@@ -84,4 +84,4 @@ Aquests 6 mesos de treball profund (on un perfil no tècnic ha construït una ar
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX_ARXIU_SECUNDARI]]
+**Ancoratge de Seguretat:** [[00_MEMORIAL_Lapides#00_INDEX_ARXIU_SECUNDARI|00_INDEX_ARXIU_SECUNDARI †]]
