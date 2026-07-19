@@ -38,3 +38,4 @@
 - [[260719_1632_PROMPT_Consell_Genoma]]
 - [[BRIEFING_Viabilitat_Economica_Legal]]
 - [[260719_0630_AUDITORIA_Fuita_Bancaria_Nucli_Mort_I_Constitucio_Triple_Trencada]]
+- [[260719_0630_PATCH_Sutura_Imports_Nucli_I_Arrel_De_Wiki_Corregida]]
