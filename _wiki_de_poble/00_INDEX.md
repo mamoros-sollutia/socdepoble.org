@@ -33,3 +33,4 @@
 - [[260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics]]
 - [[260716_1300_ACTA_SESSIO_Problema_Sincronitzacio_Skills]]
 - [[260719_0345_PROMPT_Auditoria_Suprema_Consell]]
+- [[260719_0415_ACTA_SESSIO_La_Gran_Destillacio]]
