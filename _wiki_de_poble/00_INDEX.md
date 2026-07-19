@@ -29,3 +29,4 @@
 - [[ESTANDARD_UI_Universal]]
 - [[260719_1655_BUNDLE_Sistema_Operatiu_IAIA_MarIA_Complet]]
 - [[alegacions]]
+- [[260715_0400_ACTA_SESSIO_Tancament_Gran_Auditoria]]
