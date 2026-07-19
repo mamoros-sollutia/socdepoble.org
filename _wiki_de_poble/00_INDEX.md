@@ -25,3 +25,4 @@
 - [[00_plantilles]]
 - [[plantilla_skill_trellat]]
 - [[successio_lazaro_execucio]]
+- [[ESTANDARD_Tokens_Pedra_Seca]]
