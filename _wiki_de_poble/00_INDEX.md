@@ -7,3 +7,4 @@
 - [[chrome_devtools]]
 - [[chrome_extensions]]
 - [[debug_optimize_lcp]]
+- [[google_antigravity_sdk]]
