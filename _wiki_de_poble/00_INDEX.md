@@ -35,3 +35,4 @@
 - [[260719_0345_PROMPT_Auditoria_Suprema_Consell]]
 - [[260719_0415_ACTA_SESSIO_La_Gran_Destillacio]]
 - [[260719_0430_ACTA_MARMOTA_Tancament_Sessio_Purga]]
+- [[260719_1632_PROMPT_Consell_Genoma]]
