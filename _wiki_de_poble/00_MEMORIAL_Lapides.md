@@ -95,3 +95,7 @@ Làpida erigida per enllaç perdut a _wiki_de_poble/04_ARXIU_Documents_Historics
 
 ## 02_ACTUAR_Maquina_Tecnica/plantilles/PLANTILLA_ISO_SDP
 Làpida erigida per enllaç perdut a _wiki_de_poble/04_ARXIU_Documents_Historics/260719_1655_BUNDLE_Sistema_Operatiu_IAIA_MarIA_Complet.md
+- [2026-07-19T17:48:02.940Z] Enllaç tancat a _wiki_de_poble/00_SER_Brain_Identitat/el_projecte.md (apuntava a: 02_ACTUAR_Maquina_Tecnica/assets/que-es-socdepoble-1.jpg)
+- [2026-07-19T17:48:02.940Z] Enllaç tancat a _wiki_de_poble/00_SER_Brain_Identitat/el_projecte.md (apuntava a: 02_ACTUAR_Maquina_Tecnica/assets/que-es-socdepoble-2.jpg)
+- [2026-07-19T17:48:02.940Z] Enllaç tancat a _wiki_de_poble/00_SER_Brain_Identitat/el_projecte.md (apuntava a: 02_ACTUAR_Maquina_Tecnica/assets/que-es-socdepoble-3.jpg)
+- [2026-07-19T17:48:02.940Z] Enllaç tancat a _wiki_de_poble/00_SER_Brain_Identitat/el_projecte.md (apuntava a: 02_ACTUAR_Maquina_Tecnica/assets/que-es-socdepoble-4.jpg)
