@@ -20,3 +20,4 @@
 - [[Arquitectura_L_Anima]]
 - [[Arquitectura_La_Forja]]
 - [[Arquitectura_Sistema_Nervios]]
+- [[connexio_radical]]
