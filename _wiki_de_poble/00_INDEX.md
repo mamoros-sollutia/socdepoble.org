@@ -6,3 +6,4 @@
 - [[a11y_debugging]]
 - [[chrome_devtools]]
 - [[chrome_extensions]]
+- [[debug_optimize_lcp]]
