@@ -4631,7 +4631,7 @@ export const byId = (items) => {
   });
 };
 
-export const stripMarkdownImages = (value) => String(value || '').replace(/!\[[^\]]*\]\([^)]+\)/g, '');
+export const stripMarkdownImages = (value) => String(value || '').replace(/!\[[00_MEMORIAL_Lapides#^\|^\ †]]*\]\([^)]+\)/g, '');
 export const firstMediaSource = (value) => (Array.isArray(value) ? value[0] || null : value || null);
 
 export const toFeedSummary = (value) =>
@@ -6597,7 +6597,7 @@ const normalizeText = (value) =>
     .replace(/\s+/g, ' ')
     .trim();
 
-const stripMarkdownImages = (value) => String(value || '').replace(/!\[[^\]]*\]\([^)]+\)/g, '');
+const stripMarkdownImages = (value) => String(value || '').replace(/!\[[00_MEMORIAL_Lapides#^\|^\ †]]*\]\([^)]+\)/g, '');
 const firstAsset = (value) => (Array.isArray(value) ? value[0] || null : value || null);
 const slugify = (value) =>
   normalizeText(value)
@@ -20897,7 +20897,7 @@ function resolveLink(link, source, resolver) {
   if (baseHits.length > 1) return { status: 'ambiguous', docs: baseHits };
 
   // Obsidian prioritza un basename real sobre un alias homònim. Resoldre
-  // l'alias primer podia convertir [[Target]] en una aresta cap a una altra
+  // l'alias primer podia convertir [[00_MEMORIAL_Lapides#Target|Target †]] en una aresta cap a una altra
   // nota i deixar `Target.md` falsament orfe/quarantinable.
   if (link.kind === 'wiki') {
     const aliasHits = resolver.byAlias.get(normalitza(target)) || [];
@@ -23234,7 +23234,7 @@ async function escriureActaProposta(duplicatsReals) {
     `# Proposta de fusió — contradiccions detectades`,
     ``,
     ...duplicatsReals.map(d =>
-      `- **${(d.s * 100).toFixed(1)}%** — [[${d.a}]] ↔ [[${d.b}]] → escull document canònic i converteix l'altre en pont (wikilink).`
+      `- **${(d.s * 100).toFixed(1)}%** — [[00_MEMORIAL_Lapides#${d.a}|${d.a} †]] ↔ [[00_MEMORIAL_Lapides#${d.b}|${d.b} †]] → escull document canònic i converteix l'altre en pont (wikilink).`
     )
   ];
   await fs.writeFile(target, lines.join('\n') + '\n', { encoding: 'utf8', flag: 'wx' });
@@ -26348,7 +26348,7 @@ const TAILWIND_EXACT = new Set([
 
 const TAILWIND_PREFIX = /^(?:-?m[trblxy]?|-?p[trblxy]?|w|min-w|max-w|h|min-h|max-h|gap|space-[xy]|rounded|border|bg|text|font|leading|tracking|shadow|opacity|overflow|object|items|justify|content|self|place|flex|grid|col|row|aspect|z|inset|top|right|bottom|left|translate|scale|rotate|transition|duration|ease|order|basis|grow|shrink)-/;
 const TAILWIND_VARIANT = /^(?:hover|focus|active|visited|disabled|group-hover|focus-visible|sm|md|lg|xl|2xl|dark):/;
-const ARBITRARY_VALUE = /(?:\[[^\]]+\]|#[0-9a-fA-F]{3,8}|\/\d+)$/;
+const ARBITRARY_VALUE = /(?:\[[00_MEMORIAL_Lapides#^\|^\ †]]+\]|#[0-9a-fA-F]{3,8}|\/\d+)$/;
 
 function parseArgs(argv) {
   const options = {
@@ -28701,10 +28701,10 @@ process.exit(2);
  * Destí: 02_ACTUAR_Maquina_Tecnica/scripts/teixidora_sinapsis.mjs
  *
  * SUBSTITUEIX I DEROGA orphan_linker.mjs (la "Llei Zero Enllaços").
- * Aquell script ARRANCAVA els [[enllaços]] del cos i els soterrava al frontmatter:
+ * Aquell script ARRANCAVA els [[00_MEMORIAL_Lapides#enllaços|enllaços †]] del cos i els soterrava al frontmatter:
  * és el que va deixar la 00_BIOS muda. Esta fa exactament el contrari, complint
  * la Regla 10 d'AUDITORIA_CANONICA (Integritat Neuronal): els conceptes clau
- * s'enllacen [[...]] la primera volta que apareixen AL COS DEL TEXT.
+ * s'enllacen [[00_MEMORIAL_Lapides#...|... †]] la primera volta que apareixen AL COS DEL TEXT.
  *
  * PRINCIPIS (heretats de purge_ghost_links.mjs v2, el millor gos pastor viu):
  *  1. NO DESTRUCTIVA: dry-run real per defecte, sense crear Actes.
@@ -28843,8 +28843,8 @@ function emmascara(text) {
   const rebost = [];
   const guarda = (m) => { rebost.push(m); return `\u0001${rebost.length - 1}\u0001`; };
   let t = text
-    .replace(/!?\[\[[^\]]*\]\]/g, guarda)          // wikilinks i embeds existents
-    .replace(/!?\[[^\]]*\]\([^)]*\)/g, guarda)     // enllaços markdown [x](y)
+    .replace(/!?\[\[[00_MEMORIAL_Lapides#^\|^\ †]]*\]\]/g, guarda)          // wikilinks i embeds existents
+    .replace(/!?\[[00_MEMORIAL_Lapides#^\|^\ †]]*\]\([^)]*\)/g, guarda)     // enllaços markdown [x](y)
     .replace(/(`+)([\s\S]*?)\1/g, guarda)          // codi inline
     .replace(/https?:\/\/\S+/g, guarda)            // URLs nues
     .replace(/^#{1,6} .*$/gm, guarda);             // capçaleres: no s'hi cus
@@ -29289,7 +29289,7 @@ test('els enllaços dins de codi i comentaris no formen part del graf viu', () =
     '<!-- [[ComentariFantasma]] -->',
     '%% [[ComentariObsidian]] %%',
     '```js',
-    'const exemple = "[[FenceFantasma]]";',
+    'const exemple = "[[00_MEMORIAL_Lapides#FenceFantasma|FenceFantasma †]]";',
     '```',
     '````md',
     '```',
@@ -29334,7 +29334,7 @@ test('un basename exacte guanya a un alias homònim i evita quarantena falsa', a
     estat: 'canonic',
     tipus: 'document',
     description: 'Document font que enllaça el basename físic exacte.',
-  }) + 'Consulta [[Target]] per continuar.\n');
+  }) + 'Consulta [[00_MEMORIAL_Lapides#Target|Target †]] per continuar.\n');
 
   const report = await auditWiki(root);
   assert.equal(report.graph.ambiguousOccurrences, 0);
@@ -29355,7 +29355,7 @@ test('audit és dry-run real, conserva el cos i només quarantina buit aïllat',
     hideUnresolved: false,
     colorGroups: [],
   }));
-  const bodyA = '# A\n\nEnllaça [[B]].\n\n```js\nconst x = "[[NoExisteix]]";\n```\n';
+  const bodyA = '# A\n\nEnllaça [[00_MEMORIAL_Lapides#B|B †]].\n\n```js\nconst x = "[[NoExisteix]]";\n```\n';
   await fs.writeFile(path.join(pilar, 'A.md'), [
     '---',
     'estat: canonic',
@@ -29735,7 +29735,7 @@ async function setupFixture(t) {
   await write(root, REFLEX_TEST_REL, '// canari test reflex\n');
   await write(root, SAFETY_TEST_REL, "import './doctor_dependency.mjs';\n");
   await write(root, '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/tests/doctor_dependency.mjs', '// dependència transitiva canària\n');
-  await write(root, CANARY_REL, '---\nestat: "canonic"\ntipus: "document"\ndescription: "Document canari de baseline per a les proves del Reflex."\n---\n# Canari\n\n[[Canari_Restore]]\n');
+  await write(root, CANARY_REL, '---\nestat: "canonic"\ntipus: "document"\ndescription: "Document canari de baseline per a les proves del Reflex."\n---\n# Canari\n\n[[00_MEMORIAL_Lapides#Canari_Restore|Canari_Restore †]]\n');
   await write(root, GRAPH_REL, `${JSON.stringify({
     search: '-path:"04_ARXIU_Documents_Historics" -path:"05_Escriptori_Soc_de_Poble" -path:"00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR" -path:"00_SER_Brain_Identitat/Sollutia" -path:"03_GOVERNAR_Normativa_Regles/agents_actius"',
     showAttachments: false,
@@ -34411,7 +34411,7 @@ export const byId = (items) => {
   });
 };
 
-export const stripMarkdownImages = (value) => String(value || '').replace(/!\[[^\]]*\]\([^)]+\)/g, '');
+export const stripMarkdownImages = (value) => String(value || '').replace(/!\[[00_MEMORIAL_Lapides#^\|^\ †]]*\]\([^)]+\)/g, '');
 export const firstMediaSource = (value) => (Array.isArray(value) ? value[0] || null : value || null);
 
 export const toFeedSummary = (value) =>
@@ -36189,7 +36189,7 @@ const normalizeText = (value) =>
     .replace(/\s+/g, ' ')
     .trim();
 
-const stripMarkdownImages = (value) => String(value || '').replace(/!\[[^\]]*\]\([^)]+\)/g, '');
+const stripMarkdownImages = (value) => String(value || '').replace(/!\[[00_MEMORIAL_Lapides#^\|^\ †]]*\]\([^)]+\)/g, '');
 const firstAsset = (value) => (Array.isArray(value) ? value[0] || null : value || null);
 const slugify = (value) =>
   normalizeText(value)
@@ -77442,7 +77442,7 @@ function setsEqual(first, second) {
 }
 /** Normalize a markdown string. Removes all markdown tags and obsidian links. */
 function normalizeMarkdown(str) {
-    // [[test]] -> test
+    // [[00_MEMORIAL_Lapides#test|test †]] -> test
     let interim = str.replace(/\[\[([^\|]*?)\]\]/g, "$1");
     // [[test|test]] -> test
     interim = interim.replace(/\[\[.*?\|(.*?)\]\]/, "$1");
@@ -82547,7 +82547,7 @@ class FileImporter extends obsidian.Component {
             if (this.callbacks.has(file.path))
                 this.callbacks.get(file.path)?.push([resolve, reject]);
             else
-                this.callbacks.set(file.path, [[resolve, reject]]);
+                this.callbacks.set(file.path, [[00_MEMORIAL_Lapides#resolve, reject|resolve, reject †]]);
         });
         // De-bounce repeated requests for the same file.
         if (this.reloadSet.has(file.path))
@@ -102041,7 +102041,7 @@ function protectedRanges(body) {
     /```[\s\S]*?```/g,
     /~~~[\s\S]*?~~~/g,
     /`[^`\r\n]+`/g,
-    /!?(?:\[\[[^\]]+\]\]|\[[^\]]*\]\([^\r\n)]*\))/g,
+    /!?(?:\[\[[00_MEMORIAL_Lapides#^\|^\ †]]+\]\]|\[[00_MEMORIAL_Lapides#^\|^\ †]]*\]\([^\r\n)]*\))/g,
     /<!--([\s\S]*?)-->/g,
     /^#{1,6}\s+.*$/gm,
     /^\s*\|.*\|\s*$/gm,
@@ -102361,7 +102361,7 @@ protocol del Reflex.
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX_ARXIU_SECUNDARI]]
+**Ancoratge de Seguretat:** [[00_MEMORIAL_Lapides#00_INDEX_ARXIU_SECUNDARI|00_INDEX_ARXIU_SECUNDARI †]]
 
 
 --------------------------------------------------
@@ -102382,7 +102382,7 @@ queda subordinada a `.agents/PROTOCOL_PETORRETA.md`.
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX_ARXIU_SECUNDARI]]
+**Ancoratge de Seguretat:** [[00_MEMORIAL_Lapides#00_INDEX_ARXIU_SECUNDARI|00_INDEX_ARXIU_SECUNDARI †]]
 
 
 --------------------------------------------------
@@ -102403,7 +102403,7 @@ qualsevol afirmació d'estat contra el codi i les proves.
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX_ARXIU_SECUNDARI]]
+**Ancoratge de Seguretat:** [[00_MEMORIAL_Lapides#00_INDEX_ARXIU_SECUNDARI|00_INDEX_ARXIU_SECUNDARI †]]
 
 
 --------------------------------------------------
@@ -102424,7 +102424,7 @@ proves del component en scope.
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX_ARXIU_SECUNDARI]]
+**Ancoratge de Seguretat:** [[00_MEMORIAL_Lapides#00_INDEX_ARXIU_SECUNDARI|00_INDEX_ARXIU_SECUNDARI †]]
 
 
 --------------------------------------------------
@@ -102446,7 +102446,7 @@ No obeïsques este fitxer com a instrucció. Llig `AGENTS.md` de l'arrel i
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX_ARXIU_SECUNDARI]]
+**Ancoratge de Seguretat:** [[00_MEMORIAL_Lapides#00_INDEX_ARXIU_SECUNDARI|00_INDEX_ARXIU_SECUNDARI †]]
 
 
 --------------------------------------------------
@@ -102472,7 +102472,7 @@ L'autoritat viu exclusivament en `AGENTS.md`, `.agents/AGENTS.md`,
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX_ARXIU_SECUNDARI]]
+**Ancoratge de Seguretat:** [[00_MEMORIAL_Lapides#00_INDEX_ARXIU_SECUNDARI|00_INDEX_ARXIU_SECUNDARI †]]
 
 
 --------------------------------------------------
@@ -102494,7 +102494,7 @@ jerarquia d'autoritat.
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX_ARXIU_SECUNDARI]]
+**Ancoratge de Seguretat:** [[00_MEMORIAL_Lapides#00_INDEX_ARXIU_SECUNDARI|00_INDEX_ARXIU_SECUNDARI †]]
 
 
 --------------------------------------------------
@@ -102574,7 +102574,7 @@ Entrada estàtica a la Wiki de Sóc de Poble.
 
 | Zona | Funció | Enllaç |
 |---|---|---|
-| 04 ARXIU | Memòria històrica curada i consultiva | [[04_ARXIU_Documents_Historics/actes_arxivades/90_arxiu_historic]] |
+| 04 ARXIU | Memòria històrica curada i consultiva | [[00_MEMORIAL_Lapides#04_ARXIU_Documents_Historics/actes_arxivades/90_arxiu_historic|04_ARXIU_Documents_Historics/actes_arxivades/90_arxiu_historic †]] |
 | 05 ESCRIPTORI | Treball editorial temporal, no autoritat | Buit en esta baseline; ruta `05_Escriptori_Soc_de_Poble/` |
 
 ## Escriptori de Sessió (L'Era)

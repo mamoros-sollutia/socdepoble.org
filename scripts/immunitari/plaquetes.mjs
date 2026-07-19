@@ -262,23 +262,31 @@ if (cmd === 'aplica') {
       });
       escriuAtomic(fPath, txt);
       
-      let memContent = fs.existsSync(memPath) ? fs.readFileSync(memPath, 'utf8') : '# Memorial de Làpides\n';
+      const fP = path.join(vaultDir, `${config.memorialLapides}.md`);
+      const memPath = path.join(REPO_ROOT, fP);
+      let memContent = fs.existsSync(memPath) ? fs.readFileSync(memPath, 'utf8') : '# Memorial de Llàpides\n\n';
       op.objectius.forEach(obj => {
-        memContent += `\n## ${obj}\nLàpida erigida per enllaç perdut a ${op.fitxer}\n`;
+        memContent += `- [${new Date().toISOString()}] Enllaç tancat a ${op.fitxer} (apuntava a: ${obj})\n`;
       });
       escriuAtomic(memPath, memContent);
       runGit(`add "${fPath}" "${memPath}"`);
-      runGit(`commit --no-verify -m "[PLAQUETES ${op.id}] LAPIDA: ${op.objectius.join(', ')}"`);
+      const msgFile = path.join(REPO_ROOT, '.git', 'COMMIT_MSG_PLAQUETES');
+      fs.writeFileSync(msgFile, `[PLAQUETES ${op.id}] LAPIDA: ${op.objectius.join(', ')}`);
+      runGit(`commit --no-verify -F "${msgFile}"`);
+      fs.unlinkSync(msgFile);
     }
     
     if (op.tipus === 'ADOPTA') {
-      if (!fs.existsSync(fPath)) return;
-      let idxContent = fs.existsSync(indexPath) ? fs.readFileSync(indexPath, 'utf8') : `# ${config.indexAdopcio}\n`;
+      const indexPath = path.join(vaultDir, `${config.indexAdopcio}.md`);
+      let idxContent = fs.existsSync(indexPath) ? fs.readFileSync(indexPath, 'utf8') : `# ${config.indexAdopcio}\n\n`;
       if (!idxContent.includes("## Adopcions de Les Plaquetes")) idxContent += "\n## Adopcions de Les Plaquetes\n";
       idxContent += `- [[${path.basename(op.fitxer, '.md')}]]\n`;
       escriuAtomic(indexPath, idxContent);
       runGit(`add "${indexPath}"`);
-      runGit(`commit --no-verify -m "[PLAQUETES ${op.id}] ADOPTA: ${op.fitxer}"`);
+      const msgFile = path.join(REPO_ROOT, '.git', 'COMMIT_MSG_PLAQUETES');
+      fs.writeFileSync(msgFile, `[PLAQUETES ${op.id}] ADOPTA: ${op.fitxer}`);
+      runGit(`commit --no-verify -F "${msgFile}"`);
+      fs.unlinkSync(msgFile);
     }
     
     const jEntry = JSON.stringify({ op: op.id, tipus: op.tipus, fitxer: op.fitxer, data: new Date().toISOString() }) + "\n";
