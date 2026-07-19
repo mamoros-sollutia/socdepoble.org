@@ -27,10 +27,9 @@ import {
   parseFrontmatter,
   serializeFrontmatter,
 } from '../lib/frontmatter.mjs';
+import { WIKI_DIR } from '../lib/project_paths.mjs';
 
-const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
-export const DEFAULT_WIKI_DIR = path.resolve(SCRIPT_DIR, '../../..');
-const PROJECT_DIR = path.dirname(DEFAULT_WIKI_DIR);
+export const DEFAULT_WIKI_DIR = WIKI_DIR;
 const SCHEMA_TEXT = await fs.readFile(new URL('../schema.json', import.meta.url), 'utf8');
 const SCHEMA = JSON.parse(SCHEMA_TEXT);
 const FIELD_ORDER = ['estat', 'tipus', 'description', 'aliases', 'revisat'];
@@ -148,4 +147,3 @@ export function treeDigest(docs) {
 export function treeDigestEntries(entries) {
   return sha256(entries.map((entry) => `${entry.file}\0${entry.sha256}`).sort().join('\n'));
 }
-

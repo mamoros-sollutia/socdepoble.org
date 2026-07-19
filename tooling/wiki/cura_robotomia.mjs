@@ -27,9 +27,9 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { WIKI_DIR } from './lib/project_paths.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const WIKI_DIR = path.resolve(__dirname, '../../');
 
 const PROCEDEIX = process.argv.includes('--procedeix');
 const JSON_OUT = process.argv.includes('--json');
@@ -39,6 +39,13 @@ const TEXT_EXTENSIONS = new Set([
 ]);
 const ALLOWED_ROBOTO_TOKENS = new Set(['roboto', 'robotomia']);
 const ROBOTOMIA_CANDIDATE = /\broboto[\p{L}\p{N}_]*\b/giu;
+const EXCLUDED_PREFIXES = [
+  '00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR',
+  '00_SER_Brain_Identitat/Sollutia',
+  '03_GOVERNAR_Normativa_Regles/agents_actius',
+  '04_ARXIU_Documents_Historics',
+  '05_Escriptori_Soc_de_Poble',
+];
 
 /** Diccionari tancat de ferides conegudes. Res més es toca. */
 const DICCIONARI = [
@@ -71,6 +78,8 @@ export async function cura(wikiDir = WIKI_DIR) {
     for (const entry of await fs.readdir(directory, { withFileTypes: true })) {
       const full = path.join(directory, entry.name);
       if (entry.isSymbolicLink()) continue;
+      const relative = path.relative(root, full).split(path.sep).join('/');
+      if (entry.isDirectory() && EXCLUDED_PREFIXES.some((prefix) => relative === prefix || relative.startsWith(`${prefix}/`))) continue;
       if (entry.isDirectory()) await walk(full);
       else if (entry.isFile() && TEXT_EXTENSIONS.has(path.extname(entry.name).toLowerCase())) files.push(full);
     }

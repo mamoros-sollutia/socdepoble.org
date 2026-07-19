@@ -7,11 +7,11 @@
  * arquitectura 4+2 i prefix termodinàmic reservat a esdeveniments.
  */
 import path from 'node:path';
-import { fileURLToPath, pathToFileURL } from 'node:url';
+import { pathToFileURL } from 'node:url';
 import { buildWikiIndex, parseFrontmatter } from './lib/wiki_walker.mjs';
+import { WIKI_DIR } from './lib/project_paths.mjs';
 
-const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
-const ROOT = path.resolve(SCRIPT_DIR, '../..');
+const ROOT = WIKI_DIR;
 
 export const PILARS_OPERATIUS = [
   '00_SER_Brain_Identitat',

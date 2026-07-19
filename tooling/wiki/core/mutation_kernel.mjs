@@ -29,10 +29,14 @@ import {
   serializeFrontmatter,
 } from '../lib/frontmatter.mjs';
 import { discoverMarkdown, treeDigest } from './corpus_snapshot.mjs';
+import {
+  PROJECT_DIR,
+  TOOLING_WIKI_DIR,
+  WIKI_DIR,
+} from '../lib/project_paths.mjs';
 
-const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
-export const DEFAULT_WIKI_DIR = path.resolve(SCRIPT_DIR, '../../..');
-const PROJECT_DIR = path.dirname(DEFAULT_WIKI_DIR);
+const SCRIPT_DIR = TOOLING_WIKI_DIR;
+export const DEFAULT_WIKI_DIR = WIKI_DIR;
 const SCHEMA_TEXT = await fs.readFile(new URL('../schema.json', import.meta.url), 'utf8');
 const SCHEMA = JSON.parse(SCHEMA_TEXT);
 const FIELD_ORDER = ['estat', 'tipus', 'description', 'aliases', 'revisat'];
@@ -124,13 +128,11 @@ export async function writeNewFile(file, content, { mode = 0o600 } = {}) {
 
 export async function requireReceipt(receiptPath, operation, targets, planDigest) {
   if (!receiptPath) throw new Error(`L'operació ${operation} exigix --receipt=<rebut.json>`);
-  const { claimReceiptForMutation } = await import('./reflex_petorreta.mjs');
   const claimed = await claimReceiptForMutation({ receiptPath, operation, targets, planDigest });
   return { receiptPath, operation, claimToken: claimed.claimToken };
 }
 
 export async function completeReceiptClaim(claim) {
-  const { completeMutationClaim } = await import('./reflex_petorreta.mjs');
   await completeMutationClaim({ receiptPath: claim.receiptPath, operation: claim.operation }, claim.claimToken);
 }
 
@@ -189,4 +191,3 @@ export async function assertSchemaCutoverReady() {
     throw new Error('Cutover v2 caducat: schemaSha256 no coincidix amb schema.json.');
   }
 }
-

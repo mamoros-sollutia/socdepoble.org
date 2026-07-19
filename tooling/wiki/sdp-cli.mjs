@@ -32,10 +32,14 @@ import {
   parseFrontmatter,
   serializeFrontmatter,
 } from './lib/frontmatter.mjs';
+import {
+  PROJECT_DIR as CANONICAL_PROJECT_DIR,
+  WIKI_DIR,
+} from './lib/project_paths.mjs';
 
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
-export const DEFAULT_WIKI_DIR = path.resolve(SCRIPT_DIR, '../..');
-const PROJECT_DIR = path.dirname(DEFAULT_WIKI_DIR);
+export const DEFAULT_WIKI_DIR = WIKI_DIR;
+const PROJECT_DIR = CANONICAL_PROJECT_DIR;
 const SCHEMA_TEXT = await fs.readFile(new URL('./schema.json', import.meta.url), 'utf8');
 const SCHEMA = JSON.parse(SCHEMA_TEXT);
 const FIELD_ORDER = ['estat', 'tipus', 'description', 'aliases', 'revisat'];

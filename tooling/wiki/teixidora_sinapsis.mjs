@@ -36,14 +36,13 @@
  */
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { fileURLToPath, pathToFileURL } from 'node:url';
+import { pathToFileURL } from 'node:url';
 import { buildWikiIndex } from './lib/wiki_walker.mjs';
 import { parseFrontmatter } from './lib/frontmatter.mjs';
 import { getTimestamp } from './lib/termodinamic.mjs';
 import { openReflex, sealReflex, claimReceiptForMutation, completeMutationClaim } from './reflex_petorreta.mjs';
+import { WIKI_DIR } from './lib/project_paths.mjs';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const WIKI_DIR = path.resolve(__dirname, '../../');
 const ESCRIPTORI = '05_Escriptori_Soc_de_Poble';
 
 /* ------------------------------------------------------------------ *
@@ -338,6 +337,9 @@ function cusDocument(doc, index) {
  * 5. MOTOR PRINCIPAL                                                  *
  * ------------------------------------------------------------------ */
 export async function teixeix(wikiDir = WIKI_DIR) {
+  if (PROCEDEIX) {
+    throw new Error('--procedeix retirat: la Teixidora només pot generar un diagnòstic; qualsevol cosit futur necessita pla immutable, Reflex i rollback.');
+  }
   let receiptPath = null;
   let claimToken = null;
   if (PROCEDEIX) {
@@ -383,7 +385,7 @@ Rules-SHA256: ${opened.session.rulesDigest}
     const manifestContent = JSON.stringify({
       sources: [
         {
-          path: "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/teixidora_sinapsis.mjs",
+          path: "tooling/wiki/teixidora_sinapsis.mjs",
           reason: "Script executor de la teixidora",
           classification: "public",
           role: "reference"

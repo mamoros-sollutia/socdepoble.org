@@ -1,9 +1,7 @@
 #!/usr/bin/env node
 import path from 'node:path';
-import { fileURLToPath, pathToFileURL } from 'node:url';
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const WIKI_DIR = path.resolve(__dirname, '../../');
+import { pathToFileURL } from 'node:url';
+import { WIKI_DIR } from './lib/project_paths.mjs';
 
 export async function purgeEmptyNodes(wikiDir = WIKI_DIR) {
   void wikiDir;

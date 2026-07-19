@@ -6,7 +6,7 @@ const { pathToFileURL } = require('node:url');
 (async () => {
   const moduleUrl = pathToFileURL(path.join(__dirname, 'autoneteja_wiki.mjs')).href;
   const { auditWiki } = await import(moduleUrl);
-  const wiki = path.resolve(__dirname, '../..');
+  const wiki = path.resolve(__dirname, '../../_wiki_de_poble');
   const audit = await auditWiki(wiki);
   if (!audit.operational.ok) {
     console.error(`❌ Trellat fallat: ${audit.operational.health}; pla ${audit.plan.planDigest}`);

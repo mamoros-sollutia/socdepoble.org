@@ -16,16 +16,16 @@
  *    `.wiki-safety/reports/`, fora del vault, en compte de només imprimir.
  */
 import path from 'node:path';
-import { fileURLToPath, pathToFileURL } from 'node:url';
+import { pathToFileURL } from 'node:url';
 import fs from 'node:fs/promises';
 import { buildWikiIndex } from './lib/wiki_walker.mjs';
 import { parseFrontmatter, serializeFrontmatter } from './lib/frontmatter.mjs';
 import { validarFrontmatter } from './entropia_zero_router.js';
 import { getTimestamp } from './lib/termodinamic.mjs';
 import { claimReceiptForMutation, completeMutationClaim } from './reflex_petorreta.mjs';
+import { WIKI_DIR } from './lib/project_paths.mjs';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const ROOT = path.resolve(__dirname, '../../');
+const ROOT = WIKI_DIR;
 const UMBRAL_DUPLICAT = 0.62;
 const FORCE = process.argv.includes('--force');
 const RECEIPT_ARG = process.argv.find((arg) => arg.startsWith('--receipt='));

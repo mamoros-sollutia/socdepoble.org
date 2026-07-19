@@ -9,7 +9,7 @@ Abans d'operar en este repositori, llig íntegrament `.agents/AGENTS.md`,
 `.agents/PROTOCOL_PETORRETA.md` i `.agents/skills/socdepoble-workflow/SKILL.md`.
 
 Abans de qualsevol efecte lateral, executa el preflight de
-`_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/reflex_petorreta.mjs`.
+`tooling/wiki/reflex_petorreta.mjs`.
 Les operacions sistèmiques, massives, destructives o normatives exigixen una
 Petorreta segellada i un rebut vigent. La lectura i el diagnòstic no necessiten
 crear una Petorreta nova.

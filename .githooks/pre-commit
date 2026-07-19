@@ -21,3 +21,13 @@ mkdir -m 700 "$AUDIT_TREE"
 node "$REFLEX" materialize-tree --destination="$AUDIT_TREE"
 node "$AUDIT_TREE/tooling/wiki/pre-commit.mjs" \
   --dry-run --wiki="$AUDIT_TREE/_wiki_de_poble"
+
+# 🧠 Reflex Nerviós: Sincronitza la identitat de les IAs al Graf abans del commit
+node scripts/immunitari/mirall_identitat.mjs
+git add _wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/ || true
+
+# 🩸 Sistema Immunitari: Porter de pre-commit
+node scripts/immunitari/plaquetes.mjs diagnostic --porta || {
+  echo "🩸 Les Plaquetes bloquegen el commit: ferides noves al graf."
+  exit 1
+}

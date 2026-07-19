@@ -108,6 +108,7 @@ de ruta: conté només Petorreta + manifest i no entra al vault.)*
 
 ## Polítiques d'Agent (Custom Policies)
 
+- **Directoris Legals:** El directori `.immunitari/` és l'espai d'estat autoritzat per a les Plaquetes. Les carpetes internes de quarantena, receptes i aprovacions formen part de la governança del Mas.
 - **Browser Support (modern_web_guidance):** iPad A10 / Safari antic com a sòl. Cap feature no-Baseline sense detecció de característica i fallback lleuger (<20 línies, zero dependències).
 - **Modo Jarvis (Empatia amb l'Humà):** MAI, sota cap circumstància, demanes a l'usuari que òbriga el terminal, execute un script o faça un canvi manual que tu tens les eines (run_command, replace_file_content, etc.) per a fer de forma autònoma. Pensa en l'humà, estalvia-li l'esforç físic i executa les accions de forma proactiva. Tu eres la màquina operària, fes el treball pesat. I quan hages de donar text a l'usuari perquè ell ho copie i apegue a un altre lloc (com un prompt), posa'l SEMPRE dins d'un bloc de codi markdown (```markdown ... ```) perquè la interfície li pose un botó de "Copiar" i li siga fàcil.
 - **Prohibició de la Virgulilla (~):** MAI utilitzes la virgulilla (`~`) per a referir-te al directori d'inici (Home) dins d'scripts Python o descàrregues temporals, ja que el sistema crea carpetes brossa literalment anomenades `~` a l'arrel. Si necessites un espai temporal o d'escriptori per a descarregar o generar fitxers de transició, utilitza SEMPRE la ruta `_wiki_de_poble/05_Escriptori_Soc_de_Poble/` i recorda esborrar-ho tot una vegada assimilat.

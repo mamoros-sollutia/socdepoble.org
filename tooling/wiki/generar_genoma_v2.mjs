@@ -47,6 +47,7 @@ const ROOTS = [
   'index.html',
   'src',                             // el cos: sense codi viu no hi ha «zero caixes negres»
   'scripts',
+  'tooling/wiki',
   '_wiki_de_poble/00_SER_Brain_Identitat',
   '_wiki_de_poble/01_SABER_Cultura_Coneixement',
   '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica',
@@ -103,7 +104,7 @@ function* caminar(abs, rel) {
 
 function main() {
   const { arrel, eixida, permetPii } = parseArgs(process.argv.slice(2));
-  const repoRoot = path.resolve(arrel ?? path.resolve(SCRIPT_DIR, '../../..'));
+  const repoRoot = path.resolve(arrel ?? path.resolve(SCRIPT_DIR, '../..'));
 
   const fitxers = [];
   const absents = [];

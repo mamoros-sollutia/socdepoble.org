@@ -13,7 +13,7 @@
 import { readFile, readdir } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { parseFrontmatter } from '../_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/lib/frontmatter.mjs';
+import { parseFrontmatter } from '../tooling/wiki/lib/frontmatter.mjs';
 
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = path.resolve(SCRIPT_DIR, '..');

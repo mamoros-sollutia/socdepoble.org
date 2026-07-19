@@ -11,23 +11,25 @@ import { editorialPart, validatePetorreta } from '../reflex_petorreta.mjs';
 
 const execFileAsync = promisify(execFile);
 const TEST_DIR = path.dirname(fileURLToPath(import.meta.url));
-const SOURCE_ROOT = path.resolve(TEST_DIR, '../../../..');
+const SOURCE_ROOT = path.resolve(TEST_DIR, '../../..');
 const SOURCE_SCRIPT = path.resolve(TEST_DIR, '../reflex_petorreta.mjs');
 const SOURCE_FRONTMATTER = path.resolve(TEST_DIR, '../lib/frontmatter.mjs');
+const SOURCE_PROJECT_PATHS = path.resolve(TEST_DIR, '../lib/project_paths.mjs');
 const SOURCE_AUTONETEJA = path.resolve(TEST_DIR, '../autoneteja_wiki.mjs');
 const SOURCE_SCHEMA = path.resolve(TEST_DIR, '../schema.json');
 const SOURCE_ROUTER = path.resolve(TEST_DIR, '../entropia_zero_router.js');
-const SCRIPT_REL = '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/reflex_petorreta.mjs';
-const FRONTMATTER_REL = '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/lib/frontmatter.mjs';
-const AUTONETEJA_REL = '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/autoneteja_wiki.mjs';
-const SCHEMA_REL = '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/schema.json';
-const CUTOVER_REL = '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/schema-cutover.lock.json';
-const ROUTER_REL = '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/entropia_zero_router.js';
-const PRECOMMIT_REL = '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/pre-commit.mjs';
-const FRONTMATTER_TEST_REL = '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/tests/frontmatter_autoneteja.test.mjs';
-const REFLEX_TEST_REL = '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/tests/reflex_petorreta.test.mjs';
-const SAFETY_TEST_REL = '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/tests/safety_dry_run.test.mjs';
-const BASELINE_REL = '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/wiki-baseline.lock.json';
+const SCRIPT_REL = 'tooling/wiki/reflex_petorreta.mjs';
+const FRONTMATTER_REL = 'tooling/wiki/lib/frontmatter.mjs';
+const PROJECT_PATHS_REL = 'tooling/wiki/lib/project_paths.mjs';
+const AUTONETEJA_REL = 'tooling/wiki/autoneteja_wiki.mjs';
+const SCHEMA_REL = 'tooling/wiki/schema.json';
+const CUTOVER_REL = 'tooling/wiki/schema-cutover.lock.json';
+const ROUTER_REL = 'tooling/wiki/entropia_zero_router.js';
+const PRECOMMIT_REL = 'tooling/wiki/pre-commit.mjs';
+const FRONTMATTER_TEST_REL = 'tooling/wiki/tests/frontmatter_autoneteja.test.mjs';
+const REFLEX_TEST_REL = 'tooling/wiki/tests/reflex_petorreta.test.mjs';
+const SAFETY_TEST_REL = 'tooling/wiki/tests/safety_dry_run.test.mjs';
+const BASELINE_REL = 'tooling/wiki/wiki-baseline.lock.json';
 const GRAPH_REL = '_wiki_de_poble/.obsidian/graph.json';
 const WIKI_REL = '_wiki_de_poble';
 const CANARY_REL = '_wiki_de_poble/00_SER_Brain_Identitat/Canari_Restore.md';
@@ -112,29 +114,32 @@ async function setupFixture(t) {
   ].join('\n'));
   await fs.mkdir(path.join(root, ESCRIPTORI_REL), { recursive: true });
   await write(root, SCRIPT_REL, await fs.readFile(SOURCE_SCRIPT, 'utf8'), 0o755);
-  await write(root, '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/package.json', '{"type":"module"}\n');
+  await write(root, 'tooling/wiki/package.json', '{"type":"module"}\n');
   await write(root, FRONTMATTER_REL, await fs.readFile(SOURCE_FRONTMATTER, 'utf8'));
+  await write(root, PROJECT_PATHS_REL, await fs.readFile(SOURCE_PROJECT_PATHS, 'utf8'));
   await write(root, ROUTER_REL, await fs.readFile(SOURCE_ROUTER, 'utf8'));
   await write(root, SCHEMA_REL, await fs.readFile(SOURCE_SCHEMA, 'utf8'));
-  await write(root, '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/rules/trellat-rules.json', '{}\n');
+  await write(root, 'tooling/wiki/rules/trellat-rules.json', '{}\n');
   await write(root, AUTONETEJA_REL, '#!/usr/bin/env node\n// canari doctor\n', 0o755);
   for (const relative of [
-    '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/cura_robotomia.mjs',
-    '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/contradiction_engine.mjs',
-    '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/compiler/build.cjs',
-    '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/compiler/01_build_index.cjs',
-    '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/compiler/02_build_ontology.cjs',
-    '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/core/translate.mjs',
-    '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/sdp.mjs',
-    '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/core/audit.mjs',
-    '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/core/lint.mjs',
-    '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/core/snapshot_engine.mjs',
-    '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/core/tombstone_gc.mjs',
-    '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/core/self_repair.mjs',
-    '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/core/edge_rag.mjs',
-    '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/core/a11y_seo.mjs',
-    '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/core/design_guard.mjs',
-    '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/core/runner.mjs',
+    'tooling/wiki/cura_robotomia.mjs',
+    'tooling/wiki/contradiction_engine.mjs',
+    'tooling/wiki/compiler/build.cjs',
+    'tooling/wiki/compiler/01_build_index.cjs',
+    'tooling/wiki/compiler/02_build_ontology.cjs',
+    'tooling/wiki/core/translate.mjs',
+    'tooling/wiki/sdp.mjs',
+    'tooling/wiki/core/audit.mjs',
+    'tooling/wiki/core/lint.mjs',
+    'tooling/wiki/core/snapshot_engine.mjs',
+    'tooling/wiki/core/tombstone_gc.mjs',
+    'tooling/wiki/core/self_repair.mjs',
+    'tooling/wiki/core/edge_rag.mjs',
+    'tooling/wiki/core/a11y_seo.mjs',
+    'tooling/wiki/core/design_guard.mjs',
+    'tooling/wiki/core/runner.mjs',
+    'tooling/wiki/core/sistema_nervios.mjs',
+    'tooling/wiki/sistema_nervios.mjs',
     'scripts/generate-supabase-seed.mjs',
     'scripts/enllacat-intelligent-wiki.mjs',
   ]) await write(root, relative, '// canari crític\n');
@@ -142,8 +147,11 @@ async function setupFixture(t) {
   await write(root, CUTOVER_REL, '{"schema":"socdepoble.schema-cutover.v1","ready":true}\n');
   await write(root, FRONTMATTER_TEST_REL, '// canari test frontmatter\n');
   await write(root, REFLEX_TEST_REL, '// canari test reflex\n');
-  await write(root, SAFETY_TEST_REL, "import './doctor_dependency.mjs';\n");
-  await write(root, '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/tests/doctor_dependency.mjs', '// dependència transitiva canària\n');
+  const dependencyImport = ['import ', "'./doctor_dependency.mjs';\n"].join('');
+  await write(root, SAFETY_TEST_REL, dependencyImport);
+  await write(root, 'tooling/wiki/tests/smoke_cli.test.mjs', '// canari test smoke\n');
+  await write(root, 'tooling/wiki/tests/sistema_nervios.test.mjs', '// canari test nervis\n');
+  await write(root, 'tooling/wiki/tests/doctor_dependency.mjs', '// dependència transitiva canària\n');
   await write(root, CANARY_REL, '---\nestat: "canonic"\ntipus: "document"\ndescription: "Document canari de baseline per a les proves del Reflex."\n---\n# Canari\n\n[[Canari_Restore]]\n');
   await write(root, GRAPH_REL, `${JSON.stringify({
     search: '-path:"04_ARXIU_Documents_Historics" -path:"05_Escriptori_Soc_de_Poble" -path:"00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR" -path:"00_SER_Brain_Identitat/Sollutia" -path:"03_GOVERNAR_Normativa_Regles/agents_actius"',
@@ -354,7 +362,7 @@ test('doctor --ci és portable, init activa el clon i la clausura detecta import
   assert.equal((await runOk('git', ['config', '--get', 'core.hooksPath'], fixture.root)).stdout.trim(), '.githooks');
   assert.equal((await reflex(fixture, ['doctor', '--json'])).code, 0);
 
-  const dependency = '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/tests/doctor_dependency.mjs';
+  const dependency = 'tooling/wiki/tests/doctor_dependency.mjs';
   await runOk('git', ['rm', '--cached', '-q', dependency], fixture.root);
   const missing = await reflex(fixture, ['doctor', '--ci', '--json']);
   assert.equal(missing.code, 1);

@@ -266,7 +266,7 @@ async function main() {
   const args = process.argv.slice(2);
   const verbose = args.includes('--verbose');
   const wikiArg = args.find(a => a.startsWith('--wiki='));
-  const wikiRoot = path.resolve(wikiArg ? wikiArg.slice('--wiki='.length) : path.resolve(__dirname, '../../..'));
+  const wikiRoot = path.resolve(wikiArg ? wikiArg.slice('--wiki='.length) : path.resolve(__dirname, '../../../_wiki_de_poble'));
   const buildDir = path.join(wikiRoot, CONFIG.buildDir);
   const receiptArg = args.find(a => a.startsWith('--receipt='));
   if (!receiptArg) throw new Error('Falta --receipt=<lease Reflex> per a compiler-build.');

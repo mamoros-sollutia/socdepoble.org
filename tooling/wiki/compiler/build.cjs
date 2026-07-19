@@ -36,7 +36,7 @@ async function main() {
   const receiptArg = args.find(a => a.startsWith('--receipt='));
   if (!receiptArg) throw new Error('El compilador exigix --receipt=<lease Reflex> per a l’operació compiler-build.');
   const receipt = path.resolve(receiptArg.slice('--receipt='.length));
-  const wikiRoot = path.resolve(wikiArg ? wikiArg.slice('--wiki='.length) : path.resolve(__dirname, '../../..'));
+  const wikiRoot = path.resolve(wikiArg ? wikiArg.slice('--wiki='.length) : path.resolve(__dirname, '../../../_wiki_de_poble'));
   const buildDir = path.join(wikiRoot, '_build');
   const reflexUrl = pathToFileURL(path.resolve(__dirname, '../reflex_petorreta.mjs')).href;
   const { claimReceiptForMutation, completeMutationClaim } = await import(reflexUrl);

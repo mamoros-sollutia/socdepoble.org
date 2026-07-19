@@ -1,0 +1,338 @@
+{
+  "id": "R-1784482265826",
+  "data": "2026-07-19T17:31:05.826Z",
+  "operacions": [
+    {
+      "id": "OP-001",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md",
+      "objectius": [
+        "04_ARXIU_Documents_Historics/actes_arxivades/90_arxiu_historic"
+      ],
+      "hashFont": "b308e32ef40a9e23c8062e84d17b076f500fe7bb28cdb620fdcf79151fab0b22"
+    },
+    {
+      "id": "OP-002",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/00_SER_Brain_Identitat/el_projecte.md",
+      "objectius": [
+        "02_ACTUAR_Maquina_Tecnica/assets/que-es-socdepoble-1.jpg",
+        "02_ACTUAR_Maquina_Tecnica/assets/que-es-socdepoble-2.jpg",
+        "02_ACTUAR_Maquina_Tecnica/assets/que-es-socdepoble-3.jpg",
+        "02_ACTUAR_Maquina_Tecnica/assets/que-es-socdepoble-4.jpg"
+      ],
+      "hashFont": "0e3539151af27cc3b8000af4ceef6dd35356303b75f8ce9591cd697633b55323"
+    },
+    {
+      "id": "OP-003",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/01_SABER_Cultura_Coneixement/00_visio_i_pilars.md",
+      "objectius": [
+        "02_ACTUAR_Maquina_Tecnica/assets/que-es-socdepoble-1.jpg",
+        "02_ACTUAR_Maquina_Tecnica/assets/que-es-socdepoble-2.jpg",
+        "02_ACTUAR_Maquina_Tecnica/assets/que-es-socdepoble-3.jpg",
+        "02_ACTUAR_Maquina_Tecnica/assets/que-es-socdepoble-4.jpg"
+      ],
+      "hashFont": "10d70fc6e2b89991a3e5baeb1332c645a8147f6387e0e466dc0f9c8ac743e13d"
+    },
+    {
+      "id": "OP-004",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/00_arquitectura_tecnica_unificada.md",
+      "objectius": [
+        "les_petorretes"
+      ],
+      "hashFont": "525100c8093824a2fc7d7207c196eb00fc51430c16277b5ca458ed541066da83"
+    },
+    {
+      "id": "OP-005",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/00_plantilles.md",
+      "objectius": [
+        "02_ACTUAR_Maquina_Tecnica/plantilles/PLANTILLA_ISO_SDP",
+        "04_ARXIU_Documents_Historics/actes_arxivades/90_arxiu_historic"
+      ],
+      "hashFont": "ac94283cbf03b8dfcd7cc5335a1690b04323278b8e0ba2fd812e7792b3270c5e"
+    },
+    {
+      "id": "OP-006",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/AUDITORIA_CANONICA.md",
+      "objectius": [
+        "les_petorretes"
+      ],
+      "hashFont": "2e7950088b3324f9e6ca1fe7542eeb28ba217246561a6f59556adfb2f1560c66"
+    },
+    {
+      "id": "OP-007",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_0400_ACTA_SESSIO_Tancament_Gran_Auditoria.md",
+      "objectius": [
+        "00_INDEX_ARXIU_SECUNDARI"
+      ],
+      "hashFont": "ef152714d41de167e62e80ae61b8cd5e1d749d554838345004e6e5ba83bbb8bc"
+    },
+    {
+      "id": "OP-008",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260716_1300_ACTA_SESSIO_Problema_Sincronitzacio_Skills.md",
+      "objectius": [
+        "00_INDEX_ARXIU_SECUNDARI"
+      ],
+      "hashFont": "47979e39c2823cabd6960517d9f61ed76239bd10d4fa22099aa59fe14b9decca"
+    },
+    {
+      "id": "OP-009",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260719_0345_PROMPT_Auditoria_Suprema_Consell.md",
+      "objectius": [
+        "00_INDEX_ARXIU_SECUNDARI"
+      ],
+      "hashFont": "73605cae4cafb7336e202f64f93b7de0551366a5e33506e0605f4e7b9101f498"
+    },
+    {
+      "id": "OP-010",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260719_0415_ACTA_SESSIO_La_Gran_Destillacio.md",
+      "objectius": [
+        "00_INDEX_ARXIU_SECUNDARI"
+      ],
+      "hashFont": "a69cd66505a56207d7d965dff1b617022c0e84a90afaa1eeefe1f6dbc21ca264"
+    },
+    {
+      "id": "OP-011",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260719_1655_BUNDLE_Sistema_Operatiu_IAIA_MarIA_Complet.md",
+      "objectius": [
+        "^\\",
+        "Target",
+        "${d.a}",
+        "${d.b}",
+        "enllaços",
+        "...",
+        "FenceFantasma",
+        "B",
+        "Canari_Restore",
+        "test",
+        "resolve, reject",
+        "00_INDEX_ARXIU_SECUNDARI",
+        "04_ARXIU_Documents_Historics/actes_arxivades/90_arxiu_historic",
+        "02_ACTUAR_Maquina_Tecnica/assets/que-es-socdepoble-1.jpg",
+        "02_ACTUAR_Maquina_Tecnica/assets/que-es-socdepoble-2.jpg",
+        "02_ACTUAR_Maquina_Tecnica/assets/que-es-socdepoble-3.jpg",
+        "02_ACTUAR_Maquina_Tecnica/assets/que-es-socdepoble-4.jpg",
+        "les_petorretes",
+        "02_ACTUAR_Maquina_Tecnica/plantilles/PLANTILLA_ISO_SDP"
+      ],
+      "hashFont": "b0e7771cc218a4e4cb14d59f4aa0d252427bc50f76c4331f045e04c6ced8caa4"
+    },
+    {
+      "id": "OP-012",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/Claude/260719_0630_AUDITORIA_Fuita_Bancaria_Nucli_Mort_I_Constitucio_Triple_Trencada.md",
+      "objectius": [
+        "00_INDEX_ARXIU_SECUNDARI"
+      ],
+      "hashFont": "b0aa7cafb9c681ea0ae53a67f11c122e0b607aa81582a4dab287c56073b4b563"
+    },
+    {
+      "id": "OP-013",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/Claude/260719_0630_PATCH_Sutura_Imports_Nucli_I_Arrel_De_Wiki_Corregida.md",
+      "objectius": [
+        "00_INDEX_ARXIU_SECUNDARI"
+      ],
+      "hashFont": "ceb176543a4700ecb7c1b5f0b5ee9c1c378983e7eb914f768108ed758224afa1"
+    },
+    {
+      "id": "OP-014",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/00_SER_Brain_Identitat/CORE_Registre_Automillora.md"
+    },
+    {
+      "id": "OP-015",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/a11y_debugging.md"
+    },
+    {
+      "id": "OP-016",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/chrome_devtools.md"
+    },
+    {
+      "id": "OP-017",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/chrome_extensions.md"
+    },
+    {
+      "id": "OP-018",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/debug_optimize_lcp.md"
+    },
+    {
+      "id": "OP-019",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/google_antigravity_sdk.md"
+    },
+    {
+      "id": "OP-020",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/memory_leak_debugging.md"
+    },
+    {
+      "id": "OP-021",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/modern_web_guidance.md"
+    },
+    {
+      "id": "OP-022",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/troubleshooting.md"
+    },
+    {
+      "id": "OP-023",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/00_SER_Brain_Identitat/antigravity.md"
+    },
+    {
+      "id": "OP-024",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/00_SER_Brain_Identitat/connectors_mcp_disseny.md"
+    },
+    {
+      "id": "OP-025",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/00_SER_Brain_Identitat/perfil_psiquiatric.md"
+    },
+    {
+      "id": "OP-026",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/01_SABER_Cultura_Coneixement/INDEX_TAXONOMIC.md"
+    },
+    {
+      "id": "OP-027",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/01_SABER_Cultura_Coneixement/Llibre_Blanc_Produccio_Pedra_Seca.md"
+    },
+    {
+      "id": "OP-028",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/01_SABER_Cultura_Coneixement/Sistema_Immunitari.md"
+    },
+    {
+      "id": "OP-029",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/01_SABER_Cultura_Coneixement/codex_huma/Arquitectura_L_Anima.md"
+    },
+    {
+      "id": "OP-030",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/01_SABER_Cultura_Coneixement/codex_huma/Arquitectura_La_Forja.md"
+    },
+    {
+      "id": "OP-031",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/01_SABER_Cultura_Coneixement/codex_huma/Arquitectura_Sistema_Nervios.md"
+    },
+    {
+      "id": "OP-032",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/01_SABER_Cultura_Coneixement/connexio_radical.md"
+    },
+    {
+      "id": "OP-033",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/01_SABER_Cultura_Coneixement/la_torre/fadrins_i_fadrines.md"
+    },
+    {
+      "id": "OP-034",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/00_plantilles.md"
+    },
+    {
+      "id": "OP-035",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_skill_trellat.md"
+    },
+    {
+      "id": "OP-036",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/successio_lazaro_execucio.md"
+    },
+    {
+      "id": "OP-037",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/ESTANDARD_Tokens_Pedra_Seca.md"
+    },
+    {
+      "id": "OP-038",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/ESTANDARD_UI_Universal.md"
+    },
+    {
+      "id": "OP-039",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_0400_ACTA_SESSIO_Tancament_Gran_Auditoria.md"
+    },
+    {
+      "id": "OP-040",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md"
+    },
+    {
+      "id": "OP-041",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260716_1300_ACTA_SESSIO_Problema_Sincronitzacio_Skills.md"
+    },
+    {
+      "id": "OP-042",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260719_0345_PROMPT_Auditoria_Suprema_Consell.md"
+    },
+    {
+      "id": "OP-043",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260719_0415_ACTA_SESSIO_La_Gran_Destillacio.md"
+    },
+    {
+      "id": "OP-044",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260719_0430_ACTA_MARMOTA_Tancament_Sessio_Purga.md"
+    },
+    {
+      "id": "OP-045",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260719_1632_PROMPT_Consell_Genoma.md"
+    },
+    {
+      "id": "OP-046",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260719_1655_BUNDLE_Sistema_Operatiu_IAIA_MarIA_Complet.md"
+    },
+    {
+      "id": "OP-047",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/BRIEFING_Viabilitat_Economica_Legal.md"
+    },
+    {
+      "id": "OP-048",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/CEEC/alegacions.md"
+    },
+    {
+      "id": "OP-049",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/Claude/260719_0630_AUDITORIA_Fuita_Bancaria_Nucli_Mort_I_Constitucio_Triple_Trencada.md"
+    },
+    {
+      "id": "OP-050",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/Claude/260719_0630_PATCH_Sutura_Imports_Nucli_I_Arrel_De_Wiki_Corregida.md"
+    },
+    {
+      "id": "OP-051",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/docs/GUIA_RAPIDA.md"
+    }
+  ]
+}

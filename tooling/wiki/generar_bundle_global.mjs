@@ -4,15 +4,15 @@ import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const wikiRoot = path.resolve(__dirname, '../../');
-const repoRoot = path.resolve(wikiRoot, '../');
+const wikiRoot = path.resolve(__dirname, '../../_wiki_de_poble');
+const repoRoot = path.resolve(__dirname, '../../');
 
 const dirs = [
   path.join(repoRoot, '.agents'),
   path.join(repoRoot, 'src'),
   path.join(repoRoot, '.githooks'),
-  path.join(repoRoot, '.sdp-reflex'),
   path.join(repoRoot, 'scripts'),
+  path.join(repoRoot, 'tooling', 'wiki'),
   path.join(wikiRoot, '00_SER_Brain_Identitat'),
   path.join(wikiRoot, '01_SABER_Cultura_Coneixement'),
   path.join(wikiRoot, '02_ACTUAR_Maquina_Tecnica'),

@@ -29,10 +29,14 @@ import {
 } from '../lib/frontmatter.mjs';
 import { discoverMarkdown, zoneOf, runId, treeDigest, treeDigestEntries, isMutableZone } from './corpus_snapshot.mjs';
 import { buildGraph, validateCanonical, canonicalFrontmatter, sourceShapeErrors, contentClassification } from './parse.mjs';
+import {
+  PROJECT_DIR,
+  TOOLING_WIKI_DIR,
+  WIKI_DIR,
+} from '../lib/project_paths.mjs';
 
-const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
-export const DEFAULT_WIKI_DIR = path.resolve(SCRIPT_DIR, '../../..');
-const PROJECT_DIR = path.dirname(DEFAULT_WIKI_DIR);
+const SCRIPT_DIR = TOOLING_WIKI_DIR;
+export const DEFAULT_WIKI_DIR = WIKI_DIR;
 const SCHEMA_TEXT = await fs.readFile(new URL('../schema.json', import.meta.url), 'utf8');
 const SCHEMA = JSON.parse(SCHEMA_TEXT);
 const FIELD_ORDER = ['estat', 'tipus', 'description', 'aliases', 'revisat'];
@@ -88,6 +92,7 @@ export async function readGraphConfig(root) {
       search: config.search ?? '',
       showOrphans: config.showOrphans ?? null,
       hideUnresolved: config.hideUnresolved ?? null,
+      showAttachments: config.showAttachments ?? null,
       colorGroups: Array.isArray(config.colorGroups) ? config.colorGroups.length : 0,
     };
   } catch (error) {
@@ -825,4 +830,3 @@ export async function restoreRun(manifestPath, receiptPath) {
     await releaseLock();
   }
 }
-

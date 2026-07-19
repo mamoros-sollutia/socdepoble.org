@@ -6,7 +6,7 @@
  * Un hook de commit és SEMPRE de sol lectura. Cap fase mou ni crea fitxers.
  *
  * Ús a .husky/pre-commit:
- *   node _wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/pre-commit.mjs || exit 1
+ *   node tooling/wiki/pre-commit.mjs || exit 1
  */
 import { auditRootHygiene } from './wiki_integritat.mjs';
 import { auditWiki } from './autoneteja_wiki.mjs';

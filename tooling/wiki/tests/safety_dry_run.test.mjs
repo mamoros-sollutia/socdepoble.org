@@ -55,6 +55,12 @@ test('Robotomia detecta tokens nous i casing mixt però permet la font Roboto', 
   const root = await fs.mkdtemp(path.join(os.tmpdir(), 'sdp-robotomia-'));
   t.after(() => fs.rm(root, { recursive: true, force: true }));
   await fs.writeFile(path.join(root, 'ferida.md'), '# ROBOTOFÍCIE\n\nRoboto és una font.\n', 'utf8');
+  await fs.mkdir(path.join(root, '05_Escriptori_Soc_de_Poble'), { recursive: true });
+  await fs.writeFile(
+    path.join(root, '05_Escriptori_Soc_de_Poble', 'bundle.md'),
+    '# Codi citat\n\nROBOTOVENCIÓ no forma part del corpus operatiu.\n',
+    'utf8',
+  );
   const result = await cura(root);
   assert.equal(result.ok, false);
   assert.equal(result.substitucions, 1);

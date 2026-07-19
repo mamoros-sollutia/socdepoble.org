@@ -8,10 +8,9 @@
  */
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { fileURLToPath, pathToFileURL } from 'node:url';
+import { pathToFileURL } from 'node:url';
+import { PROJECT_DIR } from './lib/project_paths.mjs';
 
-const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
-const PROJECT_DIR = path.resolve(SCRIPT_DIR, '../../..');
 const SOURCE_DIR = process.env.SDP_SOLLUTIA_PLUGINS || path.join(process.env.HOME || '', '.gemini/config/plugins');
 const DEST_DIR = path.join(PROJECT_DIR, '_wiki_de_poble/00_SER_Brain_Identitat/Sollutia');
 

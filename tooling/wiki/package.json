@@ -10,6 +10,8 @@
   "scripts": {
     "check": "node pre-commit.mjs --dry-run",
     "audit": "node autoneteja_wiki.mjs --strict",
+    "nervios": "node sistema_nervios.mjs",
+    "nervios:strict": "node sistema_nervios.mjs --strict",
     "rag": "node sdp.mjs search"
   },
   "engines": {

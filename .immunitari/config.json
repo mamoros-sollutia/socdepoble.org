@@ -1,0 +1,22 @@
+{
+  "vault": "_wiki_de_poble",
+  "ignoraObjectius": [
+    "00_AGENTS_I_SKILLS_MIRROR"
+  ],
+  "exclouFonts": [
+    "00_AGENTS_I_SKILLS_MIRROR"
+  ],
+  "hubsTaxonomics": [
+    "Graf",
+    "Maquina",
+    "Identitat",
+    "Coneixement",
+    "Govern",
+    "Sollutia",
+    "07_plantilles",
+    "skills"
+  ],
+  "hubsDelegats": true,
+  "indexAdopcio": "00_INDEX",
+  "memorialLapides": "00_MEMORIAL_Lapides"
+}

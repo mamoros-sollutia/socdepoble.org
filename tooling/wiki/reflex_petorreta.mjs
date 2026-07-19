@@ -25,22 +25,27 @@ import {
 } from 'node:crypto';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
-import { fileURLToPath, pathToFileURL } from 'node:url';
+import { pathToFileURL } from 'node:url';
 import { isUtf8 } from 'node:buffer';
 import { parseFrontmatter } from './lib/frontmatter.mjs';
 import { validarFrontmatter } from './entropia_zero_router.js';
+import {
+  PROJECT_DIR as DISCOVERED_PROJECT_DIR,
+  TOOLING_WIKI_DIR,
+  WIKI_DIR as DISCOVERED_WIKI_DIR,
+} from './lib/project_paths.mjs';
 
 const execFileAsync = promisify(execFile);
-const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
-export const PROJECT_DIR = path.resolve(SCRIPT_DIR, '../../..');
+const SCRIPT_DIR = TOOLING_WIKI_DIR;
+export const PROJECT_DIR = DISCOVERED_PROJECT_DIR;
 const STATE_DIR = path.join(PROJECT_DIR, '.sdp-reflex');
 const SESSION_DIR = path.join(STATE_DIR, 'sessions');
 const BOOTSTRAP_DIR = path.join(STATE_DIR, 'bootstrap');
 const SECRET_FILE = path.join(STATE_DIR, 'secret.key');
 const ACTIVE_FILE = path.join(STATE_DIR, 'active.json');
 const ACTIVE_LOCK = path.join(STATE_DIR, 'active.lock');
-const WIKI_DIR = path.join(PROJECT_DIR, '_wiki_de_poble');
-const WIKI_BASELINE_RELATIVE = '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/wiki-baseline.lock.json';
+const WIKI_DIR = DISCOVERED_WIKI_DIR;
+const WIKI_BASELINE_RELATIVE = 'tooling/wiki/wiki-baseline.lock.json';
 const GRAPH_CONFIG_RELATIVE = '_wiki_de_poble/.obsidian/graph.json';
 const OPEN_TTL_MS = 15 * 60 * 1000;
 const LEASE_TTL_MS = 60 * 60 * 1000;
@@ -103,37 +108,42 @@ const CRITICAL_SEED_PATHS = [
   '.githooks/pre-merge-commit',
   '.githooks/pre-applypatch',
   '.githooks/post-applypatch',
-  '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/reflex_petorreta.mjs',
-  '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/package.json',
-  '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/pre-commit.mjs',
-  '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/autoneteja_wiki.mjs',
-  '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/cura_robotomia.mjs',
-  '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/contradiction_engine.mjs',
-  '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/compiler/build.cjs',
-  '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/compiler/01_build_index.cjs',
-  '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/compiler/02_build_ontology.cjs',
-  '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/core/translate.mjs',
-  '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/sdp.mjs',
-  '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/core/audit.mjs',
-  '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/core/lint.mjs',
-  '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/core/snapshot_engine.mjs',
-  '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/core/tombstone_gc.mjs',
-  '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/core/self_repair.mjs',
-  '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/core/edge_rag.mjs',
-  '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/core/a11y_seo.mjs',
-  '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/core/design_guard.mjs',
-  '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/core/runner.mjs',
+  'tooling/wiki/reflex_petorreta.mjs',
+  'tooling/wiki/package.json',
+  'tooling/wiki/pre-commit.mjs',
+  'tooling/wiki/autoneteja_wiki.mjs',
+  'tooling/wiki/cura_robotomia.mjs',
+  'tooling/wiki/contradiction_engine.mjs',
+  'tooling/wiki/compiler/build.cjs',
+  'tooling/wiki/compiler/01_build_index.cjs',
+  'tooling/wiki/compiler/02_build_ontology.cjs',
+  'tooling/wiki/core/translate.mjs',
+  'tooling/wiki/sdp.mjs',
+  'tooling/wiki/core/audit.mjs',
+  'tooling/wiki/core/lint.mjs',
+  'tooling/wiki/core/snapshot_engine.mjs',
+  'tooling/wiki/core/tombstone_gc.mjs',
+  'tooling/wiki/core/self_repair.mjs',
+  'tooling/wiki/core/edge_rag.mjs',
+  'tooling/wiki/core/a11y_seo.mjs',
+  'tooling/wiki/core/design_guard.mjs',
+  'tooling/wiki/core/runner.mjs',
   'scripts/generate-supabase-seed.mjs',
   'scripts/generate-supabase-seed.sh',
   'scripts/enllacat-intelligent-wiki.mjs',
-  '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/lib/frontmatter.mjs',
-  '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/schema.json',
-  '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/rules/trellat-rules.json',
-  '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/schema-cutover.lock.json',
+  'tooling/wiki/lib/frontmatter.mjs',
+  'tooling/wiki/lib/project_paths.mjs',
+  'tooling/wiki/schema.json',
+  'tooling/wiki/rules/trellat-rules.json',
+  'tooling/wiki/schema-cutover.lock.json',
   WIKI_BASELINE_RELATIVE,
-  '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/tests/frontmatter_autoneteja.test.mjs',
-  '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/tests/reflex_petorreta.test.mjs',
-  '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/scripts/tests/safety_dry_run.test.mjs',
+  'tooling/wiki/core/sistema_nervios.mjs',
+  'tooling/wiki/sistema_nervios.mjs',
+  'tooling/wiki/tests/frontmatter_autoneteja.test.mjs',
+  'tooling/wiki/tests/reflex_petorreta.test.mjs',
+  'tooling/wiki/tests/safety_dry_run.test.mjs',
+  'tooling/wiki/tests/smoke_cli.test.mjs',
+  'tooling/wiki/tests/sistema_nervios.test.mjs',
 ];
 
 const sha256 = (value) => createHash('sha256').update(value).digest('hex');
@@ -202,6 +212,7 @@ async function criticalDependencyClosure() {
       for (const match of content.matchAll(pattern)) specifiers.add(match[1]);
     }
     for (const specifier of specifiers) {
+      if (specifier.endsWith('/')) continue;
       try {
         const dependency = await resolveLocalModule(relative, specifier);
         if (!paths.has(dependency)) queue.push(dependency);
@@ -329,7 +340,7 @@ export async function captureWikiBaseline(wikiDir = WIKI_DIR) {
 
 export async function verifyWikiBaselineLock(wikiDir = WIKI_DIR) {
   const baseline = await captureWikiBaseline(wikiDir);
-  const lockFile = path.join(wikiDir, '02_ACTUAR_Maquina_Tecnica', 'scripts', 'wiki-baseline.lock.json');
+  const lockFile = path.join(PROJECT_DIR, WIKI_BASELINE_RELATIVE);
   const locked = JSON.parse(await fs.readFile(lockFile, 'utf8'));
   const findings = [...baseline.findings];
   if (baseline.summary.documents === 0) findings.push('La baseline no pot certificar un corpus Markdown buit');
@@ -832,7 +843,7 @@ const SENSITIVE_PATTERNS = [
   ['IBAN', /\b[A-Z]{2}\d{2}(?:[ ]?\d{4}){4,7}\b/],
   ['correu electrònic', /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i],
   ['DNI o NIE', /\b(?:\d{8}|[XYZ]\d{7})[A-Z]\b/i],
-  ['telèfon personal probable', /(?:\+34[ .-]?)?[6789]\d{2}(?:[ .-]?\d{3}){2}\b/],
+  ['telèfon personal probable', /(?<![A-Za-z0-9])(?:\+34[ .-]?)?[6789]\d{2}(?:[ .-]?\d{3}){2}(?![A-Za-z0-9])/],
 ];
 
 function assertNoSensitiveText(content, label) {

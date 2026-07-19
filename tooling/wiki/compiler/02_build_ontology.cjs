@@ -369,7 +369,7 @@ async function main() {
   const args = process.argv.slice(2);
   const wikiArg = args.find(argument => argument.startsWith('--wiki='));
   const requestedRoot = path.resolve(
-    wikiArg ? wikiArg.slice('--wiki='.length) : path.resolve(__dirname, '../../..')
+    wikiArg ? wikiArg.slice('--wiki='.length) : path.resolve(__dirname, '../../../_wiki_de_poble')
   );
   const wikiRoot = await fs.realpath(requestedRoot);
   const buildDir = path.join(wikiRoot, '_build');

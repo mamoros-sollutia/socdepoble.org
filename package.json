@@ -11,6 +11,8 @@
     "wiki:link": "node scripts/enllacat-intelligent-wiki.mjs",
     "wiki:audit": "node tooling/wiki/autoneteja_wiki.mjs",
     "wiki:audit:strict": "node tooling/wiki/autoneteja_wiki.mjs --strict",
+    "wiki:nervios": "node tooling/wiki/sistema_nervios.mjs",
+    "wiki:nervios:strict": "node tooling/wiki/sistema_nervios.mjs --strict",
     "wiki:robotomia": "node tooling/wiki/cura_robotomia.mjs --json",
     "wiki:test": "node --test tooling/wiki/tests/*.test.mjs",
     "reflex:init": "node tooling/wiki/reflex_petorreta.mjs init",

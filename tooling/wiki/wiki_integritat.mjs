@@ -15,13 +15,13 @@
  */
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { fileURLToPath, pathToFileURL } from 'node:url';
+import { pathToFileURL } from 'node:url';
 import { getTimestamp } from './lib/termodinamic.mjs';
+import { WIKI_DIR } from './lib/project_paths.mjs';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const ROOT = path.resolve(__dirname, '../../');
+const ROOT = WIKI_DIR;
 const ORPHAN_DIR = path.join(ROOT, '04_ARXIU_Documents_Historics', 'bancal_actiu');
-const ALLOWED_ROOT_FILES = new Set(['README.md', '00_index.md', '.gitignore', '.DS_Store']);
+const ALLOWED_ROOT_FILES = new Set(['README.md', '00_index.md', '00_INDEX.md', '.gitignore', '.DS_Store']);
 
 export async function auditRootHygiene(rootDir = ROOT, orphanDir = ORPHAN_DIR, { dryRun = true } = {}) {
   if (!dryRun) {
