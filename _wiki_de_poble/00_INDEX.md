@@ -23,3 +23,4 @@
 - [[connexio_radical]]
 - [[fadrins_i_fadrines]]
 - [[00_plantilles]]
+- [[plantilla_skill_trellat]]
