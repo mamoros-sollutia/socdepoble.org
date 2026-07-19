@@ -110,3 +110,4 @@ Làpida erigida per enllaç perdut a _wiki_de_poble/04_ARXIU_Documents_Historics
 - [2026-07-19T17:48:03.339Z] Enllaç tancat a _wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_0400_ACTA_SESSIO_Tancament_Gran_Auditoria.md (apuntava a: 00_INDEX_ARXIU_SECUNDARI)
 - [2026-07-19T17:48:03.441Z] Enllaç tancat a _wiki_de_poble/05_Escriptori_Soc_de_Poble/260716_1300_ACTA_SESSIO_Problema_Sincronitzacio_Skills.md (apuntava a: 00_INDEX_ARXIU_SECUNDARI)
 - [2026-07-19T17:48:03.524Z] Enllaç tancat a _wiki_de_poble/05_Escriptori_Soc_de_Poble/260719_0345_PROMPT_Auditoria_Suprema_Consell.md (apuntava a: 00_INDEX_ARXIU_SECUNDARI)
+- [2026-07-19T17:48:03.607Z] Enllaç tancat a _wiki_de_poble/05_Escriptori_Soc_de_Poble/260719_0415_ACTA_SESSIO_La_Gran_Destillacio.md (apuntava a: 00_INDEX_ARXIU_SECUNDARI)
