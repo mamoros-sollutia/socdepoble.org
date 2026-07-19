@@ -106,3 +106,4 @@ Làpida erigida per enllaç perdut a _wiki_de_poble/04_ARXIU_Documents_Historics
 - [2026-07-19T17:48:03.089Z] Enllaç tancat a _wiki_de_poble/02_ACTUAR_Maquina_Tecnica/00_arquitectura_tecnica_unificada.md (apuntava a: les_petorretes)
 - [2026-07-19T17:48:03.183Z] Enllaç tancat a _wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/00_plantilles.md (apuntava a: 02_ACTUAR_Maquina_Tecnica/plantilles/PLANTILLA_ISO_SDP)
 - [2026-07-19T17:48:03.183Z] Enllaç tancat a _wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/00_plantilles.md (apuntava a: 04_ARXIU_Documents_Historics/actes_arxivades/90_arxiu_historic)
+- [2026-07-19T17:48:03.258Z] Enllaç tancat a _wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/AUDITORIA_CANONICA.md (apuntava a: les_petorretes)
