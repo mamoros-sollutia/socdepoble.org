@@ -35,3 +35,6 @@ Làpida erigida per enllaç perdut a _wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07
 
 ## 04_ARXIU_Documents_Historics/actes_arxivades/90_arxiu_historic
 Làpida erigida per enllaç perdut a _wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/00_plantilles.md
+
+## les_petorretes
+Làpida erigida per enllaç perdut a _wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/AUDITORIA_CANONICA.md
