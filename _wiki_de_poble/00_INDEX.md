@@ -26,3 +26,4 @@
 - [[plantilla_skill_trellat]]
 - [[successio_lazaro_execucio]]
 - [[ESTANDARD_Tokens_Pedra_Seca]]
+- [[ESTANDARD_UI_Universal]]
