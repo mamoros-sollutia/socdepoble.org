@@ -26,3 +26,6 @@ Làpida erigida per enllaç perdut a _wiki_de_poble/01_SABER_Cultura_Coneixement
 
 ## 02_ACTUAR_Maquina_Tecnica/assets/que-es-socdepoble-4.jpg
 Làpida erigida per enllaç perdut a _wiki_de_poble/01_SABER_Cultura_Coneixement/00_visio_i_pilars.md
+
+## les_petorretes
+Làpida erigida per enllaç perdut a _wiki_de_poble/02_ACTUAR_Maquina_Tecnica/00_arquitectura_tecnica_unificada.md
