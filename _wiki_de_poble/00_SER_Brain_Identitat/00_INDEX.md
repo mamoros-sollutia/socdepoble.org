@@ -21,7 +21,7 @@ Entrada estàtica a la Wiki de Sóc de Poble.
 
 | Zona | Funció | Enllaç |
 |---|---|---|
-| 04 ARXIU | Memòria històrica curada i consultiva | [[04_ARXIU_Documents_Historics/actes_arxivades/90_arxiu_historic]] |
+| 04 ARXIU | Memòria històrica curada i consultiva | [[00_MEMORIAL_Lapides#04_ARXIU_Documents_Historics/actes_arxivades/90_arxiu_historic|04_ARXIU_Documents_Historics/actes_arxivades/90_arxiu_historic †]] |
 | 05 ESCRIPTORI | Treball editorial temporal, no autoritat | Buit en esta baseline; ruta `05_Escriptori_Soc_de_Poble/` |
 
 ## Escriptori de Sessió (L'Era)

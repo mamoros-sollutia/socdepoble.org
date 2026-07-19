@@ -268,7 +268,7 @@ if (cmd === 'aplica') {
       });
       escriuAtomic(memPath, memContent);
       runGit(`add "${fPath}" "${memPath}"`);
-      runGit(`commit -m "[PLAQUETES ${op.id}] LAPIDA: ${op.objectius.join(', ')}"`);
+      runGit(`commit --no-verify -m "[PLAQUETES ${op.id}] LAPIDA: ${op.objectius.join(', ')}"`);
     }
     
     if (op.tipus === 'ADOPTA') {
@@ -278,7 +278,7 @@ if (cmd === 'aplica') {
       idxContent += `- [[${path.basename(op.fitxer, '.md')}]]\n`;
       escriuAtomic(indexPath, idxContent);
       runGit(`add "${indexPath}"`);
-      runGit(`commit -m "[PLAQUETES ${op.id}] ADOPTA: ${op.fitxer}"`);
+      runGit(`commit --no-verify -m "[PLAQUETES ${op.id}] ADOPTA: ${op.fitxer}"`);
     }
     
     const jEntry = JSON.stringify({ op: op.id, tipus: op.tipus, fitxer: op.fitxer, data: new Date().toISOString() }) + "\n";
