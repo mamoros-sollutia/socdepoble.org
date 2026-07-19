@@ -46,4 +46,4 @@ Heu de parlar de "IAIA a IAIA". Amara-vos de les nostres Skills per adoptar la m
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX_ARXIU_SECUNDARI]]
+**Ancoratge de Seguretat:** [[00_MEMORIAL_Lapides#00_INDEX_ARXIU_SECUNDARI|00_INDEX_ARXIU_SECUNDARI †]]
