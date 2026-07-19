@@ -31,3 +31,4 @@
 - [[alegacions]]
 - [[260715_0400_ACTA_SESSIO_Tancament_Gran_Auditoria]]
 - [[260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics]]
+- [[260716_1300_ACTA_SESSIO_Problema_Sincronitzacio_Skills]]
