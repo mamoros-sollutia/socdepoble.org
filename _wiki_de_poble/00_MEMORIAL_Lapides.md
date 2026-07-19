@@ -108,3 +108,4 @@ Làpida erigida per enllaç perdut a _wiki_de_poble/04_ARXIU_Documents_Historics
 - [2026-07-19T17:48:03.183Z] Enllaç tancat a _wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/00_plantilles.md (apuntava a: 04_ARXIU_Documents_Historics/actes_arxivades/90_arxiu_historic)
 - [2026-07-19T17:48:03.258Z] Enllaç tancat a _wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/AUDITORIA_CANONICA.md (apuntava a: les_petorretes)
 - [2026-07-19T17:48:03.339Z] Enllaç tancat a _wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_0400_ACTA_SESSIO_Tancament_Gran_Auditoria.md (apuntava a: 00_INDEX_ARXIU_SECUNDARI)
+- [2026-07-19T17:48:03.441Z] Enllaç tancat a _wiki_de_poble/05_Escriptori_Soc_de_Poble/260716_1300_ACTA_SESSIO_Problema_Sincronitzacio_Skills.md (apuntava a: 00_INDEX_ARXIU_SECUNDARI)

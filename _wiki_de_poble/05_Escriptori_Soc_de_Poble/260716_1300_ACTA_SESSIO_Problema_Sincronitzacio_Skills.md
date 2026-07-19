@@ -24,4 +24,4 @@ L'script o automatització encarregat d'actualitzar les skills des de l'espai de
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX_ARXIU_SECUNDARI]]
+**Ancoratge de Seguretat:** [[00_MEMORIAL_Lapides#00_INDEX_ARXIU_SECUNDARI|00_INDEX_ARXIU_SECUNDARI †]]
