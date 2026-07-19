@@ -37,3 +37,4 @@
 - [[260719_0430_ACTA_MARMOTA_Tancament_Sessio_Purga]]
 - [[260719_1632_PROMPT_Consell_Genoma]]
 - [[BRIEFING_Viabilitat_Economica_Legal]]
+- [[260719_0630_AUDITORIA_Fuita_Bancaria_Nucli_Mort_I_Constitucio_Triple_Trencada]]
