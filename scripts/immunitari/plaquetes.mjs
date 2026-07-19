@@ -262,8 +262,7 @@ if (cmd === 'aplica') {
       });
       escriuAtomic(fPath, txt);
       
-      const fP = path.join(vaultDir, `${config.memorialLapides}.md`);
-      const memPath = path.join(REPO_ROOT, fP);
+      const memPath = path.join(vaultDir, `${config.memorialLapides}.md`);
       let memContent = fs.existsSync(memPath) ? fs.readFileSync(memPath, 'utf8') : '# Memorial de Llàpides\n\n';
       op.objectius.forEach(obj => {
         memContent += `- [${new Date().toISOString()}] Enllaç tancat a ${op.fitxer} (apuntava a: ${obj})\n`;
