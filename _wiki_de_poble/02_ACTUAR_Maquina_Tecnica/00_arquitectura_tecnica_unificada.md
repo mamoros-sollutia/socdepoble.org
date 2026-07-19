@@ -2,8 +2,8 @@
 estat: "canonic"
 tipus: "document"
 description: "Separa l'arquitectura implementada de les decisions vigents i de la visió tècnica futura."
-aliases:
-  - "Arquitectura tècnica"
+aliases: ["Arquitectura tècnica"]
+temes: ["sistema"]
 ---
 # Arquitectura tècnica unificada
 
@@ -110,3 +110,6 @@ Fins que es complisquen els set punts, Antigravity ha de dir «proposat» o «no
 ## Taxonomia
 - **Categoria:** [[Maquina]]
 - **Etiquetes:** [[Graf]]
+
+
+**Ancoratge de Seguretat:** [[00_INDEX]]

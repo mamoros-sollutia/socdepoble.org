@@ -2,6 +2,7 @@
 estat: "arxivat"
 tipus: "acta"
 description: "Document sobre «CHECKLIST DE MIGRACIÓ (PEDRA SECA)»."
+temes: ["acta"]
 ---
 # CHECKLIST DE MIGRACIÓ (PEDRA SECA)
 
@@ -25,3 +26,7 @@ description: "Document sobre «CHECKLIST DE MIGRACIÓ (PEDRA SECA)»."
 
 ## 4. Ledger
 - [ ] **Registre de la Funcionalitat**: Afegir línia a `MIGRACIO_LEDGER.md` (origen → destí, data, gates passats).
+
+---
+
+**Ancoratge de Seguretat:** [[90_arxiu_historic]]

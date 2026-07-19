@@ -1,7 +1,8 @@
 ---
-autor: Sollutia
-name: debug-optimize-lcp
-description: Guides debugging and optimizing Largest Contentful Paint (LCP) using Chrome DevTools MCP tools. Use this skill whenever the user asks about LCP performance, slow page loads, Core Web Vitals optimization, or wants to understand why their page's main content takes too long to appear. Also use when the user mentions "largest contentful paint", "page load speed", "CWV", or wants to improve how fast their hero image or main content renders.
+description: "Guides debugging and optimizing Largest Contentful Paint (LCP) using Chrome DevTools MCP tools. Use this skill whenever the user a..."
+estat: "canonic"
+tipus: "skill"
+temes: ["sistema"]
 ---
 
 ## What is LCP and why it matters
@@ -120,3 +121,14 @@ The HTML document itself takes too long to arrive.
 - **Emulation**: Lab measurements differ from real-world experience. Use `emulate` to test under constraints:
   - `emulate` with `networkConditions: "Fast 3G"` and `cpuThrottlingRate: 4`.
   - This surfaces issues visible only on slower connections/devices.
+
+
+---
+
+**Ancoratge de Seguretat:** [[Soci_Sollutia]]
+
+
+---
+**Categoria:** [[Sollutia]]
+**Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX]]

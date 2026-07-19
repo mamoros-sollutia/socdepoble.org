@@ -2,6 +2,7 @@
 estat: "canonic"
 tipus: "plantilla"
 description: "Plantilla per preparar una funcionalitat per a producció amb controls de qualitat i risc."
+temes: ["sistema"]
 ---
 # Modo Producció (Botiga de Diumenge)
 **Categoria:** Plantilla
@@ -42,3 +43,12 @@ _Fent poble amb [[el_projecte|Sóc de Poble]]! © 2026_
 ## Taxonomia
 - **Categoria:** [[Maquina]]
 - **Etiquetes:** [[Graf]]
+
+
+**Ancoratge de Seguretat:** [[00_INDEX]]
+
+
+---
+**Categoria:** [[07_plantilles]]
+**Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX]]

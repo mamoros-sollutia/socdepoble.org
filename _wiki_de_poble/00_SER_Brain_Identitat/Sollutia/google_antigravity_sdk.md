@@ -1,7 +1,8 @@
 ---
-autor: Sollutia
-name: google-antigravity-sdk
-description: "Design, implement, and debug autonomous AI agents and multi-agent systems using the Google Antigravity (AGY) SDK. ACTIVATE this skill when the user wants to create, configure, or orchestrate Google Antigravity agents."
+description: "Design, implement, and debug autonomous AI agents and multi-agent systems using the Google Antigravity (AGY) SDK. ACTIVATE this sk..."
+estat: "canonic"
+tipus: "skill"
+temes: ["sistema"]
 ---
 
 # Google Antigravity SDK
@@ -90,3 +91,14 @@ relevant information.
     `examples/getting_started/structured_output.md`.
 -   If the user needs to add, configure, or load agent skills into the Google
     Antigravity SDK agent, read `examples/getting_started/agent_skills.md`.
+
+
+---
+
+**Ancoratge de Seguretat:** [[Soci_Sollutia]]
+
+
+---
+**Categoria:** [[Sollutia]]
+**Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX]]

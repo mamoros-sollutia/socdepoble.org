@@ -2,6 +2,7 @@
 estat: "canonic"
 tipus: "document"
 description: "Separa els controls de salut implementats de les mètriques conceptuals i prohibix fabricar percentatges sense evidència."
+temes: ["sistema"]
 ---
 # Consola Termodinàmica
 
@@ -66,3 +67,6 @@ i una eixida que explique exactament què ha fallat.
 ## Taxonomia
 - **Categoria:** [[Identitat]]
 - **Etiquetes:** [[Graf]]
+
+
+**Ancoratge de Seguretat:** [[00_INDEX]]

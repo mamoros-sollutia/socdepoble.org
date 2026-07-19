@@ -2,6 +2,7 @@
 estat: "esborrany"
 tipus: "acta"
 description: "Acta de sessió on es documenta el problema de sincronització de la nova Skill cap a la Wiki d'Obsidian."
+temes: ["acta"]
 ---
 
 # Acta de Sessió: Problema de Sincronització de Skills
@@ -19,3 +20,8 @@ L'script o automatització encarregat d'actualitzar les skills des de l'espai de
 - **Investigar i reparar** l'script de sincronització de Skills a la propera sessió.
 - Entendre per què els fitxers creats a `.agents/skills/` no s'aboquen o vinculen correctament a l'estructura de directoris monitoritzada per Obsidian.
 - Fins que no estiga reparat, els canvis en les Skills s'hauran de revisar manualment o no es reflectiran a la base de coneixement de l'usuari.
+
+
+---
+
+**Ancoratge de Seguretat:** [[00_INDEX_ARXIU_SECUNDARI]]

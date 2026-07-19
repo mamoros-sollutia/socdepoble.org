@@ -2,6 +2,7 @@
 estat: "futur"
 tipus: "protocol"
 description: "Conserva com a proposta futura l'homologació de peces pures sense contradir la carcassa React/Vite actual."
+temes: ["sistema"]
 ---
 # Forja a Core — proposta futura
 
@@ -51,3 +52,6 @@ Només després de l'activació anterior, una peça candidata podria exigir:
 ## Taxonomia
 - **Categoria:** [[Govern]]
 - **Etiquetes:** [[Graf]]
+
+
+**Ancoratge de Seguretat:** [[00_INDEX]]

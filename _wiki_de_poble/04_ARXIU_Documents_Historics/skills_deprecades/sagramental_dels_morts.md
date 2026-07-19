@@ -2,6 +2,7 @@
 estat: "arxivat"
 tipus: "document"
 description: "L'arquitectura Pedra Seca està dissenyada per a sobreviure generacions i heretar-se sense el seu creador."
+temes: ["sistema"]
 ---
 # SKILL: Protocol de Successió (El Factor Autobús)
 
@@ -20,3 +21,7 @@ L'arquitectura Pedra Seca està dissenyada per a sobreviure generacions i hereta
 ## 🔗 Sinapsi Arquitectònica
 
 - semantic_compression
+
+---
+
+**Ancoratge de Seguretat:** [[90_arxiu_historic]]

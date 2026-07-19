@@ -1,7 +1,8 @@
 ---
-autor: Sollutia
-name: a11y-debugging
-description: Uses Chrome DevTools MCP for accessibility (a11y) debugging and auditing based on web.dev guidelines. Use when testing semantic HTML, ARIA labels, focus states, keyboard navigation, tap targets, and color contrast.
+description: "Uses Chrome DevTools MCP for accessibility (a11y) debugging and auditing based on web.dev guidelines. Use when testing semantic HT..."
+estat: "canonic"
+tipus: "skill"
+temes: ["sistema"]
 ---
 
 ## Core Concepts
@@ -88,3 +89,14 @@ Verify document-level accessibility settings often missed in component testing u
 If standard a11y queries fail or the `evaluate_script` snippets return unexpected results:
 
 - **Visual Inspection**: If automated scripts cannot determine contrast (e.g., text over gradient images or complex backgrounds), use `take_screenshot` to capture the element. While models cannot measure exact contrast ratios from images, they can visually assess legibility and identify obvious issues.
+
+
+---
+
+**Ancoratge de Seguretat:** [[Soci_Sollutia]]
+
+
+---
+**Categoria:** [[Sollutia]]
+**Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX]]

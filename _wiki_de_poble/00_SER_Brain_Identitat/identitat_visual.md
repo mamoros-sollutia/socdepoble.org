@@ -2,6 +2,7 @@
 estat: "canonic"
 tipus: "document"
 description: "Defineix la identitat visual accessible, rural i coherent de Sóc de Poble."
+temes: ["sistema"]
 ---
 # Manual d'Identitat Visual i Narrativa (Sóc de Poble)
 
@@ -63,3 +64,6 @@ A l'hora d'incorporar aquests estats en les interfícies:
 ## Taxonomia
 - **Categoria:** [[Identitat]]
 - **Etiquetes:** [[Graf]]
+
+
+**Ancoratge de Seguretat:** [[00_INDEX]]

@@ -2,6 +2,7 @@
 estat: "arxivat"
 tipus: "acta"
 description: "- Fitxers creats o esborrats: wikidepoble/00SERBrainIdentitat/SociSollutia.md (Modificat), socdepoble.org/.agents/01contexti..."
+temes: ["acta"]
 ---
 # 📜 12/07/2026 07:06 - ACTA ÚNICA: El Tancament Arquitectònic i la Duana del Disseny Pedra Seca
 
@@ -49,3 +50,5 @@ requereix_auditoria: false
 - **Tornar a:** [[00_INDEX]]
 - **Lleis Majors:** [[00_BIOS]]
 - **Registre:** [[CORE_Registre_Automillora]]
+
+**Ancoratge de Seguretat:** [[00_INDEX]]

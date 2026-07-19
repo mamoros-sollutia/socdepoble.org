@@ -2,6 +2,7 @@
 estat: "canonic"
 tipus: "skill"
 description: "Defineix com experimentar amb IA local i RAG sense convertir prototips futurs en garanties del sistema."
+temes: ["sistema"]
 ---
 # Adaptació futura amb veto A10
 
@@ -58,3 +59,12 @@ Qualsevol experiment que haja de modificar coneixement, configuració o codi seg
 ## Taxonomia
 - **Categoria:** [[Maquina]]
 - **Etiquetes:** [[Graf]]
+
+
+**Ancoratge de Seguretat:** [[00_INDEX]]
+
+
+---
+**Categoria:** [[skills]]
+**Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX]]

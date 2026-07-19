@@ -2,6 +2,7 @@
 estat: "arxivat"
 tipus: "prompt"
 description: "[CONSELL DE LA PETORRETA — SEGONA RONDA]"
+temes: ["petorreta"]
 ---
 # SDP-PETORRETA-046: Auditoria de Codi Implementat
 
@@ -138,8 +139,8 @@ function AppShell({ children }) {
   grid-template-areas:
     "topbar topbar"
     "nav main";
-  background-color: #131313;
-  color: #ffffff;
+  background-color: rgb(19, 19, 19);
+  color: rgb(255, 255, 255);
 }
 
 /* TOPBAR ESTIL PEDRA SECA */
@@ -152,8 +153,8 @@ function AppShell({ children }) {
   align-items: center;
   justify-content: space-between;
   padding: 16px 24px;
-  background: #131313;
-  border-bottom: 2px solid #ffb68f; 
+  background: rgb(19, 19, 19);
+  border-bottom: 2px solid rgb(255, 182, 143); 
   border-radius: 0;
   backdrop-filter: none;
   box-shadow: none;
@@ -166,8 +167,8 @@ function AppShell({ children }) {
   top: 68px;
   height: calc(100vh - 68px); 
   overflow-y: auto;
-  background: #131313;
-  border-right: 2px solid #ffffff; 
+  background: rgb(19, 19, 19);
+  border-right: 2px solid rgb(255, 255, 255); 
   padding: 24px 16px;
 }
 
@@ -176,8 +177,8 @@ function AppShell({ children }) {
   grid-area: main;
   min-width: 0;
   padding: 24px;
-  background-color: #ffffff;
-  color: #131313; 
+  background-color: rgb(255, 255, 255);
+  color: rgb(19, 19, 19); 
 }
 
 /* ADAPTACIÓ MÒBIL: BOTTOM NAV BOTTOM-FIRST */
@@ -242,8 +243,8 @@ function AppShell({ children }) {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: #ffb68f;
-    color: #131313;
+    background: rgb(255, 182, 143);
+    color: rgb(19, 19, 19);
     box-shadow: none;
     border: none;
     z-index: 10;
@@ -252,3 +253,7 @@ function AppShell({ children }) {
   .nav-cta span { display: none; }
 }
 ```
+
+---
+
+**Ancoratge de Seguretat:** [[90_arxiu_historic]]

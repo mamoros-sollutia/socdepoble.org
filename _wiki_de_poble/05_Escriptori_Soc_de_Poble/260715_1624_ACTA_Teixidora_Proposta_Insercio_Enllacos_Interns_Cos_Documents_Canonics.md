@@ -1,3 +1,9 @@
+---
+estat: "arxivat"
+tipus: "acta"
+description: "Documentació heretada o arxiu restaurat."
+temes: ["acta"]
+---
 # Acta de la Teixidora de Sinapsis (ESCRIPTURA)
 
 - Fitxers revisats: 57
@@ -123,3 +129,5 @@
 
 
 > Diagnòstic consultiu: l’escriptura legacy està retirada fins integrar pla+Reflex+rollback.
+
+**Ancoratge de Seguretat:** [[00_INDEX]]

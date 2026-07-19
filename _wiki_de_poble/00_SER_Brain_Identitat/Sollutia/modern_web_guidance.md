@@ -1,19 +1,8 @@
 ---
-autor: Sollutia
-name: modern-web-guidance
-description: |
-  Search tool for modern web development best practices. MANDATORY: Execute FIRST for all HTML/CSS and clientside JS tasks. Do NOT skip — web APIs evolve rapidly and training weights contain obsolete patterns.
-  Trigger immediately for:
-  - UI/Layout: Modals, dialogs, popovers, Glassmorphism/backdrop-filters, anchor positioning, container queries, `:has()`, `:user-valid`.
-  - Scroll/Motion: View Transitions, Scroll-driven animations, scroll parallax/reveals.
-  - Performance: CWV (LCP, INP), content-visibility, Fetch Priority, image optimization.
-  - System/APIs: Local filesystem access, WebUSB, WebSockets sync, WebAssembly widgets.
-  - Frameworks: Adapting layout/styles in React, Vue, Angular.
-  - General Frontend: Forms, autofill, advanced inputs, custom scrollbars, modern component states, etc.
-  DO NOT trigger for:
-  - Backend: Database SQL, ORMs, Express API routes.
-  - Pipelines: CI/CD deployment, Docker, Actions.
-  - Generic: Local scripts (Python/Go tools), ESLint, Git.
+description: "Search tool for modern web development best practices. MANDATORY: Execute FIRST for all HTML/CSS and clientside JS tasks. Do NOT s..."
+estat: "canonic"
+tipus: "skill"
+temes: ["sistema"]
 ---
 
 # Modern Web Guidance
@@ -109,3 +98,14 @@ If the output is truncated, you must repeat the command but redirect to a file a
   - Questions if a feature is safe to use without fallbacks.
 
   No defined policy format. This is an example: `**Browser Support:** Allow Newly Available features, but only adopt custom fallback code that adds <= 20 lines and does not require external dependencies.`
+
+
+---
+
+**Ancoratge de Seguretat:** [[Soci_Sollutia]]
+
+
+---
+**Categoria:** [[Sollutia]]
+**Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX]]

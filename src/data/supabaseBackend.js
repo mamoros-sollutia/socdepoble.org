@@ -1,5 +1,6 @@
 import { APP_SEED, APP_SEED_VERSION, CHAT_MESSAGE_SEED, CHAT_THREADS, DEFAULT_USER_ID } from './appSeed.js';
 import { resolveTownImageUrl } from '../config/assetResolver.js';
+import { getVal, setVal } from './db.js';
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL?.trim() || '';
 const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY?.trim() || '';
@@ -255,14 +256,14 @@ function mapContentRowsToData(rows) {
   };
 }
 
-function buildSeedAppData(ownerUserId = DEFAULT_USER_ID) {
+async function buildSeedAppData(ownerUserId = DEFAULT_USER_ID) {
   return {
     ownerUserId,
     agents: APP_SEED.agents,
     chatThreads: APP_SEED.chatThreads,
     chatMessages: mergeChatMessages(
       APP_SEED.chatMessages.filter((message) => message.ownerUserId === ownerUserId),
-      loadDevFallbackMessages(ownerUserId)
+      await loadDevFallbackMessages(ownerUserId)
     ),
     feedPosts: APP_SEED.feedPosts,
     marketItems: APP_SEED.marketItems,
@@ -281,29 +282,29 @@ function sanitizeSnapshotArray(value, fallback) {
   return Array.isArray(value) ? value : fallback;
 }
 
-function saveLocalAppSnapshot(snapshot) {
+async function saveLocalAppSnapshot(snapshot) {
   if (typeof window === 'undefined') return;
   try {
-    window.localStorage.setItem(APP_SNAPSHOT_STORAGE_KEY, JSON.stringify(snapshot));
+    await setVal(APP_SNAPSHOT_STORAGE_KEY, snapshot);
   } catch {
     // Ignore storage issues in local demo mode.
   }
 }
 
-function loadLocalAppSnapshot(ownerUserId = DEFAULT_USER_ID) {
-  const fallback = buildSeedAppData(ownerUserId);
+async function loadLocalAppSnapshot(ownerUserId = DEFAULT_USER_ID) {
+  const fallback = await buildSeedAppData(ownerUserId);
   if (typeof window === 'undefined') return fallback;
 
   try {
-    const raw = window.localStorage.getItem(APP_SNAPSHOT_STORAGE_KEY);
-    if (!raw) {
-      saveLocalAppSnapshot(fallback);
+    const parsed = await getVal(APP_SNAPSHOT_STORAGE_KEY);
+    if (!parsed)  {
+      await saveLocalAppSnapshot(fallback);
       return fallback;
     }
 
-    const parsed = JSON.parse(raw);
+    
     if (!parsed || typeof parsed !== 'object') {
-      saveLocalAppSnapshot(fallback);
+      await saveLocalAppSnapshot(fallback);
       return fallback;
     }
 
@@ -323,46 +324,46 @@ function loadLocalAppSnapshot(ownerUserId = DEFAULT_USER_ID) {
       pages: sanitizeSnapshotArray(parsed.pages, fallback.pages),
       sectionSubmissions: sanitizeSnapshotArray(
         parsed.sectionSubmissions,
-        loadLocalSectionSubmissions(ownerUserId)
+        await loadLocalSectionSubmissions(ownerUserId)
       ),
       chatMessages: mergeChatMessages(
         sanitizeSnapshotArray(parsed.chatMessages, fallback.chatMessages).filter(
           (message) => message.ownerUserId === ownerUserId
         ),
-        loadDevFallbackMessages(ownerUserId)
+        await loadDevFallbackMessages(ownerUserId)
       ),
       seedVersion: APP_SEED_VERSION
     };
 
     return snapshot;
   } catch {
-    saveLocalAppSnapshot(fallback);
+    await saveLocalAppSnapshot(fallback);
     return fallback;
   }
 }
 
-function persistMessagesToLocalSnapshot(messages, ownerUserId = DEFAULT_USER_ID) {
-  const current = loadLocalAppSnapshot(ownerUserId);
+async function persistMessagesToLocalSnapshot(messages, ownerUserId = DEFAULT_USER_ID) {
+  const current = await loadLocalAppSnapshot(ownerUserId);
   const merged = mergeChatMessages(current.chatMessages, messages);
   const nextSnapshot = {
     ...current,
     ownerUserId,
     chatMessages: merged
   };
-  saveLocalAppSnapshot(nextSnapshot);
-  saveDevFallbackMessages(merged);
+  await saveLocalAppSnapshot(nextSnapshot);
+  await saveDevFallbackMessages(merged);
   return merged;
 }
 
-function loadDevFallbackMessages(ownerUserId = DEFAULT_USER_ID) {
+async function loadDevFallbackMessages(ownerUserId = DEFAULT_USER_ID) {
   if (typeof window === 'undefined') {
     return CHAT_MESSAGE_SEED;
   }
 
   try {
-    const raw = window.localStorage.getItem(DEV_FALLBACK_STORAGE_KEY);
-    if (!raw) return CHAT_MESSAGE_SEED;
-    const parsed = JSON.parse(raw);
+    const parsed = await getVal(DEV_FALLBACK_STORAGE_KEY);
+    if (!parsed)  return CHAT_MESSAGE_SEED;
+    
     if (!Array.isArray(parsed)) return CHAT_MESSAGE_SEED;
     return parsed.filter((message) => message.ownerUserId === ownerUserId);
   } catch {
@@ -370,22 +371,22 @@ function loadDevFallbackMessages(ownerUserId = DEFAULT_USER_ID) {
   }
 }
 
-function saveDevFallbackMessages(messages) {
+async function saveDevFallbackMessages(messages) {
   if (typeof window === 'undefined') return;
   try {
-    window.localStorage.setItem(DEV_FALLBACK_STORAGE_KEY, JSON.stringify(messages));
+    await setVal(DEV_FALLBACK_STORAGE_KEY, messages);
   } catch {
     // Ignore storage issues in fallback mode.
   }
 }
 
-function loadLocalSectionSubmissions(ownerUserId = DEFAULT_USER_ID) {
+async function loadLocalSectionSubmissions(ownerUserId = DEFAULT_USER_ID) {
   if (typeof window === 'undefined') return [];
 
   try {
-    const raw = window.localStorage.getItem(SECTION_SUBMISSIONS_STORAGE_KEY);
-    if (!raw) return [];
-    const parsed = JSON.parse(raw);
+    const parsed = await getVal(SECTION_SUBMISSIONS_STORAGE_KEY);
+    if (!parsed)  return [];
+    
     if (!Array.isArray(parsed)) return [];
     return parsed.filter((submission) => submission?.ownerUserId === ownerUserId || !submission?.ownerUserId);
   } catch {
@@ -393,19 +394,19 @@ function loadLocalSectionSubmissions(ownerUserId = DEFAULT_USER_ID) {
   }
 }
 
-function saveLocalSectionSubmissions(submissions) {
+async function saveLocalSectionSubmissions(submissions) {
   if (typeof window === 'undefined') return;
   try {
-    window.localStorage.setItem(SECTION_SUBMISSIONS_STORAGE_KEY, JSON.stringify(submissions));
+    await setVal(SECTION_SUBMISSIONS_STORAGE_KEY, submissions);
   } catch {
     // Ignore storage issues in fallback mode.
   }
 }
 
-function persistSectionSubmissionToLocal(submission, ownerUserId = DEFAULT_USER_ID) {
-  const current = loadLocalSectionSubmissions(ownerUserId);
+async function persistSectionSubmissionToLocal(submission, ownerUserId = DEFAULT_USER_ID) {
+  const current = await loadLocalSectionSubmissions(ownerUserId);
   const next = mergeById(current, [submission]);
-  saveLocalSectionSubmissions(next);
+  await saveLocalSectionSubmissions(next);
   return next;
 }
 
@@ -522,9 +523,9 @@ function mapSectionSubmissionToItem(submission) {
   return baseItem;
 }
 
-function applySectionSubmissionsToData(data, ownerUserId = DEFAULT_USER_ID) {
+async function applySectionSubmissionsToData(data, ownerUserId = DEFAULT_USER_ID) {
   const remoteSubmissions = Array.isArray(data.sectionSubmissions) ? data.sectionSubmissions : [];
-  const localSubmissions = loadLocalSectionSubmissions(ownerUserId);
+  const localSubmissions = await loadLocalSectionSubmissions(ownerUserId);
   const mergedSubmissions = mergeById(remoteSubmissions, localSubmissions);
 
   const sectionItems = mergedSubmissions.reduce((accumulator, submission) => {
@@ -545,22 +546,22 @@ function applySectionSubmissionsToData(data, ownerUserId = DEFAULT_USER_ID) {
   };
 }
 
-function loadChatConversationMap() {
+async function loadChatConversationMap() {
   if (typeof window === 'undefined') return {};
   try {
-    const raw = window.localStorage.getItem(CHAT_CONVERSATION_MAP_KEY);
-    if (!raw) return {};
-    const parsed = JSON.parse(raw);
+    const parsed = await getVal(CHAT_CONVERSATION_MAP_KEY);
+    if (!parsed)  return {};
+    
     return parsed && typeof parsed === 'object' ? parsed : {};
   } catch {
     return {};
   }
 }
 
-function saveChatConversationMap(map) {
+async function saveChatConversationMap(map) {
   if (typeof window === 'undefined') return;
   try {
-    window.localStorage.setItem(CHAT_CONVERSATION_MAP_KEY, JSON.stringify(map));
+    await setVal(CHAT_CONVERSATION_MAP_KEY, map);
   } catch {
     // Ignore storage issues in fallback mode.
   }
@@ -588,8 +589,8 @@ function getGuestDbUserId() {
   }
 }
 
-function buildChatConversationMap(threadIds = [], messages = []) {
-  const storedMap = loadChatConversationMap();
+async function buildChatConversationMap(threadIds = [], messages = []) {
+  const storedMap = await loadChatConversationMap();
   const usedConversationIds = new Set(
     Object.values(storedMap)
       .map((value) => String(value || '').trim())
@@ -607,7 +608,7 @@ function buildChatConversationMap(threadIds = [], messages = []) {
     usedConversationIds.add(conversationId);
   });
 
-  saveChatConversationMap(nextMap);
+  await saveChatConversationMap(nextMap);
   return nextMap;
 }
 
@@ -874,14 +875,14 @@ async function loadLegacyRemoteData(ownerUserId) {
   const marketItems = mapLegacyMarketItems(marketResponse || [], townLookup, profileLookup);
   const mediaItems = mapLegacyMediaItems(mediaResponse || [], feedPosts, marketItems, legacyTowns);
   const chatThreads = APP_SEED.chatThreads;
-  const threadMap = buildChatConversationMap(chatThreads.map((thread) => thread.id), messagesResponse || []);
+  const threadMap = await buildChatConversationMap(chatThreads.map((thread) => thread.id), messagesResponse || []);
   const chatMessages = mapLegacyDbMessagesToThreads(messagesResponse || [], threadMap, ownerUserId);
 
   return {
     ownerUserId,
     agents: profileAgents.length ? profileAgents : APP_SEED.agents,
     chatThreads,
-    chatMessages: mergeChatMessages(chatMessages, loadDevFallbackMessages(ownerUserId)),
+    chatMessages: mergeChatMessages(chatMessages, await loadDevFallbackMessages(ownerUserId)),
     feedPosts: feedPosts.length ? feedPosts : APP_SEED.feedPosts,
     marketItems: marketItems.length ? marketItems : APP_SEED.marketItems,
     events: APP_SEED.events,
@@ -927,7 +928,7 @@ async function loadStructuredSupabaseData(ownerUserId) {
       time: message.time_label,
       createdAtTs: message.created_at ? new Date(message.created_at).getTime() : 0
       })),
-      loadDevFallbackMessages(ownerUserId)
+      await loadDevFallbackMessages(ownerUserId)
     ),
     sectionSubmissions: Array.isArray(sectionSubmissionsResponse?.data) ? sectionSubmissionsResponse.data : [],
     seedVersion: APP_SEED_VERSION
@@ -947,30 +948,30 @@ async function loadRemoteAppData(ownerUserId = DEFAULT_USER_ID) {
 }
 
 export async function loadAppData(ownerUserId = DEFAULT_USER_ID) {
-  const loadAndMerge = async (loader) => applySectionSubmissionsToData(await loader, ownerUserId);
+  const loadAndMerge = async (loader) => await applySectionSubmissionsToData(await loader, ownerUserId);
 
   if (runtimeDataMode === 'seed') {
-    return loadAndMerge(buildSeedAppData(ownerUserId));
+    return loadAndMerge(await buildSeedAppData(ownerUserId));
   }
 
   if (runtimeDataMode === 'local') {
-    return loadAndMerge(loadLocalAppSnapshot(ownerUserId));
+    return loadAndMerge(await loadLocalAppSnapshot(ownerUserId));
   }
 
   if (runtimeDataMode === 'hybrid') {
     if (!hasSupabaseConfig) {
-      return loadAndMerge(loadLocalAppSnapshot(ownerUserId));
+      return loadAndMerge(await loadLocalAppSnapshot(ownerUserId));
     }
 
     try {
       return await loadAndMerge(loadRemoteAppData(ownerUserId));
     } catch {
-      return loadAndMerge(loadLocalAppSnapshot(ownerUserId));
+      return loadAndMerge(await loadLocalAppSnapshot(ownerUserId));
     }
   }
 
   if (!hasSupabaseConfig) {
-    return loadAndMerge(buildSeedAppData(ownerUserId));
+    return loadAndMerge(await buildSeedAppData(ownerUserId));
   }
 
   return loadAndMerge(loadRemoteAppData(ownerUserId));
@@ -978,30 +979,30 @@ export async function loadAppData(ownerUserId = DEFAULT_USER_ID) {
 
 export async function appendChatMessages(messages) {
   if (runtimeDataMode === 'local' || runtimeDataMode === 'hybrid') {
-    const localMerged = persistMessagesToLocalSnapshot(messages, DEFAULT_USER_ID);
+    const localMerged = await persistMessagesToLocalSnapshot(messages, DEFAULT_USER_ID);
     if (runtimeDataMode === 'local') return localMerged;
   }
 
   if (runtimeDataMode === 'seed' || !hasSupabaseConfig) {
-    const current = loadDevFallbackMessages(DEFAULT_USER_ID);
+    const current = await loadDevFallbackMessages(DEFAULT_USER_ID);
     const merged = [...current, ...messages];
-    saveDevFallbackMessages(merged);
+    await saveDevFallbackMessages(merged);
     return merged;
   }
 
   if (!remoteChatWritesAvailable) {
     if (runtimeDataMode === 'hybrid') {
-      return persistMessagesToLocalSnapshot(messages, DEFAULT_USER_ID);
+      return await persistMessagesToLocalSnapshot(messages, DEFAULT_USER_ID);
     }
-    const current = loadDevFallbackMessages(DEFAULT_USER_ID);
+    const current = await loadDevFallbackMessages(DEFAULT_USER_ID);
     const merged = mergeChatMessages(current, messages);
-    saveDevFallbackMessages(merged);
+    await saveDevFallbackMessages(merged);
     return merged;
   }
 
   try {
     if (legacyCompatibilityEnabled) {
-      const threadMap = buildChatConversationMap(
+      const threadMap = await buildChatConversationMap(
         [...new Set(messages.map((message) => String(message.threadId || '').trim()).filter(Boolean))],
         []
       );
@@ -1041,9 +1042,9 @@ export async function appendChatMessages(messages) {
       });
     }
 
-    const current = loadDevFallbackMessages(DEFAULT_USER_ID);
+    const current = await loadDevFallbackMessages(DEFAULT_USER_ID);
     const merged = mergeChatMessages(current, messages);
-    saveDevFallbackMessages(merged);
+    await saveDevFallbackMessages(merged);
     return merged;
   } catch (error) {
     const message = String(error?.message || '');
@@ -1060,11 +1061,11 @@ export async function appendChatMessages(messages) {
     remoteChatWritesAvailable = false;
     persistRemoteChatWriteDisabled();
     if (runtimeDataMode === 'hybrid') {
-      return persistMessagesToLocalSnapshot(messages, DEFAULT_USER_ID);
+      return await persistMessagesToLocalSnapshot(messages, DEFAULT_USER_ID);
     }
-    const current = loadDevFallbackMessages(DEFAULT_USER_ID);
+    const current = await loadDevFallbackMessages(DEFAULT_USER_ID);
     const merged = mergeChatMessages(current, messages);
-    saveDevFallbackMessages(merged);
+    await saveDevFallbackMessages(merged);
     return merged;
   }
 }
@@ -1103,7 +1104,7 @@ export async function appendSectionSubmission(submission) {
     payload
   };
 
-  persistSectionSubmissionToLocal(storedSubmission, ownerUserId);
+  await persistSectionSubmissionToLocal(storedSubmission, ownerUserId);
 
   if (runtimeDataMode === 'seed' || runtimeDataMode === 'local' || !hasSupabaseConfig) {
     return storedSubmission;
@@ -1114,7 +1115,7 @@ export async function appendSectionSubmission(submission) {
   }
 
   try {
-    /* await request('/rest/v1/section_submissions?on_conflict=' + encodeURIComponent('id'), {
+    await request('/rest/v1/section_submissions?on_conflict=' + encodeURIComponent('id'), {
       method: 'POST',
       headers: {
         Prefer: 'resolution=merge-duplicates,return=representation'
@@ -1130,7 +1131,7 @@ export async function appendSectionSubmission(submission) {
           created_at: createdAt
         }
       ]
-    }); */
+    });
     return storedSubmission;
   } catch (error) {
     const message = String(error?.message || '');

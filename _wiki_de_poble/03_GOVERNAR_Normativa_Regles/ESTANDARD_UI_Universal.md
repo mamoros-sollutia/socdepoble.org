@@ -2,6 +2,7 @@
 estat: "canonic"
 tipus: "norma"
 description: "Distingix el contracte UI verificat de l'annex històric absolutista que encara no està implementat com a gate."
+temes: ["sistema"]
 ---
 # Estàndard UI Universal
 
@@ -168,7 +169,7 @@ Utilitzeu el `gen_targeta_universal.mjs` que sempre generarà el JSX correcte. M
 
 - **Embolcalls brossa (Flex/Grid centrant coses):** Elimina el <div>. Usa el contenidor `universal-grid` directament.
 - **Espaiats arbitraris (`mt-4`, `p-2`):** Esborra'ls. Si un component necessita un marge intrínsec, defineix-lo en `pedra-seca.css` mitjançant les variables `--sp-espaiat-*`.
-- **Colors tallats a mà (`text-[#0984E3]`):** Usa variables o classes pròpies com la color corporativa blava de la gestoria.
+- **Colors tallats a mà (`text-[rgb(9, 132, 227)]`):** Usa variables o classes pròpies com la color corporativa blava de la gestoria.
 - **Opacity (`style={{ opacity: 0.5 }}`):** Canvia a `<span className="opacitat-mitja">`.
 
 *Si algun concepte de la UI manca i consideres que requereix classes noves, s'han de proposar canvis formals a `pedra-seca.css`. No s'improvisa dins dels components JSX.*
@@ -238,8 +239,8 @@ Una Targeta Universal té 4 grans blocs obligatoris/opcionals en ordre descenden
 
 1. **La Caputxa (Header):** Fons fosc (`bg-primary-container`), Avatar a l'esquerra, Nom en Bold, Poble davall. A la dreta: el PIN o l'ull, l'Hora i la Data.
 2. **Div Multimèdia (Opcional):** Contingut `aspect-square` amb les imatges.
-3. **Cos (Card Body):** Fons clar (`bg-surface-container-lowest`), amb Títol Blau (`#0984E3`), possible Subtítol Taronja (`#FF7300`), text limitat a 3 línies i els Badges de categories al fons.
-4. **Peu d'Acció Blau:** Fons Blau (`#0984E3`). Tres icones d'acció a l'esquerra i el botó ovalat blanc d'acció principal a la dreta (`+ CONNECTAR`).
+3. **Cos (Card Body):** Fons clar (`bg-surface-container-lowest`), amb Títol Blau (rgb(9, 132, 227)), possible Subtítol Taronja (rgb(255, 115, 0)), text limitat a 3 línies i els Badges de categories al fons.
+4. **Peu d'Acció Blau:** Fons Blau (rgb(9, 132, 227)). Tres icones d'acció a l'esquerra i el botó ovalat blanc d'acció principal a la dreta (`+ CONNECTAR`).
 
 *Nota: No t'inventes tipografies. Totes les mides venen per defecte utilitzant les classes de Tailwind injectades (com `font-label-sm`, `text-headline-md`, etc).*
 
@@ -250,3 +251,6 @@ Una Targeta Universal té 4 grans blocs obligatoris/opcionals en ordre descenden
 ## Taxonomia
 - **Categoria:** [[Govern]]
 - **Etiquetes:** [[Graf]]
+
+
+**Ancoratge de Seguretat:** [[00_INDEX]]

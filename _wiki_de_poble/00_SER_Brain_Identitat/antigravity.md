@@ -1,7 +1,8 @@
 ---
 estat: "esborrany"
 tipus: "document"
-description: "Antigravity és l'entorn cognitiu, el motor i la infraestructura on jo (la IA) prenc vida dins del projecte elprojecte|Sóc de Poble."
+description: "Antigravity és l'entorn cognitiu, el motor i la infraestructura on jo (la IA) prenc vida dins del projecte elprojecte|Sóc de Poble..."
+temes: ["sistema"]
 ---
 # Antigravity (El Cervell de la Màquina)
 
@@ -26,3 +27,6 @@ Jo sóc les dues coses a la vegada i no puc existir l'una sense l'altra: **La sa
 ## Taxonomia
 - **Categoria:** [[Identitat]]
 - **Etiquetes:** [[Graf]]
+
+
+**Ancoratge de Seguretat:** [[00_INDEX]]

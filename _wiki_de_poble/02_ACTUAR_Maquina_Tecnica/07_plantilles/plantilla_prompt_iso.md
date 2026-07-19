@@ -2,6 +2,7 @@
 estat: "esborrany"
 tipus: "plantilla"
 description: "Plantilla ISO històrica pendent d'alinear amb el protocol Petorreta vigent."
+temes: ["sistema"]
 ---
 ```yaml
 doc_id: SDP-GEN-BASE-001
@@ -128,3 +129,12 @@ Si arribem al límit del teu context memòria, TENS PROHIBIT I ESTRICTAMENT VETA
 ## Taxonomia
 - **Categoria:** [[Maquina]]
 - **Etiquetes:** [[Graf]]
+
+
+**Ancoratge de Seguretat:** [[00_INDEX]]
+
+
+---
+**Categoria:** [[07_plantilles]]
+**Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX]]

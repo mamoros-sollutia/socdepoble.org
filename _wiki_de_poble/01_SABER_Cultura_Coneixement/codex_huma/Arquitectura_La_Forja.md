@@ -2,6 +2,7 @@
 estat: "canonic"
 tipus: "document"
 description: "Descriu la forja tècnica de la PWA i les decisions d'arquitectura del projecte."
+temes: ["sistema"]
 ---
 # La Forja de la PWA i la seua Arquitectura (Volum II)
 **Categoria:** Arquitectura
@@ -36,3 +37,6 @@ La configuració PWA pot emmagatzemar l'esquelet estàtic mitjançant un Service
 ## Taxonomia
 - **Categoria:** [[Coneixement]]
 - **Etiquetes:** [[Graf]]
+
+
+**Ancoratge de Seguretat:** [[00_INDEX]]

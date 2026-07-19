@@ -1,3 +1,9 @@
+---
+estat: "arxivat"
+tipus: "document"
+description: "Documentació heretada o arxiu restaurat."
+temes: ["sistema"]
+---
 # Instruccions per a Supabase
 
 ## Objectiu
@@ -120,3 +126,6 @@ Es pot donar per bo quan:
 - [docs/GUIA_RAPIDA.md](docs/GUIA_RAPIDA.md)
 - [supabase/schema.sql](supabase/schema.sql)
 - [supabase/seed.sql](supabase/seed.sql)
+
+
+**Ancoratge de Seguretat:** [[00_index]]

@@ -1,7 +1,8 @@
 ---
-autor: Sollutia
-name: chrome-devtools
-description: Uses Chrome DevTools via MCP for efficient debugging, troubleshooting and browser automation. Use when debugging web pages, automating browser interactions, analyzing performance, or inspecting network requests. This skill does not apply to `--slim` mode (MCP configuration).
+description: "Uses Chrome DevTools via MCP for efficient debugging, troubleshooting and browser automation. Use when debugging web pages, automa..."
+estat: "canonic"
+tipus: "skill"
+temes: ["sistema"]
 ---
 
 ## Core Concepts
@@ -45,3 +46,14 @@ If `chrome-devtools-mcp` is insufficient, guide users to use Chrome DevTools UI:
 - https://developer.chrome.com/docs/devtools/ai-assistance
 
 If there are errors launching `chrome-devtools-mcp` or Chrome, refer to https://github.com/ChromeDevTools/chrome-devtools-mcp/blob/main/docs/troubleshooting.md.
+
+
+---
+
+**Ancoratge de Seguretat:** [[Soci_Sollutia]]
+
+
+---
+**Categoria:** [[Sollutia]]
+**Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX]]

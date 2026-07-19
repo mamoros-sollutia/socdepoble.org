@@ -2,6 +2,7 @@
 estat: "canonic"
 tipus: "skill"
 description: "Defineix l’Índex de Trellat com a marc de decisió auditable i prohibix convertir estimacions en salut automàtica."
+temes: ["sistema"]
 ---
 # Índex de Trellat
 
@@ -64,3 +65,12 @@ L’IT no crea etiquetes de frontmatter. L’esquema v2 només admet `estat`, `t
 - [[a11y_seo_trellat]]
 - [[MOTOR_OFFLINE]]
 - [[03_Consola_Termodinamica]]
+
+
+**Ancoratge de Seguretat:** [[00_INDEX]]
+
+
+---
+**Categoria:** [[skills]]
+**Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX]]

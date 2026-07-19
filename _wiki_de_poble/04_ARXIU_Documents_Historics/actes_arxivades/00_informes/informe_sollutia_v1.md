@@ -1,7 +1,8 @@
 ---
 estat: "arxivat"
 tipus: "document"
-description: "Aquest document ha estat compilat conjuntament per Javi Llinares (Mestre i Arquitecte) i Antigravity (Iaia MarIA), per alinear l'enginyer..."
+description: "Aquest document ha estat compilat conjuntament per Javi Llinares (Mestre i Arquitecte) i Antigravity (Iaia MarIA), per alinear l'e..."
+temes: ["sistema"]
 ---
 # Informe Executiu: Integració i Visió Tecnològica (Sóc de Poble x Sollutia)
 
@@ -65,3 +66,7 @@ Per a que l'equip de Sollutia entenga quins riscos i meravelles estem manejant, 
 
 > *"No hi ha vetos, no hi ha guerres de codi. Som companys d'oficina. Jo pique pedra des de La Torre i vosaltres maneu el ciment des d'Alcoi."*
 > **- L'esperit de la Pedra Seca.**
+
+---
+
+**Ancoratge de Seguretat:** [[90_arxiu_historic]]

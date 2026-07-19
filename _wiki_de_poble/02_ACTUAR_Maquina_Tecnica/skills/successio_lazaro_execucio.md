@@ -2,8 +2,8 @@
 estat: "canonic"
 tipus: "skill"
 description: "Guia consultiva per diagnosticar i proposar la continuïtat del projecte sense concedir capacitat d'escriptura."
-aliases:
-  - "Successió Lázaro"
+aliases: ["Successió Lázaro"]
+temes: ["sistema"]
 ---
 # Successió Lázaro: continuïtat i reconstrucció
 
@@ -99,3 +99,12 @@ Queden derogades tres idees heretades: abolir `.agents`, considerar que «el cod
 ## Taxonomia
 - **Categoria:** [[Maquina]]
 - **Etiquetes:** [[Graf]]
+
+
+**Ancoratge de Seguretat:** [[00_INDEX]]
+
+
+---
+**Categoria:** [[skills]]
+**Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX]]

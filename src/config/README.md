@@ -1,3 +1,8 @@
+---
+estat: "canonic"
+tipus: "index"
+description: "Documentació canònica de Sóc de Poble."
+---
 # `src/config`
 
 Ací només van peces globals i transversals del projecte.
@@ -14,3 +19,8 @@ No poseu ací contingut propi d'una secció concreta.
 
 Si una cosa només afecta `mur`, `mercat`, `xat`, `pobles` o qualsevol altra secció, ha d'anar dins de `src/sections/<seccio>/`.
 Si és una fitxa concreta d'eixa secció, la secció pot tindre també `src/sections/<seccio>/detail/`.
+
+
+---
+
+**Ancoratge de Seguretat:** [[00_index]]

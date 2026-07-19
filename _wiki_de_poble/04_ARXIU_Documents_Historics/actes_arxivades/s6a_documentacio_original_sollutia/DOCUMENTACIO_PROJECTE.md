@@ -1,3 +1,9 @@
+---
+estat: "arxivat"
+tipus: "document"
+description: "Documentació heretada o arxiu restaurat."
+temes: ["sistema"]
+---
 # Documentació del projecte
 
 Este és el document principal del projecte `socdepoble.org`.
@@ -395,3 +401,6 @@ Si es vol entendre el projecte molt ràpid:
 - les seccions es toquen dins de `src/sections/`;
 - la configuració global va en `src/config/`;
 - i la BD remota es prepara amb `Supabase`.
+
+
+**Ancoratge de Seguretat:** [[00_index]]

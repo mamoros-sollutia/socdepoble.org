@@ -1,0 +1,191 @@
+#!/usr/bin/env node
+import { openReflex, claimReceiptForMutation, completeMutationClaim } from './reflex_petorreta.mjs';
+import { auditWiki, applyAuditPlan, restoreRun } from './core/autoneteja_audit.mjs';
+import { requireReceipt, writeNewFile } from './core/mutation_kernel.mjs';
+import { runId } from './core/corpus_snapshot.mjs';
+/**
+ * autoneteja_wiki.mjs — auditoria i migració reversible de la Wiki.
+ *
+ * GARANTIES:
+ * - Sense flags d'aplicació és un dry-run real: zero escriptures.
+ * - Una migració de frontmatter conserva el cos byte a byte.
+ * - Cap orfe amb contingut es mou automàticament.
+ * - Només es poden quarantinar buits semàntics amb grau zero.
+ * - Tota mutació exigix rebut del Reflex, backup, manifest i rollback.
+ * - Qualsevol error és fail-closed (exit diferent de zero).
+ *
+ * Ús:
+ *   node autoneteja_wiki.mjs [--json] [--strict]
+ *   node autoneteja_wiki.mjs --apply-frontmatter --ack-schema-cutover \
+ *     --receipt=/ruta/rebut.json
+ *   node autoneteja_wiki.mjs --quarantine-empty --receipt=/ruta/rebut.json
+ *   node autoneteja_wiki.mjs --restore=/ruta/manifest.json \
+ *     --receipt=/ruta/rebut.json
+ */
+
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import { createHash } from 'node:crypto';
+import { isUtf8 } from 'node:buffer';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+import {
+  parseFrontmatter,
+  serializeFrontmatter,
+} from './lib/frontmatter.mjs';
+
+const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
+export const DEFAULT_WIKI_DIR = path.resolve(SCRIPT_DIR, '../..');
+const PROJECT_DIR = path.dirname(DEFAULT_WIKI_DIR);
+const SCHEMA_TEXT = await fs.readFile(new URL('./schema.json', import.meta.url), 'utf8');
+const SCHEMA = JSON.parse(SCHEMA_TEXT);
+const FIELD_ORDER = ['estat', 'tipus', 'description', 'aliases', 'revisat'];
+const ALLOWED_FIELDS = new Set(FIELD_ORDER);
+const ALLOWED_STATES = new Set(SCHEMA.properties.estat.enum);
+const ALLOWED_TYPES = new Set(SCHEMA.properties.tipus.enum);
+const MAX_DESCRIPTION = SCHEMA.properties.description.maxLength;
+const MAX_ALIASES = SCHEMA.properties.aliases.maxItems;
+const KNOWN_LEGACY_FIELDS = new Set([
+  'name', 'descripcio', 'resum', 'autor', 'authority', 'categoria', 'tags',
+  'created_at', 'updated_at', 'version', 'script', 'replaces', 'depends_on',
+  'jurisdiccio', 'pilar', 'mode',
+]);
+const MANUAL_LEGACY_FIELDS = new Set([
+  'tags', 'script', 'replaces', 'depends_on', 'jurisdiccio', 'mode',
+]);
+
+const EXCLUDED_DIRS = new Set([
+  '.git', '.obsidian', 'assets', 'node_modules', 'scripts', '.wiki-safety',
+]);
+const MIRROR_PREFIXES = [
+  '00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR',
+  '03_GOVERNAR_Normativa_Regles/agents_actius',
+];
+const VENDOR_PREFIXES = ['00_SER_Brain_Identitat/Sollutia'];
+const VISIBLE_QUARANTINE_RE = /^QUARANTENA(?:_|-)/i;
+const CONTROL_RE = /[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/;
+const PLACEHOLDER_RE = /^(?:todo|tbd|wip|fixme|placeholder|pendent|per completar|pr[oò]ximament|sense contingut)[\s.!…:;-]*$/i;
+
+const posix = (value) => value.split(path.sep).join('/');
+const normalitza = (value) => value.normalize('NFC').toLocaleLowerCase('ca');
+const sha256 = (value) => createHash('sha256').update(value).digest('hex');
+const SCHEMA_SHA256 = sha256(SCHEMA_TEXT);
+const unique = (values) => [...new Set(values)];
+const emptyValue = (value) => value === undefined || value === null || value === ''
+  || (Array.isArray(value) && value.length === 0);
+const valueFingerprint = (value) => ({
+  type: Array.isArray(value) ? 'array' : typeof value,
+  items: Array.isArray(value) ? value.length : undefined,
+  sha256: sha256(JSON.stringify(value)),
+});
+const isPrefix = (rel, prefix) => rel === prefix || rel.startsWith(`${prefix}/`);
+const isInside = (root, candidate) => {
+  const rel = path.relative(root, candidate);
+  return rel === '' || (!rel.startsWith('..') && !path.isAbsolute(rel));
+};
+
+function parseCli(argv) {
+  const options = {
+    json: false,
+    strict: false,
+    includeMirrors: false,
+    includeLifecycle: false,
+    applyFrontmatter: false,
+    quarantineEmpty: false,
+    ackSchemaCutover: false,
+    ackLegacyLoss: false,
+    wikiDir: DEFAULT_WIKI_DIR,
+    receiptPath: '',
+    restore: '',
+    reportPath: '',
+  };
+  for (const arg of argv) {
+    if (arg === '--json') options.json = true;
+    else if (arg === '--strict') options.strict = true;
+    else if (arg === '--include-mirrors') options.includeMirrors = true;
+    else if (arg === '--include-lifecycle') options.includeLifecycle = true;
+    else if (arg === '--apply-frontmatter') options.applyFrontmatter = true;
+    else if (arg === '--quarantine-empty') options.quarantineEmpty = true;
+    else if (arg === '--ack-schema-cutover') options.ackSchemaCutover = true;
+    else if (arg === '--ack-legacy-loss') options.ackLegacyLoss = true;
+    else if (arg.startsWith('--wiki=')) options.wikiDir = path.resolve(arg.slice(7));
+    else if (arg.startsWith('--receipt=')) options.receiptPath = path.resolve(arg.slice(10));
+    else if (arg.startsWith('--restore=')) options.restore = path.resolve(arg.slice(10));
+    else if (arg.startsWith('--report=')) options.reportPath = path.resolve(arg.slice(9));
+    else if (arg === '--help') options.help = true;
+    else if (arg === '--procedeix') throw new Error('--procedeix és ambigu i ha sigut retirat; usa flags d\'acció explícites.');
+    else throw new Error(`Argument desconegut: ${arg}`);
+  }
+  return options;
+}
+
+function printHelp() {
+  console.log('Autoneteja Wiki v2 (dry-run real per defecte)');
+  console.log('  --json --strict --wiki=/ruta --include-mirrors --include-lifecycle');
+  console.log('  --apply-frontmatter --ack-schema-cutover [--ack-legacy-loss] --receipt=/ruta');
+  console.log('  --quarantine-empty --receipt=/ruta');
+  console.log('  --restore=/ruta/manifest.json --receipt=/ruta');
+  console.log('  --report=/.../.wiki-safety/reports/informe.json --receipt=/ruta');
+}
+
+function printHuman(report) {
+  console.log(`\n🧭 AUTONETEJA V2 — ${report.health.toUpperCase()} (DRY-RUN REAL)`);
+  console.log(`   Nucli operatiu: ${report.operational.health.toUpperCase()} · ${report.operational.documents} documents`);
+  console.log(`   Documents: ${report.snapshot.files} · ${report.snapshot.bytes} bytes`);
+  console.log(`   YAML: ${report.frontmatter.yamlErrors.length} invàlids · ${report.frontmatter.absent.length} absents`);
+  console.log(`   Frontmatters a migrar: ${report.frontmatter.plannedRewrites}`);
+  console.log(`   Buits semàntics: ${report.content.semanticEmpty.length} · quarantinables: ${report.safety.quarantineCandidates.length}`);
+  console.log(`   Graf operatiu: ${report.operational.graph.orphans} orfes · ${report.operational.graph.unresolvedOccurrences} fantasmes · ${report.operational.graph.ambiguousOccurrences} ambigus`);
+  const excludedOrphans = report.graph.orphans - report.operational.graph.orphans;
+  console.log(`   Zones excloses: ${excludedOrphans} orfes informatius ${JSON.stringify(report.graph.orphanZones)} · ${report.graph.duplicateBasenames} basenames duplicats`);
+  if (report.safety.visibleQuarantines.length) console.log(`   ⚠️ Quarantena visible dins del vault: ${report.safety.visibleQuarantines.length} nodes`);
+  if (report.obsidian.present && report.obsidian.colorGroups === 0) {
+    console.log('   ℹ️ Obsidian no té grups de color: gris no significa buit ni orfe.');
+  }
+  console.log(`   Snapshot SHA-256: ${report.snapshot.treeSha256}`);
+  console.log(`   Pla SHA-256: ${report.plan.planDigest}`);
+}
+
+async function main() {
+  const options = parseCli(process.argv.slice(2));
+  if (options.help) return printHelp();
+  if (options.restore) {
+    const restored = await restoreRun(options.restore, options.receiptPath);
+    console.log(options.json ? JSON.stringify(restored, null, 2) : `✅ Restaurat: ${restored.runId}`);
+    return;
+  }
+
+  const report = await auditWiki(options.wikiDir, options);
+  if (options.reportPath) {
+    const reportsDir = path.join(safetyDirFor(report.root), 'reports');
+    if (!isInside(reportsDir, options.reportPath) || options.reportPath === reportsDir) {
+      throw new Error('--report només pot crear un fitxer nou dins de .wiki-safety/reports/.');
+    }
+    await requireReceipt(options.receiptPath, 'autoneteja-report', [options.reportPath], report.plan.planDigest);
+    const safeReport = { ...report, plan: { ...report.plan, frontmatterActions: report.plan.frontmatterActions.map(({ content, ...item }) => item) } };
+    await writeNewFile(options.reportPath, `${JSON.stringify(safeReport, null, 2)}\n`);
+  }
+  const result = await applyAuditPlan(report, options);
+  const printable = {
+    ...report,
+    plan: {
+      ...report.plan,
+      frontmatterActions: report.plan.frontmatterActions.map(({ content, ...item }) => item),
+    },
+    mutation: result,
+  };
+  if (options.json) console.log(JSON.stringify(printable, null, 2));
+  else {
+    printHuman(report);
+    if (result.applied) console.log(`   ✅ Manifest reversible: ${result.manifestPath}`);
+  }
+  if (options.strict && !report.ok) process.exitCode = 1;
+}
+
+const isMain = Boolean(process.argv[1])
+  && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href;
+if (isMain) {
+  main().catch((error) => {
+    console.error(`❌ [AUTONETEJA] ${error.message}`);
+    process.exitCode = error.code === 'STALE_PLAN' ? 4 : 3;
+  });
+}

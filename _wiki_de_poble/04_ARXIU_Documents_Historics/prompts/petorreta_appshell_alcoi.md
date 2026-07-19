@@ -2,6 +2,7 @@
 estat: "arxivat"
 tipus: "petorreta"
 description: "Qui som i la nostra Missió:"
+temes: ["petorreta"]
 ---
 # 📜 ACTA PETORRETA: Integració de l'AppShell d'Alcoi i Disseny Pedra Seca
 
@@ -14,7 +15,7 @@ Jo sóc la IAIA MarIA, el sistema cognitiu i l'ànima del projecte, que vetla pe
 
 **Model Arquitectònic - La Pedra Seca:**
 El nostre disseny visual es basa en la "Pedra Seca":
-- **Alt Contrast i Brutalisme Rural**: Fons negre (`#131313`, `#0a0a0a`), text clar, accents taronges (`#ffb68f`).
+- **Alt Contrast i Brutalisme Rural**: Fons negre (rgb(19, 19, 19), rgb(10, 10, 10)), text clar, accents taronges (rgb(255, 182, 143)).
 - **Rendiment Suprem**: Sense ombres (`box-shadow`), sense desenfocaments (`backdrop-filter`). Transicions mínimes.
 - **Bancal Mode**: Botons i àrees interactives grans (mínim 44x48px) sense vores arredonides en les targetes (`border-radius: 0`), però amb botons suaus (`border-radius: 28px`).
 
@@ -119,7 +120,7 @@ function AppShell({ children }) {
   height: 100vh;
   overflow: auto;
   background: rgba(5, 5, 5, 0.94);
-  color: #fff;
+  color: rgb(255, 255, 255);
   border-right: 1px solid rgba(255, 255, 255, 0.08);
   padding: 20px 16px;
 }
@@ -214,8 +215,8 @@ export function UniversalButton({ children, onClick, variant = 'primary', icon, 
 .universal-page {
   width: 100%;
   min-height: 100vh;
-  background-color: #131313;
-  color: #e5e2e1;
+  background-color: rgb(19, 19, 19);
+  color: rgb(229, 226, 225);
   font-family: Roboto, system-ui, sans-serif;
 }
 .universal-page-header {
@@ -239,13 +240,13 @@ export function UniversalButton({ children, onClick, variant = 'primary', icon, 
   font-weight: 400;
   line-height: 48px;
   margin: 0;
-  color: #e5e2e1;
+  color: rgb(229, 226, 225);
 }
 
 /* CARDS */
 .universal-card {
-  background-color: #0a0a0a;
-  border: 1px solid #4A4740;
+  background-color: rgb(10, 10, 10);
+  border: 1px solid rgb(74, 71, 64);
   border-radius: 0;
   display: flex;
   flex-direction: column;
@@ -254,11 +255,11 @@ export function UniversalButton({ children, onClick, variant = 'primary', icon, 
 }
 .universal-card.clickable:hover {
   cursor: pointer;
-  border: 2px solid #ffb68f;
+  border: 2px solid rgb(255, 182, 143);
 }
 .universal-card-header {
   padding: 16px;
-  border-bottom: 1px solid #4A4740;
+  border-bottom: 1px solid rgb(74, 71, 64);
 }
 .universal-card-title {
   font-size: 20px;
@@ -266,7 +267,7 @@ export function UniversalButton({ children, onClick, variant = 'primary', icon, 
   margin: 0;
 }
 .universal-card-body { padding: 16px; flex: 1; }
-.universal-card-footer { padding: 16px; border-top: 1px solid #4A4740; }
+.universal-card-footer { padding: 16px; border-top: 1px solid rgb(74, 71, 64); }
 
 /* BUTTONS */
 .universal-button {
@@ -287,8 +288,12 @@ export function UniversalButton({ children, onClick, variant = 'primary', icon, 
 }
 .universal-button.full-width { width: 100%; }
 .universal-button:hover { opacity: 0.8; }
-.universal-button-primary { background-color: #ffb68f; color: #542100; }
-.universal-button-secondary { background-color: #a2c9ff; color: #00315b; }
-.universal-button-outline { background-color: transparent; border: 1px solid #a88b7c; color: #e5e2e1; }
-.universal-button-outline:hover { border-color: #ffb68f; opacity: 1; }
+.universal-button-primary { background-color: rgb(255, 182, 143); color: rgb(84, 33, 0); }
+.universal-button-secondary { background-color: rgb(162, 201, 255); color: rgb(0, 49, 91); }
+.universal-button-outline { background-color: transparent; border: 1px solid rgb(168, 139, 124); color: rgb(229, 226, 225); }
+.universal-button-outline:hover { border-color: rgb(255, 182, 143); opacity: 1; }
 ```
+
+---
+
+**Ancoratge de Seguretat:** [[90_arxiu_historic]]

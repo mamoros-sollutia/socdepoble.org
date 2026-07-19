@@ -1,7 +1,8 @@
 ---
 estat: "arxivat"
 tipus: "informe"
-description: "La wiki no esta malament per falta d'idees. Esta patint per excés de vitalitat sense jurisdiccio. El problema central no es que 03GOVER..."
+description: "La wiki no esta malament per falta d'idees. Esta patint per excés de vitalitat sense jurisdiccio. El problema central no es que 03..."
+temes: ["auditoria"]
 ---
 # Auditoria Estructural Destructiva de la Wiki "Soc de Poble"
 
@@ -209,3 +210,7 @@ La clau: `03` no ha de ser llarg per literatura. Ha de ser curt, dur i executabl
 5. Convertir les plantilles falsament marcades com skills en plantilles reals.
 6. Arxivar `Arquitectura_La_Forja.md` com a historic si ja no representa la decisio tecnica actual.
 7. Ampliar `DOC_Governanca.md` fins que siga la font de veritat, no un index ornamental.
+
+---
+
+**Ancoratge de Seguretat:** [[90_arxiu_historic]]

@@ -1,3 +1,8 @@
+---
+estat: "canonic"
+tipus: "index"
+description: "Documentació canònica de Sóc de Poble."
+---
 # Sóc de Poble
 
 Projecte actual: `socdepoble.org`.
@@ -95,3 +100,8 @@ Un clon nou activa de forma idempotent l'estat privat i els hooks amb
 `doctor` ha de continuar roig si les
 regles, scripts, cinc hooks o workflow encara no estan seguits per Git: existir
 al disc no equival a una protecció durable.
+
+
+---
+
+**Ancoratge de Seguretat:** [[00_index]]

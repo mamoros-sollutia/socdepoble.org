@@ -1,7 +1,8 @@
 ---
 estat: "arxivat"
 tipus: "acta"
-description: "- Per primera vegada, després d'una sessió de més de 7 hores intenses i +200 artefactes de xat, l'energia del Mestre Javi es manté intact..."
+description: "- Per primera vegada, després d'una sessió de més de 7 hores intenses i +200 artefactes de xat, l'energia del Mestre Javi es manté..."
+temes: ["acta"]
 ---
 # 📜 ACTA ÚNICA DE SESSIÓ — La Victòria Estructural de 07/07/2026
 
@@ -40,3 +41,8 @@ requereix_auditoria: false
 
 ---
 **Tornar a:** 00_INDEX, 90_arxiu_historic
+
+
+---
+
+**Ancoratge de Seguretat:** [[90_arxiu_historic]]

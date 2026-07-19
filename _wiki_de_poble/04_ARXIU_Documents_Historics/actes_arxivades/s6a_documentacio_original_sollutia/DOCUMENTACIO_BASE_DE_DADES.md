@@ -1,3 +1,9 @@
+---
+estat: "arxivat"
+tipus: "document"
+description: "Documentació heretada o arxiu restaurat."
+temes: ["sistema"]
+---
 # Base de dades
 
 ## Idea general
@@ -141,3 +147,6 @@ Si falta alguna d'estes peces:
 - [supabase/seed.sql](supabase/seed.sql)
 - [.env.example](.env.example)
 - [INSTRUCCIONS_SUPABASE.md](INSTRUCCIONS_SUPABASE.md)
+
+
+**Ancoratge de Seguretat:** [[00_index]]

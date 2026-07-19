@@ -2,6 +2,7 @@
 estat: "esborrany"
 tipus: "plantilla"
 description: "Plantilla per registrar decisions, canvis, riscos i continuïtat entre sessions de treball."
+temes: ["sistema"]
 ---
 <!-- Nom en disc ha de seguir OBLIGATÒRIAMENT: YYMMDD_HHMM_ACTA_Sessio_Titol_Hiper_Descriptiu_Llarg_Fins_A_20_Paraules.md -->
 <!-- És VITAL que el títol siga molt llarg i descriptiu (8-20 paraules) perquè en llegir el nom de l'arxiu des del mur o el graf sàpigues exactament què hi ha dins sense necessitat d'obrir-lo per reduir l'I/O. -->
@@ -50,3 +51,12 @@ requereix_auditoria: false
 ## Taxonomia
 - **Categoria:** [[Maquina]]
 - **Etiquetes:** [[Graf]]
+
+
+**Ancoratge de Seguretat:** [[00_INDEX]]
+
+
+---
+**Categoria:** [[07_plantilles]]
+**Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX]]

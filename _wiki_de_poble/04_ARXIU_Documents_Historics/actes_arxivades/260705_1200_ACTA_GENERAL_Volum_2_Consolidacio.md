@@ -2,6 +2,7 @@
 estat: "arxivat"
 tipus: "acta"
 description: "| Data de Creació | Tipus | Títol / Resum de l'Aprenentatge |"
+temes: ["acta"]
 ---
 # 📚 ACTA GENERAL: Volum 2 - La Gran Destil·lació
 
@@ -54,3 +55,7 @@ La saviesa d'aquests documents s'ha integrat a la memòria global del projecte. 
 Aquesta és l'estructura original del prompt utilitzat per fer una bolcada (bundle) completa del cervell a altres IAs.
 
 ## 📜 Rescat Històric: El "Super Prompt" de Bolcada
+
+---
+
+**Ancoratge de Seguretat:** [[90_arxiu_historic]]

@@ -1,3 +1,8 @@
+---
+estat: "canonic"
+tipus: "index"
+description: "Documentació canònica de Sóc de Poble."
+---
 # `src/sections`
 
 Cada carpeta representa un domini visible de la web.
@@ -48,3 +53,8 @@ Nota important per al futur:
 - `xat/` és el lloc del xat simulat i de la UX conversacional local;
 - `dispositius/` és el lloc del xat entre dispositius o instàncies del portal;
 - si entra una IA real, convé tractar-la com una capa explícita i no confondre-la amb la simulació actual.
+
+
+---
+
+**Ancoratge de Seguretat:** [[00_index]]

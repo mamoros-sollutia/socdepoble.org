@@ -1,17 +1,8 @@
 ---
-autor: Sollutia
-name: chrome-extensions
-description: >
-  Build and publish Chrome Extensions using Manifest V3 best practices. Use this skill
-  whenever the user asks to create, modify, debug, or understand Chrome browser extensions,
-  add-ons, or anything involving the Chrome Extensions API. Trigger on mentions of: 'Chrome
-  extension', 'browser extension', 'manifest.json', 'content script', 'service worker' (in
-  browser context), 'popup' (in browser extension context), 'side panel', 'chrome.* API',
-  'declarativeNetRequest', 'omnibox', 'context menu' (in extension context), or any request
-  to build functionality that integrates with the Chrome browser UI. Also trigger for
-  publishing to the Chrome Web Store: 'publish extension', preparing an extension for
-  publishing, responding to a review rejection, writing permission justifications, or
-  drafting a privacy policy.
+description: "Build and publish Chrome Extensions using Manifest V3 best practices. Use this skill whenever the user asks to create, modify, deb..."
+estat: "canonic"
+tipus: "skill"
+temes: ["sistema"]
 ---
 
 # Chrome Extensions
@@ -305,7 +296,7 @@ chrome.action.onClicked.addListener(async (tab) => {
       await startRecording(tab);
       await chrome.storage.session.set({ recordingState: 'recording' });
       await chrome.action.setBadgeText({ text: 'REC' });
-      await chrome.action.setBadgeBackgroundColor({ color: '#FF0000' });
+      await chrome.action.setBadgeBackgroundColor({ color: 'rgb(255, 0, 0)' });
     } catch (err) {
       console.error('Failed to start recording:', err);
       await chrome.storage.session.set({ recordingState: 'idle' });
@@ -511,3 +502,14 @@ Verify EVERY item before delivering:
 - [ ] Error handling on all async operations
 - [ ] `host_permissions` scoped to specific domains (not `<all_urls>` unless needed)
 - [ ] `return true` in `onMessage` listeners with async responses
+
+
+---
+
+**Ancoratge de Seguretat:** [[Soci_Sollutia]]
+
+
+---
+**Categoria:** [[Sollutia]]
+**Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX]]

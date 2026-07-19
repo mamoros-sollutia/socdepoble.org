@@ -2,6 +2,7 @@
 estat: "canonic"
 tipus: "document"
 description: "Defineix com reconstruir el projecte des de fonts canòniques quan es perd context o infraestructura."
+temes: ["sistema"]
 ---
 # El Protocol Lázaro: Reconstrucció de Gènesi (Volum V)
 **Categoria:** Arquitectura
@@ -37,3 +38,6 @@ No tens gens ni mica de coneixement informàtic? No cal! Digues-li directament a
 ## Taxonomia
 - **Categoria:** [[Coneixement]]
 - **Etiquetes:** [[Graf]]
+
+
+**Ancoratge de Seguretat:** [[00_INDEX]]

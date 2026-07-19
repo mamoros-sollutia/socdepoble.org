@@ -2,6 +2,7 @@
 estat: "arxivat"
 tipus: "document"
 description: "Neutralitza una còpia antiga de context que ja no pot definir com treballa una IA en el projecte actual."
+temes: ["sistema"]
 ---
 # Context antic d'agents
 
@@ -12,3 +13,8 @@ després de llegir les fonts obligatòries i el protocol del Reflex.
 ## Taxonomia
 - **Categoria:** [[Govern]]
 - **Etiquetes:** [[Graf]]
+
+
+---
+
+**Ancoratge de Seguretat:** [[00_index]]

@@ -2,6 +2,7 @@
 estat: "canonic"
 tipus: "document"
 description: "Establix les nou lleis cognitives que governen la IAIA MarIA i els agents del projecte."
+temes: ["sistema"]
 ---
 # 🧬 EL GENOTIP: LES 9 LLEIS INAMOVIBLES
 
@@ -23,9 +24,12 @@ L’autoritat executable d’estes lleis és `.agents/PROTOCOL_PETORRETA.md`; es
 ## Sinapsis
 - [[00_BIOS]]
 - [[01_IDENTITAT]]
-- [[02_FAMILIA]]
+- [[02_EQUIP_IA]]
 
 
 ## Taxonomia
 - **Categoria:** [[Identitat]]
 - **Etiquetes:** [[Graf]]
+
+
+**Ancoratge de Seguretat:** [[00_INDEX]]

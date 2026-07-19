@@ -2,6 +2,7 @@
 estat: "esborrany"
 tipus: "plantilla"
 description: "Plantilla base per crear documents coherents amb l'esquema de metadades v2 de la Wiki."
+temes: ["sistema"]
 ---
 # PLANTILLA ISO SDP
 
@@ -176,3 +177,6 @@ La skill ha de retornar:
 ## Taxonomia
 - **Categoria:** [[Maquina]]
 - **Etiquetes:** [[Graf]]
+
+
+**Ancoratge de Seguretat:** [[00_INDEX]]

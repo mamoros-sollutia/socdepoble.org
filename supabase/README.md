@@ -1,3 +1,8 @@
+---
+estat: "canonic"
+tipus: "index"
+description: "Documentació canònica de Sóc de Poble."
+---
 # Supabase
 
 ## Fitxers
@@ -25,3 +30,8 @@
 - En `auto`, si hi ha Supabase configurat, es prova la BD primer i, si falla, es cau al fallback local.
 - Si s'està apuntant al Supabase nou i `VITE_DATA_MODE=supabase`, el xat es guarda en `chat_messages`.
 - Quan entre autenticació, caldrà substituir esta política per una vinculada a `auth.uid()`.
+
+
+---
+
+**Ancoratge de Seguretat:** [[00_index]]

@@ -2,6 +2,7 @@
 estat: "canonic"
 tipus: "document"
 description: "Font Única de Veritat per a la direcció del projecte."
+temes: ["sistema"]
 ---
 # 🏡 VISIÓ I MISSIÓ DE SÒC DE POBLE
 *Font Única de Veritat per a la direcció del projecte.*
@@ -43,3 +44,6 @@ Crear una **Xarxa Social Descentralitzada de Programari Lliure** on:
 ## Taxonomia
 - **Categoria:** [[Coneixement]]
 - **Etiquetes:** [[Graf]]
+
+
+**Ancoratge de Seguretat:** [[00_INDEX]]

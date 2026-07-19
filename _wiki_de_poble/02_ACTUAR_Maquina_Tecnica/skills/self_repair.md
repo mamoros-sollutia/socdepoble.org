@@ -2,9 +2,8 @@
 estat: "canonic"
 tipus: "skill"
 description: "Reunix criteris consultius de reparació segura, contenció d'errors i resiliència local sense autoexecució."
-aliases:
-  - "Self Repair"
-  - "SDP Stop"
+aliases: ["Self Repair", "SDP Stop"]
+temes: ["sistema"]
 ---
 # Autoreparació i contenció d'errors
 
@@ -84,3 +83,12 @@ Els antics frontmatters v1 incrustats, `pre_commit_trellat.mjs` com a autoritat,
 ## Taxonomia
 - **Categoria:** [[Maquina]]
 - **Etiquetes:** [[Graf]]
+
+
+**Ancoratge de Seguretat:** [[00_INDEX]]
+
+
+---
+**Categoria:** [[skills]]
+**Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX]]

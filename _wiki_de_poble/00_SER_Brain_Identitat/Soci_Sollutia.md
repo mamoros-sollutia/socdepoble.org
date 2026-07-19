@@ -2,6 +2,7 @@
 estat: "canonic"
 tipus: "document"
 description: "Defineix el paper, els límits i el protocol de col·laboració amb el soci tecnològic Sollutia."
+temes: ["sistema"]
 ---
 # Soci Tecnològic: Sollutia
 
@@ -218,7 +219,7 @@ Aquestes eines configuren l'instrumental de la Forja.
 ## 11. Sinapsis
 
 - [[01_IDENTITAT]]
-- [[02_FAMILIA]]
+- [[02_EQUIP_IA]]
 - [[00_BIOS]]
 - [[DOC_Governanca]]
 - [[ESTANDARD_Pedra_Seca]]
@@ -228,3 +229,6 @@ Aquestes eines configuren l'instrumental de la Forja.
 ## Taxonomia
 - **Categoria:** [[Identitat]]
 - **Etiquetes:** [[Graf]]
+
+
+**Ancoratge de Seguretat:** [[00_INDEX]]

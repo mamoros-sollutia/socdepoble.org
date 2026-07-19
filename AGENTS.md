@@ -1,3 +1,8 @@
+---
+estat: "canonic"
+tipus: "document"
+description: "Documentació canònica de Sóc de Poble."
+---
 # Punt d'entrada dels agents
 
 Abans d'operar en este repositori, llig íntegrament `.agents/AGENTS.md`,
@@ -16,3 +21,8 @@ manifest com els únics dos fitxers regulars dins del directori exacte
 dels scopes. Els scopes han de conservar un snapshot idèntic. Després, cada
 script escriptor ha de validar el rebut; el hook Git és només l’última xarxa de
 seguretat.
+
+
+---
+
+**Ancoratge de Seguretat:** [[00_index]]

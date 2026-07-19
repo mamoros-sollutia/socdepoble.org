@@ -1,7 +1,8 @@
 ---
-autor: Sollutia
-name: troubleshooting
-description: Uses Chrome DevTools MCP and documentation to troubleshoot connection and target issues. Trigger this skill when list_pages, new_page, or navigate_page fail, or when the server initialization fails.
+description: "Uses Chrome DevTools MCP and documentation to troubleshoot connection and target issues. Trigger this skill when list_pages, new_p..."
+estat: "canonic"
+tipus: "skill"
+temes: ["sistema"]
 ---
 
 ## Troubleshooting Wizard
@@ -90,3 +91,14 @@ If https://github.com/ChromeDevTools/chrome-devtools-mcp/blob/main/docs/troubles
 `gh issue list --repo ChromeDevTools/chrome-devtools-mcp --search "<error snippet>" --state all`
 
 Alternatively, you can recommend that the user checks https://github.com/ChromeDevTools/chrome-devtools-mcp/issues and https://github.com/ChromeDevTools/chrome-devtools-mcp/discussions for help.
+
+
+---
+
+**Ancoratge de Seguretat:** [[Soci_Sollutia]]
+
+
+---
+**Categoria:** [[Sollutia]]
+**Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX]]

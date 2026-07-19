@@ -2,6 +2,7 @@
 estat: "canonic"
 tipus: "protocol"
 description: "Defineix els bloquejos fail-closed reals que impedixen confondre una auditoria incompleta amb un sistema saludable."
+temes: ["sistema"]
 ---
 # SDP-LOCK — bloqueig de protecció verificable
 
@@ -43,3 +44,6 @@ són necessaris per a fer durable el control.
 ## Taxonomia
 - **Categoria:** [[Maquina]]
 - **Etiquetes:** [[Graf]]
+
+
+**Ancoratge de Seguretat:** [[00_INDEX]]

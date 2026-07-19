@@ -2,6 +2,7 @@
 estat: "canonic"
 tipus: "plantilla"
 description: "Guia sessions de pluja d'idees amb criteris de Trellat, impacte i viabilitat."
+temes: ["sistema"]
 ---
 # Brainstorming Pro (El Trellat Creatiu)
 **Categoria:** Plantilla
@@ -45,3 +46,12 @@ _Fent poble amb [[el_projecte|Sóc de Poble]]! © 2026_
 ## Taxonomia
 - **Categoria:** [[Maquina]]
 - **Etiquetes:** [[Graf]]
+
+
+**Ancoratge de Seguretat:** [[00_INDEX]]
+
+
+---
+**Categoria:** [[07_plantilles]]
+**Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX]]

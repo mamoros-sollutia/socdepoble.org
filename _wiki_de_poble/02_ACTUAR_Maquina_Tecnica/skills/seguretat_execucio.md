@@ -2,8 +2,8 @@
 estat: "canonic"
 tipus: "skill"
 description: "Descriu controls tècnics de seguretat i recuperació sense substituir la privacitat ni autoritzar mutacions."
-aliases:
-  - "Seguretat d'execució"
+aliases: ["Seguretat d'execució"]
+temes: ["sistema"]
 ---
 # Seguretat d'execució
 
@@ -106,3 +106,12 @@ Esta eixida és un diagnòstic. Només un rebut vigent pot autoritzar una operac
 ## Taxonomia
 - **Categoria:** [[Maquina]]
 - **Etiquetes:** [[Graf]]
+
+
+**Ancoratge de Seguretat:** [[00_INDEX]]
+
+
+---
+**Categoria:** [[skills]]
+**Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX]]

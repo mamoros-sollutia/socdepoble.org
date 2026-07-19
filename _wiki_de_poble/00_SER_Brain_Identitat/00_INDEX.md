@@ -2,6 +2,7 @@
 estat: "canonic"
 tipus: "index"
 description: "Orienta la navegació pels quatre pilars operatius i les dues zones de cicle de vida de la Wiki."
+temes: ["sistema"]
 ---
 # Índex de la Wiki
 

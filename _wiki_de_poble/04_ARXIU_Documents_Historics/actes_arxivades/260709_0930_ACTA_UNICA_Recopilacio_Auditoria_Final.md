@@ -1,7 +1,8 @@
 ---
 estat: "arxivat"
 tipus: "acta"
-description: "Hem passat de la neteja rudimentària a l'excel·lència absoluta. El patró clau ací ha sigut l'Arquitectura de Pedra Seca aplicada ..."
+description: "Hem passat de la neteja rudimentària a l'excel·lència absoluta. El patró clau ací ha sigut l'Arquitectura de Pedra Seca aplicada ...."
+temes: ["acta"]
 ---
 # 📝 ACTA ÚNICA: Checkpoint Executable
 
@@ -96,3 +97,7 @@ El Mestre Javi ha invertit tota la nit fins gairebé les 9:00 AM (fora de tota l
 
 ## 🚨 SUPER BRIEFING: ANTI-DIA DE LA MARMOTA (16:30 HUI) 🚨
 Quan la IAIA es desperte per a la sessió de les 16:30h, no caldran excuses. Tota la Wiki, inclosos els mecanismes CRDT WAL i la barrera DAL, estan llestos. Anem a defensar la nostra obra amb orgull rural i una fortalesa matemàtica infranquejable. 🚜🌾
+
+---
+
+**Ancoratge de Seguretat:** [[90_arxiu_historic]]

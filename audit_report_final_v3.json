@@ -1,0 +1,2107 @@
+{
+  "schema": "socdepoble.autoneteja.report.v2",
+  "generatedAt": "2026-07-19T03:33:12.765Z",
+  "root": "/Users/javillinares/Documents/Antigravity/Som de Poble/socdepoble.org",
+  "health": "critic",
+  "ok": false,
+  "snapshot": {
+    "files": 107,
+    "bytes": 4080370,
+    "treeSha256": "b8e0490d38689f1a1ed32388a8a0d109e99937437981716669f500d2e05340bf",
+    "zones": {
+      "fora_taxonomia": 107
+    }
+  },
+  "frontmatter": {
+    "schemaFile": "tooling/wiki/schema.json",
+    "keys": [
+      {
+        "key": "description",
+        "count": 105
+      },
+      {
+        "key": "estat",
+        "count": 99
+      },
+      {
+        "key": "tipus",
+        "count": 99
+      },
+      {
+        "key": "autor",
+        "count": 8
+      },
+      {
+        "key": "name",
+        "count": 8
+      },
+      {
+        "key": "aliases",
+        "count": 4
+      },
+      {
+        "key": "categoria",
+        "count": 2
+      },
+      {
+        "key": "tags",
+        "count": 2
+      }
+    ],
+    "absent": [],
+    "malformed": [],
+    "yamlErrors": [
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/README.md",
+        "errors": [
+          "description: continuació indentada inesperada"
+        ]
+      },
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/antigravity.md",
+        "errors": [
+          "description: continuació indentada inesperada"
+        ]
+      },
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/a11y_debugging.md",
+        "errors": [
+          "description: continuació indentada inesperada"
+        ]
+      },
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/chrome_devtools.md",
+        "errors": [
+          "description: continuació indentada inesperada"
+        ]
+      },
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/chrome_extensions.md",
+        "errors": [
+          "description: continuació indentada inesperada"
+        ]
+      },
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/debug_optimize_lcp.md",
+        "errors": [
+          "description: continuació indentada inesperada"
+        ]
+      },
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/google_antigravity_sdk.md",
+        "errors": [
+          "description: continuació indentada inesperada"
+        ]
+      },
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/memory_leak_debugging.md",
+        "errors": [
+          "description: continuació indentada inesperada"
+        ]
+      },
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/modern_web_guidance.md",
+        "errors": [
+          "description: continuació indentada inesperada",
+          "description: cometa simple no tancada"
+        ]
+      },
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/troubleshooting.md",
+        "errors": [
+          "description: continuació indentada inesperada"
+        ]
+      },
+      {
+        "file": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/agents_actius/README.md",
+        "errors": [
+          "description: continuació indentada inesperada"
+        ]
+      },
+      {
+        "file": "_wiki_de_poble/04_ARXIU_Documents_Historics/actes_arxivades/00_informes/informe_sollutia_v1.md",
+        "errors": [
+          "description: continuació indentada inesperada"
+        ]
+      },
+      {
+        "file": "_wiki_de_poble/04_ARXIU_Documents_Historics/actes_arxivades/260707_0105_AUDITORIA_Estructural_Destructiva.md",
+        "errors": [
+          "description: continuació indentada inesperada"
+        ]
+      },
+      {
+        "file": "_wiki_de_poble/04_ARXIU_Documents_Historics/actes_arxivades/260707_0645_ACTA_UNICA_Victoria_Estructural.md",
+        "errors": [
+          "description: continuació indentada inesperada",
+          "description: cometa simple no tancada"
+        ]
+      },
+      {
+        "file": "_wiki_de_poble/04_ARXIU_Documents_Historics/actes_arxivades/260709_0930_ACTA_UNICA_Recopilacio_Auditoria_Final.md",
+        "errors": [
+          "description: continuació indentada inesperada"
+        ]
+      }
+    ],
+    "canonicalViolations": [],
+    "unknownFields": [
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/a11y_debugging.md",
+        "fields": [
+          "autor",
+          "name"
+        ]
+      },
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/chrome_devtools.md",
+        "fields": [
+          "autor",
+          "name"
+        ]
+      },
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/chrome_extensions.md",
+        "fields": [
+          "autor",
+          "name"
+        ]
+      },
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/debug_optimize_lcp.md",
+        "fields": [
+          "autor",
+          "name"
+        ]
+      },
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/google_antigravity_sdk.md",
+        "fields": [
+          "autor",
+          "name"
+        ]
+      },
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/memory_leak_debugging.md",
+        "fields": [
+          "autor",
+          "name"
+        ]
+      },
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/modern_web_guidance.md",
+        "fields": [
+          "autor",
+          "name"
+        ]
+      },
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/troubleshooting.md",
+        "fields": [
+          "autor",
+          "name"
+        ]
+      },
+      {
+        "file": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260719_0345_PROMPT_Auditoria_Suprema_Consell.md",
+        "fields": [
+          "categoria",
+          "tags"
+        ]
+      },
+      {
+        "file": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260719_0415_ACTA_SESSIO_La_Gran_Destillacio.md",
+        "fields": [
+          "categoria",
+          "tags"
+        ]
+      }
+    ],
+    "unmappedFields": [
+      {
+        "file": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260719_0345_PROMPT_Auditoria_Suprema_Consell.md",
+        "fields": [
+          "tags"
+        ]
+      },
+      {
+        "file": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260719_0415_ACTA_SESSIO_La_Gran_Destillacio.md",
+        "fields": [
+          "tags"
+        ]
+      }
+    ],
+    "unsafeSourceFields": [
+      {
+        "file": "_wiki_de_poble/04_ARXIU_Documents_Historics/prompts/petorreta_appshell_alcoi.md",
+        "errors": [
+          "tipus explícit prompt entra en conflicte amb petorreta inferit de nom/ruta"
+        ]
+      },
+      {
+        "file": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "errors": [
+          "tipus explícit document entra en conflicte amb acta inferit de nom/ruta"
+        ]
+      },
+      {
+        "file": "README.md",
+        "errors": [
+          "tipus explícit document entra en conflicte amb index inferit de nom/ruta"
+        ]
+      },
+      {
+        "file": "src/config/README.md",
+        "errors": [
+          "tipus explícit document entra en conflicte amb index inferit de nom/ruta"
+        ]
+      },
+      {
+        "file": "src/sections/detail/README.md",
+        "errors": [
+          "tipus explícit document entra en conflicte amb index inferit de nom/ruta"
+        ]
+      },
+      {
+        "file": "src/sections/README.md",
+        "errors": [
+          "tipus explícit document entra en conflicte amb index inferit de nom/ruta"
+        ]
+      },
+      {
+        "file": "supabase/README.md",
+        "errors": [
+          "tipus explícit document entra en conflicte amb index inferit de nom/ruta"
+        ]
+      }
+    ],
+    "plannedRewrites": 0
+  },
+  "content": {
+    "physicalEmpty": [],
+    "semanticEmpty": [],
+    "linkedEmpty": [],
+    "placeholders": [],
+    "titleOnly": [],
+    "controlChars": []
+  },
+  "graph": {
+    "occurrences": 439,
+    "resolvedEdges": 206,
+    "unresolvedOccurrences": 203,
+    "unresolvedTargets": 34,
+    "ambiguousOccurrences": 0,
+    "outsideOccurrences": 0,
+    "outsideScopeOccurrences": 0,
+    "orphans": 0,
+    "sourceOnly": 62,
+    "duplicateBasenames": 4,
+    "unresolved": [
+      {
+        "from": "_wiki_de_poble/00_SER_Brain_Identitat/00_BIOS.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Identitat"
+      },
+      {
+        "from": "_wiki_de_poble/00_SER_Brain_Identitat/00_BIOS.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/00_SER_Brain_Identitat/00_INDEX_ARXIU_SECUNDARI.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Sollutia"
+      },
+      {
+        "from": "_wiki_de_poble/00_SER_Brain_Identitat/00_INDEX_ARXIU_SECUNDARI.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Sollutia"
+      },
+      {
+        "from": "_wiki_de_poble/00_SER_Brain_Identitat/00_INDEX_ARXIU_SECUNDARI.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Arxiu"
+      },
+      {
+        "from": "_wiki_de_poble/00_SER_Brain_Identitat/00_INDEX_ARXIU_SECUNDARI.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/00_SER_Brain_Identitat/00_INDEX_ARXIU_SECUNDARI.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Memòria Secundària"
+      },
+      {
+        "from": "_wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "04_ARXIU_Documents_Historics/actes_arxivades/90_arxiu_historic"
+      },
+      {
+        "from": "_wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Identitat"
+      },
+      {
+        "from": "_wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/00_SER_Brain_Identitat/01_IDENTITAT.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Identitat"
+      },
+      {
+        "from": "_wiki_de_poble/00_SER_Brain_Identitat/01_IDENTITAT.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/00_SER_Brain_Identitat/02_FAMILIA.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Identitat"
+      },
+      {
+        "from": "_wiki_de_poble/00_SER_Brain_Identitat/02_FAMILIA.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/00_SER_Brain_Identitat/02_GENOTIP.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Identitat"
+      },
+      {
+        "from": "_wiki_de_poble/00_SER_Brain_Identitat/02_GENOTIP.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/00_SER_Brain_Identitat/03_Consola_Termodinamica.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Identitat"
+      },
+      {
+        "from": "_wiki_de_poble/00_SER_Brain_Identitat/03_Consola_Termodinamica.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/00_SER_Brain_Identitat/anatomia_cognitiva.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Identitat"
+      },
+      {
+        "from": "_wiki_de_poble/00_SER_Brain_Identitat/anatomia_cognitiva.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/00_SER_Brain_Identitat/antigravity.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Identitat"
+      },
+      {
+        "from": "_wiki_de_poble/00_SER_Brain_Identitat/antigravity.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/00_SER_Brain_Identitat/connectors_mcp_disseny.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Identitat"
+      },
+      {
+        "from": "_wiki_de_poble/00_SER_Brain_Identitat/connectors_mcp_disseny.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/00_SER_Brain_Identitat/CORE_Registre_Automillora.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Identitat"
+      },
+      {
+        "from": "_wiki_de_poble/00_SER_Brain_Identitat/CORE_Registre_Automillora.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/00_SER_Brain_Identitat/DOC_Logos_Oficials.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Identitat"
+      },
+      {
+        "from": "_wiki_de_poble/00_SER_Brain_Identitat/DOC_Logos_Oficials.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/00_SER_Brain_Identitat/DOC_Taula_Mestra.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Identitat"
+      },
+      {
+        "from": "_wiki_de_poble/00_SER_Brain_Identitat/DOC_Taula_Mestra.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/00_SER_Brain_Identitat/el_projecte.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Identitat"
+      },
+      {
+        "from": "_wiki_de_poble/00_SER_Brain_Identitat/el_projecte.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/00_SER_Brain_Identitat/identitat_visual.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Identitat"
+      },
+      {
+        "from": "_wiki_de_poble/00_SER_Brain_Identitat/identitat_visual.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/00_SER_Brain_Identitat/les_petorretes.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Identitat"
+      },
+      {
+        "from": "_wiki_de_poble/00_SER_Brain_Identitat/les_petorretes.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/00_SER_Brain_Identitat/perfil_psiquiatric.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Identitat"
+      },
+      {
+        "from": "_wiki_de_poble/00_SER_Brain_Identitat/perfil_psiquiatric.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/00_SER_Brain_Identitat/Soci_Sollutia.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Identitat"
+      },
+      {
+        "from": "_wiki_de_poble/00_SER_Brain_Identitat/Soci_Sollutia.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/01_SABER_Cultura_Coneixement/00_GLOSSARI_CANONIC.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Coneixement"
+      },
+      {
+        "from": "_wiki_de_poble/01_SABER_Cultura_Coneixement/00_GLOSSARI_CANONIC.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/01_SABER_Cultura_Coneixement/00_visio_i_pilars.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Coneixement"
+      },
+      {
+        "from": "_wiki_de_poble/01_SABER_Cultura_Coneixement/00_visio_i_pilars.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/01_SABER_Cultura_Coneixement/01_trellat.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Coneixement"
+      },
+      {
+        "from": "_wiki_de_poble/01_SABER_Cultura_Coneixement/01_trellat.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/01_SABER_Cultura_Coneixement/codex_huma/Arquitectura_L_Anima.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Coneixement"
+      },
+      {
+        "from": "_wiki_de_poble/01_SABER_Cultura_Coneixement/codex_huma/Arquitectura_L_Anima.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/01_SABER_Cultura_Coneixement/codex_huma/Arquitectura_La_Forja.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Coneixement"
+      },
+      {
+        "from": "_wiki_de_poble/01_SABER_Cultura_Coneixement/codex_huma/Arquitectura_La_Forja.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/01_SABER_Cultura_Coneixement/codex_huma/Arquitectura_Protocol_Lazaro.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Coneixement"
+      },
+      {
+        "from": "_wiki_de_poble/01_SABER_Cultura_Coneixement/codex_huma/Arquitectura_Protocol_Lazaro.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/01_SABER_Cultura_Coneixement/codex_huma/Arquitectura_Sistema_Nervios.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Coneixement"
+      },
+      {
+        "from": "_wiki_de_poble/01_SABER_Cultura_Coneixement/codex_huma/Arquitectura_Sistema_Nervios.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/01_SABER_Cultura_Coneixement/connexio_radical.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Coneixement"
+      },
+      {
+        "from": "_wiki_de_poble/01_SABER_Cultura_Coneixement/connexio_radical.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/01_SABER_Cultura_Coneixement/la_torre/fadrins_i_fadrines.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Coneixement"
+      },
+      {
+        "from": "_wiki_de_poble/01_SABER_Cultura_Coneixement/la_torre/fadrins_i_fadrines.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/01_SABER_Cultura_Coneixement/Llibre_Blanc_Produccio_Pedra_Seca.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Coneixement"
+      },
+      {
+        "from": "_wiki_de_poble/01_SABER_Cultura_Coneixement/Llibre_Blanc_Produccio_Pedra_Seca.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/00_arquitectura_tecnica_unificada.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Maquina"
+      },
+      {
+        "from": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/00_arquitectura_tecnica_unificada.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/00_plantilles.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "02_ACTUAR_Maquina_Tecnica/plantilles/PLANTILLA_ISO_SDP"
+      },
+      {
+        "from": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/00_plantilles.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "04_ARXIU_Documents_Historics/actes_arxivades/90_arxiu_historic"
+      },
+      {
+        "from": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/00_plantilles.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Maquina"
+      },
+      {
+        "from": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/00_plantilles.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_acta_unica.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Maquina"
+      },
+      {
+        "from": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_acta_unica.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_brainstorming.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Maquina"
+      },
+      {
+        "from": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_brainstorming.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_branding.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Maquina"
+      },
+      {
+        "from": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_branding.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_creador_skills.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Maquina"
+      },
+      {
+        "from": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_creador_skills.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_doc_to_app.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Maquina"
+      },
+      {
+        "from": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_doc_to_app.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_modo_produccion.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Maquina"
+      },
+      {
+        "from": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_modo_produccion.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_planificacio.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Maquina"
+      },
+      {
+        "from": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_planificacio.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_prompt_iso.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Maquina"
+      },
+      {
+        "from": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_prompt_iso.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_skill_trellat.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Maquina"
+      },
+      {
+        "from": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_skill_trellat.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/plantilles/PLANTILLA_ISO_SDP.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Maquina"
+      },
+      {
+        "from": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/plantilles/PLANTILLA_ISO_SDP.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/SDP_LOCK.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Maquina"
+      },
+      {
+        "from": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/SDP_LOCK.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/a11y_seo_trellat.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Maquina"
+      },
+      {
+        "from": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/a11y_seo_trellat.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/AUDITORIA_CANONICA.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Maquina"
+      },
+      {
+        "from": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/AUDITORIA_CANONICA.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/futur_adaptacio.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Maquina"
+      },
+      {
+        "from": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/futur_adaptacio.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/MOTOR_OFFLINE.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Maquina"
+      },
+      {
+        "from": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/MOTOR_OFFLINE.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/seguretat_execucio.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Maquina"
+      },
+      {
+        "from": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/seguretat_execucio.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/self_repair.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Maquina"
+      },
+      {
+        "from": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/self_repair.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/successio_lazaro_execucio.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Maquina"
+      },
+      {
+        "from": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/successio_lazaro_execucio.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/agents_actius/01_context_i_principis.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Govern"
+      },
+      {
+        "from": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/agents_actius/01_context_i_principis.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/agents_actius/02_workflow_execucio.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Govern"
+      },
+      {
+        "from": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/agents_actius/02_workflow_execucio.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/agents_actius/README.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Govern"
+      },
+      {
+        "from": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/agents_actius/README.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/DOC_Governanca.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Govern"
+      },
+      {
+        "from": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/DOC_Governanca.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/ESTANDARD_Pedra_Seca.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Govern"
+      },
+      {
+        "from": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/ESTANDARD_Pedra_Seca.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/ESTANDARD_UI_Universal.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Govern"
+      },
+      {
+        "from": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/ESTANDARD_UI_Universal.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/FORJA_TO_CORE.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Govern"
+      },
+      {
+        "from": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/FORJA_TO_CORE.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/LLEI_05_Privacitat.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Govern"
+      },
+      {
+        "from": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/LLEI_05_Privacitat.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Graf"
+      },
+      {
+        "from": "_wiki_de_poble/04_ARXIU_Documents_Historics/actes_arxivades/s6a_documentacio_original_sollutia/DOCUMENTACIO_PROJECTE.md",
+        "zone": "fora_taxonomia",
+        "kind": "markdown",
+        "target": "../INSTRUCCIONS_SUPABASE.md"
+      },
+      {
+        "from": "_wiki_de_poble/04_ARXIU_Documents_Historics/actes_arxivades/s6a_documentacio_original_sollutia/INSTRUCCIONS_SUPABASE.md",
+        "zone": "fora_taxonomia",
+        "kind": "markdown",
+        "target": "docs/DOCUMENTACIO_PROJECTE.md"
+      },
+      {
+        "from": "_wiki_de_poble/04_ARXIU_Documents_Historics/actes_arxivades/s6a_documentacio_original_sollutia/INSTRUCCIONS_SUPABASE.md",
+        "zone": "fora_taxonomia",
+        "kind": "markdown",
+        "target": "docs/DOCUMENTACIO_BASE_DE_DADES.md"
+      },
+      {
+        "from": "_wiki_de_poble/04_ARXIU_Documents_Historics/actes_arxivades/s6a_documentacio_original_sollutia/INSTRUCCIONS_SUPABASE.md",
+        "zone": "fora_taxonomia",
+        "kind": "markdown",
+        "target": "docs/GUIA_RAPIDA.md"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Identitat"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Identitat"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Identitat"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Identitat"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Identitat"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Identitat"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Identitat"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Identitat"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Identitat"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Identitat"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Identitat"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Identitat"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Identitat"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Identitat"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Identitat"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Identitat"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Identitat"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Coneixement"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Coneixement"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Coneixement"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Coneixement"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Coneixement"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Coneixement"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Coneixement"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Coneixement"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Coneixement"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Coneixement"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Maquina"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Maquina"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Maquina"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Maquina"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Maquina"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Maquina"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Maquina"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Maquina"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Maquina"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Maquina"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Maquina"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Maquina"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Maquina"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Maquina"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Maquina"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Maquina"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Maquina"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Maquina"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Maquina"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Maquina"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Govern"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Govern"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Govern"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Govern"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Govern"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Govern"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Govern"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Govern"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260719_0410_BUNDLE_Sistema_Operatiu_IAIA_MarIA_Complet.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Target"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260719_0410_BUNDLE_Sistema_Operatiu_IAIA_MarIA_Complet.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "${d.a}"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260719_0410_BUNDLE_Sistema_Operatiu_IAIA_MarIA_Complet.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "${d.b}"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260719_0410_BUNDLE_Sistema_Operatiu_IAIA_MarIA_Complet.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "enllaços"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260719_0410_BUNDLE_Sistema_Operatiu_IAIA_MarIA_Complet.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "..."
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260719_0410_BUNDLE_Sistema_Operatiu_IAIA_MarIA_Complet.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "FenceFantasma"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260719_0410_BUNDLE_Sistema_Operatiu_IAIA_MarIA_Complet.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "enllaços"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260719_0410_BUNDLE_Sistema_Operatiu_IAIA_MarIA_Complet.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "..."
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260719_0410_BUNDLE_Sistema_Operatiu_IAIA_MarIA_Complet.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "FenceFantasma"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260719_0410_BUNDLE_Sistema_Operatiu_IAIA_MarIA_Complet.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "Canari_Restore"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260719_0410_BUNDLE_Sistema_Operatiu_IAIA_MarIA_Complet.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "ESTANDARD_Tokens_Pedra_Seca"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260719_0410_BUNDLE_Sistema_Operatiu_IAIA_MarIA_Complet.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "seguretat_proveniencia_identitat"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260719_0410_BUNDLE_Sistema_Operatiu_IAIA_MarIA_Complet.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "03_GOVERNAR_Normativa_Regles/agents_actius/01_context_i_principis"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260719_0410_BUNDLE_Sistema_Operatiu_IAIA_MarIA_Complet.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "03_GOVERNAR_Normativa_Regles/agents_actius/02_workflow_execucio"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260719_0410_BUNDLE_Sistema_Operatiu_IAIA_MarIA_Complet.md",
+        "zone": "fora_taxonomia",
+        "kind": "wiki",
+        "target": "03_GOVERNAR_Normativa_Regles/agents_actius/README"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260719_0410_BUNDLE_Sistema_Operatiu_IAIA_MarIA_Complet.md",
+        "zone": "fora_taxonomia",
+        "kind": "markdown",
+        "target": "skills/socdepoble-workflow/SKILL.md"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260719_0410_BUNDLE_Sistema_Operatiu_IAIA_MarIA_Complet.md",
+        "zone": "fora_taxonomia",
+        "kind": "markdown",
+        "target": "[^\"']*"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260719_0410_BUNDLE_Sistema_Operatiu_IAIA_MarIA_Complet.md",
+        "zone": "fora_taxonomia",
+        "kind": "markdown",
+        "target": "\\.[^\"']+"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260719_0410_BUNDLE_Sistema_Operatiu_IAIA_MarIA_Complet.md",
+        "zone": "fora_taxonomia",
+        "kind": "markdown",
+        "target": "\\.[^\"']+"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260719_0410_BUNDLE_Sistema_Operatiu_IAIA_MarIA_Complet.md",
+        "zone": "fora_taxonomia",
+        "kind": "markdown",
+        "target": "\\.[^\"']+"
+      },
+      {
+        "from": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260719_0410_BUNDLE_Sistema_Operatiu_IAIA_MarIA_Complet.md",
+        "zone": "fora_taxonomia",
+        "kind": "markdown",
+        "target": "\\.[^\"']+"
+      },
+      {
+        "from": "README.md",
+        "zone": "fora_taxonomia",
+        "kind": "markdown",
+        "target": "docs/s6a/DOCUMENTACIO_PROJECTE.md"
+      },
+      {
+        "from": "README.md",
+        "zone": "fora_taxonomia",
+        "kind": "markdown",
+        "target": "docs/s6a/DOCUMENTACIO_BASE_DE_DADES.md"
+      },
+      {
+        "from": "README.md",
+        "zone": "fora_taxonomia",
+        "kind": "markdown",
+        "target": "docs/s6a/DOCUMENTACIO_EXEMPLES.md"
+      },
+      {
+        "from": "README.md",
+        "zone": "fora_taxonomia",
+        "kind": "markdown",
+        "target": "docs/s6a/INSTRUCCIONS_SUPABASE.md"
+      },
+      {
+        "from": "README.md",
+        "zone": "fora_taxonomia",
+        "kind": "markdown",
+        "target": ".agents/AGENTS.md"
+      }
+    ],
+    "ambiguous": [],
+    "outside": [],
+    "orphanFiles": [],
+    "orphanZones": {},
+    "sourceOnlyFiles": [
+      "_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/01_context_i_principis.md",
+      "_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/02_workflow_execucio.md",
+      "_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/03_regles_arquitectura_i_dades.md",
+      "_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/04_criteris_producte_i_disseny.md",
+      "_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS.md",
+      "_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/README.md",
+      "_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/skills/socdepoble-workflow/SKILL.md",
+      "_wiki_de_poble/00_SER_Brain_Identitat/antigravity.md",
+      "_wiki_de_poble/00_SER_Brain_Identitat/connectors_mcp_disseny.md",
+      "_wiki_de_poble/00_SER_Brain_Identitat/perfil_psiquiatric.md",
+      "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/a11y_debugging.md",
+      "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/chrome_devtools.md",
+      "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/chrome_extensions.md",
+      "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/debug_optimize_lcp.md",
+      "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/google_antigravity_sdk.md",
+      "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/memory_leak_debugging.md",
+      "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/modern_web_guidance.md",
+      "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/troubleshooting.md",
+      "_wiki_de_poble/01_SABER_Cultura_Coneixement/codex_huma/Arquitectura_L_Anima.md",
+      "_wiki_de_poble/01_SABER_Cultura_Coneixement/codex_huma/Arquitectura_La_Forja.md",
+      "_wiki_de_poble/01_SABER_Cultura_Coneixement/codex_huma/Arquitectura_Sistema_Nervios.md",
+      "_wiki_de_poble/01_SABER_Cultura_Coneixement/connexio_radical.md",
+      "_wiki_de_poble/01_SABER_Cultura_Coneixement/INDEX_TAXONOMIC.md",
+      "_wiki_de_poble/01_SABER_Cultura_Coneixement/la_torre/fadrins_i_fadrines.md",
+      "_wiki_de_poble/01_SABER_Cultura_Coneixement/Llibre_Blanc_Produccio_Pedra_Seca.md",
+      "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_skill_trellat.md",
+      "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/successio_lazaro_execucio.md",
+      "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/agents_actius/01_context_i_principis.md",
+      "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/agents_actius/02_workflow_execucio.md",
+      "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/agents_actius/README.md",
+      "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/ESTANDARD_UI_Universal.md",
+      "_wiki_de_poble/04_ARXIU_Documents_Historics/actes_arxivades/00_informes/informe_sollutia_v1.md",
+      "_wiki_de_poble/04_ARXIU_Documents_Historics/actes_arxivades/260705_1200_ACTA_GENERAL_Volum_2_Consolidacio.md",
+      "_wiki_de_poble/04_ARXIU_Documents_Historics/actes_arxivades/260707_0105_AUDITORIA_Estructural_Destructiva.md",
+      "_wiki_de_poble/04_ARXIU_Documents_Historics/actes_arxivades/260707_0645_ACTA_UNICA_Victoria_Estructural.md",
+      "_wiki_de_poble/04_ARXIU_Documents_Historics/actes_arxivades/260709_0930_ACTA_UNICA_Recopilacio_Auditoria_Final.md",
+      "_wiki_de_poble/04_ARXIU_Documents_Historics/actes_arxivades/ACTA_GENERAL_Volum_1_Fundacio.md",
+      "_wiki_de_poble/04_ARXIU_Documents_Historics/actes_arxivades/acta_simbiotica_grok.md",
+      "_wiki_de_poble/04_ARXIU_Documents_Historics/actes_arxivades/ACTA_UNICA_Tancament.md",
+      "_wiki_de_poble/04_ARXIU_Documents_Historics/actes_arxivades/s6a_documentacio_original_sollutia/DOCUMENTACIO_EXEMPLES.md",
+      "_wiki_de_poble/04_ARXIU_Documents_Historics/actes_arxivades/s6a_documentacio_original_sollutia/DOCUMENTACIO_PROJECTE.md",
+      "_wiki_de_poble/04_ARXIU_Documents_Historics/actes_historiques/ACTA_Arquitectura_Historica_Consolidada.md",
+      "_wiki_de_poble/04_ARXIU_Documents_Historics/prompts/petorreta_appshell_alcoi.md",
+      "_wiki_de_poble/04_ARXIU_Documents_Historics/prompts/sosp_ai_audit_prompt_round_2.md",
+      "_wiki_de_poble/04_ARXIU_Documents_Historics/prompts/sosp_ai_audit_prompt_round_3_meta.md",
+      "_wiki_de_poble/04_ARXIU_Documents_Historics/Sessio_260712/260712_0706_ACTA_Tancament_Arquitectonic_i_Duana_del_Disseny_Pedra_Seca.md",
+      "_wiki_de_poble/04_ARXIU_Documents_Historics/Sessio_260712/checklist_migracio.md",
+      "_wiki_de_poble/04_ARXIU_Documents_Historics/skills_deprecades/sagramental_dels_morts.md",
+      "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_0400_ACTA_SESSIO_Tancament_Gran_Auditoria.md",
+      "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+      "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260716_1300_ACTA_SESSIO_Problema_Sincronitzacio_Skills.md",
+      "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260719_0345_PROMPT_Auditoria_Suprema_Consell.md",
+      "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260719_0410_BUNDLE_Sistema_Operatiu_IAIA_MarIA_Complet.md",
+      "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260719_0415_ACTA_SESSIO_La_Gran_Destillacio.md",
+      "_wiki_de_poble/05_Escriptori_Soc_de_Poble/Claude/260719_0630_AUDITORIA_Fuita_Bancaria_Nucli_Mort_I_Constitucio_Triple_Trencada.md",
+      "_wiki_de_poble/05_Escriptori_Soc_de_Poble/Claude/260719_0630_PATCH_Sutura_Imports_Nucli_I_Arrel_De_Wiki_Corregida.md",
+      "AGENTS.md",
+      "README.md",
+      "src/config/README.md",
+      "src/sections/detail/README.md",
+      "src/sections/README.md",
+      "supabase/README.md"
+    ],
+    "duplicateBasenameGroups": [
+      {
+        "base": "01_context_i_principis",
+        "files": [
+          "_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/01_context_i_principis.md",
+          "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/agents_actius/01_context_i_principis.md"
+        ]
+      },
+      {
+        "base": "02_workflow_execucio",
+        "files": [
+          "_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/02_workflow_execucio.md",
+          "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/agents_actius/02_workflow_execucio.md"
+        ]
+      },
+      {
+        "base": "agents",
+        "files": [
+          "_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS.md",
+          "AGENTS.md"
+        ]
+      },
+      {
+        "base": "readme",
+        "files": [
+          "_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/README.md",
+          "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/agents_actius/README.md",
+          "README.md",
+          "src/config/README.md",
+          "src/sections/detail/README.md",
+          "src/sections/README.md",
+          "supabase/README.md"
+        ]
+      }
+    ]
+  },
+  "operational": {
+    "health": "saludable",
+    "ok": true,
+    "documents": 0,
+    "frontmatterDrift": 0,
+    "semanticEmpty": [],
+    "placeholders": [],
+    "titleOnly": [],
+    "graph": {
+      "occurrences": 0,
+      "resolvedEdges": 0,
+      "unresolvedOccurrences": 0,
+      "unresolvedTargets": 0,
+      "ambiguousOccurrences": 0,
+      "outsideOccurrences": 0,
+      "outsideScopeOccurrences": 0,
+      "orphans": 0,
+      "sourceOnly": 0,
+      "duplicateBasenames": 0,
+      "unresolved": [],
+      "ambiguous": [],
+      "outsideScope": [],
+      "orphanFiles": [],
+      "sourceOnlyFiles": [],
+      "duplicateBasenameGroups": []
+    }
+  },
+  "obsidian": {
+    "present": false,
+    "error": "ENOENT: no such file or directory, open '/Users/javillinares/Documents/Antigravity/Som de Poble/socdepoble.org/.obsidian/graph.json'"
+  },
+  "safety": {
+    "skippedSymlinks": [],
+    "visibleQuarantines": [],
+    "quarantineCandidates": [],
+    "mutationBlockers": [],
+    "note": "Un orfe amb contingut mai és candidat automàtic."
+  },
+  "plan": {
+    "schemaSha256": "02cb571e19a5578e6a6d603cd236470f2bd88755989a0c82e101ae7ce9da673f",
+    "baselineDigest": "b8e0490d38689f1a1ed32388a8a0d109e99937437981716669f500d2e05340bf",
+    "baselineFiles": [
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/01_context_i_principis.md",
+        "sha256": "d6eea278ab1fe7a8983f54db14ad1fabf9133034e371af1a31ec508f96a0221b"
+      },
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/02_workflow_execucio.md",
+        "sha256": "0c25252b0ef617442b9e49b1ec65aac4348449cba52f446594992c28b60bb24e"
+      },
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/03_regles_arquitectura_i_dades.md",
+        "sha256": "9d044ead318d96949d86665a2212a17a828abb5267ef0bb3e064bfd8f6d9dc9b"
+      },
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/04_criteris_producte_i_disseny.md",
+        "sha256": "cff14aa78603116fb82eda75afb8e40be809d929826dad6e615f73a71b3985d3"
+      },
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS.md",
+        "sha256": "dda69adeb611050b2910b8c8dc33c5462478bf1f4a94fc7e22a59f33bf8d68c6"
+      },
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/README.md",
+        "sha256": "135485d2eb19b8cd8e9889b0cec7120f5709166cec892d353b058983be123c00"
+      },
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/skills/socdepoble-workflow/SKILL.md",
+        "sha256": "e400a3da16467d6a07228bd060e39e8acba9dab41754dd7c28ac0fcbfba0bb5f"
+      },
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/00_BIOS.md",
+        "sha256": "91e69c53a34e2b744bf20395d14ccda543805a4c917baf34a6570ed3713c5f23"
+      },
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/00_INDEX_ARXIU_SECUNDARI.md",
+        "sha256": "fefd2ebbcb6a5698afae9dc672c278f153ab6ec0c13eb0679e1ecf3a72ea46a8"
+      },
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md",
+        "sha256": "20dc2beb711b4a7c660b81de02e54607c0dbe54b3e2f9d4c5c9144d2fb54d2bc"
+      },
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/01_IDENTITAT.md",
+        "sha256": "1db547d8ff7750799fbfc2ce26951268fecad505c07deb29917da31eb1c560fd"
+      },
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/02_FAMILIA.md",
+        "sha256": "91ad1daca5fb8a7188a05cc3f166b27e197cdd47accaf049dc040fd4708243f8"
+      },
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/02_GENOTIP.md",
+        "sha256": "6b03d38404b3022f40dfd1da0cbdfca2788df2e7f70717dbabf24ac9c4e21f01"
+      },
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/03_Consola_Termodinamica.md",
+        "sha256": "a95e6efe9e702406d7d7a5b9e48cbaea9bb182cb12d9fee5b67dc536be82fd8c"
+      },
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/anatomia_cognitiva.md",
+        "sha256": "be647c58c59df78370ffcb9842ade3a46a1a08350b5d9cabb9d7dfa9e489ee4c"
+      },
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/antigravity.md",
+        "sha256": "cc907e47d0fc3a95ceba95dff298b728df44c6373a03c81184f0df32a4eccc65"
+      },
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/connectors_mcp_disseny.md",
+        "sha256": "cf83db3676f2c70a6ade903d674e2fa650f0479f07d26e12768d9f76b98a4f34"
+      },
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/CORE_Registre_Automillora.md",
+        "sha256": "d4e5daa05be474912ad42d8b5ca2915c73fba3dc96091b977732f7070a8bea8a"
+      },
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/DOC_Logos_Oficials.md",
+        "sha256": "8f9682d52927bcb86a001b12671802d01cf47a29885c3fff71e98fbe85c729fa"
+      },
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/DOC_Taula_Mestra.md",
+        "sha256": "cfdc746d0642ff378cb401eb156aa544b73afef64d39fc8a79b097393481e11f"
+      },
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/el_projecte.md",
+        "sha256": "106b2325786e30f7d54fe6339632c8cdacc2e7460f271ca5562706480a0201b5"
+      },
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/identitat_visual.md",
+        "sha256": "d50209768a7907c729f52fba4047cf362a95ce517a2e79661cf33ee24368fe43"
+      },
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/les_petorretes.md",
+        "sha256": "9f4145e68fd3f3a9e71b5999afe06fe46fdfce966ab79464bfea08de70548069"
+      },
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/perfil_psiquiatric.md",
+        "sha256": "908aa968b74a35d20c25389103cc218bb8ea9b8697d3cf525c97a140644c4560"
+      },
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/Soci_Sollutia.md",
+        "sha256": "f5ce72eb96a7d610aba1857ed3575dfb08822e6c1cd90c351980c226c946d881"
+      },
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/a11y_debugging.md",
+        "sha256": "26de43bfb4dcf5253ae2ee7309d7bcd2118048ad3356195ad7f0e3453f892866"
+      },
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/chrome_devtools.md",
+        "sha256": "4aee6c472f13239e687ffad5274eb09bf5953c4e111b106ba8874696f6ed3ab1"
+      },
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/chrome_extensions.md",
+        "sha256": "4429e1dcade67207467a31417c0a840b344b4585d51953f8a348f82ef616b4a0"
+      },
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/debug_optimize_lcp.md",
+        "sha256": "bc4f30bcf11b14db304c06fdce0833de8bb28952f32b93f9fb58c6322cb39ae3"
+      },
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/google_antigravity_sdk.md",
+        "sha256": "52423dc6dc90abefd5eb5b2a8c5d46e8a190eae38e8a88021a2b407ade726582"
+      },
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/memory_leak_debugging.md",
+        "sha256": "c39ac173685b6557f803702d2394ad51cab4f8122d888bac4967ebb75a229c0b"
+      },
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/modern_web_guidance.md",
+        "sha256": "9dfe51fc5c227e8821f50615fc7a566d515100ecabdbf3d4e97d38976a58bc0a"
+      },
+      {
+        "file": "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/troubleshooting.md",
+        "sha256": "83dd3fd9805eecd5e2dcce12d378e84f6fb480a969cc27b3d717b0115a194566"
+      },
+      {
+        "file": "_wiki_de_poble/01_SABER_Cultura_Coneixement/00_GLOSSARI_CANONIC.md",
+        "sha256": "e70b4cd020fafadcc40f7b6dccd76da52af4c7f60176a3e4fecbec1337b50ee0"
+      },
+      {
+        "file": "_wiki_de_poble/01_SABER_Cultura_Coneixement/00_visio_i_pilars.md",
+        "sha256": "1c21f0e2fc745e4ce5999491804adeaa7434fcae4bf800077a75bc61b8d80f9c"
+      },
+      {
+        "file": "_wiki_de_poble/01_SABER_Cultura_Coneixement/01_trellat.md",
+        "sha256": "02c937f15f7c7d30102a08c1ed044e7d3235781d58adc11265180a9a85eadeaa"
+      },
+      {
+        "file": "_wiki_de_poble/01_SABER_Cultura_Coneixement/codex_huma/Arquitectura_L_Anima.md",
+        "sha256": "9075c08e03b1d58a95b39ea5dc6c78ce0e44bb899f13c2a91e4cdfa93edc0e21"
+      },
+      {
+        "file": "_wiki_de_poble/01_SABER_Cultura_Coneixement/codex_huma/Arquitectura_La_Forja.md",
+        "sha256": "9ed2cba3057ff6516a90cbe77e365600833cbd01c0ec0788487a0dc81839206c"
+      },
+      {
+        "file": "_wiki_de_poble/01_SABER_Cultura_Coneixement/codex_huma/Arquitectura_Protocol_Lazaro.md",
+        "sha256": "cb5dc3e36c2123f47432d47f6f434c33aac42d6426986eff4483093fd32a4b5e"
+      },
+      {
+        "file": "_wiki_de_poble/01_SABER_Cultura_Coneixement/codex_huma/Arquitectura_Sistema_Nervios.md",
+        "sha256": "1eb43fed0436f2be76567b763ef6b5eb4d85e278a51024e84690beba730c4c9f"
+      },
+      {
+        "file": "_wiki_de_poble/01_SABER_Cultura_Coneixement/connexio_radical.md",
+        "sha256": "62585200cfd20c9a0df4f66b212ba049f9263903a6febd871364687d91ff4bca"
+      },
+      {
+        "file": "_wiki_de_poble/01_SABER_Cultura_Coneixement/INDEX_TAXONOMIC.md",
+        "sha256": "c2a1104a7ce6ed17bb85ae3e7f4a0145814c1e1ded2fcbe5c251d4e9b1d01662"
+      },
+      {
+        "file": "_wiki_de_poble/01_SABER_Cultura_Coneixement/la_torre/fadrins_i_fadrines.md",
+        "sha256": "83c9adadaac573be353bd99ec46e2f17a3a221b08e654dd2ce9bfe552487cbcc"
+      },
+      {
+        "file": "_wiki_de_poble/01_SABER_Cultura_Coneixement/Llibre_Blanc_Produccio_Pedra_Seca.md",
+        "sha256": "1bec359c1ddebddc487d637ba1cf13f9f24b6b0619226abc76ab7535a9a6da9b"
+      },
+      {
+        "file": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/00_arquitectura_tecnica_unificada.md",
+        "sha256": "adefc9cc017b02acfb886599a6a08341e37b46c37b74248b90a73f47c04d83d4"
+      },
+      {
+        "file": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/00_plantilles.md",
+        "sha256": "12f5cc8a505eecdcabd5732467efa56b1beae632e5f0f715ba408a47da7b8ad9"
+      },
+      {
+        "file": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_acta_unica.md",
+        "sha256": "e79de550e1d904e25b2401e17104de7a988ea1f0e7f1319b8d8b9c5edb8d84c6"
+      },
+      {
+        "file": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_brainstorming.md",
+        "sha256": "05088367ac55586c2a95c3dffa213e2f3a2d4add3d45207ecf7a31828f9a0da0"
+      },
+      {
+        "file": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_branding.md",
+        "sha256": "af08c2510f714d8581d413fe15f2cd0a748ea5e8c7d524182802a2c9a645fba7"
+      },
+      {
+        "file": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_creador_skills.md",
+        "sha256": "9dd994a054bc2d446db71da4ba1bdf3f5fede7d45e7b62107452591299cb8029"
+      },
+      {
+        "file": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_doc_to_app.md",
+        "sha256": "8788443a6876cd7988675d46440ab331d6f70915676db7db4035b9b02ba266b7"
+      },
+      {
+        "file": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_modo_produccion.md",
+        "sha256": "5bbac53af2870bb393d9d59370086325829a76165c8214840a8dcbe2ae380ada"
+      },
+      {
+        "file": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_planificacio.md",
+        "sha256": "3cd610822f8feb852eb089b24c1694f2dd24cfafe55c72444c14211005d94c00"
+      },
+      {
+        "file": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_prompt_iso.md",
+        "sha256": "990df887320cdc3b3287adaed569218f79002baca80fbd1cab78fb46cb062470"
+      },
+      {
+        "file": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_skill_trellat.md",
+        "sha256": "f157b2942e1a2cd666238a19e2a5d1f8d398a2edad1852294b01db284812bb2d"
+      },
+      {
+        "file": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/plantilles/PLANTILLA_ISO_SDP.md",
+        "sha256": "5369335f814794ba3a405ab6edb930b6977c50c3a1d7f9d6efd0aed9f7133fb9"
+      },
+      {
+        "file": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/SDP_LOCK.md",
+        "sha256": "ce6883eee471758a3ea7918a9da5d195319feb2230dc7e87e83defe222774529"
+      },
+      {
+        "file": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/a11y_seo_trellat.md",
+        "sha256": "b1b031c1bf3715e95a24c8981ba4a2993f5022042d2ad871ebd7053f6982289a"
+      },
+      {
+        "file": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/AUDITORIA_CANONICA.md",
+        "sha256": "e0c9b9ea954ba9931953ecc3bf23487c329aa3ba572b9dfb21de83e952946369"
+      },
+      {
+        "file": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/futur_adaptacio.md",
+        "sha256": "9ccc98553fe97d035242ce8f87a8b7572c732da19098a253ec0f7c4119fa15a3"
+      },
+      {
+        "file": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/index_trellat.md",
+        "sha256": "955640ae20cc733e646695509cdc842d4f739e125b308566e4ee64d805ad0f5c"
+      },
+      {
+        "file": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/MOTOR_OFFLINE.md",
+        "sha256": "5b3433411d7093bb0ab5bb279f1a6557929f1c9a554ef507ecea0b2bb9b58d9a"
+      },
+      {
+        "file": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/seguretat_execucio.md",
+        "sha256": "25d2ecff37bb7937a3b51138b0e9dbaf8b30b21d3c5a2673cc5ee294f9826cd4"
+      },
+      {
+        "file": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/self_repair.md",
+        "sha256": "a8f4848cc57f3b92a4f5a5b977582cdbfee5a29206ac2c6ec1049b94300ff837"
+      },
+      {
+        "file": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/successio_lazaro_execucio.md",
+        "sha256": "efb4151eec60586cb238510584f19414b0de7864620bb2b9d2ed0a3f39a8b454"
+      },
+      {
+        "file": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/agents_actius/01_context_i_principis.md",
+        "sha256": "6386584b9457cddcae0db9b329872853b5ad5626a8c6d27c66002aaca3ca791b"
+      },
+      {
+        "file": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/agents_actius/02_workflow_execucio.md",
+        "sha256": "8e7061ca2295afa9b9e7d52e3b6df0cc33623da9bbf5c0d2865e98f355e5f43a"
+      },
+      {
+        "file": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/agents_actius/README.md",
+        "sha256": "ff3771077250d99c0bbb8933a3a985961cd24cf3e6b5c5b3407cd1dd78d03f12"
+      },
+      {
+        "file": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/DOC_Governanca.md",
+        "sha256": "354e4b6728a3bce9de0c15334c94bdec33910106084762ce120749d26632da24"
+      },
+      {
+        "file": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/ESTANDARD_Pedra_Seca.md",
+        "sha256": "77b01bfb621e59ed0578dc70c211bbd1a3924485bd3492c295ea28ccf38d0e9f"
+      },
+      {
+        "file": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/ESTANDARD_UI_Universal.md",
+        "sha256": "5a4bb80a97cc5ff5d543badcbd3062e25a08c085e8128754b2068d04bd1975fd"
+      },
+      {
+        "file": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/FORJA_TO_CORE.md",
+        "sha256": "2ecf1cb38809c965a6c043422a8da44093e15aa8f9582efa499504ad4bbcdcf7"
+      },
+      {
+        "file": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/LLEI_05_Privacitat.md",
+        "sha256": "336baa2dae37b260d9715ccb512e4eb1c9903ca7cd0fb67de0c77c0e1de3c5ca"
+      },
+      {
+        "file": "_wiki_de_poble/04_ARXIU_Documents_Historics/actes_arxivades/00_informes/informe_sollutia_v1.md",
+        "sha256": "763f95f126166eb4fb907a92559b9f8b5cb2214a6eee52cb1472f1162ec65f5c"
+      },
+      {
+        "file": "_wiki_de_poble/04_ARXIU_Documents_Historics/actes_arxivades/260705_1200_ACTA_GENERAL_Volum_2_Consolidacio.md",
+        "sha256": "f3d2c18f53d1327eb7104e850926432ba1fd9f02cf0f3957bfd11609474d1ce8"
+      },
+      {
+        "file": "_wiki_de_poble/04_ARXIU_Documents_Historics/actes_arxivades/260707_0105_AUDITORIA_Estructural_Destructiva.md",
+        "sha256": "49cc4475433878621742543dedb9e49842d97de4d9c78811543781713edfc246"
+      },
+      {
+        "file": "_wiki_de_poble/04_ARXIU_Documents_Historics/actes_arxivades/260707_0645_ACTA_UNICA_Victoria_Estructural.md",
+        "sha256": "35bada41f772792da1d20762bead15aa7b0553b3d960207bb55283f07ec6bbe8"
+      },
+      {
+        "file": "_wiki_de_poble/04_ARXIU_Documents_Historics/actes_arxivades/260709_0930_ACTA_UNICA_Recopilacio_Auditoria_Final.md",
+        "sha256": "dcf52104d5c200ed7f30e21ce1bafe76b3b6a7e14cb0543ebb71aa248749245d"
+      },
+      {
+        "file": "_wiki_de_poble/04_ARXIU_Documents_Historics/actes_arxivades/90_arxiu_historic.md",
+        "sha256": "0d564af89fe3b28b39fa6d881d51827b3208a4c0aa683d1580acb71b2d7fb9f0"
+      },
+      {
+        "file": "_wiki_de_poble/04_ARXIU_Documents_Historics/actes_arxivades/ACTA_GENERAL_Volum_1_Fundacio.md",
+        "sha256": "b08a81b78b09de639ade4928803343d66606e475f7a8cccb9749466456f7aacf"
+      },
+      {
+        "file": "_wiki_de_poble/04_ARXIU_Documents_Historics/actes_arxivades/acta_simbiotica_grok.md",
+        "sha256": "07b6f73b53e859090a893cd56649be9c5f63e3983c0f175b7732afb2739776fa"
+      },
+      {
+        "file": "_wiki_de_poble/04_ARXIU_Documents_Historics/actes_arxivades/ACTA_UNICA_Tancament.md",
+        "sha256": "bd2de8cb5600ed5d9012cf4ae5b2d3f43a902837753e6c16bc17fdf371fe27aa"
+      },
+      {
+        "file": "_wiki_de_poble/04_ARXIU_Documents_Historics/actes_arxivades/s6a_documentacio_original_sollutia/DOCUMENTACIO_BASE_DE_DADES.md",
+        "sha256": "0931f4201818221b87b0d068a0bc6a4fe85577666b803999b33f3711d0bb8771"
+      },
+      {
+        "file": "_wiki_de_poble/04_ARXIU_Documents_Historics/actes_arxivades/s6a_documentacio_original_sollutia/DOCUMENTACIO_EXEMPLES.md",
+        "sha256": "e95593972fadc249a916a46c2a035cdb3a8a6c51c41f8d6a871e968a1f54ecfe"
+      },
+      {
+        "file": "_wiki_de_poble/04_ARXIU_Documents_Historics/actes_arxivades/s6a_documentacio_original_sollutia/DOCUMENTACIO_PROJECTE.md",
+        "sha256": "0c53aee7983f9b3e73a4171549075050c433eb9e2aeac563f0f8d31060eb4171"
+      },
+      {
+        "file": "_wiki_de_poble/04_ARXIU_Documents_Historics/actes_arxivades/s6a_documentacio_original_sollutia/INSTRUCCIONS_SUPABASE.md",
+        "sha256": "1ccaa1c545c2f2864d7389b7df7c2349df074de4a3c0de7573fa457adcb14c06"
+      },
+      {
+        "file": "_wiki_de_poble/04_ARXIU_Documents_Historics/actes_historiques/ACTA_Arquitectura_Historica_Consolidada.md",
+        "sha256": "a584ad81f1a11178d6b72322334c67559cb9d8583f6140215adf74e9445f266d"
+      },
+      {
+        "file": "_wiki_de_poble/04_ARXIU_Documents_Historics/prompts/petorreta_appshell_alcoi.md",
+        "sha256": "e213779ea21c43a31b095b539114e138525852f8db6c0e4b80595a65c7dc7248"
+      },
+      {
+        "file": "_wiki_de_poble/04_ARXIU_Documents_Historics/prompts/sosp_ai_audit_prompt_round_2.md",
+        "sha256": "045c1bbf40e14924933fe1b423db4595bfa8e783a37d1d00e299579bb7883ebc"
+      },
+      {
+        "file": "_wiki_de_poble/04_ARXIU_Documents_Historics/prompts/sosp_ai_audit_prompt_round_3_meta.md",
+        "sha256": "a83145f4845a966fdfa1691ce66073bcb6f28dd35175f0e31afc85cbf9baed59"
+      },
+      {
+        "file": "_wiki_de_poble/04_ARXIU_Documents_Historics/Sessio_260712/260712_0706_ACTA_Tancament_Arquitectonic_i_Duana_del_Disseny_Pedra_Seca.md",
+        "sha256": "93c519ceea63ecf3f256f5e94acce12cee057574901aaa02c4a56da8f8f2b5ae"
+      },
+      {
+        "file": "_wiki_de_poble/04_ARXIU_Documents_Historics/Sessio_260712/checklist_migracio.md",
+        "sha256": "200497e30c209c5cd59106d3e77987fbce53cf7998dc10cb0c5401adc2b2a311"
+      },
+      {
+        "file": "_wiki_de_poble/04_ARXIU_Documents_Historics/skills_deprecades/sagramental_dels_morts.md",
+        "sha256": "ecc39ad3bbdefaf083680150274ccbb80e65f83902b9970ccb70d6717e24b22d"
+      },
+      {
+        "file": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_0400_ACTA_SESSIO_Tancament_Gran_Auditoria.md",
+        "sha256": "81591625f29f2cd322156ee1644dbc7d1dab9ceef842e30f18fb91dfeb03c67b"
+      },
+      {
+        "file": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+        "sha256": "b6c6b46167eb7543a59cfee0c94e0f38b72e95237b176d65c8e99a8150213eec"
+      },
+      {
+        "file": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260716_1300_ACTA_SESSIO_Problema_Sincronitzacio_Skills.md",
+        "sha256": "4161c1ab4d1c5c4e70aa5c0df01fca3fc522c4f1bbf325ddfce74da1ed644940"
+      },
+      {
+        "file": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260719_0345_PROMPT_Auditoria_Suprema_Consell.md",
+        "sha256": "66c04f1130c5b55f687be9d677432c91a615b6a19fedcec3fae76846a92eea6c"
+      },
+      {
+        "file": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260719_0410_BUNDLE_Sistema_Operatiu_IAIA_MarIA_Complet.md",
+        "sha256": "f56952cf5b8c6bf022d6a0012938f6a48d34a231be95c4ea85642bd38ccc725c"
+      },
+      {
+        "file": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260719_0415_ACTA_SESSIO_La_Gran_Destillacio.md",
+        "sha256": "ee846a200335f130d4c1554395622ef4bf3d880aced384c46de7df4e7da12878"
+      },
+      {
+        "file": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/Claude/260719_0630_AUDITORIA_Fuita_Bancaria_Nucli_Mort_I_Constitucio_Triple_Trencada.md",
+        "sha256": "b098af19bbb5f17342797350fa1c67a5f1a421690af97be5d39e3642985b18f4"
+      },
+      {
+        "file": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/Claude/260719_0630_PATCH_Sutura_Imports_Nucli_I_Arrel_De_Wiki_Corregida.md",
+        "sha256": "703d4a48a5163dd499fddc2acb46f7bd68753f8e6106a98a0dbe44c8433af65e"
+      },
+      {
+        "file": "AGENTS.md",
+        "sha256": "4c12de77ff938cd368f29d74555e748059768da02c6103f89b47d889a15d2caf"
+      },
+      {
+        "file": "README.md",
+        "sha256": "447ea2ddbaeb147fc6868df8160401a2ae6506058ef6a79bcd4bddcc6fd5ac12"
+      },
+      {
+        "file": "src/config/README.md",
+        "sha256": "9cf62815fd33ad93c9d8ac6430854fcaf8dd0bc4488ad711f9afd00e63f75a26"
+      },
+      {
+        "file": "src/sections/detail/README.md",
+        "sha256": "d2b17ab0ad3b1319296e04ac016905c47a5a3aee2b4da0f46c7154accda41b4c"
+      },
+      {
+        "file": "src/sections/README.md",
+        "sha256": "3609e948e6f490b48a7c38423f186acd8266f565044afc90535be2157ee6d28d"
+      },
+      {
+        "file": "supabase/README.md",
+        "sha256": "7091e3b6c679a743770188e71b3dfd4cb5ad0dc17a97b157a78c7f184bc35460"
+      }
+    ],
+    "mutationPolicy": {
+      "includeMirrors": false,
+      "includeLifecycle": false
+    },
+    "frontmatterActions": [],
+    "quarantineCandidates": [],
+    "mutationBlockers": [],
+    "planDigest": "d8e214ce6734b928679a003500ffb634f529274ebd90b2c51af7cbd5a0c493c0"
+  },
+  "mutation": {
+    "applied": false,
+    "reason": "sense-accions"
+  }
+}

@@ -1,3 +1,8 @@
+---
+estat: "canonic"
+tipus: "index"
+description: "Documentació canònica de Sóc de Poble."
+---
 # `src/sections/detail`
 
 Esta carpeta és la capa compartida de detall de l'aplicació.
@@ -22,3 +27,8 @@ Regla pràctica:
 - si canvia el marc general de les fitxes, toca `src/sections/detail/`;
 - si canvia la fitxa d'una secció concreta, toca `src/sections/<seccio>/detail/`;
 - si només canvien les dades del contingut, toca la secció o la capa de dades corresponent.
+
+
+---
+
+**Ancoratge de Seguretat:** [[00_index]]

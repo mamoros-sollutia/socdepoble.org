@@ -2,6 +2,7 @@
 estat: "canonic"
 tipus: "index"
 description: "Índex secundari per unificar orfes informatius, vendores, actes arxivades i coneixement de llarga durada fora del nucli operatiu."
+temes: ["sistema"]
 ---
 
 # Pont a l'Arxiu Secundari
@@ -18,3 +19,6 @@ Tots els documents a `04_ARXIU_Documents_Historics` pengen lògicament d'aquest 
 ## Taxonomia
 - **Categoria:** [[Arxiu]]
 - **Etiquetes:** [[Graf]], [[Memòria Secundària]]
+
+
+**Ancoratge de Seguretat:** [[00_INDEX]]

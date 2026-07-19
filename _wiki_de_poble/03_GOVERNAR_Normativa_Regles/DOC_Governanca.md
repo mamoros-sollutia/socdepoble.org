@@ -2,6 +2,7 @@
 estat: "canonic"
 tipus: "norma"
 description: "Fixa l'autoritat, els límits d'execució i la frontera React/Vite sense atribuir mecanismes inexistents al sistema."
+temes: ["sistema"]
 ---
 # Governança d'execució
 
@@ -56,3 +57,6 @@ actual. El contracte executiu detallat és [[SDP_LOCK]].
 ## Taxonomia
 - **Categoria:** [[Govern]]
 - **Etiquetes:** [[Graf]]
+
+
+**Ancoratge de Seguretat:** [[00_INDEX]]

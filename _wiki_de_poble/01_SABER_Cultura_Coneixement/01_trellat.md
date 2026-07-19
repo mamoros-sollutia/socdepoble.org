@@ -2,6 +2,7 @@
 estat: "canonic"
 tipus: "document"
 description: "Defineix el Trellat com a prudència verificable: simplicitat, accessibilitat, reversibilitat i evidència abans d'afirmar."
+temes: ["sistema"]
 ---
 # El Trellat — patró de disseny rústic
 
@@ -39,3 +40,6 @@ convertisca en dogma.
 ## Taxonomia
 - **Categoria:** [[Coneixement]]
 - **Etiquetes:** [[Graf]]
+
+
+**Ancoratge de Seguretat:** [[00_INDEX]]

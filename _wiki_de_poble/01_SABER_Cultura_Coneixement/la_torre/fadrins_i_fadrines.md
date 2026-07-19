@@ -2,6 +2,7 @@
 estat: "canonic"
 tipus: "document"
 description: "Recull context cultural sobre els fadrins, les fadrines i les festes de la Torre de les Maçanes."
+temes: ["sistema"]
 ---
 # 🎊 Cultura Fadrins i Fadrines (La Torre de les Maçanes)
 
@@ -38,3 +39,6 @@ description: "Recull context cultural sobre els fadrins, les fadrines i les fest
 ## Taxonomia
 - **Categoria:** [[Coneixement]]
 - **Etiquetes:** [[Graf]]
+
+
+**Ancoratge de Seguretat:** [[00_INDEX]]

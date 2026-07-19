@@ -2,6 +2,7 @@
 estat: "canonic"
 tipus: "norma"
 description: "Defineix Pedra Seca com un criteri de simplicitat, accessibilitat i dependències justificades."
+temes: ["sistema"]
 ---
 # ESTÀNDARD PEDRA SECA
 
@@ -197,3 +198,6 @@ Aquesta clàusula preval sobre qualsevol decisió històrica prèvia. Pedra Seca
 ## Taxonomia
 - **Categoria:** [[Govern]]
 - **Etiquetes:** [[Graf]]
+
+
+**Ancoratge de Seguretat:** [[00_INDEX]]

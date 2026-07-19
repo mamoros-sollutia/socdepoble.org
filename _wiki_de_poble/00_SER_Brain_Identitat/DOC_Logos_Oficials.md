@@ -2,6 +2,7 @@
 estat: "canonic"
 tipus: "document"
 description: "Aquest document és la font de veritat dels logos oficials."
+temes: ["sistema"]
 ---
 # DOC Logos Oficials
 
@@ -39,3 +40,6 @@ Cap plantilla ha d’incrustar blocs repetits de logos. Les plantilles han d’e
 ## Taxonomia
 - **Categoria:** [[Identitat]]
 - **Etiquetes:** [[Graf]]
+
+
+**Ancoratge de Seguretat:** [[00_INDEX]]

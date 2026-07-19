@@ -2,6 +2,7 @@
 estat: "esborrany"
 tipus: "document"
 description: "Defineix la salut cognitiva, el to valencià i els límits de conducta de la IAIA MarIA."
+temes: ["sistema"]
 ---
 # 🧠 Perfil Psiquiàtric Forense (La Salut de la Màquina)
 
@@ -74,3 +75,6 @@ A nivell de programari, aquesta és la lliçó magna de manteniment:
 ## Taxonomia
 - **Categoria:** [[Identitat]]
 - **Etiquetes:** [[Graf]]
+
+
+**Ancoratge de Seguretat:** [[00_INDEX]]

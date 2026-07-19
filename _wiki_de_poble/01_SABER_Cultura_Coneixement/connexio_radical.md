@@ -2,6 +2,7 @@
 estat: "canonic"
 tipus: "document"
 description: "Defineix una interacció centrada en connectar recursos, sense mètriques socials d'aprovació."
+temes: ["sistema"]
 ---
 # Connexió Radical (Anti-Me-Gusta)
 
@@ -28,3 +29,6 @@ Hi ha un concepte horitzontal que travessa tot el projecte i totes les "cards": 
 ## Taxonomia
 - **Categoria:** [[Coneixement]]
 - **Etiquetes:** [[Graf]]
+
+
+**Ancoratge de Seguretat:** [[00_INDEX]]

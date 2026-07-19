@@ -1,3 +1,9 @@
+---
+estat: "arxivat"
+tipus: "document"
+description: "Documentació heretada o arxiu restaurat."
+temes: ["sistema"]
+---
 # Exemples d'organització del projecte
 
 El projecte està organitzat per carpetes segons la funció de cada part.
@@ -54,3 +60,7 @@ Si volem modificar/ampliar una secció que ja tenim:
 
 Si volem crear una nova secció:
 Crea una nova secció "Comarques". Ha de mostrar un llistat de totes les comarques. En fer clic en una comarca, s'ha d'obrir el detall de la comarca i mostrar tots els pobles que hi pertanyen.
+
+---
+
+**Ancoratge de Seguretat:** [[90_arxiu_historic]]

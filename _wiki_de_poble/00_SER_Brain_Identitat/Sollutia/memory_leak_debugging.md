@@ -1,7 +1,8 @@
 ---
-autor: Sollutia
-name: memory-leak-debugging
-description: Diagnoses and resolves memory leaks in JavaScript/Node.js applications. Use when a user reports high memory usage, OOM errors, or wants to analyze heapsnapshots or run memory leak detection tools like memlab.
+description: "Diagnoses and resolves memory leaks in JavaScript/Node.js applications. Use when a user reports high memory usage, OOM errors, or ..."
+estat: "canonic"
+tipus: "skill"
+temes: ["sistema"]
 ---
 
 # Memory Leak Debugging
@@ -49,3 +50,14 @@ node skills/memory-leak-debugging/references/compare_snapshots.js <baseline.heap
 ```
 
 The script will analyze and output the top growing objects by size and highlight the 3 most common types of memory leaks (e.g., Detached DOM nodes, closures, Contexts) if they are present.
+
+
+---
+
+**Ancoratge de Seguretat:** [[Soci_Sollutia]]
+
+
+---
+**Categoria:** [[Sollutia]]
+**Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX]]

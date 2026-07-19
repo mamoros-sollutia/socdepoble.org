@@ -2,6 +2,7 @@
 estat: "arxivat"
 tipus: "acta"
 description: "- Hem restaurat documents buits (arquitecturacognitiva.md) a partir de la memòria a llarg termini."
+temes: ["acta"]
 ---
 # 📜 ACTA ÚNICA DE SESSIÓ — Tancament de 05/07/2026
 
@@ -47,3 +48,7 @@ requereix_auditoria: false
 
 ---
 **Tornar a:** 00_index, 90_arxiu_historic
+
+---
+
+**Ancoratge de Seguretat:** [[90_arxiu_historic]]

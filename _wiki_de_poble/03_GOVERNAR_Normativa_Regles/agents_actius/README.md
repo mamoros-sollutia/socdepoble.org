@@ -1,7 +1,8 @@
 ---
 estat: "arxivat"
-tipus: "document"
+tipus: "index"
 description: "Declara retirada l'antiga carpeta agents_actius i neutralitza el seu nom enganyós sense trencar rutes històriques."
+temes: ["sistema"]
 ---
 # `agents_actius` — carpeta retirada
 
@@ -14,3 +15,8 @@ operatiu i del context per defecte.
 ## Taxonomia
 - **Categoria:** [[Govern]]
 - **Etiquetes:** [[Graf]]
+
+
+---
+
+**Ancoratge de Seguretat:** [[00_index]]

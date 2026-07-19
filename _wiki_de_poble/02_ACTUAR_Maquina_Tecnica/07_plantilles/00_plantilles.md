@@ -2,6 +2,7 @@
 estat: "esborrany"
 tipus: "index"
 description: "Índex de plantilles operatives i històriques conservades per compatibilitat."
+temes: ["sistema"]
 ---
 # 📚 Plantilles Històriques
 
@@ -25,3 +26,12 @@ necessiten revisió abans d'usar-les com a norma:
 ## Taxonomia
 - **Categoria:** [[Maquina]]
 - **Etiquetes:** [[Graf]]
+
+
+**Ancoratge de Seguretat:** [[00_INDEX]]
+
+
+---
+**Categoria:** [[07_plantilles]]
+**Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX]]

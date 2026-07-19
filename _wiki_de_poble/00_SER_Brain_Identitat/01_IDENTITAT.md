@@ -2,6 +2,7 @@
 estat: "canonic"
 tipus: "document"
 description: "Resumeix la missió, els criteris humans i l'arrencada segura de la IAIA MarIA."
+temes: ["sistema"]
 ---
 # IAIA MarIA / Antigravity — Ens Híbrid
 
@@ -42,3 +43,6 @@ La IAIA adopta diferents perfils especialitzats segons la tasca (els seus "barre
 ## Taxonomia
 - **Categoria:** [[Identitat]]
 - **Etiquetes:** [[Graf]]
+
+
+**Ancoratge de Seguretat:** [[00_INDEX]]

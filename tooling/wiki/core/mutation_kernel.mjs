@@ -1,0 +1,192 @@
+import { openReflex, claimReceiptForMutation, completeMutationClaim } from '../reflex_petorreta.mjs';
+/**
+ * autoneteja_wiki.mjs — auditoria i migració reversible de la Wiki.
+ *
+ * GARANTIES:
+ * - Sense flags d'aplicació és un dry-run real: zero escriptures.
+ * - Una migració de frontmatter conserva el cos byte a byte.
+ * - Cap orfe amb contingut es mou automàticament.
+ * - Només es poden quarantinar buits semàntics amb grau zero.
+ * - Tota mutació exigix rebut del Reflex, backup, manifest i rollback.
+ * - Qualsevol error és fail-closed (exit diferent de zero).
+ *
+ * Ús:
+ *   node autoneteja_wiki.mjs [--json] [--strict]
+ *   node autoneteja_wiki.mjs --apply-frontmatter --ack-schema-cutover \
+ *     --receipt=/ruta/rebut.json
+ *   node autoneteja_wiki.mjs --quarantine-empty --receipt=/ruta/rebut.json
+ *   node autoneteja_wiki.mjs --restore=/ruta/manifest.json \
+ *     --receipt=/ruta/rebut.json
+ */
+
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import { createHash } from 'node:crypto';
+import { isUtf8 } from 'node:buffer';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+import {
+  parseFrontmatter,
+  serializeFrontmatter,
+} from '../lib/frontmatter.mjs';
+import { discoverMarkdown, treeDigest } from './corpus_snapshot.mjs';
+
+const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
+export const DEFAULT_WIKI_DIR = path.resolve(SCRIPT_DIR, '../../..');
+const PROJECT_DIR = path.dirname(DEFAULT_WIKI_DIR);
+const SCHEMA_TEXT = await fs.readFile(new URL('../schema.json', import.meta.url), 'utf8');
+const SCHEMA = JSON.parse(SCHEMA_TEXT);
+const FIELD_ORDER = ['estat', 'tipus', 'description', 'aliases', 'revisat'];
+const ALLOWED_FIELDS = new Set(FIELD_ORDER);
+const ALLOWED_STATES = new Set(SCHEMA.properties.estat.enum);
+const ALLOWED_TYPES = new Set(SCHEMA.properties.tipus.enum);
+const MAX_DESCRIPTION = SCHEMA.properties.description.maxLength;
+const MAX_ALIASES = SCHEMA.properties.aliases.maxItems;
+const KNOWN_LEGACY_FIELDS = new Set([
+  'name', 'descripcio', 'resum', 'autor', 'authority', 'categoria', 'tags',
+  'created_at', 'updated_at', 'version', 'script', 'replaces', 'depends_on',
+  'jurisdiccio', 'pilar', 'mode',
+]);
+const MANUAL_LEGACY_FIELDS = new Set([
+  'tags', 'script', 'replaces', 'depends_on', 'jurisdiccio', 'mode',
+]);
+
+const EXCLUDED_DIRS = new Set([
+  '.git', '.obsidian', 'assets', 'node_modules', 'scripts', '.wiki-safety',
+]);
+const MIRROR_PREFIXES = [
+  '00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR',
+  '03_GOVERNAR_Normativa_Regles/agents_actius',
+];
+const VENDOR_PREFIXES = ['00_SER_Brain_Identitat/Sollutia'];
+const VISIBLE_QUARANTINE_RE = /^QUARANTENA(?:_|-)/i;
+const CONTROL_RE = /[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/;
+const PLACEHOLDER_RE = /^(?:todo|tbd|wip|fixme|placeholder|pendent|per completar|pr[oò]ximament|sense contingut)[\s.!…:;-]*$/i;
+
+const posix = (value) => value.split(path.sep).join('/');
+const normalitza = (value) => value.normalize('NFC').toLocaleLowerCase('ca');
+const sha256 = (value) => createHash('sha256').update(value).digest('hex');
+const SCHEMA_SHA256 = sha256(SCHEMA_TEXT);
+const unique = (values) => [...new Set(values)];
+const emptyValue = (value) => value === undefined || value === null || value === ''
+  || (Array.isArray(value) && value.length === 0);
+const valueFingerprint = (value) => ({
+  type: Array.isArray(value) ? 'array' : typeof value,
+  items: Array.isArray(value) ? value.length : undefined,
+  sha256: sha256(JSON.stringify(value)),
+});
+const isPrefix = (rel, prefix) => rel === prefix || rel.startsWith(`${prefix}/`);
+const isInside = (root, candidate) => {
+  const rel = path.relative(root, candidate);
+  return rel === '' || (!rel.startsWith('..') && !path.isAbsolute(rel));
+};
+
+export async function atomicWrite(file, content, { mode = 0o644 } = {}) {
+  await fs.mkdir(path.dirname(file), { recursive: true });
+  const temp = `${file}.sdp-tmp-${process.pid}-${Date.now()}`;
+  const handle = await fs.open(temp, 'wx', mode & 0o777);
+  try {
+    await handle.writeFile(content, typeof content === 'string' ? 'utf8' : undefined);
+    await handle.sync();
+  } catch (error) {
+    await handle.close().catch(() => {});
+    await fs.rm(temp, { force: true }).catch(() => {});
+    throw error;
+  }
+  await handle.close();
+  await fs.chmod(temp, mode & 0o777);
+  await fs.rename(temp, file);
+  const directory = await fs.open(path.dirname(file), 'r').catch(() => null);
+  if (directory) {
+    await directory.sync().catch(() => {});
+    await directory.close().catch(() => {});
+  }
+}
+
+export async function writeManifest(file, manifest) {
+  await atomicWrite(file, `${JSON.stringify(manifest, null, 2)}\n`);
+}
+
+export async function writeNewFile(file, content, { mode = 0o600 } = {}) {
+  await fs.mkdir(path.dirname(file), { recursive: true });
+  const handle = await fs.open(file, 'wx', mode);
+  try {
+    await handle.writeFile(content, typeof content === 'string' ? 'utf8' : undefined);
+    await handle.sync();
+  } finally {
+    await handle.close();
+  }
+  const directory = await fs.open(path.dirname(file), 'r').catch(() => null);
+  if (directory) {
+    await directory.sync().catch(() => {});
+    await directory.close().catch(() => {});
+  }
+}
+
+export async function requireReceipt(receiptPath, operation, targets, planDigest) {
+  if (!receiptPath) throw new Error(`L'operació ${operation} exigix --receipt=<rebut.json>`);
+  const { claimReceiptForMutation } = await import('./reflex_petorreta.mjs');
+  const claimed = await claimReceiptForMutation({ receiptPath, operation, targets, planDigest });
+  return { receiptPath, operation, claimToken: claimed.claimToken };
+}
+
+export async function completeReceiptClaim(claim) {
+  const { completeMutationClaim } = await import('./reflex_petorreta.mjs');
+  await completeMutationClaim({ receiptPath: claim.receiptPath, operation: claim.operation }, claim.claimToken);
+}
+
+const safetyDirFor = (root) => path.join(path.dirname(root), '.wiki-safety');
+
+export async function acquireMutationLock(root, { recoverStale = false } = {}) {
+  const safetyDir = safetyDirFor(root);
+  await fs.mkdir(safetyDir, { recursive: true });
+  const lockPath = path.join(safetyDir, 'autoneteja.lock');
+  let handle;
+  try {
+    handle = await fs.open(lockPath, 'wx');
+  } catch (error) {
+    if (error.code === 'EEXIST' && recoverStale) {
+      const owner = await fs.readFile(lockPath, 'utf8').catch(() => '');
+      const pid = Number(owner.trim().split(/\s+/)[0]);
+      let alive = Number.isInteger(pid) && pid > 0;
+      if (alive) {
+        try { process.kill(pid, 0); } catch (failure) { if (failure.code === 'ESRCH') alive = false; else throw failure; }
+      }
+      if (!alive) {
+        await fs.rm(lockPath, { force: true });
+        return acquireMutationLock(root, { recoverStale: false });
+      }
+    }
+    if (error.code === 'EEXIST') throw new Error('Ja hi ha una autoneteja en curs; usa restore sobre el manifest si el procés anterior va morir.');
+    throw error;
+  }
+  await handle.writeFile(`${process.pid} ${new Date().toISOString()}\n`);
+  return async () => {
+    await handle.close().catch(() => {});
+    await fs.rm(lockPath, { force: true }).catch(() => {});
+  };
+}
+
+export async function assertUnchanged(root, expectedDigest) {
+  const fresh = await discoverMarkdown(root);
+  const actual = treeDigest(fresh.docs);
+  if (actual !== expectedDigest) {
+    const error = new Error('La Wiki ha canviat després de l\'auditoria; pla caducat, zero escriptures.');
+    error.code = 'STALE_PLAN';
+    throw error;
+  }
+}
+
+export async function assertSchemaCutoverReady() {
+  const lockPath = path.join(SCRIPT_DIR, 'schema-cutover.lock.json');
+  const lock = JSON.parse(await fs.readFile(lockPath, 'utf8'));
+  if (lock.schema !== 'socdepoble.schema-cutover.v1' || lock.ready !== true) {
+    throw new Error('Cutover v2 no preparat: schema-cutover.lock.json continua en ready=false.');
+  }
+  if (!Array.isArray(lock.blockers) || lock.blockers.length > 0) {
+    throw new Error(`Cutover v2 bloquejat per ${(lock.blockers || []).length} consumidor(s) legacy.`);
+  }
+  if (lock.schemaSha256 !== SCHEMA_SHA256) {
+    throw new Error('Cutover v2 caducat: schemaSha256 no coincidix amb schema.json.');
+  }
+}
+

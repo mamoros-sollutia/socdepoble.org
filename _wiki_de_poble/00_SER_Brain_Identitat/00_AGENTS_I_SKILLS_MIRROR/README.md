@@ -1,7 +1,8 @@
 ---
 estat: "arxivat"
-tipus: "document"
+tipus: "index"
 description: "Retira el mirror executable i conserva només un pont inequívoc cap a les regles autoritatives de .agents."
+temes: ["sistema"]
 ---
 # Mirror d'agents retirat
 
@@ -12,3 +13,8 @@ prompts ni usar per a autoritzar canvis.
 L'autoritat viu exclusivament en `AGENTS.md`, `.agents/AGENTS.md`,
 `.agents/PROTOCOL_PETORRETA.md` i
 `.agents/skills/socdepoble-workflow/SKILL.md` fora del vault.
+
+
+---
+
+**Ancoratge de Seguretat:** [[00_INDEX_ARXIU_SECUNDARI]]

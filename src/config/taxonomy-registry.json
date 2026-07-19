@@ -1,0 +1,90 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "version": "3.0.0",
+  "description": "Registre centralitzat de la Taxonomia V3 de Sóc de Poble",
+  "estat": [
+    "canonic",
+    "esborrany",
+    "futur",
+    "arxivat"
+  ],
+  "tipus": [
+    "document",
+    "index",
+    "norma",
+    "protocol",
+    "registre",
+    "skill",
+    "plantilla",
+    "acta",
+    "informe",
+    "prompt",
+    "petorreta",
+    "guia"
+  ],
+  "autoritat": [
+    "politica",
+    "referencia_canonica",
+    "informativa",
+    "vendor",
+    "historica"
+  ],
+  "maduresa": [
+    "verificat",
+    "contracte",
+    "proposta",
+    "historic"
+  ],
+  "zones": [
+    "operatiu",
+    "arxiu",
+    "escriptori",
+    "vendor",
+    "mirror",
+    "generat"
+  ],
+  "dominis_operatius": [
+    "00_SER",
+    "01_SABER",
+    "02_ACTUAR",
+    "03_GOVERNAR"
+  ],
+  "relacions": [
+    "defineix",
+    "regula",
+    "implementa",
+    "explica",
+    "deriva_de",
+    "substituix",
+    "contradiu",
+    "documenta_skill",
+    "indexa"
+  ],
+  "facetes": {
+    "tema/offline_first": {
+      "prefLabel_ca": "Motor Offline",
+      "definition": "Tot allò relacionat amb el funcionament sense connexió, service workers i emmagatzematge local.",
+      "status": "vigent"
+    },
+    "tema/sincronitzacio": {
+      "prefLabel_ca": "Sincronització CRDT",
+      "definition": "Tot allò relacionat amb l'algoritme de sincronització i merges distribuïts.",
+      "status": "vigent"
+    },
+    "qualitat/accessibilitat": {
+      "prefLabel_ca": "Accessibilitat (A11y)",
+      "definition": "Estàndards de navegabilitat i llegibilitat inclusiva.",
+      "status": "vigent"
+    },
+    "risc/privacitat": {
+      "prefLabel_ca": "Privacitat de dades",
+      "definition": "Regulació i mecanismes de protecció de PII i consentiment.",
+      "status": "vigent"
+    },
+    "territori/torre_macanes": {
+      "prefLabel_ca": "La Torre de les Maçanes",
+      "definition": "Coneixement i entitats lligades directament al municipi de la Torre.",
+      "status": "vigent"
+    }
+  }
+}

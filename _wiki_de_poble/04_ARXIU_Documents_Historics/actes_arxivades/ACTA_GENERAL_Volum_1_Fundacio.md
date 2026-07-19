@@ -2,6 +2,7 @@
 estat: "arxivat"
 tipus: "acta"
 description: "Data de Destil·lació: 28 de Juny de 2026"
+temes: ["acta"]
 ---
 # 🛑 ACTA GENERAL - VOLUM 1: Fundació, Algoritmes i Desacceleració Termodinàmica
 **Data de Destil·lació:** 28 de Juny de 2026
@@ -54,3 +55,7 @@ Tal com ha ensenyat el Mestre, aquesta i totes les futures *Actes Generals* haur
 
 ---
 **Enllaç orgànic per netejar el graf**: 10_actes
+
+---
+
+**Ancoratge de Seguretat:** [[90_arxiu_historic]]

@@ -164,3 +164,6 @@ The design system follows the **Square Rule (Claude’s Law)**:
 
 ### Hitbox Requirements
 - All interactive components (chips, checkboxes, icons) must have an invisible touch target of at least 44px x 44px to comply with the "Bancal Mode" accessibility standard.
+
+
+**Ancoratge de Seguretat:** [[00_INDEX]]

@@ -2,6 +2,7 @@
 estat: "arxivat"
 tipus: "acta"
 description: "Data: YYYY-MM-DD"
+temes: ["acta"]
 ---
 # 📜 ACTA SIMBIÒTICA - [TÍTOL DESCRIPTIU]
 
@@ -24,3 +25,7 @@ description: "Data: YYYY-MM-DD"
 - Quina norma nova s'imprimeix en pedra.
 
 ---
+
+---
+
+**Ancoratge de Seguretat:** [[90_arxiu_historic]]

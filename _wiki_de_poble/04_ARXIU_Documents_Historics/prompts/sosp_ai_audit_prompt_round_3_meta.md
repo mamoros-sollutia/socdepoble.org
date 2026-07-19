@@ -2,6 +2,7 @@
 estat: "arxivat"
 tipus: "prompt"
 description: "[CONSELL DE LA PETORRETA — CONSULTA META-ESTRUCTURAL I WORKFLOW]"
+temes: ["petorreta"]
 ---
 # SDP-PETORRETA-047: Consulta Arquitectònica de l'Ecosistema i Migració
 
@@ -28,3 +29,7 @@ Com que la web vella (`Sóc de Poble`) s'eliminarà en el futur, el Mestre Javi 
 4. Validació de l'ús de `05_Escriptori_Soc_de_Poble` com a única safata d'entrada per a la memòria efímera del sistema (per evitar invencions termodinàmiques fora de lloc).
 
 Doneu-nos el vostre vistiplau o les vostres esmenes arquitectòniques abans de prémer el botó de clonat.
+
+---
+
+**Ancoratge de Seguretat:** [[90_arxiu_historic]]

@@ -2,6 +2,7 @@
 estat: "esborrany"
 tipus: "document"
 description: "Explica l'origen, la visió rural i l'objectiu descentralitzat de Sóc de Poble."
+temes: ["sistema"]
 ---
 # El Projecte
 ## 🏡 Sóc de Poble. Portal de Pobles Connectats
@@ -63,3 +64,6 @@ Ací estem per al que faça falta. Un projecte lliure per als pobles connectats.
 ## Taxonomia
 - **Categoria:** [[Identitat]]
 - **Etiquetes:** [[Graf]]
+
+
+**Ancoratge de Seguretat:** [[00_INDEX]]

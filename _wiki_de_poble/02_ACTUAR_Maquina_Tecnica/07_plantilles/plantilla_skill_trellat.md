@@ -2,6 +2,7 @@
 estat: "canonic"
 tipus: "plantilla"
 description: "Plantilla mestra per definir una skill amb missió, gallets, regles i contracte d'eixida."
+temes: ["sistema"]
 ---
 # ⚙️ SDP SKILL MASTER TEMPLATE
 **Nom de la Skill:** [Ex: Maquetador d'Esdeveniments Offline]
@@ -32,3 +33,12 @@ Abans de finalitzar la resposta, l'Agent ha de validar en silenci:
 ## Taxonomia
 - **Categoria:** [[Maquina]]
 - **Etiquetes:** [[Graf]]
+
+
+**Ancoratge de Seguretat:** [[00_INDEX]]
+
+
+---
+**Categoria:** [[07_plantilles]]
+**Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX]]
