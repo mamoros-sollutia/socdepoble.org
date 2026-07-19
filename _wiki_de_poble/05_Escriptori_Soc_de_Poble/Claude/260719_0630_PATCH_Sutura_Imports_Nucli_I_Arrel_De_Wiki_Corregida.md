@@ -87,4 +87,4 @@ Instal·leu també `smoke_cli.test.mjs` a `scripts/tests/` perquè açò no puga
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX_ARXIU_SECUNDARI]]
+**Ancoratge de Seguretat:** [[00_MEMORIAL_Lapides#00_INDEX_ARXIU_SECUNDARI|00_INDEX_ARXIU_SECUNDARI †]]
