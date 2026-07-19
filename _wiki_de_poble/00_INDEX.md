@@ -30,3 +30,4 @@
 - [[260719_1655_BUNDLE_Sistema_Operatiu_IAIA_MarIA_Complet]]
 - [[alegacions]]
 - [[260715_0400_ACTA_SESSIO_Tancament_Gran_Auditoria]]
+- [[260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics]]
