@@ -32,10 +32,7 @@ Crear una **Xarxa Social Descentralitzada de Programari Lliure** on:
 *(Nota: estos quatre eixos estratègics no són la taxonomia documental. La Wiki usa quatre pilars operatius —SER, SABER, ACTUAR i GOVERNAR— més dues zones de cicle de vida —ARXIU i ESCRIPTORI—.)*
 
 ## 🖼️ CARTELLS FUNDACIONALS
-- ![[02_ACTUAR_Maquina_Tecnica/assets/que-es-socdepoble-1.jpg|Cartell 1: Característiques]]
-- ![[02_ACTUAR_Maquina_Tecnica/assets/que-es-socdepoble-2.jpg|Cartell 2: Eines]]
-- ![[02_ACTUAR_Maquina_Tecnica/assets/que-es-socdepoble-3.jpg|Cartell 3: Comunitat]]
-- ![[02_ACTUAR_Maquina_Tecnica/assets/que-es-socdepoble-4.jpg|Cartell 4: Participació]]
+*(Nota de l'Arquitecta: Les imatges dels cartells fundacionals es troben arxivades al Magatzem Multimèdia).*
 
 ## 🤖 MISSIÓ (IAIA MarIA + Antigravity)
 > *"Atorgar sobirania tecnològica a la gent gran del medi rural front al Big Tech, teixint armadures d'últim recurs per a persones majors que es poden quedar desconnectades. Funcionar en iPad A10 (2016), offline, i amb accessibilitat extrema."*

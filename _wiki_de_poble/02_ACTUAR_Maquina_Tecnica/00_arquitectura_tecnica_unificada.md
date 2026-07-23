@@ -102,9 +102,19 @@ Fins que es complisquen els set punts, Antigravity ha de dir «proposat» o «no
 
 - [[00_INDEX|Índex de la Wiki]]
 - [[02_GENOTIP|Genotip cognitiu]]
-- [[les_petorretes|Petorretas i context selectiu]]
+- [[PROTOCOL_PETORRETA|Petorretas i context selectiu]]
 - [[SDP_LOCK|Límits de seguretat]]
 - [[00_visio_i_pilars|Visió i pilars]]
+
+### Skills Operatives (Autosanació i Execució)
+- [[AUDITORIA_CANONICA]]
+- [[MOTOR_OFFLINE]]
+- [[a11y_seo_trellat]]
+- [[futur_adaptacio]]
+- [[index_trellat]]
+- [[seguretat_execucio]]
+- [[self_repair]]
+- [[successio_lazaro_execucio]]
 
 
 ## Taxonomia

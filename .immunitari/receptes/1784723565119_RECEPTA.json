@@ -1,0 +1,21 @@
+{
+  "id": "R-1784723565118",
+  "data": "2026-07-22T12:32:45.118Z",
+  "operacions": [
+    {
+      "id": "OP-001",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/00_INDEX.md",
+      "objectius": [
+        "05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI",
+        "00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/PROTOCOL_PETORRETA"
+      ],
+      "hashFont": "8e113255ef4ef8505a56412fd668f33d877116419f06b1d6713b59a3134224da"
+    },
+    {
+      "id": "OP-002",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md"
+    }
+  ]
+}

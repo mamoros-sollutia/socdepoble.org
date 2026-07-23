@@ -3,13 +3,12 @@ estat: "canonic"
 tipus: "index"
 description: "Documentació canònica de Sóc de Poble."
 ---
-# Sóc de Poble
+# Sóc de Poble: Portal de Pobles Connectats
+**The Civic Hosting Stack for Rural Resilience**
 
-Projecte actual: `socdepoble.org`.
+Sóc de Poble és una infraestructura digital integral "offline-first" dissenyada específicament per a garantir la resiliencia cívica dels municipis rurals. Aquest repositori (`socdepoble.org`) conté el *rebuild* net i l'evolució arquitectònica del projecte, orientant-lo cap a una xarxa descentralitzada (sincronització CRDT) i un desplegament declaratiu reproduïble (NixOS). 
 
-Referència antiga, només lectura: `socdepoble`.
-
-Rebuild net del projecte amb una base més simple i mantenible.
+La missió és proporcionar una eina on l'intercanvi cultural federat (mitjançant Instàncies d'IA Local o "Iaias") i la comunicació cívica (alertes, agenda) puguen funcionar de manera autònoma, garantint la sobirania de dades fins i tot en cas d'aïllament digital del poble.
 
 ## Estructura
 
@@ -38,11 +37,9 @@ El projecte està preparat per a usar Supabase com a BD remota.
 
 Si vols entendre com està repartit el projecte i on tocar cada cosa, mira:
 
-- [Documentació del projecte](docs/s6a/DOCUMENTACIO_PROJECTE.md)
-- [Documentació de la base de dades](docs/s6a/DOCUMENTACIO_BASE_DE_DADES.md)
-- [Exemples d'organització](docs/s6a/DOCUMENTACIO_EXEMPLES.md)
-- [Instruccions de Supabase](docs/s6a/INSTRUCCIONS_SUPABASE.md)
-- [Regles dels agents](.agents/AGENTS.md)
+- [El Cervell Tècnic: Wiki de Poble](_wiki_de_poble/00_index.md)
+- [Regles de Seguretat i Agents](.agents/AGENTS.md)
+- [Protocol de la Petorreta](.agents/PROTOCOL_PETORRETA.md)
 
 ## Modes de dades
 
@@ -101,6 +98,11 @@ Un clon nou activa de forma idempotent l'estat privat i els hooks amb
 regles, scripts, cinc hooks o workflow encara no estan seguits per Git: existir
 al disc no equival a una protecció durable.
 
+## Privacitat i la "Gestoria de Poble"
+
+Aquest repositori conté el codi i el cervell tècnic (`_wiki_de_poble`). L'arquitectura informàtica està totalment separada de la burocràcia del teu grup. 
+
+Per a mantenir la privacitat dels documents de la teua associació o poble, lliurem una plantilla verge anomenada `_templates/gestoria_base`. Hauràs de moure aquesta carpeta **fora del repositori** i utilitzar-la com un "Vault" d'Obsidian independent per a arxivar la teua burocràcia, contractes, assumptes privats i multimèdia sense perill que es pugen a GitHub.
 
 ---
 

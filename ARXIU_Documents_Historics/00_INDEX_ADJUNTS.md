@@ -16,11 +16,4 @@ Aquest índex recopila exclusivament arxius multimèdia de coneixement (imatges,
 - ![[ALLEGACIONS_MEV_EDITABLE.pdf]]
 - ![[WhatsApp Audio 2026-07-15 at 20.15.54.opus]]
 - ![[audio.m4a]]
-- ![[nano_porta_del_mas.png]]
-- ![[nano_porta_masia_roure_1774195469079.png]]
-- ![[que-es-socdepoble-1.jpg]]
-- ![[que-es-socdepoble-2.jpg]]
-- ![[que-es-socdepoble-3.jpg]]
-- ![[que-es-socdepoble-4.jpg]]
-
 **Ancoratge de Seguretat:** [[00_INDEX]]

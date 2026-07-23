@@ -17,10 +17,10 @@ necessiten revisió abans d'usar-les com a norma:
 - [[plantilla_planificacio|Plantilla Planificació]]
 - [[plantilla_acta_unica|Plantilla Acta Única]]
 - [[plantilla_prompt_iso|Plantilla Prompt ISO històrica]]
-- [[02_ACTUAR_Maquina_Tecnica/plantilles/PLANTILLA_ISO_SDP|Plantilla ISO SDP v2]]
+- [[PLANTILLA_ISO_SDP|Plantilla ISO SDP v2]]
 
 ---
-**Arxiu relacionat:** [[04_ARXIU_Documents_Historics/actes_arxivades/90_arxiu_historic|Arxiu històric]]
+**Arxiu relacionat:** [[00_MEMORIAL_Lapides#90_arxiu_historic|Arxiu històric †]]
 
 
 ## Taxonomia

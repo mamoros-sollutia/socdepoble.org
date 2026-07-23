@@ -39,6 +39,7 @@ El treball editorial temporal pot passar per ací. En tancar-lo, el coneixement 
 - [[DOC_Governanca]]
 - [[ESTANDARD_Pedra_Seca]]
 - [[00_arquitectura_tecnica_unificada]]
+- [[Sistema_Immunitari]]
 
 `[[00_BIOS]]` és una redirecció històrica i `[[FORJA_TO_CORE]]` una proposta
 futura; no són punts d'arrencada ni gates actius.

@@ -1,3 +1,7 @@
+> [!NOTE] 🗃️ **Arxiu Físic de les Al·legacions**
+> Aquest document conté únicament el coneixement extret en text pla (Markdown). Els documents originals (PDFs i DOCX presentats amb firma, documents en blanc, etc.) s'han traslladat al magatzem de la Coordinadora:
+> 📁 Ruta: `public/assets/uploads/grup/ceec/alegacions_mev/`
+
 
 Ajuntament de Planes de la Baronia
 Plaça de Dalt Vila,1, 03828 Planes 

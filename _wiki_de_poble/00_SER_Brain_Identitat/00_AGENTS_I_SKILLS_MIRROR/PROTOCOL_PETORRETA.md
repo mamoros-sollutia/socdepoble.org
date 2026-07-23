@@ -72,20 +72,8 @@ L'arxiu massiu germà `_arxiu_wiki_de_poble` és custòdia humana externa i nom�
 
 ## P-11. Durabilitat i verd honest
 
-Existir al disc no equival a formar part del sistema durable. `doctor` ha de
-comprovar que regles, scripts, hooks i workflow CI crítics són fitxers físics
-vàlids i estan seguits per Git. Fins que un commit atòmic autoritzat els
-incorpore, el diagnòstic correcte és roig encara que totes les proves locals
-passen. Cap agent pot convertir eixe roig en verd relaxant el diagnòstic.
+Existir al disc no equival a formar part del sistema durable. `doctor` ha de comprovar que regles, scripts, hooks i workflow CI crítics són fitxers físics vàlids i estan seguits per Git. Fins que un commit atòmic autoritzat els incorpore, el diagnòstic correcte és roig encara que totes les proves locals passen. Cap agent pot convertir eixe roig en verd relaxant el diagnòstic.
 
 ## P-12. Temporals i derivats reproduïbles
 
-Les proves poden escriure exclusivament dins d’un directori temporal privat i
-eliminar-lo al final. Un build o instal·lació pot generar `node_modules`,
-`dist`, `_build`, cache o artefactes ignorats tant en local com dins d’un runner
-CI descartable, sempre amb lockfile congelat quan siga aplicable i sempre que
-no modifique fonts, lockfiles, índex Git, secrets, dades externes, publicacions
-ni desplegaments. Els scripts de lifecycle no poden tindre efectes externs no
-revisats. Eixos derivats no necessiten una Petorreta perquè no són estat
-autoritatiu i es poden regenerar. Qualsevol promoció d’un derivat a font,
-publicació o efecte extern torna immediatament a P-01.
+Les proves poden escriure exclusivament dins d’un directori temporal privat i eliminar-lo al final. Un build o instal·lació pot generar `node_modules`, `dist`, `_build`, cache o artefactes ignorats tant en local com dins d’un runner CI descartable, sempre amb lockfile congelat quan siga aplicable i sempre que no modifique fonts, lockfiles, índex Git, secrets, dades externes, publicacions ni desplegaments. Els scripts de lifecycle no poden tindre efectes externs no revisats. Eixos derivats no necessiten una Petorreta perquè no són estat autoritatiu i es poden regenerar. Qualsevol promoció d’un derivat a font, publicació o efecte extern torna immediatament a P-01.

@@ -48,10 +48,7 @@ Ací estem per al que faça falta. Un projecte lliure per als pobles connectats.
 
 #### 🖼️ Els 4 Cartells Fundacionals (La Llavor del Projecte)
 
-![[02_ACTUAR_Maquina_Tecnica/assets/que-es-socdepoble-1.jpg|Cartell 1: Característiques]]
-![[02_ACTUAR_Maquina_Tecnica/assets/que-es-socdepoble-2.jpg|Cartell 2: Eines]]
-![[02_ACTUAR_Maquina_Tecnica/assets/que-es-socdepoble-3.jpg|Cartell 3: Comunitat]]
-![[02_ACTUAR_Maquina_Tecnica/assets/que-es-socdepoble-4.jpg|Cartell 4: Participació]]
+*(Nota de l'Arquitecta: Els cartells originals de Sóc de Poble s'han traslladat al Magatzem/Vault Multimèdia per a no sobrecarregar el cervell pur d'Obsidian).*
 
 *(A la ment colmena: L'objectiu original i l'actual són el mateix: el Mas. Només han canviat les eines per fer-ho realitat amb Pedra Seca i la IA).*
 

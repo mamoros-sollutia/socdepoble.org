@@ -1,0 +1,157 @@
+{
+  "id": "R-1784722064296",
+  "data": "2026-07-22T12:07:44.296Z",
+  "operacions": [
+    {
+      "id": "OP-001",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/00_INDEX.md",
+      "objectius": [
+        "LLEI_00_Privacitat"
+      ],
+      "hashFont": "c21c4624293be6a986540182494c6627030e3830c4f2e5e50e914b6c8f1bf552"
+    },
+    {
+      "id": "OP-002",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/00_SER_Brain_Identitat/el_projecte.md",
+      "objectius": [
+        "02_ACTUAR_Maquina_Tecnica/assets/que-es-socdepoble-1.jpg",
+        "02_ACTUAR_Maquina_Tecnica/assets/que-es-socdepoble-2.jpg",
+        "02_ACTUAR_Maquina_Tecnica/assets/que-es-socdepoble-3.jpg",
+        "02_ACTUAR_Maquina_Tecnica/assets/que-es-socdepoble-4.jpg"
+      ],
+      "hashFont": "0e3539151af27cc3b8000af4ceef6dd35356303b75f8ce9591cd697633b55323"
+    },
+    {
+      "id": "OP-003",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/01_SABER_Cultura_Coneixement/00_visio_i_pilars.md",
+      "objectius": [
+        "02_ACTUAR_Maquina_Tecnica/assets/que-es-socdepoble-1.jpg",
+        "02_ACTUAR_Maquina_Tecnica/assets/que-es-socdepoble-2.jpg",
+        "02_ACTUAR_Maquina_Tecnica/assets/que-es-socdepoble-3.jpg",
+        "02_ACTUAR_Maquina_Tecnica/assets/que-es-socdepoble-4.jpg"
+      ],
+      "hashFont": "10d70fc6e2b89991a3e5baeb1332c645a8147f6387e0e466dc0f9c8ac743e13d"
+    },
+    {
+      "id": "OP-004",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/00_arquitectura_tecnica_unificada.md",
+      "objectius": [
+        "les_petorretes"
+      ],
+      "hashFont": "525100c8093824a2fc7d7207c196eb00fc51430c16277b5ca458ed541066da83"
+    },
+    {
+      "id": "OP-005",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/00_plantilles.md",
+      "objectius": [
+        "02_ACTUAR_Maquina_Tecnica/plantilles/PLANTILLA_ISO_SDP",
+        "04_ARXIU_Documents_Historics/actes_arxivades/90_arxiu_historic"
+      ],
+      "hashFont": "ac94283cbf03b8dfcd7cc5335a1690b04323278b8e0ba2fd812e7792b3270c5e"
+    },
+    {
+      "id": "OP-006",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/AUDITORIA_CANONICA.md",
+      "objectius": [
+        "les_petorretes"
+      ],
+      "hashFont": "2e7950088b3324f9e6ca1fe7542eeb28ba217246561a6f59556adfb2f1560c66"
+    },
+    {
+      "id": "OP-007",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/04_ARXIU_Documents_Historics/alegacions.md"
+    },
+    {
+      "id": "OP-008",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_0400_ACTA_SESSIO_Tancament_Gran_Auditoria.md"
+    },
+    {
+      "id": "OP-009",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md"
+    },
+    {
+      "id": "OP-010",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260716_1300_ACTA_SESSIO_Problema_Sincronitzacio_Skills.md"
+    },
+    {
+      "id": "OP-011",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260719_0345_PROMPT_Auditoria_Suprema_Consell.md"
+    },
+    {
+      "id": "OP-012",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260719_0415_ACTA_SESSIO_La_Gran_Destillacio.md"
+    },
+    {
+      "id": "OP-013",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260719_0430_ACTA_MARMOTA_Tancament_Sessio_Purga.md"
+    },
+    {
+      "id": "OP-014",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260719_1632_PROMPT_Consell_Genoma.md"
+    },
+    {
+      "id": "OP-015",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260719_2000_PROMPT_Auditoria_Arquitectura_IAs.md"
+    },
+    {
+      "id": "OP-016",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260720_0235_BRIEFING_Recopilacio_d_Oportunitats_de_Subvencions_Valencianes_per_a_2026.md"
+    },
+    {
+      "id": "OP-017",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260720_0235_PROMPT_Estrategia_Financament_i_Subvencions_per_a_la_Resiliencia_Comunitaria.md"
+    },
+    {
+      "id": "OP-018",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260720_0300_ACTA_MARMOTA_Tancament_Sessio_Festiva.md"
+    },
+    {
+      "id": "OP-019",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260720_0405_ACTA_SESSIO_Tancament_Financament.md"
+    },
+    {
+      "id": "OP-020",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260721_ACTA_SESSIO_NLnet_i_Burocracia.md"
+    },
+    {
+      "id": "OP-021",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260722_1300_ACTA_SESSIO_Tancament.md"
+    },
+    {
+      "id": "OP-022",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260722_1300_BRIEFING_Subvencions.md"
+    },
+    {
+      "id": "OP-023",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/BRIEFING_Viabilitat_Economica_Legal.md"
+    },
+    {
+      "id": "OP-024",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/PROPOSTA_UI_OBSIDIAN.md"
+    }
+  ]
+}

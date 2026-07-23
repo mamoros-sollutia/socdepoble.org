@@ -79,6 +79,25 @@ Una captura és evidència si aporta informació a la tasca. S’analitza, es cl
 ## Criteri d’èxit
 El Consell ha funcionat quan deixa una decisió més verificable: supòsits visibles, riscos prioritzats, codi o pautes comprovables i una llista curta d’incerteses que encara requerixen l’humà.
 
+## Annex de Skills i Fluxos
+Per garantir el correcte funcionament i l'aprenentatge de l'equip IA, aquests són els mòduls operatius integrats al cervell:
+- [[01_context_i_principis]]
+- [[02_workflow_execucio]]
+- [[03_regles_arquitectura_i_dades]]
+- [[04_criteris_producte_i_disseny]]
+- [[AGENTS]]
+- [[README]]
+- [[SKILL_campanyes-activisme]]
+- [[SKILL_natura-patrimoni]]
+- [[SKILL_socdepoble-autosanacio]]
+- [[SKILL_socdepoble-civic]]
+- [[SKILL_socdepoble-llm-wiki]]
+- [[SKILL_socdepoble-operate]]
+- [[SKILL_socdepoble-workflow]]
+
+### Eines Addicionals
+- [[pdf_clean_generator.sh]]
+
 ## Taxonomia
 - **Categoria:** [[Identitat]]
 - **Etiquetes:** [[Graf]]
