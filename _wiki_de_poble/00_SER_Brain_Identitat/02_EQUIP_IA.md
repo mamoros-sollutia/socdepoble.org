@@ -107,7 +107,7 @@ Per garantir el correcte funcionament i l'aprenentatge de l'equip IA, aquests s√
 - [[SKILL_socdepoble-workflow]]
 
 ### Eines Addicionals
-- [[pdf_clean_generator.sh]]
+- [[00_MEMORIAL_Lapides#pdf_clean_generator.sh|pdf_clean_generator.sh ‚Ä†]]
 
 ## Taxonomia
 - **Categoria:** [[Identitat]]
