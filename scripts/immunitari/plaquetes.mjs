@@ -121,6 +121,31 @@ function llistaFitxers(dir) {
   return results;
 }
 
+function llistaBrossa(dir) {
+  let results = [];
+  if (!fs.existsSync(dir)) return results;
+  const list = fs.readdirSync(dir);
+  for (let file of list) {
+    if (file.startsWith('.')) continue;
+    const p = path.join(dir, file);
+    const stat = fs.statSync(p);
+    if (stat && stat.isDirectory()) {
+      results = results.concat(llistaBrossa(p));
+    } else {
+      if (file.endsWith('.zip')) {
+        results.push(p);
+      } else if (file.endsWith('.mjs') && (p.includes('quarantena') || p.includes('Bandeja_d_Entrada'))) {
+        results.push(p);
+      } else if (file.endsWith('.json') && p.includes('quarantena')) {
+        results.push(p);
+      } else if (file === 'metadata_schema.json' && p.includes('03_GOVERNAR')) {
+        results.push(p);
+      }
+    }
+  }
+  return results;
+}
+
 if (cmd === 'diagnostic') {
   console.log("🩸 Rastrejant el graf...");
   const isPorta = args.includes('--porta');
@@ -160,6 +185,9 @@ if (cmd === 'diagnostic') {
       orfes.push(f);
     }
   });
+  
+  const brossa = llistaBrossa(vaultDir);
+  buits = buits.concat(brossa);
 
   if (isPorta) {
     if (!fs.existsSync(BASELINE_PATH)) {
@@ -272,7 +300,11 @@ if (cmd === 'aplica') {
       
       let txt = fs.readFileSync(fPath, 'utf8');
       op.objectius.forEach(obj => {
-        txt = txt.split(`[[${obj}]]`).join(`[[${config.memorialLapides}#${obj}|${obj} †]]`);
+        if (op.fitxer.includes('INDEX')) {
+          txt = txt.split('\n').filter(line => !line.includes(`[[${obj}]]`) && !line.includes(`[[${config.memorialLapides}#${obj}|`)).join('\n');
+        } else {
+          txt = txt.split(`[[${obj}]]`).join(`[[${config.memorialLapides}#${obj}|${obj} †]]`);
+        }
       });
       escriuAtomic(fPath, txt);
       
