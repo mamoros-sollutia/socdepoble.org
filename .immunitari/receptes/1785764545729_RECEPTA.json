@@ -1,0 +1,85 @@
+{
+  "id": "R-1785764545729",
+  "data": "2026-08-03T13:42:25.729Z",
+  "operacions": [
+    {
+      "id": "OP-001",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md",
+      "objectius": [
+        "alegacions"
+      ],
+      "hashFont": "a2883ee4ea0cce04d881b30407bc9bad1c6abcdadf4c4cf6e751beff4dad47b7"
+    },
+    {
+      "id": "OP-002",
+      "tipus": "DESTRUEIX",
+      "fitxer": "_wiki_de_poble/AUDITORIA_AGOST_2026_SEIENT_5.md"
+    },
+    {
+      "id": "OP-003",
+      "tipus": "DESTRUEIX",
+      "fitxer": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/metadata_schema.json"
+    },
+    {
+      "id": "OP-004",
+      "tipus": "DESTRUEIX",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/00_Bandeja_d_Entrada/Entregables_Auditoria_Agost.zip"
+    },
+    {
+      "id": "OP-005",
+      "tipus": "DESTRUEIX",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/Cervell_i_Codi_Agost.zip"
+    },
+    {
+      "id": "OP-006",
+      "tipus": "DESTRUEIX",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/quarantena_scripts/audit_result.json"
+    },
+    {
+      "id": "OP-007",
+      "tipus": "DESTRUEIX",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/quarantena_scripts/test-genai.mjs"
+    },
+    {
+      "id": "OP-008",
+      "tipus": "DESTRUEIX",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/quarantena_scripts/test-imagen-2.mjs"
+    },
+    {
+      "id": "OP-009",
+      "tipus": "DESTRUEIX",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/quarantena_scripts/test-imagen-models.mjs"
+    },
+    {
+      "id": "OP-010",
+      "tipus": "DESTRUEIX",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/quarantena_scripts/test-imagen.mjs"
+    },
+    {
+      "id": "OP-011",
+      "tipus": "DESTRUEIX",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/quarantena_scripts/test-models.mjs"
+    },
+    {
+      "id": "OP-012",
+      "tipus": "DESTRUEIX",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/quarantena_scripts/test_cervell.mjs"
+    },
+    {
+      "id": "OP-013",
+      "tipus": "DESTRUEIX",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/quarantena_scripts/test_function_call.mjs"
+    },
+    {
+      "id": "OP-014",
+      "tipus": "DESTRUEIX",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/quarantena_scripts/test_gemini.mjs"
+    },
+    {
+      "id": "OP-015",
+      "tipus": "DESTRUEIX",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/quarantena_scripts/test_models.mjs"
+    }
+  ]
+}
