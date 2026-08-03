@@ -18,3 +18,4 @@
 - [2026-08-03T13:21:44.260Z] Enllaç tancat a _wiki_de_poble/05_Escriptori_Soc_de_Poble/quarantena_scripts/00_INDEX_QUARANTENA.md (apuntava a: test_models.mjs)
 - [2026-08-03T13:21:44.364Z] Enllaç tancat a _wiki_de_poble/90_arxiu_historic/260715_0400_ACTA_SESSIO_Tancament_Gran_Auditoria.md (apuntava a: 00_MEMORIAL_Lapides)
 - [2026-08-03T13:21:44.451Z] Enllaç tancat a _wiki_de_poble/90_arxiu_historic/260716_1300_ACTA_SESSIO_Problema_Sincronitzacio_Skills.md (apuntava a: 00_MEMORIAL_Lapides)
+- [2026-08-03T13:21:44.545Z] Enllaç tancat a _wiki_de_poble/90_arxiu_historic/260719_0345_PROMPT_Auditoria_Suprema_Consell.md (apuntava a: 00_MEMORIAL_Lapides)
