@@ -24,3 +24,4 @@
 - [[00_plantilles]]
 - [[plantilla_skill_trellat]]
 - [[ADR-2026-08-ONLINE-FIRST]]
+- [[ESTANDARD_Tokens_Pedra_Seca]]
