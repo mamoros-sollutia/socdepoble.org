@@ -1,0 +1,15 @@
+{
+  "id": "R-1785763644053",
+  "data": "2026-08-03T13:27:24.053Z",
+  "operacions": [
+    {
+      "id": "OP-001",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md",
+      "objectius": [
+        "alegacions"
+      ],
+      "hashFont": "a2883ee4ea0cce04d881b30407bc9bad1c6abcdadf4c4cf6e751beff4dad47b7"
+    }
+  ]
+}

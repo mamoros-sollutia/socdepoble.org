@@ -1,0 +1,29 @@
+{
+  "id": "R-1785763880477",
+  "data": "2026-08-03T13:31:20.477Z",
+  "operacions": [
+    {
+      "id": "OP-001",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/00_INDEX.md",
+      "objectius": [
+        "AUDITORIA_AGOST_2026_SEIENT_5",
+        "AUDITORIA_AGOST_2026",
+        "audit-machine",
+        "PROFILE",
+        "PROTOCOL_CHANGE"
+      ],
+      "hashFont": "508130f13fa3e58ae32c82c3d258bd2659eb14cf824cd7af855c3256f7ec8883"
+    },
+    {
+      "id": "OP-002",
+      "tipus": "DESTRUEIX",
+      "fitxer": "_wiki_de_poble/Sollutia.md"
+    },
+    {
+      "id": "OP-003",
+      "tipus": "DESTRUEIX",
+      "fitxer": "_wiki_de_poble/alegacions.md"
+    }
+  ]
+}
