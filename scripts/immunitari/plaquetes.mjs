@@ -301,7 +301,8 @@ if (cmd === 'aplica') {
       let txt = fs.readFileSync(fPath, 'utf8');
       op.objectius.forEach(obj => {
         if (op.fitxer.includes('INDEX')) {
-          txt = txt.split('\n').filter(line => !line.includes(`[[${obj}]]`) && !line.includes(`[[${config.memorialLapides}#${obj}|`)).join('\n');
+          const regex = new RegExp(`\\[\\[${obj}(?:\\|[^\\]]+)?\\]\\]`);
+          txt = txt.split('\n').filter(line => !regex.test(line) && !line.includes(`[[${config.memorialLapides}#${obj}|`)).join('\n');
         } else {
           txt = txt.split(`[[${obj}]]`).join(`[[${config.memorialLapides}#${obj}|${obj} †]]`);
         }

@@ -48,7 +48,6 @@ Aquest document serveix per a **ancorar al cervell** totes les notes temporals, 
 - [[260720_0235_PROMPT_Estrategia_Financament_i_Subvencions_per_a_la_Resiliencia_Comunitaria]]
 
 ## 🗃️ Adopcions de l'Arxiu
-- [[alegacions|Alegacions MEV]]
 
 ---
 > *"Un escriptori ordenat és l'avantsala d'una ment eficient. Que no quede cap paper solt."*
