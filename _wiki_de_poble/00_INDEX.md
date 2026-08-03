@@ -20,3 +20,4 @@
 - [[Arquitectura_La_Forja]]
 - [[Arquitectura_Sistema_Nervios]]
 - [[connexio_radical]]
+- [[fadrins_i_fadrines]]
