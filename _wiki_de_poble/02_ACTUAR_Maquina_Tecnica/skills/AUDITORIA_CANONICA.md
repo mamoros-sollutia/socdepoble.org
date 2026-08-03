@@ -1,8 +1,15 @@
 ---
-estat: "canonic"
-tipus: "skill"
+estat: canonic
+tipus: skill
 description: "Protocol de lectura per auditar l’arquitectura 4+2, el frontmatter v2 i el graf sense modificar la Wiki."
-temes: ["sistema"]
+temes:
+- sistema
+tags:
+- dev
+- maquina
+- skills
+- socdepoble
+- tecnica
 ---
 # Auditoria canònica de la Wiki
 
@@ -97,4 +104,9 @@ Auditar no modifica fitxers. Escriure un informe, corregir YAML, moure una nota,
 ---
 **Categoria:** [[skills]]
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX]]
+
+
+---
+
 **Ancoratge de Seguretat:** [[00_INDEX]]

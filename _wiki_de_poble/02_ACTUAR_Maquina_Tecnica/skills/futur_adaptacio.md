@@ -1,8 +1,15 @@
 ---
-estat: "canonic"
-tipus: "skill"
+estat: canonic
+tipus: skill
 description: "Defineix com experimentar amb IA local i RAG sense convertir prototips futurs en garanties del sistema."
-temes: ["sistema"]
+temes:
+- sistema
+tags:
+- dev
+- maquina
+- skills
+- socdepoble
+- tecnica
 ---
 # Adaptació futura amb veto A10
 
@@ -67,4 +74,9 @@ Qualsevol experiment que haja de modificar coneixement, configuració o codi seg
 ---
 **Categoria:** [[skills]]
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX]]
+
+
+---
+
 **Ancoratge de Seguretat:** [[00_INDEX]]

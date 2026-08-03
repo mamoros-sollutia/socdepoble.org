@@ -1,8 +1,16 @@
 ---
-estat: "canonic"
-tipus: "identitat"
-description: "Mirall automàtic de 02_workflow_execucio.md"
-temes: ["iaia-maria", "sistema"]
+estat: canonic
+tipus: identitat
+description: Mirall automàtic de 02_workflow_execucio.md
+temes:
+- iaia-maria
+- sistema
+tags:
+- core
+- genoma
+- identitat
+- skills
+- socdepoble
 ---
 
 # Agent 02: Workflow d'execució
@@ -96,3 +104,8 @@ Sempre que siga viable:
 4. executar una verificació proporcional al canvi (`build`, prova manual o revisió focalitzada).
 5. si hi ha commit, auditar l’arbre preparat exacte i consumir només el rebut
    `git-commit` vinculat al commit resultant.
+
+
+---
+
+**Ancoratge de Seguretat:** [[00_INDEX]]

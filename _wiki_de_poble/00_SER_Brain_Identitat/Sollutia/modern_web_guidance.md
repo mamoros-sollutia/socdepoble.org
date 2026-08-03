@@ -1,8 +1,16 @@
 ---
 description: "Search tool for modern web development best practices. MANDATORY: Execute FIRST for all HTML/CSS and clientside JS tasks. Do NOT s..."
-estat: "canonic"
-tipus: "skill"
-temes: ["sistema"]
+estat: canonic
+tipus: skill
+temes:
+- sistema
+tags:
+- core
+- genoma
+- identitat
+- socdepoble
+- sollutia
+- subvencions
 ---
 
 # Modern Web Guidance
@@ -108,4 +116,9 @@ If the output is truncated, you must repeat the command but redirect to a file a
 ---
 **Categoria:** [[Sollutia]]
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX]]
+
+
+---
+
 **Ancoratge de Seguretat:** [[00_INDEX]]

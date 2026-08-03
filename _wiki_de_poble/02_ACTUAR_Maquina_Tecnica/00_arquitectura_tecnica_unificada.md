@@ -1,9 +1,16 @@
 ---
-estat: "canonic"
-tipus: "document"
+estat: canonic
+tipus: document
 description: "Separa l'arquitectura implementada de les decisions vigents i de la visió tècnica futura."
-aliases: ["Arquitectura tècnica"]
-temes: ["sistema"]
+aliases:
+- Arquitectura tècnica
+temes:
+- sistema
+tags:
+- dev
+- maquina
+- socdepoble
+- tecnica
 ---
 # Arquitectura tècnica unificada
 
@@ -116,10 +123,19 @@ Fins que es complisquen els set punts, Antigravity ha de dir «proposat» o «no
 - [[self_repair]]
 - [[successio_lazaro_execucio]]
 
+### Eines d'Obsidian (Plugins i Workflow)
+- [[Homepage]]
+- [[Plugins]]
+
 
 ## Taxonomia
 - **Categoria:** [[Maquina]]
 - **Etiquetes:** [[Graf]]
 
+
+**Ancoratge de Seguretat:** [[00_INDEX]]
+
+
+---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]

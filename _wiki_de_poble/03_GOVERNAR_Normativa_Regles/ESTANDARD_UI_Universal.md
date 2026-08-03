@@ -1,8 +1,14 @@
 ---
-estat: "canonic"
-tipus: "norma"
+estat: canonic
+tipus: norma
 description: "Distingix el contracte UI verificat de l'annex històric absolutista que encara no està implementat com a gate."
-temes: ["sistema"]
+temes:
+- sistema
+tags:
+- govern
+- normativa
+- regles
+- socdepoble
 ---
 # Estàndard UI Universal
 
@@ -252,5 +258,10 @@ Una Targeta Universal té 4 grans blocs obligatoris/opcionals en ordre descenden
 - **Categoria:** [[Govern]]
 - **Etiquetes:** [[Graf]]
 
+
+**Ancoratge de Seguretat:** [[00_INDEX]]
+
+
+---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]

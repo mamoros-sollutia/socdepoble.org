@@ -1,8 +1,15 @@
 ---
-estat: "esborrany"
-tipus: "plantilla"
+estat: esborrany
+tipus: plantilla
 description: "Plantilla per registrar decisions, canvis, riscos i continuïtat entre sessions de treball."
-temes: ["sistema"]
+temes:
+- sistema
+tags:
+- acta_marmota
+- dev
+- maquina
+- socdepoble
+- tecnica
 ---
 <!-- Nom en disc ha de seguir OBLIGATÒRIAMENT: YYMMDD_HHMM_ACTA_Sessio_Titol_Hiper_Descriptiu_Llarg_Fins_A_20_Paraules.md -->
 <!-- És VITAL que el títol siga molt llarg i descriptiu (8-20 paraules) perquè en llegir el nom de l'arxiu des del mur o el graf sàpigues exactament què hi ha dins sense necessitat d'obrir-lo per reduir l'I/O. -->

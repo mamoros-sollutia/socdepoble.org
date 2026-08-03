@@ -1,6 +1,14 @@
 ---
 name: campanyes-activisme
-description: Guia arquitectònica i de disseny per a reproduir l'experiència, fricció zero i funcionalitats de Change.org dins del mòdul de Campanyes de Sóc de Poble.
+description: "Guia arquitectònica i de disseny per a reproduir l'experiència, fricció zero i funcionalitats de Change.org dins del mòdul de Campanyes de Sóc de Poble."
+estat: auditat
+tipus: document
+tags:
+- core
+- genoma
+- identitat
+- skills
+- socdepoble
 ---
 
 # Skill: Campanyes d'Activisme (Estil Change.org)
@@ -84,3 +92,8 @@ Tota la implementació ha de respectar les lleis del projecte mare:
 1. **Aïllament:** Tot el codi anirà dins de `src/sections/campanyes/`. No escampar funcions pel core de l'app.
 2. **Disseny Pedra Seca:** Estrictament prohibit importar llibreries de components externs (ni Material, ni Bootstrap). S'han d'utilitzar les variables CSS globals (`var(--color-primary)`, `var(--border-radius)`, etc.) per a garantir la coherència gràfica.
 3. **Resiliència (Motor Offline):** Enviar una signatura ha de ser optimista. S'actualitza el comptador de la pantalla a l'instant, es guarda en IndexedDB local i s'intenta enviar a Supabase per darrere. Si no hi ha internet, la signatura s'enviarà quan el mòbil recupere la connexió. L'usuari mai ha de veure un "Error de xarxa" al moment de signar.
+
+
+---
+
+**Ancoratge de Seguretat:** [[00_INDEX]]

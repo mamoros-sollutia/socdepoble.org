@@ -1,8 +1,16 @@
 ---
 description: "Guides debugging and optimizing Largest Contentful Paint (LCP) using Chrome DevTools MCP tools. Use this skill whenever the user a..."
-estat: "canonic"
-tipus: "skill"
-temes: ["sistema"]
+estat: canonic
+tipus: skill
+temes:
+- sistema
+tags:
+- core
+- genoma
+- identitat
+- socdepoble
+- sollutia
+- subvencions
 ---
 
 ## What is LCP and why it matters
@@ -131,4 +139,9 @@ The HTML document itself takes too long to arrive.
 ---
 **Categoria:** [[Sollutia]]
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX]]
+
+
+---
+
 **Ancoratge de Seguretat:** [[00_INDEX]]

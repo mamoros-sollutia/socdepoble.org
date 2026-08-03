@@ -1,8 +1,14 @@
 ---
-estat: "canonic"
-tipus: "plantilla"
+estat: canonic
+tipus: plantilla
 description: "Plantilla per convertir un objectiu en fases, dependències, riscos i criteris d'acceptació."
-temes: ["sistema"]
+temes:
+- sistema
+tags:
+- dev
+- maquina
+- socdepoble
+- tecnica
 ---
 # Planificació Pro (L'Arquitectura del Marge)
 **Categoria:** Plantilla

@@ -1,8 +1,16 @@
 ---
-estat: "canonic"
-tipus: "identitat"
-description: "Mirall automàtic de 03_regles_arquitectura_i_dades.md"
-temes: ["iaia-maria", "sistema"]
+estat: canonic
+tipus: identitat
+description: Mirall automàtic de 03_regles_arquitectura_i_dades.md
+temes:
+- iaia-maria
+- sistema
+tags:
+- core
+- genoma
+- identitat
+- skills
+- socdepoble
 ---
 
 # Agent 03: Regles d'arquitectura i dades
@@ -114,3 +122,8 @@ Seguint el dictamen de l'Auditoria Sènior (SDP-PETORRETA-047), la migració des
 4. **Llei de Sentit Únic.** Prohibit qualsevol import creuat entre l'ecosistema nou i l'antic. S'aplica bloqueig mecànic si el codi nou apunta a rutes velles.
 5. **El Tractor Mestre com a Duana.** Cada *feature* migrada ha de passar validació d'AST i les regles de Pedra Seca (zero dependencies heretades brutes, zero colors fora de token, hitboxes de 44px) com a pas previ a integrar-se, no com un deute futur.
 6. **Dades a banda del codi.** Les dades antigues persistides s'exporten a JSON neutre i s'importen per la capa nova de persistència, validant l'esquema. No es copien arxius binaris o IndexedDBs creuats entre generacions.
+
+
+---
+
+**Ancoratge de Seguretat:** [[00_INDEX]]

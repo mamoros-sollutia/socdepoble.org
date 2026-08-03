@@ -1,0 +1,1481 @@
+{
+  "nom": "Prova_Farcell",
+  "data": "2026-08-02T18:59:41.189Z",
+  "arrel": "/home/claude/auditoria_test",
+  "totalFitxers": 287,
+  "foratsAdmesos": [
+    {
+      "ruta": "tooling/wiki/core/edge_rag.mjs",
+      "motiu": "import del bot"
+    },
+    {
+      "ruta": "scripts/generate-supabase-seed.sh",
+      "motiu": "script package.json"
+    },
+    {
+      "ruta": "scripts/enllacat-intelligent-wiki.mjs",
+      "motiu": "script package.json"
+    },
+    {
+      "ruta": "tooling/wiki/autoneteja_wiki.mjs",
+      "motiu": "script package.json"
+    },
+    {
+      "ruta": "tooling/wiki/sistema_nervios.mjs",
+      "motiu": "script package.json"
+    },
+    {
+      "ruta": "tooling/wiki/cura_robotomia.mjs",
+      "motiu": "script package.json"
+    },
+    {
+      "ruta": "tooling/wiki/tests",
+      "motiu": "script package.json: tooling/wiki/tests/*.test.mjs"
+    },
+    {
+      "ruta": "tooling/wiki/reflex_petorreta.mjs",
+      "motiu": "script package.json"
+    },
+    {
+      "ruta": "tooling/wiki/pre-commit.mjs",
+      "motiu": "script package.json"
+    }
+  ],
+  "fitxers": [
+    {
+      "ruta": ".agents/01_context_i_principis.md",
+      "bytes": 2953,
+      "sha256": "0377f0e98e2b3ddb67c68a6ad7f8592133afbda29c0d994b210c938d31d95ff4"
+    },
+    {
+      "ruta": ".agents/02_workflow_execucio.md",
+      "bytes": 2894,
+      "sha256": "367c3a919399e946b28db7d78ffe8568e2a384dd40bc941d5e4b692ad2a2d8d8"
+    },
+    {
+      "ruta": ".agents/03_regles_arquitectura_i_dades.md",
+      "bytes": 4435,
+      "sha256": "75a2c7208e0d013899bb95a6284258ad63febdae398a1a212a300da308232435"
+    },
+    {
+      "ruta": ".agents/04_criteris_producte_i_disseny.md",
+      "bytes": 2988,
+      "sha256": "dfc110b577aee027359346f13a7f5d3f8e9c263b2420504d4ec283ffc66dd226"
+    },
+    {
+      "ruta": ".agents/AGENTS.md",
+      "bytes": 7510,
+      "sha256": "24808932b3655dac110189b2c878facdd493081974a35a012df41fb6b1b40a88"
+    },
+    {
+      "ruta": ".agents/PROTOCOL_PETORRETA.md",
+      "bytes": 7211,
+      "sha256": "9809089bb77688e2a002da4594af4bddc3fe66a6a27e8d68a7b3a13bfbdf45b9"
+    },
+    {
+      "ruta": ".agents/README.md",
+      "bytes": 2157,
+      "sha256": "1ad70b22bd758b6b22af609988b9a3f3a98c7a86106213708a7e9892cb3ab173"
+    },
+    {
+      "ruta": ".agents/identity/PROFILE.md",
+      "bytes": 1575,
+      "sha256": "f58402f6d28e43d179ad939f21ab320e47ac06cb3dc6caf9e076a74d67f263fb"
+    },
+    {
+      "ruta": ".agents/manifest.yaml",
+      "bytes": 145,
+      "sha256": "7133d2fe2262e5d86141d8ffb1be7e7ce637fd3d8363ea74f10b9244b518a1fb"
+    },
+    {
+      "ruta": ".agents/skills/campanyes-activisme/SKILL.md",
+      "bytes": 5047,
+      "sha256": "c4cc5e0821e7a8b2b13fe0a1a8118da75fb01c874cdcec3e5500e06275d70ee4"
+    },
+    {
+      "ruta": ".agents/skills/defuddle/SKILL.md",
+      "bytes": 1123,
+      "sha256": "10673a4dc70a0a057612d443243ab7a5aa4abdd4a0fadc3f6eec5fd71ad5a971"
+    },
+    {
+      "ruta": ".agents/skills/json-canvas/SKILL.md",
+      "bytes": 7624,
+      "sha256": "97d1ae0728955c4203922753d5656890e5e4dd371b8306ea11884f9b510f1b85"
+    },
+    {
+      "ruta": ".agents/skills/json-canvas/references/EXAMPLES.md",
+      "bytes": 6476,
+      "sha256": "f5ce15a4b74643122396265e8c37c828874a4005794de2aee7030662968768eb"
+    },
+    {
+      "ruta": ".agents/skills/natura-patrimoni/SKILL.md",
+      "bytes": 2865,
+      "sha256": "dd48e5637a071db6d0b87d2bf1eb984a021c7fa112c4e211d12b2bc2e05d5420"
+    },
+    {
+      "ruta": ".agents/skills/obsidian-bases/SKILL.md",
+      "bytes": 13027,
+      "sha256": "c0037f20926c7d8591cdd040365e4c0e4c0c4146386a506f28f241faee9a27d9"
+    },
+    {
+      "ruta": ".agents/skills/obsidian-bases/references/FUNCTIONS_REFERENCE.md",
+      "bytes": 7538,
+      "sha256": "208fd63aead9bca1975626fea52605e6ab9434dc0529d923feb36b18b8877d3b"
+    },
+    {
+      "ruta": ".agents/skills/obsidian-cli/SKILL.md",
+      "bytes": 3183,
+      "sha256": "b54257cdc0e5d04488b35b0c797bfe427b24359f0848d3c73924dcacf8da6358"
+    },
+    {
+      "ruta": ".agents/skills/obsidian-markdown/SKILL.md",
+      "bytes": 5367,
+      "sha256": "7ad72e1f0a9081ed325e76b6402ad5de50a00e63e2341fd403a92f147234a007"
+    },
+    {
+      "ruta": ".agents/skills/obsidian-markdown/references/CALLOUTS.md",
+      "bytes": 1238,
+      "sha256": "9912ec2e3f8711f65b8ceb82cc19cbffc5e6f8ccf2ab627e18926c522c383d8b"
+    },
+    {
+      "ruta": ".agents/skills/obsidian-markdown/references/EMBEDS.md",
+      "bytes": 861,
+      "sha256": "63b6205507e28fb58cf200bc348a2b139e50ae739743e2e6316732148973cb7a"
+    },
+    {
+      "ruta": ".agents/skills/obsidian-markdown/references/PROPERTIES.md",
+      "bytes": 1149,
+      "sha256": "392953b5838c3ab3df135b5a914f100ae7b95e4501b6a2e5c8dc63da3ac7558b"
+    },
+    {
+      "ruta": ".agents/skills/socdepoble-autosanacio/SKILL.md",
+      "bytes": 4747,
+      "sha256": "e702f78e42becd65dbda3f53853f037578756bf597bbdd06835582dcbedd6462"
+    },
+    {
+      "ruta": ".agents/skills/socdepoble-autosanacio/scripts/audit.py",
+      "bytes": 2176,
+      "sha256": "1e827e2b0e4095a952fd253924034fc02f4e13423468838e8a3502c4ae96b917"
+    },
+    {
+      "ruta": ".agents/skills/socdepoble-autosanacio/scripts/normalize_yaml.py",
+      "bytes": 2304,
+      "sha256": "fd58be2e50ff2cf38a4b35d6f02e0140af9b9d16036a45554b8920eb3236c171"
+    },
+    {
+      "ruta": ".agents/skills/socdepoble-civic/SKILL.md",
+      "bytes": 2012,
+      "sha256": "7f0dd71f9049f87cc3bec00de5b5334c14504c2fda0e725e5b62ae2fd16aa970"
+    },
+    {
+      "ruta": ".agents/skills/socdepoble-iaia-actriu/SKILL.md",
+      "bytes": 3452,
+      "sha256": "91daf33b4c55b39630160fdba7bebb92d0c2b2f7d29d8a04602bee548a28af85"
+    },
+    {
+      "ruta": ".agents/skills/socdepoble-llm-wiki/SKILL.md",
+      "bytes": 3474,
+      "sha256": "c51be7b034e17cabd9539aa7a8c8cd21526f371d61842610859336f1f5915072"
+    },
+    {
+      "ruta": ".agents/skills/socdepoble-operate/SKILL.md",
+      "bytes": 7150,
+      "sha256": "5175ca28d2802cd61462c142825f500e70ea4fbea86de05aab96ada1160932df"
+    },
+    {
+      "ruta": ".agents/skills/socdepoble-workflow/SKILL.md",
+      "bytes": 6665,
+      "sha256": "490a4766089e4ee14b19bb0cf95604b1bf1fee785583b86d74dd2d0bc7769db0"
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/01_context_i_principis.md",
+      "bytes": 3187,
+      "sha256": "d4bb049fef03688fa94d63033fa758a3d36a3873a27503f93ff74d65f21a2082"
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/02_workflow_execucio.md",
+      "bytes": 3126,
+      "sha256": "51a8287a71b0371092484e9fab99679e5420aa8f281f12250b5945b13dbfed24"
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/03_regles_arquitectura_i_dades.md",
+      "bytes": 4677,
+      "sha256": "0808aba146730740a8c5f278cad1c4789f4addde0f96ba4278858e5ad38ab4be"
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/04_criteris_producte_i_disseny.md",
+      "bytes": 3230,
+      "sha256": "3c764dc129a7956710a086d8e2ff5923f9aa1abb1e7e2f6b441afe15d565d3b2"
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS.md",
+      "bytes": 7123,
+      "sha256": "f18553701d3e20f8afc84d3b88a2d74a4356b75405e5fb90cc2c17cec2a85323"
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/PROTOCOL_PETORRETA.md",
+      "bytes": 7453,
+      "sha256": "02764bfcb66629d44c94ae40a35db1935d05d97589e49ddc4715b31288524e1d"
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/README.md",
+      "bytes": 2375,
+      "sha256": "6ae87626ba4396f488cfdd232948fc8715d6405e0e3bd83660aa1de5963ee2d7"
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/SKILL_campanyes-activisme.md",
+      "bytes": 5183,
+      "sha256": "a29c744940469aa684ecedaaf9029bdf02f7abe3ae8b6fbbedd0a6896d6b5328"
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/SKILL_natura-patrimoni.md",
+      "bytes": 3003,
+      "sha256": "fd5dca4856299350069dd734e7b657431887ef5a0d402b114376a292c384d815"
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/SKILL_socdepoble-autosanacio.md",
+      "bytes": 4848,
+      "sha256": "c2124faf32d577d87bf1804f453df0761569ad80ede2724cd4d34aed9ebcc818"
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/SKILL_socdepoble-civic.md",
+      "bytes": 2148,
+      "sha256": "c7fc766ea4eae3366f9e6ba6a44d6742876398d349d1e6ed6d23a353c5f037bd"
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/SKILL_socdepoble-llm-wiki.md",
+      "bytes": 3575,
+      "sha256": "9df2d8ac4f6f2a31b0fbd81a3960761594977afa64d71005f0463fa2ca269ca1"
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/SKILL_socdepoble-operate.md",
+      "bytes": 7288,
+      "sha256": "f6803e03ace27a87a5d498e2222e5fc56b7c24d85cb6947a7b6e18f36ecfeee1"
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/SKILL_socdepoble-workflow.md",
+      "bytes": 6803,
+      "sha256": "54ae1370cdef7a182e66bdb5db1be8b9e5ddf10f538ecbb10972b87c9c341f09"
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/00_BIOS.md",
+      "bytes": 1762,
+      "sha256": "32f3c95e7281edd2e78467a2ece7191a507be0313f069ad49fa1d256c773ca73"
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md",
+      "bytes": 2398,
+      "sha256": "47a38fbbdee3194ae3b7380f35befc6fc492dd9c150f1493a01d9394a5822952"
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/01_IDENTITAT.md",
+      "bytes": 2676,
+      "sha256": "fb9f4e5c95af4b0c5fc5ad5922dc2b85556c3a4ae0856803d709b3659040704e"
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/02_EQUIP_IA.md",
+      "bytes": 11452,
+      "sha256": "07392f9a8c35786afed45e8facb8018b3fe9f373879af92df85c20057b392df5"
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/02_GENOTIP.md",
+      "bytes": 2392,
+      "sha256": "461fa1491cd08cfb371d94c6a12f2d88e584398b1a393144d89515b391cde0a5"
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/03_Consola_Termodinamica.md",
+      "bytes": 3318,
+      "sha256": "9c0f95b8019a010a904550dbcfafb7a971edd26de78c57786a32c1673cea2973"
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/CORE_Registre_Automillora.md",
+      "bytes": 25181,
+      "sha256": "c54f5af63eea3d4ad34924f5092066f6125c554f000e70cf4d3c67d8babec969"
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/DOC_Logos_Oficials.md",
+      "bytes": 1204,
+      "sha256": "891c63385cf0053abaeef0df4781a4413481eccbe54334f2f1b1e214de4794a5"
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/DOC_Taula_Mestra.md",
+      "bytes": 1029,
+      "sha256": "d1444b4813fcaf47c8d867313a72180704667c6895c9b9885bf7e4078878d5a1"
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/Soci_Sollutia.md",
+      "bytes": 7189,
+      "sha256": "cd0c61022df3928de1d8a7b3d68fe4d82d7b8c95efe5161245eea0dbe4fb8b21"
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/a11y_debugging.md",
+      "bytes": 5721,
+      "sha256": "44b8d8d39d16ce42bde0fc7237fac2e814227af57ccc4ddf46d757cc83fcfbd6"
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/chrome_devtools.md",
+      "bytes": 2451,
+      "sha256": "daa4e0af074902cb90e5adbc38983e477d6cb79145d5c9e00b5bf8ba3a72db69"
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/chrome_extensions.md",
+      "bytes": 23336,
+      "sha256": "975b28c0d0420cd6758c514526626717dc4bdd777dd3d6d4fee99afbb4bb0862"
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/debug_optimize_lcp.md",
+      "bytes": 6417,
+      "sha256": "b706776aa958fcc185ac789c28c07562dd0574ccb226511aaef788786b831cbf"
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/google_antigravity_sdk.md",
+      "bytes": 5127,
+      "sha256": "c722c0f70a225a6c94517558cf8bb66250717b9693a30cd5d51f169be04cfa7f"
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/memory_leak_debugging.md",
+      "bytes": 3006,
+      "sha256": "65e0530905a5a86b7dfee987bb949bc65c2045553d953c324961c3b2e651ea43"
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/modern_web_guidance.md",
+      "bytes": 4976,
+      "sha256": "65a10c0ff1f1dde260ff8aa9719e5b18a4a4d4b6a1589f06951aa7da2843b49d"
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/troubleshooting.md",
+      "bytes": 6573,
+      "sha256": "a03d3507c5a1f43c10dc4310062ae96df647ac9ab90a4def8c014a836d9b9623"
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/anatomia_cognitiva.md",
+      "bytes": 2464,
+      "sha256": "2d3a6576fe553550fd33a8c951729a26700cadf539d93538e39658de5a3ef965"
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/antigravity.md",
+      "bytes": 2248,
+      "sha256": "84fcab85366de46b9e47d94753e990f8c7f57eae4d97ec75534165fc9ffd8f8c"
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/connectors_mcp_disseny.md",
+      "bytes": 3065,
+      "sha256": "47138a61042d31e832a87819f3f6fc5437767e907f05155ff36c32a05204c605"
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/el_projecte.md",
+      "bytes": 5002,
+      "sha256": "be85b4b92401e3fe7baec5164d0b9f66d5186f1a77d1dfe5ed1cb06c7a1b4570"
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/identitat_visual.md",
+      "bytes": 5493,
+      "sha256": "3f312a0285965002692ea80e679502930e2d8deb5343b40d0e72e5d8c8e7cf9a"
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/perfil_psiquiatric.md",
+      "bytes": 10853,
+      "sha256": "a89d944e9796eecb34d08e2458b0e6cae89a53c645dc395af530b9b8843ead4a"
+    },
+    {
+      "ruta": "_wiki_de_poble/01_SABER_Cultura_Coneixement/00_GLOSSARI_CANONIC.md",
+      "bytes": 3705,
+      "sha256": "75a8e38a202bcf94ac0652c02c00480472a89514b63f12810a161193c7e25ae9"
+    },
+    {
+      "ruta": "_wiki_de_poble/01_SABER_Cultura_Coneixement/00_visio_i_pilars.md",
+      "bytes": 2634,
+      "sha256": "3c910ee29702abe0de97e6246a39ee5e248dce01c5fd4b06532eb5ea4c75d320"
+    },
+    {
+      "ruta": "_wiki_de_poble/01_SABER_Cultura_Coneixement/01_trellat.md",
+      "bytes": 1907,
+      "sha256": "975193f257aa3ca134afca4d4780e1726bca682b6c088f9c18d3bf1a10905268"
+    },
+    {
+      "ruta": "_wiki_de_poble/01_SABER_Cultura_Coneixement/Coneixement.md",
+      "bytes": 190,
+      "sha256": "1fa8dedaf55583d718bcf87d85e97d14ae022bb49a3d23352f966bba2a9c4ba2"
+    },
+    {
+      "ruta": "_wiki_de_poble/01_SABER_Cultura_Coneixement/Govern.md",
+      "bytes": 180,
+      "sha256": "6685b2c1928d2da767fc05391d9aa9584e749fac5116359f49e66b1af6f7af84"
+    },
+    {
+      "ruta": "_wiki_de_poble/01_SABER_Cultura_Coneixement/Graf.md",
+      "bytes": 176,
+      "sha256": "7b899327fb0a48e1a1932cc7108c950811b82469a698c1df0fdf70cb28e9a0f0"
+    },
+    {
+      "ruta": "_wiki_de_poble/01_SABER_Cultura_Coneixement/INDEX_TAXONOMIC.md",
+      "bytes": 1586,
+      "sha256": "2683e8ed0d1c0aba4fe649fa6414fcbb9d27e0f5169ef092118203c84c504f3d"
+    },
+    {
+      "ruta": "_wiki_de_poble/01_SABER_Cultura_Coneixement/Identitat.md",
+      "bytes": 186,
+      "sha256": "c43fd9be3d6bb3c95cb3ed233ce537be8d9de91595fc8e0e39df2efd4d465166"
+    },
+    {
+      "ruta": "_wiki_de_poble/01_SABER_Cultura_Coneixement/Llibre_Blanc_Produccio_Pedra_Seca.md",
+      "bytes": 4419,
+      "sha256": "f83c0d5589b363a9fcc843d531fefe5bb8fb0d3e3e83dd33b6257d4818e18994"
+    },
+    {
+      "ruta": "_wiki_de_poble/01_SABER_Cultura_Coneixement/Maquina.md",
+      "bytes": 182,
+      "sha256": "d5a61fba13cb581a77e2f711f6d757374701c41ccd72518555e735d238a0cf99"
+    },
+    {
+      "ruta": "_wiki_de_poble/01_SABER_Cultura_Coneixement/Sistema_Immunitari.md",
+      "bytes": 4843,
+      "sha256": "31f68eb4eb075907ca61ba1564eb1141c4b0b7700706aea6047e7c2be36c2ef1"
+    },
+    {
+      "ruta": "_wiki_de_poble/01_SABER_Cultura_Coneixement/codex_huma/Arquitectura_L_Anima.md",
+      "bytes": 2929,
+      "sha256": "6aaba9ddcd8342af07836eab1cc24d64c5796ea5ffeed314bdb707f293a378ba"
+    },
+    {
+      "ruta": "_wiki_de_poble/01_SABER_Cultura_Coneixement/codex_huma/Arquitectura_La_Forja.md",
+      "bytes": 2383,
+      "sha256": "789cbb622b07405deca6f2362765511363e6b5cff61d5a0a1d4b9785408600d0"
+    },
+    {
+      "ruta": "_wiki_de_poble/01_SABER_Cultura_Coneixement/codex_huma/Arquitectura_Protocol_Lazaro.md",
+      "bytes": 3492,
+      "sha256": "15b138911cf38550cf23fc7bb298df81ec974c820f23125d56f7fc85990f35c4"
+    },
+    {
+      "ruta": "_wiki_de_poble/01_SABER_Cultura_Coneixement/codex_huma/Arquitectura_Sistema_Nervios.md",
+      "bytes": 1977,
+      "sha256": "3cd26062c4a937773e0aad64c078c4d135ac691eff5d667b1440a977e9d56ef7"
+    },
+    {
+      "ruta": "_wiki_de_poble/01_SABER_Cultura_Coneixement/connexio_radical.md",
+      "bytes": 2189,
+      "sha256": "7cbb6c96095f0670b9d2f33777c4cc91f65e66d2930d9a55f16d6615c82d6ea5"
+    },
+    {
+      "ruta": "_wiki_de_poble/01_SABER_Cultura_Coneixement/la_torre/fadrins_i_fadrines.md",
+      "bytes": 2263,
+      "sha256": "dbbcb2e9e313f1ccdccb4ba9671dfba0350c135d400a1da6d5d6de8ed8de54b0"
+    },
+    {
+      "ruta": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/00_arquitectura_tecnica_unificada.md",
+      "bytes": 6165,
+      "sha256": "5aa7bca863a67ed5c9c1a05a803c99dffd976ea8a10bd3e25b112cd46eb409de"
+    },
+    {
+      "ruta": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/00_plantilles.md",
+      "bytes": 1129,
+      "sha256": "6e821efac81b7dbc88f27f56751151cac0bd5ceeff69d12ba15c1b6c5853e84d"
+    },
+    {
+      "ruta": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_acta_unica.md",
+      "bytes": 3289,
+      "sha256": "af315aa2208cc5e244f3ca8a4acd908130d5bcaca71b0db0175d7f8d5d9592db"
+    },
+    {
+      "ruta": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_brainstorming.md",
+      "bytes": 1939,
+      "sha256": "589d5ee8a287769f5c141c2d480d77a924ae7785f9868fbb48bf8d878ac41b65"
+    },
+    {
+      "ruta": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_branding.md",
+      "bytes": 2662,
+      "sha256": "88ca6d0ecc7768c232752cd7f8ef29054ffc13b6ae4cf866469499788c802ff0"
+    },
+    {
+      "ruta": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_creador_skills.md",
+      "bytes": 2419,
+      "sha256": "cd0ac46fcd6902d39dc403af337a8ce611734124638ead1ff0748a143ecf89b4"
+    },
+    {
+      "ruta": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_doc_to_app.md",
+      "bytes": 1949,
+      "sha256": "b41b4bb5a09b3b330d82386008b92cae4b3b280b3ff482fd498a20665380216d"
+    },
+    {
+      "ruta": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_modo_produccion.md",
+      "bytes": 1939,
+      "sha256": "11ac02d163652e9a2b76c74f117885baddff9eede22f37b2e2410e40cc2aa3a0"
+    },
+    {
+      "ruta": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_planificacio.md",
+      "bytes": 1737,
+      "sha256": "04d77f6e78375d5b12dda11d1cba1e099972103a31c6f8e45062e18d137ba6cc"
+    },
+    {
+      "ruta": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_prompt_iso.md",
+      "bytes": 10535,
+      "sha256": "f0864ed9897fece135a665032a2433f4a34145375822ecd0c38bc116a3ef5320"
+    },
+    {
+      "ruta": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_skill_trellat.md",
+      "bytes": 2231,
+      "sha256": "77524d22375ed67683d59d44eb15282a9158fe2be83d0aec88b409ba164eb5e5"
+    },
+    {
+      "ruta": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/SDP_LOCK.md",
+      "bytes": 2051,
+      "sha256": "e8004234a62009cef30e304bffea8b1cd7e07a5dedb328fd825aef3d83b0c747"
+    },
+    {
+      "ruta": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/obsidian_plugins/Homepage.md",
+      "bytes": 2106,
+      "sha256": "046cabbb9fe309118ab7a85536ce4b56543cec09bafbdd1a32fe9de33740a61a"
+    },
+    {
+      "ruta": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/obsidian_plugins/Plugins.md",
+      "bytes": 8955,
+      "sha256": "64170ec314aca9e6af51109381d5bbc3212d53a09f619acdd0276621faa68520"
+    },
+    {
+      "ruta": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/plantilles/PLANTILLA_ISO_SDP.md",
+      "bytes": 3129,
+      "sha256": "1a1ead5ddaad1dba84ca73da9706a57c6ad9b67ae2babd7c111f501314d670fc"
+    },
+    {
+      "ruta": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/AUDITORIA_CANONICA.md",
+      "bytes": 3274,
+      "sha256": "8bed6112d4884c6a90d1da91190d68dc183d6ab2970e2f30504544092d58364d"
+    },
+    {
+      "ruta": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/MOTOR_OFFLINE.md",
+      "bytes": 4505,
+      "sha256": "48999fbd1c6fd55f5d626b98d487499023d5fc188f95ce54aea2342b0af365ac"
+    },
+    {
+      "ruta": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/a11y_seo_trellat.md",
+      "bytes": 3277,
+      "sha256": "bc1f7030dc555b2ae316075770991f6d6d1f1f8ecbf0e3adedced59081a366db"
+    },
+    {
+      "ruta": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/futur_adaptacio.md",
+      "bytes": 3526,
+      "sha256": "98b25c109379229c06bf0d913b4d57bd8734b75b503685d470638f80db7d5e94"
+    },
+    {
+      "ruta": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/index_trellat.md",
+      "bytes": 3252,
+      "sha256": "1454fa2c43699c68f893c4aafb61744a452c14c42f1e1e280f0a2ca7bde003f8"
+    },
+    {
+      "ruta": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/seguretat_execucio.md",
+      "bytes": 4625,
+      "sha256": "ed4f7043a6128165245d9e9f0565dfff52f490da4966260a1f318a25f140325d"
+    },
+    {
+      "ruta": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/self_repair.md",
+      "bytes": 4473,
+      "sha256": "267868904ba1bd12ce94c191b458b1cbabb6e0b99cdfc710e956e185541d9450"
+    },
+    {
+      "ruta": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/successio_lazaro_execucio.md",
+      "bytes": 4768,
+      "sha256": "1aeb2f2255e3ac1ab5d29ad8a6fcfba011ee4da3c493687d60c4d1aa344b959b"
+    },
+    {
+      "ruta": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/DOC_Governanca.md",
+      "bytes": 2301,
+      "sha256": "3ba3552935a17d57356a01c9b09a33c43171b9ff0e4927393e923bd164a44e00"
+    },
+    {
+      "ruta": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/ESTANDARD_Pedra_Seca.md",
+      "bytes": 7027,
+      "sha256": "a47a108a2c4240a5179e67cf82e5cdd88b21f054e2064fa83332c6cbb898d52b"
+    },
+    {
+      "ruta": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/ESTANDARD_Tokens_Pedra_Seca.md",
+      "bytes": 6986,
+      "sha256": "2f2b24e9fc52fd223a6747050cf2c390242eb82d7c3f2e1a6d12c0bd6c386338"
+    },
+    {
+      "ruta": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/ESTANDARD_UI_Universal.md",
+      "bytes": 11107,
+      "sha256": "08c2bb60c6d6e98589e80b100ba54272d7710916cbba1ed6799d672c4b6102d6"
+    },
+    {
+      "ruta": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/FORJA_TO_CORE.md",
+      "bytes": 2135,
+      "sha256": "9714fe3445f3faa2b36e7af8dace6e04bb79318c7e342f3de6906daf4365dfde"
+    },
+    {
+      "ruta": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/LLEI_05_Privacitat.md",
+      "bytes": 2503,
+      "sha256": "5650dd4b1da45486937067738c94b45336ec745a28973c167a1e66d744b91eaf"
+    },
+    {
+      "ruta": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/PLA_DIRECTOR_Legal_i_Subvencions.md",
+      "bytes": 9252,
+      "sha256": "f8745d945caa4ae5e4c0946d8eaa794725bc39eacf84f0c4fd9b988a2ee79bdd"
+    },
+    {
+      "ruta": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/PLA_DIRECTOR_Viabilitat_Economica.md",
+      "bytes": 5771,
+      "sha256": "c283679b169627f77a0327be4d646b23887a637a71252d36eb0b68e56312d8e3"
+    },
+    {
+      "ruta": "_wiki_de_poble/04_ARXIU_Documents_Historics/00_INDEX_ARXIU.md",
+      "bytes": 372,
+      "sha256": "772ed898f82b6c2c15b87da915ecd7de0b13f86747a103e1d6229b69c82eb5c1"
+    },
+    {
+      "ruta": "_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/00_INDEX_CONSELL_SUBVENCIO.md",
+      "bytes": 1351,
+      "sha256": "d076d056c6e7510f990da02dab6367cb15ab35c039d7ca82466c5c2cc6f0abd5"
+    },
+    {
+      "ruta": "_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/260727_1405_DOCUMENT_Esborrany_Correu_Sollutia_Sobre_Arquitectura_Carpetes.md",
+      "bytes": 1188,
+      "sha256": "145d45253a905ebe7491fef257628aec59e7c6b02df0c0a23ab1a6ebbaf045c7"
+    },
+    {
+      "ruta": "_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/260727_1944_PETORRETA_Bot_WhatsApp_Robust.md",
+      "bytes": 14194,
+      "sha256": "3b819cc03f73971d543e54a2950e92775ff11247e6109918ee8b53e920748998"
+    },
+    {
+      "ruta": "_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/260728_0219_PETORRETA_IAIA_50k_Consell.md",
+      "bytes": 3119,
+      "sha256": "3da0d8b182c6d6072a9db1b13b46866b631c0de9a2cc10d11f6779fefdc1ead9"
+    },
+    {
+      "ruta": "_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/260728_0220_PETORRETA_IAIA_50k_Consell_FULL.md",
+      "bytes": 67237,
+      "sha256": "b8d0eae9ac243290c4ca68b60f0d14f1e8bb9c94e2499510fbf21876b56654ed"
+    },
+    {
+      "ruta": "_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/260728_0245_RESPOSTA_QWEN_Subvencio.md",
+      "bytes": 2491,
+      "sha256": "a2e16ce4c76d87b3c57954a29ecc2b144fb2ceccc214df77e3c7ff9d0f4bc44e"
+    },
+    {
+      "ruta": "_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/260728_0300_RESPOSTA_GROK_Codi.md",
+      "bytes": 2246,
+      "sha256": "c51d552f71bdd48a4b2af0814f56da8607e10c68fb42fbb59dab56c7ba7a685a"
+    },
+    {
+      "ruta": "_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/260728_0305_RESPOSTA_GEMINI_Codi.md",
+      "bytes": 2057,
+      "sha256": "9d6dcb78170f1a4bf62a2619b4e8a8140aead048b4bd6f463485dfa0c42731d4"
+    },
+    {
+      "ruta": "_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/260728_0310_RESPOSTA_GROK_Cron_Metriques.md",
+      "bytes": 1766,
+      "sha256": "71205427354445ac0aecc021633b3b41868abd5adb7ce5e87a6debdc2598f7d2"
+    },
+    {
+      "ruta": "_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/260728_0425_ACTA_TANCAMENT_Jornada.md",
+      "bytes": 3088,
+      "sha256": "957aeb387ff1d84e3697713231988ff0abba26f367a99cef23db7df3597e4001"
+    },
+    {
+      "ruta": "_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/260728_0520_PETORRETA_IAIA_Fix_Tools.md",
+      "bytes": 9459,
+      "sha256": "1d964ac8d39bf81b54fdf625d9e6b5477f3ba055e45e23a01f23e66e61d7b7f6"
+    },
+    {
+      "ruta": "_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/260728_1000_DISCURS_Subvencio_50k_Dola.md",
+      "bytes": 3769,
+      "sha256": "edcf3b4a63a26fd97316b23d9b73e26ab885d4b351309e4587f61667adf44e12"
+    },
+    {
+      "ruta": "_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/260728_1952_RESPOSTA_GEMINI_Consell.md",
+      "bytes": 1180,
+      "sha256": "1ad9904a161f2c483d8f8d50306ec2973b6ca6206292ca78e45f7a66707c5192"
+    },
+    {
+      "ruta": "_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/260728_1955_RESPOSTA_PERPLEXITY_Consell.md",
+      "bytes": 1058,
+      "sha256": "6df40452ad523be383ed964faed73980d1f4898d6cce005dc21a2c46991fb013"
+    },
+    {
+      "ruta": "_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/260728_1956_RESPOSTA_KIMI_Consell.md",
+      "bytes": 1305,
+      "sha256": "327e775371eb2ae20262886db43a895c185fe72964134c4026c241785f174aec"
+    },
+    {
+      "ruta": "_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/260728_1957_RESPOSTA_DEEPSEEK_Consell.md",
+      "bytes": 1030,
+      "sha256": "e8291c7d16edb9cb10ea10833b36c48cdb851fe3e76b9c742f366a8035d1e9a2"
+    },
+    {
+      "ruta": "_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/260728_1958_RESPOSTA_QWEN_Consell_2.md",
+      "bytes": 1052,
+      "sha256": "2bebc01ea754bf3bae982efbfd0ff091bb22eae3129f4b986ab4f8b877065fb2"
+    },
+    {
+      "ruta": "_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/260728_1959_RESPOSTA_CLAUDE_Consell.md",
+      "bytes": 1353,
+      "sha256": "ba5a9066f85ea62b0479c623aa338706f32aa67cee40bb0c61e8b0892ac074db"
+    },
+    {
+      "ruta": "_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/260728_2003_RESPOSTA_CODEX_Consell.md",
+      "bytes": 1428,
+      "sha256": "5f7951a3539be9a0941a75693a0f0b2f17aadaf2bdf9d14f5305996a010091c2"
+    },
+    {
+      "ruta": "_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/260728_2042_PETORRETA_IAIA_Alternativa_Imatges.md",
+      "bytes": 8405,
+      "sha256": "3f2a543639bfc651d3e16c7b2fe753dcc9caeb00b8bf1f081adfd6561dbd7af7"
+    },
+    {
+      "ruta": "_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/260728_2120_ACTA_ARQUITECTURA_MULTIMEDIA_Video_i_Robustesa.md",
+      "bytes": 3026,
+      "sha256": "7ccdf386340b74e6f4dafe2795a024a8def3ae8b502cd2d328d7c0705dcc4388"
+    },
+    {
+      "ruta": "_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/260728_2120_PROJECTE_Unfillertube.md",
+      "bytes": 11371,
+      "sha256": "7dd2ccd6f3e4ebd0dbf0d1402267cc31a3b96ce5b77295e98f920263fc4839f8"
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md",
+      "bytes": 2005,
+      "sha256": "9a55555d62aab3f5b249ffae211bc2c7136a6b98c45dff8aecc04e30bda7f974"
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260720_0235_BRIEFING_Recopilacio_d_Oportunitats_de_Subvencions_Valencianes_per_a_2026.md",
+      "bytes": 6547,
+      "sha256": "fa6699705f10cc8bf91f34c38bffa912c7f3dd97718aeb1a541b0fcf5cc10e7f"
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260729_0120_ACTA_MARMOTA_Tancament_Sessio.md",
+      "bytes": 3034,
+      "sha256": "adbf6510e03a85e1b2dd1688b38ee2639e3eae2ae05ef6a67114878a37329681"
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260729_1422_PROMPT_Auditoria_Final_ARXIUS_ADJUNTS.md",
+      "bytes": 67316,
+      "sha256": "03c1bf1dbbd2a348a6e8c5cf43d0b4368591d4d01ecdf2c1dac3d1dd5d3e5127"
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260729_1422_PROMPT_Auditoria_Final_Per_Tancar_La_IA_Del_Bot_WhatsApp.md",
+      "bytes": 5947,
+      "sha256": "8d031390ed63379216a5e1e3aa099500345b3771738ef25056e73efd92a20220"
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260729_1422_PROMPT_Auditoria_Final_Per_Tancar_La_IA_Del_Bot_WhatsApp_COMPLET_CONSELL.md",
+      "bytes": 73036,
+      "sha256": "a011b3fe24bb603cf2c1cf0dace3bd28095a016807260139d78720045964da90"
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260801_1900_ACTA_SESSIO_Enviament_NLnet.md",
+      "bytes": 2742,
+      "sha256": "51d03318f31d0d76a8de8729290f4a989e839ad3c21061f7a191d3776fb25763"
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/Capturador_Bookmarklet.md",
+      "bytes": 2554,
+      "sha256": "0e3ae2b99023b057e31e79fd7ebfc12b815bdb134c8a36d1aa17b8676bdcee92"
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/PROPOSTA_UI_OBSIDIAN.md",
+      "bytes": 2354,
+      "sha256": "52ad9fc7360445602b8d1b83ddb43149121c9b6c52797f5b9d2a265522fac94c"
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/carmen_tattoos_naming.md",
+      "bytes": 4386,
+      "sha256": "372065e1281f41a0cd40a5e97e70a112f5a2e22e428321ca03f12771bbb36416"
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/quarantena_scripts/00_INDEX_QUARANTENA.md",
+      "bytes": 602,
+      "sha256": "1f9a7fc39a9227120c0e3971386dd89ac59ea7df185222b177179408648dd47a"
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/quarantena_scripts/audit_result.json",
+      "bytes": 90231,
+      "sha256": "f4c39a3fc72ccd23d3e6dbae63f7e333ff42121ddf5df215d62f7b8a9c974d78"
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/quarantena_scripts/sync_iaia.sh",
+      "bytes": 1086,
+      "sha256": "ee193c982c995342ce3130e5070f5445154b700dbbcc05eba740e74ca5d01236"
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/quarantena_scripts/test-genai.mjs",
+      "bytes": 802,
+      "sha256": "91b71c339d7c718f1bde72279c2b69b8cbcc87241597c3a98798822c6fa87b11"
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/quarantena_scripts/test-imagen-2.mjs",
+      "bytes": 575,
+      "sha256": "e202bbffde5edb939b18e45cae2b239971bfe30273d758496fca076602b3d1f9"
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/quarantena_scripts/test-imagen-models.mjs",
+      "bytes": 306,
+      "sha256": "448e8e853844856cb78865cad6f363d9d66a5b6f549bf3b08fc03f74e8daf463"
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/quarantena_scripts/test-imagen.mjs",
+      "bytes": 575,
+      "sha256": "a25ad690e47a6921c7d6b6cccc12b246e6becca3958db8200aa5eebd9a2d63cd"
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/quarantena_scripts/test-models.mjs",
+      "bytes": 277,
+      "sha256": "9226888cbb183b831c815dbcee7d3e4d560367641b5458db979dca1a05d9c8e0"
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/quarantena_scripts/test_cervell.mjs",
+      "bytes": 334,
+      "sha256": "be5ce90fa304472e954da667f39c49488105ed136eeea999a126dd96dfc02dd6"
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/quarantena_scripts/test_function_call.mjs",
+      "bytes": 760,
+      "sha256": "60709d8241c8fb11dde55b455a1de0ccda9ec4b3cf0d8b65cac707ec137a0e97"
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/quarantena_scripts/test_gemini.mjs",
+      "bytes": 595,
+      "sha256": "ea71afb29f562a5287ea24359aa732623e7b7e6c77465db6eef93b343e98b5b8"
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/quarantena_scripts/test_models.mjs",
+      "bytes": 234,
+      "sha256": "e1269469ca72cf1568fc8758eba5d3ce8ac8fd611dd7864c7c05f884c5466369"
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/rebut_desbrossadora_2026-08-02.json",
+      "bytes": 186,
+      "sha256": "87c928a3deef101f872b018cd51bc88b8eb21863b1bddfd01d667cbfc63f1685"
+    },
+    {
+      "ruta": "_wiki_de_poble/90_arxiu_historic/260715_0400_ACTA_SESSIO_Tancament_Gran_Auditoria.md",
+      "bytes": 7193,
+      "sha256": "01089b93f5c95e4cc55482df6f5cd26afa3e9d709866e3cbba649e4dae188e7f"
+    },
+    {
+      "ruta": "_wiki_de_poble/90_arxiu_historic/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+      "bytes": 7220,
+      "sha256": "1970ddbf4c3c6146e584c6a9f88b7915d9effb4310a1df27ecb8ac4990fc5e9f"
+    },
+    {
+      "ruta": "_wiki_de_poble/90_arxiu_historic/260716_1300_ACTA_SESSIO_Problema_Sincronitzacio_Skills.md",
+      "bytes": 1515,
+      "sha256": "5d348a2641599d815db535e7cdb5d8593ca620223a28cdfdd00e5bed471ddd43"
+    },
+    {
+      "ruta": "_wiki_de_poble/90_arxiu_historic/260719_0345_PROMPT_Auditoria_Suprema_Consell.md",
+      "bytes": 3515,
+      "sha256": "cb01b43dd5134e073f09e62692c59615efe6bbb1f9930a521f20360a5a315c2d"
+    },
+    {
+      "ruta": "_wiki_de_poble/90_arxiu_historic/260719_0415_ACTA_SESSIO_La_Gran_Destillacio.md",
+      "bytes": 3987,
+      "sha256": "e8e4a4211394f751cb5e4f376dbd3323dca360a2b86c1888b2324d682d4f2517"
+    },
+    {
+      "ruta": "_wiki_de_poble/90_arxiu_historic/260719_0430_ACTA_MARMOTA_Tancament_Sessio_Purga.md",
+      "bytes": 3311,
+      "sha256": "30e5585d5f26e0de3d9ef89362cef26644f086738d6cda8b3f4fa582b92e5649"
+    },
+    {
+      "ruta": "_wiki_de_poble/90_arxiu_historic/260719_1632_PROMPT_Consell_Genoma.md",
+      "bytes": 5624,
+      "sha256": "ff2e85ac38cff3e4286186b17994411866adc3e6053ec5a4c5e48d238d618b5c"
+    },
+    {
+      "ruta": "_wiki_de_poble/90_arxiu_historic/260719_2000_PROMPT_Auditoria_Arquitectura_IAs.md",
+      "bytes": 2827,
+      "sha256": "bac54f1e297e7589aa29965f70f7b286fbbd94feb29dcd4e55d752449fa25bf3"
+    },
+    {
+      "ruta": "_wiki_de_poble/90_arxiu_historic/260720_0235_PROMPT_Estrategia_Financament_i_Subvencions_per_a_la_Resiliencia_Comunitaria.md",
+      "bytes": 4714,
+      "sha256": "d27dddbe147264ab4f4bc9624955a96037f43239135bb9ad74449dbb424e6f49"
+    },
+    {
+      "ruta": "_wiki_de_poble/90_arxiu_historic/260720_0300_ACTA_MARMOTA_Tancament_Sessio_Festiva.md",
+      "bytes": 3373,
+      "sha256": "e92530d2d40862842744cc9e142c0f7064de99095800876066ad4f5748e5722a"
+    },
+    {
+      "ruta": "_wiki_de_poble/90_arxiu_historic/260720_0405_ACTA_SESSIO_Tancament_Financament.md",
+      "bytes": 2817,
+      "sha256": "567ef1909c5b5b441eece9a1f64ce317baeed7eaf17b466c143fed4a3ed3ad2d"
+    },
+    {
+      "ruta": "_wiki_de_poble/90_arxiu_historic/260721_ACTA_SESSIO_NLnet_i_Burocracia.md",
+      "bytes": 2231,
+      "sha256": "e99ccd350e6c5ef6e3f2d1221a1f09ccf8122e960dd896dd29dc7a495fb94908"
+    },
+    {
+      "ruta": "_wiki_de_poble/90_arxiu_historic/260722_1300_ACTA_SESSIO_Tancament.md",
+      "bytes": 2603,
+      "sha256": "b8f4b9810380043c09f3eb8e26fe38e94d9c7f1ea424ca4d8ea07a88b3ac7df8"
+    },
+    {
+      "ruta": "_wiki_de_poble/90_arxiu_historic/260722_1300_BRIEFING_Subvencions.md",
+      "bytes": 3310,
+      "sha256": "3ca183498461f7e925535ec18035376cb0282c9d5e60dd0f5c4a6eeabf470f40"
+    },
+    {
+      "ruta": "_wiki_de_poble/90_arxiu_historic/260726_1530_ACTA_MARMOTA_Tancament_Sessio.md",
+      "bytes": 3462,
+      "sha256": "0516fa001acd786d0b77f1a536c4dc8313c290c6b3280774a11378468daa1e2b"
+    },
+    {
+      "ruta": "_wiki_de_poble/90_arxiu_historic/BRIEFING_Viabilitat_Economica_Legal.md",
+      "bytes": 3639,
+      "sha256": "954c87c6239f87d8d23303cae00ffe07460fbc28726c83c73d04af52b0769147"
+    },
+    {
+      "ruta": "_wiki_de_poble/99_maquinaria/00_MEMORIAL_Lapides.md",
+      "bytes": 8553,
+      "sha256": "f0862cddfc49ca61f2e3878a7f031dec870dca17c9457784e54f5a5c7d848d73"
+    },
+    {
+      "ruta": "_wiki_de_poble/99_maquinaria/pdf_clean_generator.sh",
+      "bytes": 917,
+      "sha256": "4a066f4c0ffb67fa5bbdd1016ec084f34d5e47bbf2d5d937300426937cc2adc7"
+    },
+    {
+      "ruta": "bot/cervell.mjs",
+      "bytes": 16150,
+      "sha256": "80393e0123d92f5bfad5c89c1ccdbf28e16b1901144b0e44ac579c585de5bf21"
+    },
+    {
+      "ruta": "bot/cervell_bridge.mjs",
+      "bytes": 4295,
+      "sha256": "bd0d1d456211750d782b5f0f3109bdd0658f24800c3afac028470c9b5d21033f"
+    },
+    {
+      "ruta": "bot/guardrails.mjs",
+      "bytes": 25850,
+      "sha256": "09a062172eff7143b1333a65210e0bca10242ecd157a982e67db6144c8c70e50"
+    },
+    {
+      "ruta": "bot/index.mjs",
+      "bytes": 2392,
+      "sha256": "244da97b7038a7262f288d64000127a5e111ed65797e49eed2fc0072c73b668e"
+    },
+    {
+      "ruta": "bot/memoria/episodica.mjs",
+      "bytes": 5481,
+      "sha256": "b2cbf95ce84e8025fbcd67b33fd42c3cb1d420cd74ba257b064e043dfe1d906e"
+    },
+    {
+      "ruta": "bot/whatsapp_baileys.mjs",
+      "bytes": 48163,
+      "sha256": "4e624e6c5459b14f4e518fd75d8d1708e8bf66b1388b817e086b93cfcaae9aa7"
+    },
+    {
+      "ruta": "package.json",
+      "bytes": 1739,
+      "sha256": "520f8d756f0683ab8602497c051db86127cb7f9c8cdbf454f952ef4d60fb60a1"
+    },
+    {
+      "ruta": "src/app/App.jsx",
+      "bytes": 14749,
+      "sha256": "34aa7feca1eebaabc06744072f533b784a21975aac8fcfb7027c6875cb784d88"
+    },
+    {
+      "ruta": "src/app/AppDataContext.jsx",
+      "bytes": 11043,
+      "sha256": "1662d0348b9602ed3ed8b38fb8f29c8a0d015ce3f30f9fd5b20756a43d125131"
+    },
+    {
+      "ruta": "src/components/BrandMark.jsx",
+      "bytes": 296,
+      "sha256": "877bfdaab297ba1d58faf7590933278b82dd7ce62dc4309648c75593cb004521"
+    },
+    {
+      "ruta": "src/components/SectionChrome.jsx",
+      "bytes": 630,
+      "sha256": "811a6a993ea065d09b2ce66ade77bf3e472f7e09f8271658dde4d78fb61883ad"
+    },
+    {
+      "ruta": "src/components/SectionItemCard.jsx",
+      "bytes": 1740,
+      "sha256": "9cb13362e35b00f6d41f5fd24a975eba45b9a746d501d7e555418f401ca3c0b2"
+    },
+    {
+      "ruta": "src/components/design-system/DesignSystemPage.jsx",
+      "bytes": 3455,
+      "sha256": "3b8697f08aa6f7460dbed1bc587fb961c26ba86a407f83404bd2d14c0af0f0e3"
+    },
+    {
+      "ruta": "src/components/design-system/primitives/ColorSwatch.jsx",
+      "bytes": 1435,
+      "sha256": "0ffc73ff762b18d851645194222d7341ffa66c535df313fbad0d3f1fd3cf7c3d"
+    },
+    {
+      "ruta": "src/components/design-system/primitives/Section.jsx",
+      "bytes": 316,
+      "sha256": "53eb27594cb3afc9430cf02b7c1d3cc1a27e5dd942d399e6604daf3d629aa7ac"
+    },
+    {
+      "ruta": "src/components/design-system/sections/Alerts.jsx",
+      "bytes": 1899,
+      "sha256": "44afc5d64dc589ad9d0e76ab3a13ae7338b2bd68f33850f057136be0fc967832"
+    },
+    {
+      "ruta": "src/components/design-system/sections/Buttons.jsx",
+      "bytes": 2170,
+      "sha256": "40579dbe02a7f96f2afd80ff383f2e025092597e704296cc13230ce75f78c368"
+    },
+    {
+      "ruta": "src/components/design-system/sections/Cards.jsx",
+      "bytes": 2564,
+      "sha256": "7212dcddbdf087b9cb20f45e8e1489d65c1ea1507593e4e9b9373d434317da6b"
+    },
+    {
+      "ruta": "src/components/design-system/sections/ColorPalette.jsx",
+      "bytes": 4041,
+      "sha256": "042b6f25b04f2fb90d0af93417885976e1f3f54b09ff9e7060ad41b127d6e31b"
+    },
+    {
+      "ruta": "src/components/design-system/sections/FormsAndInputs.jsx",
+      "bytes": 3042,
+      "sha256": "64815d7bad2d67a6a3ed49b01075e7da38411953fcfd27c7c43588b82ace51e9"
+    },
+    {
+      "ruta": "src/components/design-system/sections/LegacySections.jsx",
+      "bytes": 84411,
+      "sha256": "19ed63b04b65d2b7d63f8b990970249f1f04e5791ee3b1d08d9f8fbbb4ca5056"
+    },
+    {
+      "ruta": "src/components/design-system/sections/SpacingAndGrid.jsx",
+      "bytes": 1157,
+      "sha256": "2125d71891e523e06ebd239c884838fc013143f9179d860a08dcbdd5d7f7a891"
+    },
+    {
+      "ruta": "src/components/design-system/sections/Typography.jsx",
+      "bytes": 2419,
+      "sha256": "73d965e290da8233eab8f2a812092bb9e6a37518dbf63f0296162b89843fe15f"
+    },
+    {
+      "ruta": "src/components/universal/Universal.css",
+      "bytes": 10358,
+      "sha256": "639b457a02e7bdafef6d96c207badab9717defb2e9619efa8732145c9eecd5f1"
+    },
+    {
+      "ruta": "src/components/universal/UniversalComponents.jsx",
+      "bytes": 2138,
+      "sha256": "ff480f2a14c3aee40e2826e057332dd0987d737ddec10506b516d1ea288de3e2"
+    },
+    {
+      "ruta": "src/config/README.md",
+      "bytes": 666,
+      "sha256": "8b53d1677740199d20be9fc6604e44de3b4f196123b674a2c0910fbc7033eb35"
+    },
+    {
+      "ruta": "src/config/app.js",
+      "bytes": 573,
+      "sha256": "888678bd75a24fc64d703f588cf9532bc2e0a2846e8d02d9f3fdd1e6be53c2d2"
+    },
+    {
+      "ruta": "src/config/assetResolver.js",
+      "bytes": 3292,
+      "sha256": "9af3643ebf7c52506f672d8d3064104d9ab689f385780278a71e82fdc420962d"
+    },
+    {
+      "ruta": "src/config/contentHelpers.js",
+      "bytes": 1781,
+      "sha256": "eb247f966cdc8997127220c493452956d52a8eb0f1d11d1488b5963b3965d75a"
+    },
+    {
+      "ruta": "src/config/design-tokens.json",
+      "bytes": 2120,
+      "sha256": "d43e0ac87a5a68d62ffac21258294bb3849c53df92988a07c9a3215bf46222bf"
+    },
+    {
+      "ruta": "src/config/designSystemMarkdown.js",
+      "bytes": 5203,
+      "sha256": "04ab26cdb929b17cbe8d8967c8562a07a902fe254d465185cd737ada24822c98"
+    },
+    {
+      "ruta": "src/config/i18n.js",
+      "bytes": 71407,
+      "sha256": "5481ce24a2ba668d2a28c5fbe4de0413a29bd0474bd2585307058cbb59126a88"
+    },
+    {
+      "ruta": "src/config/navigation.js",
+      "bytes": 2254,
+      "sha256": "1b9ff15f51a5a5721920be3890a5e527780eca4c5a9c8bc227cb2b3d4df906ff"
+    },
+    {
+      "ruta": "src/config/sections.js",
+      "bytes": 2362,
+      "sha256": "962b513f82823e1b02ad0905dfc54b78ff80a46c6c385ac3075ed17ce9ed8485"
+    },
+    {
+      "ruta": "src/config/storage.js",
+      "bytes": 549,
+      "sha256": "9dafe174826a025508b432243d1ebacd0e2fa5d76ca65b0fdf28d846dcc62c0f"
+    },
+    {
+      "ruta": "src/config/taxonomy-registry.json",
+      "bytes": 2033,
+      "sha256": "26a64d4c0e10db59fabb567876828b253285f849769b35cacc38765561f808c6"
+    },
+    {
+      "ruta": "src/data/appSeed.js",
+      "bytes": 2414,
+      "sha256": "1395b6b872457acba7b18418fea7616e0078dd17ae7284ffbd1c2b896141a61f"
+    },
+    {
+      "ruta": "src/data/db.js",
+      "bytes": 572,
+      "sha256": "63a95f11e910fea1ea8873e53954accf6b662f5bcafd813fb5f1381578742de8"
+    },
+    {
+      "ruta": "src/data/sectionContent.js",
+      "bytes": 1140,
+      "sha256": "d7e3c91d59eed12accf85dd6703eae76e3aeb6f10a7e11ec255ea85193aedc65"
+    },
+    {
+      "ruta": "src/data/supabaseBackend.js",
+      "bytes": 43776,
+      "sha256": "0b1bb0e3e5ed481a1849609a4b35269b045762a18d0c52da3b5fcbf06584c5a5"
+    },
+    {
+      "ruta": "src/main.jsx",
+      "bytes": 603,
+      "sha256": "5fcdbe813049c2c2f6b832f3cfc133f1346d2bb95b337b818aeaf3fd7221e7fd"
+    },
+    {
+      "ruta": "src/pages/features/sosp-components.css",
+      "bytes": 12278,
+      "sha256": "6dc0c132347cc86b285040162495fd5074f402975cdf5f87da348fc2de86f23f"
+    },
+    {
+      "ruta": "src/sections/README.md",
+      "bytes": 2157,
+      "sha256": "7a134076bf8b276f513d2e073c7b8b9fa11f50748285cfe8e279a916da68b4ab"
+    },
+    {
+      "ruta": "src/sections/connectar/ConnectarSection.jsx",
+      "bytes": 12716,
+      "sha256": "e8c2fc279975d4e13571beaf1dac0c1cee311987c3e899f6810461d1dd5d67d2"
+    },
+    {
+      "ruta": "src/sections/control/ControlSection.css",
+      "bytes": 2605,
+      "sha256": "8818ddf54dc8501fa9ffa7a31652a719c31c8192df2ec21516ecb436a728ecca"
+    },
+    {
+      "ruta": "src/sections/control/ControlSection.jsx",
+      "bytes": 6911,
+      "sha256": "7ebf7e88fd73b5048ad0634543c96d6a77095653bf356a031ee2e18485a200a8"
+    },
+    {
+      "ruta": "src/sections/detail/ItemDetailSection.jsx",
+      "bytes": 4139,
+      "sha256": "18eaa5cf002e0193f907bc3c6af842196c629d0954e588216ae5181ccf55dae0"
+    },
+    {
+      "ruta": "src/sections/detail/PageDetailSection.jsx",
+      "bytes": 2300,
+      "sha256": "4d1eec5f7215d0992a0d368ff0f29e109dbb96368a87b8e34e74127a6e8f8165"
+    },
+    {
+      "ruta": "src/sections/detail/README.md",
+      "bytes": 899,
+      "sha256": "e7d04a24e10ed7457d949b1831d11a8f17175decd5a1c6a9498b78cfbddabcff"
+    },
+    {
+      "ruta": "src/sections/detail/detailHelpers.jsx",
+      "bytes": 99,
+      "sha256": "ece09cae8b891becd5762b7514bb0cf8bcc24d24511040b687730473ec1e7437"
+    },
+    {
+      "ruta": "src/sections/detail/detailRichText.jsx",
+      "bytes": 1679,
+      "sha256": "4c3b327a4261da31751e966054bbb504c14e36183890c7bccd93c1c56e6b8ca4"
+    },
+    {
+      "ruta": "src/sections/detail/detailSectionMeta.jsx",
+      "bytes": 998,
+      "sha256": "ad7420f62cc3b50821fc8d6f830adf6b9222530a933907aa4c16f3c22d457fca"
+    },
+    {
+      "ruta": "src/sections/dispositius/DevicesSection.jsx",
+      "bytes": 22625,
+      "sha256": "2c44a701d8865a9dc84c0ec723fe4bd0bc4f6a5c3ec7109be5b8f050f416ecd3"
+    },
+    {
+      "ruta": "src/sections/dispositius/devicesRuntime.js",
+      "bytes": 5655,
+      "sha256": "f3ccd612e7a345bd09fca03b845af354e95ecc8190d81f72c2224528a3f1ac98"
+    },
+    {
+      "ruta": "src/sections/disseny/DesignSection.jsx",
+      "bytes": 1938,
+      "sha256": "97d03cd6d404ef4d5c67bf323e2a2f089dba0fb574f1970b7c2f8d83c48eda33"
+    },
+    {
+      "ruta": "src/sections/disseny/markdown.js",
+      "bytes": 3104,
+      "sha256": "93374b6f23c21cc24ce415176010b9e4f154679500f382ddcb7144d8bae580de"
+    },
+    {
+      "ruta": "src/sections/events/EventsSection.jsx",
+      "bytes": 3526,
+      "sha256": "0cae8140ee06574cea37e8004b66164a88a064cb6ab2c036fb2d0a77c3fd419e"
+    },
+    {
+      "ruta": "src/sections/events/detail/detailSectionMeta.jsx",
+      "bytes": 1136,
+      "sha256": "d68faa0deb31f5fa3a50f683c300e98a930b44f084104fb17ee3ac27e73bd020"
+    },
+    {
+      "ruta": "src/sections/events/eventsContent.js",
+      "bytes": 372,
+      "sha256": "debccb69c6a963278283588f1a5b00f8079d5e43e45157b06931169394fe7f43"
+    },
+    {
+      "ruta": "src/sections/events/eventsSeed.js",
+      "bytes": 3528,
+      "sha256": "a5bec6eb41c719fd197545d3910e7806fbe3e5b810636a7ce34e46d033f8619c"
+    },
+    {
+      "ruta": "src/sections/gestoria/GestoriaSection.css",
+      "bytes": 2189,
+      "sha256": "a53240a2536cb90f16a95fdd5debf1da35c9df443731b1bad15536ef6ad002d0"
+    },
+    {
+      "ruta": "src/sections/gestoria/GestoriaSection.jsx",
+      "bytes": 6053,
+      "sha256": "a8ab2ec2d0cde044c0a6de6a9cde33e1e34a00fe09c387298f2cd75a132eda7a"
+    },
+    {
+      "ruta": "src/sections/gestoria/logic/backticks.txt",
+      "bytes": 5554,
+      "sha256": "e51590ec0fb864309c40cc1840263d8ddffc9db3cb0ab348e0300a740198bf1f"
+    },
+    {
+      "ruta": "src/sections/gestoria/logic/caixa-real.html",
+      "bytes": 14544,
+      "sha256": "6f58601926e26990954e9d99bbd63a788a3c66525c7f0e8004776a914f0ce67c"
+    },
+    {
+      "ruta": "src/sections/gestoria/logic/csv_ingestor.js",
+      "bytes": 16155,
+      "sha256": "b7bd96272f173d3192c964a383aba237048f1e9e2b222d379b5310a5495f402d"
+    },
+    {
+      "ruta": "src/sections/gestoria/logic/dashboard_data.js",
+      "bytes": 32004,
+      "sha256": "c7b73f141cc83abc25b7bb330bdb2be66b2e57d4ea7f229cb52fb7c0d6dbb1c3"
+    },
+    {
+      "ruta": "src/sections/gestoria/logic/db.js",
+      "bytes": 1352,
+      "sha256": "761476d23bdf48c89fe8b5a930e69d380bafe031f4573797d3d252b447dd6d77"
+    },
+    {
+      "ruta": "src/sections/gestoria/logic/el-rebost.html",
+      "bytes": 14529,
+      "sha256": "51480010f5ff05c4da9451fd86fa0a4f452958ce5ef362ffa32e3ec8a712473d"
+    },
+    {
+      "ruta": "src/sections/gestoria/logic/hisenda.html",
+      "bytes": 14527,
+      "sha256": "e234aa04679a826eb0583ab2b181b943f1efe9b30e503e070e5feeed12804203"
+    },
+    {
+      "ruta": "src/sections/gestoria/logic/iaia-gestora.html",
+      "bytes": 14534,
+      "sha256": "b28eda04b26ca5e06bf1c95fa809038a151ac96a5d33e34b5d2cfff4e6778713"
+    },
+    {
+      "ruta": "src/sections/gestoria/logic/index.html",
+      "bytes": 5505,
+      "sha256": "d7c2fcbdd504cedea618da1cc0cf0c9a8eb6bff3650785c11c32e9554e6872bf"
+    },
+    {
+      "ruta": "src/sections/gestoria/logic/logo.svg",
+      "bytes": 125585,
+      "sha256": "47952f36c83553445b5dde61d65a6d09a96d21f665129fb6dc6e63e8a072dd9f"
+    },
+    {
+      "ruta": "src/sections/gestoria/logic/tauler.js",
+      "bytes": 144456,
+      "sha256": "718c134cf449f8ddb22e27d9cdcc26b35509de45fc98ee757bdbe13a12f043f9"
+    },
+    {
+      "ruta": "src/sections/ia/IaSection.jsx",
+      "bytes": 9681,
+      "sha256": "e0ab708250c01377ec61a45a5af5a4cd043bee890a8fe25da53b6edb4c183cf4"
+    },
+    {
+      "ruta": "src/sections/login/LoginSection.jsx",
+      "bytes": 8980,
+      "sha256": "aa7380bc91e5597ce35cb3acd83f1efbc1bdb7cad67591fd71c456e2aba11305"
+    },
+    {
+      "ruta": "src/sections/mapa/MapTownCard.jsx",
+      "bytes": 527,
+      "sha256": "bd534671e8ed3547e98fb68507fa9f0debd8b13418a5b242e9cdfbe2d3de7af4"
+    },
+    {
+      "ruta": "src/sections/mapa/MapaSection.jsx",
+      "bytes": 1722,
+      "sha256": "3686942a4686e5d598f2541ea2a51c7e01406d58bf969ce4b290e76dc6274109"
+    },
+    {
+      "ruta": "src/sections/mapa/mapConfig.js",
+      "bytes": 247,
+      "sha256": "ba2cf34b191e17df9981b249eeb9a6be3fb1cec94aef6f12e01ff22cb241502e"
+    },
+    {
+      "ruta": "src/sections/mercat/MercatSection.jsx",
+      "bytes": 3729,
+      "sha256": "d8a91663057d0a9a6860cbab0a6c5470c26ae11516c6eab8ee5cbde29bbe8867"
+    },
+    {
+      "ruta": "src/sections/mercat/detail/detailSectionMeta.jsx",
+      "bytes": 1675,
+      "sha256": "2c1fea1950b3af4f5c78fd2279b96e495861829be97bca1cbf26b8a064067f80"
+    },
+    {
+      "ruta": "src/sections/mercat/marketContent.js",
+      "bytes": 502,
+      "sha256": "8b4ba18810ad80cdd4ae71855031834dc3ed1bcfab055735d1d68c05bc08ff4e"
+    },
+    {
+      "ruta": "src/sections/mercat/marketSeed.js",
+      "bytes": 1378,
+      "sha256": "3cb98441e343a2dcac255949af2ef25876039ad88950276ac3eb4b698e938f74"
+    },
+    {
+      "ruta": "src/sections/multimedia/MultimediaSection.jsx",
+      "bytes": 4767,
+      "sha256": "1529d652f6f800605f697b2fd1b0e67c2bcc05c3e38f0b95f8462e6b0ddbe657"
+    },
+    {
+      "ruta": "src/sections/multimedia/detail/detailSectionMeta.jsx",
+      "bytes": 1410,
+      "sha256": "64c473c35f5e1fad3de50493c1bcd37791099457ed08c8099737855cf88fb894"
+    },
+    {
+      "ruta": "src/sections/multimedia/mediaContent.js",
+      "bytes": 2057,
+      "sha256": "e44bd43354c07890db312349342c9b682a2f7f146d66bd108f3acec7b6f63c44"
+    },
+    {
+      "ruta": "src/sections/mur/MurSection.jsx",
+      "bytes": 4057,
+      "sha256": "fd1104e2ad44c91e882e65dffc6ce0ee3ed4f468fc661d6ab9ed88dd06fb39bc"
+    },
+    {
+      "ruta": "src/sections/mur/detail/detailSectionMeta.jsx",
+      "bytes": 1580,
+      "sha256": "d1c4676fcde785df129bcca65dfac734d044caaae1634aff256e9b69babf99d6"
+    },
+    {
+      "ruta": "src/sections/mur/feedContent.js",
+      "bytes": 644,
+      "sha256": "b46e30c928a0c58f95cec731292969efacd522c07ecb33e38676e5d46c5b2e13"
+    },
+    {
+      "ruta": "src/sections/mur/feedSeed.js",
+      "bytes": 1214,
+      "sha256": "5ef553b3a2af58590b3186be11a86cdf96378e97bc7acfd4ed51afda0c2e8e76"
+    },
+    {
+      "ruta": "src/sections/notes/NotesSection.jsx",
+      "bytes": 9158,
+      "sha256": "0a393aa3a10dffd4c629f13469a3b1eea8ddcc15d99f02808342a3af354b7c24"
+    },
+    {
+      "ruta": "src/sections/notes/detail/detailSectionMeta.jsx",
+      "bytes": 798,
+      "sha256": "8a39efd67ed27c5db2d152103685813aa3f479d2e8e5e98e8983204c46dc5eef"
+    },
+    {
+      "ruta": "src/sections/notes/notesContent.js",
+      "bytes": 532,
+      "sha256": "b3d34f6c989ff218656a2560ae3157960c26c5b4e057ba39e69c29024b475e44"
+    },
+    {
+      "ruta": "src/sections/pobles/PoblesSection.jsx",
+      "bytes": 2472,
+      "sha256": "3e23a565aaa9459c4d464735b2d14bca8905968d61fd033f3a68061dc21359d3"
+    },
+    {
+      "ruta": "src/sections/pobles/detail/detailSectionMeta.jsx",
+      "bytes": 940,
+      "sha256": "fa88513c675d64eee278f3fbdadfc6f868b09df8b714a9e5116e4f99d110661e"
+    },
+    {
+      "ruta": "src/sections/pobles/townsContent.js",
+      "bytes": 600,
+      "sha256": "5ddcf9ede542597190ba364b2a11b1ffcefe5fd35fd9832a687f55bfa67cf2f3"
+    },
+    {
+      "ruta": "src/sections/pobles/townsSeed.js",
+      "bytes": 3931,
+      "sha256": "7e3ded812b8e15e6fcbdd81b32aee70ba1095f63a2fb814d162de60be07f2159"
+    },
+    {
+      "ruta": "src/sections/profile/ProfileSection.jsx",
+      "bytes": 2394,
+      "sha256": "f21db7f38d90d8d41e76fd0a262c6fac8bdc3e8e73011e8a9d89186d944fcb5a"
+    },
+    {
+      "ruta": "src/sections/profile/agentsSeed.js",
+      "bytes": 22788,
+      "sha256": "1f121b517daef22b865c1356161ad9d339a5946e60472e20c5e8c301ba83243c"
+    },
+    {
+      "ruta": "src/sections/profile/profileContent.js",
+      "bytes": 305,
+      "sha256": "1c9249f8a56b0240a7727790bc4ebd4caf7e8e0205f4bdf294e09613cd36e11e"
+    },
+    {
+      "ruta": "src/sections/search/SearchSection.jsx",
+      "bytes": 3074,
+      "sha256": "d5fe8fa46c135c833b12b9b4edda9db705fd4e477e105217391e80f992d7c9ec"
+    },
+    {
+      "ruta": "src/sections/text/TextSection.jsx",
+      "bytes": 853,
+      "sha256": "6edd0d6c2bedbf2ea7f19df1f8896a512e1a394c2685d2ded09804484d608b77"
+    },
+    {
+      "ruta": "src/sections/text/pageContent.js",
+      "bytes": 6714,
+      "sha256": "32f1a42805d49294dc7443ab433d4c1bc62391b624a91d06886b776a9a03dbe0"
+    },
+    {
+      "ruta": "src/sections/translations/TranslationsSection.jsx",
+      "bytes": 1820,
+      "sha256": "2a5a257c5da654bcab1c2a6c71d94b19972a1d40af103953b71ef035acacf33f"
+    },
+    {
+      "ruta": "src/sections/xat/XatSection.jsx",
+      "bytes": 5919,
+      "sha256": "0a069c0d429423060784d834ec8d2f43a5bb025312155e65732d7798e772d271"
+    },
+    {
+      "ruta": "src/sections/xat/chatContent.js",
+      "bytes": 1743,
+      "sha256": "602d34de8f22a9fdefbda28e40581dea083f6ded21cf61c6bdc10e936050d816"
+    },
+    {
+      "ruta": "src/sections/xat/chatRuntime.js",
+      "bytes": 5533,
+      "sha256": "ac91490505a978dcd55e775ec12467b1926af506fff7e00b677e1f5d7b3237f2"
+    },
+    {
+      "ruta": "src/sections/xat/chatSeed.js",
+      "bytes": 4404,
+      "sha256": "cd289371c218e456f25a52b55414311e5f7641484577fbe4a1160890ce4e3adf"
+    },
+    {
+      "ruta": "src/styles/global.css",
+      "bytes": 47936,
+      "sha256": "0ef10956610735f2653c70b0c64156af4ee240d1e3074fd5aa6390825e7be110"
+    }
+  ]
+}

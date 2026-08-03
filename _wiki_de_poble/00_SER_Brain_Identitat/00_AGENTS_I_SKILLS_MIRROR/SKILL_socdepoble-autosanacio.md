@@ -1,8 +1,15 @@
 ---
-estat: "canonic"
-tipus: "skill"
+estat: canonic
+tipus: skill
 description: "Manual operatiu de plaquetes.mjs v1.1: el Sistema Immunitari que diagnostica ferides del graf (fantasmes, orfes) i les cura només amb aprovació mecànica per hash, un commit git per operació i reversió quirúrgica."
-temes: ["sistema"]
+temes:
+- sistema
+tags:
+- core
+- genoma
+- identitat
+- skills
+- socdepoble
 ---
 
 # Sistema Immunitari — Les Plaquetes 🩸
@@ -70,3 +77,8 @@ Requereix haver executat `segella` (i versionar `.immunitari/baseline.json`). La
 ## Limitacions honestes de v1
 
 Els incrustats `![[nota_inexistent]]` es reporten però no es lapiden. Els objectius amb nom base ambigu resolen al primer colp d'índex (mateix criteri laxista que Obsidian; es reporta). El codi en línia amb doble accent greu no s'emmascara. L'aprovació per hash garanteix *lectura conscient de la recepta*, no identitat: la garantia d'identitat és la cadena git + el lease de `PROTOCOL_PETORRETA`.
+
+
+---
+
+**Ancoratge de Seguretat:** [[00_INDEX]]

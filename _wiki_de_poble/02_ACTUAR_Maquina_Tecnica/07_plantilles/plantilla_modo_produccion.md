@@ -1,8 +1,14 @@
 ---
-estat: "canonic"
-tipus: "plantilla"
+estat: canonic
+tipus: plantilla
 description: "Plantilla per preparar una funcionalitat per a producció amb controls de qualitat i risc."
-temes: ["sistema"]
+temes:
+- sistema
+tags:
+- dev
+- maquina
+- socdepoble
+- tecnica
 ---
 # Modo Producció (Botiga de Diumenge)
 **Categoria:** Plantilla

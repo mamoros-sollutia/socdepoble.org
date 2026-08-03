@@ -1,8 +1,16 @@
 ---
 description: "Uses Chrome DevTools via MCP for efficient debugging, troubleshooting and browser automation. Use when debugging web pages, automa..."
-estat: "canonic"
-tipus: "skill"
-temes: ["sistema"]
+estat: canonic
+tipus: skill
+temes:
+- sistema
+tags:
+- core
+- genoma
+- identitat
+- socdepoble
+- sollutia
+- subvencions
 ---
 
 ## Core Concepts
@@ -56,4 +64,9 @@ If there are errors launching `chrome-devtools-mcp` or Chrome, refer to https://
 ---
 **Categoria:** [[Sollutia]]
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX]]
+
+
+---
+
 **Ancoratge de Seguretat:** [[00_INDEX]]

@@ -1,8 +1,14 @@
 ---
-estat: "esborrany"
-tipus: "document"
+estat: esborrany
+tipus: document
 description: "Descriu una metàfora de control agentiu sempre subordinada al Reflex i a l'autorització humana."
-temes: ["sistema"]
+temes:
+- sistema
+tags:
+- core
+- genoma
+- identitat
+- socdepoble
 ---
 # 🧠 SKILL: Anatomia Cognitiva (Cerebel, Cingulat i Executiu)
 
@@ -33,5 +39,10 @@ L'aprenentatge per reforç local (Epigenètica de la màquina). En lloc de repen
 - **Categoria:** [[Identitat]]
 - **Etiquetes:** [[Graf]]
 
+
+**Ancoratge de Seguretat:** [[00_INDEX]]
+
+
+---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]

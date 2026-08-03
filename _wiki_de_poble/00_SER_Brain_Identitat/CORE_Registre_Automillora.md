@@ -1,8 +1,14 @@
 ---
-estat: "arxivat"
-tipus: "registre"
-description: "Aquest és el registre quirúrgic dels canvis de comportament."
-temes: ["sistema"]
+estat: arxivat
+tipus: registre
+description: Aquest és el registre quirúrgic dels canvis de comportament.
+temes:
+- sistema
+tags:
+- core
+- genoma
+- identitat
+- socdepoble
 ---
 # Registre d'Automillora (El Diari de la Màquina)
 
@@ -48,5 +54,10 @@ S'HA D'INCLOURE sempre el temps de sessió aproximat (Hores) per a avaluar la fa
 - **Categoria:** [[Identitat]]
 - **Etiquetes:** [[Graf]]
 
+
+**Ancoratge de Seguretat:** [[00_INDEX]]
+
+
+---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]

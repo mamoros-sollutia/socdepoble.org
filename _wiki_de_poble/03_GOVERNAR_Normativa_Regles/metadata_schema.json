@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://socdepoble.org/schemas/brain-frontmatter.schema.json",
+  "title": "Frontmatter canònic del Brain",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["estat", "tipus", "description"],
+  "properties": {
+    "estat": {
+      "enum": ["canonic", "actiu", "esborrany", "arxivat", "quarantena", "generat"]
+    },
+    "tipus": {
+      "enum": [
+        "acta",
+        "briefing",
+        "document",
+        "hub",
+        "index",
+        "informe",
+        "norma",
+        "plantilla",
+        "prompt",
+        "protocol",
+        "registre",
+        "skill"
+      ]
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 240
+    },
+    "aliases": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "revisat": {
+      "type": "string",
+      "format": "date"
+    },
+    "sessio": {
+      "enum": ["oberta", "tancada", "auditada"]
+    },
+    "source": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "sessio": { "type": "string" }
+        },
+        "required": ["sessio"]
+      },
+      "then": {
+        "properties": {
+          "tipus": { "enum": ["acta", "briefing"] }
+        }
+      }
+    }
+  ]
+}

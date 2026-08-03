@@ -1,8 +1,14 @@
 ---
-estat: "canonic"
-tipus: "norma"
-description: "La privacitat és per defecte."
-temes: ["sistema"]
+estat: canonic
+tipus: norma
+description: La privacitat és per defecte.
+temes:
+- sistema
+tags:
+- govern
+- normativa
+- regles
+- socdepoble
 ---
 # LLEI 05 Privacitat
 
@@ -89,5 +95,10 @@ Activa SDP-LOCK si:
 - **Categoria:** [[Govern]]
 - **Etiquetes:** [[Graf]]
 
+
+**Ancoratge de Seguretat:** [[00_INDEX]]
+
+
+---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]

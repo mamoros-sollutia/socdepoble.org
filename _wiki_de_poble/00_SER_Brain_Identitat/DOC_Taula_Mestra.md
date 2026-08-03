@@ -1,8 +1,14 @@
 ---
-estat: "esborrany"
-tipus: "index"
+estat: esborrany
+tipus: index
 description: "Índex Dataview de les notes operatives, ordenat per connectivitat i amb metadades de l'esquema v2."
-temes: ["sistema"]
+temes:
+- sistema
+tags:
+- core
+- genoma
+- identitat
+- socdepoble
 ---
 # 📊 Taula Mestra de la Wiki (Vista 2D)
 > **⚠️ REQUISIT:** Per veure aquesta taula renderitzada (a l'estil Notion o Excel), necessites tenir instal·lat i activat el plugin de la comunitat anomenat **Dataview** a Obsidian.
@@ -29,5 +35,10 @@ SORT (length(file.inlinks) + length(file.outlinks)) ASC
 - **Categoria:** [[Identitat]]
 - **Etiquetes:** [[Graf]]
 
+
+**Ancoratge de Seguretat:** [[00_INDEX]]
+
+
+---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]

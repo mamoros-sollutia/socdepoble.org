@@ -1,8 +1,19 @@
 ---
-estat: "canonic"
-tipus: "document"
+estat: canonic
+tipus: document
 description: "Pla Director d'Estratègia Jurídica i de Finançament per a Sóc de Poble (2026-2027)."
-temes: ["governanca", "finançament", "associacio", "estrategia"]
+temes:
+- governanca
+- finançament
+- associacio
+- estrategia
+tags:
+- govern
+- normativa
+- regles
+- socdepoble
+- sollutia
+- subvencions
 ---
 
 # Pla Director de Finançament i Governança (2026-2027)
@@ -81,3 +92,8 @@ El pressupost complet per garantir la independència, incloent els honoraris d'A
 
 ---
 *Fi de l'informe executiu. Arxivat a la Wiki com a normativa d'operacions (Directiva de Finançament).*
+
+
+---
+
+**Ancoratge de Seguretat:** [[00_INDEX]]

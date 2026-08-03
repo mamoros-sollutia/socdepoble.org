@@ -1,8 +1,17 @@
 ---
-estat: "canonic"
-tipus: "document"
-description: "Pla Director de Viabilitat Econòmica i Model de Negoci per a Sóc de Poble."
-temes: ["governanca", "economia", "viabilitat", "pressupost"]
+estat: canonic
+tipus: document
+description: Pla Director de Viabilitat Econòmica i Model de Negoci per a Sóc de Poble.
+temes:
+- governanca
+- economia
+- viabilitat
+- pressupost
+tags:
+- govern
+- normativa
+- regles
+- socdepoble
 ---
 
 # Pla Director de Viabilitat Econòmica
@@ -84,3 +93,8 @@ Les subvencions NO paguen manteniment estructural. Financen innovació i project
 | **Any 3** | 60.000 € | 20.000 € | 15.000 € | **95.000 €** |
 
 *L'objectiu de l'Any 3 és que les subvencions deixen de ser l'oxigen necessari per a respirar i es convertisquen només en ajuda per a expandir-se.*
+
+
+---
+
+**Ancoratge de Seguretat:** [[00_INDEX]]

@@ -1,8 +1,16 @@
 ---
-estat: "canonic"
-tipus: "identitat"
-description: "Mirall automàtic de README.md"
-temes: ["iaia-maria", "sistema"]
+estat: canonic
+tipus: identitat
+description: Mirall automàtic de README.md
+temes:
+- iaia-maria
+- sistema
+tags:
+- core
+- genoma
+- identitat
+- skills
+- socdepoble
 ---
 
 # Agents de `socdepoble.org`
@@ -49,3 +57,8 @@ Abast:
 - estes directrius només apliquen a `socdepoble.org`;
 - el projecte antic `socdepoble` és només lectura;
 - la font de veritat final és el codi actual i este marc d'agents adaptat.
+
+
+---
+
+**Ancoratge de Seguretat:** [[00_INDEX]]

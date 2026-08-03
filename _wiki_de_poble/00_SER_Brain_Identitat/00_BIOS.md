@@ -1,8 +1,14 @@
 ---
-estat: "arxivat"
-tipus: "document"
+estat: arxivat
+tipus: document
 description: "Conserva la BIOS històrica i redirigix l'arrencada de l'agent cap al Reflex i les fonts d'autoritat reals."
-temes: ["sistema"]
+temes:
+- sistema
+tags:
+- core
+- genoma
+- identitat
+- socdepoble
 ---
 # BIOS històrica — redirecció vigent
 
@@ -40,5 +46,10 @@ les fonts d'autoritat actuals.
 - **Categoria:** [[Identitat]]
 - **Etiquetes:** [[Graf]]
 
+
+**Ancoratge de Seguretat:** [[00_INDEX]]
+
+
+---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]

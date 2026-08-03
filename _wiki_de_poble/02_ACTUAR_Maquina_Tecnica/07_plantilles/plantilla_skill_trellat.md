@@ -1,8 +1,15 @@
 ---
-estat: "canonic"
-tipus: "plantilla"
+estat: canonic
+tipus: plantilla
 description: "Plantilla mestra per definir una skill amb missió, gallets, regles i contracte d'eixida."
-temes: ["sistema"]
+temes:
+- sistema
+tags:
+- dev
+- maquina
+- skills
+- socdepoble
+- tecnica
 ---
 # ⚙️ SDP SKILL MASTER TEMPLATE
 **Nom de la Skill:** [Ex: Maquetador d'Esdeveniments Offline]

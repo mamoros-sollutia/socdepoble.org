@@ -1,8 +1,15 @@
 ---
-estat: "esborrany"
-tipus: "plantilla"
-description: "Plantilla ISO històrica pendent d'alinear amb el protocol Petorreta vigent."
-temes: ["sistema"]
+estat: esborrany
+tipus: plantilla
+description: Plantilla ISO històrica pendent d'alinear amb el protocol Petorreta vigent.
+temes:
+- sistema
+tags:
+- dev
+- maquina
+- prompt
+- socdepoble
+- tecnica
 ---
 ```yaml
 doc_id: SDP-GEN-BASE-001

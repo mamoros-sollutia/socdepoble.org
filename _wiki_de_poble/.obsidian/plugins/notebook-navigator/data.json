@@ -13,7 +13,12 @@
       "hiddenFileProperties": [],
       "navigationBanner": null,
       "periodicNotesFolder": "",
-      "shortcuts": [],
+      "shortcuts": [
+        {
+          "type": "note",
+          "path": "00_SER_Brain_Identitat/02_EQUIP_IA.md"
+        }
+      ],
       "navRainbow": {
         "mode": "none",
         "balanceHueLuminance": true,
@@ -208,7 +213,7 @@
   "showAllPropertiesFolder": true,
   "scopePropertiesToCurrentContext": false,
   "defaultListMode": "standard",
-  "includeDescendantNotes": false,
+  "includeDescendantNotes": true,
   "defaultFolderSort": "modified-desc",
   "propertySortKey": "",
   "propertySortSecondary": "title",
@@ -503,9 +508,29 @@
   "folderIcons": {},
   "folderColors": {},
   "folderBackgroundColors": {},
-  "folderSortOverrides": {},
+  "folderSortOverrides": {
+    "02_ACTUAR_Maquina_Tecnica": "title-asc",
+    "00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR": "title-asc",
+    "00_SER_Brain_Identitat": "title-asc",
+    "00_SER_Brain_Identitat/Sollutia": "title-asc",
+    "/": "title-asc"
+  },
   "folderTreeSortOverrides": {},
-  "folderAppearances": {},
+  "folderAppearances": {
+    "02_ACTUAR_Maquina_Tecnica": {
+      "titleRows": 2,
+      "previewRows": 1
+    },
+    "00_SER_Brain_Identitat": {
+      "groupBy": "custom"
+    },
+    "00_SER_Brain_Identitat/Sollutia": {
+      "groupBy": "custom"
+    },
+    "00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR": {
+      "groupBy": "custom"
+    }
+  },
   "tagIcons": {},
   "tagColors": {},
   "tagBackgroundColors": {},

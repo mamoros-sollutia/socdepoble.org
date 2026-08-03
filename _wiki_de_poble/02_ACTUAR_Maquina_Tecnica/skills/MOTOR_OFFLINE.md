@@ -1,8 +1,15 @@
 ---
-estat: "futur"
-tipus: "skill"
+estat: futur
+tipus: skill
 description: "Contracte futur per evolucionar PWA, dades locals, sincronització i recuperació amb proves de pèrdua zero."
-temes: ["sistema"]
+temes:
+- sistema
+tags:
+- dev
+- maquina
+- skills
+- socdepoble
+- tecnica
 ---
 # Motor Offline i Resiliència
 
@@ -98,4 +105,9 @@ Este document només pot passar de `futur` a `canonic` quan existisquen:
 ---
 **Categoria:** [[skills]]
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX]]
+
+
+---
+
 **Ancoratge de Seguretat:** [[00_INDEX]]

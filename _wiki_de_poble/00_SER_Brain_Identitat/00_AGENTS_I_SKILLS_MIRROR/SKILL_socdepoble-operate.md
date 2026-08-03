@@ -1,6 +1,14 @@
 ---
 name: socdepoble-operate
-description: Enforces strict agent workflow, file routing, path management, and thermodynamic naming conventions for the socdepoble.org ecosystem. Use when creating actas, petorretas, or writing any workspace files to avoid Amnesia and Path Errors.
+description: "Enforces strict agent workflow, file routing, path management, and thermodynamic naming conventions for the socdepoble.org ecosystem. Use when creating actas, petorretas, or writing any workspace files to avoid Amnesia and Path Errors."
+estat: auditat
+tipus: document
+tags:
+- core
+- genoma
+- identitat
+- skills
+- socdepoble
 ---
 
 ## Core Concepts
@@ -56,3 +64,8 @@ When instructed to "clean the desktop" or "organize documentation", strictly enf
 
 - **EACCES (Permission Denied)**: If you receive a permission error writing to `_wiki_de_poble`, the folder may be locked (`dr-xr-xr-x`). Do NOT silently write the file to the root directory. Instead, use the `ask_permission` tool or unlock the directory temporarily, write the file, and lock it again.
 - **Lost Files**: If the user cannot see a file you created, you likely wrote it to the old `Sóc de Poble` workspace due to relative pathing. Immediately locate the file, delete it from the old workspace, and recreate it in the correct `Som de Poble/socdepoble.org` absolute path.
+
+
+---
+
+**Ancoratge de Seguretat:** [[00_INDEX]]

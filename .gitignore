@@ -13,3 +13,5 @@ _build/
 !.env.example
 _wiki_de_poble/.obsidian/workspace*.json
 _wiki_de_poble/.obsidian/cache/
+.iaia_auth/
+.wwebjs_auth/

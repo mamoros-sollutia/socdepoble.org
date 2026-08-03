@@ -1,8 +1,16 @@
 ---
-estat: "canonic"
-tipus: "identitat"
-description: "Mirall automàtic de 04_criteris_producte_i_disseny.md"
-temes: ["iaia-maria", "sistema"]
+estat: canonic
+tipus: identitat
+description: Mirall automàtic de 04_criteris_producte_i_disseny.md
+temes:
+- iaia-maria
+- sistema
+tags:
+- core
+- genoma
+- identitat
+- skills
+- socdepoble
 ---
 
 # Agent 04: Criteris de producte i disseny
@@ -92,3 +100,8 @@ No es vol:
 ## Regla final
 
 Quan hi haja dubte entre "més espectacular" i "més útil", guanya "més útil".
+
+
+---
+
+**Ancoratge de Seguretat:** [[00_INDEX]]

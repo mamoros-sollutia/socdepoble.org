@@ -1,8 +1,16 @@
 ---
-estat: "canonic"
-tipus: "document"
+estat: canonic
+tipus: document
 description: "Defineix el paper, els límits i el protocol de col·laboració amb el soci tecnològic Sollutia."
-temes: ["sistema"]
+temes:
+- sistema
+tags:
+- core
+- genoma
+- identitat
+- socdepoble
+- sollutia
+- subvencions
 ---
 # Soci Tecnològic: Sollutia
 
@@ -230,5 +238,10 @@ Aquestes eines configuren l'instrumental de la Forja.
 - **Categoria:** [[Identitat]]
 - **Etiquetes:** [[Graf]]
 
+
+**Ancoratge de Seguretat:** [[00_INDEX]]
+
+
+---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]

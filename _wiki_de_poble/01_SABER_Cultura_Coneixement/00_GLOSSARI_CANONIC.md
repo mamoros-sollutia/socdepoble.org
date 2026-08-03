@@ -1,8 +1,14 @@
 ---
-estat: "canonic"
-tipus: "document"
+estat: canonic
+tipus: document
 description: "Font Única de Veritat. Tota comunicació interna, codi, interfícies i textos han d'usar aquests termes."
-temes: ["sistema"]
+temes:
+- sistema
+tags:
+- coneixement
+- cultura
+- saber
+- socdepoble
 ---
 # 📚 GLOSSARI CANÒNIC I DICCIONARI DE LA LLENGUA DEL MAS
 *Font Única de Veritat. Tota comunicació interna, codi, interfícies i textos han d'usar aquests termes.*
@@ -71,5 +77,10 @@ En generar imatges amb el model Nano Banana, s'ha d'incrustar: *"© [[el_project
 - **Categoria:** [[Coneixement]]
 - **Etiquetes:** [[Graf]]
 
+
+**Ancoratge de Seguretat:** [[00_INDEX]]
+
+
+---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]

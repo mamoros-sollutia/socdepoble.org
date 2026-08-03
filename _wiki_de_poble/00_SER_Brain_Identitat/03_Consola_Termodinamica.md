@@ -1,8 +1,14 @@
 ---
-estat: "canonic"
-tipus: "document"
+estat: canonic
+tipus: document
 description: "Separa els controls de salut implementats de les mètriques conceptuals i prohibix fabricar percentatges sense evidència."
-temes: ["sistema"]
+temes:
+- sistema
+tags:
+- core
+- genoma
+- identitat
+- socdepoble
 ---
 # Consola Termodinàmica
 
@@ -68,5 +74,10 @@ i una eixida que explique exactament què ha fallat.
 - **Categoria:** [[Identitat]]
 - **Etiquetes:** [[Graf]]
 
+
+**Ancoratge de Seguretat:** [[00_INDEX]]
+
+
+---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]

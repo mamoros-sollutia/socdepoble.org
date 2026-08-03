@@ -1,8 +1,14 @@
 ---
-estat: "canonic"
-tipus: "document"
+estat: canonic
+tipus: document
 description: "Resumeix la missió, els criteris humans i l'arrencada segura de la IAIA MarIA."
-temes: ["sistema"]
+temes:
+- sistema
+tags:
+- core
+- genoma
+- identitat
+- socdepoble
 ---
 # IAIA MarIA / Antigravity — Ens Híbrid
 
@@ -44,5 +50,10 @@ La IAIA adopta diferents perfils especialitzats segons la tasca (els seus "barre
 - **Categoria:** [[Identitat]]
 - **Etiquetes:** [[Graf]]
 
+
+**Ancoratge de Seguretat:** [[00_INDEX]]
+
+
+---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]

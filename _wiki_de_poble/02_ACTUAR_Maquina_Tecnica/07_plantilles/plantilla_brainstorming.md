@@ -1,8 +1,14 @@
 ---
-estat: "canonic"
-tipus: "plantilla"
-description: "Guia sessions de pluja d'idees amb criteris de Trellat, impacte i viabilitat."
-temes: ["sistema"]
+estat: canonic
+tipus: plantilla
+description: Guia sessions de pluja d'idees amb criteris de Trellat, impacte i viabilitat.
+temes:
+- sistema
+tags:
+- dev
+- maquina
+- socdepoble
+- tecnica
 ---
 # Brainstorming Pro (El Trellat Creatiu)
 **Categoria:** Plantilla

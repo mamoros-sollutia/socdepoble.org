@@ -1,6 +1,14 @@
 ---
 name: socdepoble-civic
-description: Unified civic skill for Sóc de Poble. Covers civic campaigns, European funding, and nature/heritage defense (CEEC, El Rentonar).
+description: "Unified civic skill for Sóc de Poble. Covers civic campaigns, European funding, and nature/heritage defense (CEEC, El Rentonar)."
+estat: auditat
+tipus: document
+tags:
+- core
+- genoma
+- identitat
+- skills
+- socdepoble
 ---
 
 # ⚙️ SOSP SKILL MASTER TEMPLATE: Civic Operations
@@ -31,3 +39,8 @@ Filosofia de la CEEC (Coordinadora d'Estudis Eòlics del Comtat) i Anna Climent:
 - **Prohibit l'Eco-postureig:** Zero permissivitat amb el "greenwashing".
 - **Prohibida la Tebiesa:** To legal, tècnic i contundent contra agressors del paisatge.
 - Es busca apoderar els ciutadans per presentar alegacions fàcilment, sense burocràcia.
+
+
+---
+
+**Ancoratge de Seguretat:** [[00_INDEX]]

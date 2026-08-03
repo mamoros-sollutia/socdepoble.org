@@ -1,0 +1,589 @@
+{
+  "schema": "socdepoble.brain-distill-plan.v1",
+  "created_at": "2026-08-02T19:43:36.192440+00:00",
+  "root_name": "audit_src",
+  "operations": [
+    {
+      "kind": "manual",
+      "source": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/quarantena_scripts/ext.tar.gz",
+      "sha256": "34efc2d7cf3397c187310ad82b09c54e420e9c7b139a051042de7a69484da33e",
+      "reason": "arxiu sensible: membres_credencial=3190, rutes_insegures=0; revocar i purgar historial"
+    },
+    {
+      "kind": "move",
+      "source": "_wiki_de_poble/90_arxiu_historic/260715_0400_ACTA_SESSIO_Tancament_Gran_Auditoria.md",
+      "sha256": "01089b93f5c95e4cc55482df6f5cd26afa3e9d709866e3cbba649e4dae188e7f",
+      "reason": "fusionar el segon arxiu històric",
+      "destination": "_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/legacy_pre_canonical/260715_0400_ACTA_SESSIO_Tancament_Gran_Auditoria.md"
+    },
+    {
+      "kind": "move",
+      "source": "_wiki_de_poble/90_arxiu_historic/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+      "sha256": "c62bb464f132853ad754dc71a66f8564c0a0f975986ccab3e172adf180ee3a59",
+      "reason": "fusionar el segon arxiu històric",
+      "destination": "_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/legacy_pre_canonical/260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics.md",
+      "normalize_anchor": true
+    },
+    {
+      "kind": "move",
+      "source": "_wiki_de_poble/90_arxiu_historic/260716_1300_ACTA_SESSIO_Problema_Sincronitzacio_Skills.md",
+      "sha256": "5d348a2641599d815db535e7cdb5d8593ca620223a28cdfdd00e5bed471ddd43",
+      "reason": "fusionar el segon arxiu històric",
+      "destination": "_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/legacy_pre_canonical/260716_1300_ACTA_SESSIO_Problema_Sincronitzacio_Skills.md"
+    },
+    {
+      "kind": "move",
+      "source": "_wiki_de_poble/90_arxiu_historic/260719_0345_PROMPT_Auditoria_Suprema_Consell.md",
+      "sha256": "cb01b43dd5134e073f09e62692c59615efe6bbb1f9930a521f20360a5a315c2d",
+      "reason": "fusionar el segon arxiu històric",
+      "destination": "_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/legacy_pre_canonical/260719_0345_PROMPT_Auditoria_Suprema_Consell.md"
+    },
+    {
+      "kind": "move",
+      "source": "_wiki_de_poble/90_arxiu_historic/260719_0415_ACTA_SESSIO_La_Gran_Destillacio.md",
+      "sha256": "e8e4a4211394f751cb5e4f376dbd3323dca360a2b86c1888b2324d682d4f2517",
+      "reason": "fusionar el segon arxiu històric",
+      "destination": "_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/legacy_pre_canonical/260719_0415_ACTA_SESSIO_La_Gran_Destillacio.md"
+    },
+    {
+      "kind": "move",
+      "source": "_wiki_de_poble/90_arxiu_historic/260719_0430_ACTA_MARMOTA_Tancament_Sessio_Purga.md",
+      "sha256": "88e9301bab69a61507ed07b70d0787218ea5be50f09204075c121a6866ed462c",
+      "reason": "fusionar el segon arxiu històric",
+      "destination": "_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/legacy_pre_canonical/260719_0430_ACTA_MARMOTA_Tancament_Sessio_Purga.md",
+      "normalize_anchor": true
+    },
+    {
+      "kind": "move",
+      "source": "_wiki_de_poble/90_arxiu_historic/260719_1632_PROMPT_Consell_Genoma.md",
+      "sha256": "ff2e85ac38cff3e4286186b17994411866adc3e6053ec5a4c5e48d238d618b5c",
+      "reason": "fusionar el segon arxiu històric",
+      "destination": "_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/legacy_pre_canonical/260719_1632_PROMPT_Consell_Genoma.md"
+    },
+    {
+      "kind": "move",
+      "source": "_wiki_de_poble/90_arxiu_historic/260719_2000_PROMPT_Auditoria_Arquitectura_IAs.md",
+      "sha256": "bac54f1e297e7589aa29965f70f7b286fbbd94feb29dcd4e55d752449fa25bf3",
+      "reason": "fusionar el segon arxiu històric",
+      "destination": "_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/legacy_pre_canonical/260719_2000_PROMPT_Auditoria_Arquitectura_IAs.md"
+    },
+    {
+      "kind": "move",
+      "source": "_wiki_de_poble/90_arxiu_historic/260720_0235_PROMPT_Estrategia_Financament_i_Subvencions_per_a_la_Resiliencia_Comunitaria.md",
+      "sha256": "d27dddbe147264ab4f4bc9624955a96037f43239135bb9ad74449dbb424e6f49",
+      "reason": "fusionar el segon arxiu històric",
+      "destination": "_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/legacy_pre_canonical/260720_0235_PROMPT_Estrategia_Financament_i_Subvencions_per_a_la_Resiliencia_Comunitaria.md"
+    },
+    {
+      "kind": "move",
+      "source": "_wiki_de_poble/90_arxiu_historic/260720_0300_ACTA_MARMOTA_Tancament_Sessio_Festiva.md",
+      "sha256": "e92530d2d40862842744cc9e142c0f7064de99095800876066ad4f5748e5722a",
+      "reason": "fusionar el segon arxiu històric",
+      "destination": "_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/legacy_pre_canonical/260720_0300_ACTA_MARMOTA_Tancament_Sessio_Festiva.md"
+    },
+    {
+      "kind": "move",
+      "source": "_wiki_de_poble/90_arxiu_historic/260720_0405_ACTA_SESSIO_Tancament_Financament.md",
+      "sha256": "567ef1909c5b5b441eece9a1f64ce317baeed7eaf17b466c143fed4a3ed3ad2d",
+      "reason": "fusionar el segon arxiu històric",
+      "destination": "_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/legacy_pre_canonical/260720_0405_ACTA_SESSIO_Tancament_Financament.md"
+    },
+    {
+      "kind": "move",
+      "source": "_wiki_de_poble/90_arxiu_historic/260721_ACTA_SESSIO_NLnet_i_Burocracia.md",
+      "sha256": "e99ccd350e6c5ef6e3f2d1221a1f09ccf8122e960dd896dd29dc7a495fb94908",
+      "reason": "fusionar el segon arxiu històric",
+      "destination": "_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/legacy_pre_canonical/260721_ACTA_SESSIO_NLnet_i_Burocracia.md"
+    },
+    {
+      "kind": "move",
+      "source": "_wiki_de_poble/90_arxiu_historic/260722_1300_ACTA_SESSIO_Tancament.md",
+      "sha256": "b8f4b9810380043c09f3eb8e26fe38e94d9c7f1ea424ca4d8ea07a88b3ac7df8",
+      "reason": "fusionar el segon arxiu històric",
+      "destination": "_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/legacy_pre_canonical/260722_1300_ACTA_SESSIO_Tancament.md"
+    },
+    {
+      "kind": "move",
+      "source": "_wiki_de_poble/90_arxiu_historic/260722_1300_BRIEFING_Subvencions.md",
+      "sha256": "3ca183498461f7e925535ec18035376cb0282c9d5e60dd0f5c4a6eeabf470f40",
+      "reason": "fusionar el segon arxiu històric",
+      "destination": "_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/legacy_pre_canonical/260722_1300_BRIEFING_Subvencions.md"
+    },
+    {
+      "kind": "move",
+      "source": "_wiki_de_poble/90_arxiu_historic/260726_1530_ACTA_MARMOTA_Tancament_Sessio.md",
+      "sha256": "0516fa001acd786d0b77f1a536c4dc8313c290c6b3280774a11378468daa1e2b",
+      "reason": "fusionar el segon arxiu històric",
+      "destination": "_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/legacy_pre_canonical/260726_1530_ACTA_MARMOTA_Tancament_Sessio.md"
+    },
+    {
+      "kind": "move",
+      "source": "_wiki_de_poble/90_arxiu_historic/BRIEFING_Viabilitat_Economica_Legal.md",
+      "sha256": "954c87c6239f87d8d23303cae00ffe07460fbc28726c83c73d04af52b0769147",
+      "reason": "fusionar el segon arxiu històric",
+      "destination": "_wiki_de_poble/04_ARXIU_Documents_Historics/sense_data/legacy_pre_canonical/BRIEFING_Viabilitat_Economica_Legal.md"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/00_SER_Brain_Identitat/00_BIOS.md",
+      "sha256": "c85cd264e5f084ae6cf05e0fb3dc5184149482465d7e598cb733fb18602233c4",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/00_SER_Brain_Identitat/01_IDENTITAT.md",
+      "sha256": "143a47a678ae9c78e897e16c0492ea26f4a5fbcafd6eedb40e13dadb25487e1a",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/00_SER_Brain_Identitat/02_EQUIP_IA.md",
+      "sha256": "bcaa3e20b6145e6d881a4d1390beccbcc868b7482c8dd412a0ff47d7b3712785",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/00_SER_Brain_Identitat/02_GENOTIP.md",
+      "sha256": "0413559e0fc722c1d3e29ae1b892b20112197fa14a15e82396a5fbca299a5326",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/00_SER_Brain_Identitat/03_Consola_Termodinamica.md",
+      "sha256": "12ecb4405fb3554812d692aec7499d62e7cfc8d7b6503ffcb619b6b11d15ccef",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/00_SER_Brain_Identitat/CORE_Registre_Automillora.md",
+      "sha256": "2f86bd171098723f0e9a1965317babbfca38ab18d9de6b37ba302dd2181ce59e",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/00_SER_Brain_Identitat/DOC_Logos_Oficials.md",
+      "sha256": "1100c657690da2f77ba5177e661c52ccb04e134a0545b4417ea72cff0ec999e6",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/00_SER_Brain_Identitat/DOC_Taula_Mestra.md",
+      "sha256": "c6a7405ec1689b52c7ad91c5a697612a22234af99b220d8ea871e4876f262ce3",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/00_SER_Brain_Identitat/Soci_Sollutia.md",
+      "sha256": "3a24f36991b9d284f5905b2026e5a733d6f984b89182e082ea5beb6881c4ac40",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/a11y_debugging.md",
+      "sha256": "13f5290a315091e261d800eabd04541cabc2a5803f670b526d7ca32213248e76",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/chrome_devtools.md",
+      "sha256": "1162008079321de84816cd52564f3db7333c85b1b8304bc0acbd5410c0222a65",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/chrome_extensions.md",
+      "sha256": "1a7e017a7a44f10ef221749f9b04033bd25069dae1399c8681d1faccba1a1a7b",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/debug_optimize_lcp.md",
+      "sha256": "5cfa9172882c91dcfc62c9fba71ce7082caddc4b0a06e18fd64357305396ce4e",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/google_antigravity_sdk.md",
+      "sha256": "1b4c5c0c62ad32dcaf5173a1c7d5f6ec6433a2ecfa7d8c9bb75b9b778d53eb17",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/memory_leak_debugging.md",
+      "sha256": "4af856a4b1233b0e6756c8a869a2f1c24150f0ba6c5fded2f03aa5a30dec6865",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/modern_web_guidance.md",
+      "sha256": "52433f3fe68c983b72e36d92de626439e2eff8268e9c39e2899e119c8e0bb41e",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/troubleshooting.md",
+      "sha256": "a68d01fd57b9af0bd6aafb1a64ea5fce1a81c30f251395c0fd8c667161599e86",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/00_SER_Brain_Identitat/anatomia_cognitiva.md",
+      "sha256": "e5f9a4727460d3e1a2a3305f5a8e552fc78fa622c9ee18fdeec866ff52600dad",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/00_SER_Brain_Identitat/antigravity.md",
+      "sha256": "e3d2b0c0c025bdd3f787d29c41d1a92056356abca9c4c4381dd4041c1b8de21f",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/00_SER_Brain_Identitat/connectors_mcp_disseny.md",
+      "sha256": "b5c335b38f93d551bf5e7b76e48b9dfa9d298ee96bba47f82baa445a2fc1bc8a",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/00_SER_Brain_Identitat/el_projecte.md",
+      "sha256": "8b62265634261c833814647dd028e0b1511472566a718f85a20f2e6eabc28fdc",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/00_SER_Brain_Identitat/identitat_visual.md",
+      "sha256": "6c7200b7c0cec4219133bd4862957bc4263ccbfa67fffc35b9b18fc7b5cef1e6",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/00_SER_Brain_Identitat/perfil_psiquiatric.md",
+      "sha256": "3c5cf1f15874f316516e1d08bd75f9dbb0e9783193330f35d41febb9f4da5e83",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/01_SABER_Cultura_Coneixement/00_GLOSSARI_CANONIC.md",
+      "sha256": "ab2b7c864e529b51b5c2b31186dbd9af4bdf35893b8c9c10b123c0cdbe3f5c63",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/01_SABER_Cultura_Coneixement/00_visio_i_pilars.md",
+      "sha256": "5b1f07d2ef7b53432f1d31fa7b31f41893d70a455da4962ce7ee9e89c2b25933",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/01_SABER_Cultura_Coneixement/01_trellat.md",
+      "sha256": "c58765ced739b38115cc19fee9e198acb857e656ae6df6d50300ee8c170b0e9e",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/01_SABER_Cultura_Coneixement/Llibre_Blanc_Produccio_Pedra_Seca.md",
+      "sha256": "4e1adadc746e4f5a00a1e1ebb5068bf2e21c864d7b8f72a633c109395dbc4f04",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/01_SABER_Cultura_Coneixement/codex_huma/Arquitectura_L_Anima.md",
+      "sha256": "dde244e6b1553cc959ba1d1c6432004717984944b09c2ef7a410dee8e7609b41",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/01_SABER_Cultura_Coneixement/codex_huma/Arquitectura_La_Forja.md",
+      "sha256": "5ac2fac164e8cbd6d06ac8c9749f7c268491738cc235db2e387dd4cc55a6191d",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/01_SABER_Cultura_Coneixement/codex_huma/Arquitectura_Protocol_Lazaro.md",
+      "sha256": "30e735b6996a490cda99c6147d5337fafc102eddb67ec51edc5bde34296c71f6",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/01_SABER_Cultura_Coneixement/codex_huma/Arquitectura_Sistema_Nervios.md",
+      "sha256": "57aa3c9403465a47722988bc02f0bcc9bfad2f88afbea7aba6e2934c82569b5d",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/01_SABER_Cultura_Coneixement/connexio_radical.md",
+      "sha256": "84dc0c0599f0f6e431fc143789642c610a3612eb0eeca46e5a24fd9187f9fe61",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/01_SABER_Cultura_Coneixement/la_torre/fadrins_i_fadrines.md",
+      "sha256": "5a3502ae0bec8266d5c134262ed9913d4f33ebd38284dc574cfbd265e3a48b0d",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/00_arquitectura_tecnica_unificada.md",
+      "sha256": "28104ddc7113a012cda3baf3f9350dbcc8ddc7427321606886bcc89b7d12cf38",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/00_plantilles.md",
+      "sha256": "256fed801723ac4c178918b1737c3ef1849efd9e3860eef6cf368da167ed930f",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_acta_unica.md",
+      "sha256": "830f108e913e1c0ce5439d347df5e26545dc9b47f04b3bf427902912da5c17bf",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_brainstorming.md",
+      "sha256": "02eaf1b8652c5148e2022fc94aa911bb173b66e40bcff41f1d11e28e53d182c0",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_branding.md",
+      "sha256": "39a625c80ee5595b09e1072f135997a8a72998809fc4b5b427cbf3f1302c1739",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_creador_skills.md",
+      "sha256": "c1bc4758285595dd7468b16fa2b4202d33392b5d3d1b7e220c4a7fcc28f4d7e3",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_doc_to_app.md",
+      "sha256": "dbcd9738a5ded9e87fb54f759f0d5d5d67c08bd5272545691249bc3339b17949",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_modo_produccion.md",
+      "sha256": "5a6605d9d6c2b9af5afbf1258dc474261a37fa2bafa2e70e0aff7c94445be561",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_planificacio.md",
+      "sha256": "fbc3f433ce167a9ebd2ec0c12fa6df4db93e46866522187c359d25e55d69c39c",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_prompt_iso.md",
+      "sha256": "5cf8541119b01ea83cf671e0d811366897913cfb4da6acdbcae424ee33f6ce4d",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_skill_trellat.md",
+      "sha256": "f1eff31f44e9c936401a5b7ed27a4120300839c0afedd9c036e2a38d43f8f2b2",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/SDP_LOCK.md",
+      "sha256": "1f34d14bef1cd1d8ce02fc5705568f46d879abe3b80e8a327681c277d5bd1938",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/AUDITORIA_CANONICA.md",
+      "sha256": "a364c086b5c72840c988fa6a3b9b3322d2f860ff3a9dfb8b2d3f93be03adc1ad",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/MOTOR_OFFLINE.md",
+      "sha256": "58dea81f936695cb992a6792eb0287c910c7d4b5905786065a7cbfa769402982",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/a11y_seo_trellat.md",
+      "sha256": "babc80d876fc19a85fff9d6608bbbeaaad050a8e6965dbf8fde3d7fd165a1d6f",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/futur_adaptacio.md",
+      "sha256": "4886d6935651dcc8c9feb05f0928f8e955f22dfb76aa0612a402c4d7b5daa5e5",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/index_trellat.md",
+      "sha256": "5d799c97ef0e6d5328833239867d8853a4471396daa3a3a2fb6207eace140200",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/seguretat_execucio.md",
+      "sha256": "2d2408de52be77af155f65f3288537c379342a8255b1cf56c770210acec167ed",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/self_repair.md",
+      "sha256": "6e1060bbbae4e657eefd3faa24c1f10e55a5cbbae73d06d30bc6edfe36617344",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/successio_lazaro_execucio.md",
+      "sha256": "597f61c2b62971f3dabb1442fdfe381aea66189046537166da310555e2344166",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/DOC_Governanca.md",
+      "sha256": "a1b3fe87b935d08f176fa4732c246de26549c91617e09879e1b551e7e6f77c6b",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/ESTANDARD_Pedra_Seca.md",
+      "sha256": "e5ec2fbcf6a2991902d2f5858a701e4992eea341761f9233865d2d562cd83f7c",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/ESTANDARD_Tokens_Pedra_Seca.md",
+      "sha256": "cf58997e6a24ec7f5bba00db809c9ec9998b792ba2ce6601cd3edfa21af5889e",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/ESTANDARD_UI_Universal.md",
+      "sha256": "cfa57ba34c73a65afd6dfb800c79d9127caa1e8fb7b911272fbfd53ce394b7f7",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/FORJA_TO_CORE.md",
+      "sha256": "9e1b30e3b136a7494d429f5520e35244c745c1b15b92f080550a30bf867796bc",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "normalize_anchor",
+      "source": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/LLEI_05_Privacitat.md",
+      "sha256": "fc995f5d15f4c5210a829a9c779071c38b2acb9586fc85797951f1e7e8d8b83b",
+      "reason": "ancoratge automàtic duplicat"
+    },
+    {
+      "kind": "trash",
+      "source": "_wiki_de_poble/.DS_Store",
+      "sha256": "274be6a458e688a6155a29b1e079671be44c4f232a68fa4a087311c5caadde55",
+      "reason": "artefacte local de Finder"
+    },
+    {
+      "kind": "trash",
+      "source": "_wiki_de_poble/.obsidian/.DS_Store",
+      "sha256": "3f729f8b3cabe6cab52a7d42ee8daa2f2d064a9f484f7a5ca9b39b39c49d26f9",
+      "reason": "artefacte local de Finder"
+    },
+    {
+      "kind": "trash",
+      "source": "_wiki_de_poble/.obsidian/workspace.json",
+      "sha256": "def0f9d36f6d0cd0e234fcb92cbd04c01f0c828cbea704b74817ef2d192d82aa",
+      "reason": "estat local de la interfície Obsidian"
+    },
+    {
+      "kind": "trash",
+      "source": "_wiki_de_poble/00_SER_Brain_Identitat/.DS_Store",
+      "sha256": "a552db9c5bd514097d8d142e8d50257dec5d77ff56aaecda23119f358919e766",
+      "reason": "artefacte local de Finder"
+    },
+    {
+      "kind": "trash",
+      "source": "_wiki_de_poble/01_SABER_Cultura_Coneixement/.DS_Store",
+      "sha256": "22b4ff887328fe9d2ab2055b97d44b683cb392c0768bb89c5e021e1a979f64ff",
+      "reason": "artefacte local de Finder"
+    },
+    {
+      "kind": "trash",
+      "source": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/.!11382!.DS_Store",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reason": "artefacte local de Finder"
+    },
+    {
+      "kind": "trash",
+      "source": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/.DS_Store",
+      "sha256": "1a9ab4f599f217ac4f282e2b0e721cf32d7992cff361be211e598bd71be457a4",
+      "reason": "artefacte local de Finder"
+    },
+    {
+      "kind": "trash",
+      "source": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/.DS_Store",
+      "sha256": "c1bf7d6c304e6f5ad5dd1e1bb89813413c100d17bcd958296d935a01384145f9",
+      "reason": "artefacte local de Finder"
+    },
+    {
+      "kind": "trash",
+      "source": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/.DS_Store",
+      "sha256": "367085e2d453a43ea961a937d0b04245490c79e66d189bed729be88d68911194",
+      "reason": "artefacte local de Finder"
+    },
+    {
+      "kind": "trash",
+      "source": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/00_Bandeja_d_Entrada/.DS_Store",
+      "sha256": "d4e54b598f1511ff9be28a59f5502cdf752411aaae9ec3a451c0cb253a44dd81",
+      "reason": "artefacte local de Finder"
+    },
+    {
+      "kind": "trash",
+      "source": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/quarantena_scripts/audit_result.json",
+      "sha256": "f4c39a3fc72ccd23d3e6dbae63f7e333ff42121ddf5df215d62f7b8a9c974d78",
+      "reason": "informe generat, no font canònica"
+    },
+    {
+      "kind": "trash",
+      "source": "bot/var/baileys-runtime/owner.lock",
+      "sha256": "18e32c69d3fc34bba8f0e6c029518dec0329015929660ab301e41ef28e752eb2",
+      "reason": "estat efímer del runtime"
+    },
+    {
+      "kind": "trash",
+      "source": "bot/var/baileys-runtime/owner.lock.stale-1785335521541",
+      "sha256": "897f229fdaab182bd73920aea1f22ee5de4a1e32447ddfba6a69180761a959ad",
+      "reason": "estat efímer del runtime"
+    },
+    {
+      "kind": "trash",
+      "source": "bot/var/baileys-runtime/owner.lock.stale-1785335554764",
+      "sha256": "2031a520ad80b9f7bb01010f3de3ff7f025fbb7261308e0df31078026051d349",
+      "reason": "estat efímer del runtime"
+    },
+    {
+      "kind": "trash",
+      "source": "bot/var/baileys-runtime/owner.lock.stale-1785335577130",
+      "sha256": "720f9058d9cb23afc12d2c3db7ae861e7a7ec6161d566ef9745ef912f32b4850",
+      "reason": "estat efímer del runtime"
+    },
+    {
+      "kind": "trash",
+      "source": "bot/var/baileys-runtime/owner.lock.stale-1785335622518",
+      "sha256": "4f3c51b2893a0ab87e4ab27052ba6a0a389c08e86416b56cd5d3c013eb129082",
+      "reason": "estat efímer del runtime"
+    },
+    {
+      "kind": "trash",
+      "source": "bot/var/baileys-runtime/owner.lock.stale-1785335853909",
+      "sha256": "0f0eb4976702ee209b29a2107a85ad97e2425b21ba12f5fe3cc8b672a6c84995",
+      "reason": "estat efímer del runtime"
+    },
+    {
+      "kind": "trash",
+      "source": "src/.DS_Store",
+      "sha256": "2553d7d1b25fbfd05bfbba023b980b8606e34a7a07ae03d355d26d23d39154e2",
+      "reason": "artefacte local de Finder"
+    }
+  ]
+}

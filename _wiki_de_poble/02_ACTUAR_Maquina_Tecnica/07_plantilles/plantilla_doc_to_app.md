@@ -1,8 +1,14 @@
 ---
-estat: "canonic"
-tipus: "plantilla"
+estat: canonic
+tipus: plantilla
 description: "Plantilla per convertir documentació en funcionalitats d'aplicació traçables i verificables."
-temes: ["sistema"]
+temes:
+- sistema
+tags:
+- dev
+- maquina
+- socdepoble
+- tecnica
 ---
 # Doc to App (Transformació IAIA)
 **Categoria:** Plantilla

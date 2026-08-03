@@ -1,8 +1,14 @@
 ---
-estat: "canonic"
-tipus: "document"
+estat: canonic
+tipus: document
 description: "Descriu la forja tècnica de la PWA i les decisions d'arquitectura del projecte."
-temes: ["sistema"]
+temes:
+- sistema
+tags:
+- coneixement
+- cultura
+- saber
+- socdepoble
 ---
 # La Forja de la PWA i la seua Arquitectura (Volum II)
 **Categoria:** Arquitectura
@@ -38,5 +44,10 @@ La configuració PWA pot emmagatzemar l'esquelet estàtic mitjançant un Service
 - **Categoria:** [[Coneixement]]
 - **Etiquetes:** [[Graf]]
 
+
+**Ancoratge de Seguretat:** [[00_INDEX]]
+
+
+---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]

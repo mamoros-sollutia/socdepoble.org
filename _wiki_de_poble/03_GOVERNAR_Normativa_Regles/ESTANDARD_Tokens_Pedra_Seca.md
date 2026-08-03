@@ -1,5 +1,15 @@
 ---
 name: La Pedra Seca
+estat: auditat
+tipus: document
+tags:
+- govern
+- normativa
+- pedra_seca
+- regles
+- socdepoble
+---
+```yaml
 colors:
   surface: '131313'
   surface-dim: '131313'
@@ -84,7 +94,7 @@ spacing:
   carrer: 16px
   placa: 24px
   bancal: 40px
----
+```
 
 ## Brand & Style
 
@@ -165,5 +175,10 @@ The design system follows the **Square Rule (Claude’s Law)**:
 ### Hitbox Requirements
 - All interactive components (chips, checkboxes, icons) must have an invisible touch target of at least 44px x 44px to comply with the "Bancal Mode" accessibility standard.
 
+
+**Ancoratge de Seguretat:** [[00_INDEX]]
+
+
+---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]

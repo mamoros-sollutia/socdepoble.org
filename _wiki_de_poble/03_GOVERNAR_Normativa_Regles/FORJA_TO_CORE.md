@@ -1,8 +1,14 @@
 ---
-estat: "futur"
-tipus: "protocol"
+estat: futur
+tipus: protocol
 description: "Conserva com a proposta futura l'homologació de peces pures sense contradir la carcassa React/Vite actual."
-temes: ["sistema"]
+temes:
+- sistema
+tags:
+- govern
+- normativa
+- regles
+- socdepoble
 ---
 # Forja a Core — proposta futura
 
@@ -53,5 +59,10 @@ Només després de l'activació anterior, una peça candidata podria exigir:
 - **Categoria:** [[Govern]]
 - **Etiquetes:** [[Graf]]
 
+
+**Ancoratge de Seguretat:** [[00_INDEX]]
+
+
+---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]

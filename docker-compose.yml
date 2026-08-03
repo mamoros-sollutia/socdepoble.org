@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  iaia-bot:
+    build: .
+    container_name: iaia_socdepoble
+    restart: unless-stopped
+    volumes:
+      - ./.iaia_auth:/app/.iaia_auth
+      - ./var:/app/var
+      - ./.env:/app/.env
+    environment:
+      - NODE_ENV=production

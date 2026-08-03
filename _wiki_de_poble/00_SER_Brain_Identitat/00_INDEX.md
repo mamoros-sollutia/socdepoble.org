@@ -1,8 +1,14 @@
 ---
-estat: "canonic"
-tipus: "index"
+estat: canonic
+tipus: index
 description: "Orienta la navegació pels quatre pilars operatius i les dues zones de cicle de vida de la Wiki."
-temes: ["sistema"]
+temes:
+- sistema
+tags:
+- core
+- genoma
+- identitat
+- socdepoble
 ---
 # Índex de la Wiki
 
@@ -21,7 +27,7 @@ Entrada estàtica a la Wiki de Sóc de Poble.
 
 | Zona | Funció | Enllaç |
 |---|---|---|
-| 04 ARXIU | Memòria històrica curada i consultiva | [[00_MEMORIAL_Lapides#04_ARXIU_Documents_Historics/actes_arxivades/90_arxiu_historic|04_ARXIU_Documents_Historics/actes_arxivades/90_arxiu_historic †]] |
+| 04 ARXIU | Memòria històrica curada i consultiva | [[00_INDEX_ARXIU]] |
 | 05 ESCRIPTORI | Treball editorial temporal, no autoritat | Buit en esta baseline; ruta `05_Escriptori_Soc_de_Poble/` |
 
 ## Escriptori de Sessió (L'Era)
@@ -63,3 +69,8 @@ L’estat del graf no es manté en una llista manual: el calcula l’Autoneteja 
 ## Taxonomia
 - **Categoria:** [[Identitat]]
 - **Etiquetes:** [[Graf]]
+
+
+---
+
+**Ancoratge de Seguretat:** [[00_INDEX]]

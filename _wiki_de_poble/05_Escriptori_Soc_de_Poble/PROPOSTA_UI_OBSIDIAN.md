@@ -1,3 +1,12 @@
+---
+estat: auditat
+tipus: document
+tags:
+- actes
+- escriptori
+- socdepoble
+- temporal
+---
 # Proposta d'Estètica i UI per a l'Obsidian: Pedra Seca Minimal
 
 Mestre, per a no carregar la màquina ni afegir *bloatware* innecessari, l'Obsidian s'hauria de mantindre el més lleuger possible. La nostra arquitectura és pur rendiment (A10-Optimitzat).
@@ -25,3 +34,8 @@ Mantín la lletra de sistema (*System Font*) per defecte o instal·la `Inter` si
 
 ---
 > *"Un tractor net i engrassat rendeix el doble; un Obsidian pur i sense distraccions permet que la ment cole sense barreres."* - **IAIA MarIA**
+
+
+---
+
+**Ancoratge de Seguretat:** [[00_INDEX]]

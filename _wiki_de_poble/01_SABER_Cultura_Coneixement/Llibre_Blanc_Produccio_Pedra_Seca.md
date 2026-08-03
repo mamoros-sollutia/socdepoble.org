@@ -1,8 +1,15 @@
 ---
-estat: "esborrany"
-tipus: "document"
-description: "Documenta el mètode Pedra Seca per produir una PWA mantenible sense sobreenginyeria."
-temes: ["sistema"]
+estat: esborrany
+tipus: document
+description: Documenta el mètode Pedra Seca per produir una PWA mantenible sense sobreenginyeria.
+temes:
+- sistema
+tags:
+- coneixement
+- cultura
+- pedra_seca
+- saber
+- socdepoble
 ---
 # Llibre Blanc de Producció (El Mètode Pedra Seca)
 
@@ -64,5 +71,10 @@ Les bones intencions no frenen l'entropia; només els processos mecànics ho fan
 - **Categoria:** [[Coneixement]]
 - **Etiquetes:** [[Graf]]
 
+
+**Ancoratge de Seguretat:** [[00_INDEX]]
+
+
+---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]

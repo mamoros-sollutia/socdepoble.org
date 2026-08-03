@@ -1,8 +1,16 @@
 ---
 description: "Build and publish Chrome Extensions using Manifest V3 best practices. Use this skill whenever the user asks to create, modify, deb..."
-estat: "canonic"
-tipus: "skill"
-temes: ["sistema"]
+estat: canonic
+tipus: skill
+temes:
+- sistema
+tags:
+- core
+- genoma
+- identitat
+- socdepoble
+- sollutia
+- subvencions
 ---
 
 # Chrome Extensions
@@ -512,4 +520,9 @@ Verify EVERY item before delivering:
 ---
 **Categoria:** [[Sollutia]]
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX]]
+
+
+---
+
 **Ancoratge de Seguretat:** [[00_INDEX]]

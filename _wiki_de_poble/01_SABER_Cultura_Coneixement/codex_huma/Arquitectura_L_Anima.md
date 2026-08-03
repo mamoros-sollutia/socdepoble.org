@@ -1,8 +1,14 @@
 ---
-estat: "canonic"
-tipus: "document"
+estat: canonic
+tipus: document
 description: "Explica el propòsit social, cultural i rural que dona sentit a l'arquitectura del projecte."
-temes: ["sistema"]
+temes:
+- sistema
+tags:
+- coneixement
+- cultura
+- saber
+- socdepoble
 ---
 # L'Ànima i el Propòsit (Volum I)
 **Categoria:** Arquitectura
@@ -40,5 +46,10 @@ Aquest document està dissenyat perquè un lector –sense cap formació en prog
 - **Categoria:** [[Coneixement]]
 - **Etiquetes:** [[Graf]]
 
+
+**Ancoratge de Seguretat:** [[00_INDEX]]
+
+
+---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]

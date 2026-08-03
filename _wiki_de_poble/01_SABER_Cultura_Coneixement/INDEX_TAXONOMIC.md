@@ -1,8 +1,14 @@
 ---
-estat: "canonic"
-tipus: "index"
+estat: canonic
+tipus: index
 description: "Llistat mestre de Temes (Etiquetes) admesos per a la Wiki per evitar la creació d'etiquetes brossa i disperses."
-temes: ["sistema"]
+temes:
+- sistema
+tags:
+- coneixement
+- cultura
+- saber
+- socdepoble
 ---
 # 🏷️ Índex Taxonòmic (Temes)
 
@@ -25,3 +31,8 @@ Per evitar l'entropia i la generació de nodes orfes o etiquetes redundants, **�
 *(Les etiquetes anteriors es basen en el Glossari Canònic i la pràctica de l'Auditoria).* 
 
 **Ancoratge de Seguretat:** [[00_GLOSSARI_CANONIC]]
+
+
+---
+
+**Ancoratge de Seguretat:** [[00_INDEX]]

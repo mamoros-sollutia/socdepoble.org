@@ -1,3 +1,12 @@
+---
+estat: auditat
+tipus: document
+tags:
+- actes
+- escriptori
+- socdepoble
+- temporal
+---
 # 🕸️ El Capturador de l'Abocador (Bookmarklet)
 
 Aquest xicotet giny permet agafar qualsevol web que estigues llegint al teu navegador (Chrome, Safari, Firefox) i llançar-la directament a l'Abocador (`00_Raw`) de l'Obsidian, sense trencar la teua concentració. 
@@ -44,3 +53,8 @@ javascript:(function(){
 3. Fas clic al botó "**Sóc de Poble: Caçar Web**" de la teua barra de favorits.
 4. L'Obsidian s'obrirà automàticament i crearà una nota nova a la carpeta `00_Raw` amb el títol de la web, la data exacta i el text que havies seleccionat (com una cita blockquote).
 5. Després només cal que em digues *"Neteja l'abocador"* i la IAIA MarIA processarà la captura i la destil·larà a la Wiki oficial.
+
+
+---
+
+**Ancoratge de Seguretat:** [[00_INDEX]]

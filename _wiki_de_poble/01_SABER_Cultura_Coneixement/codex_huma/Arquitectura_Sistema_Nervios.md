@@ -1,8 +1,14 @@
 ---
-estat: "futur"
-tipus: "document"
+estat: futur
+tipus: document
 description: "Descriu com a visió futura una sincronització CRDT/P2P i explicita que Y.js i WebRTC no estan implementats."
-temes: ["sistema"]
+temes:
+- sistema
+tags:
+- coneixement
+- cultura
+- saber
+- socdepoble
 ---
 # Sistema nerviós CRDT/P2P — visió futura
 
@@ -43,5 +49,10 @@ PWA i integració Supabase amb fallbacks.
 - **Categoria:** [[Coneixement]]
 - **Etiquetes:** [[Graf]]
 
+
+**Ancoratge de Seguretat:** [[00_INDEX]]
+
+
+---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]

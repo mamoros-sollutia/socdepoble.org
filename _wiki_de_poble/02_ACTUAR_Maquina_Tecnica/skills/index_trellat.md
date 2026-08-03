@@ -1,8 +1,15 @@
 ---
-estat: "canonic"
-tipus: "skill"
+estat: canonic
+tipus: skill
 description: "Defineix l’Índex de Trellat com a marc de decisió auditable i prohibix convertir estimacions en salut automàtica."
-temes: ["sistema"]
+temes:
+- sistema
+tags:
+- dev
+- maquina
+- skills
+- socdepoble
+- tecnica
 ---
 # Índex de Trellat
 
@@ -73,4 +80,9 @@ L’IT no crea etiquetes de frontmatter. L’esquema v2 només admet `estat`, `t
 ---
 **Categoria:** [[skills]]
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX]]
+
+
+---
+
 **Ancoratge de Seguretat:** [[00_INDEX]]

@@ -1,8 +1,14 @@
 ---
-estat: "canonic"
-tipus: "document"
+estat: canonic
+tipus: document
 description: "Recull context cultural sobre els fadrins, les fadrines i les festes de la Torre de les Maçanes."
-temes: ["sistema"]
+temes:
+- sistema
+tags:
+- coneixement
+- cultura
+- saber
+- socdepoble
 ---
 # 🎊 Cultura Fadrins i Fadrines (La Torre de les Maçanes)
 
@@ -40,5 +46,10 @@ temes: ["sistema"]
 - **Categoria:** [[Coneixement]]
 - **Etiquetes:** [[Graf]]
 
+
+**Ancoratge de Seguretat:** [[00_INDEX]]
+
+
+---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]

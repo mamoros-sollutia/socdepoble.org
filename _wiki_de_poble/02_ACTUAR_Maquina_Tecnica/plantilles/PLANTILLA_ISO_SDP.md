@@ -1,8 +1,14 @@
 ---
-estat: "esborrany"
-tipus: "plantilla"
+estat: esborrany
+tipus: plantilla
 description: "Plantilla base per crear documents coherents amb l'esquema de metadades v2 de la Wiki."
-temes: ["sistema"]
+temes:
+- sistema
+tags:
+- dev
+- maquina
+- socdepoble
+- tecnica
 ---
 # PLANTILLA ISO SDP
 

@@ -1,8 +1,14 @@
 ---
-estat: "canonic"
-tipus: "plantilla"
+estat: canonic
+tipus: plantilla
 description: "Guia la definició de marca, narrativa, identitat visual i criteris de coherència."
-temes: ["sistema"]
+temes:
+- sistema
+tags:
+- dev
+- maquina
+- socdepoble
+- tecnica
 ---
 # Plantilla de Branding (Sóc de Poble)
 **Categoria:** Plantilla

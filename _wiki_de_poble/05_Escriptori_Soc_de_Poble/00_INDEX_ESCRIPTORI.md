@@ -1,8 +1,14 @@
 ---
-estat: "canonic"
-tipus: "document"
+estat: canonic
+tipus: document
 description: "Índex Mestre de l'Escriptori per a ancorar Actes, Briefings i Prompts al Graf."
-temes: ["escriptori"]
+temes:
+- escriptori
+tags:
+- actes
+- escriptori
+- socdepoble
+- temporal
 ---
 
 # 🗂️ Índex Mestre de l'Escriptori
@@ -10,12 +16,12 @@ temes: ["escriptori"]
 Aquest document serveix per a **ancorar al cervell** totes les notes temporals, actes i documents de treball que el Mestre i la IAIA MarIA creen diàriament. Sense aquest document, el graf queda ple d'òrfenes desconnectades.
 
 ## 🛠️ Eines i Utilitats
+- [[00_INDEX_QUARANTENA|🚧 Calaix de Quarantena (Scripts)]]
 - [[Capturador_Bookmarklet|Bookmarklet per a l'Abocador (00_Raw)]]
 - [[PROPOSTA_UI_OBSIDIAN|Proposta d'Interfície Pedra Seca per a Obsidian]]
 
 ## 📥 Bandeja d'Entrada (Inbox)
-- [[Homepage]]
-- [[Plugins]]
+
 
 ## 📝 Actes de Sessió
 - [[260715_0400_ACTA_SESSIO_Tancament_Gran_Auditoria]]
@@ -46,3 +52,8 @@ Aquest document serveix per a **ancorar al cervell** totes les notes temporals, 
 
 ---
 > *"Un escriptori ordenat és l'avantsala d'una ment eficient. Que no quede cap paper solt."*
+
+
+---
+
+**Ancoratge de Seguretat:** [[00_INDEX]]

@@ -1,7 +1,13 @@
 ---
-estat: "canonic"
-tipus: "skill"
+estat: canonic
+tipus: skill
 description: "Implementa el mètode Karpathy (LLM Wiki) per al manteniment automatitzat del cervell de Sóc de Poble. Assigna a la IAIA MarIA el rol d'Arquitecta Silenciosa de la Informació."
+tags:
+- core
+- genoma
+- identitat
+- skills
+- socdepoble
 ---
 
 # 🧠 Skill: LLM Wiki (Mètode Karpathy)
@@ -48,3 +54,8 @@ Quan s'invoque aquesta skill, has d'executar el següent protocol mecànic pas a
 2. **Duplicació:** Si la informació de `00_Raw/` ja existia a la Wiki amb altres paraules, avisa el Mestre i no ho dupliques. 
 
 *"La ment humana del Mestre és lliure per a pensar i dictar en el caos de l'Abocador; la ment de la màquina està obligada a organitzar eixe caos en un ordre de ciment."*
+
+
+---
+
+**Ancoratge de Seguretat:** [[00_INDEX]]

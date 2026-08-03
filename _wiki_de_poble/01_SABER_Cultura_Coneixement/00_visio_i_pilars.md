@@ -1,8 +1,14 @@
 ---
-estat: "canonic"
-tipus: "document"
-description: "Font Única de Veritat per a la direcció del projecte."
-temes: ["sistema"]
+estat: canonic
+tipus: document
+description: Font Única de Veritat per a la direcció del projecte.
+temes:
+- sistema
+tags:
+- coneixement
+- cultura
+- saber
+- socdepoble
 ---
 # 🏡 VISIÓ I MISSIÓ DE SÒC DE POBLE
 *Font Única de Veritat per a la direcció del projecte.*
@@ -42,5 +48,10 @@ Crear una **Xarxa Social Descentralitzada de Programari Lliure** on:
 - **Categoria:** [[Coneixement]]
 - **Etiquetes:** [[Graf]]
 
+
+**Ancoratge de Seguretat:** [[00_INDEX]]
+
+
+---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]

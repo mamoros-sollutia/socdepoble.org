@@ -1,8 +1,15 @@
 ---
-estat: "canonic"
-tipus: "skill"
+estat: canonic
+tipus: skill
 description: "Contracte verificable d’accessibilitat, SEO i rendiment per a les interfícies públiques."
-temes: ["sistema"]
+temes:
+- sistema
+tags:
+- dev
+- maquina
+- skills
+- socdepoble
+- tecnica
 ---
 # A11y i SEO amb Trellat
 
@@ -61,4 +68,9 @@ L’iPad A10 és el tribunal pràctic. LCP, INP, CLS, pes transferit i memòria 
 ---
 **Categoria:** [[skills]]
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX]]
+
+
+---
+
 **Ancoratge de Seguretat:** [[00_INDEX]]

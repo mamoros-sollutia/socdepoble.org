@@ -1,8 +1,15 @@
 ---
-estat: "canonic"
-tipus: "plantilla"
+estat: canonic
+tipus: plantilla
 description: "Plantilla per dissenyar skills amb gallets, abast, regles, proves i eixida verificable."
-temes: ["sistema"]
+temes:
+- sistema
+tags:
+- dev
+- maquina
+- skills
+- socdepoble
+- tecnica
 ---
 # Creador de Skills Antigravity (La Fàbrica)
 **Categoria:** Plantilla

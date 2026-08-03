@@ -1,9 +1,17 @@
 ---
-estat: "canonic"
-tipus: "skill"
+estat: canonic
+tipus: skill
 description: "Guia consultiva per diagnosticar i proposar la continuïtat del projecte sense concedir capacitat d'escriptura."
-aliases: ["Successió Lázaro"]
-temes: ["sistema"]
+aliases:
+- Successió Lázaro
+temes:
+- sistema
+tags:
+- dev
+- maquina
+- skills
+- socdepoble
+- tecnica
 ---
 # Successió Lázaro: continuïtat i reconstrucció
 
@@ -107,4 +115,9 @@ Queden derogades tres idees heretades: abolir `.agents`, considerar que «el cod
 ---
 **Categoria:** [[skills]]
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX]]
+
+
+---
+
 **Ancoratge de Seguretat:** [[00_INDEX]]

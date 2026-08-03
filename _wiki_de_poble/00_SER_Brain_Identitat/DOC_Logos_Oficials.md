@@ -1,8 +1,14 @@
 ---
-estat: "canonic"
-tipus: "document"
-description: "Aquest document és la font de veritat dels logos oficials."
-temes: ["sistema"]
+estat: canonic
+tipus: document
+description: Aquest document és la font de veritat dels logos oficials.
+temes:
+- sistema
+tags:
+- core
+- genoma
+- identitat
+- socdepoble
 ---
 # DOC Logos Oficials
 
@@ -41,5 +47,10 @@ Cap plantilla ha d’incrustar blocs repetits de logos. Les plantilles han d’e
 - **Categoria:** [[Identitat]]
 - **Etiquetes:** [[Graf]]
 
+
+**Ancoratge de Seguretat:** [[00_INDEX]]
+
+
+---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]

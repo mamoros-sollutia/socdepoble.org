@@ -1,8 +1,16 @@
 ---
 description: "Diagnoses and resolves memory leaks in JavaScript/Node.js applications. Use when a user reports high memory usage, OOM errors, or ..."
-estat: "canonic"
-tipus: "skill"
-temes: ["sistema"]
+estat: canonic
+tipus: skill
+temes:
+- sistema
+tags:
+- core
+- genoma
+- identitat
+- socdepoble
+- sollutia
+- subvencions
 ---
 
 # Memory Leak Debugging
@@ -60,4 +68,9 @@ The script will analyze and output the top growing objects by size and highlight
 ---
 **Categoria:** [[Sollutia]]
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX]]
+
+
+---
+
 **Ancoratge de Seguretat:** [[00_INDEX]]

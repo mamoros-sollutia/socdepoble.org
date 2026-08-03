@@ -1,8 +1,14 @@
 ---
-estat: "canonic"
-tipus: "document"
+estat: canonic
+tipus: document
 description: "Defineix una interacció centrada en connectar recursos, sense mètriques socials d'aprovació."
-temes: ["sistema"]
+temes:
+- sistema
+tags:
+- coneixement
+- cultura
+- saber
+- socdepoble
 ---
 # Connexió Radical (Anti-Me-Gusta)
 
@@ -30,5 +36,10 @@ Hi ha un concepte horitzontal que travessa tot el projecte i totes les "cards": 
 - **Categoria:** [[Coneixement]]
 - **Etiquetes:** [[Graf]]
 
+
+**Ancoratge de Seguretat:** [[00_INDEX]]
+
+
+---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]

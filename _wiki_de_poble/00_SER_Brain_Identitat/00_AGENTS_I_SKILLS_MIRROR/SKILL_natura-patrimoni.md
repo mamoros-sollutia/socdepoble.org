@@ -1,6 +1,14 @@
 ---
 name: Natura i Patrimoni
-description: Codifica la filosofia de defensa del territori de la CEEC, El Rentonar i Anna Climent. Utilitza-la per a redactar comunicats, alegacions i analitzar agressions al paisatge rural.
+description: "Codifica la filosofia de defensa del territori de la CEEC, El Rentonar i Anna Climent. Utilitza-la per a redactar comunicats, alegacions i analitzar agressions al paisatge rural."
+estat: auditat
+tipus: document
+tags:
+- core
+- genoma
+- identitat
+- skills
+- socdepoble
 ---
 
 # ⚙️ SOSP SKILL MASTER TEMPLATE: Natura i Patrimoni
@@ -26,3 +34,8 @@ Abans de finalitzar la resposta, l'Agent ha de validar en silenci:
 - [ ] Les instruccions per als ciutadans per a presentar queixes o alegacions són digeribles en 1 minut?
 - [ ] S'ha evitat l'ús de terminologia complaent amb el model de "desenvolupament massiu"?
 - [ ] S'estan oferint alternatives per als "analfabets digitals" i per als "hiper-digitals" al mateix temps?
+
+
+---
+
+**Ancoratge de Seguretat:** [[00_INDEX]]

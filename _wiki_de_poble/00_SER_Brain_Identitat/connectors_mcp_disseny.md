@@ -1,8 +1,14 @@
 ---
-estat: "futur"
-tipus: "document"
+estat: futur
+tipus: document
 description: "Especifica una possible integració futura amb connectors de disseny que sempre requerix discovery real."
-temes: ["sistema"]
+temes:
+- sistema
+tags:
+- core
+- genoma
+- identitat
+- socdepoble
 ---
 # 04. Connectors MCP de Disseny (Arquitectura PWA i Visual)
 
@@ -54,5 +60,10 @@ Mentre que Affinity és la nostra eina de base vectorial, **Stitch** actua com e
 - **Categoria:** [[Identitat]]
 - **Etiquetes:** [[Graf]]
 
+
+**Ancoratge de Seguretat:** [[00_INDEX]]
+
+
+---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]

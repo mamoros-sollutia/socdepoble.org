@@ -1,8 +1,15 @@
 ---
-estat: "canonic"
-tipus: "norma"
+estat: canonic
+tipus: norma
 description: "Defineix Pedra Seca com un criteri de simplicitat, accessibilitat i dependències justificades."
-temes: ["sistema"]
+temes:
+- sistema
+tags:
+- govern
+- normativa
+- pedra_seca
+- regles
+- socdepoble
 ---
 # ESTÀNDARD PEDRA SECA
 
@@ -199,5 +206,10 @@ Aquesta clàusula preval sobre qualsevol decisió històrica prèvia. Pedra Seca
 - **Categoria:** [[Govern]]
 - **Etiquetes:** [[Graf]]
 
+
+**Ancoratge de Seguretat:** [[00_INDEX]]
+
+
+---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]
