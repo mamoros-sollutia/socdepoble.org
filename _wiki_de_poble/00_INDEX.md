@@ -32,3 +32,4 @@
 - [[audit-machine]]
 - [[ADR-2026-08-ONLINE-FIRST]]
 - [[PROFILE]]
+- [[PROTOCOL_CHANGE]]
