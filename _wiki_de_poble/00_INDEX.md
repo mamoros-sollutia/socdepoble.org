@@ -36,3 +36,4 @@
 - [[AUDITORIA_AGOST_2026_SEIENT_5]]
 - [[260729_0120_ACTA_MARMOTA_Tancament_Sessio]]
 - [[260729_1422_PROMPT_Auditoria_Final_ARXIUS_ADJUNTS]]
+- [[260729_1422_PROMPT_Auditoria_Final_Per_Tancar_La_IA_Del_Bot_WhatsApp]]
