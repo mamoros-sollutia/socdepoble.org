@@ -16,3 +16,4 @@
 - [2026-08-03T13:21:44.260Z] Enllaç tancat a _wiki_de_poble/05_Escriptori_Soc_de_Poble/quarantena_scripts/00_INDEX_QUARANTENA.md (apuntava a: test_function_call.mjs)
 - [2026-08-03T13:21:44.260Z] Enllaç tancat a _wiki_de_poble/05_Escriptori_Soc_de_Poble/quarantena_scripts/00_INDEX_QUARANTENA.md (apuntava a: test_gemini.mjs)
 - [2026-08-03T13:21:44.260Z] Enllaç tancat a _wiki_de_poble/05_Escriptori_Soc_de_Poble/quarantena_scripts/00_INDEX_QUARANTENA.md (apuntava a: test_models.mjs)
+- [2026-08-03T13:21:44.364Z] Enllaç tancat a _wiki_de_poble/90_arxiu_historic/260715_0400_ACTA_SESSIO_Tancament_Gran_Auditoria.md (apuntava a: 00_MEMORIAL_Lapides)
