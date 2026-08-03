@@ -21,3 +21,4 @@
 - [[Arquitectura_Sistema_Nervios]]
 - [[connexio_radical]]
 - [[fadrins_i_fadrines]]
+- [[00_plantilles]]
