@@ -40,3 +40,4 @@
 - [[260729_1422_PROMPT_Auditoria_Final_Per_Tancar_La_IA_Del_Bot_WhatsApp_COMPLET_CONSELL]]
 - [[260801_1900_ACTA_SESSIO_Enviament_NLnet]]
 - [[carmen_tattoos_naming]]
+- [[260726_1530_ACTA_MARMOTA_Tancament_Sessio]]
