@@ -12,3 +12,4 @@
 - [[modern_web_guidance]]
 - [[troubleshooting]]
 - [[antigravity]]
+- [[connectors_mcp_disseny]]
