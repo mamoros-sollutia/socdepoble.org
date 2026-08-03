@@ -19,3 +19,4 @@
 - [2026-08-03T13:21:44.364Z] Enllaç tancat a _wiki_de_poble/90_arxiu_historic/260715_0400_ACTA_SESSIO_Tancament_Gran_Auditoria.md (apuntava a: 00_MEMORIAL_Lapides)
 - [2026-08-03T13:21:44.451Z] Enllaç tancat a _wiki_de_poble/90_arxiu_historic/260716_1300_ACTA_SESSIO_Problema_Sincronitzacio_Skills.md (apuntava a: 00_MEMORIAL_Lapides)
 - [2026-08-03T13:21:44.545Z] Enllaç tancat a _wiki_de_poble/90_arxiu_historic/260719_0345_PROMPT_Auditoria_Suprema_Consell.md (apuntava a: 00_MEMORIAL_Lapides)
+- [2026-08-03T13:21:44.634Z] Enllaç tancat a _wiki_de_poble/90_arxiu_historic/260719_0415_ACTA_SESSIO_La_Gran_Destillacio.md (apuntava a: 00_MEMORIAL_Lapides)
