@@ -1,10 +1,12 @@
 {
   "vault": "_wiki_de_poble",
   "ignoraObjectius": [
-    "00_AGENTS_I_SKILLS_MIRROR"
+    "00_AGENTS_I_SKILLS_MIRROR",
+    "00_Bandeja_d_Entrada"
   ],
   "exclouFonts": [
-    "00_AGENTS_I_SKILLS_MIRROR"
+    "00_AGENTS_I_SKILLS_MIRROR",
+    "00_Bandeja_d_Entrada"
   ],
   "hubsTaxonomics": [
     "Graf",

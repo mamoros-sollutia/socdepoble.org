@@ -145,7 +145,13 @@ if (cmd === 'diagnostic') {
   });
 
   let orfes = [];
+  let buits = [];
   fitxers.forEach(f => {
+    const cont = fs.readFileSync(f, 'utf8').trim();
+    if (cont === '') {
+      buits.push(f);
+      return;
+    }
     const base = path.basename(f, '.md').toLowerCase();
     if (!referits.has(base) && 
         base !== config.indexAdopcio.toLowerCase() && 
@@ -200,6 +206,14 @@ if (cmd === 'diagnostic') {
       id: genId(),
       tipus: "ADOPTA",
       fitxer: path.relative(REPO_ROOT, o)
+    });
+  });
+
+  buits.forEach(b => {
+    ops.push({
+      id: genId(),
+      tipus: "DESTRUEIX",
+      fitxer: path.relative(REPO_ROOT, b)
     });
   });
 
@@ -284,6 +298,14 @@ if (cmd === 'aplica') {
       runGit(`add "${indexPath}"`);
       const msgFile = path.join(REPO_ROOT, '.git', 'COMMIT_MSG_PLAQUETES');
       fs.writeFileSync(msgFile, `[PLAQUETES ${op.id}] ADOPTA: ${op.fitxer}`);
+      runGit(`commit --no-verify -F "${msgFile}"`);
+      fs.unlinkSync(msgFile);
+    }
+    
+    if (op.tipus === 'DESTRUEIX') {
+      runGit(`rm "${fPath}"`);
+      const msgFile = path.join(REPO_ROOT, '.git', 'COMMIT_MSG_PLAQUETES');
+      fs.writeFileSync(msgFile, `[PLAQUETES ${op.id}] DESTRUEIX: ${op.fitxer}`);
       runGit(`commit --no-verify -F "${msgFile}"`);
       fs.unlinkSync(msgFile);
     }
