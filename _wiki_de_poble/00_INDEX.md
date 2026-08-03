@@ -31,3 +31,4 @@
 - [[AUDITORIA_AGOST_2026]]
 - [[audit-machine]]
 - [[ADR-2026-08-ONLINE-FIRST]]
+- [[PROFILE]]
