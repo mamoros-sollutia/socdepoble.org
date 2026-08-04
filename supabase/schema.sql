@@ -82,30 +82,29 @@ drop policy if exists "public write app_content" on public.app_content;
 drop policy if exists "public update app_content" on public.app_content;
 
 drop policy if exists "public read chat_threads" on public.chat_threads;
-create policy "public read chat_threads"
+create policy "private read chat_threads"
 on public.chat_threads
 for select
-to anon, authenticated
-using (true);
+to authenticated
+using (owner_user_id::uuid = auth.uid());
 
 drop policy if exists "public write chat_threads" on public.chat_threads;
 drop policy if exists "public update chat_threads" on public.chat_threads;
 
 drop policy if exists "public read chat_messages" on public.chat_messages;
-create policy "public read chat_messages"
+create policy "private read chat_messages"
 on public.chat_messages
 for select
-to anon, authenticated
-using (true);
+to authenticated
+using (owner_user_id::uuid = auth.uid());
 
 drop policy if exists "public write chat_messages" on public.chat_messages;
-create policy "public write chat_messages"
+create policy "private write chat_messages"
 on public.chat_messages
 for insert
-to anon, authenticated
+to authenticated
 with check (
-  owner_user_id is not null
-  and owner_user_id <> ''
+  owner_user_id::uuid = auth.uid()
   and thread_id is not null
   and text is not null
   and text <> ''
@@ -116,20 +115,19 @@ drop policy if exists "public update chat_messages" on public.chat_messages;
 drop policy if exists "public delete chat_messages" on public.chat_messages;
 
 drop policy if exists "public read section_submissions" on public.section_submissions;
-create policy "public read section_submissions"
+create policy "private read section_submissions"
 on public.section_submissions
 for select
-to anon, authenticated
-using (true);
+to authenticated
+using (owner_user_id::uuid = auth.uid());
 
 drop policy if exists "public write section_submissions" on public.section_submissions;
-create policy "public write section_submissions"
+create policy "private write section_submissions"
 on public.section_submissions
 for insert
-to anon, authenticated
+to authenticated
 with check (
-  owner_user_id is not null
-  and owner_user_id <> ''
+  owner_user_id::uuid = auth.uid()
   and section_id in ('mur', 'mercat', 'events')
   and title is not null
   and title <> ''
