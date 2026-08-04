@@ -18,9 +18,17 @@ async function walk(dir, acc = []) {
   const entries = await readdir(dir, { withFileTypes: true });
   for (const e of entries) {
     if (e.name.startsWith('.') || e.name === 'node_modules') continue;
+    
+    // Filtres RAG canònics (Fase 1)
+    if (e.name === 'vendor' || e.name === 'mirrors' || e.name.startsWith('90_') || e.name.toLowerCase().includes('petorreta')) continue;
+
     const full = join(dir, e.name);
-    if (e.isDirectory()) await walk(full, acc);
-    else if (e.name.endsWith('.md')) acc.push(full);
+    if (e.isDirectory()) {
+      if (full.includes('bot/var') || full.includes('05_Escriptori') || full.includes('04_ARXIU')) continue;
+      await walk(full, acc);
+    } else if (e.name.endsWith('.md')) {
+      acc.push(full);
+    }
   }
   return acc;
 }
