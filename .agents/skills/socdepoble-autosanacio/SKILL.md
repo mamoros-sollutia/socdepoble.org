@@ -1,72 +1,38 @@
 ---
 estat: "canonic"
 tipus: "skill"
-description: "Manual operatiu de plaquetes.mjs v1.1: el Sistema Immunitari que diagnostica ferides del graf (fantasmes, orfes) i les cura només amb aprovació mecànica per hash, un commit git per operació i reversió quirúrgica."
+description: "Manual operatiu de plaquetes.mjs v1.1: el Sistema Immunitari que diagnostica ferides del graf (fantasmes, orfes). IMPORTANT: L'script és 100% Read-Only. Les mutacions les executa l'Agent mitjançant les eines de l'IDE complint el protocol Reflex."
 temes: ["sistema"]
 ---
 
 # Sistema Immunitari — Les Plaquetes 🩸
 
-`plaquetes.mjs` circula pel vault com les plaquetes per la sang: detecta ferides (nodes fantasma, fitxers orfes), proposa la coagulació en una **RECEPTA** llegible, i només opera quan un humà aprova per hash. Zero dependències NPM: només stdlib de Node ≥ 18. Zero AI Slop.
-
-## Instal·lació al Mas
-
-1. Copiar l'script a `scripts/immunitari/plaquetes.mjs`.
-2. `node scripts/immunitari/plaquetes.mjs init` — crea `.immunitari/config.json` amb valors per defecte i el `.gitignore` intern.
-3. Revisar la configuració (vault, hubs, zones delegades, exclusions) i fer-ne commit.
-4. **Obligació de governança:** registrar `.immunitari/` com a directori legal a les normes de la Wiki *abans* del primer `aplica`. Ja vam patir un dimoni que escrivia logs en territori il·legal; no repetim pecats.
+`plaquetes.mjs` circula pel vault com les plaquetes per la sang: detecta ferides (nodes fantasma, fitxers orfes), i proposa la coagulació en una **RECEPTA** llegible.
+**IMPORTANT:** El script no té capacitats destructives ni de modificació (`bash`, `git rm`). Qualsevol canvi suggerit pel diagnòstic HA DE SER APLICAT per l'agent a través de l'IDE (`replace_file_content` o `write_to_file`), obeint el protocol Reflex en tot moment.
 
 ## Flux d'execució
 
 ```
 diagnostic ──▶ RECEPTA (JSON, dry-run: 0 escriptures al vault)
                  │
-                 ▼  l'humà LLIG la recepta (les previsualitzacions hi són per a això)
-aprova <id> ──▶ artefacte .aprovat.json  (exigeix els 12 primers caràcters del hash)
-                 │
-                 ▼  commit de recepta + aprovació (cadena d'auditoria)
-aplica <id> ──▶ 1 commit git per operació · escriptura atòmica (tmp+rename)
-                 │
-                 ├─▶ reversa <OP-id>   git revert quirúrgic d'una sola operació
-                 └─▶ segella           fixa la baseline de ferides
-                        │
-                        ▼
-              diagnostic --porta       porter de pre-commit: eixida 1 si hi ha
-                                       ferides noves respecte del segell
+                 ▼  l'humà o l'agent LLIG la recepta
+Aprovació  ──▶  L'Agent muta els fitxers afectats mitjançant eines de l'IDE 
+                (write_to_file / replace_file_content). Muta el codi sota 
+                les lleis del Protocol Reflex.
 ```
 
-Si la recepta s'edita a mà després de l'aprovació, el hash divergeix i `aplica` es nega: cal tornar a aprovar. Si un fitxer muta entre diagnòstic i aplicació, la seua operació se salta amb avís explícit (mai escriptura a cegues).
-
-## Les cinc línies roges (executables, no declarades)
+## Les cinc línies roges (Lleis de la IAIA MarIA)
 
 | # | Línia roja | On es força al codi |
 |---|---|---|
-| R1 | El mode autònom **no existeix** en v1 | `--autonom` o `PLAQUETES_AUTONOM` → eixida 2 abans de fer res |
-| R2 | Atòmic i reversible | `escriuAtomic()` (tmp+rename POSIX) · `commitOperacio()` un commit/op · `aplica` exigeix arbre git net |
-| R3 | Res s'esborra mai | No hi ha cap crida a `unlink`/`rm` a tot l'script; només `mouAQuarantena()` cap a `.immunitari/quarantena/<lot>/` |
-| R4 | El reparador no s'opera a si mateix | `assegura()` veta escriptures a `scripts/immunitari/`, `.immunitari/aprovacions/`, `.git/` i al propi fitxer de l'script |
-| R5 | Canaris i zones delegades intocables | Config: `ignoraObjectius`, `exclouFonts`, `zonesDelegades`, `orfesLegals` — informe sí, bisturí no |
+| R1 | L'script NO muta arxius | Mai permetre que scripts generin mutacions bypassant l'agent. |
+| R2 | Protocol Reflex obligatori | Tot canvi el fa l'agent demanant permís de mutació mitjançant Reflex. |
+| R3 | Res s'esborra mai | L'agent mou (re-etiqueta o mou a quarantena), mai `rm` excepte si està expressament indicat. |
+| R4 | El reparador no s'opera a si mateix | Cap script ni agent pot escriure a `scripts/immunitari/`, `.git/`. |
+| R5 | Canaris i zones delegades intocables | `ignoraObjectius`, `exclouFonts` s'han de respectar. |
 
-## Operacions del catàleg v1
+## Operacions del catàleg v1 (Executades per l'Agent, no per l'script)
 
-- **LAPIDA** — substitueix cada `[[fantasma]]` per `[[00_MEMORIAL_Lapides#fantasma|àlies †]]` (l'àlies original es preserva) i erigeix la secció corresponent al Memorial amb origen i línia. Narrativa preservada sense mentir al graf. Els incrustats `![[...]]` mai es toquen.
-- **ADOPTA** — afegeix l'orfe amb contingut a la secció «Adopcions de Les Plaquetes» de l'índex configurat. No modifica l'orfe (per això només exigeix existència, no hash).
-- **QUARANTENA** — mou fitxers buits a `.immunitari/quarantena/<lot>/` conservant la ruta relativa. R3: mai esborrat; git registra el moviment i `reversa` el desfà.
-- **CREA_HUB** — crea la nota concentradora (MOC) d'un hub taxonòmic. **Inactiva per defecte** (`hubsDelegats: true`) mentre la tasca (a) siga territori de la MarIA local.
-
-## Porter de pre-commit
-
-```bash
-# .git/hooks/pre-commit  (chmod +x)
-#!/bin/sh
-node scripts/immunitari/plaquetes.mjs diagnostic --porta || {
-  echo "🩸 Les Plaquetes bloquegen el commit: ferides noves al graf."
-  exit 1
-}
-```
-
-Requereix haver executat `segella` (i versionar `.immunitari/baseline.json`). La porta compta fantasmes + orfes: una nota nova sense enllaçar també és ferida.
-
-## Limitacions honestes de v1
-
-Els incrustats `![[nota_inexistent]]` es reporten però no es lapiden. Els objectius amb nom base ambigu resolen al primer colp d'índex (mateix criteri laxista que Obsidian; es reporta). El codi en línia amb doble accent greu no s'emmascara. L'aprovació per hash garanteix *lectura conscient de la recepta*, no identitat: la garantia d'identitat és la cadena git + el lease de `PROTOCOL_PETORRETA`.
+- **LAPIDA** — l'agent substitueix cada `[[fantasma]]` per `[[00_MEMORIAL_Lapides#fantasma|àlies †]]` (l'àlies original es preserva) i erigeix la secció corresponent al Memorial amb origen i línia. Narrativa preservada sense mentir al graf. Els incrustats `![[...]]` mai es toquen.
+- **ADOPTA** — l'agent afegeix l'orfe amb contingut a la secció «Adopcions de Les Plaquetes» de l'índex configurat.
+- **QUARANTENA** — l'agent reanomena fitxers buits o els desplaça, conservant la ruta relativa.

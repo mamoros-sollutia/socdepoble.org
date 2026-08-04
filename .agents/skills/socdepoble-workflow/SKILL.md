@@ -32,6 +32,7 @@ Format: `YYMMDD_HHMM_CATEGORY_Descriptive_Title_of_Eight_to_Twelve_Words.md`
 
 ### 3. Creating a Petorreta
 A Petorreta is an audit prompt intended for external LLMs (Claude, GPT).
+- **GREETING THE CONSELL (CRITICAL)**: When creating a Petorreta, you MUST explicitly address the entire "Consell d'Intel·ligències" in the greeting. Do not shorten or summarize the list. Use exactly: `Benvolgut Consell d'Intel·ligències (Qwen, Deepseek, Dola, Kimi, Claude, Perplexity, Mistral Vibe, Grok, Gemini, Copilot, ChatGPT i Z.ai),`.
 - **CMD+A FRIENDLY (CRITICAL)**: A Petorreta file must strictly contain ONLY the prompt and context text. DO NOT add YAML frontmatter or introductory comments like "Mestre, copy this...". The user must be able to hit Cmd+A and Cmd+C to copy the entire file contents directly to an external LLM without dragging the mouse. Put any instructions for the user in your chat response or printed in the terminal, never inside the `.md` file.
 - **RELEVANT, VERIFIABLE CONTEXT**: Never bundle the entire Wiki by default. Create a selective context manifest containing only relevant sources, reasons, classifications and roles. The Reflex accepts at most 25 text sources, 2 MiB per file and 8 MiB total; it hashes them and rejects binaries, duplicates, symlink escapes and basic secret/IBAN/email/DNI/phone patterns. These patterns do not replace human privacy review. If an external LLM needs source text, generate a redacted annex from that manifest, not a blind vault dump.
 - Include the exact session, intent, rules and plan hashes emitted by the Reflex.
@@ -43,6 +44,7 @@ When instructed to "clean the desktop" or "organize documentation", strictly enf
 1. **Identify Anomalies:** Actively look for out-of-place folders (e.g., `src`, `docs`, `supabase`, `app`) or root-level files that were accidentally created inside `_wiki_de_poble` or `_wiki_de_poble/05_Escriptori_Soc_de_Poble`.
 2. **Purge Garbage:** Delete these anomalous folders and files. `05_Escriptori_Soc_de_Poble` should ONLY contain valid Actas/Petorretas following the Thermodynamic Naming Pattern.
 3. **Preserve Curated Archives (CRITICAL):** The `CEEC` folder and other external archives have been moved by the human user to the external sibling directory `_arxiu_wiki_de_poble/`. NEVER delete, move, or alter the `CEEC` folder or any other content inside `_arxiu_wiki_de_poble/`. It is a safe haven for human-curated bulk documents.
+4. **Sublimació de Petorretas (Garbage Collection):** Once a Petorreta or Bundle (e.g., `PETORRETA_*.md`, `BUNDLE_*.md` in `05_Escriptori_Soc_de_Poble`) has been successfully processed by the AI Council and its resulting actions or knowledge have been integrated, it MUST be sublimated (deleted). They are temporary scaffolding and should not clutter the workspace once they are no longer needed.
 
 ## Strict Constraints & Prohibitions
 
