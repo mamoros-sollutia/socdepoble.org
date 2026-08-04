@@ -32,6 +32,7 @@ Format: `YYMMDD_HHMM_CATEGORY_Descriptive_Title_of_Eight_to_Twelve_Words.md`
 
 ### 3. Creating a Petorreta
 A Petorreta is an audit prompt intended for external LLMs (Claude, GPT).
+- **CMD+A FRIENDLY (CRITICAL)**: A Petorreta file must strictly contain ONLY the prompt and context text. DO NOT add YAML frontmatter or introductory comments like "Mestre, copy this...". The user must be able to hit Cmd+A and Cmd+C to copy the entire file contents directly to an external LLM without dragging the mouse. Put any instructions for the user in your chat response or printed in the terminal, never inside the `.md` file.
 - **RELEVANT, VERIFIABLE CONTEXT**: Never bundle the entire Wiki by default. Create a selective context manifest containing only relevant sources, reasons, classifications and roles. The Reflex accepts at most 25 text sources, 2 MiB per file and 8 MiB total; it hashes them and rejects binaries, duplicates, symlink escapes and basic secret/IBAN/email/DNI/phone patterns. These patterns do not replace human privacy review. If an external LLM needs source text, generate a redacted annex from that manifest, not a blind vault dump.
 - Include the exact session, intent, rules and plan hashes emitted by the Reflex.
 - An ordinary editorial Petorreta MUST be saved using the Thermodynamic Naming Pattern in `05_Escriptori_Soc_de_Poble`.
