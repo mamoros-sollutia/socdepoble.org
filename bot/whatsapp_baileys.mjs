@@ -49,6 +49,8 @@ const DEFAULTS = Object.freeze({
   messageCacheTtlMs: 24 * 60 * 60_000,
   allowAllGroups: false,
   allowedGroupJids: [],
+  allowAllDirects: false,
+  allowedDirectJids: [],
   groupPrefix: /^(?:iaia|mar[íi]a)[,:]?\s+/iu,
   perMinute: 8,
   perDay: 250,
@@ -128,6 +130,9 @@ function validateAdapterConfig(config) {
   }
   if (!Array.isArray(config.allowedGroupJids)) {
     throw new TypeError('allowedGroupJids ha de ser un array');
+  }
+  if (!Array.isArray(config.allowedDirectJids)) {
+    throw new TypeError('allowedDirectJids ha de ser un array');
   }
   if (!(config.groupPrefix instanceof RegExp)) {
     throw new TypeError('groupPrefix ha de ser una RegExp');
@@ -679,6 +684,7 @@ export class HardenedBaileysAdapter {
     this.config = { ...DEFAULTS, ...config };
     validateAdapterConfig(this.config);
     this.allowedGroups = new Set(this.config.allowedGroupJids);
+    this.allowedDirects = new Set(this.config.allowedDirectJids);
 
     this.replyLedger = new ReplyLedger(join(dataDir, 'inbound-ledger'), {
       recoveryMs:
@@ -1049,6 +1055,10 @@ export class HardenedBaileysAdapter {
     return this.config.allowAllGroups || this.allowedGroups.has(chatJid);
   }
 
+  #directIsAllowed(senderJid) {
+    return this.config.allowAllDirects || this.allowedDirects.has(senderJid);
+  }
+
   #groupActivation(content, text) {
     const context = contextOf(content);
     const ownIds = [this.#socket?.user?.id, this.#socket?.user?.lid].filter(Boolean);
@@ -1092,6 +1102,12 @@ export class HardenedBaileysAdapter {
         if (activation.commanded) {
           this.config.groupPrefix.lastIndex = 0;
           text = text.replace(this.config.groupPrefix, '').trim();
+        }
+      } else {
+        // Missatges privats: Fail-closed segons IAIA_DIRECTES
+        if (!this.#directIsAllowed(address.senderJid)) {
+          await this.replyLedger.markDone(eventId);
+          return;
         }
       }
 

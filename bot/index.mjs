@@ -37,6 +37,22 @@ function politicaGrups() {
   };
 }
 
+// [FIX] Política de missatges privats (fail-closed per defecte).
+// Sense estar a la llista IAIA_DIRECTES, el bot ignora qualsevol missatge privat per evitar pèrdua de tokens i abús.
+function politicaDirectes() {
+  const cru = (process.env.IAIA_DIRECTES || '').trim();
+  if (cru === 'tots') return { allowAllDirects: true, allowedDirectJids: [] };
+  if (cru === '') return { allowAllDirects: false, allowedDirectJids: [] };
+  return {
+    allowAllDirects: false,
+    allowedDirectJids: cru.split(',').map((s) => {
+      let num = s.trim();
+      if (!num.endsWith('@s.whatsapp.net')) num = `${num}@s.whatsapp.net`;
+      return num;
+    }).filter(Boolean),
+  };
+}
+
 async function main() {
   console.log('[BOT] Iniciant el cervell...');
   await iniciaCervell();
@@ -54,8 +70,9 @@ async function main() {
   };
 
   const grups = politicaGrups();
+  const directes = politicaDirectes();
   console.log(`[BOT] Política de grups: ${process.env.IAIA_GRUPS || 'cap (defecte fail-closed)'}`);
-
+  console.log(`[BOT] Política de directes: ${process.env.IAIA_DIRECTES || 'cap (defecte fail-closed)'}`);
   const whatsapp = await createHardenedBaileysAdapter({
     logger: consoleLogger,
     authState: state,
@@ -69,7 +86,7 @@ async function main() {
       process.exit(1);
     },
     onLimitState: (limitState) => console.warn('[WHATSAPP] Restricció/circuit:', limitState.type),
-    config: grups,
+    config: { ...grups, ...directes },
   });
 
   installShutdownHandlers(whatsapp);
