@@ -1,84 +1,44 @@
 ---
-estat: canonic
+estat: actiu
 tipus: skill
-description: "Manual operatiu de plaquetes.mjs v1.1: el Sistema Immunitari que diagnostica ferides del graf (fantasmes, orfes) i les cura només amb aprovació mecànica per hash, un commit git per operació i reversió quirúrgica."
-temes:
-- sistema
-tags:
-- core
-- genoma
-- identitat
-- skills
-- socdepoble
+description: "Mirall humà de la skill socdepoble-autosanacio"
+source: .agents/skills/socdepoble-autosanacio/SKILL.md
 ---
 
-# Sistema Immunitari — Les Plaquetes 🩸
+> [!WARNING]
+> **AQUEST FITXER ÉS UN REFLEX (MIRROR)**
+> Açò és l'estrat humà. Qualsevol modificació o discussió sobre com he d'actuar s'ha de fer ací. Quan estiguem d'acord, s'actualitzarà la meua vertadera matriu a `.agents/skills/socdepoble-autosanacio/SKILL.md` exclusivament en anglés tècnic.
 
-`plaquetes.mjs` circula pel vault com les plaquetes per la sang: detecta ferides (nodes fantasma, fitxers orfes), proposa la coagulació en una **RECEPTA** llegible, i només opera quan un humà aprova per hash. Zero dependències NPM: només stdlib de Node ≥ 18. Zero AI Slop.
+# Autosanació del graf (Sistema Immunitari)
 
-## Instal·lació al Mas
+## Contracte i Autoritat
 
-1. Copiar l'script a `scripts/immunitari/plaquetes.mjs`.
-2. `node scripts/immunitari/plaquetes.mjs init` — crea `.immunitari/config.json` amb valors per defecte i el `.gitignore` intern.
-3. Revisar la configuració (vault, hubs, zones delegades, exclusions) i fer-ne commit.
-4. **Obligació de governança:** registrar `.immunitari/` com a directori legal a les normes de la Wiki *abans* del primer `aplica`. Ja vam patir un dimoni que escrivia logs en territori il·legal; no repetim pecats.
+Aquesta Skill executa el diagnòstic del graf. El diagnòstic és **100% READ_ONLY**. L'auditoria genera una llista d'incidències, mai muta arxius directament.
+Si l'auditor canònic no està disponible o falla una precondició, retorna ERROR o NOT_RUN, mai PASS. No enganyis l'usuari amb falsos verds.
 
-## Flux d'execució
+## Execució del Diagnòstic (Fase 1)
 
-```
-diagnostic ──▶ RECEPTA (JSON, dry-run: 0 escriptures al vault)
-                 │
-                 ▼  l'humà LLIG la recepta (les previsualitzacions hi són per a això)
-aprova <id> ──▶ artefacte .aprovat.json  (exigeix els 12 primers caràcters del hash)
-                 │
-                 ▼  commit de recepta + aprovació (cadena d'auditoria)
-aplica <id> ──▶ 1 commit git per operació · escriptura atòmica (tmp+rename)
-                 │
-                 ├─▶ reversa <OP-id>   git revert quirúrgic d'una sola operació
-                 └─▶ segella           fixa la baseline de ferides
-                        │
-                        ▼
-              diagnostic --porta       porter de pre-commit: eixida 1 si hi ha
-                                       ferides noves respecte del segell
-```
+Usa les eines del sistema per analitzar l'estat del coneixement (p. ex. buscant wikilinks trencats, orfes sense connexions, o pàgines buides). 
 
-Si la recepta s'edita a mà després de l'aprovació, el hash divergeix i `aplica` es nega: cal tornar a aprovar. Si un fitxer muta entre diagnòstic i aplicació, la seua operació se salta amb avís explícit (mai escriptura a cegues).
+Per cada incidència detectada indica:
+- Identificador i severitat de l'error.
+- Fitxer/línia i evidència.
+- Classificació: fantasma (enllaç irresolt), ambigu, orfe, buit o exclusió.
+- Proposta de solució, nivell de confiança de la teua proposta, i alternatives.
+- Fitxers que canviarien i prova de rollback.
 
-## Les cinc línies roges (executables, no declarades)
+**Límits del diagnòstic:** No inventes destins per a fer desaparéixer un error ràpidament. No reescrius un enllaç només per semblança de nom sense estar-ne segur. Respecta canaris, exclusions i zones de l'Escriptori.
 
-| # | Línia roja | On es força al codi |
-|---|---|---|
-| R1 | El mode autònom **no existeix** en v1 | `--autonom` o `PLAQUETES_AUTONOM` → eixida 2 abans de fer res |
-| R2 | Atòmic i reversible | `escriuAtomic()` (tmp+rename POSIX) · `commitOperacio()` un commit/op · `aplica` exigeix arbre git net |
-| R3 | Res s'esborra mai | No hi ha cap crida a `unlink`/`rm` a tot l'script; només `mouAQuarantena()` cap a `.immunitari/quarantena/<lot>/` |
-| R4 | El reparador no s'opera a si mateix | `assegura()` veta escriptures a `scripts/immunitari/`, `.immunitari/aprovacions/`, `.git/` i al propi fitxer de l'script |
-| R5 | Canaris i zones delegades intocables | Config: `ignoraObjectius`, `exclouFonts`, `zonesDelegades`, `orfesLegals` — informe sí, bisturí no |
+## Aplicació de Solucions (Fase 2)
 
-## Operacions del catàleg v1
+Aplicar les solucions o receptes recomanades pel diagnòstic és una operació de **SOURCE_MUTATION** completament diferent. Per a executar-la, has de complir amb el Workflow Universal:
+1. Reaudita l'estat si fa temps de l'auditoria original.
+2. Demana permís al Mestre amb un pla clar (`implementation_plan.md` o Petorreta segellada).
+3. Obté l'autorització / lease del protocol Reflex.
+4. Aplica els canvis amb les eines adients.
+5. Verifica el graf resultant.
 
-- **LAPIDA** — substitueix cada `[[fantasma]]` per `[[00_MEMORIAL_Lapides#fantasma|àlies †]]` (l'àlies original es preserva) i erigeix la secció corresponent al Memorial amb origen i línia. Narrativa preservada sense mentir al graf. Els incrustats `![[...]]` mai es toquen.
-- **ADOPTA** — afegeix l'orfe amb contingut a la secció «Adopcions de Les Plaquetes» de l'índex configurat. No modifica l'orfe (per això només exigeix existència, no hash).
-- **QUARANTENA** — mou fitxers buits a `.immunitari/quarantena/<lot>/` conservant la ruta relativa. R3: mai esborrat; git registra el moviment i `reversa` el desfà.
-- **CREA_HUB** — crea la nota concentradora (MOC) d'un hub taxonòmic. **Inactiva per defecte** (`hubsDelegats: true`) mentre la tasca (a) siga territori de la MarIA local.
-
-## Porter de pre-commit
-
-```bash
-# .git/hooks/pre-commit  (chmod +x)
-#!/bin/sh
-node scripts/immunitari/plaquetes.mjs diagnostic --porta || {
-  echo "🩸 Les Plaquetes bloquegen el commit: ferides noves al graf."
-  exit 1
-}
-```
-
-Requereix haver executat `segella` (i versionar `.immunitari/baseline.json`). La porta compta fantasmes + orfes: una nota nova sense enllaçar també és ferida.
-
-## Limitacions honestes de v1
-
-Els incrustats `![[nota_inexistent]]` es reporten però no es lapiden. Els objectius amb nom base ambigu resolen al primer colp d'índex (mateix criteri laxista que Obsidian; es reporta). El codi en línia amb doble accent greu no s'emmascara. L'aprovació per hash garanteix *lectura conscient de la recepta*, no identitat: la garantia d'identitat és la cadena git + el lease de `PROTOCOL_PETORRETA`.
-
+Una quarantena només pot afectar targets exactes i recuperables. Mai s'elimina codi o notes sense Reflex i confirmació expressa.
 
 ---
-
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX_MIRROR]]

@@ -1,17 +1,13 @@
 ---
-estat: canonic
-tipus: identitat
-description: Mirall automàtic de 02_workflow_execucio.md
-temes:
-- iaia-maria
-- sistema
-tags:
-- core
-- genoma
-- identitat
-- skills
-- socdepoble
+estat: generat
+tipus: document
+description: Vista generada des de .agents/02_workflow_execucio.md; no editar.
+source: .agents/02_workflow_execucio.md
+source_sha256: 367c3a919399e946b28db7d78ffe8568e2a384dd40bc941d5e4b692ad2a2d8d8
 ---
+
+> [!warning] FITXER GENERAT
+> Font canònica: `.agents/02_workflow_execucio.md`. Qualsevol edició manual serà sobreescrita.
 
 # Agent 02: Workflow d'execució
 
@@ -105,7 +101,6 @@ Sempre que siga viable:
 5. si hi ha commit, auditar l’arbre preparat exacte i consumir només el rebut
    `git-commit` vinculat al commit resultant.
 
-
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX_MIRROR]]

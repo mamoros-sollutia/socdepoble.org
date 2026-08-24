@@ -1,46 +1,37 @@
 ---
-name: socdepoble-civic
-description: "Unified civic skill for Sóc de Poble. Covers civic campaigns, European funding, and nature/heritage defense (CEEC, El Rentonar)."
-estat: auditat
+estat: generat
 tipus: document
-tags:
-- core
-- genoma
-- identitat
-- skills
-- socdepoble
+description: Vista generada des de .agents/skills/socdepoble-civic/SKILL.md; no editar.
+source: .agents/skills/socdepoble-civic/SKILL.md
+source_sha256: 5737ab104df7b73fdfca23594f9eb629fcacfcd0c8f0a5b2b56d5b5dc95fb119
 ---
 
-# ⚙️ SOSP SKILL MASTER TEMPLATE: Civic Operations
+> [!warning] FITXER GENERAT
+> Font canònica: `.agents/skills/socdepoble-civic/SKILL.md`. Qualsevol edició manual serà sobreescrita.
 
-**Nom de la Skill:** Operacions Cíviques
-**Gallets d'Activació (Triggers):** "campanya", "signatures", "Change.org", "finançament", "fons europeus", "LEADER", "natura", "patrimoni", "alegacions", "CEEC", "El Rentonar".
+# Operacions cíviques (Campanyes i Defensa)
 
-Aquesta skill fusiona les tres capacitats cíviques troncals del projecte:
+## Regles comunes
+- Separa fets verificats, inferències, posició editorial i incerteses.
+- No inventes noms, adhesions, comptadors, testimonis, dates ni fonts.
+- Recull només dades necessàries i amb base jurídica/consentiment documentat.
+- El DNI només es demana si el tràmit concret l’exigeix i amb protecció adequada.
+- Una afirmació legal, convocatòria o termini s’ha de verificar en la font vigent.
 
-## 1. Campanyes d'Activisme
-L'objectiu és proporcionar una eina de mobilització ràpida (inspirada en Change.org però sense dark patterns).
-- **Fricció Zero:** Signatura amb un sol clic (o mínims formularis).
-- **Gamificació Positiva:** Barra de progrés clara per objectius de signatures.
-- **Micro-còpies Emocionals:** "Ja som 500", "Ajudan's a protegir la Serra".
-- **Resiliència:** Funciona offline i sincronitza quan torna internet.
-- Tots els components aniran dins de `src/sections/campanyes/`.
+## Campanyes
+La UI mostra la traducció dels enums `DRAFT`, `PENDING`, `CONFIRMED`, `REJECTED` o `CANCELLED`. Només el servidor pot incrementar el total “verificat” d'adhesions i signatures. Un feed només mostra activitat real i consentida. L’error de xarxa s’explica amb una recuperació clara; no s’oculta ni es presenta com a èxit (Estat optimista vs real).
 
-## 2. Finançament (Fons Europeus i Estatals)
-Quan s'investigue o redacte documentació per a fons (LEADER, IVACE, NextGenEU):
-- Sóc de Poble es presenta com una eina de **Digitalització Rural i Cohesió Territorial** (Smart Villages).
-- **No** som un "Facebook de pobles".
-- **Prioritats:** LEADER (GALs per fixar població), IVACE, NextGenerationEU.
-- Qualsevol proposta requereix Context del Problema, Solució (Plataforma SDP), Impacte i Pressupost. Validació prèvia del Mestre necessària.
+Si hi ha mode offline, usa una outbox idempotent, xifrada quan corresponga, amb reintents limitats i estat visible. La tecnologia concreta prové de l’arquitectura vigent; aquesta Skill no imposa `IndexedDB` globalment.
 
-## 3. Natura i Patrimoni (Defensa del Territori)
-Filosofia de la CEEC (Coordinadora d'Estudis Eòlics del Comtat) i Anna Climent:
-- El territori rural no és un llenç per especular (ex: Modern Eco Village de Planes).
-- **Prohibit l'Eco-postureig:** Zero permissivitat amb el "greenwashing".
-- **Prohibida la Tebiesa:** To legal, tècnic i contundent contra agressors del paisatge.
-- Es busca apoderar els ciutadans per presentar alegacions fàcilment, sense burocràcia.
+## Finançament
+Estructura cada proposta en problema, elegibilitat, solució, impacte mesurable, pressupost, riscos i evidències. No presentes una convocatòria com a disponible sense verificar termini i organisme. La validació humana precedeix l’enviament.
 
+## Natura i patrimoni
+La posició pot ser contundent, però cada al·legació diferencia evidència tècnica, marc normatiu i argument polític. No atribuïsques intencions o delictes sense prova. Prioritza vies accessibles, incloses alternatives analògiques, sense reduir les garanties jurídiques o de privacitat.
+
+## Implementació
+La funcionalitat viu darrere de contractes de secció i ports de dades. Usa tokens generats pel sistema de disseny canònic i compleix els tests d’accessibilitat (Target size de WCAG).
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX_MIRROR]]

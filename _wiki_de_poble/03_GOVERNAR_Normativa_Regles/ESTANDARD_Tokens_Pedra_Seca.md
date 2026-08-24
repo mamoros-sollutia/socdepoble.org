@@ -111,8 +111,8 @@ The brand persona is grounded, rural-digital, and hyper-accessible. It rejects t
 
 The palette is static and avoids dynamic color logic to save processing cycles. It supports both Dark and Light modes, ensuring high accessibility in any environment.
 
-- **Primary (Taronja):** `#FF7300`. Used for actionable elements, primary buttons, and active states.
-- **Secondary (Blau):** `#0984E3`. Used for informational accents or secondary progress indicators.
+- **Primary (Taronja):** `FF7300`. Used for actionable elements, primary buttons, and active states.
+- **Secondary (Blau):** `0984E3`. Used for informational accents or secondary progress indicators.
 - **Neutral (Negre):** The foundational surface.
 - **Surface Contrast (Calç):** Pure white for maximum text readability.
 - **Outline (Pedra):** A muted gray used exclusively for structural separation in lieu of shadows.
@@ -138,7 +138,7 @@ The layout follows a "Bancal" philosophy—organized, terrace-like sections that
 
 Depth is conveyed through **Structural Tiering** rather than optical illusions like shadows or blurs. This "Flat Depth" ensures zero GPU tax.
 
-- **Level 0 (Foundation):** Base `surface.base` (#0a0a0a). No borders.
+- **Level 0 (Foundation):** Base `surface.base` (0a0a0a). No borders.
 - **Level 1 (Structural):** Applied to content cards and containers. Defined by a `1px solid outline.default` border.
 - **Level 2 (Interaction):** Applied to active or focused states. Defined by a `2px solid primary_color`.
 - **Separation:** Elements are separated by physical space (`spacing` units) and solid lines, never by gradient or shadow.

@@ -4,7 +4,7 @@ import { createHash } from 'node:crypto';
 import { createGzip, createGunzip } from 'node:zlib';
 import { createInterface } from 'node:readline';
 import { pipeline } from 'node:stream/promises';
-import { Transform } from 'node:stream';
+import { Transform, Writable } from 'node:stream';
 import { claimReceiptForMutation, completeMutationClaim } from '../reflex_petorreta.mjs';
 
 const MB = 1024 * 1024;
@@ -14,7 +14,8 @@ const DEFAULTS = {
   maxJsonBytes: 4 * MB
 };
 
-function stripTombstones(node, acc) {
+function stripTombstones(node, acc, depth = 0) {
+  if (depth > 1000) return undefined; // Protecció contra RangeError (stack overflow)
   if (Array.isArray(node)) {
     const out = [];
     for (const item of node) {
@@ -23,7 +24,8 @@ function stripTombstones(node, acc) {
         acc.removedBytes += Buffer.byteLength(JSON.stringify(item));
         continue;
       }
-      out.push(stripTombstones(item, acc));
+      const next = stripTombstones(item, acc, depth + 1);
+      if (next !== undefined) out.push(next);
     }
     return out;
   }
@@ -37,7 +39,7 @@ function stripTombstones(node, acc) {
 
     const out = {};
     for (const [k, v] of Object.entries(node)) {
-      const next = stripTombstones(v, acc);
+      const next = stripTombstones(v, acc, depth + 1);
       if (next !== undefined) out[k] = next;
     }
     return out;
@@ -48,10 +50,10 @@ function stripTombstones(node, acc) {
 
 async function sha256File(path, gunzip = false) {
   const h = createHash('sha256');
-  const sink = new Transform({
-    transform(chunk, enc, cb) {
+  const sink = new Writable({
+    write(chunk, enc, cb) {
       h.update(chunk);
-      cb(null, chunk);
+      cb();
     }
   });
 

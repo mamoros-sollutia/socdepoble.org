@@ -73,9 +73,9 @@ export default function NotesSection() {
       meta={[t('nav.notes', 'Notes'), `${noteFolders.length} ${t('section.notes.folders', 'carpetes')}`, `${notes.length} ${t('section.notes.note', 'notes')}`]}
     >
       <article className="card" style={{ padding: 0, overflow: 'hidden' }}>
-        <div className="topbar" style={{ position: 'static', borderRadius: 0, borderLeft: 0, borderRight: 0, borderTop: 0, background: '#171717', color: '#fff' }}>
-          <div className="topbar__title" style={{ color: '#fff' }}>
-            <strong style={{ color: '#fff' }}>{t('section.notes.mobileTitle', 'Quadern')}</strong>
+        <div className="topbar" style={{ position: 'static', borderRadius: 0, borderLeft: 0, borderRight: 0, borderTop: 0, background: 'var(--sdp-fons-roca)', color: 'var(--sdp-sobre-roca)' }}>
+          <div className="topbar__title" style={{ color: 'var(--sdp-sobre-roca)' }}>
+            <strong style={{ color: 'var(--sdp-sobre-roca)' }}>{t('section.notes.mobileTitle', 'Quadern')}</strong>
           </div>
           <div className="topbar__actions" style={{ gap: 6 }}>
             <button type="button" className={`pill ${mobileView === 'folders' ? 'pill--primary' : ''}`} onClick={() => setMobileView('folders')}>

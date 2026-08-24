@@ -42,8 +42,7 @@ updated_at: '260709_0500'
 authority: IAIA MarIA (Auditora Suprema) i El Consell (Dola, Grok, Qwen)
 tags:
   - arquitectura
-  - ui
-categoria: skill
+  categoria: skill
 ---
 
 # 🪨 LLEI SUPREMA: PEDRA SECA UI
@@ -194,8 +193,7 @@ authority: Consell de les 11 IAs + Mestre Javi
 description: Estàndard estricte per a crear i renderitzar Targetes Universals (Universal Cards) seguint el disseny d'Stitch. Obligatori per no inventar caputxes ni elements aleatoris.
 tags:
   - normativa
-  - ui
-categoria: skill
+  categoria: skill
 ---
 
 # 📜 SKILL: Estàndard Targeta Universal (Universal Card)
@@ -245,7 +243,7 @@ Una Targeta Universal té 4 grans blocs obligatoris/opcionals en ordre descenden
 
 1. **La Caputxa (Header):** Fons fosc (`bg-primary-container`), Avatar a l'esquerra, Nom en Bold, Poble davall. A la dreta: el PIN o l'ull, l'Hora i la Data.
 2. **Div Multimèdia (Opcional):** Contingut `aspect-square` amb les imatges.
-3. **Cos (Card Body):** Fons clar (`bg-surface-container-lowest`), amb Títol Blau (rgb(9, 132, 227)), possible Subtítol Taronja (rgb(255, 115, 0)), text limitat a 3 línies i els Badges de categories al fons.
+3. **Cos (Card Body):** Fons clar (`bg-surface-container-lowest`), amb Títol Blau (rgb(9, 132, 227)), possible Subtítol Taronja (rgb(255, 115, 0)) limitat a 3 línies i els Badges de categories al fons.
 4. **Peu d'Acció Blau:** Fons Blau (rgb(9, 132, 227)). Tres icones d'acció a l'esquerra i el botó ovalat blanc d'acció principal a la dreta (`+ CONNECTAR`).
 
 *Nota: No t'inventes tipografies. Totes les mides venen per defecte utilitzant les classes de Tailwind injectades (com `font-label-sm`, `text-headline-md`, etc).*

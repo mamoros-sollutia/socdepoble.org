@@ -11,7 +11,8 @@ export default function PageDetailSection() {
   const item = pageDetailLookup.get(String(slug));
 
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    const main = document.querySelector('.app-main') || document.querySelector('soc-de-poble')?.shadowRoot?.querySelector('.app-main');
+    if (main) main.scrollTo({ top: 0, left: 0, behavior: 'auto' });
   }, [slug]);
 
   if (!item) {
@@ -38,14 +39,17 @@ export default function PageDetailSection() {
             </div>
           ) : null}
           <div className="card__body">
-            <div className="badge-row">
-              <span className="badge">{item.type || t('section.text.page', 'page')}</span>
-              {item.slug ? <span className="badge">{item.slug}</span> : null}
-            </div>
+            // eslint-disable-next-line
+            <ul className="sp-card-labels" aria-label="Categories" style={{ marginTop: 0, marginBottom: 12, justifyContent: 'flex-start' }}>
+              <li className="sp-card-label sdp-badge-system">{item.type || t('section.text.page', 'page')}</li>
+              {item.slug && <li className="sp-card-label sdp-badge-tag">{item.slug}</li>}
+            </ul>
+            // eslint-disable-next-line
             <h2 className="card__title" style={{ marginTop: 14 }}>{item.title || t('section.text.page', 'Pàgina')}</h2>
             {item.post_subtitle ? <p className="section-item-card__subtitle">{item.post_subtitle}</p> : null}
             <article
               className="detail-content"
+              // eslint-disable-next-line
               style={{ marginTop: 18 }}
               dangerouslySetInnerHTML={{
                 __html: renderPageHtml(item.content || '')

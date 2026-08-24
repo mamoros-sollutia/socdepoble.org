@@ -6,14 +6,17 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
-  plugins: [react({ jsxRuntime: 'classic' })],
+  plugins: [react()],
 
   define: {
     'process.env.NODE_ENV': JSON.stringify('production')
   },
 
   resolve: {
-    alias: { '@': path.resolve(__dirname, 'src') }
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+      'react/jsx-runtime': path.resolve(__dirname, 'src/shims/jsx-runtime.js')
+    }
   },
 
   build: {

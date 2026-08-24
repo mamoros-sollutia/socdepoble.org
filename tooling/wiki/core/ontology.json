@@ -1,0 +1,45 @@
+{
+  "schema_version": 2,
+  "description": "Bus Ontològic Central: Única font de veritat per a enums, estats i zones.",
+  "estats": [
+    "canonic",
+    "actiu",
+    "esborrany",
+    "arxivat",
+    "quarantena",
+    "generat"
+  ],
+  "tipus": [
+    "acta",
+    "briefing",
+    "document",
+    "hub",
+    "index",
+    "informe",
+    "norma",
+    "plantilla",
+    "prompt",
+    "protocol",
+    "registre",
+    "skill"
+  ],
+  "zones": {
+    "live": [
+      "00_SER_Brain_Identitat",
+      "01_SABER_Cultura_Coneixement",
+      "02_ACTUAR_Maquina_Tecnica",
+      "03_GOVERNAR_Normativa_Regles"
+    ],
+    "archive": [
+      "04_ARXIU_Documents_Historics",
+      "90_arxiu_historic"
+    ],
+    "ephemeral": [
+      "05_Escriptori_Soc_de_Poble"
+    ],
+    "generated": [
+      "_build",
+      ".snapshots"
+    ]
+  }
+}

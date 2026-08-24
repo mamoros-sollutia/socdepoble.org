@@ -5,18 +5,16 @@ import {
   createHardenedBaileysAdapter,
   installShutdownHandlers,
 } from './whatsapp_baileys.mjs';
-import { createCervellHandler } from './cervell_bridge.mjs';
+import { createCervellHandler, createLlmProcessor } from './cervell_bridge.mjs';
 import { iniciaCervell, pensa, transcriuAudio, generaImatge } from './cervell.mjs';
 import { RUTES } from './arrels.mjs'; // [FIX-1]
 
 process.on('unhandledRejection', (reason) => {
   console.error('[FATAL] Promesa no gestionada:', reason);
-  process.exit(1);
 });
 
 process.on('uncaughtException', (error) => {
   console.error('[FATAL] Excepció no capturada:', error);
-  process.exit(1);
 });
 
 // [FIX-6] ABANS: el comentari deia «Fail-closed: sense esta llista, no contesta
@@ -54,6 +52,7 @@ function politicaDirectes() {
 }
 
 async function main() {
+  process.umask(0o077); // Setmana A: Contenció (Només jo puc llegir/escriure els nous fitxers)
   console.log('[BOT] Iniciant el cervell...');
   await iniciaCervell();
 
@@ -77,7 +76,7 @@ async function main() {
     logger: consoleLogger,
     authState: state,
     saveCreds,
-    handleInbound: createCervellHandler(cervell),
+    handleInbound: createCervellHandler([createLlmProcessor(cervell)]),
     dataDir: RUTES.runtime,
     onQr: (qr) => qrcode.generate(qr, { small: true }),
     onReady: () => console.info('[WHATSAPP] IAIA MarIA connectada'),

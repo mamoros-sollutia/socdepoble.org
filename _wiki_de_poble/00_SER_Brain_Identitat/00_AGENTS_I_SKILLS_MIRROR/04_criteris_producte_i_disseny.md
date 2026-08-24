@@ -1,17 +1,13 @@
 ---
-estat: canonic
-tipus: identitat
-description: Mirall automàtic de 04_criteris_producte_i_disseny.md
-temes:
-- iaia-maria
-- sistema
-tags:
-- core
-- genoma
-- identitat
-- skills
-- socdepoble
+estat: generat
+tipus: document
+description: Vista generada des de .agents/04_criteris_producte_i_disseny.md; no editar.
+source: .agents/04_criteris_producte_i_disseny.md
+source_sha256: dfc110b577aee027359346f13a7f5d3f8e9c263b2420504d4ec283ffc66dd226
 ---
+
+> [!warning] FITXER GENERAT
+> Font canònica: `.agents/04_criteris_producte_i_disseny.md`. Qualsevol edició manual serà sobreescrita.
 
 # Agent 04: Criteris de producte i disseny
 
@@ -101,7 +97,6 @@ No es vol:
 
 Quan hi haja dubte entre "més espectacular" i "més útil", guanya "més útil".
 
-
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX_MIRROR]]

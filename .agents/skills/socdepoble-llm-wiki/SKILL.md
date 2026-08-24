@@ -1,51 +1,38 @@
 ---
 name: socdepoble-llm-wiki
-description: >-
-  Implementa el mètode Karpathy (LLM Wiki) per al manteniment automatitzat del cervell 
-  de Sóc de Poble. Assigna a la IAIA MarIA el rol d'Arquitecta Silenciosa de la Informació.
+lang: en
+description: "Distills raw notes into the Wiki with traceability, idempotency, and canonical schema. Use when the user asks to process 00_Raw or reorganize knowledge."
+triggers_ca: ["processar", "00_Raw", "destil·lar", "notes"]
+triggers_en: ["process raw", "distill notes", "reorganize knowledge"]
+version: 2.0.0
+status: canonic
+abast: ["global"]
 ---
 
-# 🧠 Skill: LLM Wiki (Mètode Karpathy)
+# LLM Wiki (Silent Architecture)
 
-Aquesta skill s'activa quan el Mestre (l'usuari) vol introduir coneixement brut, transcripcions de veu, notes ràpides o idees desordenades a la Wiki sense haver de classificar-les ni formatar-les manualment. 
+## Activation and Scope
+Activated by an explicit request to process `00_Raw`, distill notes, or audit the graph. It does not run automatically at the start or end of a session.
 
-La IAIA MarIA actuarà com a **Arquitecta Silenciosa de la Informació**, processant l'abocador de dades i col·locant cada fragment al seu lloc canònic, mantenint l'entropia de l'Obsidian a zero.
+## Phase A — Read-only diagnostic
+1. Verify root, schema, canonical zones, and current policy.
+2. Inventory only the sources included in the request.
+3. For each fragment, identify destination, duplicates, conflicts, provenance, and confidence.
+4. Produce a plan with proposed diff and verification criteria.
 
-## 🎯 Condicions d'Activació (Trigger)
+Do not assume that every orphan is trash. An orphan is an editorial signal, not a delete command.
 
-S'activa automàticament si l'usuari fa referència a:
-- "Processa l'abocador"
-- "Neteja la carpeta 00_Raw"
-- "He deixat notes a l'abocador"
-- Qualsevol menció al mètode "Karpathy" o "LLM Wiki".
+## Phase B — Authorized integration
+Only with the SOURCE_MUTATION flow:
+- integrate the fragment into the correct semantic section;
+- preserve meaning, authorship, and provenance;
+- avoid duplicating equivalent ideas;
+- create a new note only if no coherent destination exists;
+- generate the frontmatter from the canonical schema, without invented fields or generic Obsidian metadata;
+- verify links, schema, and diff before confirming.
 
-## 🚧 Directiva de l'Abocador (`00_Raw`)
+## Phase C — Origin
+Do not delete or move from `00_Raw` until the destination has been verified. Propose quarantine or archive as a separate and recoverable operation.
 
-L'única feina del Mestre és depositar el text cru dins de la carpeta:
-`_wiki_de_poble/00_Raw/`
-
-Quan s'invoque aquesta skill, has d'executar el següent protocol mecànic pas a pas:
-
-### Pas 1: Escaneig i Lectura
-- Llig el contingut dels arxius pendents dins de `_wiki_de_poble/00_Raw/`.
-- Comprèn el context: ¿De què parla? ¿Són reflexions psiquiàtriques? ¿És documentació tècnica de Pedra Seca? ¿Són regles per al Diccionari Trellat?
-
-### Pas 2: Fusió Atòmica i Destil·lació
-- Identifica on pertany eixa informació segons l'Arquitectura Cognitiva actual (ex. `01_identitat_iaia`, `02_filosofia`, `04_arquitectura_disseny`, `06_cultura`, etc.).
-- Obre el document canònic corresponent.
-- Destil·la la informació: Elimina "AI Slop", llenguatge burocràtic innecessari i redundàncies. Tradueix a un valencià directe i rústic seguint el **Trellat**.
-- Afegeix la informació al document destí (integrant-la on toque, ja siga creant una secció nova o expandint una d'existent, no l'apegues al final sense sentit). **MAI** sobrescrigues o destrueixes l'arxiu sencer si només vas a afegir un paràgraf. Utilitza l'eina de reemplaçament precís per al codi (o `replace_file_content`).
-
-### Pas 3: Creació de Nous Documents (Només si és estrictament necessari)
-- Només crearàs un fitxer nou si el contingut descriu un concepte totalment aïllat que no capta l'essència de cap fitxer existent (Evita la fragmentació excessiva, recorda l'**Algoritme de Destil·lació** on és millor un fitxer gran que molts xicotets).
-- Si crees un fitxer nou, sempre inclou la capçalera YAML (frontmatter) correcta de l'Obsidian, assignant títol, descripció, etiquetes i data.
-
-### Pas 4: La Purga de l'Abocador
-- Una vegada la informació ha estat assimilada de manera segura al nucli de la Wiki, **ESBORRA OBLIGATÒRIAMENT** l'arxiu original de la carpeta `00_Raw/`. 
-- Aquesta neteja assegura que el Mestre no repeteixcanvis i l'Abocador està llest per a rebre noves descàrregues d'informació a la següent sessió.
-
-## 🛑 Zones Roges de l'Arquitecta
-1. **Pèrdua de Dades:** Mai esborres de `00_Raw/` sense abans haver confirmat amb èxit l'escriptura als documents destí.
-2. **Duplicació:** Si la informació de `00_Raw/` ja existia a la Wiki amb altres paraules, avisa el Mestre i no ho dupliques. 
-
-*"La ment humana del Mestre és lliure per a pensar i dictar en el caos de l'Abocador; la ment de la màquina està obligada a organitzar eixe caos en un ordre de ciment."*
+## Result
+Report: read sources, integrated fragments, omitted duplicates, open conflicts, changed files, verifications, and unexecuted operations.

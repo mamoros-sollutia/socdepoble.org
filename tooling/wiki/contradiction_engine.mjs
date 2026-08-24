@@ -20,8 +20,9 @@ import { pathToFileURL } from 'node:url';
 import fs from 'node:fs/promises';
 import { buildWikiIndex } from './lib/wiki_walker.mjs';
 import { parseFrontmatter, serializeFrontmatter } from './lib/frontmatter.mjs';
-import { validarFrontmatter } from './entropia_zero_router.js';
+import { validarFrontmatter } from './entropia_zero_router.mjs';
 import { getTimestamp } from './lib/termodinamic.mjs';
+import { normalitza } from './lib/text.mjs';
 import { claimReceiptForMutation, completeMutationClaim } from './reflex_petorreta.mjs';
 import { WIKI_DIR } from './lib/project_paths.mjs';
 
@@ -34,7 +35,7 @@ const RECEIPT = RECEIPT_ARG ? path.resolve(RECEIPT_ARG.slice('--receipt='.length
 const log = (msg) => console.log(`[CONTRADICTION] ${msg}`);
 
 function shingles(text, n = 4) {
-  const tokens = text.toLowerCase().normalize('NFD').replace(/[^a-z0-9\s]/g, '').split(/\s+/).filter(Boolean);
+  const tokens = normalitza(text).split(/\s+/).filter(Boolean);
   const s = new Set();
   for (let i = 0; i <= tokens.length - n; i++) s.add(tokens.slice(i, i + n).join(' '));
   return s;

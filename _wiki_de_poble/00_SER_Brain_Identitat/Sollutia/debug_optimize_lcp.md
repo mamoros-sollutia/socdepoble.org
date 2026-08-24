@@ -64,7 +64,7 @@ Call `performance_analyze_insight` with the insight set ID and the insight name 
 
 ### Step 3: Identify the LCP Element
 
-Use `evaluate_script` with the **"Identify LCP Element" snippet** found in references/lcp-snippets.md to reveal the LCP element's tag, resource URL, and raw timing data.
+Use `evaluate_script` with the **"Identify LCP Element" snippet** found in references/lcp-snippets.md to reveal the LCP element's  resource URL, and raw timing data.
 
 The `url` field tells you what resource to look for in the network waterfall. If `url` is empty, the LCP element is text-based (no resource to load).
 

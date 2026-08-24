@@ -33,5 +33,24 @@
 - [[260729_1422_PROMPT_Auditoria_Final_Per_Tancar_La_IA_Del_Bot_WhatsApp]]
 - [[260729_1422_PROMPT_Auditoria_Final_Per_Tancar_La_IA_Del_Bot_WhatsApp_COMPLET_CONSELL]]
 - [[260801_1900_ACTA_SESSIO_Enviament_NLnet]]
-- [[carmen_tattoos_naming]]
 - [[260726_1530_ACTA_MARMOTA_Tancament_Sessio]]
+- [[260811_0512_ACTA_MARMOTA_Fortalesa_ShadowDOM]]
+
+## Arxiu Històric
+- [[00_INDEX_ARXIU]]
+
+## Disseny i Arquitectura Actual (Pedra Seca)
+- [[disseny_pedra_seca.html]]
+- [[model_arquitectonic_pedra_seca_dola]]
+- [[RONDA_A_decisions]]
+- [[LLEGIU-ME]]
+- [[ESTANDARD_Integracio_React]]
+
+## Actes i Sessions (260809 - 260813)
+- [[260809_0530_ACTA_SESSIO_Auditoria_Pedra_Seca]]
+- [[260812_2253_PROMPT_Auditoria_Consell]]
+- [[260813_0330_SUPER_ACTA_I_PETORRETA_DE_REINICI]]
+- [[260813_0410_PETORRETA_RESTAURACIO_UI]]
+- [[260813_0455_ACTA_MARMOTA_Restauracio_UI_i_WordPress]]
+- [[260813_0630_PETORRETA_MANUAL_DISSENY]]
+- [[260813_0725_ACTA_MARMOTA_Sanejament_Pedra_Seca]]

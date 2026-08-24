@@ -60,7 +60,7 @@ const CONTROL_RE = /[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/;
 const PLACEHOLDER_RE = /^(?:todo|tbd|wip|fixme|placeholder|pendent|per completar|pr[oò]ximament|sense contingut)[\s.!…:;-]*$/i;
 
 const posix = (value) => value.split(path.sep).join('/');
-const normalitza = (value) => value.normalize('NFC').toLocaleLowerCase('ca');
+import { normalitza } from '../lib/text.mjs';
 const sha256 = (value) => createHash('sha256').update(value).digest('hex');
 const SCHEMA_SHA256 = sha256(SCHEMA_TEXT);
 const unique = (values) => [...new Set(values)];

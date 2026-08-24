@@ -1,0 +1,15 @@
+{
+  "name": "socdepoble-bot",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "node index.mjs"
+  },
+  "dependencies": {
+    "@google/genai": "^2.13.0",
+    "baileys": "7.0.0-rc13",
+    "dotenv": "^17.4.2",
+    "qrcode-terminal": "^0.12.0"
+  }
+}

@@ -47,7 +47,7 @@ const SEVERITY_ORDER = new Map([
 ]);
 
 const posix = (value) => value.split(path.sep).join('/');
-const normalize = (value) => String(value).normalize('NFC').toLocaleLowerCase('ca');
+import { normalitza as normalize } from '../lib/text.mjs';
 const sha256 = (value) => createHash('sha256').update(value).digest('hex');
 const isInside = (root, candidate) => {
   const relative = path.relative(root, candidate);

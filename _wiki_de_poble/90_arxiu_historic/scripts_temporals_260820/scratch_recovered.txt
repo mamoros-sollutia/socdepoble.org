@@ -1,0 +1,788 @@
+Created At: 2026-08-19T13:13:41+02:00
+Completed At: 2026-08-19T13:13:41+02:00
+File Path: `file:///Users/javillinares/Documents/Antigravity/Som%20de%20Poble/socdepoble.org/src/components/universal/UniversalComponents.jsx`
+Total Lines: 780
+Total Bytes: 21828
+Showing lines 1 to 780
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+1: import { resolveAsset } from '../../config/assetResolver';
+2: const CARD_HEADINGS = new Set(['h2', 'h3', 'h4']);
+3: const PAGE_CHROME_MODES = new Set(['none', 'page', 'context', 'full']);
+4: 
+5: const DEFAULT_AUTHOR = {
+6:   name: 'Sóc de Poble',
+7:   location: 'La Torre de les Maçanes',
+8:   avatarUrl: '/assets/system/ui/logo-socdepoble-cuadrat-verd.svg'
+9: };
+10: 
+11: function ActionControl({
+12:   label,
+13:   title = label,
+14:   className,
+15:   onClick,
+16:   disabled = false,
+17:   children
+18: }) {
+19:   const presentationOnly = !onClick;
+20: 
+21:   return (
+22:     <button
+23:       type="button"
+24:       className={className}
+25:       aria-label={label}
+26:       title={title}
+27:       onClick={onClick}
+28:       disabled={disabled}
+29:       aria-disabled={presentationOnly || undefined}
+30:       tabIndex={presentationOnly ? -1 : undefined}
+31:     >
+32:       {children}
+33:     </button>
+34:   );
+35: }
+36: 
+37: function DateTimeControl({ time, date, dateTime, label, onClick }) {
+38:   if (!time && !date) return null;
+39: 
+40:   const accessibleLabel = label || ['Data i hora', time, date].filter(Boolean).join(': ');
+41:   const content = (
+42:     <>
+43:       {time && <span>{time}</span>}
+44:       {date && <span>{date}</span>}
+45:     </>
+46:   );
+47: 
+48:   if (onClick) {
+49:     return (
+50:       <button
+51:         type="button"
+52:         className="btn-date-time sp-card-time sdp-flex-col"
+53:         aria-label={accessibleLabel}
+54:         title={accessibleLabel}
+55:         onClick={onClick}
+56:       >
+57:         {content}
+58:       </button>
+59:     );
+60:   }
+61: 
+62:   return (
+63:     <time
+64:       className="btn-date-time sp-card-time sdp-flex-col"
+65:       dateTime={dateTime}
+66:       aria-label={accessibleLabel}
+67:     >
+68:       {content}
+69:     </time>
+70:   );
+71: }
+72: 
+73: function GlobeIcon({ className }) {
+74:   return (
+75:     <svg
+76:       className={className}
+77:       fill="none"
+78:       stroke="currentColor"
+79:       strokeLinecap="round"
+80:       strokeLinejoin="round"
+81:       strokeWidth="2"
+82:       viewBox="0 0 24 24"
+83:       aria-hidden="true"
+84:       focusable="false"
+85:     >
+86:       <circle cx="12" cy="12" r="10" />
+87:       <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+88:       <path d="M2 12h20" />
+89:     </svg>
+90:   );
+91: }
+92: 
+93: function IaiaIcon({ className }) {
+94:   return (
+95:     <svg
+96:       className={className}
+97:       viewBox="0 0 24 24"
+98:       aria-hidden="true"
+99:       focusable="false"
+100:     >
+101:       <circle cx="12" cy="5" r="2.5" />
+102:       <circle cx="12" cy="2" r="1.5" />
+103:       <path d="M 12 8 C 9.5 8 8.5 12 7.5 19 C 7.2 21 16.8 21 16.5 19 C 15.5 12 14.5 8 12 8 Z" />
+104:       <path d="M 9.5 9 C 7 10 5.5 11.5 5.5 13 L 5.5 14.5 C 5.5 15 6.5 15 6.5 14 L 7 12 C 8 11 9.5 10.5 9.5 10.5 Z" />
+105:       <path d="M 4.5 12.5 C 2.5 12.5 2.5 14.5 3.5 14.5 L 3.5 22 H 4.5 L 4.5 14.5 C 5.5 14.5 5.5 12.5 4.5 12.5 Z" />
+106:       <path d="M 14.5 9 C 17 10 18.5 11.5 18.5 13 L 18.5 14.5 C 18.5 15 17.5 15 17.5 14 L 17 12 C 16 11 14.5 10.5 14.5 10.5 Z" />
+107:       <rect height="4" rx="0.5" width="1.5" x="9.5" y="19" />
+108:       <rect height="4" rx="0.5" width="1.5" x="13" y="19" />
+109:     </svg>
+110:   );
+111: }
+112: 
+113: function SearchIcon({ className }) {
+114:   return (
+115:     <svg
+116:       className={className}
+117:       viewBox="0 0 24 24"
+118:       aria-hidden="true"
+119:       focusable="false"
+120:     >
+121:       <circle cx="11" cy="11" r="8" />
+122:       <path d="m21 21-4.3-4.3" />
+123:     </svg>
+124:   );
+125: }
+126: 
+127: function ThemeIcon({ className, mode = 'light' }) {
+128:   return (
+129:     <svg
+130:       className={className}
+131:       viewBox="0 0 24 24"
+132:       aria-hidden="true"
+133:       focusable="false"
+134:     >
+135:       {mode === 'dark' ? (
+136:         <>
+137:           <path d="M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z" />
+138:           <line x1="12" x2="12" y1="1" y2="3" />
+139:           <line x1="12" x2="12" y1="21" y2="23" />
+140:           <line x1="4.22" x2="5.64" y1="4.22" y2="5.64" />
+141:           <line x1="18.36" x2="19.78" y1="18.36" y2="19.78" />
+142:           <line x1="1" x2="3" y1="12" y2="12" />
+143:           <line x1="21" x2="23" y1="12" y2="12" />
+144:           <line x1="4.22" x2="5.64" y1="19.78" y2="18.36" />
+145:           <line x1="18.36" x2="19.78" y1="5.64" y2="4.22" />
+146:         </>
+147:       ) : (
+148:         <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+149:       )}
+150:     </svg>
+151:   );
+152: }
+153: 
+154: function BackIcon({ className }) {
+155:   return (
+156:     <svg
+157:       className={className}
+158:       fill="none"
+159:       stroke="currentColor"
+160:       strokeWidth="2"
+161:       viewBox="0 0 24 24"
+162:       aria-hidden="true"
+163:       focusable="false"
+164:     >
+165:       <path d="m12 19-7-7 7-7" />
+166:       <path d="M19 12H5" />
+167:     </svg>
+168:   );
+169: }
+170: 
+171: function IndexIcon({ className }) {
+172:   return (
+173:     <svg
+174:       className={className}
+175:       fill="none"
+176:       stroke="currentColor"
+177:       strokeWidth="2"
+178:       viewBox="0 0 24 24"
+179:       aria-hidden="true"
+180:       focusable="false"
+181:     >
+182:       <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20" />
+183:     </svg>
+184:   );
+185: }
+186: 
+187: function TranslateIcon({ className }) {
+188:   return (
+189:     <svg
+190:       className={className}
+191:       fill="none"
+192:       stroke="currentColor"
+193:       strokeLinecap="round"
+194:       strokeLinejoin="round"
+195:       strokeWidth="2"
+196:       viewBox="0 0 24 24"
+197:       aria-hidden="true"
+198:       focusable="false"
+199:     >
+200:       <path d="m5 8 6 6" />
+201:       <path d="m4 14 6-6 2-3" />
+202:       <path d="M2 5h12" />
+203:       <path d="M7 2h1" />
+204:       <path d="m22 22-5-10-5 10" />
+205:       <path d="M14 18h6" />
+206:     </svg>
+207:   );
+208: }
+209: 
+210: function CommentIcon({ className }) {
+211:   return (
+212:     <svg
+213:       className={className}
+214:       fill="none"
+215:       stroke="currentColor"
+216:       strokeLinecap="round"
+217:       strokeLinejoin="round"
+218:       strokeWidth="2"
+219:       viewBox="0 0 24 24"
+220:       aria-hidden="true"
+221:       focusable="false"
+222:     >
+223:       <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
+224:     </svg>
+225:   );
+226: }
+227: 
+228: function ShareIcon({ className }) {
+229:   return (
+230:     <svg
+231:       className={className}
+232:       fill="none"
+233:       stroke="currentColor"
+234:       strokeLinecap="round"
+235:       strokeLinejoin="round"
+236:       strokeWidth="2"
+237:       viewBox="0 0 24 24"
+238:       aria-hidden="true"
+239:       focusable="false"
+240:     >
+241:       <circle cx="18" cy="5" r="3" />
+242:       <circle cx="6" cy="12" r="3" />
+243:       <circle cx="18" cy="19" r="3" />
+244:       <line x1="8.59" x2="15.42" y1="13.51" y2="17.49" />
+245:       <line x1="15.41" x2="8.59" y1="6.51" y2="10.49" />
+246:     </svg>
+247:   );
+248: }
+249: 
+250: function PinIcon({ className }) {
+251:   return (
+252:     <svg
+253:       className={className}
+254:       fill="none"
+255:       stroke="currentColor"
+256:       strokeLinecap="round"
+257:       strokeLinejoin="round"
+258:       strokeWidth="2"
+259:       viewBox="0 0 24 24"
+260:       aria-hidden="true"
+261:       focusable="false"
+262:     >
+263:       <path d="M16 11V7a4 4 0 0 0-8 0v4l-2 4h12l-2-4z" />
+264:       <path d="M12 15v7" />
+265:     </svg>
+266:   );
+267: }
+268: 
+269: export function UniversalPage({
+270:   title,
+271:   subtitle,
+272:   lead,
+273:   labels = [],
+274:   copyright,
+275:   showLogos = false,
+276:   tone,
+277:   chrome = 'page',
+278:   showTopBars,
+279:   topBarData = {},
+280:   heroImage,
+281:   heroAlt = '',
+282:   authorName = DEFAULT_AUTHOR.name,
+283:   authorLocation = DEFAULT_AUTHOR.location,
+284:   authorAvatar = DEFAULT_AUTHOR.avatarUrl,
+285:   authorAvatarAlt = '',
+286:   time,
+287:   date,
+288:   dateTime,
+289:   viewerAvatarUrl = DEFAULT_AUTHOR.avatarUrl,
+290:   viewerAvatarAlt = 'Sóc de Poble',
+291:   themeMode = 'light',
+292:   onLanguage,
+293:   onIaia,
+294:   onSearch,
+295:   onTheme,
+296:   onProfile,
+297:   onBack,
+298:   onIndex,
+299:   onTranslate,
+300:   onComment,
+301:   onShare,
+302:   onConnect,
+303:   onPin,
+304:   onDateTime,
+305:   connectLabel = 'Connectar',
+306:   children
+307: }) {
+308:   const requestedChrome = showTopBars ? 'full' : chrome;
+309:   const resolvedChrome = PAGE_CHROME_MODES.has(requestedChrome) ? requestedChrome : 'page';
+310:   const showBlackBar = resolvedChrome === 'full';
+311:   const showContextBars = resolvedChrome === 'full' || resolvedChrome === 'context';
+312:   const showPageHeader = resolvedChrome !== 'none';
+313:   const hasHeader = Boolean(showPageHeader && (showLogos || title || labels.length || copyright));
+314: 
+315:   const barAuthorName = topBarData.authorName ?? authorName;
+316:   const barAuthorLocation = topBarData.authorLocation ?? authorLocation;
+317:   const barAuthorAvatar = topBarData.authorAvatar ?? authorAvatar;
+318:   const barTime = topBarData.time ?? time;
+319:   const barDate = topBarData.date ?? date;
+320:   const barDateTime = topBarData.dateTime ?? dateTime;
+321:   const barHeroImage = topBarData.heroImage ?? heroImage;
+322:   const barHeroAlt = topBarData.heroAlt ?? heroAlt;
+323: 
+324:   return (
+325:     <>
+326:       {showBlackBar && (
+327:         <header className="bar-black">
+328:           <div
+329:             className="mobile-logo-wrapper sdp-flex sdp-items-center sdp-justify-center"
+330:             id="mobile-sidebar-toggle"
+331:           >
+332:             <img
+333:               alt="Sóc de Poble"
+334:               src={resolveAsset("/assets/system/ui/logo-socdepoble-rect-blanc.svg")}
+335:             />
+336:           </div>
+337:           <div className="right-icons">
+338:             <ActionControl
+339:               className="icon sp-card-action"
+340:               label="Idioma"
+341:               onClick={onLanguage}
+342:             >
+343:               <GlobeIcon />
+344:             </ActionControl>
+345:             <ActionControl
+346:               className="icon sp-card-action"
+347:               label="IAIA MarIA"
+348:               onClick={onIaia}
+349:             >
+350:               <IaiaIcon className="iaia-icon" />
+351:             </ActionControl>
+352:             <ActionControl
+353:               className="icon sp-card-action"
+354:               label="Cercar"
+355:               onClick={onSearch}
+356:             >
+357:               <SearchIcon />
+358:             </ActionControl>
+359:             <ActionControl
+360:               className="icon sp-card-action"
+361:               label="Canviar el tema"
+362:               onClick={onTheme}
+363:             >
+364:               <ThemeIcon mode={themeMode} />
+365:             </ActionControl>
+366:             <ActionControl
+367:               className="icon sp-card-action"
+368:               label="Perfil"
+369:               onClick={onProfile}
+370:             >
+371:               <img alt={viewerAvatarAlt} src={viewerAvatarUrl} />
+372:             </ActionControl>
+373:           </div>
+374:         </header>
+375:       )}
+376: 
+377:       {showContextBars && (
+378:         <>
+379:           <header className="bar-blue">
+380:             <div className="bar-blue-left sdp-flex sdp-items-center sdp-gap-24">
+381:               <IconButton label="Tornar arrere" onClick={onBack} presentation>
+382:                 <BackIcon className="icon" />
+383:               </IconButton>
+384:               <IconButton label="Índex de secció" onClick={onIndex} presentation>
+385:                 <IndexIcon className="icon" />
+386:               </IconButton>
+387:             </div>
+388:             <div className="sp-card-actions">
+389:               <IconButton label="Traduir" onClick={onTranslate} presentation>
+390:                 <TranslateIcon className="icon" />
+391:               </IconButton>
+392:               <IconButton
+393:                 label="Comentar (Xat Privat)"
+394:                 onClick={onComment}
+395:                 presentation
+396:               >
+397:                 <CommentIcon className="icon" />
+398:               </IconButton>
+399:               <IconButton label="Compartir" onClick={onShare} presentation>
+400:                 <ShareIcon className="icon" />
+401:               </IconButton>
+402:             </div>
+403:             <ActionControl
+404:               className="sp-card-connect"
+405:               label={connectLabel}
+406:               onClick={onConnect}
+407:             >
+408:               {connectLabel}
+409:             </ActionControl>
+410:           </header>
+411: 
+412:           {barHeroImage && (
+413:             <div className="hero-image">
+414:               <img alt={barHeroAlt} src={barHeroImage} />
+415:             </div>
+416:           )}
+417: 
+418:           <section className="bar-orange" aria-label="Autoria i data">
+419:             <div className="sp-card-author">
+420:               <img
+421:                 className="avatar-frame__image"
+422:                 src={resolveAsset(barAuthorAvatar)}
+423:                 alt={authorAvatarAlt}
+424:                 decoding="async"
+425:                 width="48"
+426:                 height="48"
+427:               />
+428:               <div className="sp-card-author-info">
+429:                 <div className="sp-card-author-name">{barAuthorName}</div>
+430:                 <div className="sp-card-author-location">{barAuthorLocation}</div>
+431:               </div>
+432:             </div>
+433:             <div className="bar-actions sdp-flex sdp-items-center sdp-gap-8">
+434:               <ActionControl
+435:                 className="btn-icon-orange"
+436:                 label="Ancorar"
+437:                 onClick={onPin}
+438:               >
+439:                 <PinIcon className="icon" />
+440:               </ActionControl>
+441:               <DateTimeControl
+442:                 time={barTime}
+443:                 date={barDate}
+444:                 dateTime={barDateTime}
+445:                 onClick={onDateTime}
+446:               />
+447:             </div>
+448:           </section>
+449:         </>
+450:       )}
+451: 
+452:       <div className="sp-card card-disseny sdp-mx-auto sdp-my-6" style={{ maxWidth: '900px', padding: '24px' }}>
+453:         {hasHeader && (
+454:           <header
+455:             className={['page-title', tone && `is-${tone}`].filter(Boolean).join(' ')}
+456:           >
+457:             {showLogos && (
+458:               <>
+459:                 <img
+460:                   alt="Logotip Sóc de Poble"
+461:                   className="page-title-logo light-only"
+462:                   src={resolveAsset("/assets/system/ui/logo-socdepoble-rect-negre.svg")}
+463:                 />
+464:                 <img
+465:                   alt="Logotip Sóc de Poble"
+466:                   className="page-title-logo dark-only"
+467:                   src={resolveAsset("/assets/system/ui/logo-socdepoble-rect-blanc.svg")}
+468:                 />
+469:               </>
+470:             )}
+471:             {title && <h1>{title}</h1>}
+472:             {labels.length > 0 && (
+473:               <ul className="sp-card-labels page-title-labels" aria-label="Categories">
+474:                 {labels.map((label, index) => (
+475:                   <li
+476:                     key={`${label.text}-${index}`}
+477:                     className={['sp-card-label', label.className || 'label-blue'].join(' ')}
+478:                   >
+479:                     {label.text}
+480:                   </li>
+481:                 ))}
+482:               </ul>
+483:             )}
+484:             {copyright && (
+485:               <p className="sp-card-copyright page-title-copyright">{copyright}</p>
+486:             )}
+487:           </header>
+488:         )}
+489: 
+490:         {(subtitle || lead) && (
+491:           <div className="page-intro sdp-text-center sdp-mb-6 sdp-mx-auto">
+492:             {subtitle && <h2>{subtitle}</h2>}
+493:             {lead && <p className="lead">{lead}</p>}
+494:           </div>
+495:         )}
+496: 
+497:         <div className="content-wrapper">{children}</div>
+498:       </div>
+499:     </>
+500:   );
+501: }
+502: 
+503: export function IconButton({
+504:   label,
+505:   children,
+506:   onClick,
+507:   className = '',
+508:   disabled = false,
+509:   presentation = false
+510: }) {
+511:   if (!onClick && !presentation && !disabled) return null;
+512: 
+513:   return (
+514:     <ActionControl
+515:       className={['sp-card-action', className].filter(Boolean).join(' ')}
+516:       label={label}
+517:       onClick={onClick}
+518:       disabled={disabled}
+519:     >
+520:       {children}
+521:     </ActionControl>
+522:   );
+523: }
+524: 
+525: export function UniversalButton({
+526:   children,
+527:   onClick,
+528:   variant = 'primary',
+529:   size = '',
+530:   type = 'button',
+531:   className = '',
+532:   disabled = false,
+533:   icon = null,
+534:   ariaLabel
+535: }) {
+536:   const sizeClass = size ? `btn-${size}` : '';
+537:   const variantClass = variant ? `btn-${variant}` : '';
+538: 
+539:   return (
+540:     <button
+541:       className={['btn', variantClass, sizeClass, className].filter(Boolean).join(' ')}
+542:       type={type}
+543:       onClick={onClick}
+544:       disabled={disabled}
+545:       aria-label={ariaLabel || (typeof children === 'string' ? children : undefined)}
+546:     >
+547:       {icon && (
+548:         <span className="icon-btn" aria-hidden="true">
+549:           {icon}
+550:         </span>
+551:       )}
+552:       {children}
+553:     </button>
+554:   );
+555: }
+556: 
+557: export function UniversalCard({
+558:   title,
+559:   headingLevel = 'h3',
+560:   subtitle,
+561:   body,
+562:   location,
+563:   time,
+564:   date,
+565:   dateTime,
+566:   author,
+567:   authorHref,
+568:   avatarUrl,
+569:   avatarAlt = '',
+570:   imageUrl,
+571:   imageAlt = '',
+572:   price,
+573:   labels = [],
+574:   mainHref,
+575:   onMainClick,
+576:   copyright,
+577:   calendarBadge = null,
+578:   isAvis = false,
+579:   hasFooter,
+580:   showPin,
+581:   showDateTime,
+582:   showTranslate,
+583:   showComment,
+584:   showShare,
+585:   showConnect,
+586:   onPin,
+587:   onDateTime,
+588:   onTranslate,
+589:   onComment,
+590:   onShare,
+591:   onConnect,
+592:   connectLabel = 'Connectar'
+593: }) {
+594:   const HeadingTag = CARD_HEADINGS.has(headingLevel) ? headingLevel : 'h3';
+595:   const hasAuthor = Boolean(author || avatarUrl || location);
+596:   const footerDefaultsVisible = hasFooter === true;
+597:   const pinVisible = showPin ?? Boolean(onPin);
+598:   const dateTimeVisible = showDateTime ?? Boolean(time || date || onDateTime);
+599:   const translateVisible = showTranslate ?? (footerDefaultsVisible || Boolean(onTranslate));
+600:   const commentVisible = showComment ?? (footerDefaultsVisible || Boolean(onComment));
+601:   const shareVisible = showShare ?? (footerDefaultsVisible || Boolean(onShare));
+602:   const connectVisible = showConnect ?? (footerDefaultsVisible || Boolean(onConnect));
+603:   const hasMeta = pinVisible || dateTimeVisible;
+604:   const hasHeader = hasAuthor || hasMeta;
+605:   const hasIconActions = translateVisible || commentVisible || shareVisible;
+606:   const footerVisible = hasFooter === false ? false : hasIconActions || connectVisible;
+607: 
+608:   const authorContent = hasAuthor && (
+609:     <span className="sp-card-author">
+610:       {avatarUrl && (
+611:         <img
+612:           alt={avatarAlt}
+613:           className="sp-card-avatar"
+614:           src={avatarUrl}
+615:           width="48"
+616:           height="48"
+617:         />
+618:       )}
+619:       {(author || location) && (
+620:         <span className="sp-card-author-info">
+621:           {author && <span className="sp-card-author-name">{author}</span>}
+622:           {location && <span className="sp-card-author-location">{location}</span>}
+623:         </span>
+624:       )}
+625:     </span>
+626:   );
+627: 
+628:   let titleContent = title;
+629:   if (mainHref) {
+630:     titleContent = (
+631:       <a className="sp-card-main-link" href={mainHref} onClick={onMainClick}>
+632:         {title}
+633:       </a>
+634:     );
+635:   } else if (onMainClick) {
+636:     titleContent = (
+637:       <button
+638:         type="button"
+639:         className="sp-card-main-button"
+640:         onClick={onMainClick}
+641:         aria-label={`Obrir ${title}`}
+642:       >
+643:         {title}
+644:       </button>
+645:     );
+646:   }
+647: 
+648:   const pinLabel = title ? `Ancorar ${title}` : 'Ancorar';
+649:   const connectAriaLabel = title ? `${connectLabel} amb ${title}` : connectLabel;
+650: 
+651:   return (
+652:     <article className={['sp-card', isAvis && 'sp-card--avis'].filter(Boolean).join(' ')}>
+653:       {hasHeader && (
+654:         <header className="sp-card-header">
+655:           {hasAuthor && (
+656:             authorHref ? (
+657:               <a className="sp-card-author-link" href={authorHref}>
+658:                 {authorContent}
+659:               </a>
+660:             ) : (
+661:               <span className="sp-card-author-block">{authorContent}</span>
+662:             )
+663:           )}
+664:           {hasMeta && (
+665:             <div className="sp-card-meta">
+666:               {pinVisible && (
+667:                 <ActionControl
+668:                   className="btn-icon-orange"
+669:                   label={pinLabel}
+670:                   onClick={onPin}
+671:                 >
+672:                   <PinIcon className="icon" />
+673:                 </ActionControl>
+674:               )}
+675:               {dateTimeVisible && (
+676:                 <DateTimeControl
+677:                   time={time}
+678:                   date={date}
+679:                   dateTime={dateTime}
+680:                   onClick={onDateTime}
+681:                 />
+682:               )}
+683:             </div>
+684:           )}
+685:         </header>
+686:       )}
+687: 
+688:       {imageUrl && (
+689:         <img
+690:           className="sp-card-media"
+691:           src={imageUrl}
+692:           alt={imageAlt}
+693:           loading="lazy"
+694:           decoding="async"
+695:         />
+696:       )}
+697: 
+698:       <div
+699:         className={[
+700:           'sp-card-body',
+701:           (price || calendarBadge) && 'sp-card-body--with-aside'
+702:         ].filter(Boolean).join(' ')}
+703:       >
+704:         {calendarBadge && (
+705:           <time
+706:             className="sp-card-calendar-badge"
+707:             dateTime={calendarBadge.dateTime}
+708:             aria-label={calendarBadge.label || [calendarBadge.dia, calendarBadge.mes].join(' ')}
+709:           >
+710:             <span className="sp-card-calendar-badge__dia">{calendarBadge.dia}</span>
+711:             <span className="sp-card-calendar-badge__mes">{calendarBadge.mes}</span>
+712:           </time>
+713:         )}
+714:         {price && <p className="sp-card-price">{price}</p>}
+715: 
+716:         {title && <HeadingTag className="sp-card-title">{titleContent}</HeadingTag>}
+717:         {subtitle && <p className="sp-card-subtitle">{subtitle}</p>}
+718:         {body && (
+719:           typeof body === 'string' ? (
+720:             <p className="sp-card-text">{body}</p>
+721:           ) : (
+722:             <div className="sp-card-text">{body}</div>
+723:           )
+724:         )}
+725:         {labels.length > 0 && (
+726:           <ul className="sp-card-labels" aria-label="Categories">
+727:             {labels.map((label, index) => (
+728:               <li
+729:                 key={`${label.text}-${index}`}
+730:                 className={['sp-card-label', label.className || 'label-blue'].join(' ')}
+731:               >
+732:                 {label.text}
+733:               </li>
+734:             ))}
+735:           </ul>
+736:         )}
+737:         {copyright && <p className="sp-card-copyright">{copyright}</p>}
+738:       </div>
+739: 
+740:       {footerVisible && (
+741:         <footer className="sp-card-footer">
+742:           {hasIconActions && (
+743:             <div className="sp-card-actions">
+744:               {translateVisible && (
+745:                 <IconButton label="Traduir" onClick={onTranslate} presentation>
+746:                   <TranslateIcon className="icon" />
+747:                 </IconButton>
+748:               )}
+749:               {commentVisible && (
+750:                 <IconButton
+751:                   label="Comentar (Xat Privat)"
+752:                   onClick={onComment}
+753:                   presentation
+754:                 >
+755:                   <CommentIcon className="icon" />
+756:                 </IconButton>
+757:               )}
+758:               {shareVisible && (
+759:                 <IconButton label="Compartir" onClick={onShare} presentation>
+760:                   <ShareIcon className="icon" />
+761:                 </IconButton>
+762:               )}
+763:             </div>
+764:           )}
+765:           {connectVisible && (
+766:             <ActionControl
+767:               className="sp-card-connect"
+768:               label={connectAriaLabel}
+769:               title={connectAriaLabel}
+770:               onClick={onConnect}
+771:             >
+772:               {connectLabel}
+773:             </ActionControl>
+774:           )}
+775:         </footer>
+776:       )}
+777:     </article>
+778:   );
+779: }
+780: 
+The above content shows the entire, complete file contents of the requested file.

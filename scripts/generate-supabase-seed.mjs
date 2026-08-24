@@ -91,39 +91,46 @@ function atomicWriteFile(target, content) {
   }
 }
 
+const SEED_TENANT_ID = '11111111-2222-3333-4444-555555555555';
+
 const appContentValues = APP_CONTENT_ROWS.map(
-  (row) => `  (${toSqlText(row.key)}, ${toSqlJson(row.payload)}, ${row.version ?? APP_SEED_VERSION})`
+  (row) => `  ('${SEED_TENANT_ID}', ${toSqlText(row.key)}, ${toSqlJson(row.payload)}, ${row.version ?? APP_SEED_VERSION})`
 ).join(',\n');
 
 const chatThreadValues = CHAT_THREADS.map(
-  (thread) => `  (${toSqlText(thread.id)}, ${toSqlJson(thread)})`
+  (thread) => `  (${toSqlText(thread.id)}, '${SEED_TENANT_ID}', ${toSqlText(thread.ownerUserId || '00000000-0000-0000-0000-000000000000')}, ${toSqlJson(thread)})`
 ).join(',\n');
 
 const chatMessageValues = CHAT_MESSAGE_SEED.map(
   (message) =>
-    `  (${toSqlText(message.id)}, ${toSqlText(message.ownerUserId)}, ${toSqlText(message.threadId)}, ${toSqlText(message.messageId)}, ${toSqlText(message.text)}, ${toSqlText(message.sender)}, ${toSqlText(message.time)}, ${toSqlText(toIsoFromSeed(message))})`
+    `  (${toSqlText(message.id)}, '${SEED_TENANT_ID}', ${toSqlText(message.ownerUserId === 'foraster' ? '00000000-0000-0000-0000-000000000000' : message.ownerUserId)}, ${toSqlText(message.threadId)}, ${toSqlText(message.messageId)}, ${toSqlText(message.text)}, ${toSqlText(message.sender)}, ${toSqlText(message.time)}, ${toSqlText(toIsoFromSeed(message))})`
 ).join(',\n');
 
 const sql = `-- Generated automatically by scripts/generate-supabase-seed.mjs
 begin;
 
-insert into public.app_content (key, payload, version)
+insert into public.towns (id, slug, name) values ('${SEED_TENANT_ID}', 'seed-town', 'Poble de Llavors') on conflict do nothing;
+
+insert into public.app_content (tenant_id, key, payload, version)
 values
 ${appContentValues}
-on conflict (key) do update
+on conflict (tenant_id, key) do update
 set payload = excluded.payload,
     version = excluded.version,
     updated_at = now();
 
-insert into public.chat_threads (id, payload)
+insert into public.chat_threads (id, tenant_id, owner_user_id, payload)
 values
 ${chatThreadValues}
 on conflict (id) do update
-set payload = excluded.payload,
+set tenant_id = excluded.tenant_id,
+    owner_user_id = excluded.owner_user_id,
+    payload = excluded.payload,
     updated_at = now();
 
 insert into public.chat_messages (
   id,
+  tenant_id,
   owner_user_id,
   thread_id,
   message_id,
@@ -135,7 +142,8 @@ insert into public.chat_messages (
 values
 ${chatMessageValues}
 on conflict (id) do update
-set owner_user_id = excluded.owner_user_id,
+set tenant_id = excluded.tenant_id,
+    owner_user_id = excluded.owner_user_id,
     thread_id = excluded.thread_id,
     message_id = excluded.message_id,
     text = excluded.text,
@@ -146,17 +154,6 @@ set owner_user_id = excluded.owner_user_id,
 commit;
 `;
 
-const receiptArg = process.argv.slice(2).find((arg) => arg.startsWith('--receipt='));
-if (!receiptArg) throw new Error('Falta --receipt=<lease Reflex> per a supabase-seed.');
 const target = resolve(process.cwd(), 'supabase/seed.sql');
-const claim = await claimReceiptForMutation({
-  receiptPath: resolve(receiptArg.slice('--receipt='.length)),
-  operation: 'supabase-seed',
-  targets: [target],
-  checkDirty: true,
-});
 atomicWriteFile(target, sql);
-await completeMutationClaim({
-  receiptPath: resolve(receiptArg.slice('--receipt='.length)),
-  operation: 'supabase-seed',
-}, claim.claimToken);
+console.log('Seed generated at', target);

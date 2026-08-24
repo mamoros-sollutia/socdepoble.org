@@ -1,6 +1,6 @@
 const isBrowser = typeof window !== 'undefined' && typeof window.localStorage !== 'undefined';
 
-export const readJson = (key, fallback) => {
+export const getVal = (key, fallback = null) => {
   if (!isBrowser) return fallback;
   try {
     const raw = window.localStorage.getItem(key);
@@ -11,7 +11,7 @@ export const readJson = (key, fallback) => {
   }
 };
 
-export const writeJson = (key, value) => {
+export const setVal = (key, value) => {
   if (!isBrowser) return;
   try {
     window.localStorage.setItem(key, JSON.stringify(value));

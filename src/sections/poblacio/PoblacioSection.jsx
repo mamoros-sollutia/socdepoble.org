@@ -1,0 +1,67 @@
+import React, { useMemo } from 'react';
+import { UniversalPage } from '../../components/universal/UniversalComponents';
+import { useAppData } from '../../app/AppDataContext';
+import { useSEO } from '../../hooks/useSEO';
+import { Link } from 'react-router-dom';
+
+export default function PoblacioSection() {
+  const { sortedTowns, t } = useAppData();
+
+  useSEO({
+    title: t('section.poblacio.title', 'Cens de Població'),
+    description: t('section.poblacio.subtitle', 'Demografia i nombre d\'habitants dels pobles connectats.')
+  });
+
+  const sortedByPopulation = useMemo(() => {
+    return [...sortedTowns].sort((a, b) => {
+      // Parse population string (e.g. "700 hab") to number
+      const popA = parseInt((a.population || '0').replace(/\D/g, ''), 10);
+      const popB = parseInt((b.population || '0').replace(/\D/g, ''), 10);
+      return popB - popA; // Descending order
+    });
+  }, [sortedTowns]);
+
+  return (
+    <UniversalPage
+      title={t('section.poblacio.title', 'Cens de Població')}
+      subtitle={t('section.poblacio.subtitle', 'Demografia')}
+      lead={t('section.poblacio.lead', 'Llistat de tots els pobles registrats al sistema, ordenats pel seu nombre d\'habitants.')}
+      chrome="system"
+      showLogos={true}
+      labels={[{ text: 'Població', className: 'sdp-badge-system' }]}
+    >
+      <div className="sdp-mb-12">
+        <div className="sdp-table-container">
+          <table className="sdp-table sdp-table--poblacio">
+            <thead>
+              <tr>
+                <th>Poble</th>
+                <th>Comarca</th>
+                <th className="sdp-text-right">Habitants</th>
+              </tr>
+            </thead>
+            <tbody>
+              {sortedByPopulation.map((town) => (
+                <tr key={town.id}>
+                  <td>
+                    <Link to={`/pobles/${town.id}`} className="sdp-table-link">
+                      {town.title}
+                    </Link>
+                  </td>
+                  <td>
+                    {town.comarca}
+                  </td>
+                  <td className="sdp-text-right">
+                    <strong>
+                      {town.population}
+                    </strong>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </UniversalPage>
+  );
+}

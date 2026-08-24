@@ -9,9 +9,28 @@ import {
   PAGE_COPY,
   TOWNS
 } from './sectionContent.js';
+import { getVal, setVal } from '../config/storage.js';
 
 export const APP_SEED_VERSION = 1;
-export const DEFAULT_USER_ID = 'foraster';
+export function getGuestSessionId() {
+  if (typeof window === 'undefined') return 'foraster';
+  try {
+    let id = getVal('socdepoble-guest-session-id');
+    if (!id) {
+      if (typeof crypto !== 'undefined' && crypto.randomUUID) {
+        id = 'guest-' + crypto.randomUUID();
+      } else {
+        id = 'guest-' + Date.now().toString(36) + Math.random().toString(36).slice(2);
+      }
+      setVal('socdepoble-guest-session-id', id);
+    }
+    return id;
+  } catch {
+    return 'foraster';
+  }
+}
+
+export const DEFAULT_USER_ID = getGuestSessionId();
 
 export const NOTE_FOLDERS_SEED = [
   { id: 'f-root', name: 'General', parentId: null },

@@ -1,3 +1,7 @@
+import logoLight from '../assets/ui/logo-socdepoble-rect-blanc.svg';
+import logoDark from '../assets/ui/logo-socdepoble-rect-negre.svg';
+import logoSquare from '../assets/ui/logo-socdepoble-cuadrat-verd.svg';
+
 export const APP_NAME = 'Sóc de Poble';
 export const APP_TAGLINE = 'Xarxa pública del poble.';
 export const APP_DESCRIPTION = 'Portal públic del poble.';
@@ -13,7 +17,7 @@ export const THEME = {
 };
 
 export const ASSET_PATHS = {
-  logoHorizontalLight: '/assets/system/ui/logo-socdepoble-rect-blanc.svg',
-  logoHorizontalDark: '/assets/system/ui/logo-socdepoble-rect-negre.svg',
-  logoSquare: '/assets/system/ui/logo-socdepoble-cuadrat-verd.svg'
+  logoHorizontalLight: logoLight,
+  logoHorizontalDark: logoDark,
+  logoSquare: logoSquare
 };

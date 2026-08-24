@@ -1,17 +1,13 @@
 ---
-estat: canonic
-tipus: identitat
-description: Mirall automàtic de 03_regles_arquitectura_i_dades.md
-temes:
-- iaia-maria
-- sistema
-tags:
-- core
-- genoma
-- identitat
-- skills
-- socdepoble
+estat: generat
+tipus: document
+description: Vista generada des de .agents/03_regles_arquitectura_i_dades.md; no editar.
+source: .agents/03_regles_arquitectura_i_dades.md
+source_sha256: 75a2c7208e0d013899bb95a6284258ad63febdae398a1a212a300da308232435
 ---
+
+> [!warning] FITXER GENERAT
+> Font canònica: `.agents/03_regles_arquitectura_i_dades.md`. Qualsevol edició manual serà sobreescrita.
 
 # Agent 03: Regles d'arquitectura i dades
 
@@ -123,7 +119,6 @@ Seguint el dictamen de l'Auditoria Sènior (SDP-PETORRETA-047), la migració des
 5. **El Tractor Mestre com a Duana.** Cada *feature* migrada ha de passar validació d'AST i les regles de Pedra Seca (zero dependencies heretades brutes, zero colors fora de token, hitboxes de 44px) com a pas previ a integrar-se, no com un deute futur.
 6. **Dades a banda del codi.** Les dades antigues persistides s'exporten a JSON neutre i s'importen per la capa nova de persistència, validant l'esquema. No es copien arxius binaris o IndexedDBs creuats entre generacions.
 
-
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX_MIRROR]]

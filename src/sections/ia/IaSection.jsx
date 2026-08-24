@@ -1,5 +1,5 @@
 import SectionChrome from '../../components/SectionChrome';
-
+import DOMPurify from 'dompurify';
 const IA_HTML = `
   <p><strong>Aquest document és el nostre Sistema de Gestió de Coneixement (CMS) fundacional.</strong> Un Còdex dissenyat perquè tant les Intel·ligències Artificials com els humans puguem entendre com hem construït el Mas. Ací es plasma el "Trellat", traduït a metàfores del camp perquè qualsevol puga comprendre-ho.</p>
 
@@ -57,7 +57,7 @@ export default function IaSection() {
           <span className="pill">ia</span>
         </div>
         <div className="text-panel__body">
-          <article dangerouslySetInnerHTML={{ __html: IA_HTML }} />
+          <article dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(IA_HTML) }} />
         </div>
       </div>
     </SectionChrome>

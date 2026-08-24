@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 const { spawn } = require('child_process');
 const path = require('path');
+const { WIKI_DIR } = require('../lib/project_paths.cjs');
 const { pathToFileURL } = require('url');
 
 const SCRIPTS = [
@@ -36,7 +37,7 @@ async function main() {
   const receiptArg = args.find(a => a.startsWith('--receipt='));
   if (!receiptArg) throw new Error('El compilador exigix --receipt=<lease Reflex> per a l’operació compiler-build.');
   const receipt = path.resolve(receiptArg.slice('--receipt='.length));
-  const wikiRoot = path.resolve(wikiArg ? wikiArg.slice('--wiki='.length) : path.resolve(__dirname, '../../../_wiki_de_poble'));
+  const wikiRoot = path.resolve(wikiArg ? wikiArg.slice('--wiki='.length) : WIKI_DIR);
   const buildDir = path.join(wikiRoot, '_build');
   const reflexUrl = pathToFileURL(path.resolve(__dirname, '../reflex_petorreta.mjs')).href;
   const { claimReceiptForMutation, completeMutationClaim } = await import(reflexUrl);

@@ -1,3 +1,5 @@
+import { getVal, setVal } from './storage.js';
+
 const isBrowser = typeof window !== 'undefined' && typeof window.localStorage !== 'undefined';
 
 export const LANGUAGE_STORAGE_KEY = 'socdepoble-language';
@@ -169,7 +171,7 @@ const TRANSLATIONS = {
     'section.mapa.publicNav': 'Navegació pública',
     'section.disseny.kicker': 'Disseny',
     'section.disseny.title': 'Sistema de Disseny Sóc de Poble',
-    'section.disseny.subtitle': 'Arquitectura Pedra Seca per a interfícies clares i resistents.',
+    'section.disseny.subtitle': 'Arquitectura Pedra Seca per a interfícies clares i resistents',
     'section.disseny.workInProgress': 'Treball en Progrés',
     'section.disseny.note': 'Les següents seccions estan sent migrades cap al patró Slot per reduir el DOM_DEPTH.',
     'section.pobles.kicker': 'Pobles',
@@ -1262,7 +1264,7 @@ const TRANSLATIONS = {
     'section.mapa.publicNav': 'Navegación pública',
     'section.disseny.kicker': 'Deseño',
     'section.disseny.title': 'Sistema de Deseño Sóc de Poble',
-    'section.disseny.subtitle': 'Arquitectura Pedra Seca para interfaces claras e resistentes.',
+    'section.disseny.subtitle': 'Arquitectura Pedra Seca para interfaces claras e resistentes',
     'section.disseny.workInProgress': 'Traballo en progreso',
     'section.disseny.note': 'As seguintes seccións están sendo migradas ao patrón Slot para reducir o DOM_DEPTH.',
     'section.pobles.kicker': 'Pobos',
@@ -1403,6 +1405,9 @@ const TRANSLATIONS = {
     'section.connectar.area.mur': 'Publica ou revisa o muro público.',
     'section.connectar.area.mercat': 'Explora produtos e intercambios.',
     'section.connectar.area.events': 'Mira sesións, citas e rituais.',
+    'section.dispositius.kicker': 'Dispositivos',
+    'section.dispositius.title': 'Dispositivos e conexións directas',
+    'section.dispositius.subtitle': 'Descobre instancias abertas do portal, lanza unha conexión e envía mensaxes directas dende esta mesma pantalla.',
     'error.loadPortal': 'Non foi posible cargar o portal'
   }
 };
@@ -1415,12 +1420,12 @@ export function normalizeLanguage(code) {
 
 export function readStoredLanguage() {
   if (!isBrowser) return DEFAULT_LANGUAGE;
-  return normalizeLanguage(window.localStorage.getItem(LANGUAGE_STORAGE_KEY));
+  return normalizeLanguage(getVal(LANGUAGE_STORAGE_KEY));
 }
 
 export function writeStoredLanguage(language) {
   if (!isBrowser) return;
-  window.localStorage.setItem(LANGUAGE_STORAGE_KEY, normalizeLanguage(language));
+  setVal(LANGUAGE_STORAGE_KEY, normalizeLanguage(language));
 }
 
 export function createTranslator(language) {

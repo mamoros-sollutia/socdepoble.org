@@ -1,0 +1,260 @@
+<html style="margin:0;padding:0;">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+(function(){
+  var s = document.createElement('style');
+  s.textContent = ':root{--bg:#202024;--card:#2a2a2f;--text:#e8e5df;--muted:#9a978f;--accent:#c47046;--accent-soft:rgba(196,112,70,.14);--accent2:#7ba8b8;--accent2-soft:rgba(123,168,184,.14);--border:rgba(232,229,223,.12);--sdp-black:#0e0d0c;--sdp-blue:#016ebf;--sdp-blue-deep:#004983;--sdp-orange:#fe7406;--sdp-white:#ffffff;--sdp-text-dark:#0e0d0c}.reveal{opacity:0;transform:translateY(18px);animation:fadeUp .55s ease forwards}.reveal:nth-child(2){animation-delay:.08s}.reveal:nth-child(3){animation-delay:.16s}.reveal:nth-child(4){animation-delay:.24s}.reveal:nth-child(5){animation-delay:.32s}.reveal:nth-child(6){animation-delay:.4s}@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}.kicker{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:600}.chip{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.04em}.chip-bad{background:rgba(194,24,29,.15);color:#ff8a80;border:1px solid rgba(194,24,29,.35)}.chip-good{background:rgba(2,126,56,.15);color:#86dfa4;border:1px solid rgba(2,126,56,.35)}.chip-warn{background:rgba(156,105,2,.18);color:#f5c96b;border:1px solid rgba(156,105,2,.35)}.sdp-bar-black{height:64px;background:var(--sdp-black);color:#fff;display:flex;align-items:center;padding:0 24px;border-bottom:1px solid rgba(255,255,255,.06)}.sdp-bar-blue{height:58px;background:var(--sdp-blue);color:#fff;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 24px}.sdp-bar-orange{height:58px;background:var(--sdp-orange);color:var(--sdp-text-dark);padding:0 24px;display:flex;justify-content:space-between;align-items:center;font-size:14px}.sdp-card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 10px 28px rgba(0,0,0,.25);max-width:420px}.sdp-card-header{background:var(--sdp-orange);color:var(--sdp-text-dark);padding:12px 16px;display:flex;justify-content:space-between;align-items:center}.sdp-card-body{padding:22px 20px 16px;text-align:center;color:#0e0d0c}.sdp-card-footer{background:var(--sdp-blue);color:#fff;padding:12px 16px;display:flex;justify-content:space-between;align-items:center}.sdp-actions{display:flex;align-items:center;gap:8px}.sdp-act{background:transparent;border:0;color:inherit;width:48px;height:48px;display:flex;align-items:center;justify-content:center;cursor:pointer;border-radius:8px;opacity:.9;transition:all .15s}.sdp-act:hover{opacity:1;transform:translateY(-1px);background:rgba(255,255,255,.08)}.sdp-connect{background:var(--sdp-blue-deep);border:0;color:#fff;font-weight:700;text-transform:uppercase;font-size:12px;letter-spacing:.5px;height:48px;padding:0 20px;border-radius:999px;cursor:pointer;transition:transform .15s}.sdp-connect:hover{transform:scale(1.03)}.sdp-btn-orange{background:rgba(0,0,0,.15);border:0;color:#fff;width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer}.sdp-btn-dt{background:rgba(0,0,0,.15);border:0;color:#fff;font-weight:700;height:48px;padding:0 14px;border-radius:999px;font-size:12px;line-height:1.2;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer}.right-icons{margin-left:auto;display:flex;align-items:center;gap:16px}.ghost-card{border:1px dashed var(--border);border-radius:12px;padding:24px;color:var(--muted);text-align:center;font-size:13px}.api-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:14px 0;border-bottom:1px solid var(--border)}.api-row:last-child{border-bottom:0}.tag{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;padding:2px 8px;border-radius:6px;background:rgba(255,255,255,.06);color:var(--text)}.tag-prop{color:#f5c96b}.tag-fn{color:#86dfa4}.tag-bad{color:#ff8a80;background:rgba(194,24,29,.12)}';
+  document.head.appendChild(s);
+})();
+</script>
+<div style="background-color:transparent;box-sizing:border-box;">
+  <div style="color:var(--text);font-family:'Sora',system-ui,sans-serif;background:var(--bg)">
+    <div style="max-width:980px;margin:0 auto;padding:56px 28px">
+
+      <!-- HERO -->
+      <div class="reveal" style="margin-bottom:48px">
+        <p class="kicker" style="margin-bottom:12px">Petorreta 260813_0420 · Restauració UI</p>
+        <h1 style="font-size:42px;line-height:1.1;font-weight:800;letter-spacing:-.02em;margin-bottom:14px">
+          Pedra Seca <span style="background:linear-gradient(100deg,var(--sdp-orange),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent">restaurada</span>
+        </h1>
+        <p style="color:var(--muted);font-size:17px;line-height:1.6;max-width:680px">
+          S'han restaurat les 3 barres superiors i el peu de targeta a <code style="color:var(--accent)">UniversalComponents.jsx</code> i <code style="color:var(--accent)">Cards.jsx</code>.
+          API neta de presentació basada en <em>props booleanes</em>: zero callbacks fantasma, zero divs innecessaris.
+        </p>
+      </div>
+
+      <!-- DIAGNOSTIC -->
+      <div class="reveal" style="margin-bottom:44px">
+        <p class="kicker" style="margin-bottom:14px">01 · Diagnòstic quirúrgic</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;border-top:3px solid #c2181d">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+              <span class="chip chip-bad">ABANS · Codex netejant</span>
+            </div>
+            <p style="font-size:14px;line-height:1.6;color:var(--muted);margin-bottom:10px">
+              En purgar callbacks inerts, Codex va eliminar la representació visual de:
+            </p>
+            <ul style="list-style:none;padding:0;margin:0;font-size:13.5px;line-height:1.9;color:var(--text)">
+              <li style="display:flex;align-items:center;gap:8px"><span style="color:#ff8a80;font-weight:700">✗</span> <code class="tag">header.bar-black</code></li>
+              <li style="display:flex;align-items:center;gap:8px"><span style="color:#ff8a80;font-weight:700">✗</span> <code class="tag">header.bar-blue</code></li>
+              <li style="display:flex;align-items:center;gap:8px"><span style="color:#ff8a80;font-weight:700">✗</span> <code class="tag">section.bar-orange</code></li>
+              <li style="display:flex;align-items:center;gap:8px"><span style="color:#ff8a80;font-weight:700">✗</span> <code class="tag">footer.sp-card-footer</code> (hora · pin · traduir · comentar · compartir · connectar)</li>
+            </ul>
+            <div style="margin-top:14px;padding:10px 12px;background:rgba(194,24,29,.1);border:1px solid rgba(194,24,29,.25);border-radius:8px;font-size:12.5px;color:#ffb3b0;line-height:1.5">
+              <strong>Arrel:</strong> <code class="tag tag-bad">if (!onClick) return null</code> a <em>IconButton</em>. Sense callback, no es pinta res. El Design System es quedava calvari.
+            </div>
+          </div>
+
+          <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;border-top:3px solid #027e38">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+              <span class="chip chip-good">DESPRÉS · API neta</span>
+            </div>
+            <p style="font-size:14px;line-height:1.6;color:var(--muted);margin-bottom:10px">
+              Nova capa de <em>maneres de presentació</em>. El component decideix pintar per <strong>props booleanes</strong>, no per l'existència d'un handler:
+            </p>
+            <ul style="list-style:none;padding:0;margin:0;font-size:13.5px;line-height:1.9;color:var(--text)">
+              <li style="display:flex;align-items:center;gap:8px"><span style="color:#86dfa4;font-weight:700">✓</span> <code class="tag"><span class="tag-prop">showBarBlack</span></code> / <code class="tag"><span class="tag-prop">showBarBlue</span></code></li>
+              <li style="display:flex;align-items:center;gap:8px"><span style="color:#86dfa4;font-weight:700">✓</span> <code class="tag"><span class="tag-prop">showBarOrange</span></code> / <code class="tag"><span class="tag-prop">hasFooter</span></code></li>
+              <li style="display:flex;align-items:center;gap:8px"><span style="color:#86dfa4;font-weight:700">✓</span> <code class="tag"><span class="tag-prop">showTranslate</span></code> · <code class="tag"><span class="tag-prop">showComment</span></code> · <code class="tag"><span class="tag-prop">showShare</span></code></li>
+              <li style="display:flex;align-items:center;gap:8px"><span style="color:#86dfa4;font-weight:700">✓</span> <code class="tag"><span class="tag-prop">showPin</span></code> · <code class="tag"><span class="tag-prop">showDateTime</span></code> · <code class="tag"><span class="tag-prop">showConnect</span></code></li>
+            </ul>
+            <div style="margin-top:14px;padding:10px 12px;background:rgba(2,126,56,.1);border:1px solid rgba(2,126,56,.25);border-radius:8px;font-size:12.5px;color:#86dfa4;line-height:1.5">
+              <strong>Resultat:</strong> <code class="tag"><span class="tag-fn">() ={'>'} {}</span></code> desapareix completament de <em>Cards.jsx</em>.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LES 3 BARRES RESTAURADES -->
+      <div class="reveal" style="margin-bottom:44px">
+        <p class="kicker" style="margin-bottom:14px">02 · Les 3 barres · <code>UniversalPage</code></p>
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden">
+          <div style="padding:16px 20px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <span class="chip chip-good">bar-black</span>
+              <span class="chip chip-good">bar-blue</span>
+              <span class="chip chip-good">bar-orange</span>
+            </div>
+            <span style="font-size:12px;color:var(--muted)">DOM exacte · disseny_pedra_seca.html</span>
+          </div>
+
+          <!-- BARRA NEGRA -->
+          <div class="sdp-bar-black" style="font-family:'Sora',sans-serif">
+            <span style="font-weight:800;letter-spacing:.02em">SÓC DE POBLE</span>
+            <div class="right-icons">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:.85"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" stroke="none"><circle cx="12" cy="5" r="2.5"/><path d="M12 8C9.5 8 8.5 12 7.5 19C7.2 21 16.8 21 16.5 19C15.5 12 14.5 8 12 8Z"/></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:.85"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:.85"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+              <div style="width:32px;height:32px;border-radius:50%;background:var(--sdp-orange)"></div>
+            </div>
+          </div>
+
+          <!-- BARRA BLAVA -->
+          <div class="sdp-bar-blue" style="font-family:'Sora',sans-serif">
+            <div style="display:flex;align-items:center;gap:20px">
+              <button class="sdp-act" style="width:40px;height:40px" title="Tornar"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg></button>
+              <button class="sdp-act" style="width:40px;height:40px" title="Índex"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg></button>
+            </div>
+            <div class="sdp-actions">
+              <button class="sdp-act" title="Traduir"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg></button>
+              <button class="sdp-act" title="Comentar"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></button>
+              <button class="sdp-act" title="Compartir"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/></svg></button>
+            </div>
+            <button class="sdp-connect" style="margin-left:auto">Connectar</button>
+          </div>
+
+          <!-- BARRA TARONJA -->
+          <div class="sdp-bar-orange" style="font-family:'Sora',sans-serif;font-weight:700">
+            <div style="display:flex;align-items:center;gap:12px">
+              <div style="width:40px;height:40px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--sdp-orange)">S</div>
+              <div style="display:flex;flex-direction:column;line-height:1.2">
+                <span style="font-size:15px">Sóc de Poble</span>
+                <span style="font-size:12.5px;font-weight:600;opacity:.85">La Torre de les Maçanes</span>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px">
+              <button class="sdp-btn-orange" title="Ancorar"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 11V7a4 4 0 0 0-8 0v4l-2 4h12l-2-4z"/><path d="M12 15v7"/></svg></button>
+              <button class="sdp-btn-dt"><span>23:33</span><span>22/3/26</span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TARGETA AMB FOOTER -->
+      <div class="reveal" style="margin-bottom:44px">
+        <p class="kicker" style="margin-bottom:14px">03 · Targeta mestra · <code>UniversalCard</code></p>
+        <div style="display:grid;grid-template-columns:1.05fr 1fr;gap:20px;align-items:start">
+          <div style="display:flex;justify-content:center;padding:20px;background:repeating-linear-gradient(45deg, rgba(255,255,255,.02), rgba(255,255,255,.02) 10px, transparent 10px, transparent 20px);border:1px solid var(--border);border-radius:14px">
+            <div class="sdp-card" style="font-family:'Sora',sans-serif">
+              <div class="sdp-card-header">
+                <div style="display:flex;align-items:center;gap:10px">
+                  <div style="width:40px;height:40px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--sdp-orange)">S</div>
+                  <div style="line-height:1.2;color:#0e0d0c">
+                    <div style="font-weight:800;font-size:14.5px">Sóc de Poble</div>
+                    <div style="font-size:12.5px;opacity:.85;font-weight:600">La Torre de les Maçanes</div>
+                  </div>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px;color:#0e0d0c">
+                  <button class="sdp-btn-orange" style="width:40px;height:40px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 11V7a4 4 0 0 0-8 0v4l-2 4h12l-2-4z"/><path d="M12 15v7"/></svg></button>
+                  <button class="sdp-btn-dt" style="height:40px;padding:0 12px"><span>19:00</span><span>22/03</span></button>
+                </div>
+              </div>
+              <div class="sdp-card-body">
+                <span class="chip" style="background:#ffe7dc;color:#ad4c03;border:0;margin-bottom:10px;display:inline-flex">ASSEMBLEA</span>
+                <h3 style="font-size:20px;font-weight:800;line-height:1.2;color:#00599d;margin:0 0 8px">Aigua i Futur del poble</h3>
+                <p style="font-size:14px;color:#514c45;margin:0;line-height:1.55">Trobada oberta a la plaça per decidir conjuntament les obres de la nova font.</p>
+              </div>
+              <div class="sdp-card-footer">
+                <div class="sdp-actions">
+                  <button class="sdp-act" title="Traduir"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg></button>
+                  <button class="sdp-act" title="Comentar"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></button>
+                  <button class="sdp-act" title="Compartir"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/></svg></button>
+                </div>
+                <button class="sdp-connect">Connectar</button>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px">
+              <p class="kicker" style="margin-bottom:10px">Footer complet · 6 botons</p>
+              <div class="api-row" style="padding:6px 0"><span><code class="tag"><span class="tag-prop">showPin</span></code> + <code class="tag"><span class="tag-prop">showDateTime</span></code></span><span style="color:var(--muted);font-size:13px">capçalera taronja</span></div>
+              <div class="api-row" style="padding:6px 0"><span><code class="tag"><span class="tag-prop">hasFooter</span></code></span><span style="color:var(--muted);font-size:13px">renderitza <code class="tag">footer.sp-card-footer</code></span></div>
+              <div class="api-row" style="padding:6px 0"><span><code class="tag"><span class="tag-prop">showTranslate</span></code> · <code class="tag"><span class="tag-prop">showComment</span></code> · <code class="tag"><span class="tag-prop">showShare</span></code></span><span style="color:var(--muted);font-size:13px">grup d'accions</span></div>
+              <div class="api-row" style="padding:6px 0;border:0"><span><code class="tag"><span class="tag-prop">showConnect</span></code> + <code class="tag">connectLabel</code></span><span style="color:var(--muted);font-size:13px">CTA del peu</span></div>
+            </div>
+            <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px">
+              <p class="kicker" style="margin-bottom:10px">Regla d'or</p>
+              <p style="font-size:13.5px;line-height:1.6;color:var(--muted);margin:0">
+                Si es passa un <code class="tag"><span class="tag-fn">onClick</span></code> el botó és operatiu. Si només hi ha la <em>prop booleana</em>, el botó és presentacional i apareix <strong>disabled</strong>. La decisió de <em>pintar</em> i la decisió de <em>fer</em> estan separades.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- API COMPARATIVA -->
+      <div class="reveal" style="margin-bottom:44px">
+        <p class="kicker" style="margin-bottom:14px">04 · API abans / després</p>
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden">
+          <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--border)">
+            <div style="padding:14px 18px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#ff8a80;font-weight:700;background:rgba(194,24,29,.06)">ANTIGA API · callbacks fantasma</div>
+            <div style="padding:14px 18px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#86dfa4;font-weight:700;background:rgba(2,126,56,.06)">NOVA API · presentació pura</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;line-height:1.7">
+            <pre style="margin:0;padding:18px;color:#ffb3b0;border-right:1px solid var(--border);white-space:pre-wrap;overflow-x:auto">// Cards.jsx (ABANS)
+&#60;UniversalCard
+  title="..."
+  onPin={<span class="tag-bad">() => {}</span>}
+  onTranslate={<span class="tag-bad">() => {}</span>}
+  onComment={<span class="tag-bad">() => {}</span>}
+  onShare={<span class="tag-bad">() => {}</span>}
+  onConnect={<span class="tag-bad">() => {}</span>}
+/&#62;
+
+// 5 handlers que no fan res.
+// El DOM depen de si existeixen.</pre>
+            <pre style="margin:0;padding:18px;color:#b8f2cb;white-space:pre-wrap;overflow-x:auto">// Cards.jsx (DESPRÉS)
+&#60;UniversalCard
+  title="..."
+  <span class="tag-fn">showPin</span>
+  <span class="tag-fn">hasFooter</span>
+  <span class="tag-fn">showTranslate</span>
+  <span class="tag-fn">showComment</span>
+  <span class="tag-fn">showShare</span>
+  <span class="tag-fn">showConnect</span>
+/&#62;
+
+// Zero callbacks.
+// En producció s'afegixen on cal:
+//   onPin={handler} onConnect={go}</pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- WORDPRESS -->
+      <div class="reveal" style="margin-bottom:24px">
+        <p class="kicker" style="margin-bottom:14px">05 · Preparació WordPress · <code>socdepoble.cat</code></p>
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px">
+          <p style="color:var(--muted);font-size:14.5px;line-height:1.6;margin:0 0 18px">
+            L'API de <em>props booleanes + JSON-serialitzables</em> és directament injectable des de PHP. Cada component es pot embolcallar en un <strong>Custom Element</strong> (Web Component) que llegeix atributs i muntar el React allà dins. Sense fricció.
+          </p>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+            <div style="padding:14px;border:1px solid var(--border);border-radius:10px">
+              <p style="font-weight:700;font-size:13.5px;margin:0 0 6px;color:var(--text)">1. Shortcode PHP</p>
+              <p style="font-size:12.5px;color:var(--muted);line-height:1.5;margin:0">Atributs del shortcode → props JSON → atribut <code>data-props</code> del Web Component.</p>
+            </div>
+            <div style="padding:14px;border:1px solid var(--border);border-radius:10px">
+              <p style="font-weight:700;font-size:13.5px;margin:0 0 6px;color:var(--text)">2. Custom Element</p>
+              <p style="font-size:12.5px;color:var(--muted);line-height:1.5;margin:0"><code>connectedCallback</code> llegeix atributs, crea arrel React i injecta <code>UniversalCard</code> amb les props.</p>
+            </div>
+            <div style="padding:14px;border:1px solid var(--border);border-radius:10px">
+              <p style="font-weight:700;font-size:13.5px;margin:0 0 6px;color:var(--text)">3. Shadow DOM</p>
+              <p style="font-size:12.5px;color:var(--muted);line-height:1.5;margin:0">CSS aïllat del tema WP. Les variables <code>--sdp-*</code> es propaguen i són overridables.</p>
+            </div>
+          </div>
+          <div style="margin-top:16px;padding:12px 14px;background:var(--accent-soft);border:1px solid rgba(196,112,70,.3);border-radius:8px;font-size:12.5px;color:var(--text);line-height:1.55">
+            <strong style="color:var(--accent)">Efecte inmediat:</strong> el plugin WP només ha de registrar <code>[sdp_card showPin hasFooter showTranslate ...]</code>.
+            El component és el mateix a React, al Design System i a WordPress — una sola font de veritat.
+          </div>
+        </div>
+      </div>
+
+      <!-- FOOTER -->
+      <div style="padding-top:28px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+        <div style="font-size:12px;color:var(--muted)">
+          <strong style="color:var(--text)">Consell de les 11 IAs</strong> · Codex executant · Trellat pur
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <span class="chip chip-good">WCAG 2.2 AA/AAA</span>
+          <span class="chip chip-good">Zero fantasma</span>
+          <span class="chip chip-warn">WP-ready</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</html>

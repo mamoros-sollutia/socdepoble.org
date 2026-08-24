@@ -56,9 +56,9 @@ export default function ItemDetailSection() {
               <span className="badge">{section.label}</span>
               <span className="badge">{item.id}</span>
             </div>
-            <h2 className="card__title" style={{ marginTop: 14 }}>{section.getTitle(item)}</h2>
+            <h2 className="card__title" style={{ marginTop: 'var(--sdp-space-4)' }}>{section.getTitle(item)}</h2>
             {subtitle ? <p className="section-item-card__subtitle">{subtitle}</p> : null}
-            <div style={{ marginTop: 18 }}>
+            <div style={{ marginTop: 'var(--sdp-space-6)' }}>
               {section.renderBody(item)}
             </div>
           </div>

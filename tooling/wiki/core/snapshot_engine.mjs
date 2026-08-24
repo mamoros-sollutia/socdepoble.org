@@ -5,6 +5,7 @@ import { readFile, writeFile, rename, unlink, readdir, mkdir } from 'node:fs/pro
 import { join, relative } from 'node:path';
 import zlib from 'node:zlib';
 import { promisify } from 'node:util';
+import { randomUUID } from 'node:crypto';
 import { claimReceiptForMutation, completeMutationClaim } from '../reflex_petorreta.mjs';
 
 const gzip = promisify(zlib.gzip);
@@ -26,7 +27,7 @@ export const nodeAdapter = {
   },
   readText: (p) => readFile(p, 'utf8'),
   readBinary: (p) => readFile(p),
-  writeFile: (p, data) => writeFile(p, data),
+  writeFile: (p, data, opts) => writeFile(p, data, opts),
   rename: (a, b) => rename(a, b),
   unlink: (p) => unlink(p).catch(() => {}),
   readdir: (d) => readdir(d).catch(() => []),
@@ -53,15 +54,12 @@ const snapshotName = (ts) => `snapshot_${ts.replace(/[:.]/g, '-')}.sdp`;
 export async function createSnapshot(options = {}, adapter = nodeAdapter) {
   const root = options.root || '.';
   const outDir = options.out || join(root, '.snapshots');
-  let claim = null;
-  if (adapter === nodeAdapter) {
-    claim = await claimReceiptForMutation({
-      receiptPath: options.receipt,
-      operation: 'snapshot-create',
-      targets: [outDir],
-      checkDirty: true,
-    });
-  }
+  const claim = await claimReceiptForMutation({
+    receiptPath: options.receipt,
+    operation: 'snapshot-create',
+    targets: [outDir],
+    checkDirty: true,
+  });
   await adapter.mkdir(outDir);
 
   const files = await adapter.walk(root);
@@ -72,9 +70,9 @@ export async function createSnapshot(options = {}, adapter = nodeAdapter) {
   const { codec, data } = await compress(raw);
 
   const finalPath = join(outDir, snapshotName(payload.generatedAt));
-  const tmpPath = `${finalPath}.tmp`;
+  const tmpPath = `${finalPath}-${randomUUID()}.tmp`;
   const header = Buffer.from(JSON.stringify({ codec, rawBytes: raw.length }) + '\n', 'utf8');
-  await adapter.writeFile(tmpPath, Buffer.concat([header, data]));
+  await adapter.writeFile(tmpPath, Buffer.concat([header, data]), { flag: 'wx' });
   await adapter.rename(tmpPath, finalPath); // atòmic: mateix volum, mateixa carpeta
 
   const verified = await verifySnapshot(finalPath, adapter, files.length);

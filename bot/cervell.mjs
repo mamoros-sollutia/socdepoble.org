@@ -5,7 +5,7 @@
 import { GoogleGenAI, Type } from '@google/genai';
 import fs from 'node:fs/promises';
 import { join } from 'node:path';
-import { buildIndex, search } from '../tooling/wiki/core/edge_rag.mjs';
+import { search } from '../tooling/wiki/core/edge_rag.mjs';
 import { getMemory, formatMemoryForPrompt, updateMemory, purgeExpired } from './memoria/episodica.mjs';
 import { RUTES } from './arrels.mjs'; // [FIX-1] rutes úniques i deterministes
 
@@ -95,9 +95,8 @@ export async function iniciaCervell() {
     ragIndex = JSON.parse(indexData);
     console.log(`[CERVELL] Índex preparat: ${ragIndex.docCount || 0} fitxers processats.`);
   } catch (error) {
-    console.warn('[CERVELL] rag_index.json no trobat o il·legible. Es calcula ara (síncron)...', error.message);
-    ragIndex = await buildIndex(RUTES.wiki);
-    console.log(`[CERVELL] Índex construït: ${ragIndex.docCount} fitxers processats.`);
+    console.error('[CERVELL] rag_index.json no trobat o il·legible. Has d\'executar pre-build abans.', error.message);
+    throw new Error('RAG index no trobat. (Run pre-build)');
   }
 
   void purgeExpired();

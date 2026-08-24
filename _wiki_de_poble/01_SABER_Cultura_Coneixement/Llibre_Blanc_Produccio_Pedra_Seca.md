@@ -33,7 +33,7 @@ L'error d'arrel és intentar que una IA o un sol humà cree i gestione tota l'ar
 L'altre gran pou de desesperació és dibuixar (i programar) components complexos (un *slider*, un *dropdown*, un modal amb animacions) des de zero confiant en *prompts* de la IA.
 
 **La Regla:** No dibuixes la roda. Empra un *Design System* consolidat i modifica'l.
-- **A nivell de Figma:** Utilitza una base testada mundialment (ex: *Material 3 Design Kit* de Google). Modifica els *tokens* essencials perquè respiren l'ànima del projecte: la teua tipografia (Roboto), els teus colors purs (Taronja `#FF7300` / Blau `#0984E3`) i la mida *Bancal Mode* (botons grans de 48px). Lleva-li les ombres innecessàries per apropar-ho a la "Pedra Seca".
+- **A nivell de Figma:** Utilitza una base testada mundialment (ex: *Material 3 Design Kit* de Google). Modifica els *tokens* essencials perquè respiren l'ànima del projecte: la teua tipografia (Noto Sans), els teus colors purs (Taronja `FF7300` / Blau `0984E3`) i la mida *Bancal Mode* (botons grans de 48px). Lleva-li les ombres innecessàries per apropar-ho a la "Pedra Seca".
 - **A nivell de Codi:** Utilitza una llibreria *Headless* o totalment accessible (ex: Radix UI). La llibreria ja resol la lògica del teclat, focus, lectors de pantalles i l'estat d'accessibilitat. Tu només li passes per damunt la "mà de pintura" (variables CSS/Tailwind) amb el teu disseny.
 
 ## Fase 3: La Contenció de l'IA (L'Eixam Tancat)
@@ -60,7 +60,7 @@ Les bones intencions no frenen l'entropia; només els processos mecànics ho fan
 
 **La Regla:** Si el codi trenca el disseny, el codi no es guarda.
 - Instal·la *hooks* pre-commit o ĺinters d'AST (El Tractor Mestre) que rebutgen immediatament el codi si detecten invents manuals de l'IA o del desenvolupador.
-- Està rigorosament prohibit usar valors *hardcoded* (`#FF7300`, `text-[12px]`) dins d'un component UI final. Només s'accepten tokens del *Design System* (`--sp-primary-color`).
+- Està rigorosament prohibit usar valors *hardcoded* (`FF7300`, `text-[12px]`) dins d'un component UI final. Només s'accepten tokens del *Design System* (`--sp-primary-color`).
 
 ---
 

@@ -41,7 +41,7 @@ const DEFAULTS = Object.freeze({
   maxImageBytes: 8 * 1024 * 1024,
   imageDownloadTimeoutMs: 30_000,
   audioDownloadTimeoutMs: 60_000,
-  processTimeoutMs: 120_000,
+  processTimeoutMs: 300_000,
   replyTtlMs: 10 * 60_000,
   shutdownTimeoutMs: 30_000,
   socketEndTimeoutMs: 5_000,

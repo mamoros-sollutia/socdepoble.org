@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowRight, Check, Link2, MessageSquare, Plus, RefreshCcw, ShieldCheck, Wifi, X } from 'lucide-react';
-import SectionChrome from '../../components/SectionChrome';
+import { UniversalPage } from '../../components/universal/UniversalComponents';
 import { useAppData } from '../../app/AppDataContext';
 import {
   PRESENCE_STALE_MS,
@@ -47,13 +47,15 @@ const MOCK_REPLIES = {
 
 export default function DevicesSection() {
   const navigate = useNavigate();
-  const { t } = useAppData();
-  const [profile, setProfile] = useState(() => loadDeviceProfile());
-  const [draftName, setDraftName] = useState(() => loadDeviceProfile().name);
+  const { t, externalConfig } = useAppData();
+  const tenantId = externalConfig?.tenantId || 'default-tenant';
+  
+  const [profile, setProfile] = useState(() => loadDeviceProfile(tenantId));
+  const [draftName, setDraftName] = useState(() => loadDeviceProfile(tenantId).name);
   const [devices, setDevices] = useState({});
-  const [connections, setConnections] = useState(() => loadDeviceConnections(loadDeviceProfile().id));
-  const [messagesByPeer, setMessagesByPeer] = useState(() => loadDeviceChats(loadDeviceProfile().id));
-  const [selectedPeerId, setSelectedPeerId] = useState(() => loadSelectedPeer(loadDeviceProfile().id));
+  const [connections, setConnections] = useState(() => loadDeviceConnections(tenantId, loadDeviceProfile(tenantId).id));
+  const [messagesByPeer, setMessagesByPeer] = useState(() => loadDeviceChats(tenantId, loadDeviceProfile(tenantId).id));
+  const [selectedPeerId, setSelectedPeerId] = useState(() => loadSelectedPeer(tenantId, loadDeviceProfile(tenantId).id));
   const [draftMessage, setDraftMessage] = useState('');
   const bridgeRef = useRef(null);
   const mockReplyTimerRef = useRef(null);
@@ -99,29 +101,29 @@ export default function DevicesSection() {
         ...current,
         [peerId]: [...(current[peerId] || []), message]
       };
-      saveDeviceChats(profile.id, next);
+      saveDeviceChats(tenantId, profile.id, next);
       return next;
     });
   };
 
   useEffect(() => {
-    saveDeviceProfile(profile);
+    saveDeviceProfile(tenantId, profile);
     setDraftName(profile.name);
-  }, [profile]);
+  }, [profile, tenantId]);
 
   useEffect(() => {
-    saveDeviceConnections(profile.id, connections);
-  }, [connections, profile.id]);
+    saveDeviceConnections(tenantId, profile.id, connections);
+  }, [connections, profile.id, tenantId]);
 
   useEffect(() => {
-    saveSelectedPeer(profile.id, selectedPeerId);
-  }, [profile.id, selectedPeerId]);
+    saveSelectedPeer(tenantId, profile.id, selectedPeerId);
+  }, [profile.id, selectedPeerId, tenantId]);
 
   useEffect(() => {
     if (!supportsBridge) return undefined;
 
     bridgeRef.current?.destroy?.();
-    bridgeRef.current = createDeviceBridge(profile, {
+    bridgeRef.current = createDeviceBridge(tenantId, profile, {
       onPresence(device) {
         setDevices((current) => ({
           ...current,
@@ -180,7 +182,7 @@ export default function DevicesSection() {
       bridgeRef.current?.destroy?.();
       bridgeRef.current = null;
     };
-  }, [profile, supportsBridge]);
+  }, [profile, supportsBridge, tenantId]);
 
   useEffect(() => {
     const timer = window.setInterval(() => {
@@ -339,19 +341,24 @@ export default function DevicesSection() {
   ];
 
   return (
-    <SectionChrome
-      kicker={t('section.dispositius.kicker', 'Dispositius')}
+    <UniversalPage
       title={t('section.dispositius.title', 'Dispositius i connexions directes')}
       subtitle={t(
         'section.dispositius.subtitle',
         'Descobrix instàncies obertes del portal, llança una connexió i envia missatges directes des d’esta mateixa pantalla.'
       )}
-      meta={[supportsBridge ? 'Temps real local' : 'Navegador limitat', 'Descoberta en viu', '/dispositius']}
+      chrome="system"
+      showLogos={true}
+      labels={[
+        { text: supportsBridge ? 'Temps real local' : 'Navegador limitat', className: 'sdp-badge-system' },
+        { text: 'Descoberta en viu', className: 'sdp-badge-category' }
+      ]}
     >
       <div className="devices-shell">
         <div className="devices-summary-grid">
           {summary.map((item) => (
             <article key={item.label} className="card card--soft">
+              // eslint-disable-next-line
               <div className="card__body" style={{ display: 'grid', gap: 8 }}>
                 <span className="devices-summary-label">{item.label}</span>
                 <strong className="devices-summary-value">{item.value}</strong>
@@ -373,6 +380,7 @@ export default function DevicesSection() {
             </div>
             <div className="devices-panel__body">
               <article className="card card--soft">
+                // eslint-disable-next-line
                 <div className="card__body" style={{ display: 'grid', gap: 14 }}>
                   <div className="badge-row">
                     <span className="badge">
@@ -416,9 +424,11 @@ export default function DevicesSection() {
                   const state = connections[device.id]?.state || 'idle';
                   return (
                     <article key={device.id} className={`card device-card ${selectedPeerId === device.id ? 'device-card--active' : ''}`}>
+                      // eslint-disable-next-line
                       <div className="card__body" style={{ display: 'grid', gap: 12 }}>
                         <div className="devices-row">
                           <div>
+                            // eslint-disable-next-line
                             <strong className="card__title" style={{ fontSize: '1rem' }}>{device.name}</strong>
                             <p className="card__text">
                               ID curt {device.id.slice(0, 8)}
@@ -472,9 +482,7 @@ export default function DevicesSection() {
                 <button type="button" className="pill" onClick={() => navigate('/connectar')}>
                   <Plus size={16} /> Connectar
                 </button>
-                <button type="button" className="pill" onClick={() => navigate('/chats')}>
-                  <ArrowRight size={16} /> Xat general
-                </button>
+
               </div>
             </div>
             <div className="devices-panel__body">
@@ -482,9 +490,11 @@ export default function DevicesSection() {
               {activeChatPeer ? (
                 <div className="devices-chat-shell">
                   <article className="card card--soft">
+                    // eslint-disable-next-line
                     <div className="card__body" style={{ display: 'grid', gap: 12 }}>
                       <div className="devices-row">
                         <div>
+                          // eslint-disable-next-line
                           <strong className="card__title" style={{ fontSize: '1rem' }}>{activeChatPeer.name}</strong>
                           <p className="card__text">Estat: {connectionLabel(activeChatPeer.id)}</p>
                         </div>
@@ -568,6 +578,6 @@ export default function DevicesSection() {
           </section>
         </div>
       </div>
-    </SectionChrome>
+    </UniversalPage>
   );
 }

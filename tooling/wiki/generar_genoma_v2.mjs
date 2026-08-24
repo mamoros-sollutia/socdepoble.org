@@ -102,9 +102,9 @@ function* caminar(abs, rel) {
   }
 }
 
-function main() {
+async function main() {
   const { arrel, eixida, permetPii } = parseArgs(process.argv.slice(2));
-  const repoRoot = path.resolve(arrel ?? path.resolve(SCRIPT_DIR, '../..'));
+  const repoRoot = path.resolve(arrel ?? process.cwd());
 
   const fitxers = [];
   const absents = [];
@@ -121,7 +121,7 @@ function main() {
 
   for (const f of fitxers) {
     if (f.tipus === 'symlink') { manifest.symlinks.push(f.rel); continue; }
-    const buf = fs.readFileSync(f.abs);
+    const buf = await fs.promises.readFile(f.abs);
     const hash = sha256(buf);
     shaGlobals.update(`${f.rel}\n${hash}\n`);
     if (isUtf8(buf)) {
@@ -188,4 +188,7 @@ function main() {
   if (piiTrobada.length) console.log(`⚠ ${piiTrobada.length} coincidències PII acceptades amb --permet-pii.`);
 }
 
-main();
+main().catch(err => {
+  console.error(err);
+  process.exit(1);
+});

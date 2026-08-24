@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 const fs = require('fs').promises;
-const path = require('path');
+const path = require('node:path');
+const { WIKI_DIR } = require('../lib/project_paths.cjs');
 const crypto = require('crypto');
 const { isUtf8 } = require('buffer');
 
@@ -39,7 +40,7 @@ function loadFrontmatterTools() {
   if (!frontmatterToolsPromise) {
     frontmatterToolsPromise = Promise.all([
       import('../lib/frontmatter.mjs'),
-      import('../entropia_zero_router.js')
+      import('../entropia_zero_router.mjs')
     ]);
   }
   return frontmatterToolsPromise;
@@ -266,7 +267,7 @@ async function main() {
   const args = process.argv.slice(2);
   const verbose = args.includes('--verbose');
   const wikiArg = args.find(a => a.startsWith('--wiki='));
-  const wikiRoot = path.resolve(wikiArg ? wikiArg.slice('--wiki='.length) : path.resolve(__dirname, '../../../_wiki_de_poble'));
+  const wikiRoot = path.resolve(wikiArg ? wikiArg.slice('--wiki='.length) : WIKI_DIR);
   const buildDir = path.join(wikiRoot, CONFIG.buildDir);
   const receiptArg = args.find(a => a.startsWith('--receipt='));
   if (!receiptArg) throw new Error('Falta --receipt=<lease Reflex> per a compiler-build.');

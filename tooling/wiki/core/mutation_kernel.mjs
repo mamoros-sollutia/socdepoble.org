@@ -67,7 +67,7 @@ const CONTROL_RE = /[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/;
 const PLACEHOLDER_RE = /^(?:todo|tbd|wip|fixme|placeholder|pendent|per completar|pr[oò]ximament|sense contingut)[\s.!…:;-]*$/i;
 
 const posix = (value) => value.split(path.sep).join('/');
-const normalitza = (value) => value.normalize('NFC').toLocaleLowerCase('ca');
+import { normalitza } from '../lib/text.mjs';
 const sha256 = (value) => createHash('sha256').update(value).digest('hex');
 const SCHEMA_SHA256 = sha256(SCHEMA_TEXT);
 const unique = (values) => [...new Set(values)];
@@ -138,29 +138,42 @@ export async function completeReceiptClaim(claim) {
 
 const safetyDirFor = (root) => path.join(path.dirname(root), '.wiki-safety');
 
-export async function acquireMutationLock(root, { recoverStale = false } = {}) {
+export async function acquireMutationLock(root, { recoverStale = false, maxRetries = 5, retryDelayMs = 100 } = {}) {
   const safetyDir = safetyDirFor(root);
   await fs.mkdir(safetyDir, { recursive: true });
   const lockPath = path.join(safetyDir, 'autoneteja.lock');
   let handle;
-  try {
-    handle = await fs.open(lockPath, 'wx');
-  } catch (error) {
-    if (error.code === 'EEXIST' && recoverStale) {
-      const owner = await fs.readFile(lockPath, 'utf8').catch(() => '');
-      const pid = Number(owner.trim().split(/\s+/)[0]);
-      let alive = Number.isInteger(pid) && pid > 0;
-      if (alive) {
-        try { process.kill(pid, 0); } catch (failure) { if (failure.code === 'ESRCH') alive = false; else throw failure; }
+  let retries = 0;
+
+  while (retries <= maxRetries) {
+    try {
+      handle = await fs.open(lockPath, 'wx');
+      break;
+    } catch (error) {
+      if (error.code === 'EEXIST') {
+        if (recoverStale) {
+          const owner = await fs.readFile(lockPath, 'utf8').catch(() => '');
+          const pid = Number(owner.trim().split(/\s+/)[0]);
+          let alive = Number.isInteger(pid) && pid > 0;
+          if (alive) {
+            try { process.kill(pid, 0); } catch (failure) { if (failure.code === 'ESRCH') alive = false; else throw failure; }
+          }
+          if (!alive) {
+            await fs.rm(lockPath, { force: true });
+            continue;
+          }
+        }
+        if (retries < maxRetries) {
+          retries++;
+          await new Promise(r => setTimeout(r, retryDelayMs));
+          continue;
+        }
+        throw new Error('Ja hi ha una autoneteja en curs; usa restore sobre el manifest si el procés anterior va morir.');
       }
-      if (!alive) {
-        await fs.rm(lockPath, { force: true });
-        return acquireMutationLock(root, { recoverStale: false });
-      }
+      throw error;
     }
-    if (error.code === 'EEXIST') throw new Error('Ja hi ha una autoneteja en curs; usa restore sobre el manifest si el procés anterior va morir.');
-    throw error;
   }
+
   await handle.writeFile(`${process.pid} ${new Date().toISOString()}\n`);
   return async () => {
     await handle.close().catch(() => {});

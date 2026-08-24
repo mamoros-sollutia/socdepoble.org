@@ -30,7 +30,7 @@ Estandarditzar com es construeixen i es documenten les noves "Skills" (protocols
 
 ## 1. ESTRUCTURA DE FITXERS
 Tota Skill del Mas ha de viure a la carpeta en minúscules: `/_skills/<numero>_<nom_descriptiu>/`
-*Exemple de nom de carpeta de Skill:* `00_mente_colmena` (S'usa prefix numèric i guions baixos. A diferència dels documents de text, les carpetes de skills NO porten la data AAAA-MM-DD).
+*Exemple de nom de carpeta de Skill:* `00_mente_colmena` (S'usa prefix numèric i guions baixos. A diferència dels documents de  les carpetes de skills NO porten la data AAAA-MM-DD).
 
 - `SKILL.md`: La lògica i instruccions mestres (Aquest nom d'arxiu és innegociable perquè el motor d'Antigravity el llija automàticament).
 - `/recursos`: Fitxers de suport (JSON, MD, Imatges).

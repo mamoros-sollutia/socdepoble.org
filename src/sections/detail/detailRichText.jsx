@@ -1,15 +1,11 @@
-function stripDangerousHtml(raw) {
-  return String(raw || '')
-    .replace(/<script[\s\S]*?<\/script>/gi, '')
-    .replace(/<style[\s\S]*?<\/style>/gi, '');
-}
+import DOMPurify from 'dompurify';
 
 export function renderRichText(text) {
   const raw = String(text || '').trim();
   if (!raw) return null;
 
   if (/<[a-z][\s\S]*>/i.test(raw)) {
-    const cleanedHtml = stripDangerousHtml(raw);
+    const cleanedHtml = DOMPurify.sanitize(raw);
     return <article className="detail-content" dangerouslySetInnerHTML={{ __html: cleanedHtml }} />;
   }
 
@@ -45,12 +41,12 @@ export function renderPostContent(text) {
 }
 
 export function renderPageHtml(text) {
-  return String(text || '')
-    .replace(/<script[\s\S]*?<\/script>/gi, '')
-    .replace(/<style[\s\S]*?<\/style>/gi, '')
+  let html = String(text || '')
     .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" style="max-width:100%;border-radius:18px;margin:18px 0;" />')
     .replace(/\n\n/g, '</p><p>')
     .replace(/\n/g, '<br />')
     .replace(/^/, '<p>')
     .replace(/$/, '</p>');
+    
+  return DOMPurify.sanitize(html);
 }

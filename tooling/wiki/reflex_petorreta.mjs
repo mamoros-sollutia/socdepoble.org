@@ -28,7 +28,7 @@ import { promisify } from 'node:util';
 import { pathToFileURL } from 'node:url';
 import { isUtf8 } from 'node:buffer';
 import { parseFrontmatter } from './lib/frontmatter.mjs';
-import { validarFrontmatter } from './entropia_zero_router.js';
+import { validarFrontmatter } from './entropia_zero_router.mjs';
 import {
   PROJECT_DIR as DISCOVERED_PROJECT_DIR,
   TOOLING_WIKI_DIR,
@@ -47,8 +47,12 @@ const ACTIVE_LOCK = path.join(STATE_DIR, 'active.lock');
 const WIKI_DIR = DISCOVERED_WIKI_DIR;
 const WIKI_BASELINE_RELATIVE = 'tooling/wiki/wiki-baseline.lock.json';
 const GRAPH_CONFIG_RELATIVE = '_wiki_de_poble/.obsidian/graph.json';
-const OPEN_TTL_MS = 15 * 60 * 1000;
-const LEASE_TTL_MS = 60 * 60 * 1000;
+function getDynamicTTL(risk, scopesCount = 1, contextBytes = 0) {
+  const riskMult = risk === 'high' ? 2 : risk === 'low' ? 0.5 : 1;
+  const openTtl = (15 * 60 * 1000 * riskMult) + (scopesCount * 60 * 1000);
+  const leaseTtl = (60 * 60 * 1000 * riskMult) + (scopesCount * 2 * 60 * 1000) + (Math.floor(contextBytes / (1024 * 1024)) * 5 * 60 * 1000);
+  return { openTtl, leaseTtl: Math.min(leaseTtl, 4 * 60 * 60 * 1000) };
+}
 const MAX_CONTEXT_SOURCES = 25;
 const MAX_CONTEXT_FILE_BYTES = 2 * 1024 * 1024;
 const MAX_CONTEXT_TOTAL_BYTES = 8 * 1024 * 1024;
@@ -125,6 +129,8 @@ const CRITICAL_SEED_PATHS = [
   'tooling/wiki/core/tombstone_gc.mjs',
   'tooling/wiki/core/self_repair.mjs',
   'tooling/wiki/core/edge_rag.mjs',
+  'tooling/wiki/core/search_cli.mjs',
+  'tooling/wiki/core/build_rag_index.mjs',
   'tooling/wiki/core/a11y_seo.mjs',
   'tooling/wiki/core/design_guard.mjs',
   'tooling/wiki/core/runner.mjs',
@@ -962,7 +968,7 @@ export async function openReflex(options) {
     scopes: normalizedScopes,
     operations: normalizedOperations,
     openedAt: openedAt.toISOString(),
-    openExpiresAt: new Date(openedAt.getTime() + OPEN_TTL_MS).toISOString(),
+    openExpiresAt: new Date(openedAt.getTime() + getDynamicTTL(risk, normalizedScopes.length).openTtl).toISOString(),
     nonceSha256: sha256(nonce),
     rules: loaded.rules.map(({ content, ...rule }) => rule),
     rulesDigest: loaded.digest,
@@ -1039,7 +1045,7 @@ export async function sealReflex(options) {
     ...session,
     status: 'sealed',
     sealedAt: sealedAt.toISOString(),
-    leaseExpiresAt: new Date(sealedAt.getTime() + LEASE_TTL_MS).toISOString(),
+    leaseExpiresAt: new Date(sealedAt.getTime() + getDynamicTTL(session.risk, session.scopes.length, context.sources.reduce((sum, s) => sum + s.bytes, 0)).leaseTtl).toISOString(),
     petorreta: {
       path: posix(path.relative(PROJECT_DIR, petorreta)),
       bytes: Buffer.byteLength(content),

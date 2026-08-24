@@ -1,39 +1,1092 @@
-import SectionChrome from '../../components/SectionChrome';
+import React from 'react';
+import { UniversalPage } from '../../components/universal/UniversalComponents.jsx';
 import '../../pages/features/sosp-components.css';
-import { useAppData } from '../../app/AppDataContext';
-
-import { ColorPalette } from '../../components/design-system/sections/ColorPalette';
-import { Typography } from '../../components/design-system/sections/Typography';
-import { SpacingAndGrid } from '../../components/design-system/sections/SpacingAndGrid';
-import { Buttons } from '../../components/design-system/sections/Buttons';
-import { FormsAndInputs } from '../../components/design-system/sections/FormsAndInputs';
-import { Cards } from '../../components/design-system/sections/Cards';
-import { Alerts } from '../../components/design-system/sections/Alerts';
-import { LegacySections } from '../../components/design-system/sections/LegacySections';
 
 export default function DesignSection() {
-  const { t } = useAppData();
   return (
-    <SectionChrome
-      kicker={t('section.disseny.kicker', 'Disseny')}
-      title={t('section.disseny.title', 'Sistema de Disseny Sóc de Poble')}
-      subtitle={t('section.disseny.subtitle', 'Arquitectura Pedra Seca per a interfícies clares i resistents.')}
+    <UniversalPage
+      chrome="context"
+      showLogos={true}
+      title="Disseny"
+      subtitle="Sistema oficial de disseny per a Sóc de Poble"
+      lead="Inclou la Targeta Mestra, els colors oficials, i tots els elements preparats, inclús els skills i scripts, perquè qualsevol IA puga entendre este sistema i reproduir-lo."
+      labels={[
+        { text: 'Mur', className: 'label-blue' },
+        { text: 'Disseny UI', className: 'label-orange' }
+      ]}
+      copyright="© Sóc de Poble / Fet per la IAIA i Nano Banana"
+      heroImage="/assets/uploads/brain/ibanez_pedra_seca_design_1780873465211.png"
+      authorName="Sóc de Poble"
+      authorLocation="La Torre de les Maçanes"
+      time="23:29"
+      date="22/3/22"
     >
-      <main className="universal-content w-full sosp-design-system max-w-5xl mx-auto p-6 pb-24 grid grid-cols-1 gap-y-12">
-        <ColorPalette />
-        <Typography />
-        <SpacingAndGrid />
-        <Buttons />
-        <FormsAndInputs />
-        <Cards />
-        <Alerts />
-        <LegacySections />
+      <div className="universal-content sosp-design-system sdp-manual-disseny">
+        {/* Generated JSX from HTML */}
+        
+<section className="design-block">
+<h3>1. Identitat Cromàtica</h3>
+<p>La paleta es genera en <strong>OKLCH</strong>: el to i el croma de marca es mantenen constants i només varia la lluminositat. Per això l'escala és perceptivament regular i cada graó té un contrast previsible.</p>
+<div className="alert alert-info sdp-mb-6"><div className="alert-content"><h4>Contracte d'accessibilitat</h4>
+<p>Este sistema complix <strong>WCAG 2.2 nivell AAA (≥7:1) en tot el text, els fons i els grisos estructurals</strong>, i <strong>nivell AA (≥4,5:1) en els colors d'interacció</strong> — enllaços, pestanyes actives i botons primaris. Els límits dels controls complixen la norma 1.4.11 (≥3:1).</p>
+<p>Esta distinció és deliberada i honesta: AAA estricte en tot obligaria a abandonar el taronja de marca, perquè cap taronja reconeixible arriba a 7:1 sobre blanc. Preferim dir-ho que amagar-ho.</p>
+</div></div>
 
-        <div className="text-center p-12 bg-stone-100 rounded-xl border border-dashed border-stone-300 mt-16">
-          <h3 className="text-xl font-bold text-stone-600">{t('section.disseny.workInProgress', 'Treball en Progrés')}</h3>
-          <p className="text-stone-500">{t('section.disseny.note', 'Les següents seccions estan sent migrades cap al patró Slot per reduir el DOM_DEPTH.')}</p>
+<h3>🤖 LLEIS DE PEDRA SECA PER A IAs ARQUITECTES</h3>
+<div className="alert alert-warning sdp-mb-6"><div className="alert-content">
+<p><strong>Aquestes regles són absolutes i no es poden trencar sota cap concepte:</strong></p>
+<ol>
+<li><strong>Prohibició d'estils en línia:</strong> Està terminantment prohibit l'ús de <code>style=&#123;&#123;&#125;&#125;</code> en tot el codi JSX. Tots els estils han de viure en CSS mitjançant classes de la Constitució Pedra Seca.</li>
+<li><strong>Arquitectura OKLCH de 2 Capes:</strong> Els colors primitius (Capa 1) s'han de basar en OKLCH mantenint el to i el croma exactes de la marca. Aquests <strong>mai</strong> s'apliquen directament, sempre es mapen a variables semàntiques (Capa 2) que són les que responen al mode fosc.</li>
+<li><strong>Shadow DOM i Mode Fosc:</strong> Perquè les variables de CSS funcionin bé dins de WordPress o altres entorns amb Shadow DOM, <strong>sempre</strong> que s'escrigui una regla per al tema fosc com <code>:root[data-theme="dark"]</code> s'ha de duplicar exactament amb el selector bessó <code>:host([data-theme="dark"])</code>.</li>
+</ol>
+</div></div>
+<h4>1.1 Colors de marca</h4>
+<div className="palette">
+<div className="swatch">
+<div className="swatch-color sw-primary-500">Taronja · fons</div>
+<div className="swatch-info">#fe7406<br/>--sdp-primary-500</div>
+</div>
+<div className="swatch">
+<div className="swatch-color sw-primary-700">Taronja fort</div>
+<div className="swatch-info">#ad4c03<br/>--sdp-primary-700<br/>Text accent sobre fons clar · fons massís de botó important</div>
+</div>
+<div className="swatch">
+<div className="swatch-color sw-secondary-500">Blau · fons</div>
+<div className="swatch-info">#016ebf<br/>--sdp-secondary-500</div>
+</div>
+<div className="swatch">
+<div className="swatch-color sw-secondary-600">Blau fort</div>
+<div className="swatch-info">#00599d<br/>--sdp-secondary-600</div>
+</div>
+<div className="swatch">
+<div className="swatch-color sw-blanc-pur">Blanc</div>
+<div className="swatch-info">#ffffff<br/>Fons principal</div>
+</div>
+<div className="swatch">
+<div className="swatch-color sw-negre-pur">Negre</div>
+<div className="swatch-info">#1a1918<br/>--sdp-pedra-900<br/>Text principal</div>
+</div>
+</div>
+<div className="table-wrapper"><table><thead><tr><th>Parella</th><th>Contrast</th><th>Nivell</th><th>Ús</th></tr></thead><tbody>
+<tr><td>Text fosc sobre taronja 500</td><td>7.13:1</td><td>AAA</td><td>Botons primaris, capçalera de targeta</td></tr>
+<tr><td>Taronja 700 sobre blanc</td><td>5.51:1</td><td>AA</td><td>Enllaços, pestanya activa</td></tr>
+<tr><td>Taronja 800 sobre blanc</td><td>7.97:1</td><td>AAA</td><td>Títols h2 i h4</td></tr>
+<tr><td>Blanc sobre blau 500</td><td>5.23:1</td><td>AA</td><td>Barra blava, peu de targeta</td></tr>
+<tr><td>Blau 600 sobre blanc</td><td>7.20:1</td><td>AAA</td><td>Títols h1, h3 i h5</td></tr>
+</tbody></table></div>
+<h4>1.2 Colors d'estat</h4>
+<div className="palette">
+<div className="swatch">
+<div className="swatch-color sw-error-500">Alerta</div>
+<div className="swatch-info">#c2181d<br/>--sdp-error-500</div>
+</div>
+<div className="swatch">
+<div className="swatch-color sw-avis-500">Avís</div>
+<div className="swatch-info">#9c6902<br/>--sdp-avis-500</div>
+</div>
+<div className="swatch">
+<div className="swatch-color sw-exit-500">Èxit</div>
+<div className="swatch-info">#027e38<br/>--sdp-exit-500</div>
+</div>
+</div>
+<h4>1.3 Escala Pedra</h4>
+<p>Neutre càlid, mai gris fred. El graó <strong>600</strong> és el sòl per a text secundari: és el primer que arriba a 7:1 sobre blanc.</p>
+<div className="palette">
+<div className="swatch">
+<div className="swatch-color sw-pedra-50">Blanc trencat · 50</div>
+<div className="swatch-info">#fdfcfb<br/>--sdp-pedra-50</div>
+</div>
+<div className="swatch">
+<div className="swatch-color sw-pedra-100">Núvol · 100</div>
+<div className="swatch-info">#f9f8f5<br/>--sdp-pedra-100</div>
+</div>
+<div className="swatch">
+<div className="swatch-color sw-pedra-200">Arena · 200</div>
+<div className="swatch-info">#efece7<br/>--sdp-pedra-200</div>
+</div>
+<div className="swatch">
+<div className="swatch-color sw-pedra-300">Calç · 300</div>
+<div className="swatch-info">#dcd7cd<br/>--sdp-pedra-300</div>
+</div>
+<div className="swatch">
+<div className="swatch-color sw-pedra-400">Cendra · 400</div>
+<div className="swatch-info">#b7b1a5<br/>--sdp-pedra-400</div>
+</div>
+<div className="swatch">
+<div className="swatch-color sw-pedra-500">Pedra · 500</div>
+<div className="swatch-info">#8b857b<br/>--sdp-pedra-500</div>
+</div>
+<div className="swatch">
+<div className="swatch-color sw-pedra-600">Pedra fosca · 600</div>
+<div className="swatch-info">#5b564e<br/>--sdp-pedra-600</div>
+</div>
+<div className="swatch">
+<div className="swatch-color sw-pedra-700">Grafit · 700</div>
+<div className="swatch-info">#3d3b35<br/>--sdp-pedra-700</div>
+</div>
+<div className="swatch">
+<div className="swatch-color sw-pedra-750">Pissarra · 750</div>
+<div className="swatch-info">#302e29<br/>--sdp-pedra-750</div>
+</div>
+<div className="swatch">
+<div className="swatch-color sw-pedra-800">Carbó · 800</div>
+<div className="swatch-info">#22211e<br/>--sdp-pedra-800</div>
+</div>
+<div className="swatch">
+<div className="swatch-color sw-pedra-850">Sutja · 850</div>
+<div className="swatch-info">#181715<br/>--sdp-pedra-850</div>
+</div>
+<div className="swatch">
+<div className="swatch-color sw-pedra-900">Negre · 900</div>
+<div className="swatch-info">#0e0d0c<br/>--sdp-pedra-900</div>
+</div>
+</div>
+</section>
+{/*  SECCIÓ: TIPOGRAFIA CMS  */}
+<section className="design-block">
+<h3>2. Estudi Tipogràfic</h3>
+<p>Aquesta és l'arquitectura tipogràfica universal de l'ecosistema Sóc de Poble. S'ha dissenyat sota un rigorós estudi per a garantir l'accessibilitat AAA (lectura sota llum solar intensa per a gent gran).</p>
+
+<h4>Lleis Fonamentals:</h4>
+<ul>
+<li><strong>Arrel Mestra:</strong> <code>18px (1.125rem)</code> per a garantir touch-targets i visibilitat nativa sense zoom.</li>
+<li><strong>Font Única:</strong> <code>Noto Sans</code>, escollida per l'altura de la seua "x", les seues formes obertes i el suport multilingüe extrem.</li>
+<li><strong>Ample Màxim de Lectura:</strong> <code>68ch</code>, el límit científic abans de causar fatiga ocular al saltar de línia.</li>
+<li><strong>Interlineat (Line-height):</strong> <code>1.6</code> en paràgrafs per a donar oxigen; <code>1.2</code> en capçaleres per mantindre la compacitat.</li>
+</ul>
+<p>Dalt del títol pot anar una imatge o multimèdia d'un ample màxim de 600x600. Baix d'aquest H1 aniran exclusivament els components de presentació de la Targeta Mestra: categoria, etiqueta i copyright.</p>
+<p>L'H2 divideix els grans blocs temàtics de la pàgina.</p>
+<h1>H1: Títol Principal (40px)</h1>
+<div className="sdp-text-center">
+<h2>H2: Secció Major (32px)</h2>
+<p className="lead">
+Aquesta és l'<em>entradilla</em> (<code>&lt;p className="lead"&gt;</code>). S'usa exclusivament sota l'H2 per establir la premissa de la secció amb un cos superior al text normal.
+</p>
+</div>
+<h3>H3: Sub-secció Temàtica (24px)</h3>
+<p>L'H3 s'empra per donar jerarquia interna dins d'un bloc H2. Sol acompanyar llistes de dades o enumeracions llargues.</p>
+<p>El text de cos (<code>&lt;p&gt;</code>) funciona com a ciment. No pot baixar mai dels 16px en mòbil, però l'estàndard base d'este sistema és 18px. Este paràgraf demostra la llegibilitat continuada i serveix d\'exemple de com es veu un text normal després de l'entradilla.</p>
+<ul>
+<li>La llista no ordenada (<code>&lt;ul&gt;</code>) manté un marge esquerre net per diferenciar-se ràpidament del paràgraf.</li>
+<li>S'evita usar majúscules ("uppercase") en capçaleres per preservar la silueta de la paraula, fonamental per a la lectura ràpida.</li>
+</ul>
+<h4>H4: Component de Suport (20px)</h4>
+<p>L'H4 és útil per a targetes (cards) internes o petites cites que necessiten el seu propi títol sense trencar l'esquema de lectura.</p>
+<blockquote>
+<p>“Un poble sense memòria és com un arbre sense arrels, condemnat a caure al primer vent fort.”</p>
+</blockquote>
+<h5>H5: Títol de Widget o Metadada (16px, Negreta)</h5>
+<ol>
+<li>Títols que requereixen presència però no pertanyen al flux narratiu principal.</li>
+<li>S'usa sovint en barres laterals (sidebars).</li>
+</ol>
+<h6>H6: Micro-Etiqueta (14px, Majúscules)</h6>
+<p>L'H6 és l'única etiqueta on es permet l'ús de majúscules pel seu caràcter de "badge" visual (sobretítols, dates, categories pures).</p>
+
+</section>
+{/*  SECCIÓ: ESPAIAT I GRID  */}
+<section className="design-block">
+<h3>3. Espaiat i Grid</h3>
+<h4>Sistema d'Espaiat (escala modular base 4/8)</h4>
+
+<div className="spacing-item">
+<div className="spacing-bar" ></div>
+<div className="spacing-label">--sdp-space-1 = 4px</div>
+</div>
+<div className="spacing-item">
+<div className="spacing-bar" ></div>
+<div className="spacing-label">--sdp-space-2 = 8px</div>
+</div>
+<div className="spacing-item">
+<div className="spacing-bar" ></div>
+<div className="spacing-label">--sdp-space-3 = 12px</div>
+</div>
+<div className="spacing-item">
+<div className="spacing-bar" ></div>
+<div className="spacing-label">--sdp-space-4 = 16px</div>
+</div>
+<div className="spacing-item">
+<div className="spacing-bar" ></div>
+<div className="spacing-label">--sdp-space-6 = 24px</div>
+</div>
+<div className="spacing-item">
+<div className="spacing-bar" ></div>
+<div className="spacing-label">--sdp-space-8 = 32px</div>
+</div>
+<div className="spacing-item">
+<div className="spacing-bar" ></div>
+<div className="spacing-label">--sdp-space-10 = 40px</div>
+</div>
+<div className="spacing-item">
+<div className="spacing-bar" ></div>
+<div className="spacing-label">--sdp-space-12 = 48px</div>
+</div>
+<div className="spacing-item">
+<div className="spacing-bar" ></div>
+<div className="spacing-label">--sdp-space-16 = 64px</div>
+</div>
+<div className="spacing-item">
+<div className="spacing-bar" ></div>
+<div className="spacing-label">--sdp-space-20 = 80px</div>
+</div>
+
+<h4>Grid Responsive</h4>
+<div className="grid-preview">
+<div className="grid-col">1 columna (mòbil)</div>
+<div className="grid-col">2 columnes (tauleta)</div>
+<div className="grid-col">3 columnes (escriptori)</div>
+</div>
+</section>
+{/*  SECCIÓ: BOTONS  */}
+<section className="design-block">
+<h3>4. Botons</h3>
+<h4>Variants</h4>
+<div className="btn-group">
+<button className="btn btn-primary">Primari</button>
+<button className="btn btn-secondary">Secundari</button>
+<button className="btn btn-outline-dark">Terciari</button>
+<button className="btn btn-base">Neutral / Base</button>
+<button className="btn btn-danger">Perill</button>
+<button className="btn btn-ghost">Fantasma</button>
+</div>
+
+<h4>Mides</h4>
+<div className="btn-group">
+<button className="btn btn-primary btn-sm">Petit</button>
+<button className="btn btn-primary">Normal</button>
+<button className="btn btn-primary btn-lg">Gran</button>
+</div>
+<h4>Estats</h4>
+<div className="btn-group">
+<button className="btn btn-primary">Normal</button>
+<button className="btn btn-primary" disabled="">Desactivat</button>
+<button className="btn btn-primary">
+<svg className="spinner" viewBox="0 0 20 20"><circle cx="12" cy="12" fill="none" r="10" stroke="currentColor" strokeWidth="3"></circle></svg>
+            Carregant...
+          </button>
+</div>
+<h4>Amb Icona</h4>
+<div className="btn-group">
+<button className="btn btn-primary">
+<svg className="icon-btn" viewBox="0 0 20 20"><path d="M12 5v14M5 12h14"></path></svg> Afegir
+          </button>
+<button className="btn btn-secondary">
+<svg className="icon-btn" viewBox="0 0 20 20"><path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg> Eliminar
+          </button>
+</div>
+</section>
+{/*  SECCIÓ: FORMULARIS  */}
+<section className="design-block">
+<h3>5. Formularis i Inputs</h3>
+
+<div className="form-group">
+<label>Nom del poble</label>
+<input placeholder="Ex: Petrer" type="text"/>
+</div>
+<div className="form-group">
+<label>Província</label>
+<select>
+<option>Alacant</option>
+<option>València</option>
+<option>Castelló</option>
+</select>
+</div>
+<div className="form-group">
+<label>Descripció</label>
+<textarea placeholder="Escriu una breu descripció..." rows="4"></textarea>
+</div>
+<div className="checkbox-group">
+<input defaultChecked id="chk1" type="checkbox"/>
+<label htmlFor="chk1">Accepte els termes del Consell de la Petorreta</label>
+</div>
+<div className="checkbox-group sdp-mt-2">
+<input defaultChecked id="optA" name="opt" type="radio"/> <label htmlFor="optA">Opció A</label>
+<input id="optB" name="opt" type="radio"/> <label htmlFor="optB">Opció B</label>
+</div>
+<div className="form-group has-error sdp-mt-4">
+<label>Input amb error</label>
+<input type="text" defaultValue="valor incorrecte"/>
+<div className="error-text">Aquest camp és obligatori.</div>
+</div>
+<div className="form-group is-disabled sdp-mt-4">
+<label>Input desactivat</label>
+<input disabled="" type="text" defaultValue="No editable"/>
+</div>
+
+</section>
+{/*  SECCIÓ 7: ALERTES  */}
+<section className="design-block">
+<h3>7. Alertes i Missatges</h3>
+<div className="alert alert-info">
+<div className="alert-icon"><svg fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 20 20"><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="16" y2="12"></line><line x1="12" x2="12.01" y1="8" y2="8"></line></svg></div>
+<div className="alert-content">
+<h4>Informació</h4>
+<p>Aquesta és una alerta informativa per a destacar dades rellevants.</p>
+</div>
+</div>
+<div className="alert alert-success">
+<div className="alert-icon"><svg fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 20 20"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div>
+<div className="alert-content">
+<h4>Èxit</h4>
+<p>L'operació s'ha completat correctament.</p>
+</div>
+</div>
+<div className="alert alert-warning">
+<div className="alert-icon"><svg fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 20 20"><path d="M10.25 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" x2="12" y1="9" y2="13"></line><line x1="12" x2="12.01" y1="17" y2="17"></line></svg></div>
+<div className="alert-content">
+<h4>Avís</h4>
+<p>Revisa els camps abans de continuar.</p>
+</div>
+</div>
+<div className="alert alert-error">
+<div className="alert-icon"><svg fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 20 20"><circle cx="12" cy="12" r="10"></circle><line x1="15" x2="9" y1="9" y2="15"></line><line x1="9" x2="15" y1="9" y2="15"></line></svg></div>
+<div className="alert-content">
+<h4>Error</h4>
+<p>No s'ha pogut connectar amb el servidor.</p>
+</div>
+</div>
+</section>
+{/*  SECCIÓ 8: BADGES  */}
+<section className="design-block text-center">
+<h3>8. Badges i Etiquetes</h3>
+<div className="sdp-flex sdp-gap-12 sdp-justify-center sdp-mb-6">
+<span className="badge badge-default">Per defecte</span>
+<span className="badge badge-primary">Primari</span>
+<span className="badge badge-success">Èxit</span>
+<span className="badge badge-warning">Avís</span>
+<span className="badge badge-danger">Perill</span>
+<span className="badge badge-info">Informació</span>
+</div>
+<h4>Etiquetes de Poble</h4>
+<div className="sdp-flex sdp-gap-12">
+<span className="badge badge-outline"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="icona-linia" viewBox="0 0 20 20" width="16"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> Poble actiu</span>
+<span className="badge badge-outline"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="icona-linia" viewBox="0 0 20 20" width="16"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg> Fototeca</span>
+<span className="badge badge-outline"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="icona-linia" viewBox="0 0 20 20" width="16"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg> Arxiu</span>
+<span className="badge badge-outline"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="icona-linia" viewBox="0 0 20 20" width="16"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon><line x1="8" x2="8" y1="2" y2="18"></line><line x1="16" x2="16" y1="6" y2="22"></line></svg> Mapa</span>
+<span className="badge badge-outline"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="icona-linia" viewBox="0 0 20 20" width="16"><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="16" y2="12"></line><line x1="12" x2="12.01" y1="8" y2="8"></line></svg> Festes</span>
+</div>
+</section>
+{/*  SECCIÓ 9: TAULES  */}
+<section className="design-block">
+<h3>9. Taules</h3>
+<div className="table-wrapper">
+<table>
+<thead>
+<tr>
+<th>Poble</th>
+<th>Província</th>
+<th>Habitants</th>
+<th>Estat</th>
+<th>Accions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Petrer</td>
+<td>Alacant</td>
+<td>34.000</td>
+<td><span className="badge badge-success">Actiu</span></td>
+<td><a className="table-action" href="#">Editar</a></td>
+</tr>
+<tr>
+<td>Ontinyent</td>
+<td>València</td>
+<td>36.000</td>
+<td><span className="badge badge-warning">Pendent</span></td>
+<td><a className="table-action" href="#">Editar</a></td>
+</tr>
+<tr>
+<td>Morella</td>
+<td>Castelló</td>
+<td>2.500</td>
+<td><span className="badge badge-info">Revisió</span></td>
+<td><a className="table-action" href="#">Editar</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4>Taula Zebra (Alternada)</h4>
+<div className="table-wrapper">
+<table className="table-zebra">
+<thead>
+<tr>
+<th>Recurs</th>
+<th>Tipus</th>
+<th>Data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Festa de la Mare de Déu</td>
+<td>Esdeveniment</td>
+<td>15/08/2024</td>
+</tr>
+<tr>
+<td>Plaça Major</td>
+<td>Lloc</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Entrevista alcalde</td>
+<td>Notícia</td>
+<td>03/06/2024</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+{/*  SECCIÓ 10: NAVEGACIÓ  */}
+<section className="design-block">
+<h3>10. Navegació</h3>
+<h4>Barra de Navegació</h4>
+<div className="nav-bar">
+<a className="active" href="#">Sóc de Poble</a>
+<a href="#">Inici</a>
+<a href="#">Pobles</a>
+<a href="#">Arxiu</a>
+</div>
+<h4>Paginació</h4>
+<div className="pagination">
+<button className="page-btn" disabled="">← Anterior</button>
+<button className="page-btn active">1</button>
+<button className="page-btn">2</button>
+<button className="page-btn">3</button>
+<span>...</span>
+<button className="page-btn">12</button>
+<button className="page-btn">Següent →</button>
+</div>
+</section>
+{/*  SECCIÓ 11: MODALS  */}
+<section className="design-block">
+<h3>11. Modals i Diàlegs</h3>
+<div className="modal-preview">
+<div className="modal-box">
+<h4>Confirmar Eliminació</h4>
+<p>Esteu segur que voleu eliminar aquest element? Aquesta acció no es pot desfer.</p>
+<div className="modal-actions">
+<button className="btn btn-outline-dark btn-sm">Cancel·lar</button>
+<button className="btn btn-danger btn-sm">Eliminar</button>
+</div>
+</div>
+</div>
+</section>
+{/*  SECCIÓ 12: CÀRREGA  */}
+<section className="design-block">
+<h3>12. Indicadors de Càrrega</h3>
+<div className="spinner-group">
+<div className="sdp-text-center"><svg className="spinner spinner-sm" viewBox="0 0 20 20"><circle cx="12" cy="12" fill="none" r="10" stroke="currentColor" strokeWidth="3"></circle></svg>
+Petit</div>
+<div className="sdp-text-center"><svg className="spinner spinner-md" viewBox="0 0 20 20"><circle cx="12" cy="12" fill="none" r="10" stroke="currentColor" strokeWidth="3"></circle></svg>
+Normal</div>
+<div className="sdp-text-center"><svg className="spinner spinner-lg" viewBox="0 0 20 20"><circle cx="12" cy="12" fill="none" r="10" stroke="currentColor" strokeWidth="3"></circle></svg>
+Gran</div>
+</div>
+<h4>Esquelet (Skeleton)</h4>
+<div className="skeleton skeleton-title"></div>
+<div className="skeleton skeleton-text"></div>
+<div className="skeleton skeleton-text"></div>
+<div className="skeleton skeleton-text"></div>
+</section>
+{/*  SECCIÓ 13: AVATARS  */}
+<section className="design-block">
+<h3>13. Avatars i Imatges</h3>
+<div className="avatar-group">
+<div className="avatar avatar-xs">AB</div>
+<div className="avatar avatar-sm">AB</div>
+<div className="avatar avatar-md">AB</div>
+<div className="avatar avatar-lg">AB</div>
+<div className="avatar avatar-xl">AB</div>
+</div>
+</section>
+{/*  SECCIÓ 14: DESPLEGABLES  */}
+<section className="design-block">
+<h3>14. Desplegables</h3>
+<div className="accordion">
+<div className="accordion-header">
+            Què és Sóc de Poble?
+            <svg fill="none" height="20" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 20 20" width="20"><polyline points="6 9 12 15 18 9"></polyline></svg>
+</div>
+<div className="accordion-header">
+            Com puc col·laborar?
+            <svg fill="none" height="20" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 20 20" width="20"><polyline points="6 9 12 15 18 9"></polyline></svg>
+</div>
+</div>
+</section>
+{/*  SECCIÓ 15: PESTANYES  */}
+<section className="design-block">
+<h3>15. Pestanyes</h3>
+<div className="tabs">
+<div className="tab active">General</div>
+<div className="tab">Fotografies</div>
+<div className="tab">Història</div>
+<div className="tab">Mapa</div>
+</div>
+<div className="tab-content">
+<p className="sdp-m-0">Contingut de la pestanya activa. Aquesta àrea canvia segons la selecció. Les pestanyes són accessibles via teclat (Tab + Enter/Espai).</p>
+</div>
+</section>
+{/*  SECCIÓ 16: PROGRÉS  */}
+<section className="design-block">
+<h3>16. Barra de Progrés</h3>
+<div className="progress-container">
+<div className="progress-header"><span>Pujada d'imatges</span><span>45%</span></div>
+<div className="progress-bar"><div className="progress-fill"></div></div>
+</div>
+<div className="progress-container">
+<div className="progress-header"><span>Indexació de documents</span><span>78%</span></div>
+<div className="progress-bar"><div className="progress-fill"></div></div>
+</div>
+</section>
+{/*  SECCIÓ 17: TOOLTIPS  */}
+<section className="design-block">
+<h3>17. Tooltips</h3>
+<div className="tooltip-preview">
+<button className="btn btn-primary" title="Això és un tooltip d'exemple">Passa per damunt</button>
+<span className="tooltip-term" title="Explicació addicional del terme">Terme amb ajuda</span>
+</div>
+</section>
+{/*  SECCIÓ 18: LLISTES  */}
+<section className="design-block">
+<h3>18. Llistes</h3>
+<div className="lists-preview">
+<h4>Llista Ordenada</h4>
+<ol>
+<li>Registrar-se al portal</li>
+<li>Seleccionar el poble</li>
+<li>Pujar contingut històric</li>
+<li>Revisar i publicar</li>
+</ol>
+<h4>Llista Desordenada</h4>
+<ul>
+<li>Fotografies antigues</li>
+<li>Documents administratius</li>
+<li>Entrevistes orals</li>
+</ul>
+</div>
+</section>
+{/*  SECCIÓ 19: DIVISORS  */}
+<section className="design-block sdp-mb-20">
+<h3>19. Divisors i Separadors</h3>
+<div className="divider-preview">
+<div className="divider-label">19.1 Divisor horitzontal bàsic</div>
+<div className="divider-basic"></div>
+</div>
+<div className="divider-preview">
+<div className="divider-label">19.2 Divisor amb text</div>
+<div className="divider-text">O BÉ</div>
+</div>
+<div className="divider-preview">
+<div className="divider-label">19.3 Separador de secció (major)</div>
+<div className="divider-major"></div>
+</div>
+<div className="divider-preview">
+<div className="divider-label">19.4 Separador puntejat</div>
+<div className="divider-dashed"></div>
+</div>
+<div className="divider-preview">
+<div className="divider-label">19.5 Separador de pàgina (salt visual)</div>
+<div className="divider-dotted"></div>
+</div>
+</section>
+{/*  SECCIÓ 20: TARGETES MESTRES  */}
+<section className="design-block">
+<h3>20. Targeta Mestra (Sóc de Poble Universal Card)</h3>
+<p className="sdp-text-center sdp-mb-2">La Targeta Mestra és un bloc modular desmuntable i enllaçable (amb <code>&lt;a className="sp-card-main-link"&gt;</code> dins del títol). Qualsevol clic dins d'ella condueix a la pàgina, excepte els botons amb funcions específiques (z-index superior).</p>
+<h4>20.1 Targeta Mestra: Text pur i Etiquetes (Gestoria de Poble)</h4>
+<article className="sp-card">
+<header className="sp-card-header">
+<a className="sp-card-author-link" href="#" title="Anar al perfil de l'autor">
+<div className="sp-card-author">
+<img alt="Avatar" className="sp-card-avatar sdp-p-0" src="https://socdepoble.org/assets/system/ui/logo-socdepoble-cuadrat-verd.svg"/>
+<div className="sp-card-author-info">
+<div className="sp-card-author-name">Javi Llinares</div>
+<div className="sp-card-author-location">La Torre de les Maçanes</div>
+</div>
+</div>
+</a>
+<div className="sp-card-meta sdp-gap-8">
+{/*  Tooltip (Bocata) d'Avís o PIN  */}
+<div className="tooltip-container">
+<button className="btn-icon-orange" title="Mode Privadesa">
+<svg className="icon" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 20 20"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="m9 12 2 2 4-4"></path></svg>
+</button>
+<div className="tooltip-text">Mode Privadesa actiu</div>
+</div>
+<button className="btn-date-time" title="Veure calendari d'este dia">
+<span>14:28</span><span>26/06/22</span>
+</button>
+</div>
+</header>
+<div className="sp-card-body">
+<div className="sp-card-price sdp-mb-6">***,** €</div>
+<h4 className="sp-card-title"><a href="#caixa-real" className="sp-card-main-link" title="Obrir Caixa Real">Caixa Real</a></h4>
+<p className="sp-card-subtitle">Saldo Disponible</p>
+<div className="sp-card-labels">
+<span className="sp-card-label label-blue">Gestoria</span>
+<span className="sp-card-label label-green">Caixa Real</span>
+</div>
+<div className="sp-card-copyright sdp-mt-4">© Sóc de Poble / Fet per la IAIA i Nano Banana</div>
+</div>
+<footer className="sp-card-footer">
+<div className="sp-card-actions">
+<button className="sp-card-action" title="Traduir">
+<svg className="icon" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 20 20"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg>
+</button>
+<button className="sp-card-action" title="Comentar (Xat Privat)">
+<svg className="icon" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 20 20"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg>
+</button>
+<button className="sp-card-action" title="Compartir">
+<svg className="icon" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 20 20"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line></svg>
+</button>
+</div>
+<button className="sp-card-connect" title="Connectar amb Caixa Real">Connectar</button>
+</footer>
+</article>
+<h4>20.2 Targeta Mestra: Text pur (Hisenda)</h4>
+<article className="sp-card">
+<header className="sp-card-header">
+<a className="sp-card-author-link" href="#" title="Anar al perfil de l'autor">
+<div className="sp-card-author">
+<img alt="Avatar" className="sp-card-avatar sdp-p-0" src="https://socdepoble.org/assets/system/ui/logo-socdepoble-cuadrat-verd.svg"/>
+<div className="sp-card-author-info">
+<div className="sp-card-author-name">Javi Llinares</div>
+<div className="sp-card-author-location">La Torre de les Maçanes</div>
+</div>
+</div>
+</a>
+<div className="sp-card-meta sdp-gap-8">
+<div className="tooltip-container">
+<button className="btn-icon-orange" title="Avís Important">
+<svg className="icon" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 20 20"><path d="m3 11 18-5v12L3 14v-3z"></path><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"></path></svg>
+</button>
+<div className="tooltip-text">Falten 3 dies per presentar el model</div>
+</div>
+<button className="btn-date-time" title="Veure calendari d'este dia">
+<span>14:28</span><span>26/06/22</span>
+</button>
+</div>
+</header>
+<div className="sp-card-body">
+<div className="sp-card-price sdp-mb-6">***,** €</div>
+<h4 className="sp-card-title"><a href="#hisenda" className="sp-card-main-link" title="Obrir Hisenda">Hisenda</a></h4>
+<p className="sp-card-subtitle">Model 303 / 130</p>
+<div className="sp-card-labels">
+<span className="sp-card-label label-blue">Gestoria</span>
+<span className="sp-card-label label-orange">Hisenda</span>
+</div>
+<div className="sp-card-copyright sdp-mt-4">© Sóc de Poble / Fet per la IAIA i Nano Banana</div>
+</div>
+<footer className="sp-card-footer">
+<div className="sp-card-actions">
+<button className="sp-card-action" title="Traduir">
+<svg className="icon" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 20 20"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg>
+</button>
+<button className="sp-card-action" title="Comentar (Xat Privat)">
+<svg className="icon" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 20 20"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg>
+</button>
+<button className="sp-card-action" title="Compartir">
+<svg className="icon" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 20 20"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line></svg>
+</button>
+</div>
+<button className="sp-card-connect" title="Connectar amb Hisenda">Connectar</button>
+</footer>
+</article>
+<h4>20.3 Targeta Mestra: Imatge Completa (Producte)</h4>
+<article className="sp-card">
+<header className="sp-card-header">
+<a className="sp-card-author-link" href="#" title="Anar al perfil de l'autor">
+<div className="sp-card-author">
+<img alt="Avatar" className="sp-card-avatar sdp-p-0" src="https://socdepoble.org/assets/system/ui/logo-socdepoble-cuadrat-verd.svg"/>
+<div className="sp-card-author-info">
+<div className="sp-card-author-name">Sóc de Poble</div>
+<div className="sp-card-author-location">La Torre de les Maçanes</div>
+</div>
+</div>
+</a>
+<div className="sp-card-meta sdp-gap-8">
+<button className="btn-icon-orange" title="Ancorar" >
+<svg className="icon" viewBox="0 0 20 20"><path d="M16 11V7a4 4 0 0 0-8 0v4l-2 4h12l-2-4z"></path><path d="M12 15v7"></path></svg>
+</button>
+<button className="btn-date-time" title="Veure calendari d'este dia">
+<span>00:29</span><span>23/3/22</span>
+</button>
+</div>
+</header>
+<div className="sp-card-media">
+<img alt="Samarreta" src="https://socdepoble.org/assets/uploads/brain/media__1776503825171.jpg"/>
+</div>
+<div className="sp-card-body">
+<div className="sp-card-price">15.00€</div>
+<h4 className="sp-card-title"><a href="#samarreta" className="sp-card-main-link" title="Obrir Samarreta Sóc de Poble">Samarreta Sóc de Poble</a></h4>
+<p className="sp-card-subtitle">L'edició definitiva amb el logotip complet</p>
+<p className="sp-card-text">Dibuix del mapa del tresor. Cotó Roly de màxima qualitat.</p>
+<div className="sp-card-labels">
+<span className="sp-card-label label-blue">Mercat</span>
+<span className="sp-card-label label-blue">Roba</span>
+<span className="sp-card-label label-green">Samarreta</span>
+</div>
+<div className="sp-card-copyright sdp-mt-4">© Sóc de Poble / Fet per la IAIA i Nano Banana</div>
+</div>
+<footer className="sp-card-footer">
+<div className="sp-card-actions">
+<button className="sp-card-action" title="Traduir">
+<svg className="icon" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 20 20"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg>
+</button>
+<button className="sp-card-action" title="Comentar (Xat Privat)">
+<svg className="icon" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 20 20"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg>
+</button>
+<button className="sp-card-action" title="Compartir">
+<svg className="icon" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 20 20"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line></svg>
+</button>
+</div>
+<button className="sp-card-connect" title="Connectar">Connectar</button>
+</footer>
+</article>
+<h4>20.4 Targeta Mestra: Pàgina de Mur (Disseny)</h4>
+<article className="sp-card">
+<header className="sp-card-header">
+<a className="sp-card-author-link" href="#" title="Anar al perfil de l'autor">
+<div className="sp-card-author">
+<img alt="Avatar" className="sp-card-avatar sdp-p-0" src="https://socdepoble.org/assets/system/ui/logo-socdepoble-cuadrat-verd.svg"/>
+<div className="sp-card-author-info">
+<div className="sp-card-author-name">Sóc de Poble</div>
+<div className="sp-card-author-location">La Torre de les Maçanes</div>
+</div>
+</div>
+</a>
+<div className="sp-card-meta sdp-gap-8">
+<button className="btn-icon-orange" title="Ancorar">
+<svg className="icon" viewBox="0 0 20 20"><path d="M16 11V7a4 4 0 0 0-8 0v4l-2 4h12l-2-4z"></path><path d="M12 15v7"></path></svg>
+</button>
+<button className="btn-date-time" title="Veure calendari d'este dia">
+<span>10:00</span><span>07/8/22</span>
+</button>
+</div>
+</header>
+<div className="sp-card-media">
+<img alt="Disseny Pedra Seca" src="assets/img/ibanez_pedra_seca_design_1780873465211.png"/>
+</div>
+<div className="sp-card-body">
+<h4 className="sp-card-title"><a href="#disseny" className="sp-card-main-link" title="Obrir Disseny Pedra Seca">Disseny Pedra Seca</a></h4>
+<p className="sp-card-subtitle">Sistema oficial de disseny per a Sóc de Poble</p>
+<p className="sp-card-text">Inclou la Targeta Mestra, els colors oficials, i tots els elements preparats, inclús els skills i scripts, perquè qualsevol IA puga entendre este sistema i reproduir-lo.</p>
+<div className="sp-card-labels">
+<span className="sp-card-label label-orange">MUR</span>
+<span className="sp-card-label label-blue">Disseny UI</span>
+</div>
+<div className="sp-card-copyright sdp-mt-4">© Sóc de Poble / Fet per la IAIA i Nano Banana</div>
+</div>
+<footer className="sp-card-footer">
+<div className="sp-card-actions">
+<button className="sp-card-action" title="Traduir">
+<svg className="icon" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 20 20"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg>
+</button>
+<button className="sp-card-action" title="Comentar (Xat Privat)">
+<svg className="icon" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 20 20"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg>
+</button>
+<button className="sp-card-action" title="Compartir">
+<svg className="icon" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 20 20"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line></svg>
+</button>
+</div>
+<button className="sp-card-connect" title="Connectar">Connectar</button>
+</footer>
+</article>
+</section>
+{/*  SECCIÓ 21: ESTADÍSTIQUES I DASHBOARDS  */}
+<section className="design-block">
+<h3>21. Estadístiques i Dashboards</h3>
+<h4>21.1 Targeta d'estadística</h4>
+<div className="stat-card sdp-mb-6">
+<div className="stat-icon"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="icona-linia" viewBox="0 0 20 20" width="16"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
+<div className="stat-info">
+<div className="stat-value">5.847</div>
+<div className="stat-label">Habitants</div>
+</div>
+</div>
+<h4>21.2 Grid d'estadístiques</h4>
+<div className="stat-grid">
+<div className="stat-card">
+<div className="stat-icon"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="icona-linia" viewBox="0 0 20 20" width="16"><rect height="18" rx="2" ry="2" width="18" x="3" y="4"></rect><line x1="16" x2="16" y1="2" y2="6"></line><line x1="8" x2="8" y1="2" y2="6"></line><line x1="3" x2="21" y1="10" y2="10"></line></svg></div>
+<div className="stat-info">
+<div className="stat-value">776</div>
+<div className="stat-label">Anys d'història</div>
+</div>
+</div>
+<div className="stat-card">
+<div className="stat-icon"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="icona-linia" viewBox="0 0 20 20" width="16"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></div>
+<div className="stat-info">
+<div className="stat-value">2.341</div>
+<div className="stat-label">Habitatges</div>
+</div>
+</div>
+<div className="stat-card">
+<div className="stat-icon">🌳</div>
+<div className="stat-info">
+<div className="stat-value">29,4</div>
+<div className="stat-label">Km² de natura</div>
+</div>
+</div>
+<div className="stat-card">
+<div className="stat-icon">📖</div>
+<div className="stat-info">
+<div className="stat-value">142</div>
+<div className="stat-label">Documents històrics</div>
+</div>
+</div>
+</div>
+<h4>21.3 Panell d'Umami (Integració directa)</h4>
+<div className="dashboard-panel">
+<div className="dashboard-header"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="icona-linia" viewBox="0 0 20 20" width="16"><line x1="18" x2="18" y1="20" y2="10"></line><line x1="12" x2="12" y1="20" y2="4"></line><line x1="6" x2="6" y1="20" y2="14"></line></svg> Activitat del Portal</div>
+<div className="dashboard-grid">
+<div className="dashboard-item">
+<div className="dashboard-item-value">5.847</div>
+<div className="dashboard-item-label">Visitants únics</div>
+</div>
+<div className="dashboard-item">
+<div className="dashboard-item-value">23.412</div>
+<div className="dashboard-item-label">Pàgines vistes</div>
+</div>
+<div className="dashboard-item">
+<div className="dashboard-item-value">29,4%</div>
+<div className="dashboard-item-label">Taxa de rebuig</div>
+</div>
+<div className="dashboard-item">
+<div className="dashboard-item-value">2m 45s</div>
+<div className="dashboard-item-label">Duració mitjana</div>
+</div>
+</div>
+<div className="dashboard-footer">Dades d'<span>Umami Analytics</span> • Actualització en temps real</div>
+</div>
+</section>
+{/*  SECCIÓ 22: CERCA I FILTRATGE  */}
+<section className="design-block">
+<h3>22. Cerca i Filtratge</h3>
+<h4>22.1 Barra de cerca bàsica</h4>
+<div className="search-bar-basic">
+<input placeholder="Cerca pobles, festes, documents..." type="text"/>
+<button>🔍 Cerca</button>
+</div>
+<h4>22.2 Cerca amb filtres</h4>
+<div className="search-filters">
+<input placeholder="Cerca..." type="text"/>
+<select>
+<option>Totes les categories</option>
+<option>Festes</option>
+<option>Llocs</option>
+</select>
+<button>Cerca</button>
+</div>
+<h4>22.3 Resultats de cerca</h4>
+<div className="sdp-mb-1">S'han trobat <strong>12 resultats</strong> per a "festa major"</div>
+<div className="search-result">
+<div className="search-result-title">Festa Major de Benigànim</div>
+<div className="search-result-meta">Festes • Benigànim • Agost 2024</div>
+<div className="search-result-excerpt">Del 15 al 20 d'agost celebrem les festes patronals amb més de 50 activitats per a tots els públics...</div>
+</div>
+<div className="search-result">
+<div className="search-result-title">Festa Major de Llutxent</div>
+<div className="search-result-meta">Festes • Llutxent • Setembre 2024</div>
+<div className="search-result-excerpt">La festa major de Llutxent destaca per la seua processó de les festes de la Mare de Déu...</div>
+</div>
+</section>
+{/*  SECCIÓ 23: PAGINACIÓ  */}
+<section className="design-block">
+<h3>23. Paginació</h3>
+<h4>23.1 Paginació numèrica</h4>
+<div className="pagination">
+<a className="page-btn" href="#">← Primera</a>
+<a className="page-btn" href="#">2</a>
+<a className="page-btn active" href="#">3</a>
+<a className="page-btn" href="#">4</a>
+<a className="page-btn" href="#">5</a>
+<span>...</span>
+<a className="page-btn" href="#">20</a>
+<a className="page-btn" href="#">Següent →</a>
+</div>
+<h4>23.2 Paginació simplificada (anterior / següent)</h4>
+<div className="pagination-simple">
+<a href="#">
+<span className="pagination-label">← Article Anterior</span>
+<span className="pagination-title">Les festes de la Magdalena</span>
+</a>
+<a className="next" href="#">
+<span className="pagination-label">Article Següent →</span>
+<span className="pagination-title">La ruta del riu-rau</span>
+</a>
+</div>
+</section>
+{/*  SECCIÓ 24: TASQUES I CHECKLISTS  */}
+<section className="design-block">
+<h3>24. Llistes de Tasques i Checklists</h3>
+<h4>24.1 Checklist d'administració</h4>
+<div className="checklist-admin">
+<div className="checklist-item">
+<input defaultChecked type="checkbox"/>
+<label><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="icona-linia" viewBox="0 0 20 20" width="16"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Verificació prèvia a publicar</label>
+</div>
+<div className="checklist-item">
+<input defaultChecked type="checkbox"/>
+<label>Revisar ortografia i valencià</label>
+</div>
+<div className="checklist-item">
+<input defaultChecked type="checkbox"/>
+<label>Comprovar imatges (alt text obligatori)</label>
+</div>
+<div className="checklist-item">
+<input type="checkbox"/>
+<label>Validar enllaços interns</label>
+</div>
+<div className="checklist-item">
+<input type="checkbox"/>
+<label>Revisar contrast de colors (WCAG 2.1 AA)</label>
+</div>
+</div>
+<h4>24.2 Llista de tasques amb progrés</h4>
+<div className="checklist-admin">
+<div className="checklist-item">
+<input defaultChecked type="checkbox"/>
+<label>Migrar base de dades històrica</label>
+<span className="date-tag done">15/01</span>
+</div>
+<div className="checklist-item">
+<input type="checkbox"/>
+<label>Digitalitzar fotografies del fons municipal</label>
+<span className="date-tag">01/02</span>
+</div>
+</div>
+</section>
+{/*  SECCIÓ 25: UPLOAD I DESCÀRREGUES  */}
+<section className="design-block">
+<h3>25. Upload i Descàrregues</h3>
+<h4>25.1 Zona d'arrossegament d'arxius</h4>
+<div className="upload-zone">
+<div className="upload-zone-text">📎 Arrossega els arxius ací</div>
+<div className="upload-zone-sub">o <span>selecciona'ls del teu dispositiu</span></div>
+<div className="sdp-mt-2">Màxim 10MB per arxiu. Formats: JPG, PNG, PDF</div>
+</div>
+<div className="file-item">
+<div className="file-item-info">
+<div className="file-item-name">festa_major_2024.jpg</div>
+<div className="file-item-meta">2,4 MB</div>
+</div>
+<div className="file-item-action"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="icona-linia" viewBox="0 0 20 20" width="16"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></div>
+</div>
+<h4>25.2 Enllaç de descàrrega</h4>
+<div className="download-card">
+<div className="download-card-icon"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="icona-linia" viewBox="0 0 20 20" width="16"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></div>
+<div className="download-card-info">
+<div className="download-card-title">Carta Pobla de Benigànim (1248)</div>
+<div className="download-card-meta">PDF • 3,2 MB • Transcripció paleogràfica</div>
+</div>
+<a className="download-card-btn" href="#"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="icona-linia" viewBox="0 0 20 20" width="16"><line x1="12" x2="12" y1="5" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg></a>
+</div>
+</section>
+{/*  SECCIÓ 26: EMBEDDINGS I MEDIA EXTERNA  */}
+<section className="design-block">
+<h3>26. Embeddings i Media Externa</h3>
+<h4>26.1 Vídeo embebint (HTML5 natiu)</h4>
+<div className="embed-container">
+<div className="sdp-flex sdp-items-center sdp-justify-center">
+<div className="sdp-flex sdp-items-center sdp-justify-center"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="icona-linia" viewBox="0 0 20 20" width="16"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></div>
+</div>
+</div>
+<div className="embed-caption">Sóc de Poble: Portal de pobles connectats (2013)</div>
+<div className="accordion sdp-mb-6">
+<div className="accordion-header">
+<svg aria-hidden="true" fill="none" height="16" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="icona-linia" viewBox="0 0 20 20" width="16"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg> Descripció del vídeo original
+            <svg fill="none" height="20" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 20 20" width="20"><polyline points="6 9 12 15 18 9"></polyline></svg>
+</div>
+</div>
+<h4>26.2 Mapa embebint (iframe amb fallback)</h4>
+<div className="embed-container sdp-flex sdp-items-center sdp-justify-center">
+          [OpenStreetMap Iframe]
         </div>
-      </main>
-    </SectionChrome>
+<div className="embed-caption"><a href="#">Veure mapa més gran a OpenStreetMap →</a></div>
+<h4>26.3 Audio (podcast local)</h4>
+<div className="audio-player">
+<button className="audio-play-btn"><svg viewBox="0 0 20 20"><path d="M8 5v14l11-7z"></path></svg></button>
+<div className="audio-progress">
+<div className="audio-progress-fill"></div>
+</div>
+<div className="audio-time">12:45</div>
+</div>
+<div className="embed-caption sdp-text-left">Podcast «Històries de poble» · Episodi 1</div>
+</section>
+{/*  SECCIÓ 27: CLASSES UTILITÀRIES  */}
+<section className="design-block">
+<h3>27. Classes Utilitàries</h3>
+<p className="sdp-text-center sdp-mb-6">Aquestes classes són recomanacions d'arquitectura css (no aplicades ací via Tailwind pur sinó com a concepte)</p>
+<div className="utils-grid">
+<div className="utils-box">
+<h4>Classes de Visibilitat</h4>
+<ul className="utils-list">
+<li><strong>.sdp-sr-only</strong> - Ocult visiblement, text per a screen readers</li>
+<li><strong>.sdp-visible-sr-only</strong> - Visible només per assistència</li>
+<li><strong>.sdp-ocult</strong> - display: none</li>
+<li><strong>.sdp-ocult-mobil</strong> - Amaga en xs/sm</li>
+</ul>
+</div>
+<div className="utils-box">
+<h4>Classes de Color</h4>
+<ul className="utils-list">
+<li><strong>.sdp-text-exit</strong> - ✓ Èxit</li>
+<li><strong>.sdp-text-error</strong> - ✕ Error</li>
+<li><strong>.sdp-text-avis</strong> - <svg aria-hidden="true" fill="none" height="16" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="icona-linia" viewBox="0 0 20 20" width="16"><path d="M10.25 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" x2="12" y1="9" y2="13"></line><line x1="12" x2="12.01" y1="17" y2="17"></line></svg> Avís</li>
+<li><strong>.sdp-text-info</strong> - i Informació</li>
+</ul>
+</div>
+</div>
+</section>
+{/*  SECCIÓ 28: PEUS DE PÀGINA  */}
+<section className="design-block">
+<h3>28. Peus de pàgina (Footers)</h3>
+<h4>28.1 Peu de pàgina complet</h4>
+<div className="sdp-p-10">[Footer complet (Enllaços, Legal, Xarxes)]</div>
+<h4>28.2 Peu de pàgina minimalista</h4>
+<div className="sdp-p-4 sdp-text-center">© 2026 Sóc de Poble. Tots els drets reservats.</div>
+</section>
+{/*  SECCIÓ 29: EXEMPLES DE COMPOSICIÓ  */}
+<section className="design-block sdp-mb-20">
+<h3>29. Exemples de Composició</h3>
+<h4>29.1 Formulari de contacte complet</h4>
+<div className="sdp-p-6">
+<h4>Contacta amb nosaltres</h4>
+<div className="sdp-mb-1">Les teues dades</div>
+<div className="form-group">
+<label>Nom complet <span>*</span></label>
+<input type="text"/>
+</div>
+<div className="form-group">
+<label>Correu electrònic <span>*</span></label>
+<input type="email"/>
+</div>
+<div className="form-group">
+<label>Motiu del contacte</label>
+<select>
+<option>Selecciona un motiu...</option>
+</select>
+</div>
+</div>
+</section>
+
+        <section className="mt-16 bg-stone-50 p-8 rounded-2xl border border-stone-200">
+          <h3 className="sosp-h3 mb-6">🤖 LLEIS DE PEDRA SECA PER A IAs ARQUITECTES</h3>
+          <div className="prose prose-stone">
+            <p><strong>ATENCIÓ AGENTS IA:</strong> Aquesta secció estableix les regles inamovibles (el Trellat) de l'arquitectura de Disseny de Sóc de Poble. Incomplir aquestes regles es considera una infracció greu (codi tòxic).</p>
+            <ul className="space-y-4 mt-4">
+              <li><strong>1. Prohibició d'estils en línia:</strong> MAI utilitzaràs la propietat style per donar colors, marges, espaiats o estètica. Els estils en línia destrueixen el sistema de temes. Utilitza exclusivament classes utilitàries globals (CSS) o l'arquitectura Pedra Seca.</li>
+              <li><strong>2. Capes Semàntiques OKLCH:</strong> Tots els colors es basen en l'espai OKLCH distribuït en dues capes:
+                <br />a) Primitives: <code>--sdp-primary-500: oklch(...)</code> (No s'apliquen directament a l'HTML).
+                <br />b) Semàntiques: <code>--sdp-accio-fons: var(--sdp-primary-500)</code> (És la capa que utilitza l'HTML).
+              </li>
+              <li><strong>3. Shadow DOM i Theming:</strong> A causa de la presència de Web Components / Shadow DOM, el selector <code>:root[data-theme="dark"]</code> no penetra en els subarbres ombrejats. Per tant, al full d'estils (<code>index.css</code>) TOTES les declaracions del mode fosc s'han de duplicar amb <code>:host([data-theme="dark"])</code> acompanyant <code>:root[data-theme="dark"]</code>.</li>
+            </ul>
+          </div>
+        </section>
+
+      </div>
+    </UniversalPage>
   );
 }
+

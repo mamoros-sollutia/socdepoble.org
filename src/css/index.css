@@ -9,6 +9,7 @@
    Col·loca'ls a  assets/fonts/  amb estos noms exactes.
    ───────────────────────────────────────────────────────────────── */
 /* L'import s'ha mogut fora de React */
+@import './legacy-components.css';
 /* ═══════════════════════════════════════════════════════════════════
    PEDRA SECA · Full d'estils base — v2.0
    Sóc de Poble · CSS natiu, sense frameworks (substitueix el base)
@@ -46,12 +47,19 @@
    var(--sdp-primary-*) o var(--sdp-secondary-*), és un error.
    ───────────────────────────────────────────────────────────────── */
 
-:root, :host {
+:host, .sdp-root {
+  all: initial;
+}
+
+:root, :host, .sdp-root {
   /* ═══ CAPA 1 · PRIMITIUS ═══════════════════════════════════════ */
 
   /* Pedra · neutre càlid — OKLCH H 84°, croma baix */
+  --sdp-blanc-pur: oklch(100% 0 0);
+  --sdp-negre-pur: oklch(0% 0 0);
+  --sdp-blanc: #ffffff;
+  --sdp-negre: #000000;
   --sdp-pedra-50:  #fdfcfb;
-  --sdp-pedra-75:  #fbfaf8;
   --sdp-pedra-100: #f9f8f5;
   --sdp-pedra-200: #efece7;
   --sdp-pedra-300: #dcd7cd;
@@ -72,7 +80,7 @@
   --sdp-primary-400: #ff955b;
   --sdp-primary-500: #fe7406;   /* el cànon. Només com a FONS. */
   --sdp-primary-600: #dd6302;
-  --sdp-primary-700: #ad4c03;   /* text accent · 5,51:1 · AA */
+  --sdp-primary-700: #ad4c03;   /* Taronja fort · text i fons massís d'accent */
   --sdp-primary-800: #873a01;   /* text accent · 7,97:1 · AAA */
   --sdp-primary-900: #602701;
 
@@ -83,7 +91,7 @@
   --sdp-secondary-300: #96c9ff;
   --sdp-secondary-400: #49a3fa;
   --sdp-secondary-500: #016ebf;   /* fons · text blanc 5,23:1 · AA */
-  --sdp-secondary-600: #00599d;   /* text · 7,20:1 · AAA */
+  --sdp-secondary-600: #00599d; /* Blau fort · text i fons massís d'acció */
   --sdp-secondary-700: #004983;
   --sdp-secondary-800: #003663;
   --sdp-secondary-900: #002546;
@@ -97,12 +105,18 @@
      Cada línia porta el contrast mesurat i el nivell que compleix.  */
 
   /* Fons */
-  --sdp-fons-app:        var(--sdp-pedra-75);
-  --sdp-fons-targeta: #ffffff;
-  --sdp-fons-elevat:     #ffffff;
+  --sdp-fons-app:        var(--sdp-pedra-100);
+  --sdp-fons-targeta:    var(--sdp-blanc-pur);
+  --sdp-fons-elevat:     var(--sdp-blanc-pur);
+  --sdp-fons-superficie: var(--sdp-blanc-pur);
+  
+  /* Estructura de marca: no canvia amb el tema */
+  --sdp-fons-roca:       var(--sdp-pedra-900);
+  --sdp-sobre-roca:      var(--sdp-pedra-50);
   --sdp-fons-subtil:     var(--sdp-pedra-200);
   --sdp-fons-invers:     var(--sdp-pedra-900);
   --sdp-fons-vel:        rgba(14, 13, 12, 0.55);
+  --sdp-color-focus:     var(--sdp-secondary-500);
 
   /* Text — TOT compleix AAA (≥7:1) sobre la seua superfície */
   --sdp-text-titol:  var(--sdp-pedra-900);   /* 19,42:1 */
@@ -161,6 +175,11 @@
   --sdp-t-lenta: 0.3s cubic-bezier(0.2, 0.7, 0.3, 1);
 
   /* Mètriques del layout */
+  --sdp-ctrl-vw: clamp(320px, 100vw, 1024px);
+  --sdp-ctrl-scale: calc((var(--sdp-ctrl-vw) - 320px) / (1024 - 320));
+  --sdp-step-0: calc(14px + (16 - 14) * var(--sdp-ctrl-scale));
+  --sdp-space-base: var(--sdp-step-0);
+
   --sdp-col-sidebar: 260px;
   --sdp-col-llista: 380px;
   --sdp-alt-negra: 64px;
@@ -174,14 +193,14 @@
   --sdp-touch-comode: 48px;
 
   /* Escala z-index · única font de veritat */
-  --z-barra-taronja: 80;
-  --z-barra-blava: 90;
-  --z-barra-negra: 100;
-  --z-sidebar: 200;
-  --z-fab: 500;
-  --z-nav-mobil: 950;
-  --z-vel: 960;
-  --z-calaix: 1000;
+  --z-barra-taronja: 99080;
+  --z-barra-blava: 99090;
+  --z-barra-negra: 99100;
+  --z-sidebar: 99200;
+  --z-fab: 99500;
+  --z-nav-mobil: 99950;
+  --z-vel: 99960;
+  --z-calaix: 99990;
 
   /* Tipografia */
   --sdp-font: 'Noto Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -246,8 +265,9 @@
   color-scheme: dark;
 
   --sdp-fons-app:        var(--sdp-pedra-900);
-  --sdp-fons-targeta: var(--sdp-pedra-850);
+  --sdp-fons-targeta:    var(--sdp-pedra-850);
   --sdp-fons-elevat:     var(--sdp-pedra-800);
+  --sdp-fons-superficie: var(--sdp-pedra-850);
   --sdp-fons-subtil:     var(--sdp-pedra-750);
   --sdp-fons-invers:     var(--sdp-pedra-100);
   --sdp-fons-vel:        rgba(14, 13, 12, 0.72);
@@ -276,7 +296,7 @@
   --sdp-accio-subtil:  var(--sdp-secondary-900);
   --sdp-sobre-accio:   #ffffff;
   --sdp-accio-text:    var(--sdp-secondary-300);   /* 10,28:1 */
-  --sdp-focus:         var(--sdp-secondary-300);
+  --sdp-focus:         var(--sdp-focus-invers);
   --sdp-focus-invers:  var(--sdp-primary-400);
 
   --sdp-error-fons: #2a0f11; --sdp-error-text: #ffb3b0;
@@ -300,30 +320,39 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
-body, :host {
+body {
   font-family: var(--sdp-font);
   line-height: 1.5;
   background: var(--sdp-fons-app);
   color: var(--sdp-text-titol);
   margin: 0;
   padding: 0;
-  height: 100vh;
-  height: 100dvh;                      /* barres dinàmiques d'iOS */
-  overflow: hidden;                    /* el scroll viu a les columnes */
-  overscroll-behavior: none;
-  display: flex;                       /* esquelet de columnes */
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
 :host {
+  display: block;
+  width: 100%;
+  height: 100dvh;
+  min-width: 0;
+  min-height: 0;
+  font-family: var(--sdp-font);
+  line-height: 1.5;
+  background: var(--sdp-fons-app);
+  color: var(--sdp-text-titol);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.sdp-root {
+  display: flex;
   width: 100%;
   height: 100%;
   min-width: 0;
-}
-
-#root {
-  display: contents;
+  min-height: 0;
+  overflow: hidden;
+  overscroll-behavior: none;
 }
 
 img { max-width: 100%; }
@@ -622,11 +651,11 @@ header.bar-black {
   top: 0;
   z-index: var(--z-barra-negra);
 }
-.bar-black .right-icons { display: flex; align-items: center; gap: var(--sdp-space-4); margin-left: auto; }
+.bar-black .right-icons { display: flex; align-items: center; gap: var(--sdp-space-2); margin-left: auto; }
 .bar-black .right-icons .icon { width: var(--sdp-touch); height: var(--sdp-touch); padding: 6px; opacity: 0.8; cursor: pointer; transition: opacity var(--sdp-t), transform var(--sdp-t); }
 .bar-black .right-icons .icon:hover { opacity: 1; transform: translateY(-1px); }
 .bar-black .right-icons .icon img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block; }
-.bar-black .right-icons .icon:has(img) { width: 48px !important; height: 48px !important; }
+.bar-black .right-icons .icon:has(img) { width: 48px; height: 48px; }
 @keyframes sdp-iaia-pulse {
   0% { opacity: 1; transform: scale(1); }
   50% { opacity: 0.5; transform: scale(0.95); }
@@ -639,7 +668,7 @@ header.bar-black {
 }
 
 /* Botó logo: només visible en mòbil (obri la sidebar) o en escriptori tancat */
-.mobile-logo-wrapper { display: none !important; cursor: pointer; }
+.mobile-logo-wrapper { display: none; cursor: pointer; }
 .mobile-logo-wrapper img { width: 180px; height: auto; object-fit: contain; }
 
 
@@ -657,6 +686,7 @@ header.bar-blue {
   z-index: var(--z-barra-blava);
 }
 
+.bar-blue-left { display: flex; align-items: center; gap: var(--sdp-space-3); }
 .bar-actions { display: flex; align-items: center; gap: var(--sdp-space-5); }
 .bar-actions .icon { cursor: pointer; opacity: 0.9; transition: opacity var(--sdp-t); }
 .bar-actions .icon:hover { opacity: 1; }
@@ -846,6 +876,7 @@ section.design-block > p:first-of-type {
 .sw-primary-500 { background: var(--sdp-primary-500); color: var(--sdp-pedra-900); }
 .sw-primary-700 { background: var(--sdp-primary-700); color: #ffffff; }
 .sw-secondary-500 { background: var(--sdp-secondary-500); color: #ffffff; }
+.sw-secondary-600 { background: var(--sdp-secondary-600); color: #ffffff; }
 .sw-secondary-700 { background: var(--sdp-secondary-700); color: #ffffff; }
 .sw-error-500 { background: var(--sdp-error-500); color: #ffffff; }
 .sw-avis-500 { background: var(--sdp-avis-500); color: #ffffff; }
@@ -1189,19 +1220,22 @@ details[open] summary.accordion-header svg { transform: rotate(180deg); }
 .sp-card { position: relative; }
 .sp-card-link-overlay { position: absolute; inset: 0; z-index: 1; border-radius: inherit; outline: none; }
 .sp-card-link-overlay:focus-visible { box-shadow: 0 0 0 3px var(--sdp-focus) inset; }
-.sp-card-header, .sp-card-footer, .sp-card-author-link, .btn-icon-orange, .btn-date-time, .sp-card-action, .sp-card-connect { position: relative; z-index: 2; }
-.sp-card-author-link { display: flex; align-items: center; min-width: 0; }
+.sp-card-header, .sp-card-footer, .sp-card-author-link, .sp-card-author-block, .btn-icon-orange, .btn-date-time, .sp-card-action, .sp-card-connect, .sp-card-labels, .sp-card-copyright, .sp-card-body a, .sp-card-body span[onClick] { position: relative; z-index: 2; }
+.sp-card-author-link, .sp-card-author-block { display: flex; align-items: center; min-width: 0; flex: 1; }
 
 /* Etiquetes de la Targeta Mestra i Sistema de Badges */
-.sdp-badges-container, .sp-card-labels { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--sdp-space-2); margin-top: var(--sdp-space-4); margin-bottom: var(--sdp-space-2); list-style: none; padding: 0; }
+.sdp-badges-container, .sp-card-labels { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--sdp-space-2); margin-top: var(--sdp-space-3); margin-bottom: var(--sdp-space-4); list-style: none; padding: 0; }
 .sdp-badges-container li, .sp-card-labels li { list-style: none; padding: 0; margin: 0; }
 .sdp-badge, .sp-card-labels .sp-card-label, .sp-card-label { display: inline-flex; align-items: center; justify-content: center; height: 24px; padding: 0 12px; border-radius: 12px; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.05em; white-space: nowrap; }
 
 /* Sistema de Badges Universals (Taxonomia 2026) */
 .sdp-badge-system { background: var(--sdp-accio); color: var(--sdp-sobre-accio); }
 :root[data-theme="dark"] .sdp-badge-system, :host([data-theme="dark"]) .sdp-badge-system { background: var(--sdp-accent); color: var(--sdp-sobre-accent); }
+.sdp-badge-accent { background: var(--sdp-accent); color: var(--sdp-sobre-accent); }
+:root[data-theme="dark"] .sdp-badge-accent, :host([data-theme="dark"]) .sdp-badge-accent { background: var(--sdp-accio); color: var(--sdp-sobre-accio); }
 .sdp-badge-category { background: var(--sdp-accio-subtil); color: var(--sdp-accio-text); }
 .sdp-badge-tag { background: var(--sdp-exit-fons); color: var(--sdp-exit-text); }
+.sdp-badge-neutral { background: var(--sdp-fons-subtil); color: var(--sdp-text-titol); }
 
 /* Retrocompatibilitat */
 
@@ -1241,7 +1275,7 @@ details[open] summary.accordion-header svg { transform: rotate(180deg); }
 .sp-card-author-location svg { display: inline-block; vertical-align: middle; margin-right: var(--sdp-space-1); }
 .sp-card-meta { display: flex; align-items: center; gap: var(--sdp-space-2); color: var(--sdp-sobre-accent); text-align: right; flex: none; }
 
-.sp-card-media { width: 100%; aspect-ratio: 1 / 1; display: block; object-fit: cover; background: var(--sdp-fons-subtil); }
+.sp-card-media { width: 100%; aspect-ratio: 1 / 1; display: block; object-fit: cover; object-position: top; background: var(--sdp-fons-subtil); }
 
 .sp-card-body { padding: 22px 24px 16px; text-align: left; position: relative; min-width: 0; }
 .sp-card-body:has(.sp-card-title:only-child) { text-align: center; }
@@ -1306,9 +1340,38 @@ details[open] summary.accordion-header svg { transform: rotate(180deg); }
 /* Si hi ha preu o etiqueta a dalt a la dreta, tot s'alinea a l'esquerra per a equilibrar el pes visual */
 .sp-card .sp-card-body:has(.sp-card-price) h1,
 .sp-card .sp-card-body:has(.sp-card-price) h2,
-.sp-card-body:has(.sp-card-price) p,
-.sp-card-body:has(.sp-card-price) .sp-card-text {
+.sp-card .sp-card-body:has(.sp-card-price) .sp-card-title,
+.sp-card .sp-card-body:has(.sp-card-price) .sp-card-subtitle,
+.sp-card-body:has(.sp-card-price) p:not(.sp-card-copyright),
+.sp-card-body:has(.sp-card-price) .sp-card-text,
+.sp-card-body:has(.sp-card-price) .sp-card-labels,
+.sp-card .sp-card-body:has(.sp-card-calendar-badge) h1,
+.sp-card .sp-card-body:has(.sp-card-calendar-badge) h2,
+.sp-card .sp-card-body:has(.sp-card-calendar-badge) .sp-card-title,
+.sp-card .sp-card-body:has(.sp-card-calendar-badge) .sp-card-subtitle,
+.sp-card-body:has(.sp-card-calendar-badge) p:not(.sp-card-copyright),
+.sp-card-body:has(.sp-card-calendar-badge) .sp-card-text,
+.sp-card-body:has(.sp-card-calendar-badge) .sp-card-labels {
   text-align: left;
+  margin-left: 0;
+  margin-right: 0;
+  justify-content: flex-start;
+}
+
+.sp-card-media-container {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  position: relative;
+  overflow: hidden;
+  background: var(--sdp-fons-subtil);
+  display: flex;
+  flex-direction: column;
+}
+.sp-card-media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 .sp-card-copyright {
   text-align: center;
@@ -1323,7 +1386,8 @@ details[open] summary.accordion-header svg { transform: rotate(180deg); }
 .sp-card-footer { 
   background: var(--sdp-accio); 
   padding: var(--sdp-space-3) var(--sdp-space-4); 
-  display: flex; justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center; 
   gap: var(--sdp-space-3); 
   color: var(--sdp-sobre-accio); 
@@ -1334,16 +1398,15 @@ details[open] summary.accordion-header svg { transform: rotate(180deg); }
 .sp-card-actions { 
   display: flex; 
   align-items: center; 
-  gap: var(--sdp-space-2); 
-  justify-self: center;
+  gap: var(--sdp-space-3); 
+  justify-self: start;
   margin: 0;
   padding: 0;
 }
-.sp-card-footer .sp-card-actions { margin-left: var(--sdp-space-1); }
 .sp-card-action { background: transparent; border: none; color: currentColor; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0; height: var(--sdp-space-12); width: var(--sdp-space-12); opacity: 0.9; transition: opacity var(--sdp-t), transform var(--sdp-t); }
-.sp-card-action .icon { width: 30px; height: 30px; stroke-width: 2.5; }
+.sp-card-action .icon { width: 30px; height: 30px; stroke-width: 2.5; display: block; margin: auto; }
 .sp-card-action:hover { opacity: 1; transform: translateY(-1px); }
-.sp-card-connect { background: var(--sdp-accio-forta); border: none; color: var(--sdp-text-invers); font-weight: 600; text-transform: uppercase; font-size: 0.8rem; cursor: pointer; letter-spacing: 0.5px; display: flex; align-items: center; justify-content: center; height: var(--sdp-space-12); padding: 0 var(--sdp-space-5); border-radius: var(--sdp-radi-pastilla); white-space: nowrap; transition: transform var(--sdp-t), opacity var(--sdp-t); margin-left: auto; }
+.sp-card-connect { background: var(--sdp-accio-forta); border: none; color: var(--sdp-text-invers); font-weight: 600; text-transform: uppercase; font-size: 0.8rem; cursor: pointer; letter-spacing: 0.5px; display: flex; align-items: center; justify-content: center; height: var(--sdp-space-12); padding: 0 var(--sdp-space-5); border-radius: var(--sdp-radi-pastilla); white-space: nowrap; transition: transform var(--sdp-t), opacity var(--sdp-t); margin-left: auto; justify-self: end; grid-column: 3; }
 .sp-card-connect:hover { transform: scale(1.02); opacity: 0.95; }
 
 /* 7.22 Estadístiques i dashboards */
@@ -1443,6 +1506,38 @@ details[open] summary.accordion-header svg { transform: rotate(180deg); }
 .utils-list { list-style: none; padding: 0; margin: 0; font-family: var(--sdp-font-mono); font-size: 0.85rem; color: var(--sdp-text-titol); line-height: 2; }
 .utils-list li strong { color: var(--sdp-accent-text); }
 
+/* ── 7.5. TAULES (.sdp-table) ───────────────────────────────────── */
+.sdp-table-container {
+  overflow-x: auto;
+}
+.sdp-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  margin-top: var(--sdp-space-8);
+}
+.sdp-table th {
+  padding: var(--sdp-space-3) var(--sdp-space-4);
+}
+.sdp-table td {
+  padding: var(--sdp-space-3) var(--sdp-space-4);
+}
+.sdp-table--poblacio thead tr {
+  border-bottom: 2px solid var(--sdp-accio);
+  color: var(--sdp-text-meta);
+}
+.sdp-table--poblacio tbody tr {
+  border-bottom: 1px solid var(--sdp-fons-subtil);
+}
+.sdp-table-link {
+  font-weight: 800;
+  color: var(--sdp-accio-text);
+  text-decoration: none;
+}
+.sdp-text-right {
+  text-align: right;
+}
+
 /* ── 8. FAB (només escriptori) ─────────────────────────────────── */
 .fab-button {
   position: fixed;
@@ -1466,7 +1561,7 @@ details[open] summary.accordion-header svg { transform: rotate(180deg); }
 .fab-button:active { transform: scale(0.96); }
 .fab-button svg { width: 24px; height: 24px; }
 
-/* ── 9. UTILITATS sdp-* ────────────────────────────────────────── */
+.sdp-mb-8 { margin-bottom: var(--sdp-space-8); }
 .text-center { text-align: center; }
 .sdp-ocult { display: none !important; }
 .sdp-text-exit { color: var(--sdp-exit); }
@@ -1518,7 +1613,7 @@ nav.mobile-nav { display: none; }
   }
 
   /* El logo actua com a botó (sense hamburguesa addicional) */
-  .mobile-logo-wrapper { display: flex !important; }
+  .mobile-logo-wrapper { display: flex; align-items: center; justify-content: center; }
 
   /* El visor deixa espai per a la barra inferior fixa */
   main.app-main { padding-bottom: calc(var(--sdp-alt-nav-mobil) + env(safe-area-inset-bottom, 0px)); }
@@ -1621,21 +1716,23 @@ nav.mobile-nav { display: none; }
 /* ══ MÒBIL ESTRET · ≤480px ════════════════════════════════════ */
 @media (max-width: 480px) {
   /* Barra Negra - Escalat per pantalles minúscules */
-  .bar-black { padding: 0 var(--sdp-space-2); }
-  .mobile-logo-wrapper { width: 150px; }
-  .mobile-logo-btn img { width: 130px; }
-  .bar-black .right-icons { gap: var(--sdp-space-1); }
-  .bar-black .right-icons .icon { width: var(--sdp-touch); height: var(--sdp-touch); padding: 9px; }
-  .bar-black .right-icons img.icon { width: 32px; height: 32px; }
-  .bar-black .right-icons svg { width: 24px; height: 24px; stroke-width: 2; }
+  header.bar-black { padding: 0 8px; }
+  .mobile-logo-wrapper { width: 135px; }
+  .mobile-logo-wrapper img { width: 112px; }
+  header.bar-black .right-icons { gap: 0; margin-left: auto; }
+  header.bar-black .right-icons .icon { width: 36px; height: 36px; min-width: 36px; min-height: 36px; padding: 6px; }
+  header.bar-black .right-icons img.icon { width: 28px; height: 28px; min-width: 28px; min-height: 28px; }
+  header.bar-black .right-icons svg { width: 22px; height: 22px; stroke-width: 2; }
 
-  /* Barra Blava - Ajustament dens: les icones s'encongeixen, el touch-target de 48px es manté */
-  .bar-blue { padding: 0 var(--sdp-space-2); }
-  .bar-blue-left { gap: var(--sdp-space-1); }
-  .sp-card-actions { gap: var(--sdp-space-1); }
-  .bar-blue .sp-card-actions { position: static; transform: none; margin-left: var(--sdp-space-2); }
-  .sp-card-action .icon { width: 24px; height: 24px; stroke-width: 2; }
-  .sp-card-connect { padding: 0 var(--sdp-space-3); font-size: 0.75rem; letter-spacing: 0; }
+  /* Barra Blava - Ajustament dens: es manté agrupació a l'esquerra, es redueix la mida */
+  header.bar-blue { padding: 0 8px; grid-template-columns: auto auto 1fr; }
+  header.bar-blue > *:nth-child(2) { justify-self: start; margin-left: 0; }
+  .bar-blue-left { gap: 0; }
+  .sp-card-actions { gap: 0; }
+  .bar-blue .sp-card-actions { position: static; transform: none; }
+  .sp-card-action { width: 44px; height: 44px; min-width: 44px; min-height: 44px; }
+  .sp-card-action .icon { width: 22px; height: 22px; stroke-width: 2; display: block; margin: auto; }
+  .sp-card-connect { padding: 0 8px; font-size: 0.7rem; letter-spacing: 0; height: 44px; min-height: 44px; }
 
   .swatch-color { height: 80px; padding: 12px; }
   .btn { padding: 11px 20px; font-size: 0.95rem; }
@@ -1662,8 +1759,8 @@ nav.mobile-nav { display: none; }
 /* ── 12. IMATGES SEGONS TEMA ───────────────────────────────────── */
 .light-only { display: block; }
 .dark-only  { display: none; }
-:root[data-theme="dark"] .light-only { display: none; }
-:root[data-theme="dark"] .dark-only  { display: block; }
+:root[data-theme="dark"] .light-only, :host([data-theme="dark"]) .light-only { display: none; }
+:root[data-theme="dark"] .dark-only, :host([data-theme="dark"]) .dark-only { display: block; }
 
 /* Botons de la Barra Taronja i Targetes */
 .btn-icon-orange {
@@ -1723,10 +1820,10 @@ nav.mobile-nav { display: none; }
     justify-content: center;
   }
   :host(.sidebar-closed) .mobile-logo-wrapper img {
-    width: 100% !important;
-    max-width: 180px !important;
-    height: auto !important;
-    object-fit: contain !important;
+    width: 100%;
+    max-width: 180px;
+    height: auto;
+    object-fit: contain;
   } }
 
 /* ── 9. UTILITATS SDP-* ─────────────────────────────────────────── */
@@ -2003,3 +2100,170 @@ nav.mobile-nav { display: none; }
   from { opacity: 0; }
   to { opacity: 1; }
 }
+
+/* UniversalCard Calendar Badge Override */
+.sp-card-body--with-aside {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--sdp-space-4);
+  align-items: start;
+}
+
+.sp-card-calendar-badge {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 128px;
+  height: 128px;
+  background-color: var(--sdp-primary-100);
+  color: var(--sdp-accio-text);
+  border-radius: var(--sdp-radi-xl);
+  margin-bottom: var(--sdp-space-4);
+  box-shadow: var(--sdp-ombra-1);
+  border: 2px solid transparent;
+  transition: all 0.2s ease-in-out;
+}
+
+button.sp-card-calendar-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--sdp-ombra-2);
+  border-color: var(--sdp-accent-subtil);
+  background-color: var(--sdp-primary-200);
+}
+
+.sdp-badge-poble {
+  background: var(--sdp-fons-targeta);
+  color: var(--sdp-text-titol);
+  border: 1px solid var(--sdp-vora);
+  border-radius: var(--sdp-radi-pastilla);
+  padding: 4px 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.sdp-badge-poble--actiu {
+  background: var(--sdp-accio);
+  color: var(--sdp-sobre-accio);
+  border-color: var(--sdp-accio);
+}
+
+:root[data-theme="dark"] .sp-card-calendar-badge, :host([data-theme="dark"]) .sp-card-calendar-badge {
+  background-color: var(--sdp-accio-text);
+  color: var(--sdp-primary-100);
+}
+
+:root[data-theme="dark"] button.sp-card-calendar-badge:hover, :host([data-theme="dark"]) button.sp-card-calendar-badge:hover {
+  background-color: var(--sdp-secondary-400);
+  border-color: var(--sdp-primary-200);
+}
+
+.sp-card-calendar-badge__dia {
+  font-size: 3.5rem;
+  font-weight: 900;
+  line-height: 1;
+  font-family: var(--sdp-font-family-display, inherit);
+}
+
+.sp-card-calendar-badge__mes {
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.sp-card-calendar-badge__any {
+  font-size: 0.9rem;
+  font-weight: 500;
+  opacity: 0.8;
+  margin-top: 2px;
+}
+
+/* ── BOTONERA MUR (Constitució Pedra Seca) ── */
+.sdp-filtres {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) repeat(2, minmax(10rem, auto)) auto;
+  align-items: end;
+  gap: var(--sdp-space-4);
+  padding: var(--sdp-space-4);
+  background: var(--sdp-fons-targeta);
+  border: 1px solid var(--sdp-vora);
+  border-radius: var(--sdp-radi-m);
+}
+
+.sdp-filtres__vistes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sdp-space-2);
+}
+
+.sdp-filtre--vista, .sdp-filtre--accio, .sdp-filtre--camp input, .sdp-filtre--camp select {
+  min-block-size: var(--sdp-touch-comode); /* 48px */
+}
+
+/* Blau per a arquitectura / vistes */
+.sdp-filtre--vista {
+  padding-inline: var(--sdp-space-5);
+  background: var(--sdp-accio);
+  color: var(--sdp-sobre-accio);
+  border: 1px solid var(--sdp-accio);
+  border-radius: var(--sdp-radi-pastilla);
+  font-weight: 800;
+  cursor: pointer;
+}
+
+/* Taronja per a estat/mode actiu */
+.sdp-filtre--vista[aria-pressed="true"] {
+  background: var(--sdp-accent);
+  color: var(--sdp-sobre-accent);
+  border: 1px solid var(--sdp-accent-hover);
+  box-shadow: inset 0 -4px 0 var(--sdp-accent-hover);
+}
+
+.sdp-filtre--vista:focus-visible, .sdp-filtre--accio:focus-visible, .sdp-filtre--camp :is(input, select):focus-visible {
+  outline: 3px solid var(--sdp-focus);
+  outline-offset: 2px;
+}
+
+.sdp-filtre--camp {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sdp-space-1);
+}
+
+.sdp-filtre--camp span {
+  font-size: var(--sdp-text-meta);
+  font-weight: 700;
+  color: var(--sdp-text-suau);
+}
+
+.mur-filter input, .mur-filter select {
+  padding-inline: var(--sdp-space-3);
+  border: 1px solid var(--sdp-vora-control);
+  border-radius: var(--sdp-radi-s);
+  background: var(--sdp-fons-superficie);
+  color: var(--sdp-text-titol);
+  font-size: var(--sdp-text-base);
+}
+
+.mur-map {
+  background: var(--sdp-accent);
+  color: var(--sdp-sobre-accent);
+  border: none;
+  border-radius: var(--sdp-radi-s);
+  font-weight: 700;
+  padding-inline: var(--sdp-space-4);
+  cursor: pointer;
+}
+
+@media (max-width: 720px) {
+  .mur-filters {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── BADGES POBLE (Auditoria Grok) ── */
+.label-poble-actiu { background: var(--sdp-exit-fons); color: var(--sdp-exit-text); }
+.label-fototeca    { background: var(--sdp-accio-subtil); color: var(--sdp-accio-text); }
+.label-mapa        { background: var(--sdp-accent-subtil); color: var(--sdp-accent-text-hover); }
+.label-festes      { background: var(--sdp-avis-fons); color: var(--sdp-avis-text); }

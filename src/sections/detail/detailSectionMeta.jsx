@@ -1,4 +1,4 @@
-import { buildEventsDetailSectionMeta } from '../events/detail/detailSectionMeta.jsx';
+import { buildEventsDetailSectionMeta } from '../mur/detail/eventsDetailSectionMeta.jsx';
 import { buildMercatDetailSectionMeta } from '../mercat/detail/detailSectionMeta.jsx';
 import { buildMultimediaDetailSectionMeta } from '../multimedia/detail/detailSectionMeta.jsx';
 import { buildMurDetailSectionMeta } from '../mur/detail/detailSectionMeta.jsx';

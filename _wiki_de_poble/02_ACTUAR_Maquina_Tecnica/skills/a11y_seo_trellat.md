@@ -36,7 +36,7 @@ Este document és una guia de qualitat, no un executor automàtic. Una afirmaci�
 2. Cada ruta pública defineix títol i descripció propis. Les URL indexables declaren la canònica quan puga haver-hi duplicats.
 3. Open Graph i altres metadades socials s’usen en pàgines compartibles i es validen amb URL absolutes desplegables.
 4. JSON-LD només s’afegeix quan correspon a una entitat real i les dades visibles sostenen el marcatge. No s’inventa Schema.org per omplir camps.
-5. Imatges amb dimensions conegudes, text alternatiu segons funció i càrrega diferida només fora del contingut inicial visible.
+5. Imatges amb dimensions conegudes alternatiu segons funció i càrrega diferida només fora del contingut inicial visible.
 
 ## Rendiment
 

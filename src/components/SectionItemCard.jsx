@@ -1,4 +1,5 @@
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { UniversalCard } from './universal/UniversalComponents';
 
 export default function SectionItemCard({
   to,
@@ -8,54 +9,52 @@ export default function SectionItemCard({
   subtitle,
   excerpt,
   meta = [],
+  labels = [],
   eyebrow,
-  buttonLabel = 'Llegir més',
-  children,
-  className = ''
+  className = '',
+  // New props that map to UniversalCard natively
+  author,
+  location,
+  avatarUrl,
+  time,
+  date,
+  price
 }) {
-  const Wrapper = to ? Link : 'article';
-  const wrapperProps = to
-    ? { to, state, className: `card section-item-card ${className}`.trim() }
-    : { className: `card section-item-card ${className}`.trim() };
-  const visibleMeta = meta.filter(Boolean);
+  const navigate = useNavigate();
+
+  const handleMainClick = to
+    ? (e) => {
+        e.preventDefault();
+        navigate(to, { state });
+      }
+    : undefined;
+
+  const resolvedLabels = labels.length > 0 ? labels : eyebrow ? [eyebrow] : [];
+  
+  // Format the meta array into a small footer string if needed, or use as time fallback
+  const metaString = meta.filter(Boolean).join(' · ');
 
   return (
-    <Wrapper {...wrapperProps}>
-      {image ? (
-        <div className="media-frame section-item-card__media">
-          <img src={image} alt={title || 'Element'} loading="lazy" decoding="async" />
-        </div>
-      ) : null}
-
-      <div className="card__body section-item-card__body">
-        {eyebrow ? (
-          <div className="badge-row">
-            <span className="badge">{eyebrow}</span>
-          </div>
-        ) : null}
-
-        <h2 className="card__title" style={{ marginTop: eyebrow ? 12 : 0 }}>{title}</h2>
-
-        {subtitle ? <p className="section-item-card__subtitle">{subtitle}</p> : null}
-
-        {excerpt ? <p className="card__text section-item-card__excerpt">{excerpt}</p> : null}
-
-        {visibleMeta.length > 0 ? (
-          <div className="feed-card__meta">
-            {visibleMeta.map((entry) => (
-              <span key={String(entry)}>{entry}</span>
-            ))}
-          </div>
-        ) : null}
-
-        {children ? <div className="section-item-card__extra">{children}</div> : null}
-
-        {to ? (
-          <div className="section-item-card__footer">
-            <span className="section-item-card__action">{buttonLabel}</span>
-          </div>
-        ) : null}
-      </div>
-    </Wrapper>
+    // eslint-disable-next-line
+    <div className={className} style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+      <UniversalCard
+        title={title}
+        subtitle={subtitle}
+        body={excerpt || metaString}
+        imageUrl={image}
+        labels={resolvedLabels}
+        onMainClick={handleMainClick}
+        author={author}
+        location={location}
+        avatarUrl={avatarUrl}
+        time={time}
+        date={date}
+        price={price}
+        hasFooter={true}
+        showTranslate={true}
+        showComment={true}
+        showShare={true}
+      />
+    </div>
   );
 }

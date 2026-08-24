@@ -1,18 +1,25 @@
 /**
  * [FIX-3b] Cadenes d'error neutres: la boca de l'àvia ja no revela proveïdors interns (Nano-Banana/FLUX).
- * Pont mínim entre whatsapp_baileys.mjs i el cervell actual de la IAIA.
- * Espera els mètodes transcribeAudio(bytes, mimeType), answer(text, opts) i,
- * opcionalment, generateImage(prompt).
- *
- * Contracte d'imatge unificat: el cervell retorna sempre { bytes: Buffer, mimeType }.
+ * Pont Event Bus / Router mínim entre whatsapp_baileys.mjs i els processadors (incloent el cervell LLM).
  */
 
-export function createCervellHandler(cervell) {
+export function createCervellHandler(middlewares = []) {
+  return async function handleInbound(envelope) {
+    for (const middleware of middlewares) {
+      if (typeof middleware !== 'function') continue;
+      const result = await middleware(envelope);
+      if (result) return result;
+    }
+    return null; // Si cap middleware processa l'estímul
+  };
+}
+
+export function createLlmProcessor(cervell) {
   if (!cervell || typeof cervell.pensa !== 'function') {
     throw new TypeError('El cervell ha d’implementar pensa(pregunta, opts)');
   }
 
-  return async function handleInbound(envelope) {
+  return async function llmProcessor(envelope) {
     const { text, audio, image, sendProgress, signal, senderJid, chatJid } = envelope;
     let question = typeof text === 'string' ? text.trim() : '';
     let audioBytes = null;

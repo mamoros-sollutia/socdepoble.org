@@ -1,17 +1,13 @@
 ---
-estat: canonic
-tipus: identitat
-description: Mirall automàtic de 01_context_i_principis.md
-temes:
-- iaia-maria
-- sistema
-tags:
-- core
-- genoma
-- identitat
-- skills
-- socdepoble
+estat: generat
+tipus: document
+description: Vista generada des de .agents/01_context_i_principis.md; no editar.
+source: .agents/01_context_i_principis.md
+source_sha256: 0377f0e98e2b3ddb67c68a6ad7f8592133afbda29c0d994b210c938d31d95ff4
 ---
+
+> [!warning] FITXER GENERAT
+> Font canònica: `.agents/01_context_i_principis.md`. Qualsevol edició manual serà sobreescrita.
 
 # Agent 01: Context i principis
 
@@ -91,7 +87,6 @@ Si el projecte antic i el nou entren en tensió, la prioritat és:
 - L'actor principal actual és el `foraster`.
 - El producte ha de poder créixer cap a identitat i contingut propi sense forçar eixa complexitat ara.
 
-
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX_MIRROR]]

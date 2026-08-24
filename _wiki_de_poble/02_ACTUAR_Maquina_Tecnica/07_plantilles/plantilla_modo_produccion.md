@@ -30,7 +30,7 @@ Auditoria forense final abans que el projecte es considere "acabat" o es publiqu
 ## CHECKLIST D'AUDITORIA
 1. **Funcionalitat:** Obre sense errors? Les imatges carreguen? Rutes OK?
 2. **Responsive:** Hi ha scroll horitzontal en mòbil? Llegibilitat?
-3. **Disseny (Pedra Seca):** Radis de 28px i 18px? S'aplica estrictament la paleta de 4 colors (Primary, Secondary, Tertiary, Neutral)? Tipografia Roboto?
+3. **Disseny (Pedra Seca):** Radis de 28px i 18px? S'aplica estrictament la paleta de 4 colors (Primary, Secondary, Tertiary, Neutral)? Tipografia Noto Sans?
 4. **UX/Copy:** Enllaços de la Sidebar intactes? Res de text "Lorem Ipsum"?
 5. **Accessibilitat:** Contrast suficient? Alt text a imatges?
 

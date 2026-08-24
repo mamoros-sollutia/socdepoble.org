@@ -13,6 +13,7 @@ import { auditWiki } from './autoneteja_wiki.mjs';
 import { runSemanticAudit } from './semantic_auditor.mjs';
 import { verifyWikiBaselineLock } from './reflex_petorreta.mjs';
 import path from 'node:path';
+import { execSync } from 'node:child_process';
 
 const step = (n, msg) => console.log(`\n[${n}/4] ${msg}`);
 
@@ -29,6 +30,33 @@ function wikiFromCli(argv) {
 
 async function main() {
   const wikiDir = wikiFromCli(process.argv.slice(2));
+
+  step(0, 'Sondes mecàniques anti-tombstone i anti-camins fràgils...');
+  try {
+    // 1. Cercar camins fràgils a tooling/wiki ignorant project_paths
+    try {
+      const out = execSync("grep -rnl 'process\\.cwd()\\|\\.\\./\\.\\.' tooling/wiki | grep -v 'project_paths'", { encoding: 'utf8' });
+      if (out.trim()) {
+        console.error(`SDP-LOCK: Fitxers usant camins absoluts o cwd:\n${out}`);
+        process.exit(1);
+      }
+    } catch (e) { /* grep falla si no troba res, la qual cosa és bo */ }
+
+    // 2. Anti-tombstone: cercar si algun import invoca fitxers amb TOMBSTONE
+    try {
+      const tombstones = execSync("grep -rl 'SDP-LOCK: .* retirat' tooling/wiki", { encoding: 'utf8' }).trim().split('\n').filter(Boolean).map(p => path.basename(p));
+      if (tombstones.length > 0) {
+        const grepPattern = tombstones.join('\\|');
+        const references = execSync(`grep -rnl '${grepPattern}' tooling/wiki .agents package.json`, { encoding: 'utf8' });
+        const badRefs = references.trim().split('\n').filter(p => !tombstones.includes(path.basename(p)) && p);
+        if (badRefs.length > 0) {
+          console.error(`SDP-LOCK: Els següents fitxers referencien tombstones inactius:\n${badRefs.join('\n')}`);
+          process.exit(1);
+        }
+      }
+    } catch(e) {}
+  } catch(e) {}
+
   step(1, 'Integritat d\'arrel (sol lectura)...');
   const orphanDir = wikiDir
     ? path.join(wikiDir, '04_ARXIU_Documents_Historics', 'bancal_actiu')
@@ -73,6 +101,24 @@ async function main() {
   else console.log('✅ Cap avís semàntic.');
 
   console.log('\n✅ TALLAFOCS SUPERAT. Trellat intacte.');
+
+  step(5, 'Integritat termodinàmica de la Canonada...');
+  try {
+    execSync('node 06_EINES/canonada.mjs verifica', { stdio: 'inherit' });
+  } catch (err) {
+    console.error('\n🚨 SDP-LOCK: Fitxers usant fs.writeFileSync detectats fora de la Canonada 🚨');
+    process.exit(1);
+  }
+
+  step(6, 'Compilació i Validació Cognitiva (La Canonada)...');
+  try {
+    execSync('node tooling/wiki/validate-wiki-compliance.mjs', { stdio: 'inherit' });
+    execSync('node tooling/wiki/compile-wiki-to-system-prompt.mjs', { stdio: 'inherit' });
+  } catch (err) {
+    console.error('\n🚨 SDP-LOCK: Fracàs a la canonada cognitiva 🚨');
+    process.exit(1);
+  }
+
   process.exit(0);
 }
 

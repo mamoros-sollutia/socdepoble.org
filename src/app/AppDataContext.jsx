@@ -1,20 +1,24 @@
-import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+import { createContext, useContext, useEffect, useMemo, useState, useRef } from 'react';
 import {
   appendChatMessages,
   appendSectionSubmission,
   APP_SNAPSHOT_STORAGE_KEY,
   DATA_SYNC_CHANNEL_NAME,
   DEFAULT_USER_ID,
-  hasSupabaseConfig,
+  getHasSupabaseConfig,
   SECTION_SUBMISSIONS_STORAGE_KEY,
   loadAppData,
-  runtimeDataMode
+  getRuntimeDataMode
 } from '../data/supabaseBackend';
 import { normalizeSearchText, sortPinnedContent } from '../config/contentHelpers';
-import { createTranslator, readStoredLanguage, writeStoredLanguage } from '../config/i18n';
+import { resolveAsset as baseResolveAsset } from '../config/assetResolver';
+import { createTranslator, readStoredLanguage, writeStoredLanguage, normalizeLanguage } from '../config/i18n';
+import { getVal, setVal } from '../config/storage.js';
 import { makeChatReply } from '../sections/xat/chatRuntime';
+import { readThemePreference, resolveTheme, writeThemePreference } from '../config/theme';
 
-const AppDataContext = createContext(null);
+const AppStateContext = createContext(null);
+const AppActionsContext = createContext(null);
 const DATA_SYNC_STORAGE_KEYS = new Set([APP_SNAPSHOT_STORAGE_KEY, SECTION_SUBMISSIONS_STORAGE_KEY]);
 const LANGUAGE_LOCALES = {
   ca: 'ca-ES',
@@ -62,7 +66,7 @@ const buildSearchCollections = (data) => [
 ];
 
 const buildPageCopy = (pages) =>
-  Object.fromEntries(pages.map((page) => [page.key, { title: page.title, subtitle: page.subtitle, html: page.html }]));
+  Object.fromEntries(pages.map((page) => [page.key, { title: page.title, subtitle: page.subtitle, lead: page.lead, image: page.image, imageAlt: page.imageAlt, html: page.html }]));
 
 const buildMessageMap = (messages) =>
   messages.reduce((accumulator, message) => {
@@ -103,30 +107,71 @@ const appendUniqueById = (items = [], item) => {
   return Array.from(map.values());
 };
 
-const broadcastDataUpdate = () => {
-  if (typeof window === 'undefined' || typeof BroadcastChannel === 'undefined') return;
-
-  try {
-    const channel = new BroadcastChannel(DATA_SYNC_CHANNEL_NAME);
-    channel.postMessage({ type: 'content:updated' });
-    channel.close();
-  } catch {
-    // Ignore sync errors between tabs.
-  }
-};
-
-export function AppDataProvider({ children }) {
+export function AppDataProvider({ children, externalConfig = {} }) {
   const [status, setStatus] = useState('loading');
   const [error, setError] = useState(null);
   const [rawData, setRawData] = useState(null);
-  const [language, setLanguage] = useState(() => readStoredLanguage());
+  const [language, setLanguage] = useState(() => {
+    if (externalConfig?.language) return normalizeLanguage(externalConfig.language);
+    if (typeof document !== 'undefined' && document.documentElement.lang) {
+      const htmlLang = document.documentElement.lang.split('-')[0];
+      if (['ca', 'es', 'en', 'eu', 'gl'].includes(htmlLang)) {
+        return normalizeLanguage(htmlLang);
+      }
+    }
+    return readStoredLanguage();
+  });
+
+  const [themePreference, setThemePreference] = useState(() => readThemePreference(externalConfig?.themeMode));
+  const [systemDark, setSystemDark] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const mq = window.matchMedia('(prefers-color-scheme: dark)');
+    setSystemDark(mq.matches);
+    const handler = (e) => setSystemDark(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
+
+  const themeMode = resolveTheme(themePreference === 'system' ? (systemDark ? 'dark' : 'light') : themePreference);
+
+  const toggleTheme = () => {
+    setThemePreference((prev) => {
+      const currentResolved = resolveTheme(prev === 'system' ? (systemDark ? 'dark' : 'light') : prev);
+      const next = currentResolved === 'dark' ? 'light' : 'dark';
+      writeThemePreference(next);
+      return next;
+    });
+  };
+
+  const tenantId = externalConfig?.tenantId || 'default-tenant';
+  const userId = externalConfig?.user?.id || externalConfig?.userId || DEFAULT_USER_ID;
+  const channelNamespace = `sdp:${tenantId}:${userId}:v2`;
+  
+  // Stabilize externalConfig per evitar infinite re-renders sense usar JSON.stringify sencer que peta amb referències circulars
+  const stableExternalConfig = useMemo(() => ({ ...externalConfig }), [
+    externalConfig?.language,
+    externalConfig?.themeMode,
+    externalConfig?.tenantId,
+    externalConfig?.userId,
+    externalConfig?.basePath,
+    externalConfig?.pluginUrl,
+    externalConfig?.version,
+    externalConfig?.manageDocumentHead,
+    externalConfig?.supabaseUrl,
+    externalConfig?.supabaseAnonKey
+  ]);
+
+  const broadcastChannelRef = useRef(null);
 
   useEffect(() => {
     let cancelled = false;
+    const controller = new AbortController();
 
     const loadData = async () => {
       try {
-        const data = await loadAppData(DEFAULT_USER_ID);
+        const data = await loadAppData(userId, { ...externalConfig, signal: controller.signal });
         if (cancelled) return;
         setRawData(data);
         setStatus('ready');
@@ -142,18 +187,21 @@ export function AppDataProvider({ children }) {
 
     return () => {
       cancelled = true;
+      controller.abort();
     };
-  }, []);
+  }, [stableExternalConfig]);
 
   useEffect(() => {
     if (typeof window === 'undefined') return undefined;
 
     let cancelled = false;
     let channel = null;
+    let refreshTimeout = null;
+    const controller = new AbortController();
 
     const refreshData = async () => {
       try {
-        const data = await loadAppData(DEFAULT_USER_ID);
+        const data = await loadAppData(userId, { ...stableExternalConfig, signal: controller.signal });
         if (cancelled) return;
         setRawData(data);
         setStatus('ready');
@@ -162,84 +210,214 @@ export function AppDataProvider({ children }) {
       }
     };
 
-    const onStorage = (event) => {
-      if (!event?.key || !DATA_SYNC_STORAGE_KEYS.has(event.key)) return;
-      refreshData();
+    const attemptRefresh = () => {
+      if (refreshTimeout) clearTimeout(refreshTimeout);
+      if (document.hidden) return; // Thundering Herd: visibility gate
+      
+      const jitter = Math.floor(Math.random() * 200) + 50;
+      refreshTimeout = setTimeout(() => {
+        refreshData();
+      }, jitter);
     };
 
+    const onStorage = (event) => {
+      if (!event?.key || !DATA_SYNC_STORAGE_KEYS.has(event.key)) return;
+      attemptRefresh();
+    };
+
+    const onVisibilityChange = () => {
+      if (!document.hidden) attemptRefresh();
+    };
+
+    const onManualRefresh = () => attemptRefresh();
+
     window.addEventListener('storage', onStorage);
+    window.addEventListener('sdp:refresh-data', onManualRefresh);
+    document.addEventListener('visibilitychange', onVisibilityChange);
 
     if (typeof BroadcastChannel !== 'undefined') {
-      channel = new BroadcastChannel(DATA_SYNC_CHANNEL_NAME);
+      channel = new BroadcastChannel(channelNamespace);
+      broadcastChannelRef.current = channel;
       channel.addEventListener('message', (event) => {
         if (event?.data?.type !== 'content:updated') return;
-        refreshData();
+        if (event?.data?.tenantId && event.data.tenantId !== tenantId) return;
+        attemptRefresh();
       });
     }
 
     return () => {
       cancelled = true;
+      controller.abort();
+      if (refreshTimeout) clearTimeout(refreshTimeout);
       window.removeEventListener('storage', onStorage);
+      window.removeEventListener('sdp:refresh-data', onManualRefresh);
+      document.removeEventListener('visibilitychange', onVisibilityChange);
       channel?.close();
+      broadcastChannelRef.current = null;
     };
-  }, []);
+  }, [stableExternalConfig, channelNamespace, tenantId, userId]);
 
   useEffect(() => {
     writeStoredLanguage(language);
   }, [language]);
 
-  const value = useMemo(() => {
-    const translator = createTranslator(language);
-    const locale = LANGUAGE_LOCALES[language] || 'ca-ES';
+  const translator = useMemo(() => createTranslator(language), [language]);
+  const locale = LANGUAGE_LOCALES[language] || 'ca-ES';
 
+  const sortedFeedPosts = useMemo(() => rawData ? sortPinnedContent(rawData.feedPosts) : [], [rawData?.feedPosts]);
+  const sortedMarketItems = useMemo(() => rawData ? sortPinnedContent(rawData.marketItems) : [], [rawData?.marketItems]);
+  const sortedEvents = useMemo(() => rawData ? sortEvents(rawData.events) : [], [rawData?.events]);
+  const featuredTowns = useMemo(() => rawData ? rawData.towns.slice(0, 6) : [], [rawData?.towns]);
+  
+  const sortedTowns = useMemo(() => {
+    if (!rawData || !rawData.towns) return [];
+    
+    const townActivity = new Map();
+    
+    const processItem = (item) => {
+      const townName = item.town_name || item.population;
+      if (!townName) return;
+      
+      const itemTime = new Date(item.created_at || item.date).getTime();
+      if (isNaN(itemTime)) return;
+      
+      const currentLatest = townActivity.get(townName) || 0;
+      if (itemTime > currentLatest) {
+        townActivity.set(townName, itemTime);
+      }
+    };
+    
+    (rawData.feedPosts || []).forEach(processItem);
+    (rawData.marketItems || []).forEach(processItem);
+    (rawData.events || []).forEach(processItem);
+    
+    return [...rawData.towns].sort((a, b) => {
+      const timeA = townActivity.get(a.title) || new Date(a.created_at).getTime() || 0;
+      const timeB = townActivity.get(b.title) || new Date(b.created_at).getTime() || 0;
+      return timeB - timeA;
+    }).map(town => {
+      const latestActivity = townActivity.get(town.title);
+      const activityDate = latestActivity ? new Date(latestActivity) : new Date(town.created_at);
+      
+      const dynamicTime = !isNaN(activityDate.getTime()) 
+        ? activityDate.toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit' })
+        : town.time;
+        
+      const dynamicDate = !isNaN(activityDate.getTime()) 
+        ? activityDate.toLocaleDateString(locale, { day: 'numeric', month: 'numeric', year: 'numeric' })
+        : '';
+        
+      return {
+        ...town,
+        dynamic_time: dynamicTime,
+        dynamic_date: dynamicDate
+      };
+    });
+  }, [rawData, locale]);
+  const mediaTimelineGroups = useMemo(() => rawData ? groupMediaTimeline(rawData.mediaItems, translator, locale) : [], [rawData?.mediaItems, translator, locale]);
+  const pageCopy = useMemo(() => rawData ? buildPageCopy(rawData.pages) : {}, [rawData?.pages]);
+  const pageDetailLookup = useMemo(() => rawData ? new Map(
+    rawData.feedPosts.flatMap((item) => {
+      const keys = [];
+      if (item.slug) keys.push([String(item.slug), item]);
+      if (item.id != null) keys.push([String(item.id), item]);
+      return keys;
+    })
+  ) : new Map(), [rawData?.feedPosts]);
+  const globalSearchItems = useMemo(() => rawData ? buildSearchCollections(rawData) : [], [
+    rawData?.agents, rawData?.chatThreads, rawData?.feedPosts, rawData?.marketItems, rawData?.events, rawData?.towns
+  ]);
+  const chatMessagesByThread = useMemo(() => rawData ? buildMessageMap(rawData.chatMessages) : {}, [rawData?.chatMessages]);
+
+  const stateValue = useMemo(() => {
     if (!rawData) {
       return {
         status,
         error,
         ownerUserId: DEFAULT_USER_ID,
-        hasSupabaseConfig,
-        dataMode: runtimeDataMode,
+        hasSupabaseConfig: getHasSupabaseConfig(stableExternalConfig),
+        dataMode: getRuntimeDataMode(stableExternalConfig),
         language,
-        setLanguage,
-        t: translator
+        themeMode,
+        t: translator,
+        externalConfig: stableExternalConfig
       };
     }
 
-    const sortedFeedPosts = sortPinnedContent(rawData.feedPosts);
-    const sortedMarketItems = sortPinnedContent(rawData.marketItems);
-    const sortedEvents = sortEvents(rawData.events);
-    const featuredTowns = rawData.towns.slice(0, 6);
-    const mediaTimelineGroups = groupMediaTimeline(rawData.mediaItems, translator, locale);
-    const pageCopy = buildPageCopy(rawData.pages);
-    const pageDetailLookup = new Map(
-      rawData.feedPosts.flatMap((item) => {
-        const keys = [];
-        if (item.slug) keys.push([String(item.slug), item]);
-        if (item.id != null) keys.push([String(item.id), item]);
-        return keys;
-      })
-    );
-    const globalSearchItems = buildSearchCollections(rawData);
-    const chatMessagesByThread = buildMessageMap(rawData.chatMessages);
+    return {
+      status,
+      error,
+      externalConfig: stableExternalConfig,
+      ownerUserId: rawData.ownerUserId,
+      hasSupabaseConfig: getHasSupabaseConfig(stableExternalConfig),
+      dataMode: getRuntimeDataMode(stableExternalConfig),
+      language,
+      themeMode,
+      t: translator,
+      agents: rawData.agents,
+      chatThreads: rawData.chatThreads,
+      feedPosts: rawData.feedPosts,
+      marketItems: rawData.marketItems,
+      events: rawData.events,
+      towns: rawData.towns,
+      mediaItems: rawData.mediaItems,
+      noteFolders: rawData.noteFolders,
+      notes: rawData.notes,
+      pages: rawData.pages,
+      sectionSubmissions: rawData.sectionSubmissions || [],
+      pageCopy,
+      sortedFeedPosts,
+      sortedMarketItems,
+      sortedEvents,
+      sortedTowns,
+      featuredTowns,
+      mediaTimelineGroups,
+      globalSearchItems,
+      pageDetailLookup
+    };
+  }, [
+    error, language, rawData, status, stableExternalConfig,
+    translator, sortedFeedPosts, sortedMarketItems, sortedEvents,
+    sortedTowns, featuredTowns, mediaTimelineGroups, pageCopy, pageDetailLookup,
+    globalSearchItems, themeMode
+  ]);
+
+  const actionsValue = useMemo(() => {
+    const setLanguageFn = (code) => {
+      setLanguage(code);
+      if (typeof window !== 'undefined') {
+        window.dispatchEvent(new CustomEvent('sdp:language-changed', { detail: { language: code } }));
+        if (typeof window.sdp_change_language === 'function') {
+          window.sdp_change_language(code);
+        }
+      }
+    };
+    const normalizeSearchTextFn = normalizeSearchText;
+    
+    if (!rawData) {
+      return {
+        setLanguage: setLanguageFn,
+        normalizeSearchText: normalizeSearchTextFn,
+        getSectionItems: () => [],
+        findSectionItem: () => null,
+        getThreadMessages: () => [],
+        sendChatMessage: async () => [],
+        sendSectionSubmission: async () => null,
+        resolveAsset: (path) => path,
+        toggleTheme
+      };
+    }
 
     const getSectionItems = (sectionId) => {
       switch (sectionId) {
-        case 'xat':
-          return rawData.chatThreads;
-        case 'mur':
-          return rawData.feedPosts;
-        case 'mercat':
-          return rawData.marketItems;
-        case 'events':
-          return rawData.events;
-        case 'pobles':
-          return rawData.towns;
-        case 'multimedia':
-          return rawData.mediaItems;
-        case 'notes':
-          return rawData.notes;
-        default:
-          return [];
+        case 'xat': return rawData.chatThreads;
+        case 'mur': return rawData.feedPosts;
+        case 'mercat': return rawData.marketItems;
+        case 'events': return rawData.events;
+        case 'pobles': return rawData.towns;
+        case 'multimedia': return rawData.mediaItems;
+        case 'notes': return rawData.notes;
+        default: return [];
       }
     };
 
@@ -269,13 +447,18 @@ export function AppDataProvider({ children }) {
         ...replyBase
       };
 
-      await appendChatMessages([userMessage, replyMessage]);
+      await appendChatMessages([userMessage, replyMessage], stableExternalConfig);
 
       setRawData((current) => ({
         ...current,
         chatMessages: [...current.chatMessages, userMessage, replyMessage]
       }));
-      broadcastDataUpdate();
+      
+      try {
+        broadcastChannelRef.current?.postMessage({ type: 'content:updated', tenantId });
+      } catch (e) {
+        // ignore
+      }
 
       return [userMessage, replyMessage];
     };
@@ -292,7 +475,7 @@ export function AppDataProvider({ children }) {
         ...submission,
         ownerUserId: rawData.ownerUserId
       };
-      const persistedSubmission = await appendSectionSubmission(preparedSubmission);
+      const persistedSubmission = await appendSectionSubmission(preparedSubmission, stableExternalConfig);
       const item = persistedSubmission.payload || preparedSubmission.payload || preparedSubmission;
       const sectionId = String(persistedSubmission.sectionId || item.sectionId || '').trim();
 
@@ -314,55 +497,64 @@ export function AppDataProvider({ children }) {
 
         return next;
       });
-      broadcastDataUpdate();
+      
+      try {
+        broadcastChannelRef.current?.postMessage({ type: 'content:updated', tenantId });
+      } catch (e) {
+        // ignore
+      }
 
       return persistedSubmission;
     };
 
+    const resolveAsset = (path) => {
+      return baseResolveAsset(
+        path, 
+        stableExternalConfig?.basePath, 
+        stableExternalConfig?.pluginUrl, 
+        stableExternalConfig?.version
+      );
+    };
+
     return {
-      status,
-      error,
-      ownerUserId: rawData.ownerUserId,
-      hasSupabaseConfig,
-      dataMode: runtimeDataMode,
-      language,
-      setLanguage,
-      t: translator,
-      agents: rawData.agents,
-      chatThreads: rawData.chatThreads,
-      feedPosts: rawData.feedPosts,
-      marketItems: rawData.marketItems,
-      events: rawData.events,
-      towns: rawData.towns,
-      mediaItems: rawData.mediaItems,
-      noteFolders: rawData.noteFolders,
-      notes: rawData.notes,
-      pages: rawData.pages,
-      sectionSubmissions: rawData.sectionSubmissions || [],
-      pageCopy,
-      sortedFeedPosts,
-      sortedMarketItems,
-      sortedEvents,
-      featuredTowns,
-      mediaTimelineGroups,
-      globalSearchItems,
-      pageDetailLookup,
-      normalizeSearchText,
+      setLanguage: setLanguageFn,
+      normalizeSearchText: normalizeSearchTextFn,
       getSectionItems,
       findSectionItem,
       getThreadMessages,
       sendChatMessage,
-      sendSectionSubmission
+      sendSectionSubmission,
+      resolveAsset,
+      toggleTheme
     };
-  }, [error, language, rawData, status]);
+  }, [rawData, chatMessagesByThread, locale, stableExternalConfig, channelNamespace]);
 
-  return <AppDataContext.Provider value={value}>{children}</AppDataContext.Provider>;
+  return (
+    <AppStateContext.Provider value={stateValue}>
+      <AppActionsContext.Provider value={actionsValue}>
+        {children}
+      </AppActionsContext.Provider>
+    </AppStateContext.Provider>
+  );
+}
+
+export function useAppState() {
+  const context = useContext(AppStateContext);
+  if (!context) throw new Error('useAppState dins de AppDataProvider.');
+  return context;
+}
+
+export function useAppActions() {
+  const context = useContext(AppActionsContext);
+  if (!context) throw new Error('useAppActions dins de AppDataProvider.');
+  return context;
 }
 
 export function useAppData() {
-  const context = useContext(AppDataContext);
-  if (!context) {
-    throw new Error('useAppData ha d\'usar-se dins de AppDataProvider.');
+  const state = useContext(AppStateContext);
+  const actions = useContext(AppActionsContext);
+  if (!state || !actions) {
+    throw new Error('useAppData dins de AppDataProvider.');
   }
-  return context;
+  return { ...state, ...actions };
 }

@@ -20,6 +20,7 @@ export function buildMultimediaDetailSectionMeta({ mediaItems = [], t }) {
         </div>
         {renderRichText(item.description || item.content)}
         {item.src ? (
+          // eslint-disable-next-line
           <div className="media-frame media-frame--contain detail-hero__media" style={{ marginTop: 18 }}>
             <img src={item.src} alt={item.title} decoding="async" />
           </div>

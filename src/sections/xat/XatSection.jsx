@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Megaphone, MessageCircle, ShoppingBasket, Home, Users, Search, User, BrainCircuit, Languages, Share2 } from 'lucide-react';
-import { IconButton } from '../../components/universal/UniversalComponents';
+import { IconButton, UniversalPage } from '../../components/universal/UniversalComponents';
 import { useAppData } from '../../app/AppDataContext';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
+import NotFoundPage from '../../pages/NotFoundPage';
 
 const wallCards = [
   {
@@ -35,7 +36,7 @@ export function UniversalCard({ title, body, location, time }) {
       <div className="cardBody">
         <h3>{title}</h3>
         <p>{body}</p>
-        <div className="stoneImage" aria-label="Imatge placeholder de pedra seca" />
+        <div className="stoneImage" aria-hidden="true" />
       </div>
       <footer className="cardFooter">
         <IconButton label="Traduir">
@@ -75,40 +76,6 @@ function SecondaryPanels() {
   );
 }
 
-const dummyChats = [
-  {
-    id: "festes",
-    title: "Grup de Festes",
-    preview: "Recordeu portar cadires a la plaça a les 19:00.",
-    time: "14:32",
-    unread: 3,
-    active: true,
-    kind: "group",
-  },
-  {
-    id: "ajuntament",
-    title: "Bàndol de l'Ajuntament",
-    preview: "Tall d'aigua demà de 9:00 a 11:00 al carrer Major.",
-    time: "13:05",
-    unread: 1,
-    kind: "council",
-  },
-  {
-    id: "mercat",
-    title: "Mercat del dissabte",
-    preview: "Maria ven tomaques, ous i oli de la cooperativa.",
-    time: "12:18",
-    kind: "market",
-  },
-  {
-    id: "veins",
-    title: "Veïns de La Torre",
-    preview: "Algú ha vist les claus del casal?",
-    time: "Ahir",
-    unread: 6,
-    kind: "village",
-  },
-];
 
 function Avatar({ kind }) {
   const icons = {
@@ -125,43 +92,38 @@ function Avatar({ kind }) {
   );
 }
 
-function ChatListItem({ chat, isActive, onClick }) {
+function ChatListItem({ chat }) {
   return (
-    <button
-      type="button"
-      className={`chatItem ${isActive ? "isActive" : ""}`}
-      aria-current={isActive ? "page" : undefined}
-      onClick={onClick}
+    <NavLink
+      to={`/chat/${encodeURIComponent(String(chat.id))}`}
+      className={({ isActive }) => `chatItem ${isActive ? "isActive" : ""}`}
     >
-      <Avatar kind={chat.kind} />
+      <Avatar kind={chat.type} />
       <span className="chatCopy">
         <span className="chatTitleRow">
-          <strong>{chat.title}</strong>
-          <span className="chatTime">{chat.time}</span>
+          <strong>{chat.name || chat.title}</strong>
         </span>
-        <span className="chatPreview">{chat.preview}</span>
+        <span className="chatPreview">{chat.lastMessagePreview}</span>
       </span>
-      {chat.unread ? <span className="badge">{chat.unread}</span> : null}
-    </button>
+      {chat.unreadCount ? <span className="badge">{chat.unreadCount}</span> : null}
+    </NavLink>
   );
 }
 
-function ChatList({ activeId, onSelectChat }) {
+function ChatList({ threads, activeId, onSelectChat }) {
   return (
     <section className="chatList" aria-label="Xats del poble">
       <div className="chatListHeader">
-        <h1>Xat</h1>
+        <h2>Xat</h2>
         <IconButton label="Buscar xat">
           <Search aria-hidden="true" />
         </IconButton>
       </div>
       <div className="chatRows">
-        {dummyChats.map((chat) => (
+        {threads.map((chat) => (
           <ChatListItem 
             key={chat.id} 
             chat={chat} 
-            isActive={chat.id === activeId}
-            onClick={() => onSelectChat(chat.id)} 
           />
         ))}
       </div>
@@ -169,29 +131,56 @@ function ChatList({ activeId, onSelectChat }) {
   );
 }
 
-function ConversationPane({ activeId }) {
-  const chat = dummyChats.find(c => c.id === activeId) || dummyChats[0];
+function ConversationPane({ activeId, thread, messages, onSendMessage }) {
+  const [text, setText] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const value = text.trim();
+    if (!value) return;
+    
+    setText('');
+    try {
+      await onSendMessage(thread, value);
+    } catch (err) {
+      setText(value); // Restaura si falla
+    }
+  };
 
   return (
     <section className="conversationPane" aria-label="Conversa seleccionada">
       <div className="conversationHeader">
-        <Avatar kind={chat?.kind || 'group'} />
+        <Avatar kind={thread?.type || 'group'} />
         <div>
-          <h2>{chat?.title || 'Conversa'}</h2>
+          <h2>{thread?.name || thread?.title || 'Conversa'}</h2>
           <p>Veïns connectats</p>
         </div>
       </div>
-      <div className="messageStack">
-        <article className="message messageOther">
-          <p>{chat?.preview || 'Benvinguts al xat.'}</p>
-          <time>{chat?.time || 'Ara'}</time>
-        </article>
+      <div 
+        className="messageStack"
+        role="log"
+        aria-live="polite"
+        aria-relevant="additions"
+      >
+        {messages.map((msg, i) => (
+          <article 
+            key={msg.id || i} 
+            className={`message ${msg.sender === 'me' || msg.is_ai ? "messageMe" : "messageOther"}`}
+          >
+            <p>{msg.text ?? msg.content ?? ''}</p>
+          </article>
+        ))}
+        {messages.length === 0 && (
+          <article className="message messageOther">
+            <p>Cap missatge encara.</p>
+          </article>
+        )}
       </div>
-      <form className="messageComposer" onSubmit={e => e.preventDefault()}>
+      <form className="messageComposer" onSubmit={handleSubmit}>
         <label className="srOnly" htmlFor="message">
           Escriu un missatge
         </label>
-        <input id="message" placeholder="Escriu un missatge..." />
+        <input id="message" value={text} onChange={(e) => setText(e.target.value)} placeholder="Escriu un missatge..." />
         <button className="button primary" type="submit">
           Enviar
         </button>
@@ -201,13 +190,33 @@ function ConversationPane({ activeId }) {
 }
 
 export default function XatSection() {
-  const [activeId, setActiveId] = useState("festes");
+  const { chatThreads, getThreadMessages, sendChatMessage, t } = useAppData();
+  const { threadId } = useParams();
+  
+  const activeThread = threadId 
+    ? chatThreads?.find(c => String(c.id) === threadId)
+    : chatThreads?.[0] ?? null;
+
+  if (threadId && !activeThread) {
+    return <NotFoundPage />;
+  }
+
+  const activeId = activeThread?.id ?? null;
+  const messages = activeThread ? getThreadMessages(activeThread.id) : [];
 
   return (
-    <div className="mainGrid">
-      <ChatList activeId={activeId} onSelectChat={setActiveId} />
-      <ConversationPane activeId={activeId} />
-      <SecondaryPanels />
-    </div>
+    <UniversalPage
+      title={t('section.xat.kicker', 'Xat')}
+      subtitle={t('section.xat.title', 'Converses')}
+      lead={t('section.xat.subtitle', 'Connecta amb els veïns i grups del poble.')}
+      chrome="system"
+      showLogos={true}
+    >
+      <div className="mainGrid">
+        <ChatList threads={chatThreads || []} />
+        <ConversationPane activeId={activeId} thread={activeThread} messages={messages} onSendMessage={sendChatMessage} />
+        <SecondaryPanels />
+      </div>
+    </UniversalPage>
   );
 }

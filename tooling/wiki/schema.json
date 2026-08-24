@@ -1,30 +1,43 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://socdepoble.org/schemas/wiki-frontmatter-v2.1.json",
-  "title": "Frontmatter canònic de la Wiki de Sóc de Poble",
-  "description": "Única font mecànica de veritat per a les metadades Markdown de la Wiki.",
-  "$comment": "S'aplica a contingut propi; mirrors i vendors conserven el seu contracte i són immutables.",
+  "title": "Frontmatter can\u00f2nic de la Wiki de S\u00f3c de Poble",
+  "description": "\u00danica font mec\u00e0nica de veritat per a les metadades Markdown de la Wiki.",
+  "$comment": "S'aplica a contingut propi; mirrors i vendors conserven el seu contracte i s\u00f3n immutables.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["estat", "tipus", "description"],
+  "required": [
+    "estat",
+    "tipus",
+    "description"
+  ],
   "properties": {
     "estat": {
       "type": "string",
-      "enum": ["canonic", "esborrany", "futur", "arxivat"]
+      "enum": [
+        "canonic",
+        "actiu",
+        "esborrany",
+        "arxivat",
+        "quarantena",
+        "generat"
+      ]
     },
     "tipus": {
       "type": "string",
       "enum": [
+        "acta",
+        "briefing",
         "document",
+        "hub",
         "index",
+        "informe",
         "norma",
+        "plantilla",
+        "prompt",
         "protocol",
         "registre",
         "skill",
-        "plantilla",
-        "acta",
-        "informe",
-        "prompt",
         "petorreta"
       ]
     },
@@ -35,7 +48,11 @@
     },
     "aliases": {
       "type": "array",
-      "items": { "type": "string", "minLength": 1, "maxLength": 80 },
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 80
+      },
       "maxItems": 5,
       "uniqueItems": true
     },
@@ -46,7 +63,9 @@
     },
     "temes": {
       "type": "array",
-      "items": { "type": "string" },
+      "items": {
+        "type": "string"
+      },
       "uniqueItems": true
     }
   }

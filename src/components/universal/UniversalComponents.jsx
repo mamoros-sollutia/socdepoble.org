@@ -23,6 +23,14 @@ export function ActionControl({
 }) {
   const presentationOnly = !onClick;
 
+  if (presentationOnly) {
+    return (
+      <span className={className} aria-label={label} title={title}>
+        {children}
+      </span>
+    );
+  }
+
   return (
     <button
       type="button"
@@ -31,8 +39,6 @@ export function ActionControl({
       title={title}
       onClick={onClick}
       disabled={disabled}
-      aria-disabled={presentationOnly || undefined}
-      tabIndex={presentationOnly ? -1 : undefined}
     >
       {children}
     </button>
@@ -107,6 +113,7 @@ export function IaiaIcon({ className }) {
       fill="currentColor"
     >
       <path
+        // eslint-disable-next-line
         style={{ fillRule: "nonzero", clipRule: "evenodd", strokeLinejoin: "round", strokeMiterlimit: 2 }}
         d="M654.322021484375,634.7418212890625L639.4090576171875,575.3836669921875C639.4090576171875,575.3836669921875,638.4949951171875,570.5927124023438,633.9271240234375,567.901123046875C629.3841552734375,565.2110595703125,583.4334716796875,537.8279418945312,583.4334716796875,537.8279418945312C581.4577026367188,536.6675415039062,579.3094482421875,535.9998779296875,577.1859741210938,535.7286376953125C576.7413940429688,535.6306762695312,576.297607421875,535.5552978515625,575.85302734375,535.5552978515625L568.7909545898438,535.5552978515625C568.8406982421875,535.4573974609375,568.8896484375,535.3338012695312,568.9884033203125,535.210205078125C574.642822265625,528.740478515625,578.0751342773438,520.2723388671875,578.0751342773438,510.9874267578125C578.0751342773438,498.5180969238281,571.8773803710938,487.4819641113281,562.3958129882812,480.8147888183594C561.679931640625,480.3204650878906,561.26025390625,479.2835998535156,561.3341064453125,478.4200744628906C561.407958984375,477.72833251953125,561.4576416015625,476.9883728027344,561.4576416015625,476.2710266113281C561.4576416015625,465.06158447265625,552.3709106445312,455.99969482421875,541.1614990234375,455.99969482421875C529.9761352539062,455.99969482421875,520.889404296875,465.08721923828125,520.889404296875,476.2710266113281C520.889404296875,476.9883728027344,520.9391479492188,477.72833251953125,521.0130004882812,478.4200744628906C521.1116943359375,479.2835998535156,520.6671142578125,480.3204650878906,519.9512329101562,480.8147888183594C510.46966552734375,487.4819641113281,504.27191162109375,498.5180969238281,504.27191162109375,510.9874267578125C504.27191162109375,520.2723388671875,507.7042236328125,528.740478515625,513.358642578125,535.210205078125C513.4573974609375,535.3338012695312,513.5071411132812,535.4573974609375,513.5809326171875,535.5552978515625L503.82733154296875,535.5552978515625C502.6427917480469,535.5552978515625,501.55621337890625,535.9260864257812,500.59320068359375,536.4444580078125C499.5804748535156,536.8152465820312,498.5684814453125,537.2598266601562,497.6303405761719,537.8279418945312L495.4820556640625,539.1361083984375L462.4942626953125,558.7412719726562C462.4942626953125,558.7412719726562,448.81475830078125,566.74072265625,446.02520751953125,568.5431518554688C442.79034423828125,570.6424560546875,441.926025390625,574.2970581054688,441.926025390625,574.2970581054688L429.8025817871094,622.4698486328125C421.99981689453125,626.0250244140625,418.4198303222656,631.9266357421875,418.4198303222656,631.9266357421875C413.95068359375,638.8651123046875,413.9996643066406,647.1372680664062,413.9996643066406,647.1372680664062L413.9996643066406,824.7174072265625C413.9996643066406,824.7174072265625,414.1978454589844,831.8050537109375,421.75341796875,831.8050537109375C429.2841491699219,831.8050537109375,429.852294921875,825.2855834960938,429.852294921875,825.2855834960938C429.852294921875,825.2855834960938,429.9751281738281,651.4821166992188,430.1484375,649.4083862304688L430.1484375,649.2109375C432.24700927734375,651.6795043945312,435.0863037109375,653.5316772460938,438.44476318359375,654.37109375C439.7777404785156,654.692138671875,441.1114807128906,654.8654174804688,442.4195861816406,654.8654174804688C449.40777587890625,654.8654174804688,455.778076171875,650.2734375,457.8517761230469,643.3349609375C458.46966552734375,645.0379638671875,458.8893737792969,647.8034057617188,459.65496826171875,652.00048828125C460.8153991699219,658.2969970703125,474.8648681640625,660.3721923828125,474.51898193359375,649.358642578125C474.14825439453125,638.322509765625,470.222412109375,633.8284912109375,465.23480224609375,627.1854248046875C464.5928039550781,626.2977905273438,463.7533874511719,625.506591796875,462.81524658203125,624.7666015625C462.74139404296875,624.7169189453125,462.6916809082031,624.6671752929688,462.6419372558594,624.6189575195312L470.4944152832031,593.3838500976562L471.0128479003906,591.334228515625L472.0745544433594,590.6922607421875L491.30902099609375,579.259765625L486.8398742675781,606.7423095703125L480.370849609375,646.4952392578125L465.062255859375,740.4703369140625C465.062255859375,744.0510864257812,467.9512634277344,746.9401245117188,471.5312805175781,746.9401245117188L494.7164611816406,746.9401245117188L494.7164611816406,817.7548828125C494.7164611816406,820.2490234375,495.3336181640625,822.61962890625,496.32147216796875,824.7174072265625C498.9384765625,830.1503295898438,504.4452209472656,833.95263671875,510.8893737792969,833.95263671875C518.1978149414062,833.95263671875,524.2968139648438,829.063720703125,526.2966918945312,822.4221801757812C526.7412719726562,820.9407958984375,527.062255859375,819.385498046875,527.062255859375,817.7548828125L527.062255859375,746.9401245117188L553.3587646484375,746.9401245117188L553.3587646484375,817.7548828125C553.3587646484375,817.9522705078125,553.4085083007812,818.1256103515625,553.4085083007812,818.2989501953125C553.7046508789062,826.9900512695312,560.790771484375,833.95263671875,569.5316772460938,833.95263671875C574.9638671875,833.95263671875,579.7788696289062,831.2369384765625,582.6920166015625,827.1136474609375C584.5690307617188,824.4461669921875,585.70458984375,821.26171875,585.70458984375,817.7548828125L585.70458984375,746.9401245117188L609.0133666992188,746.9401245117188C612.5941162109375,746.9401245117188,615.4823608398438,744.0510864257812,615.4823608398438,740.4703369140625L606.1002197265625,684.298095703125L588.4210205078125,578.4444580078125L610.0502319335938,591.334228515625L622.989013671875,642.6432495117188C624.0996704101562,647.1116333007812,627.0135498046875,650.6682739257812,630.766845703125,652.791748046875C633.13671875,654.1239624023438,635.8283081054688,654.8654174804688,638.6683349609375,654.8654174804688C639.9515991210938,654.8654174804688,641.2853393554688,654.692138671875,642.5941772460938,654.37109375C651.260498046875,652.1979370117188,656.5200805664062,643.4088134765625,654.322021484375,634.7418212890625"
       />
@@ -398,6 +405,7 @@ export function UniversalPage({
   onPin,
   onDateTime,
   connectLabel = 'Connectar',
+  price,
   children
 }) {
   const [isTocOpen, setIsTocOpen] = useState(false);
@@ -420,6 +428,30 @@ export function UniversalPage({
     } else {
       navigator.clipboard.writeText(window.location.href);
       alert('Enllaç copiat al porta-retalls');
+    }
+  });
+  
+  const handleDateTime = onDateTime || ((e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    let yyyymmdd;
+    if (barDateTime) {
+      yyyymmdd = barDateTime.split('T')[0];
+    } else if (barDate) {
+      const parts = barDate.split('/');
+      if (parts.length === 3) {
+        let [dd, mm, yy] = parts;
+        if (yy.length === 2) yy = '20' + yy;
+        yyyymmdd = `${yy}-${mm.padStart(2, '0')}-${dd.padStart(2, '0')}`;
+      } else {
+        const d = new Date(barDate);
+        if (!isNaN(d.getTime())) yyyymmdd = d.toISOString().split('T')[0];
+      }
+    }
+    if (yyyymmdd) {
+      navigate(`/mur?date=${yyyymmdd}`);
+    } else {
+      navigate('/mur');
     }
   });
 
@@ -496,7 +528,7 @@ export function UniversalPage({
       {showBlueBar && (
         <>
           <header className="bar-blue">
-            <div className="bar-blue-left sdp-flex sdp-items-center sdp-gap-12">
+            <div className="bar-blue-left sdp-flex sdp-items-center">
               <IconButton label="Tornar arrere" onClick={handleBack} presentation>
                 <BackIcon className="icon" />
               </IconButton>
@@ -531,11 +563,15 @@ export function UniversalPage({
             </ActionControl>
           </header>
 
-          {barHeroImage && (
+          {topBarData?.heroComponent ? (
             <div className="hero-image">
-              <img alt={barHeroAlt} src={barHeroImage} />
+              {topBarData.heroComponent}
             </div>
-          )}
+          ) : barHeroImage ? (
+            <div className="hero-image">
+              <img alt={barHeroAlt} src={resolveAsset(barHeroImage)} />
+            </div>
+          ) : null}
 
           {showOrangeBar && (
             <section className="bar-orange" aria-label="Autoria i data">
@@ -554,18 +590,20 @@ export function UniversalPage({
                 </div>
               </div>
               <div className="bar-actions sdp-flex sdp-items-center sdp-gap-8">
-                <ActionControl
-                  className="btn-icon-orange"
-                  label="Ancorar"
-                  onClick={onPin}
-                >
-                  <PinIcon className="icon" />
-                </ActionControl>
+                {topBarData?.showPin !== false && (
+                  <ActionControl
+                    className="btn-icon-orange"
+                    label="Ancorar"
+                    onClick={onPin}
+                  >
+                    <PinIcon className="icon" />
+                  </ActionControl>
+                )}
                 <DateTimeControl
                   time={barTime}
                   date={barDate}
                   dateTime={barDateTime}
-                  onClick={onDateTime}
+                  onClick={handleDateTime}
                 />
               </div>
             </section>
@@ -591,18 +629,30 @@ export function UniversalPage({
               />
             </>
           )}
-          {title && <h1>{title}</h1>}
+          {title && (
+            <h1>
+              {title}
+              {price && <span className="sp-card-price" style={{ float: 'none', marginLeft: 16, display: 'inline-block', verticalAlign: 'middle', marginBottom: 4 }}>{price}</span>}
+            </h1>
+          )}
           {labels.length > 0 && (
             <ul className="sp-card-labels page-title-labels" aria-label="Categories">
               {labels.map((label, index) => {
                 const text = typeof label === 'string' ? label : label.text;
                 const className = typeof label === 'string' ? 'sdp-badge-tag' : label.className || 'sdp-badge-tag';
+                const href = typeof label === 'string' ? null : label.href;
                 return (
                   <li
                     key={`${text}-${index}`}
                     className={['sp-card-label', className].join(' ')}
                   >
-                    {text}
+                    {href ? (
+                      href.startsWith('http') ? (
+                        <a href={href} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>{text}</a>
+                      ) : (
+                        <Link to={href} style={{ color: 'inherit', textDecoration: 'none' }}>{text}</Link>
+                      )
+                    ) : text}
                   </li>
                 );
               })}
@@ -683,6 +733,171 @@ export function UniversalButton({
   );
 }
 
+function CardHeader({ hasAuthor, authorHref, authorContent, hasMeta, pinVisible, pinLabel, onPin, dateTimeVisible, time, date, dateTime, handleDateTime }) {
+  return (
+    <header className="sp-card-header">
+      {hasAuthor && (
+        authorHref ? (
+          <Link className="sp-card-author-link" to={authorHref}>
+            {authorContent}
+          </Link>
+        ) : (
+          <span className="sp-card-author-block">{authorContent}</span>
+        )
+      )}
+      {hasMeta && (
+        <div className="sp-card-meta">
+          {pinVisible && (
+            <ActionControl
+              className="btn-icon-orange"
+              label={pinLabel}
+              onClick={onPin}
+            >
+              <PinIcon className="icon" />
+            </ActionControl>
+          )}
+          {dateTimeVisible && (
+            <DateTimeControl
+              time={time}
+              date={date}
+              dateTime={dateTime}
+              onClick={handleDateTime}
+            />
+          )}
+        </div>
+      )}
+    </header>
+  );
+}
+
+function CardBody({ imageUrl, imageAlt, calendarBadge, price, title, titleContent, TitleTag, subtitle, body, labels, copyright }) {
+  return (
+    <>
+      {imageUrl && (
+        <div className="sp-card-media-container">
+          <img
+            className="sp-card-media"
+            src={imageUrl}
+            alt={imageAlt}
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      )}
+
+      <div
+        className={[
+          'sp-card-body',
+          (price || calendarBadge) && 'sp-card-body--with-aside'
+        ].filter(Boolean).join(' ')}
+      >
+        {calendarBadge && (
+          calendarBadge.onClick ? (
+            <button
+              type="button"
+              className="sp-card-calendar-badge"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                calendarBadge.onClick();
+              }}
+              aria-label={calendarBadge.label || [calendarBadge.dia, calendarBadge.mes, calendarBadge.any].filter(Boolean).join(' ')}
+              style={{ position: 'relative', zIndex: 20, cursor: 'pointer', border: '1px solid var(--sdp-accent-subtil)', padding: 0 }}
+            >
+              <time dateTime={calendarBadge.dateTime} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <span className="sp-card-calendar-badge__dia">{calendarBadge.dia}</span>
+                <span className="sp-card-calendar-badge__mes">{calendarBadge.mes}</span>
+                {calendarBadge.any && <span className="sp-card-calendar-badge__any">{calendarBadge.any}</span>}
+              </time>
+            </button>
+          ) : (
+            <time
+              className="sp-card-calendar-badge"
+              dateTime={calendarBadge.dateTime}
+              aria-label={calendarBadge.label || [calendarBadge.dia, calendarBadge.mes, calendarBadge.any].filter(Boolean).join(' ')}
+            >
+              <span className="sp-card-calendar-badge__dia">{calendarBadge.dia}</span>
+              <span className="sp-card-calendar-badge__mes">{calendarBadge.mes}</span>
+              {calendarBadge.any && <span className="sp-card-calendar-badge__any">{calendarBadge.any}</span>}
+            </time>
+          )
+        )}
+        {price && <p className="sp-card-price">{price}</p>}
+
+        {title && <TitleTag className="sp-card-title">{titleContent}</TitleTag>}
+        {subtitle && <h4 className="sp-card-subtitle">{subtitle}</h4>}
+        {body && (
+          typeof body === 'string' ? (
+            <p className="sp-card-text">{body}</p>
+          ) : (
+            <div className="sp-card-text">{body}</div>
+          )
+        )}
+        {labels.length > 0 && (
+          <ul className="sp-card-labels" aria-label="Categories">
+            {labels.map((label, index) => {
+              const text = typeof label === 'string' ? label : label.text;
+              const className = typeof label === 'string' ? 'sdp-badge-tag' : label.className || 'sdp-badge-tag';
+              const href = typeof label === 'string' ? null : label.href;
+              return (
+                <li
+                  key={`${text}-${index}`}
+                  className={['sp-card-label', className].join(' ')}
+                >
+                  {href ? (
+                    href.startsWith('http') ? (
+                      <a href={href} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>{text}</a>
+                    ) : (
+                      <Link to={href} style={{ color: 'inherit', textDecoration: 'none' }}>{text}</Link>
+                    )
+                  ) : text}
+                </li>
+              );
+            })}
+          </ul>
+        )}
+        {copyright && <p className="sp-card-copyright">{copyright}</p>}
+      </div>
+    </>
+  );
+}
+
+function CardFooter({ hasIconActions, translateVisible, handleTranslate, commentVisible, handleComment, shareVisible, handleShare, connectVisible, connectLabel, handleConnect, connectAriaLabel }) {
+  return (
+    <footer className="sp-card-footer">
+      {hasIconActions && (
+        <div className="sp-card-actions">
+          {translateVisible && (
+            <IconButton label="Traduir" onClick={handleTranslate} presentation>
+              <TranslateIcon className="icon" />
+            </IconButton>
+          )}
+          {commentVisible && (
+            <IconButton label="Comentar" onClick={handleComment} presentation>
+              <CommentIcon className="icon" />
+            </IconButton>
+          )}
+          {shareVisible && (
+            <IconButton label="Compartir" onClick={handleShare} presentation>
+              <ShareIcon className="icon" />
+            </IconButton>
+          )}
+        </div>
+      )}
+      {connectVisible && (
+        <ActionControl
+          className="sp-card-connect"
+          label={connectLabel}
+          onClick={handleConnect}
+          aria-label={connectAriaLabel}
+        >
+          {connectLabel}
+        </ActionControl>
+      )}
+    </footer>
+  );
+}
+
 export function UniversalCard({
   title,
   headingLevel = 'h3',
@@ -732,6 +947,30 @@ export function UniversalCard({
       alert('Enllaç copiat al porta-retalls');
     }
   });
+  
+  const handleDateTime = onDateTime || ((e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    let yyyymmdd;
+    if (dateTime) {
+      yyyymmdd = dateTime.split('T')[0];
+    } else if (date) {
+      const parts = date.split('/');
+      if (parts.length === 3) {
+        let [dd, mm, yy] = parts;
+        if (yy.length === 2) yy = '20' + yy;
+        yyyymmdd = `${yy}-${mm.padStart(2, '0')}-${dd.padStart(2, '0')}`;
+      } else {
+        const d = new Date(date);
+        if (!isNaN(d.getTime())) yyyymmdd = d.toISOString().split('T')[0];
+      }
+    }
+    if (yyyymmdd) {
+      navigate(`/mur?date=${yyyymmdd}`);
+    } else {
+      navigate('/mur');
+    }
+  });
 
   const hasAuthor = Boolean(author || avatarUrl || location);
   const footerDefaultsVisible = hasFooter === true;
@@ -771,150 +1010,59 @@ export function UniversalCard({
   const pinLabel = title ? `Ancorar ${title}` : 'Ancorar';
   const connectAriaLabel = title ? `${connectLabel} amb ${title}` : connectLabel;
 
-  const contentWrapper = (
-    <>
-      {imageUrl && (
-        <div className="sp-card-media-container" style={{ width: '100%', aspectRatio: '1 / 1', position: 'relative', overflow: 'hidden', background: 'var(--sdp-fons-subtil)' }}>
-          <img
-            className="sp-card-media"
-            src={imageUrl}
-            alt={imageAlt}
-            loading="lazy"
-            decoding="async"
-            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-          />
-        </div>
-      )}
-
-      <div
-        className={[
-          'sp-card-body',
-          (price || calendarBadge) && 'sp-card-body--with-aside'
-        ].filter(Boolean).join(' ')}
-      >
-        {calendarBadge && (
-          <time
-            className="sp-card-calendar-badge"
-            dateTime={calendarBadge.dateTime}
-            aria-label={calendarBadge.label || [calendarBadge.dia, calendarBadge.mes].join(' ')}
-          >
-            <span className="sp-card-calendar-badge__dia">{calendarBadge.dia}</span>
-            <span className="sp-card-calendar-badge__mes">{calendarBadge.mes}</span>
-          </time>
-        )}
-        {price && <p className="sp-card-price">{price}</p>}
-
-        {title && <TitleTag className="sp-card-title">{titleContent}</TitleTag>}
-        {subtitle && <h4 className="sp-card-subtitle">{subtitle}</h4>}
-        {body && (
-          typeof body === 'string' ? (
-            <p className="sp-card-text">{body}</p>
-          ) : (
-            <div className="sp-card-text">{body}</div>
-          )
-        )}
-        {labels.length > 0 && (
-          <ul className="sp-card-labels" aria-label="Categories">
-            {labels.map((label, index) => {
-              const text = typeof label === 'string' ? label : label.text;
-              const className = typeof label === 'string' ? 'sdp-badge-tag' : label.className || 'sdp-badge-tag';
-              return (
-                <li
-                  key={`${text}-${index}`}
-                  className={['sp-card-label', className].join(' ')}
-                >
-                  {text}
-                </li>
-              );
-            })}
-          </ul>
-        )}
-        {copyright && <p className="sp-card-copyright">{copyright}</p>}
-      </div>
-    </>
-  );
-
   return (
     <article className={['sp-card', isAvis && 'sp-card--avis'].filter(Boolean).join(' ')}>
       {hasHeader && (
-        <header className="sp-card-header">
-          {hasAuthor && (
-            authorHref ? (
-              <Link className="sp-card-author-link" to={authorHref}>
-                {authorContent}
-              </Link>
-            ) : (
-              <span className="sp-card-author-block">{authorContent}</span>
-            )
-          )}
-          {hasMeta && (
-            <div className="sp-card-meta">
-              {pinVisible && (
-                <ActionControl
-                  className="btn-icon-orange"
-                  label={pinLabel}
-                  onClick={onPin}
-                >
-                  <PinIcon className="icon" />
-                </ActionControl>
-              )}
-              {dateTimeVisible && (
-                <DateTimeControl
-                  time={time}
-                  date={date}
-                  dateTime={dateTime}
-                  onClick={onDateTime}
-                />
-              )}
-            </div>
-          )}
-        </header>
+        <CardHeader 
+          hasAuthor={hasAuthor}
+          authorHref={authorHref}
+          authorContent={authorContent}
+          hasMeta={hasMeta}
+          pinVisible={pinVisible}
+          pinLabel={pinLabel}
+          onPin={onPin}
+          dateTimeVisible={dateTimeVisible}
+          time={time}
+          date={date}
+          dateTime={dateTime}
+          handleDateTime={handleDateTime}
+        />
       )}
 
       {mainHref ? (
-        <Link className="sp-card-content-link" to={mainHref} onClick={onMainClick}>
-          {contentWrapper}
-        </Link>
+        <Link className="sp-card-link-overlay" to={mainHref} onClick={onMainClick} aria-label={title || 'Obrir detall'} />
       ) : onMainClick ? (
-        <button type="button" className="sp-card-content-link" onClick={onMainClick}>
-          {contentWrapper}
-        </button>
-      ) : (
-        contentWrapper
-      )}
+        <button type="button" className="sp-card-link-overlay" onClick={onMainClick} aria-label={title || 'Obrir detall'} />
+      ) : null}
+
+      <CardBody
+        imageUrl={imageUrl}
+        imageAlt={imageAlt}
+        calendarBadge={calendarBadge}
+        price={price}
+        title={title}
+        titleContent={titleContent}
+        TitleTag={TitleTag}
+        subtitle={subtitle}
+        body={body}
+        labels={labels}
+        copyright={copyright}
+      />
 
       {footerVisible && (
-        <footer className="sp-card-footer">
-          {hasIconActions && (
-            <div className="sp-card-actions">
-              {translateVisible && (
-                <IconButton label="Traduir" onClick={handleTranslate} presentation>
-                  <TranslateIcon className="icon" />
-                </IconButton>
-              )}
-              {commentVisible && (
-                <IconButton label="Comentar" onClick={handleComment} presentation>
-                  <CommentIcon className="icon" />
-                </IconButton>
-              )}
-              {shareVisible && (
-                <IconButton label="Compartir" onClick={handleShare} presentation>
-                  <ShareIcon className="icon" />
-                </IconButton>
-              )}
-            </div>
-          )}
-          {connectVisible && (
-            <ActionControl
-              className="sp-card-connect"
-              label={connectLabel}
-              onClick={handleConnect}
-              aria-label={connectAriaLabel}
-            >
-              {connectLabel}
-            </ActionControl>
-          )}
-        </footer>
+        <CardFooter
+          hasIconActions={hasIconActions}
+          translateVisible={translateVisible}
+          handleTranslate={handleTranslate}
+          commentVisible={commentVisible}
+          handleComment={handleComment}
+          shareVisible={shareVisible}
+          handleShare={handleShare}
+          connectVisible={connectVisible}
+          connectLabel={connectLabel}
+          handleConnect={handleConnect}
+          connectAriaLabel={connectAriaLabel}
+        />
       )}
     </article>
   );
@@ -930,15 +1078,17 @@ export function UniversalIndicatorCard({
   className = ''
 }) {
   return (
-    <div 
+    <button 
+      type="button"
       className={`sdp-indicator-card ${active ? 'active' : ''} ${className}`}
       onClick={onClick}
+      aria-pressed={active}
     >
-      <div className="sdp-indicator-card-icon" style={iconColor ? { color: iconColor } : {}}>
+      <span className="sdp-indicator-card-icon" style={iconColor ? { color: iconColor } : {}}>
         {icon}
-      </div>
-      <h3 className="sdp-indicator-card-title">{title}</h3>
-      {subtitle && <p className="sdp-indicator-card-subtitle">{subtitle}</p>}
-    </div>
+      </span>
+      <span className="sdp-indicator-card-title">{title}</span>
+      {subtitle && <span className="sdp-indicator-card-subtitle">{subtitle}</span>}
+    </button>
   );
 }

@@ -1,38 +1,41 @@
 ---
-estat: "canonic"
-tipus: "skill"
-description: "Manual operatiu de plaquetes.mjs v1.1: el Sistema Immunitari que diagnostica ferides del graf (fantasmes, orfes). IMPORTANT: L'script és 100% Read-Only. Les mutacions les executa l'Agent mitjançant les eines de l'IDE complint el protocol Reflex."
-temes: ["sistema"]
+name: socdepoble-autosanacio
+lang: en
+description: "Audits the Sóc de Poble graph in read-only mode and generates a verifiable plan for unresolved links, orphans, and empty notes. Use when graph hygiene or repair is requested."
+triggers_ca: ["autosanacio", "reparar graf", "orfes", "enllaços trencats"]
+triggers_en: ["graph hygiene", "orphans", "repair links"]
+version: 2.0.0
+status: canonic
+abast: ["global"]
 ---
 
-# Sistema Immunitari — Les Plaquetes 🩸
+# Graph Auto-Healing (Immune System)
 
-`plaquetes.mjs` circula pel vault com les plaquetes per la sang: detecta ferides (nodes fantasma, fitxers orfes), i proposa la coagulació en una **RECEPTA** llegible.
-**IMPORTANT:** El script no té capacitats destructives ni de modificació (`bash`, `git rm`). Qualsevol canvi suggerit pel diagnòstic HA DE SER APLICAT per l'agent a través de l'IDE (`replace_file_content` o `write_to_file`), obeint el protocol Reflex en tot moment.
+## Contract and Authority
 
-## Flux d'execució
+This skill executes graph diagnostics. Diagnostics are **100% READ_ONLY**. The audit generates an issue list and never mutates files directly. 
+If the canonical auditor is unavailable or a precondition fails, return ERROR or NOT_RUN, never PASS. Do not deceive the user with false greens.
 
-```
-diagnostic ──▶ RECEPTA (JSON, dry-run: 0 escriptures al vault)
-                 │
-                 ▼  l'humà o l'agent LLIG la recepta
-Aprovació  ──▶  L'Agent muta els fitxers afectats mitjançant eines de l'IDE 
-                (write_to_file / replace_file_content). Muta el codi sota 
-                les lleis del Protocol Reflex.
-```
+## Diagnostic Execution (Phase 1)
 
-## Les cinc línies roges (Lleis de la IAIA MarIA)
+Use system tools to analyze the state of knowledge (e.g., searching for broken wikilinks, unlinked orphans, or empty pages).
 
-| # | Línia roja | On es força al codi |
-|---|---|---|
-| R1 | L'script NO muta arxius | Mai permetre que scripts generin mutacions bypassant l'agent. |
-| R2 | Protocol Reflex obligatori | Tot canvi el fa l'agent demanant permís de mutació mitjançant Reflex. |
-| R3 | Res s'esborra mai | L'agent mou (re-etiqueta o mou a quarantena), mai `rm` excepte si està expressament indicat. |
-| R4 | El reparador no s'opera a si mateix | Cap script ni agent pot escriure a `scripts/immunitari/`, `.git/`. |
-| R5 | Canaris i zones delegades intocables | `ignoraObjectius`, `exclouFonts` s'han de respectar. |
+For each detected issue, indicate:
+- Error identifier and severity.
+- File/line and evidence.
+- Classification: ghost (unresolved link), ambiguous, orphan, empty, or exclusion.
+- Proposed solution, confidence level of your proposal, and alternatives.
+- Files that would change and rollback proof.
 
-## Operacions del catàleg v1 (Executades per l'Agent, no per l'script)
+**Diagnostic Limits:** Do not invent destinations just to make an error disappear quickly. Do not rewrite a link purely based on name similarity without being certain. Respect canaries, exclusions, and Escriptori zones.
 
-- **LAPIDA** — l'agent substitueix cada `[[fantasma]]` per `[[00_MEMORIAL_Lapides#fantasma|àlies †]]` (l'àlies original es preserva) i erigeix la secció corresponent al Memorial amb origen i línia. Narrativa preservada sense mentir al graf. Els incrustats `![[...]]` mai es toquen.
-- **ADOPTA** — l'agent afegeix l'orfe amb contingut a la secció «Adopcions de Les Plaquetes» de l'índex configurat.
-- **QUARANTENA** — l'agent reanomena fitxers buits o els desplaça, conservant la ruta relativa.
+## Applying Solutions (Phase 2)
+
+Applying the recommended solutions or recipes from the diagnostic is a completely different **SOURCE_MUTATION** operation. To execute it, you must comply with the Universal Workflow:
+1. Re-audit the state if time has passed since the original audit.
+2. Request permission from the Master with a clear plan (`implementation_plan.md` or a sealed Petorreta).
+3. Obtain authorization / lease from the Reflex protocol.
+4. Apply the changes with the appropriate tools.
+5. Verify the resulting graph.
+
+Quarantine can only affect exact and recoverable targets. Code or notes are never deleted without Reflex and explicit confirmation.

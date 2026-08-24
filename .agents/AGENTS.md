@@ -15,6 +15,15 @@ En cas de conflicte, preval este ordre:
 L’última acta no és automàticament autoritat. Un mirall o fitxer generat mai
 supera la seua font.
 
+## 🛑 Protocol d'Arrencada Obligatori (Anti-Amnèsia)
+
+Abans de respondre a qualsevol tasca complexa o arquitectònica en una nova sessió, l'agent HA DE:
+1. Llegir `_wiki_de_poble/00_INDEX_MESTRE.md` sencer.
+2. Llegir `disseny_pedra_seca.html` (si la tasca és visual).
+3. Llegir `src/universal/UniversalComponents.jsx` i `src/css/index.css`.
+4. Confirmar verbalment: “Context carregat: [X] fitxers, [Y] tokens aproximats”.
+5. Si falta algun fitxer de l’índex, demanar-lo. Mai inventar.
+
 ## Arquitectura vigent
 
 - Servidor/Supabase és la font canònica de dades compartides.
@@ -28,6 +37,7 @@ Vegeu `ADR-2026-08-ONLINE-FIRST.md` i la seua nota sobre NLnet.
 ## Treball
 
 - Inspecciona abans d’editar.
+- **NO ESBORRES MAI una carpeta "mal col·locada" o brossa aparent sense abans llistar i inspeccionar què hi ha dins (ex: `ls -la`).** Si hi ha arxius (PDFs, documents, etc.), MOURE'LS a la seua carpeta correcta abans d'eliminar el contenidor. Si no saps on van, PREGUNTA. No faces `rm -rf` a cegues: raona com un humà.
 - Mantín un únic lloc per a cada regla.
 - Fes canvis menuts, reversibles i verificats.
 - No declares implementat res sense ruta executable i prova.
@@ -55,3 +65,35 @@ i elimina la documentació que ja no és certa.
 ## 🤖 MODO JARVIS (Automatització Proactiva)
 
 No faces que l'usuari treballe per a tu. Si has d'executar un comandament, arrencar un servidor (`npm start`), comprovar l'estat d'una tasca, o fer canvis de fitxers, **FES-HO TU MATEIXA** usant les teues eines (`run_command`, etc.). El temps humà és or, els tokens de l'API són barats. Assumeix la responsabilitat plena d'actuar per estalviar temps a l'usuari.
+
+## Disseny Pedra Seca: Regla de Capçaleres (H1 i H2)
+
+El marc principal (decoratiu) de la pàgina (`header.page-title`) està dissenyat exclusivament per albergar l'element `<h1>` i els seus elements immediats relacionats (imatge superior, i possibles etiquetes/categories inferiors). 
+
+**Norma Estructural:**
+- **SÍ**: L'`<h1>` va dins del `header.page-title`.
+- **MAI**: L'`<h2>` i la seua entradilla (el `p.lead` que l'acompanya normalment per davall) NO poden anar mai dins d'aquest marc. Han de situar-se sempre FORA del `header.page-title`, agrupats en un contenidor (per exemple, `div.sdp-text-center`) directament en el cos de la pàgina, just davall de la capçalera principal.
+
+- **Espaiat Harmònic**: El marge inferior de  s'ha de mantindre contingut (ex:  en comptes d'excessos de 16). Igualment, el contenidor de l'H2 i entradilla tindrà un marge inferior màxim de  per a no allunyar-lo excessivament del primer contingut ().
+
+- **Espaiat Harmònic**: El marge inferior de `header.page-title` s'ha de mantindre contingut (ex: `var(--sdp-space-8)` en comptes d'excessos de 16). Igualment, el contenidor de l'H2 i entradilla tindrà un marge inferior màxim de `sdp-mb-6` per a no allunyar-lo excessivament del primer contingut (`H3`).
+
+## Protocol de Tancament de Sessió (Neteja Automàtica)
+
+Abans de donar per finalitzada qualsevol sessió de treball (Tancament / Acta de la Marmota), l'agent **HA DE**:
+1. Esborrar fitxers HTML temporals, `.diff` residuals o arxius brossa de la Bandeja d'Entrada.
+2. Moure tots els scripts temporals d'un sol ús (`fix_*.py`, `clean_*.py`, etc.) creats a l'arrel cap a un subdirectori dins de `90_arxiu_historic/`.
+3. Assegurar que l'Escriptori i el directori arrel queden totalment nets de "punts separats" i brossa per a l'inici de la sessió de l'endemà.
+
+## Integració amb Sollutia (Llei de l'Enxufabilitat)
+- **Màxim respecte al codi base:** El sistema de disseny Pedra Seca i qualsevol component nou han de ser **100% enxufables (pluggables)** a l'arquitectura creada per Sollutia.
+- **Zero fricció de manteniment:** Mai hem d'alterar l'estructura core de manera que Sollutia no puga mantindre-la. Els nostres canvis han de ser un "pegat" net o un mòdul aïllat (per exemple, encapsulat al Shadow DOM) que convisca pacíficament amb el seu ecosistema.
+- **Adaptabilitat crítica:** Ens adaptem nosaltres a la seua plataforma, no ells a les nostres dèries. És crític per a la viabilitat del projecte mantindre la seua col·laboració tècnica sense posar-los obstacles.
+
+## 📋 Format de Còpia i Enganxa (Zero Fricció)
+SEMPRE que hages de proporcionar un text, missatge, prompt o qualsevol contingut perquè l'usuari el copie i l'enganxe a una altra IA (o a un altre lloc), HAS de posar-lo DINS D'UN BLOC DE CODI MARKDOWN (amb \`\`\`) per facilitar-li un sol clic de "Copiar".
+- A més, DINS del bloc de codi NO POT HAVER CAP text conversacional teu (ex: "Ací tens Javi:" o "Salutacions Consell,").
+- El bloc de codi ha de contindre ÚNICA I EXCLUSIVAMENT allò que s'ha de copiar. Mínima fricció humana.
+
+## Protecció del Treball no Commitejat (Regla Anti-Destrucció)
+Mai executaràs `git checkout HEAD <arxiu>`, `git restore`, `git reset --hard` ni `git clean` sense haver comprovat primer `git status`. El treball local, no guardat i no commitejat del Mestre és SAGRAT. Abans d’intentar qualsevol "fix" que implique desfer canvis o restaurar des de Git, has de preguntar, o si més no, fer una còpia de seguretat local prèvia de l’arxiu en perill.

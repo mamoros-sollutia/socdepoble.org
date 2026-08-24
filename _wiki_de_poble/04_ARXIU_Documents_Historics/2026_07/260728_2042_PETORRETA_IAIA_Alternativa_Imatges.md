@@ -37,7 +37,7 @@ Aquest fitxer rep el missatge de WhatsApp (de l'adaptador Baileys que ja és tot
 export function createCervellHandler(cervell) {
   if (!cervell || typeof cervell.pensa !== 'function') throw new TypeError('El cervell ha d’implementar pensa');
   return async function handleInbound(envelope) {
-    const { text, audio, image, sendProgress, signal, senderJid, chatJid } = envelope;
+    const {  audio, image, sendProgress, signal, senderJid, chatJid } = envelope;
     let question = typeof text === 'string' ? text.trim() : '';
     let audioBytes = null;
     try {

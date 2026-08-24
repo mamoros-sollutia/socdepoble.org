@@ -1,0 +1,64 @@
+---
+estat: "canonic"
+tipus: "normativa"
+description: "Lleis de pas i manual d'integració Plug & Play entre el mòdul Pedra Seca i la SPA React de Sollutia."
+---
+# 📜 LLEIS DE PAS: MANUAL D'INTEGRACIÓ REACT / PEDRA SECA 📜
+
+**Document vinculant per a l'equip de Sollutia sobre la implementació del mòdul "Pedra Seca" al seu motor React.**
+
+Aquest document estableix el contracte d'integració definitiu. Pedra Seca ja no es lliura com a "plantilles HTML/CSS per muntar", sinó com a una **llibreria React** autònoma, empaquetada i aïllada. L'equip de Sollutia actua com a Host i només ha d'importar el mòdul i proveir la configuració.
+
+---
+
+### LLEI 1: El Component Mestre (`PedraSecaEmbed`)
+
+Sollutia NO ha de reconstruir el JSX ni cridar a `createRoot`. L'única via vàlida d'integració és importar el component `<PedraSecaEmbed />` dins de l'arbre React de Sollutia.
+
+* **Ús previst:**
+  ```jsx
+  import PedraSecaEmbed from '@socdepoble/dist/pedraseca.js'; // O la ruta npm/local corresponent
+  import { BrowserRouter } from 'react-router-dom';
+  import '@socdepoble/src/css/index.css'; // O el CSS final compilat
+
+  function AppSollutia() {
+    return (
+      <BrowserRouter>
+        {/* Sollutia pot muntar Pedra Seca on vulgui */}
+        <PedraSecaEmbed 
+          config={{
+            basePath: '/social', // Opcional: on es munta el sub-ruter
+            supabaseUrl: import.meta.env.VITE_SUPABASE_URL,
+            supabaseAnonKey: import.meta.env.VITE_SUPABASE_ANON_KEY
+          }}
+        />
+      </BrowserRouter>
+    );
+  }
+  ```
+* **Enrutament:** Pedra Seca confia que Sollutia provingui el context del `BrowserRouter` (s'ofereix `react-router-dom` com a `peerDependency`).
+* **Configuració (`externalConfig`):** Tot allò que Sollutia vulgui sobreescriure (claus de Supabase, ruta base) s'ha de passar a través de la propietat `config`.
+
+### LLEI 2: La Frontera del Mas (`.sdp-root`)
+
+Per evitar que els estils antics de Sollutia o llibreries externes xoquin amb la puresa de la "Pedra Seca", tota la UI del mòdul renderitza dins d'un contenidor principal amb la classe `.sdp-root`.
+
+* **Encapsulament CSS:** Tots els tokens, regles de reset i estils dels components de Pedra Seca vénen prefixats per `.sdp-root`. No hi ha cap modificació d'estils globals sobre `html` o `body`.
+* **Zero Interferències:** Sollutia té la garantia que carregar l'CSS de Pedra Seca no trencarà la resta de la seva aplicació.
+* **Prohibició de Mutació:** Sollutia no pot sobreescriure les classes internes (com `.sdp-card`) amb Tailwind o CSS extern. Qualsevol adaptació s'ha de fer passant paràmetres a la `config` o respectant les variables `--sdp-*`.
+
+### LLEI 3: Dependències i Vite
+
+* **Peer Dependencies:** El mòdul Pedra Seca requereix que Sollutia tingui instal·lat `react` (19.x), `react-dom` (19.x) i `react-router-dom` (7.x). No porta la seva pròpia instància de React per evitar errors d'hidratació o de duplicitat de Context.
+* **PWA / Service Worker:** Pedra Seca, quan es construeix internament, fa servir `vite-plugin-pwa`. Si Sollutia l'integra, Sollutia serà la responsable del seu propi Service Worker i manifest; Pedra Seca no forçarà la creació de workers globals per no entrar en conflicte amb els de Sollutia.
+
+### LLEI 4: Accessibilitat Innegociable (WCAG AA)
+
+Els tokens de Pedra Seca garanteixen un contrast mínim de 4.5:1 (WCAG AA) tant en mode clar com en mode fosc.
+* **Canvi de Tema:** Pedra Seca aplica el mode fosc assignant `data-theme="dark"` a la seva arrel `.sdp-root`, mai al `body` general. Açò vol dir que Sollutia pot tindre un tema diferent a la resta de la pàgina, i Pedra Seca mantindrà l'aïllament del seu tema.
+
+### LLEI 5: Aïllament Estricte de Rutes Absolutes
+
+Dins del mòdul Pedra Seca, no existeixen referències forçades a arrels absolutes (excepte si es configuren). Qualsevol crida a recursos com imatges serà tractada amb imports de Vite (per exemple, `import logo from './assets/img/logo.svg'`) perquè la ruta es resolgui correctament quan Sollutia construeixi el seu paquet.
+
+***Aquesta normativa invalida protocols antics on es requeria que Sollutia convertís HTML a JSX. Avui, la integració és Plug & Play.***

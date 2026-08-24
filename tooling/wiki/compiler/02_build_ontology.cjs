@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 const fs = require('fs').promises;
-const path = require('path');
+const path = require('node:path');
+const { WIKI_DIR } = require('../lib/project_paths.cjs');
 const crypto = require('crypto');
 const { isUtf8 } = require('buffer');
 const SCHEMA = require('../schema.json');
@@ -369,7 +370,7 @@ async function main() {
   const args = process.argv.slice(2);
   const wikiArg = args.find(argument => argument.startsWith('--wiki='));
   const requestedRoot = path.resolve(
-    wikiArg ? wikiArg.slice('--wiki='.length) : path.resolve(__dirname, '../../../_wiki_de_poble')
+    wikiArg ? wikiArg.slice('--wiki='.length) : WIKI_DIR
   );
   const wikiRoot = await fs.realpath(requestedRoot);
   const buildDir = path.join(wikiRoot, '_build');

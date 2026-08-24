@@ -35,7 +35,7 @@ Escriu exactament com modifiquem la funció `pensa()`.
 ### 3. `bot/cervell_bridge.mjs` (La Cirurgia del Pont)
 Escriu el codi corregit de `handleInbound()`.
 - Unifica el contracte de retorn d'imatges: que reba el `base64` de Gemini i el retorne convertit a `Buffer` cap a Baileys de manera segura.
-- Si l'usuari envia una foto sense text, injecta automàticament "Ajuda'm amb esta imatge".
+- Si l'usuari envia una foto sense  injecta automàticament "Ajuda'm amb esta imatge".
 - Afig el bloc `finally { ... }` per esborrar explícitament els fitxers temporals d'àudio que es generen en la transcripció i evitar fuites de dades.
 
 No doneu consells genèrics, escriviu el **codi de producció en JavaScript (Node.js)** llest per a copiar i pegar. Ens hi juguem els 50.000€!

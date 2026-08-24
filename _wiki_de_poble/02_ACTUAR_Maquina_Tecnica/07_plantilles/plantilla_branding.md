@@ -25,7 +25,7 @@ Els únics logos vàlids per al projecte s'ubiquen a `public/assets/system/ui/`.
 - **Rectangular Estàndard:** `/assets/system/ui/logo-socdepoble-rect.svg`
 
 ## MISSIÓ DEL PROTOCOL
-Recursos mestres per a forçar la consistència en tot el contingut generat (disseny, text i estructura). Aquest protocol és el filtre sagrat abans de qualsevol acte.
+Recursos mestres per a forçar la consistència en tot el contingut generat (disseny i estructura). Aquest protocol és el filtre sagrat abans de qualsevol acte.
 
 ## 1. ESTIL VISUAL (JSON)
 ```json
@@ -38,8 +38,8 @@ Recursos mestres per a forçar la consistència en tot el contingut generat (dis
     "neutral": "rgb(255, 255, 255)"
   },
   "typography": {
-    "headings": "Roboto",
-    "body": "Roboto",
+    "headings": "Noto Sans",
+    "body": "Noto Sans",
     "base_size": "19px"
   },
   "geometry": {

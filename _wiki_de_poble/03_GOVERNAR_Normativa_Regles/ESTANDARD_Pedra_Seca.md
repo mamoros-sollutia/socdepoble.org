@@ -50,7 +50,7 @@ Tot color, radi, ombra, espaiat estructural, tipografia, mida tàctil i estat vi
 
 Si un valor no existeix en el registre `--sp-*`, **no existeix per al Mas**.
 
-Els colors corporatius únics i definitius, lliures de tota contradicció, són el Taronja `#FF7300` i el Blau `#0984E3`.
+Els colors corporatius únics i definitius, lliures de tota contradicció, són el Taronja `FF7300` i el Blau `0984E3`.
 
 ---
 

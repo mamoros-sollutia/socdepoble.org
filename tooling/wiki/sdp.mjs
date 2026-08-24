@@ -15,7 +15,7 @@ const COMMAND_MAP = {
   gc: 'tombstone_gc.mjs', // esporgadora de làpides CRDT
   repair: 'self_repair.mjs', // Autosanació: frontmatter + títols termodinàmics febles
   'self-repair': 'self_repair.mjs',
-  search: 'edge_rag.mjs', // cercador semàntic local TF-IDF
+  search: 'search_cli.mjs', // cercador semàntic local TF-IDF
   'a11y-seo': 'a11y_seo.mjs', // informe parcial; mai certificació global
   design: 'design_guard.mjs'
 };

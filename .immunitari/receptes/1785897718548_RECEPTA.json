@@ -1,0 +1,15 @@
+{
+  "id": "R-1785897718547",
+  "data": "2026-08-05T02:41:58.547Z",
+  "operacions": [
+    {
+      "id": "OP-001",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/00_INDEX.md",
+      "objectius": [
+        "carmen_tattoos_naming"
+      ],
+      "hashFont": "2b916ea2bdaaec26c932b13a1814ef08400768e2351e7f69417d726e1f91ac40"
+    }
+  ]
+}

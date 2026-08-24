@@ -96,7 +96,7 @@ Verify document-level accessibility settings often missed in component testing u
 
 If standard a11y queries fail or the `evaluate_script` snippets return unexpected results:
 
-- **Visual Inspection**: If automated scripts cannot determine contrast (e.g., text over gradient images or complex backgrounds), use `take_screenshot` to capture the element. While models cannot measure exact contrast ratios from images, they can visually assess legibility and identify obvious issues.
+- **Visual Inspection**: If automated scripts cannot determine contrast (e.g. over gradient images or complex backgrounds), use `take_screenshot` to capture the element. While models cannot measure exact contrast ratios from images, they can visually assess legibility and identify obvious issues.
 
 
 ---

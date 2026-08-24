@@ -32,7 +32,7 @@ export default function MultimediaSection() {
             <div className="media-frame" style={{ aspectRatio: '1 / 1' }}>
               <img src={featured.src} alt={featured.title} />
             </div>
-            <div className="card__body" style={{ display: 'grid', alignContent: 'center' }}>
+            <div className="sdp-grid" style={{ '--sdp-grid-cols': 2, gap: 'var(--sdp-space-4)' }}>
               <span className="badge" style={{ width: 'fit-content' }}>{featured.tag}</span>
               <h2 className="card__title" style={{ marginTop: 14 }}>{featured.title}</h2>
               <p className="card__text">

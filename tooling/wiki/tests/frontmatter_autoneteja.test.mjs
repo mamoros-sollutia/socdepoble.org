@@ -13,7 +13,7 @@ import {
   liveMarkdown,
   applyAuditPlan,
 } from '../autoneteja_wiki.mjs';
-import { determinarCarpeta, validarFrontmatter } from '../entropia_zero_router.js';
+import { determinarCarpeta, validarFrontmatter } from '../entropia_zero_router.mjs';
 
 test('frontmatter buit, CRLF i llistes en bloc són vàlids', () => {
   const empty = parseFrontmatter('---\n---\n# Títol');

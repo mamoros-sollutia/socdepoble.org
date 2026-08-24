@@ -195,7 +195,7 @@ INSTRUCCIONS DE RESPOSTA:
       text = (response.text ?? '').trim();
     }
 
-    return { text, imatgePrompt };
+    return {  imatgePrompt };
   } catch (error) {
     return { text: "Xiquet, ara mateix tinc el cap atabalat. Torna a provar després.", imatgePrompt: null };
   }
@@ -205,7 +205,7 @@ INSTRUCCIONS DE RESPOSTA:
 #### 3. bot/cervell_bridge.mjs
 ```javascript
 export function createCervellHandler(cervell) {
-  return async function handleInbound({ text, audio, image, sendProgress, signal, envelope }) {
+  return async function handleInbound({  audio, image, sendProgress, signal, envelope }) {
     let question = text;
     if (audio) question = await cervell.transcribeAudio(audio.bytes, audio.mimeType, { signal });
     if (typeof question !== 'string' || !question.trim()) return null;

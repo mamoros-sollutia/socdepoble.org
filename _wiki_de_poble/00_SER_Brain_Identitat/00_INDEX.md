@@ -74,3 +74,6 @@ L’estat del graf no es manté en una llista manual: el calcula l’Autoneteja 
 ---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]
+## 🪞 Mirall d'Agents i Skills
+Aquest directori està generat automàticament des de l'arrel oculta `.agents`. Conté l'índex per lligar tot al graf de coneixement.
+- [[00_INDEX_MIRROR]]

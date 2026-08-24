@@ -96,7 +96,7 @@ const ARBITRARY_VALUE = /(?:\[[^\]]+\]|#[0-9a-fA-F]{3,8}|\/\d+)$/;
 
 function parseArgs(argv) {
   const options = {
-    root: process.cwd(),
+    root: process.env.SDP_PROJECT_DIR || process.cwd(),
     strict: false,
     json: false,
     aplana: true,

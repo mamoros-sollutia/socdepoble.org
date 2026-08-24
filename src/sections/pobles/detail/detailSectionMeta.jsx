@@ -7,7 +7,7 @@ export function buildPoblesDetailSectionMeta({ towns = [], t }) {
     label: t('section.detail.pobles.label', 'Poble'),
     listPath: '/pobles',
     items: towns,
-    getTitle: (item) => item.title || item.name || t('section.detail.pobles.itemTitle', 'Poble'),
+    getTitle: (item) => item.author || `Gent de ${item.title || item.name || t('section.detail.pobles.itemTitle', 'Poble')}`,
     getSubtitle: (item) => item.post_subtitle || item.content || '',
     getImage: (item) => item.image_url || null,
     renderBody: (item) => (

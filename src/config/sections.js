@@ -1,6 +1,6 @@
 import { BrainCircuit, CalendarDays, FileText, GalleryVerticalEnd, LandPlot, MapPinned, Newspaper, NotebookPen, Palette, Route, ShieldCheck, ShoppingCart, Waves, MessageSquare, Wifi } from 'lucide-react';
 
-export const SECTION_ORDER = ['xat', 'mur', 'mercat', 'pobles', 'events', 'mapa', 'multimedia', 'notes', 'dispositius', 'projecte', 'constitucio', 'disseny', 'skills', 'ia', 'roadmap', 'legal'];
+export const SECTION_ORDER = ['xat', 'mur', 'mercat', 'pobles', 'multimedia', 'notes', 'dispositius', 'projecte', 'constitucio', 'disseny', 'skills', 'ia', 'roadmap', 'versions', 'legal'];
 
 export const SECTIONS = [
   { id: 'xat', path: '/chat', label: 'Xat', shortLabel: 'Xat', icon: MessageSquare, kind: 'xat' },
@@ -16,8 +16,9 @@ export const SECTIONS = [
   { id: 'constitucio', path: '/constitucio', label: 'Constitució', shortLabel: 'Lleis', icon: ShieldCheck, kind: 'text', pageKey: 'constitucio' },
   { id: 'disseny', path: '/disseny', label: 'Disseny', shortLabel: 'Disseny', icon: Palette, kind: 'text', pageKey: 'disseny' },
   { id: 'skills', path: '/skills', label: 'Skills', shortLabel: 'Skills', icon: Waves, kind: 'text', pageKey: 'skills' },
-  { id: 'ia', path: '/ia', label: "L'ànima de la iaia", shortLabel: 'IAIA', icon: BrainCircuit, kind: 'ia' },
+  { id: 'ia', path: '/ia', label: "L'ànima de la iaia", shortLabel: 'IAIA', icon: BrainCircuit, kind: 'text', pageKey: 'anima' },
   { id: 'roadmap', path: '/roadmap', label: 'Full de ruta', shortLabel: 'Ruta', icon: Route, kind: 'text', pageKey: 'roadmap' },
+  { id: 'versions', path: '/versions', label: 'Versions', shortLabel: 'Versions', icon: FileText, kind: 'text', pageKey: 'versions' },
   { id: 'legal', path: '/legal', label: 'Legal i privacitat', shortLabel: 'Legal', icon: FileText, kind: 'text', pageKey: 'legal' }
 ];
 

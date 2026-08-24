@@ -7,21 +7,15 @@ const normalizeText = (value) =>
     .trim();
 
 const TOWN_FALLBACK_IMAGES = [
-  '/assets/uploads/poble/la-torre-de-les-macanes/img-la-torre-de-les-ma-anes-main.jpg',
-  '/assets/uploads/poble/penaguila/img-pen-guila-main.jpg',
-  '/assets/uploads/poble/benimassot/img-benimassot-main.jpg',
-  '/assets/uploads/poble/la-torre-de-les-macanes/P_20161028_153325_SRES.jpg',
-  '/assets/uploads/poble/la-torre-de-les-macanes/P_20161028_150735.jpg',
-  '/assets/uploads/poble/la-torre-de-les-macanes/toponim-la-torre-de-les-macanes-2048px.jpg',
-  '/assets/uploads/brain/hero_panoramic_landscape_1774710654078.png',
-  '/assets/uploads/brain/hero_panoramic_rural_view_1774720664221.png',
-  '/assets/uploads/brain/art_trellat_farmer_1774708525806.png',
-  '/assets/uploads/brain/nano_mercat_llaurador_1774197050578.png',
-  '/assets/uploads/brain/aplec_danses_1774952191348.png',
-  '/assets/uploads/brain/nano_mel_font_roja_1774216345755.png',
-  '/assets/uploads/brain/art_trellat_v2_1774708257858.png',
-  '/assets/uploads/brain/hero_serrella_comic_1774709602282.png',
-  '/assets/uploads/brain/nano_oli_oliva_1774198089084.png'
+  '/assets/img/hero_panoramic_landscape_1774710654078.png',
+  '/assets/img/hero_panoramic_rural_view_1774720664221.png',
+  '/assets/img/art_trellat_farmer_1774708525806.png',
+  '/assets/img/nano_mercat_llaurador_1774197050578.png',
+  '/assets/img/aplec_danses_1774952191348.png',
+  '/assets/img/nano_mel_font_roja_1774216345755.png',
+  '/assets/img/art_trellat_v2_1774708257858.png',
+  '/assets/img/hero_serrella_comic_1774709602282.png',
+  '/assets/img/nano_oli_oliva_1774198089084.png'
 ];
 
 function pickDeterministicImage(seed, options) {
@@ -37,7 +31,28 @@ function pickDeterministicImage(seed, options) {
   return list[hash % list.length];
 }
 
-function resolveTownImageUrl(value, context = '', seed = '') {
+export function resolveAsset(path, basePath = '/', pluginUrl = '', version = '') {
+  if (!path) return '';
+  if (/^https?:\/\//i.test(path)) return path;
+  
+  let base = String(basePath || '').replace(/\/$/, '');
+  if (base === '/') base = '';
+  if (pluginUrl) {
+    base = String(pluginUrl).replace(/\/$/, '');
+  }
+
+  if (typeof path !== 'string') {
+    path = String(path);
+  }
+  path = path.replace(/^\/+/, '');
+  
+  const separator = path.includes('?') ? '&' : '?';
+  const query = version ? `${separator}v=${version}` : '';
+  
+  return base ? `${base}/${path}${query}` : `/${path}${query}`;
+}
+
+function resolveTownImageUrl(value, context = '', seed = '', basePath = '/', pluginUrl = '', version = '') {
   const raw = String(value || '').trim();
   const text = normalizeText(`${raw} ${context}`);
 
@@ -45,25 +60,23 @@ function resolveTownImageUrl(value, context = '', seed = '') {
   if (
     raw &&
     !raw.startsWith('/assets/uploads/poble/') &&
-    !raw.startsWith('/assets/uploads/brain/') &&
+    !raw.startsWith('/assets/img/') &&
     !raw.startsWith('/assets/images/towns/')
   ) {
-    return raw;
+    return resolveAsset(raw, basePath, pluginUrl, version);
   }
 
-  if (text.includes('penaguila')) return '/assets/uploads/poble/penaguila/img-pen-guila-main.jpg';
-  if (text.includes('benimassot')) return '/assets/uploads/poble/benimassot/img-benimassot-main.jpg';
-  if (text.includes('la torre') || text.includes('torre de les macanes')) return '/assets/uploads/poble/la-torre-de-les-macanes/img-la-torre-de-les-ma-anes-main.jpg';
-  if (text.includes('benifallim')) return '/assets/uploads/brain/hero_panoramic_landscape_1774710654078.png';
-  if (text.includes('sella')) return '/assets/uploads/brain/nano_mercat_llaurador_1774197050578.png';
-  if (text.includes('orxeta')) return '/assets/uploads/brain/aplec_danses_1774952191348.png';
-  if (text.includes('relleu')) return '/assets/uploads/brain/nano_mel_font_roja_1774216345755.png';
-  if (text.includes('alcoleja')) return '/assets/uploads/brain/art_trellat_v2_1774708257858.png';
-  if (text.includes('xixona')) return '/assets/uploads/brain/hero_serrella_comic_1774709602282.png';
-  if (text.includes('tibi')) return '/assets/uploads/brain/nano_oli_oliva_1774198089084.png';
-  if (raw.startsWith('/assets/images/towns/')) return pickDeterministicImage(seed || text, TOWN_FALLBACK_IMAGES);
+  if (text.includes('benifallim')) return resolveAsset('/assets/img/hero_panoramic_landscape_1774710654078.png', basePath, pluginUrl, version);
+  if (text.includes('sella')) return resolveAsset('/assets/img/nano_mercat_llaurador_1774197050578.png', basePath, pluginUrl, version);
+  if (text.includes('orxeta')) return resolveAsset('/assets/img/aplec_danses_1774952191348.png', basePath, pluginUrl, version);
+  if (text.includes('relleu')) return resolveAsset('/assets/img/nano_mel_font_roja_1774216345755.png', basePath, pluginUrl, version);
+  if (text.includes('alcoleja')) return resolveAsset('/assets/img/art_trellat_v2_1774708257858.png', basePath, pluginUrl, version);
+  if (text.includes('xixona')) return resolveAsset('/assets/img/hero_serrella_comic_1774709602282.png', basePath, pluginUrl, version);
+  if (text.includes('tibi')) return resolveAsset('/assets/img/nano_oli_oliva_1774198089084.png', basePath, pluginUrl, version);
+  if (raw.startsWith('/assets/images/towns/')) return resolveAsset(pickDeterministicImage(seed || text, TOWN_FALLBACK_IMAGES), basePath, pluginUrl, version);
 
-  return pickDeterministicImage(seed || text, TOWN_FALLBACK_IMAGES);
+  return resolveAsset(pickDeterministicImage(seed || text, TOWN_FALLBACK_IMAGES), basePath, pluginUrl, version);
 }
 
 export { resolveTownImageUrl, TOWN_FALLBACK_IMAGES };
+

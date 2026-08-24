@@ -26,18 +26,20 @@ const PAGE_ROUTE_MAP = {
   ruta: '/roadmap',
   roadmap: '/roadmap',
   anima: '/ia',
-  ia: '/ia'
+  ia: '/ia',
+  legal: '/legal',
+  versions: '/versions'
 };
 const KNOWN_PAGE_SLUGS = new Set(Object.keys(PAGE_ROUTE_MAP));
 
 export const getSectionItemPath = (sectionId, itemId) => {
   if (sectionId === 'xat') {
-    return `/chats/${encodeURIComponent(String(itemId))}`;
+    return `/chat/${encodeURIComponent(String(itemId))}`;
   }
   return `/${sectionId}/${encodeURIComponent(String(itemId))}`;
 };
 
-export const getSectionListPath = (sectionId) => (sectionId === 'xat' ? '/chats' : `/${sectionId}`);
+export const getSectionListPath = (sectionId) => (sectionId === 'xat' ? '/chat' : `/${sectionId}`);
 
 export const getSectionItems = (sectionId) => SECTION_ITEMS[sectionId] || [];
 

@@ -94,7 +94,7 @@ def detect_fillers(transcription: list[dict]) -> list[dict]:
     Detecta muletilles en una transcripció amb timestamps.
     
     Args:
-        transcription: Llista de segments amb text, start_time, end_time
+        transcription: Llista de segments amb  start_time, end_time
     
     Returns:
         Llista de segments que contenen muletilles

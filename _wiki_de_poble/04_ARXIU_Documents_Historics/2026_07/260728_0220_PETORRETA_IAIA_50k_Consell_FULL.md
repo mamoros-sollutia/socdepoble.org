@@ -32,7 +32,7 @@ Vull que actueu com els arquitectes d'IA més potents del món. Us passe TOT el 
 
 Necessite que em proposeu:
 1. **Prompts del Sistema Revolucionaris:** Com estructurem la identitat de la IAIA perquè tinga "memòria episòdica" (sense trencar la privacitat) i siga una *veïna* que s'anticipa?
-2. **Ampliació de Funcionalitats (Beta Wow Factor):** Tenint accés complet a text, veu i imatge, quines funcionalitats he de programar hui mateix per al·lucinar els betatesters?
+2. **Ampliació de Funcionalitats (Beta Wow Factor):** Tenint accés complet a  veu i imatge, quines funcionalitats he de programar hui mateix per al·lucinar els betatesters?
 3. **Discurs per a la Subvenció:** Com empaquetem aquest avanç tecnològic de manera que cride l'atenció del tribunal europeu de "Territorios Inteligentes"?
 4. **Auditoria del Codi:** Reviseu el codi adjunt. Hi ha alguna vulnerabilitat, coll d'ampolla o millora d'arquitectura que hem de fer abans de llançar?
 
@@ -251,7 +251,7 @@ main().catch(err => {
 // bot/cervell.mjs — El cervell de la IAIA MarIA (agnòstic del transport)
 // Sóc de Poble · Pedra Seca
 //
-// Este mòdul NO sap res de WhatsApp. Rep text, torna text (i opcionalment una imatge).
+// Este mòdul NO sap res de WhatsApp. Rep  torna text (i opcionalment una imatge).
 // Així el transport (Baileys hui; Cloud API, Telegram o la mateixa PWA demà) és un
 // adaptador intercanviable de ~150 línies, no una reescriptura del bot.
 
@@ -353,7 +353,7 @@ Per exemple: Clar que sí xiquet, ara et mostre el poble nevat! [GENERA_IMATGE: 
       imatgePrompt = m[1].trim();
       text = text.replace(m[0], '').trim();
     }
-    return { text, imatgePrompt };
+    return {  imatgePrompt };
   } catch (error) {
     console.error('[CERVELL] Fallada al cridar a Gemini:', error);
     return {
@@ -427,7 +427,7 @@ export function createCervellHandler(cervell) {
     throw new TypeError('El cervell ha d’implementar answer(text)');
   }
 
-  return async function handleInbound({ text, audio, image, sendProgress, signal }) {
+  return async function handleInbound({  audio, image, sendProgress, signal }) {
     let question = text;
     if (audio) {
       if (typeof cervell.transcribeAudio !== 'function') {
@@ -1090,23 +1090,23 @@ function buildOutgoingContent(reply, config) {
 }
 
 export class HardenedBaileysAdapter {
-  #socket = null;
-  #generation = 0;
-  #lastClosedGeneration = 0;
-  #connectPromise = null;
-  #reconnectTimer = null;
-  #stableTimer = null;
-  #stopping = false;
-  #connected = false;
-  #halted = false;
-  #allowOutbound = true;
-  #limitsConfirmedGeneration = 0;
-  #stopPromise = null;
-  #credsError = null;
-  #unsafeSocketClose = false;
-  #socketEndPromises = new WeakMap();
-  #groupFetches = new Map();
-  #groupVersions = new Map();
+   = null;
+   = 0;
+   = 0;
+   = null;
+   = null;
+   = null;
+   = false;
+   = false;
+   = false;
+   = true;
+   = 0;
+   = null;
+   = null;
+   = false;
+   = new WeakMap();
+   = new Map();
+   = new Map();
 
   constructor({
     authState,
@@ -1197,7 +1197,7 @@ export class HardenedBaileysAdapter {
     };
   }
 
-  #notify(label, callback, value) {
+  (label, callback, value) {
     try {
       void Promise.resolve(callback(value)).catch((error) => {
         this.logger.warn(errorSummary(error), `Callback ${label} rebutjat`);
@@ -1207,7 +1207,7 @@ export class HardenedBaileysAdapter {
     }
   }
 
-  #endSocket(socket) {
+  (socket) {
     if (!socket) return Promise.resolve();
     let ending = this.#socketEndPromises.get(socket);
     if (!ending) {
@@ -1236,7 +1236,7 @@ export class HardenedBaileysAdapter {
     }
   }
 
-  #socketOptions(socketRef) {
+  (socketRef) {
     return {
       auth: {
         creds: this.authState.creds,
@@ -1251,7 +1251,7 @@ export class HardenedBaileysAdapter {
       enableAutoSessionRecreation: true,
       msgRetryCounterCache: this.retryCache,
       getMessage: async (key) => this.#getCachedMessage(key),
-      cachedGroupMetadata: async (jid) => this.#cachedGroupMetadata(jid, socketRef()),
+      cachedGroupMetadata: async (jid) => this.#cachedGroupMetadata(jidRef()),
       shouldIgnoreJid: (jid) =>
         isJidStatusBroadcast(jid) || isJidNewsletter(jid) || isJidBroadcast(jid),
       connectTimeoutMs: 30_000,
@@ -1259,7 +1259,7 @@ export class HardenedBaileysAdapter {
     };
   }
 
-  async #openSocket() {
+  async () {
     if (this.#stopping || this.#halted) return;
     if (this.#connectPromise) return this.#connectPromise;
     this.#connectPromise = (async () => {
@@ -1292,14 +1292,14 @@ export class HardenedBaileysAdapter {
       let socket;
       socket = this.socketFactory(this.#socketOptions(() => socket));
       this.#socket = socket;
-      this.#bindSocket(socket, generation);
+      this.#bindSocket(socket);
     })().finally(() => {
       this.#connectPromise = null;
     });
     return this.#connectPromise;
   }
 
-  #bindSocket(socket, generation) {
+  (socket) {
     socket.ev.process(async (events) => {
       // creds.update d'una socket acabada continua sent valuós. saveCreds
       // serialitza l'estat compartit actual, així que es processa abans del
@@ -1322,7 +1322,7 @@ export class HardenedBaileysAdapter {
         if (connection?.connection === 'close') this.#connected = false;
         return;
       }
-      if (connection) await this.#onConnectionUpdate(connection, generation);
+      if (connection) await this.#onConnectionUpdate(connection);
 
       const cap = events['message-capping.update'];
       if (cap) {
@@ -1349,7 +1349,7 @@ export class HardenedBaileysAdapter {
     });
   }
 
-  async #onConnectionUpdate(update, generation) {
+  async (update) {
     if (Object.hasOwn(update, 'reachoutTimeLock')) {
       const lock = update.reachoutTimeLock || { isActive: false };
       this.outbound.applyReachoutTimelock(lock);
@@ -1368,7 +1368,7 @@ export class HardenedBaileysAdapter {
       this.#reconnectTimer = null;
       clearTimeout(this.#stableTimer);
       this.#stableTimer = setTimeout(() => this.reconnectPolicy.opened(), 120_000);
-      void this.#finishOpening(this.#socket, generation);
+      void this.#finishOpening(this.#socket);
       return;
     }
     if (update.connection !== 'close') return;
@@ -1409,7 +1409,7 @@ export class HardenedBaileysAdapter {
     }, decision.delayMs);
   }
 
-  #scheduleOpenFailure(error) {
+  (error) {
     if (this.#stopping || this.#halted || this.#reconnectTimer) return;
     const decision = this.reconnectPolicy.decision(disconnectCode(error));
     if (!decision.reconnect) {
@@ -1430,8 +1430,8 @@ export class HardenedBaileysAdapter {
     }, decision.delayMs);
   }
 
-  async #finishOpening(socket, generation) {
-    const lockKnown = await this.#refreshAccountLimits(socket, generation);
+  async (socket) {
+    const lockKnown = await this.#refreshAccountLimits(socket);
     if (
       socket !== this.#socket ||
       generation !== this.#generation ||
@@ -1448,7 +1448,7 @@ export class HardenedBaileysAdapter {
     this.#notify('onReady', this.onReady, this.status);
   }
 
-  async #refreshAccountLimits(socket, generation) {
+  async (socket) {
     if (!socket || socket !== this.#socket) return false;
     const requestStartedAt = Date.now();
     const [lock, cap] = await Promise.allSettled([
@@ -1482,7 +1482,7 @@ export class HardenedBaileysAdapter {
     return lock.status === 'fulfilled' && Boolean(lock.value);
   }
 
-  #accept(message) {
+  (message) {
     if (!message?.message || !message.key?.id || message.key.fromMe) return;
     let address;
     try {
@@ -1506,11 +1506,11 @@ export class HardenedBaileysAdapter {
     });
   }
 
-  #groupIsAllowed(chatJid) {
+  (chatJid) {
     return this.config.allowAllGroups || this.allowedGroups.has(chatJid);
   }
 
-  #groupActivation(content, text) {
+  (content) {
     const context = contextOf(content);
     const ownIds = [this.#socket?.user?.id, this.#socket?.user?.lid].filter(Boolean);
     const mentioned = (context?.mentionedJid || []).some((jid) =>
@@ -1525,7 +1525,7 @@ export class HardenedBaileysAdapter {
     return { active: mentioned || quoted || commanded, commanded };
   }
 
-  async #process(message, address) {
+  async (message, address) {
     const eventId = eventIdOf(message);
     if (!(await this.replyLedger.claim(eventId))) return;
     const receivedAt = messageTimeMs(message);
@@ -1545,7 +1545,7 @@ export class HardenedBaileysAdapter {
           await this.replyLedger.markDone(eventId);
           return;
         }
-        const activation = this.#groupActivation(content, text);
+        const activation = this.#groupActivation(content);
         if (!activation.active) {
           await this.replyLedger.markDone(eventId);
           return;
@@ -1702,7 +1702,7 @@ export class HardenedBaileysAdapter {
     }
   }
 
-  #cacheMessage(message) {
+  (message) {
     if (!message?.key?.id || !message?.message) return Promise.resolve();
     return this.messageStore.set(message.key.id, message.message).catch((error) => {
       this.logger.error(errorSummary(error), 'No s’ha pogut persistir la cache de missatges');
@@ -1710,11 +1710,11 @@ export class HardenedBaileysAdapter {
     });
   }
 
-  async #getCachedMessage(key) {
+  async (key) {
     return this.messageStore.get(key?.id);
   }
 
-  async #cachedGroupMetadata(jid, socket) {
+  async (jid) {
     const cached = this.groupCache.get(jid);
     if (cached) return cached;
     if (!socket || socket !== this.#socket || !this.#connected) return undefined;
@@ -1724,7 +1724,7 @@ export class HardenedBaileysAdapter {
     if (existing?.generation === generation && existing?.version === version) {
       return existing.promise;
     }
-    const record = { generation, version, promise: null };
+    const record = {  version, promise: null };
     record.promise = socket
       .groupMetadata(jid)
       .then((metadata) => {
@@ -1744,18 +1744,18 @@ export class HardenedBaileysAdapter {
     return record.promise;
   }
 
-  #invalidateGroup(jid) {
+  (jid) {
     this.#groupVersions.set(jid, (this.#groupVersions.get(jid) || 0) + 1);
     this.groupCache.del(jid);
     this.#groupFetches.delete(jid);
   }
 
-  #putGroupMetadata(metadata) {
+  (metadata) {
     this.#invalidateGroup(metadata.id);
     this.groupCache.set(metadata.id, metadata);
   }
 
-  #fatal(error, context) {
+  (error, context) {
     if (this.#halted || this.#stopping) return;
     this.#halted = true;
     this.#connected = false;
@@ -1763,7 +1763,7 @@ export class HardenedBaileysAdapter {
     this.#reconnectTimer = null;
     this.inboundQueue.close();
     this.outbound.close();
-    // #performStop observa esta mateixa promesa i només allibera el lock si
+    //  observa esta mateixa promesa i només allibera el lock si
     // acaba satisfactòriament. Ací evitem una segona crida idempotent enganyosa.
     void this.#endSocket(this.#socket).catch(() => undefined);
     const wrapped = Object.assign(new Error(`${context}: ${error?.message || error}`), {
@@ -1783,7 +1783,7 @@ export class HardenedBaileysAdapter {
     return this.#stopPromise;
   }
 
-  async #performStop(reason) {
+  async (reason) {
     this.#stopping = true;
     clearTimeout(this.#reconnectTimer);
     clearTimeout(this.#stableTimer);
@@ -1792,7 +1792,7 @@ export class HardenedBaileysAdapter {
     const deadline = Date.now() + this.config.shutdownTimeoutMs;
     const remaining = () => Math.max(0, deadline - Date.now());
 
-    // #openSocket revalida #stopping després de cada await. Esperar-lo abans
+    //  revalida  després de cada await. Esperar-lo abans
     // d'alliberar el lock impedix crear una socket òrfena després del SIGTERM.
     const connecting = this.#connectPromise;
     let connectSettled = true;

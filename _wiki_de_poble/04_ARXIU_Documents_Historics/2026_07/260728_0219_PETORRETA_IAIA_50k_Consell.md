@@ -35,7 +35,7 @@ Vull que actueu com els arquitectes d'IA més potents del món per a dissenyar e
 
 Necessite que em proposeu:
 1. **Prompts del Sistema Revolucionaris:** Com estructurem la identitat de la IAIA perquè tinga "memòria episòdica" dels poblatans (sense trencar la privacitat) i no siga només un bot transaccional, sinó una *veïna* que s'anticipa?
-2. **Ampliació de Funcionalitats (Beta Wow Factor):** Tenint accés complet a text, veu i imatge (multimodal 100%), quines dues funcionalitats he de programar hui mateix perquè els meus betatesters al·lucinen demà?
+2. **Ampliació de Funcionalitats (Beta Wow Factor):** Tenint accés complet a  veu i imatge (multimodal 100%), quines dues funcionalitats he de programar hui mateix perquè els meus betatesters al·lucinen demà?
 3. **Discurs per a la Subvenció:** Com empaquetem aquest avanç tecnològic de manera que cride l'atenció del tribunal europeu de "Territorios Inteligentes"? Quines "buzzwords" i enfocaments reals (tecnologia comunitària, asimetria d'accés, IA frugal de poble) hem de destacar?
 
 *Consell, penseu en gran. Doneu-me idees potents, propostes de prompts per a injectar al codi, i el "storytelling" per a guanyar la subvenció. Som-hi!*

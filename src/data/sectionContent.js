@@ -1,6 +1,6 @@
 import { AGENT_LIST } from '../sections/profile/profileContent.js';
 import { CHAT_MESSAGES, CHAT_THREADS } from '../sections/xat/chatContent.js';
-import { EVENTS } from '../sections/events/eventsContent.js';
+import { EVENTS } from '../sections/mur/eventsContent.js';
 import { MARKET_ITEMS } from '../sections/mercat/marketContent.js';
 import { MEDIA_ITEMS } from '../sections/multimedia/mediaContent.js';
 import { FEED_POSTS } from '../sections/mur/feedContent.js';

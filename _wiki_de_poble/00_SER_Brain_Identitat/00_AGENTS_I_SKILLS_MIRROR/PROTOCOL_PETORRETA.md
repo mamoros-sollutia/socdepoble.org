@@ -1,18 +1,13 @@
 ---
-estat: canonic
-tipus: identitat
-description: Mirall automàtic de PROTOCOL_PETORRETA.md
-temes:
-- iaia-maria
-- sistema
-tags:
-- core
-- genoma
-- identitat
-- petorreta
-- skills
-- socdepoble
+estat: generat
+tipus: document
+description: Vista generada des de .agents/PROTOCOL_PETORRETA.md; no editar.
+source: .agents/PROTOCOL_PETORRETA.md
+source_sha256: 9809089bb77688e2a002da4594af4bddc3fe66a6a27e8d68a7b3a13bfbdf45b9
 ---
+
+> [!warning] FITXER GENERAT
+> Font canònica: `.agents/PROTOCOL_PETORRETA.md`. Qualsevol edició manual serà sobreescrita.
 
 # Protocol executable de Petorretas i Acte Reflex
 
@@ -49,7 +44,7 @@ La Petorreta mecànica d’una sessió del Reflex viu només en `.sdp-reflex/boo
 
 ## P-05. Context mínim i segur
 
-No es copia automàticament tota la Wiki. El manifest selecciona fonts rellevants amb `path`, `reason`, `classification` i `role` (`reference` o `target`). El Reflex limita el manifest a 25 fonts de text, 2 MiB per fitxer i 8 MiB totals; calcula hashes i rebutja binaris, duplicats, symlinks d’eixida i patrons bàsics de secrets, IBAN, correu, DNI/NIE i telèfon. És un filtre preventiu, no una garantia de redacció de tota PII; la revisió humana continua sent obligatòria abans de compartir context extern.
+No es copia automàticament tota la Wiki. El manifest selecciona fonts rellevants amb `path`, `reason`, `classification` i `role` (`reference` o `target`). El Reflex limita el manifest a 25 fonts de  2 MiB per fitxer i 8 MiB totals; calcula hashes i rebutja binaris, duplicats, symlinks d’eixida i patrons bàsics de secrets, IBAN, correu, DNI/NIE i telèfon. És un filtre preventiu, no una garantia de redacció de tota PII; la revisió humana continua sent obligatòria abans de compartir context extern.
 
 ## P-06. Mínim privilegi
 
@@ -81,13 +76,24 @@ L'arxiu massiu germà `_arxiu_wiki_de_poble` és custòdia humana externa i nom�
 
 ## P-11. Durabilitat i verd honest
 
-Existir al disc no equival a formar part del sistema durable. `doctor` ha de comprovar que regles, scripts, hooks i workflow CI crítics són fitxers físics vàlids i estan seguits per Git. Fins que un commit atòmic autoritzat els incorpore, el diagnòstic correcte és roig encara que totes les proves locals passen. Cap agent pot convertir eixe roig en verd relaxant el diagnòstic.
+Existir al disc no equival a formar part del sistema durable. `doctor` ha de
+comprovar que regles, scripts, hooks i workflow CI crítics són fitxers físics
+vàlids i estan seguits per Git. Fins que un commit atòmic autoritzat els
+incorpore, el diagnòstic correcte és roig encara que totes les proves locals
+passen. Cap agent pot convertir eixe roig en verd relaxant el diagnòstic.
 
 ## P-12. Temporals i derivats reproduïbles
 
-Les proves poden escriure exclusivament dins d’un directori temporal privat i eliminar-lo al final. Un build o instal·lació pot generar `node_modules`, `dist`, `_build`, cache o artefactes ignorats tant en local com dins d’un runner CI descartable, sempre amb lockfile congelat quan siga aplicable i sempre que no modifique fonts, lockfiles, índex Git, secrets, dades externes, publicacions ni desplegaments. Els scripts de lifecycle no poden tindre efectes externs no revisats. Eixos derivats no necessiten una Petorreta perquè no són estat autoritatiu i es poden regenerar. Qualsevol promoció d’un derivat a font, publicació o efecte extern torna immediatament a P-01.
-
+Les proves poden escriure exclusivament dins d’un directori temporal privat i
+eliminar-lo al final. Un build o instal·lació pot generar `node_modules`,
+`dist`, `_build`, cache o artefactes ignorats tant en local com dins d’un runner
+CI descartable, sempre amb lockfile congelat quan siga aplicable i sempre que
+no modifique fonts, lockfiles, índex Git, secrets, dades externes, publicacions
+ni desplegaments. Els scripts de lifecycle no poden tindre efectes externs no
+revisats. Eixos derivats no necessiten una Petorreta perquè no són estat
+autoritatiu i es poden regenerar. Qualsevol promoció d’un derivat a font,
+publicació o efecte extern torna immediatament a P-01.
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX_MIRROR]]

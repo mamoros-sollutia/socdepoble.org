@@ -4,30 +4,15 @@ const DEVICE_CONNECTIONS_KEY_PREFIX = 'socdepoble-device-connections-v1';
 const DEVICE_SELECTED_PEER_KEY_PREFIX = 'socdepoble-device-selected-peer-v1';
 const CHANNEL_NAME = 'socdepoble-device-bridge-v1';
 
+const getProfileKey = (tenantId) => `${DEVICE_PROFILE_KEY}-${tenantId}`;
+const getChatKey = (tenantId, deviceId) => `${DEVICE_CHAT_KEY_PREFIX}-${tenantId}::${deviceId}`;
+const getConnKey = (tenantId, deviceId) => `${DEVICE_CONNECTIONS_KEY_PREFIX}-${tenantId}::${deviceId}`;
+const getPeerKey = (tenantId, deviceId) => `${DEVICE_SELECTED_PEER_KEY_PREFIX}-${tenantId}::${deviceId}`;
+
 export const PRESENCE_HEARTBEAT_MS = 5000;
 export const PRESENCE_STALE_MS = 16000;
 
-const isBrowser = typeof window !== 'undefined';
-
-const readJson = (key, fallback) => {
-  if (!isBrowser) return fallback;
-  try {
-    const raw = window.localStorage.getItem(key);
-    if (!raw) return fallback;
-    return JSON.parse(raw);
-  } catch {
-    return fallback;
-  }
-};
-
-const writeJson = (key, value) => {
-  if (!isBrowser) return;
-  try {
-    window.localStorage.setItem(key, JSON.stringify(value));
-  } catch {
-    // Ignore storage errors for local live features.
-  }
-};
+import { getVal, setVal } from '../../config/storage.js';
 
 const randomToken = () => Math.random().toString(36).slice(2, 10);
 
@@ -40,7 +25,7 @@ const createDeviceId = () => {
 
 const buildDefaultName = () => `Portal ${randomToken().slice(0, 4).toUpperCase()}`;
 
-export function loadDeviceProfile() {
+export function loadDeviceProfile(tenantId) {
   const fallback = {
     id: createDeviceId(),
     name: buildDefaultName(),
@@ -48,7 +33,7 @@ export function loadDeviceProfile() {
     createdAt: Date.now()
   };
 
-  const stored = readJson(DEVICE_PROFILE_KEY, fallback);
+  const stored = getVal(getProfileKey(tenantId), fallback);
   const profile = {
     ...fallback,
     ...stored,
@@ -56,36 +41,36 @@ export function loadDeviceProfile() {
     name: stored?.name || fallback.name
   };
 
-  writeJson(DEVICE_PROFILE_KEY, profile);
+  setVal(getProfileKey(tenantId), profile);
   return profile;
 }
 
-export function saveDeviceProfile(profile) {
-  writeJson(DEVICE_PROFILE_KEY, profile);
+export function saveDeviceProfile(tenantId, profile) {
+  setVal(getProfileKey(tenantId), profile);
 }
 
-export function loadDeviceChats(deviceId) {
-  return readJson(`${DEVICE_CHAT_KEY_PREFIX}::${deviceId}`, {});
+export function loadDeviceChats(tenantId, deviceId) {
+  return getVal(getChatKey(tenantId, deviceId), {});
 }
 
-export function saveDeviceChats(deviceId, chats) {
-  writeJson(`${DEVICE_CHAT_KEY_PREFIX}::${deviceId}`, chats);
+export function saveDeviceChats(tenantId, deviceId, chats) {
+  setVal(getChatKey(tenantId, deviceId), chats);
 }
 
-export function loadDeviceConnections(deviceId) {
-  return readJson(`${DEVICE_CONNECTIONS_KEY_PREFIX}::${deviceId}`, {});
+export function loadDeviceConnections(tenantId, deviceId) {
+  return getVal(getConnKey(tenantId, deviceId), {});
 }
 
-export function saveDeviceConnections(deviceId, connections) {
-  writeJson(`${DEVICE_CONNECTIONS_KEY_PREFIX}::${deviceId}`, connections);
+export function saveDeviceConnections(tenantId, deviceId, connections) {
+  setVal(getConnKey(tenantId, deviceId), connections);
 }
 
-export function loadSelectedPeer(deviceId) {
-  return readJson(`${DEVICE_SELECTED_PEER_KEY_PREFIX}::${deviceId}`, '');
+export function loadSelectedPeer(tenantId, deviceId) {
+  return getVal(getPeerKey(tenantId, deviceId), '');
 }
 
-export function saveSelectedPeer(deviceId, peerId) {
-  writeJson(`${DEVICE_SELECTED_PEER_KEY_PREFIX}::${deviceId}`, peerId);
+export function saveSelectedPeer(tenantId, deviceId, peerId) {
+  setVal(getPeerKey(tenantId, deviceId), peerId);
 }
 
 export function createChatMessage({ sender, text, author }) {
@@ -98,12 +83,12 @@ export function createChatMessage({ sender, text, author }) {
   };
 }
 
-export function createDeviceBridge(selfDevice, handlers) {
-  if (!isBrowser || typeof BroadcastChannel === 'undefined') {
+export function createDeviceBridge(tenantId, selfDevice, handlers) {
+  if (typeof window === 'undefined' || typeof BroadcastChannel === 'undefined') {
     return null;
   }
 
-  const channel = new BroadcastChannel(CHANNEL_NAME);
+  const channel = new BroadcastChannel(`${CHANNEL_NAME}::${tenantId}`);
 
   const post = (payload) => {
     channel.postMessage({

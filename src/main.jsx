@@ -1,20 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
-import App from './app/App';
-import { AppDataProvider } from './app/AppDataContext';
-import './styles/global.css';
-import { registerSW } from 'virtual:pwa-register';
+import { defineCustomElement } from './PedraSecaEmbed';
 
-// Registre del Service Worker per garantir funcionament Offline-First
-registerSW({ immediate: true });
+defineCustomElement();
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <AppDataProvider>
-        <App />
-      </AppDataProvider>
-    </BrowserRouter>
-  </React.StrictMode>
-);
+// Per a l'entorn de desenvolupament local de Vite, simplement
+// instanciem l'element personalitzat al DOM, igual que faria WordPress.
+const arrel = document.getElementById('root');
+if (arrel && !arrel.innerHTML) {
+  const element = document.createElement('soc-de-poble');
+  // Afegim una configuració mock per a dev local i l'atribut de fonts
+  element.setAttribute('fonts-href', '/src/assets/fonts/noto-sans.css');
+  element.setAttribute('config', JSON.stringify({
+    pluginUrl: '/',
+    supabaseUrl: import.meta.env.VITE_SUPABASE_URL || '',
+  }));
+  arrel.appendChild(element);
+}

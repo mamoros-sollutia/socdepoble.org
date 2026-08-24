@@ -33,6 +33,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+require_once __DIR__ . '/inc/sdp-seo.php';
+require_once __DIR__ . '/inc/sdp-tema.php';
+
 const SDP_VERSIO           = '1.1.0';
 const SDP_HANDLE           = 'soc-de-poble';
 const SDP_OPCIO_PAGINA     = 'sdp_pagina_id';
@@ -93,45 +96,13 @@ function sdp_base_path() {
 	return '' === $prefix ? '/' : '/' . $prefix;
 }
 
-/* ──────────────────────────── Regles de reescriptura ───────────────────── */
-
-/**
- * Cedeix tot el que penja del prefix a React.
- *
- * NOTES DE DISSENY:
- *  - Sense `^` inicial: WP ja ancora amb `preg_match("#^$match#", ...)`.
- *  - `page_id` i no `pagename`: un slug canviat no ha de trencar el ruteig.
- *  - `sdp_ruta` deixa el subcamí llegible des de PHP (canonical, SEO, logs).
- *  - No pot xocar amb `/wp-json/`: el patró comença pel prefix i els reservats
- *    estan vetats a `sdp_prefix()`. La REST API de Sollutia queda intacta.
- */
-function sdp_registrar_regles() {
-	$prefix = sdp_prefix();
-	if ( '' === $prefix ) {
-		return;
-	}
-
-	add_rewrite_rule(
-		preg_quote( $prefix, '#' ) . '/(.+?)/?$',
-		'index.php?page_id=' . sdp_pagina_id() . '&sdp_ruta=$matches[1]',
-		'top'
-	);
-}
-add_action( 'init', 'sdp_registrar_regles', 20 );
-
-function sdp_query_vars( $vars ) {
-	$vars[] = 'sdp_ruta';
-	return $vars;
-}
-add_filter( 'query_vars', 'sdp_query_vars' );
-
 /**
  * PORTA MECÀNICA. Refresca les regles quan canvia la versió, la pàgina o el
  * prefix. Sense això, `add_rewrite_rule` és inert: WP llig l'opció
  * `rewrite_rules` en memòria cau i no la regenera mai tota sola.
  */
 function sdp_refrescar_regles_si_cal() {
-	$signatura = SDP_VERSIO . '|' . sdp_pagina_id() . '|' . sdp_prefix();
+	$signatura = SDP_VERSIO . '|' . md5( sdp_route_pattern() ) . '|' . sdp_pagina_id() . '|' . sdp_prefix();
 	if ( get_option( SDP_OPCIO_SIGNATURA ) === $signatura ) {
 		return;
 	}
@@ -159,36 +130,6 @@ function sdp_es_pagina_app() {
 	$id = sdp_pagina_id();
 	return $id && ( is_page( $id ) || sdp_es_ruta_react() );
 }
-
-/**
- * `redirect_canonical` veuria `/poble/mercat` com la pàgina `poble` i faria un
- * 301 cap a `/poble/`: el subcamí es perdria abans que React arrancara.
- * També forcem 200 explícit per si un altre connector ha marcat 404.
- */
-function sdp_protegir_ruta() {
-	if ( ! sdp_es_ruta_react() ) {
-		return;
-	}
-
-	remove_action( 'template_redirect', 'redirect_canonical' );
-
-	global $wp_query;
-	if ( $wp_query instanceof WP_Query ) {
-		$wp_query->is_404 = false;
-	}
-	status_header( 200 );
-}
-add_action( 'template_redirect', 'sdp_protegir_ruta', 0 );
-
-/** Canonical honest per als subcamins (Yoast/RankMath el respecten). */
-function sdp_canonical( $url ) {
-	if ( ! sdp_es_ruta_react() ) {
-		return $url;
-	}
-	return home_url( '/' . trim( sdp_prefix(), '/' ) . '/' . trim( (string) get_query_var( 'sdp_ruta' ), '/' ) . '/' );
-}
-add_filter( 'get_canonical_url', 'sdp_canonical', 20 );
-add_filter( 'wpseo_canonical', 'sdp_canonical', 20 );
 
 /* ─────────────────────────────── Actius ────────────────────────────────── */
 
@@ -234,13 +175,22 @@ add_action( 'wp_enqueue_scripts', 'sdp_encuar_aviat' );
 function sdp_render( $atts = array() ) {
 	$atts = shortcode_atts(
 		array(
-			'base_path' => sdp_base_path(),   // ABANS: '/' fix -> React no trobava cap ruta sota /poble/
+			'base_path' => '',
 			'data_mode' => 'remote',
 			'config'    => '',
 		),
 		$atts,
 		'soc_de_poble'
 	);
+
+	$base_path = trim( (string) $atts['base_path'] );
+
+	if ( '' === $base_path ) {
+		$base_path = sdp_base_path();
+	}
+
+	$base_path = '/' . trim( $base_path, '/' );
+	$atts['base_path'] = '/' === $base_path ? '/' : untrailingslashit( $base_path );
 
 	// Idempotent: si `sdp_encuar_aviat` ja ho ha fet, no passa res.
 	wp_enqueue_style( SDP_HANDLE . '-fonts' );
@@ -355,6 +305,9 @@ add_filter( 'template_include', 'sdp_force_blank_template' );
 /* ───────────────────── Ajust: quina pàgina és l'app ────────────────────── */
 
 function sdp_registrar_ajust() {
+	if ( ! is_admin() ) {
+		return;
+	}
 	register_setting(
 		'reading',
 		SDP_OPCIO_PAGINA,

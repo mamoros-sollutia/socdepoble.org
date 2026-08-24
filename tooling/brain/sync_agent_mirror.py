@@ -85,13 +85,24 @@ def source_mapping(root: Path, source_dir: str, mirror_dir: str) -> dict[Path, b
         source_name = f"{source_dir.rstrip('/')}/{relative.as_posix()}"
         source_bytes = source.read_bytes()
         source_text = source_bytes.decode("utf-8", errors="strict").replace("\r\n", "\n")
-        body = strip_frontmatter(source_text).strip() + "\n"
+        body = strip_frontmatter(source_text).strip() + "\n\n---\n\n**Ancoratge de Seguretat:** [[00_INDEX_MIRROR]]\n"
         rendered = HEADER.format(
             source=source_name,
             digest=digest_bytes(source_bytes),
         ) + body
         result[destination] = rendered.encode("utf-8")
+        
+    # GENERATE INDEX
+    index_destination = mirror_root / "00_INDEX_MIRROR.md"
+    index_content = "---\nestat: generat\ntipus: document\ndescription: Índex automàtic del mirall d'agents i skills.\n---\n\n# Índex del Mirall d'Agents\n\n"
+    for dest in sorted(result.keys()):
+        if dest.name != "00_INDEX_MIRROR.md" and dest.suffix == ".md":
+            index_content += f"- [[{dest.stem}]]\n"
+            
+    result[index_destination] = index_content.encode("utf-8")
+        
     return result
+
 
 
 def run(args: argparse.Namespace) -> int:

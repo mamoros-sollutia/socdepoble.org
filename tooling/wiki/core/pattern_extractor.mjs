@@ -2,8 +2,9 @@ import { readdir, readFile, realpath } from 'node:fs/promises';
 import path, { basename, join, relative, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { parseFrontmatter } from '../lib/frontmatter.mjs';
-import { validarFrontmatter } from '../entropia_zero_router.js';
+import { validarFrontmatter } from '../entropia_zero_router.mjs';
 import { isValidContentFile } from '../lib/termodinamic.mjs';
+import { PROJECT_DIR } from '../lib/project_paths.mjs';
 
 const ACTA_DIR = '04_ARXIU_Documents_Historics/actes_arxivades';
 const REGISTRE = '00_SER_Brain_Identitat/CORE_Registre_Automillora.md';
@@ -103,7 +104,7 @@ function hasPattern(md, text) {
 }
 
 export async function run(options = {}) {
-  const root = await realpath(resolve(options.root || process.cwd()));
+  const root = await realpath(resolve(options.root || PROJECT_DIR));
   const actaDir = join(root, options.actaDir || ACTA_DIR);
   if (!isInside(root, resolve(actaDir))) throw new Error(`Directori d'actes fora de la Wiki: ${actaDir}`);
   const registrePath = await resolveExistingInside(root, options.registre || REGISTRE, 'Registre');
@@ -156,7 +157,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
   }));
 
   run({
-    root: args.root || process.cwd(),
+    root: args.root || PROJECT_DIR,
     acta: args.acta,
     write: args.write === 'true',
     receipt: args.receipt,

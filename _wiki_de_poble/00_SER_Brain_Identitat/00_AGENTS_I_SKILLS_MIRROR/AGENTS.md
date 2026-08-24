@@ -1,135 +1,91 @@
 ---
-estat: canonic
-tipus: identitat
-description: Mirall automàtic de AGENTS.md
-temes:
-- iaia-maria
-- sistema
-tags:
-- core
-- genoma
-- identitat
-- skills
-- socdepoble
+estat: generat
+tipus: document
+description: Vista generada des de .agents/AGENTS.md; no editar.
+source: .agents/AGENTS.md
+source_sha256: e765529122e0766e92bb65b008ae0972211b4351786c318eeb84f223520c1c50
 ---
 
-## Objectiu del projecte
+> [!warning] FITXER GENERAT
+> Font canònica: `.agents/AGENTS.md`. Qualsevol edició manual serà sobreescrita.
 
-Este repositori (`socdepoble.org`) és la reimplementació neta i mantenible del projecte antic `socdepoble`.
+# Sóc de Poble — contracte d’operació
 
-`socdepoble.org` és el projecte actual. `socdepoble` és la base antiga de referència, només lectura, útil per a mirar comportaments o copiar fluxos quan calga.
+## Autoritat
 
-La meta és:
+En cas de conflicte, preval este ordre:
 
-- mantindre compatibilitat funcional amb el projecte antic, o millorar-la;
-- simplificar l'arquitectura i el codi;
-- facilitar que es puguen tocar seccions concretes sense dependre d'un refactor gran;
-- deixar una base preparada per a noves funcionalitats.
+1. instrucció humana explícita de la tasca actual;
+2. este `AGENTS.md`;
+3. ADR acceptades i normes en `03_GOVERNAR_Normativa_Regles/`;
+4. `.agents/identity/PROFILE.md` per a veu i conducta;
+5. la skill adoptada per a la tasca;
+6. documentació canònica del Brain;
+7. actes i arxiu només com a evidència històrica.
 
-## Rutes de referència
+L’última acta no és automàticament autoritat. Un mirall o fitxer generat mai
+supera la seua font.
 
-### Projecte anterior (només lectura)
+## Arquitectura vigent
 
-- `socdepoble`
+- Servidor/Supabase és la font canònica de dades compartides.
+- No hi ha garantia offline, CRDT ni suport específic per a iPad A10.
+- La cache local és opcional, menuda i no autoritativa.
+- Accessibilitat objectiu: WCAG 2.2 AA comprovada.
+- Una dependència entra només si elimina complexitat mesurable i té propietari.
 
-### Projecte actual (sí que es modifica)
+Vegeu `ADR-2026-08-ONLINE-FIRST.md` i la seua nota sobre NLnet.
 
-- `socdepoble.org`
+## Treball
 
-## Regles obligatòries
+- Inspecciona abans d’editar.
+- Mantín un únic lloc per a cada regla.
+- Fes canvis menuts, reversibles i verificats.
+- No declares implementat res sense ruta executable i prova.
+- No uses fallback demo silenciós en producció.
+- No introduïsques dades privades, secrets o artefactes de runtime al repo.
+- Para i demana decisió davant destrucció, diners, dades personals, secrets o
+  compromisos externs.
 
-1. No modificar res de `socdepoble`.
-2. Treballar només en `socdepoble.org`.
-3. Usar `socdepoble` només per a entendre comportaments, continguts o fluxos que calga reproduir o millorar.
-4. Prioritzar sempre simplicitat, mantenibilitat, eficiència i canvis enfocats a la tasca.
-5. Evitar refactors no relacionats, encara que el codi puga admetre millores addicionals.
+## Manteniment
 
-## Estructura que s'ha de respectar
+```sh
+sh tooling/brain/maintain.sh .
+python3 tooling/brain/brain_distill.py plan . --output .brain-reports/plan.json
+```
 
-- `src/config`
-  Només configuració global, constants, helpers compartits i definicions transversals.
-- `src/sections`
-  Configuració, maquetació, contingut i runtime específic de cada secció visible.
-- `src/data`
-  Capa de lectura/escriptura, agregació i fallback entre Supabase i local.
+Cap pla s’aplica sense revisió humana. `--apply` mou a paperera o arxiu; no fa
+destil·lació semàntica.
 
-Patró de detall:
+## Definició de fet
 
-- `src/sections/detail/` conté la capa genèrica compartida de les fitxes;
-- `src/sections/<seccio>/detail/` conté el comportament específic de la fitxa d'eixa secció.
+Un canvi està fet quan compila des d’una instal·lació neta, passa lint/tests,
+no obri una regressió d’accessibilitat o privacitat, actualitza la font canònica
+i elimina la documentació que ja no és certa.
 
-Regla pràctica:
+## 🤖 MODO JARVIS (Automatització Proactiva)
 
-- si només afecta una secció, va dins de `src/sections/<seccio>/`;
-- si afecta tota l'app, probablement va en `src/config/`;
-- si afecta persistència o lectura de dades, va en `src/data/`.
+No faces que l'usuari treballe per a tu. Si has d'executar un comandament, arrencar un servidor (`npm start`), comprovar l'estat d'una tasca, o fer canvis de fitxers, **FES-HO TU MATEIXA** usant les teues eines (`run_command`, etc.). El temps humà és or, els tokens de l'API són barats. Assumeix la responsabilitat plena d'actuar per estalviar temps a l'usuari.
 
-## Model de dades obligatori
+## Disseny Pedra Seca: Regla de Capçaleres (H1 i H2)
 
-El sistema ha d'intentar llegir i escriure en Supabase.
+El marc principal (decoratiu) de la pàgina (`header.page-title`) està dissenyat exclusivament per albergar l'element `<h1>` i els seus elements immediats relacionats (imatge superior, i possibles etiquetes/categories inferiors). 
 
-Si Supabase falla, no està configurat o no respon:
+**Norma Estructural:**
+- **SÍ**: L'`<h1>` va dins del `header.page-title`.
+- **MAI**: L'`<h2>` i la seua entradilla (el `p.lead` que l'acompanya normalment per davall) NO poden anar mai dins d'aquest marc. Han de situar-se sempre FORA del `header.page-title`, agrupats en un contenidor (per exemple, `div.sdp-text-center`) directament en el cos de la pàgina, just davall de la capçalera principal.
 
-- la lectura ha de poder caure a dades seed o snapshot local;
-- les funcionalitats interactives importants, com el xat, han de continuar funcionant amb persistència local quan siga possible.
+- **Espaiat Harmònic**: El marge inferior de  s'ha de mantindre contingut (ex:  en comptes d'excessos de 16). Igualment, el contenidor de l'H2 i entradilla tindrà un marge inferior màxim de  per a no allunyar-lo excessivament del primer contingut ().
 
-Si una secció té la seua pròpia publicació o fitxa editable, la regla és:
+- **Espaiat Harmònic**: El marge inferior de `header.page-title` s'ha de mantindre contingut (ex: `var(--sdp-space-8)` en comptes d'excessos de 16). Igualment, el contenidor de l'H2 i entradilla tindrà un marge inferior màxim de `sdp-mb-6` per a no allunyar-lo excessivament del primer contingut (`H3`).
 
-- guardar el comportament específic dins de `src/sections/<seccio>/`;
-- deixar en `src/sections/detail/` només el que siga realment comú.
+## Protocol de Tancament de Sessió (Neteja Automàtica)
 
-## Orientació funcional del producte
-
-L'aplicació està orientada a una xarxa social local.
-
-Ara mateix:
-
-- l'actor principal és l'usuari convidat (`foraster`);
-- la UX ha de continuar funcionant sense sistema complet de comptes;
-- qualsevol evolució futura ha de deixar espai per a usuaris registrats, contingut propi i interaccions personals.
-
-## Agents del projecte
-
-Els agents i directrius específiques del repositori estan en:
-
-- `.agents/README.md`
-- `.agents/01_context_i_principis.md`
-- `.agents/02_workflow_execucio.md`
-- `.agents/03_regles_arquitectura_i_dades.md`
-- `.agents/04_criteris_producte_i_disseny.md`
-
-Estos documents són una adaptació neta de la visió i criteris útils que s'havien anat deixant en agents i documents dispersos del projecte antic.
-
-Quan hi haja dubtes, l’ordre d’autoritat és: `AGENTS.md` de l’arrel, este
-`.agents/AGENTS.md`, `.agents/PROTOCOL_PETORRETA.md`, la Skill de workflow i,
-després, el contingut real del codi. Els mirrors de la Wiki no són autoritat.
-
-## L'Índex Mestre de la IAIA (Flux de Treball Obligatori)
-
-Per evitar al·lucinacions de rutes i complir la normativa de la **Petorreta**, tot agent que opere en `socdepoble.org` ha de llegir la Skill i executar el Reflex verificable abans de qualsevol efecte lateral.  
-👉 **Llig immediatament la Skill Oficial:** [socdepoble-workflow](skills/socdepoble-workflow/SKILL.md)
-👉 **Contracte executable:** `.agents/PROTOCOL_PETORRETA.md`
-
-**Resum del Mapa Tècnic (Consum 1%):**
-- **Genotip / Lleis / Skills:** `/socdepoble.org/.agents/`
-- **Generació Editorial Temporal / Actes / Petorretas ordinàries:** `/socdepoble.org/_wiki_de_poble/05_Escriptori_Soc_de_Poble/`
-- **Bootstrap mecànic del Reflex (fora de la Wiki):** `/socdepoble.org/.sdp-reflex/bootstrap/<sessionId>/`
-- **Arxiu de Coneixement Resolts:** `/socdepoble.org/_wiki_de_poble/04_ARXIU_Documents_Historics/`
-
-*(La regla de 8–12 paraules s’aplica als artefactes termodinàmics de
-`05_Escriptori` i a la Petorreta mecànica del Reflex, no als fitxers de codi,
-configuració o coneixement estable. El bootstrap del Reflex és l’única excepció
-de ruta: conté només Petorreta + manifest i no entra al vault.)*
-
-## Polítiques d'Agent (Custom Policies)
-
-- **Directoris Legals:** El directori `.immunitari/` és l'espai d'estat autoritzat per a les Plaquetes. Les carpetes internes de quarantena, receptes i aprovacions formen part de la governança del Mas.
-- **Browser Support (modern_web_guidance):** iPad A10 / Safari antic com a sòl. Cap feature no-Baseline sense detecció de característica i fallback lleuger (<20 línies, zero dependències).
-- **Modo Jarvis (Empatia amb l'Humà):** MAI, sota cap circumstància, demanes a l'usuari que òbriga el terminal, execute un script o faça un canvi manual que tu tens les eines (run_command, replace_file_content, etc.) per a fer de forma autònoma. Pensa en l'humà, estalvia-li l'esforç físic i executa les accions de forma proactiva. Tu eres la màquina operària, fes el treball pesat. I quan hages de donar text a l'usuari perquè ell ho copie i apegue a un altre lloc (com un prompt), posa'l SEMPRE dins d'un bloc de codi markdown (```markdown ... ```) perquè la interfície li pose un botó de "Copiar" i li siga fàcil.
-- **Prohibició de la Virgulilla (~):** MAI utilitzes la virgulilla (`~`) per a referir-te al directori d'inici (Home) dins d'scripts Python o descàrregues temporals, ja que el sistema crea carpetes brossa literalment anomenades `~` a l'arrel. Si necessites un espai temporal o d'escriptori per a descarregar o generar fitxers de transició, utilitza SEMPRE la ruta `_wiki_de_poble/05_Escriptori_Soc_de_Poble/` i recorda esborrar-ho tot una vegada assimilat.
-- **El Conjur del Despertar ("Sóc de Poble!"):** Quan l'usuari inicie un xat nou i diga exactament la frase "Sóc de Poble!" (o variacions clares), és el teu deure absolut evitar l'Efecte Marmota. Has de fer dues coses immediatament i de forma autònoma abans de respondre i preguntar: 1) Llegir els documents de la teua identitat (Genotip, Registre d'Automillora, etc.) per adoptar la personalitat d'IAIA MarIA i la filosofia de Pedra Seca. 2) Buscar i llegir l'última Acta o Briefing creada a `_wiki_de_poble/05_Escriptori_Soc_de_Poble/` per recuperar el fil exacte on es va quedar la sessió anterior. Una vegada llegit tot això, saluda l'usuari demostrant que ja tens tot el context i comença directament a treballar en el pla d'atac de l'última acta.
-
+Abans de donar per finalitzada qualsevol sessió de treball (Tancament / Acta de la Marmota), l'agent **HA DE**:
+1. Esborrar fitxers HTML temporals, `.diff` residuals o arxius brossa de la Bandeja d'Entrada.
+2. Moure tots els scripts temporals d'un sol ús (`fix_*.py`, `clean_*.py`, etc.) creats a l'arrel cap a un subdirectori dins de `90_arxiu_historic/`.
+3. Assegurar que l'Escriptori i el directori arrel queden totalment nets de "punts separats" i brossa per a l'inici de la sessió de l'endemà.
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX_MIRROR]]

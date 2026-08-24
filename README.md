@@ -6,9 +6,10 @@ description: "Documentació canònica de Sóc de Poble."
 # Sóc de Poble: Portal de Pobles Connectats
 **The Civic Hosting Stack for Rural Resilience**
 
-Sóc de Poble és una infraestructura digital integral "offline-first" dissenyada específicament per a garantir la resiliencia cívica dels municipis rurals. Aquest repositori (`socdepoble.org`) conté el *rebuild* net i l'evolució arquitectònica del projecte, orientant-lo cap a una xarxa descentralitzada (sincronització CRDT) i un desplegament declaratiu reproduïble (NixOS). 
+Sóc de Poble és una infraestructura digital cívica, concebuda i dissenyada mitjançant el [Sistema de Disseny Pedra Seca](/tooling/wiki/arquitectura/03-design.md).
+El projecte empra un empaquetament com a Llibreria (UMD/ESM) per oferir una integració fluïda i resistent en qualsevol lloc web (especialment WordPress), utilitzant Supabase com a font única de veritat.
 
-La missió és proporcionar una eina on l'intercanvi cultural federat (mitjançant Instàncies d'IA Local o "Iaias") i la comunicació cívica (alertes, agenda) puguen funcionar de manera autònoma, garantint la sobirania de dades fins i tot en cas d'aïllament digital del poble.
+La missió és proporcionar una eina on l'intercanvi cultural federat i la comunicació cívica (alertes, agenda) puguen funcionar de manera resilients, àgils i directes per al món rural.
 
 ## Estructura
 
@@ -26,12 +27,11 @@ pnpm dev
 ```
 
 La instal·lació només genera derivats ignorats i reproduïbles; no ha de canviar
-`package.json`, `pnpm-lock.yaml` ni l'índex Git. Els scripts de lifecycle o una
-instal·lació que faça efectes externs queden bloquejats pel protocol.
+`package.json`, `pnpm-lock.yaml` ni l'índex Git. S'exigeix l'ús de `pnpm` per al control estricte de dependències (monorepo).
 
 ## Base de dades
 
-El projecte està preparat per a usar Supabase com a BD remota.
+El projecte usa **Supabase** com a base de dades remota canònica i font única de veritat.
 
 ## Documentació
 
@@ -57,15 +57,12 @@ L'app admet `VITE_DATA_MODE` per a poder provar sense trencar la web:
 - `seed`
   Mostra dades del codi. Va bé per a demos o proves ràpides.
 
-- `local`
-  Carrega un snapshot complet de `localStorage` i el usa com a backend local de prova.
-
 Passos mínims:
 
 1. Crear un projecte a Supabase.
-2. Executar [supabase/schema.sql](supabase/schema.sql).
-3. Executar [supabase/seed.sql](supabase/seed.sql).
-4. Crear un `.env` basat en [.env.example](.env.example).
+2. Executar `supabase/schema.sql`.
+3. Executar `supabase/seed.sql`.
+4. Crear un `.env` basat en `.env.example`.
 5. Arrancar el projecte.
 
 Exemple de `.env`:
@@ -76,27 +73,11 @@ VITE_SUPABASE_ANON_KEY=your-anon-key
 VITE_DATA_MODE=auto
 ```
 
-Regenerar el SQL de dades seed és una mutació governada. Necessita una sessió
-Reflex segellada que declare l'operació `supabase-seed`, incloga
-`supabase/seed.sql` dins del seu scope i aporte el rebut vigent:
-
-```bash
-pnpm run db:seed:generate -- --receipt=.sdp-reflex/sessions/<session-id>.json
-```
-
-El generador valida el rebut abans de crear cap temporal i publica
-`supabase/seed.sql` de manera atòmica; si la validació o l'escriptura fallen,
-no deixa un seed parcial visible.
+Regenerar el SQL de dades seed és una mutació governada, que requereix el segell criptogràfic de `canonada.mjs`.
 
 ## Integritat de la Wiki
 
-La definició local de CI de `.github/workflows/wiki-integrity.yml` comprova els tests, l'auditoria estricta, les recaigudes de Robotomia, la prevalidació i `doctor --ci` contra la baseline segellada. Només quedarà activa en GitHub després de versionar-la i publicar-la; protegir la branca principal continua sent una decisió de governança separada.
-
-Un clon nou activa de forma idempotent l'estat privat i els hooks amb
-`pnpm run reflex:init`; després es diagnostica amb `pnpm run reflex:doctor`.
-`doctor` ha de continuar roig si les
-regles, scripts, cinc hooks o workflow encara no estan seguits per Git: existir
-al disc no equival a una protecció durable.
+La definició local de CI de `.github/workflows/wiki-integrity.yml` comprova l'auditoria estricta. Només quedarà activa en GitHub després de versionar-la.
 
 ## Privacitat i la "Gestoria de Poble"
 

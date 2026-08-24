@@ -19,15 +19,29 @@ export const WRITE_ZONES = {
     '03_GOVERNAR_Normativa_Regles'
   ],
   archive: ['04_ARXIU_Documents_Historics'],
+  ephemeral: ['05_Escriptori_Soc_de_Poble'],
   generated: [
     '_build',
     '.snapshots'
   ]
 };
 
+import { realpathSync } from 'node:fs';
+
 export function resolveInside(root, target, label = 'path') {
-  const rootAbs = resolve(root);
-  const abs = isAbsolute(target) ? resolve(target) : resolve(rootAbs, target);
+  const rootAbs = realpathSync(resolve(root));
+  let abs = isAbsolute(target) ? resolve(target) : resolve(rootAbs, target);
+
+  try {
+    abs = realpathSync(abs);
+  } catch (e) {
+    // Si no existeix encara, resolem pare
+    try {
+      const parentReal = realpathSync(dirname(abs));
+      abs = join(parentReal, basename(abs));
+    } catch (e2) {}
+  }
+
   const rel = relative(rootAbs, abs);
 
   if (rel === '' || rel.startsWith('..') || isAbsolute(rel)) {
@@ -82,7 +96,7 @@ export async function atomicWriteFile(path, data, options = {}) {
 
   try {
     if (backup) await rename(path, backup);
-    await writeFile(tmp, data, options.encoding || undefined);
+    await writeFile(tmp, data, { encoding: options.encoding || 'utf8', flag: 'wx' });
     await rename(tmp, path);
 
     if (backup && !options.keepBackup) await rm(backup, { force: true });
@@ -162,6 +176,7 @@ export async function withRollback(root, name, fn) {
       const fromAbs = resolveInside(root, from, 'transaction move from');
       const toAbs = resolveInside(root, to, 'transaction move to');
       await this.backup(fromAbs);
+      if (await exists(toAbs)) await this.backup(toAbs);
       await mkdir(dirname(toAbs), { recursive: true });
       await rename(fromAbs, toAbs);
       touched.push({ movedFrom: fromAbs, movedTo: toAbs });

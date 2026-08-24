@@ -1,13 +1,15 @@
 // Dades de mercat recuperades de la versió original.
 export const MOCK_MARKET_ITEMS = [{
-  id: 'samarreta-soc-de-poble',
+  id: 'samarreta-socdepoble',
   type: 'product',
   title: 'Samarreta Sóc de Poble',
-  description: "L'edició definitiva amb el Logotip Complet (Mapa del Tresor). Cotó Roly de màxima qualitat. #MapaDelTresor #SócDePoble",
+  subtitle: "L'edició definitiva amb el logotip complet",
+  description: "Mapa del tresor sobre cotó resistent. La imatge complementa el text, no el substituïx.",
   price: '15.00€',
   seller: 'Sóc de Poble',
   avatar_url: '/assets/system/ui/logo-socdepoble-cuadrat-verd.svg',
   author_name: 'Sóc de Poble',
+  population: 'La Torre de les Maçanes',
   author_role: 'business',
   author_id: 'soc-de-poble_official',
   author_entity_id: 'socdepoble',
@@ -32,5 +34,5 @@ export const MOCK_MARKET_ITEMS = [{
   pinned_position: 1,
   lat: 38.5582,
   lng: -0.4413,
-  created_at: '2026-03-22T22:33:00.000Z'
+  created_at: '2026-08-15T12:33:00.000Z'
 }];
