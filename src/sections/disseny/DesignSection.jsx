@@ -1,7 +1,7 @@
 import React from 'react';
 import { UniversalPage, UniversalCard } from '../../components/universal/UniversalComponents.jsx';
 import { buildMapEmbedUrl } from '../mur/mapConfig';
-import '../../pages/features/sosp-components.css';
+
 
 export default function DesignSection() {
   return (

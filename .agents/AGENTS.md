@@ -26,9 +26,9 @@ Abans de respondre a qualsevol tasca complexa o arquitectònica en una nova sess
 
 ## Arquitectura vigent
 
-- Servidor/Supabase és la font canònica de dades compartides.
-- No hi ha garantia offline, CRDT ni suport específic per a iPad A10.
-- La cache local és opcional, menuda i no autoritativa.
+- Servidor/Supabase i Sollutia són la font de veritat canònica absoluta (Online-First).
+- S'abandona oficialment qualsevol arquitectura CRDT o local-first. Sense connexió a xarxa, el sistema no preten ser funcional ni resilient, per tant no es requereix guardar estat d'usuari (estalvi dràstic de complexitat).
+- La memòria cau local (localStorage) és exclusivament tèrmica i descartable, usada únicament per optimitzar el rendiment (carregues ràpides inicials) i mai com a font autoritativa ni per emmagatzematge permanent.
 - Accessibilitat objectiu: WCAG 2.2 AA comprovada.
 - Una dependència entra només si elimina complexitat mesurable i té propietari.
 
@@ -82,7 +82,7 @@ El marc principal (decoratiu) de la pàgina (`header.page-title`) està dissenya
 
 Abans de donar per finalitzada qualsevol sessió de treball (Tancament / Acta de la Marmota), l'agent **HA DE**:
 1. Esborrar fitxers HTML temporals, `.diff` residuals o arxius brossa de la Bandeja d'Entrada.
-2. Moure tots els scripts temporals d'un sol ús (`fix_*.py`, `clean_*.py`, etc.) creats a l'arrel cap a un subdirectori dins de `90_arxiu_historic/`.
+2. Moure tots els scripts temporals d'un sol ús (`fix_*.py`, `clean_*.py`, etc.) creats a l'arrel directament FORA del sistema cap a `../_arxiu_wiki_de_poble/` (o esborrar-los directament). El directori `90_arxiu_historic/` no s'ha d'embrutar per no engreixar l'arbre viu de la Wiki.
 3. Assegurar que l'Escriptori i el directori arrel queden totalment nets de "punts separats" i brossa per a l'inici de la sessió de l'endemà.
 
 ## Integració amb Sollutia (Llei de l'Enxufabilitat)

@@ -176,7 +176,7 @@
 
   /* Mètriques del layout */
   --sdp-ctrl-vw: clamp(320px, 100vw, 1024px);
-  --sdp-ctrl-scale: calc((var(--sdp-ctrl-vw) - 320px) / (1024 - 320));
+  --sdp-ctrl-scale: calc((var(--sdp-ctrl-vw) - 320px) / (1024px - 320px));
   --sdp-step-0: calc(14px + (16 - 14) * var(--sdp-ctrl-scale));
   --sdp-space-base: var(--sdp-step-0);
 
@@ -655,7 +655,7 @@ header.bar-black {
 .bar-black .right-icons .icon { width: var(--sdp-touch); height: var(--sdp-touch); padding: 6px; opacity: 0.8; cursor: pointer; transition: opacity var(--sdp-t), transform var(--sdp-t); }
 .bar-black .right-icons .icon:hover { opacity: 1; transform: translateY(-1px); }
 .bar-black .right-icons .icon img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block; }
-.bar-black .right-icons .icon:has(img) { width: 48px; height: 48px; }
+.bar-black .right-icons .icon.has-img { width: 48px; height: 48px; }
 @keyframes sdp-iaia-pulse {
   0% { opacity: 1; transform: scale(1); }
   50% { opacity: 0.5; transform: scale(0.95); }
@@ -1278,7 +1278,7 @@ details[open] summary.accordion-header svg:last-child { transform: rotate(180deg
 .sp-card-media { width: 100%; aspect-ratio: 1 / 1; display: block; object-fit: cover; object-position: top; background: var(--sdp-fons-subtil); }
 
 .sp-card-body { padding: 22px 24px 16px; text-align: left; position: relative; min-width: 0; }
-.sp-card-body:has(.sp-card-title:only-child) { text-align: center; }
+.sp-card-body.has-only-title { text-align: center; }
 .sp-card-title { font-size: 1.4rem; color: var(--sdp-accio-text); font-weight: 800; line-height: var(--sdp-leading-tight); margin: 0 0 var(--sdp-space-2) 0; flex: 1; text-align: center; }
 
 .sp-card-main-button, .sp-card-main-link {
@@ -1338,20 +1338,20 @@ details[open] summary.accordion-header svg:last-child { transform: rotate(180deg
   text-align: center;
 }
 /* Si hi ha preu o etiqueta a dalt a la dreta, tot s'alinea a l'esquerra per a equilibrar el pes visual */
-.sp-card .sp-card-body:has(.sp-card-price) h1,
-.sp-card .sp-card-body:has(.sp-card-price) h2,
-.sp-card .sp-card-body:has(.sp-card-price) .sp-card-title,
-.sp-card .sp-card-body:has(.sp-card-price) .sp-card-subtitle,
-.sp-card-body:has(.sp-card-price) p:not(.sp-card-copyright),
-.sp-card-body:has(.sp-card-price) .sp-card-text,
-.sp-card-body:has(.sp-card-price) .sp-card-labels,
-.sp-card .sp-card-body:has(.sp-card-calendar-badge) h1,
-.sp-card .sp-card-body:has(.sp-card-calendar-badge) h2,
-.sp-card .sp-card-body:has(.sp-card-calendar-badge) .sp-card-title,
-.sp-card .sp-card-body:has(.sp-card-calendar-badge) .sp-card-subtitle,
-.sp-card-body:has(.sp-card-calendar-badge) p:not(.sp-card-copyright),
-.sp-card-body:has(.sp-card-calendar-badge) .sp-card-text,
-.sp-card-body:has(.sp-card-calendar-badge) .sp-card-labels {
+.sp-card .sp-card-body.has-price h1,
+.sp-card .sp-card-body.has-price h2,
+.sp-card .sp-card-body.has-price .sp-card-title,
+.sp-card .sp-card-body.has-price .sp-card-subtitle,
+.sp-card-body.has-price p:not(.sp-card-copyright),
+.sp-card-body.has-price .sp-card-text,
+.sp-card-body.has-price .sp-card-labels,
+.sp-card .sp-card-body.has-calendar-badge h1,
+.sp-card .sp-card-body.has-calendar-badge h2,
+.sp-card .sp-card-body.has-calendar-badge .sp-card-title,
+.sp-card .sp-card-body.has-calendar-badge .sp-card-subtitle,
+.sp-card-body.has-calendar-badge p:not(.sp-card-copyright),
+.sp-card-body.has-calendar-badge .sp-card-text,
+.sp-card-body.has-calendar-badge .sp-card-labels {
   text-align: left;
   margin-left: 0;
   margin-right: 0;
@@ -1607,7 +1607,7 @@ nav.mobile-nav { display: none; }
     transition: opacity var(--sdp-t-lenta);
     z-index: var(--z-vel);
   }
-  :host(:has(.app-sidebar.sidebar-open))::after {
+  :host(.has-sidebar-open)::after {
     opacity: 1;
     pointer-events: auto;
   }

@@ -98,8 +98,6 @@ function obtenirFull() {
 
 /* ─────────────────────── Fonts al document (P0-3) ──────────────────────── */
 
-let sdpInstanceCount = 0;
-
 function carregarFonts(href) {
   if (!href || typeof document === 'undefined') return;
   if (!document.querySelector(`link[data-sdp-fonts="${CSS.escape(href)}"]`)) {
@@ -112,7 +110,9 @@ function carregarFonts(href) {
 }
 
 function descarregarFonts(href) {
-  if (!href || typeof document === 'undefined' || sdpInstanceCount > 0) return;
+  if (!href || typeof document === 'undefined') return;
+  const numInstancies = document.getElementsByTagName('soc-de-poble').length;
+  if (numInstancies > 0) return;
   const link = document.querySelector(`link[data-sdp-fonts="${CSS.escape(href)}"]`);
   if (link) link.remove();
 }
@@ -140,7 +140,6 @@ class SocDePobleElement extends BaseElement {
     super();
     this._config = {};
     this._configProp = {};
-    this._lastConfigHash = null;
     this._root = null;
     this._punt = null;
     this._desmuntatge = null;
@@ -157,7 +156,6 @@ class SocDePobleElement extends BaseElement {
   }
 
   connectedCallback() {
-    sdpInstanceCount++;
     
     /* P0-2: cancel·la un desmuntatge pendent si tornem a entrar al DOM. */
     if (this._desmuntatge !== null) {
@@ -249,11 +247,20 @@ class SocDePobleElement extends BaseElement {
       rawConfig.pluginUrl = this.getAttribute('plugin-url');
     }
     
-    const configHash = JSON.stringify(rawConfig);
+    let canviat = false;
+    if (!this._config || Object.keys(rawConfig).length !== Object.keys(this._config).length) {
+      canviat = true;
+    } else {
+      for (const key in rawConfig) {
+        if (rawConfig[key] !== this._config[key]) {
+          canviat = true;
+          break;
+        }
+      }
+    }
 
-    if (configHash !== this._lastConfigHash) {
-      this._lastConfigHash = configHash;
-      this._config = JSON.parse(configHash);
+    if (canviat) {
+      this._config = { ...rawConfig };
     }
     carregarFonts(this._config.fontsHref);
   }
@@ -266,7 +273,6 @@ class SocDePobleElement extends BaseElement {
   }
 
   disconnectedCallback() {
-    sdpInstanceCount--;
     if (this._config.fontsHref) {
       descarregarFonts(this._config.fontsHref);
     }
