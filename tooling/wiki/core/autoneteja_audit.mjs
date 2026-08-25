@@ -29,6 +29,7 @@ import {
 } from '../lib/frontmatter.mjs';
 import { discoverMarkdown, zoneOf, runId, treeDigest, treeDigestEntries, isMutableZone } from './corpus_snapshot.mjs';
 import { buildGraph, validateCanonical, canonicalFrontmatter, sourceShapeErrors, contentClassification } from './parse.mjs';
+import { assertUnchanged, requireReceipt, atomicWrite, writeManifest, acquireMutationLock, assertSchemaCutoverReady, safetyDirFor, writeNewFile, completeReceiptClaim } from './mutation_kernel.mjs';
 import {
   PROJECT_DIR,
   TOOLING_WIKI_DIR,

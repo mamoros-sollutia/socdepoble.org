@@ -3,7 +3,7 @@ estat: generat
 tipus: document
 description: Vista generada des de .agents/AGENTS.md; no editar.
 source: .agents/AGENTS.md
-source_sha256: e765529122e0766e92bb65b008ae0972211b4351786c318eeb84f223520c1c50
+source_sha256: 0af5796187e344a69f88279922c60ad8b301e6cfd31dbf37b6103af341246614
 ---
 
 > [!warning] FITXER GENERAT
@@ -26,6 +26,15 @@ En cas de conflicte, preval este ordre:
 L’última acta no és automàticament autoritat. Un mirall o fitxer generat mai
 supera la seua font.
 
+## 🛑 Protocol d'Arrencada Obligatori (Anti-Amnèsia)
+
+Abans de respondre a qualsevol tasca complexa o arquitectònica en una nova sessió, l'agent HA DE:
+1. Llegir `_wiki_de_poble/00_INDEX_MESTRE.md` sencer.
+2. Llegir `disseny_pedra_seca.html` (si la tasca és visual).
+3. Llegir `src/universal/UniversalComponents.jsx` i `src/css/index.css`.
+4. Confirmar verbalment: “Context carregat: [X] fitxers, [Y] tokens aproximats”.
+5. Si falta algun fitxer de l’índex, demanar-lo. Mai inventar.
+
 ## Arquitectura vigent
 
 - Servidor/Supabase és la font canònica de dades compartides.
@@ -39,6 +48,7 @@ Vegeu `ADR-2026-08-ONLINE-FIRST.md` i la seua nota sobre NLnet.
 ## Treball
 
 - Inspecciona abans d’editar.
+- **NO ESBORRES MAI una carpeta "mal col·locada" o brossa aparent sense abans llistar i inspeccionar què hi ha dins (ex: `ls -la`).** Si hi ha arxius (PDFs, documents, etc.), MOURE'LS a la seua carpeta correcta abans d'eliminar el contenidor. Si no saps on van, PREGUNTA. No faces `rm -rf` a cegues: raona com un humà.
 - Mantín un únic lloc per a cada regla.
 - Fes canvis menuts, reversibles i verificats.
 - No declares implementat res sense ruta executable i prova.
@@ -85,6 +95,19 @@ Abans de donar per finalitzada qualsevol sessió de treball (Tancament / Acta de
 1. Esborrar fitxers HTML temporals, `.diff` residuals o arxius brossa de la Bandeja d'Entrada.
 2. Moure tots els scripts temporals d'un sol ús (`fix_*.py`, `clean_*.py`, etc.) creats a l'arrel cap a un subdirectori dins de `90_arxiu_historic/`.
 3. Assegurar que l'Escriptori i el directori arrel queden totalment nets de "punts separats" i brossa per a l'inici de la sessió de l'endemà.
+
+## Integració amb Sollutia (Llei de l'Enxufabilitat)
+- **Màxim respecte al codi base:** El sistema de disseny Pedra Seca i qualsevol component nou han de ser **100% enxufables (pluggables)** a l'arquitectura creada per Sollutia.
+- **Zero fricció de manteniment:** Mai hem d'alterar l'estructura core de manera que Sollutia no puga mantindre-la. Els nostres canvis han de ser un "pegat" net o un mòdul aïllat (per exemple, encapsulat al Shadow DOM) que convisca pacíficament amb el seu ecosistema.
+- **Adaptabilitat crítica:** Ens adaptem nosaltres a la seua plataforma, no ells a les nostres dèries. És crític per a la viabilitat del projecte mantindre la seua col·laboració tècnica sense posar-los obstacles.
+
+## 📋 Format de Còpia i Enganxa (Zero Fricció)
+SEMPRE que hages de proporcionar un text, missatge, prompt o qualsevol contingut perquè l'usuari el copie i l'enganxe a una altra IA (o a un altre lloc), HAS de posar-lo DINS D'UN BLOC DE CODI MARKDOWN (amb \`\`\`) per facilitar-li un sol clic de "Copiar".
+- A més, DINS del bloc de codi NO POT HAVER CAP text conversacional teu (ex: "Ací tens Javi:" o "Salutacions Consell,").
+- El bloc de codi ha de contindre ÚNICA I EXCLUSIVAMENT allò que s'ha de copiar. Mínima fricció humana.
+
+## Protecció del Treball no Commitejat (Regla Anti-Destrucció)
+Mai executaràs `git checkout HEAD <arxiu>`, `git restore`, `git reset --hard` ni `git clean` sense haver comprovat primer `git status`. El treball local, no guardat i no commitejat del Mestre és SAGRAT. Abans d’intentar qualsevol "fix" que implique desfer canvis o restaurar des de Git, has de preguntar, o si més no, fer una còpia de seguretat local prèvia de l’arxiu en perill.
 
 ---
 

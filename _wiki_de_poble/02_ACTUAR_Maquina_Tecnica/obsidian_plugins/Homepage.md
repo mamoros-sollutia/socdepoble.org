@@ -38,3 +38,7 @@ Additionally, pre-release versions can be either installed manually or via tools
 ---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]
+
+## Taxonomia
+- **Categoria:** [[Maquina]]
+- **Etiquetes:** [[Graf]]

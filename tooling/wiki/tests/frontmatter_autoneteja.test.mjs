@@ -297,7 +297,7 @@ test('orfes, placeholders i títols sols operatius fan fallar audit i --strict',
 test('un orfe històric és informatiu i no contamina el nucli operatiu', async (t) => {
   const root = await fs.mkdtemp(path.join(os.tmpdir(), 'sdp-autoneteja-archive-orphan-'));
   t.after(() => fs.rm(root, { recursive: true, force: true }));
-  const archive = path.join(root, '04_ARXIU_Documents_Historics');
+  const archive = path.join(root, '90_arxiu_historic');
   await fs.mkdir(archive, { recursive: true });
   await fs.writeFile(path.join(archive, 'Historic.md'), serializeFrontmatter({
     estat: 'arxivat',

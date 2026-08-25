@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect, useLayoutEffect, useState, memo, useRef } from 'react';
-import { Link, Navigate, NavLink, Route, Routes, useNavigate, useParams } from 'react-router-dom';
+import { Navigate, NavLink, Route, Routes, useNavigate, useParams } from 'react-router-dom';
 import { Globe, MoonStar, Plus, Search, Settings, Sun, UserRound } from 'lucide-react';
 import BrandMark from '../components/BrandMark';
 import SectionChrome from '../components/SectionChrome';
@@ -118,9 +118,15 @@ function AppShell({ children, mobileNav }) {
   return (
     <>
       <nav id="app-sidebar" className="app-sidebar" aria-label="Navegació principal">
-        <Link to="/" className="brand" aria-label="Inici Sóc de Poble">
+        <div className="brand sdp-cursor-pointer" aria-label="Obrir o tancar menú Sóc de Poble" role="button" tabIndex={0} onClick={(e) => {
+          const root = e.target.getRootNode();
+          const sidebar = root.querySelector('.app-sidebar') || document.querySelector('.app-sidebar');
+          const host = root instanceof ShadowRoot ? root.host : document.body;
+          sidebar?.classList.toggle('sidebar-open');
+          host.classList.toggle('sidebar-closed');
+        }}>
           <BrandMark className="app-brand__mark" />
-        </Link>
+        </div>
 
         <button
           type="button"
@@ -282,7 +288,7 @@ function AppRoutes() {
   return (
     <Suspense fallback={<RouteFallback />}>
       <Routes>
-        <Route path="/" element={<Navigate to="/pobles" replace />} />
+        <Route path="/" element={<Navigate to={DEFAULT_SECTION_PATH} replace />} />
         <Route path="/chat" element={<XatSection />} />
         <Route path="/chat/:threadId" element={<XatSection />} />
         <Route path="/xat" element={<Navigate to="/chat" replace />} />

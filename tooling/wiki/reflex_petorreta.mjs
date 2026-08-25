@@ -236,7 +236,7 @@ function validateGraphContract(graph) {
   if (graph.hideUnresolved !== true) findings.push('hideUnresolved ha de ser true');
   if (graph.showAttachments !== false) findings.push('showAttachments ha de ser false');
   const requiredFilters = [
-    '04_ARXIU_Documents_Historics',
+    '90_arxiu_historic',
     '05_Escriptori_Soc_de_Poble',
     '00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR',
     '00_SER_Brain_Identitat/Sollutia',

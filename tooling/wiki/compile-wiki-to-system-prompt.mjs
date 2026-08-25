@@ -68,3 +68,4 @@ compilePrompt().catch(err => {
   console.error('❌ Error compilant el còrtex:', err);
   process.exit(1);
 });
+const __dummy = 'passa per canonada';

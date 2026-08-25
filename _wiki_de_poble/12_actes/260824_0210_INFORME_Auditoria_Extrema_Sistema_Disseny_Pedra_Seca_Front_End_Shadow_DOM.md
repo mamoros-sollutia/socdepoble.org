@@ -39,7 +39,7 @@ El `farcell.mjs` torna a lliurar un bundle incomplet. La troballa P0-2 depén d'
 
 | Dialecte | Classes mortes | Origen |
 |---|---|---|
-| Tailwind | 295 | Mai compilat. No hi ha `@tailwind` ni configuració en tot el projecte |
+| Tailwind | 295 | Mai compilat. No hi ha `@tailwind` ni configuració en tot [[el_projecte|el projecte]] |
 | `sosp-*` | 128 | Prefix prohibit pel vostre propi manual |
 | BEM/kebab | 121 | `login-*`, `notes-*`, `devices-*`, `section-hero__*` |
 | camelCase | 23 | Migració a CSS Modules que no es va fer mai |
@@ -502,3 +502,8 @@ Els punts 1 i 4 sumen 25 minuts i arreglen una fallada d'accessibilitat AA i el 
 ---
 
 **Ancoratge de Seguretat:** [[00_INDEX_ESCRIPTORI]]
+
+
+## Taxonomia
+- **Categoria:** General (BROKEN LINK: General) <!-- TODO: fix link -->
+- **Etiquetes:** [[Graf]]

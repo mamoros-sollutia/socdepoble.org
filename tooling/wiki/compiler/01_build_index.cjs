@@ -15,7 +15,7 @@ const CONFIG = {
     '01_SABER_Cultura_Coneixement',
     '02_ACTUAR_Maquina_Tecnica',
     '03_GOVERNAR_Normativa_Regles',
-    '04_ARXIU_Documents_Historics',
+    '90_arxiu_historic',
     '05_Escriptori_Soc_de_Poble'
   ],
   carpetesExcluides: [

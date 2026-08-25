@@ -1,4 +1,3 @@
-import { openReflex, claimReceiptForMutation, completeMutationClaim } from '../reflex_petorreta.mjs';
 /**
  * autoneteja_wiki.mjs — auditoria i migració reversible de la Wiki.
  *
@@ -24,11 +23,13 @@ import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { isUtf8 } from 'node:buffer';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { verificaTancaSeguretat } from './tanca.mjs';
 import {
   parseFrontmatter,
   serializeFrontmatter,
 } from '../lib/frontmatter.mjs';
 import { discoverMarkdown, treeDigest } from './corpus_snapshot.mjs';
+import { claimReceiptForMutation, completeMutationClaim } from '../reflex_petorreta.mjs';
 import {
   PROJECT_DIR,
   TOOLING_WIKI_DIR,
@@ -85,6 +86,7 @@ const isInside = (root, candidate) => {
 };
 
 export async function atomicWrite(file, content, { mode = 0o644 } = {}) {
+  verificaTancaSeguretat(file);
   await fs.mkdir(path.dirname(file), { recursive: true });
   const temp = `${file}.sdp-tmp-${process.pid}-${Date.now()}`;
   const handle = await fs.open(temp, 'wx', mode & 0o777);
@@ -111,6 +113,7 @@ export async function writeManifest(file, manifest) {
 }
 
 export async function writeNewFile(file, content, { mode = 0o600 } = {}) {
+  verificaTancaSeguretat(file);
   await fs.mkdir(path.dirname(file), { recursive: true });
   const handle = await fs.open(file, 'wx', mode);
   try {
@@ -136,7 +139,7 @@ export async function completeReceiptClaim(claim) {
   await completeMutationClaim({ receiptPath: claim.receiptPath, operation: claim.operation }, claim.claimToken);
 }
 
-const safetyDirFor = (root) => path.join(path.dirname(root), '.wiki-safety');
+export const safetyDirFor = (root) => path.join(path.dirname(root), '.wiki-safety');
 
 export async function acquireMutationLock(root, { recoverStale = false, maxRetries = 5, retryDelayMs = 100 } = {}) {
   const safetyDir = safetyDirFor(root);

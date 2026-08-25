@@ -3,7 +3,7 @@ estat: "canonic"
 tipus: "acta"
 description: "Acta de tancament de la jornada on s'ha construït la Fortalesa Shadow DOM per encapsular Pedra Seca i integrar-lo a Sollutia."
 ---
-**Ancoratge de Seguretat:** [[00_index]]
+**Ancoratge de Seguretat:** [[00_INDEX|00_index]]
 
 # 🔴 ACTA DE LA MARMOTA: La Fortalesa Shadow DOM (10/10)
 **Data:** 11 d'Agost de 2026 (Matinada, 05:12h)

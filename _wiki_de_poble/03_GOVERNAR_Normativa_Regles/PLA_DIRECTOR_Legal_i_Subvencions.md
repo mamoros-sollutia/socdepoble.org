@@ -31,7 +31,7 @@ L'arquitectura legal del projecte ha de complir tres premisses: permetre la capt
 | Forma Jurídica                                   | Fortaleses                                                                                                              | Debilitats / Amenaces                                                                 | Veredicte                                                                                                |
 | :----------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------ | :------------------------------------------------------------------------------------------------------- |
 | **Associació Sense Ànim de Lucre (Llei 1/2002)** | Construcció ràpida i barata (<300€/any). Accés a la majoria de línies d'ajuda (CERV, Cultura, Agenda 2030).             | Exigeix 3 socis fundadors humans. La junta no pot ser remunerada pel càrrec.          | **GUANYADORA (Fase 1).** Opcional: Demanar Utilitat Pública als 2 anys per a desgravacions de mecenatge. |
-| **Cooperativa d'Iniciativa Social**              | Emparada per la Llei 1/2003 valenciana. Respon perfectament si el projecte creix en equip laboral i serveis recurrents. | Burocràcia elevada (INCOOP, règim laboral de socis). Massa pesada per a arrancar.     | **Segona opció (Fase 2).** Només quan s'assolisquen +35.000€ d'ingressos recurrents.                     |
+| **Cooperativa d'Iniciativa Social**              | Emparada per la Llei 1/2003 valenciana. Respon perfectament si [[el_projecte|el projecte]] creix en equip laboral i serveis recurrents. | Burocràcia elevada (INCOOP, règim laboral de socis). Massa pesada per a arrancar.     | **Segona opció (Fase 2).** Només quan s'assolisquen +35.000€ d'ingressos recurrents.                     |
 | **Fundació Autonòmica**                          | Màxim prestigi institucional. Accés total a grans línies d'innovació.                                                   | Requereix una dotació fundacional inicial d'uns 30.000€. Protectorat molt rígid.      | **Descartada.** És construir un palau de formigó quan es necessita un mas àgil.                          |
 | **Societat Limitada (SL)**                       | Agilitat màxima de facturació.                                                                                          | Tanca la porta al 90% de les subvencions culturals i de repte demogràfic analitzades. | **Descartada.**                                                                                          |
 
@@ -40,7 +40,7 @@ L'arquitectura legal del projecte ha de complir tres premisses: permetre la capt
 >    - **Composició Tàctica:** La Junta estarà formada per figures de màxima confiança territorial (Joan i Julio -vinculats a El Rentonar- i Nando) com a President, Secretari i Tresorer.
 >    - **Implicació Legal per a la Junta:** ZERO repercussió en l'IRPF personal (és un càrrec sense ànim de lucre pel qual no cobren), i ZERO obligacions de declaracions trimestrals (tota la burocràcia i impostos els fa la gestoria a nom del CIF de l'Associació).
 >    - **Funció Requerida:** La seua única funció és signar la constitució (actes i estatuts), l'obertura del compte bancari, l'autorització del certificat digital i l'assemblea anual de comptes. Amb açò l'Associació obté el CIF propi per a poder operar legalment.
-> 2. **Aliança Tecnològica:** S'estableix un vincle estratègic inseparable amb **[[Sollutia]] (Partner Tecnològic)**. L'Associació capta fons no lucratius i subcontracta els serveis a Sollutia. Sollutia avala tècnicament el projecte, cobra pel seu desenvolupament a preus de mercat i aporta l'estructura empresarial de la qual Sóc de Poble no disposa per si sola.
+> 2. **Aliança Tecnològica:** S'estableix un vincle estratègic inseparable amb **Sollutia (BROKEN LINK: Sollutia) <!-- TODO: fix link --> (Partner Tecnològic)**. L'Associació capta fons no lucratius i subcontracta els serveis a Sollutia. Sollutia avala tècnicament el projecte, cobra pel seu desenvolupament a preus de mercat i aporta l'estructura empresarial de la qual Sóc de Poble no disposa per si sola.
 
 ---
 
@@ -87,7 +87,7 @@ L'Administració no paga mai "hores de manteniment d'una web". Es ven un **serve
 > **"Sóc de Poble no és una xarxa social, ni un portal turístic. És una infraestructura comunitària i un Pla de Contingència Municipal. Quan falla la fibra òptica per una DANA, una nevada o un incendi, el poble no pot quedar aïllat ni mut. Sóc de Poble funciona de manera local (offline-first) garantint l'accés a l'agenda civil, avisos d'emergència i memòria històrica, sense vendre dades i sense dependre de multinacionals. Som la nevera digital on el poble guarda el que necessita per a sobreviure."**
 
 ### Pressupost Mínim Sostenible
-El pressupost complet per garantir la independència, incloent els honoraris d'Associació i el marge estratègic de **[[Sollutia]]**, s'ha detallat de forma exhaustiva al document agermanat:
+El pressupost complet per garantir la independència, incloent els honoraris d'Associació i el marge estratègic de **Sollutia (BROKEN LINK: Sollutia) <!-- TODO: fix link -->**, s'ha detallat de forma exhaustiva al document agermanat:
 👉 **[[PLA_DIRECTOR_Viabilitat_Economica]]**
 
 ---
@@ -97,3 +97,7 @@ El pressupost complet per garantir la independència, incloent els honoraris d'A
 ---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]
+
+## Taxonomia
+- **Categoria:** [[Govern]]
+- **Etiquetes:** [[Graf]]

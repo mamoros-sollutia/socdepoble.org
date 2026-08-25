@@ -55,6 +55,6 @@ _Fent poble amb [[el_projecte|Sóc de Poble]]! © 2026_
 
 
 ---
-**Categoria:** [[07_plantilles]]
+**Categoria:** [[00_plantilles|07_plantilles]]
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
 **Ancoratge de Seguretat:** [[00_INDEX]]

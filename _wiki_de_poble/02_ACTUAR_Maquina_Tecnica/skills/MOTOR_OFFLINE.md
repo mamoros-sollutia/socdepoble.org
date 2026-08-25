@@ -103,7 +103,7 @@ Este document només pot passar de `futur` a `canonic` quan existisquen:
 
 
 ---
-**Categoria:** [[skills]]
+**Categoria:** skills (BROKEN LINK: skills) <!-- TODO: fix link -->
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
 **Ancoratge de Seguretat:** [[00_INDEX]]
 

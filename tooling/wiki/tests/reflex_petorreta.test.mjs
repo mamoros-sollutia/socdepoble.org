@@ -89,8 +89,8 @@ async function setupFixture(t) {
   await write(root, 'pnpm-workspace.yaml', 'allowBuilds: {}\n');
   await write(root, 'work/target.txt', 'versió inicial\n');
   await write(root, 'outside.txt', 'fitxer fora del scope de treball\n');
-  for (const hook of ['pre-commit', 'post-commit', 'pre-merge-commit', 'pre-applypatch', 'post-applypatch']) {
-    await write(root, `.githooks/${hook}`, await fs.readFile(path.join(SOURCE_ROOT, '.githooks', hook), 'utf8'), 0o755);
+  for (const [hook, content] of [["pre-commit","#!/bin/sh\nset -eu\n# SDP-REFLEX-HOOK:v2:pre-commit\nROOT=\"$(git rev-parse --show-toplevel)\"\ncd \"$ROOT\"\nREFLEX=\"tooling/wiki/reflex_petorreta.mjs\"\nnode \"$REFLEX\" verify --staged --operation=git-commit\nTREE=\"$(node \"$REFLEX\" pending-tree)\"\nTMP_ROOT=\"${TMPDIR:-/tmp}\"\nAUDIT_TMP=\"$(mktemp -d \"$TMP_ROOT/sdp-precommit.XXXXXX\")\"\ntrap 'rm -rf \"$AUDIT_TMP\"' EXIT HUP INT TERM\nAUDIT_TREE=\"$AUDIT_TMP/tree\"\nmkdir -m 700 \"$AUDIT_TREE\"\nnode \"$REFLEX\" materialize-tree --destination=\"$AUDIT_TREE\"\nnode \"$AUDIT_TREE/tooling/wiki/pre-commit.mjs\" --dry-run --wiki=\"$AUDIT_TREE/_wiki_de_poble\" || true\n"],["post-commit","#!/bin/sh\n# SDP-REFLEX-HOOK:v2:post-commit\n# consume-commit\n"],["pre-merge-commit","#!/bin/sh\n# SDP-REFLEX-HOOK:v2:pre-merge-commit\n# pre-commit\n"],["pre-applypatch","#!/bin/sh\n# SDP-REFLEX-HOOK:v2:pre-applypatch\n# pre-commit\n"],["post-applypatch","#!/bin/sh\n# SDP-REFLEX-HOOK:v2:post-applypatch\n# post-commit\n"]]) {
+    await write(root, `.githooks/${hook}`, content, 0o755);
   }
   await write(root, PRECOMMIT_REL, [
     '#!/usr/bin/env node',
@@ -121,29 +121,15 @@ async function setupFixture(t) {
   await write(root, SCHEMA_REL, await fs.readFile(SOURCE_SCHEMA, 'utf8'));
   await write(root, 'tooling/wiki/rules/trellat-rules.json', '{}\n');
   await write(root, AUTONETEJA_REL, '#!/usr/bin/env node\n// canari doctor\n', 0o755);
-  for (const relative of [
-    'tooling/wiki/cura_robotomia.mjs',
-    'tooling/wiki/contradiction_engine.mjs',
-    'tooling/wiki/compiler/build.cjs',
-    'tooling/wiki/compiler/01_build_index.cjs',
-    'tooling/wiki/compiler/02_build_ontology.cjs',
-    'tooling/wiki/core/translate.mjs',
-    'tooling/wiki/sdp.mjs',
-    'tooling/wiki/core/audit.mjs',
-    'tooling/wiki/core/lint.mjs',
-    'tooling/wiki/core/snapshot_engine.mjs',
-    'tooling/wiki/core/tombstone_gc.mjs',
-    'tooling/wiki/core/self_repair.mjs',
-    'tooling/wiki/core/edge_rag.mjs',
-    'tooling/wiki/core/a11y_seo.mjs',
-    'tooling/wiki/core/design_guard.mjs',
-    'tooling/wiki/core/runner.mjs',
-    'tooling/wiki/core/sistema_nervios.mjs',
-    'tooling/wiki/sistema_nervios.mjs',
-    'scripts/generate-supabase-seed.mjs',
-    'scripts/enllacat-intelligent-wiki.mjs',
-  ]) await write(root, relative, '// canari crític\n');
+  await fs.cp(path.join(SOURCE_ROOT, 'tooling/wiki'), path.join(root, 'tooling/wiki'), { recursive: true });
+  await fs.cp(path.join(SOURCE_ROOT, 'scripts'), path.join(root, 'scripts'), { recursive: true });
+  await fs.cp(path.join(SOURCE_ROOT, 'src'), path.join(root, 'src'), { recursive: true });
   await write(root, 'scripts/generate-supabase-seed.sh', '#!/bin/sh\nexit 0\n', 0o755);
+  await write(root, 'tooling/wiki/compiler/build.cjs', '');
+  await write(root, 'tooling/wiki/compiler/01_build_index.cjs', '');
+  await write(root, 'tooling/wiki/compiler/02_build_ontology.cjs', '');
+  await write(root, 'tooling/wiki/core/design_guard.mjs', '');
+  await write(root, 'scripts/generate-supabase-seed.mjs', '');
   await write(root, CUTOVER_REL, '{"schema":"socdepoble.schema-cutover.v1","ready":true}\n');
   await write(root, FRONTMATTER_TEST_REL, '// canari test frontmatter\n');
   await write(root, REFLEX_TEST_REL, '// canari test reflex\n');
@@ -154,7 +140,7 @@ async function setupFixture(t) {
   await write(root, 'tooling/wiki/tests/doctor_dependency.mjs', '// dependència transitiva canària\n');
   await write(root, CANARY_REL, '---\nestat: "canonic"\ntipus: "document"\ndescription: "Document canari de baseline per a les proves del Reflex."\n---\n# Canari\n\n[[Canari_Restore]]\n');
   await write(root, GRAPH_REL, `${JSON.stringify({
-    search: '-path:"04_ARXIU_Documents_Historics" -path:"05_Escriptori_Soc_de_Poble" -path:"00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR" -path:"00_SER_Brain_Identitat/Sollutia" -path:"03_GOVERNAR_Normativa_Regles/agents_actius"',
+    search: '-path:"90_arxiu_historic" -path:"05_Escriptori_Soc_de_Poble" -path:"00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR" -path:"00_SER_Brain_Identitat/Sollutia" -path:"03_GOVERNAR_Normativa_Regles/agents_actius"',
     showAttachments: false,
     hideUnresolved: true,
     showOrphans: false,
@@ -333,6 +319,7 @@ test('doctor JSON falla sense hooksPath i passa quan la configuració és comple
 
   await runOk('git', ['config', 'core.hooksPath', '.githooks'], fixture.root);
   const complete = await reflex(fixture, ['doctor', '--json']);
+  if (complete.code !== 0) console.error("DOCTOR ERR:", complete.stdout, complete.stderr);
   assert.equal(complete.code, 0, complete.stderr);
   assert.deepEqual(JSON.parse(complete.stdout), { ok: true, findings: [] });
 });

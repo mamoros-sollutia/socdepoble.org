@@ -1,0 +1,75 @@
+--- /tmp/tc.bak	2026-08-25 10:45:56.832337157 +0000
++++ tooling/wiki/tractor-cognitiu.mjs	2026-08-25 10:45:56.867488872 +0000
+@@ -177,6 +177,7 @@
+ 
+ /* ══════════ P3 · C-4 — Guardes importades i mai cridades ══════════ */
+ 
++const FONT_TRACTOR = fileURLToPath(import.meta.url);
+ const GUARDES = ['openReflex', 'sealReflex', 'claimReceiptForMutation', 'completeMutationClaim'];
+ const fontsJs = camina(path.join(ARREL, 'tooling'), /\.(mjs|js|cjs)$/);
+ 
+@@ -186,6 +187,20 @@
+     .replace(/\/\*[\s\S]*?\*\//g, '')
+     .replace(/(^|[^:])\/\/.*$/gm, '$1');
+ 
++  /* La comprovacio de soques va PRIMER i sense escapatoria: si esta despres
++     del `continue`, esborrar l'import de la guarda es converteix en la manera
++     de passar la porta. Exempcio nomes per a la font del propi tractor, que
++     conte la cadena dins del seu regex. */
++  if (path.resolve(f) !== path.resolve(FONT_TRACTOR)) {
++    const soques = (senseComentaris.match(/['"`]bypass['"`]/g) || []).length;
++    const escriu = /\bfs\.(promises\.)?writeFile(Sync)?\s*\(/.test(senseComentaris)
++      || /\bwriteFile(Sync)?\s*\(/.test(senseComentaris);
++    if (soques > 0 && escriu) {
++      registra('P3', 'BLOQUEJANT', rel(f),
++        `${soques} soques 'bypass' codificades a ma en un fitxer que escriu al disc. El fre esta capat.`);
++    }
++  }
++
+   const importades = GUARDES.filter((g) =>
+     new RegExp(`import\\s*\\{[^}]*\\b${g}\\b[^}]*\\}`, 's').test(senseComentaris));
+   if (importades.length === 0) continue;
+@@ -200,13 +215,6 @@
+       { mortes, importades });
+   }
+ 
+-  const soques = (senseComentaris.match(/['"`]bypass['"`]/g) || []).length;
+-  const escriu = /\bfs\.(promises\.)?writeFile(Sync)?\s*\(/.test(senseComentaris)
+-    || /\bwriteFile(Sync)?\s*\(/.test(senseComentaris);
+-  if (soques > 0 && escriu) {
+-    registra('P3', 'BLOQUEJANT', rel(f),
+-      `${soques} soques 'bypass' codificades a mà en un fitxer que escriu al disc. El fre està capat.`);
+-  }
+ }
+ 
+ /* ══════════ P4 · C-3 — Escriptura directa saltant-se la Canonada ══════════ */
+@@ -230,17 +238,22 @@
+   'tooling/wiki/core/build_rag_index.mjs',
+   'tooling/wiki/build_rag_index.mjs',
+ ];
+-const ragPath = CANDIDATS_RAG.map((p) => path.join(ARREL, p)).find((p) => fs.existsSync(p));
++const ragPaths = CANDIDATS_RAG.map((p) => path.join(ARREL, p)).filter((p) => fs.existsSync(p));
++const ragPath = ragPaths[0];
+ 
+ if (!ragPath) {
+   registra('P5', 'AVÍS', '(RAG)', "No s'ha localitzat el motor RAG als camins canònics; porta P5 no verificada.");
+ } else {
+-  const ragSrc = fs.readFileSync(ragPath, 'utf8');
+-  const filtraPunt = /startsWith\(['"]\.['"]\)/.test(ragSrc);
+-  const excepcioSkills = /\.agents/.test(ragSrc);
+-  if (filtraPunt && !excepcioSkills) {
+-    registra('P5', 'BLOQUEJANT', rel(ragPath),
+-      "El caminador descarta tot directori que comence per punt i no fa excepció per a .agents/skills: el cànon és inabastable per cerca semàntica.");
++  let excepcioSkills = false;
++  for (const rp of ragPaths) {
++    const ragSrc = fs.readFileSync(rp, 'utf8');
++    const filtraPunt = /startsWith\(['"]\.['"]\)/.test(ragSrc);
++    const teExcepcio = /\.agents/.test(ragSrc);
++    if (teExcepcio) excepcioSkills = true;
++    if (filtraPunt && !teExcepcio) {
++      registra('P5', 'BLOQUEJANT', rel(rp),
++        "El caminador descarta tot directori que comence per punt i no fa excepció per a .agents/skills: el cànon és inabastable per cerca semàntica.");
++    }
+   }
+ 
+   const paths = path.join(ARREL, 'tooling/wiki/lib/project_paths.mjs');

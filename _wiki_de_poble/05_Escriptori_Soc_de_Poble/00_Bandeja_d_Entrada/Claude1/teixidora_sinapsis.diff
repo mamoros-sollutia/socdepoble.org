@@ -1,0 +1,31 @@
+--- /tmp/teix.bak	2026-08-25 10:57:47.583879572 +0000
++++ tooling/wiki/teixidora_sinapsis.mjs	2026-08-25 10:57:47.611002680 +0000
+@@ -342,8 +342,27 @@
+  * 5. MOTOR PRINCIPAL                                                  *
+  * ------------------------------------------------------------------ */
+ export async function teixeix(wikiDir = WIKI_DIR) {
++  /* ─────────────────────────── PARADA DURA ───────────────────────────
++   * Ací hi havia un `throw` i el va llevar algu ("throw removed for direct
++   * write"), deixant l'`if` buit com a cicatriu. Ara mateix el sistema nomes
++   * es segur per accident: `PROCEDEIX` esta clavat a false a la linia 94.
++   * El dia que algu el torne a lligar a --procedeix, tot este cami s'executa
++   * amb receiptPath:'bypass', claimToken:'bypass', sense Reflex, sense rebut
++   * i sense rollback, i muta els documents de la wiki in place (l.447).
++   *
++   * La seguretat no pot dependre d'una constant que qualsevol pot girar.
++   * Mateix patro que sync_sollutia_skills.mjs: refusar, dir per que, i eixir.
++   * Per a reobrir: restaurar openReflex/sealReflex/claimReceiptForMutation/
++   * completeMutationClaim de veres i llevar este bloc en el mateix commit.
++   * ------------------------------------------------------------------ */
+   if (PROCEDEIX) {
+-    // throw new Error removed for direct write
++    throw new Error(
++      'TEIXIDORA BLOQUEJADA: el mode escriptura esta desactivat fins que tornen '
++      + 'les guardes del Reflex. Les soques \'bypass\' (l.352, l.443) no son '
++      + 'guardes: no expedixen rebut, no validen res i no permeten rollback. '
++      + 'Restaura openReflex/sealReflex/claimReceiptForMutation/'
++      + 'completeMutationClaim abans de reactivar.'
++    );
+   }
+   let receiptPath = null;
+   let claimToken = null;

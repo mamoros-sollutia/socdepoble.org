@@ -44,7 +44,7 @@ La Petorreta mecànica d’una sessió del Reflex viu només en `.sdp-reflex/boo
 
 ## P-05. Context mínim i segur
 
-No es copia automàticament tota la Wiki. El manifest selecciona fonts rellevants amb `path`, `reason`, `classification` i `role` (`reference` o `target`). El Reflex limita el manifest a 25 fonts de  2 MiB per fitxer i 8 MiB totals; calcula hashes i rebutja binaris, duplicats, symlinks d’eixida i patrons bàsics de secrets, IBAN, correu, DNI/NIE i telèfon. És un filtre preventiu, no una garantia de redacció de tota PII; la revisió humana continua sent obligatòria abans de compartir context extern.
+No es copia automàticament tota la Wiki. El manifest selecciona fonts rellevants amb `path`, `reason`, `classification` i `role` (`reference` o `target`). El Reflex limita el manifest a 25 fonts de text, 2 MiB per fitxer i 8 MiB totals; calcula hashes i rebutja binaris, duplicats, symlinks d’eixida i patrons bàsics de secrets, IBAN, correu, DNI/NIE i telèfon. És un filtre preventiu, no una garantia de redacció de tota PII; la revisió humana continua sent obligatòria abans de compartir context extern.
 
 ## P-06. Mínim privilegi
 

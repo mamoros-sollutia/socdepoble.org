@@ -1096,7 +1096,7 @@ tbody tr:hover { background: var(--sdp-accent-subtil); }
 summary.accordion-header::-webkit-details-marker { display: none; }
 .accordion-header:hover, summary.accordion-header:hover { background: var(--sdp-fons-subtil); }
 .accordion-header svg, summary.accordion-header svg { flex: none; transition: transform var(--sdp-t); }
-details[open] summary.accordion-header svg { transform: rotate(180deg); }
+details[open] summary.accordion-header svg:last-child { transform: rotate(180deg); }
 .accordion pre { margin: 0; border: 0; border-radius: 0; }
 
 /* 7.11 Pestanyes */
@@ -1993,7 +1993,7 @@ nav.mobile-nav { display: none; }
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0.6);
-  z-index: 9999;
+  z-index: var(--z-calaix);
   display: flex;
   animation: sdp-fade-in var(--sdp-t-rapida) ease-out;
 }

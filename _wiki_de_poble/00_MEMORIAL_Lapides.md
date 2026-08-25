@@ -26,3 +26,8 @@
 - [2026-08-03T13:34:04.646Z] Enllaç tancat a _wiki_de_poble/00_INDEX.md (apuntava a: PROFILE)
 - [2026-08-03T13:34:04.646Z] Enllaç tancat a _wiki_de_poble/00_INDEX.md (apuntava a: PROTOCOL_CHANGE)
 - [2026-08-03T13:43:03.429Z] Enllaç tancat a _wiki_de_poble/05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md (apuntava a: alegacions)
+
+
+## Taxonomia
+- **Categoria:** General (BROKEN LINK: General) <!-- TODO: fix link -->
+- **Etiquetes:** [[Graf]]

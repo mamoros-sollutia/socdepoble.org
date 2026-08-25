@@ -1,8 +1,8 @@
 import { readFile, readdir, writeFile } from 'node:fs/promises';
 import { join, relative, dirname } from 'node:path';
-import { parseFrontmatter } from '../../lib/frontmatter.mjs';
+import { parseFrontmatter } from '../lib/frontmatter.mjs';
 
-const RULES_URL = new URL('../../rules/trellat-rules.json', import.meta.url);
+const RULES_URL = new URL('../rules/trellat-rules.json', import.meta.url);
 let rulesCache = null;
 
 async function loadRules() {

@@ -60,7 +60,7 @@ const ROOTS = [
 const SKIP_DIR_NAMES = new Set([
   '.git', 'node_modules', 'dist', 'build', '_build', 'coverage',
   '.sdp-reflex', '.wiki-safety', '.snapshots',
-  '04_ARXIU_Documents_Historics', '05_Escriptori_Soc_de_Poble',
+  '90_arxiu_historic', '05_Escriptori_Soc_de_Poble',
 ]);
 // Extensions que es transmeten com a binari (base64) si cal; la resta de
 // no-UTF8 es declaren al manifest amb sha256 però no s'incrusten.

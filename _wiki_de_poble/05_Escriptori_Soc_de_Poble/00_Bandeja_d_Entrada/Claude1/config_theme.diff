@@ -1,0 +1,42 @@
+--- /tmp/theme.bak	2026-08-25 10:56:58.640212272 +0000
++++ src/config/theme.js	2026-08-25 10:56:58.664442615 +0000
+@@ -6,16 +6,34 @@
+   return raw; // Text cru (dark/light), ja no fem JSON.parse
+ };
+ 
++/**
++ * Torna l'element que porta data-theme: l'amfitrio <soc-de-poble> quan estem
++ * dins del Shadow DOM, i nomes fora d'ell l'arrel del document.
++ * Ha de coincidir amb l'objectiu d'escriptura de App.jsx:73.
++ */
++export function arrelDelTema(node) {
++  if (typeof document === 'undefined') return null;
++  const arrel = node && typeof node.getRootNode === 'function' ? node.getRootNode() : null;
++  if (typeof ShadowRoot !== 'undefined' && arrel instanceof ShadowRoot) return arrel.host;
++  const marcat = document.querySelector('[data-theme]');
++  if (marcat) return marcat;
++  return document.querySelector('.sdp-root') || document.documentElement;
++}
++
+ export function readThemePreference(configured) {
+   if (VALID.has(configured)) return configured;
+   
+   if (typeof window === 'undefined' || typeof document === 'undefined') return 'light'; // Fallback
+ 
+-  // 1. Font de veritat: atribut HTML (Shadow DOM o arrel)
+-  let root = null;
+-  if (typeof document !== 'undefined') {
+-    root = document.querySelector('.sdp-root') || document.documentElement;
+-  }
++  // 1. Font de veritat: l'amfitrio del Shadow DOM (el que escriu App.jsx:73)
++  //
++  //    document.querySelector NO travessa el limit del Shadow DOM. Buscar
++  //    '.sdp-root' des del document mai el troba dins de WordPress i cau a
++  //    documentElement -> el <html> de Sollutia, que no te data-theme mai.
++  //    Resultat: la lectura no troba mai el que ha escrit l'escriptura i el
++  //    tema torna a clar en cada recarrega. A mes, escriure-hi violaria la
++  //    Regla de l'Enxufabilitat (mai tocar l'arrel de l'amfitrio).
++  const root = arrelDelTema();
+   const htmlTheme = root ? root.getAttribute('data-theme') : null;
+   if (htmlTheme && VALID.has(htmlTheme)) return htmlTheme;
+ 

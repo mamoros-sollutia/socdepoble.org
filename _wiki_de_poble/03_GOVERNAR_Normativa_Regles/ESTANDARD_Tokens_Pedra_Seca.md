@@ -182,3 +182,7 @@ The design system follows the **Square Rule (Claude’s Law)**:
 ---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]
+
+## Taxonomia
+- **Categoria:** [[Govern]]
+- **Etiquetes:** [[Graf]]

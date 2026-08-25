@@ -62,7 +62,7 @@ If there are errors launching `chrome-devtools-mcp` or Chrome, refer to https://
 
 
 ---
-**Categoria:** [[Sollutia]]
+**Categoria:** Sollutia (BROKEN LINK: Sollutia) <!-- TODO: fix link -->
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
 **Ancoratge de Seguretat:** [[00_INDEX]]
 

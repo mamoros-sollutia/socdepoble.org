@@ -519,7 +519,8 @@
   "folderAppearances": {
     "02_ACTUAR_Maquina_Tecnica": {
       "titleRows": 2,
-      "previewRows": 1
+      "previewRows": 1,
+      "groupBy": "folder"
     },
     "00_SER_Brain_Identitat": {
       "groupBy": "folder",
@@ -530,9 +531,6 @@
     },
     "00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR": {
       "groupBy": "custom"
-    },
-    "00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/identity": {
-      "groupBy": "folder"
     },
     "01_SABER_Cultura_Coneixement": {
       "groupBy": "folder",

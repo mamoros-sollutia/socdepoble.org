@@ -46,6 +46,6 @@ Abans de finalitzar la resposta, l'Agent ha de validar en silenci:
 
 
 ---
-**Categoria:** [[07_plantilles]]
+**Categoria:** [[00_plantilles|07_plantilles]]
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
 **Ancoratge de Seguretat:** [[00_INDEX]]

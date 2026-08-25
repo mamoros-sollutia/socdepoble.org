@@ -48,3 +48,8 @@ Revisar
 `05_Escriptori_Soc_de_Poble/260801_1900_ACTA_SESSIO_Enviament_NLnet.md` i deixar
 per escrit una de tres decisions: mantindre CRDT/NixOS en un subprojecte,
 comunicar canvi d’abast o retirar la proposta.
+
+
+## Taxonomia
+- **Categoria:** [[Maquina]]
+- **Etiquetes:** [[Graf]]

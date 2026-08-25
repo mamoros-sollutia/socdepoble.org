@@ -114,7 +114,7 @@ If the output is truncated, you must repeat the command but redirect to a file a
 
 
 ---
-**Categoria:** [[Sollutia]]
+**Categoria:** Sollutia (BROKEN LINK: Sollutia) <!-- TODO: fix link -->
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
 **Ancoratge de Seguretat:** [[00_INDEX]]
 

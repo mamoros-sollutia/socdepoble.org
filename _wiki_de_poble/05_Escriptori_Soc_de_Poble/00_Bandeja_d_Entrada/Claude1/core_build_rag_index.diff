@@ -1,0 +1,15 @@
+--- /tmp/rag.bak	2026-08-25 10:56:58.632212271 +0000
++++ tooling/wiki/core/build_rag_index.mjs	2026-08-25 10:56:58.663559689 +0000
+@@ -13,7 +13,11 @@
+ async function walk(dir, acc = []) {
+   const entries = await readdir(dir, { withFileTypes: true });
+   for (const e of entries) {
+-    if (e.name.startsWith('.') || e.name === 'node_modules') continue;
++    /* .agents conte el canon operatiu (SKILL.md). Descartar-lo per comencar
++       per punt es la causa arrel de la ceguesa cognitiva: cap skill es
++       recuperable per cerca semantica. La copia de tooling/wiki/ ja ho tenia;
++       esta, que es la que crida reflex_petorreta.mjs:133, no. */
++    if ((e.name.startsWith('.') && e.name !== '.agents') || e.name === 'node_modules') continue;
+     if (e.name === 'vendor' || e.name === 'mirrors' || e.name.startsWith('90_') || e.name.toLowerCase().includes('petorreta')) continue;
+ 
+     const full = join(dir, e.name);

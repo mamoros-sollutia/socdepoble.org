@@ -78,6 +78,8 @@ def source_mapping(root: Path, source_dir: str, mirror_dir: str) -> dict[Path, b
         relative = source.relative_to(source_root)
         if relative.parts[:1] == ("skills",) and relative.name == "SKILL.md":
             destination = mirror_root / f"SKILL_{relative.parts[1]}.md"
+        elif relative.parts[:1] == ("identity",):
+            destination = mirror_root / relative.name
         elif len(relative.parts) == 1:
             destination = mirror_root / relative.name
         else:

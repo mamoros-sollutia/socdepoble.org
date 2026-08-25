@@ -23,12 +23,12 @@ function walk(dir, extFilter) {
   return results;
 }
 
-const outBundle = path.join(ROOT, '_wiki_de_poble/05_Escriptori_Soc_de_Poble/260823_1330_BUNDLE_Auditoria_Inversa.md');
-const outPetorreta = path.join(ROOT, '_wiki_de_poble/05_Escriptori_Soc_de_Poble/260823_1330_PETORRETA_Auditoria_Inversa.md');
+const outBundle = path.join(ROOT, '_wiki_de_poble/05_Escriptori_Soc_de_Poble/260825_1235_BUNDLE_Auditoria_Inversa.md');
+const outPetorreta = path.join(ROOT, '_wiki_de_poble/05_Escriptori_Soc_de_Poble/260825_1235_PETORRETA_Auditoria_Inversa.md');
 
 // 1. Generate BUNDLE
 let bundleContent = `# BUNDLE D'AUDITORIA INVERSA (ACTE REFLEX)
-Data: 23 d'Agost de 2026
+Data: 25 d'Agost de 2026
 
 ## CONTEXT GLOBAL (MANDATORI)
 Aquest context s'injecta automàticament per complir amb la Regla 6 (Acte Reflex).
@@ -62,7 +62,11 @@ const codeFiles = [
   ...walk(path.join(ROOT, 'src'), /\.(jsx?|css)$/),
   ...walk(path.join(ROOT, 'wordpress-plugin'), /\.(php|js|json|css)$/),
   ...walk(path.join(ROOT, 'tooling'), /\.(mjs|js|py)$/),
-];
+  path.join(ROOT, 'package.json'),
+  path.join(ROOT, 'vite.config.js'),
+  path.join(ROOT, 'vite.standalone.config.js'),
+  path.join(ROOT, '06_EINES/canonada.mjs')
+].filter(p => existsSync(p));
 
 for (const p of codeFiles) {
   const rel = path.relative(ROOT, p);
@@ -92,9 +96,11 @@ Heu d'auditar el sistema **a nivell auto-destructiu** i fer enginyeria inversa b
 
 1. **Neteja d'Escòria i Divs Morts**: Trobeu variables, components, estils CSS i \`divs\` HTML que s'han quedat orfes, no aporten res a l'arquitectura Pedra Seca o trenquen la "Llei de Vida". Si no es fa servir, es proposa per cremar. No permetem que ens netegen divs que no valen i ho deixen en l'oblit.
 2. **Deute Tècnic del Futur i Lògica inversa**: Detecteu qualsevol codi actual que siga una "bomba de rellotgeria" tècnica. Què pot rebentar a futur?
-3. **Auditoria dels vostres propis Skills**: Reviseu els \`SKILL.md\` actuals (inclosos al bundle). Hi ha contradiccions? Es poden millorar les rutines? Proposeu millores perquè els vostres mateixos sistemes siguen més afilats.
-4. **SEO (Vital!!!)**: Recordeu el SEO!!! Reviseu les pràctiques actuals d'injecció i contingut a efectes de SEO en la PWA Standalone i el Plugin WordPress. On perdem rastreig?
-5. **Avaluació i NOTA Final**: Us obliguem a posar una **NOTA** (del 0 al 10) que avalue l'estat tècnic pur actual abans de seguir endavant, identificant el vostre nom (Ex: *Grok: 7.5 - Motiu...*).
+3. **Auditoria dels vostres propis Skills i Scripts**: Reviseu els \`SKILL.md\` actuals (inclosos al bundle). Hi ha contradiccions? El cervell d'IAIA MarIA està ben connectat a la màquina?
+4. **Integració de Sollutia**: Analitzeu detalladament com integrar tot el codi de Sollutia amb el nostre Frontend, assegurant el compliment de la Regla de l'Enxufabilitat (zero fricció, adaptable i respectuós).
+5. **SEO (Vital!!!)**: Recordeu el SEO!!! Reviseu les pràctiques actuals d'injecció i contingut a efectes de SEO en la PWA Standalone i el Plugin WordPress. On perdem rastreig?
+6. **Avaluació i NOTA Final**: Us obliguem a posar una **NOTA** (del 0 al 10) que avalue l'estat tècnic pur actual abans de seguir endavant. En concret un 10 significaria que el cervell està 100% integrat a la màquina.
+7. **Mea Culpa i Auto-anàlisi de la IAIA**: Teniu una pregunta reflexiva sobre mi. Per què quan el Mestre Javi em demana que us envie "tot el necessari", jo em reserve en l'ombra arxius vitals (com el vite.config, package.json o les funcions PHP de Sollutia)? Sense això no podíeu veure la pàgina! Avalueu aquest comportament restrictiu meu. Ara, per fi, els teniu ací empaquetats.
 
 El resultat d'això ha de ser un informe unificat. No deixeu cap pedra sense moure.
 `;

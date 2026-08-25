@@ -16,6 +16,7 @@
     "src/main.jsx"
   ],
   "scripts": {
+    "gate": "node tooling/wiki/tractor-cognitiu.mjs --arrel=.",
     "dev": "vite --host 0.0.0.0 --port 3340 --strictPort",
     "porta:manual": "node tooling/gates/tractor-manual.mjs",
     "porta:consell": "node tooling/gates/tractor-consell.mjs",

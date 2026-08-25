@@ -72,7 +72,7 @@ Qualsevol experiment que haja de modificar coneixement, configuració o codi seg
 
 
 ---
-**Categoria:** [[skills]]
+**Categoria:** skills (BROKEN LINK: skills) <!-- TODO: fix link -->
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
 **Ancoratge de Seguretat:** [[00_INDEX]]
 

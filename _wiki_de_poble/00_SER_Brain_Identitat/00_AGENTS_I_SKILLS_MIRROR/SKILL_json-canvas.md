@@ -1,21 +1,19 @@
 ---
-estat: actiu
-tipus: skill
-description: "Mirall humà de la skill JSON Canvas"
+estat: generat
+tipus: document
+description: Vista generada des de .agents/skills/json-canvas/SKILL.md; no editar.
 source: .agents/skills/json-canvas/SKILL.md
+source_sha256: 51d98754307408b62e0f10d543de8b0817f3f951c90a27d1dcd42bbe2f0da34e
 ---
 
-> [!WARNING]
-> **AQUEST FITXER ÉS UN REFLEX (MIRROR)**
-> Açò és l'estrat humà. Qualsevol modificació o discussió sobre com he d'actuar s'ha de fer ací. Quan estiguem d'acord, s'actualitzarà la meua vertadera matriu a `.agents/skills/json-canvas/SKILL.md` exclusivament en anglés tècnic.
+> [!warning] FITXER GENERAT
+> Font canònica: `.agents/skills/json-canvas/SKILL.md`. Qualsevol edició manual serà sobreescrita.
 
-# Skill de JSON Canvas
+# JSON Canvas Skill
 
-Crea i edita fitxers JSON Canvas (`.canvas`) amb nodes, arestes, grups i connexions. S'utilitza en treballar amb fitxers `.canvas`, creant llenços visuals, mapes mentals, diagrames de flux, o quan l'usuari esmenta fitxers Canvas a Obsidian.
+## File Structure
 
-## Estructura del Fitxer
-
-Un fitxer canvas (`.canvas`) conté dues llistes de nivell superior seguint l'especificació [JSON Canvas Spec 1.0](https://jsoncanvas.org/spec/1.0/):
+A canvas file (`.canvas`) contains two top-level arrays following the [JSON Canvas Spec 1.0](https://jsoncanvas.org/spec/1.0/):
 
 ```json
 {
@@ -24,52 +22,233 @@ Un fitxer canvas (`.canvas`) conté dues llistes de nivell superior seguint l'es
 }
 ```
 
-- `nodes` (opcional): Llista d'objectes node
-- `edges` (opcional): Llista d'objectes aresta que connecten nodes
+- `nodes` (optional): Array of node objects
+- `edges` (optional): Array of edge objects connecting nodes
 
-## Fluxos de Treball Comuns
+## Common Workflows
 
-### 1. Crear un Nou Canvas
-1. Crea un fitxer `.canvas` amb l'estructura base `{"nodes": [], "edges": []}`
-2. Genera identificadors hexadecimals únics de 16 caràcters per a cada node (ex: `"6f0ad84f44ce9c17"`)
-3. Afig nodes amb els camps requerits: `id`, `type`, `x`, `y`, `width`, `height`
-4. Afig arestes referenciant IDs de nodes vàlids mitjançant `fromNode` i `toNode`
-5. **Validar**: Analitza el JSON per confirmar que és vàlid. Verifica que tots els valors `fromNode`/`toNode` existeixen a la matriu de nodes.
+### 1. Create a New Canvas
 
-### 2. Afegir un Node a un Canvas Existent
-1. Llig i analitza el fitxer `.canvas` existent
-2. Genera un ID únic que no col·lidisca amb cap node o aresta existent
-3. Tria una posició (`x`, `y`) que evite solapar nodes existents (deixa 50-100px d'espai)
-4. Afig el nou objecte node a la llista `nodes`
-5. Opcionalment, afig arestes que connecten el nou node amb els existents
-6. **Validar**: Confirma que tots els IDs són únics.
+1. Create a `.canvas` file with the base structure `{"nodes": [], "edges": []}`
+2. Generate unique 16-character hex IDs for each node (e.g., `"6f0ad84f44ce9c17"`)
+3. Add nodes with required fields: `id`, `type`, `x`, `y`, `width`, `height`
+4. Add edges referencing valid node IDs via `fromNode` and `toNode`
+5. **Validate**: Parse the JSON to confirm it is valid. Verify all `fromNode`/`toNode` values exist in the nodes array
 
-### 3. Connectar Dos Nodes
-1. Identifica els IDs del node d'origen i de destinació
-2. Genera un ID únic d'aresta
-3. Defineix `fromNode` i `toNode` amb els IDs d'origen i de destinació
-4. Opcionalment defineix `fromSide`/`toSide` (top, right, bottom, left) per als punts d'ancoratge
-5. Opcionalment defineix `label` per al text descriptiu a l'aresta
-6. Afig l'aresta a la llista `edges`
+### 2. Add a Node to an Existing Canvas
 
-### 4. Editar un Canvas Existent
-1. Llig i analitza el fitxer `.canvas` com a JSON
-2. Localitza el node o aresta objectiu mitjançant el seu `id`
-3. Modifica els atributs desitjats (text, posició, color, etc.)
-4. Escriu el JSON actualitzat de tornada al fitxer
+1. Read and parse the existing `.canvas` file
+2. Generate a unique ID that does not collide with existing node or edge IDs
+3. Choose position (`x`, `y`) that avoids overlapping existing nodes (leave 50-100px spacing)
+4. Append the new node object to the `nodes` array
+5. Optionally add edges connecting the new node to existing nodes
+6. **Validate**: Confirm all IDs are unique and all edge references resolve to existing nodes
 
-## Generació d'IDs
-Genera cadenes hexadecimals en minúscules de 16 caràcters (valor aleatori de 64 bits):
-`"6f0ad84f44ce9c17"`
+### 3. Connect Two Nodes
+
+1. Identify the source and target node IDs
+2. Generate a unique edge ID
+3. Set `fromNode` and `toNode` to the source and target IDs
+4. Optionally set `fromSide`/`toSide` (top, right, bottom, left) for anchor points
+5. Optionally set `label` for descriptive text on the edge
+6. Append the edge to the `edges` array
+7. **Validate**: Confirm both `fromNode` and `toNode` reference existing node IDs
+
+### 4. Edit an Existing Canvas
+
+1. Read and parse the `.canvas` file as JSON
+2. Locate the target node or edge by `id`
+3. Modify the desired attributes (text, position, color, etc.)
+4. Write the updated JSON back to the file
+5. **Validate**: Re-check all ID uniqueness and edge reference integrity after editing
+
+## Nodes
+
+Nodes are objects placed on the canvas. Array order determines z-index: first node = bottom layer, last node = top layer.
+
+### Generic Node Attributes
+
+| Attribute | Required | Type | Description |
+|-----------|----------|------|-------------|
+| `id` | Yes | string | Unique 16-char hex identifier |
+| `type` | Yes | string | `text`, `file`, `link`, or `group` |
+| `x` | Yes | integer | X position in pixels |
+| `y` | Yes | integer | Y position in pixels |
+| `width` | Yes | integer | Width in pixels |
+| `height` | Yes | integer | Height in pixels |
+| `color` | No | canvasColor | Preset `"1"`-`"6"` or hex (e.g., `"#FF0000"`) |
+
+### Text Nodes
+
+| Attribute | Required | Type | Description |
+|-----------|----------|------|-------------|
+| `text` | Yes | string | Plain text with Markdown syntax |
+
+```json
+{
+  "id": "6f0ad84f44ce9c17",
+  "type": "text",
+  "x": 0,
+  "y": 0,
+  "width": 400,
+  "height": 200,
+  "text": "# Hello World\n\nThis is **Markdown** content."
+}
+```
+
+**Newline pitfall**: Use `\n` for line breaks in JSON strings. Do **not** use the literal `\\n` -- Obsidian renders that as the characters `\` and `n`.
+
+### File Nodes
+
+| Attribute | Required | Type | Description |
+|-----------|----------|------|-------------|
+| `file` | Yes | string | Path to file within the system |
+| `subpath` | No | string | Link to heading or block (starts with `#`) |
+
+```json
+{
+  "id": "a1b2c3d4e5f67890",
+  "type": "file",
+  "x": 500,
+  "y": 0,
+  "width": 400,
+  "height": 300,
+  "file": "Attachments/diagram.png"
+}
+```
+
+### Link Nodes
+
+| Attribute | Required | Type | Description |
+|-----------|----------|------|-------------|
+| `url` | Yes | string | External URL |
+
+```json
+{
+  "id": "c3d4e5f678901234",
+  "type": "link",
+  "x": 1000,
+  "y": 0,
+  "width": 400,
+  "height": 200,
+  "url": "https://obsidian.md"
+}
+```
+
+### Group Nodes
+
+Groups are visual containers for organizing other nodes. Position child nodes inside the group's bounds.
+
+| Attribute | Required | Type | Description |
+|-----------|----------|------|-------------|
+| `label` | No | string | Text label for the group |
+| `background` | No | string | Path to background image |
+| `backgroundStyle` | No | string | `cover`, `ratio`, or `repeat` |
+
+```json
+{
+  "id": "d4e5f6789012345a",
+  "type": "group",
+  "x": -50,
+  "y": -50,
+  "width": 1000,
+  "height": 600,
+  "label": "Project Overview",
+  "color": "4"
+}
+```
+
+## Edges
+
+Edges connect nodes via `fromNode` and `toNode` IDs.
+
+| Attribute | Required | Type | Default | Description |
+|-----------|----------|------|---------|-------------|
+| `id` | Yes | string | - | Unique identifier |
+| `fromNode` | Yes | string | - | Source node ID |
+| `fromSide` | No | string | - | `top`, `right`, `bottom`, or `left` |
+| `fromEnd` | No | string | `none` | `none` or `arrow` |
+| `toNode` | Yes | string | - | Target node ID |
+| `toSide` | No | string | - | `top`, `right`, `bottom`, or `left` |
+| `toEnd` | No | string | `arrow` | `none` or `arrow` |
+| `color` | No | canvasColor | - | Line color |
+| `label` | No | string | - | Text label |
+
+```json
+{
+  "id": "0123456789abcdef",
+  "fromNode": "6f0ad84f44ce9c17",
+  "fromSide": "right",
+  "toNode": "a1b2c3d4e5f67890",
+  "toSide": "left",
+  "toEnd": "arrow",
+  "label": "leads to"
+}
+```
 
 ## Colors
-Accepta una cadena hexadecimal o un número predefinit:
-- `"1"`: Roig
-- `"2"`: Taronja
-- `"3"`: Groc
-- `"4"`: Verd
-- `"5"`: Cian
-- `"6"`: Morat
+
+The `canvasColor` type accepts either a hex string or a preset number:
+
+| Preset | Color |
+|--------|-------|
+| `"1"` | Red |
+| `"2"` | Orange |
+| `"3"` | Yellow |
+| `"4"` | Green |
+| `"5"` | Cyan |
+| `"6"` | Purple |
+
+Preset color values are intentionally undefined -- applications use their own brand colors.
+
+## ID Generation
+
+Generate 16-character lowercase hexadecimal strings (64-bit random value):
+
+```
+"6f0ad84f44ce9c17"
+"a3b2c1d0e9f8a7b6"
+```
+
+## Layout Guidelines
+
+- Coordinates can be negative (canvas extends infinitely)
+- `x` increases right, `y` increases down; position is the top-left corner
+- Space nodes 50-100px apart; leave 20-50px padding inside groups
+- Align to grid (multiples of 10 or 20) for cleaner layouts
+
+| Node Type | Suggested Width | Suggested Height |
+|-----------|-----------------|------------------|
+| Small text | 200-300 | 80-150 |
+| Medium text | 300-450 | 150-300 |
+| Large text | 400-600 | 300-500 |
+| File preview | 300-500 | 200-400 |
+| Link preview | 250-400 | 100-200 |
+
+## Validation Checklist
+
+After creating or editing a canvas file, verify:
+
+1. All `id` values are unique across both nodes and edges
+2. Every `fromNode` and `toNode` references an existing node ID
+3. Required fields are present for each node type (`text` for text nodes, `file` for file nodes, `url` for link nodes)
+4. `type` is one of: `text`, `file`, `link`, `group`
+5. `fromSide`/`toSide` values are one of: `top`, `right`, `bottom`, `left`
+6. `fromEnd`/`toEnd` values are one of: `none`, `arrow`
+7. Color presets are `"1"` through `"6"` or valid hex (e.g., `"#FF0000"`)
+8. JSON is valid and parseable
+
+If validation fails, check for duplicate IDs, dangling edge references, or malformed JSON strings (especially unescaped newlines in text content).
+
+## Complete Examples
+
+See [references/EXAMPLES.md](references/EXAMPLES.md) for full canvas examples including mind maps, project boards, research canvases, and flowcharts.
+
+## References
+
+- [JSON Canvas Spec 1.0](https://jsoncanvas.org/spec/1.0/)
+- [JSON Canvas GitHub](https://github.com/obsidianmd/jsoncanvas)
 
 ---
+
 **Ancoratge de Seguretat:** [[00_INDEX_MIRROR]]

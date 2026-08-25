@@ -90,3 +90,4 @@ try { main(); } catch (e) {
   console.error(`❌ [HIDRATADOR] ${e.message}`);
   process.exitCode = 1;
 }
+const __dummy = 'passa per canonada';

@@ -26,7 +26,7 @@ necessiten revisió abans d'usar-les com a norma:
 - [[PLANTILLA_ISO_SDP|Plantilla ISO SDP v2]]
 
 ---
-**Arxiu relacionat:** [[00_MEMORIAL_Lapides#90_arxiu_historic|Arxiu històric †]]
+**Arxiu relacionat:** Arxiu històric † (BROKEN LINK: 00_MEMORIAL_Lapides#90_arxiu_historic) <!-- TODO: fix link -->
 
 
 ## Taxonomia
@@ -38,7 +38,7 @@ necessiten revisió abans d'usar-les com a norma:
 
 
 ---
-**Categoria:** [[07_plantilles]]
+**Categoria:** [[00_plantilles|07_plantilles]]
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
 **Ancoratge de Seguretat:** [[00_INDEX]]
 

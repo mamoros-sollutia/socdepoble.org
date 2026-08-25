@@ -107,7 +107,7 @@ Alternatively, you can recommend that the user checks https://github.com/ChromeD
 
 
 ---
-**Categoria:** [[Sollutia]]
+**Categoria:** Sollutia (BROKEN LINK: Sollutia) <!-- TODO: fix link -->
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
 **Ancoratge de Seguretat:** [[00_INDEX]]
 

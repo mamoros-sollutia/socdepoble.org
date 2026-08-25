@@ -55,7 +55,7 @@ Si la recepta s'edita a mà després de l'aprovació, el hash divergeix i `aplic
 
 ## Operacions del catàleg v1
 
-- **LAPIDA** — substitueix cada `[[fantasma]]` per `[[00_MEMORIAL_Lapides#fantasma|àlies †]]` (l'àlies original es preserva) i erigeix la secció corresponent al Memorial amb origen i línia. Narrativa preservada sense mentir al graf. Els incrustats `![[...]]` mai es toquen.
+- **LAPIDA** — substitueix cada `fantasma (BROKEN LINK: fantasma) <!-- TODO: fix link -->` per `àlies † (BROKEN LINK: 00_MEMORIAL_Lapides#fantasma) <!-- TODO: fix link -->` (l'àlies original es preserva) i erigeix la secció corresponent al Memorial amb origen i línia. Narrativa preservada sense mentir al graf. Els incrustats `!... (BROKEN LINK: ...) <!-- TODO: fix link -->` mai es toquen.
 - **ADOPTA** — afegeix l'orfe amb contingut a la secció «Adopcions de Les Plaquetes» de l'índex configurat. No modifica l'orfe (per això només exigeix existència, no hash).
 - **QUARANTENA** — mou fitxers buits a `.immunitari/quarantena/<lot>/` conservant la ruta relativa. R3: mai esborrat; git registra el moviment i `reversa` el desfà.
 - **CREA_HUB** — crea la nota concentradora (MOC) d'un hub taxonòmic. **Inactiva per defecte** (`hubsDelegats: true`) mentre la tasca (a) siga territori de la MarIA local.
@@ -75,9 +75,13 @@ Requereix haver executat `segella` (i versionar `.immunitari/baseline.json`). La
 
 ## Limitacions honestes de v1
 
-Els incrustats `![[nota_inexistent]]` es reporten però no es lapiden. Els objectius amb nom base ambigu resolen al primer colp d'índex (mateix criteri laxista que Obsidian; es reporta). El codi en línia amb doble accent greu no s'emmascara. L'aprovació per hash garanteix *lectura conscient de la recepta*, no identitat: la garantia d'identitat és la cadena git + el lease de `PROTOCOL_PETORRETA`.
+Els incrustats `!nota_inexistent (BROKEN LINK: nota_inexistent) <!-- TODO: fix link -->` es reporten però no es lapiden. Els objectius amb nom base ambigu resolen al primer colp d'índex (mateix criteri laxista que Obsidian; es reporta). El codi en línia amb doble accent greu no s'emmascara. L'aprovació per hash garanteix *lectura conscient de la recepta*, no identitat: la garantia d'identitat és la cadena git + el lease de `PROTOCOL_PETORRETA`.
 
 
 ---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]
+
+## Taxonomia
+- **Categoria:** [[Coneixement]]
+- **Etiquetes:** [[Graf]]

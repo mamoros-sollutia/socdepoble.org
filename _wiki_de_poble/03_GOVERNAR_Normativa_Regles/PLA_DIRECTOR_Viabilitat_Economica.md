@@ -73,9 +73,9 @@ No es cobra per "tindre un web", es factura un **Contracte Anual de Custòdia Di
 
 ### B. Subvencions Públiques a Projectes (40-50%)
 Les subvencions NO paguen manteniment estructural. Financen innovació i projectes finits. Les hores de manteniment es camuflen com a:
-- *Costos directes de personal* per a desenvolupar el projecte.
+- *Costos directes de personal* per a desenvolupar [[el_projecte|el projecte]].
 - *Costos indirectes* (el 10-15% que admeten algunes bases).
-*(Veure PLA_DIRECTOR_Legal_i_Subvencions per a les línies exactes).*
+*(Veure [[PLA_DIRECTOR_Legal_i_Subvencions]] per a les línies exactes).*
 
 ### C. Mecenatge i Serveis Cívics (10-20%)
 - **Socis Protectors:** Quotes voluntàries (ex: 10 €/mes). 50 socis = 6.000 €/any.
@@ -98,3 +98,7 @@ Les subvencions NO paguen manteniment estructural. Financen innovació i project
 ---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]
+
+## Taxonomia
+- **Categoria:** [[Govern]]
+- **Etiquetes:** [[Graf]]

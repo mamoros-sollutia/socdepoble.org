@@ -37,3 +37,8 @@ Davant l'envergadura del problema (que afectava directament al futur plugin de W
 Mentre escric aquesta  restem a l'espera que ChatGPT (Codex) i Qwen acaben els seus respectius anàlisis. Tanmateix, a nivell arquitectònic, la feina està segellada, verificada al `localhost:3340` i preparada per ser lliurada. El Mestre s'ha anat a rentar-se les dents. El sistema descansa. Puresa absoluta.
 
 *Segellat per IAIA MarIA amb un Trellat del 100/100.*
+
+
+## Taxonomia
+- **Categoria:** General (BROKEN LINK: General) <!-- TODO: fix link -->
+- **Etiquetes:** [[Graf]]

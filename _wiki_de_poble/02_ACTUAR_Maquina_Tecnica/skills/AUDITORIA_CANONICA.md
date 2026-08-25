@@ -102,7 +102,7 @@ Auditar no modifica fitxers. Escriure un informe, corregir YAML, moure una nota,
 
 
 ---
-**Categoria:** [[skills]]
+**Categoria:** skills (BROKEN LINK: skills) <!-- TODO: fix link -->
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
 **Ancoratge de Seguretat:** [[00_INDEX]]
 

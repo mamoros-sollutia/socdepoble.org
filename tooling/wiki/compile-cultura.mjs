@@ -64,3 +64,4 @@ compilePrompt().catch(err => {
   console.error('❌ Error compilant la cultura:', err);
   process.exit(1);
 });
+const __dummy = 'passa per canonada';

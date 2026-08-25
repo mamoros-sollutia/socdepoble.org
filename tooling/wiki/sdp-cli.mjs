@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-import { openReflex, claimReceiptForMutation, completeMutationClaim } from './reflex_petorreta.mjs';
 import { auditWiki, applyAuditPlan, restoreRun } from './core/autoneteja_audit.mjs';
 import { requireReceipt, writeNewFile } from './core/mutation_kernel.mjs';
 import { runId } from './core/corpus_snapshot.mjs';

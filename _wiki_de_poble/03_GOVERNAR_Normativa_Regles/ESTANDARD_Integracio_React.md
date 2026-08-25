@@ -62,3 +62,8 @@ Els tokens de Pedra Seca garanteixen un contrast mínim de 4.5:1 (WCAG AA) tant 
 Dins del mòdul Pedra Seca, no existeixen referències forçades a arrels absolutes (excepte si es configuren). Qualsevol crida a recursos com imatges serà tractada amb imports de Vite (per exemple, `import logo from './assets/img/logo.svg'`) perquè la ruta es resolgui correctament quan Sollutia construeixi el seu paquet.
 
 ***Aquesta normativa invalida protocols antics on es requeria que Sollutia convertís HTML a JSX. Avui, la integració és Plug & Play.***
+
+
+## Taxonomia
+- **Categoria:** [[Govern]]
+- **Etiquetes:** [[Graf]]

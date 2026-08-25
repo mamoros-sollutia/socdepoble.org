@@ -227,3 +227,7 @@ AI chat with note context, smart writing assistance, and one-click edits for you
 ---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]
+
+## Taxonomia
+- **Categoria:** [[Maquina]]
+- **Etiquetes:** [[Graf]]

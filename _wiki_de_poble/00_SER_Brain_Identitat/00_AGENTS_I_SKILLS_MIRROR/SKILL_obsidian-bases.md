@@ -1,126 +1,509 @@
 ---
-estat: actiu
-tipus: skill
-description: "Mirall humà de la skill obsidian-bases"
+estat: generat
+tipus: document
+description: Vista generada des de .agents/skills/obsidian-bases/SKILL.md; no editar.
 source: .agents/skills/obsidian-bases/SKILL.md
+source_sha256: 6ac79bec1ba852e94b0daae1018e87f8aab50d3bd316e3fdded121c218e005dd
 ---
 
-> [!WARNING]
-> **AQUEST FITXER ÉS UN REFLEX (MIRROR)**
-> Açò és l'estrat humà. Qualsevol modificació o discussió sobre com he d'actuar s'ha de fer ací. Quan estiguem d'acord, s'actualitzarà la meua vertadera matriu a `.agents/skills/obsidian-bases/SKILL.md` exclusivament en anglés tècnic.
+> [!warning] FITXER GENERAT
+> Font canònica: `.agents/skills/obsidian-bases/SKILL.md`. Qualsevol edició manual serà sobreescrita.
 
-# Skill de Bases d'Obsidian
+# Obsidian Bases Skill
 
-Crea i edita fitxers de Bases d'Obsidian (`.base`) amb vistes, filtres, fórmules i resums. S'utilitza en treballar amb fitxers `.base`, creant vistes tipus base de dades per a notes, o quan l'usuari esmenta Bases, vistes de taula, vistes de targeta, filtres o fórmules a Obsidian.
+## Workflow
 
-## Flux de treball
+1. **Create the file**: Create a `.base` file in the vault with valid YAML content
+2. **Define scope**: Add `filters` to select which notes appear (by tag, folder, property, or date)
+3. **Add formulas** (optional): Define computed properties in the `formulas` section
+4. **Configure views**: Add one or more views (`table`, `cards`, `list`, or `map`) with `order` specifying which properties to display
+5. **Validate**: Verify the file is valid YAML with no syntax errors. Check that all referenced properties and formulas exist. Common issues: unquoted strings containing special YAML characters, mismatched quotes in formula expressions, referencing `formula.X` without defining `X` in `formulas`
+6. **Test in Obsidian**: Open the `.base` file in Obsidian to confirm the view renders correctly. If it shows a YAML error, check quoting rules below
 
-1. **Crear el fitxer**: Crea un fitxer `.base` al vault amb contingut YAML vàlid.
-2. **Definir l'abast**: Afig `filters` per seleccionar quines notes apareixen (per etiqueta, carpeta, propietat o data).
-3. **Afegir fórmules** (opcional): Defineix propietats calculades a la secció `formulas`.
-4. **Configurar vistes**: Afig una o més vistes (`table`, `cards`, `list` o `map`) amb `order` per especificar quines propietats mostrar.
-5. **Validar**: Verifica que el fitxer siga YAML vàlid sense errors de sintaxi. Comprova que totes les propietats i fórmules referenciades existisquen.
-6. **Provar a Obsidian**: Obri el fitxer `.base` a Obsidian per confirmar que la vista es renderitza correctament.
+## Schema
 
-## Esquema
-
-Els fitxers de Bases utilitzen l'extensió `.base` i contenen YAML vàlid.
+Base files use the `.base` extension and contain valid YAML.
 
 ```yaml
-# Els filtres globals s'apliquen a TOTES les vistes de la base
+# Global filters apply to ALL views in the base
 filters:
+  # Can be a single filter string
+  # OR a recursive filter object with exactly ONE key: and, or, or not
   and:
     - 'status == "active"'
     - not:
         - 'file.hasTag("archived")'
 
-# Defineix propietats de fórmula per utilitzar en totes les vistes
+# Define formula properties that can be used across all views
 formulas:
   formula_name: 'expression'
 
-# Configura els noms a mostrar (display names) i ajustos per propietats
+# Configure display names and settings for properties
 properties:
   property_name:
-    displayName: "Nom a Mostrar"
+    displayName: "Display Name"
   formula.formula_name:
-    displayName: "Nom a Mostrar de la Fórmula"
+    displayName: "Formula Display Name"
   file.ext:
-    displayName: "Extensió"
+    displayName: "Extension"
 
-# Defineix fórmules de resum personalitzades
+# Define custom summary formulas
 summaries:
   custom_summary_name: 'values.mean().round(3)'
 
-# Defineix una o més vistes
+# Define one or more views
 views:
   - type: table | cards | list | map
-    name: "Nom de la Vista"
-    limit: 10                    # Opcional: limita els resultats
-    groupBy:                     # Opcional: agrupa resultats
+    name: "View Name"
+    limit: 10                    # Optional: limit results
+    groupBy:                     # Optional: group results
       property: property_name
       direction: ASC | DESC
-    filters:                     # Els filtres específics de vista segueixen les mateixes regles
+    filters:                     # View-specific filters follow the same rules
       and:
         - 'status == "active"'
-    order:                       # Propietats a mostrar en ordre
+    order:                       # Properties to display in order
       - file.name
       - property_name
       - formula.formula_name
-    summaries:                   # Assigna propietats a fórmules de resum
+    summaries:                   # Map properties to summary formulas
       property_name: Average
 ```
 
-## Sintaxi de Filtres
+## Filter Syntax
 
-Els filtres redueixen els resultats. Es poden aplicar globalment o per vista. 
-Accepta filtres individuals o estructures imbricades amb operadors `and`, `or`, `not`.
+Filters narrow down results. They can be applied globally or per-view.
 
-| Operador | Descripció |
+### Filter Structure
+
+```yaml
+# Single filter
+filters: 'status == "done"'
+
+# AND - all conditions must be true
+filters:
+  and:
+    - 'status == "done"'
+    - 'priority > 3'
+
+# OR - any condition can be true
+filters:
+  or:
+    - 'file.hasTag("book")'
+    - 'file.hasTag("article")'
+
+# NOT - exclude matching items
+filters:
+  not:
+    - 'file.hasTag("archived")'
+
+# Nested filters
+filters:
+  or:
+    - file.hasTag("tag")
+    - and:
+        - file.hasTag("book")
+        - file.hasLink("Textbook")
+    - not:
+        - file.hasTag("book")
+        - file.inFolder("Required Reading")
+```
+
+### Filter Operators
+
+| Operator | Description |
 |----------|-------------|
-| `==` | igual |
-| `!=` | diferent |
-| `>` | major que |
-| `<` | menor que |
-| `>=` | major o igual que |
-| `<=` | menor o igual que |
-| `&&` | AND lògic |
-| `\|\|` | OR lògic |
-| `!` | NOT lògic |
+| `==` | equals |
+| `!=` | not equal |
+| `>` | greater than |
+| `<` | less than |
+| `>=` | greater than or equal |
+| `<=` | less than or equal |
+| `&&` | logical and |
+| `\|\|` | logical or |
+| <code>!</code> | logical not |
 
-## Propietats
+## Properties
 
-Hi ha tres tipus de propietats:
-1. **Propietats de la nota** - Des del frontmatter: `note.author` o simplement `author`
-2. **Propietats del fitxer** - Metadades del fitxer: `file.name`, `file.mtime`, `file.tags`, `file.links`, etc.
-3. **Propietats de fórmula** - Valors calculats: `formula.my_formula`
+### Three Types of Properties
 
-## Sintaxi de Fórmules
+1. **Note properties** - From frontmatter: `note.author` or just `author`
+2. **File properties** - File metadata: `file.name`, `file.mtime`, etc.
+3. **Formula properties** - Computed values: `formula.my_formula`
 
-Les fórmules calculen valors a partir de propietats i es defineixen a la secció `formulas`. Admeten aritmètica simple, lògica condicional (`if()`), formatat d'estils i dades (`file.ctime.format()`). 
+### File Properties Reference
 
-- **Atenció amb les dates**: En restar dues dates, el resultat és del tipus **Duration** (no un número). Per tractar-lo com a número cal utilitzar les propietats `.days`, `.hours`, etc., i **després** aplicar funcions numèriques (com `.round()`).
+| Property | Type | Description |
+|----------|------|-------------|
+| `file.name` | String | File name |
+| `file.basename` | String | File name without extension |
+| `file.path` | String | Full path to file |
+| `file.folder` | String | Parent folder path |
+| `file.ext` | String | File extension |
+| `file.size` | Number | File size in bytes |
+| `file.ctime` | Date | Created time |
+| `file.mtime` | Date | Modified time |
+| `file.tags` | List | All tags in file |
+| `file.links` | List | Internal links in file |
+| `file.backlinks` | List | Files linking to this file |
+| `file.embeds` | List | Embeds in the note |
+| `file.properties` | Object | All frontmatter properties |
 
-## Funcions Clau
+### The `this` Keyword
 
-| Funció | Signatura | Descripció |
+- In main content area: refers to the base file itself
+- When embedded: refers to the embedding file
+- In sidebar: refers to the active file in main content
+
+## Formula Syntax
+
+Formulas compute values from properties. Defined in the `formulas` section.
+
+```yaml
+formulas:
+  # Simple arithmetic
+  total: "price * quantity"
+
+  # Conditional logic
+  status_icon: 'if(done, "✅", "⏳")'
+
+  # String formatting
+  formatted_price: 'if(price, price.toFixed(2) + " dollars")'
+
+  # Date formatting
+  created: 'file.ctime.format("YYYY-MM-DD")'
+
+  # Calculate days since created (use .days for Duration)
+  days_old: '(now() - file.ctime).days'
+
+  # Calculate days until due date
+  days_until_due: 'if(due_date, (date(due_date) - today()).days, "")'
+```
+
+## Key Functions
+
+Most commonly used functions. For the complete reference of all types (Date, String, Number, List, File, Link, Object, RegExp), see [FUNCTIONS_REFERENCE.md](references/FUNCTIONS_REFERENCE.md).
+
+| Function | Signature | Description |
 |----------|-----------|-------------|
-| `date()` | `date(string): date` | Analitza un text com a data (`YYYY-MM-DD HH:mm:ss`) |
-| `now()` | `now(): date` | Data i hora actual |
-| `today()` | `today(): date` | Data actual (hora = 00:00:00) |
-| `if()` | `if(condition, trueResult, falseResult?)` | Condicional |
-| `duration()` | `duration(string): duration` | Analitza un text com a durada |
-| `file()` | `file(path): file` | Obté l'objecte del fitxer |
-| `link()` | `link(path, display?): Link` | Crea un enllaç |
+| `date()` | `date(string): date` | Parse string to date (`YYYY-MM-DD HH:mm:ss`) |
+| `now()` | `now(): date` | Current date and time |
+| `today()` | `today(): date` | Current date (time = 00:00:00) |
+| `if()` | `if(condition, trueResult, falseResult?)` | Conditional |
+| `duration()` | `duration(string): duration` | Parse duration string |
+| `file()` | `file(path): file` | Get file object |
+| `link()` | `link(path, display?): Link` | Create a link |
 
-## Incrustar Bases
+### Duration Type
 
-Incrusta en fitxers Markdown utilitzant `![[NomDeLaBase.base]]` o `![[NomDeLaBase.base#Nom de la Vista]]` per a una vista específica.
+When subtracting two dates, the result is a **Duration** type (not a number).
 
-## Regles de Cometes en YAML
+**Duration Fields:** `duration.days`, `duration.hours`, `duration.minutes`, `duration.seconds`, `duration.milliseconds`
 
-- Utilitza cometes simples per a fórmules que contenen cometes dobles: `'if(done, "Sí", "No")'`
-- Utilitza cometes dobles per a cadenes simples: `"El Nom de la meua Vista"`
-- Compte amb caràcters especials YAML (`:`, `{`, `}`, `[`, `]`, `,`, `&`, `*`, `#`, `?`, `|`, `-`, `<`, `>`, `=`, `!`, `%`, `@`, `` ` ``). Cal emmarcar-los en cometes si formen part d'una cadena de text.
+**IMPORTANT:** Duration does NOT support `.round()`, `.floor()`, `.ceil()` directly. Access a numeric field first (like `.days`), then apply number functions.
+
+```yaml
+# CORRECT: Calculate days between dates
+"(date(due_date) - today()).days"                    # Returns number of days
+"(now() - file.ctime).days"                          # Days since created
+"(date(due_date) - today()).days.round(0)"           # Rounded days
+
+# WRONG - will cause error:
+# "((date(due) - today()) / 86400000).round(0)"      # Duration doesn't support division then round
+```
+
+### Date Arithmetic
+
+```yaml
+# Duration units: y/year/years, M/month/months, d/day/days,
+#                 w/week/weeks, h/hour/hours, m/minute/minutes, s/second/seconds
+"now() + \"1 day\""       # Tomorrow
+"today() + \"7d\""        # A week from today
+"now() - file.ctime"      # Returns Duration
+"(now() - file.ctime).days"  # Get days as number
+```
+
+## View Types
+
+### Table View
+
+```yaml
+views:
+  - type: table
+    name: "My Table"
+    order:
+      - file.name
+      - status
+      - due_date
+    summaries:
+      price: Sum
+      count: Average
+```
+
+### Cards View
+
+```yaml
+views:
+  - type: cards
+    name: "Gallery"
+    order:
+      - file.name
+      - cover_image
+      - description
+```
+
+### List View
+
+```yaml
+views:
+  - type: list
+    name: "Simple List"
+    order:
+      - file.name
+      - status
+```
+
+### Map View
+
+Requires latitude/longitude properties and the Maps community plugin.
+
+```yaml
+views:
+  - type: map
+    name: "Locations"
+    # Map-specific settings for lat/lng properties
+```
+
+## Default Summary Formulas
+
+| Name | Input Type | Description |
+|------|------------|-------------|
+| `Average` | Number | Mathematical mean |
+| `Min` | Number | Smallest number |
+| `Max` | Number | Largest number |
+| `Sum` | Number | Sum of all numbers |
+| `Range` | Number | Max - Min |
+| `Median` | Number | Mathematical median |
+| `Stddev` | Number | Standard deviation |
+| `Earliest` | Date | Earliest date |
+| `Latest` | Date | Latest date |
+| `Range` | Date | Latest - Earliest |
+| `Checked` | Boolean | Count of true values |
+| `Unchecked` | Boolean | Count of false values |
+| `Empty` | Any | Count of empty values |
+| `Filled` | Any | Count of non-empty values |
+| `Unique` | Any | Count of unique values |
+
+## Complete Examples
+
+### Task Tracker Base
+
+```yaml
+filters:
+  and:
+    - file.hasTag("task")
+    - 'file.ext == "md"'
+
+formulas:
+  days_until_due: 'if(due, (date(due) - today()).days, "")'
+  is_overdue: 'if(due, date(due) < today() && status != "done", false)'
+  priority_label: 'if(priority == 1, "🔴 High", if(priority == 2, "🟡 Medium", "🟢 Low"))'
+
+properties:
+  status:
+    displayName: Status
+  formula.days_until_due:
+    displayName: "Days Until Due"
+  formula.priority_label:
+    displayName: Priority
+
+views:
+  - type: table
+    name: "Active Tasks"
+    filters:
+      and:
+        - 'status != "done"'
+    order:
+      - file.name
+      - status
+      - formula.priority_label
+      - due
+      - formula.days_until_due
+    groupBy:
+      property: status
+      direction: ASC
+    summaries:
+      formula.days_until_due: Average
+
+  - type: table
+    name: "Completed"
+    filters:
+      and:
+        - 'status == "done"'
+    order:
+      - file.name
+      - completed_date
+```
+
+### Reading List Base
+
+```yaml
+filters:
+  or:
+    - file.hasTag("book")
+    - file.hasTag("article")
+
+formulas:
+  reading_time: 'if(pages, (pages * 2).toString() + " min", "")'
+  status_icon: 'if(status == "reading", "📖", if(status == "done", "✅", "📚"))'
+  year_read: 'if(finished_date, date(finished_date).year, "")'
+
+properties:
+  author:
+    displayName: Author
+  formula.status_icon:
+    displayName: ""
+  formula.reading_time:
+    displayName: "Est. Time"
+
+views:
+  - type: cards
+    name: "Library"
+    order:
+      - cover
+      - file.name
+      - author
+      - formula.status_icon
+    filters:
+      not:
+        - 'status == "dropped"'
+
+  - type: table
+    name: "Reading List"
+    filters:
+      and:
+        - 'status == "to-read"'
+    order:
+      - file.name
+      - author
+      - pages
+      - formula.reading_time
+```
+
+### Daily Notes Index
+
+```yaml
+filters:
+  and:
+    - file.inFolder("Daily Notes")
+    - '/^\d{4}-\d{2}-\d{2}$/.matches(file.basename)'
+
+formulas:
+  word_estimate: '(file.size / 5).round(0)'
+  day_of_week: 'date(file.basename).format("dddd")'
+
+properties:
+  formula.day_of_week:
+    displayName: "Day"
+  formula.word_estimate:
+    displayName: "~Words"
+
+views:
+  - type: table
+    name: "Recent Notes"
+    limit: 30
+    order:
+      - file.name
+      - formula.day_of_week
+      - formula.word_estimate
+      - file.mtime
+```
+
+## Embedding Bases
+
+Embed in Markdown files:
+
+```markdown
+!MyBase.base (BROKEN LINK: MyBase.base) <!-- TODO: fix link -->
+
+<!-- Specific view -->
+!MyBase.base#View Name (BROKEN LINK: MyBase.base#View Name) <!-- TODO: fix link -->
+```
+
+## YAML Quoting Rules
+
+- Use single quotes for formulas containing double quotes: `'if(done, "Yes", "No")'`
+- Use double quotes for simple strings: `"My View Name"`
+- Escape nested quotes properly in complex expressions
+
+## Troubleshooting
+
+### YAML Syntax Errors
+
+**Unquoted special characters**: Strings containing `:`, `{`, `}`, `[`, `]`, `,`, `&`, `*`, `#`, `?`, `|`, `-`, `<`, `>`, `=`, `!`, `%`, `@`, `` ` `` must be quoted.
+
+```yaml
+# WRONG - colon in unquoted string
+displayName: Status: Active
+
+# CORRECT
+displayName: "Status: Active"
+```
+
+**Mismatched quotes in formulas**: When a formula contains double quotes, wrap the entire formula in single quotes.
+
+```yaml
+# WRONG - double quotes inside double quotes
+formulas:
+  label: "if(done, "Yes", "No")"
+
+# CORRECT - single quotes wrapping double quotes
+formulas:
+  label: 'if(done, "Yes", "No")'
+```
+
+### Common Formula Errors
+
+**Duration math without field access**: Subtracting dates returns a Duration, not a number. Always access `.days`, `.hours`, etc.
+
+```yaml
+# WRONG - Duration is not a number
+"(now() - file.ctime).round(0)"
+
+# CORRECT - access .days first, then round
+"(now() - file.ctime).days.round(0)"
+```
+
+**Missing null checks**: Properties may not exist on all notes. Use `if()` to guard.
+
+```yaml
+# WRONG - crashes if due_date is empty
+"(date(due_date) - today()).days"
+
+# CORRECT - guard with if()
+'if(due_date, (date(due_date) - today()).days, "")'
+```
+
+**Referencing undefined formulas**: Ensure every `formula.X` in `order` or `properties` has a matching entry in `formulas`.
+
+```yaml
+# This will fail silently if 'total' is not defined in formulas
+order:
+  - formula.total
+
+# Fix: define it
+formulas:
+  total: "price * quantity"
+```
+
+## References
+
+- [Bases Syntax](https://help.obsidian.md/bases/syntax)
+- [Functions](https://help.obsidian.md/bases/functions)
+- [Views](https://help.obsidian.md/bases/views)
+- [Formulas](https://help.obsidian.md/formulas)
+- [Complete Functions Reference](references/FUNCTIONS_REFERENCE.md)
 
 ---
+
 **Ancoratge de Seguretat:** [[00_INDEX_MIRROR]]

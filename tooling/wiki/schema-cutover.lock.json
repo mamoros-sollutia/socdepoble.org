@@ -17,7 +17,7 @@
     "core/pattern_extractor.mjs:sol lectura",
     "core/self_repair.mjs:tombstoned",
     "semantic_auditor.mjs",
-    "teixidora_sinapsis.mjs:escriptura tombstonada",
+    "teixidora_sinapsis.mjs:escriptura tombstonada (fail-closed amb throw verificat)",
     "consolidar_etiquetes.mjs:tombstoned",
     "scripts/enllacat-intelligent-wiki.mjs:parser v2 + sol lectura",
     "reflex_petorreta.mjs:Petorreta validada contra v2",

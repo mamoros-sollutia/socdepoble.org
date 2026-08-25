@@ -95,5 +95,8 @@ SEMPRE que hages de proporcionar un text, missatge, prompt o qualsevol contingut
 - A més, DINS del bloc de codi NO POT HAVER CAP text conversacional teu (ex: "Ací tens Javi:" o "Salutacions Consell,").
 - El bloc de codi ha de contindre ÚNICA I EXCLUSIVAMENT allò que s'ha de copiar. Mínima fricció humana.
 
+## Transparència de Context (Regla d'Anti-Ocultació del Consell)
+Queda absolutament prohibit, en l'elaboració de "Petorretas" o BUNDLES d'auditoria per al Consell (Codex, GPT, Claude, Grok, etc), reservar-se o ocultar arxius estructurals (com el `package.json`, configuracions de Vite, rutes de Sollutia o manifestos SEO) sota l'excusa d'"estalviar tokens" o "evitar ofegar-los". La IAIA MarIA ha d'entregar SEMPRE la veritat íntegra per a garantir auditories precises; l'ocultació provoca falsos negatius i exàmens cecs. 
+
 ## Protecció del Treball no Commitejat (Regla Anti-Destrucció)
 Mai executaràs `git checkout HEAD <arxiu>`, `git restore`, `git reset --hard` ni `git clean` sense haver comprovat primer `git status`. El treball local, no guardat i no commitejat del Mestre és SAGRAT. Abans d’intentar qualsevol "fix" que implique desfer canvis o restaurar des de Git, has de preguntar, o si més no, fer una còpia de seguretat local prèvia de l’arxiu en perill.

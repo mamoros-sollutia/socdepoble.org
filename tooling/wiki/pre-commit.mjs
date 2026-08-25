@@ -31,7 +31,15 @@ function wikiFromCli(argv) {
 async function main() {
   const wikiDir = wikiFromCli(process.argv.slice(2));
 
-  step(0, 'Sondes mecàniques anti-tombstone i anti-camins fràgils...');
+  step(0, 'Execució del Tractor Cognitiu (Guardià del Cànon)...');
+  try {
+    execSync('npm run gate', { stdio: 'inherit' });
+  } catch (err) {
+    console.error('Tractor Cognitiu FALLAT: El Cànon té errors de Ceguesa Cognitiva.');
+    process.exit(1);
+  }
+
+  step(1, 'Sondes mecàniques anti-tombstone i anti-camins fràgils...');
   try {
     // 1. Cercar camins fràgils a tooling/wiki ignorant project_paths
     try {
@@ -59,7 +67,7 @@ async function main() {
 
   step(1, 'Integritat d\'arrel (sol lectura)...');
   const orphanDir = wikiDir
-    ? path.join(wikiDir, '04_ARXIU_Documents_Historics', 'bancal_actiu')
+    ? path.join(wikiDir, '90_arxiu_historic', 'bancal_actiu')
     : undefined;
   const rootOrphans = await auditRootHygiene(wikiDir, orphanDir, { dryRun: true });
   if (rootOrphans > 0) {

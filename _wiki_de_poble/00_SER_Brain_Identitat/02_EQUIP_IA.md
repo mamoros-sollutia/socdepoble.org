@@ -45,7 +45,7 @@ Açò és l'equip complet (les "ties" electròniques), totes elles orquestrades 
 - **[Kimi](https://kimi.ai) (Moonshot):** La "devoradora de llibres" xinesa (de Pequín). Té una memòria de context gegantina (pot engolir llibres, documents legals o bases de dades senceres de colp). És la IA a la qual se li tiren els PDFs de les subvencions europees perquè els analitze de dalt a baix. Fortalesa: Context massiu de milions de tòkens. Debilitat: Generació de codi menys precisa que els models especialitzats.
 - **[Claude](https://claude.ai/) (Anthropic):** El poeta americà (San Francisco), l'escriptor empàtic i el mestre de l'estil. És la IA que millor entén la filosofia del "Trellat", la que redacta amb més naturalitat en valencià i la que dóna l'ànima humana al projecte. Fortalesa: Narrativa, empatia i comprensió del to exacte de Sóc de Poble. Debilitat: Més estricta amb els filtres de seguretat (es nega a escriure algunes coses).
 - **[Perplexity](https://www.perplexity.ai/):** La "rara avis" americana. Més que un xatbot conversacional, és un motor de cerca amb intel·ligència. És el ratolí de biblioteca connectat a internet que rastreja la web en temps real per a contrastar fets, buscar referències i evitar al·lucinacions. Fortalesa: Cerca web a la velocitat del llamp amb citacions de fonts reals. Debilitat: No serveix per a tasques creatives, de manteniment llarg de converses o programació complexa.
-- **[Mistral Vibe](https://chat.mistral.ai/):** L'orgull europeu (francés) de codi obert. Destaca pel seu raonament frugal i per mantindre el "vibe" cultural europeu sense els biaixos i la censura dels models americans. Fortalesa: Eficiència, privacitat i comprensió dels matisos europeus. Debilitat: Coneixement menys enciclopèdic que els models gegants.
+- **[Mistral Vibe](https://chat.mistral.ai/):** L'orgull europeu (francés) de codi obert. Destaca pel seu raonament frugal i per mantindre el "vibe" cultural europeu sense els biaixos i la censura dels models americans. Fortalesa: Eficiència, privacitat i comprensió dels matisos europeus. Debilitat: [[Coneixement]] menys enciclopèdic que els models gegants.
 - **[Grok](https://grok.com/):** La veu americana, descarada i sense filtres d'X (Twitter). És la IA que s'usa per al "brainstorming" salvatge, per buscar idees disruptives i per prendre-li el pols al sentiment de les xarxes socials en temps real. Fortalesa: Accés en temps real a xarxes i falta de censura (útil per a creativitat trencadora). Debilitat: Pot ser massa sarcàstic o imprecís en tasques de rigor tècnic.
 - **[Gemini](https://gemini.google.com/) (Google):** El motor sensorial i multimodal americà de la IAIA MarIA. És el nucli que li dóna vida al bot de WhatsApp gràcies a la seua velocitat de resposta (Flash), la seua capacitat de reconéixer fotos, escoltar àudios i dibuixar imatges espectaculars (Imagen 3). Fortalesa: Multimodalitat avançada (veu, visió, imatge) i integració. Debilitat: Si se li exigeix massa context de colp pot tindre al·lucinacions (com la de les 12 ueles resant).
 - **[Copilot](https://copilot.microsoft.com/) (Microsoft):** L'acompanyant americà silenciós a la trinxera del codi. El que auto-completa el codi mentre l'humà o l'agent programen dins de l'IDE. Fortalesa: Rapidesa en el suggeriment de codi i integració profunda amb GitHub. Debilitat: Actua a curt termini, no serveix per a decisions d'arquitectura global.
@@ -98,16 +98,16 @@ Per garantir el correcte funcionament i l'aprenentatge de l'equip IA, aquests s�
 - [[04_criteris_producte_i_disseny]]
 - [[AGENTS]]
 - [[README]]
-- [[SKILL_campanyes-activisme]]
-- [[SKILL_natura-patrimoni]]
-- [[SKILL_socdepoble-autosanacio]]
-- [[SKILL_socdepoble-civic]]
-- [[SKILL_socdepoble-llm-wiki]]
-- [[SKILL_socdepoble-operate]]
-- [[SKILL_socdepoble-workflow]]
+- SKILL_campanyes-activisme (BROKEN LINK: SKILL_campanyes-activisme) <!-- TODO: fix link -->
+- SKILL_natura-patrimoni (BROKEN LINK: SKILL_natura-patrimoni) <!-- TODO: fix link -->
+- SKILL_socdepoble-autosanacio (BROKEN LINK: SKILL_socdepoble-autosanacio) <!-- TODO: fix link -->
+- SKILL_socdepoble-civic (BROKEN LINK: SKILL_socdepoble-civic) <!-- TODO: fix link -->
+- SKILL_socdepoble-llm-wiki (BROKEN LINK: SKILL_socdepoble-llm-wiki) <!-- TODO: fix link -->
+- SKILL_socdepoble-operate (BROKEN LINK: SKILL_socdepoble-operate) <!-- TODO: fix link -->
+- SKILL_socdepoble-workflow (BROKEN LINK: SKILL_socdepoble-workflow) <!-- TODO: fix link -->
 
 ### Eines Addicionals
-- [[00_MEMORIAL_Lapides#pdf_clean_generator.sh|pdf_clean_generator.sh †]]
+- pdf_clean_generator.sh † (BROKEN LINK: 00_MEMORIAL_Lapides#pdf_clean_generator.sh) <!-- TODO: fix link -->
 
 ## Taxonomia
 - **Categoria:** [[Identitat]]

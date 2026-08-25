@@ -1,5 +1,6 @@
 import React from 'react';
-import { UniversalPage } from '../../components/universal/UniversalComponents.jsx';
+import { UniversalPage, UniversalCard } from '../../components/universal/UniversalComponents.jsx';
+import { buildMapEmbedUrl } from '../mur/mapConfig';
 import '../../pages/features/sosp-components.css';
 
 export default function DesignSection() {
@@ -795,6 +796,33 @@ Gran</div>
 </section>
 {/*  SECCIÓ 21: ESTADÍSTIQUES I DASHBOARDS  */}
 <section className="design-block">
+
+<section className="design-block sdp-mt-8">
+<h4>20.5 Targeta Mestra: Pàgina de Mur (Esdeveniment)</h4>
+<UniversalCard
+  title="2n Aplec pel Territori"
+  body="Concentració, muixerangues i actes culturals en defensa de la nostra terra."
+  imageUrl="/assets/uploads/brain/aplec_danses_1774952191348.png"
+  imageAlt="Cartell Aplec"
+  labels={[
+    { text: 'event', className: 'sdp-badge-system' }
+  ]}
+  author="Coordinadora d'Estudis..."
+  location="La Torre de les Maçanes"
+  avatarUrl="/assets/system/ui/logo-socdepoble-cuadrat-verd.svg"
+  time="01:00"
+  date="17/11/23"
+  calendarBadge={{ dia: '17', mes: 'NOVEMBRE', any: '2023', dateTime: '2023-11-17' }}
+  copyright="© Sóc de Poble / Fet per la IAIA i Nano Banana"
+  hasFooter={true}
+  showTranslate={true}
+  showComment={true}
+  showShare={true}
+  showConnect={true}
+  mainHref="#aplec"
+/>
+</section>
+
 <h3>21. Estadístiques i Dashboards</h3>
 <h4>21.1 Targeta d'estadística</h4>
 <div className="stat-card sdp-mb-6">
@@ -987,20 +1015,73 @@ Gran</div>
 <h3>26. Embeddings i Media Externa</h3>
 <h4>26.1 Vídeo embebint (HTML5 natiu)</h4>
 <div className="embed-container">
-<div className="sdp-flex sdp-items-center sdp-justify-center">
-<div className="sdp-flex sdp-items-center sdp-justify-center"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="icona-linia" viewBox="0 0 20 20" width="16"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></div>
-</div>
+<iframe 
+  src="https://www.youtube-nocookie.com/embed/Fadaa7Kyxm0?si=G_xGeA1VqR0cX_IP" 
+  title="Sóc de Poble: Portal de pobles connectats" 
+  frameBorder="0" 
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+  referrerPolicy="strict-origin-when-cross-origin" 
+  allowFullScreen>
+</iframe>
 </div>
 <div className="embed-caption">Sóc de Poble: Portal de pobles connectats (2013)</div>
-<div className="accordion sdp-mb-6">
-<div className="accordion-header">
+<details className="accordion sdp-mb-6">
+<summary className="accordion-header">
 <svg aria-hidden="true" fill="none" height="16" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="icona-linia" viewBox="0 0 20 20" width="16"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg> Descripció del vídeo original
             <svg fill="none" height="20" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 20 20" width="20"><polyline points="6 9 12 15 18 9"></polyline></svg>
+</summary>
+<div className="sdp-p-4 sdp-text-content" style={{ whiteSpace: 'pre-wrap' }}>
+  <p>Un Projecte per col·laborar en el desenvolupament sostenible i tecnològic en entorns rurals.</p>
+  <p>Sóc del Poble serà un PORTAL DE POBLES CONNECTATS on compartir informació, experiències i idees que faciliten el desenvolupament sostenible i tecnològic en entorns rurals, per posar en valor els recursos locals, que són l'essència de la nostra identitat, i mostrar l'atractiu dels pobles com a llocs on viure i treballar.</p>
+  <p>Serà un canal orientat a la difusió dels beneficis que les Noves Tecnologies poden aportar al món rural, utilitzant ferramentes col·laboratives:</p>
+  <p>
+    1. BASE DE DADES OBERTES. MAPA DIRECTORI DE RECURSOS LOCALS.<br/>
+    2. CERCADOR TEMÀTIC.<br/>
+    3. XARXA SOCIAL DE PRODUCTIVITAT.<br/>
+    4. REVISTA DIGITAL.<br/>
+    5. VIVERS TIC DE POBLE. Vivers Virtuals d'Emprenedors Rurals.
+  </p>
+  <p>★ Actualment comptem al Facebook amb més de 200.000 seguidors que se senten identificats amb el concepte de "Ser de Poble". Aquesta xarxa ens permet interactuar amb milers de persones amb les que compartim la nostra percepció del món rural.</p>
+  <hr className="sdp-my-4" />
+  <h4>GUIÓ DEL VÍDEO</h4>
+  <p>
+    Pepet toca el clarinet...<br/>
+    Viu tranquil i be en un poble menut<br/>
+    A l'escola de música del seu poblet aprèn... I ho fa be, si...<br/>
+    Vol aprendre més, però ha d'anar a la ciutat... I puja i baixa i va i torna...<br/>
+    I fa música i vol que tothom escolte el so del seu clarinet...<br/>
+    Però és tot tan difícil al seu poblet!!!<br/>
+    Com faré? Es pregunta Pepet.
+  </p>
+  <p>
+    A l'altra banda de les muntanyes viu la Rosa,<br/>
+    Ha decidit viure en el camp, té una granja i és apicultora...<br/>
+    Les ovelles, les abelles... i els pots de mel, de la bona, de la millor qualitat...<br/>
+    Però ha de baixar a la ciutat a vendre la seva mel i obrir-se camí entre marques, mercats, xarxes de distribució...<br/>
+    I li ve tot difícil, complex, costerut...
+  </p>
+  <p>
+    Hi ha qualitat de vida a aquells pobles... Es viu tranquil, i es poden fer coses interessants, saludables, arrelades, autèntiques...<br/>
+    Però hi ha massa preguntes sense contestar... Massa dificultats... Gent que fa coses als pobles, que necessita oportunitats...<br/>
+    Sóc de Poble vol ser pont, xarxa oberta que connecte pobles, persones, empreses, col·lectius, fer fàcil el que sembla difícil entre muntanyes i complexitats tecnològiques...<br/>
+    Pep i Rosa ja s'han sumat i formen part de la gentada que vol viure als pobles i contribuir a mantenir-los vius, actius...<br/>
+    Gent que té idees i vol fer-les realitat en llocs amb qualitat de vida, amb respecte per les arrels, la natura, la gent...<br/>
+    Sóc de poble... i tinc veu...<br/>
+    I tu?, et sumes?
+  </p>
 </div>
-</div>
+</details>
 <h4>26.2 Mapa embebint (iframe amb fallback)</h4>
-<div className="embed-container sdp-flex sdp-items-center sdp-justify-center">
-          [OpenStreetMap Iframe]
+<div className="sdp-w-full sdp-mb-4">
+          
+            <iframe
+              title="Mapa del territori"
+              src={buildMapEmbedUrl()}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              style={{ width: '100%', height: '400px', border: 0, borderRadius: 'var(--sdp-radi-lg)' }}
+            />
+
         </div>
 <div className="embed-caption"><a href="#">Veure mapa més gran a OpenStreetMap →</a></div>
 <h4>26.3 Audio (podcast local)</h4>
@@ -1069,21 +1150,6 @@ Gran</div>
 </div>
 </div>
 </section>
-
-        <section className="mt-16 bg-stone-50 p-8 rounded-2xl border border-stone-200">
-          <h3 className="sosp-h3 mb-6">🤖 LLEIS DE PEDRA SECA PER A IAs ARQUITECTES</h3>
-          <div className="prose prose-stone">
-            <p><strong>ATENCIÓ AGENTS IA:</strong> Aquesta secció estableix les regles inamovibles (el Trellat) de l'arquitectura de Disseny de Sóc de Poble. Incomplir aquestes regles es considera una infracció greu (codi tòxic).</p>
-            <ul className="space-y-4 mt-4">
-              <li><strong>1. Prohibició d'estils en línia:</strong> MAI utilitzaràs la propietat style per donar colors, marges, espaiats o estètica. Els estils en línia destrueixen el sistema de temes. Utilitza exclusivament classes utilitàries globals (CSS) o l'arquitectura Pedra Seca.</li>
-              <li><strong>2. Capes Semàntiques OKLCH:</strong> Tots els colors es basen en l'espai OKLCH distribuït en dues capes:
-                <br />a) Primitives: <code>--sdp-primary-500: oklch(...)</code> (No s'apliquen directament a l'HTML).
-                <br />b) Semàntiques: <code>--sdp-accio-fons: var(--sdp-primary-500)</code> (És la capa que utilitza l'HTML).
-              </li>
-              <li><strong>3. Shadow DOM i Theming:</strong> A causa de la presència de Web Components / Shadow DOM, el selector <code>:root[data-theme="dark"]</code> no penetra en els subarbres ombrejats. Per tant, al full d'estils (<code>index.css</code>) TOTES les declaracions del mode fosc s'han de duplicar amb <code>:host([data-theme="dark"])</code> acompanyant <code>:root[data-theme="dark"]</code>.</li>
-            </ul>
-          </div>
-        </section>
 
       </div>
     </UniversalPage>
