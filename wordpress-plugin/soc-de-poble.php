@@ -200,7 +200,14 @@ function sdp_render( $atts = array() ) {
 	if ( '' !== $atts['config'] ) {
 		$desat = json_decode( $atts['config'], true );
 		if ( is_array( $desat ) ) {
-			$config = $desat;
+			// Qwenb: Validació de la Frontera de Confiança.
+			// Evitar la injecció de metadades no autoritzades des del shortcode.
+			$permeses = array( 'theme', 'lang', 'dataMode', 'showMenu', 'layout' );
+			foreach ( $permeses as $key ) {
+				if ( isset( $desat[ $key ] ) ) {
+					$config[ $key ] = sanitize_text_field( $desat[ $key ] );
+				}
+			}
 		}
 	}
 

@@ -74,8 +74,8 @@ export default function NotesSection() {
     >
       <article className="card" style={{ padding: 0, overflow: 'hidden' }}>
         <div className="topbar" style={{ position: 'static', borderRadius: 0, borderLeft: 0, borderRight: 0, borderTop: 0, background: 'var(--sdp-fons-roca)', color: 'var(--sdp-sobre-roca)' }}>
-          <div className="topbar__title" style={{ color: 'var(--sdp-sobre-roca)' }}>
-            <strong style={{ color: 'var(--sdp-sobre-roca)' }}>{t('section.notes.mobileTitle', 'Quadern')}</strong>
+          <div className="topbar__title" style={ { color: 'var(--sdp-sobre-roca)' }}>
+            <strong style={ { color: 'var(--sdp-sobre-roca)' }}>{t('section.notes.mobileTitle', 'Quadern')}</strong>
           </div>
           <div className="topbar__actions" style={{ gap: 6 }}>
             <button type="button" className={`pill ${mobileView === 'folders' ? 'pill--primary' : ''}`} onClick={() => setMobileView('folders')}>
@@ -180,13 +180,13 @@ export default function NotesSection() {
                   <article
                     className="app-note-content"
                     style={{ marginTop: 24 }}
-                    dangerouslySetInnerHTML={{ __html: activeNote.content }}
+                    children={ activeNote.content }
                   />
                 </>
               ) : (
                 <div className="chat-empty">
                   <FileText size={64} />
-                  <h2 className="section-title" style={{ color: 'inherit' }}>{t('section.notes.open', 'Obre un solc')}</h2>
+                  <h2 className="section-title" style={ { color: 'inherit' }}>{t('section.notes.open', 'Obre un solc')}</h2>
                 </div>
               )}
             </div>

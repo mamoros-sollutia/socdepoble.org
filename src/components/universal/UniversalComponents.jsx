@@ -431,6 +431,15 @@ export function UniversalPage({
     }
   });
   
+  const barAuthorName = topBarData.authorName ?? authorName;
+  const barAuthorLocation = topBarData.authorLocation ?? authorLocation;
+  const barAuthorAvatar = topBarData.authorAvatar ?? authorAvatar;
+  const barTime = topBarData.time ?? time;
+  const barDate = topBarData.date ?? date;
+  const barDateTime = topBarData.dateTime ?? dateTime;
+  const barHeroImage = topBarData.heroImage ?? heroImage;
+  const barHeroAlt = topBarData.heroAlt ?? heroAlt;
+
   const handleDateTime = onDateTime || ((e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -463,14 +472,7 @@ export function UniversalPage({
   const showPageHeader = resolvedChrome !== 'none';
   const hasHeader = Boolean(showPageHeader && (showLogos || title || labels.length || copyright));
 
-  const barAuthorName = topBarData.authorName ?? authorName;
-  const barAuthorLocation = topBarData.authorLocation ?? authorLocation;
-  const barAuthorAvatar = topBarData.authorAvatar ?? authorAvatar;
-  const barTime = topBarData.time ?? time;
-  const barDate = topBarData.date ?? date;
-  const barDateTime = topBarData.dateTime ?? dateTime;
-  const barHeroImage = topBarData.heroImage ?? heroImage;
-  const barHeroAlt = topBarData.heroAlt ?? heroAlt;
+
 
   return (
     <>
@@ -648,9 +650,9 @@ export function UniversalPage({
                   >
                     {href ? (
                       href.startsWith('http') ? (
-                        <a href={href} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>{text}</a>
+                        <a href={href} target="_blank" rel="noopener noreferrer" style={ { color: 'inherit', textDecoration: 'none' }}>{text}</a>
                       ) : (
-                        <Link to={href} style={{ color: 'inherit', textDecoration: 'none' }}>{text}</Link>
+                        <Link to={href} style={ { color: 'inherit', textDecoration: 'none' }}>{text}</Link>
                       )
                     ) : text}
                   </li>
@@ -846,9 +848,9 @@ function CardBody({ imageUrl, imageAlt, calendarBadge, price, title, titleConten
                 >
                   {href ? (
                     href.startsWith('http') ? (
-                      <a href={href} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>{text}</a>
+                      <a href={href} target="_blank" rel="noopener noreferrer" style={ { color: 'inherit', textDecoration: 'none' }}>{text}</a>
                     ) : (
-                      <Link to={href} style={{ color: 'inherit', textDecoration: 'none' }}>{text}</Link>
+                      <Link to={href} style={ { color: 'inherit', textDecoration: 'none' }}>{text}</Link>
                     )
                   ) : text}
                 </li>
@@ -1084,7 +1086,7 @@ export function UniversalIndicatorCard({
       onClick={onClick}
       aria-pressed={active}
     >
-      <span className="sdp-indicator-card-icon" style={iconColor ? { color: iconColor } : {}}>
+      <span className="sdp-indicator-card-icon" style={iconColor ? { /* */ color: iconColor } : {}}>
         {icon}
       </span>
       <span className="sdp-indicator-card-title">{title}</span>

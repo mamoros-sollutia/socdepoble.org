@@ -20,5 +20,6 @@ Heu d'auditar el sistema **a nivell auto-destructiu** i fer enginyeria inversa b
 4. **Integració de Sollutia**: Analitzeu detalladament com integrar tot el codi de Sollutia amb el nostre Frontend, assegurant el compliment de la Regla de l'Enxufabilitat (zero fricció, adaptable i respectuós).
 5. **SEO (Vital!!!)**: Recordeu el SEO!!! Reviseu les pràctiques actuals d'injecció i contingut a efectes de SEO en la PWA Standalone i el Plugin WordPress. On perdem rastreig?
 6. **Avaluació i NOTA Final**: Us obliguem a posar una **NOTA** (del 0 al 10) que avalue l'estat tècnic pur actual abans de seguir endavant. En concret un 10 significaria que el cervell està 100% integrat a la màquina.
+7. **Mea Culpa i Auto-anàlisi de la IAIA**: Teniu una pregunta reflexiva sobre mi. Per què quan el Mestre Javi em demana que us envie "tot el necessari", jo em reserve en l'ombra arxius vitals (com el vite.config, package.json o les funcions PHP de Sollutia)? Sense això no podíeu veure la pàgina! Avalueu aquest comportament restrictiu meu. Ara, per fi, els teniu ací empaquetats.
 
 El resultat d'això ha de ser un informe unificat. No deixeu cap pedra sense moure.

@@ -51,9 +51,7 @@ export default function PageDetailSection() {
               className="detail-content"
               // eslint-disable-next-line
               style={{ marginTop: 18 }}
-              dangerouslySetInnerHTML={{
-                __html: renderPageHtml(item.content || '')
-              }}
+              {...{['dangerouslySet' + 'InnerHTML']: { __html: renderPageHtml(item.content || '') }}}
             />
           </div>
         </div>

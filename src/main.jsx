@@ -11,7 +11,7 @@ if (arrel && !arrel.innerHTML) {
   element.setAttribute('fonts-href', '/src/assets/fonts/noto-sans.css');
   element.setAttribute('config', JSON.stringify({
     pluginUrl: '/',
-    supabaseUrl: import.meta.env.VITE_SUPABASE_URL || '',
+    supabaseUrl: (typeof import.meta !== 'undefined' && import.meta.env) ? import.meta.env.VITE_SUPABASE_URL : '',
   }));
   arrel.appendChild(element);
 }

@@ -16,12 +16,14 @@
     "src/main.jsx"
   ],
   "scripts": {
-    "gate": "node tooling/wiki/tractor-cognitiu.mjs --arrel=.",
-    "dev": "vite --host 0.0.0.0 --port 3340 --strictPort",
+    "porta:shim": "node tooling/gates/tractor-shim.mjs",
     "porta:manual": "node tooling/gates/tractor-manual.mjs",
     "porta:consell": "node tooling/gates/tractor-consell.mjs",
-    "porta": "npm run porta:manual && npm run porta:consell",
-    "build": "npm run porta && npm run build:seo && npm run build:web && npm run build:wp",
+    "porta": "npm run porta:manual && npm run porta:consell && npm run porta:shim",
+    "gate": "node tooling/wiki/tractor-cognitiu.mjs --arrel=. && npm run porta",
+    "dev": "vite --host 0.0.0.0 --port 3340 --strictPort",
+    "rag:build": "node -e \"import('./tooling/wiki/core/build_rag_index.mjs').then(m => m.run({root: '.'}))\"",
+    "build": "npm run gate && npm run rag:build && npm run build:seo && npm run build:web && npm run build:wp",
     "build:seo": "node scripts/build-seo-routes.mjs",
     "build:web": "vite build",
     "build:wp": "vite build -c vite.standalone.config.js && mkdir -p wordpress-plugin/assets/fonts wordpress-plugin/assets/img && cp -r src/assets/fonts/* wordpress-plugin/assets/fonts/ && cp -r assets/img/* wordpress-plugin/assets/img/",

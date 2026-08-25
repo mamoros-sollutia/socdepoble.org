@@ -61,7 +61,9 @@ bundleContent += `\n## CODI FONT (REACT, WP PLUGIN, TOOLING)\n`;
 const codeFiles = [
   ...walk(path.join(ROOT, 'src'), /\.(jsx?|css)$/),
   ...walk(path.join(ROOT, 'wordpress-plugin'), /\.(php|js|json|css)$/),
-  ...walk(path.join(ROOT, 'tooling'), /\.(mjs|js|py)$/),
+  ...walk(path.join(ROOT, 'tooling'), /\.(mjs|js|py|sh|json|sql)$/),
+  ...walk(path.join(ROOT, 'scripts'), /\.(mjs|js|py|sh|json|sql)$/),
+  ...walk(path.join(ROOT, 'supabase'), /\.(sql)$/),
   path.join(ROOT, 'package.json'),
   path.join(ROOT, 'vite.config.js'),
   path.join(ROOT, 'vite.standalone.config.js'),
@@ -107,3 +109,15 @@ El resultat d'això ha de ser un informe unificat. No deixeu cap pedra sense mou
 
 writeFileSync(outPetorreta, petorretaContent);
 console.log('Petorreta creada:', outPetorreta);
+
+// 3. Validació Post-Acció (Anti-Mandra)
+function verifyAntiMandra(announcedName, actualPath) {
+  const actualName = path.basename(actualPath);
+  if (announcedName !== actualName) {
+    throw new Error(`Anti-Mandra Alert: El nom anunciat '${announcedName}' no coincideix amb l'escrit a disc '${actualName}'. Això trenca la traçabilitat!`);
+  }
+}
+
+verifyAntiMandra('260825_1235_BUNDLE_Auditoria_Inversa.md', outBundle);
+verifyAntiMandra('260825_1235_PETORRETA_Auditoria_Inversa.md', outPetorreta);
+console.log('✅ Verificació Post-Acció (Anti-Mandra): els noms anunciats coincideixen amb el disc.');

@@ -22,7 +22,7 @@ export default function DesignSection() {
       time="23:29"
       date="22/3/22"
     >
-      <div className="universal-content sosp-design-system sdp-manual-disseny">
+      <div className="universal-content sdp-design-system sdp-manual-disseny">
         {/* Generated JSX from HTML */}
         
 <section className="design-block">
@@ -484,10 +484,10 @@ Normal</div>
 Gran</div>
 </div>
 <h4>Esquelet (Skeleton)</h4>
-<div className="skeleton skeleton-title"></div>
-<div className="skeleton skeleton-text"></div>
-<div className="skeleton skeleton-text"></div>
-<div className="skeleton skeleton-text"></div>
+<div className="skeleton skeleton-title">{""}</div>
+<div className="skeleton skeleton-text">{""}</div>
+<div className="skeleton skeleton-text">{""}</div>
+<div className="skeleton skeleton-text">{""}</div>
 </section>
 {/*  SECCIÓ 13: AVATARS  */}
 <section className="design-block">
@@ -532,11 +532,11 @@ Gran</div>
 <h3>16. Barra de Progrés</h3>
 <div className="progress-container">
 <div className="progress-header"><span>Pujada d'imatges</span><span>45%</span></div>
-<div className="progress-bar"><div className="progress-fill"></div></div>
+<div className="progress-bar"><div className="progress-fill">{""}</div></div>
 </div>
 <div className="progress-container">
 <div className="progress-header"><span>Indexació de documents</span><span>78%</span></div>
-<div className="progress-bar"><div className="progress-fill"></div></div>
+<div className="progress-bar"><div className="progress-fill">{""}</div></div>
 </div>
 </section>
 {/*  SECCIÓ 17: TOOLTIPS  */}
@@ -571,7 +571,7 @@ Gran</div>
 <h3>19. Divisors i Separadors</h3>
 <div className="divider-preview">
 <div className="divider-label">19.1 Divisor horitzontal bàsic</div>
-<div className="divider-basic"></div>
+<div className="divider-basic">{""}</div>
 </div>
 <div className="divider-preview">
 <div className="divider-label">19.2 Divisor amb text</div>
@@ -579,15 +579,15 @@ Gran</div>
 </div>
 <div className="divider-preview">
 <div className="divider-label">19.3 Separador de secció (major)</div>
-<div className="divider-major"></div>
+<div className="divider-major">{""}</div>
 </div>
 <div className="divider-preview">
 <div className="divider-label">19.4 Separador puntejat</div>
-<div className="divider-dashed"></div>
+<div className="divider-dashed">{""}</div>
 </div>
 <div className="divider-preview">
 <div className="divider-label">19.5 Separador de pàgina (salt visual)</div>
-<div className="divider-dotted"></div>
+<div className="divider-dotted">{""}</div>
 </div>
 </section>
 {/*  SECCIÓ 20: TARGETES MESTRES  */}
@@ -1088,7 +1088,7 @@ Gran</div>
 <div className="audio-player">
 <button className="audio-play-btn"><svg viewBox="0 0 20 20"><path d="M8 5v14l11-7z"></path></svg></button>
 <div className="audio-progress">
-<div className="audio-progress-fill"></div>
+<div className="audio-progress-fill">{""}</div>
 </div>
 <div className="audio-time">12:45</div>
 </div>

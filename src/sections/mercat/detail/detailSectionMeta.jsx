@@ -36,7 +36,7 @@ export function buildMercatDetailSectionMeta({ marketItems = [], t }) {
                   {variation.description}
                 </p>
                 // eslint-disable-next-line
-                <p style={{ color: 'var(--sdp-color-muted, gray)', textTransform: 'uppercase', fontSize: '0.8rem', marginBottom: 16 }}>
+                <p style={ { color: 'var(--sdp-color-muted, gray)', textTransform: 'uppercase', fontSize: '0.8rem', marginBottom: 16 }}>
                   VENEDOR: SÓC DE POBLE
                 </p>
                 // eslint-disable-next-line

@@ -1720,8 +1720,8 @@ nav.mobile-nav { display: none; }
   .mobile-logo-wrapper { width: 135px; }
   .mobile-logo-wrapper img { width: 112px; }
   header.bar-black .right-icons { gap: 0; margin-left: auto; }
-  header.bar-black .right-icons .icon { width: 36px; height: 36px; min-width: 36px; min-height: 36px; padding: 6px; }
-  header.bar-black .right-icons img.icon { width: 28px; height: 28px; min-width: 28px; min-height: 28px; }
+  header.bar-black .right-icons .icon { width: 44px; height: 44px; min-width: 44px; min-height: 44px; padding: 6px; }
+  header.bar-black .right-icons img.icon { width: 44px; height: 44px; min-width: 44px; min-height: 44px; }
   header.bar-black .right-icons svg { width: 22px; height: 22px; stroke-width: 2; }
 
   /* Barra Blava - Ajustament dens: es manté agrupació a l'esquerra, es redueix la mida */

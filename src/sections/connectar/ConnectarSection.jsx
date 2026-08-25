@@ -6,6 +6,12 @@ import { useAppData } from '../../app/AppDataContext';
 
 const TAGS = ['Història local', 'Patrimoni', 'Gent del poble', 'Debat', 'Mercat', 'Tecnologia'];
 
+const generateId = () => {
+  return typeof crypto !== 'undefined' && crypto.randomUUID
+    ? crypto.randomUUID()
+    : 'id-' + Date.now().toString(36) + '-' + Math.random().toString(36).substring(2);
+};
+
 export default function ConnectarSection({ agents = [] }) {
   const { t, sendSectionSubmission } = useAppData();
   const navigate = useNavigate();
@@ -50,7 +56,7 @@ export default function ConnectarSection({ agents = [] }) {
 
     if (selectedArea === 'mur') {
       return {
-        id: crypto.randomUUID(),
+        id: generateId(),
         sectionId: 'mur',
         type: 'post',
         title,
@@ -73,7 +79,7 @@ export default function ConnectarSection({ agents = [] }) {
 
     if (selectedArea === 'mercat') {
       return {
-        id: crypto.randomUUID(),
+        id: generateId(),
         sectionId: 'mercat',
         type: 'product',
         title,
@@ -95,7 +101,7 @@ export default function ConnectarSection({ agents = [] }) {
     }
 
     return {
-      id: crypto.randomUUID(),
+      id: generateId(),
       sectionId: 'events',
       type: 'event',
       title,

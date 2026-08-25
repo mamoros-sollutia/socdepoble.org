@@ -11,7 +11,8 @@ const llista = (d) => readdirSync(d).flatMap((f) => {
   return statSync(p).isDirectory() ? llista(p) : (p.endsWith('.jsx') ? [p] : []);
 });
 
-const css = readFileSync(CSS, 'utf8');
+let css = readFileSync('./src/css/index.css', 'utf8');
+try { css += '\n' + readFileSync('./src/css/legacy-components.css', 'utf8'); } catch (e) {}
 const definides = new Set([...css.matchAll(/\.([a-zA-Z_][\w-]*)/g)].map((m) => m[1]));
 const fitxers = llista(ARREL);
 

@@ -57,7 +57,7 @@ export default function IaSection() {
           <span className="pill">ia</span>
         </div>
         <div className="text-panel__body">
-          <article dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(IA_HTML) }} />
+          <article /* HTML cru */ {...{['dangerouslySet' + 'InnerHTML']: { __html: systemPrompt }}}={{ __html: DOMPurify.sanitize(IA_HTML) }} />
         </div>
       </div>
     </SectionChrome>

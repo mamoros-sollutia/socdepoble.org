@@ -25,7 +25,7 @@ export default function TextSection({ page, pageKey }) {
     >
       // eslint-disable-next-line
       <div className="sdp-grid sdp-text-content" style={{ padding: 'var(--sdp-space-6) var(--sdp-space-4)' }}>
-        <article dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(page.html) }} />
+        <article children={ DOMPurify.sanitize(page.html) } />
       </div>
     </UniversalPage>
   );

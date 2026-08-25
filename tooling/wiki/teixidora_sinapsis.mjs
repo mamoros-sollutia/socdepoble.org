@@ -349,7 +349,8 @@ export async function teixeix(wikiDir = WIKI_DIR) {
   let claimToken = null;
   if (PROCEDEIX) {
     console.log('🤖 Sol·licitant permís al Reflex per operar la Teixidora...');
-    const opened = { receiptPath: 'bypass', session: { bootstrap: { path: '.sdp-reflex/bootstrap' } } };
+    throw new Error('La teixidora està temporalment desactivada per escriptura fins que es complete la migració a Reflex.');
+    const opened = { receiptPath: 'NO_BYPASS_ALLOWED', session: { bootstrap: { path: '.sdp-reflex/bootstrap' } } };
     const bootstrapDir = path.resolve(wikiDir, '..', opened.session.bootstrap.path);
     await fs.mkdir(bootstrapDir, { recursive: true });
     
@@ -440,7 +441,8 @@ Rules-SHA256: ${opened.session.rulesDigest}
   }
 
   if (PROCEDEIX && docsToUpdate.length > 0) {
-    const claim = { claimToken: 'bypass' };
+    throw new Error('La teixidora està temporalment desactivada per escriptura fins que es complete la migració a Reflex.');
+    const claim = { claimToken: 'NO_BYPASS_ALLOWED' };
     claimToken = claim.claimToken;
     
     for (const { doc, nouContingut } of docsToUpdate) {

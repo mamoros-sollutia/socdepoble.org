@@ -6,7 +6,6 @@ import { getVal, setVal } from '../config/storage.js';
 const DEV_FALLBACK_STORAGE_KEY = 'socdepoble-dev-chat-messages';
 const APP_SNAPSHOT_STORAGE_KEY = 'socdepoble-app-snapshot-v1';
 const CHAT_CONVERSATION_MAP_KEY = 'socdepoble-chat-conversation-map';
-const CHAT_GUEST_DB_USER_ID_KEY = 'socdepoble-chat-guest-db-user-id';
 const getChatRemoteWriteDisabledKey = (config) => `socdepoble-chat-remote-write-disabled::${getResolvedConfig(config).supabaseUrl || 'none'}`;
 const SECTION_SUBMISSIONS_STORAGE_KEY = 'socdepoble-section-submissions-v1';
 const getSectionRemoteWriteDisabledKey = (config) => `socdepoble-section-remote-write-disabled::${getResolvedConfig(config).supabaseUrl || 'none'}`;
@@ -36,7 +35,7 @@ const normalizeText = (value) =>
     .replace(/\s+/g, ' ')
     .trim();
 
-const stripMarkdownImages = (value) => String(value || '').replace(/!\[[^\]]*\]\([^)]+\)/g, '');
+
 const firstAsset = (value) => (Array.isArray(value) ? value[0] || null : value || null);
 const buildSearchText = (parts) => normalizeText(parts.filter(Boolean).join(' '));
 
@@ -724,6 +723,10 @@ export function getHasSupabaseConfig(config = {}) {
 }
 
 export function getRuntimeDataMode(config = {}) {
+  return getResolvedConfig(config).runtimeDataMode;
+}
+
+export function normalizeDataMode(config = {}) {
   return getResolvedConfig(config).runtimeDataMode;
 }
 

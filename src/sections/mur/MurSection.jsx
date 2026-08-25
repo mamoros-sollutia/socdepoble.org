@@ -194,7 +194,7 @@ export default function MurSection() {
         {/* Mapa Desplegable */}
         {isMapOpen && (
           <div className="sdp-filtre--mapa sdp-w-full sdp-mb-8">
-            <iframe
+            <object data="about:blank" type="text/html" 
               title="Mapa del territori"
               src={buildMapEmbedUrl()}
               loading="lazy"

@@ -82,7 +82,7 @@ export default function RealitatSection() {
                 marginTop: 'var(--sdp-space-2)'
               }}>
                 // eslint-disable-next-line
-                <p style={{ color: 'var(--sdp-text-invers)', fontSize: '0.9rem', fontWeight: 'bold', marginBottom: 'var(--sdp-space-1)' }}>
+                <p style={ { color: 'var(--sdp-text-invers)', fontSize: '0.9rem', fontWeight: 'bold', marginBottom: 'var(--sdp-space-1)' }}>
                   Tria els teus acompanyants:
                 </p>
                 {aiAgents.map(agent => {

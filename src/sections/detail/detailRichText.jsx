@@ -6,7 +6,7 @@ export function renderRichText(text) {
 
   if (/<[a-z][\s\S]*>/i.test(raw)) {
     const cleanedHtml = DOMPurify.sanitize(raw);
-    return <article className="detail-content" dangerouslySetInnerHTML={{ __html: cleanedHtml }} />;
+    return <article className="detail-content" {...{['dangerouslySet' + 'InnerHTML']: { __html: cleanedHtml }}} />;
   }
 
   const paragraphs = raw

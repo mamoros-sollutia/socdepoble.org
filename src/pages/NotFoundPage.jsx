@@ -22,8 +22,7 @@ export default function NotFoundPage() {
       meta={['404', 'No trobat']}
     >
       <div className="sdp-text-center sdp-mt-8">
-        // eslint-disable-next-line
-        <Compass size={48} className="sdp-mx-auto sdp-mb-4" style={{ color: 'var(--sdp-text-suau)' }} />
+        <Compass size={48} className="sdp-mx-auto sdp-mb-4 sdp-text-suau" />
         <p className="sdp-mb-6">
           Pots tornar a l'inici per seguir explorant Sóc de Poble.
         </p>
