@@ -4,21 +4,21 @@ Arrel: `.`
 
 ## Mètriques
 
-- `files`: `29713`
-- `bytes`: `1810430013`
-- `code_files`: `112`
-- `missing_relative_imports`: `2`
-- `missing_asset_references`: `10`
-- `bare_imports`: `{"@google/genai": 2, "baileys": 2, "dexie": 1, "dompurify": 3, "dotenv": 1, "lucide-react": 15, "qrcode-terminal": 1, "react": 22, "react-dom": 2, "react-router-dom": 12}`
-- `legacy_mirror_pairs`: `22`
-- `legacy_mirror_drift`: `22`
-- `markdown_files`: `157`
-- `active_markdown_files`: `0`
-- `wikilinks`: `852`
-- `broken_wikilinks`: `202`
+- `files`: `7939`
+- `bytes`: `351426637`
+- `code_files`: `84`
+- `missing_relative_imports`: `1`
+- `missing_asset_references`: `14`
+- `bare_imports`: `{"@google/genai": 2, "baileys": 2, "dompurify": 3, "dotenv": 1, "lucide-react": 16, "qrcode-terminal": 1, "react": 26, "react-dom": 2, "react-router-dom": 14}`
+- `legacy_mirror_pairs`: `13`
+- `legacy_mirror_drift`: `0`
+- `markdown_files`: `119`
+- `active_markdown_files`: `1`
+- `wikilinks`: `791`
+- `broken_wikilinks`: `61`
 - `active_orphans`: `0`
-- `document_states`: `{}`
-- `findings_by_severity`: `{"critical": 4, "high": 39, "medium": 4184}`
+- `document_states`: `{"<missing>": 1}`
+- `findings_by_severity`: `{"critical": 2, "high": 18, "low": 25, "medium": 2873}`
 
 ## Troballes
 
@@ -30,47 +30,13 @@ Evidència: `pattern=openai-key`
 
 Acció: Revoca'l, elimina'l de la font i usa variables d'entorn/secret manager.
 
-### [CRITICAL] security.secret-value — `node_modules/zod/src/v4/mini/tests/string.test.ts:289`
-
-Possible secret incrustat; el valor s'ha omés de l'informe.
-
-Evidència: `pattern=jwt`
-
-Acció: Revoca'l, elimina'l de la font i usa variables d'entorn/secret manager.
-
-### [CRITICAL] code.import-missing — `src/PedraSecaEmbed.jsx:43`
+### [CRITICAL] code.import-missing — `src/PedraSecaEmbed.jsx:38`
 
 Import relatiu no resolt.
 
 Evidència: `./css/index.css?inline`
 
 Acció: Restaura el mòdul o elimina la branca morta.
-
-### [CRITICAL] code.import-missing — `src/main.jsx:6`
-
-Import relatiu no resolt.
-
-Evidència: `./css/index.css?v=2`
-
-Acció: Restaura el mòdul o elimina la branca morta.
-
-### [HIGH] code.asset-missing — `/assets/avatars/comic/`
-
-Asset referenciat però absent del paquet auditat.
-
-Acció: Inclou l'asset o substitueix la referència per una URL/asset real.
-
-### [HIGH] code.asset-missing — `/assets/brain/`
-
-Asset referenciat però absent del paquet auditat.
-
-Acció: Inclou l'asset o substitueix la referència per una URL/asset real.
-
-### [HIGH] code.asset-missing — `/assets/brand/default_socdepoble.webp`
-
-Asset referenciat però absent del paquet auditat.
-
-Acció: Inclou l'asset o substitueix la referència per una URL/asset real.
 
 ### [HIGH] code.asset-missing — `/assets/images/nano_anima_mas_ibanez_v3_1781060081431.webp`
 
@@ -96,7 +62,55 @@ Asset referenciat però absent del paquet auditat.
 
 Acció: Inclou l'asset o substitueix la referència per una URL/asset real.
 
-### [HIGH] code.asset-missing — `/assets/market/`
+### [HIGH] code.asset-missing — `/assets/img/aplec_danses_1774952191348.png`
+
+Asset referenciat però absent del paquet auditat.
+
+Acció: Inclou l'asset o substitueix la referència per una URL/asset real.
+
+### [HIGH] code.asset-missing — `/assets/img/art_trellat_farmer_1774708525806.png`
+
+Asset referenciat però absent del paquet auditat.
+
+Acció: Inclou l'asset o substitueix la referència per una URL/asset real.
+
+### [HIGH] code.asset-missing — `/assets/img/art_trellat_v2_1774708257858.png`
+
+Asset referenciat però absent del paquet auditat.
+
+Acció: Inclou l'asset o substitueix la referència per una URL/asset real.
+
+### [HIGH] code.asset-missing — `/assets/img/hero_panoramic_landscape_1774710654078.png`
+
+Asset referenciat però absent del paquet auditat.
+
+Acció: Inclou l'asset o substitueix la referència per una URL/asset real.
+
+### [HIGH] code.asset-missing — `/assets/img/hero_panoramic_rural_view_1774720664221.png`
+
+Asset referenciat però absent del paquet auditat.
+
+Acció: Inclou l'asset o substitueix la referència per una URL/asset real.
+
+### [HIGH] code.asset-missing — `/assets/img/hero_serrella_comic_1774709602282.png`
+
+Asset referenciat però absent del paquet auditat.
+
+Acció: Inclou l'asset o substitueix la referència per una URL/asset real.
+
+### [HIGH] code.asset-missing — `/assets/img/nano_mel_font_roja_1774216345755.png`
+
+Asset referenciat però absent del paquet auditat.
+
+Acció: Inclou l'asset o substitueix la referència per una URL/asset real.
+
+### [HIGH] code.asset-missing — `/assets/img/nano_mercat_llaurador_1774197050578.png`
+
+Asset referenciat però absent del paquet auditat.
+
+Acció: Inclou l'asset o substitueix la referència per una URL/asset real.
+
+### [HIGH] code.asset-missing — `/assets/img/nano_oli_oliva_1774198089084.png`
 
 Asset referenciat però absent del paquet auditat.
 
@@ -108,259 +122,35 @@ Asset referenciat però absent del paquet auditat.
 
 Acció: Inclou l'asset o substitueix la referència per una URL/asset real.
 
-### [HIGH] code.asset-missing — `/assets/uploads/poble/morella/cover.jpg`
+### [HIGH] wiki.frontmatter-missing — `_wiki_de_poble/04_arquitectura_disseny/model_arquitectonic_pedra_seca_dola.md`
 
-Asset referenciat però absent del paquet auditat.
+Document actiu sense frontmatter.
 
-Acció: Inclou l'asset o substitueix la referència per una URL/asset real.
+Acció: Afig l'esquema canònic mínim.
 
-### [HIGH] wiki.mirror-drift — `AGENTS.md`
-
-El mirall manual divergeix de la font .agents.
-
-Evidència: `source=.agents/AGENTS.md`
-
-Acció: Regenera'l; no edites mai el mirall a mà.
-
-### [HIGH] wiki.mirror-drift — `README.md`
-
-El mirall manual divergeix de la font .agents.
-
-Evidència: `source=.agents/README.md`
-
-Acció: Regenera'l; no edites mai el mirall a mà.
-
-### [HIGH] wiki.mirror-drift — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/01_context_i_principis.md`
-
-El mirall manual divergeix de la font .agents.
-
-Evidència: `source=.agents/01_context_i_principis.md`
-
-Acció: Regenera'l; no edites mai el mirall a mà.
-
-### [HIGH] wiki.mirror-drift — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/02_workflow_execucio.md`
-
-El mirall manual divergeix de la font .agents.
-
-Evidència: `source=.agents/02_workflow_execucio.md`
-
-Acció: Regenera'l; no edites mai el mirall a mà.
-
-### [HIGH] wiki.mirror-drift — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/03_regles_arquitectura_i_dades.md`
-
-El mirall manual divergeix de la font .agents.
-
-Evidència: `source=.agents/03_regles_arquitectura_i_dades.md`
-
-Acció: Regenera'l; no edites mai el mirall a mà.
-
-### [HIGH] wiki.mirror-drift — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/04_criteris_producte_i_disseny.md`
-
-El mirall manual divergeix de la font .agents.
-
-Evidència: `source=.agents/04_criteris_producte_i_disseny.md`
-
-Acció: Regenera'l; no edites mai el mirall a mà.
-
-### [HIGH] wiki.mirror-drift — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS.md`
-
-El mirall manual divergeix de la font .agents.
-
-Evidència: `source=.agents/AGENTS.md`
-
-Acció: Regenera'l; no edites mai el mirall a mà.
-
-### [HIGH] wiki.mirror-drift — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/PROTOCOL_CHANGE.md`
-
-El mirall manual divergeix de la font .agents.
-
-Evidència: `source=.agents/PROTOCOL_CHANGE.md`
-
-Acció: Regenera'l; no edites mai el mirall a mà.
-
-### [HIGH] wiki.mirror-drift — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/PROTOCOL_PETORRETA.md`
-
-El mirall manual divergeix de la font .agents.
-
-Evidència: `source=.agents/PROTOCOL_PETORRETA.md`
-
-Acció: Regenera'l; no edites mai el mirall a mà.
-
-### [HIGH] wiki.mirror-drift — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/README.md`
-
-El mirall manual divergeix de la font .agents.
-
-Evidència: `source=.agents/README.md`
-
-Acció: Regenera'l; no edites mai el mirall a mà.
-
-### [HIGH] wiki.mirror-drift — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/SKILL_defuddle.md`
-
-El mirall manual divergeix de la font .agents.
-
-Evidència: `source=.agents/skills/defuddle/SKILL.md`
-
-Acció: Regenera'l; no edites mai el mirall a mà.
-
-### [HIGH] wiki.mirror-drift — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/SKILL_json-canvas.md`
-
-El mirall manual divergeix de la font .agents.
-
-Evidència: `source=.agents/skills/json-canvas/SKILL.md`
-
-Acció: Regenera'l; no edites mai el mirall a mà.
-
-### [HIGH] wiki.mirror-drift — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/SKILL_obsidian-bases.md`
-
-El mirall manual divergeix de la font .agents.
-
-Evidència: `source=.agents/skills/obsidian-bases/SKILL.md`
-
-Acció: Regenera'l; no edites mai el mirall a mà.
-
-### [HIGH] wiki.mirror-drift — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/SKILL_obsidian-cli.md`
-
-El mirall manual divergeix de la font .agents.
-
-Evidència: `source=.agents/skills/obsidian-cli/SKILL.md`
-
-Acció: Regenera'l; no edites mai el mirall a mà.
-
-### [HIGH] wiki.mirror-drift — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/SKILL_obsidian-markdown.md`
-
-El mirall manual divergeix de la font .agents.
-
-Evidència: `source=.agents/skills/obsidian-markdown/SKILL.md`
-
-Acció: Regenera'l; no edites mai el mirall a mà.
-
-### [HIGH] wiki.mirror-drift — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/SKILL_socdepoble-autosanacio.md`
-
-El mirall manual divergeix de la font .agents.
-
-Evidència: `source=.agents/skills/socdepoble-autosanacio/SKILL.md`
-
-Acció: Regenera'l; no edites mai el mirall a mà.
-
-### [HIGH] wiki.mirror-drift — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/SKILL_socdepoble-civic.md`
-
-El mirall manual divergeix de la font .agents.
-
-Evidència: `source=.agents/skills/socdepoble-civic/SKILL.md`
-
-Acció: Regenera'l; no edites mai el mirall a mà.
-
-### [HIGH] wiki.mirror-drift — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/SKILL_socdepoble-iaia-actriu.md`
-
-El mirall manual divergeix de la font .agents.
-
-Evidència: `source=.agents/skills/socdepoble-iaia-actriu/SKILL.md`
-
-Acció: Regenera'l; no edites mai el mirall a mà.
-
-### [HIGH] wiki.mirror-drift — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/SKILL_socdepoble-llm-wiki.md`
-
-El mirall manual divergeix de la font .agents.
-
-Evidència: `source=.agents/skills/socdepoble-llm-wiki/SKILL.md`
-
-Acció: Regenera'l; no edites mai el mirall a mà.
-
-### [HIGH] wiki.mirror-drift — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/SKILL_socdepoble-sociologia-whatsapp.md`
-
-El mirall manual divergeix de la font .agents.
-
-Evidència: `source=.agents/skills/socdepoble-sociologia-whatsapp/SKILL.md`
-
-Acció: Regenera'l; no edites mai el mirall a mà.
-
-### [HIGH] wiki.mirror-drift — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/SKILL_socdepoble-workflow.md`
-
-El mirall manual divergeix de la font .agents.
-
-Evidència: `source=.agents/skills/socdepoble-workflow/SKILL.md`
-
-Acció: Regenera'l; no edites mai el mirall a mà.
-
-### [HIGH] wiki.mirror-drift — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/identity/PROFILE.md`
-
-El mirall manual divergeix de la font .agents.
-
-Evidència: `source=.agents/identity/PROFILE.md`
-
-Acció: Regenera'l; no edites mai el mirall a mà.
-
-### [HIGH] wiki.mirror-source-invalid — `_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/obsidian_plugins/Homepage.md`
-
-El mirall declara una font fora de .agents.
-
-Acció: Regenera el mirall només des de .agents.
-
-### [HIGH] wiki.mirror-source-invalid — `_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/obsidian_plugins/Plugins.md`
-
-El mirall declara una font fora de .agents.
-
-Acció: Regenera el mirall només des de .agents.
-
-### [HIGH] security.html-injection-sink — `src/sections/detail/PageDetailSection.jsx:50`
+### [HIGH] security.html-injection-sink — `src/sections/disseny/DesignSection.jsx:970`
 
 Punt d'injecció HTML; exigeix dades estructurades o sanitització robusta.
 
 Acció: Elimina dangerouslySetInnerHTML per a dades remotes/usuari; renderitza nodes React.
 
-### [HIGH] security.html-injection-sink — `src/sections/detail/detailRichText.jsx:9`
+### [HIGH] security.html-injection-sink — `src/sections/disseny/DesignSection.jsx:1029`
 
 Punt d'injecció HTML; exigeix dades estructurades o sanitització robusta.
 
 Acció: Elimina dangerouslySetInnerHTML per a dades remotes/usuari; renderitza nodes React.
 
-### [HIGH] security.html-injection-sink — `src/sections/ia/IaSection.jsx:60`
+### [HIGH] security.html-injection-sink — `src/sections/text/TextSection.jsx:29`
 
 Punt d'injecció HTML; exigeix dades estructurades o sanitització robusta.
 
 Acció: Elimina dangerouslySetInnerHTML per a dades remotes/usuari; renderitza nodes React.
 
-### [HIGH] security.html-injection-sink — `src/sections/notes/NotesSection.jsx:184`
-
-Punt d'injecció HTML; exigeix dades estructurades o sanitització robusta.
-
-Acció: Elimina dangerouslySetInnerHTML per a dades remotes/usuari; renderitza nodes React.
-
-### [HIGH] security.html-injection-sink — `src/sections/text/TextSection.jsx:20`
-
-Punt d'injecció HTML; exigeix dades estructurades o sanitització robusta.
-
-Acció: Elimina dangerouslySetInnerHTML per a dades remotes/usuari; renderitza nodes React.
-
-### [MEDIUM] hygiene.exact-duplicate — `.git/logs/HEAD`
+### [MEDIUM] hygiene.exact-duplicate — `.husky/_/pre-rebase`
 
 Fitxers exactament duplicats.
 
-Evidència: `.git/logs/HEAD | .git/logs/refs/heads/feature/socDePoble`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `.git/logs/refs/heads/main`
-
-Fitxers exactament duplicats.
-
-Evidència: `.git/logs/refs/heads/main | .git/logs/refs/remotes/upstream/HEAD | .git/logs/refs/heads/ops/runbook-and-backups | .git/logs/refs/heads/feature/orquestrador-timeline-animacions | .wiki-safety/20260714_210936778Z/originals/00_SER_Brain_Identitat/C.md.bak | .wiki-safety/20260714_210936778Z/quarantine/00_SER_Brain_Identitat/C.md | .wiki-safety/20260714_210849595Z/originals/00_SER_Brain_Identitat/C.md.bak | .wiki-safety/20260714_210849595Z/quarantine/00_SER_Brain_Identitat/C.md | .wiki-safety/20260714_210933425Z/originals/00_SER_Brain_Identitat/C.md.bak | .wiki-safety/20260714_210933425Z/quarantine/00_SER_Brain_Identitat/C.md | .wiki-safety/20260714_210855124Z/originals/00_SER_Brain_Identitat/C.md.bak | .wiki-safety/20260714_210855124Z/quarantine/00_SER_Brain_Identitat/C.md | .wiki-safety/20260714_210751292Z/originals/02_ACTUAR_Maquina_Tecnica/skills/iaia-maria-core/references/01_identitat_iaia/iaia_maria.md.bak | bot/var/baileys-runtime/outbound-attempts.jsonl | bot/var/bot_var.backup.socdepoble/baileys-runtime/outbound-attempts.jsonl | .wwebjs_auth/session/first_party_sets.db-journal | .wwebjs_auth/session/Default/Safe Browsing Cookies-journal | .wwebjs_auth/session/Default/ServerCertificate-journal | .wwebjs_auth/session/Default/heavy_ad_intervention_opt_out.db-journal | .wwebjs_auth/session/Default/Shortcuts-journal | .wwebjs_auth/session/Default/SharedStorage-wal | .wwebjs_auth/session/Default/Favicons-journal | .wwebjs_auth/session/Default/Affiliation Database-journal | .wwebjs_auth/session/Default/Network Action Predictor-journal | .wwebjs_auth/session/Default/Account Web Data-journal | .wwebjs_auth/session/Default/History-journal | .wwebjs_auth/session/Default/Login Data For Account-journal | .wwebjs_auth/session/Default/Trust Tokens-journal | .wwebjs_auth/session/Default/Web Data-journal | .wwebjs_auth/session/Default/Top Sites-journal | .wwebjs_auth/session/Default/Login Data-journal | .wwebjs_auth/session/segmentation_platform/ukm_db-wal | .wwebjs_auth/session/GPUPersistentCache/GPUCache/JJSXBCRJVEXH5LTPGVFMEBRAY3EZ63OB/cache.journal | .wwebjs_auth/session/Default/Session Storage/LOCK | .wwebjs_auth/session/Default/Session Storage/LOG | .wwebjs_auth/session/Default/Session Storage/LOG.old | .wwebjs_auth/session/Default/GCM Store/LOCK | .wwebjs_auth/session/Default/GCM Store/LOG | .wwebjs_auth/session/Default/chrome_cart_db/LOCK | .wwebjs_auth/session/Default/chrome_cart_db/LOG | .wwebjs_auth/session/Default/chrome_cart_db/LOG.old | .wwebjs_auth/session/Default/VideoDecodeStats/LOCK | .wwebjs_auth/session/Default/VideoDecodeStats/LOG | .wwebjs_auth/session/Default/WebStorage/QuotaManager-journal | .wwebjs_auth/session/Default/AutofillStrikeDatabase/LOCK | .wwebjs_auth/session/Default/AutofillStrikeDatabase/LOG | .wwebjs_auth/session/Default/AutofillStrikeDatabase/LOG.old | .wwebjs_auth/session/Default/Site Characteristics Database/LOCK | .wwebjs_auth/session/Default/Site Characteristics Database/LOG | .wwebjs_auth/session/Default/PersistentOriginTrials/LOCK | .wwebjs_auth/session/Default/PersistentOriginTrials/LOG | .wwebjs_auth/session/Default/PersistentOriginTrials/LOG.old | .wwebjs_auth/session/Default/Extension Scripts/LOCK | .wwebjs_auth/session/Default/Extension Rules/LOCK | .wwebjs_auth/session/Default/discounts_db/LOCK | .wwebjs_auth/session/Default/discounts_db/LOG | .wwebjs_auth/session/Default/discounts_db/LOG.old | .wwebjs_auth/session/Default/Shared Dictionary/db-journal | .wwebjs_auth/session/Default/Extension State/LOCK | .wwebjs_auth/session/Default/Extension State/LOG | .wwebjs_auth/session/Default/commerce_subscription_db/LOCK | .wwebjs_auth/session/Default/commerce_subscription_db/LOG | .wwebjs_auth/session/Default/commerce_subscription_db/LOG.old | .wwebjs_auth/session/Default/discount_infos_db/LOCK | .wwebjs_auth/session/Default/discount_infos_db/LOG | .wwebjs_auth/session/Default/discount_infos_db/LOG.old | .wwebjs_auth/session/Default/BudgetDatabase/LOCK | .wwebjs_auth/session/Default/BudgetDatabase/LOG | .wwebjs_auth/session/Default/BudgetDatabase/LOG.old | .wwebjs_auth/session/Default/shared_proto_db/LOCK | .wwebjs_auth/session/Default/AutofillAiModelCache/LOCK | .wwebjs_auth/session/Default/AutofillAiModelCache/LOG | .wwebjs_auth/session/Default/AutofillAiModelCache/LOG.old | .wwebjs_auth/session/Default/ClientCertificates/LOCK | .wwebjs_auth/session/Default/ClientCertificates/LOG | .wwebjs_auth/session/Default/ClientCertificates/LOG.old | .wwebjs_auth/session/Default/parcel_tracking_db/LOCK | .wwebjs_auth/session/Default/parcel_tracking_db/LOG | .wwebjs_auth/session/Default/parcel_tracking_db/LOG.old | .wwebjs_auth/session/Default/Segmentation Platform/SegmentInfoDB/LOCK | .wwebjs_auth/session/Default/Segmentation Platform/SegmentInfoDB/LOG | .wwebjs_auth/session/Default/Segmentation Platform/SegmentInfoDB/LOG.old | .wwebjs_auth/session/Default/Segmentation Platform/SignalStorageConfigDB/LOCK | .wwebjs_auth/session/Default/Segmentation Platform/SignalStorageConfigDB/LOG | .wwebjs_auth/session/Default/Segmentation Platform/SignalStorageConfigDB/LOG.old | .wwebjs_auth/session/Default/Segmentation Platform/SignalDB/LOCK | .wwebjs_auth/session/Default/Segmentation Platform/SignalDB/LOG | .wwebjs_auth/session/Default/Segmentation Platform/SignalDB/LOG.old | .wwebjs_auth/session/Default/Local Storage/leveldb/LOCK | .wwebjs_auth/session/Default/Sync Data/LevelDB/LOCK | .wwebjs_auth/session/Default/Sync Data/LevelDB/LOG | .wwebjs_auth/session/Default/shared_proto_db/metadata/LOCK | .wwebjs_auth/session/Default/shared_proto_db/metadata/LOG | .wwebjs_auth/session/Default/shared_proto_db/metadata/LOG.old | .wwebjs_auth/session/Default/Service Worker/Database/LOCK | .wwebjs_auth/session/Default/Service Worker/Database/LOG | .wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/LOCK | public/assets/pages/05_events/.keep | public/assets/pages/04_pobles/.keep | public/assets/pages/02_mur/.keep | public/assets/pages/08_bloc_de_notes/.keep | public/assets/pages/07_multimedia/.keep | public/assets/pages/06_mapa/.keep | public/assets/pages/03_mercat/.keep | public/assets/pages/01_chat/.keep | node_modules/workbox-strategies/_version.d.ts | node_modules/workbox-precaching/_version.d.ts | node_modules/workbox-google-analytics/_version.d.ts | node_modules/resolve/npm-debug.log.357d1f5f60a5f00f2e0c325cef16bbd4 | node_modules/workbox-recipes/_version.d.ts | node_modules/workbox-routing/_version.d.ts | node_modules/workbox-broadcast-update/_version.d.ts | node_modules/workbox-core/_version.d.ts | node_modules/workbox-expiration/_version.d.ts | node_modules/workbox-navigation-preload/_version.d.ts | node_modules/workbox-range-requests/_version.d.ts | node_modules/workbox-streams/_version.d.ts | node_modules/workbox-window/_version.d.ts | node_modules/workbox-background-sync/_version.d.ts | node_modules/workbox-cacheable-response/_version.d.ts | node_modules/terser/dist/.gitkeep | node_modules/@standard-schema/spec/dist/index.js | node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/mug.coffee | node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/mug.js | node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/baz/doom.js | node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/browser_field/a.js | node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/browser_field/b.js | node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/false_main/index.js | node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/other_path/root.js | node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/other_path/lib/other-lib.js | node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/multirepo/packages/package-b/index.js | node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/symlinked/_/node_modules/foo.js | node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/symlinked/_/symlink_target/.gitkeep | node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/shadowed_core/node_modules/util/index.js | node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/pathfilter/deep_ref/main.js | node_modules/undici/lib/llhttp/.gitkeep | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/resolver/mug.coffee | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/resolver/mug.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/resolver/baz/doom.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/resolver/browser_field/a.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/resolver/browser_field/b.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/resolver/false_main/index.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/resolver/other_path/root.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/resolver/other_path/lib/other-lib.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/resolver/multirepo/packages/package-b/index.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/resolver/symlinked/_/node_modules/foo.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/resolver/symlinked/_/symlink_target/.gitkeep | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/shadowed_core/node_modules/util/index.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/pathfilter/deep_ref/main.js | node_modules/resolve/test/dotdot/index.js | node_modules/resolve/test/precedence/bbb.js | node_modules/resolve/test/precedence/aaa.js | node_modules/resolve/test/resolver/mug.coffee | node_modules/resolve/test/resolver/mug.js | node_modules/resolve/test/resolver/foo.js | node_modules/resolve/test/resolver/same_names/foo.js | node_modules/resolve/test/resolver/empty_main/index.js | node_modules/resolve/test/resolver/dot_main/index.js | node_modules/resolve/test/resolver/null_main/index.js | node_modules/resolve/test/resolver/dot_slash_main/index.js | node_modules/resolve/test/resolver/missing_main/index.js | node_modules/resolve/test/resolver/baz/doom.js | node_modules/resolve/test/resolver/baz/quux.js | node_modules/resolve/test/resolver/browser_field/a.js | node_modules/resolve/test/resolver/browser_field/b.js | node_modules/resolve/test/resolver/incorrect_main/index.js | node_modules/resolve/test/resolver/false_main/index.js | node_modules/resolve/test/resolver/other_path/root.js | node_modules/resolve/test/resolver/other_path/lib/other-lib.js | node_modules/resolve/test/resolver/quux/foo/index.js | node_modules/resolve/test/resolver/multirepo/packages/package-b/index.js | node_modules/resolve/test/resolver/symlinked/package/bar.js | node_modules/resolve/test/resolver/symlinked/_/node_modules/foo.js | node_modules/resolve/test/resolver/symlinked/_/symlink_target/.gitkeep | node_modules/resolve/test/resolver/same_names/foo/index.js | node_modules/resolve/test/shadowed_core/node_modules/util/index.js | node_modules/resolve/test/precedence/bbb/main.js | node_modules/resolve/test/precedence/aaa/index.js | node_modules/resolve/test/precedence/aaa/main.js | node_modules/resolve/test/module_dir/zmodules/bbb/main.js | node_modules/resolve/test/module_dir/xmodules/aaa/index.js | node_modules/resolve/test/module_dir/ymodules/aaa/index.js | node_modules/resolve/test/dotdot/abc/index.js | node_modules/resolve/test/node_path/y/bbb/index.js | node_modules/resolve/test/node_path/y/ccc/index.js | node_modules/resolve/test/node_path/x/ccc/index.js | node_modules/resolve/test/node_path/x/aaa/index.js | node_modules/resolve/test/pathfilter/deep_ref/main.js | node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/empty.js | _templates/gestoria_base/01_Identitat_Legal/.gitkeep | _templates/gestoria_base/02_Facturacio/.gitkeep | _templates/gestoria_base/00_Tauler_Central/.gitkeep | _templates/gestoria_base/03_Burocracia/.gitkeep | _templates/gestoria_base/90_Arxiu_Historic/.gitkeep | _templates/gestoria_base/03_Projectes_Actius/.gitkeep | _templates/gestoria_base/04_Eines_de_Pedra_Seca/.gitkeep`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `.git/logs/refs/remotes/upstream/main`
-
-Fitxers exactament duplicats.
-
-Evidència: `.git/logs/refs/remotes/upstream/main | .git/logs/refs/remotes/upstream/feature/socDePoble | .git/logs/refs/remotes/upstream/feature/Sollutia`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `.git/refs/remotes/upstream/main`
-
-Fitxers exactament duplicats.
-
-Evidència: `.git/refs/remotes/upstream/main | .git/refs/remotes/upstream/feature/socDePoble | .git/refs/remotes/upstream/feature/Sollutia`
+Evidència: `.husky/_/pre-rebase | .husky/_/pre-applypatch | .husky/_/pre-auto-gc | .husky/_/pre-merge-commit | .husky/_/post-commit | .husky/_/applypatch-msg | .husky/_/prepare-commit-msg | .husky/_/post-checkout | .husky/_/post-applypatch | .husky/_/post-rewrite | .husky/_/commit-msg | .husky/_/pre-push | .husky/_/post-merge | .husky/_/pre-commit`
 
 Acció: Conserva una font canònica i genera o enllaça la resta.
 
@@ -19164,19 +18954,11 @@ Evidència: `.iaia_auth/tctoken-__index.json | bot/.iaia_auth/tctoken-__index.js
 
 Acció: Conserva una font canònica i genera o enllaça la resta.
 
-### [MEDIUM] hygiene.exact-duplicate — `.sdp-reflex/bootstrap/7a8af590-70f3-4d17-8d37-26adeac219fa/manifest.json`
+### [MEDIUM] hygiene.exact-duplicate — `.sdp-reflex/bootstrap/260825_0022_PROMPT_Teixidora_Automatitzada_Generacio_Massiva_De_Taxonomia_I_Sinapsis.md`
 
 Fitxers exactament duplicats.
 
-Evidència: `.sdp-reflex/bootstrap/7a8af590-70f3-4d17-8d37-26adeac219fa/manifest.json | .sdp-reflex/bootstrap/019bf4bb-ae79-42e8-bff1-ec6f42c6b4b1/manifest.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `.sdp-reflex/bootstrap/d049a840-3420-4549-8b92-95ae51748d82/manifest.yaml`
-
-Fitxers exactament duplicats.
-
-Evidència: `.sdp-reflex/bootstrap/d049a840-3420-4549-8b92-95ae51748d82/manifest.yaml | .sdp-reflex/bootstrap/6d32c910-53b4-4042-a6b7-c9a866dfd8ec/manifest.yaml | .sdp-reflex/bootstrap/c929131b-d3eb-4d63-a4ef-22ee03576889/manifest.yaml | .sdp-reflex/bootstrap/0e20cf56-e11a-4cf2-afb7-d9ace560a0ba/manifest.yaml`
+Evidència: `.sdp-reflex/bootstrap/260825_0022_PROMPT_Teixidora_Automatitzada_Generacio_Massiva_De_Taxonomia_I_Sinapsis.md | .sdp-reflex/bootstrap/260825_0128_PROMPT_Teixidora_Automatitzada_Generacio_Massiva_De_Taxonomia_I_Sinapsis.md | .sdp-reflex/bootstrap/260825_0023_PROMPT_Teixidora_Automatitzada_Generacio_Massiva_De_Taxonomia_I_Sinapsis.md`
 
 Acció: Conserva una font canònica i genera o enllaça la resta.
 
@@ -19193,6 +18975,14 @@ Acció: Conserva una font canònica i genera o enllaça la resta.
 Fitxers exactament duplicats.
 
 Evidència: `.wiki-safety/20260714_210751292Z/originals/05_Escriptori_Soc_de_Poble/260709_0951_DOC_Bundle_Wiki_Sencera_i_Codi_Per_Codex.md.bak | .wiki-safety/20260714_210751292Z/originals/04_ARXIU_Documents_Historics/Sessio_260712/260709_0951_DOC_Bundle_Wiki_Sencera_i_Codi_Per_Codex.md.bak | .wiki-safety/20260714_210751292Z/quarantine/04_ARXIU_Documents_Historics/Sessio_260712/260709_0951_DOC_Bundle_Wiki_Sencera_i_Codi_Per_Codex.md`
+
+Acció: Conserva una font canònica i genera o enllaça la resta.
+
+### [MEDIUM] hygiene.exact-duplicate — `.wiki-safety/20260714_210936778Z/originals/00_SER_Brain_Identitat/C.md.bak`
+
+Fitxers exactament duplicats.
+
+Evidència: `.wiki-safety/20260714_210936778Z/originals/00_SER_Brain_Identitat/C.md.bak | .wiki-safety/20260714_210936778Z/quarantine/00_SER_Brain_Identitat/C.md | .wiki-safety/20260714_210849595Z/originals/00_SER_Brain_Identitat/C.md.bak | .wiki-safety/20260714_210849595Z/quarantine/00_SER_Brain_Identitat/C.md | .wiki-safety/20260714_210933425Z/originals/00_SER_Brain_Identitat/C.md.bak | .wiki-safety/20260714_210933425Z/quarantine/00_SER_Brain_Identitat/C.md | .wiki-safety/20260714_210855124Z/originals/00_SER_Brain_Identitat/C.md.bak | .wiki-safety/20260714_210855124Z/quarantine/00_SER_Brain_Identitat/C.md | .wiki-safety/20260714_210751292Z/originals/02_ACTUAR_Maquina_Tecnica/skills/iaia-maria-core/references/01_identitat_iaia/iaia_maria.md.bak | bot/var/baileys-runtime/outbound-attempts.jsonl | bot/var/bot_var.backup.socdepoble/baileys-runtime/outbound-attempts.jsonl | .wwebjs_auth/session/first_party_sets.db-journal | .wwebjs_auth/session/Default/Safe Browsing Cookies-journal | .wwebjs_auth/session/Default/ServerCertificate-journal | .wwebjs_auth/session/Default/heavy_ad_intervention_opt_out.db-journal | .wwebjs_auth/session/Default/Shortcuts-journal | .wwebjs_auth/session/Default/SharedStorage-wal | .wwebjs_auth/session/Default/Favicons-journal | .wwebjs_auth/session/Default/Affiliation Database-journal | .wwebjs_auth/session/Default/Network Action Predictor-journal | .wwebjs_auth/session/Default/Account Web Data-journal | .wwebjs_auth/session/Default/History-journal | .wwebjs_auth/session/Default/Login Data For Account-journal | .wwebjs_auth/session/Default/Trust Tokens-journal | .wwebjs_auth/session/Default/Web Data-journal | .wwebjs_auth/session/Default/Top Sites-journal | .wwebjs_auth/session/Default/Login Data-journal | .wwebjs_auth/session/segmentation_platform/ukm_db-wal | .wwebjs_auth/session/GPUPersistentCache/GPUCache/JJSXBCRJVEXH5LTPGVFMEBRAY3EZ63OB/cache.journal | .wwebjs_auth/session/Default/Session Storage/LOCK | .wwebjs_auth/session/Default/Session Storage/LOG | .wwebjs_auth/session/Default/Session Storage/LOG.old | .wwebjs_auth/session/Default/GCM Store/LOCK | .wwebjs_auth/session/Default/GCM Store/LOG | .wwebjs_auth/session/Default/chrome_cart_db/LOCK | .wwebjs_auth/session/Default/chrome_cart_db/LOG | .wwebjs_auth/session/Default/chrome_cart_db/LOG.old | .wwebjs_auth/session/Default/VideoDecodeStats/LOCK | .wwebjs_auth/session/Default/VideoDecodeStats/LOG | .wwebjs_auth/session/Default/WebStorage/QuotaManager-journal | .wwebjs_auth/session/Default/AutofillStrikeDatabase/LOCK | .wwebjs_auth/session/Default/AutofillStrikeDatabase/LOG | .wwebjs_auth/session/Default/AutofillStrikeDatabase/LOG.old | .wwebjs_auth/session/Default/Site Characteristics Database/LOCK | .wwebjs_auth/session/Default/Site Characteristics Database/LOG | .wwebjs_auth/session/Default/PersistentOriginTrials/LOCK | .wwebjs_auth/session/Default/PersistentOriginTrials/LOG | .wwebjs_auth/session/Default/PersistentOriginTrials/LOG.old | .wwebjs_auth/session/Default/Extension Scripts/LOCK | .wwebjs_auth/session/Default/Extension Rules/LOCK | .wwebjs_auth/session/Default/discounts_db/LOCK | .wwebjs_auth/session/Default/discounts_db/LOG | .wwebjs_auth/session/Default/discounts_db/LOG.old | .wwebjs_auth/session/Default/Shared Dictionary/db-journal | .wwebjs_auth/session/Default/Extension State/LOCK | .wwebjs_auth/session/Default/Extension State/LOG | .wwebjs_auth/session/Default/commerce_subscription_db/LOCK | .wwebjs_auth/session/Default/commerce_subscription_db/LOG | .wwebjs_auth/session/Default/commerce_subscription_db/LOG.old | .wwebjs_auth/session/Default/discount_infos_db/LOCK | .wwebjs_auth/session/Default/discount_infos_db/LOG | .wwebjs_auth/session/Default/discount_infos_db/LOG.old | .wwebjs_auth/session/Default/BudgetDatabase/LOCK | .wwebjs_auth/session/Default/BudgetDatabase/LOG | .wwebjs_auth/session/Default/BudgetDatabase/LOG.old | .wwebjs_auth/session/Default/shared_proto_db/LOCK | .wwebjs_auth/session/Default/AutofillAiModelCache/LOCK | .wwebjs_auth/session/Default/AutofillAiModelCache/LOG | .wwebjs_auth/session/Default/AutofillAiModelCache/LOG.old | .wwebjs_auth/session/Default/ClientCertificates/LOCK | .wwebjs_auth/session/Default/ClientCertificates/LOG | .wwebjs_auth/session/Default/ClientCertificates/LOG.old | .wwebjs_auth/session/Default/parcel_tracking_db/LOCK | .wwebjs_auth/session/Default/parcel_tracking_db/LOG | .wwebjs_auth/session/Default/parcel_tracking_db/LOG.old | .wwebjs_auth/session/Default/Segmentation Platform/SegmentInfoDB/LOCK | .wwebjs_auth/session/Default/Segmentation Platform/SegmentInfoDB/LOG | .wwebjs_auth/session/Default/Segmentation Platform/SegmentInfoDB/LOG.old | .wwebjs_auth/session/Default/Segmentation Platform/SignalStorageConfigDB/LOCK | .wwebjs_auth/session/Default/Segmentation Platform/SignalStorageConfigDB/LOG | .wwebjs_auth/session/Default/Segmentation Platform/SignalStorageConfigDB/LOG.old | .wwebjs_auth/session/Default/Segmentation Platform/SignalDB/LOCK | .wwebjs_auth/session/Default/Segmentation Platform/SignalDB/LOG | .wwebjs_auth/session/Default/Segmentation Platform/SignalDB/LOG.old | .wwebjs_auth/session/Default/Local Storage/leveldb/LOCK | .wwebjs_auth/session/Default/Sync Data/LevelDB/LOCK | .wwebjs_auth/session/Default/Sync Data/LevelDB/LOG | .wwebjs_auth/session/Default/shared_proto_db/metadata/LOCK | .wwebjs_auth/session/Default/shared_proto_db/metadata/LOG | .wwebjs_auth/session/Default/shared_proto_db/metadata/LOG.old | .wwebjs_auth/session/Default/Service Worker/Database/LOCK | .wwebjs_auth/session/Default/Service Worker/Database/LOG | .wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/LOCK | _wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_prompt_iso.md | public/assets/pages/05_events/.keep | public/assets/pages/04_pobles/.keep | public/assets/pages/02_mur/.keep | public/assets/pages/08_bloc_de_notes/.keep | public/assets/pages/07_multimedia/.keep | public/assets/pages/06_mapa/.keep | public/assets/pages/03_mercat/.keep | public/assets/pages/01_chat/.keep | _templates/gestoria_base/01_Identitat_Legal/.gitkeep | _templates/gestoria_base/02_Facturacio/.gitkeep | _templates/gestoria_base/00_Tauler_Central/.gitkeep | _templates/gestoria_base/03_Burocracia/.gitkeep | _templates/gestoria_base/90_Arxiu_Historic/.gitkeep | _templates/gestoria_base/03_Projectes_Actius/.gitkeep | _templates/gestoria_base/04_Eines_de_Pedra_Seca/.gitkeep`
 
 Acció: Conserva una font canònica i genera o enllaça la resta.
 
@@ -19290,11 +19080,11 @@ Nom base duplicat: els wikilinks poden ser ambigus.
 
 Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
 
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/00_INDEX.md:31`
+### [MEDIUM] wiki.link-broken — `_wiki_de_poble/00_INDEX.md:29`
 
 Wikilink sense objectiu resoluble.
 
-Evidència: `260729_0120_ACTA_MARMOTA_Tancament_Sessio`
+Evidència: `260811_0512_ACTA_MARMOTA_Fortalesa_ShadowDOM`
 
 Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
@@ -19302,63 +19092,317 @@ Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
 Wikilink sense objectiu resoluble.
 
-Evidència: `260729_1422_PROMPT_Auditoria_Final_ARXIUS_ADJUNTS`
+Evidència: `00_INDEX_ARXIU`
 
 Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/00_INDEX.md:33`
+### [MEDIUM] wiki.link-broken — `_wiki_de_poble/00_INDEX.md:40`
 
 Wikilink sense objectiu resoluble.
 
-Evidència: `260729_1422_PROMPT_Auditoria_Final_Per_Tancar_La_IA_Del_Bot_WhatsApp`
+Evidència: `RONDA_A_decisions`
 
 Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/00_INDEX.md:34`
+### [MEDIUM] wiki.link-broken — `_wiki_de_poble/00_INDEX.md:44`
 
 Wikilink sense objectiu resoluble.
 
-Evidència: `260729_1422_PROMPT_Auditoria_Final_Per_Tancar_La_IA_Del_Bot_WhatsApp_COMPLET_CONSELL`
+Evidència: `260809_0530_ACTA_SESSIO_Auditoria_Pedra_Seca`
 
 Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/00_INDEX.md:35`
+### [MEDIUM] wiki.link-broken — `_wiki_de_poble/00_INDEX.md:45`
 
 Wikilink sense objectiu resoluble.
 
-Evidència: `260801_1900_ACTA_SESSIO_Enviament_NLnet`
+Evidència: `260813_0410_PETORRETA_RESTAURACIO_UI`
 
 Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/00_INDEX.md:36`
+### [MEDIUM] wiki.link-broken — `_wiki_de_poble/00_INDEX.md:46`
 
 Wikilink sense objectiu resoluble.
 
-Evidència: `260726_1530_ACTA_MARMOTA_Tancament_Sessio`
+Evidència: `260813_0455_ACTA_MARMOTA_Restauracio_UI_i_WordPress`
 
 Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
-### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/00_INDEX.md:40`
+### [MEDIUM] wiki.link-broken — `_wiki_de_poble/00_INDEX.md:47`
+
+Wikilink sense objectiu resoluble.
+
+Evidència: `260813_0725_ACTA_MARMOTA_Sanejament_Pedra_Seca`
+
+Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
+
+### [MEDIUM] wiki.anchor-duplicated — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/CULTURA.md`
+
+L'ancoratge automàtic apareix 5 vegades.
+
+Acció: Normalitza'l a una única aparició o elimina este ritual redundant.
+
+### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/CULTURA.md:76`
 
 Wikilink amb més d'un objectiu possible.
 
-Evidència: `_wiki_de_poble/04_ARXIU_Documents_Historics/00_INDEX_ARXIU.md | _wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md`
+Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
 
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/SKILL_obsidian-markdown.md:13`
+### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/CULTURA.md:80`
+
+Wikilink amb més d'un objectiu possible.
+
+Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
+
+### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/CULTURA.md:109`
+
+Wikilink amb més d'un objectiu possible.
+
+Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
+
+### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/CULTURA.md:149`
+
+Wikilink amb més d'un objectiu possible.
+
+Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
+
+### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/CULTURA.md:153`
+
+Wikilink amb més d'un objectiu possible.
+
+Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
+
+### [MEDIUM] wiki.anchor-duplicated — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/GENOMA.md`
+
+L'ancoratge automàtic apareix 133 vegades.
+
+Acció: Normalitza'l a una única aparició o elimina este ritual redundant.
+
+### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/GENOMA.md:31`
+
+Wikilink amb més d'un objectiu possible.
+
+Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
+
+### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/GENOMA.md:2013`
+
+Wikilink amb més d'un objectiu possible.
+
+Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
+
+### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/GENOMA.md:2017`
+
+Wikilink amb més d'un objectiu possible.
+
+Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
+
+### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/GENOMA.md:2070`
+
+Wikilink amb més d'un objectiu possible.
+
+Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
+
+### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/GENOMA.md:2074`
+
+Wikilink amb més d'un objectiu possible.
+
+Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
+
+### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/GENOMA.md:2163`
+
+Wikilink amb més d'un objectiu possible.
+
+Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
+
+### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/GENOMA.md:2167`
+
+Wikilink amb més d'un objectiu possible.
+
+Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
+
+### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/GENOMA.md:2180`
+
+Wikilink amb més d'un objectiu possible.
+
+Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
+
+### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/GENOMA.md:2251`
+
+Wikilink amb més d'un objectiu possible.
+
+Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
+
+### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/GENOMA.md:2338`
+
+Wikilink amb més d'un objectiu possible.
+
+Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
+
+### [MEDIUM] wiki.anchor-duplicated — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/sdp_master_context.md`
+
+L'ancoratge automàtic apareix 138 vegades.
+
+Acció: Normalitza'l a una única aparició o elimina este ritual redundant.
+
+### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/sdp_master_context.md:31`
+
+Wikilink amb més d'un objectiu possible.
+
+Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
+
+### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/sdp_master_context.md:2013`
+
+Wikilink amb més d'un objectiu possible.
+
+Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
+
+### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/sdp_master_context.md:2017`
+
+Wikilink amb més d'un objectiu possible.
+
+Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
+
+### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/sdp_master_context.md:2070`
+
+Wikilink amb més d'un objectiu possible.
+
+Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
+
+### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/sdp_master_context.md:2074`
+
+Wikilink amb més d'un objectiu possible.
+
+Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
+
+### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/sdp_master_context.md:2163`
+
+Wikilink amb més d'un objectiu possible.
+
+Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
+
+### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/sdp_master_context.md:2167`
+
+Wikilink amb més d'un objectiu possible.
+
+Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
+
+### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/sdp_master_context.md:2180`
+
+Wikilink amb més d'un objectiu possible.
+
+Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
+
+### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/sdp_master_context.md:2251`
+
+Wikilink amb més d'un objectiu possible.
+
+Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
+
+### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/sdp_master_context.md:2338`
+
+Wikilink amb més d'un objectiu possible.
+
+Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
+
+### [MEDIUM] wiki.anchor-duplicated — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/sdp_master_context_pack.md`
+
+L'ancoratge automàtic apareix 6 vegades.
+
+Acció: Normalitza'l a una única aparició o elimina este ritual redundant.
+
+### [MEDIUM] wiki.link-broken — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/sdp_master_context_pack.md:360`
 
 Wikilink sense objectiu resoluble.
 
-Evidència: `Note`
+Evidència: `00_INDEX_CONSELL_SUBVENCIO`
 
 Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/SKILL_obsidian-markdown.md:18`
+### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/sdp_master_context_pack.md:366`
+
+Wikilink amb més d'un objectiu possible.
+
+Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
+
+### [MEDIUM] wiki.link-broken — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/sdp_master_context_pack.md:413`
 
 Wikilink sense objectiu resoluble.
 
-Evidència: `wikilinks`
+Evidència: `260727_1405_DOCUMENT_Esborrany_Correu_Sollutia_Sobre_Arquitectura_Carpetes`
 
 Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
+
+### [MEDIUM] wiki.link-broken — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/sdp_master_context_pack.md:414`
+
+Wikilink sense objectiu resoluble.
+
+Evidència: `260727_1944_PETORRETA_Bot_WhatsApp_Robust`
+
+Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
+
+### [MEDIUM] wiki.link-broken — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/sdp_master_context_pack.md:415`
+
+Wikilink sense objectiu resoluble.
+
+Evidència: `260728_0219_PETORRETA_IAIA_50k_Consell`
+
+Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
+
+### [MEDIUM] wiki.link-broken — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/sdp_master_context_pack.md:416`
+
+Wikilink sense objectiu resoluble.
+
+Evidència: `260728_0220_PETORRETA_IAIA_50k_Consell_FULL`
+
+Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
+
+### [MEDIUM] wiki.link-broken — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/sdp_master_context_pack.md:417`
+
+Wikilink sense objectiu resoluble.
+
+Evidència: `260728_0245_RESPOSTA_QWEN_Subvencio`
+
+Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
+
+### [MEDIUM] wiki.link-broken — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/sdp_master_context_pack.md:527`
+
+Wikilink sense objectiu resoluble.
+
+Evidència: `00_INDEX_QUARANTENA`
+
+Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
+
+### [MEDIUM] wiki.link-broken — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/sdp_master_context_pack.md:531`
+
+Wikilink sense objectiu resoluble.
+
+Evidència: `260805_0430_SUPER_BRIEFING_Auditoria_Pedra_Seca`
+
+Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
+
+### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/sdp_master_context_pack.md:638`
+
+Wikilink amb més d'un objectiu possible.
+
+Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
+
+### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/sdp_master_context_pack.md:645`
+
+Wikilink amb més d'un objectiu possible.
+
+Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
+
+### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/sdp_master_context_pack.md:652`
+
+Wikilink amb més d'un objectiu possible.
+
+Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
+
+### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/sdp_master_context_pack.md:683`
+
+Wikilink amb més d'un objectiu possible.
+
+Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
 
 ### [MEDIUM] wiki.anchor-duplicated — `_wiki_de_poble/00_SER_Brain_Identitat/00_BIOS.md`
 
@@ -19378,11 +19422,13 @@ Wikilink amb més d'un objectiu possible.
 
 Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
 
-### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md:18`
+### [MEDIUM] wiki.link-broken — `_wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md:18`
 
-Wikilink amb més d'un objectiu possible.
+Wikilink sense objectiu resoluble.
 
-Evidència: `_wiki_de_poble/04_ARXIU_Documents_Historics/00_INDEX_ARXIU.md | _wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md`
+Evidència: `00_INDEX_ARXIU`
+
+Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
 ### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md:64`
 
@@ -19420,27 +19466,11 @@ L'ancoratge automàtic apareix 2 vegades.
 
 Acció: Normalitza'l a una única aparició o elimina este ritual redundant.
 
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/00_SER_Brain_Identitat/02_EQUIP_IA.md:84`
+### [MEDIUM] wiki.link-broken — `_wiki_de_poble/00_SER_Brain_Identitat/02_EQUIP_IA.md:65`
 
 Wikilink sense objectiu resoluble.
 
-Evidència: `SKILL_campanyes-activisme`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/00_SER_Brain_Identitat/02_EQUIP_IA.md:85`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `SKILL_natura-patrimoni`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/00_SER_Brain_Identitat/02_EQUIP_IA.md:89`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `SKILL_socdepoble-operate`
+Evidència: `00_INDEX_CONSELL_SUBVENCIO`
 
 Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
@@ -19570,14 +19600,6 @@ L'ancoratge automàtic apareix 2 vegades.
 
 Acció: Normalitza'l a una única aparició o elimina este ritual redundant.
 
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/a11y_debugging.md:91`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `Sollutia`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
 ### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/a11y_debugging.md:92`
 
 Wikilink amb més d'un objectiu possible.
@@ -19601,14 +19623,6 @@ Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/
 L'ancoratge automàtic apareix 2 vegades.
 
 Acció: Normalitza'l a una única aparició o elimina este ritual redundant.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/chrome_devtools.md:51`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `Sollutia`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
 ### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/chrome_devtools.md:52`
 
@@ -19634,14 +19648,6 @@ L'ancoratge automàtic apareix 2 vegades.
 
 Acció: Normalitza'l a una única aparició o elimina este ritual redundant.
 
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/chrome_extensions.md:323`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `Sollutia`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
 ### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/chrome_extensions.md:324`
 
 Wikilink amb més d'un objectiu possible.
@@ -19665,14 +19671,6 @@ Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/
 L'ancoratge automàtic apareix 2 vegades.
 
 Acció: Normalitza'l a una única aparició o elimina este ritual redundant.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/debug_optimize_lcp.md:126`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `Sollutia`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
 ### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/debug_optimize_lcp.md:127`
 
@@ -19698,14 +19696,6 @@ L'ancoratge automàtic apareix 2 vegades.
 
 Acció: Normalitza'l a una única aparició o elimina este ritual redundant.
 
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/google_antigravity_sdk.md:96`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `Sollutia`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
 ### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/google_antigravity_sdk.md:97`
 
 Wikilink amb més d'un objectiu possible.
@@ -19729,14 +19719,6 @@ Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/
 L'ancoratge automàtic apareix 2 vegades.
 
 Acció: Normalitza'l a una única aparició o elimina este ritual redundant.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/memory_leak_debugging.md:53`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `Sollutia`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
 ### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/memory_leak_debugging.md:54`
 
@@ -19762,14 +19744,6 @@ L'ancoratge automàtic apareix 2 vegades.
 
 Acció: Normalitza'l a una única aparició o elimina este ritual redundant.
 
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/modern_web_guidance.md:78`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `Sollutia`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
 ### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/modern_web_guidance.md:79`
 
 Wikilink amb més d'un objectiu possible.
@@ -19793,14 +19767,6 @@ Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/
 L'ancoratge automàtic apareix 2 vegades.
 
 Acció: Normalitza'l a una única aparició o elimina este ritual redundant.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/troubleshooting.md:96`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `Sollutia`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
 ### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/00_SER_Brain_Identitat/Sollutia/troubleshooting.md:97`
 
@@ -19928,24 +19894,6 @@ Wikilink amb més d'un objectiu possible.
 
 Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
 
-### [MEDIUM] wiki.anchor-duplicated — `_wiki_de_poble/01_SABER_Cultura_Coneixement/00_GLOSSARI_CANONIC.md`
-
-L'ancoratge automàtic apareix 2 vegades.
-
-Acció: Normalitza'l a una única aparició o elimina este ritual redundant.
-
-### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/01_SABER_Cultura_Coneixement/00_GLOSSARI_CANONIC.md:69`
-
-Wikilink amb més d'un objectiu possible.
-
-Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
-
-### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/01_SABER_Cultura_Coneixement/00_GLOSSARI_CANONIC.md:74`
-
-Wikilink amb més d'un objectiu possible.
-
-Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
-
 ### [MEDIUM] wiki.anchor-duplicated — `_wiki_de_poble/01_SABER_Cultura_Coneixement/00_visio_i_pilars.md`
 
 L'ancoratge automàtic apareix 2 vegades.
@@ -20000,12 +19948,6 @@ Wikilink amb més d'un objectiu possible.
 
 Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
 
-### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/01_SABER_Cultura_Coneixement/INDEX_TAXONOMIC.md:26`
-
-Wikilink amb més d'un objectiu possible.
-
-Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
-
 ### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/01_SABER_Cultura_Coneixement/Identitat.md:7`
 
 Wikilink amb més d'un objectiu possible.
@@ -20035,14 +19977,6 @@ Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/
 Wikilink amb més d'un objectiu possible.
 
 Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/01_SABER_Cultura_Coneixement/Sistema_Immunitari.md:31`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `fantasma`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
 ### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/01_SABER_Cultura_Coneixement/Sistema_Immunitari.md:49`
 
@@ -20140,24 +20074,6 @@ Wikilink amb més d'un objectiu possible.
 
 Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
 
-### [MEDIUM] wiki.anchor-duplicated — `_wiki_de_poble/01_SABER_Cultura_Coneixement/la_torre/fadrins_i_fadrines.md`
-
-L'ancoratge automàtic apareix 2 vegades.
-
-Acció: Normalitza'l a una única aparició o elimina este ritual redundant.
-
-### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/01_SABER_Cultura_Coneixement/la_torre/fadrins_i_fadrines.md:38`
-
-Wikilink amb més d'un objectiu possible.
-
-Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
-
-### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/01_SABER_Cultura_Coneixement/la_torre/fadrins_i_fadrines.md:43`
-
-Wikilink amb més d'un objectiu possible.
-
-Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
-
 ### [MEDIUM] wiki.anchor-duplicated — `_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/00_arquitectura_tecnica_unificada.md`
 
 L'ancoratge automàtic apareix 2 vegades.
@@ -20194,14 +20110,6 @@ Wikilink amb més d'un objectiu possible.
 
 Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
 
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/00_plantilles.md:29`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `07_plantilles`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
 ### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/00_plantilles.md:30`
 
 Wikilink amb més d'un objectiu possible.
@@ -20232,14 +20140,6 @@ Wikilink amb més d'un objectiu possible.
 
 Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
 
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_acta_unica.md:47`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `07_plantilles`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
 ### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_acta_unica.md:48`
 
 Wikilink amb més d'un objectiu possible.
@@ -20263,14 +20163,6 @@ Acció: Normalitza'l a una única aparició o elimina este ritual redundant.
 Wikilink amb més d'un objectiu possible.
 
 Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_brainstorming.md:49`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `07_plantilles`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
 ### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_brainstorming.md:50`
 
@@ -20296,14 +20188,6 @@ Wikilink amb més d'un objectiu possible.
 
 Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
 
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_branding.md:51`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `07_plantilles`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
 ### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_branding.md:52`
 
 Wikilink amb més d'un objectiu possible.
@@ -20327,14 +20211,6 @@ Acció: Normalitza'l a una única aparició o elimina este ritual redundant.
 Wikilink amb més d'un objectiu possible.
 
 Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_creador_skills.md:51`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `07_plantilles`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
 ### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_creador_skills.md:52`
 
@@ -20360,14 +20236,6 @@ Wikilink amb més d'un objectiu possible.
 
 Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
 
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_doc_to_app.md:50`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `07_plantilles`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
 ### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_doc_to_app.md:51`
 
 Wikilink amb més d'un objectiu possible.
@@ -20391,14 +20259,6 @@ Acció: Normalitza'l a una única aparició o elimina este ritual redundant.
 Wikilink amb més d'un objectiu possible.
 
 Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_modo_produccion.md:46`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `07_plantilles`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
 ### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_modo_produccion.md:47`
 
@@ -20424,14 +20284,6 @@ Wikilink amb més d'un objectiu possible.
 
 Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
 
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_planificacio.md:43`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `07_plantilles`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
 ### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_planificacio.md:44`
 
 Wikilink amb més d'un objectiu possible.
@@ -20439,38 +20291,6 @@ Wikilink amb més d'un objectiu possible.
 Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
 
 ### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_planificacio.md:45`
-
-Wikilink amb més d'un objectiu possible.
-
-Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
-
-### [MEDIUM] wiki.anchor-duplicated — `_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_prompt_iso.md`
-
-L'ancoratge automàtic apareix 2 vegades.
-
-Acció: Normalitza'l a una única aparició o elimina este ritual redundant.
-
-### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_prompt_iso.md:72`
-
-Wikilink amb més d'un objectiu possible.
-
-Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_prompt_iso.md:76`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `07_plantilles`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_prompt_iso.md:77`
-
-Wikilink amb més d'un objectiu possible.
-
-Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
-
-### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_prompt_iso.md:78`
 
 Wikilink amb més d'un objectiu possible.
 
@@ -20487,14 +20307,6 @@ Acció: Normalitza'l a una única aparició o elimina este ritual redundant.
 Wikilink amb més d'un objectiu possible.
 
 Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_skill_trellat.md:36`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `07_plantilles`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
 ### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_skill_trellat.md:37`
 
@@ -20556,14 +20368,6 @@ Wikilink amb més d'un objectiu possible.
 
 Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
 
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/AUDITORIA_CANONICA.md:84`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `skills`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
 ### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/AUDITORIA_CANONICA.md:85`
 
 Wikilink amb més d'un objectiu possible.
@@ -20593,14 +20397,6 @@ Acció: Normalitza'l a una única aparició o elimina este ritual redundant.
 Wikilink amb més d'un objectiu possible.
 
 Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/MOTOR_OFFLINE.md:93`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `skills`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
 ### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/MOTOR_OFFLINE.md:94`
 
@@ -20632,14 +20428,6 @@ Wikilink amb més d'un objectiu possible.
 
 Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
 
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/a11y_seo_trellat.md:56`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `skills`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
 ### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/a11y_seo_trellat.md:57`
 
 Wikilink amb més d'un objectiu possible.
@@ -20669,14 +20457,6 @@ Acció: Normalitza'l a una única aparició o elimina este ritual redundant.
 Wikilink amb més d'un objectiu possible.
 
 Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/futur_adaptacio.md:62`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `skills`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
 ### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/futur_adaptacio.md:63`
 
@@ -20708,14 +20488,6 @@ Wikilink amb més d'un objectiu possible.
 
 Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
 
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/index_trellat.md:66`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `skills`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
 ### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/index_trellat.md:67`
 
 Wikilink amb més d'un objectiu possible.
@@ -20746,14 +20518,6 @@ Wikilink amb més d'un objectiu possible.
 
 Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
 
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/seguretat_execucio.md:99`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `skills`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
 ### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/seguretat_execucio.md:100`
 
 Wikilink amb més d'un objectiu possible.
@@ -20783,14 +20547,6 @@ Acció: Normalitza'l a una única aparició o elimina este ritual redundant.
 Wikilink amb més d'un objectiu possible.
 
 Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/self_repair.md:85`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `skills`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
 ### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/self_repair.md:86`
 
@@ -20833,14 +20589,6 @@ Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/
 Wikilink amb més d'un objectiu possible.
 
 Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/successio_lazaro_execucio.md:91`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `skills`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
 ### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/successio_lazaro_execucio.md:92`
 
@@ -20920,13 +20668,13 @@ L'ancoratge automàtic apareix 2 vegades.
 
 Acció: Normalitza'l a una única aparició o elimina este ritual redundant.
 
-### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/03_GOVERNAR_Normativa_Regles/ESTANDARD_UI_Universal.md:191`
+### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/03_GOVERNAR_Normativa_Regles/ESTANDARD_UI_Universal.md:189`
 
 Wikilink amb més d'un objectiu possible.
 
 Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
 
-### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/03_GOVERNAR_Normativa_Regles/ESTANDARD_UI_Universal.md:196`
+### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/03_GOVERNAR_Normativa_Regles/ESTANDARD_UI_Universal.md:194`
 
 Wikilink amb més d'un objectiu possible.
 
@@ -20974,22 +20722,6 @@ Wikilink amb més d'un objectiu possible.
 
 Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
 
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/03_GOVERNAR_Normativa_Regles/PLA_DIRECTOR_Legal_i_Subvencions.md:26`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `Sollutia`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/03_GOVERNAR_Normativa_Regles/PLA_DIRECTOR_Legal_i_Subvencions.md:73`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `Sollutia`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
 ### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/03_GOVERNAR_Normativa_Regles/PLA_DIRECTOR_Legal_i_Subvencions.md:82`
 
 Wikilink amb més d'un objectiu possible.
@@ -21002,497 +20734,23 @@ Wikilink amb més d'un objectiu possible.
 
 Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
 
-### [MEDIUM] wiki.basename-duplicate — `_wiki_de_poble/04_ARXIU_Documents_Historics/00_INDEX_ARXIU.md`
+### [MEDIUM] wiki.frontmatter-key-missing — `_wiki_de_poble/04_arquitectura_disseny/model_arquitectonic_pedra_seca_dola.md`
 
-Nom base duplicat: els wikilinks poden ser ambigus.
+Falta la clau de frontmatter 'estat'.
 
-Evidència: `_wiki_de_poble/04_ARXIU_Documents_Historics/00_INDEX_ARXIU.md | _wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md`
+### [MEDIUM] wiki.frontmatter-key-missing — `_wiki_de_poble/04_arquitectura_disseny/model_arquitectonic_pedra_seca_dola.md`
 
-### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/04_ARXIU_Documents_Historics/00_INDEX_ARXIU.md:15`
+Falta la clau de frontmatter 'tipus'.
 
-Wikilink amb més d'un objectiu possible.
+### [MEDIUM] wiki.frontmatter-key-missing — `_wiki_de_poble/04_arquitectura_disseny/model_arquitectonic_pedra_seca_dola.md`
 
-Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
+Falta la clau de frontmatter 'description'.
 
-### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/00_INDEX_CONSELL_SUBVENCIO.md:30`
-
-Wikilink amb més d'un objectiu possible.
-
-Evidència: `_wiki_de_poble/04_ARXIU_Documents_Historics/00_INDEX_ARXIU.md | _wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md`
-
-### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/260727_1405_DOCUMENT_Esborrany_Correu_Sollutia_Sobre_Arquitectura_Carpetes.md:15`
-
-Wikilink amb més d'un objectiu possible.
-
-Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
-
-### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/260727_1944_PETORRETA_Bot_WhatsApp_Robust.md:34`
-
-Wikilink amb més d'un objectiu possible.
-
-Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
-
-### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/260728_0219_PETORRETA_IAIA_50k_Consell.md:33`
-
-Wikilink amb més d'un objectiu possible.
-
-Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
-
-### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/260728_0220_PETORRETA_IAIA_50k_Consell_FULL.md:52`
-
-Wikilink amb més d'un objectiu possible.
-
-Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
-
-### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/260728_0245_RESPOSTA_QWEN_Subvencio.md:28`
-
-Wikilink amb més d'un objectiu possible.
-
-Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
-
-### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/260728_0300_RESPOSTA_GROK_Codi.md:37`
-
-Wikilink amb més d'un objectiu possible.
-
-Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
-
-### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/260728_0305_RESPOSTA_GEMINI_Codi.md:30`
-
-Wikilink amb més d'un objectiu possible.
-
-Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
-
-### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/260728_0310_RESPOSTA_GROK_Cron_Metriques.md:28`
-
-Wikilink amb més d'un objectiu possible.
-
-Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
-
-### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/260728_0425_ACTA_TANCAMENT_Jornada.md:35`
-
-Wikilink amb més d'un objectiu possible.
-
-Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
-
-### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/260728_0520_PETORRETA_IAIA_Fix_Tools.md:221`
-
-Wikilink amb més d'un objectiu possible.
-
-Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
-
-### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/260728_1000_DISCURS_Subvencio_50k_Dola.md:35`
-
-Wikilink amb més d'un objectiu possible.
-
-Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
-
-### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/260728_1952_RESPOSTA_GEMINI_Consell.md:17`
-
-Wikilink amb més d'un objectiu possible.
-
-Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
-
-### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/260728_1955_RESPOSTA_PERPLEXITY_Consell.md:16`
-
-Wikilink amb més d'un objectiu possible.
-
-Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
-
-### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/260728_1956_RESPOSTA_KIMI_Consell.md:21`
-
-Wikilink amb més d'un objectiu possible.
-
-Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
-
-### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/260728_1957_RESPOSTA_DEEPSEEK_Consell.md:19`
-
-Wikilink amb més d'un objectiu possible.
-
-Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
-
-### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/260728_1958_RESPOSTA_QWEN_Consell_2.md:17`
-
-Wikilink amb més d'un objectiu possible.
-
-Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
-
-### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/260728_1959_RESPOSTA_CLAUDE_Consell.md:21`
-
-Wikilink amb més d'un objectiu possible.
-
-Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
-
-### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/260728_2003_RESPOSTA_CODEX_Consell.md:22`
-
-Wikilink amb més d'un objectiu possible.
-
-Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
-
-### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/260728_2042_PETORRETA_IAIA_Alternativa_Imatges.md:43`
-
-Wikilink amb més d'un objectiu possible.
-
-Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
-
-### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/260728_2120_ACTA_ARQUITECTURA_MULTIMEDIA_Video_i_Robustesa.md:36`
-
-Wikilink amb més d'un objectiu possible.
-
-Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
-
-### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/260728_2120_PROJECTE_Unfillertube.md:82`
-
-Wikilink amb més d'un objectiu possible.
-
-Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
-
-### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/04_ARXIU_Documents_Historics/2026_07/260806_1800_ACTA_GENERAL_Volum_2_Refinament.md:32`
-
-Wikilink amb més d'un objectiu possible.
-
-Evidència: `_wiki_de_poble/04_ARXIU_Documents_Historics/00_INDEX_ARXIU.md | _wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md`
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/04_arquitectura_disseny/model_arquitectonic_pedra_seca_dola.md:7`
+### [MEDIUM] wiki.link-broken — `_wiki_de_poble/05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md:7`
 
 Wikilink sense objectiu resoluble.
 
-Evidència: `25,27,28,29`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/04_arquitectura_disseny/model_arquitectonic_pedra_seca_dola.md:7`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `26,30,39,41`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/04_arquitectura_disseny/model_arquitectonic_pedra_seca_dola.md:7`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `40,42`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/04_arquitectura_disseny/model_arquitectonic_pedra_seca_dola.md:7`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `47,55`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/04_arquitectura_disseny/model_arquitectonic_pedra_seca_dola.md:7`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `48,49,50`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/04_arquitectura_disseny/model_arquitectonic_pedra_seca_dola.md:9`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `35,38,56`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/04_arquitectura_disseny/model_arquitectonic_pedra_seca_dola.md:9`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `68,71`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/04_arquitectura_disseny/model_arquitectonic_pedra_seca_dola.md:9`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `96,97,98`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/04_arquitectura_disseny/model_arquitectonic_pedra_seca_dola.md:9`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `99,140`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/04_arquitectura_disseny/model_arquitectonic_pedra_seca_dola.md:11`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `26`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/04_arquitectura_disseny/model_arquitectonic_pedra_seca_dola.md:13`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `47,51,52`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/04_arquitectura_disseny/model_arquitectonic_pedra_seca_dola.md:13`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `50,61`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/04_arquitectura_disseny/model_arquitectonic_pedra_seca_dola.md:13`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `58`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/04_arquitectura_disseny/model_arquitectonic_pedra_seca_dola.md:13`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `60`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/04_arquitectura_disseny/model_arquitectonic_pedra_seca_dola.md:19`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `25,26`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/04_arquitectura_disseny/model_arquitectonic_pedra_seca_dola.md:20`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `38,46`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/04_arquitectura_disseny/model_arquitectonic_pedra_seca_dola.md:21`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `26,86`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/04_arquitectura_disseny/model_arquitectonic_pedra_seca_dola.md:22`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `47,48`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/04_arquitectura_disseny/model_arquitectonic_pedra_seca_dola.md:72`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `68,71`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/04_arquitectura_disseny/model_arquitectonic_pedra_seca_dola.md:72`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `46`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/04_arquitectura_disseny/model_arquitectonic_pedra_seca_dola.md:74`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `38,56`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/04_arquitectura_disseny/model_arquitectonic_pedra_seca_dola.md:78`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `58`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/04_arquitectura_disseny/model_arquitectonic_pedra_seca_dola.md:78`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `60`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/04_arquitectura_disseny/model_arquitectonic_pedra_seca_dola.md:80`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `96,97`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/04_arquitectura_disseny/model_arquitectonic_pedra_seca_dola.md:81`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `98,99`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/04_arquitectura_disseny/model_arquitectonic_pedra_seca_dola.md:82`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `12,18`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/04_arquitectura_disseny/model_arquitectonic_pedra_seca_dola.md:98`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `45,172`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/04_arquitectura_disseny/model_arquitectonic_pedra_seca_dola.md:100`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `21,149`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/04_arquitectura_disseny/model_arquitectonic_pedra_seca_dola.md:100`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `19,43`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/04_arquitectura_disseny/model_arquitectonic_pedra_seca_dola.md:102`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `151,154`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/04_arquitectura_disseny/model_arquitectonic_pedra_seca_dola.md:102`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `132,134`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/04_arquitectura_disseny/model_arquitectonic_pedra_seca_dola.md:102`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `133`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/04_arquitectura_disseny/model_arquitectonic_pedra_seca_dola.md:102`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `151`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/04_arquitectura_disseny/model_arquitectonic_pedra_seca_dola.md:104`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `26`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/04_arquitectura_disseny/model_arquitectonic_pedra_seca_dola.md:104`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `39,40`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/04_arquitectura_disseny/model_arquitectonic_pedra_seca_dola.md:104`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `42`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/04_arquitectura_disseny/model_arquitectonic_pedra_seca_dola.md:106`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `59`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/04_arquitectura_disseny/model_arquitectonic_pedra_seca_dola.md:106`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `136`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/04_arquitectura_disseny/model_arquitectonic_pedra_seca_dola.md:106`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `137,138`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/04_arquitectura_disseny/model_arquitectonic_pedra_seca_dola.md:123`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `46`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/04_arquitectura_disseny/model_arquitectonic_pedra_seca_dola.md:127`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `59`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/04_arquitectura_disseny/model_arquitectonic_pedra_seca_dola.md:130`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `96,97,98`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/04_arquitectura_disseny/model_arquitectonic_pedra_seca_dola.md:132`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `12,18`
+Evidència: `00_INDEX_QUARANTENA`
 
 Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
@@ -21500,7 +20758,7 @@ Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
 Wikilink sense objectiu resoluble.
 
-Evidència: `260715_0400_ACTA_SESSIO_Tancament_Gran_Auditoria`
+Evidència: `260823_1211_ACTA_Sintesi_Auditoria_Consell`
 
 Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
@@ -21508,23 +20766,7 @@ Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
 Wikilink sense objectiu resoluble.
 
-Evidència: `260715_1624_ACTA_Teixidora_Proposta_Insercio_Enllacos_Interns_Cos_Documents_Canonics`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md:14`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `260716_1300_ACTA_SESSIO_Problema_Sincronitzacio_Skills`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md:15`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `260719_0415_ACTA_SESSIO_La_Gran_Destillacio`
+Evidència: `260824_0209_ACTA_Sintesi_Auditoria_Pedra_Seca_Extrema`
 
 Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
@@ -21532,7 +20774,7 @@ Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
 Wikilink sense objectiu resoluble.
 
-Evidència: `260720_0405_ACTA_SESSIO_Tancament_Financament`
+Evidència: `260821_0731_ACTA_MARMOTA_Tancament_Sessio_Wordpress_SEO_Escalat`
 
 Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
@@ -21540,7 +20782,7 @@ Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
 Wikilink sense objectiu resoluble.
 
-Evidència: `260721_ACTA_SESSIO_NLnet_i_Burocracia`
+Evidència: `260824_0100_ACTA_MARMOTA_Pla_Immediat_Seient_Cinc`
 
 Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
@@ -21548,7 +20790,7 @@ Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
 Wikilink sense objectiu resoluble.
 
-Evidència: `260722_1300_ACTA_SESSIO_Tancament`
+Evidència: `260824_0412_ACTA_MARMOTA_Recuperacio_Disseny_i_Explicacio_Forense`
 
 Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
@@ -21556,39 +20798,93 @@ Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
 Wikilink sense objectiu resoluble.
 
-Evidència: `260805_2140_ACTA_SESSIO_Resum_De_La_Gran_Auditoria_I_Tancament_Termodinamic_Del_Dia`
+Evidència: `260824_0552_ACTA_MARMOTA_Sublimacio_i_Neteja_Final`
 
 Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md:20`
+### [MEDIUM] wiki.link-broken — `_wiki_de_poble/05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md:22`
 
 Wikilink sense objectiu resoluble.
 
-Evidència: `260806_1454_ACTA_SESSIO_Notes_Auditoria_Consell_Refinament_Skills_I_Plugins`
+Evidència: `260824_0320_BRIEFING_Sollutia_Routing`
 
 Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md:37`
+### [MEDIUM] wiki.link-broken — `_wiki_de_poble/05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md:25`
 
 Wikilink sense objectiu resoluble.
 
-Evidència: `260719_0430_ACTA_MARMOTA_Tancament_Sessio_Purga`
+Evidència: `260823_1150_PETORRETA_Auditoria_Global_Codi`
 
 Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md:38`
+### [MEDIUM] wiki.link-broken — `_wiki_de_poble/05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md:26`
 
 Wikilink sense objectiu resoluble.
 
-Evidència: `260720_0300_ACTA_MARMOTA_Tancament_Sessio_Festiva`
+Evidència: `260823_1330_PETORRETA_Auditoria_Inversa`
 
 Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md:39`
+### [MEDIUM] wiki.link-broken — `_wiki_de_poble/05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md:27`
 
 Wikilink sense objectiu resoluble.
 
-Evidència: `260805_0430_ACTA_MARMOTA_Tancament_Sessio_Pedra_Seca`
+Evidència: `260823_2145_PETORRETA_Alineacio_HTML`
+
+Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
+
+### [MEDIUM] wiki.link-broken — `_wiki_de_poble/05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md:28`
+
+Wikilink sense objectiu resoluble.
+
+Evidència: `260823_2150_PETORRETA_Alineacio_HTML`
+
+Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
+
+### [MEDIUM] wiki.link-broken — `_wiki_de_poble/05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md:29`
+
+Wikilink sense objectiu resoluble.
+
+Evidència: `260824_0154_PROMPT_Auditoria_Pedra_Seca_Extrema`
+
+Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
+
+### [MEDIUM] wiki.link-broken — `_wiki_de_poble/05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md:30`
+
+Wikilink sense objectiu resoluble.
+
+Evidència: `260824_0158_BUNDLE_Codi_Complet_Absolut_Sollutia_Pedra_Seca`
+
+Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
+
+### [MEDIUM] wiki.link-broken — `_wiki_de_poble/05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md:31`
+
+Wikilink sense objectiu resoluble.
+
+Evidència: `260824_0211_BUNDLE_Mini_Auditoria_Mistral_Vibe`
+
+Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
+
+### [MEDIUM] wiki.link-broken — `_wiki_de_poble/05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md:32`
+
+Wikilink sense objectiu resoluble.
+
+Evidència: `260824_0320_PETORRETA_Router_Sollutia`
+
+Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
+
+### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md:42`
+
+Wikilink amb més d'un objectiu possible.
+
+Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
+
+### [MEDIUM] wiki.link-broken — `_wiki_de_poble/05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md:43`
+
+Wikilink sense objectiu resoluble.
+
+Evidència: `260824_1438_PETORRETA_Auditoria_Inversa_i_Skills`
 
 Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
@@ -21596,7 +20892,7 @@ Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
 Wikilink sense objectiu resoluble.
 
-Evidència: `260720_0235_BRIEFING_Recopilacio_d_Oportunitats_de_Subvencions_Valencianes_per_a_2026`
+Evidència: `260824_1438_BUNDLE_Auditoria_Global_Sollutia`
 
 Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
@@ -21604,7 +20900,7 @@ Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
 Wikilink sense objectiu resoluble.
 
-Evidència: `260722_1300_BRIEFING_Subvencions`
+Evidència: `260824_1450_ACTA_Auditoria_Arquitectura_Per_Gemini`
 
 Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
@@ -21612,7 +20908,23 @@ Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
 Wikilink sense objectiu resoluble.
 
-Evidència: `BRIEFING_Viabilitat_Economica_Legal`
+Evidència: `260824_1451_ACTA_Auditoria_Arquitectura_Per_Grok`
+
+Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
+
+### [MEDIUM] wiki.link-broken — `_wiki_de_poble/05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md:47`
+
+Wikilink sense objectiu resoluble.
+
+Evidència: `260824_1452_ACTA_Auditoria_Arquitectura_Per_Perplexity`
+
+Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
+
+### [MEDIUM] wiki.link-broken — `_wiki_de_poble/05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md:48`
+
+Wikilink sense objectiu resoluble.
+
+Evidència: `260824_1459_ACTA_Auditoria_Arquitectura_Per_Dola`
 
 Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
@@ -21620,7 +20932,7 @@ Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
 Wikilink sense objectiu resoluble.
 
-Evidència: `260719_0345_PROMPT_Auditoria_Suprema_Consell`
+Evidència: `260824_1502_ACTA_Auditoria_Arquitectura_Per_Z`
 
 Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
@@ -21628,7 +20940,7 @@ Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
 Wikilink sense objectiu resoluble.
 
-Evidència: `260719_1632_PROMPT_Consell_Genoma`
+Evidència: `260824_1505_ACTA_Auditoria_Arquitectura_Per_Claude_P1`
 
 Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
@@ -21636,7 +20948,7 @@ Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
 Wikilink sense objectiu resoluble.
 
-Evidència: `260719_2000_PROMPT_Auditoria_Arquitectura_IAs`
+Evidència: `260824_1507_ACTA_Auditoria_Arquitectura_Per_Kimi`
 
 Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
@@ -21644,7 +20956,7 @@ Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
 Wikilink sense objectiu resoluble.
 
-Evidència: `260720_0235_PROMPT_Estrategia_Financament_i_Subvencions_per_a_la_Resiliencia_Comunitaria`
+Evidència: `260824_1508_ACTA_Auditoria_Arquitectura_Per_Copilot`
 
 Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
@@ -21652,15 +20964,31 @@ Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
 Wikilink sense objectiu resoluble.
 
-Evidència: `260806_1837_PROMPT_Disseny_Claude_Fable`
+Evidència: `260824_1510_ACTA_Auditoria_Arquitectura_Per_Qwen`
 
 Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md:57`
+### [MEDIUM] wiki.link-broken — `_wiki_de_poble/05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md:54`
 
 Wikilink sense objectiu resoluble.
 
-Evidència: `260807_1900_PROMPT_Auditoria_V4.4_Neteja_Absoluta`
+Evidència: `260824_1517_ACTA_Auditoria_Arquitectura_Per_Claude_P2`
+
+Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
+
+### [MEDIUM] wiki.link-broken — `_wiki_de_poble/05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md:55`
+
+Wikilink sense objectiu resoluble.
+
+Evidència: `260824_1520_ACTA_Auditoria_Arquitectura_Per_Codex`
+
+Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
+
+### [MEDIUM] wiki.link-broken — `_wiki_de_poble/05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md:56`
+
+Wikilink sense objectiu resoluble.
+
+Evidència: `260824_1531_PETORRETA_Reestructuracio_Cervell`
 
 Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
@@ -21668,803 +20996,223 @@ Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
 Wikilink sense objectiu resoluble.
 
-Evidència: `260807_1910_PROMPT_Auditoria_V4.5_Definitiva`
+Evidència: `260824_1550_ACTA_Proposta_Reestructuracio_Gemini`
 
 Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
 
-### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md:69`
+### [MEDIUM] wiki.link-broken — `_wiki_de_poble/05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md:59`
+
+Wikilink sense objectiu resoluble.
+
+Evidència: `260824_1555_ACTA_Proposta_Reestructuracio_Copilot`
+
+Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
+
+### [MEDIUM] wiki.link-broken — `_wiki_de_poble/05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md:60`
+
+Wikilink sense objectiu resoluble.
+
+Evidència: `260824_1556_ACTA_Proposta_Reestructuracio_Grok`
+
+Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
+
+### [MEDIUM] wiki.link-broken — `_wiki_de_poble/05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md:61`
+
+Wikilink sense objectiu resoluble.
+
+Evidència: `260824_1556_ACTA_Proposta_Reestructuracio_Vibe`
+
+Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
+
+### [MEDIUM] wiki.link-broken — `_wiki_de_poble/05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md:62`
+
+Wikilink sense objectiu resoluble.
+
+Evidència: `260824_1557_ACTA_Proposta_Reestructuracio_Perplexity`
+
+Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
+
+### [MEDIUM] wiki.link-broken — `_wiki_de_poble/05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md:63`
+
+Wikilink sense objectiu resoluble.
+
+Evidència: `260824_1558_ACTA_Proposta_Reestructuracio_Kimi`
+
+Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
+
+### [MEDIUM] wiki.link-broken — `_wiki_de_poble/05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md:64`
+
+Wikilink sense objectiu resoluble.
+
+Evidència: `260824_1559_ACTA_Proposta_Reestructuracio_Dola`
+
+Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
+
+### [MEDIUM] wiki.link-broken — `_wiki_de_poble/05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md:65`
+
+Wikilink sense objectiu resoluble.
+
+Evidència: `260824_1600_ACTA_Proposta_Reestructuracio_Deepseek`
+
+Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
+
+### [MEDIUM] wiki.link-broken — `_wiki_de_poble/05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md:66`
+
+Wikilink sense objectiu resoluble.
+
+Evidència: `260824_1601_ACTA_Proposta_Reestructuracio_Z`
+
+Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
+
+### [MEDIUM] wiki.link-broken — `_wiki_de_poble/05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md:67`
+
+Wikilink sense objectiu resoluble.
+
+Evidència: `260824_1604_ACTA_Proposta_Reestructuracio_Codex`
+
+Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
+
+### [MEDIUM] wiki.link-broken — `_wiki_de_poble/05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md:68`
+
+Wikilink sense objectiu resoluble.
+
+Evidència: `260824_1606_ACTA_Subagent_TimeMachine_Codex`
+
+Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
+
+### [MEDIUM] wiki.link-broken — `_wiki_de_poble/05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md:69`
+
+Wikilink sense objectiu resoluble.
+
+Evidència: `260824_1607_ACTA_Subagent_Dependenices_Codex`
+
+Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
+
+### [MEDIUM] wiki.link-broken — `_wiki_de_poble/05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md:70`
+
+Wikilink sense objectiu resoluble.
+
+Evidència: `260824_1612_ACTA_Proposta_Reestructuracio_Qwen`
+
+Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
+
+### [MEDIUM] wiki.link-broken — `_wiki_de_poble/05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md:71`
+
+Wikilink sense objectiu resoluble.
+
+Evidència: `260824_1615_ACTA_Veredicte_Final_Claude`
+
+Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
+
+### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/05_Escriptori_Soc_de_Poble/260826_0415_PETORRETA_Auditoria_Global.md:20`
 
 Wikilink amb més d'un objectiu possible.
 
 Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
 
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/05_Escriptori_Soc_de_Poble/260813_0330_SUPER_ACTA_I_PETORRETA_DE_REINICI.md:58`
+### [MEDIUM] hygiene.exact-duplicate — `assets/img/aplec_danses_1774952191348.png`
 
-Wikilink sense objectiu resoluble.
+Fitxers exactament duplicats.
 
-Evidència: `02_filosofia/el_trellat`
+Evidència: `assets/img/aplec_danses_1774952191348.png | public/assets/uploads/brain/aplec_danses_1774952191348.png | wordpress-plugin/assets/img/aplec_danses_1774952191348.png | wordpress-plugin/assets/uploads/brain/aplec_danses_1774952191348.png`
 
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
+Acció: Conserva una font canònica i genera o enllaça la resta.
 
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/05_Escriptori_Soc_de_Poble/260813_0330_SUPER_ACTA_I_PETORRETA_DE_REINICI.md:59`
+### [MEDIUM] hygiene.exact-duplicate — `assets/img/art_trellat_farmer_1774708525806.png`
 
-Wikilink sense objectiu resoluble.
+Fitxers exactament duplicats.
 
-Evidència: `05_skills_ia/consola_termodinamica/SKILL`
+Evidència: `assets/img/art_trellat_farmer_1774708525806.png | public/assets/uploads/brain/art_trellat_farmer_1774708525806.png | public/assets/uploads/empresa/soc-de-poble/posts/el-projecte/art-trellat-v3.png | wordpress-plugin/assets/img/art_trellat_farmer_1774708525806.png | wordpress-plugin/assets/uploads/brain/art_trellat_farmer_1774708525806.png | wordpress-plugin/assets/uploads/empresa/soc-de-poble/posts/el-projecte/art-trellat-v3.png`
 
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
+Acció: Conserva una font canònica i genera o enllaça la resta.
 
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/05_Escriptori_Soc_de_Poble/260813_0330_SUPER_ACTA_I_PETORRETA_DE_REINICI.md:60`
+### [MEDIUM] hygiene.exact-duplicate — `assets/img/art_trellat_v2_1774708257858.png`
 
-Wikilink sense objectiu resoluble.
+Fitxers exactament duplicats.
 
-Evidència: `05_skills_ia/a11y_trellat/SKILL`
+Evidència: `assets/img/art_trellat_v2_1774708257858.png | public/assets/uploads/brain/art_trellat_v2_1774708257858.png | wordpress-plugin/assets/img/art_trellat_v2_1774708257858.png | wordpress-plugin/assets/uploads/brain/art_trellat_v2_1774708257858.png`
 
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
+Acció: Conserva una font canònica i genera o enllaça la resta.
 
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/05_Escriptori_Soc_de_Poble/260813_0330_SUPER_ACTA_I_PETORRETA_DE_REINICI.md:69`
+### [MEDIUM] hygiene.exact-duplicate — `assets/img/hero_panoramic_landscape_1774710654078.png`
 
-Wikilink sense objectiu resoluble.
+Fitxers exactament duplicats.
 
-Evidència: `el_trellat`
+Evidència: `assets/img/hero_panoramic_landscape_1774710654078.png | public/assets/uploads/brain/hero_panoramic_landscape_1774710654078.png | wordpress-plugin/assets/img/hero_panoramic_landscape_1774710654078.png | wordpress-plugin/assets/uploads/brain/hero_panoramic_landscape_1774710654078.png`
 
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
+Acció: Conserva una font canònica i genera o enllaça la resta.
 
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/05_Escriptori_Soc_de_Poble/260813_0330_SUPER_ACTA_I_PETORRETA_DE_REINICI.md:71`
+### [MEDIUM] hygiene.exact-duplicate — `assets/img/hero_panoramic_rural_view_1774720664221.png`
 
-Wikilink sense objectiu resoluble.
+Fitxers exactament duplicats.
 
-Evidència: `04_arquitectura_disseny/arquitectura_tecnica`
+Evidència: `assets/img/hero_panoramic_rural_view_1774720664221.png | public/assets/uploads/brain/hero_panoramic_rural_view_1774720664221.png | public/assets/uploads/brain/nano_astronauta_esmorzar_1773441997380.png | public/assets/uploads/empresa/soc-de-poble/posts/el-projecte/exemple-de-poble-001.png | wordpress-plugin/assets/img/hero_panoramic_rural_view_1774720664221.png | wordpress-plugin/assets/uploads/brain/hero_panoramic_rural_view_1774720664221.png | wordpress-plugin/assets/uploads/brain/nano_astronauta_esmorzar_1773441997380.png | wordpress-plugin/assets/uploads/empresa/soc-de-poble/posts/el-projecte/exemple-de-poble-001.png`
 
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
+Acció: Conserva una font canònica i genera o enllaça la resta.
 
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/05_Escriptori_Soc_de_Poble/260813_0330_SUPER_ACTA_I_PETORRETA_DE_REINICI.md:71`
+### [MEDIUM] hygiene.exact-duplicate — `assets/img/hero_serrella_comic_1774709602282.png`
 
-Wikilink sense objectiu resoluble.
+Fitxers exactament duplicats.
 
-Evidència: `04_arquitectura_disseny/arquitectura_cognitiva`
+Evidència: `assets/img/hero_serrella_comic_1774709602282.png | public/assets/uploads/brain/hero_serrella_comic_1774709602282.png | public/assets/uploads/avatars/avatar_samir_comic.png | public/assets/uploads/gent/avatars/avatar_samir_comic.png | wordpress-plugin/assets/img/hero_serrella_comic_1774709602282.png | wordpress-plugin/assets/uploads/brain/hero_serrella_comic_1774709602282.png | wordpress-plugin/assets/uploads/avatars/avatar_samir_comic.png | wordpress-plugin/assets/uploads/gent/avatars/avatar_samir_comic.png`
 
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
+Acció: Conserva una font canònica i genera o enllaça la resta.
 
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/05_Escriptori_Soc_de_Poble/260813_0330_SUPER_ACTA_I_PETORRETA_DE_REINICI.md:89`
+### [MEDIUM] hygiene.exact-duplicate — `assets/img/nano_mel_font_roja_1774216345755.png`
 
-Wikilink sense objectiu resoluble.
+Fitxers exactament duplicats.
 
-Evidència: `diccionari_trellat`
+Evidència: `assets/img/nano_mel_font_roja_1774216345755.png | public/assets/uploads/brain/nano_mel_font_roja_1774216345755.png | wordpress-plugin/assets/img/nano_mel_font_roja_1774216345755.png | wordpress-plugin/assets/uploads/brain/nano_mel_font_roja_1774216345755.png`
 
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
+Acció: Conserva una font canònica i genera o enllaça la resta.
 
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:7`
+### [MEDIUM] hygiene.exact-duplicate — `assets/img/nano_mercat_llaurador_1774197050578.png`
 
-Wikilink sense objectiu resoluble.
+Fitxers exactament duplicats.
 
-Evidència: `add_interactions.py`
+Evidència: `assets/img/nano_mercat_llaurador_1774197050578.png | public/assets/uploads/brain/nano_mercat_llaurador_1774197050578.png | wordpress-plugin/assets/img/nano_mercat_llaurador_1774197050578.png | wordpress-plugin/assets/uploads/brain/nano_mercat_llaurador_1774197050578.png`
 
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
+Acció: Conserva una font canònica i genera o enllaça la resta.
 
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:8`
+### [MEDIUM] hygiene.exact-duplicate — `assets/img/nano_oli_oliva_1774198089084.png`
 
-Wikilink sense objectiu resoluble.
+Fitxers exactament duplicats.
 
-Evidència: `add_wall_grid.py`
+Evidència: `assets/img/nano_oli_oliva_1774198089084.png | public/assets/uploads/brain/nano_oli_oliva_1774198089084.png | wordpress-plugin/assets/img/nano_oli_oliva_1774198089084.png | wordpress-plugin/assets/uploads/brain/nano_oli_oliva_1774198089084.png`
 
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
+Acció: Conserva una font canònica i genera o enllaça la resta.
 
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:9`
+### [MEDIUM] hygiene.exact-duplicate — `assets/img/que-es-socdepoble-1.jpg`
 
-Wikilink sense objectiu resoluble.
+Fitxers exactament duplicats.
 
-Evidència: `align_cards.py`
+Evidència: `assets/img/que-es-socdepoble-1.jpg | wordpress-plugin/assets/img/que-es-socdepoble-1.jpg`
 
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
+Acció: Conserva una font canònica i genera o enllaça la resta.
 
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:10`
+### [MEDIUM] hygiene.exact-duplicate — `assets/img/que-es-socdepoble-2.jpg`
 
-Wikilink sense objectiu resoluble.
+Fitxers exactament duplicats.
 
-Evidència: `clean_grid.py`
+Evidència: `assets/img/que-es-socdepoble-2.jpg | wordpress-plugin/assets/img/que-es-socdepoble-2.jpg`
 
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
+Acció: Conserva una font canònica i genera o enllaça la resta.
 
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:11`
+### [MEDIUM] hygiene.exact-duplicate — `assets/img/que-es-socdepoble-3.jpg`
 
-Wikilink sense objectiu resoluble.
+Fitxers exactament duplicats.
 
-Evidència: `clean_typography.py`
+Evidència: `assets/img/que-es-socdepoble-3.jpg | wordpress-plugin/assets/img/que-es-socdepoble-3.jpg`
 
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
+Acció: Conserva una font canònica i genera o enllaça la resta.
 
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:12`
+### [MEDIUM] hygiene.exact-duplicate — `assets/img/que-es-socdepoble-4.jpg`
 
-Wikilink sense objectiu resoluble.
+Fitxers exactament duplicats.
 
-Evidència: `clean_workspace.py`
+Evidència: `assets/img/que-es-socdepoble-4.jpg | wordpress-plugin/assets/img/que-es-socdepoble-4.jpg`
 
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:13`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `create_mercat.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:14`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `create_mur_clean.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:15`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `create_mur_page.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:16`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `fix_all_cards.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:17`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `fix_avatars.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:18`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `fix_barblue.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:19`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `fix_card_alignment.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:20`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `fix_card_price.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:21`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `fix_card_sizes.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:22`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `fix_cards.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:23`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `fix_close_sidebar.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:24`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `fix_copyright.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:25`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `fix_css_specificity.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:26`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `fix_disseny_end.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:27`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `fix_empty_css.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:28`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `fix_escriptori_index.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:29`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `fix_flex.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:30`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `fix_ghost.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:31`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `fix_ghost2.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:32`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `fix_ghost_cards.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:33`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `fix_ghosts_and_typography.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:34`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `fix_grid.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:35`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `fix_grid_columns.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:36`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `fix_h2_case.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:37`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `fix_h2_entradilla.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:38`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `fix_h2_h3.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:39`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `fix_h2_spacing.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:40`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `fix_html.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:41`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `fix_html_composition.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:42`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `fix_html_composition2.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:43`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `fix_html_order.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:44`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `fix_index_left.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:45`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `fix_index_sidebar.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:46`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `fix_lead_and_text.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:47`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `fix_logo_alignment.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:48`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `fix_logo_display.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:49`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `fix_margins.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:50`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `fix_schema.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:51`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `fix_scroll.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:52`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `fix_slashes.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:53`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `fix_standalone.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:54`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `fix_sync.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:55`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `fix_title.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:56`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `fix_typo.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:57`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `fix_typography.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:58`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `fix_uppercase.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:59`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `get_product_card.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:60`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `make_mur_page.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:61`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `really_strip_cms.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:62`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `replace_vars.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:63`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `strip_cms.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:64`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `tweak_card_alignment.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:65`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `update_cards.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:66`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `update_grid.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:67`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `update_grid2.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:68`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `update_headings.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:69`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `update_mur.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:70`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `upgrade_headings.py`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:74`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `inject_dola.mjs`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:75`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `append_sections_final.mjs`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:76`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `clean_sdp.mjs`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:77`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `append_sections.mjs`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/00_INDEX_ARXIU.md:78`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `fix_structure.mjs`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.anchor-duplicated — `_wiki_de_poble/90_arxiu_historic/260808_1434_PROMPT_Super_Petorreta_Auditoria_Global_Cervell.md`
-
-L'ancoratge automàtic apareix 16 vegades.
-
-Acció: Normalitza'l a una única aparició o elimina este ritual redundant.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/260808_1434_PROMPT_Super_Petorreta_Auditoria_Global_Cervell.md:426`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `Note Name`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/260808_1434_PROMPT_Super_Petorreta_Auditoria_Global_Cervell.md:427`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `Note Name`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/260808_1434_PROMPT_Super_Petorreta_Auditoria_Global_Cervell.md:428`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `Note Name`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/260808_1434_PROMPT_Super_Petorreta_Auditoria_Global_Cervell.md:429`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `Note Name`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/260808_1434_PROMPT_Super_Petorreta_Auditoria_Global_Cervell.md:502`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `improve workflow`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/260808_1434_PROMPT_Super_Petorreta_Auditoria_Global_Cervell.md:516`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `Algorithm Notes`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/260808_1434_PROMPT_Super_Petorreta_Auditoria_Global_Cervell.md:520`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `Meeting Notes 2024-01-10`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/260808_1434_PROMPT_Super_Petorreta_Auditoria_Global_Cervell.md:935`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `^\`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/260808_1434_PROMPT_Super_Petorreta_Auditoria_Global_Cervell.md:936`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `^\`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/260808_1434_PROMPT_Super_Petorreta_Auditoria_Global_Cervell.md:1061`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `${desti}`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/260808_1434_PROMPT_Super_Petorreta_Auditoria_Global_Cervell.md:1061`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `${desti}`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/260808_1434_PROMPT_Super_Petorreta_Auditoria_Global_Cervell.md:1094`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `${desti}`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/260808_1434_PROMPT_Super_Petorreta_Auditoria_Global_Cervell.md:1094`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `${desti}`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/260808_1434_PROMPT_Super_Petorreta_Auditoria_Global_Cervell.md:1115`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `${categoriaStr}`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/260808_1434_PROMPT_Super_Petorreta_Auditoria_Global_Cervell.md:1254`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `${d.desti}`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/260808_1434_PROMPT_Super_Petorreta_Auditoria_Global_Cervell.md:1376`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `Viu`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/260808_1434_PROMPT_Super_Petorreta_Auditoria_Global_Cervell.md:1377`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `InlineFantasma`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/260808_1434_PROMPT_Super_Petorreta_Auditoria_Global_Cervell.md:1378`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `ComentariFantasma`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/260808_1434_PROMPT_Super_Petorreta_Auditoria_Global_Cervell.md:1379`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `ComentariObsidian`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/260808_1434_PROMPT_Super_Petorreta_Auditoria_Global_Cervell.md:1382`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `EncaraDinsFenceLlarg`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-broken — `_wiki_de_poble/90_arxiu_historic/260808_1434_PROMPT_Super_Petorreta_Auditoria_Global_Cervell.md:1383`
-
-Wikilink sense objectiu resoluble.
-
-Evidència: `NoExisteix`
-
-Acció: Crea un MOC/nota real o substitueix l'enllaç per text/ruta de fitxer.
-
-### [MEDIUM] wiki.link-ambiguous — `_wiki_de_poble/90_arxiu_historic/260811_0512_ACTA_MARMOTA_Fortalesa_ShadowDOM.md:1`
-
-Wikilink amb més d'un objectiu possible.
-
-Evidència: `_wiki_de_poble/00_INDEX.md | _wiki_de_poble/00_SER_Brain_Identitat/00_INDEX.md`
+Acció: Conserva una font canònica i genera o enllaça la resta.
 
 ### [MEDIUM] hygiene.runtime-state — `bot/var/baileys-runtime/owner.lock`
 
@@ -22608,9356 +21356,6 @@ Evidència: `bot/var/memoria/memoria_episodica_11e4ca4888ae8134800f55ba.json | b
 
 Acció: Conserva una font canònica i genera o enllaça la resta.
 
-### [MEDIUM] hygiene.exact-duplicate — `dist/socdepoble-react.css`
-
-Fitxers exactament duplicats.
-
-Evidència: `dist/socdepoble-react.css | wordpress-plugin/dist/socdepoble-react.css`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/.bin/acorn`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/.bin/acorn | node_modules/acorn/bin/acorn`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/.bin/atob`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/.bin/atob | node_modules/atob/bin/atob.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/.bin/baseline-browser-mapping`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/.bin/baseline-browser-mapping | node_modules/baseline-browser-mapping/dist/cli.cjs`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/.bin/browsers`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/.bin/browsers | node_modules/@puppeteer/browsers/lib/main-cli.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/.bin/ejs`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/.bin/ejs | node_modules/ejs/bin/cli.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/.bin/eslint`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/.bin/eslint | node_modules/eslint/bin/eslint.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/.bin/glob`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/.bin/glob | node_modules/glob/dist/esm/bin.mjs`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/.bin/jake`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/.bin/jake | node_modules/jake/bin/cli.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/.bin/js-yaml`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/.bin/js-yaml | node_modules/js-yaml/bin/js-yaml.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/.bin/jsesc`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/.bin/jsesc | node_modules/jsesc/bin/jsesc`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/.bin/json5`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/.bin/json5 | node_modules/json5/lib/cli.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/.bin/loose-envify`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/.bin/loose-envify | node_modules/loose-envify/cli.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/.bin/lz-string`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/.bin/lz-string | node_modules/lz-string/bin/bin.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/.bin/nanoid`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/.bin/nanoid | node_modules/nanoid/bin/nanoid.cjs`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/.bin/node-which`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/.bin/node-which | node_modules/which/bin/node-which`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/.bin/parser`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/.bin/parser | node_modules/@babel/parser/bin/babel-parser.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/.bin/puppeteer`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/.bin/puppeteer | node_modules/puppeteer/lib/puppeteer/node/cli.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/.bin/regjsparser`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/.bin/regjsparser | node_modules/regjsparser/bin/parser`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/.bin/resolve`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/.bin/resolve | node_modules/@babel/helper-define-polyfill-provider/node_modules/.bin/resolve | node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/bin/resolve | node_modules/@rollup/plugin-node-resolve/node_modules/.bin/resolve | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/bin/resolve | node_modules/resolve/bin/resolve`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/.bin/rollup`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/.bin/rollup | node_modules/rollup/dist/bin/rollup`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/.bin/semver`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/.bin/semver | node_modules/semver/bin/semver.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/.bin/specificity`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/.bin/specificity | node_modules/@bramus/specificity/bin/cli.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/.bin/terser`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/.bin/terser | node_modules/terser/bin/terser`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/.bin/tldts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/.bin/tldts | node_modules/tldts/bin/cli.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/.bin/update-browserslist-db`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/.bin/update-browserslist-db | node_modules/update-browserslist-db/cli.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/.bin/vite`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/.bin/vite | node_modules/vite/bin/vite.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/.bin/vitest`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/.bin/vitest | node_modules/vitest/vitest.mjs`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/.bin/why-is-node-running`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/.bin/why-is-node-running | node_modules/why-is-node-running/cli.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/.vite/deps/react-dom.js.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/.vite/deps/react-dom.js.map | node_modules/.vite/deps/chunk-PX6F3LHL.js.map | node_modules/.vite/deps/react.js.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-annotate-as-pure/LICENSE`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-annotate-as-pure/LICENSE | node_modules/@babel/preset-env/LICENSE | node_modules/@babel/plugin-transform-modules-amd/LICENSE | node_modules/@babel/plugin-transform-exponentiation-operator/LICENSE | node_modules/@babel/plugin-transform-arrow-functions/LICENSE | node_modules/@babel/plugin-transform-react-jsx-source/LICENSE | node_modules/@babel/helper-string-parser/LICENSE | node_modules/@babel/helper-validator-option/LICENSE | node_modules/@babel/plugin-transform-function-name/LICENSE | node_modules/@babel/plugin-transform-computed-properties/LICENSE | node_modules/@babel/plugin-transform-shorthand-properties/LICENSE | node_modules/@babel/types/LICENSE | node_modules/@babel/helper-plugin-utils/LICENSE | node_modules/@babel/plugin-transform-classes/LICENSE | node_modules/@babel/helper-skip-transparent-expression-wrappers/LICENSE | node_modules/@babel/core/LICENSE | node_modules/@babel/plugin-transform-json-strings/LICENSE | node_modules/@babel/plugin-bugfix-safari-rest-destructuring-rhs-array/LICENSE | node_modules/@babel/helper-member-expression-to-functions/LICENSE | node_modules/@babel/plugin-transform-optional-chaining/LICENSE | node_modules/@babel/helper-globals/LICENSE | node_modules/@babel/plugin-transform-sticky-regex/LICENSE | node_modules/@babel/plugin-transform-nullish-coalescing-operator/LICENSE | node_modules/@babel/plugin-transform-async-generator-functions/LICENSE | node_modules/@babel/plugin-transform-block-scoping/LICENSE | node_modules/@babel/plugin-transform-member-expression-literals/LICENSE | node_modules/@babel/plugin-transform-react-jsx-self/LICENSE | node_modules/@babel/plugin-transform-unicode-regex/LICENSE | node_modules/@babel/plugin-transform-dynamic-import/LICENSE | node_modules/@babel/plugin-transform-async-to-generator/LICENSE | node_modules/@babel/runtime/LICENSE | node_modules/@babel/helper-remap-async-to-generator/LICENSE | node_modules/@babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining/LICENSE | node_modules/@babel/template/LICENSE | node_modules/@babel/plugin-transform-private-methods/LICENSE | node_modules/@babel/plugin-syntax-import-attributes/LICENSE | node_modules/@babel/plugin-transform-destructuring/LICENSE | node_modules/@babel/helper-module-transforms/LICENSE | node_modules/@babel/plugin-bugfix-v8-static-class-fields-redefine-readonly/LICENSE | node_modules/@babel/helper-wrap-function/LICENSE | node_modules/@babel/generator/LICENSE | node_modules/@babel/helper-validator-identifier/LICENSE | node_modules/@babel/plugin-transform-object-super/LICENSE | node_modules/@babel/plugin-transform-export-namespace-from/LICENSE | node_modules/@babel/plugin-bugfix-safari-class-field-initializer-scope/LICENSE | node_modules/@babel/plugin-transform-property-literals/LICENSE | node_modules/@babel/plugin-syntax-import-assertions/LICENSE | node_modules/@babel/plugin-bugfix-firefox-class-in-computed-class-key/LICENSE | node_modules/@babel/plugin-transform-unicode-property-regex/LICENSE | node_modules/@babel/plugin-transform-private-property-in-object/LICENSE | node_modules/@babel/plugin-transform-modules-systemjs/LICENSE | node_modules/@babel/helper-replace-supers/LICENSE | node_modules/@babel/plugin-transform-unicode-escapes/LICENSE | node_modules/@babel/plugin-transform-dotall-regex/LICENSE | node_modules/@babel/plugin-transform-literals/LICENSE | node_modules/@babel/plugin-transform-reserved-words/LICENSE | node_modules/@babel/plugin-transform-named-capturing-groups-regex/LICENSE | node_modules/@babel/helper-compilation-targets/LICENSE | node_modules/@babel/plugin-transform-block-scoped-functions/LICENSE | node_modules/@babel/plugin-transform-typeof-symbol/LICENSE | node_modules/@babel/code-frame/LICENSE | node_modules/@babel/plugin-transform-modules-umd/LICENSE | node_modules/@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression/LICENSE | node_modules/@babel/traverse/LICENSE | node_modules/@babel/plugin-transform-parameters/LICENSE | node_modules/@babel/plugin-transform-numeric-separator/LICENSE | node_modules/@babel/plugin-transform-unicode-sets-regex/LICENSE | node_modules/@babel/plugin-transform-spread/LICENSE | node_modules/@babel/helper-module-imports/LICENSE | node_modules/@babel/plugin-proposal-private-property-in-object/LICENSE | node_modules/@babel/plugin-transform-new-target/LICENSE | node_modules/@babel/plugin-transform-regexp-modifiers/LICENSE | node_modules/@babel/plugin-transform-object-rest-spread/LICENSE | node_modules/@babel/plugin-transform-duplicate-named-capturing-groups-regex/LICENSE | node_modules/@babel/plugin-transform-template-literals/LICENSE | node_modules/@babel/plugin-syntax-unicode-sets-regex/LICENSE | node_modules/@babel/compat-data/LICENSE | node_modules/@babel/plugin-transform-class-static-block/LICENSE | node_modules/@babel/helper-create-regexp-features-plugin/LICENSE | node_modules/@babel/plugin-transform-duplicate-keys/LICENSE | node_modules/@babel/plugin-transform-class-properties/LICENSE | node_modules/@babel/plugin-transform-logical-assignment-operators/LICENSE | node_modules/@babel/helper-create-class-features-plugin/LICENSE | node_modules/@babel/plugin-transform-modules-commonjs/LICENSE | node_modules/@babel/plugin-transform-explicit-resource-management/LICENSE | node_modules/@babel/helper-optimise-call-expression/LICENSE | node_modules/@babel/plugin-transform-for-of/LICENSE | node_modules/@babel/plugin-transform-optional-catch-binding/LICENSE`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/.claude/notes.md`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/.claude/notes.md | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/.claude/notes.md`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/.claude/settings.local.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/.claude/settings.local.json | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/.claude/settings.local.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/.editorconfig`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/.editorconfig | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/.editorconfig`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/.eslintrc`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/.eslintrc | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/.eslintrc`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/.github/FUNDING.yml`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/.github/FUNDING.yml | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/.github/FUNDING.yml | node_modules/resolve/.github/FUNDING.yml`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/.github/INCIDENT_RESPONSE_PROCESS.md`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/.github/INCIDENT_RESPONSE_PROCESS.md | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/.github/INCIDENT_RESPONSE_PROCESS.md | node_modules/resolve/.github/INCIDENT_RESPONSE_PROCESS.md`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/.github/THREAT_MODEL.md`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/.github/THREAT_MODEL.md | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/.github/THREAT_MODEL.md | node_modules/resolve/.github/THREAT_MODEL.md`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/eslint.config.mjs`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/eslint.config.mjs | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/eslint.config.mjs`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/example/async.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/example/async.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/example/async.js | node_modules/resolve/example/async.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/example/sync.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/example/sync.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/example/sync.js | node_modules/resolve/example/sync.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/index.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/index.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/index.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/lib/async.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/lib/async.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/lib/async.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/lib/caller.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/lib/caller.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/lib/caller.js | node_modules/resolve/lib/caller.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/lib/core.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/lib/core.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/lib/core.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/lib/core.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/lib/core.json | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/lib/core.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/lib/homedir.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/lib/homedir.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/lib/homedir.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/lib/is-core.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/lib/is-core.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/lib/is-core.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/lib/node-modules-paths.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/lib/node-modules-paths.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/lib/node-modules-paths.js | node_modules/resolve/lib/node-modules-paths.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/lib/normalize-options.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/lib/normalize-options.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/lib/normalize-options.js | node_modules/resolve/lib/normalize-options.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/lib/sync.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/lib/sync.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/lib/sync.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/package.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/package.json | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/package.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/readme.markdown`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/readme.markdown | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/readme.markdown`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/core.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/core.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/core.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/default_paths.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/default_paths.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/default_paths.js | node_modules/resolve/test/default_paths.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/dotdot.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/dotdot.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/dotdot.js | node_modules/resolve/test/dotdot.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/dotdot/abc/index.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/dotdot/abc/index.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/dotdot/abc/index.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/dotdot/index.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/dotdot/index.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/dotdot/index.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/faulty_basedir.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/faulty_basedir.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/faulty_basedir.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/filter.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/filter.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/filter.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/filter_sync.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/filter_sync.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/filter_sync.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/home_paths.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/home_paths.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/home_paths.js | node_modules/resolve/test/home_paths.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/home_paths_sync.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/home_paths_sync.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/home_paths_sync.js | node_modules/resolve/test/home_paths_sync.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/homedir.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/homedir.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/homedir.js | node_modules/resolve/test/homedir.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/mock.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/mock.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/mock.js | node_modules/resolve/test/mock.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/mock_sync.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/mock_sync.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/mock_sync.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/module_dir.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/module_dir.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/module_dir.js | node_modules/resolve/test/module_dir.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/module_dir/xmodules/aaa/index.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/module_dir/xmodules/aaa/index.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/module_dir/xmodules/aaa/index.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/module_dir/ymodules/aaa/index.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/module_dir/ymodules/aaa/index.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/module_dir/ymodules/aaa/index.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/module_dir/zmodules/bbb/main.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/module_dir/zmodules/bbb/main.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/module_dir/zmodules/bbb/main.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/module_dir/zmodules/bbb/package.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/module_dir/zmodules/bbb/package.json | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/module_dir/zmodules/bbb/package.json | node_modules/resolve/test/module_dir/zmodules/bbb/package.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/node-modules-paths.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/node-modules-paths.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/node-modules-paths.js | node_modules/resolve/test/node-modules-paths.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/node_path.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/node_path.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/node_path.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/node_path/x/aaa/index.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/node_path/x/aaa/index.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/node_path/x/aaa/index.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/node_path/x/ccc/index.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/node_path/x/ccc/index.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/node_path/x/ccc/index.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/node_path/y/bbb/index.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/node_path/y/bbb/index.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/node_path/y/bbb/index.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/node_path/y/ccc/index.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/node_path/y/ccc/index.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/node_path/y/ccc/index.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/nonstring.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/nonstring.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/nonstring.js | node_modules/resolve/test/nonstring.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/pathfilter.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/pathfilter.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/pathfilter.js | node_modules/resolve/test/pathfilter.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/pathfilter_sync.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/pathfilter_sync.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/pathfilter_sync.js | node_modules/resolve/test/pathfilter_sync.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/precedence.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/precedence.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/precedence.js | node_modules/resolve/test/precedence.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/precedence/aaa.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/precedence/aaa.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/precedence/aaa.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/precedence/aaa/index.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/precedence/aaa/index.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/precedence/aaa/index.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/precedence/aaa/main.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/precedence/aaa/main.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/precedence/aaa/main.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/precedence/bbb.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/precedence/bbb.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/precedence/bbb.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/precedence/bbb/main.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/precedence/bbb/main.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/precedence/bbb/main.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/resolver.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/baz/package.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/baz/package.json | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/resolver/baz/package.json | node_modules/resolve/test/resolver/baz/package.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/browser_field/package.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/browser_field/package.json | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/resolver/browser_field/package.json | node_modules/resolve/test/resolver/browser_field/package.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/dot_main/package.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/dot_main/package.json | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/resolver/dot_main/package.json | node_modules/resolve/test/resolver/dot_main/package.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/dot_slash_main/package.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/dot_slash_main/package.json | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/resolver/dot_slash_main/package.json | node_modules/resolve/test/resolver/dot_slash_main/package.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/false_main/package.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/false_main/package.json | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/resolver/false_main/package.json | node_modules/resolve/test/resolver/false_main/package.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/foo.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/foo.js | node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/dot_main/index.js | node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/dot_slash_main/index.js | node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/baz/quux.js | node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/quux/foo/index.js | node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/same_names/foo/index.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/resolver/foo.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/resolver/dot_main/index.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/resolver/dot_slash_main/index.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/resolver/baz/quux.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/resolver/quux/foo/index.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/resolver/same_names/foo/index.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/incorrect_main/index.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/incorrect_main/index.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/resolver/incorrect_main/index.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/incorrect_main/package.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/incorrect_main/package.json | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/resolver/incorrect_main/package.json | node_modules/resolve/test/resolver/incorrect_main/package.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/invalid_main/package.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/invalid_main/package.json | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/resolver/invalid_main/package.json | node_modules/resolve/test/resolver/invalid_main/package.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/multirepo/lerna.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/multirepo/lerna.json | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/resolver/multirepo/lerna.json | node_modules/resolve/test/resolver/multirepo/lerna.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/multirepo/package.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/multirepo/package.json | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/resolver/multirepo/package.json | node_modules/resolve/test/resolver/multirepo/package.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/multirepo/packages/package-a/index.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/multirepo/packages/package-a/index.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/resolver/multirepo/packages/package-a/index.js | node_modules/resolve/test/resolver/multirepo/packages/package-a/index.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/multirepo/packages/package-a/package.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/multirepo/packages/package-a/package.json | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/resolver/multirepo/packages/package-a/package.json | node_modules/resolve/test/resolver/multirepo/packages/package-a/package.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/multirepo/packages/package-b/package.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/multirepo/packages/package-b/package.json | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/resolver/multirepo/packages/package-b/package.json | node_modules/resolve/test/resolver/multirepo/packages/package-b/package.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/nested_symlinks/mylib/async.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/nested_symlinks/mylib/async.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/resolver/nested_symlinks/mylib/async.js | node_modules/resolve/test/resolver/nested_symlinks/mylib/async.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/nested_symlinks/mylib/package.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/nested_symlinks/mylib/package.json | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/resolver/nested_symlinks/mylib/package.json | node_modules/resolve/test/resolver/nested_symlinks/mylib/package.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/nested_symlinks/mylib/sync.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/nested_symlinks/mylib/sync.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/resolver/nested_symlinks/mylib/sync.js | node_modules/resolve/test/resolver/nested_symlinks/mylib/sync.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/same_names/foo.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/same_names/foo.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/resolver/same_names/foo.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/symlinked/package/bar.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/symlinked/package/bar.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/resolver/symlinked/package/bar.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/symlinked/package/package.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/symlinked/package/package.json | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/resolver/symlinked/package/package.json | node_modules/resolve/test/resolver/symlinked/package/package.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/without_basedir/main.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/without_basedir/main.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/resolver/without_basedir/main.js | node_modules/resolve/test/resolver/without_basedir/main.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver_sync.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver_sync.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/resolver_sync.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/shadowed_core.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/shadowed_core.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/shadowed_core.js | node_modules/resolve/test/shadowed_core.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/subdirs.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/subdirs.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/subdirs.js | node_modules/resolve/test/subdirs.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/symlinks.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/symlinks.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/symlinks.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/preset-env/data/built-in-modules.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/preset-env/data/built-in-modules.js | node_modules/@babel/preset-env/data/built-in-modules.json.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/preset-env/data/built-ins.json.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/preset-env/data/built-ins.json.js | node_modules/@babel/preset-env/data/built-ins.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/preset-env/data/corejs2-built-ins.json.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/preset-env/data/corejs2-built-ins.json.js | node_modules/@babel/preset-env/data/corejs2-built-ins.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@babel/preset-env/data/plugins.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@babel/preset-env/data/plugins.js | node_modules/@babel/preset-env/data/plugins.json.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@csstools/css-parser-algorithms/LICENSE.md`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@csstools/css-parser-algorithms/LICENSE.md | node_modules/@csstools/css-tokenizer/LICENSE.md | node_modules/@csstools/css-calc/LICENSE.md | node_modules/@csstools/css-color-parser/LICENSE.md`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@csstools/css-syntax-patches-for-csstree/LICENSE.md`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@csstools/css-syntax-patches-for-csstree/LICENSE.md | node_modules/@csstools/color-helpers/LICENSE.md`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@eslint-community/eslint-utils/LICENSE`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@eslint-community/eslint-utils/LICENSE | node_modules/@eslint-community/regexpp/LICENSE`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@eslint-community/eslint-utils/index.d.mts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@eslint-community/eslint-utils/index.d.mts | node_modules/@eslint-community/eslint-utils/index.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@eslint/config-array/dist/esm/types.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@eslint/config-array/dist/esm/types.ts | node_modules/@eslint/config-array/dist/cjs/types.cts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@eslint/config-helpers/dist/esm/types.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@eslint/config-helpers/dist/esm/types.ts | node_modules/@eslint/config-helpers/dist/cjs/types.cts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@eslint/core/dist/esm/types.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@eslint/core/dist/esm/types.d.ts | node_modules/@eslint/core/dist/cjs/types.d.cts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@eslint/eslintrc/dist/eslintrc.d.cts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@eslint/eslintrc/dist/eslintrc.d.cts | node_modules/@eslint/eslintrc/lib/types/index.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@eslint/object-schema/dist/esm/types.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@eslint/object-schema/dist/esm/types.ts | node_modules/@eslint/object-schema/dist/cjs/types.cts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@eslint/plugin-kit/dist/esm/types.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@eslint/plugin-kit/dist/esm/types.ts | node_modules/@eslint/plugin-kit/dist/cjs/types.cts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@exodus/bytes/fallback/utf8.auto.native.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@exodus/bytes/fallback/utf8.auto.native.js | node_modules/@exodus/bytes/fallback/utf8.auto.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@humanwhocodes/retry/dist/retrier.d.cts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@humanwhocodes/retry/dist/retrier.d.cts | node_modules/@humanwhocodes/retry/dist/retrier.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@isaacs/cliui/dist/commonjs/ansi-regex/index.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@isaacs/cliui/dist/commonjs/ansi-regex/index.d.ts | node_modules/@isaacs/cliui/dist/esm/ansi-regex/index.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@isaacs/cliui/dist/commonjs/ansi-regex/index.d.ts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@isaacs/cliui/dist/commonjs/ansi-regex/index.d.ts.map | node_modules/@isaacs/cliui/dist/esm/ansi-regex/index.d.ts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@isaacs/cliui/dist/commonjs/ansi-styles/index.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@isaacs/cliui/dist/commonjs/ansi-styles/index.d.ts | node_modules/@isaacs/cliui/dist/esm/ansi-styles/index.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@isaacs/cliui/dist/commonjs/ansi-styles/index.d.ts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@isaacs/cliui/dist/commonjs/ansi-styles/index.d.ts.map | node_modules/@isaacs/cliui/dist/esm/ansi-styles/index.d.ts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@isaacs/cliui/dist/commonjs/eastasianwidth/index.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@isaacs/cliui/dist/commonjs/eastasianwidth/index.d.ts | node_modules/@isaacs/cliui/dist/esm/eastasianwidth/index.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@isaacs/cliui/dist/commonjs/eastasianwidth/index.d.ts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@isaacs/cliui/dist/commonjs/eastasianwidth/index.d.ts.map | node_modules/@isaacs/cliui/dist/esm/eastasianwidth/index.d.ts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@isaacs/cliui/dist/commonjs/emoji-regex/index.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@isaacs/cliui/dist/commonjs/emoji-regex/index.d.ts | node_modules/@isaacs/cliui/dist/esm/emoji-regex/index.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@isaacs/cliui/dist/commonjs/emoji-regex/index.d.ts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@isaacs/cliui/dist/commonjs/emoji-regex/index.d.ts.map | node_modules/@isaacs/cliui/dist/esm/emoji-regex/index.d.ts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@isaacs/cliui/dist/commonjs/string-width/index.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@isaacs/cliui/dist/commonjs/string-width/index.d.ts | node_modules/@isaacs/cliui/dist/esm/string-width/index.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@isaacs/cliui/dist/commonjs/string-width/index.d.ts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@isaacs/cliui/dist/commonjs/string-width/index.d.ts.map | node_modules/@isaacs/cliui/dist/esm/string-width/index.d.ts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@isaacs/cliui/dist/commonjs/strip-ansi/index.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@isaacs/cliui/dist/commonjs/strip-ansi/index.d.ts | node_modules/@isaacs/cliui/dist/esm/strip-ansi/index.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@isaacs/cliui/dist/commonjs/strip-ansi/index.d.ts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@isaacs/cliui/dist/commonjs/strip-ansi/index.d.ts.map | node_modules/@isaacs/cliui/dist/esm/strip-ansi/index.d.ts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@isaacs/cliui/dist/commonjs/wrap-ansi/index.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@isaacs/cliui/dist/commonjs/wrap-ansi/index.d.ts | node_modules/@isaacs/cliui/dist/esm/wrap-ansi/index.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@isaacs/cliui/dist/commonjs/wrap-ansi/index.d.ts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@isaacs/cliui/dist/commonjs/wrap-ansi/index.d.ts.map | node_modules/@isaacs/cliui/dist/esm/wrap-ansi/index.d.ts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@isaacs/cliui/dist/esm/index.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@isaacs/cliui/dist/esm/index.d.ts | node_modules/@isaacs/cliui/dist/commonjs/index.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@isaacs/cliui/dist/esm/index.d.ts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@isaacs/cliui/dist/esm/index.d.ts.map | node_modules/@isaacs/cliui/dist/commonjs/index.d.ts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@jridgewell/gen-mapping/types/gen-mapping.d.cts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@jridgewell/gen-mapping/types/gen-mapping.d.cts.map | node_modules/@jridgewell/gen-mapping/types/gen-mapping.d.mts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@jridgewell/gen-mapping/types/set-array.d.cts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@jridgewell/gen-mapping/types/set-array.d.cts | node_modules/@jridgewell/gen-mapping/types/set-array.d.mts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@jridgewell/gen-mapping/types/set-array.d.mts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@jridgewell/gen-mapping/types/set-array.d.mts.map | node_modules/@jridgewell/gen-mapping/types/set-array.d.cts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@jridgewell/gen-mapping/types/sourcemap-segment.d.cts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@jridgewell/gen-mapping/types/sourcemap-segment.d.cts | node_modules/@jridgewell/gen-mapping/types/sourcemap-segment.d.mts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@jridgewell/gen-mapping/types/sourcemap-segment.d.mts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@jridgewell/gen-mapping/types/sourcemap-segment.d.mts.map | node_modules/@jridgewell/gen-mapping/types/sourcemap-segment.d.cts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@jridgewell/gen-mapping/types/types.d.cts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@jridgewell/gen-mapping/types/types.d.cts.map | node_modules/@jridgewell/gen-mapping/types/types.d.mts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@jridgewell/remapping/types/build-source-map-tree.d.mts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@jridgewell/remapping/types/build-source-map-tree.d.mts.map | node_modules/@jridgewell/remapping/types/build-source-map-tree.d.cts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@jridgewell/remapping/types/remapping.d.cts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@jridgewell/remapping/types/remapping.d.cts.map | node_modules/@jridgewell/remapping/types/remapping.d.mts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@jridgewell/remapping/types/source-map-tree.d.cts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@jridgewell/remapping/types/source-map-tree.d.cts.map | node_modules/@jridgewell/remapping/types/source-map-tree.d.mts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@jridgewell/remapping/types/source-map-tree.d.mts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@jridgewell/remapping/types/source-map-tree.d.mts | node_modules/@jridgewell/remapping/types/source-map-tree.d.cts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@jridgewell/remapping/types/source-map.d.mts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@jridgewell/remapping/types/source-map.d.mts.map | node_modules/@jridgewell/remapping/types/source-map.d.cts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@jridgewell/remapping/types/types.d.cts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@jridgewell/remapping/types/types.d.cts | node_modules/@jridgewell/remapping/types/types.d.mts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@jridgewell/remapping/types/types.d.cts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@jridgewell/remapping/types/types.d.cts.map | node_modules/@jridgewell/remapping/types/types.d.mts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@jridgewell/source-map/types/source-map.d.mts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@jridgewell/source-map/types/source-map.d.mts | node_modules/@jridgewell/source-map/types/source-map.d.cts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@jridgewell/source-map/types/source-map.d.mts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@jridgewell/source-map/types/source-map.d.mts.map | node_modules/@jridgewell/source-map/types/source-map.d.cts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@jridgewell/sourcemap-codec/LICENSE`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@jridgewell/sourcemap-codec/LICENSE | node_modules/@jridgewell/trace-mapping/LICENSE | node_modules/@jridgewell/gen-mapping/LICENSE | node_modules/@jridgewell/source-map/LICENSE | node_modules/@jridgewell/remapping/LICENSE`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@jridgewell/sourcemap-codec/types/scopes.d.cts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@jridgewell/sourcemap-codec/types/scopes.d.cts | node_modules/@jridgewell/sourcemap-codec/types/scopes.d.mts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@jridgewell/sourcemap-codec/types/scopes.d.mts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@jridgewell/sourcemap-codec/types/scopes.d.mts.map | node_modules/@jridgewell/sourcemap-codec/types/scopes.d.cts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@jridgewell/sourcemap-codec/types/sourcemap-codec.d.cts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@jridgewell/sourcemap-codec/types/sourcemap-codec.d.cts.map | node_modules/@jridgewell/sourcemap-codec/types/sourcemap-codec.d.mts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@jridgewell/sourcemap-codec/types/strings.d.cts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@jridgewell/sourcemap-codec/types/strings.d.cts | node_modules/@jridgewell/sourcemap-codec/types/strings.d.mts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@jridgewell/sourcemap-codec/types/strings.d.cts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@jridgewell/sourcemap-codec/types/strings.d.cts.map | node_modules/@jridgewell/sourcemap-codec/types/strings.d.mts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@jridgewell/sourcemap-codec/types/vlq.d.mts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@jridgewell/sourcemap-codec/types/vlq.d.mts.map | node_modules/@jridgewell/sourcemap-codec/types/vlq.d.cts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@jridgewell/trace-mapping/types/binary-search.d.mts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@jridgewell/trace-mapping/types/binary-search.d.mts.map | node_modules/@jridgewell/trace-mapping/types/binary-search.d.cts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@jridgewell/trace-mapping/types/by-source.d.cts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@jridgewell/trace-mapping/types/by-source.d.cts.map | node_modules/@jridgewell/trace-mapping/types/by-source.d.mts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@jridgewell/trace-mapping/types/flatten-map.d.cts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@jridgewell/trace-mapping/types/flatten-map.d.cts.map | node_modules/@jridgewell/trace-mapping/types/flatten-map.d.mts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@jridgewell/trace-mapping/types/resolve.d.cts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@jridgewell/trace-mapping/types/resolve.d.cts.map | node_modules/@jridgewell/trace-mapping/types/resolve.d.mts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@jridgewell/trace-mapping/types/sort.d.mts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@jridgewell/trace-mapping/types/sort.d.mts.map | node_modules/@jridgewell/trace-mapping/types/sort.d.cts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@jridgewell/trace-mapping/types/sourcemap-segment.d.cts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@jridgewell/trace-mapping/types/sourcemap-segment.d.cts | node_modules/@jridgewell/trace-mapping/types/sourcemap-segment.d.mts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@jridgewell/trace-mapping/types/sourcemap-segment.d.mts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@jridgewell/trace-mapping/types/sourcemap-segment.d.mts.map | node_modules/@jridgewell/trace-mapping/types/sourcemap-segment.d.cts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@jridgewell/trace-mapping/types/strip-filename.d.cts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@jridgewell/trace-mapping/types/strip-filename.d.cts.map | node_modules/@jridgewell/trace-mapping/types/strip-filename.d.mts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@jridgewell/trace-mapping/types/trace-mapping.d.mts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@jridgewell/trace-mapping/types/trace-mapping.d.mts.map | node_modules/@jridgewell/trace-mapping/types/trace-mapping.d.cts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@jridgewell/trace-mapping/types/types.d.cts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@jridgewell/trace-mapping/types/types.d.cts.map | node_modules/@jridgewell/trace-mapping/types/types.d.mts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@rollup/plugin-babel/LICENSE`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@rollup/plugin-babel/LICENSE | node_modules/@rollup/plugin-replace/LICENSE | node_modules/@rollup/plugin-terser/LICENSE | node_modules/@rollup/plugin-node-resolve/LICENSE | node_modules/@rollup/pluginutils/LICENSE`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@standard-schema/spec/dist/index.d.cts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@standard-schema/spec/dist/index.d.cts | node_modules/@standard-schema/spec/dist/index.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/amd-function-name/build/a-REsyh-LW.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/amd-function-name/build/a-REsyh-LW.js | node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/amd-function-name/build/a-29701bae.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/assets-in-worker/build/assets/my-asset-8db90352.bin`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/assets-in-worker/build/assets/my-asset-8db90352.bin | node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/assets-in-worker/build/assets/my-asset-620b911b.bin | node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/assets-in-worker/build/assets/my-asset-C4yNwep_.bin`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/dynamic-import/a.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/dynamic-import/a.js | node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/public-path/a.js | node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/simple-bundle/a.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/dynamic-import/entry.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/dynamic-import/entry.js | node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/public-path/entry.js | node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/import-meta/entry.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/import-meta/build/a-BFYklafB.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/import-meta/build/a-BFYklafB.js | node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/import-meta/build/a-115d949a.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/import-worker-url-custom-scheme/build/b-725e92c1.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/import-worker-url-custom-scheme/build/b-725e92c1.js | node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/import-worker-url/build/b-725e92c1.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/import-worker-url-custom-scheme/build/b-74a80c25.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/import-worker-url-custom-scheme/build/b-74a80c25.js | node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/import-worker-url/build/b-64a9d830.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/import-worker-url-custom-scheme/build/entry.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/import-worker-url-custom-scheme/build/entry.js | node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/import-worker-url/build/entry.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/import-worker-url-custom-scheme/build/runner.html`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/import-worker-url-custom-scheme/build/runner.html | node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/import-worker-url/build/runner.html | node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/import-meta-worker/build/runner.html`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/import-worker-url-custom-scheme/build/worker-Bq6uP7t8.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/import-worker-url-custom-scheme/build/worker-Bq6uP7t8.js | node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/import-worker-url/build/worker-Bq6uP7t8.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/import-worker-url-custom-scheme/build/worker-ef1d7c89.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/import-worker-url-custom-scheme/build/worker-ef1d7c89.js | node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/import-worker-url/build/worker-ef1d7c89.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/import-worker-url/a.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/import-worker-url/a.js | node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/import-worker-url-custom-scheme/a.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/import-worker-url/b.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/import-worker-url/b.js | node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/import-worker-url-custom-scheme/b.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/import-worker-url/worker.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/import-worker-url/worker.js | node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/import-worker-url-custom-scheme/worker.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/more-workers/build/b-e9bb9f94.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/more-workers/build/b-e9bb9f94.js | node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/more-workers/build/b-Dok_VKGN.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/more-workers/build/worker_a-25924b0d.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/more-workers/build/worker_a-25924b0d.js | node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/more-workers/build/worker_a-DtsyxKtN.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/more-workers/worker_a.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/more-workers/worker_a.js | node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/worker/worker.js | node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/url-import-meta-worker/worker.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/public-path/build/a-1fb502b9.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/public-path/build/a-1fb502b9.js | node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/dynamic-import/build/a-f1483003.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/public-path/build/a-b9a1bf8d.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/public-path/build/a-b9a1bf8d.js | node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/public-path/build/a-Dqjf2iqw.js | node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/dynamic-import/build/a-b9a1bf8d.js | node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/dynamic-import/build/a-Dqjf2iqw.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/public-path/build/entry.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/public-path/build/entry.js | node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/dynamic-import/build/entry.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/url-import-meta-worker/build/b-8c5ed926.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/url-import-meta-worker/build/b-8c5ed926.js | node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/worker/build/b-a9f43d76.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/url-import-meta-worker/build/b-CNJP1XvI.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/url-import-meta-worker/build/b-CNJP1XvI.js | node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/url-import-meta-worker/build/b-258f8a6b.js | node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/worker/build/b-CNJP1XvI.js | node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/worker/build/b-258f8a6b.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/url-import-meta-worker/build/entry.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/url-import-meta-worker/build/entry.js | node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/worker/build/entry.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/url-import-meta-worker/build/runner.html`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/url-import-meta-worker/build/runner.html | node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/worker/build/runner.html | node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/simple-bundle/build/runner.html | node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/import-meta/build/runner.html | node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/amd-function-name/build/runner.html | node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/single-default/build/runner.html | node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/assets-in-worker/build/runner.html | node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/public-path/build/runner.html | node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/more-workers/build/runner.html | node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/dynamic-import/build/runner.html`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/url-import-meta-worker/build/worker-S2Vh56Q-.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/url-import-meta-worker/build/worker-S2Vh56Q-.js | node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/worker/build/worker-S2Vh56Q-.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/url-import-meta-worker/build/worker-e833ae5d.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/url-import-meta-worker/build/worker-e833ae5d.js | node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/worker/build/worker-e833ae5d.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/worker/a.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/worker/a.js | node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/url-import-meta-worker/a.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/worker/b.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/worker/b.js | node_modules/@trickfilm400/rollup-plugin-off-main-thread/tests/fixtures/url-import-meta-worker/b.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@types/chai/LICENSE`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@types/chai/LICENSE | node_modules/@types/resolve/LICENSE | node_modules/@types/aria-query/LICENSE | node_modules/@types/babel__template/LICENSE | node_modules/@types/deep-eql/LICENSE | node_modules/@types/babel__generator/LICENSE | node_modules/@types/trusted-types/LICENSE | node_modules/@types/babel__traverse/LICENSE | node_modules/@types/estree/LICENSE | node_modules/@types/babel__core/LICENSE | node_modules/@types/json-schema/LICENSE`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@vitest/spy/LICENSE`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@vitest/spy/LICENSE | node_modules/@vitest/snapshot/LICENSE | node_modules/@vitest/runner/LICENSE | node_modules/@vitest/utils/LICENSE | node_modules/@vitest/mocker/LICENSE | node_modules/@vitest/pretty-format/LICENSE | node_modules/@vitest/expect/LICENSE`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/@vitest/utils/dist/types.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/@vitest/utils/dist/types.js | node_modules/@vitest/utils/dist/index.js | node_modules/@vitest/runner/dist/types.js | node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/cup.coffee | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/test/resolver/cup.coffee | node_modules/resolve/test/resolver/cup.coffee`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/acorn/dist/acorn.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/acorn/dist/acorn.d.ts | node_modules/acorn/dist/acorn.d.mts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/ajv/dist/vocabularies/dynamic/recursiveRef.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/ajv/dist/vocabularies/dynamic/recursiveRef.d.ts | node_modules/ajv/dist/vocabularies/dynamic/recursiveAnchor.d.ts | node_modules/ajv/dist/vocabularies/core/id.d.ts | node_modules/ajv/dist/vocabularies/jtd/union.d.ts | node_modules/ajv/dist/vocabularies/jtd/optionalProperties.d.ts | node_modules/ajv/dist/vocabularies/applicator/thenElse.d.ts | node_modules/ajv/dist/vocabularies/applicator/properties.d.ts | node_modules/ajv/dist/vocabularies/applicator/dependentSchemas.d.ts | node_modules/ajv/dist/vocabularies/applicator/prefixItems.d.ts | node_modules/ajv/dist/vocabularies/applicator/allOf.d.ts | node_modules/ajv/dist/vocabularies/applicator/patternProperties.d.ts | node_modules/ajv/dist/vocabularies/validation/limitContains.d.ts | node_modules/ajv/dist/vocabularies/validation/limitLength.d.ts | node_modules/ajv/dist/vocabularies/validation/limitItems.d.ts | node_modules/ajv/dist/vocabularies/validation/limitProperties.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/ajv/lib/refs/data.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/ajv/lib/refs/data.json | node_modules/ajv/dist/refs/data.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/ajv/lib/refs/json-schema-2019-09/meta/applicator.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/ajv/lib/refs/json-schema-2019-09/meta/applicator.json | node_modules/ajv/dist/refs/json-schema-2019-09/meta/applicator.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/ajv/lib/refs/json-schema-2019-09/meta/content.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/ajv/lib/refs/json-schema-2019-09/meta/content.json | node_modules/ajv/dist/refs/json-schema-2019-09/meta/content.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/ajv/lib/refs/json-schema-2019-09/meta/core.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/ajv/lib/refs/json-schema-2019-09/meta/core.json | node_modules/ajv/dist/refs/json-schema-2019-09/meta/core.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/ajv/lib/refs/json-schema-2019-09/meta/format.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/ajv/lib/refs/json-schema-2019-09/meta/format.json | node_modules/ajv/dist/refs/json-schema-2019-09/meta/format.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/ajv/lib/refs/json-schema-2019-09/meta/meta-data.json | node_modules/ajv/dist/refs/json-schema-2019-09/meta/meta-data.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/ajv/lib/refs/json-schema-2019-09/meta/validation.json | node_modules/ajv/dist/refs/json-schema-2019-09/meta/validation.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/ajv/lib/refs/json-schema-2019-09/schema.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/ajv/lib/refs/json-schema-2019-09/schema.json | node_modules/ajv/dist/refs/json-schema-2019-09/schema.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/ajv/lib/refs/json-schema-2020-12/meta/applicator.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/ajv/lib/refs/json-schema-2020-12/meta/applicator.json | node_modules/ajv/dist/refs/json-schema-2020-12/meta/applicator.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/ajv/lib/refs/json-schema-2020-12/meta/content.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/ajv/lib/refs/json-schema-2020-12/meta/content.json | node_modules/ajv/dist/refs/json-schema-2020-12/meta/content.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/ajv/lib/refs/json-schema-2020-12/meta/core.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/ajv/lib/refs/json-schema-2020-12/meta/core.json | node_modules/ajv/dist/refs/json-schema-2020-12/meta/core.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/ajv/lib/refs/json-schema-2020-12/meta/format-annotation.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/ajv/lib/refs/json-schema-2020-12/meta/format-annotation.json | node_modules/ajv/dist/refs/json-schema-2020-12/meta/format-annotation.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/ajv/lib/refs/json-schema-2020-12/meta/meta-data.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/ajv/lib/refs/json-schema-2020-12/meta/meta-data.json | node_modules/ajv/dist/refs/json-schema-2020-12/meta/meta-data.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/ajv/lib/refs/json-schema-2020-12/meta/unevaluated.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/ajv/lib/refs/json-schema-2020-12/meta/unevaluated.json | node_modules/ajv/dist/refs/json-schema-2020-12/meta/unevaluated.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/ajv/lib/refs/json-schema-2020-12/meta/validation.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/ajv/lib/refs/json-schema-2020-12/meta/validation.json | node_modules/ajv/dist/refs/json-schema-2020-12/meta/validation.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/ajv/lib/refs/json-schema-2020-12/schema.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/ajv/lib/refs/json-schema-2020-12/schema.json | node_modules/ajv/dist/refs/json-schema-2020-12/schema.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/ajv/lib/refs/json-schema-draft-06.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/ajv/lib/refs/json-schema-draft-06.json | node_modules/ajv/dist/refs/json-schema-draft-06.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/ajv/lib/refs/json-schema-draft-07.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/ajv/lib/refs/json-schema-draft-07.json | node_modules/ajv/dist/refs/json-schema-draft-07.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/ajv/lib/refs/json-schema-secure.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/ajv/lib/refs/json-schema-secure.json | node_modules/ajv/dist/refs/json-schema-secure.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/aria-query/lib/etc/roles/literal/graphicsDocumentRole.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/aria-query/lib/etc/roles/literal/graphicsDocumentRole.js | node_modules/aria-query/lib/etc/roles/graphics/graphicsDocumentRole.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/aria-query/lib/etc/roles/literal/graphicsObjectRole.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/aria-query/lib/etc/roles/literal/graphicsObjectRole.js | node_modules/aria-query/lib/etc/roles/graphics/graphicsObjectRole.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/aria-query/lib/etc/roles/literal/graphicsSymbolRole.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/aria-query/lib/etc/roles/literal/graphicsSymbolRole.js | node_modules/aria-query/lib/etc/roles/graphics/graphicsSymbolRole.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/array-includes/LICENSE`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/array-includes/LICENSE | node_modules/define-properties/LICENSE`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/array.prototype.findlast/test/implementation.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/array.prototype.findlast/test/implementation.js | node_modules/array-includes/test/implementation.js | node_modules/string.prototype.trimstart/test/implementation.js | node_modules/function.prototype.name/test/implementation.js | node_modules/string.prototype.trimend/test/implementation.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/array.prototype.flat/LICENSE`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/array.prototype.flat/LICENSE | node_modules/array.prototype.flatmap/LICENSE`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/async-function/.eslintrc`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/async-function/.eslintrc | node_modules/generator-function/.eslintrc`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/async/allLimit.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/async/allLimit.js | node_modules/async/everyLimit.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/async/asyncify.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/async/asyncify.js | node_modules/async/wrapSync.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/async/concat.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/async/concat.js | node_modules/async/flatMap.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/async/concatSeries.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/async/concatSeries.js | node_modules/async/flatMapSeries.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/async/detect.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/async/detect.js | node_modules/async/find.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/async/detectSeries.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/async/detectSeries.js | node_modules/async/findSeries.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/async/doDuring.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/async/doDuring.js | node_modules/async/doWhilst.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/async/each.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/async/each.js | node_modules/async/forEach.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/async/eachOfLimit.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/async/eachOfLimit.js | node_modules/async/forEachOfLimit.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/async/eachOfSeries.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/async/eachOfSeries.js | node_modules/async/forEachOfSeries.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/async/every.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/async/every.js | node_modules/async/all.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/async/everySeries.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/async/everySeries.js | node_modules/async/allSeries.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/async/findLimit.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/async/findLimit.js | node_modules/async/detectLimit.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/async/flatMapLimit.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/async/flatMapLimit.js | node_modules/async/concatLimit.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/async/foldr.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/async/foldr.js | node_modules/async/reduceRight.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/async/forEachLimit.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/async/forEachLimit.js | node_modules/async/eachLimit.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/async/forEachOf.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/async/forEachOf.js | node_modules/async/eachOf.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/async/forEachSeries.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/async/forEachSeries.js | node_modules/async/eachSeries.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/async/reduce.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/async/reduce.js | node_modules/async/foldl.js | node_modules/async/inject.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/async/select.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/async/select.js | node_modules/async/filter.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/async/selectLimit.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/async/selectLimit.js | node_modules/async/filterLimit.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/async/selectSeries.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/async/selectSeries.js | node_modules/async/filterSeries.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/async/some.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/async/some.js | node_modules/async/any.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/async/someLimit.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/async/someLimit.js | node_modules/async/anyLimit.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/async/someSeries.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/async/someSeries.js | node_modules/async/anySeries.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/async/whilst.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/async/whilst.js | node_modules/async/during.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/babel-plugin-polyfill-regenerator/LICENSE`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/babel-plugin-polyfill-regenerator/LICENSE | node_modules/babel-plugin-polyfill-corejs3/LICENSE | node_modules/babel-plugin-polyfill-corejs2/LICENSE | node_modules/@babel/helper-define-polyfill-provider/LICENSE`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/balanced-match/dist/esm/index.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/balanced-match/dist/esm/index.d.ts | node_modules/balanced-match/dist/commonjs/index.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/balanced-match/dist/esm/index.d.ts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/balanced-match/dist/esm/index.d.ts.map | node_modules/balanced-match/dist/commonjs/index.d.ts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/baseline-browser-mapping/LICENSE.txt`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/baseline-browser-mapping/LICENSE.txt | node_modules/chromium-bidi/LICENSE | node_modules/@humanfs/core/LICENSE | node_modules/@humanfs/node/LICENSE | node_modules/@humanwhocodes/retry/LICENSE | node_modules/@humanwhocodes/module-importer/LICENSE | node_modules/@eslint/config-array/LICENSE | node_modules/@eslint/config-helpers/LICENSE | node_modules/@eslint/core/LICENSE | node_modules/@eslint/object-schema/LICENSE | node_modules/@eslint/plugin-kit/LICENSE`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/brace-expansion/dist/esm/index.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/brace-expansion/dist/esm/index.d.ts | node_modules/brace-expansion/dist/commonjs/index.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/brace-expansion/dist/esm/index.d.ts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/brace-expansion/dist/esm/index.d.ts.map | node_modules/brace-expansion/dist/commonjs/index.d.ts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/browserslist/cli.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/browserslist/cli.js | node_modules/.bin/browserslist`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/call-bind/LICENSE`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/call-bind/LICENSE | node_modules/get-intrinsic/LICENSE`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/call-bound/.eslintrc`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/call-bound/.eslintrc | node_modules/iterator.prototype/.eslintrc | node_modules/es-set-tostringtag/.eslintrc`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/callsites/license`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/callsites/license | node_modules/shebang-regex/license | node_modules/unique-string/license | node_modules/path-exists/license | node_modules/leven/license | node_modules/parent-module/license | node_modules/chalk/license | node_modules/ansi-regex/license | node_modules/has-flag/license | node_modules/supports-color/license | node_modules/path-key/license | node_modules/crypto-random-string/license | node_modules/ansi-styles/license | node_modules/resolve-from/license | node_modules/temp-dir/license | node_modules/pretty-format/node_modules/ansi-styles/license`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/cliui/node_modules/string-width/index.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/cliui/node_modules/string-width/index.js | node_modules/wrap-ansi/node_modules/string-width/index.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/cliui/node_modules/string-width/package.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/cliui/node_modules/string-width/package.json | node_modules/wrap-ansi/node_modules/string-width/package.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/cliui/node_modules/string-width/readme.md`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/cliui/node_modules/string-width/readme.md | node_modules/wrap-ansi/node_modules/string-width/readme.md`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/css-tree/lib/syntax/atrule/page.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/css-tree/lib/syntax/atrule/page.js | node_modules/css-tree/lib/syntax/atrule/nest.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/define-data-property/LICENSE`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/define-data-property/LICENSE | node_modules/data-view-buffer/LICENSE | node_modules/safe-array-concat/LICENSE | node_modules/stop-iteration-iterator/LICENSE | node_modules/typed-array-buffer/LICENSE`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/dequal/index.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/dequal/index.d.ts | node_modules/dequal/lite/index.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/dexie/import-wrapper.d.mts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/dexie/import-wrapper.d.mts | node_modules/dexie/import-wrapper-prod.d.mts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/dunder-proto/tsconfig.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/dunder-proto/tsconfig.json | node_modules/typed-array-byte-length/tsconfig.json | node_modules/is-shared-array-buffer/tsconfig.json | node_modules/is-weakset/tsconfig.json | node_modules/get-symbol-description/tsconfig.json | node_modules/is-data-view/tsconfig.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/ejs/LICENSE`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/ejs/LICENSE | node_modules/doctrine/LICENSE.closure-compiler | node_modules/dompurify/LICENSE`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2015/AbstractEqualityComparison.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2015/AbstractEqualityComparison.js | node_modules/es-abstract/2017/AbstractEqualityComparison.js | node_modules/es-abstract/2019/AbstractEqualityComparison.js | node_modules/es-abstract/2018/AbstractEqualityComparison.js | node_modules/es-abstract/2016/AbstractEqualityComparison.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2015/AbstractRelationalComparison.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2015/AbstractRelationalComparison.js | node_modules/es-abstract/2017/AbstractRelationalComparison.js | node_modules/es-abstract/2016/AbstractRelationalComparison.js | node_modules/es-abstract/5/AbstractRelationalComparison.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2015/AdvanceStringIndex.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2015/AdvanceStringIndex.js | node_modules/es-abstract/2017/AdvanceStringIndex.js | node_modules/es-abstract/2019/AdvanceStringIndex.js | node_modules/es-abstract/2018/AdvanceStringIndex.js | node_modules/es-abstract/2016/AdvanceStringIndex.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2015/ArrayCreate.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2015/ArrayCreate.js | node_modules/es-abstract/2017/ArrayCreate.js | node_modules/es-abstract/2019/ArrayCreate.js | node_modules/es-abstract/2020/ArrayCreate.js | node_modules/es-abstract/2018/ArrayCreate.js | node_modules/es-abstract/2016/ArrayCreate.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2015/ArraySpeciesCreate.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2015/ArraySpeciesCreate.js | node_modules/es-abstract/2017/ArraySpeciesCreate.js | node_modules/es-abstract/2019/ArraySpeciesCreate.js | node_modules/es-abstract/2020/ArraySpeciesCreate.js | node_modules/es-abstract/2018/ArraySpeciesCreate.js | node_modules/es-abstract/2016/ArraySpeciesCreate.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2015/CreateListFromArrayLike.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2015/CreateListFromArrayLike.js | node_modules/es-abstract/2017/CreateListFromArrayLike.js | node_modules/es-abstract/2019/CreateListFromArrayLike.js | node_modules/es-abstract/2018/CreateListFromArrayLike.js | node_modules/es-abstract/2016/CreateListFromArrayLike.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2015/DetachArrayBuffer.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2015/DetachArrayBuffer.js | node_modules/es-abstract/2016/DetachArrayBuffer.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2015/EnumerableOwnNames.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2015/EnumerableOwnNames.js | node_modules/es-abstract/2016/EnumerableOwnNames.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2015/GetIterator.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2015/GetIterator.js | node_modules/es-abstract/2017/GetIterator.js | node_modules/es-abstract/2019/GetIterator.js | node_modules/es-abstract/2018/GetIterator.js | node_modules/es-abstract/2016/GetIterator.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2015/GetSubstitution.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2015/GetSubstitution.js | node_modules/es-abstract/2017/GetSubstitution.js | node_modules/es-abstract/2016/GetSubstitution.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2015/GetValueFromBuffer.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2015/GetValueFromBuffer.js | node_modules/es-abstract/2016/GetValueFromBuffer.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2015/IntegerIndexedElementGet.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2015/IntegerIndexedElementGet.js | node_modules/es-abstract/2016/IntegerIndexedElementGet.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2015/IntegerIndexedElementSet.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2015/IntegerIndexedElementSet.js | node_modules/es-abstract/2016/IntegerIndexedElementSet.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2015/InternalizeJSONProperty.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2015/InternalizeJSONProperty.js | node_modules/es-abstract/2016/InternalizeJSONProperty.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2015/IsCompatiblePropertyDescriptor.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2015/IsCompatiblePropertyDescriptor.js | node_modules/es-abstract/2017/IsCompatiblePropertyDescriptor.js | node_modules/es-abstract/2019/IsCompatiblePropertyDescriptor.js | node_modules/es-abstract/2021/IsCompatiblePropertyDescriptor.js | node_modules/es-abstract/2020/IsCompatiblePropertyDescriptor.js | node_modules/es-abstract/2018/IsCompatiblePropertyDescriptor.js | node_modules/es-abstract/2016/IsCompatiblePropertyDescriptor.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2015/IsDetachedBuffer.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2015/IsDetachedBuffer.js | node_modules/es-abstract/2016/IsDetachedBuffer.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2015/IsInteger.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2015/IsInteger.js | node_modules/es-abstract/2017/IsInteger.js | node_modules/es-abstract/2019/IsInteger.js | node_modules/es-abstract/2020/IsInteger.js | node_modules/es-abstract/2018/IsInteger.js | node_modules/es-abstract/2016/IsInteger.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2015/IsPropertyDescriptor.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2015/IsPropertyDescriptor.js | node_modules/es-abstract/2017/IsPropertyDescriptor.js | node_modules/es-abstract/2016/IsPropertyDescriptor.js | node_modules/es-abstract/5/IsPropertyDescriptor.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2015/IsWordChar.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2015/IsWordChar.js | node_modules/es-abstract/2016/IsWordChar.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2015/MakeDay.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2015/MakeDay.js | node_modules/es-abstract/2017/MakeDay.js | node_modules/es-abstract/2019/MakeDay.js | node_modules/es-abstract/2020/MakeDay.js | node_modules/es-abstract/2018/MakeDay.js | node_modules/es-abstract/2016/MakeDay.js | node_modules/es-abstract/5/MakeDay.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2015/MakeTime.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2015/MakeTime.js | node_modules/es-abstract/2017/MakeTime.js | node_modules/es-abstract/2019/MakeTime.js | node_modules/es-abstract/2020/MakeTime.js | node_modules/es-abstract/2018/MakeTime.js | node_modules/es-abstract/2016/MakeTime.js | node_modules/es-abstract/5/MakeTime.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2015/ObjectCreate.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2015/ObjectCreate.js | node_modules/es-abstract/2017/ObjectCreate.js | node_modules/es-abstract/2019/ObjectCreate.js | node_modules/es-abstract/2018/ObjectCreate.js | node_modules/es-abstract/2016/ObjectCreate.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2015/OrdinaryCreateFromConstructor.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2015/OrdinaryCreateFromConstructor.js | node_modules/es-abstract/2017/OrdinaryCreateFromConstructor.js | node_modules/es-abstract/2019/OrdinaryCreateFromConstructor.js | node_modules/es-abstract/2018/OrdinaryCreateFromConstructor.js | node_modules/es-abstract/2016/OrdinaryCreateFromConstructor.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2015/OrdinaryGetOwnProperty.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2015/OrdinaryGetOwnProperty.js | node_modules/es-abstract/2017/OrdinaryGetOwnProperty.js | node_modules/es-abstract/2019/OrdinaryGetOwnProperty.js | node_modules/es-abstract/2020/OrdinaryGetOwnProperty.js | node_modules/es-abstract/2018/OrdinaryGetOwnProperty.js | node_modules/es-abstract/2016/OrdinaryGetOwnProperty.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2015/QuoteJSONString.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2015/QuoteJSONString.js | node_modules/es-abstract/2017/QuoteJSONString.js | node_modules/es-abstract/2016/QuoteJSONString.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2015/SetValueInBuffer.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2015/SetValueInBuffer.js | node_modules/es-abstract/2016/SetValueInBuffer.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2015/SplitMatch.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2015/SplitMatch.js | node_modules/es-abstract/2017/SplitMatch.js | node_modules/es-abstract/2019/SplitMatch.js | node_modules/es-abstract/2020/SplitMatch.js | node_modules/es-abstract/2018/SplitMatch.js | node_modules/es-abstract/2016/SplitMatch.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2015/StrictEqualityComparison.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2015/StrictEqualityComparison.js | node_modules/es-abstract/2017/StrictEqualityComparison.js | node_modules/es-abstract/2019/StrictEqualityComparison.js | node_modules/es-abstract/2021/StrictEqualityComparison.js | node_modules/es-abstract/2020/StrictEqualityComparison.js | node_modules/es-abstract/2018/StrictEqualityComparison.js | node_modules/es-abstract/2016/StrictEqualityComparison.js | node_modules/es-abstract/5/StrictEqualityComparison.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2015/ToInteger.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2015/ToInteger.js | node_modules/es-abstract/2017/ToInteger.js | node_modules/es-abstract/2019/ToInteger.js | node_modules/es-abstract/2018/ToInteger.js | node_modules/es-abstract/2016/ToInteger.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2015/ToLength.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2015/ToLength.js | node_modules/es-abstract/2017/ToLength.js | node_modules/es-abstract/2019/ToLength.js | node_modules/es-abstract/2020/ToLength.js | node_modules/es-abstract/2018/ToLength.js | node_modules/es-abstract/2016/ToLength.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2015/ToNumber.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2015/ToNumber.js | node_modules/es-abstract/2017/ToNumber.js | node_modules/es-abstract/2019/ToNumber.js | node_modules/es-abstract/2018/ToNumber.js | node_modules/es-abstract/2016/ToNumber.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2015/Type.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2015/Type.js | node_modules/es-abstract/2017/Type.js | node_modules/es-abstract/2019/Type.js | node_modules/es-abstract/2018/Type.js | node_modules/es-abstract/2016/Type.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2015/ValidateAndApplyPropertyDescriptor.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2015/ValidateAndApplyPropertyDescriptor.js | node_modules/es-abstract/2017/ValidateAndApplyPropertyDescriptor.js | node_modules/es-abstract/2019/ValidateAndApplyPropertyDescriptor.js | node_modules/es-abstract/2021/ValidateAndApplyPropertyDescriptor.js | node_modules/es-abstract/2020/ValidateAndApplyPropertyDescriptor.js | node_modules/es-abstract/2018/ValidateAndApplyPropertyDescriptor.js | node_modules/es-abstract/2016/ValidateAndApplyPropertyDescriptor.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2015/ValidateTypedArray.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2015/ValidateTypedArray.js | node_modules/es-abstract/2017/ValidateTypedArray.js | node_modules/es-abstract/2019/ValidateTypedArray.js | node_modules/es-abstract/2021/ValidateTypedArray.js | node_modules/es-abstract/2020/ValidateTypedArray.js | node_modules/es-abstract/2018/ValidateTypedArray.js | node_modules/es-abstract/2016/ValidateTypedArray.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2015/abs.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2015/abs.js | node_modules/es-abstract/2017/abs.js | node_modules/es-abstract/2019/abs.js | node_modules/es-abstract/2018/abs.js | node_modules/es-abstract/2016/abs.js | node_modules/es-abstract/5/abs.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2015/floor.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2015/floor.js | node_modules/es-abstract/2017/floor.js | node_modules/es-abstract/2019/floor.js | node_modules/es-abstract/2018/floor.js | node_modules/es-abstract/2016/floor.js | node_modules/es-abstract/5/floor.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2016/tables/typed-array-objects.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2016/tables/typed-array-objects.js | node_modules/es-abstract/2015/tables/typed-array-objects.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2017/GetValueFromBuffer.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2017/GetValueFromBuffer.js | node_modules/es-abstract/2018/GetValueFromBuffer.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2017/IntegerIndexedElementGet.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2017/IntegerIndexedElementGet.js | node_modules/es-abstract/2019/IntegerIndexedElementGet.js | node_modules/es-abstract/2018/IntegerIndexedElementGet.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2017/IntegerIndexedElementSet.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2017/IntegerIndexedElementSet.js | node_modules/es-abstract/2019/IntegerIndexedElementSet.js | node_modules/es-abstract/2018/IntegerIndexedElementSet.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2017/IsWordChar.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2017/IsWordChar.js | node_modules/es-abstract/2019/IsWordChar.js | node_modules/es-abstract/2020/IsWordChar.js | node_modules/es-abstract/2018/IsWordChar.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2017/IterableToList.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2017/IterableToList.js | node_modules/es-abstract/2019/IterableToList.js | node_modules/es-abstract/2018/IterableToList.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2017/NumberToRawBytes.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2017/NumberToRawBytes.js | node_modules/es-abstract/2019/NumberToRawBytes.js | node_modules/es-abstract/2018/NumberToRawBytes.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2017/RawBytesToNumber.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2017/RawBytesToNumber.js | node_modules/es-abstract/2019/RawBytesToNumber.js | node_modules/es-abstract/2018/RawBytesToNumber.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2017/SameValueNonNumber.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2017/SameValueNonNumber.js | node_modules/es-abstract/2019/SameValueNonNumber.js | node_modules/es-abstract/2018/SameValueNonNumber.js | node_modules/es-abstract/2016/SameValueNonNumber.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2017/SetValueInBuffer.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2017/SetValueInBuffer.js | node_modules/es-abstract/2019/SetValueInBuffer.js | node_modules/es-abstract/2018/SetValueInBuffer.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2017/StringGetOwnProperty.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2017/StringGetOwnProperty.js | node_modules/es-abstract/2019/StringGetOwnProperty.js | node_modules/es-abstract/2020/StringGetOwnProperty.js | node_modules/es-abstract/2018/StringGetOwnProperty.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2017/ToIndex.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2017/ToIndex.js | node_modules/es-abstract/2019/ToIndex.js | node_modules/es-abstract/2018/ToIndex.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2017/UTF16Decode.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2017/UTF16Decode.js | node_modules/es-abstract/2019/UTF16Decode.js | node_modules/es-abstract/2018/UTF16Decode.js | node_modules/es-abstract/2016/UTF16Decode.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2017/UTF16Encoding.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2017/UTF16Encoding.js | node_modules/es-abstract/2019/UTF16Encoding.js | node_modules/es-abstract/2020/UTF16Encoding.js | node_modules/es-abstract/2018/UTF16Encoding.js | node_modules/es-abstract/2016/UTF16Encoding.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2017/ValidateAtomicAccess.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2017/ValidateAtomicAccess.js | node_modules/es-abstract/2019/ValidateAtomicAccess.js | node_modules/es-abstract/2020/ValidateAtomicAccess.js | node_modules/es-abstract/2018/ValidateAtomicAccess.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2018/tables/typed-array-objects.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2018/tables/typed-array-objects.js | node_modules/es-abstract/2017/tables/typed-array-objects.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2019/AbstractRelationalComparison.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2019/AbstractRelationalComparison.js | node_modules/es-abstract/2018/AbstractRelationalComparison.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2019/AsyncIteratorClose.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2019/AsyncIteratorClose.js | node_modules/es-abstract/2020/AsyncIteratorClose.js | node_modules/es-abstract/2018/AsyncIteratorClose.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2019/CopyDataProperties.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2019/CopyDataProperties.js | node_modules/es-abstract/2018/CopyDataProperties.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2019/GetSubstitution.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2019/GetSubstitution.js | node_modules/es-abstract/2020/GetSubstitution.js | node_modules/es-abstract/2018/GetSubstitution.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2019/InternalizeJSONProperty.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2019/InternalizeJSONProperty.js | node_modules/es-abstract/2018/InternalizeJSONProperty.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2019/IsStringPrefix.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2019/IsStringPrefix.js | node_modules/es-abstract/2021/IsStringPrefix.js | node_modules/es-abstract/2020/IsStringPrefix.js | node_modules/es-abstract/2018/IsStringPrefix.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2019/NumberToString.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2019/NumberToString.js | node_modules/es-abstract/2018/NumberToString.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2019/SetFunctionLength.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2019/SetFunctionLength.js | node_modules/es-abstract/2018/SetFunctionLength.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2019/TimeString.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2019/TimeString.js | node_modules/es-abstract/2021/TimeString.js | node_modules/es-abstract/2020/TimeString.js | node_modules/es-abstract/2018/TimeString.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2019/TimeZoneString.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2019/TimeZoneString.js | node_modules/es-abstract/2020/TimeZoneString.js | node_modules/es-abstract/2018/TimeZoneString.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2019/UnicodeEscape.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2019/UnicodeEscape.js | node_modules/es-abstract/2018/UnicodeEscape.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2020/BigInt/add.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2020/BigInt/add.js | node_modules/es-abstract/2021/BigInt/add.js | node_modules/es-abstract/2023/BigInt/add.js | node_modules/es-abstract/2024/BigInt/add.js | node_modules/es-abstract/2025/BigInt/add.js | node_modules/es-abstract/2022/BigInt/add.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2020/BigInt/bitwiseAND.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2020/BigInt/bitwiseAND.js | node_modules/es-abstract/2021/BigInt/bitwiseAND.js | node_modules/es-abstract/2023/BigInt/bitwiseAND.js | node_modules/es-abstract/2024/BigInt/bitwiseAND.js | node_modules/es-abstract/2025/BigInt/bitwiseAND.js | node_modules/es-abstract/2022/BigInt/bitwiseAND.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2020/BigInt/bitwiseNOT.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2020/BigInt/bitwiseNOT.js | node_modules/es-abstract/2021/BigInt/bitwiseNOT.js | node_modules/es-abstract/2023/BigInt/bitwiseNOT.js | node_modules/es-abstract/2024/BigInt/bitwiseNOT.js | node_modules/es-abstract/2025/BigInt/bitwiseNOT.js | node_modules/es-abstract/2022/BigInt/bitwiseNOT.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2020/BigInt/bitwiseOR.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2020/BigInt/bitwiseOR.js | node_modules/es-abstract/2021/BigInt/bitwiseOR.js | node_modules/es-abstract/2023/BigInt/bitwiseOR.js | node_modules/es-abstract/2024/BigInt/bitwiseOR.js | node_modules/es-abstract/2025/BigInt/bitwiseOR.js | node_modules/es-abstract/2022/BigInt/bitwiseOR.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2020/BigInt/bitwiseXOR.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2020/BigInt/bitwiseXOR.js | node_modules/es-abstract/2021/BigInt/bitwiseXOR.js | node_modules/es-abstract/2023/BigInt/bitwiseXOR.js | node_modules/es-abstract/2024/BigInt/bitwiseXOR.js | node_modules/es-abstract/2025/BigInt/bitwiseXOR.js | node_modules/es-abstract/2022/BigInt/bitwiseXOR.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2020/BigInt/divide.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2020/BigInt/divide.js | node_modules/es-abstract/2021/BigInt/divide.js | node_modules/es-abstract/2023/BigInt/divide.js | node_modules/es-abstract/2024/BigInt/divide.js | node_modules/es-abstract/2025/BigInt/divide.js | node_modules/es-abstract/2022/BigInt/divide.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2020/BigInt/equal.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2020/BigInt/equal.js | node_modules/es-abstract/2021/BigInt/equal.js | node_modules/es-abstract/2023/BigInt/equal.js | node_modules/es-abstract/2024/BigInt/equal.js | node_modules/es-abstract/2025/BigInt/equal.js | node_modules/es-abstract/2022/BigInt/equal.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2020/BigInt/exponentiate.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2020/BigInt/exponentiate.js | node_modules/es-abstract/2021/BigInt/exponentiate.js | node_modules/es-abstract/2023/BigInt/exponentiate.js | node_modules/es-abstract/2024/BigInt/exponentiate.js | node_modules/es-abstract/2025/BigInt/exponentiate.js | node_modules/es-abstract/2022/BigInt/exponentiate.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2020/BigInt/index.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2020/BigInt/index.js | node_modules/es-abstract/2020/Number/index.js | node_modules/es-abstract/2021/BigInt/index.js | node_modules/es-abstract/2021/Number/index.js | node_modules/es-abstract/2023/Number/index.js | node_modules/es-abstract/2024/Number/index.js | node_modules/es-abstract/2025/Number/index.js | node_modules/es-abstract/2022/BigInt/index.js | node_modules/es-abstract/2022/Number/index.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2020/BigInt/leftShift.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2020/BigInt/leftShift.js | node_modules/es-abstract/2021/BigInt/leftShift.js | node_modules/es-abstract/2023/BigInt/leftShift.js | node_modules/es-abstract/2024/BigInt/leftShift.js | node_modules/es-abstract/2025/BigInt/leftShift.js | node_modules/es-abstract/2022/BigInt/leftShift.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2020/BigInt/lessThan.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2020/BigInt/lessThan.js | node_modules/es-abstract/2021/BigInt/lessThan.js | node_modules/es-abstract/2023/BigInt/lessThan.js | node_modules/es-abstract/2024/BigInt/lessThan.js | node_modules/es-abstract/2025/BigInt/lessThan.js | node_modules/es-abstract/2022/BigInt/lessThan.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2020/BigInt/multiply.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2020/BigInt/multiply.js | node_modules/es-abstract/2021/BigInt/multiply.js | node_modules/es-abstract/2023/BigInt/multiply.js | node_modules/es-abstract/2024/BigInt/multiply.js | node_modules/es-abstract/2025/BigInt/multiply.js | node_modules/es-abstract/2022/BigInt/multiply.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2020/BigInt/remainder.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2020/BigInt/remainder.js | node_modules/es-abstract/2021/BigInt/remainder.js | node_modules/es-abstract/2023/BigInt/remainder.js | node_modules/es-abstract/2024/BigInt/remainder.js | node_modules/es-abstract/2025/BigInt/remainder.js | node_modules/es-abstract/2022/BigInt/remainder.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2020/BigInt/sameValue.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2020/BigInt/sameValue.js | node_modules/es-abstract/2021/BigInt/sameValue.js | node_modules/es-abstract/2022/BigInt/sameValue.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2020/BigInt/sameValueZero.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2020/BigInt/sameValueZero.js | node_modules/es-abstract/2021/BigInt/sameValueZero.js | node_modules/es-abstract/2022/BigInt/sameValueZero.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2020/BigInt/signedRightShift.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2020/BigInt/signedRightShift.js | node_modules/es-abstract/2021/BigInt/signedRightShift.js | node_modules/es-abstract/2023/BigInt/signedRightShift.js | node_modules/es-abstract/2024/BigInt/signedRightShift.js | node_modules/es-abstract/2025/BigInt/signedRightShift.js | node_modules/es-abstract/2022/BigInt/signedRightShift.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2020/BigInt/subtract.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2020/BigInt/subtract.js | node_modules/es-abstract/2021/BigInt/subtract.js | node_modules/es-abstract/2023/BigInt/subtract.js | node_modules/es-abstract/2024/BigInt/subtract.js | node_modules/es-abstract/2025/BigInt/subtract.js | node_modules/es-abstract/2022/BigInt/subtract.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2020/BigInt/toString.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2020/BigInt/toString.js | node_modules/es-abstract/2021/BigInt/toString.js | node_modules/es-abstract/2022/BigInt/toString.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2020/BigInt/unaryMinus.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2020/BigInt/unaryMinus.js | node_modules/es-abstract/2021/BigInt/unaryMinus.js | node_modules/es-abstract/2023/BigInt/unaryMinus.js | node_modules/es-abstract/2024/BigInt/unaryMinus.js | node_modules/es-abstract/2025/BigInt/unaryMinus.js | node_modules/es-abstract/2022/BigInt/unaryMinus.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2020/BigInt/unsignedRightShift.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2020/BigInt/unsignedRightShift.js | node_modules/es-abstract/2021/BigInt/unsignedRightShift.js | node_modules/es-abstract/2023/BigInt/unsignedRightShift.js | node_modules/es-abstract/2024/BigInt/unsignedRightShift.js | node_modules/es-abstract/2025/BigInt/unsignedRightShift.js | node_modules/es-abstract/2022/BigInt/unsignedRightShift.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2020/Number/bitwiseAND.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2020/Number/bitwiseAND.js | node_modules/es-abstract/2021/Number/bitwiseAND.js | node_modules/es-abstract/2023/Number/bitwiseAND.js | node_modules/es-abstract/2024/Number/bitwiseAND.js | node_modules/es-abstract/2025/Number/bitwiseAND.js | node_modules/es-abstract/2022/Number/bitwiseAND.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2020/Number/bitwiseNOT.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2020/Number/bitwiseNOT.js | node_modules/es-abstract/2021/Number/bitwiseNOT.js | node_modules/es-abstract/2023/Number/bitwiseNOT.js | node_modules/es-abstract/2024/Number/bitwiseNOT.js | node_modules/es-abstract/2025/Number/bitwiseNOT.js | node_modules/es-abstract/2022/Number/bitwiseNOT.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2020/Number/bitwiseOR.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2020/Number/bitwiseOR.js | node_modules/es-abstract/2021/Number/bitwiseOR.js | node_modules/es-abstract/2023/Number/bitwiseOR.js | node_modules/es-abstract/2024/Number/bitwiseOR.js | node_modules/es-abstract/2025/Number/bitwiseOR.js | node_modules/es-abstract/2022/Number/bitwiseOR.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2020/Number/bitwiseXOR.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2020/Number/bitwiseXOR.js | node_modules/es-abstract/2021/Number/bitwiseXOR.js | node_modules/es-abstract/2023/Number/bitwiseXOR.js | node_modules/es-abstract/2024/Number/bitwiseXOR.js | node_modules/es-abstract/2025/Number/bitwiseXOR.js | node_modules/es-abstract/2022/Number/bitwiseXOR.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2020/Number/divide.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2020/Number/divide.js | node_modules/es-abstract/2021/Number/divide.js | node_modules/es-abstract/2023/Number/divide.js | node_modules/es-abstract/2024/Number/divide.js | node_modules/es-abstract/2025/Number/divide.js | node_modules/es-abstract/2022/Number/divide.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2020/Number/equal.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2020/Number/equal.js | node_modules/es-abstract/2021/Number/equal.js | node_modules/es-abstract/2023/Number/equal.js | node_modules/es-abstract/2024/Number/equal.js | node_modules/es-abstract/2025/Number/equal.js | node_modules/es-abstract/2022/Number/equal.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2020/Number/exponentiate.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2020/Number/exponentiate.js | node_modules/es-abstract/2021/Number/exponentiate.js | node_modules/es-abstract/2023/Number/exponentiate.js | node_modules/es-abstract/2024/Number/exponentiate.js | node_modules/es-abstract/2025/Number/exponentiate.js | node_modules/es-abstract/2022/Number/exponentiate.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2020/Number/lessThan.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2020/Number/lessThan.js | node_modules/es-abstract/2021/Number/lessThan.js | node_modules/es-abstract/2023/Number/lessThan.js | node_modules/es-abstract/2024/Number/lessThan.js | node_modules/es-abstract/2025/Number/lessThan.js | node_modules/es-abstract/2022/Number/lessThan.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2020/Number/multiply.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2020/Number/multiply.js | node_modules/es-abstract/2021/Number/multiply.js | node_modules/es-abstract/2023/Number/multiply.js | node_modules/es-abstract/2024/Number/multiply.js | node_modules/es-abstract/2025/Number/multiply.js | node_modules/es-abstract/2022/Number/multiply.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2020/Number/sameValue.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2020/Number/sameValue.js | node_modules/es-abstract/2021/Number/sameValue.js | node_modules/es-abstract/2023/Number/sameValue.js | node_modules/es-abstract/2024/Number/sameValue.js | node_modules/es-abstract/2025/Number/sameValue.js | node_modules/es-abstract/2022/Number/sameValue.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2020/Number/sameValueZero.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2020/Number/sameValueZero.js | node_modules/es-abstract/2021/Number/sameValueZero.js | node_modules/es-abstract/2023/Number/sameValueZero.js | node_modules/es-abstract/2024/Number/sameValueZero.js | node_modules/es-abstract/2025/Number/sameValueZero.js | node_modules/es-abstract/2022/Number/sameValueZero.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2020/Number/toString.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2020/Number/toString.js | node_modules/es-abstract/2021/Number/toString.js | node_modules/es-abstract/2022/Number/toString.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2020/Number/unaryMinus.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2020/Number/unaryMinus.js | node_modules/es-abstract/2021/Number/unaryMinus.js | node_modules/es-abstract/2023/Number/unaryMinus.js | node_modules/es-abstract/2024/Number/unaryMinus.js | node_modules/es-abstract/2025/Number/unaryMinus.js | node_modules/es-abstract/2022/Number/unaryMinus.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2020/tables/typed-array-objects.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2020/tables/typed-array-objects.js | node_modules/es-abstract/2021/tables/typed-array-objects.js | node_modules/es-abstract/2023/tables/typed-array-objects.js | node_modules/es-abstract/2022/tables/typed-array-objects.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2021/AbstractEqualityComparison.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2021/AbstractEqualityComparison.js | node_modules/es-abstract/2020/AbstractEqualityComparison.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2021/AbstractRelationalComparison.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2021/AbstractRelationalComparison.js | node_modules/es-abstract/2020/AbstractRelationalComparison.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2021/Number/add.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2021/Number/add.js | node_modules/es-abstract/2023/Number/add.js | node_modules/es-abstract/2024/Number/add.js | node_modules/es-abstract/2025/Number/add.js | node_modules/es-abstract/2022/Number/add.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2021/Number/leftShift.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2021/Number/leftShift.js | node_modules/es-abstract/2023/Number/leftShift.js | node_modules/es-abstract/2024/Number/leftShift.js | node_modules/es-abstract/2025/Number/leftShift.js | node_modules/es-abstract/2022/Number/leftShift.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2021/Number/remainder.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2021/Number/remainder.js | node_modules/es-abstract/2022/Number/remainder.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2021/Number/signedRightShift.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2021/Number/signedRightShift.js | node_modules/es-abstract/2023/Number/signedRightShift.js | node_modules/es-abstract/2024/Number/signedRightShift.js | node_modules/es-abstract/2025/Number/signedRightShift.js | node_modules/es-abstract/2022/Number/signedRightShift.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2021/Number/subtract.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2021/Number/subtract.js | node_modules/es-abstract/2023/Number/subtract.js | node_modules/es-abstract/2024/Number/subtract.js | node_modules/es-abstract/2025/Number/subtract.js | node_modules/es-abstract/2022/Number/subtract.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2021/Number/unsignedRightShift.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2021/Number/unsignedRightShift.js | node_modules/es-abstract/2023/Number/unsignedRightShift.js | node_modules/es-abstract/2024/Number/unsignedRightShift.js | node_modules/es-abstract/2025/Number/unsignedRightShift.js | node_modules/es-abstract/2022/Number/unsignedRightShift.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2021/StringToBigInt.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2021/StringToBigInt.js | node_modules/es-abstract/2020/StringToBigInt.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2021/ToBigInt.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2021/ToBigInt.js | node_modules/es-abstract/2020/ToBigInt.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2021/ToNumber.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2021/ToNumber.js | node_modules/es-abstract/2020/ToNumber.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/AddEntriesFromIterable.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/AddEntriesFromIterable.js | node_modules/es-abstract/2019/AddEntriesFromIterable.js | node_modules/es-abstract/2021/AddEntriesFromIterable.js | node_modules/es-abstract/2020/AddEntriesFromIterable.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/AddToKeptObjects.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/AddToKeptObjects.js | node_modules/es-abstract/2025/AddToKeptObjects.js | node_modules/es-abstract/2024/AddToKeptObjects.js | node_modules/es-abstract/2023/AddToKeptObjects.js | node_modules/es-abstract/2021/AddToKeptObjects.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/AdvanceStringIndex.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/AdvanceStringIndex.js | node_modules/es-abstract/2025/AdvanceStringIndex.js | node_modules/es-abstract/2024/AdvanceStringIndex.js | node_modules/es-abstract/2023/AdvanceStringIndex.js | node_modules/es-abstract/2021/AdvanceStringIndex.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/ApplyStringOrNumericBinaryOperator.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/ApplyStringOrNumericBinaryOperator.js | node_modules/es-abstract/2024/ApplyStringOrNumericBinaryOperator.js | node_modules/es-abstract/2023/ApplyStringOrNumericBinaryOperator.js | node_modules/es-abstract/2021/ApplyStringOrNumericBinaryOperator.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/ArrayCreate.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/ArrayCreate.js | node_modules/es-abstract/2025/ArrayCreate.js | node_modules/es-abstract/2024/ArrayCreate.js | node_modules/es-abstract/2023/ArrayCreate.js | node_modules/es-abstract/2021/ArrayCreate.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/ArraySetLength.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/ArraySetLength.js | node_modules/es-abstract/2025/ArraySetLength.js | node_modules/es-abstract/2024/ArraySetLength.js | node_modules/es-abstract/2023/ArraySetLength.js | node_modules/es-abstract/2015/ArraySetLength.js | node_modules/es-abstract/2017/ArraySetLength.js | node_modules/es-abstract/2019/ArraySetLength.js | node_modules/es-abstract/2021/ArraySetLength.js | node_modules/es-abstract/2020/ArraySetLength.js | node_modules/es-abstract/2018/ArraySetLength.js | node_modules/es-abstract/2016/ArraySetLength.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/ArraySpeciesCreate.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/ArraySpeciesCreate.js | node_modules/es-abstract/2025/ArraySpeciesCreate.js | node_modules/es-abstract/2024/ArraySpeciesCreate.js | node_modules/es-abstract/2023/ArraySpeciesCreate.js | node_modules/es-abstract/2021/ArraySpeciesCreate.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/AsyncFromSyncIteratorContinuation.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/AsyncFromSyncIteratorContinuation.js | node_modules/es-abstract/2024/AsyncFromSyncIteratorContinuation.js | node_modules/es-abstract/2023/AsyncFromSyncIteratorContinuation.js | node_modules/es-abstract/2019/AsyncFromSyncIteratorContinuation.js | node_modules/es-abstract/2021/AsyncFromSyncIteratorContinuation.js | node_modules/es-abstract/2020/AsyncFromSyncIteratorContinuation.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/AsyncIteratorClose.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/AsyncIteratorClose.js | node_modules/es-abstract/2023/AsyncIteratorClose.js | node_modules/es-abstract/2021/AsyncIteratorClose.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/BigIntBitwiseOp.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/BigIntBitwiseOp.js | node_modules/es-abstract/2025/BigIntBitwiseOp.js | node_modules/es-abstract/2024/BigIntBitwiseOp.js | node_modules/es-abstract/2023/BigIntBitwiseOp.js | node_modules/es-abstract/2021/BigIntBitwiseOp.js | node_modules/es-abstract/2020/BigIntBitwiseOp.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/BinaryAnd.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/BinaryAnd.js | node_modules/es-abstract/2025/BinaryAnd.js | node_modules/es-abstract/2024/BinaryAnd.js | node_modules/es-abstract/2023/BinaryAnd.js | node_modules/es-abstract/2021/BinaryAnd.js | node_modules/es-abstract/2020/BinaryAnd.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/BinaryOr.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/BinaryOr.js | node_modules/es-abstract/2025/BinaryOr.js | node_modules/es-abstract/2024/BinaryOr.js | node_modules/es-abstract/2023/BinaryOr.js | node_modules/es-abstract/2021/BinaryOr.js | node_modules/es-abstract/2020/BinaryOr.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/BinaryXor.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/BinaryXor.js | node_modules/es-abstract/2025/BinaryXor.js | node_modules/es-abstract/2024/BinaryXor.js | node_modules/es-abstract/2023/BinaryXor.js | node_modules/es-abstract/2021/BinaryXor.js | node_modules/es-abstract/2020/BinaryXor.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/ByteListBitwiseOp.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/ByteListBitwiseOp.js | node_modules/es-abstract/2025/ByteListBitwiseOp.js | node_modules/es-abstract/2024/ByteListBitwiseOp.js | node_modules/es-abstract/2023/ByteListBitwiseOp.js | node_modules/es-abstract/2021/ByteListBitwiseOp.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/ByteListEqual.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/ByteListEqual.js | node_modules/es-abstract/2025/ByteListEqual.js | node_modules/es-abstract/2024/ByteListEqual.js | node_modules/es-abstract/2023/ByteListEqual.js | node_modules/es-abstract/2021/ByteListEqual.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/Call.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/Call.js | node_modules/es-abstract/2025/Call.js | node_modules/es-abstract/2024/Call.js | node_modules/es-abstract/2023/Call.js | node_modules/es-abstract/2015/Call.js | node_modules/es-abstract/2017/Call.js | node_modules/es-abstract/2019/Call.js | node_modules/es-abstract/2021/Call.js | node_modules/es-abstract/2020/Call.js | node_modules/es-abstract/2018/Call.js | node_modules/es-abstract/2016/Call.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/CanonicalNumericIndexString.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/CanonicalNumericIndexString.js | node_modules/es-abstract/2025/CanonicalNumericIndexString.js | node_modules/es-abstract/2024/CanonicalNumericIndexString.js | node_modules/es-abstract/2023/CanonicalNumericIndexString.js | node_modules/es-abstract/2015/CanonicalNumericIndexString.js | node_modules/es-abstract/2017/CanonicalNumericIndexString.js | node_modules/es-abstract/2019/CanonicalNumericIndexString.js | node_modules/es-abstract/2021/CanonicalNumericIndexString.js | node_modules/es-abstract/2020/CanonicalNumericIndexString.js | node_modules/es-abstract/2018/CanonicalNumericIndexString.js | node_modules/es-abstract/2016/CanonicalNumericIndexString.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/Canonicalize.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/Canonicalize.js | node_modules/es-abstract/2015/Canonicalize.js | node_modules/es-abstract/2017/Canonicalize.js | node_modules/es-abstract/2019/Canonicalize.js | node_modules/es-abstract/2021/Canonicalize.js | node_modules/es-abstract/2020/Canonicalize.js | node_modules/es-abstract/2018/Canonicalize.js | node_modules/es-abstract/2016/Canonicalize.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/CharacterRange.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/CharacterRange.js | node_modules/es-abstract/2024/CharacterRange.js | node_modules/es-abstract/2023/CharacterRange.js | node_modules/es-abstract/2015/CharacterRange.js | node_modules/es-abstract/2017/CharacterRange.js | node_modules/es-abstract/2019/CharacterRange.js | node_modules/es-abstract/2021/CharacterRange.js | node_modules/es-abstract/2020/CharacterRange.js | node_modules/es-abstract/2018/CharacterRange.js | node_modules/es-abstract/2016/CharacterRange.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/ClearKeptObjects.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/ClearKeptObjects.js | node_modules/es-abstract/2025/ClearKeptObjects.js | node_modules/es-abstract/2024/ClearKeptObjects.js | node_modules/es-abstract/2023/ClearKeptObjects.js | node_modules/es-abstract/2021/ClearKeptObjects.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/CloneArrayBuffer.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/CloneArrayBuffer.js | node_modules/es-abstract/2025/CloneArrayBuffer.js | node_modules/es-abstract/2024/CloneArrayBuffer.js | node_modules/es-abstract/2023/CloneArrayBuffer.js | node_modules/es-abstract/2021/CloneArrayBuffer.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/CodePointAt.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/CodePointAt.js | node_modules/es-abstract/2025/CodePointAt.js | node_modules/es-abstract/2024/CodePointAt.js | node_modules/es-abstract/2023/CodePointAt.js | node_modules/es-abstract/2021/CodePointAt.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/CodePointsToString.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/CodePointsToString.js | node_modules/es-abstract/2025/CodePointsToString.js | node_modules/es-abstract/2024/CodePointsToString.js | node_modules/es-abstract/2023/CodePointsToString.js | node_modules/es-abstract/2021/CodePointsToString.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/CompletePropertyDescriptor.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/CompletePropertyDescriptor.js | node_modules/es-abstract/2025/CompletePropertyDescriptor.js | node_modules/es-abstract/2024/CompletePropertyDescriptor.js | node_modules/es-abstract/2023/CompletePropertyDescriptor.js | node_modules/es-abstract/2015/CompletePropertyDescriptor.js | node_modules/es-abstract/2017/CompletePropertyDescriptor.js | node_modules/es-abstract/2019/CompletePropertyDescriptor.js | node_modules/es-abstract/2021/CompletePropertyDescriptor.js | node_modules/es-abstract/2020/CompletePropertyDescriptor.js | node_modules/es-abstract/2018/CompletePropertyDescriptor.js | node_modules/es-abstract/2016/CompletePropertyDescriptor.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/CompletionRecord.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/CompletionRecord.js | node_modules/es-abstract/2025/CompletionRecord.js | node_modules/es-abstract/2024/CompletionRecord.js | node_modules/es-abstract/2023/CompletionRecord.js | node_modules/es-abstract/2017/CompletionRecord.js | node_modules/es-abstract/2019/CompletionRecord.js | node_modules/es-abstract/2021/CompletionRecord.js | node_modules/es-abstract/2020/CompletionRecord.js | node_modules/es-abstract/2018/CompletionRecord.js | node_modules/es-abstract/2016/CompletionRecord.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/CopyDataProperties.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/CopyDataProperties.js | node_modules/es-abstract/2025/CopyDataProperties.js | node_modules/es-abstract/2024/CopyDataProperties.js | node_modules/es-abstract/2023/CopyDataProperties.js | node_modules/es-abstract/2021/CopyDataProperties.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/CreateAsyncFromSyncIterator.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/CreateAsyncFromSyncIterator.js | node_modules/es-abstract/2021/CreateAsyncFromSyncIterator.js | node_modules/es-abstract/2020/CreateAsyncFromSyncIterator.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/CreateDataProperty.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/CreateDataProperty.js | node_modules/es-abstract/2025/CreateDataProperty.js | node_modules/es-abstract/2024/CreateDataProperty.js | node_modules/es-abstract/2023/CreateDataProperty.js | node_modules/es-abstract/2015/CreateDataProperty.js | node_modules/es-abstract/2017/CreateDataProperty.js | node_modules/es-abstract/2019/CreateDataProperty.js | node_modules/es-abstract/2021/CreateDataProperty.js | node_modules/es-abstract/2020/CreateDataProperty.js | node_modules/es-abstract/2018/CreateDataProperty.js | node_modules/es-abstract/2016/CreateDataProperty.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/CreateDataPropertyOrThrow.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/CreateDataPropertyOrThrow.js | node_modules/es-abstract/2015/CreateDataPropertyOrThrow.js | node_modules/es-abstract/2017/CreateDataPropertyOrThrow.js | node_modules/es-abstract/2019/CreateDataPropertyOrThrow.js | node_modules/es-abstract/2021/CreateDataPropertyOrThrow.js | node_modules/es-abstract/2020/CreateDataPropertyOrThrow.js | node_modules/es-abstract/2018/CreateDataPropertyOrThrow.js | node_modules/es-abstract/2016/CreateDataPropertyOrThrow.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/CreateHTML.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/CreateHTML.js | node_modules/es-abstract/2025/CreateHTML.js | node_modules/es-abstract/2024/CreateHTML.js | node_modules/es-abstract/2023/CreateHTML.js | node_modules/es-abstract/2015/CreateHTML.js | node_modules/es-abstract/2017/CreateHTML.js | node_modules/es-abstract/2019/CreateHTML.js | node_modules/es-abstract/2021/CreateHTML.js | node_modules/es-abstract/2020/CreateHTML.js | node_modules/es-abstract/2018/CreateHTML.js | node_modules/es-abstract/2016/CreateHTML.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/CreateIterResultObject.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/CreateIterResultObject.js | node_modules/es-abstract/2024/CreateIterResultObject.js | node_modules/es-abstract/2023/CreateIterResultObject.js | node_modules/es-abstract/2015/CreateIterResultObject.js | node_modules/es-abstract/2017/CreateIterResultObject.js | node_modules/es-abstract/2019/CreateIterResultObject.js | node_modules/es-abstract/2021/CreateIterResultObject.js | node_modules/es-abstract/2020/CreateIterResultObject.js | node_modules/es-abstract/2018/CreateIterResultObject.js | node_modules/es-abstract/2016/CreateIterResultObject.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/CreateListFromArrayLike.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/CreateListFromArrayLike.js | node_modules/es-abstract/2024/CreateListFromArrayLike.js | node_modules/es-abstract/2023/CreateListFromArrayLike.js | node_modules/es-abstract/2021/CreateListFromArrayLike.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/CreateMethodProperty.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/CreateMethodProperty.js | node_modules/es-abstract/2023/CreateMethodProperty.js | node_modules/es-abstract/2015/CreateMethodProperty.js | node_modules/es-abstract/2017/CreateMethodProperty.js | node_modules/es-abstract/2019/CreateMethodProperty.js | node_modules/es-abstract/2021/CreateMethodProperty.js | node_modules/es-abstract/2020/CreateMethodProperty.js | node_modules/es-abstract/2018/CreateMethodProperty.js | node_modules/es-abstract/2016/CreateMethodProperty.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/CreateNonEnumerableDataPropertyOrThrow.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/CreateNonEnumerableDataPropertyOrThrow.js | node_modules/es-abstract/2025/CreateNonEnumerableDataPropertyOrThrow.js | node_modules/es-abstract/2024/CreateNonEnumerableDataPropertyOrThrow.js | node_modules/es-abstract/2023/CreateNonEnumerableDataPropertyOrThrow.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/CreateRegExpStringIterator.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/CreateRegExpStringIterator.js | node_modules/es-abstract/2023/CreateRegExpStringIterator.js | node_modules/es-abstract/2021/CreateRegExpStringIterator.js | node_modules/es-abstract/2020/CreateRegExpStringIterator.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/DateFromTime.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/DateFromTime.js | node_modules/es-abstract/2025/DateFromTime.js | node_modules/es-abstract/2024/DateFromTime.js | node_modules/es-abstract/2023/DateFromTime.js | node_modules/es-abstract/2015/DateFromTime.js | node_modules/es-abstract/2017/DateFromTime.js | node_modules/es-abstract/2019/DateFromTime.js | node_modules/es-abstract/2021/DateFromTime.js | node_modules/es-abstract/2020/DateFromTime.js | node_modules/es-abstract/2018/DateFromTime.js | node_modules/es-abstract/2016/DateFromTime.js | node_modules/es-abstract/5/DateFromTime.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/DateString.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/DateString.js | node_modules/es-abstract/2025/DateString.js | node_modules/es-abstract/2024/DateString.js | node_modules/es-abstract/2023/DateString.js | node_modules/es-abstract/2019/DateString.js | node_modules/es-abstract/2021/DateString.js | node_modules/es-abstract/2020/DateString.js | node_modules/es-abstract/2018/DateString.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/Day.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/Day.js | node_modules/es-abstract/2025/Day.js | node_modules/es-abstract/2024/Day.js | node_modules/es-abstract/2023/Day.js | node_modules/es-abstract/2015/Day.js | node_modules/es-abstract/2017/Day.js | node_modules/es-abstract/2019/Day.js | node_modules/es-abstract/2021/Day.js | node_modules/es-abstract/2020/Day.js | node_modules/es-abstract/2018/Day.js | node_modules/es-abstract/2016/Day.js | node_modules/es-abstract/5/Day.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/DayFromYear.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/DayFromYear.js | node_modules/es-abstract/2025/DayFromYear.js | node_modules/es-abstract/2024/DayFromYear.js | node_modules/es-abstract/2023/DayFromYear.js | node_modules/es-abstract/2015/DayFromYear.js | node_modules/es-abstract/2017/DayFromYear.js | node_modules/es-abstract/2019/DayFromYear.js | node_modules/es-abstract/2021/DayFromYear.js | node_modules/es-abstract/2020/DayFromYear.js | node_modules/es-abstract/2018/DayFromYear.js | node_modules/es-abstract/2016/DayFromYear.js | node_modules/es-abstract/5/DayFromYear.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/DayWithinYear.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/DayWithinYear.js | node_modules/es-abstract/2025/DayWithinYear.js | node_modules/es-abstract/2024/DayWithinYear.js | node_modules/es-abstract/2023/DayWithinYear.js | node_modules/es-abstract/2015/DayWithinYear.js | node_modules/es-abstract/2017/DayWithinYear.js | node_modules/es-abstract/2019/DayWithinYear.js | node_modules/es-abstract/2021/DayWithinYear.js | node_modules/es-abstract/2020/DayWithinYear.js | node_modules/es-abstract/2018/DayWithinYear.js | node_modules/es-abstract/2016/DayWithinYear.js | node_modules/es-abstract/5/DayWithinYear.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/DaysInYear.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/DaysInYear.js | node_modules/es-abstract/2025/DaysInYear.js | node_modules/es-abstract/2024/DaysInYear.js | node_modules/es-abstract/2023/DaysInYear.js | node_modules/es-abstract/2015/DaysInYear.js | node_modules/es-abstract/2017/DaysInYear.js | node_modules/es-abstract/2019/DaysInYear.js | node_modules/es-abstract/2021/DaysInYear.js | node_modules/es-abstract/2020/DaysInYear.js | node_modules/es-abstract/2018/DaysInYear.js | node_modules/es-abstract/2016/DaysInYear.js | node_modules/es-abstract/5/DaysInYear.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/DefineMethodProperty.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/DefineMethodProperty.js | node_modules/es-abstract/2025/DefineMethodProperty.js | node_modules/es-abstract/2024/DefineMethodProperty.js | node_modules/es-abstract/2023/DefineMethodProperty.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/DefinePropertyOrThrow.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/DefinePropertyOrThrow.js | node_modules/es-abstract/2025/DefinePropertyOrThrow.js | node_modules/es-abstract/2024/DefinePropertyOrThrow.js | node_modules/es-abstract/2023/DefinePropertyOrThrow.js | node_modules/es-abstract/2015/DefinePropertyOrThrow.js | node_modules/es-abstract/2017/DefinePropertyOrThrow.js | node_modules/es-abstract/2019/DefinePropertyOrThrow.js | node_modules/es-abstract/2021/DefinePropertyOrThrow.js | node_modules/es-abstract/2020/DefinePropertyOrThrow.js | node_modules/es-abstract/2018/DefinePropertyOrThrow.js | node_modules/es-abstract/2016/DefinePropertyOrThrow.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/DeletePropertyOrThrow.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/DeletePropertyOrThrow.js | node_modules/es-abstract/2025/DeletePropertyOrThrow.js | node_modules/es-abstract/2024/DeletePropertyOrThrow.js | node_modules/es-abstract/2023/DeletePropertyOrThrow.js | node_modules/es-abstract/2015/DeletePropertyOrThrow.js | node_modules/es-abstract/2017/DeletePropertyOrThrow.js | node_modules/es-abstract/2019/DeletePropertyOrThrow.js | node_modules/es-abstract/2021/DeletePropertyOrThrow.js | node_modules/es-abstract/2020/DeletePropertyOrThrow.js | node_modules/es-abstract/2018/DeletePropertyOrThrow.js | node_modules/es-abstract/2016/DeletePropertyOrThrow.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/DetachArrayBuffer.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/DetachArrayBuffer.js | node_modules/es-abstract/2025/DetachArrayBuffer.js | node_modules/es-abstract/2024/DetachArrayBuffer.js | node_modules/es-abstract/2023/DetachArrayBuffer.js | node_modules/es-abstract/2019/DetachArrayBuffer.js | node_modules/es-abstract/2021/DetachArrayBuffer.js | node_modules/es-abstract/2020/DetachArrayBuffer.js | node_modules/es-abstract/2018/DetachArrayBuffer.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/EnumerableOwnPropertyNames.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/EnumerableOwnPropertyNames.js | node_modules/es-abstract/2019/EnumerableOwnPropertyNames.js | node_modules/es-abstract/2021/EnumerableOwnPropertyNames.js | node_modules/es-abstract/2020/EnumerableOwnPropertyNames.js | node_modules/es-abstract/2018/EnumerableOwnPropertyNames.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/FlattenIntoArray.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/FlattenIntoArray.js | node_modules/es-abstract/2025/FlattenIntoArray.js | node_modules/es-abstract/2024/FlattenIntoArray.js | node_modules/es-abstract/2023/FlattenIntoArray.js | node_modules/es-abstract/2021/FlattenIntoArray.js | node_modules/es-abstract/2020/FlattenIntoArray.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/FromPropertyDescriptor.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/FromPropertyDescriptor.js | node_modules/es-abstract/2025/FromPropertyDescriptor.js | node_modules/es-abstract/2024/FromPropertyDescriptor.js | node_modules/es-abstract/2023/FromPropertyDescriptor.js | node_modules/es-abstract/2015/FromPropertyDescriptor.js | node_modules/es-abstract/2017/FromPropertyDescriptor.js | node_modules/es-abstract/2019/FromPropertyDescriptor.js | node_modules/es-abstract/2021/FromPropertyDescriptor.js | node_modules/es-abstract/2020/FromPropertyDescriptor.js | node_modules/es-abstract/2018/FromPropertyDescriptor.js | node_modules/es-abstract/2016/FromPropertyDescriptor.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/Get.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/Get.js | node_modules/es-abstract/2025/Get.js | node_modules/es-abstract/2024/Get.js | node_modules/es-abstract/2023/Get.js | node_modules/es-abstract/2015/Get.js | node_modules/es-abstract/2017/Get.js | node_modules/es-abstract/2019/Get.js | node_modules/es-abstract/2021/Get.js | node_modules/es-abstract/2020/Get.js | node_modules/es-abstract/2018/Get.js | node_modules/es-abstract/2016/Get.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/GetGlobalObject.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/GetGlobalObject.js | node_modules/es-abstract/2025/GetGlobalObject.js | node_modules/es-abstract/2024/GetGlobalObject.js | node_modules/es-abstract/2023/GetGlobalObject.js | node_modules/es-abstract/2015/GetGlobalObject.js | node_modules/es-abstract/2017/GetGlobalObject.js | node_modules/es-abstract/2019/GetGlobalObject.js | node_modules/es-abstract/2021/GetGlobalObject.js | node_modules/es-abstract/2020/GetGlobalObject.js | node_modules/es-abstract/2018/GetGlobalObject.js | node_modules/es-abstract/2016/GetGlobalObject.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/GetIterator.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/GetIterator.js | node_modules/es-abstract/2021/GetIterator.js | node_modules/es-abstract/2020/GetIterator.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/GetMatchIndexPair.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/GetMatchIndexPair.js | node_modules/es-abstract/2025/GetMatchIndexPair.js | node_modules/es-abstract/2024/GetMatchIndexPair.js | node_modules/es-abstract/2023/GetMatchIndexPair.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/GetMatchString.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/GetMatchString.js | node_modules/es-abstract/2025/GetMatchString.js | node_modules/es-abstract/2024/GetMatchString.js | node_modules/es-abstract/2023/GetMatchString.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/GetMethod.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/GetMethod.js | node_modules/es-abstract/2025/GetMethod.js | node_modules/es-abstract/2024/GetMethod.js | node_modules/es-abstract/2023/GetMethod.js | node_modules/es-abstract/2015/GetMethod.js | node_modules/es-abstract/2017/GetMethod.js | node_modules/es-abstract/2019/GetMethod.js | node_modules/es-abstract/2021/GetMethod.js | node_modules/es-abstract/2020/GetMethod.js | node_modules/es-abstract/2018/GetMethod.js | node_modules/es-abstract/2016/GetMethod.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/GetOwnPropertyKeys.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/GetOwnPropertyKeys.js | node_modules/es-abstract/2025/GetOwnPropertyKeys.js | node_modules/es-abstract/2024/GetOwnPropertyKeys.js | node_modules/es-abstract/2023/GetOwnPropertyKeys.js | node_modules/es-abstract/2015/GetOwnPropertyKeys.js | node_modules/es-abstract/2017/GetOwnPropertyKeys.js | node_modules/es-abstract/2019/GetOwnPropertyKeys.js | node_modules/es-abstract/2021/GetOwnPropertyKeys.js | node_modules/es-abstract/2020/GetOwnPropertyKeys.js | node_modules/es-abstract/2018/GetOwnPropertyKeys.js | node_modules/es-abstract/2016/GetOwnPropertyKeys.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/GetPromiseResolve.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/GetPromiseResolve.js | node_modules/es-abstract/2025/GetPromiseResolve.js | node_modules/es-abstract/2024/GetPromiseResolve.js | node_modules/es-abstract/2023/GetPromiseResolve.js | node_modules/es-abstract/2021/GetPromiseResolve.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/GetPrototypeFromConstructor.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/GetPrototypeFromConstructor.js | node_modules/es-abstract/2025/GetPrototypeFromConstructor.js | node_modules/es-abstract/2024/GetPrototypeFromConstructor.js | node_modules/es-abstract/2023/GetPrototypeFromConstructor.js | node_modules/es-abstract/2015/GetPrototypeFromConstructor.js | node_modules/es-abstract/2017/GetPrototypeFromConstructor.js | node_modules/es-abstract/2019/GetPrototypeFromConstructor.js | node_modules/es-abstract/2021/GetPrototypeFromConstructor.js | node_modules/es-abstract/2020/GetPrototypeFromConstructor.js | node_modules/es-abstract/2018/GetPrototypeFromConstructor.js | node_modules/es-abstract/2016/GetPrototypeFromConstructor.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/GetStringIndex.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/GetStringIndex.js | node_modules/es-abstract/2025/GetStringIndex.js | node_modules/es-abstract/2024/GetStringIndex.js | node_modules/es-abstract/2023/GetStringIndex.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/GetV.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/GetV.js | node_modules/es-abstract/2025/GetV.js | node_modules/es-abstract/2024/GetV.js | node_modules/es-abstract/2023/GetV.js | node_modules/es-abstract/2015/GetV.js | node_modules/es-abstract/2017/GetV.js | node_modules/es-abstract/2019/GetV.js | node_modules/es-abstract/2021/GetV.js | node_modules/es-abstract/2020/GetV.js | node_modules/es-abstract/2018/GetV.js | node_modules/es-abstract/2016/GetV.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/GetValueFromBuffer.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/GetValueFromBuffer.js | node_modules/es-abstract/2023/GetValueFromBuffer.js | node_modules/es-abstract/2021/GetValueFromBuffer.js | node_modules/es-abstract/2020/GetValueFromBuffer.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/HasOwnProperty.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/HasOwnProperty.js | node_modules/es-abstract/2025/HasOwnProperty.js | node_modules/es-abstract/2024/HasOwnProperty.js | node_modules/es-abstract/2023/HasOwnProperty.js | node_modules/es-abstract/2015/HasOwnProperty.js | node_modules/es-abstract/2017/HasOwnProperty.js | node_modules/es-abstract/2019/HasOwnProperty.js | node_modules/es-abstract/2021/HasOwnProperty.js | node_modules/es-abstract/2020/HasOwnProperty.js | node_modules/es-abstract/2018/HasOwnProperty.js | node_modules/es-abstract/2016/HasOwnProperty.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/HasProperty.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/HasProperty.js | node_modules/es-abstract/2025/HasProperty.js | node_modules/es-abstract/2024/HasProperty.js | node_modules/es-abstract/2023/HasProperty.js | node_modules/es-abstract/2015/HasProperty.js | node_modules/es-abstract/2017/HasProperty.js | node_modules/es-abstract/2019/HasProperty.js | node_modules/es-abstract/2021/HasProperty.js | node_modules/es-abstract/2020/HasProperty.js | node_modules/es-abstract/2018/HasProperty.js | node_modules/es-abstract/2016/HasProperty.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/HourFromTime.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/HourFromTime.js | node_modules/es-abstract/2025/HourFromTime.js | node_modules/es-abstract/2024/HourFromTime.js | node_modules/es-abstract/2023/HourFromTime.js | node_modules/es-abstract/2015/HourFromTime.js | node_modules/es-abstract/2017/HourFromTime.js | node_modules/es-abstract/2019/HourFromTime.js | node_modules/es-abstract/2021/HourFromTime.js | node_modules/es-abstract/2020/HourFromTime.js | node_modules/es-abstract/2018/HourFromTime.js | node_modules/es-abstract/2016/HourFromTime.js | node_modules/es-abstract/5/HourFromTime.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/InLeapYear.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/InLeapYear.js | node_modules/es-abstract/2025/InLeapYear.js | node_modules/es-abstract/2024/InLeapYear.js | node_modules/es-abstract/2023/InLeapYear.js | node_modules/es-abstract/2015/InLeapYear.js | node_modules/es-abstract/2017/InLeapYear.js | node_modules/es-abstract/2019/InLeapYear.js | node_modules/es-abstract/2021/InLeapYear.js | node_modules/es-abstract/2020/InLeapYear.js | node_modules/es-abstract/2018/InLeapYear.js | node_modules/es-abstract/2016/InLeapYear.js | node_modules/es-abstract/5/InLeapYear.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/InstallErrorCause.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/InstallErrorCause.js | node_modules/es-abstract/2025/InstallErrorCause.js | node_modules/es-abstract/2024/InstallErrorCause.js | node_modules/es-abstract/2023/InstallErrorCause.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/InstanceofOperator.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/InstanceofOperator.js | node_modules/es-abstract/2025/InstanceofOperator.js | node_modules/es-abstract/2024/InstanceofOperator.js | node_modules/es-abstract/2023/InstanceofOperator.js | node_modules/es-abstract/2015/InstanceofOperator.js | node_modules/es-abstract/2017/InstanceofOperator.js | node_modules/es-abstract/2019/InstanceofOperator.js | node_modules/es-abstract/2021/InstanceofOperator.js | node_modules/es-abstract/2020/InstanceofOperator.js | node_modules/es-abstract/2018/InstanceofOperator.js | node_modules/es-abstract/2016/InstanceofOperator.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/IntegerIndexedElementGet.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/IntegerIndexedElementGet.js | node_modules/es-abstract/2023/IntegerIndexedElementGet.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/IntegerIndexedElementSet.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/IntegerIndexedElementSet.js | node_modules/es-abstract/2023/IntegerIndexedElementSet.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/InternalizeJSONProperty.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/InternalizeJSONProperty.js | node_modules/es-abstract/2021/InternalizeJSONProperty.js | node_modules/es-abstract/2020/InternalizeJSONProperty.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/Invoke.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/Invoke.js | node_modules/es-abstract/2025/Invoke.js | node_modules/es-abstract/2024/Invoke.js | node_modules/es-abstract/2023/Invoke.js | node_modules/es-abstract/2015/Invoke.js | node_modules/es-abstract/2017/Invoke.js | node_modules/es-abstract/2019/Invoke.js | node_modules/es-abstract/2021/Invoke.js | node_modules/es-abstract/2020/Invoke.js | node_modules/es-abstract/2018/Invoke.js | node_modules/es-abstract/2016/Invoke.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/IsAccessorDescriptor.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/IsAccessorDescriptor.js | node_modules/es-abstract/2025/IsAccessorDescriptor.js | node_modules/es-abstract/2024/IsAccessorDescriptor.js | node_modules/es-abstract/2023/IsAccessorDescriptor.js | node_modules/es-abstract/2015/IsAccessorDescriptor.js | node_modules/es-abstract/2017/IsAccessorDescriptor.js | node_modules/es-abstract/2019/IsAccessorDescriptor.js | node_modules/es-abstract/2021/IsAccessorDescriptor.js | node_modules/es-abstract/2020/IsAccessorDescriptor.js | node_modules/es-abstract/2018/IsAccessorDescriptor.js | node_modules/es-abstract/2016/IsAccessorDescriptor.js | node_modules/es-abstract/5/IsAccessorDescriptor.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/IsArray.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/IsArray.js | node_modules/es-abstract/2025/IsArray.js | node_modules/es-abstract/2024/IsArray.js | node_modules/es-abstract/2023/IsArray.js | node_modules/es-abstract/2015/IsArray.js | node_modules/es-abstract/2017/IsArray.js | node_modules/es-abstract/2019/IsArray.js | node_modules/es-abstract/2021/IsArray.js | node_modules/es-abstract/2020/IsArray.js | node_modules/es-abstract/2018/IsArray.js | node_modules/es-abstract/2016/IsArray.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/IsBigIntElementType.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/IsBigIntElementType.js | node_modules/es-abstract/2023/IsBigIntElementType.js | node_modules/es-abstract/2021/IsBigIntElementType.js | node_modules/es-abstract/2020/IsBigIntElementType.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/IsCallable.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/IsCallable.js | node_modules/es-abstract/2025/IsCallable.js | node_modules/es-abstract/2024/IsCallable.js | node_modules/es-abstract/2023/IsCallable.js | node_modules/es-abstract/2015/IsCallable.js | node_modules/es-abstract/2017/IsCallable.js | node_modules/es-abstract/2019/IsCallable.js | node_modules/es-abstract/2021/IsCallable.js | node_modules/es-abstract/2020/IsCallable.js | node_modules/es-abstract/2018/IsCallable.js | node_modules/es-abstract/2016/IsCallable.js | node_modules/es-abstract/5/IsCallable.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/IsCompatiblePropertyDescriptor.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/IsCompatiblePropertyDescriptor.js | node_modules/es-abstract/2025/IsCompatiblePropertyDescriptor.js | node_modules/es-abstract/2024/IsCompatiblePropertyDescriptor.js | node_modules/es-abstract/2023/IsCompatiblePropertyDescriptor.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/IsConcatSpreadable.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/IsConcatSpreadable.js | node_modules/es-abstract/2025/IsConcatSpreadable.js | node_modules/es-abstract/2024/IsConcatSpreadable.js | node_modules/es-abstract/2023/IsConcatSpreadable.js | node_modules/es-abstract/2015/IsConcatSpreadable.js | node_modules/es-abstract/2017/IsConcatSpreadable.js | node_modules/es-abstract/2019/IsConcatSpreadable.js | node_modules/es-abstract/2021/IsConcatSpreadable.js | node_modules/es-abstract/2020/IsConcatSpreadable.js | node_modules/es-abstract/2018/IsConcatSpreadable.js | node_modules/es-abstract/2016/IsConcatSpreadable.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/IsConstructor.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/IsConstructor.js | node_modules/es-abstract/2025/IsConstructor.js | node_modules/es-abstract/2024/IsConstructor.js | node_modules/es-abstract/2023/IsConstructor.js | node_modules/es-abstract/2015/IsConstructor.js | node_modules/es-abstract/2017/IsConstructor.js | node_modules/es-abstract/2019/IsConstructor.js | node_modules/es-abstract/2021/IsConstructor.js | node_modules/es-abstract/2020/IsConstructor.js | node_modules/es-abstract/2018/IsConstructor.js | node_modules/es-abstract/2016/IsConstructor.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/IsDataDescriptor.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/IsDataDescriptor.js | node_modules/es-abstract/2025/IsDataDescriptor.js | node_modules/es-abstract/2024/IsDataDescriptor.js | node_modules/es-abstract/2023/IsDataDescriptor.js | node_modules/es-abstract/2015/IsDataDescriptor.js | node_modules/es-abstract/2017/IsDataDescriptor.js | node_modules/es-abstract/2019/IsDataDescriptor.js | node_modules/es-abstract/2021/IsDataDescriptor.js | node_modules/es-abstract/2020/IsDataDescriptor.js | node_modules/es-abstract/2018/IsDataDescriptor.js | node_modules/es-abstract/2016/IsDataDescriptor.js | node_modules/es-abstract/5/IsDataDescriptor.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/IsDetachedBuffer.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/IsDetachedBuffer.js | node_modules/es-abstract/2025/IsDetachedBuffer.js | node_modules/es-abstract/2024/IsDetachedBuffer.js | node_modules/es-abstract/2023/IsDetachedBuffer.js | node_modules/es-abstract/2017/IsDetachedBuffer.js | node_modules/es-abstract/2019/IsDetachedBuffer.js | node_modules/es-abstract/2021/IsDetachedBuffer.js | node_modules/es-abstract/2020/IsDetachedBuffer.js | node_modules/es-abstract/2018/IsDetachedBuffer.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/IsExtensible.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/IsExtensible.js | node_modules/es-abstract/2025/IsExtensible.js | node_modules/es-abstract/2024/IsExtensible.js | node_modules/es-abstract/2023/IsExtensible.js | node_modules/es-abstract/2015/IsExtensible.js | node_modules/es-abstract/2017/IsExtensible.js | node_modules/es-abstract/2019/IsExtensible.js | node_modules/es-abstract/2021/IsExtensible.js | node_modules/es-abstract/2020/IsExtensible.js | node_modules/es-abstract/2018/IsExtensible.js | node_modules/es-abstract/2016/IsExtensible.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/IsGenericDescriptor.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/IsGenericDescriptor.js | node_modules/es-abstract/2025/IsGenericDescriptor.js | node_modules/es-abstract/2024/IsGenericDescriptor.js | node_modules/es-abstract/2023/IsGenericDescriptor.js | node_modules/es-abstract/2015/IsGenericDescriptor.js | node_modules/es-abstract/2017/IsGenericDescriptor.js | node_modules/es-abstract/2019/IsGenericDescriptor.js | node_modules/es-abstract/2021/IsGenericDescriptor.js | node_modules/es-abstract/2020/IsGenericDescriptor.js | node_modules/es-abstract/2018/IsGenericDescriptor.js | node_modules/es-abstract/2016/IsGenericDescriptor.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/IsIntegralNumber.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/IsIntegralNumber.js | node_modules/es-abstract/2021/IsIntegralNumber.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/IsLooselyEqual.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/IsLooselyEqual.js | node_modules/es-abstract/2025/IsLooselyEqual.js | node_modules/es-abstract/2024/IsLooselyEqual.js | node_modules/es-abstract/2023/IsLooselyEqual.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/IsNoTearConfiguration.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/IsNoTearConfiguration.js | node_modules/es-abstract/2023/IsNoTearConfiguration.js | node_modules/es-abstract/2021/IsNoTearConfiguration.js | node_modules/es-abstract/2020/IsNoTearConfiguration.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/IsPromise.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/IsPromise.js | node_modules/es-abstract/2025/IsPromise.js | node_modules/es-abstract/2024/IsPromise.js | node_modules/es-abstract/2023/IsPromise.js | node_modules/es-abstract/2015/IsPromise.js | node_modules/es-abstract/2017/IsPromise.js | node_modules/es-abstract/2019/IsPromise.js | node_modules/es-abstract/2021/IsPromise.js | node_modules/es-abstract/2020/IsPromise.js | node_modules/es-abstract/2018/IsPromise.js | node_modules/es-abstract/2016/IsPromise.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/IsPropertyKey.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/IsPropertyKey.js | node_modules/es-abstract/2024/IsPropertyKey.js | node_modules/es-abstract/2023/IsPropertyKey.js | node_modules/es-abstract/2015/IsPropertyKey.js | node_modules/es-abstract/2017/IsPropertyKey.js | node_modules/es-abstract/2019/IsPropertyKey.js | node_modules/es-abstract/2021/IsPropertyKey.js | node_modules/es-abstract/2020/IsPropertyKey.js | node_modules/es-abstract/2018/IsPropertyKey.js | node_modules/es-abstract/2016/IsPropertyKey.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/IsRegExp.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/IsRegExp.js | node_modules/es-abstract/2025/IsRegExp.js | node_modules/es-abstract/2024/IsRegExp.js | node_modules/es-abstract/2023/IsRegExp.js | node_modules/es-abstract/2015/IsRegExp.js | node_modules/es-abstract/2017/IsRegExp.js | node_modules/es-abstract/2019/IsRegExp.js | node_modules/es-abstract/2021/IsRegExp.js | node_modules/es-abstract/2020/IsRegExp.js | node_modules/es-abstract/2018/IsRegExp.js | node_modules/es-abstract/2016/IsRegExp.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/IsSharedArrayBuffer.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/IsSharedArrayBuffer.js | node_modules/es-abstract/2025/IsSharedArrayBuffer.js | node_modules/es-abstract/2024/IsSharedArrayBuffer.js | node_modules/es-abstract/2023/IsSharedArrayBuffer.js | node_modules/es-abstract/2017/IsSharedArrayBuffer.js | node_modules/es-abstract/2019/IsSharedArrayBuffer.js | node_modules/es-abstract/2021/IsSharedArrayBuffer.js | node_modules/es-abstract/2020/IsSharedArrayBuffer.js | node_modules/es-abstract/2018/IsSharedArrayBuffer.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/IsUnclampedIntegerElementType.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/IsUnclampedIntegerElementType.js | node_modules/es-abstract/2023/IsUnclampedIntegerElementType.js | node_modules/es-abstract/2021/IsUnclampedIntegerElementType.js | node_modules/es-abstract/2020/IsUnclampedIntegerElementType.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/IsUnsignedElementType.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/IsUnsignedElementType.js | node_modules/es-abstract/2023/IsUnsignedElementType.js | node_modules/es-abstract/2021/IsUnsignedElementType.js | node_modules/es-abstract/2020/IsUnsignedElementType.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/IsValidIntegerIndex.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/IsValidIntegerIndex.js | node_modules/es-abstract/2023/IsValidIntegerIndex.js | node_modules/es-abstract/2021/IsValidIntegerIndex.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/IsWordChar.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/IsWordChar.js | node_modules/es-abstract/2021/IsWordChar.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/IterableToList.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/IterableToList.js | node_modules/es-abstract/2021/IterableToList.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/IteratorClose.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/IteratorClose.js | node_modules/es-abstract/2015/IteratorClose.js | node_modules/es-abstract/2017/IteratorClose.js | node_modules/es-abstract/2019/IteratorClose.js | node_modules/es-abstract/2021/IteratorClose.js | node_modules/es-abstract/2020/IteratorClose.js | node_modules/es-abstract/2018/IteratorClose.js | node_modules/es-abstract/2016/IteratorClose.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/IteratorComplete.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/IteratorComplete.js | node_modules/es-abstract/2025/IteratorComplete.js | node_modules/es-abstract/2024/IteratorComplete.js | node_modules/es-abstract/2023/IteratorComplete.js | node_modules/es-abstract/2015/IteratorComplete.js | node_modules/es-abstract/2017/IteratorComplete.js | node_modules/es-abstract/2019/IteratorComplete.js | node_modules/es-abstract/2021/IteratorComplete.js | node_modules/es-abstract/2020/IteratorComplete.js | node_modules/es-abstract/2018/IteratorComplete.js | node_modules/es-abstract/2016/IteratorComplete.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/IteratorNext.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/IteratorNext.js | node_modules/es-abstract/2015/IteratorNext.js | node_modules/es-abstract/2017/IteratorNext.js | node_modules/es-abstract/2019/IteratorNext.js | node_modules/es-abstract/2021/IteratorNext.js | node_modules/es-abstract/2020/IteratorNext.js | node_modules/es-abstract/2018/IteratorNext.js | node_modules/es-abstract/2016/IteratorNext.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/IteratorStep.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/IteratorStep.js | node_modules/es-abstract/2015/IteratorStep.js | node_modules/es-abstract/2017/IteratorStep.js | node_modules/es-abstract/2019/IteratorStep.js | node_modules/es-abstract/2021/IteratorStep.js | node_modules/es-abstract/2020/IteratorStep.js | node_modules/es-abstract/2018/IteratorStep.js | node_modules/es-abstract/2016/IteratorStep.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/IteratorValue.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/IteratorValue.js | node_modules/es-abstract/2025/IteratorValue.js | node_modules/es-abstract/2024/IteratorValue.js | node_modules/es-abstract/2023/IteratorValue.js | node_modules/es-abstract/2015/IteratorValue.js | node_modules/es-abstract/2017/IteratorValue.js | node_modules/es-abstract/2019/IteratorValue.js | node_modules/es-abstract/2021/IteratorValue.js | node_modules/es-abstract/2020/IteratorValue.js | node_modules/es-abstract/2018/IteratorValue.js | node_modules/es-abstract/2016/IteratorValue.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/LengthOfArrayLike.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/LengthOfArrayLike.js | node_modules/es-abstract/2025/LengthOfArrayLike.js | node_modules/es-abstract/2024/LengthOfArrayLike.js | node_modules/es-abstract/2023/LengthOfArrayLike.js | node_modules/es-abstract/2021/LengthOfArrayLike.js | node_modules/es-abstract/2020/LengthOfArrayLike.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/MakeDate.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/MakeDate.js | node_modules/es-abstract/2025/MakeDate.js | node_modules/es-abstract/2024/MakeDate.js | node_modules/es-abstract/2023/MakeDate.js | node_modules/es-abstract/2015/MakeDate.js | node_modules/es-abstract/2017/MakeDate.js | node_modules/es-abstract/2019/MakeDate.js | node_modules/es-abstract/2021/MakeDate.js | node_modules/es-abstract/2020/MakeDate.js | node_modules/es-abstract/2018/MakeDate.js | node_modules/es-abstract/2016/MakeDate.js | node_modules/es-abstract/5/MakeDate.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/MakeDay.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/MakeDay.js | node_modules/es-abstract/2025/MakeDay.js | node_modules/es-abstract/2024/MakeDay.js | node_modules/es-abstract/2023/MakeDay.js | node_modules/es-abstract/2021/MakeDay.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/MakeMatchIndicesIndexPairArray.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/MakeMatchIndicesIndexPairArray.js | node_modules/es-abstract/2025/MakeMatchIndicesIndexPairArray.js | node_modules/es-abstract/2024/MakeMatchIndicesIndexPairArray.js | node_modules/es-abstract/2023/MakeMatchIndicesIndexPairArray.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/MakeTime.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/MakeTime.js | node_modules/es-abstract/2025/MakeTime.js | node_modules/es-abstract/2024/MakeTime.js | node_modules/es-abstract/2023/MakeTime.js | node_modules/es-abstract/2021/MakeTime.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/MinFromTime.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/MinFromTime.js | node_modules/es-abstract/2025/MinFromTime.js | node_modules/es-abstract/2024/MinFromTime.js | node_modules/es-abstract/2023/MinFromTime.js | node_modules/es-abstract/2015/MinFromTime.js | node_modules/es-abstract/2017/MinFromTime.js | node_modules/es-abstract/2019/MinFromTime.js | node_modules/es-abstract/2021/MinFromTime.js | node_modules/es-abstract/2020/MinFromTime.js | node_modules/es-abstract/2018/MinFromTime.js | node_modules/es-abstract/2016/MinFromTime.js | node_modules/es-abstract/5/MinFromTime.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/MonthFromTime.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/MonthFromTime.js | node_modules/es-abstract/2025/MonthFromTime.js | node_modules/es-abstract/2024/MonthFromTime.js | node_modules/es-abstract/2023/MonthFromTime.js | node_modules/es-abstract/2015/MonthFromTime.js | node_modules/es-abstract/2017/MonthFromTime.js | node_modules/es-abstract/2019/MonthFromTime.js | node_modules/es-abstract/2021/MonthFromTime.js | node_modules/es-abstract/2020/MonthFromTime.js | node_modules/es-abstract/2018/MonthFromTime.js | node_modules/es-abstract/2016/MonthFromTime.js | node_modules/es-abstract/5/MonthFromTime.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/NewPromiseCapability.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/NewPromiseCapability.js | node_modules/es-abstract/2025/NewPromiseCapability.js | node_modules/es-abstract/2024/NewPromiseCapability.js | node_modules/es-abstract/2023/NewPromiseCapability.js | node_modules/es-abstract/2015/NewPromiseCapability.js | node_modules/es-abstract/2017/NewPromiseCapability.js | node_modules/es-abstract/2019/NewPromiseCapability.js | node_modules/es-abstract/2021/NewPromiseCapability.js | node_modules/es-abstract/2020/NewPromiseCapability.js | node_modules/es-abstract/2018/NewPromiseCapability.js | node_modules/es-abstract/2016/NewPromiseCapability.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/NormalCompletion.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/NormalCompletion.js | node_modules/es-abstract/2025/NormalCompletion.js | node_modules/es-abstract/2024/NormalCompletion.js | node_modules/es-abstract/2023/NormalCompletion.js | node_modules/es-abstract/2015/NormalCompletion.js | node_modules/es-abstract/2017/NormalCompletion.js | node_modules/es-abstract/2019/NormalCompletion.js | node_modules/es-abstract/2021/NormalCompletion.js | node_modules/es-abstract/2020/NormalCompletion.js | node_modules/es-abstract/2018/NormalCompletion.js | node_modules/es-abstract/2016/NormalCompletion.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/NumberBitwiseOp.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/NumberBitwiseOp.js | node_modules/es-abstract/2025/NumberBitwiseOp.js | node_modules/es-abstract/2024/NumberBitwiseOp.js | node_modules/es-abstract/2023/NumberBitwiseOp.js | node_modules/es-abstract/2021/NumberBitwiseOp.js | node_modules/es-abstract/2020/NumberBitwiseOp.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/NumberToBigInt.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/NumberToBigInt.js | node_modules/es-abstract/2025/NumberToBigInt.js | node_modules/es-abstract/2024/NumberToBigInt.js | node_modules/es-abstract/2023/NumberToBigInt.js | node_modules/es-abstract/2021/NumberToBigInt.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/NumericToRawBytes.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/NumericToRawBytes.js | node_modules/es-abstract/2023/NumericToRawBytes.js | node_modules/es-abstract/2021/NumericToRawBytes.js | node_modules/es-abstract/2020/NumericToRawBytes.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/ObjectDefineProperties.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/ObjectDefineProperties.js | node_modules/es-abstract/2023/ObjectDefineProperties.js | node_modules/es-abstract/2015/ObjectDefineProperties.js | node_modules/es-abstract/2017/ObjectDefineProperties.js | node_modules/es-abstract/2019/ObjectDefineProperties.js | node_modules/es-abstract/2021/ObjectDefineProperties.js | node_modules/es-abstract/2020/ObjectDefineProperties.js | node_modules/es-abstract/2018/ObjectDefineProperties.js | node_modules/es-abstract/2016/ObjectDefineProperties.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/OrdinaryCreateFromConstructor.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/OrdinaryCreateFromConstructor.js | node_modules/es-abstract/2025/OrdinaryCreateFromConstructor.js | node_modules/es-abstract/2024/OrdinaryCreateFromConstructor.js | node_modules/es-abstract/2023/OrdinaryCreateFromConstructor.js | node_modules/es-abstract/2021/OrdinaryCreateFromConstructor.js | node_modules/es-abstract/2020/OrdinaryCreateFromConstructor.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/OrdinaryDefineOwnProperty.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/OrdinaryDefineOwnProperty.js | node_modules/es-abstract/2025/OrdinaryDefineOwnProperty.js | node_modules/es-abstract/2024/OrdinaryDefineOwnProperty.js | node_modules/es-abstract/2023/OrdinaryDefineOwnProperty.js | node_modules/es-abstract/2015/OrdinaryDefineOwnProperty.js | node_modules/es-abstract/2017/OrdinaryDefineOwnProperty.js | node_modules/es-abstract/2019/OrdinaryDefineOwnProperty.js | node_modules/es-abstract/2021/OrdinaryDefineOwnProperty.js | node_modules/es-abstract/2020/OrdinaryDefineOwnProperty.js | node_modules/es-abstract/2018/OrdinaryDefineOwnProperty.js | node_modules/es-abstract/2016/OrdinaryDefineOwnProperty.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/OrdinaryGetOwnProperty.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/OrdinaryGetOwnProperty.js | node_modules/es-abstract/2025/OrdinaryGetOwnProperty.js | node_modules/es-abstract/2024/OrdinaryGetOwnProperty.js | node_modules/es-abstract/2023/OrdinaryGetOwnProperty.js | node_modules/es-abstract/2021/OrdinaryGetOwnProperty.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/OrdinaryGetPrototypeOf.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/OrdinaryGetPrototypeOf.js | node_modules/es-abstract/2025/OrdinaryGetPrototypeOf.js | node_modules/es-abstract/2024/OrdinaryGetPrototypeOf.js | node_modules/es-abstract/2023/OrdinaryGetPrototypeOf.js | node_modules/es-abstract/2017/OrdinaryGetPrototypeOf.js | node_modules/es-abstract/2019/OrdinaryGetPrototypeOf.js | node_modules/es-abstract/2021/OrdinaryGetPrototypeOf.js | node_modules/es-abstract/2020/OrdinaryGetPrototypeOf.js | node_modules/es-abstract/2018/OrdinaryGetPrototypeOf.js | node_modules/es-abstract/2016/OrdinaryGetPrototypeOf.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/OrdinaryHasInstance.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/OrdinaryHasInstance.js | node_modules/es-abstract/2025/OrdinaryHasInstance.js | node_modules/es-abstract/2024/OrdinaryHasInstance.js | node_modules/es-abstract/2023/OrdinaryHasInstance.js | node_modules/es-abstract/2015/OrdinaryHasInstance.js | node_modules/es-abstract/2017/OrdinaryHasInstance.js | node_modules/es-abstract/2019/OrdinaryHasInstance.js | node_modules/es-abstract/2021/OrdinaryHasInstance.js | node_modules/es-abstract/2020/OrdinaryHasInstance.js | node_modules/es-abstract/2018/OrdinaryHasInstance.js | node_modules/es-abstract/2016/OrdinaryHasInstance.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/OrdinaryHasProperty.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/OrdinaryHasProperty.js | node_modules/es-abstract/2025/OrdinaryHasProperty.js | node_modules/es-abstract/2024/OrdinaryHasProperty.js | node_modules/es-abstract/2023/OrdinaryHasProperty.js | node_modules/es-abstract/2015/OrdinaryHasProperty.js | node_modules/es-abstract/2017/OrdinaryHasProperty.js | node_modules/es-abstract/2019/OrdinaryHasProperty.js | node_modules/es-abstract/2021/OrdinaryHasProperty.js | node_modules/es-abstract/2020/OrdinaryHasProperty.js | node_modules/es-abstract/2018/OrdinaryHasProperty.js | node_modules/es-abstract/2016/OrdinaryHasProperty.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/OrdinaryObjectCreate.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/OrdinaryObjectCreate.js | node_modules/es-abstract/2025/OrdinaryObjectCreate.js | node_modules/es-abstract/2024/OrdinaryObjectCreate.js | node_modules/es-abstract/2023/OrdinaryObjectCreate.js | node_modules/es-abstract/2021/OrdinaryObjectCreate.js | node_modules/es-abstract/2020/OrdinaryObjectCreate.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/OrdinarySetPrototypeOf.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/OrdinarySetPrototypeOf.js | node_modules/es-abstract/2025/OrdinarySetPrototypeOf.js | node_modules/es-abstract/2024/OrdinarySetPrototypeOf.js | node_modules/es-abstract/2023/OrdinarySetPrototypeOf.js | node_modules/es-abstract/2017/OrdinarySetPrototypeOf.js | node_modules/es-abstract/2019/OrdinarySetPrototypeOf.js | node_modules/es-abstract/2021/OrdinarySetPrototypeOf.js | node_modules/es-abstract/2020/OrdinarySetPrototypeOf.js | node_modules/es-abstract/2018/OrdinarySetPrototypeOf.js | node_modules/es-abstract/2016/OrdinarySetPrototypeOf.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/OrdinaryToPrimitive.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/OrdinaryToPrimitive.js | node_modules/es-abstract/2025/OrdinaryToPrimitive.js | node_modules/es-abstract/2024/OrdinaryToPrimitive.js | node_modules/es-abstract/2023/OrdinaryToPrimitive.js | node_modules/es-abstract/2017/OrdinaryToPrimitive.js | node_modules/es-abstract/2019/OrdinaryToPrimitive.js | node_modules/es-abstract/2021/OrdinaryToPrimitive.js | node_modules/es-abstract/2020/OrdinaryToPrimitive.js | node_modules/es-abstract/2018/OrdinaryToPrimitive.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/PromiseResolve.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/PromiseResolve.js | node_modules/es-abstract/2025/PromiseResolve.js | node_modules/es-abstract/2024/PromiseResolve.js | node_modules/es-abstract/2023/PromiseResolve.js | node_modules/es-abstract/2019/PromiseResolve.js | node_modules/es-abstract/2021/PromiseResolve.js | node_modules/es-abstract/2020/PromiseResolve.js | node_modules/es-abstract/2018/PromiseResolve.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/QuoteJSONString.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/QuoteJSONString.js | node_modules/es-abstract/2025/QuoteJSONString.js | node_modules/es-abstract/2024/QuoteJSONString.js | node_modules/es-abstract/2023/QuoteJSONString.js | node_modules/es-abstract/2021/QuoteJSONString.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/RawBytesToNumeric.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/RawBytesToNumeric.js | node_modules/es-abstract/2023/RawBytesToNumeric.js | node_modules/es-abstract/2021/RawBytesToNumeric.js | node_modules/es-abstract/2020/RawBytesToNumeric.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/RegExpCreate.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/RegExpCreate.js | node_modules/es-abstract/2025/RegExpCreate.js | node_modules/es-abstract/2024/RegExpCreate.js | node_modules/es-abstract/2023/RegExpCreate.js | node_modules/es-abstract/2015/RegExpCreate.js | node_modules/es-abstract/2017/RegExpCreate.js | node_modules/es-abstract/2019/RegExpCreate.js | node_modules/es-abstract/2021/RegExpCreate.js | node_modules/es-abstract/2020/RegExpCreate.js | node_modules/es-abstract/2018/RegExpCreate.js | node_modules/es-abstract/2016/RegExpCreate.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/RegExpExec.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/RegExpExec.js | node_modules/es-abstract/2025/RegExpExec.js | node_modules/es-abstract/2024/RegExpExec.js | node_modules/es-abstract/2023/RegExpExec.js | node_modules/es-abstract/2015/RegExpExec.js | node_modules/es-abstract/2017/RegExpExec.js | node_modules/es-abstract/2019/RegExpExec.js | node_modules/es-abstract/2021/RegExpExec.js | node_modules/es-abstract/2020/RegExpExec.js | node_modules/es-abstract/2018/RegExpExec.js | node_modules/es-abstract/2016/RegExpExec.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/RegExpHasFlag.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/RegExpHasFlag.js | node_modules/es-abstract/2025/RegExpHasFlag.js | node_modules/es-abstract/2024/RegExpHasFlag.js | node_modules/es-abstract/2023/RegExpHasFlag.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/RequireObjectCoercible.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/RequireObjectCoercible.js | node_modules/es-abstract/2025/RequireObjectCoercible.js | node_modules/es-abstract/2024/RequireObjectCoercible.js | node_modules/es-abstract/2023/RequireObjectCoercible.js | node_modules/es-abstract/2015/RequireObjectCoercible.js | node_modules/es-abstract/2017/RequireObjectCoercible.js | node_modules/es-abstract/2019/RequireObjectCoercible.js | node_modules/es-abstract/2021/RequireObjectCoercible.js | node_modules/es-abstract/2020/RequireObjectCoercible.js | node_modules/es-abstract/2018/RequireObjectCoercible.js | node_modules/es-abstract/2016/RequireObjectCoercible.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/SameValue.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/SameValue.js | node_modules/es-abstract/2025/SameValue.js | node_modules/es-abstract/2024/SameValue.js | node_modules/es-abstract/2023/SameValue.js | node_modules/es-abstract/2015/SameValue.js | node_modules/es-abstract/2017/SameValue.js | node_modules/es-abstract/2019/SameValue.js | node_modules/es-abstract/2021/SameValue.js | node_modules/es-abstract/2020/SameValue.js | node_modules/es-abstract/2018/SameValue.js | node_modules/es-abstract/2016/SameValue.js | node_modules/es-abstract/5/SameValue.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/SameValueNonNumeric.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/SameValueNonNumeric.js | node_modules/es-abstract/2021/SameValueNonNumeric.js | node_modules/es-abstract/2020/SameValueNonNumeric.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/SameValueZero.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/SameValueZero.js | node_modules/es-abstract/2025/SameValueZero.js | node_modules/es-abstract/2024/SameValueZero.js | node_modules/es-abstract/2023/SameValueZero.js | node_modules/es-abstract/2015/SameValueZero.js | node_modules/es-abstract/2017/SameValueZero.js | node_modules/es-abstract/2019/SameValueZero.js | node_modules/es-abstract/2021/SameValueZero.js | node_modules/es-abstract/2020/SameValueZero.js | node_modules/es-abstract/2018/SameValueZero.js | node_modules/es-abstract/2016/SameValueZero.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/SecFromTime.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/SecFromTime.js | node_modules/es-abstract/2025/SecFromTime.js | node_modules/es-abstract/2024/SecFromTime.js | node_modules/es-abstract/2023/SecFromTime.js | node_modules/es-abstract/2015/SecFromTime.js | node_modules/es-abstract/2017/SecFromTime.js | node_modules/es-abstract/2019/SecFromTime.js | node_modules/es-abstract/2021/SecFromTime.js | node_modules/es-abstract/2020/SecFromTime.js | node_modules/es-abstract/2018/SecFromTime.js | node_modules/es-abstract/2016/SecFromTime.js | node_modules/es-abstract/5/SecFromTime.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/Set.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/Set.js | node_modules/es-abstract/2025/Set.js | node_modules/es-abstract/2024/Set.js | node_modules/es-abstract/2023/Set.js | node_modules/es-abstract/2015/Set.js | node_modules/es-abstract/2017/Set.js | node_modules/es-abstract/2019/Set.js | node_modules/es-abstract/2021/Set.js | node_modules/es-abstract/2020/Set.js | node_modules/es-abstract/2018/Set.js | node_modules/es-abstract/2016/Set.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/SetFunctionLength.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/SetFunctionLength.js | node_modules/es-abstract/2025/SetFunctionLength.js | node_modules/es-abstract/2024/SetFunctionLength.js | node_modules/es-abstract/2023/SetFunctionLength.js | node_modules/es-abstract/2021/SetFunctionLength.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/SetFunctionName.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/SetFunctionName.js | node_modules/es-abstract/2025/SetFunctionName.js | node_modules/es-abstract/2024/SetFunctionName.js | node_modules/es-abstract/2023/SetFunctionName.js | node_modules/es-abstract/2015/SetFunctionName.js | node_modules/es-abstract/2017/SetFunctionName.js | node_modules/es-abstract/2019/SetFunctionName.js | node_modules/es-abstract/2021/SetFunctionName.js | node_modules/es-abstract/2020/SetFunctionName.js | node_modules/es-abstract/2018/SetFunctionName.js | node_modules/es-abstract/2016/SetFunctionName.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/SetIntegrityLevel.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/SetIntegrityLevel.js | node_modules/es-abstract/2025/SetIntegrityLevel.js | node_modules/es-abstract/2024/SetIntegrityLevel.js | node_modules/es-abstract/2023/SetIntegrityLevel.js | node_modules/es-abstract/2015/SetIntegrityLevel.js | node_modules/es-abstract/2017/SetIntegrityLevel.js | node_modules/es-abstract/2019/SetIntegrityLevel.js | node_modules/es-abstract/2021/SetIntegrityLevel.js | node_modules/es-abstract/2020/SetIntegrityLevel.js | node_modules/es-abstract/2018/SetIntegrityLevel.js | node_modules/es-abstract/2016/SetIntegrityLevel.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/SetValueInBuffer.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/SetValueInBuffer.js | node_modules/es-abstract/2023/SetValueInBuffer.js | node_modules/es-abstract/2021/SetValueInBuffer.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/SpeciesConstructor.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/SpeciesConstructor.js | node_modules/es-abstract/2025/SpeciesConstructor.js | node_modules/es-abstract/2024/SpeciesConstructor.js | node_modules/es-abstract/2023/SpeciesConstructor.js | node_modules/es-abstract/2015/SpeciesConstructor.js | node_modules/es-abstract/2017/SpeciesConstructor.js | node_modules/es-abstract/2019/SpeciesConstructor.js | node_modules/es-abstract/2021/SpeciesConstructor.js | node_modules/es-abstract/2020/SpeciesConstructor.js | node_modules/es-abstract/2018/SpeciesConstructor.js | node_modules/es-abstract/2016/SpeciesConstructor.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/StringCreate.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/StringCreate.js | node_modules/es-abstract/2025/StringCreate.js | node_modules/es-abstract/2024/StringCreate.js | node_modules/es-abstract/2023/StringCreate.js | node_modules/es-abstract/2015/StringCreate.js | node_modules/es-abstract/2017/StringCreate.js | node_modules/es-abstract/2019/StringCreate.js | node_modules/es-abstract/2021/StringCreate.js | node_modules/es-abstract/2020/StringCreate.js | node_modules/es-abstract/2018/StringCreate.js | node_modules/es-abstract/2016/StringCreate.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/StringGetOwnProperty.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/StringGetOwnProperty.js | node_modules/es-abstract/2025/StringGetOwnProperty.js | node_modules/es-abstract/2024/StringGetOwnProperty.js | node_modules/es-abstract/2023/StringGetOwnProperty.js | node_modules/es-abstract/2021/StringGetOwnProperty.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/StringIndexOf.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/StringIndexOf.js | node_modules/es-abstract/2024/StringIndexOf.js | node_modules/es-abstract/2023/StringIndexOf.js | node_modules/es-abstract/2021/StringIndexOf.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/StringPad.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/StringPad.js | node_modules/es-abstract/2023/StringPad.js | node_modules/es-abstract/2021/StringPad.js | node_modules/es-abstract/2020/StringPad.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/StringToBigInt.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/StringToBigInt.js | node_modules/es-abstract/2025/StringToBigInt.js | node_modules/es-abstract/2024/StringToBigInt.js | node_modules/es-abstract/2023/StringToBigInt.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/StringToCodePoints.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/StringToCodePoints.js | node_modules/es-abstract/2025/StringToCodePoints.js | node_modules/es-abstract/2024/StringToCodePoints.js | node_modules/es-abstract/2023/StringToCodePoints.js | node_modules/es-abstract/2021/StringToCodePoints.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/StringToNumber.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/StringToNumber.js | node_modules/es-abstract/2025/StringToNumber.js | node_modules/es-abstract/2024/StringToNumber.js | node_modules/es-abstract/2023/StringToNumber.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/SymbolDescriptiveString.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/SymbolDescriptiveString.js | node_modules/es-abstract/2025/SymbolDescriptiveString.js | node_modules/es-abstract/2024/SymbolDescriptiveString.js | node_modules/es-abstract/2023/SymbolDescriptiveString.js | node_modules/es-abstract/2015/SymbolDescriptiveString.js | node_modules/es-abstract/2017/SymbolDescriptiveString.js | node_modules/es-abstract/2019/SymbolDescriptiveString.js | node_modules/es-abstract/2021/SymbolDescriptiveString.js | node_modules/es-abstract/2020/SymbolDescriptiveString.js | node_modules/es-abstract/2018/SymbolDescriptiveString.js | node_modules/es-abstract/2016/SymbolDescriptiveString.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/TestIntegrityLevel.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/TestIntegrityLevel.js | node_modules/es-abstract/2025/TestIntegrityLevel.js | node_modules/es-abstract/2024/TestIntegrityLevel.js | node_modules/es-abstract/2023/TestIntegrityLevel.js | node_modules/es-abstract/2015/TestIntegrityLevel.js | node_modules/es-abstract/2017/TestIntegrityLevel.js | node_modules/es-abstract/2019/TestIntegrityLevel.js | node_modules/es-abstract/2021/TestIntegrityLevel.js | node_modules/es-abstract/2020/TestIntegrityLevel.js | node_modules/es-abstract/2018/TestIntegrityLevel.js | node_modules/es-abstract/2016/TestIntegrityLevel.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/ThrowCompletion.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/ThrowCompletion.js | node_modules/es-abstract/2025/ThrowCompletion.js | node_modules/es-abstract/2024/ThrowCompletion.js | node_modules/es-abstract/2023/ThrowCompletion.js | node_modules/es-abstract/2019/ThrowCompletion.js | node_modules/es-abstract/2021/ThrowCompletion.js | node_modules/es-abstract/2020/ThrowCompletion.js | node_modules/es-abstract/2018/ThrowCompletion.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/TimeClip.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/TimeClip.js | node_modules/es-abstract/2025/TimeClip.js | node_modules/es-abstract/2024/TimeClip.js | node_modules/es-abstract/2023/TimeClip.js | node_modules/es-abstract/2015/TimeClip.js | node_modules/es-abstract/2017/TimeClip.js | node_modules/es-abstract/2019/TimeClip.js | node_modules/es-abstract/2021/TimeClip.js | node_modules/es-abstract/2020/TimeClip.js | node_modules/es-abstract/2018/TimeClip.js | node_modules/es-abstract/2016/TimeClip.js | node_modules/es-abstract/5/TimeClip.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/TimeFromYear.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/TimeFromYear.js | node_modules/es-abstract/2025/TimeFromYear.js | node_modules/es-abstract/2024/TimeFromYear.js | node_modules/es-abstract/2023/TimeFromYear.js | node_modules/es-abstract/2015/TimeFromYear.js | node_modules/es-abstract/2017/TimeFromYear.js | node_modules/es-abstract/2019/TimeFromYear.js | node_modules/es-abstract/2021/TimeFromYear.js | node_modules/es-abstract/2020/TimeFromYear.js | node_modules/es-abstract/2018/TimeFromYear.js | node_modules/es-abstract/2016/TimeFromYear.js | node_modules/es-abstract/5/TimeFromYear.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/TimeString.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/TimeString.js | node_modules/es-abstract/2025/TimeString.js | node_modules/es-abstract/2024/TimeString.js | node_modules/es-abstract/2023/TimeString.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/TimeWithinDay.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/TimeWithinDay.js | node_modules/es-abstract/2025/TimeWithinDay.js | node_modules/es-abstract/2024/TimeWithinDay.js | node_modules/es-abstract/2023/TimeWithinDay.js | node_modules/es-abstract/2015/TimeWithinDay.js | node_modules/es-abstract/2017/TimeWithinDay.js | node_modules/es-abstract/2019/TimeWithinDay.js | node_modules/es-abstract/2021/TimeWithinDay.js | node_modules/es-abstract/2020/TimeWithinDay.js | node_modules/es-abstract/2018/TimeWithinDay.js | node_modules/es-abstract/2016/TimeWithinDay.js | node_modules/es-abstract/5/TimeWithinDay.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/ToBigInt.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/ToBigInt.js | node_modules/es-abstract/2025/ToBigInt.js | node_modules/es-abstract/2024/ToBigInt.js | node_modules/es-abstract/2023/ToBigInt.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/ToBigInt64.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/ToBigInt64.js | node_modules/es-abstract/2025/ToBigInt64.js | node_modules/es-abstract/2024/ToBigInt64.js | node_modules/es-abstract/2023/ToBigInt64.js | node_modules/es-abstract/2021/ToBigInt64.js | node_modules/es-abstract/2020/ToBigInt64.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/ToBigUint64.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/ToBigUint64.js | node_modules/es-abstract/2025/ToBigUint64.js | node_modules/es-abstract/2024/ToBigUint64.js | node_modules/es-abstract/2023/ToBigUint64.js | node_modules/es-abstract/2021/ToBigUint64.js | node_modules/es-abstract/2020/ToBigUint64.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/ToBoolean.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/ToBoolean.js | node_modules/es-abstract/2025/ToBoolean.js | node_modules/es-abstract/2024/ToBoolean.js | node_modules/es-abstract/2023/ToBoolean.js | node_modules/es-abstract/2015/ToBoolean.js | node_modules/es-abstract/2017/ToBoolean.js | node_modules/es-abstract/2019/ToBoolean.js | node_modules/es-abstract/2021/ToBoolean.js | node_modules/es-abstract/2020/ToBoolean.js | node_modules/es-abstract/2018/ToBoolean.js | node_modules/es-abstract/2016/ToBoolean.js | node_modules/es-abstract/5/ToBoolean.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/ToDateString.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/ToDateString.js | node_modules/es-abstract/2025/ToDateString.js | node_modules/es-abstract/2024/ToDateString.js | node_modules/es-abstract/2023/ToDateString.js | node_modules/es-abstract/2015/ToDateString.js | node_modules/es-abstract/2017/ToDateString.js | node_modules/es-abstract/2019/ToDateString.js | node_modules/es-abstract/2021/ToDateString.js | node_modules/es-abstract/2020/ToDateString.js | node_modules/es-abstract/2018/ToDateString.js | node_modules/es-abstract/2016/ToDateString.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/ToIndex.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/ToIndex.js | node_modules/es-abstract/2023/ToIndex.js | node_modules/es-abstract/2021/ToIndex.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/ToInt16.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/ToInt16.js | node_modules/es-abstract/2015/ToInt16.js | node_modules/es-abstract/2017/ToInt16.js | node_modules/es-abstract/2019/ToInt16.js | node_modules/es-abstract/2021/ToInt16.js | node_modules/es-abstract/2020/ToInt16.js | node_modules/es-abstract/2018/ToInt16.js | node_modules/es-abstract/2016/ToInt16.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/ToInt32.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/ToInt32.js | node_modules/es-abstract/2015/ToInt32.js | node_modules/es-abstract/2017/ToInt32.js | node_modules/es-abstract/2019/ToInt32.js | node_modules/es-abstract/2021/ToInt32.js | node_modules/es-abstract/2020/ToInt32.js | node_modules/es-abstract/2018/ToInt32.js | node_modules/es-abstract/2016/ToInt32.js | node_modules/es-abstract/5/ToInt32.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/ToInt8.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/ToInt8.js | node_modules/es-abstract/2015/ToInt8.js | node_modules/es-abstract/2017/ToInt8.js | node_modules/es-abstract/2019/ToInt8.js | node_modules/es-abstract/2021/ToInt8.js | node_modules/es-abstract/2020/ToInt8.js | node_modules/es-abstract/2018/ToInt8.js | node_modules/es-abstract/2016/ToInt8.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/ToIntegerOrInfinity.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/ToIntegerOrInfinity.js | node_modules/es-abstract/2021/ToIntegerOrInfinity.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/ToLength.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/ToLength.js | node_modules/es-abstract/2025/ToLength.js | node_modules/es-abstract/2024/ToLength.js | node_modules/es-abstract/2023/ToLength.js | node_modules/es-abstract/2021/ToLength.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/ToNumber.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/ToNumber.js | node_modules/es-abstract/2025/ToNumber.js | node_modules/es-abstract/2024/ToNumber.js | node_modules/es-abstract/2023/ToNumber.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/ToNumeric.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/ToNumeric.js | node_modules/es-abstract/2025/ToNumeric.js | node_modules/es-abstract/2024/ToNumeric.js | node_modules/es-abstract/2023/ToNumeric.js | node_modules/es-abstract/2021/ToNumeric.js | node_modules/es-abstract/2020/ToNumeric.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/ToObject.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/ToObject.js | node_modules/es-abstract/2025/ToObject.js | node_modules/es-abstract/2024/ToObject.js | node_modules/es-abstract/2023/ToObject.js | node_modules/es-abstract/2015/ToObject.js | node_modules/es-abstract/2017/ToObject.js | node_modules/es-abstract/2019/ToObject.js | node_modules/es-abstract/2021/ToObject.js | node_modules/es-abstract/2020/ToObject.js | node_modules/es-abstract/2018/ToObject.js | node_modules/es-abstract/2016/ToObject.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/ToPrimitive.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/ToPrimitive.js | node_modules/es-abstract/2025/ToPrimitive.js | node_modules/es-abstract/2024/ToPrimitive.js | node_modules/es-abstract/2023/ToPrimitive.js | node_modules/es-abstract/2015/ToPrimitive.js | node_modules/es-abstract/2017/ToPrimitive.js | node_modules/es-abstract/2019/ToPrimitive.js | node_modules/es-abstract/2021/ToPrimitive.js | node_modules/es-abstract/2020/ToPrimitive.js | node_modules/es-abstract/2018/ToPrimitive.js | node_modules/es-abstract/2016/ToPrimitive.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/ToPropertyDescriptor.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/ToPropertyDescriptor.js | node_modules/es-abstract/2025/ToPropertyDescriptor.js | node_modules/es-abstract/2024/ToPropertyDescriptor.js | node_modules/es-abstract/2023/ToPropertyDescriptor.js | node_modules/es-abstract/2015/ToPropertyDescriptor.js | node_modules/es-abstract/2017/ToPropertyDescriptor.js | node_modules/es-abstract/2019/ToPropertyDescriptor.js | node_modules/es-abstract/2021/ToPropertyDescriptor.js | node_modules/es-abstract/2020/ToPropertyDescriptor.js | node_modules/es-abstract/2018/ToPropertyDescriptor.js | node_modules/es-abstract/2016/ToPropertyDescriptor.js | node_modules/es-abstract/5/ToPropertyDescriptor.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/ToPropertyKey.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/ToPropertyKey.js | node_modules/es-abstract/2025/ToPropertyKey.js | node_modules/es-abstract/2024/ToPropertyKey.js | node_modules/es-abstract/2023/ToPropertyKey.js | node_modules/es-abstract/2015/ToPropertyKey.js | node_modules/es-abstract/2017/ToPropertyKey.js | node_modules/es-abstract/2019/ToPropertyKey.js | node_modules/es-abstract/2021/ToPropertyKey.js | node_modules/es-abstract/2020/ToPropertyKey.js | node_modules/es-abstract/2018/ToPropertyKey.js | node_modules/es-abstract/2016/ToPropertyKey.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/ToString.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/ToString.js | node_modules/es-abstract/2025/ToString.js | node_modules/es-abstract/2024/ToString.js | node_modules/es-abstract/2023/ToString.js | node_modules/es-abstract/2015/ToString.js | node_modules/es-abstract/2017/ToString.js | node_modules/es-abstract/2019/ToString.js | node_modules/es-abstract/2021/ToString.js | node_modules/es-abstract/2020/ToString.js | node_modules/es-abstract/2018/ToString.js | node_modules/es-abstract/2016/ToString.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/ToUint16.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/ToUint16.js | node_modules/es-abstract/2015/ToUint16.js | node_modules/es-abstract/2017/ToUint16.js | node_modules/es-abstract/2019/ToUint16.js | node_modules/es-abstract/2021/ToUint16.js | node_modules/es-abstract/2020/ToUint16.js | node_modules/es-abstract/2018/ToUint16.js | node_modules/es-abstract/2016/ToUint16.js | node_modules/es-abstract/5/ToUint16.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/ToUint32.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/ToUint32.js | node_modules/es-abstract/2015/ToUint32.js | node_modules/es-abstract/2017/ToUint32.js | node_modules/es-abstract/2019/ToUint32.js | node_modules/es-abstract/2021/ToUint32.js | node_modules/es-abstract/2020/ToUint32.js | node_modules/es-abstract/2018/ToUint32.js | node_modules/es-abstract/2016/ToUint32.js | node_modules/es-abstract/5/ToUint32.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/ToUint8.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/ToUint8.js | node_modules/es-abstract/2015/ToUint8.js | node_modules/es-abstract/2017/ToUint8.js | node_modules/es-abstract/2019/ToUint8.js | node_modules/es-abstract/2021/ToUint8.js | node_modules/es-abstract/2020/ToUint8.js | node_modules/es-abstract/2018/ToUint8.js | node_modules/es-abstract/2016/ToUint8.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/ToUint8Clamp.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/ToUint8Clamp.js | node_modules/es-abstract/2023/ToUint8Clamp.js | node_modules/es-abstract/2015/ToUint8Clamp.js | node_modules/es-abstract/2017/ToUint8Clamp.js | node_modules/es-abstract/2019/ToUint8Clamp.js | node_modules/es-abstract/2021/ToUint8Clamp.js | node_modules/es-abstract/2020/ToUint8Clamp.js | node_modules/es-abstract/2018/ToUint8Clamp.js | node_modules/es-abstract/2016/ToUint8Clamp.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/ToZeroPaddedDecimalString.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/ToZeroPaddedDecimalString.js | node_modules/es-abstract/2025/ToZeroPaddedDecimalString.js | node_modules/es-abstract/2024/ToZeroPaddedDecimalString.js | node_modules/es-abstract/2023/ToZeroPaddedDecimalString.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/TrimString.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/TrimString.js | node_modules/es-abstract/2025/TrimString.js | node_modules/es-abstract/2024/TrimString.js | node_modules/es-abstract/2023/TrimString.js | node_modules/es-abstract/2019/TrimString.js | node_modules/es-abstract/2021/TrimString.js | node_modules/es-abstract/2020/TrimString.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/Type.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/Type.js | node_modules/es-abstract/2024/Type.js | node_modules/es-abstract/2023/Type.js | node_modules/es-abstract/2021/Type.js | node_modules/es-abstract/2020/Type.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/TypedArrayCreate.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/TypedArrayCreate.js | node_modules/es-abstract/2023/TypedArrayCreate.js | node_modules/es-abstract/2017/TypedArrayCreate.js | node_modules/es-abstract/2019/TypedArrayCreate.js | node_modules/es-abstract/2021/TypedArrayCreate.js | node_modules/es-abstract/2020/TypedArrayCreate.js | node_modules/es-abstract/2018/TypedArrayCreate.js | node_modules/es-abstract/2016/TypedArrayCreate.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/TypedArrayElementSize.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/TypedArrayElementSize.js | node_modules/es-abstract/2025/TypedArrayElementSize.js | node_modules/es-abstract/2024/TypedArrayElementSize.js | node_modules/es-abstract/2023/TypedArrayElementSize.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/TypedArrayElementType.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/TypedArrayElementType.js | node_modules/es-abstract/2025/TypedArrayElementType.js | node_modules/es-abstract/2024/TypedArrayElementType.js | node_modules/es-abstract/2023/TypedArrayElementType.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/TypedArraySpeciesCreate.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/TypedArraySpeciesCreate.js | node_modules/es-abstract/2023/TypedArraySpeciesCreate.js | node_modules/es-abstract/2017/TypedArraySpeciesCreate.js | node_modules/es-abstract/2019/TypedArraySpeciesCreate.js | node_modules/es-abstract/2021/TypedArraySpeciesCreate.js | node_modules/es-abstract/2020/TypedArraySpeciesCreate.js | node_modules/es-abstract/2018/TypedArraySpeciesCreate.js | node_modules/es-abstract/2016/TypedArraySpeciesCreate.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/UTF16EncodeCodePoint.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/UTF16EncodeCodePoint.js | node_modules/es-abstract/2025/UTF16EncodeCodePoint.js | node_modules/es-abstract/2024/UTF16EncodeCodePoint.js | node_modules/es-abstract/2023/UTF16EncodeCodePoint.js | node_modules/es-abstract/2021/UTF16EncodeCodePoint.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/UTF16SurrogatePairToCodePoint.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/UTF16SurrogatePairToCodePoint.js | node_modules/es-abstract/2025/UTF16SurrogatePairToCodePoint.js | node_modules/es-abstract/2024/UTF16SurrogatePairToCodePoint.js | node_modules/es-abstract/2023/UTF16SurrogatePairToCodePoint.js | node_modules/es-abstract/2021/UTF16SurrogatePairToCodePoint.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/UnicodeEscape.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/UnicodeEscape.js | node_modules/es-abstract/2025/UnicodeEscape.js | node_modules/es-abstract/2024/UnicodeEscape.js | node_modules/es-abstract/2023/UnicodeEscape.js | node_modules/es-abstract/2021/UnicodeEscape.js | node_modules/es-abstract/2020/UnicodeEscape.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/ValidateAndApplyPropertyDescriptor.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/ValidateAndApplyPropertyDescriptor.js | node_modules/es-abstract/2025/ValidateAndApplyPropertyDescriptor.js | node_modules/es-abstract/2024/ValidateAndApplyPropertyDescriptor.js | node_modules/es-abstract/2023/ValidateAndApplyPropertyDescriptor.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/ValidateAtomicAccess.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/ValidateAtomicAccess.js | node_modules/es-abstract/2023/ValidateAtomicAccess.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/ValidateIntegerTypedArray.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/ValidateIntegerTypedArray.js | node_modules/es-abstract/2023/ValidateIntegerTypedArray.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/ValidateTypedArray.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/ValidateTypedArray.js | node_modules/es-abstract/2023/ValidateTypedArray.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/WeakRefDeref.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/WeakRefDeref.js | node_modules/es-abstract/2025/WeakRefDeref.js | node_modules/es-abstract/2024/WeakRefDeref.js | node_modules/es-abstract/2023/WeakRefDeref.js | node_modules/es-abstract/2021/WeakRefDeref.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/WeekDay.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/WeekDay.js | node_modules/es-abstract/2025/WeekDay.js | node_modules/es-abstract/2024/WeekDay.js | node_modules/es-abstract/2023/WeekDay.js | node_modules/es-abstract/2015/WeekDay.js | node_modules/es-abstract/2017/WeekDay.js | node_modules/es-abstract/2019/WeekDay.js | node_modules/es-abstract/2021/WeekDay.js | node_modules/es-abstract/2020/WeekDay.js | node_modules/es-abstract/2018/WeekDay.js | node_modules/es-abstract/2016/WeekDay.js | node_modules/es-abstract/5/WeekDay.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/WordCharacters.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/WordCharacters.js | node_modules/es-abstract/2017/WordCharacters.js | node_modules/es-abstract/2019/WordCharacters.js | node_modules/es-abstract/2021/WordCharacters.js | node_modules/es-abstract/2020/WordCharacters.js | node_modules/es-abstract/2018/WordCharacters.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/YearFromTime.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/YearFromTime.js | node_modules/es-abstract/2025/YearFromTime.js | node_modules/es-abstract/2024/YearFromTime.js | node_modules/es-abstract/2023/YearFromTime.js | node_modules/es-abstract/2015/YearFromTime.js | node_modules/es-abstract/2017/YearFromTime.js | node_modules/es-abstract/2019/YearFromTime.js | node_modules/es-abstract/2021/YearFromTime.js | node_modules/es-abstract/2020/YearFromTime.js | node_modules/es-abstract/2018/YearFromTime.js | node_modules/es-abstract/2016/YearFromTime.js | node_modules/es-abstract/5/YearFromTime.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/abs.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/abs.js | node_modules/es-abstract/2025/abs.js | node_modules/es-abstract/2024/abs.js | node_modules/es-abstract/2023/abs.js | node_modules/es-abstract/2021/abs.js | node_modules/es-abstract/2020/abs.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/clamp.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/clamp.js | node_modules/es-abstract/2025/clamp.js | node_modules/es-abstract/2024/clamp.js | node_modules/es-abstract/2023/clamp.js | node_modules/es-abstract/2021/clamp.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/floor.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/floor.js | node_modules/es-abstract/2025/floor.js | node_modules/es-abstract/2024/floor.js | node_modules/es-abstract/2023/floor.js | node_modules/es-abstract/2021/floor.js | node_modules/es-abstract/2020/floor.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/max.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/max.js | node_modules/es-abstract/2025/max.js | node_modules/es-abstract/2024/max.js | node_modules/es-abstract/2023/max.js | node_modules/es-abstract/2015/max.js | node_modules/es-abstract/2017/max.js | node_modules/es-abstract/2019/max.js | node_modules/es-abstract/2021/max.js | node_modules/es-abstract/2020/max.js | node_modules/es-abstract/2018/max.js | node_modules/es-abstract/2016/max.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/min.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/min.js | node_modules/es-abstract/2025/min.js | node_modules/es-abstract/2024/min.js | node_modules/es-abstract/2023/min.js | node_modules/es-abstract/2015/min.js | node_modules/es-abstract/2017/min.js | node_modules/es-abstract/2019/min.js | node_modules/es-abstract/2021/min.js | node_modules/es-abstract/2020/min.js | node_modules/es-abstract/2018/min.js | node_modules/es-abstract/2016/min.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/modulo.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/modulo.js | node_modules/es-abstract/2025/modulo.js | node_modules/es-abstract/2024/modulo.js | node_modules/es-abstract/2023/modulo.js | node_modules/es-abstract/2015/modulo.js | node_modules/es-abstract/2017/modulo.js | node_modules/es-abstract/2019/modulo.js | node_modules/es-abstract/2021/modulo.js | node_modules/es-abstract/2020/modulo.js | node_modules/es-abstract/2018/modulo.js | node_modules/es-abstract/2016/modulo.js | node_modules/es-abstract/5/modulo.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/msFromTime.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/msFromTime.js | node_modules/es-abstract/2025/msFromTime.js | node_modules/es-abstract/2024/msFromTime.js | node_modules/es-abstract/2023/msFromTime.js | node_modules/es-abstract/2015/msFromTime.js | node_modules/es-abstract/2017/msFromTime.js | node_modules/es-abstract/2019/msFromTime.js | node_modules/es-abstract/2021/msFromTime.js | node_modules/es-abstract/2020/msFromTime.js | node_modules/es-abstract/2018/msFromTime.js | node_modules/es-abstract/2016/msFromTime.js | node_modules/es-abstract/5/msFromTime.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/substring.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/substring.js | node_modules/es-abstract/2025/substring.js | node_modules/es-abstract/2024/substring.js | node_modules/es-abstract/2023/substring.js | node_modules/es-abstract/2021/substring.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/thisBigIntValue.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/thisBigIntValue.js | node_modules/es-abstract/2023/thisBigIntValue.js | node_modules/es-abstract/2021/thisBigIntValue.js | node_modules/es-abstract/2020/thisBigIntValue.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/thisBooleanValue.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/thisBooleanValue.js | node_modules/es-abstract/2023/thisBooleanValue.js | node_modules/es-abstract/2015/thisBooleanValue.js | node_modules/es-abstract/2017/thisBooleanValue.js | node_modules/es-abstract/2019/thisBooleanValue.js | node_modules/es-abstract/2021/thisBooleanValue.js | node_modules/es-abstract/2020/thisBooleanValue.js | node_modules/es-abstract/2018/thisBooleanValue.js | node_modules/es-abstract/2016/thisBooleanValue.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/thisNumberValue.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/thisNumberValue.js | node_modules/es-abstract/2023/thisNumberValue.js | node_modules/es-abstract/2015/thisNumberValue.js | node_modules/es-abstract/2017/thisNumberValue.js | node_modules/es-abstract/2019/thisNumberValue.js | node_modules/es-abstract/2021/thisNumberValue.js | node_modules/es-abstract/2020/thisNumberValue.js | node_modules/es-abstract/2018/thisNumberValue.js | node_modules/es-abstract/2016/thisNumberValue.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/thisStringValue.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/thisStringValue.js | node_modules/es-abstract/2023/thisStringValue.js | node_modules/es-abstract/2015/thisStringValue.js | node_modules/es-abstract/2017/thisStringValue.js | node_modules/es-abstract/2019/thisStringValue.js | node_modules/es-abstract/2021/thisStringValue.js | node_modules/es-abstract/2020/thisStringValue.js | node_modules/es-abstract/2018/thisStringValue.js | node_modules/es-abstract/2016/thisStringValue.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/thisSymbolValue.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/thisSymbolValue.js | node_modules/es-abstract/2023/thisSymbolValue.js | node_modules/es-abstract/2019/thisSymbolValue.js | node_modules/es-abstract/2021/thisSymbolValue.js | node_modules/es-abstract/2020/thisSymbolValue.js | node_modules/es-abstract/2018/thisSymbolValue.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2022/thisTimeValue.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2022/thisTimeValue.js | node_modules/es-abstract/2023/thisTimeValue.js | node_modules/es-abstract/2015/thisTimeValue.js | node_modules/es-abstract/2017/thisTimeValue.js | node_modules/es-abstract/2019/thisTimeValue.js | node_modules/es-abstract/2021/thisTimeValue.js | node_modules/es-abstract/2020/thisTimeValue.js | node_modules/es-abstract/2018/thisTimeValue.js | node_modules/es-abstract/2016/thisTimeValue.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2023/BigInt/index.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2023/BigInt/index.js | node_modules/es-abstract/2024/BigInt/index.js | node_modules/es-abstract/2025/BigInt/index.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2023/BigInt/toString.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2023/BigInt/toString.js | node_modules/es-abstract/2024/BigInt/toString.js | node_modules/es-abstract/2025/BigInt/toString.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2023/Number/remainder.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2023/Number/remainder.js | node_modules/es-abstract/2024/Number/remainder.js | node_modules/es-abstract/2025/Number/remainder.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2023/Number/toString.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2023/Number/toString.js | node_modules/es-abstract/2024/Number/toString.js | node_modules/es-abstract/2025/Number/toString.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2024/IsIntegralNumber.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2024/IsIntegralNumber.js | node_modules/es-abstract/2023/IsIntegralNumber.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2024/IsStrictlyEqual.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2024/IsStrictlyEqual.js | node_modules/es-abstract/2023/IsStrictlyEqual.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2024/SameValueNonNumber.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2024/SameValueNonNumber.js | node_modules/es-abstract/2023/SameValueNonNumber.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/AddEntriesFromIterable.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/AddEntriesFromIterable.js | node_modules/es-abstract/2024/AddEntriesFromIterable.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/AddValueToKeyedGroup.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/AddValueToKeyedGroup.js | node_modules/es-abstract/2024/AddValueToKeyedGroup.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/AllCharacters.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/AllCharacters.js | node_modules/es-abstract/2024/AllCharacters.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/ArrayBufferByteLength.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/ArrayBufferByteLength.js | node_modules/es-abstract/2024/ArrayBufferByteLength.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/ArrayBufferCopyAndDetach.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/ArrayBufferCopyAndDetach.js | node_modules/es-abstract/2024/ArrayBufferCopyAndDetach.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/AsyncIteratorClose.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/AsyncIteratorClose.js | node_modules/es-abstract/2024/AsyncIteratorClose.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/CanBeHeldWeakly.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/CanBeHeldWeakly.js | node_modules/es-abstract/2024/CanBeHeldWeakly.js | node_modules/es-abstract/2023/CanBeHeldWeakly.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/Canonicalize.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/Canonicalize.js | node_modules/es-abstract/2024/Canonicalize.js | node_modules/es-abstract/2023/Canonicalize.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/CharacterComplement.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/CharacterComplement.js | node_modules/es-abstract/2024/CharacterComplement.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/CompareArrayElements.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/CompareArrayElements.js | node_modules/es-abstract/2024/CompareArrayElements.js | node_modules/es-abstract/2023/CompareArrayElements.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/CompareTypedArrayElements.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/CompareTypedArrayElements.js | node_modules/es-abstract/2024/CompareTypedArrayElements.js | node_modules/es-abstract/2023/CompareTypedArrayElements.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/CreateDataPropertyOrThrow.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/CreateDataPropertyOrThrow.js | node_modules/es-abstract/2024/CreateDataPropertyOrThrow.js | node_modules/es-abstract/2023/CreateDataPropertyOrThrow.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/EnumerableOwnProperties.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/EnumerableOwnProperties.js | node_modules/es-abstract/2024/EnumerableOwnProperties.js | node_modules/es-abstract/2023/EnumerableOwnProperties.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/FindViaPredicate.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/FindViaPredicate.js | node_modules/es-abstract/2024/FindViaPredicate.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/GetArrayBufferMaxByteLengthOption.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/GetArrayBufferMaxByteLengthOption.js | node_modules/es-abstract/2024/GetArrayBufferMaxByteLengthOption.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/GetIterator.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/GetIterator.js | node_modules/es-abstract/2024/GetIterator.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/GetIteratorFromMethod.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/GetIteratorFromMethod.js | node_modules/es-abstract/2024/GetIteratorFromMethod.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/GetNamedTimeZoneEpochNanoseconds.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/GetNamedTimeZoneEpochNanoseconds.js | node_modules/es-abstract/2024/GetNamedTimeZoneEpochNanoseconds.js | node_modules/es-abstract/2023/GetNamedTimeZoneEpochNanoseconds.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/GetSubstitution.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/GetSubstitution.js | node_modules/es-abstract/2024/GetSubstitution.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/GetUTCEpochNanoseconds.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/GetUTCEpochNanoseconds.js | node_modules/es-abstract/2024/GetUTCEpochNanoseconds.js | node_modules/es-abstract/2023/GetUTCEpochNanoseconds.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/GetValueFromBuffer.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/GetValueFromBuffer.js | node_modules/es-abstract/2024/GetValueFromBuffer.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/GetViewByteLength.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/GetViewByteLength.js | node_modules/es-abstract/2024/GetViewByteLength.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/HasEitherUnicodeFlag.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/HasEitherUnicodeFlag.js | node_modules/es-abstract/2024/HasEitherUnicodeFlag.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/InternalizeJSONProperty.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/InternalizeJSONProperty.js | node_modules/es-abstract/2024/InternalizeJSONProperty.js | node_modules/es-abstract/2023/InternalizeJSONProperty.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/IsArrayBufferViewOutOfBounds.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/IsArrayBufferViewOutOfBounds.js | node_modules/es-abstract/2024/IsArrayBufferViewOutOfBounds.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/IsBigIntElementType.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/IsBigIntElementType.js | node_modules/es-abstract/2024/IsBigIntElementType.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/IsFixedLengthArrayBuffer.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/IsFixedLengthArrayBuffer.js | node_modules/es-abstract/2024/IsFixedLengthArrayBuffer.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/IsLessThan.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/IsLessThan.js | node_modules/es-abstract/2024/IsLessThan.js | node_modules/es-abstract/2023/IsLessThan.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/IsNoTearConfiguration.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/IsNoTearConfiguration.js | node_modules/es-abstract/2024/IsNoTearConfiguration.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/IsStringWellFormedUnicode.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/IsStringWellFormedUnicode.js | node_modules/es-abstract/2024/IsStringWellFormedUnicode.js | node_modules/es-abstract/2023/IsStringWellFormedUnicode.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/IsTimeZoneOffsetString.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/IsTimeZoneOffsetString.js | node_modules/es-abstract/2024/IsTimeZoneOffsetString.js | node_modules/es-abstract/2023/IsTimeZoneOffsetString.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/IsTypedArrayOutOfBounds.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/IsTypedArrayOutOfBounds.js | node_modules/es-abstract/2024/IsTypedArrayOutOfBounds.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/IsUnclampedIntegerElementType.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/IsUnclampedIntegerElementType.js | node_modules/es-abstract/2024/IsUnclampedIntegerElementType.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/IsUnsignedElementType.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/IsUnsignedElementType.js | node_modules/es-abstract/2024/IsUnsignedElementType.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/IsValidIntegerIndex.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/IsValidIntegerIndex.js | node_modules/es-abstract/2024/IsValidIntegerIndex.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/IsViewOutOfBounds.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/IsViewOutOfBounds.js | node_modules/es-abstract/2024/IsViewOutOfBounds.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/IsWordChar.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/IsWordChar.js | node_modules/es-abstract/2024/IsWordChar.js | node_modules/es-abstract/2023/IsWordChar.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/IteratorClose.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/IteratorClose.js | node_modules/es-abstract/2024/IteratorClose.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/IteratorToList.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/IteratorToList.js | node_modules/es-abstract/2024/IteratorToList.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/KeyForSymbol.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/KeyForSymbol.js | node_modules/es-abstract/2024/KeyForSymbol.js | node_modules/es-abstract/2023/KeyForSymbol.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/MakeDataViewWithBufferWitnessRecord.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/MakeDataViewWithBufferWitnessRecord.js | node_modules/es-abstract/2024/MakeDataViewWithBufferWitnessRecord.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/MakeFullYear.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/MakeFullYear.js | node_modules/es-abstract/2024/MakeFullYear.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/MakeTypedArrayWithBufferWitnessRecord.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/MakeTypedArrayWithBufferWitnessRecord.js | node_modules/es-abstract/2024/MakeTypedArrayWithBufferWitnessRecord.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/ObjectDefineProperties.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/ObjectDefineProperties.js | node_modules/es-abstract/2024/ObjectDefineProperties.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/ParseHexOctet.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/ParseHexOctet.js | node_modules/es-abstract/2024/ParseHexOctet.js | node_modules/es-abstract/2023/ParseHexOctet.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/SetTypedArrayFromArrayLike.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/SetTypedArrayFromArrayLike.js | node_modules/es-abstract/2024/SetTypedArrayFromArrayLike.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/SetTypedArrayFromTypedArray.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/SetTypedArrayFromTypedArray.js | node_modules/es-abstract/2024/SetTypedArrayFromTypedArray.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/SetValueInBuffer.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/SetValueInBuffer.js | node_modules/es-abstract/2024/SetValueInBuffer.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/SortIndexedProperties.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/SortIndexedProperties.js | node_modules/es-abstract/2024/SortIndexedProperties.js | node_modules/es-abstract/2023/SortIndexedProperties.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/StringPad.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/StringPad.js | node_modules/es-abstract/2024/StringPad.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/StringPaddingBuiltinsImpl.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/StringPaddingBuiltinsImpl.js | node_modules/es-abstract/2024/StringPaddingBuiltinsImpl.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/SystemTimeZoneIdentifier.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/SystemTimeZoneIdentifier.js | node_modules/es-abstract/2024/SystemTimeZoneIdentifier.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/ThisBigIntValue.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/ThisBigIntValue.js | node_modules/es-abstract/2024/ThisBigIntValue.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/ThisBooleanValue.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/ThisBooleanValue.js | node_modules/es-abstract/2024/ThisBooleanValue.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/ThisNumberValue.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/ThisNumberValue.js | node_modules/es-abstract/2024/ThisNumberValue.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/ThisStringValue.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/ThisStringValue.js | node_modules/es-abstract/2024/ThisStringValue.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/ThisSymbolValue.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/ThisSymbolValue.js | node_modules/es-abstract/2024/ThisSymbolValue.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/TimeZoneString.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/TimeZoneString.js | node_modules/es-abstract/2024/TimeZoneString.js | node_modules/es-abstract/2023/TimeZoneString.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/ToIndex.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/ToIndex.js | node_modules/es-abstract/2024/ToIndex.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/ToInt16.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/ToInt16.js | node_modules/es-abstract/2024/ToInt16.js | node_modules/es-abstract/2023/ToInt16.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/ToInt32.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/ToInt32.js | node_modules/es-abstract/2024/ToInt32.js | node_modules/es-abstract/2023/ToInt32.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/ToInt8.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/ToInt8.js | node_modules/es-abstract/2024/ToInt8.js | node_modules/es-abstract/2023/ToInt8.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/ToIntegerOrInfinity.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/ToIntegerOrInfinity.js | node_modules/es-abstract/2024/ToIntegerOrInfinity.js | node_modules/es-abstract/2023/ToIntegerOrInfinity.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/ToUint16.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/ToUint16.js | node_modules/es-abstract/2024/ToUint16.js | node_modules/es-abstract/2023/ToUint16.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/ToUint32.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/ToUint32.js | node_modules/es-abstract/2024/ToUint32.js | node_modules/es-abstract/2023/ToUint32.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/ToUint8.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/ToUint8.js | node_modules/es-abstract/2024/ToUint8.js | node_modules/es-abstract/2023/ToUint8.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/ToUint8Clamp.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/ToUint8Clamp.js | node_modules/es-abstract/2024/ToUint8Clamp.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/TypedArrayByteLength.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/TypedArrayByteLength.js | node_modules/es-abstract/2024/TypedArrayByteLength.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/TypedArrayCreateFromConstructor.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/TypedArrayCreateFromConstructor.js | node_modules/es-abstract/2024/TypedArrayCreateFromConstructor.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/TypedArrayCreateSameType.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/TypedArrayCreateSameType.js | node_modules/es-abstract/2024/TypedArrayCreateSameType.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/TypedArrayGetElement.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/TypedArrayGetElement.js | node_modules/es-abstract/2024/TypedArrayGetElement.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/TypedArrayLength.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/TypedArrayLength.js | node_modules/es-abstract/2024/TypedArrayLength.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/TypedArraySetElement.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/TypedArraySetElement.js | node_modules/es-abstract/2024/TypedArraySetElement.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/TypedArraySpeciesCreate.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/TypedArraySpeciesCreate.js | node_modules/es-abstract/2024/TypedArraySpeciesCreate.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/ValidateAtomicAccess.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/ValidateAtomicAccess.js | node_modules/es-abstract/2024/ValidateAtomicAccess.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/ValidateAtomicAccessOnIntegerTypedArray.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/ValidateAtomicAccessOnIntegerTypedArray.js | node_modules/es-abstract/2024/ValidateAtomicAccessOnIntegerTypedArray.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/ValidateIntegerTypedArray.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/ValidateIntegerTypedArray.js | node_modules/es-abstract/2024/ValidateIntegerTypedArray.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/ValidateTypedArray.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/ValidateTypedArray.js | node_modules/es-abstract/2024/ValidateTypedArray.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/WordCharacters.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/WordCharacters.js | node_modules/es-abstract/2024/WordCharacters.js | node_modules/es-abstract/2023/WordCharacters.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-abstract/2025/truncate.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-abstract/2025/truncate.js | node_modules/es-abstract/2024/truncate.js | node_modules/es-abstract/2023/truncate.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-define-property/.eslintrc`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-define-property/.eslintrc | node_modules/is-weakset/.eslintrc | node_modules/typed-array-buffer/.eslintrc`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-errors/LICENSE`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-errors/LICENSE | node_modules/possible-typed-array-names/LICENSE | node_modules/side-channel-list/LICENSE | node_modules/data-view-byte-offset/LICENSE | node_modules/call-bind-apply-helpers/LICENSE | node_modules/own-keys/LICENSE | node_modules/es-define-property/LICENSE | node_modules/call-bound/LICENSE | node_modules/set-proto/LICENSE | node_modules/safe-push-apply/LICENSE | node_modules/data-view-byte-length/LICENSE | node_modules/side-channel-map/LICENSE | node_modules/es-object-atoms/LICENSE`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-iterator-helpers/Iterator.from/index.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-iterator-helpers/Iterator.from/index.js | node_modules/es-iterator-helpers/Iterator.concat/index.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-iterator-helpers/Iterator.prototype.take/index.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-iterator-helpers/Iterator.prototype.take/index.js | node_modules/es-iterator-helpers/Iterator.prototype.drop/index.js | node_modules/es-iterator-helpers/Iterator.prototype.reduce/index.js | node_modules/es-iterator-helpers/Iterator.prototype.toArray/index.js | node_modules/es-iterator-helpers/Iterator.prototype.every/index.js | node_modules/es-iterator-helpers/Iterator.prototype.find/index.js | node_modules/es-iterator-helpers/Iterator.prototype.forEach/index.js | node_modules/es-iterator-helpers/Iterator.prototype.some/index.js | node_modules/es-iterator-helpers/Iterator.prototype.includes/index.js | node_modules/es-iterator-helpers/Iterator/index.js | node_modules/es-iterator-helpers/Iterator.prototype.map/index.js | node_modules/es-iterator-helpers/Iterator.prototype.windows/index.js | node_modules/es-iterator-helpers/Iterator.prototype.join/index.js | node_modules/es-iterator-helpers/Iterator.prototype.filter/index.js | node_modules/es-iterator-helpers/Iterator.prototype.flatMap/index.js | node_modules/es-iterator-helpers/Iterator.prototype.chunks/index.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-iterator-helpers/Iterator.prototype/polyfill.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-iterator-helpers/Iterator.prototype/polyfill.js | node_modules/es-iterator-helpers/Iterator.prototype.constructor/polyfill.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-iterator-helpers/Iterator.zip/index.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-iterator-helpers/Iterator.zip/index.js | node_modules/es-iterator-helpers/Iterator.prototype/index.js | node_modules/es-iterator-helpers/Iterator.zipKeyed/index.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/es-iterator-helpers/LICENSE`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/es-iterator-helpers/LICENSE | node_modules/es-set-tostringtag/LICENSE`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint-plugin-react/node_modules/balanced-match/.github/FUNDING.yml`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint-plugin-react/node_modules/balanced-match/.github/FUNDING.yml | node_modules/eslint/node_modules/balanced-match/.github/FUNDING.yml | node_modules/filelist/node_modules/balanced-match/.github/FUNDING.yml | node_modules/@eslint/eslintrc/node_modules/balanced-match/.github/FUNDING.yml | node_modules/@eslint/config-array/node_modules/balanced-match/.github/FUNDING.yml`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint-plugin-react/node_modules/balanced-match/LICENSE.md`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint-plugin-react/node_modules/balanced-match/LICENSE.md | node_modules/eslint/node_modules/balanced-match/LICENSE.md | node_modules/filelist/node_modules/balanced-match/LICENSE.md | node_modules/@eslint/eslintrc/node_modules/balanced-match/LICENSE.md | node_modules/@eslint/config-array/node_modules/balanced-match/LICENSE.md`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint-plugin-react/node_modules/balanced-match/README.md`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint-plugin-react/node_modules/balanced-match/README.md | node_modules/eslint/node_modules/balanced-match/README.md | node_modules/filelist/node_modules/balanced-match/README.md | node_modules/@eslint/eslintrc/node_modules/balanced-match/README.md | node_modules/@eslint/config-array/node_modules/balanced-match/README.md`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint-plugin-react/node_modules/balanced-match/index.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint-plugin-react/node_modules/balanced-match/index.js | node_modules/eslint/node_modules/balanced-match/index.js | node_modules/filelist/node_modules/balanced-match/index.js | node_modules/@eslint/eslintrc/node_modules/balanced-match/index.js | node_modules/@eslint/config-array/node_modules/balanced-match/index.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint-plugin-react/node_modules/balanced-match/package.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint-plugin-react/node_modules/balanced-match/package.json | node_modules/eslint/node_modules/balanced-match/package.json | node_modules/filelist/node_modules/balanced-match/package.json | node_modules/@eslint/eslintrc/node_modules/balanced-match/package.json | node_modules/@eslint/config-array/node_modules/balanced-match/package.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint-plugin-react/node_modules/brace-expansion/README.md`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint-plugin-react/node_modules/brace-expansion/README.md | node_modules/eslint/node_modules/brace-expansion/README.md | node_modules/@eslint/eslintrc/node_modules/brace-expansion/README.md | node_modules/@eslint/config-array/node_modules/brace-expansion/README.md`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint-plugin-react/node_modules/brace-expansion/index.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint-plugin-react/node_modules/brace-expansion/index.js | node_modules/eslint/node_modules/brace-expansion/index.js | node_modules/@eslint/eslintrc/node_modules/brace-expansion/index.js | node_modules/@eslint/config-array/node_modules/brace-expansion/index.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint-plugin-react/node_modules/brace-expansion/package.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint-plugin-react/node_modules/brace-expansion/package.json | node_modules/eslint/node_modules/brace-expansion/package.json | node_modules/@eslint/eslintrc/node_modules/brace-expansion/package.json | node_modules/@eslint/config-array/node_modules/brace-expansion/package.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint-plugin-react/node_modules/minimatch/README.md`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint-plugin-react/node_modules/minimatch/README.md | node_modules/eslint/node_modules/minimatch/README.md | node_modules/@eslint/eslintrc/node_modules/minimatch/README.md | node_modules/@eslint/config-array/node_modules/minimatch/README.md`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint-plugin-react/node_modules/minimatch/minimatch.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint-plugin-react/node_modules/minimatch/minimatch.js | node_modules/eslint/node_modules/minimatch/minimatch.js | node_modules/@eslint/eslintrc/node_modules/minimatch/minimatch.js | node_modules/@eslint/config-array/node_modules/minimatch/minimatch.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint-plugin-react/node_modules/minimatch/package.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint-plugin-react/node_modules/minimatch/package.json | node_modules/eslint/node_modules/minimatch/package.json | node_modules/@eslint/eslintrc/node_modules/minimatch/package.json | node_modules/@eslint/config-array/node_modules/minimatch/package.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint-visitor-keys/LICENSE`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint-visitor-keys/LICENSE | node_modules/@eslint-community/eslint-utils/node_modules/eslint-visitor-keys/LICENSE`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/LICENSE`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/LICENSE | node_modules/@eslint/js/LICENSE | node_modules/@eslint/eslintrc/LICENSE`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/.tonic_example.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/.tonic_example.js | node_modules/@eslint/eslintrc/node_modules/ajv/.tonic_example.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/LICENSE`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/LICENSE | node_modules/@eslint/eslintrc/node_modules/ajv/LICENSE`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/README.md`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/README.md | node_modules/@eslint/eslintrc/node_modules/ajv/README.md`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/dist/ajv.bundle.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/dist/ajv.bundle.js | node_modules/@eslint/eslintrc/node_modules/ajv/dist/ajv.bundle.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/dist/ajv.min.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/dist/ajv.min.js | node_modules/@eslint/eslintrc/node_modules/ajv/dist/ajv.min.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/dist/ajv.min.js.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/dist/ajv.min.js.map | node_modules/@eslint/eslintrc/node_modules/ajv/dist/ajv.min.js.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/ajv.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/ajv.d.ts | node_modules/@eslint/eslintrc/node_modules/ajv/lib/ajv.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/ajv.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/ajv.js | node_modules/@eslint/eslintrc/node_modules/ajv/lib/ajv.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/cache.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/cache.js | node_modules/@eslint/eslintrc/node_modules/ajv/lib/cache.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/compile/async.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/compile/async.js | node_modules/@eslint/eslintrc/node_modules/ajv/lib/compile/async.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/compile/equal.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/compile/equal.js | node_modules/@eslint/eslintrc/node_modules/ajv/lib/compile/equal.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/compile/error_classes.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/compile/error_classes.js | node_modules/@eslint/eslintrc/node_modules/ajv/lib/compile/error_classes.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/compile/formats.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/compile/formats.js | node_modules/@eslint/eslintrc/node_modules/ajv/lib/compile/formats.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/compile/index.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/compile/index.js | node_modules/@eslint/eslintrc/node_modules/ajv/lib/compile/index.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/compile/resolve.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/compile/resolve.js | node_modules/@eslint/eslintrc/node_modules/ajv/lib/compile/resolve.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/compile/rules.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/compile/rules.js | node_modules/@eslint/eslintrc/node_modules/ajv/lib/compile/rules.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/compile/schema_obj.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/compile/schema_obj.js | node_modules/@eslint/eslintrc/node_modules/ajv/lib/compile/schema_obj.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/compile/ucs2length.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/compile/ucs2length.js | node_modules/@eslint/eslintrc/node_modules/ajv/lib/compile/ucs2length.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/compile/util.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/compile/util.js | node_modules/@eslint/eslintrc/node_modules/ajv/lib/compile/util.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/data.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/data.js | node_modules/@eslint/eslintrc/node_modules/ajv/lib/data.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/definition_schema.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/definition_schema.js | node_modules/@eslint/eslintrc/node_modules/ajv/lib/definition_schema.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dot/_limit.jst`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dot/_limit.jst | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dot/_limit.jst`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dot/_limitItems.jst`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dot/_limitItems.jst | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dot/_limitItems.jst`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dot/_limitLength.jst`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dot/_limitLength.jst | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dot/_limitLength.jst`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dot/_limitProperties.jst`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dot/_limitProperties.jst | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dot/_limitProperties.jst`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dot/allOf.jst`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dot/allOf.jst | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dot/allOf.jst`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dot/anyOf.jst`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dot/anyOf.jst | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dot/anyOf.jst`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dot/coerce.def`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dot/coerce.def | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dot/coerce.def`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dot/comment.jst`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dot/comment.jst | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dot/comment.jst`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dot/const.jst`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dot/const.jst | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dot/const.jst`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dot/contains.jst`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dot/contains.jst | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dot/contains.jst`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dot/custom.jst`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dot/custom.jst | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dot/custom.jst`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dot/defaults.def`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dot/defaults.def | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dot/defaults.def`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dot/definitions.def`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dot/definitions.def | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dot/definitions.def`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dot/dependencies.jst`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dot/dependencies.jst | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dot/dependencies.jst`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dot/enum.jst`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dot/enum.jst | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dot/enum.jst`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dot/errors.def`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dot/errors.def | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dot/errors.def`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dot/format.jst`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dot/format.jst | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dot/format.jst`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dot/if.jst`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dot/if.jst | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dot/if.jst`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dot/items.jst`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dot/items.jst | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dot/items.jst`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dot/missing.def`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dot/missing.def | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dot/missing.def`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dot/multipleOf.jst`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dot/multipleOf.jst | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dot/multipleOf.jst`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dot/not.jst`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dot/not.jst | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dot/not.jst`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dot/oneOf.jst`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dot/oneOf.jst | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dot/oneOf.jst`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dot/pattern.jst`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dot/pattern.jst | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dot/pattern.jst`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dot/properties.jst`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dot/properties.jst | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dot/properties.jst`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dot/propertyNames.jst`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dot/propertyNames.jst | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dot/propertyNames.jst`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dot/ref.jst`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dot/ref.jst | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dot/ref.jst`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dot/required.jst`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dot/required.jst | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dot/required.jst`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dot/uniqueItems.jst`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dot/uniqueItems.jst | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dot/uniqueItems.jst`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dot/validate.jst`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dot/validate.jst | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dot/validate.jst`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dotjs/README.md`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dotjs/README.md | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dotjs/README.md`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dotjs/_limit.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dotjs/_limit.js | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dotjs/_limit.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dotjs/_limitItems.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dotjs/_limitItems.js | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dotjs/_limitItems.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dotjs/_limitLength.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dotjs/_limitLength.js | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dotjs/_limitLength.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dotjs/_limitProperties.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dotjs/_limitProperties.js | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dotjs/_limitProperties.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dotjs/allOf.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dotjs/allOf.js | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dotjs/allOf.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dotjs/anyOf.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dotjs/anyOf.js | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dotjs/anyOf.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dotjs/comment.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dotjs/comment.js | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dotjs/comment.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dotjs/const.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dotjs/const.js | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dotjs/const.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dotjs/contains.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dotjs/contains.js | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dotjs/contains.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dotjs/custom.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dotjs/custom.js | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dotjs/custom.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dotjs/dependencies.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dotjs/dependencies.js | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dotjs/dependencies.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dotjs/enum.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dotjs/enum.js | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dotjs/enum.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dotjs/format.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dotjs/format.js | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dotjs/format.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dotjs/if.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dotjs/if.js | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dotjs/if.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dotjs/index.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dotjs/index.js | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dotjs/index.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dotjs/items.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dotjs/items.js | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dotjs/items.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dotjs/multipleOf.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dotjs/multipleOf.js | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dotjs/multipleOf.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dotjs/not.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dotjs/not.js | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dotjs/not.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dotjs/oneOf.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dotjs/oneOf.js | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dotjs/oneOf.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dotjs/pattern.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dotjs/pattern.js | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dotjs/pattern.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dotjs/properties.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dotjs/properties.js | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dotjs/properties.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dotjs/propertyNames.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dotjs/propertyNames.js | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dotjs/propertyNames.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dotjs/ref.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dotjs/ref.js | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dotjs/ref.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dotjs/required.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dotjs/required.js | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dotjs/required.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dotjs/uniqueItems.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dotjs/uniqueItems.js | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dotjs/uniqueItems.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/dotjs/validate.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/dotjs/validate.js | node_modules/@eslint/eslintrc/node_modules/ajv/lib/dotjs/validate.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/keyword.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/keyword.js | node_modules/@eslint/eslintrc/node_modules/ajv/lib/keyword.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/refs/data.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/refs/data.json | node_modules/@eslint/eslintrc/node_modules/ajv/lib/refs/data.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/refs/json-schema-draft-04.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/refs/json-schema-draft-04.json | node_modules/@eslint/eslintrc/node_modules/ajv/lib/refs/json-schema-draft-04.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/refs/json-schema-draft-06.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/refs/json-schema-draft-06.json | node_modules/@eslint/eslintrc/node_modules/ajv/lib/refs/json-schema-draft-06.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/refs/json-schema-draft-07.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/refs/json-schema-draft-07.json | node_modules/@eslint/eslintrc/node_modules/ajv/lib/refs/json-schema-draft-07.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/lib/refs/json-schema-secure.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/lib/refs/json-schema-secure.json | node_modules/@eslint/eslintrc/node_modules/ajv/lib/refs/json-schema-secure.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/package.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/package.json | node_modules/@eslint/eslintrc/node_modules/ajv/package.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/scripts/.eslintrc.yml`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/scripts/.eslintrc.yml | node_modules/@eslint/eslintrc/node_modules/ajv/scripts/.eslintrc.yml`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/scripts/bundle.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/scripts/bundle.js | node_modules/@eslint/eslintrc/node_modules/ajv/scripts/bundle.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/scripts/compile-dots.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/scripts/compile-dots.js | node_modules/@eslint/eslintrc/node_modules/ajv/scripts/compile-dots.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/scripts/info`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/scripts/info | node_modules/@eslint/eslintrc/node_modules/ajv/scripts/info`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/scripts/prepare-tests`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/scripts/prepare-tests | node_modules/@eslint/eslintrc/node_modules/ajv/scripts/prepare-tests`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/scripts/publish-built-version`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/scripts/publish-built-version | node_modules/@eslint/eslintrc/node_modules/ajv/scripts/publish-built-version`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/ajv/scripts/travis-gh-pages`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/ajv/scripts/travis-gh-pages | node_modules/@eslint/eslintrc/node_modules/ajv/scripts/travis-gh-pages`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/json-schema-traverse/.eslintrc.yml`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/json-schema-traverse/.eslintrc.yml | node_modules/@eslint/eslintrc/node_modules/json-schema-traverse/.eslintrc.yml`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/json-schema-traverse/.travis.yml`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/json-schema-traverse/.travis.yml | node_modules/@eslint/eslintrc/node_modules/json-schema-traverse/.travis.yml`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/json-schema-traverse/README.md`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/json-schema-traverse/README.md | node_modules/@eslint/eslintrc/node_modules/json-schema-traverse/README.md`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/json-schema-traverse/index.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/json-schema-traverse/index.js | node_modules/@eslint/eslintrc/node_modules/json-schema-traverse/index.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/json-schema-traverse/package.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/json-schema-traverse/package.json | node_modules/@eslint/eslintrc/node_modules/json-schema-traverse/package.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/json-schema-traverse/spec/.eslintrc.yml`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/json-schema-traverse/spec/.eslintrc.yml | node_modules/json-schema-traverse/spec/.eslintrc.yml | node_modules/@eslint/eslintrc/node_modules/json-schema-traverse/spec/.eslintrc.yml`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/json-schema-traverse/spec/fixtures/schema.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/json-schema-traverse/spec/fixtures/schema.js | node_modules/json-schema-traverse/spec/fixtures/schema.js | node_modules/@eslint/eslintrc/node_modules/json-schema-traverse/spec/fixtures/schema.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/eslint/node_modules/json-schema-traverse/spec/index.spec.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/eslint/node_modules/json-schema-traverse/spec/index.spec.js | node_modules/json-schema-traverse/spec/index.spec.js | node_modules/@eslint/eslintrc/node_modules/json-schema-traverse/spec/index.spec.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/estree-walker/LICENSE`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/estree-walker/LICENSE | node_modules/@rollup/pluginutils/node_modules/estree-walker/LICENSE`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/esutils/LICENSE.BSD`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/esutils/LICENSE.BSD | node_modules/doctrine/LICENSE.esprima | node_modules/estraverse/LICENSE.BSD`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/expect-type/dist/branding.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/expect-type/dist/branding.js | node_modules/expect-type/dist/overloads.js | node_modules/workbox-build/build/types.js | node_modules/zod/v3/standard-schema.cjs | node_modules/zod/v3/helpers/enumUtil.cjs | node_modules/zod/v3/helpers/partialUtil.cjs | node_modules/zod/v3/helpers/typeAliases.cjs | node_modules/zod/v4/core/standard-schema.cjs | node_modules/zod/v4/core/json-schema.cjs`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/fast-deep-equal/react.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/fast-deep-equal/react.d.ts | node_modules/fast-deep-equal/es6/react.d.ts | node_modules/fast-deep-equal/es6/index.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/fdir/dist/index.d.mts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/fdir/dist/index.d.mts | node_modules/fdir/dist/index.d.cts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/for-each/.github/SECURITY.md`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/for-each/.github/SECURITY.md | node_modules/function-bind/.github/SECURITY.md`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/foreground-child/dist/esm/all-signals.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/foreground-child/dist/esm/all-signals.d.ts | node_modules/foreground-child/dist/commonjs/all-signals.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/foreground-child/dist/esm/all-signals.d.ts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/foreground-child/dist/esm/all-signals.d.ts.map | node_modules/foreground-child/dist/commonjs/all-signals.d.ts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/foreground-child/dist/esm/index.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/foreground-child/dist/esm/index.d.ts | node_modules/foreground-child/dist/commonjs/index.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/foreground-child/dist/esm/index.d.ts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/foreground-child/dist/esm/index.d.ts.map | node_modules/foreground-child/dist/commonjs/index.d.ts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/foreground-child/dist/esm/proxy-signals.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/foreground-child/dist/esm/proxy-signals.d.ts | node_modules/foreground-child/dist/commonjs/proxy-signals.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/foreground-child/dist/esm/proxy-signals.d.ts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/foreground-child/dist/esm/proxy-signals.d.ts.map | node_modules/foreground-child/dist/commonjs/proxy-signals.d.ts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/foreground-child/dist/esm/watchdog.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/foreground-child/dist/esm/watchdog.d.ts | node_modules/foreground-child/dist/commonjs/watchdog.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/foreground-child/dist/esm/watchdog.d.ts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/foreground-child/dist/esm/watchdog.d.ts.map | node_modules/foreground-child/dist/commonjs/watchdog.d.ts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/function.prototype.name/LICENSE`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/function.prototype.name/LICENSE | node_modules/globalthis/LICENSE`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/function.prototype.name/auto.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/function.prototype.name/auto.d.ts | node_modules/parse5/dist/tree-adapters/interface.js | node_modules/yargs/build/lib/typings/yargs-parser-types.js | node_modules/idb/build/async-iterators.d.ts | node_modules/idb/build/database-extras.d.ts | node_modules/zod/v3/standard-schema.js | node_modules/zod/v3/helpers/enumUtil.js | node_modules/zod/v3/helpers/partialUtil.js | node_modules/zod/v3/helpers/typeAliases.js | node_modules/zod/v4/core/standard-schema.js | node_modules/zod/v4/core/json-schema.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/glob/dist/esm/glob.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/glob/dist/esm/glob.d.ts | node_modules/glob/dist/commonjs/glob.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/glob/dist/esm/glob.d.ts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/glob/dist/esm/glob.d.ts.map | node_modules/glob/dist/commonjs/glob.d.ts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/glob/dist/esm/has-magic.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/glob/dist/esm/has-magic.d.ts | node_modules/glob/dist/commonjs/has-magic.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/glob/dist/esm/has-magic.d.ts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/glob/dist/esm/has-magic.d.ts.map | node_modules/glob/dist/commonjs/has-magic.d.ts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/glob/dist/esm/ignore.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/glob/dist/esm/ignore.d.ts | node_modules/glob/dist/commonjs/ignore.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/glob/dist/esm/ignore.d.ts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/glob/dist/esm/ignore.d.ts.map | node_modules/glob/dist/commonjs/ignore.d.ts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/glob/dist/esm/index.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/glob/dist/esm/index.d.ts | node_modules/glob/dist/commonjs/index.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/glob/dist/esm/index.d.ts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/glob/dist/esm/index.d.ts.map | node_modules/glob/dist/commonjs/index.d.ts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/glob/dist/esm/pattern.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/glob/dist/esm/pattern.d.ts | node_modules/glob/dist/commonjs/pattern.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/glob/dist/esm/pattern.d.ts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/glob/dist/esm/pattern.d.ts.map | node_modules/glob/dist/commonjs/pattern.d.ts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/glob/dist/esm/processor.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/glob/dist/esm/processor.d.ts | node_modules/glob/dist/commonjs/processor.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/glob/dist/esm/processor.d.ts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/glob/dist/esm/processor.d.ts.map | node_modules/glob/dist/commonjs/processor.d.ts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/glob/dist/esm/walker.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/glob/dist/esm/walker.d.ts | node_modules/glob/dist/commonjs/walker.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/glob/dist/esm/walker.d.ts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/glob/dist/esm/walker.d.ts.map | node_modules/glob/dist/commonjs/walker.d.ts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/globals/index.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/globals/index.js | node_modules/@eslint/eslintrc/node_modules/globals/index.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/globals/license`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/globals/license | node_modules/strip-ansi/license | node_modules/tempy/license | node_modules/escape-string-regexp/license | node_modules/strip-json-comments/license | node_modules/wrap-ansi/license | node_modules/p-locate/license | node_modules/p-limit/license | node_modules/is-stream/license | node_modules/find-up/license | node_modules/get-east-asian-width/license | node_modules/yocto-queue/license | node_modules/import-fresh/license | node_modules/string-width/license | node_modules/locate-path/license | node_modules/pretty-bytes/license | node_modules/cliui/node_modules/string-width/license | node_modules/workbox-build/node_modules/pretty-bytes/license | node_modules/wrap-ansi/node_modules/ansi-styles/license | node_modules/wrap-ansi/node_modules/string-width/license | node_modules/@eslint/eslintrc/node_modules/globals/license | node_modules/strip-ansi/node_modules/ansi-regex/license`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/has-tostringtag/LICENSE`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/has-tostringtag/LICENSE | node_modules/is-shared-array-buffer/LICENSE | node_modules/get-symbol-description/LICENSE`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/has-tostringtag/tsconfig.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/has-tostringtag/tsconfig.json | node_modules/is-negative-zero/tsconfig.json | node_modules/is-map/tsconfig.json | node_modules/which-collection/tsconfig.json | node_modules/is-weakmap/tsconfig.json | node_modules/is-set/tsconfig.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/html-encoding-sniffer/LICENSE.txt`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/html-encoding-sniffer/LICENSE.txt | node_modules/data-urls/LICENSE.txt | node_modules/whatwg-mimetype/LICENSE.txt`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/internal-slot/tsconfig.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/internal-slot/tsconfig.json | node_modules/set-proto/tsconfig.json | node_modules/get-proto/tsconfig.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/is-array-buffer/.eslintrc`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/is-array-buffer/.eslintrc | node_modules/data-view-byte-offset/.eslintrc | node_modules/data-view-buffer/.eslintrc | node_modules/data-view-byte-length/.eslintrc`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/is-array-buffer/tsconfig.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/is-array-buffer/tsconfig.json | node_modules/array-buffer-byte-length/tsconfig.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/is-bigint/.eslintrc`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/is-bigint/.eslintrc | node_modules/which-boxed-primitive/.eslintrc | node_modules/es-errors/.eslintrc | node_modules/has-proto/.eslintrc | node_modules/possible-typed-array-names/.eslintrc | node_modules/has-tostringtag/.eslintrc | node_modules/is-weakref/.eslintrc | node_modules/dunder-proto/.eslintrc | node_modules/unbox-primitive/.eslintrc | node_modules/is-shared-array-buffer/.eslintrc | node_modules/is-map/.eslintrc | node_modules/has-bigints/.eslintrc | node_modules/which-collection/.eslintrc | node_modules/is-weakmap/.eslintrc | node_modules/is-set/.eslintrc | node_modules/available-typed-arrays/.eslintrc`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/is-bigint/.nycrc`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/is-bigint/.nycrc | node_modules/functions-have-names/.nycrc | node_modules/is-array-buffer/.nycrc | node_modules/has-property-descriptors/.nycrc | node_modules/string.prototype.trimend/.nycrc | node_modules/is-typed-array/.nycrc | node_modules/function.prototype.name/.nycrc | node_modules/string.prototype.trimstart/.nycrc | node_modules/call-bind/.nycrc | node_modules/array.prototype.flat/.nycrc | node_modules/string.prototype.trim/.nycrc | node_modules/object.values/.nycrc | node_modules/call-bind-apply-helpers/.nycrc | node_modules/own-keys/.nycrc | node_modules/reflect.getprototypeof/.nycrc | node_modules/is-generator-function/.nycrc | node_modules/async-function/.nycrc | node_modules/is-negative-zero/.nycrc | node_modules/is-symbol/.nycrc | node_modules/is-async-function/.nycrc | node_modules/is-weakref/.nycrc | node_modules/array-includes/.nycrc | node_modules/es-define-property/.nycrc | node_modules/get-intrinsic/.nycrc | node_modules/object.entries/.nycrc | node_modules/es-to-primitive/.nycrc | node_modules/call-bound/.nycrc | node_modules/regexp.prototype.flags/.nycrc | node_modules/is-shared-array-buffer/.nycrc | node_modules/supports-preserve-symlinks-flag/.nycrc | node_modules/has-symbols/.nycrc | node_modules/arraybuffer.prototype.slice/.nycrc | node_modules/internal-slot/.nycrc | node_modules/set-proto/.nycrc | node_modules/which-builtin-type/.nycrc | node_modules/array.prototype.tosorted/.nycrc | node_modules/is-finalizationregistry/.nycrc | node_modules/define-properties/.nycrc | node_modules/is-weakset/.nycrc | node_modules/is-core-module/.nycrc | node_modules/is-map/.nycrc | node_modules/es-abstract-get/.nycrc | node_modules/has-bigints/.nycrc | node_modules/es-shim-unscopables/.nycrc | node_modules/get-symbol-description/.nycrc | node_modules/get-proto/.nycrc | node_modules/generator-function/.nycrc | node_modules/is-data-view/.nycrc | node_modules/array.prototype.findlast/.nycrc | node_modules/is-document.all/.nycrc | node_modules/is-callable/.nycrc | node_modules/is-weakmap/.nycrc | node_modules/is-set/.nycrc | node_modules/available-typed-arrays/.nycrc | node_modules/string.prototype.matchall/.nycrc | node_modules/es-set-tostringtag/.nycrc | node_modules/array.prototype.flatmap/.nycrc | node_modules/object.fromentries/.nycrc | node_modules/object.assign/.nycrc`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/is-bigint/LICENSE`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/is-bigint/LICENSE | node_modules/object.fromentries/LICENSE`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/is-bigint/tsconfig.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/is-bigint/tsconfig.json | node_modules/which-boxed-primitive/tsconfig.json | node_modules/is-number-object/tsconfig.json | node_modules/is-symbol/tsconfig.json | node_modules/is-boolean-object/tsconfig.json | node_modules/is-regex/tsconfig.json | node_modules/is-document.all/tsconfig.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/is-data-view/.github/FUNDING.yml`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/is-data-view/.github/FUNDING.yml | node_modules/is-typed-array/.github/FUNDING.yml`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/is-generator-function/.eslintrc`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/is-generator-function/.eslintrc | node_modules/is-async-function/.eslintrc`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/is-generator-function/LICENSE`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/is-generator-function/LICENSE | node_modules/is-negative-zero/LICENSE | node_modules/is-regex/LICENSE`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/is-map/.editorconfig`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/is-map/.editorconfig | node_modules/is-weakmap/.editorconfig | node_modules/is-set/.editorconfig`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/is-number-object/.nycrc`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/is-number-object/.nycrc | node_modules/is-date-object/.nycrc | node_modules/is-boolean-object/.nycrc | node_modules/is-regex/.nycrc | node_modules/is-string/.nycrc`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/is-obj/license`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/is-obj/license | node_modules/object-assign/license`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/is-symbol/.editorconfig`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/is-symbol/.editorconfig | node_modules/array-includes/.editorconfig | node_modules/regexp.prototype.flags/.editorconfig | node_modules/arraybuffer.prototype.slice/.editorconfig | node_modules/define-properties/.editorconfig | node_modules/object-keys/.editorconfig`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/is-typed-array/LICENSE`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/is-typed-array/LICENSE | node_modules/object.values/LICENSE | node_modules/is-number-object/LICENSE | node_modules/is-symbol/LICENSE | node_modules/is-date-object/LICENSE | node_modules/object.entries/LICENSE | node_modules/es-to-primitive/LICENSE | node_modules/is-boolean-object/LICENSE | node_modules/which-typed-array/LICENSE | node_modules/is-callable/LICENSE | node_modules/string.prototype.matchall/LICENSE | node_modules/is-string/LICENSE`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/is-weakref/LICENSE`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/is-weakref/LICENSE | node_modules/typed-array-length/LICENSE | node_modules/typed-array-byte-length/LICENSE | node_modules/typed-array-byte-offset/LICENSE | node_modules/is-finalizationregistry/LICENSE | node_modules/available-typed-arrays/LICENSE`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/is-weakref/tsconfig.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/is-weakref/tsconfig.json | node_modules/which-builtin-type/tsconfig.json | node_modules/is-finalizationregistry/tsconfig.json | node_modules/has-bigints/tsconfig.json | node_modules/is-string/tsconfig.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/is-weakset/.gitattributes`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/is-weakset/.gitattributes | node_modules/is-map/.gitattributes | node_modules/is-set/.gitattributes`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/is-weakset/LICENSE`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/is-weakset/LICENSE | node_modules/is-map/LICENSE | node_modules/which-collection/LICENSE | node_modules/is-weakmap/LICENSE | node_modules/is-set/LICENSE`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/isarray/LICENSE`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/isarray/LICENSE | node_modules/eslint-plugin-react/node_modules/brace-expansion/LICENSE | node_modules/eslint/node_modules/brace-expansion/LICENSE | node_modules/filelist/node_modules/brace-expansion/LICENSE | node_modules/@eslint/eslintrc/node_modules/brace-expansion/LICENSE | node_modules/@eslint/config-array/node_modules/brace-expansion/LICENSE`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/iterator.prototype/LICENSE`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/iterator.prototype/LICENSE | node_modules/es-shim-unscopables/LICENSE | node_modules/safe-regex-test/LICENSE | node_modules/gopd/LICENSE`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/jackspeak/LICENSE.md`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/jackspeak/LICENSE.md | node_modules/minimatch/LICENSE.md`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/jackspeak/dist/esm/index.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/jackspeak/dist/esm/index.d.ts | node_modules/jackspeak/dist/commonjs/index.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/jackspeak/dist/esm/index.d.ts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/jackspeak/dist/esm/index.d.ts.map | node_modules/jackspeak/dist/commonjs/index.d.ts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/jsdom/lib/generated/idl/Function.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/jsdom/lib/generated/idl/Function.js | node_modules/whatwg-url/lib/Function.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/jsdom/lib/generated/idl/VoidFunction.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/jsdom/lib/generated/idl/VoidFunction.js | node_modules/whatwg-url/lib/VoidFunction.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/jsdom/lib/generated/idl/utils.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/jsdom/lib/generated/idl/utils.js | node_modules/whatwg-url/lib/utils.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/jsesc/LICENSE-MIT.txt`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/jsesc/LICENSE-MIT.txt | node_modules/punycode/LICENSE-MIT.txt | node_modules/is-potential-custom-element-name/LICENSE-MIT.txt | node_modules/regexpu-core/LICENSE-MIT.txt | node_modules/unicode-match-property-ecmascript/LICENSE-MIT.txt | node_modules/regenerate/LICENSE-MIT.txt | node_modules/string.prototype.repeat/LICENSE-MIT.txt | node_modules/unicode-match-property-value-ecmascript/LICENSE-MIT.txt | node_modules/unicode-canonical-property-names-ecmascript/LICENSE-MIT.txt | node_modules/unicode-property-aliases-ecmascript/LICENSE-MIT.txt | node_modules/emoji-regex/LICENSE-MIT.txt | node_modules/regenerate-unicode-properties/LICENSE-MIT.txt`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/json-schema-traverse/LICENSE`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/json-schema-traverse/LICENSE | node_modules/fast-deep-equal/LICENSE | node_modules/eslint/node_modules/json-schema-traverse/LICENSE | node_modules/@eslint/eslintrc/node_modules/json-schema-traverse/LICENSE`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/json-stable-stringify-without-jsonify/.npmignore`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/json-stable-stringify-without-jsonify/.npmignore | node_modules/stackback/.npmignore`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/json-stable-stringify-without-jsonify/LICENSE`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/json-stable-stringify-without-jsonify/LICENSE | node_modules/concat-map/LICENSE`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/json-stable-stringify-without-jsonify/example/key_cmp.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/json-stable-stringify-without-jsonify/example/key_cmp.js | node_modules/fast-json-stable-stringify/example/key_cmp.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/json-stable-stringify-without-jsonify/example/nested.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/json-stable-stringify-without-jsonify/example/nested.js | node_modules/fast-json-stable-stringify/example/nested.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/json-stable-stringify-without-jsonify/example/str.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/json-stable-stringify-without-jsonify/example/str.js | node_modules/fast-json-stable-stringify/example/str.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/json-stable-stringify-without-jsonify/example/value_cmp.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/json-stable-stringify-without-jsonify/example/value_cmp.js | node_modules/fast-json-stable-stringify/example/value_cmp.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/lru-cache/LICENSE`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/lru-cache/LICENSE | node_modules/semver/LICENSE | node_modules/yallist/LICENSE | node_modules/which/LICENSE | node_modules/isexe/LICENSE | node_modules/eslint-plugin-react/node_modules/minimatch/LICENSE | node_modules/eslint/node_modules/minimatch/LICENSE | node_modules/@eslint/eslintrc/node_modules/minimatch/LICENSE | node_modules/@eslint/config-array/node_modules/minimatch/LICENSE`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/magic-string/dist/magic-string.cjs.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/magic-string/dist/magic-string.cjs.d.ts | node_modules/magic-string/dist/magic-string.es.d.mts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/math-intrinsics/.eslintrc`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/math-intrinsics/.eslintrc | node_modules/es-object-atoms/.eslintrc`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/math-intrinsics/LICENSE`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/math-intrinsics/LICENSE | node_modules/dunder-proto/LICENSE`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/minimatch/dist/esm/assert-valid-pattern.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/minimatch/dist/esm/assert-valid-pattern.d.ts | node_modules/minimatch/dist/commonjs/assert-valid-pattern.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/minimatch/dist/esm/assert-valid-pattern.d.ts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/minimatch/dist/esm/assert-valid-pattern.d.ts.map | node_modules/minimatch/dist/commonjs/assert-valid-pattern.d.ts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/minimatch/dist/esm/ast.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/minimatch/dist/esm/ast.d.ts | node_modules/minimatch/dist/commonjs/ast.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/minimatch/dist/esm/ast.d.ts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/minimatch/dist/esm/ast.d.ts.map | node_modules/minimatch/dist/commonjs/ast.d.ts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/minimatch/dist/esm/brace-expressions.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/minimatch/dist/esm/brace-expressions.d.ts | node_modules/minimatch/dist/commonjs/brace-expressions.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/minimatch/dist/esm/brace-expressions.d.ts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/minimatch/dist/esm/brace-expressions.d.ts.map | node_modules/minimatch/dist/commonjs/brace-expressions.d.ts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/minimatch/dist/esm/escape.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/minimatch/dist/esm/escape.d.ts | node_modules/minimatch/dist/commonjs/escape.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/minimatch/dist/esm/escape.d.ts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/minimatch/dist/esm/escape.d.ts.map | node_modules/minimatch/dist/commonjs/escape.d.ts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/minimatch/dist/esm/index.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/minimatch/dist/esm/index.d.ts | node_modules/minimatch/dist/commonjs/index.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/minimatch/dist/esm/index.d.ts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/minimatch/dist/esm/index.d.ts.map | node_modules/minimatch/dist/commonjs/index.d.ts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/minimatch/dist/esm/unescape.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/minimatch/dist/esm/unescape.d.ts | node_modules/minimatch/dist/commonjs/unescape.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/minimatch/dist/esm/unescape.d.ts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/minimatch/dist/esm/unescape.d.ts.map | node_modules/minimatch/dist/commonjs/unescape.d.ts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/minipass/LICENSE.md`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/minipass/LICENSE.md | node_modules/path-scurry/LICENSE.md | node_modules/path-scurry/node_modules/lru-cache/LICENSE.md | node_modules/jsdom/node_modules/lru-cache/LICENSE.md`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/minipass/dist/esm/index.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/minipass/dist/esm/index.d.ts | node_modules/minipass/dist/commonjs/index.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/minipass/dist/esm/index.d.ts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/minipass/dist/esm/index.d.ts.map | node_modules/minipass/dist/commonjs/index.d.ts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/nanoid/index.d.cts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/nanoid/index.d.cts | node_modules/nanoid/index.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/nanoid/non-secure/package.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/nanoid/non-secure/package.json | node_modules/nanoid/url-alphabet/package.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/node-exports-info/.nycrc`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/node-exports-info/.nycrc | node_modules/define-data-property/.nycrc | node_modules/which-boxed-primitive/.nycrc | node_modules/has-tostringtag/.nycrc | node_modules/side-channel-list/.nycrc | node_modules/data-view-byte-offset/.nycrc | node_modules/function-bind/.nycrc | node_modules/typed-array-length/.nycrc | node_modules/dunder-proto/.nycrc | node_modules/hasown/.nycrc | node_modules/side-channel-weakmap/.nycrc | node_modules/data-view-buffer/.nycrc | node_modules/typed-array-byte-length/.nycrc | node_modules/unbox-primitive/.nycrc | node_modules/typed-array-byte-offset/.nycrc | node_modules/array-buffer-byte-length/.nycrc | node_modules/safe-array-concat/.nycrc | node_modules/stop-iteration-iterator/.nycrc | node_modules/side-channel/.nycrc | node_modules/set-function-length/.nycrc | node_modules/safe-regex-test/.nycrc | node_modules/which-collection/.nycrc | node_modules/safe-push-apply/.nycrc | node_modules/which-typed-array/.nycrc | node_modules/data-view-byte-length/.nycrc | node_modules/side-channel-map/.nycrc | node_modules/typed-array-buffer/.nycrc`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/node-exports-info/LICENSE`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/node-exports-info/LICENSE | node_modules/has-property-descriptors/LICENSE | node_modules/has-proto/LICENSE | node_modules/supports-preserve-symlinks-flag/LICENSE`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/node-exports-info/tsconfig.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/node-exports-info/tsconfig.json | node_modules/is-typed-array/tsconfig.json | node_modules/unbox-primitive/tsconfig.json | node_modules/es-abstract-get/tsconfig.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/object.fromentries/test/implementation.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/object.fromentries/test/implementation.js | node_modules/object.entries/test/implementation.js | node_modules/object.values/test/implementation.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/object.values/index.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/object.values/index.js | node_modules/object.entries/index.js | node_modules/object.fromentries/index.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/package-json-from-dist/LICENSE.md`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/package-json-from-dist/LICENSE.md | node_modules/glob/LICENSE.md`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/package-json-from-dist/dist/esm/index.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/package-json-from-dist/dist/esm/index.d.ts | node_modules/package-json-from-dist/dist/commonjs/index.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/package-json-from-dist/dist/esm/index.d.ts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/package-json-from-dist/dist/esm/index.d.ts.map | node_modules/package-json-from-dist/dist/commonjs/index.d.ts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/dist/esm/index.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/dist/esm/index.d.ts | node_modules/path-scurry/dist/commonjs/index.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/dist/esm/index.d.ts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/dist/esm/index.d.ts.map | node_modules/path-scurry/dist/commonjs/index.d.ts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/README.md`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/README.md | node_modules/jsdom/node_modules/lru-cache/README.md`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/browser/diagnostics-channel-browser.d.ts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/browser/diagnostics-channel-browser.d.ts.map | node_modules/path-scurry/node_modules/lru-cache/dist/esm/browser/diagnostics-channel-browser.d.ts.map | node_modules/jsdom/node_modules/lru-cache/dist/commonjs/browser/diagnostics-channel-browser.d.ts.map | node_modules/jsdom/node_modules/lru-cache/dist/esm/browser/diagnostics-channel-browser.d.ts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/browser/diagnostics-channel-browser.js.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/browser/diagnostics-channel-browser.js.map | node_modules/jsdom/node_modules/lru-cache/dist/commonjs/browser/diagnostics-channel-browser.js.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/browser/diagnostics-channel.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/browser/diagnostics-channel.d.ts | node_modules/path-scurry/node_modules/lru-cache/dist/esm/browser/diagnostics-channel.d.ts | node_modules/jsdom/node_modules/lru-cache/dist/commonjs/browser/diagnostics-channel.d.ts | node_modules/jsdom/node_modules/lru-cache/dist/esm/browser/diagnostics-channel.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/browser/diagnostics-channel.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/browser/diagnostics-channel.js | node_modules/jsdom/node_modules/lru-cache/dist/commonjs/browser/diagnostics-channel.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/browser/index.d.ts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/browser/index.d.ts.map | node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/node/index.d.ts.map | node_modules/path-scurry/node_modules/lru-cache/dist/esm/browser/index.d.ts.map | node_modules/path-scurry/node_modules/lru-cache/dist/esm/node/index.d.ts.map | node_modules/jsdom/node_modules/lru-cache/dist/commonjs/browser/index.d.ts.map | node_modules/jsdom/node_modules/lru-cache/dist/commonjs/node/index.d.ts.map | node_modules/jsdom/node_modules/lru-cache/dist/esm/browser/index.d.ts.map | node_modules/jsdom/node_modules/lru-cache/dist/esm/node/index.d.ts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/browser/index.js.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/browser/index.js.map | node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/node/index.js.map | node_modules/jsdom/node_modules/lru-cache/dist/commonjs/browser/index.js.map | node_modules/jsdom/node_modules/lru-cache/dist/commonjs/node/index.js.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/browser/index.min.js.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/browser/index.min.js.map | node_modules/jsdom/node_modules/lru-cache/dist/commonjs/browser/index.min.js.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/browser/perf.d.ts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/browser/perf.d.ts.map | node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/node/perf.d.ts.map | node_modules/path-scurry/node_modules/lru-cache/dist/esm/browser/perf.d.ts.map | node_modules/path-scurry/node_modules/lru-cache/dist/esm/node/perf.d.ts.map | node_modules/jsdom/node_modules/lru-cache/dist/commonjs/browser/perf.d.ts.map | node_modules/jsdom/node_modules/lru-cache/dist/commonjs/node/perf.d.ts.map | node_modules/jsdom/node_modules/lru-cache/dist/esm/browser/perf.d.ts.map | node_modules/jsdom/node_modules/lru-cache/dist/esm/node/perf.d.ts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/browser/perf.js.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/browser/perf.js.map | node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/node/perf.js.map | node_modules/jsdom/node_modules/lru-cache/dist/commonjs/browser/perf.js.map | node_modules/jsdom/node_modules/lru-cache/dist/commonjs/node/perf.js.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/diagnostics-channel-cjs.cjs.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/diagnostics-channel-cjs.cjs.map | node_modules/jsdom/node_modules/lru-cache/dist/commonjs/diagnostics-channel-cjs.cjs.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/diagnostics-channel-cjs.d.cts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/diagnostics-channel-cjs.d.cts.map | node_modules/jsdom/node_modules/lru-cache/dist/commonjs/diagnostics-channel-cjs.d.cts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/diagnostics-channel.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/diagnostics-channel.d.ts | node_modules/jsdom/node_modules/lru-cache/dist/commonjs/diagnostics-channel.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/diagnostics-channel.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/diagnostics-channel.js | node_modules/jsdom/node_modules/lru-cache/dist/commonjs/diagnostics-channel.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/index.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/index.js | node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/browser/index.js | node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/node/index.js | node_modules/jsdom/node_modules/lru-cache/dist/commonjs/index.js | node_modules/jsdom/node_modules/lru-cache/dist/commonjs/browser/index.js | node_modules/jsdom/node_modules/lru-cache/dist/commonjs/node/index.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/index.js.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/index.js.map | node_modules/jsdom/node_modules/lru-cache/dist/commonjs/index.js.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/index.min.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/index.min.js | node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/browser/index.min.js | node_modules/jsdom/node_modules/lru-cache/dist/commonjs/index.min.js | node_modules/jsdom/node_modules/lru-cache/dist/commonjs/browser/index.min.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/index.min.js.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/index.min.js.map | node_modules/jsdom/node_modules/lru-cache/dist/commonjs/index.min.js.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/node/diagnostics-channel-node.d.ts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/node/diagnostics-channel-node.d.ts.map | node_modules/path-scurry/node_modules/lru-cache/dist/esm/node/diagnostics-channel-node.d.ts.map | node_modules/jsdom/node_modules/lru-cache/dist/commonjs/node/diagnostics-channel-node.d.ts.map | node_modules/jsdom/node_modules/lru-cache/dist/esm/node/diagnostics-channel-node.d.ts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/node/diagnostics-channel-node.js.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/node/diagnostics-channel-node.js.map | node_modules/jsdom/node_modules/lru-cache/dist/commonjs/node/diagnostics-channel-node.js.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/node/diagnostics-channel.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/node/diagnostics-channel.d.ts | node_modules/path-scurry/node_modules/lru-cache/dist/esm/node/diagnostics-channel.d.ts | node_modules/jsdom/node_modules/lru-cache/dist/commonjs/node/diagnostics-channel.d.ts | node_modules/jsdom/node_modules/lru-cache/dist/esm/node/diagnostics-channel.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/node/diagnostics-channel.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/node/diagnostics-channel.js | node_modules/jsdom/node_modules/lru-cache/dist/commonjs/node/diagnostics-channel.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/node/index.min.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/node/index.min.js | node_modules/jsdom/node_modules/lru-cache/dist/commonjs/node/index.min.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/node/index.min.js.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/node/index.min.js.map | node_modules/jsdom/node_modules/lru-cache/dist/commonjs/node/index.min.js.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/package.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/package.json | node_modules/path-scurry/dist/commonjs/package.json | node_modules/minipass/dist/commonjs/package.json | node_modules/glob/dist/commonjs/package.json | node_modules/yargs/helpers/package.json | node_modules/package-json-from-dist/dist/commonjs/package.json | node_modules/minimatch/dist/commonjs/package.json | node_modules/jsdom/node_modules/lru-cache/dist/commonjs/package.json | node_modules/foreground-child/dist/commonjs/package.json | node_modules/brace-expansion/dist/commonjs/package.json | node_modules/@isaacs/cliui/dist/commonjs/package.json | node_modules/jackspeak/dist/commonjs/package.json | node_modules/signal-exit/dist/cjs/package.json | node_modules/balanced-match/dist/commonjs/package.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/perf.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/perf.js | node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/browser/perf.js | node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/node/perf.js | node_modules/jsdom/node_modules/lru-cache/dist/commonjs/perf.js | node_modules/jsdom/node_modules/lru-cache/dist/commonjs/browser/perf.js | node_modules/jsdom/node_modules/lru-cache/dist/commonjs/node/perf.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/perf.js.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/perf.js.map | node_modules/jsdom/node_modules/lru-cache/dist/commonjs/perf.js.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/esm/browser/diagnostics-channel-browser.js.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/esm/browser/diagnostics-channel-browser.js.map | node_modules/jsdom/node_modules/lru-cache/dist/esm/browser/diagnostics-channel-browser.js.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/esm/browser/diagnostics-channel.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/esm/browser/diagnostics-channel.js | node_modules/jsdom/node_modules/lru-cache/dist/esm/browser/diagnostics-channel.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/esm/browser/index.js.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/esm/browser/index.js.map | node_modules/path-scurry/node_modules/lru-cache/dist/esm/node/index.js.map | node_modules/jsdom/node_modules/lru-cache/dist/esm/browser/index.js.map | node_modules/jsdom/node_modules/lru-cache/dist/esm/node/index.js.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/esm/browser/index.min.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/esm/browser/index.min.js | node_modules/jsdom/node_modules/lru-cache/dist/esm/browser/index.min.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/esm/browser/index.min.js.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/esm/browser/index.min.js.map | node_modules/jsdom/node_modules/lru-cache/dist/esm/browser/index.min.js.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/esm/browser/perf.js.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/esm/browser/perf.js.map | node_modules/path-scurry/node_modules/lru-cache/dist/esm/node/perf.js.map | node_modules/jsdom/node_modules/lru-cache/dist/esm/browser/perf.js.map | node_modules/jsdom/node_modules/lru-cache/dist/esm/node/perf.js.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/esm/diagnostics-channel-esm.d.mts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/esm/diagnostics-channel-esm.d.mts.map | node_modules/jsdom/node_modules/lru-cache/dist/esm/diagnostics-channel-esm.d.mts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/esm/diagnostics-channel-esm.mjs.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/esm/diagnostics-channel-esm.mjs.map | node_modules/jsdom/node_modules/lru-cache/dist/esm/diagnostics-channel-esm.mjs.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/esm/diagnostics-channel.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/esm/diagnostics-channel.d.ts | node_modules/jsdom/node_modules/lru-cache/dist/esm/diagnostics-channel.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/esm/diagnostics-channel.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/esm/diagnostics-channel.js | node_modules/jsdom/node_modules/lru-cache/dist/esm/diagnostics-channel.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/esm/index.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/esm/index.d.ts | node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/index.d.ts | node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/browser/index.d.ts | node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/node/index.d.ts | node_modules/path-scurry/node_modules/lru-cache/dist/esm/browser/index.d.ts | node_modules/path-scurry/node_modules/lru-cache/dist/esm/node/index.d.ts | node_modules/jsdom/node_modules/lru-cache/dist/esm/index.d.ts | node_modules/jsdom/node_modules/lru-cache/dist/commonjs/index.d.ts | node_modules/jsdom/node_modules/lru-cache/dist/commonjs/browser/index.d.ts | node_modules/jsdom/node_modules/lru-cache/dist/commonjs/node/index.d.ts | node_modules/jsdom/node_modules/lru-cache/dist/esm/browser/index.d.ts | node_modules/jsdom/node_modules/lru-cache/dist/esm/node/index.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/esm/index.d.ts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/esm/index.d.ts.map | node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/index.d.ts.map | node_modules/jsdom/node_modules/lru-cache/dist/esm/index.d.ts.map | node_modules/jsdom/node_modules/lru-cache/dist/commonjs/index.d.ts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/esm/index.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/esm/index.js | node_modules/path-scurry/node_modules/lru-cache/dist/esm/browser/index.js | node_modules/path-scurry/node_modules/lru-cache/dist/esm/node/index.js | node_modules/jsdom/node_modules/lru-cache/dist/esm/index.js | node_modules/jsdom/node_modules/lru-cache/dist/esm/browser/index.js | node_modules/jsdom/node_modules/lru-cache/dist/esm/node/index.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/esm/index.js.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/esm/index.js.map | node_modules/jsdom/node_modules/lru-cache/dist/esm/index.js.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/esm/index.min.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/esm/index.min.js | node_modules/jsdom/node_modules/lru-cache/dist/esm/index.min.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/esm/index.min.js.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/esm/index.min.js.map | node_modules/jsdom/node_modules/lru-cache/dist/esm/index.min.js.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/esm/node/diagnostics-channel-node.js.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/esm/node/diagnostics-channel-node.js.map | node_modules/jsdom/node_modules/lru-cache/dist/esm/node/diagnostics-channel-node.js.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/esm/node/diagnostics-channel.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/esm/node/diagnostics-channel.js | node_modules/jsdom/node_modules/lru-cache/dist/esm/node/diagnostics-channel.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/esm/node/index.min.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/esm/node/index.min.js | node_modules/jsdom/node_modules/lru-cache/dist/esm/node/index.min.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/esm/node/index.min.js.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/esm/node/index.min.js.map | node_modules/jsdom/node_modules/lru-cache/dist/esm/node/index.min.js.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/esm/package.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/esm/package.json | node_modules/path-scurry/dist/esm/package.json | node_modules/.vite/deps/package.json | node_modules/minipass/dist/esm/package.json | node_modules/glob/dist/esm/package.json | node_modules/package-json-from-dist/dist/esm/package.json | node_modules/minimatch/dist/esm/package.json | node_modules/jsdom/node_modules/lru-cache/dist/esm/package.json | node_modules/foreground-child/dist/esm/package.json | node_modules/brace-expansion/dist/esm/package.json | node_modules/@isaacs/cliui/dist/esm/package.json | node_modules/jackspeak/dist/esm/package.json | node_modules/vite-plugin-pwa/types/package.json | node_modules/signal-exit/dist/mjs/package.json | node_modules/balanced-match/dist/esm/package.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/esm/perf.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/esm/perf.d.ts | node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/perf.d.ts | node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/browser/perf.d.ts | node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/node/perf.d.ts | node_modules/path-scurry/node_modules/lru-cache/dist/esm/browser/perf.d.ts | node_modules/path-scurry/node_modules/lru-cache/dist/esm/node/perf.d.ts | node_modules/jsdom/node_modules/lru-cache/dist/esm/perf.d.ts | node_modules/jsdom/node_modules/lru-cache/dist/commonjs/perf.d.ts | node_modules/jsdom/node_modules/lru-cache/dist/commonjs/browser/perf.d.ts | node_modules/jsdom/node_modules/lru-cache/dist/commonjs/node/perf.d.ts | node_modules/jsdom/node_modules/lru-cache/dist/esm/browser/perf.d.ts | node_modules/jsdom/node_modules/lru-cache/dist/esm/node/perf.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/esm/perf.d.ts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/esm/perf.d.ts.map | node_modules/path-scurry/node_modules/lru-cache/dist/commonjs/perf.d.ts.map | node_modules/jsdom/node_modules/lru-cache/dist/esm/perf.d.ts.map | node_modules/jsdom/node_modules/lru-cache/dist/commonjs/perf.d.ts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/esm/perf.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/esm/perf.js | node_modules/path-scurry/node_modules/lru-cache/dist/esm/browser/perf.js | node_modules/path-scurry/node_modules/lru-cache/dist/esm/node/perf.js | node_modules/jsdom/node_modules/lru-cache/dist/esm/perf.js | node_modules/jsdom/node_modules/lru-cache/dist/esm/browser/perf.js | node_modules/jsdom/node_modules/lru-cache/dist/esm/node/perf.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/dist/esm/perf.js.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/dist/esm/perf.js.map | node_modules/jsdom/node_modules/lru-cache/dist/esm/perf.js.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/path-scurry/node_modules/lru-cache/package.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/path-scurry/node_modules/lru-cache/package.json | node_modules/jsdom/node_modules/lru-cache/package.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/pathe/dist/index.d.mts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/pathe/dist/index.d.mts | node_modules/pathe/dist/index.d.cts | node_modules/pathe/dist/index.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/pathe/dist/utils.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/pathe/dist/utils.d.ts | node_modules/pathe/dist/utils.d.cts | node_modules/pathe/dist/utils.d.mts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/prelude-ls/LICENSE`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/prelude-ls/LICENSE | node_modules/levn/LICENSE | node_modules/optionator/LICENSE | node_modules/type-check/LICENSE`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/pretty-format/build/plugins/AsymmetricMatcher.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/pretty-format/build/plugins/AsymmetricMatcher.d.ts | node_modules/pretty-format/build/plugins/Immutable.d.ts | node_modules/pretty-format/build/plugins/ReactElement.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/pretty-format/build/plugins/ConvertAnsi.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/pretty-format/build/plugins/ConvertAnsi.d.ts | node_modules/pretty-format/build/plugins/DOMElement.d.ts | node_modules/pretty-format/build/plugins/DOMCollection.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/puppeteer/README.md`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/puppeteer/README.md | node_modules/puppeteer-core/README.md`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/react-is/LICENSE`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/react-is/LICENSE | node_modules/pretty-format/LICENSE | node_modules/pretty-format/node_modules/react-is/LICENSE`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/react-is/README.md`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/react-is/README.md | node_modules/pretty-format/node_modules/react-is/README.md`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/react-is/index.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/react-is/index.js | node_modules/pretty-format/node_modules/react-is/index.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/react-router-dom/LICENSE.md`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/react-router-dom/LICENSE.md | node_modules/react-router/LICENSE.md`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/react-router-dom/dist/index.d.mts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/react-router-dom/dist/index.d.mts | node_modules/react-router-dom/dist/index.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/react-router/dist/development/browser-B2PdsXXH.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/react-router/dist/development/browser-B2PdsXXH.d.ts | node_modules/react-router/dist/production/browser-B2PdsXXH.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/react-router/dist/development/browser-DBmQ1yAR.d.mts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/react-router/dist/development/browser-DBmQ1yAR.d.mts | node_modules/react-router/dist/production/browser-DBmQ1yAR.d.mts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/react-router/dist/development/context-CeD5LmaF.d.mts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/react-router/dist/development/context-CeD5LmaF.d.mts | node_modules/react-router/dist/production/context-CeD5LmaF.d.mts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/react-router/dist/development/data-CjO11-hU.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/react-router/dist/development/data-CjO11-hU.d.ts | node_modules/react-router/dist/production/data-CjO11-hU.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/react-router/dist/development/data-DEjBmEfD.d.mts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/react-router/dist/development/data-DEjBmEfD.d.mts | node_modules/react-router/dist/production/data-DEjBmEfD.d.mts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/react-router/dist/development/dom-export.d.mts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/react-router/dist/development/dom-export.d.mts | node_modules/react-router/dist/production/dom-export.d.mts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/react-router/dist/development/dom-export.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/react-router/dist/development/dom-export.d.ts | node_modules/react-router/dist/production/dom-export.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/react-router/dist/development/index-react-server-client-3ykjivgQ.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/react-router/dist/development/index-react-server-client-3ykjivgQ.d.ts | node_modules/react-router/dist/production/index-react-server-client-3ykjivgQ.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/react-router/dist/development/index-react-server-client-CACgcj2J.d.mts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/react-router/dist/development/index-react-server-client-CACgcj2J.d.mts | node_modules/react-router/dist/production/index-react-server-client-CACgcj2J.d.mts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/react-router/dist/development/index-react-server-client.d.mts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/react-router/dist/development/index-react-server-client.d.mts | node_modules/react-router/dist/production/index-react-server-client.d.mts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/react-router/dist/development/index-react-server-client.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/react-router/dist/development/index-react-server-client.d.ts | node_modules/react-router/dist/production/index-react-server-client.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/react-router/dist/development/index-react-server.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/react-router/dist/development/index-react-server.d.ts | node_modules/react-router/dist/development/index-react-server.d.mts | node_modules/react-router/dist/production/index-react-server.d.ts | node_modules/react-router/dist/production/index-react-server.d.mts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/react-router/dist/development/index-react-server.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/react-router/dist/development/index-react-server.js | node_modules/react-router/dist/production/index-react-server.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/react-router/dist/development/index-react-server.mjs`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/react-router/dist/development/index-react-server.mjs | node_modules/react-router/dist/production/index-react-server.mjs`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/react-router/dist/development/index.d.mts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/react-router/dist/development/index.d.mts | node_modules/react-router/dist/production/index.d.mts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/react-router/dist/development/index.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/react-router/dist/development/index.d.ts | node_modules/react-router/dist/production/index.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/react-router/dist/development/instrumentation-Dkmpzd13.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/react-router/dist/development/instrumentation-Dkmpzd13.d.ts | node_modules/react-router/dist/production/instrumentation-Dkmpzd13.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/react-router/dist/development/register-CmkRspdl.d.mts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/react-router/dist/development/register-CmkRspdl.d.mts | node_modules/react-router/dist/production/register-CmkRspdl.d.mts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/react-router/dist/development/register-roq_0qYo.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/react-router/dist/development/register-roq_0qYo.d.ts | node_modules/react-router/dist/production/register-roq_0qYo.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/react-router/dist/production/lib/types/internal.d.mts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/react-router/dist/production/lib/types/internal.d.mts | node_modules/react-router/dist/development/lib/types/internal.d.mts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/react-router/dist/production/lib/types/internal.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/react-router/dist/production/lib/types/internal.d.ts | node_modules/react-router/dist/development/lib/types/internal.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/react-router/dist/production/lib/types/internal.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/react-router/dist/production/lib/types/internal.js | node_modules/react-router/dist/development/lib/types/internal.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/react-router/dist/production/lib/types/internal.mjs`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/react-router/dist/production/lib/types/internal.mjs | node_modules/react-router/dist/development/lib/types/internal.mjs`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/reflect.getprototypeof/LICENSE`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/reflect.getprototypeof/LICENSE | node_modules/array.prototype.tosorted/LICENSE | node_modules/array.prototype.findlast/LICENSE`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Ahom.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Ahom.js | node_modules/regenerate-unicode-properties/Script/Ahom.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Anatolian_Hieroglyphs.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Anatolian_Hieroglyphs.js | node_modules/regenerate-unicode-properties/Script/Anatolian_Hieroglyphs.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Balinese.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Balinese.js | node_modules/regenerate-unicode-properties/Script/Balinese.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Bamum.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Bamum.js | node_modules/regenerate-unicode-properties/Script/Bamum.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Bassa_Vah.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Bassa_Vah.js | node_modules/regenerate-unicode-properties/Script/Bassa_Vah.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Batak.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Batak.js | node_modules/regenerate-unicode-properties/Script/Batak.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Beria_Erfe.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Beria_Erfe.js | node_modules/regenerate-unicode-properties/Script/Beria_Erfe.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Bhaiksuki.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Bhaiksuki.js | node_modules/regenerate-unicode-properties/Script/Bhaiksuki.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Brahmi.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Brahmi.js | node_modules/regenerate-unicode-properties/Script/Brahmi.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Braille.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Braille.js | node_modules/regenerate-unicode-properties/Script/Braille.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Canadian_Aboriginal.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Canadian_Aboriginal.js | node_modules/regenerate-unicode-properties/Script/Canadian_Aboriginal.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Cham.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Cham.js | node_modules/regenerate-unicode-properties/Script/Cham.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Chorasmian.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Chorasmian.js | node_modules/regenerate-unicode-properties/Script/Chorasmian.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Cuneiform.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Cuneiform.js | node_modules/regenerate-unicode-properties/Script/Cuneiform.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Deseret.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Deseret.js | node_modules/regenerate-unicode-properties/Script/Deseret.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Dives_Akuru.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Dives_Akuru.js | node_modules/regenerate-unicode-properties/Script/Dives_Akuru.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Egyptian_Hieroglyphs.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Egyptian_Hieroglyphs.js | node_modules/regenerate-unicode-properties/Script/Egyptian_Hieroglyphs.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Elymaic.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Elymaic.js | node_modules/regenerate-unicode-properties/Script/Elymaic.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Hatran.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Hatran.js | node_modules/regenerate-unicode-properties/Script/Hatran.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Imperial_Aramaic.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Imperial_Aramaic.js | node_modules/regenerate-unicode-properties/Script/Imperial_Aramaic.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Inscriptional_Pahlavi.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Inscriptional_Pahlavi.js | node_modules/regenerate-unicode-properties/Script/Inscriptional_Pahlavi.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Inscriptional_Parthian.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Inscriptional_Parthian.js | node_modules/regenerate-unicode-properties/Script/Inscriptional_Parthian.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Kawi.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Kawi.js | node_modules/regenerate-unicode-properties/Script/Kawi.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Kharoshthi.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Kharoshthi.js | node_modules/regenerate-unicode-properties/Script/Kharoshthi.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Khitan_Small_Script.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Khitan_Small_Script.js | node_modules/regenerate-unicode-properties/Script/Khitan_Small_Script.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Khmer.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Khmer.js | node_modules/regenerate-unicode-properties/Script/Khmer.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Kirat_Rai.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Kirat_Rai.js | node_modules/regenerate-unicode-properties/Script/Kirat_Rai.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Lao.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Lao.js | node_modules/regenerate-unicode-properties/Script/Lao.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Lepcha.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Lepcha.js | node_modules/regenerate-unicode-properties/Script/Lepcha.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Makasar.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Makasar.js | node_modules/regenerate-unicode-properties/Script/Makasar.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Marchen.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Marchen.js | node_modules/regenerate-unicode-properties/Script/Marchen.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Medefaidrin.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Medefaidrin.js | node_modules/regenerate-unicode-properties/Script/Medefaidrin.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Meetei_Mayek.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Meetei_Mayek.js | node_modules/regenerate-unicode-properties/Script/Meetei_Mayek.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Mende_Kikakui.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Mende_Kikakui.js | node_modules/regenerate-unicode-properties/Script/Mende_Kikakui.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Meroitic_Cursive.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Meroitic_Cursive.js | node_modules/regenerate-unicode-properties/Script/Meroitic_Cursive.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Miao.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Miao.js | node_modules/regenerate-unicode-properties/Script/Miao.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Mro.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Mro.js | node_modules/regenerate-unicode-properties/Script/Mro.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Nabataean.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Nabataean.js | node_modules/regenerate-unicode-properties/Script/Nabataean.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Nag_Mundari.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Nag_Mundari.js | node_modules/regenerate-unicode-properties/Script/Nag_Mundari.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/New_Tai_Lue.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/New_Tai_Lue.js | node_modules/regenerate-unicode-properties/Script/New_Tai_Lue.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Nushu.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Nushu.js | node_modules/regenerate-unicode-properties/Script/Nushu.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Nyiakeng_Puachue_Hmong.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Nyiakeng_Puachue_Hmong.js | node_modules/regenerate-unicode-properties/Script/Nyiakeng_Puachue_Hmong.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Ogham.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Ogham.js | node_modules/regenerate-unicode-properties/Script/Ogham.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Ol_Chiki.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Ol_Chiki.js | node_modules/regenerate-unicode-properties/Script/Ol_Chiki.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Old_Italic.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Old_Italic.js | node_modules/regenerate-unicode-properties/Script/Old_Italic.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Old_North_Arabian.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Old_North_Arabian.js | node_modules/regenerate-unicode-properties/Script/Old_North_Arabian.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Old_Persian.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Old_Persian.js | node_modules/regenerate-unicode-properties/Script/Old_Persian.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Old_Sogdian.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Old_Sogdian.js | node_modules/regenerate-unicode-properties/Script/Old_Sogdian.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Old_South_Arabian.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Old_South_Arabian.js | node_modules/regenerate-unicode-properties/Script/Old_South_Arabian.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Osmanya.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Osmanya.js | node_modules/regenerate-unicode-properties/Script/Osmanya.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Pahawh_Hmong.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Pahawh_Hmong.js | node_modules/regenerate-unicode-properties/Script/Pahawh_Hmong.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Palmyrene.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Palmyrene.js | node_modules/regenerate-unicode-properties/Script/Palmyrene.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Pau_Cin_Hau.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Pau_Cin_Hau.js | node_modules/regenerate-unicode-properties/Script/Pau_Cin_Hau.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Phoenician.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Phoenician.js | node_modules/regenerate-unicode-properties/Script/Phoenician.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Rejang.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Rejang.js | node_modules/regenerate-unicode-properties/Script/Rejang.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Saurashtra.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Saurashtra.js | node_modules/regenerate-unicode-properties/Script/Saurashtra.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Siddham.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Siddham.js | node_modules/regenerate-unicode-properties/Script/Siddham.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Sidetic.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Sidetic.js | node_modules/regenerate-unicode-properties/Script/Sidetic.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/SignWriting.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/SignWriting.js | node_modules/regenerate-unicode-properties/Script/SignWriting.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Sora_Sompeng.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Sora_Sompeng.js | node_modules/regenerate-unicode-properties/Script/Sora_Sompeng.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Soyombo.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Soyombo.js | node_modules/regenerate-unicode-properties/Script/Soyombo.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Sundanese.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Sundanese.js | node_modules/regenerate-unicode-properties/Script/Sundanese.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Tai_Tham.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Tai_Tham.js | node_modules/regenerate-unicode-properties/Script/Tai_Tham.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Tai_Viet.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Tai_Viet.js | node_modules/regenerate-unicode-properties/Script/Tai_Viet.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Tai_Yo.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Tai_Yo.js | node_modules/regenerate-unicode-properties/Script/Tai_Yo.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Tangsa.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Tangsa.js | node_modules/regenerate-unicode-properties/Script/Tangsa.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Tolong_Siki.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Tolong_Siki.js | node_modules/regenerate-unicode-properties/Script/Tolong_Siki.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Ugaritic.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Ugaritic.js | node_modules/regenerate-unicode-properties/Script/Ugaritic.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Unknown.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Unknown.js | node_modules/regenerate-unicode-properties/Script/Unknown.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Vai.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Vai.js | node_modules/regenerate-unicode-properties/Script/Vai.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Vithkuqi.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Vithkuqi.js | node_modules/regenerate-unicode-properties/Script/Vithkuqi.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Wancho.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Wancho.js | node_modules/regenerate-unicode-properties/Script/Wancho.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Warang_Citi.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Warang_Citi.js | node_modules/regenerate-unicode-properties/Script/Warang_Citi.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/regenerate-unicode-properties/Script_Extensions/Zanabazar_Square.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/regenerate-unicode-properties/Script_Extensions/Zanabazar_Square.js | node_modules/regenerate-unicode-properties/Script/Zanabazar_Square.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/resolve/LICENSE`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/resolve/LICENSE | node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/LICENSE | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/LICENSE`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/resolve/SECURITY.md`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/resolve/SECURITY.md | node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/SECURITY.md | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/SECURITY.md`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/resolve/async.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/resolve/async.js | node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/async.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/async.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/resolve/sync.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/resolve/sync.js | node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/sync.js | node_modules/@rollup/plugin-node-resolve/node_modules/resolve/sync.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/rollup/dist/es/package.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/rollup/dist/es/package.json | node_modules/@rollup/pluginutils/node_modules/estree-walker/dist/esm/package.json | node_modules/@rollup/pluginutils/dist/es/package.json | node_modules/@rollup/plugin-node-resolve/dist/es/package.json | node_modules/@rollup/plugin-terser/dist/es/package.json | node_modules/@rollup/plugin-replace/dist/es/package.json | node_modules/@rollup/plugin-babel/dist/es/package.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/safe-array-concat/.eslintrc`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/safe-array-concat/.eslintrc | node_modules/safe-push-apply/.eslintrc`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/safe-array-concat/tsconfig.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/safe-array-concat/tsconfig.json | node_modules/safe-push-apply/tsconfig.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/scheduler/LICENSE`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/scheduler/LICENSE | node_modules/react-refresh/LICENSE | node_modules/react-dom/LICENSE | node_modules/react/LICENSE`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/set-function-length/.github/FUNDING.yml`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/set-function-length/.github/FUNDING.yml | node_modules/set-function-name/.github/FUNDING.yml`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/set-function-name/LICENSE`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/set-function-name/LICENSE | node_modules/hasown/LICENSE | node_modules/set-function-length/LICENSE`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/set-proto/.eslintrc`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/set-proto/.eslintrc | node_modules/get-proto/.eslintrc`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/side-channel-list/.editorconfig`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/side-channel-list/.editorconfig | node_modules/side-channel-weakmap/.editorconfig | node_modules/side-channel/.editorconfig | node_modules/side-channel-map/.editorconfig`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/side-channel-list/.eslintrc`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/side-channel-list/.eslintrc | node_modules/side-channel-map/.eslintrc`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/side-channel-list/tsconfig.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/side-channel-list/tsconfig.json | node_modules/data-view-byte-offset/tsconfig.json | node_modules/async-function/tsconfig.json | node_modules/es-to-primitive/tsconfig.json | node_modules/side-channel-weakmap/tsconfig.json | node_modules/side-channel/tsconfig.json | node_modules/set-function-length/tsconfig.json | node_modules/generator-function/tsconfig.json | node_modules/gopd/tsconfig.json | node_modules/es-set-tostringtag/tsconfig.json | node_modules/side-channel-map/tsconfig.json | node_modules/typed-array-buffer/tsconfig.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/side-channel-weakmap/.eslintrc`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/side-channel-weakmap/.eslintrc | node_modules/side-channel/.eslintrc`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/signal-exit/dist/mjs/browser.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/signal-exit/dist/mjs/browser.d.ts | node_modules/signal-exit/dist/cjs/browser.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/signal-exit/dist/mjs/browser.d.ts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/signal-exit/dist/mjs/browser.d.ts.map | node_modules/signal-exit/dist/cjs/browser.d.ts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/signal-exit/dist/mjs/index.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/signal-exit/dist/mjs/index.d.ts | node_modules/signal-exit/dist/cjs/index.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/signal-exit/dist/mjs/index.d.ts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/signal-exit/dist/mjs/index.d.ts.map | node_modules/signal-exit/dist/cjs/index.d.ts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/signal-exit/dist/mjs/signals.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/signal-exit/dist/mjs/signals.d.ts | node_modules/signal-exit/dist/cjs/signals.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/signal-exit/dist/mjs/signals.d.ts.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/signal-exit/dist/mjs/signals.d.ts.map | node_modules/signal-exit/dist/cjs/signals.d.ts.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/source-map-js/lib/array-set.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/source-map-js/lib/array-set.js | node_modules/source-map-support/node_modules/source-map/lib/array-set.js | node_modules/css/node_modules/source-map/lib/array-set.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/source-map-js/lib/base64-vlq.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/source-map-js/lib/base64-vlq.js | node_modules/source-map-support/node_modules/source-map/lib/base64-vlq.js | node_modules/css/node_modules/source-map/lib/base64-vlq.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/source-map-js/lib/base64.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/source-map-js/lib/base64.js | node_modules/source-map-support/node_modules/source-map/lib/base64.js | node_modules/css/node_modules/source-map/lib/base64.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/source-map-js/lib/binary-search.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/source-map-js/lib/binary-search.js | node_modules/source-map-support/node_modules/source-map/lib/binary-search.js | node_modules/css/node_modules/source-map/lib/binary-search.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/source-map-js/lib/mapping-list.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/source-map-js/lib/mapping-list.js | node_modules/source-map-support/node_modules/source-map/lib/mapping-list.js | node_modules/css/node_modules/source-map/lib/mapping-list.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/source-map-js/lib/source-node.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/source-map-js/lib/source-node.js | node_modules/source-map-support/node_modules/source-map/lib/source-node.js | node_modules/css/node_modules/source-map/lib/source-node.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/source-map-js/source-map.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/source-map-js/source-map.js | node_modules/source-map-support/node_modules/source-map/source-map.js | node_modules/css/node_modules/source-map/source-map.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/source-map-support/node_modules/source-map/CHANGELOG.md`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/source-map-support/node_modules/source-map/CHANGELOG.md | node_modules/css/node_modules/source-map/CHANGELOG.md`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/source-map-support/node_modules/source-map/README.md`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/source-map-support/node_modules/source-map/README.md | node_modules/css/node_modules/source-map/README.md`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/source-map-support/node_modules/source-map/dist/source-map.debug.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/source-map-support/node_modules/source-map/dist/source-map.debug.js | node_modules/css/node_modules/source-map/dist/source-map.debug.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/source-map-support/node_modules/source-map/dist/source-map.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/source-map-support/node_modules/source-map/dist/source-map.js | node_modules/css/node_modules/source-map/dist/source-map.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/source-map-support/node_modules/source-map/dist/source-map.min.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/source-map-support/node_modules/source-map/dist/source-map.min.js | node_modules/css/node_modules/source-map/dist/source-map.min.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/source-map-support/node_modules/source-map/dist/source-map.min.js.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/source-map-support/node_modules/source-map/dist/source-map.min.js.map | node_modules/css/node_modules/source-map/dist/source-map.min.js.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/source-map-support/node_modules/source-map/lib/quick-sort.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/source-map-support/node_modules/source-map/lib/quick-sort.js | node_modules/css/node_modules/source-map/lib/quick-sort.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/source-map-support/node_modules/source-map/lib/source-map-consumer.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/source-map-support/node_modules/source-map/lib/source-map-consumer.js | node_modules/css/node_modules/source-map/lib/source-map-consumer.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/source-map-support/node_modules/source-map/lib/source-map-generator.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/source-map-support/node_modules/source-map/lib/source-map-generator.js | node_modules/css/node_modules/source-map/lib/source-map-generator.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/source-map-support/node_modules/source-map/lib/util.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/source-map-support/node_modules/source-map/lib/util.js | node_modules/css/node_modules/source-map/lib/util.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/source-map-support/node_modules/source-map/package.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/source-map-support/node_modules/source-map/package.json | node_modules/css/node_modules/source-map/package.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/source-map-support/node_modules/source-map/source-map.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/source-map-support/node_modules/source-map/source-map.d.ts | node_modules/css/node_modules/source-map/source-map.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/source-map/LICENSE`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/source-map/LICENSE | node_modules/source-map-js/LICENSE | node_modules/source-map-support/node_modules/source-map/LICENSE | node_modules/css/node_modules/source-map/LICENSE`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/string-width/index.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/string-width/index.d.ts | node_modules/cliui/node_modules/string-width/index.d.ts | node_modules/wrap-ansi/node_modules/string-width/index.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/string.prototype.trimend/.eslintrc`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/string.prototype.trimend/.eslintrc | node_modules/string.prototype.trimstart/.eslintrc`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/string.prototype.trimend/LICENSE`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/string.prototype.trimend/LICENSE | node_modules/string.prototype.trimstart/LICENSE`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/string.prototype.trimend/auto.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/string.prototype.trimend/auto.js | node_modules/function.prototype.name/auto.js | node_modules/string.prototype.trimstart/auto.js | node_modules/array.prototype.flat/auto.js | node_modules/string.prototype.trim/auto.js | node_modules/object.values/auto.js | node_modules/reflect.getprototypeof/auto.js | node_modules/array-includes/auto.js | node_modules/object.entries/auto.js | node_modules/regexp.prototype.flags/auto.js | node_modules/arraybuffer.prototype.slice/auto.js | node_modules/array.prototype.tosorted/auto.js | node_modules/array.prototype.findlast/auto.js | node_modules/es-iterator-helpers/auto.js | node_modules/string.prototype.matchall/auto.js | node_modules/globalthis/auto.js | node_modules/array.prototype.flatmap/auto.js | node_modules/object.fromentries/auto.js | node_modules/object.assign/auto.js | node_modules/es-iterator-helpers/Iterator.prototype.take/auto.js | node_modules/es-iterator-helpers/Iterator.zip/auto.js | node_modules/es-iterator-helpers/Iterator.prototype.drop/auto.js | node_modules/es-iterator-helpers/Iterator.prototype.reduce/auto.js | node_modules/es-iterator-helpers/Iterator.prototype.toArray/auto.js | node_modules/es-iterator-helpers/Iterator.prototype.every/auto.js | node_modules/es-iterator-helpers/Iterator.prototype.find/auto.js | node_modules/es-iterator-helpers/Iterator.prototype.forEach/auto.js | node_modules/es-iterator-helpers/Iterator.prototype/auto.js | node_modules/es-iterator-helpers/Iterator.prototype.some/auto.js | node_modules/es-iterator-helpers/Iterator.prototype.includes/auto.js | node_modules/es-iterator-helpers/Iterator/auto.js | node_modules/es-iterator-helpers/Iterator.prototype.map/auto.js | node_modules/es-iterator-helpers/Iterator.from/auto.js | node_modules/es-iterator-helpers/Iterator.prototype.windows/auto.js | node_modules/es-iterator-helpers/Iterator.zipKeyed/auto.js | node_modules/es-iterator-helpers/Iterator.prototype.join/auto.js | node_modules/es-iterator-helpers/Iterator.prototype.filter/auto.js | node_modules/es-iterator-helpers/Iterator.prototype.constructor/auto.js | node_modules/es-iterator-helpers/Iterator.prototype.flatMap/auto.js | node_modules/es-iterator-helpers/Iterator.prototype.chunks/auto.js | node_modules/es-iterator-helpers/Iterator.concat/auto.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/string.prototype.trimend/index.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/string.prototype.trimend/index.js | node_modules/string.prototype.trimstart/index.js | node_modules/string.prototype.trim/index.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/tinybench/LICENSE`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/tinybench/LICENSE | node_modules/tinyrainbow/LICENCE`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/tinybench/dist/index.d.cts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/tinybench/dist/index.d.cts | node_modules/tinybench/dist/index.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/tinyglobby/dist/index.d.mts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/tinyglobby/dist/index.d.mts | node_modules/tinyglobby/dist/index.d.cts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/tldts-core/dist/cjs/src/lookup/interface.js.map`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/tldts-core/dist/cjs/src/lookup/interface.js.map | node_modules/tldts-core/dist/es6/src/lookup/interface.js.map`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/tldts/LICENSE`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/tldts/LICENSE | node_modules/tldts-core/LICENSE`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/tough-cookie/dist/index.d.cts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/tough-cookie/dist/index.d.cts | node_modules/tough-cookie/dist/index.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/typed-array-byte-length/README.md`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/typed-array-byte-length/README.md | node_modules/typed-array-byte-offset/README.md`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/typed-array-byte-offset/.github/FUNDING.yml`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/typed-array-byte-offset/.github/FUNDING.yml | node_modules/typed-array-byte-length/.github/FUNDING.yml | node_modules/typed-array-length/.github/FUNDING.yml`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/typed-array-length/tsconfig.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/typed-array-length/tsconfig.json | node_modules/typed-array-byte-offset/tsconfig.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/uri-js/dist/es5/uri.all.min.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/uri-js/dist/es5/uri.all.min.d.ts | node_modules/uri-js/dist/es5/uri.all.d.ts | node_modules/uri-js/dist/esnext/uri.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/uri-js/dist/esnext/schemes/http.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/uri-js/dist/esnext/schemes/http.d.ts | node_modules/uri-js/dist/esnext/schemes/https.d.ts | node_modules/uri-js/dist/esnext/schemes/wss.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/vite-plugin-pwa/dist/index.d.cts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/vite-plugin-pwa/dist/index.d.cts | node_modules/vite-plugin-pwa/dist/index.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/vitest/import-meta.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/vitest/import-meta.d.ts | node_modules/vite/types/import-meta.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/vitest/optional-runtime-types.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/vitest/optional-runtime-types.d.ts | node_modules/@vitest/spy/optional-types.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/webdriver-bidi-protocol/out/gen/ua-client-hints.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/webdriver-bidi-protocol/out/gen/ua-client-hints.js | node_modules/webdriver-bidi-protocol/out/gen/mapping.js | node_modules/webdriver-bidi-protocol/out/gen/main.js | node_modules/webdriver-bidi-protocol/out/gen/web-bluetooth.js | node_modules/webdriver-bidi-protocol/out/gen/permissions.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/which-boxed-primitive/.editorconfig`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/which-boxed-primitive/.editorconfig | node_modules/functions-have-names/.editorconfig | node_modules/string.prototype.trimend/.editorconfig | node_modules/is-typed-array/.editorconfig | node_modules/string.prototype.trimstart/.editorconfig | node_modules/array.prototype.flat/.editorconfig | node_modules/object.values/.editorconfig | node_modules/is-date-object/.editorconfig | node_modules/object.entries/.editorconfig | node_modules/unbox-primitive/.editorconfig | node_modules/internal-slot/.editorconfig | node_modules/is-data-view/.editorconfig | node_modules/which-typed-array/.editorconfig | node_modules/array.prototype.findlast/.editorconfig | node_modules/string.prototype.matchall/.editorconfig | node_modules/array.prototype.flatmap/.editorconfig | node_modules/object.fromentries/.editorconfig | node_modules/object.assign/.editorconfig`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/which-boxed-primitive/LICENSE`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/which-boxed-primitive/LICENSE | node_modules/functions-have-names/LICENSE | node_modules/side-channel-weakmap/LICENSE | node_modules/unbox-primitive/LICENSE | node_modules/internal-slot/LICENSE | node_modules/has-bigints/LICENSE | node_modules/side-channel/LICENSE`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/word-wrap/LICENSE`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/word-wrap/LICENSE | node_modules/is-extglob/LICENSE`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/workbox-background-sync/QueueStore.mjs`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/workbox-background-sync/QueueStore.mjs | node_modules/workbox-background-sync/lib/QueueStore.mjs`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/workbox-background-sync/StorableRequest.mjs`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/workbox-background-sync/StorableRequest.mjs | node_modules/workbox-background-sync/lib/StorableRequest.mjs`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/workbox-broadcast-update/utils/constants.mjs`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/workbox-broadcast-update/utils/constants.mjs | node_modules/workbox-routing/utils/constants.mjs | node_modules/workbox-google-analytics/utils/constants.mjs`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/workbox-core/cacheNames.mjs`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/workbox-core/cacheNames.mjs | node_modules/workbox-core/_private/cacheNames.mjs`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/workbox-core/models/messages/messages.mjs`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/workbox-core/models/messages/messages.mjs | node_modules/workbox-strategies/utils/messages.mjs`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/workbox-navigation-preload/isSupported.mjs`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/workbox-navigation-preload/isSupported.mjs | node_modules/workbox-streams/isSupported.mjs`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/workbox-navigation-preload/tsconfig.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/workbox-navigation-preload/tsconfig.json | node_modules/workbox-range-requests/tsconfig.json | node_modules/workbox-streams/tsconfig.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/workbox-precaching/_types.mjs`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/workbox-precaching/_types.mjs | node_modules/workbox-routing/_types.mjs | node_modules/workbox-streams/_types.mjs`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/workbox-precaching/getCacheKeyForURL.mjs`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/workbox-precaching/getCacheKeyForURL.mjs | node_modules/workbox-precaching/utils/getCacheKeyForURL.mjs`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/workbox-strategies/LICENSE`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/workbox-strategies/LICENSE | node_modules/workbox-precaching/LICENSE | node_modules/workbox-google-analytics/LICENSE | node_modules/workbox-recipes/LICENSE | node_modules/workbox-routing/LICENSE | node_modules/workbox-sw/LICENSE | node_modules/workbox-broadcast-update/LICENSE | node_modules/workbox-core/LICENSE | node_modules/workbox-expiration/LICENSE | node_modules/workbox-build/LICENSE | node_modules/workbox-navigation-preload/LICENSE | node_modules/workbox-range-requests/LICENSE | node_modules/workbox-streams/LICENSE | node_modules/workbox-window/LICENSE | node_modules/workbox-background-sync/LICENSE | node_modules/workbox-cacheable-response/LICENSE`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/workbox-strategies/index.mjs`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/workbox-strategies/index.mjs | node_modules/workbox-precaching/index.mjs | node_modules/workbox-google-analytics/index.mjs | node_modules/workbox-recipes/index.mjs | node_modules/workbox-routing/index.mjs | node_modules/workbox-broadcast-update/index.mjs | node_modules/workbox-core/index.mjs | node_modules/workbox-expiration/index.mjs | node_modules/workbox-navigation-preload/index.mjs | node_modules/workbox-range-requests/index.mjs | node_modules/workbox-streams/index.mjs | node_modules/workbox-window/index.mjs | node_modules/workbox-background-sync/index.mjs | node_modules/workbox-cacheable-response/index.mjs`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/workbox-strategies/tsconfig.json`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/workbox-strategies/tsconfig.json | node_modules/workbox-routing/tsconfig.json | node_modules/workbox-broadcast-update/tsconfig.json | node_modules/workbox-expiration/tsconfig.json | node_modules/workbox-background-sync/tsconfig.json | node_modules/workbox-cacheable-response/tsconfig.json`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/zod/index.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/zod/index.js | node_modules/zod/index.d.ts | node_modules/zod/src/index.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/zod/src/v3/helpers/typeAliases.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/zod/src/v3/helpers/typeAliases.ts | node_modules/zod/v3/helpers/typeAliases.d.ts | node_modules/zod/v3/helpers/typeAliases.d.cts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/zod/src/v4/core/index.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/zod/src/v4/core/index.ts | node_modules/zod/v4/core/index.js | node_modules/zod/v4/core/index.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/zod/src/v4/locales/index.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/zod/src/v4/locales/index.ts | node_modules/zod/v4/locales/index.js | node_modules/zod/v4/locales/index.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/zod/src/v4/mini/index.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/zod/src/v4/mini/index.ts | node_modules/zod/v4/mini/index.js | node_modules/zod/v4/mini/index.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/zod/src/v4/mini/parse.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/zod/src/v4/mini/parse.ts | node_modules/zod/v4/mini/parse.d.ts | node_modules/zod/v4/mini/parse.js`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/zod/v3/external.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/zod/v3/external.js | node_modules/zod/v3/external.d.ts | node_modules/zod/src/v3/external.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/zod/v3/helpers/enumUtil.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/zod/v3/helpers/enumUtil.d.ts | node_modules/zod/v3/helpers/enumUtil.d.cts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/zod/v3/helpers/errorUtil.d.cts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/zod/v3/helpers/errorUtil.d.cts | node_modules/zod/v3/helpers/errorUtil.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/zod/v3/helpers/util.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/zod/v3/helpers/util.d.ts | node_modules/zod/v3/helpers/util.d.cts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/zod/v3/index.cjs`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/zod/v3/index.cjs | node_modules/zod/v4/classic/index.cjs`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/zod/v3/index.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/zod/v3/index.js | node_modules/zod/v3/index.d.ts | node_modules/zod/src/v3/index.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/zod/v3/standard-schema.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/zod/v3/standard-schema.d.ts | node_modules/zod/v3/standard-schema.d.cts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/zod/v4-mini/index.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/zod/v4-mini/index.js | node_modules/zod/v4-mini/index.d.ts | node_modules/zod/src/v4-mini/index.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/zod/v4/classic/checks.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/zod/v4/classic/checks.js | node_modules/zod/v4/classic/checks.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/zod/v4/classic/index.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/zod/v4/classic/index.js | node_modules/zod/v4/classic/index.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/zod/v4/core/doc.d.cts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/zod/v4/core/doc.d.cts | node_modules/zod/v4/core/doc.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/zod/v4/core/json-schema.d.cts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/zod/v4/core/json-schema.d.cts | node_modules/zod/v4/core/json-schema.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/zod/v4/core/regexes.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/zod/v4/core/regexes.d.ts | node_modules/zod/v4/core/regexes.d.cts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/zod/v4/core/standard-schema.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/zod/v4/core/standard-schema.d.ts | node_modules/zod/v4/core/standard-schema.d.cts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/zod/v4/core/versions.d.cts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/zod/v4/core/versions.d.cts | node_modules/zod/v4/core/versions.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/zod/v4/index.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/zod/v4/index.js | node_modules/zod/v4/index.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/zod/v4/locales/ru.d.cts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/zod/v4/locales/ru.d.cts | node_modules/zod/v4/locales/zh-CN.d.cts | node_modules/zod/v4/locales/ps.d.cts | node_modules/zod/v4/locales/vi.d.cts | node_modules/zod/v4/locales/pl.d.cts | node_modules/zod/v4/locales/no.d.cts | node_modules/zod/v4/locales/hu.d.cts | node_modules/zod/v4/locales/ca.d.cts | node_modules/zod/v4/locales/pt.d.cts | node_modules/zod/v4/locales/ua.d.cts | node_modules/zod/v4/locales/fr.d.cts | node_modules/zod/v4/locales/id.d.cts | node_modules/zod/v4/locales/fi.d.cts | node_modules/zod/v4/locales/nl.d.cts | node_modules/zod/v4/locales/th.d.cts | node_modules/zod/v4/locales/az.d.cts | node_modules/zod/v4/locales/ota.d.cts | node_modules/zod/v4/locales/es.d.cts | node_modules/zod/v4/locales/sl.d.cts | node_modules/zod/v4/locales/mk.d.cts | node_modules/zod/v4/locales/kh.d.cts | node_modules/zod/v4/locales/de.d.cts | node_modules/zod/v4/locales/ur.d.cts | node_modules/zod/v4/locales/he.d.cts | node_modules/zod/v4/locales/ar.d.cts | node_modules/zod/v4/locales/ja.d.cts | node_modules/zod/v4/locales/fa.d.cts | node_modules/zod/v4/locales/zh-TW.d.cts | node_modules/zod/v4/locales/ko.d.cts | node_modules/zod/v4/locales/sv.d.cts | node_modules/zod/v4/locales/cs.d.cts | node_modules/zod/v4/locales/fr-CA.d.cts | node_modules/zod/v4/locales/ms.d.cts | node_modules/zod/v4/locales/be.d.cts | node_modules/zod/v4/locales/ta.d.cts | node_modules/zod/v4/locales/it.d.cts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/zod/v4/locales/tr.d.cts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/zod/v4/locales/tr.d.cts | node_modules/zod/v4/locales/en.d.cts | node_modules/zod/v4/locales/eo.d.cts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/zod/v4/locales/tr.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/zod/v4/locales/tr.d.ts | node_modules/zod/v4/locales/eo.d.ts | node_modules/zod/v4/locales/en.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/zod/v4/locales/ua.d.ts`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/zod/v4/locales/ua.d.ts | node_modules/zod/v4/locales/sl.d.ts | node_modules/zod/v4/locales/mk.d.ts | node_modules/zod/v4/locales/ps.d.ts | node_modules/zod/v4/locales/hu.d.ts | node_modules/zod/v4/locales/ms.d.ts | node_modules/zod/v4/locales/nl.d.ts | node_modules/zod/v4/locales/ja.d.ts | node_modules/zod/v4/locales/ru.d.ts | node_modules/zod/v4/locales/pl.d.ts | node_modules/zod/v4/locales/de.d.ts | node_modules/zod/v4/locales/fi.d.ts | node_modules/zod/v4/locales/ta.d.ts | node_modules/zod/v4/locales/zh-CN.d.ts | node_modules/zod/v4/locales/ur.d.ts | node_modules/zod/v4/locales/be.d.ts | node_modules/zod/v4/locales/pt.d.ts | node_modules/zod/v4/locales/az.d.ts | node_modules/zod/v4/locales/it.d.ts | node_modules/zod/v4/locales/fr-CA.d.ts | node_modules/zod/v4/locales/fr.d.ts | node_modules/zod/v4/locales/ota.d.ts | node_modules/zod/v4/locales/ca.d.ts | node_modules/zod/v4/locales/ko.d.ts | node_modules/zod/v4/locales/zh-TW.d.ts | node_modules/zod/v4/locales/he.d.ts | node_modules/zod/v4/locales/fa.d.ts | node_modules/zod/v4/locales/vi.d.ts | node_modules/zod/v4/locales/cs.d.ts | node_modules/zod/v4/locales/id.d.ts | node_modules/zod/v4/locales/no.d.ts | node_modules/zod/v4/locales/kh.d.ts | node_modules/zod/v4/locales/sv.d.ts | node_modules/zod/v4/locales/th.d.ts | node_modules/zod/v4/locales/ar.d.ts | node_modules/zod/v4/locales/es.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `node_modules/zod/v4/mini/checks.js`
-
-Fitxers exactament duplicats.
-
-Evidència: `node_modules/zod/v4/mini/checks.js | node_modules/zod/v4/mini/checks.d.ts`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] package.unused-workbox — `package.json`
-
-workbox-window està declarat però no s'importa.
-
-Acció: Elimina'l amb la PWA/offline o documenta un ús real verificat.
-
 ### [MEDIUM] hygiene.exact-duplicate — `public/assets/events/nano_sessio_treball.png`
 
 Fitxers exactament duplicats.
@@ -32011,6 +21409,22 @@ Acció: Conserva una font canònica i genera o enllaça la resta.
 Fitxers exactament duplicats.
 
 Evidència: `public/assets/system/icons/icon-orange.svg | wordpress-plugin/assets/system/icons/icon-orange.svg`
+
+Acció: Conserva una font canònica i genera o enllaça la resta.
+
+### [MEDIUM] hygiene.exact-duplicate — `public/assets/towns/la-torre-de-les-macanes/1.jpg`
+
+Fitxers exactament duplicats.
+
+Evidència: `public/assets/towns/la-torre-de-les-macanes/1.jpg | public/assets/uploads/poble/la-torre-de-les-macanes/img-la-torre-de-les-ma-anes-main.jpg | wordpress-plugin/assets/uploads/poble/la-torre-de-les-macanes/img-la-torre-de-les-ma-anes-main.jpg`
+
+Acció: Conserva una font canònica i genera o enllaça la resta.
+
+### [MEDIUM] hygiene.exact-duplicate — `public/assets/towns/penaguila/1.jpg`
+
+Fitxers exactament duplicats.
+
+Evidència: `public/assets/towns/penaguila/1.jpg | public/assets/uploads/poble/penaguila/img-pen-guila-main.jpg | wordpress-plugin/assets/uploads/poble/penaguila/img-pen-guila-main.jpg`
 
 Acció: Conserva una font canònica i genera o enllaça la resta.
 
@@ -32150,30 +21564,6 @@ Evidència: `public/assets/uploads/avatars/vicent-ferris-comic.png | public/asse
 
 Acció: Conserva una font canònica i genera o enllaça la resta.
 
-### [MEDIUM] hygiene.exact-duplicate — `public/assets/uploads/brain/aplec_danses_1774952191348.png`
-
-Fitxers exactament duplicats.
-
-Evidència: `public/assets/uploads/brain/aplec_danses_1774952191348.png | wordpress-plugin/assets/uploads/brain/aplec_danses_1774952191348.png`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `public/assets/uploads/brain/art_trellat_farmer_1774708525806.png`
-
-Fitxers exactament duplicats.
-
-Evidència: `public/assets/uploads/brain/art_trellat_farmer_1774708525806.png | public/assets/uploads/empresa/soc-de-poble/posts/el-projecte/art-trellat-v3.png | wordpress-plugin/assets/uploads/brain/art_trellat_farmer_1774708525806.png | wordpress-plugin/assets/uploads/empresa/soc-de-poble/posts/el-projecte/art-trellat-v3.png`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `public/assets/uploads/brain/art_trellat_v2_1774708257858.png`
-
-Fitxers exactament duplicats.
-
-Evidència: `public/assets/uploads/brain/art_trellat_v2_1774708257858.png | wordpress-plugin/assets/uploads/brain/art_trellat_v2_1774708257858.png`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
 ### [MEDIUM] hygiene.exact-duplicate — `public/assets/uploads/brain/avatar_ratoli_comic_1778960942888.png`
 
 Fitxers exactament duplicats.
@@ -32195,30 +21585,6 @@ Acció: Conserva una font canònica i genera o enllaça la resta.
 Fitxers exactament duplicats.
 
 Evidència: `public/assets/uploads/brain/collita_pomes_valencia_1779774496548.png | public/assets/uploads/ajuntament/la-torre-de-les-macanes/post/collita-poma-local.png | wordpress-plugin/assets/uploads/brain/collita_pomes_valencia_1779774496548.png | wordpress-plugin/assets/uploads/ajuntament/la-torre-de-les-macanes/post/collita-poma-local.png`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `public/assets/uploads/brain/hero_panoramic_landscape_1774710654078.png`
-
-Fitxers exactament duplicats.
-
-Evidència: `public/assets/uploads/brain/hero_panoramic_landscape_1774710654078.png | wordpress-plugin/assets/uploads/brain/hero_panoramic_landscape_1774710654078.png`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `public/assets/uploads/brain/hero_panoramic_rural_view_1774720664221.png`
-
-Fitxers exactament duplicats.
-
-Evidència: `public/assets/uploads/brain/hero_panoramic_rural_view_1774720664221.png | public/assets/uploads/brain/nano_astronauta_esmorzar_1773441997380.png | public/assets/uploads/empresa/soc-de-poble/posts/el-projecte/exemple-de-poble-001.png | wordpress-plugin/assets/uploads/brain/hero_panoramic_rural_view_1774720664221.png | wordpress-plugin/assets/uploads/brain/nano_astronauta_esmorzar_1773441997380.png | wordpress-plugin/assets/uploads/empresa/soc-de-poble/posts/el-projecte/exemple-de-poble-001.png`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `public/assets/uploads/brain/hero_serrella_comic_1774709602282.png`
-
-Fitxers exactament duplicats.
-
-Evidència: `public/assets/uploads/brain/hero_serrella_comic_1774709602282.png | public/assets/uploads/avatars/avatar_samir_comic.png | public/assets/uploads/gent/avatars/avatar_samir_comic.png | wordpress-plugin/assets/uploads/brain/hero_serrella_comic_1774709602282.png | wordpress-plugin/assets/uploads/avatars/avatar_samir_comic.png | wordpress-plugin/assets/uploads/gent/avatars/avatar_samir_comic.png`
 
 Acció: Conserva una font canònica i genera o enllaça la resta.
 
@@ -32262,35 +21628,11 @@ Evidència: `public/assets/uploads/brain/nano_agricola_mas_1773539958988.png | w
 
 Acció: Conserva una font canònica i genera o enllaça la resta.
 
-### [MEDIUM] hygiene.exact-duplicate — `public/assets/uploads/brain/nano_mel_font_roja_1774216345755.png`
-
-Fitxers exactament duplicats.
-
-Evidència: `public/assets/uploads/brain/nano_mel_font_roja_1774216345755.png | wordpress-plugin/assets/uploads/brain/nano_mel_font_roja_1774216345755.png`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `public/assets/uploads/brain/nano_mercat_llaurador_1774197050578.png`
-
-Fitxers exactament duplicats.
-
-Evidència: `public/assets/uploads/brain/nano_mercat_llaurador_1774197050578.png | wordpress-plugin/assets/uploads/brain/nano_mercat_llaurador_1774197050578.png`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
 ### [MEDIUM] hygiene.exact-duplicate — `public/assets/uploads/brain/nano_mixa_socis_1774215027069.png`
 
 Fitxers exactament duplicats.
 
 Evidència: `public/assets/uploads/brain/nano_mixa_socis_1774215027069.png | wordpress-plugin/assets/uploads/brain/nano_mixa_socis_1774215027069.png`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `public/assets/uploads/brain/nano_oli_oliva_1774198089084.png`
-
-Fitxers exactament duplicats.
-
-Evidència: `public/assets/uploads/brain/nano_oli_oliva_1774198089084.png | wordpress-plugin/assets/uploads/brain/nano_oli_oliva_1774198089084.png`
 
 Acció: Conserva una font canònica i genera o enllaça la resta.
 
@@ -32990,14 +22332,6 @@ Evidència: `public/assets/uploads/poble/la-torre-de-les-macanes/gentdelatorre-l
 
 Acció: Conserva una font canònica i genera o enllaça la resta.
 
-### [MEDIUM] hygiene.exact-duplicate — `public/assets/uploads/poble/la-torre-de-les-macanes/img-la-torre-de-les-ma-anes-main.jpg`
-
-Fitxers exactament duplicats.
-
-Evidència: `public/assets/uploads/poble/la-torre-de-les-macanes/img-la-torre-de-les-ma-anes-main.jpg | wordpress-plugin/assets/uploads/poble/la-torre-de-les-macanes/img-la-torre-de-les-ma-anes-main.jpg`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
 ### [MEDIUM] hygiene.exact-duplicate — `public/assets/uploads/poble/la-torre-de-les-macanes/toponim-la-torre-de-les-macanes-2048px.jpg`
 
 Fitxers exactament duplicats.
@@ -33067,14 +22401,6 @@ Acció: Conserva una font canònica i genera o enllaça la resta.
 Fitxers exactament duplicats.
 
 Evidència: `public/assets/uploads/poble/penaguila/.DS-Store | wordpress-plugin/assets/uploads/poble/penaguila/.DS-Store`
-
-Acció: Conserva una font canònica i genera o enllaça la resta.
-
-### [MEDIUM] hygiene.exact-duplicate — `public/assets/uploads/poble/penaguila/img-pen-guila-main.jpg`
-
-Fitxers exactament duplicats.
-
-Evidència: `public/assets/uploads/poble/penaguila/img-pen-guila-main.jpg | wordpress-plugin/assets/uploads/poble/penaguila/img-pen-guila-main.jpg`
 
 Acció: Conserva una font canònica i genera o enllaça la resta.
 
@@ -33214,11 +22540,27 @@ Evidència: `public/assets/uploads/poble/xixona/.DS-Store | wordpress-plugin/ass
 
 Acció: Conserva una font canònica i genera o enllaça la resta.
 
+### [MEDIUM] hygiene.exact-duplicate — `src/assets/fonts/noto-sans.css`
+
+Fitxers exactament duplicats.
+
+Evidència: `src/assets/fonts/noto-sans.css | wordpress-plugin/assets/fonts/noto-sans.css`
+
+Acció: Conserva una font canònica i genera o enllaça la resta.
+
+### [MEDIUM] hygiene.exact-duplicate — `src/assets/fonts/o-0bIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjc5a7duw.woff2`
+
+Fitxers exactament duplicats.
+
+Evidència: `src/assets/fonts/o-0bIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjc5a7duw.woff2 | wordpress-plugin/assets/fonts/o-0bIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjc5a7duw.woff2`
+
+Acció: Conserva una font canònica i genera o enllaça la resta.
+
 ### [MEDIUM] hygiene.exact-duplicate — `src/assets/img/ibanez_pedra_seca_design_1780873465211.png`
 
 Fitxers exactament duplicats.
 
-Evidència: `src/assets/img/ibanez_pedra_seca_design_1780873465211.png | assets/img/ibanez_pedra_seca_design_1780873465211.png | public/assets/uploads/brain/ibanez_pedra_seca_design_1780873465211.png | wordpress-plugin/assets/uploads/brain/ibanez_pedra_seca_design_1780873465211.png`
+Evidència: `src/assets/img/ibanez_pedra_seca_design_1780873465211.png | assets/img/ibanez_pedra_seca_design_1780873465211.png | public/assets/uploads/brain/ibanez_pedra_seca_design_1780873465211.png | wordpress-plugin/assets/img/ibanez_pedra_seca_design_1780873465211.png | wordpress-plugin/assets/uploads/brain/ibanez_pedra_seca_design_1780873465211.png`
 
 Acció: Conserva una font canònica i genera o enllaça la resta.
 
@@ -33242,7 +22584,7 @@ Acció: Conserva una font canònica i genera o enllaça la resta.
 
 Fitxers exactament duplicats.
 
-Evidència: `src/assets/ui/logo-socdepoble-rect-negre.svg | assets/img/logo-socdepoble-rect-negre.svg | public/assets/system/ui/logo-socdepoble-rect-negre.svg | wordpress-plugin/assets/system/ui/logo-socdepoble-rect-negre.svg`
+Evidència: `src/assets/ui/logo-socdepoble-rect-negre.svg | assets/img/logo-socdepoble-rect-negre.svg | public/assets/system/ui/logo-socdepoble-rect-negre.svg | wordpress-plugin/assets/img/logo-socdepoble-rect-negre.svg | wordpress-plugin/assets/system/ui/logo-socdepoble-rect-negre.svg`
 
 Acció: Conserva una font canònica i genera o enllaça la resta.
 
@@ -33254,18 +22596,152 @@ Evidència: `src/assets/ui/vite_motor.svg | public/assets/system/ui/vite_motor.s
 
 Acció: Conserva una font canònica i genera o enllaça la resta.
 
-### [MEDIUM] hygiene.exact-duplicate — `tooling/archive_scripts/quarantena_scripts/260812_2258_neteja_arrel/puppeteer_chat_light.png`
+### [LOW] hygiene.junk — `.DS_Store`
 
-Fitxers exactament duplicats.
+Artefacte local que no ha d'entrar al repositori.
 
-Evidència: `tooling/archive_scripts/quarantena_scripts/260812_2258_neteja_arrel/puppeteer_chat_light.png | tooling/archive_scripts/quarantena_scripts/260812_2258_neteja_arrel/puppeteer_chat_final.png`
+Acció: Mou-lo a paperera i ignora'l en Git/ZIP.
 
-Acció: Conserva una font canònica i genera o enllaça la resta.
+### [LOW] hygiene.junk — `.agents/.DS_Store`
 
-### [MEDIUM] hygiene.exact-duplicate — `tooling/escala_sdp_root.mjs`
+Artefacte local que no ha d'entrar al repositori.
 
-Fitxers exactament duplicats.
+Acció: Mou-lo a paperera i ignora'l en Git/ZIP.
 
-Evidència: `tooling/escala_sdp_root.mjs | tooling/archive_scripts/escala_sdp_root.mjs`
+### [LOW] hygiene.junk — `.agents/cervells/inicial_2026-08-24T21-26-15-657Z/.DS_Store`
 
-Acció: Conserva una font canònica i genera o enllaça la resta.
+Artefacte local que no ha d'entrar al repositori.
+
+Acció: Mou-lo a paperera i ignora'l en Git/ZIP.
+
+### [LOW] hygiene.junk — `.immunitari/.DS_Store`
+
+Artefacte local que no ha d'entrar al repositori.
+
+Acció: Mou-lo a paperera i ignora'l en Git/ZIP.
+
+### [LOW] hygiene.junk — `.wiki-safety/.DS_Store`
+
+Artefacte local que no ha d'entrar al repositori.
+
+Acció: Mou-lo a paperera i ignora'l en Git/ZIP.
+
+### [LOW] hygiene.junk — `_wiki_de_poble/.DS_Store`
+
+Artefacte local que no ha d'entrar al repositori.
+
+Acció: Mou-lo a paperera i ignora'l en Git/ZIP.
+
+### [LOW] hygiene.junk — `_wiki_de_poble/.obsidian/.DS_Store`
+
+Artefacte local que no ha d'entrar al repositori.
+
+Acció: Mou-lo a paperera i ignora'l en Git/ZIP.
+
+### [LOW] hygiene.junk — `_wiki_de_poble/00_SER_Brain_Identitat/.DS_Store`
+
+Artefacte local que no ha d'entrar al repositori.
+
+Acció: Mou-lo a paperera i ignora'l en Git/ZIP.
+
+### [LOW] hygiene.junk — `_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/.DS_Store`
+
+Artefacte local que no ha d'entrar al repositori.
+
+Acció: Mou-lo a paperera i ignora'l en Git/ZIP.
+
+### [LOW] hygiene.junk — `_wiki_de_poble/05_Escriptori_Soc_de_Poble/.DS_Store`
+
+Artefacte local que no ha d'entrar al repositori.
+
+Acció: Mou-lo a paperera i ignora'l en Git/ZIP.
+
+### [LOW] hygiene.junk — `_wiki_de_poble/05_Escriptori_Soc_de_Poble/00_Bandeja_d_Entrada/.DS_Store`
+
+Artefacte local que no ha d'entrar al repositori.
+
+Acció: Mou-lo a paperera i ignora'l en Git/ZIP.
+
+### [LOW] hygiene.junk — `_wiki_de_poble/90_arxiu_historic/.DS_Store`
+
+Artefacte local que no ha d'entrar al repositori.
+
+Acció: Mou-lo a paperera i ignora'l en Git/ZIP.
+
+### [LOW] hygiene.junk — `assets/.DS_Store`
+
+Artefacte local que no ha d'entrar al repositori.
+
+Acció: Mou-lo a paperera i ignora'l en Git/ZIP.
+
+### [LOW] hygiene.junk — `bot/.DS_Store`
+
+Artefacte local que no ha d'entrar al repositori.
+
+Acció: Mou-lo a paperera i ignora'l en Git/ZIP.
+
+### [LOW] hygiene.junk — `bot/var/.DS_Store`
+
+Artefacte local que no ha d'entrar al repositori.
+
+Acció: Mou-lo a paperera i ignora'l en Git/ZIP.
+
+### [LOW] hygiene.junk — `public/assets/uploads/.DS_Store`
+
+Artefacte local que no ha d'entrar al repositori.
+
+Acció: Mou-lo a paperera i ignora'l en Git/ZIP.
+
+### [LOW] hygiene.junk — `scripts/.DS_Store`
+
+Artefacte local que no ha d'entrar al repositori.
+
+Acció: Mou-lo a paperera i ignora'l en Git/ZIP.
+
+### [LOW] hygiene.junk — `src/.DS_Store`
+
+Artefacte local que no ha d'entrar al repositori.
+
+Acció: Mou-lo a paperera i ignora'l en Git/ZIP.
+
+### [LOW] hygiene.junk — `src/components/.DS_Store`
+
+Artefacte local que no ha d'entrar al repositori.
+
+Acció: Mou-lo a paperera i ignora'l en Git/ZIP.
+
+### [LOW] hygiene.junk — `src/sections/.DS_Store`
+
+Artefacte local que no ha d'entrar al repositori.
+
+Acció: Mou-lo a paperera i ignora'l en Git/ZIP.
+
+### [LOW] hygiene.junk — `tooling/.DS_Store`
+
+Artefacte local que no ha d'entrar al repositori.
+
+Acció: Mou-lo a paperera i ignora'l en Git/ZIP.
+
+### [LOW] hygiene.junk — `tooling/wiki/.!33842!.DS_Store`
+
+Artefacte local que no ha d'entrar al repositori.
+
+Acció: Mou-lo a paperera i ignora'l en Git/ZIP.
+
+### [LOW] hygiene.junk — `tooling/wiki/.DS_Store`
+
+Artefacte local que no ha d'entrar al repositori.
+
+Acció: Mou-lo a paperera i ignora'l en Git/ZIP.
+
+### [LOW] hygiene.junk — `wordpress-plugin/.DS_Store`
+
+Artefacte local que no ha d'entrar al repositori.
+
+Acció: Mou-lo a paperera i ignora'l en Git/ZIP.
+
+### [LOW] hygiene.junk — `wordpress-plugin/assets/.DS_Store`
+
+Artefacte local que no ha d'entrar al repositori.
+
+Acció: Mou-lo a paperera i ignora'l en Git/ZIP.

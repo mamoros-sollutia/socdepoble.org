@@ -1214,6 +1214,8 @@ details[open] summary.accordion-header svg:last-child { transform: rotate(180deg
   display: flex;
   flex-direction: column;
   transition: box-shadow var(--sdp-t-lenta);
+  content-visibility: auto;
+  contain-intrinsic-size: 400px;
 }
 
 /* Targeta Mestra enllaçable: overlay a z1, capa interactiva a z2 */
@@ -1344,14 +1346,12 @@ details[open] summary.accordion-header svg:last-child { transform: rotate(180deg
 .sp-card .sp-card-body.has-price .sp-card-subtitle,
 .sp-card-body.has-price p:not(.sp-card-copyright),
 .sp-card-body.has-price .sp-card-text,
-.sp-card-body.has-price .sp-card-labels,
 .sp-card .sp-card-body.has-calendar-badge h1,
 .sp-card .sp-card-body.has-calendar-badge h2,
 .sp-card .sp-card-body.has-calendar-badge .sp-card-title,
 .sp-card .sp-card-body.has-calendar-badge .sp-card-subtitle,
 .sp-card-body.has-calendar-badge p:not(.sp-card-copyright),
-.sp-card-body.has-calendar-badge .sp-card-text,
-.sp-card-body.has-calendar-badge .sp-card-labels {
+.sp-card-body.has-calendar-badge .sp-card-text {
   text-align: left;
   margin-left: 0;
   margin-right: 0;
@@ -2103,10 +2103,7 @@ nav.mobile-nav { display: none; }
 
 /* UniversalCard Calendar Badge Override */
 .sp-card-body--with-aside {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: var(--sdp-space-4);
-  align-items: start;
+  display: block;
 }
 
 .sp-card-calendar-badge {
@@ -2114,12 +2111,14 @@ nav.mobile-nav { display: none; }
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  float: right;
+  margin-left: 16px;
+  margin-bottom: 12px;
   width: 128px;
   height: 128px;
   background-color: var(--sdp-primary-100);
   color: var(--sdp-accio-text);
   border-radius: var(--sdp-radi-xl);
-  margin-bottom: var(--sdp-space-4);
   box-shadow: var(--sdp-ombra-1);
   border: 2px solid transparent;
   transition: all 0.2s ease-in-out;
@@ -2266,4 +2265,43 @@ button.sp-card-calendar-badge:hover {
 .label-poble-actiu { background: var(--sdp-exit-fons); color: var(--sdp-exit-text); }
 .label-fototeca    { background: var(--sdp-accio-subtil); color: var(--sdp-accio-text); }
 .label-mapa        { background: var(--sdp-accent-subtil); color: var(--sdp-accent-text-hover); }
+
+/* Documentació del Sistema de Disseny (DesignSection) */
+.component-doc { margin-bottom: var(--sdp-space-8); }
+.component-doc-header { margin-bottom: var(--sdp-space-4); }
+.component-doc-preview { padding: var(--sdp-space-6); background: var(--sdp-fons-element); border-radius: var(--sdp-radi-md); border: 1px solid var(--sdp-vora-div); }
+.sdp-text-lg { font-size: 1.125rem; }
+.sdp-text-gray-500 { color: var(--sdp-text-suau); }
+.sdp-mr-2 { margin-right: var(--sdp-space-2); }
+.sdp-mb-10 { margin-bottom: var(--sdp-space-10); }
+.chat-container { padding: var(--sdp-space-4); margin-bottom: var(--sdp-space-6); background-color: var(--sdp-fons-principal); border-radius: var(--sdp-radi-lg); display: flex; flex-direction: column; gap: var(--sdp-space-4); }
+.form-control { width: 100%; border: 1px solid var(--sdp-vora-control); border-radius: var(--sdp-radi-md); padding: var(--sdp-space-2) var(--sdp-space-3); background-color: var(--sdp-fons-element); color: var(--sdp-text-principal); }
+
+/* Documentació - Elements de Xat */
+.chat-avatar-ia { background-color: var(--sdp-accent); color: var(--sdp-sobre-accent); }
+.chat-bubble-ia { background-color: var(--sdp-fons-targeta); border: 1px solid var(--sdp-vora-control); border-radius: var(--sdp-radi-lg) var(--sdp-radi-lg) var(--sdp-radi-lg) 0; padding: var(--sdp-space-3) var(--sdp-space-4); }
+.chat-time-ia { font-size: var(--sdp-text-meta); color: var(--sdp-text-suau); display: block; margin-top: var(--sdp-space-1); }
+.chat-avatar-jl { background-color: var(--sdp-accio-subtil); color: var(--sdp-accio-text); }
+.chat-bubble-jl { background-color: var(--sdp-accio-text); color: #ffffff; border-radius: var(--sdp-radi-lg) var(--sdp-radi-lg) 0 var(--sdp-radi-lg); padding: var(--sdp-space-3) var(--sdp-space-4); }
+.chat-time-jl { font-size: var(--sdp-text-meta); color: rgba(255,255,255,0.7); display: block; margin-top: var(--sdp-space-1); text-align: right; }
+.chat-input-wrapper { display: flex; gap: var(--sdp-space-2); align-items: flex-end; background-color: var(--sdp-fons-targeta); padding: var(--sdp-space-3); border-radius: var(--sdp-radi-lg); border: 1px solid var(--sdp-vora-control); }
+.chat-input-textarea { width: 100%; resize: none; border: none; background-color: transparent; padding: var(--sdp-space-2) 0; outline: none; color: inherit; }
+
 .label-festes      { background: var(--sdp-avis-fons); color: var(--sdp-avis-text); }
+.sdp-avisador-efimer {
+  position: fixed;
+  bottom: var(--sdp-space-8);
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--sdp-fons-principal);
+  color: var(--sdp-text-principal);
+  padding: var(--sdp-space-4) var(--sdp-space-6);
+  border-radius: var(--sdp-radi-lg);
+  box-shadow: var(--sdp-ombra-flotant);
+  border: 1px solid var(--sdp-vora-destacada);
+  z-index: var(--sdp-z-toast);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: var(--sdp-space-3);
+}

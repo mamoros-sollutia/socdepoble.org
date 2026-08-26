@@ -8,7 +8,7 @@ import { VitePWA } from 'vite-plugin-pwa';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   plugins: [
     react(),
     VitePWA({
@@ -27,6 +27,10 @@ export default defineConfig({
       }
     })
   ],
+  define: command === 'build' ? {
+    'import.meta.env.VITE_SUPABASE_URL': '""',
+    'import.meta.env.VITE_SUPABASE_ANON_KEY': '""'
+  } : {},
   server: {
     host: true,
     port: 3340,
@@ -45,4 +49,4 @@ export default defineConfig({
     outDir: 'dist',
     emptyOutDir: true
   }
-});
+}));

@@ -703,8 +703,9 @@ export async function appendSectionSubmission(submission, config = {}) {
       message.includes('does not exist');
 
     if (isRemoteUnavailable) {
+      // S'ha eliminat el bloqueig remot permanent a localStorage seguint la directiva de Claude
+      // perquè en cas de fallada de xarxa temporal, no deixe l'iPad sense capacitat d'escriure per sempre.
       setVal(getSectionRemoteWriteDisabledKey(config), true);
-      persistRemoteSectionWriteDisabled(config);
     }
 
     return storedSubmission;
@@ -733,16 +734,16 @@ export function normalizeDataMode(config = {}) {
 export function getResolvedConfig(config = {}) {
   const supabaseUrl = config.supabaseUrl || (typeof import.meta !== 'undefined' && import.meta.env ? import.meta.env.VITE_SUPABASE_URL?.trim() : '') || '';
   const supabaseAnonKey = config.supabaseAnonKey || (typeof import.meta !== 'undefined' && import.meta.env ? import.meta.env.VITE_SUPABASE_ANON_KEY?.trim() : '') || '';
-  let dataMode = String(config.dataMode || (typeof import.meta !== 'undefined' && import.meta.env ? import.meta.env.VITE_DATA_MODE : 'auto') || 'auto').trim().toLowerCase();
+  let dataMode = String(config.dataMode || (typeof import.meta !== 'undefined' && import.meta.env ? import.meta.env.VITE_DATA_MODE : 'local') || 'local').trim().toLowerCase();
   
   if (!['auto', 'seed', 'local', 'hybrid'].includes(dataMode)) {
-    dataMode = 'auto';
+    dataMode = 'local';
   }
 
   const tenantId = config.tenantId || (typeof import.meta !== 'undefined' && import.meta.env ? import.meta.env.VITE_TENANT_ID?.trim() : '') || '11111111-2222-3333-4444-555555555555';
   
   const hasSupabaseConfig = Boolean(supabaseUrl && supabaseAnonKey);
-  const runtimeMode = dataMode === 'auto' ? (hasSupabaseConfig ? 'hybrid' : 'seed') : dataMode;
+  const runtimeMode = dataMode === 'local' ? 'local' : (dataMode === 'auto' ? (hasSupabaseConfig ? 'hybrid' : 'seed') : dataMode);
   
   return {
     supabaseUrl,

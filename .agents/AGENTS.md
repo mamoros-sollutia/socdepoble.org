@@ -81,8 +81,9 @@ El marc principal (decoratiu) de la pàgina (`header.page-title`) està dissenya
 
 Abans de donar per finalitzada qualsevol sessió de treball (Tancament / Acta de la Marmota), l'agent **HA DE**:
 1. Esborrar fitxers HTML temporals, `.diff` residuals o arxius brossa de la Bandeja d'Entrada.
-2. Moure tots els scripts temporals d'un sol ús (`fix_*.py`, `clean_*.py`, etc.) creats a l'arrel directament FORA del sistema cap a `../_arxiu_wiki_de_poble/` (o esborrar-los directament). El directori `90_arxiu_historic/` no s'ha d'embrutar per no engreixar l'arbre viu de la Wiki.
-3. Assegurar que l'Escriptori i el directori arrel queden totalment nets de "punts separats" i brossa per a l'inici de la sessió de l'endemà.
+2. Moure tots els scripts temporals d'un sol ús (`fix_*.py`, `clean_*.py`, etc.) creats a l'arrel directament FORA del sistema cap a `../_arxiu_wiki_de_poble/` (o esborrar-los directament).
+3. **Puresa de la Wiki (Llei del Mas Viu):** Allò que et fa ser qui eres (Genoma, Regles, Identitat, Índexs, Skills) es queda a `_wiki_de_poble`. Tot el que ja és purament històric i del que ja hem après (Actes, Reflexions Forenses passades, llibres negres, logs) S'HA DE TRAURE FORA del repositori de `socdepoble.org` i moure-ho a `../_arxiu_wiki_de_poble/`. El directori `90_arxiu_historic/` dins del repo i `12_actes/` s'han de buidar constantment per no engreixar l'arbre viu de la Wiki.
+4. Assegurar que l'Escriptori i el directori arrel queden totalment nets de "punts separats" i brossa per a l'inici de la sessió de l'endemà.
 
 ## Integració amb Sollutia (Llei de l'Enxufabilitat)
 - **Màxim respecte al codi base:** El sistema de disseny Pedra Seca i qualsevol component nou han de ser **100% enxufables (pluggables)** a l'arquitectura creada per Sollutia.

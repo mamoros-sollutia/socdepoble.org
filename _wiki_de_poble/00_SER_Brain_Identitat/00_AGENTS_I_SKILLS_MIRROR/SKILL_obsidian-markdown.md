@@ -17,21 +17,21 @@ Create and edit valid Obsidian Flavored Markdown. Obsidian extends CommonMark an
 
 1. **Add frontmatter** with properties (title, tags, aliases) at the top of the file. See [PROPERTIES.md](references/PROPERTIES.md) for all property types.
 2. **Write content** using standard Markdown for structure, plus Obsidian-specific syntax below.
-3. **Link related notes** using wikilinks (`Note (BROKEN LINK: Note) <!-- TODO: fix link -->`) for internal vault connections, or standard Markdown links for external URLs.
-4. **Embed content** from other notes, images, or PDFs using the `!embed (BROKEN LINK: embed) <!-- TODO: fix link -->` syntax. See [EMBEDS.md](references/EMBEDS.md) for all embed types.
+3. **Link related notes** using wikilinks (`[[Note]]`) for internal vault connections, or standard Markdown links for external URLs.
+4. **Embed content** from other notes, images, or PDFs using the `![[embed]]` syntax. See [EMBEDS.md](references/EMBEDS.md) for all embed types.
 5. **Add callouts** for highlighted information using `> [!type]` syntax. See [CALLOUTS.md](references/CALLOUTS.md) for all callout types.
 6. **Verify** the note renders correctly in Obsidian's reading view.
 
-> When choosing between wikilinks and Markdown links: use `wikilinks (BROKEN LINK: wikilinks) <!-- TODO: fix link -->` for notes within the vault (Obsidian tracks renames automatically) and `[text](url)` for external URLs only.
+> When choosing between wikilinks and Markdown links: use `[[wikilinks]]` for notes within the vault (Obsidian tracks renames automatically) and `[text](url)` for external URLs only.
 
 ## Internal Links (Wikilinks)
 
 ```markdown
-Note Name (BROKEN LINK: Note Name) <!-- TODO: fix link -->                          Link to note
-Display Text (BROKEN LINK: Note Name) <!-- TODO: fix link -->             Custom display text
-Note Name#Heading (BROKEN LINK: Note Name#Heading) <!-- TODO: fix link -->                  Link to heading
-Note Name#^block-id (BROKEN LINK: Note Name#^block-id) <!-- TODO: fix link -->                Link to block
-#Heading in same note (BROKEN LINK: #Heading in same note) <!-- TODO: fix link -->              Same-note heading link
+[[Note Name]]                          Link to note
+[[Note Name|Display Text]]             Custom display text
+[[Note Name#Heading]]                  Link to heading
+[[Note Name#^block-id]]                Link to block
+[[#Heading in same note]]              Same-note heading link
 ```
 
 Define a block ID by appending `^block-id` to any paragraph:
@@ -53,11 +53,11 @@ For lists and quotes, place the block ID on a separate line after the block:
 Prefix any wikilink with `!` to embed its content inline:
 
 ```markdown
-!Note Name (BROKEN LINK: Note Name) <!-- TODO: fix link -->                         Embed full note
-!Note Name#Heading (BROKEN LINK: Note Name#Heading) <!-- TODO: fix link -->                 Embed section
-!image.png (BROKEN LINK: image.png) <!-- TODO: fix link -->                         Embed image
-!300 (BROKEN LINK: image.png) <!-- TODO: fix link -->                     Embed image with width
-!document.pdf#page=3 (BROKEN LINK: document.pdf#page=3) <!-- TODO: fix link -->               Embed PDF page
+![[Note Name]]                         Embed full note
+![[Note Name#Heading]]                 Embed section
+![[image.png]]                         Embed image
+![[image.png|300]]                     Embed image with width
+![[document.pdf#page=3]]               Embed PDF page
 ```
 
 See [EMBEDS.md](references/EMBEDS.md) for audio, video, search embeds, and external images.
@@ -172,7 +172,7 @@ status: in-progress
 
 # Project Alpha
 
-This project aims to improve workflow (BROKEN LINK: improve workflow) <!-- TODO: fix link --> using modern techniques.
+This project aims to [[improve workflow]] using modern techniques.
 
 > [!important] Key Deadline
 > The first milestone is due on ==January 30th==.
@@ -186,11 +186,11 @@ This project aims to improve workflow (BROKEN LINK: improve workflow) <!-- TODO:
 
 ## Notes
 
-The algorithm uses $O(n \log n)$ sorting. See Algorithm Notes#Sorting (BROKEN LINK: Algorithm Notes#Sorting) <!-- TODO: fix link --> for details.
+The algorithm uses $O(n \log n)$ sorting. See [[Algorithm Notes#Sorting]] for details.
 
-!600 (BROKEN LINK: Architecture Diagram.png) <!-- TODO: fix link -->
+![[Architecture Diagram.png|600]]
 
-Reviewed in Meeting Notes 2024-01-10#Decisions (BROKEN LINK: Meeting Notes 2024-01-10#Decisions) <!-- TODO: fix link -->.
+Reviewed in [[Meeting Notes 2024-01-10#Decisions]].
 ````
 
 ## References

@@ -530,21 +530,24 @@
 .conversation-meta {}
 .conversation-preview {}
 .connect-final {}
-.detail-page {}
-.detail-hero {}
+.detail-page { display: flex; flex-direction: column; gap: var(--sdp-space-6); max-width: 800px; margin: 0 auto; padding: var(--sdp-space-4); }
+.detail-hero { background: var(--sdp-fons-principal); border-radius: var(--sdp-radi-2xl); box-shadow: var(--sdp-ombra-2); overflow: hidden; }
 .card {}
-.card__body {}
-.card__title {}
-.section-item-card__subtitle {}
-.detail-actions {}
-.detail-actions__nav {}
-.media-frame {}
-.media-frame--contain {}
-.detail-hero__media {}
+.card__body { padding: var(--sdp-space-6); }
+.card__title { font-size: 2rem; color: var(--sdp-text-titol); font-weight: 800; line-height: 1.1; margin-bottom: var(--sdp-space-4); }
+.section-item-card__subtitle { font-size: 1.2rem; color: var(--sdp-text-suau); font-weight: 500; margin-bottom: var(--sdp-space-6); }
+.detail-actions { display: flex; justify-content: space-between; align-items: center; margin-top: var(--sdp-space-6); padding-top: var(--sdp-space-6); border-top: 1px solid var(--sdp-vora-suau); }
+.detail-actions__nav { display: flex; gap: var(--sdp-space-3); }
+.media-frame { width: 100%; position: relative; }
+.media-frame img { width: 100%; height: auto; display: block; }
+.media-frame--contain img { object-fit: contain; max-height: 60vh; }
+.detail-hero__media { border-top: 1px solid var(--sdp-vora-suau); }
 .detail-content {}
 .detail-content--plain {}
-.detail-content__paragraph {}
+.detail-content__paragraph { margin-bottom: var(--sdp-space-4); line-height: 1.6; }
 .detail-content__paragraph--plain {}
+.badge-row { display: flex; gap: var(--sdp-space-2); margin-bottom: var(--sdp-space-4); flex-wrap: wrap; }
+.badge { display: inline-flex; align-items: center; justify-content: center; height: 24px; padding: 0 12px; border-radius: 12px; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.05em; background: var(--sdp-accio); color: var(--sdp-sobre-accio); white-space: nowrap; }
 .devices-shell {}
 .devices-summary-grid {}
 .card--soft {}

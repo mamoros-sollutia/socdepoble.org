@@ -14,7 +14,7 @@ export function readThemePreference(configured) {
   // 1. Font de veritat: atribut HTML (Shadow DOM o arrel)
   let root = null;
   if (typeof document !== 'undefined') {
-    root = document.querySelector('.sdp-root') || document.documentElement;
+    root = document.querySelector('#soc-de-poble') || document.documentElement;
   }
   const htmlTheme = root ? root.getAttribute('data-theme') : null;
   if (htmlTheme && VALID.has(htmlTheme)) return htmlTheme;

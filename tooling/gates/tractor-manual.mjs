@@ -43,8 +43,8 @@ for (const f of fitxers) {
     infraccio('L04 · Color inline (no segueix el mode fosc)', f, 'style={{background…}}');
   if (/<div className="[^"]*"><\/div>/.test(net))
     infraccio('L05 · Div buit', f, '<div></div>');
-  if (/dangerouslySetInnerHTML/.test(net))
-    infraccio('L06 · HTML cru', f, 'dangerouslySetInnerHTML');
+  if (/dangerouslySetInnerHTML/.test(net) && !/dangerouslySetInnerHTML=\{\{\s*__html:\s*sanitizeHtml\(/.test(net))
+    infraccio('L06 · HTML cru', f, 'dangerouslySetInnerHTML (cal usar sanitizeHtml)');
   if (/<iframe/i.test(net))
     infraccio('L07 · Petició externa al manual', f, '<iframe>');
 }

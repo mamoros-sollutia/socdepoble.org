@@ -1,7 +1,7 @@
 import { UniversalPage } from '../../components/universal/UniversalComponents';
 import { useAppData } from '../../app/AppDataContext';
 import { resolveAsset } from '../../config/assetResolver';
-import DOMPurify from 'dompurify';
+import { sanitizeHtml } from '../../utils/sanitize';
 
 export default function TextSection({ page, pageKey }) {
   const { t } = useAppData();
@@ -22,10 +22,11 @@ export default function TextSection({ page, pageKey }) {
       date="20/08/26"
       dateTime="2026-08-20T22:28:00+02:00"
       chrome="context"
+      topBarData={{ showPin: false }}
     >
-      // eslint-disable-next-line
+      {/* eslint-disable-next-line */}
       <div className="sdp-grid sdp-text-content" style={{ padding: 'var(--sdp-space-6) var(--sdp-space-4)' }}>
-        <article children={ DOMPurify.sanitize(page.html) } />
+        <article dangerouslySetInnerHTML={{ __html: sanitizeHtml(page.html) }} />
       </div>
     </UniversalPage>
   );

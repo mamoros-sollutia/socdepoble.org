@@ -116,11 +116,6 @@ export default function LoginSection() {
                 <input className="section-search" type="email" name="email" placeholder={t('section.login.placeholder.email', 'nom@exemple.com')} autoComplete="email" />
               </label>
 
-              <label className="login-field">
-                <span>{t('section.login.loginPassword', 'Contrasenya')}</span>
-                <input className="section-search" type="password" name="password" placeholder={t('section.login.placeholder.password', '••••••••')} autoComplete="current-password" />
-              </label>
-
               <button type="submit" className="pill pill--primary login-action">
                 {t('section.login.loginButton', 'Entrar')}
                 <ArrowRight size={16} />
@@ -144,11 +139,6 @@ export default function LoginSection() {
               <label className="login-field">
                 <span>{t('section.login.loginEmail', 'Correu electrònic')}</span>
                 <input className="section-search" type="email" name="email" placeholder={t('section.login.placeholder.email', 'nom@exemple.com')} autoComplete="email" />
-              </label>
-
-              <label className="login-field">
-                <span>{t('section.login.loginPassword', 'Contrasenya')}</span>
-                <input className="section-search" type="password" name="password" placeholder={t('section.login.placeholder.newPassword', 'Tria una clau')} autoComplete="new-password" />
               </label>
 
               <button type="submit" className="pill pill--primary login-action">

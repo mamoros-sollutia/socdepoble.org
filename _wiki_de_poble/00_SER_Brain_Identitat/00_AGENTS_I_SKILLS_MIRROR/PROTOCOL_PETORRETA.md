@@ -3,7 +3,7 @@ estat: generat
 tipus: document
 description: Vista generada des de .agents/PROTOCOL_PETORRETA.md; no editar.
 source: .agents/PROTOCOL_PETORRETA.md
-source_sha256: 9809089bb77688e2a002da4594af4bddc3fe66a6a27e8d68a7b3a13bfbdf45b9
+source_sha256: a6c3934e4f8a52af41f8078eaedb53193bcbb1d001757ca157ca8dd02168bcd6
 ---
 
 > [!warning] FITXER GENERAT
@@ -42,9 +42,10 @@ La lectura, cerca, auditoria en memòria i impressió per stdout són lliures. C
 
 La Petorreta mecànica d’una sessió del Reflex viu només en `.sdp-reflex/bootstrap/<sessionId>/`; les Petorretas editorials ordinàries continuen vivint en `05_Escriptori_Soc_de_Poble`. Usa `YYMMDD_HHMM_PROMPT_` i 8–12 paraules descriptives, declara `tipus: petorreta`, i conté Context, Tasques, Riscos i Criteris d’acceptació. No pot contindre placeholders editorials pendents.
 
-## P-05. Context mínim i segur
+## P-05. Context mínim i segur, però Típic i Íntegre (Sense Ocultació)
 
 No es copia automàticament tota la Wiki. El manifest selecciona fonts rellevants amb `path`, `reason`, `classification` i `role` (`reference` o `target`). El Reflex limita el manifest a 25 fonts de text, 2 MiB per fitxer i 8 MiB totals; calcula hashes i rebutja binaris, duplicats, symlinks d’eixida i patrons bàsics de secrets, IBAN, correu, DNI/NIE i telèfon. És un filtre preventiu, no una garantia de redacció de tota PII; la revisió humana continua sent obligatòria abans de compartir context extern.
+**REGLA CRÍTICA:** Queda absolutament prohibit ocultar fitxers de configuració estructurals (`package.json`, `vite.config.*`, manifestos o arxius de backend) o fer "estalvi de tokens" de forma deliberada quan es prepara una Petorreta d'Auditoria per al Consell. L'omissió de context provoca un diagnòstic fals, cec i incorrecte de la intel·ligència. La informació sempre s'entrega íntegra.
 
 ## P-06. Mínim privilegi
 

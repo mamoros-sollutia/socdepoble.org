@@ -424,10 +424,10 @@ views:
 Embed in Markdown files:
 
 ```markdown
-!MyBase.base (BROKEN LINK: MyBase.base) <!-- TODO: fix link -->
+![[MyBase.base]]
 
 <!-- Specific view -->
-!MyBase.base#View Name (BROKEN LINK: MyBase.base#View Name) <!-- TODO: fix link -->
+![[MyBase.base#View Name]]
 ```
 
 ## YAML Quoting Rules

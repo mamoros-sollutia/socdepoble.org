@@ -109,7 +109,7 @@ Per evitar l'entropia i la generació de nodes orfes o etiquetes redundants, **�
 
 *(Les etiquetes anteriors es basen en el Glossari Canònic i la pràctica de l'Auditoria).* 
 
-**Ancoratge de Seguretat:** 00_GLOSSARI_CANONIC (BROKEN LINK: 00_GLOSSARI_CANONIC) <!-- TODO: fix link -->
+**Ancoratge de Seguretat:** [[00_GLOSSARI_CANONIC]]
 
 ---
 

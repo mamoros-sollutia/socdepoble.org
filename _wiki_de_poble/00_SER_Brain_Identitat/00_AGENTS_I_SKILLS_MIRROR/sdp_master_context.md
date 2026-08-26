@@ -35,7 +35,7 @@ seguretat.
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX|00_index]]
+**Ancoratge de Seguretat:** [[00_index]]
 
 ## Protecció del Treball no Commitejat (Regla Anti-Destrucció)
 Mai executaràs `git checkout HEAD <arxiu>`, `git restore`, `git reset --hard` ni `git clean` sense haver comprovat primer `git status`. El treball local, no guardat i no commitejat del Mestre és SAGRAT. Abans d’intentar qualsevol "fix" que implique desfer canvis o restaurar des de Git, has de preguntar, o si més no, fer una còpia de seguretat local prèvia de l’arxiu en perill.
@@ -1300,10 +1300,10 @@ views:
 Embed in Markdown files:
 
 ```markdown
-!MyBase.base (BROKEN LINK: MyBase.base) <!-- TODO: fix link -->
+![[MyBase.base]]
 
 <!-- Specific view -->
-!MyBase.base#View Name (BROKEN LINK: MyBase.base#View Name) <!-- TODO: fix link -->
+![[MyBase.base#View Name]]
 ```
 
 ## YAML Quoting Rules
@@ -1673,21 +1673,21 @@ Create and edit valid Obsidian Flavored Markdown. Obsidian extends CommonMark an
 
 1. **Add frontmatter** with properties (title, tags, aliases) at the top of the file. See [PROPERTIES.md](references/PROPERTIES.md) for all property types.
 2. **Write content** using standard Markdown for structure, plus Obsidian-specific syntax below.
-3. **Link related notes** using wikilinks (`Note (BROKEN LINK: Note) <!-- TODO: fix link -->`) for internal vault connections, or standard Markdown links for external URLs.
-4. **Embed content** from other notes, images, or PDFs using the `!embed (BROKEN LINK: embed) <!-- TODO: fix link -->` syntax. See [EMBEDS.md](references/EMBEDS.md) for all embed types.
+3. **Link related notes** using wikilinks (`[[Note]]`) for internal vault connections, or standard Markdown links for external URLs.
+4. **Embed content** from other notes, images, or PDFs using the `![[embed]]` syntax. See [EMBEDS.md](references/EMBEDS.md) for all embed types.
 5. **Add callouts** for highlighted information using `> [!type]` syntax. See [CALLOUTS.md](references/CALLOUTS.md) for all callout types.
 6. **Verify** the note renders correctly in Obsidian's reading view.
 
-> When choosing between wikilinks and Markdown links: use `wikilinks (BROKEN LINK: wikilinks) <!-- TODO: fix link -->` for notes within the vault (Obsidian tracks renames automatically) and `[text](url)` for external URLs only.
+> When choosing between wikilinks and Markdown links: use `[[wikilinks]]` for notes within the vault (Obsidian tracks renames automatically) and `[text](url)` for external URLs only.
 
 ## Internal Links (Wikilinks)
 
 ```markdown
-Note Name (BROKEN LINK: Note Name) <!-- TODO: fix link -->                          Link to note
-Display Text (BROKEN LINK: Note Name) <!-- TODO: fix link -->             Custom display text
-Note Name#Heading (BROKEN LINK: Note Name#Heading) <!-- TODO: fix link -->                  Link to heading
-Note Name#^block-id (BROKEN LINK: Note Name#^block-id) <!-- TODO: fix link -->                Link to block
-#Heading in same note (BROKEN LINK: #Heading in same note) <!-- TODO: fix link -->              Same-note heading link
+[[Note Name]]                          Link to note
+[[Note Name|Display Text]]             Custom display text
+[[Note Name#Heading]]                  Link to heading
+[[Note Name#^block-id]]                Link to block
+[[#Heading in same note]]              Same-note heading link
 ```
 
 Define a block ID by appending `^block-id` to any paragraph:
@@ -1709,11 +1709,11 @@ For lists and quotes, place the block ID on a separate line after the block:
 Prefix any wikilink with `!` to embed its content inline:
 
 ```markdown
-!Note Name (BROKEN LINK: Note Name) <!-- TODO: fix link -->                         Embed full note
-!Note Name#Heading (BROKEN LINK: Note Name#Heading) <!-- TODO: fix link -->                 Embed section
-!image.png (BROKEN LINK: image.png) <!-- TODO: fix link -->                         Embed image
-!300 (BROKEN LINK: image.png) <!-- TODO: fix link -->                     Embed image with width
-!document.pdf#page=3 (BROKEN LINK: document.pdf#page=3) <!-- TODO: fix link -->               Embed PDF page
+![[Note Name]]                         Embed full note
+![[Note Name#Heading]]                 Embed section
+![[image.png]]                         Embed image
+![[image.png|300]]                     Embed image with width
+![[document.pdf#page=3]]               Embed PDF page
 ```
 
 See [EMBEDS.md](references/EMBEDS.md) for audio, video, search embeds, and external images.
@@ -1828,7 +1828,7 @@ status: in-progress
 
 # Project Alpha
 
-This project aims to improve workflow (BROKEN LINK: improve workflow) <!-- TODO: fix link --> using modern techniques.
+This project aims to [[improve workflow]] using modern techniques.
 
 > [!important] Key Deadline
 > The first milestone is due on ==January 30th==.
@@ -1842,11 +1842,11 @@ This project aims to improve workflow (BROKEN LINK: improve workflow) <!-- TODO:
 
 ## Notes
 
-The algorithm uses $O(n \log n)$ sorting. See Algorithm Notes#Sorting (BROKEN LINK: Algorithm Notes#Sorting) <!-- TODO: fix link --> for details.
+The algorithm uses $O(n \log n)$ sorting. See [[Algorithm Notes#Sorting]] for details.
 
-!600 (BROKEN LINK: Architecture Diagram.png) <!-- TODO: fix link -->
+![[Architecture Diagram.png|600]]
 
-Reviewed in Meeting Notes 2024-01-10#Decisions (BROKEN LINK: Meeting Notes 2024-01-10#Decisions) <!-- TODO: fix link -->.
+Reviewed in [[Meeting Notes 2024-01-10#Decisions]].
 ````
 
 ## References
@@ -1927,17 +1927,17 @@ Reviewed in Meeting Notes 2024-01-10#Decisions (BROKEN LINK: Meeting Notes 2024-
 ## Embed Notes
 
 ```markdown
-!Note Name (BROKEN LINK: Note Name) <!-- TODO: fix link -->
-!Note Name#Heading (BROKEN LINK: Note Name#Heading) <!-- TODO: fix link -->
-!Note Name#^block-id (BROKEN LINK: Note Name#^block-id) <!-- TODO: fix link -->
+![[Note Name]]
+![[Note Name#Heading]]
+![[Note Name#^block-id]]
 ```
 
 ## Embed Images
 
 ```markdown
-!image.png (BROKEN LINK: image.png) <!-- TODO: fix link -->
-!640x480 (BROKEN LINK: image.png) <!-- TODO: fix link -->    Width x Height
-!300 (BROKEN LINK: image.png) <!-- TODO: fix link -->        Width only (maintains aspect ratio)
+![[image.png]]
+![[image.png|640x480]]    Width x Height
+![[image.png|300]]        Width only (maintains aspect ratio)
 ```
 
 ## External Images
@@ -1950,29 +1950,29 @@ Reviewed in Meeting Notes 2024-01-10#Decisions (BROKEN LINK: Meeting Notes 2024-
 ## Embed Audio
 
 ```markdown
-!audio.mp3 (BROKEN LINK: audio.mp3) <!-- TODO: fix link -->
-!audio.ogg (BROKEN LINK: audio.ogg) <!-- TODO: fix link -->
+![[audio.mp3]]
+![[audio.ogg]]
 ```
 
 ## Embed PDF
 
 ```markdown
-!document.pdf (BROKEN LINK: document.pdf) <!-- TODO: fix link -->
-!document.pdf#page=3 (BROKEN LINK: document.pdf#page=3) <!-- TODO: fix link -->
-!document.pdf#height=400 (BROKEN LINK: document.pdf#height=400) <!-- TODO: fix link -->
+![[document.pdf]]
+![[document.pdf#page=3]]
+![[document.pdf#height=400]]
 ```
 
 ## Embed Bases
 
 ```markdown
-!BaseFile.base (BROKEN LINK: BaseFile.base) <!-- TODO: fix link -->
-!BaseFile.base#View Name (BROKEN LINK: BaseFile.base#View Name) <!-- TODO: fix link -->
+![[BaseFile.base]]
+![[BaseFile.base#View Name]]
 ```
 
 ## Embed Lists
 
 ```markdown
-!Note#^list-id (BROKEN LINK: Note#^list-id) <!-- TODO: fix link -->
+![[Note#^list-id]]
 ```
 
 Where the list has a block ID:
@@ -2029,7 +2029,7 @@ due: 2024-02-01T14:30:00
 | Date | `date: 2024-01-15` |
 | Date & Time | `due: 2024-01-15T14:30:00` |
 | List | `tags: [one, two]` or YAML list |
-| Links | `related: "Other Note (BROKEN LINK: Other Note) <!-- TODO: fix link -->"` |
+| Links | `related: "[[Other Note]]"` |
 
 ## Default Properties
 
@@ -2392,19 +2392,19 @@ Valencian is the default vehicular language (unless the Master changes to anothe
 - [[PROTOCOL_CHANGE]]
 - [[PROTOCOL_PETORRETA]]
 - [[README]]
-- SKILL_defuddle (BROKEN LINK: SKILL_defuddle) <!-- TODO: fix link -->
+- [[SKILL_defuddle]]
 - [[SKILL_json-canvas]]
 - [[SKILL_obsidian-bases]]
-- SKILL_obsidian-cli (BROKEN LINK: SKILL_obsidian-cli) <!-- TODO: fix link -->
+- [[SKILL_obsidian-cli]]
 - [[SKILL_obsidian-markdown]]
-- SKILL_socdepoble-autosanacio (BROKEN LINK: SKILL_socdepoble-autosanacio) <!-- TODO: fix link -->
-- SKILL_socdepoble-civic (BROKEN LINK: SKILL_socdepoble-civic) <!-- TODO: fix link -->
-- SKILL_socdepoble-iaia-actriu (BROKEN LINK: SKILL_socdepoble-iaia-actriu) <!-- TODO: fix link -->
-- SKILL_socdepoble-llm-wiki (BROKEN LINK: SKILL_socdepoble-llm-wiki) <!-- TODO: fix link -->
-- SKILL_socdepoble-sociologia-whatsapp (BROKEN LINK: SKILL_socdepoble-sociologia-whatsapp) <!-- TODO: fix link -->
-- SKILL_socdepoble-workflow (BROKEN LINK: SKILL_socdepoble-workflow) <!-- TODO: fix link -->
+- [[SKILL_socdepoble-autosanacio]]
+- [[SKILL_socdepoble-civic]]
+- [[SKILL_socdepoble-iaia-actriu]]
+- [[SKILL_socdepoble-llm-wiki]]
+- [[SKILL_socdepoble-sociologia-whatsapp]]
+- [[SKILL_socdepoble-workflow]]
 - [[PROFILE]]
-- SKILL_consola-termodinamica (BROKEN LINK: SKILL_consola-termodinamica) <!-- TODO: fix link -->
+- [[SKILL_consola-termodinamica]]
 
 ---
 
@@ -3350,7 +3350,7 @@ Les fórmules calculen valors a partir de propietats i es defineixen a la secci�
 
 ## Incrustar Bases
 
-Incrusta en fitxers Markdown utilitzant `!NomDeLaBase.base (BROKEN LINK: NomDeLaBase.base) <!-- TODO: fix link -->` o `!NomDeLaBase.base#Nom de la Vista (BROKEN LINK: NomDeLaBase.base#Nom de la Vista) <!-- TODO: fix link -->` per a una vista específica.
+Incrusta en fitxers Markdown utilitzant `![[NomDeLaBase.base]]` o `![[NomDeLaBase.base#Nom de la Vista]]` per a una vista específica.
 
 ## Regles de Cometes en YAML
 
@@ -3488,20 +3488,20 @@ Crea i edita Markdown vàlid per a Obsidian. Obsidian amplia CommonMark i GFM am
 
 1. **Afig frontmatter** amb propietats (title, tags, aliases) a la part superior del fitxer.
 2. **Escriu contingut** utilitzant Markdown estàndard per a l'estructura.
-3. **Enllaça notes relacionades** utilitzant wikilinks (`Nota (BROKEN LINK: Nota) <!-- TODO: fix link -->`).
-4. **Incrusta contingut** d'altres notes, imatges o PDFs utilitzant la sintaxi `!embed (BROKEN LINK: embed) <!-- TODO: fix link -->`.
+3. **Enllaça notes relacionades** utilitzant wikilinks (`[[Nota]]`).
+4. **Incrusta contingut** d'altres notes, imatges o PDFs utilitzant la sintaxi `![[embed]]`.
 5. **Afig callouts** per a informació destacada utilitzant la sintaxi `> [!tipus]`.
 
-> **Regla d'or**: Utilitza `wikilinks (BROKEN LINK: wikilinks) <!-- TODO: fix link -->` per a notes dins del vault (Obsidian fa un seguiment dels canvis de nom automàticament) i `[text](url)` només per a URLs externes.
+> **Regla d'or**: Utilitza `[[wikilinks]]` per a notes dins del vault (Obsidian fa un seguiment dels canvis de nom automàticament) i `[text](url)` només per a URLs externes.
 
 ## Enllaços Interns (Wikilinks)
 
 ```markdown
-Nom de la Nota (BROKEN LINK: Nom de la Nota) <!-- TODO: fix link -->                     Enllaç a nota
-Text a Mostrar (BROKEN LINK: Nom de la Nota) <!-- TODO: fix link -->      Text personalitzat
-Nom de la Nota#Encapçalament (BROKEN LINK: Nom de la Nota#Encapçalament) <!-- TODO: fix link -->       Enllaç a encapçalament
-Nom de la Nota#^block-id (BROKEN LINK: Nom de la Nota#^block-id) <!-- TODO: fix link -->           Enllaç a bloc
-#Encapçalament mateixa nota (BROKEN LINK: #Encapçalament mateixa nota) <!-- TODO: fix link -->        Enllaç dins la mateixa nota
+[[Nom de la Nota]]                     Enllaç a nota
+[[Nom de la Nota|Text a Mostrar]]      Text personalitzat
+[[Nom de la Nota#Encapçalament]]       Enllaç a encapçalament
+[[Nom de la Nota#^block-id]]           Enllaç a bloc
+[[#Encapçalament mateixa nota]]        Enllaç dins la mateixa nota
 ```
 
 Defineix un ID de bloc afegint `^block-id` al final d'un paràgraf:
@@ -3515,11 +3515,11 @@ Aquest paràgraf pot ser enllaçat. ^my-block-id
 Afig un `!` davant de qualsevol wikilink per incrustar-ne el contingut en línia:
 
 ```markdown
-!Nom de la Nota (BROKEN LINK: Nom de la Nota) <!-- TODO: fix link -->                    Incrusta la nota sencera
-!Nom de la Nota#Encapçalament (BROKEN LINK: Nom de la Nota#Encapçalament) <!-- TODO: fix link -->      Incrusta només la secció
-!image.png (BROKEN LINK: image.png) <!-- TODO: fix link -->                         Incrusta imatge
-!300 (BROKEN LINK: image.png) <!-- TODO: fix link -->                     Incrusta imatge amb amplada 300px
-!document.pdf#page=3 (BROKEN LINK: document.pdf#page=3) <!-- TODO: fix link -->               Incrusta pàgina de PDF
+![[Nom de la Nota]]                    Incrusta la nota sencera
+![[Nom de la Nota#Encapçalament]]      Incrusta només la secció
+![[image.png]]                         Incrusta imatge
+![[image.png|300]]                     Incrusta imatge amb amplada 300px
+![[document.pdf#page=3]]               Incrusta pàgina de PDF
 ```
 
 ## Callouts
@@ -3973,7 +3973,7 @@ Entrada estàtica a la Wiki de Sóc de Poble.
 | Pilar | Funció | Enllaç |
 |---|---|---|
 | 00 SER | Identitat, genotip, visió, actors | [[01_IDENTITAT]] |
-| 01 SABER | Cultura, glossari, llengua, memòria del poble | 00_GLOSSARI_CANONIC (BROKEN LINK: 00_GLOSSARI_CANONIC) <!-- TODO: fix link --> |
+| 01 SABER | Cultura, glossari, llengua, memòria del poble | [[00_GLOSSARI_CANONIC]] |
 | 02 ACTUAR | Màquina tècnica, skills, scripts, plantilles | [[00_arquitectura_tecnica_unificada]] |
 | 03 GOVERNAR | Lleis, estàndards, protocols, veto | [[DOC_Governanca]] |
 
@@ -4163,16 +4163,16 @@ Per garantir el correcte funcionament i l'aprenentatge de l'equip IA, aquests s�
 - [[04_criteris_producte_i_disseny]]
 - [[AGENTS]]
 - [[README]]
-- SKILL_campanyes-activisme (BROKEN LINK: SKILL_campanyes-activisme) <!-- TODO: fix link -->
-- SKILL_natura-patrimoni (BROKEN LINK: SKILL_natura-patrimoni) <!-- TODO: fix link -->
-- SKILL_socdepoble-autosanacio (BROKEN LINK: SKILL_socdepoble-autosanacio) <!-- TODO: fix link -->
-- SKILL_socdepoble-civic (BROKEN LINK: SKILL_socdepoble-civic) <!-- TODO: fix link -->
-- SKILL_socdepoble-llm-wiki (BROKEN LINK: SKILL_socdepoble-llm-wiki) <!-- TODO: fix link -->
-- SKILL_socdepoble-operate (BROKEN LINK: SKILL_socdepoble-operate) <!-- TODO: fix link -->
-- SKILL_socdepoble-workflow (BROKEN LINK: SKILL_socdepoble-workflow) <!-- TODO: fix link -->
+- [[SKILL_campanyes-activisme]]
+- [[SKILL_natura-patrimoni]]
+- [[SKILL_socdepoble-autosanacio]]
+- [[SKILL_socdepoble-civic]]
+- [[SKILL_socdepoble-llm-wiki]]
+- [[SKILL_socdepoble-operate]]
+- [[SKILL_socdepoble-workflow]]
 
 ### Eines Addicionals
-- pdf_clean_generator.sh † (BROKEN LINK: 00_MEMORIAL_Lapides#pdf_clean_generator.sh) <!-- TODO: fix link -->
+- [[00_MEMORIAL_Lapides#pdf_clean_generator.sh|pdf_clean_generator.sh †]]
 
 ## Taxonomia
 - **Categoria:** [[Identitat]]
@@ -4749,7 +4749,7 @@ If standard a11y queries fail or the `evaluate_script` snippets return unexpecte
 **Ancoratge de Seguretat:** [[Soci_Sollutia]]
 
 ---
-**Categoria:** Sollutia (BROKEN LINK: Sollutia) <!-- TODO: fix link -->
+**Categoria:** [[Sollutia]]
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
 **Ancoratge de Seguretat:** [[00_INDEX]]
 
@@ -4807,7 +4807,7 @@ If there are errors launching `chrome-devtools-mcp` or Chrome, refer to https://
 **Ancoratge de Seguretat:** [[Soci_Sollutia]]
 
 ---
-**Categoria:** Sollutia (BROKEN LINK: Sollutia) <!-- TODO: fix link -->
+**Categoria:** [[Sollutia]]
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
 **Ancoratge de Seguretat:** [[00_INDEX]]
 
@@ -5321,7 +5321,7 @@ Verify EVERY item before delivering:
 **Ancoratge de Seguretat:** [[Soci_Sollutia]]
 
 ---
-**Categoria:** Sollutia (BROKEN LINK: Sollutia) <!-- TODO: fix link -->
+**Categoria:** [[Sollutia]]
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
 **Ancoratge de Seguretat:** [[00_INDEX]]
 
@@ -5454,7 +5454,7 @@ The HTML document itself takes too long to arrive.
 **Ancoratge de Seguretat:** [[Soci_Sollutia]]
 
 ---
-**Categoria:** Sollutia (BROKEN LINK: Sollutia) <!-- TODO: fix link -->
+**Categoria:** [[Sollutia]]
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
 **Ancoratge de Seguretat:** [[00_INDEX]]
 
@@ -5557,7 +5557,7 @@ relevant information.
 **Ancoratge de Seguretat:** [[Soci_Sollutia]]
 
 ---
-**Categoria:** Sollutia (BROKEN LINK: Sollutia) <!-- TODO: fix link -->
+**Categoria:** [[Sollutia]]
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
 **Ancoratge de Seguretat:** [[00_INDEX]]
 
@@ -5619,7 +5619,7 @@ The script will analyze and output the top growing objects by size and highlight
 **Ancoratge de Seguretat:** [[Soci_Sollutia]]
 
 ---
-**Categoria:** Sollutia (BROKEN LINK: Sollutia) <!-- TODO: fix link -->
+**Categoria:** [[Sollutia]]
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
 **Ancoratge de Seguretat:** [[00_INDEX]]
 
@@ -5729,7 +5729,7 @@ If the output is truncated, you must repeat the command but redirect to a file a
 **Ancoratge de Seguretat:** [[Soci_Sollutia]]
 
 ---
-**Categoria:** Sollutia (BROKEN LINK: Sollutia) <!-- TODO: fix link -->
+**Categoria:** [[Sollutia]]
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
 **Ancoratge de Seguretat:** [[00_INDEX]]
 
@@ -5832,7 +5832,7 @@ Alternatively, you can recommend that the user checks https://github.com/ChromeD
 **Ancoratge de Seguretat:** [[Soci_Sollutia]]
 
 ---
-**Categoria:** Sollutia (BROKEN LINK: Sollutia) <!-- TODO: fix link -->
+**Categoria:** [[Sollutia]]
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
 **Ancoratge de Seguretat:** [[00_INDEX]]
 
@@ -6399,7 +6399,7 @@ Per evitar l'entropia i la generació de nodes orfes o etiquetes redundants, **�
 
 *(Les etiquetes anteriors es basen en el Glossari Canònic i la pràctica de l'Auditoria).* 
 
-**Ancoratge de Seguretat:** 00_GLOSSARI_CANONIC (BROKEN LINK: 00_GLOSSARI_CANONIC) <!-- TODO: fix link -->
+**Ancoratge de Seguretat:** [[00_GLOSSARI_CANONIC]]
 
 ---
 
@@ -6538,7 +6538,7 @@ Si la recepta s'edita a mà després de l'aprovació, el hash divergeix i `aplic
 
 ## Operacions del catàleg v1
 
-- **LAPIDA** — substitueix cada `fantasma (BROKEN LINK: fantasma) <!-- TODO: fix link -->` per `àlies † (BROKEN LINK: 00_MEMORIAL_Lapides#fantasma) <!-- TODO: fix link -->` (l'àlies original es preserva) i erigeix la secció corresponent al Memorial amb origen i línia. Narrativa preservada sense mentir al graf. Els incrustats `!... (BROKEN LINK: ...) <!-- TODO: fix link -->` mai es toquen.
+- **LAPIDA** — substitueix cada `[[fantasma]]` per `[[00_MEMORIAL_Lapides#fantasma|àlies †]]` (l'àlies original es preserva) i erigeix la secció corresponent al Memorial amb origen i línia. Narrativa preservada sense mentir al graf. Els incrustats `![[...]]` mai es toquen.
 - **ADOPTA** — afegeix l'orfe amb contingut a la secció «Adopcions de Les Plaquetes» de l'índex configurat. No modifica l'orfe (per això només exigeix existència, no hash).
 - **QUARANTENA** — mou fitxers buits a `.immunitari/quarantena/<lot>/` conservant la ruta relativa. R3: mai esborrat; git registra el moviment i `reversa` el desfà.
 - **CREA_HUB** — crea la nota concentradora (MOC) d'un hub taxonòmic. **Inactiva per defecte** (`hubsDelegats: true`) mentre la tasca (a) siga territori de la MarIA local.
@@ -6558,7 +6558,7 @@ Requereix haver executat `segella` (i versionar `.immunitari/baseline.json`). La
 
 ## Limitacions honestes de v1
 
-Els incrustats `!nota_inexistent (BROKEN LINK: nota_inexistent) <!-- TODO: fix link -->` es reporten però no es lapiden. Els objectius amb nom base ambigu resolen al primer colp d'índex (mateix criteri laxista que Obsidian; es reporta). El codi en línia amb doble accent greu no s'emmascara. L'aprovació per hash garanteix *lectura conscient de la recepta*, no identitat: la garantia d'identitat és la cadena git + el lease de `PROTOCOL_PETORRETA`.
+Els incrustats `![[nota_inexistent]]` es reporten però no es lapiden. Els objectius amb nom base ambigu resolen al primer colp d'índex (mateix criteri laxista que Obsidian; es reporta). El codi en línia amb doble accent greu no s'emmascara. L'aprovació per hash garanteix *lectura conscient de la recepta*, no identitat: la garantia d'identitat és la cadena git + el lease de `PROTOCOL_PETORRETA`.
 
 ---
 
@@ -6965,7 +6965,7 @@ necessiten revisió abans d'usar-les com a norma:
 - [[PLANTILLA_ISO_SDP|Plantilla ISO SDP v2]]
 
 ---
-**Arxiu relacionat:** Arxiu històric † (BROKEN LINK: 00_MEMORIAL_Lapides#90_arxiu_historic) <!-- TODO: fix link -->
+**Arxiu relacionat:** [[00_MEMORIAL_Lapides#90_arxiu_historic|Arxiu històric †]]
 
 ## Taxonomia
 - **Categoria:** [[Maquina]]
@@ -6974,7 +6974,7 @@ necessiten revisió abans d'usar-les com a norma:
 **Ancoratge de Seguretat:** [[00_INDEX]]
 
 ---
-**Categoria:** [[00_plantilles|07_plantilles]]
+**Categoria:** [[07_plantilles]]
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
 **Ancoratge de Seguretat:** [[00_INDEX]]
 
@@ -7035,7 +7035,7 @@ requereix_auditoria: false
 **Ancoratge de Seguretat:** [[00_INDEX]]
 
 ---
-**Categoria:** [[00_plantilles|07_plantilles]]
+**Categoria:** [[07_plantilles]]
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
 **Ancoratge de Seguretat:** [[00_INDEX]]
 
@@ -7087,7 +7087,7 @@ _Fent poble amb [[el_projecte|Sóc de Poble]]! © 2026_
 **Ancoratge de Seguretat:** [[00_INDEX]]
 
 ---
-**Categoria:** [[00_plantilles|07_plantilles]]
+**Categoria:** [[07_plantilles]]
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
 **Ancoratge de Seguretat:** [[00_INDEX]]
 
@@ -7160,7 +7160,7 @@ _Fent poble amb [[el_projecte|Sóc de Poble]]! © 2026_
 **Ancoratge de Seguretat:** [[00_INDEX]]
 
 ---
-**Categoria:** [[00_plantilles|07_plantilles]]
+**Categoria:** [[07_plantilles]]
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
 **Ancoratge de Seguretat:** [[00_INDEX]]
 
@@ -7219,7 +7219,7 @@ _Fent poble amb [[el_projecte|Sóc de Poble]]! © 2026_
 **Ancoratge de Seguretat:** [[00_INDEX]]
 
 ---
-**Categoria:** [[00_plantilles|07_plantilles]]
+**Categoria:** [[07_plantilles]]
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
 **Ancoratge de Seguretat:** [[00_INDEX]]
 
@@ -7272,7 +7272,7 @@ _Fent poble amb [[el_projecte|Sóc de Poble]]! © 2026_
 **Ancoratge de Seguretat:** [[00_INDEX]]
 
 ---
-**Categoria:** [[00_plantilles|07_plantilles]]
+**Categoria:** [[07_plantilles]]
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
 **Ancoratge de Seguretat:** [[00_INDEX]]
 
@@ -7321,7 +7321,7 @@ _Fent poble amb [[el_projecte|Sóc de Poble]]! © 2026_
 **Ancoratge de Seguretat:** [[00_INDEX]]
 
 ---
-**Categoria:** [[00_plantilles|07_plantilles]]
+**Categoria:** [[07_plantilles]]
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
 **Ancoratge de Seguretat:** [[00_INDEX]]
 
@@ -7367,7 +7367,7 @@ _Fent poble amb [[el_projecte|Sóc de Poble]]! © 2026_
 **Ancoratge de Seguretat:** [[00_INDEX]]
 
 ---
-**Categoria:** [[00_plantilles|07_plantilles]]
+**Categoria:** [[07_plantilles]]
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
 **Ancoratge de Seguretat:** [[00_INDEX]]
 
@@ -7411,7 +7411,7 @@ Abans de finalitzar la resposta, l'Agent ha de validar en silenci:
 **Ancoratge de Seguretat:** [[00_INDEX]]
 
 ---
-**Categoria:** [[00_plantilles|07_plantilles]]
+**Categoria:** [[07_plantilles]]
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
 **Ancoratge de Seguretat:** [[00_INDEX]]
 
@@ -8025,7 +8025,7 @@ Auditar no modifica fitxers. Escriure un informe, corregir YAML, moure una nota,
 **Ancoratge de Seguretat:** [[00_INDEX]]
 
 ---
-**Categoria:** skills (BROKEN LINK: skills) <!-- TODO: fix link -->
+**Categoria:** [[skills]]
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
 **Ancoratge de Seguretat:** [[00_INDEX]]
 
@@ -8125,7 +8125,7 @@ Este document només pot passar de `futur` a `canonic` quan existisquen:
 **Ancoratge de Seguretat:** [[00_INDEX]]
 
 ---
-**Categoria:** skills (BROKEN LINK: skills) <!-- TODO: fix link -->
+**Categoria:** [[skills]]
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
 **Ancoratge de Seguretat:** [[00_INDEX]]
 
@@ -8188,7 +8188,7 @@ L’iPad A10 és el tribunal pràctic. LCP, INP, CLS, pes transferit i memòria 
 **Ancoratge de Seguretat:** [[00_INDEX]]
 
 ---
-**Categoria:** skills (BROKEN LINK: skills) <!-- TODO: fix link -->
+**Categoria:** [[skills]]
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
 **Ancoratge de Seguretat:** [[00_INDEX]]
 
@@ -8257,7 +8257,7 @@ Qualsevol experiment que haja de modificar coneixement, configuració o codi seg
 **Ancoratge de Seguretat:** [[00_INDEX]]
 
 ---
-**Categoria:** skills (BROKEN LINK: skills) <!-- TODO: fix link -->
+**Categoria:** [[skills]]
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
 **Ancoratge de Seguretat:** [[00_INDEX]]
 
@@ -8333,7 +8333,7 @@ L’IT no crea etiquetes de frontmatter. L’esquema v2 només admet `estat`, `t
 **Ancoratge de Seguretat:** [[00_INDEX]]
 
 ---
-**Categoria:** skills (BROKEN LINK: skills) <!-- TODO: fix link -->
+**Categoria:** [[skills]]
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
 **Ancoratge de Seguretat:** [[00_INDEX]]
 
@@ -8448,7 +8448,7 @@ Esta eixida és un diagnòstic. Només un rebut vigent pot autoritzar una operac
 **Ancoratge de Seguretat:** [[00_INDEX]]
 
 ---
-**Categoria:** skills (BROKEN LINK: skills) <!-- TODO: fix link -->
+**Categoria:** [[skills]]
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
 **Ancoratge de Seguretat:** [[00_INDEX]]
 
@@ -8540,7 +8540,7 @@ Els antics frontmatters v1 incrustats, `pre_commit_trellat.mjs` com a autoritat,
 **Ancoratge de Seguretat:** [[00_INDEX]]
 
 ---
-**Categoria:** skills (BROKEN LINK: skills) <!-- TODO: fix link -->
+**Categoria:** [[skills]]
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
 **Ancoratge de Seguretat:** [[00_INDEX]]
 
@@ -8648,7 +8648,7 @@ Queden derogades tres idees heretades: abolir `.agents`, considerar que «el cod
 **Ancoratge de Seguretat:** [[00_INDEX]]
 
 ---
-**Categoria:** skills (BROKEN LINK: skills) <!-- TODO: fix link -->
+**Categoria:** [[skills]]
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
 **Ancoratge de Seguretat:** [[00_INDEX]]
 
@@ -9588,7 +9588,7 @@ L'arquitectura legal del projecte ha de complir tres premisses: permetre la capt
 >    - **Composició Tàctica:** La Junta estarà formada per figures de màxima confiança territorial (Joan i Julio -vinculats a El Rentonar- i Nando) com a President, Secretari i Tresorer.
 >    - **Implicació Legal per a la Junta:** ZERO repercussió en l'IRPF personal (és un càrrec sense ànim de lucre pel qual no cobren), i ZERO obligacions de declaracions trimestrals (tota la burocràcia i impostos els fa la gestoria a nom del CIF de l'Associació).
 >    - **Funció Requerida:** La seua única funció és signar la constitució (actes i estatuts), l'obertura del compte bancari, l'autorització del certificat digital i l'assemblea anual de comptes. Amb açò l'Associació obté el CIF propi per a poder operar legalment.
-> 2. **Aliança Tecnològica:** S'estableix un vincle estratègic inseparable amb **Sollutia (BROKEN LINK: Sollutia) <!-- TODO: fix link --> (Partner Tecnològic)**. L'Associació capta fons no lucratius i subcontracta els serveis a Sollutia. Sollutia avala tècnicament el projecte, cobra pel seu desenvolupament a preus de mercat i aporta l'estructura empresarial de la qual Sóc de Poble no disposa per si sola.
+> 2. **Aliança Tecnològica:** S'estableix un vincle estratègic inseparable amb **[[Sollutia]] (Partner Tecnològic)**. L'Associació capta fons no lucratius i subcontracta els serveis a Sollutia. Sollutia avala tècnicament el projecte, cobra pel seu desenvolupament a preus de mercat i aporta l'estructura empresarial de la qual Sóc de Poble no disposa per si sola.
 
 ---
 
@@ -9635,7 +9635,7 @@ L'Administració no paga mai "hores de manteniment d'una web". Es ven un **serve
 > **"Sóc de Poble no és una xarxa social, ni un portal turístic. És una infraestructura comunitària i un Pla de Contingència Municipal. Quan falla la fibra òptica per una DANA, una nevada o un incendi, el poble no pot quedar aïllat ni mut. Sóc de Poble funciona de manera local (offline-first) garantint l'accés a l'agenda civil, avisos d'emergència i memòria històrica, sense vendre dades i sense dependre de multinacionals. Som la nevera digital on el poble guarda el que necessita per a sobreviure."**
 
 ### Pressupost Mínim Sostenible
-El pressupost complet per garantir la independència, incloent els honoraris d'Associació i el marge estratègic de **Sollutia (BROKEN LINK: Sollutia) <!-- TODO: fix link -->**, s'ha detallat de forma exhaustiva al document agermanat:
+El pressupost complet per garantir la independència, incloent els honoraris d'Associació i el marge estratègic de **[[Sollutia]]**, s'ha detallat de forma exhaustiva al document agermanat:
 👉 **[[PLA_DIRECTOR_Viabilitat_Economica]]**
 
 ---

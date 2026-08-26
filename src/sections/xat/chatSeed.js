@@ -123,7 +123,7 @@ export const MOCK_MESSAGES = {
     time: "09:00"
   }, {
     id: 2,
-    text: "Ah, i recorda que tenim el CIF G-54321987 verificat al sistema. Tot en ordre amb Hisenda.",
+    text: "Ah, i recorda que tenim el CIF [OMÉS PER PRIVACITAT] verificat al sistema. Tot en ordre amb Hisenda.",
     sender: "other",
     time: "09:05"
   }, {

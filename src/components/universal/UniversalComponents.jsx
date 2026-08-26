@@ -2,7 +2,26 @@ import { resolveAsset } from '../../config/assetResolver';
 import { useNavigate, Link } from 'react-router-dom';
 import { useEffect, useState, useRef } from 'react';
 import { useAppData } from '../../app/AppDataContext';
+import { showToast } from './AvisadorEfimer';
+
 const PAGE_CHROME_MODES = new Set(['none', 'page', 'context', 'full', 'system']);
+
+function isSafeUrl(url) {
+  if (!url) return false;
+  try {
+    const u = new URL(url, window.location.origin);
+    return u.protocol === 'http:' || u.protocol === 'https:';
+  } catch {
+    return false;
+  }
+}
+
+function isValidDate(dd, mm, yy) {
+  const d = new Date(yy, mm - 1, dd);
+  return d.getFullYear() === Number(yy) && 
+         d.getMonth() === Number(mm) - 1 && 
+         d.getDate() === Number(dd);
+}
 
 const DEFAULT_AUTHOR = {
   name: 'Sóc de Poble',
@@ -111,6 +130,7 @@ export function IaiaIcon({ className }) {
       aria-hidden="true"
       focusable="false"
       fill="currentColor"
+      style={{ willChange: 'transform' }}
     >
       <path
         // eslint-disable-next-line
@@ -423,11 +443,12 @@ export function UniversalPage({
   const handleTheme = onTheme || appData?.toggleTheme || (() => {});
   const handleComment = onComment || (() => navigate('/xat'));
   const handleShare = onShare || (() => {
+    const safeHref = isSafeUrl(window.location.href) ? window.location.href : window.location.origin;
     if (navigator.share) {
-      navigator.share({ title: title || document.title, url: window.location.href }).catch(console.error);
+      navigator.share({ title: title || document.title, url: safeHref }).catch(console.error);
     } else {
-      navigator.clipboard.writeText(window.location.href);
-      alert('Enllaç copiat al porta-retalls');
+      navigator.clipboard.writeText(safeHref);
+      showToast('Enllaç copiat al porta-retalls');
     }
   });
   
@@ -451,14 +472,16 @@ export function UniversalPage({
       if (parts.length === 3) {
         let [dd, mm, yy] = parts;
         if (yy.length === 2) yy = '20' + yy;
-        yyyymmdd = `${yy}-${mm.padStart(2, '0')}-${dd.padStart(2, '0')}`;
+        if (isValidDate(dd, mm, yy)) {
+          yyyymmdd = `${yy}-${mm.padStart(2, '0')}-${dd.padStart(2, '0')}`;
+        }
       } else {
         const d = new Date(barDate);
         if (!isNaN(d.getTime())) yyyymmdd = d.toISOString().split('T')[0];
       }
     }
     if (yyyymmdd) {
-      navigate(`/mur?date=${yyyymmdd}`);
+      navigate(`/mur?date=${encodeURIComponent(yyyymmdd)}`);
     } else {
       navigate('/mur');
     }
@@ -790,7 +813,8 @@ function CardBody({ imageUrl, imageAlt, calendarBadge, price, title, titleConten
       <div
         className={[
           'sp-card-body',
-          (price || calendarBadge) && 'sp-card-body--with-aside'
+          price && 'has-price',
+          calendarBadge && 'has-calendar-badge'
         ].filter(Boolean).join(' ')}
       >
         {calendarBadge && (
@@ -942,11 +966,14 @@ export function UniversalCard({
   const handleTranslate = onTranslate || (() => navigate('/traduccions'));
   const handleComment = onComment || (() => navigate('/xat'));
   const handleShare = onShare || (() => {
+    const safeHref = isSafeUrl(mainHref) ? mainHref : null;
+    const fullUrl = safeHref ? (window.location.origin + safeHref) : window.location.href;
+    
     if (navigator.share) {
-      navigator.share({ title: title || document.title, url: mainHref || window.location.href }).catch(console.error);
+      navigator.share({ title: title || document.title, url: fullUrl }).catch(console.error);
     } else {
-      navigator.clipboard.writeText(mainHref ? (window.location.origin + mainHref) : window.location.href);
-      alert('Enllaç copiat al porta-retalls');
+      navigator.clipboard.writeText(fullUrl);
+      showToast('Enllaç copiat al porta-retalls');
     }
   });
   
@@ -961,14 +988,16 @@ export function UniversalCard({
       if (parts.length === 3) {
         let [dd, mm, yy] = parts;
         if (yy.length === 2) yy = '20' + yy;
-        yyyymmdd = `${yy}-${mm.padStart(2, '0')}-${dd.padStart(2, '0')}`;
+        if (isValidDate(dd, mm, yy)) {
+          yyyymmdd = `${yy}-${mm.padStart(2, '0')}-${dd.padStart(2, '0')}`;
+        }
       } else {
         const d = new Date(date);
         if (!isNaN(d.getTime())) yyyymmdd = d.toISOString().split('T')[0];
       }
     }
     if (yyyymmdd) {
-      navigate(`/mur?date=${yyyymmdd}`);
+      navigate(`/mur?date=${encodeURIComponent(yyyymmdd)}`);
     } else {
       navigate('/mur');
     }

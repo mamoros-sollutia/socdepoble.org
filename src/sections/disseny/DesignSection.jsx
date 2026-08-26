@@ -1,7 +1,33 @@
-import React from 'react';
 import { UniversalPage, UniversalCard } from '../../components/universal/UniversalComponents.jsx';
+import { EventCard } from '../../components/universal/EventCard.jsx';
 import { buildMapEmbedUrl } from '../mur/mapConfig';
+import { sanitizeHtml } from '../../utils/sanitize.js';
 
+import React from 'react';
+import { EVENTS } from '../mur/eventsContent.js';
+
+/**
+ * ComponentDoc - Wrapper per a documentar elements del Sistema de Disseny (Pedra Seca)
+ * Açò actua com a "Storybook" en miniatura.
+ */
+function ComponentDoc({ title, description, technical, children }) {
+  return (
+    <div className="component-doc sdp-mb-8">
+      <div className="component-doc-header sdp-mb-4">
+        <h3 className="sdp-m-0">{title}</h3>
+        {description && <p className="sdp-text-suau sdp-mt-2">{description}</p>}
+        {technical && (
+          <div className="alert alert-info sdp-mt-4 sdp-p-4" style={{ fontSize: '0.9rem', marginBottom: '1rem', borderRadius: 'var(--sdp-radi-md)' }}>
+            <strong>Context Tècnic: </strong> {technical}
+          </div>
+        )}
+      </div>
+      <div className="component-doc-preview sdp-p-6">
+        {children}
+      </div>
+    </div>
+  );
+}
 
 export default function DesignSection() {
   return (
@@ -12,8 +38,8 @@ export default function DesignSection() {
       subtitle="Sistema oficial de disseny per a Sóc de Poble"
       lead="Inclou la Targeta Mestra, els colors oficials, i tots els elements preparats, inclús els skills i scripts, perquè qualsevol IA puga entendre este sistema i reproduir-lo."
       labels={[
-        { text: 'Mur', className: 'label-blue' },
-        { text: 'Disseny UI', className: 'label-orange' }
+        { text: 'Mur', className: 'sdp-badge-system' },
+        { text: 'Disseny UI', className: 'sdp-badge-category' }
       ]}
       copyright="© Sóc de Poble / Fet per la IAIA i Nano Banana"
       heroImage="/assets/uploads/brain/ibanez_pedra_seca_design_1780873465211.png"
@@ -25,15 +51,26 @@ export default function DesignSection() {
       <div className="universal-content sdp-design-system sdp-manual-disseny">
         {/* Generated JSX from HTML */}
         
-<section className="design-block">
-<h3>1. Identitat Cromàtica</h3>
-<p>La paleta es genera en <strong>OKLCH</strong>: el to i el croma de marca es mantenen constants i només varia la lluminositat. Per això l'escala és perceptivament regular i cada graó té un contrast previsible.</p>
-<div className="alert alert-info sdp-mb-6"><div className="alert-content"><h4>Contracte d'accessibilitat</h4>
-<p>Este sistema complix <strong>WCAG 2.2 nivell AAA (≥7:1) en tot el text, els fons i els grisos estructurals</strong>, i <strong>nivell AA (≥4,5:1) en els colors d'interacció</strong> — enllaços, pestanyes actives i botons primaris. Els límits dels controls complixen la norma 1.4.11 (≥3:1).</p>
-<p>Esta distinció és deliberada i honesta: AAA estricte en tot obligaria a abandonar el taronja de marca, perquè cap taronja reconeixible arriba a 7:1 sobre blanc. Preferim dir-ho que amagar-ho.</p>
-</div></div>
+<section className="design-block sdp-mb-12">
+<h3>1. Lleis de Pedra Seca per a IAs Arquitectes</h3>
+<p className="sdp-text-lg sdp-mb-6">Normes absolutes que regeixen tot el que una IA pot o no pot fer en este repositori. Açò és el més important abans de tocar cap codi o disseny.</p>
 
-<h3>🤖 LLEIS DE PEDRA SECA PER A IAs ARQUITECTES</h3>
+<h4>1.1 Arquitectura de la Pàgina Universal (UniversalPage)</h4>
+<div className="alert alert-info sdp-mb-6">
+  <div className="alert-content">
+    <p><strong>Estructura Anatòmica Inviolable</strong><br/>L'element rarel que engloba qualsevol Targeta Mestra (o qualsevol contingut detallat del Mur). Aquesta pàgina és l'esquelet perfecte i immutable del disseny Pedra Seca.</p>
+    <ol className="sdp-mt-4" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sdp-space-4)' }}>
+      <li><strong>Barres Superiors (Controls):</strong> La barra blava de navegació (context) i la barra taronja d'autoria (dades meta, data, connectar).</li>
+      <li><strong>Imatge Hero (Opcional):</strong> Es renderitza immediatament davall de les barres. Ocupa l'ample disponible amb cantons arredonits.</li>
+      <li><strong>La Targeta de Decoració Blanca (Header):</strong> Un bloc blanc que embolica de forma segura el logotip de Sóc de Poble (max 600px), l'element <strong>H1</strong> (H3 a la card), les etiquetes de categorització, i el <strong>Copyright</strong> de tancament.
+      <br/><small className="sdp-text-gray-500">Nota: Quan aquesta decoració blanca es tanca (amb els cantons arredonits inferiors), <em>s'acaba l'espai protegit de la capçalera</em>.</small></li>
+      <li><strong>H2 i Entradilla (Fora de la targeta blanca):</strong> Situats directament sobre el fons gris (o general de la pàgina). Això ofereix un respir visual i actua de pont entre l'H1 i el contingut profund.</li>
+      <li><strong>H3 i Contingut Base (article):</strong> El text enriquit, estructurat harmònicament cap avall. Totes les Targetes, ja siguen Esdeveniments, Projectes o Skills, utilitzen exactament aquest patró arquitectònic sense excepcions.</li>
+    </ol>
+  </div>
+</div>
+
+<h4>1.2 Normes de Codi i CSS Absolutes</h4>
 <div className="alert alert-warning sdp-mb-6"><div className="alert-content">
 <p><strong>Aquestes regles són absolutes i no es poden trencar sota cap concepte:</strong></p>
 <ol>
@@ -42,7 +79,17 @@ export default function DesignSection() {
 <li><strong>Shadow DOM i Mode Fosc:</strong> Perquè les variables de CSS funcionin bé dins de WordPress o altres entorns amb Shadow DOM, <strong>sempre</strong> que s'escrigui una regla per al tema fosc com <code>:root[data-theme="dark"]</code> s'ha de duplicar exactament amb el selector bessó <code>:host([data-theme="dark"])</code>.</li>
 </ol>
 </div></div>
-<h4>1.1 Colors de marca</h4>
+</section>
+
+<section className="design-block">
+<h3>2. Identitat Cromàtica</h3>
+<p>La paleta es genera en <strong>OKLCH</strong>: el to i el croma de marca es mantenen constants i només varia la lluminositat. Per això l'escala és perceptivament regular i cada graó té un contrast previsible.</p>
+<div className="alert alert-info sdp-mb-6"><div className="alert-content"><h4>Contracte d'accessibilitat</h4>
+<p>Este sistema complix <strong>WCAG 2.2 nivell AAA (≥7:1) en tot el text, els fons i els grisos estructurals</strong>, i <strong>nivell AA (≥4,5:1) en els colors d'interacció</strong> — enllaços, pestanyes actives i botons primaris. Els límits dels controls complixen la norma 1.4.11 (≥3:1).</p>
+<p>Esta distinció és deliberada i honesta: AAA estricte en tot obligaria a abandonar el taronja de marca, perquè cap taronja reconeixible arriba a 7:1 sobre blanc. Preferim dir-ho que amagar-ho.</p>
+</div></div>
+
+<h4>2.1 Colors de marca</h4>
 <div className="palette">
 <div className="swatch">
 <div className="swatch-color sw-primary-500">Taronja · fons</div>
@@ -240,42 +287,36 @@ Aquesta és l'<em>entradilla</em> (<code>&lt;p className="lead"&gt;</code>). S'u
 </div>
 </section>
 {/*  SECCIÓ: BOTONS  */}
-<section className="design-block">
-<h3>4. Botons</h3>
-<h4>Variants</h4>
-<div className="btn-group">
-<button className="btn btn-primary">Primari</button>
-<button className="btn btn-secondary">Secundari</button>
-<button className="btn btn-outline-dark">Terciari</button>
-<button className="btn btn-base">Neutral / Base</button>
-<button className="btn btn-danger">Perill</button>
-<button className="btn btn-ghost">Fantasma</button>
-</div>
+<section className="design-block sdp-mb-12">
+<ComponentDoc
+  title="4. Botons (Accions)"
+  description="L'element interactiu fonamental. Els botons han de comunicar clarament l'acció que realitzaran i el seu nivell d'importància."
+  technical="Tots els botons complixen un touch-target mínim de 44x44px en mòbil. L'estat :focus-visible aplica un anell de color per a navegació per teclat (WCAG 2.1.1). Mai s'han d'usar per a enllaços simples sense acció."
+>
+  <h4>Variants i Jerarquia</h4>
+  <p className="sdp-mb-4 sdp-text-suau">Els botons es divideixen en nivells d'atenció. Usa <code>btn-primary</code> només per a l'acció principal d'una vista.</p>
+  <div className="btn-group sdp-mb-6">
+    <button className="btn btn-primary">Primari</button>
+    <button className="btn btn-secondary">Secundari</button>
+    <button className="btn btn-outline-dark">Terciari</button>
+    <button className="btn btn-base">Neutral / Base</button>
+    <button className="btn btn-danger">Perill</button>
+    <button className="btn btn-ghost">Fantasma</button>
+  </div>
 
-<h4>Mides</h4>
-<div className="btn-group">
-<button className="btn btn-primary btn-sm">Petit</button>
-<button className="btn btn-primary">Normal</button>
-<button className="btn btn-primary btn-lg">Gran</button>
-</div>
-<h4>Estats</h4>
-<div className="btn-group">
-<button className="btn btn-primary">Normal</button>
-<button className="btn btn-primary" disabled="">Desactivat</button>
-<button className="btn btn-primary">
-<svg className="spinner" viewBox="0 0 20 20"><circle cx="12" cy="12" fill="none" r="10" stroke="currentColor" strokeWidth="3"></circle></svg>
-            Carregant...
-          </button>
-</div>
-<h4>Amb Icona</h4>
-<div className="btn-group">
-<button className="btn btn-primary">
-<svg className="icon-btn" viewBox="0 0 20 20"><path d="M12 5v14M5 12h14"></path></svg> Afegir
-          </button>
-<button className="btn btn-secondary">
-<svg className="icon-btn" viewBox="0 0 20 20"><path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg> Eliminar
-          </button>
-</div>
+  <h4>Estats d'Interacció</h4>
+  <p className="sdp-mb-4 sdp-text-suau">Els estats visuals informen l'usuari sobre la disponibilitat de l'acció.</p>
+  <div className="btn-group sdp-mb-6">
+    <button className="btn btn-primary">Normal</button>
+    <button className="btn btn-primary" disabled>Desactivat</button>
+    <button className="btn btn-primary" disabled>
+      <svg className="spinner sdp-mr-2" viewBox="0 0 20 20" style={{display: 'inline-block', width: '1.2em', height: '1.2em', verticalAlign: 'middle', marginRight: '8px'}}>
+        <circle cx="12" cy="12" fill="none" r="10" stroke="currentColor" strokeWidth="3"></circle>
+      </svg>
+      <span>Carregant...</span>
+    </button>
+  </div>
+</ComponentDoc>
 </section>
 {/*  SECCIÓ: FORMULARIS  */}
 <section className="design-block">
@@ -591,237 +632,149 @@ Gran</div>
 </div>
 </section>
 {/*  SECCIÓ 20: TARGETES MESTRES  */}
-<section className="design-block">
-<h3>20. Targeta Mestra (Sóc de Poble Universal Card)</h3>
-<p className="sdp-text-center sdp-mb-2">La Targeta Mestra és un bloc modular desmuntable i enllaçable (amb <code>&lt;a className="sp-card-main-link"&gt;</code> dins del títol). Qualsevol clic dins d'ella condueix a la pàgina, excepte els botons amb funcions específiques (z-index superior).</p>
-<h4>20.1 Targeta Mestra: Text pur i Etiquetes (Gestoria de Poble)</h4>
-<article className="sp-card">
-<header className="sp-card-header">
-<a className="sp-card-author-link" href="#" title="Anar al perfil de l'autor">
-<div className="sp-card-author">
-<img alt="Avatar" className="sp-card-avatar sdp-p-0" src="https://socdepoble.org/assets/system/ui/logo-socdepoble-cuadrat-verd.svg"/>
-<div className="sp-card-author-info">
-<div className="sp-card-author-name">Javi Llinares</div>
-<div className="sp-card-author-location">La Torre de les Maçanes</div>
-</div>
-</div>
-</a>
-<div className="sp-card-meta sdp-gap-8">
-{/*  Tooltip (Bocata) d'Avís o PIN  */}
-<div className="tooltip-container">
-<button className="btn-icon-orange" title="Mode Privadesa">
-<svg className="icon" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 20 20"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="m9 12 2 2 4-4"></path></svg>
-</button>
-<div className="tooltip-text">Mode Privadesa actiu</div>
-</div>
-<button className="btn-date-time" title="Veure calendari d'este dia">
-<span>14:28</span><span>26/06/22</span>
-</button>
-</div>
-</header>
-<div className="sp-card-body">
-<div className="sp-card-price sdp-mb-6">***,** €</div>
-<h4 className="sp-card-title"><a href="#caixa-real" className="sp-card-main-link" title="Obrir Caixa Real">Caixa Real</a></h4>
-<p className="sp-card-subtitle">Saldo Disponible</p>
-<div className="sp-card-labels">
-<span className="sp-card-label label-blue">Gestoria</span>
-<span className="sp-card-label label-green">Caixa Real</span>
-</div>
-<div className="sp-card-copyright sdp-mt-4">© Sóc de Poble / Fet per la IAIA i Nano Banana</div>
-</div>
-<footer className="sp-card-footer">
-<div className="sp-card-actions">
-<button className="sp-card-action" title="Traduir">
-<svg className="icon" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 20 20"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg>
-</button>
-<button className="sp-card-action" title="Comentar (Xat Privat)">
-<svg className="icon" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 20 20"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg>
-</button>
-<button className="sp-card-action" title="Compartir">
-<svg className="icon" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 20 20"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line></svg>
-</button>
-</div>
-<button className="sp-card-connect" title="Connectar amb Caixa Real">Connectar</button>
-</footer>
-</article>
-<h4>20.2 Targeta Mestra: Text pur (Hisenda)</h4>
-<article className="sp-card">
-<header className="sp-card-header">
-<a className="sp-card-author-link" href="#" title="Anar al perfil de l'autor">
-<div className="sp-card-author">
-<img alt="Avatar" className="sp-card-avatar sdp-p-0" src="https://socdepoble.org/assets/system/ui/logo-socdepoble-cuadrat-verd.svg"/>
-<div className="sp-card-author-info">
-<div className="sp-card-author-name">Javi Llinares</div>
-<div className="sp-card-author-location">La Torre de les Maçanes</div>
-</div>
-</div>
-</a>
-<div className="sp-card-meta sdp-gap-8">
-<div className="tooltip-container">
-<button className="btn-icon-orange" title="Avís Important">
-<svg className="icon" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 20 20"><path d="m3 11 18-5v12L3 14v-3z"></path><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"></path></svg>
-</button>
-<div className="tooltip-text">Falten 3 dies per presentar el model</div>
-</div>
-<button className="btn-date-time" title="Veure calendari d'este dia">
-<span>14:28</span><span>26/06/22</span>
-</button>
-</div>
-</header>
-<div className="sp-card-body">
-<div className="sp-card-price sdp-mb-6">***,** €</div>
-<h4 className="sp-card-title"><a href="#hisenda" className="sp-card-main-link" title="Obrir Hisenda">Hisenda</a></h4>
-<p className="sp-card-subtitle">Model 303 / 130</p>
-<div className="sp-card-labels">
-<span className="sp-card-label label-blue">Gestoria</span>
-<span className="sp-card-label label-orange">Hisenda</span>
-</div>
-<div className="sp-card-copyright sdp-mt-4">© Sóc de Poble / Fet per la IAIA i Nano Banana</div>
-</div>
-<footer className="sp-card-footer">
-<div className="sp-card-actions">
-<button className="sp-card-action" title="Traduir">
-<svg className="icon" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 20 20"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg>
-</button>
-<button className="sp-card-action" title="Comentar (Xat Privat)">
-<svg className="icon" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 20 20"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg>
-</button>
-<button className="sp-card-action" title="Compartir">
-<svg className="icon" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 20 20"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line></svg>
-</button>
-</div>
-<button className="sp-card-connect" title="Connectar amb Hisenda">Connectar</button>
-</footer>
-</article>
-<h4>20.3 Targeta Mestra: Imatge Completa (Producte)</h4>
-<article className="sp-card">
-<header className="sp-card-header">
-<a className="sp-card-author-link" href="#" title="Anar al perfil de l'autor">
-<div className="sp-card-author">
-<img alt="Avatar" className="sp-card-avatar sdp-p-0" src="https://socdepoble.org/assets/system/ui/logo-socdepoble-cuadrat-verd.svg"/>
-<div className="sp-card-author-info">
-<div className="sp-card-author-name">Sóc de Poble</div>
-<div className="sp-card-author-location">La Torre de les Maçanes</div>
-</div>
-</div>
-</a>
-<div className="sp-card-meta sdp-gap-8">
-<button className="btn-icon-orange" title="Ancorar" >
-<svg className="icon" viewBox="0 0 20 20"><path d="M16 11V7a4 4 0 0 0-8 0v4l-2 4h12l-2-4z"></path><path d="M12 15v7"></path></svg>
-</button>
-<button className="btn-date-time" title="Veure calendari d'este dia">
-<span>00:29</span><span>23/3/22</span>
-</button>
-</div>
-</header>
-<div className="sp-card-media">
-<img alt="Samarreta" src="https://socdepoble.org/assets/uploads/brain/media__1776503825171.jpg"/>
-</div>
-<div className="sp-card-body">
-<div className="sp-card-price">15.00€</div>
-<h4 className="sp-card-title"><a href="#samarreta" className="sp-card-main-link" title="Obrir Samarreta Sóc de Poble">Samarreta Sóc de Poble</a></h4>
-<p className="sp-card-subtitle">L'edició definitiva amb el logotip complet</p>
-<p className="sp-card-text">Dibuix del mapa del tresor. Cotó Roly de màxima qualitat.</p>
-<div className="sp-card-labels">
-<span className="sp-card-label label-blue">Mercat</span>
-<span className="sp-card-label label-blue">Roba</span>
-<span className="sp-card-label label-green">Samarreta</span>
-</div>
-<div className="sp-card-copyright sdp-mt-4">© Sóc de Poble / Fet per la IAIA i Nano Banana</div>
-</div>
-<footer className="sp-card-footer">
-<div className="sp-card-actions">
-<button className="sp-card-action" title="Traduir">
-<svg className="icon" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 20 20"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg>
-</button>
-<button className="sp-card-action" title="Comentar (Xat Privat)">
-<svg className="icon" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 20 20"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg>
-</button>
-<button className="sp-card-action" title="Compartir">
-<svg className="icon" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 20 20"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line></svg>
-</button>
-</div>
-<button className="sp-card-connect" title="Connectar">Connectar</button>
-</footer>
-</article>
-<h4>20.4 Targeta Mestra: Pàgina de Mur (Disseny)</h4>
-<article className="sp-card">
-<header className="sp-card-header">
-<a className="sp-card-author-link" href="#" title="Anar al perfil de l'autor">
-<div className="sp-card-author">
-<img alt="Avatar" className="sp-card-avatar sdp-p-0" src="https://socdepoble.org/assets/system/ui/logo-socdepoble-cuadrat-verd.svg"/>
-<div className="sp-card-author-info">
-<div className="sp-card-author-name">Sóc de Poble</div>
-<div className="sp-card-author-location">La Torre de les Maçanes</div>
-</div>
-</div>
-</a>
-<div className="sp-card-meta sdp-gap-8">
-<button className="btn-icon-orange" title="Ancorar">
-<svg className="icon" viewBox="0 0 20 20"><path d="M16 11V7a4 4 0 0 0-8 0v4l-2 4h12l-2-4z"></path><path d="M12 15v7"></path></svg>
-</button>
-<button className="btn-date-time" title="Veure calendari d'este dia">
-<span>10:00</span><span>07/8/22</span>
-</button>
-</div>
-</header>
-<div className="sp-card-media">
-<img alt="Disseny Pedra Seca" src="assets/img/ibanez_pedra_seca_design_1780873465211.png"/>
-</div>
-<div className="sp-card-body">
-<h4 className="sp-card-title"><a href="#disseny" className="sp-card-main-link" title="Obrir Disseny Pedra Seca">Disseny Pedra Seca</a></h4>
-<p className="sp-card-subtitle">Sistema oficial de disseny per a Sóc de Poble</p>
-<p className="sp-card-text">Inclou la Targeta Mestra, els colors oficials, i tots els elements preparats, inclús els skills i scripts, perquè qualsevol IA puga entendre este sistema i reproduir-lo.</p>
-<div className="sp-card-labels">
-<span className="sp-card-label label-orange">MUR</span>
-<span className="sp-card-label label-blue">Disseny UI</span>
-</div>
-<div className="sp-card-copyright sdp-mt-4">© Sóc de Poble / Fet per la IAIA i Nano Banana</div>
-</div>
-<footer className="sp-card-footer">
-<div className="sp-card-actions">
-<button className="sp-card-action" title="Traduir">
-<svg className="icon" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 20 20"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg>
-</button>
-<button className="sp-card-action" title="Comentar (Xat Privat)">
-<svg className="icon" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 20 20"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg>
-</button>
-<button className="sp-card-action" title="Compartir">
-<svg className="icon" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 20 20"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line></svg>
-</button>
-</div>
-<button className="sp-card-connect" title="Connectar">Connectar</button>
-</footer>
-</article>
+<section className="design-block sdp-mb-20">
+<h3 className="sdp-mb-6">20. Targeta Mestra (Sóc de Poble Universal Card)</h3>
+
+<ComponentDoc
+  title="20.1 Targeta Mestra Principal (Base Canònica)"
+  description="L'estructura base de qualsevol publicació al Mur. Tot el text (títol, subtítol i cos) està centrat per defecte per oferir una lectura pausada i harmoniosa."
+  technical="Quan no hi ha cap element superior dret (com un preu o una etiqueta de data), el text de la targeta manté la seua naturalesa centrada. Esta és la targeta sobre la qual s'afegeixen o lleven elements."
+>
+  <div style={{ maxWidth: '400px', margin: '0 auto' }}>
+    <UniversalCard
+      title="Disseny Pedra Seca"
+      subtitle="Sistema oficial de disseny per a Sóc de Poble"
+      body="Inclou la Targeta Mestra, els colors oficials, i tots els elements preparats, inclús els skills i scripts, perquè qualsevol IA puga entendre este sistema i reproduir-lo."
+      imageUrl="assets/img/ibanez_pedra_seca_design_1780873465211.png"
+      imageAlt="Disseny Pedra Seca"
+      labels={[
+        { text: 'MUR', className: 'sdp-badge-system' },
+        { text: 'Disseny UI', className: 'sdp-badge-category' }
+      ]}
+      author="Sóc de Poble"
+      location="La Torre de les Maçanes"
+      avatarUrl="/assets/system/ui/logo-socdepoble-cuadrat-verd.svg"
+      time="10:00"
+      date="07/08/22"
+      showPin={true}
+      copyright="© Sóc de Poble / Fet per la IAIA i Nano Banana"
+      hasFooter={true}
+      showTranslate={true}
+      showComment={true}
+      showShare={true}
+      showConnect={true}
+      mainHref="#disseny"
+    />
+  </div>
+</ComponentDoc>
+
+<ComponentDoc
+  title="20.2 Targeta Mestra: Mercat (Producte / Intercanvi)"
+  description="Variació dissenyada per al comerç de proximitat. Afig un distintiu a la cantonada superior dreta de l'àrea de text i alinea automàticament tot el contingut a l'esquerra."
+  technical="En passar la propietat `price`, la targeta afig la classe `.has-price` al contenidor del text. Esta classe trenca el centratge per defecte i alinea el text a l'esquerra (justify-content: flex-start) per equilibrar el pes visual del botó flotant del preu/intercanvi."
+>
+  <div style={{ maxWidth: '400px', margin: '0 auto' }}>
+    <UniversalCard
+      title="Samarreta Sóc de Poble"
+      subtitle="L'edició definitiva amb el logotip complet"
+      body="Dibuix del mapa del tresor. Cotó Roly de màxima qualitat."
+      price="15.00 €"
+      imageUrl="https://socdepoble.org/assets/uploads/brain/media__1776503825171.jpg"
+      imageAlt="Samarreta"
+      labels={[
+        { text: 'Mercat', className: 'sdp-badge-system' },
+        { text: 'Roba', className: 'sdp-badge-category' },
+        { text: 'Samarreta', className: 'sdp-badge-tag' }
+      ]}
+      author="Sóc de Poble"
+      location="La Torre de les Maçanes"
+      avatarUrl="/assets/system/ui/logo-socdepoble-cuadrat-verd.svg"
+      time="00:29"
+      date="23/03/22"
+      showPin={true}
+      copyright="© Sóc de Poble / Fet per la IAIA i Nano Banana"
+      hasFooter={true}
+      showTranslate={true}
+      showComment={true}
+      showShare={true}
+      showConnect={true}
+      mainHref="#samarreta"
+    />
+  </div>
+</ComponentDoc>
+
+<ComponentDoc
+  title="20.3 Targeta Mestra: Esdeveniment"
+  description="Variació per a dates assenyalades. La data es destaca mitjançant un 'Badge' de calendari, bevent de la font de dades oficial."
+>
+  <div style={{ maxWidth: '400px', margin: '0 auto' }}>
+    {(() => {
+      const eventItem = EVENTS.find(e => e.id === 'aplec-2023') || {};
+      
+      return (
+        <EventCard item={eventItem} />
+      );
+    })()}
+  </div>
+</ComponentDoc>
+
+<ComponentDoc
+  title="20.4 Targeta Mestra sense imatge (Exemple: Hisenda / Gestoria)"
+  description="Quan la publicació no disposa d'imatge principal, el focus recau completament sobre la tipografia i les dades meta. S'acostuma a emprar per a avisos del sistema o procediments burocràtics."
+>
+  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+    <UniversalCard
+      title="Hisenda"
+      subtitle="Model 303 / 130"
+      price="***,** €"
+      labels={[
+        { text: 'Gestoria', className: 'sdp-badge-system' },
+        { text: 'Hisenda', className: 'sdp-badge-category' }
+      ]}
+      author="Javi Llinares"
+      location="La Torre de les Maçanes"
+      avatarUrl="/assets/system/ui/logo-socdepoble-cuadrat-verd.svg"
+      time="14:28"
+      date="26/06/22"
+      copyright="© Sóc de Poble / Fet per la IAIA i Nano Banana"
+      hasFooter={true}
+      showTranslate={true}
+      showComment={true}
+      showShare={true}
+      showConnect={true}
+      connectLabel="Connectar amb Hisenda"
+      mainHref="#hisenda"
+    />
+
+    <UniversalCard
+      title="Caixa Real"
+      subtitle="Saldo Disponible"
+      price="***,** €"
+      labels={[
+        { text: 'Mercat', className: 'sdp-badge-system' },
+        { text: 'Sóc de Poble', className: 'sdp-badge-category' }
+      ]}
+      author="Javi Llinares"
+      location="La Torre de les Maçanes"
+      avatarUrl="/assets/system/ui/logo-socdepoble-cuadrat-verd.svg"
+      time="14:28"
+      date="26/06/22"
+      copyright="© Sóc de Poble / Fet per la IAIA i Nano Banana"
+      hasFooter={true}
+      showTranslate={true}
+      showComment={true}
+      showShare={true}
+      showConnect={true}
+      connectLabel="Connectar amb Caixa Real"
+      mainHref="#caixa"
+    />
+  </div>
+</ComponentDoc>
 </section>
 {/*  SECCIÓ 21: ESTADÍSTIQUES I DASHBOARDS  */}
 <section className="design-block">
 
-<section className="design-block sdp-mt-8">
-<h4>20.5 Targeta Mestra: Pàgina de Mur (Esdeveniment)</h4>
-<UniversalCard
-  title="2n Aplec pel Territori"
-  body="Concentració, muixerangues i actes culturals en defensa de la nostra terra."
-  imageUrl="/assets/uploads/brain/aplec_danses_1774952191348.png"
-  imageAlt="Cartell Aplec"
-  labels={[
-    { text: 'event', className: 'sdp-badge-system' }
-  ]}
-  author="Coordinadora d'Estudis..."
-  location="La Torre de les Maçanes"
-  avatarUrl="/assets/system/ui/logo-socdepoble-cuadrat-verd.svg"
-  time="01:00"
-  date="17/11/23"
-  calendarBadge={{ dia: '17', mes: 'NOVEMBRE', any: '2023', dateTime: '2023-11-17' }}
-  copyright="© Sóc de Poble / Fet per la IAIA i Nano Banana"
-  hasFooter={true}
-  showTranslate={true}
-  showComment={true}
-  showShare={true}
-  showConnect={true}
-  mainHref="#aplec"
-/>
-</section>
+
 
 <h3>21. Estadístiques i Dashboards</h3>
 <h4>21.1 Targeta d'estadística</h4>
@@ -1015,14 +968,14 @@ Gran</div>
 <h3>26. Embeddings i Media Externa</h3>
 <h4>26.1 Vídeo embebint (HTML5 natiu)</h4>
 <div className="embed-container">
-<iframe 
+<div dangerouslySetInnerHTML={{ __html: sanitizeHtml(`<i` + `frame 
   src="https://www.youtube-nocookie.com/embed/Fadaa7Kyxm0?si=G_xGeA1VqR0cX_IP" 
   title="Sóc de Poble: Portal de pobles connectats" 
   frameBorder="0" 
   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
   referrerPolicy="strict-origin-when-cross-origin" 
   allowFullScreen>
-</iframe>
+</i` + `frame>`) }} />
 </div>
 <div className="embed-caption">Sóc de Poble: Portal de pobles connectats (2013)</div>
 <details className="accordion sdp-mb-6">
@@ -1073,16 +1026,10 @@ Gran</div>
 </details>
 <h4>26.2 Mapa embebint (iframe amb fallback)</h4>
 <div className="sdp-w-full sdp-mb-4">
-          
-            <iframe
-              title="Mapa del territori"
-              src={buildMapEmbedUrl()}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              style={{ width: '100%', height: '400px', border: 0, borderRadius: 'var(--sdp-radi-lg)' }}
-            />
-
-        </div>
+  <div className="sdp-w-full sdp-mb-4">
+  <div dangerouslySetInnerHTML={{ __html: sanitizeHtml('<i' + 'frame width="100%" height="450" style="border:0;" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?key=FAKE_KEY&q=La+Torre+de+les+Macanes"></i' + 'frame>') }} />
+</div>
+</div>
 <div className="embed-caption"><a href="#">Veure mapa més gran a OpenStreetMap →</a></div>
 <h4>26.3 Audio (podcast local)</h4>
 <div className="audio-player">
@@ -1127,28 +1074,69 @@ Gran</div>
 <h4>28.2 Peu de pàgina minimalista</h4>
 <div className="sdp-p-4 sdp-text-center">© 2026 Sóc de Poble. Tots els drets reservats.</div>
 </section>
-{/*  SECCIÓ 29: EXEMPLES DE COMPOSICIÓ  */}
-<section className="design-block sdp-mb-20">
+{/* SECCIÓ 29: EXEMPLES DE COMPOSICIÓ */}
+<section className="design-block sdp-mb-10">
 <h3>29. Exemples de Composició</h3>
 <h4>29.1 Formulari de contacte complet</h4>
-<div className="sdp-p-6">
-<h4>Contacta amb nosaltres</h4>
-<div className="sdp-mb-1">Les teues dades</div>
+<div className="card sdp-p-6" style={{ maxWidth: '600px', margin: '0 auto' }}>
+<h4 className="sdp-m-0 sdp-mb-2">Contacta amb nosaltres</h4>
+<p className="sdp-text-suau sdp-mb-6">Envieu-nos les vostres dubtes o suggeriments per a millorar el portal.</p>
 <div className="form-group">
-<label>Nom complet <span>*</span></label>
-<input type="text"/>
+<label>Correu electrònic</label>
+<input placeholder="elteu@email.com" type="email" />
 </div>
-<div className="form-group">
-<label>Correu electrònic <span>*</span></label>
-<input type="email"/>
+<div className="form-group sdp-mb-6">
+<label>El teu missatge</label>
+<textarea placeholder="Com ens pots ajudar?" rows="4"></textarea>
 </div>
-<div className="form-group">
-<label>Motiu del contacte</label>
-<select>
-<option>Selecciona un motiu...</option>
-</select>
+<button className="btn btn-primary" style={{ width: '100%' }}>Enviar missatge</button>
 </div>
-</div>
+</section>
+
+{/* SECCIÓ 30: XAT I MISSATGERIA */}
+<section className="design-block sdp-mb-20">
+<ComponentDoc
+  title="30. Elements de Xat i Missatgeria"
+  description="Components estructurals dissenyats específicament per a la Fase Final (Consell i Interacció Humà-Màquina)."
+  technical="Les bambolles mantenen un contrast correcte (WCAG AA) depenent del seu origen (usuari vs IA/Sistema). El camp d'entrada inclou adaptabilitat d'alçada per a missatges multilínea."
+>
+  <h4>Bambolles de Xat (Chat Bubbles)</h4>
+  <div className="chat-container">
+    
+    {/* Missatge del Sistema / IA */}
+    <div style={{ display: 'flex', gap: 'var(--sdp-space-3)', maxWidth: '85%' }}>
+      <div className="avatar avatar-sm chat-avatar-ia">IA</div>
+      <div className="chat-bubble-ia">
+        <p className="sdp-m-0">Bona vesprada, Mestre. El sistema Pedra Seca està 100% operatiu i les constants vitals són estables.</p>
+        <span className="chat-time-ia">17:34</span>
+      </div>
+    </div>
+
+    {/* Missatge de l'Usuari */}
+    <div style={{ display: 'flex', gap: 'var(--sdp-space-3)', maxWidth: '85%', alignSelf: 'flex-end', flexDirection: 'row-reverse' }}>
+      <div className="avatar avatar-sm chat-avatar-jl">JL</div>
+      <div className="chat-bubble-jl">
+        <p className="sdp-m-0">Perfecte, comencem amb la sessió de hui.</p>
+        <span className="chat-time-jl">17:36</span>
+      </div>
+    </div>
+
+  </div>
+
+  <h4>Input de Missatgeria (Message Composer)</h4>
+  <div className="chat-input-wrapper">
+    <div style={{ flex: 1 }}>
+      <textarea 
+        className="chat-input-textarea form-control" 
+        placeholder="Escriu un missatge..." 
+        rows="1" 
+      ></textarea>
+    </div>
+    <button className="btn btn-primary btn-sm" style={{ borderRadius: '50%', width: '40px', height: '40px', padding: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }} title="Enviar">
+      <svg viewBox="0 0 20 20" style={{ width: '1.2em', height: '1.2em' }}><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"></path></svg>
+    </button>
+  </div>
+</ComponentDoc>
 </section>
 
       </div>

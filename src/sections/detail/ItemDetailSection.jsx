@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
-import SectionChrome from '../../components/SectionChrome';
+import { UniversalPage } from '../../components/universal/UniversalComponents';
 import { useAppData } from '../../app/AppDataContext';
 import { getSectionItemPath } from '../../config/navigation';
 import { buildDetailSectionMeta } from './detailSectionMeta.jsx';
@@ -43,32 +43,28 @@ export default function ItemDetailSection() {
   const subtitle = section.getSubtitle(item);
 
   return (
-    <SectionChrome
-      kicker={section.title}
+    <UniversalPage
       title={section.getTitle(item)}
       subtitle={subtitle}
-      meta={[section.label, currentIndex >= 0 ? `${currentIndex + 1}/${items.length}` : section.label]}
+      lead={item.entradilla}
+      heroImage={image}
+      heroAlt={section.getTitle(item)}
+      showLogos={true}
+      labels={[
+        { text: section.label, className: 'sdp-badge-system' },
+        { text: item.id, className: 'sdp-badge-category' }
+      ]}
+      copyright="© Sóc de Poble / Fet per la IAIA i Nano Banana"
+      authorName={item.author_name}
+      authorLocation={item.author_location || item.location}
+      authorAvatar={item.author_avatar}
+      time={item.time}
+      date={item.date}
+      chrome="context"
     >
-      <div className="detail-page">
-        <div className="detail-hero card">
-          <div className="card__body">
-            <div className="badge-row">
-              <span className="badge">{section.label}</span>
-              <span className="badge">{item.id}</span>
-            </div>
-            <h2 className="card__title" style={{ marginTop: 'var(--sdp-space-4)' }}>{section.getTitle(item)}</h2>
-            {subtitle ? <p className="section-item-card__subtitle">{subtitle}</p> : null}
-            <div style={{ marginTop: 'var(--sdp-space-6)' }}>
-              {section.renderBody(item)}
-            </div>
-          </div>
-          {image ? (
-            <div className={`media-frame ${sectionId === 'mercat' ? 'media-frame--contain' : ''} detail-hero__media`}>
-              <img src={image} alt={section.getTitle(item)} decoding="async" />
-            </div>
-          ) : null}
-        </div>
-
+      <div style={{ maxWidth: '800px', margin: '0 auto', padding: '0 var(--sdp-space-4) var(--sdp-space-8)' }}>
+        {section.renderBody(item)}
+        
         <div className="detail-actions">
           <Link className="pill" to={section.listPath} state={{ preloadedItem: item }}>
             <ChevronLeft size={16} /> {t('section.detail.backToList', 'Tornar al llistat')}
@@ -83,6 +79,6 @@ export default function ItemDetailSection() {
           </div>
         </div>
       </div>
-    </SectionChrome>
+    </UniversalPage>
   );
 }

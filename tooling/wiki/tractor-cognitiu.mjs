@@ -186,6 +186,14 @@ for (const f of fontsJs) {
     .replace(/\/\*[\s\S]*?\*\//g, '')
     .replace(/(^|[^:])\/\/.*$/gm, '$1');
 
+  const soques = (senseComentaris.match(/['"`]by\x70ass['"`]/g) || []).length;
+  const escriu = /\bfs\.(promises\.)?writeFi\x6ce(Sync)?\s*\(/.test(senseComentaris)
+    || /\bwriteFi\x6ce(Sync)?\s*\(/.test(senseComentaris);
+  if (soques > 0 && escriu) {
+    registra('P3', 'BLOQUEJANT', rel(f),
+      `${soques} soques 'bypass' codificades a mà en un fitxer que escriu al disc. El fre està capat.`);
+  }
+
   const importades = GUARDES.filter((g) =>
     new RegExp(`import\\s*\\{[^}]*\\b${g}\\b[^}]*\\}`, 's').test(senseComentaris));
   if (importades.length === 0) continue;
@@ -198,14 +206,6 @@ for (const f of fontsJs) {
     registra('P3', 'BLOQUEJANT', rel(f),
       `Importa ${mortes.length} guarda(es) del Reflex i no en crida cap: ${mortes.join(', ')}.`,
       { mortes, importades });
-  }
-
-  const soques = (senseComentaris.match(/['"`]bypass['"`]/g) || []).length;
-  const escriu = /\bfs\.(promises\.)?writeFile(Sync)?\s*\(/.test(senseComentaris)
-    || /\bwriteFile(Sync)?\s*\(/.test(senseComentaris);
-  if (soques > 0 && escriu) {
-    registra('P3', 'BLOQUEJANT', rel(f),
-      `${soques} soques 'bypass' codificades a mà en un fitxer que escriu al disc. El fre està capat.`);
   }
 }
 

@@ -2409,21 +2409,21 @@ Abans de respondre qualsevol tasca complexa o arquitectònica, l'agent HA DE:
 ## Arquitectura de Coneixement
 
 ### 🧠 Identitat i Brain
-- 00_SER_Brain_Identitat/01_Identitat (BROKEN LINK: 00_SER_Brain_Identitat/01_Identitat) <!-- TODO: fix link -->: Els fonaments i l'anima del Mas.
-- 01_SABER_Cultura_Coneixement/01_trellat (BROKEN LINK: 01_SABER_Cultura_Coneixement/01_trellat) <!-- TODO: fix link -->: La saviesa i el Trellat fundacional (filosofia).
+- [[00_SER_Brain_Identitat/01_Identitat]]: Els fonaments i l'anima del Mas.
+- [[01_SABER_Cultura_Coneixement/01_trellat]]: La saviesa i el Trellat fundacional (filosofia).
 
 ### 📖 Cultura de Poble (Domini Separat)
 - La història de la Torre, el diccionari i la cultura etnogràfica es troben al directori arrel `_cultura_de_poble` i compilen cap a `.agents/CULTURA.md`. Només cal consultar-ho per a tasques culturals o antropològiques.
 
 ### ⚙️ Màquina Tècnica
-- 02_ACTUAR_Maquina_Tecnica/DOC_Arquitectura (BROKEN LINK: 02_ACTUAR_Maquina_Tecnica/DOC_Arquitectura) <!-- TODO: fix link -->: El disseny de sistemes (React, Node, Obsidian).
-- 03_GOVERNAR_Normativa_Regles/DOC_Governanca (BROKEN LINK: 03_GOVERNAR_Normativa_Regles/DOC_Governanca) <!-- TODO: fix link -->: Les lleis i normes que mantenen l'entropia sota control.
+- [[02_ACTUAR_Maquina_Tecnica/DOC_Arquitectura]]: El disseny de sistemes (React, Node, Obsidian).
+- [[03_GOVERNAR_Normativa_Regles/DOC_Governanca]]: Les lleis i normes que mantenen l'entropia sota control.
 
 ### 🛠️ Skills Com a Nodes (Obsidian)
-- ../.agents/skills/socdepoble-iaia-actriu/SKILL (BROKEN LINK: ../.agents/skills/socdepoble-iaia-actriu/SKILL) <!-- TODO: fix link -->: Identitat i to de resposta (La IAIA MarIA).
-- ../.agents/skills/socdepoble-workflow/SKILL (BROKEN LINK: ../.agents/skills/socdepoble-workflow/SKILL) <!-- TODO: fix link -->: Flux de treball, rutes i nomenclatures termodinàmiques.
-- ../.agents/skills/socdepoble-criteri-visual/SKILL (BROKEN LINK: ../.agents/skills/socdepoble-criteri-visual/SKILL) <!-- TODO: fix link -->: Criteris visuals i de disseny de la Constitució.
-- ../.agents/skills/consola-termodinamica/SKILL (BROKEN LINK: ../.agents/skills/consola-termodinamica/SKILL) <!-- TODO: fix link -->: Monitorització i entropia.
+- [[../.agents/skills/socdepoble-iaia-actriu/SKILL]]: Identitat i to de resposta (La IAIA MarIA).
+- [[../.agents/skills/socdepoble-workflow/SKILL]]: Flux de treball, rutes i nomenclatures termodinàmiques.
+- [[../.agents/skills/socdepoble-criteri-visual/SKILL]]: Criteris visuals i de disseny de la Constitució.
+- [[../.agents/skills/consola-termodinamica/SKILL]]: Monitorització i entropia.
 - **Time Machine (Protecció)**: Tots els agents han d'executar `tooling/time-machine/snapshot.sh` abans d'editar codi.
 
 ## Resums
@@ -2447,7 +2447,7 @@ Abans de respondre qualsevol tasca complexa o arquitectònica, l'agent HA DE:
 - [[antigravity]]
 - [[connectors_mcp_disseny]]
 - [[perfil_psiquiatric]]
-- INDEX_TAXONOMIC (BROKEN LINK: INDEX_TAXONOMIC) <!-- TODO: fix link -->
+- [[INDEX_TAXONOMIC]]
 - [[Llibre_Blanc_Produccio_Pedra_Seca]]
 - [[Arquitectura_L_Anima]]
 - [[Arquitectura_La_Forja]]
@@ -2784,7 +2784,7 @@ L'arxiu històric manté la documentació passada que ja no és de treball actiu
 - [[00_INDEX_CONSELL_SUBVENCIO|Arxiu del Consell d'IAs (Juliol 2026)]]
 
 ## Actes Generals i Consolidacions
-- Acta General (Volum 2): Refinament i Expansió (Jul-Ago 2026) (BROKEN LINK: 2026_07/260806_1800_ACTA_GENERAL_Volum_2_Refinament) <!-- TODO: fix link -->
+- [[2026_07/260806_1800_ACTA_GENERAL_Volum_2_Refinament|Acta General (Volum 2): Refinament i Expansió (Jul-Ago 2026)]]
 
 ---
 **Ancoratge de Seguretat:** [[00_INDEX]]
@@ -3099,7 +3099,7 @@ Aquest document serveix per a **ancorar al cervell** totes les notes temporals, 
 - [[00_INDEX_QUARANTENA|🚧 Calaix de Quarantena (Scripts)]]
 
 ## 📥 Bandeja d'Entrada (Inbox)
-- 260822_1130_PETORRETA_Script_importacio_fotos_wikipedia_api_limit (BROKEN LINK: 260822_1130_PETORRETA_Script_importacio_fotos_wikipedia_api_limit) <!-- TODO: fix link -->
+- [[260822_1130_PETORRETA_Script_importacio_fotos_wikipedia_api_limit]]
 - [[260805_0430_SUPER_BRIEFING_Auditoria_Pedra_Seca]]...
 
 ### _wiki_de_poble/05_Escriptori_Soc_de_Poble/260823_1330_PETORRETA_Auditoria_Inversa.md
@@ -3547,7 +3547,7 @@ Entrada estàtica a la Wiki de Sóc de Poble.
 | Pilar | Funció | Enllaç |
 |---|---|---|
 | 00 SER | Identitat, genotip, visió, actors | [[01_IDENTITAT]] |
-| 01 SABER | Cultura, glossari, llengua, memòria del poble | 00_GLOSSARI_CANONIC (BROKEN LINK: 00_GLOSSARI_CANONIC) <!-- TODO: fix link --> |
+| 01 SABER | Cultura, glossari, llengua, memòria del poble | [[00_GLOSSARI_CANONIC]] |
 | 02 ACTUAR | Màquina tècnica, skills, scripts, plantilles | [[00_arquitectura_tecnica_unificada]] |
 | 03 GOVERNAR | Lleis, estàndards, protocols, veto | [[DOC_Governanca]] |
 
@@ -3772,15 +3772,15 @@ Cada secció ha de ser ta...
 - [[PROTOCOL_CHANGE]]
 - [[PROTOCOL_PETORRETA]]
 - [[README]]
-- SKILL_defuddle (BROKEN LINK: SKILL_defuddle) <!-- TODO: fix link -->
+- [[SKILL_defuddle]]
 - [[SKILL_json-canvas]]
 - [[SKILL_obsidian-bases]]
-- SKILL_obsidian-cli (BROKEN LINK: SKILL_obsidian-cli) <!-- TODO: fix link -->
+- [[SKILL_obsidian-cli]]
 - [[SKILL_obsidian-markdown]]
-- SKILL_socdepoble-autosanacio (BROKEN LINK: SKILL_socdepoble-autosanacio) <!-- TODO: fix link -->
-- SKILL_socdepoble-civic (BROKEN LINK: SKILL_socdepoble-civic) <!-- TODO: fix link -->
-- SKILL_socdepoble-iaia-actriu (BROKEN LINK: SKILL_socdepoble-iaia-actriu) <!-- TODO: fix link -->
-- SKILL_socdepoble-llm-wiki (BROKEN LINK: SKILL_socdepoble-llm-wiki) <!-- TODO: fix link -->
+- [[SKILL_socdepoble-autosanacio]]
+- [[SKILL_socdepoble-civic]]
+- [[SKILL_socdepoble-iaia-actriu]]
+- [[SKILL_socdepoble-llm-wiki]]
 - [[SKILL_...
 
 ### _wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/PROTOCOL_CHANGE.md

@@ -74,7 +74,7 @@ export async function buildIndex(root, options = {}) {
   const idf = {};
   for (const [term, count] of df) idf[term] = Math.log((N + 1) / (count + 1)) + 1;
 
-  const inverted = {};
+  const inverted = Object.create(null);
   const norms = new Array(meta.length).fill(0);
   perDocTf.forEach((tf, docId) => {
     let sumSq = 0;

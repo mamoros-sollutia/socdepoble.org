@@ -1,5 +1,6 @@
 import { CalendarDays, UserRound } from 'lucide-react';
 import { renderRichText } from '../../detail/detailRichText.jsx';
+import { Aplec2023Article } from '../articles/Aplec2023Article.jsx';
 
 export function buildEventsDetailSectionMeta({ events = [], t }) {
   return {
@@ -8,7 +9,7 @@ export function buildEventsDetailSectionMeta({ events = [], t }) {
     listPath: '/events',
     items: events,
     getTitle: (item) => item.title || t('section.detail.events.itemTitle', 'Esdeveniment'),
-    getSubtitle: (item) => item.description || '',
+    getSubtitle: (item) => item.subtitle || '',
     getImage: (item) => item.image_url || null,
     renderBody: (item) => (
       <>
@@ -18,7 +19,13 @@ export function buildEventsDetailSectionMeta({ events = [], t }) {
           <span className="pill"><UserRound size={14} /> {item.author_name || t('section.detail.events.organisation', 'Organització')}</span>
           {item.file ? <span className="pill">{item.file}</span> : null}
         </div>
-        {renderRichText(item.description || item.content)}
+        
+        {/* Render custom article if present, else fallback to standard rich text/description */}
+        {item.id === 'aplec-2023' ? (
+          <Aplec2023Article />
+        ) : (
+          renderRichText(item.description || item.content)
+        )}
       </>
     )
   };

@@ -5,11 +5,15 @@ import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   plugins: [react()],
 
   define: {
-    'process.env.NODE_ENV': JSON.stringify('production')
+    'process.env.NODE_ENV': JSON.stringify('production'),
+    ...(command === 'build' ? {
+      'import.meta.env.VITE_SUPABASE_URL': '""',
+      'import.meta.env.VITE_SUPABASE_ANON_KEY': '""'
+    } : {})
   },
 
   resolve: {
@@ -51,4 +55,4 @@ export default defineConfig({
       }
     }
   }
-});
+}));

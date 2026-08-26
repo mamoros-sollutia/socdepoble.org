@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { UniversalPage, UniversalCard } from '../../components/universal/UniversalComponents';
+import { UniversalPage, UniversalCard, ActionControl, IconButton } from '../../components/universal/UniversalComponents';
+import { EventCard } from '../../components/universal/EventCard';
 import { useAppData } from '../../app/AppDataContext';
 import { useSEO } from '../../hooks/useSEO';
 import { resolveAsset } from '../../config/assetResolver';
@@ -209,6 +210,10 @@ export default function MurSection() {
           {displayedItems.map((item) => {
             const rawDate = item.date || item.publish_date || item.created_at || "2026-08-21T00:00:00.000Z";
             
+            if (item.type === 'event') {
+              return <EventCard key={`${item.type}-${item.id}`} item={item} />;
+            }
+            
             return (
               <UniversalCard
                 key={`${item.type}-${item.id}`}
@@ -224,7 +229,7 @@ export default function MurSection() {
                 date={formatDate(rawDate)}
                 time={formatTime(item.time, rawDate)}
                 copyright="© Sóc de Poble / Fet per la IAIA i Nano Banana"
-                calendarBadge={item.type === 'event' ? getCalendarBadge(rawDate) : null}
+                calendarBadge={null}
                 labels={item.labels || [
                   { text: item.isSystem ? 'Sistema' : (item.type || 'Publicació'), className: item.isSystem ? 'sdp-badge-system' : 'sdp-badge-category' }
                 ]}
