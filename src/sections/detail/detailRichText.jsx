@@ -1,12 +1,12 @@
 import DOMPurify from 'dompurify';
+import { sanitizeHtml } from '../../utils/sanitize';
 
 export function renderRichText(text) {
   const raw = String(text || '').trim();
   if (!raw) return null;
 
   if (/<[a-z][\s\S]*>/i.test(raw)) {
-    const cleanedHtml = DOMPurify.sanitize(raw);
-    return <article className="detail-content" {...{['dangerouslySet' + 'InnerHTML']: { __html: cleanedHtml }}} />;
+    return <article className="detail-content" dangerouslySetInnerHTML={{ __html: sanitizeHtml(raw) }} />;
   }
 
   const paragraphs = raw

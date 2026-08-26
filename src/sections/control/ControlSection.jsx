@@ -40,18 +40,14 @@ export default function ControlSection() {
       ]}
       chrome="system"
     >
-      // eslint-disable-next-line
       <div style={{ padding: 'var(--sdp-space-8) var(--sdp-space-4)', maxWidth: '1000px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 'var(--sdp-space-12)' }}>
         
         {/* Accions Principals - Quadres de Comandament */}
         <section>
-          // eslint-disable-next-line
           <div style={{ textAlign: 'center', marginBottom: 'var(--sdp-space-6)' }}>
-            // eslint-disable-next-line
             <h4 style={{ fontSize: '0.85rem', color: 'var(--sdp-text-suau)', textTransform: 'uppercase', letterSpacing: '0.05em', margin: 0 }}>Accessos Ràpids</h4>
           </div>
           
-          // eslint-disable-next-line
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: 'var(--sdp-space-4)' }}>
             <UniversalIndicatorCard 
               icon={<FileText size={40} strokeWidth={1.5} />}
@@ -86,13 +82,10 @@ export default function ControlSection() {
 
         {/* Nodes d'Administració (antic control-grid) */}
         <section>
-          // eslint-disable-next-line
           <div style={{ textAlign: 'center', marginBottom: 'var(--sdp-space-6)' }}>
-            // eslint-disable-next-line
             <h4 style={{ fontSize: '0.85rem', color: 'var(--sdp-text-suau)', textTransform: 'uppercase', letterSpacing: '0.05em', margin: 0 }}>Nodes d'Administració</h4>
           </div>
           
-          // eslint-disable-next-line
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'var(--sdp-space-6)' }}>
             <UniversalCard
               title="JAVI LLINARES"
@@ -104,7 +97,6 @@ export default function ControlSection() {
               onMainClick={handleNavNotes}
               onConnect={handleNavConnectar}
               body={
-                // eslint-disable-next-line
                 <div style={{ display: 'flex', justifyContent: 'center', margin: '24px 0 16px', color: 'var(--sdp-accent)' }}>
                   <User size={64} strokeWidth={1.5} />
                 </div>
@@ -121,7 +113,6 @@ export default function ControlSection() {
               onMainClick={handleNavIA}
               onConnect={handleNavConnectar}
               body={
-                // eslint-disable-next-line
                 <div style={{ display: 'flex', justifyContent: 'center', margin: '24px 0 16px', color: 'var(--sdp-accent)' }}>
                   <Cpu size={64} strokeWidth={1.5} />
                 </div>
@@ -138,7 +129,6 @@ export default function ControlSection() {
               onMainClick={handleNavTermo}
               onConnect={handleNavConnectar}
               body={
-                // eslint-disable-next-line
                 <div style={{ display: 'flex', justifyContent: 'center', margin: '24px 0 16px', color: 'var(--sdp-accent)' }}>
                   <Network size={64} strokeWidth={1.5} />
                 </div>
@@ -155,7 +145,6 @@ export default function ControlSection() {
               onMainClick={handleNavGestoria}
               onConnect={handleNavConnectar}
               body={
-                // eslint-disable-next-line
                 <div style={{ display: 'flex', justifyContent: 'center', margin: '24px 0 16px', color: 'var(--sdp-accent)' }}>
                   <Receipt size={64} strokeWidth={1.5} />
                 </div>
@@ -165,7 +154,6 @@ export default function ControlSection() {
         </section>
 
         {/* Eines i Recursos (Opcions secundàries) */}
-        // eslint-disable-next-line
         <section style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sdp-space-4)', maxWidth: '400px', margin: '0 auto' }}>
           <UniversalButton onClick={() => navigate('/xat')} variant="outline" icon={<MessageSquare size={18} />}>
             Missatges per a dubtes

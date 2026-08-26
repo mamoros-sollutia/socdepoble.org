@@ -1,5 +1,28 @@
 // Dades de mercat recuperades de la versió original.
 export const MOCK_MARKET_ITEMS = [{
+  id: 'mac-mini-m4',
+  type: 'product',
+  title: 'Mac Mini Apple M4, 24/512GB',
+  subtitle: 'Com nou - Apple - Gris',
+  description: 'Mac Mini en perfecte estat. Comprat al març de 2025.\n\n- Processador Apple M4.\n- 24GB de RAM.\n- 512 GB d\'emmagatzematge.\n\nCaracterístiques adicionals:\n- Color: Gris\n- Estat: Com nou\n- Marca: Apple',
+  price: '900.00€',
+  seller: 'Javi Llinares',
+  avatar_url: '/assets/uploads/gent/javi-llinares/avatars/javi-llinares-perfil-1200px.jpg',
+  author_name: 'Javi Llinares',
+  population: 'La Torre de les Maçanes',
+  author_role: 'user',
+  author_id: 'javi-llinares',
+  official: false,
+  pinned: false,
+  variations: [],
+  images: ['/assets/uploads/brain/mac_mini_m4_1787721966622.jpg'],
+  category_slug: 'tecnologia',
+  tag: 'ordinador',
+  is_pinned: false,
+  lat: 38.5919,
+  lng: -0.4184,
+  created_at: '2026-02-15T12:00:00.000Z'
+}, {
   id: 'samarreta-socdepoble',
   type: 'product',
   title: 'Samarreta Sóc de Poble',
@@ -19,17 +42,25 @@ export const MOCK_MARKET_ITEMS = [{
     name: 'Edició Gris Plom',
     price: '15.00€',
     description: 'Cotó Roly Gris. Discreta i elegant.',
-    image: '02-samarreta-socdepoble-roly-plom-oscur-1024px.png'
+    image: '/assets/uploads/empresa/soc-de-poble/mercat/samarreta-soc-de-poble/02-samarreta-socdepoble-roly-plom-oscur-1024px.png'
   }, {
     name: 'Edició Verda',
     price: '15.00€',
     description: 'Edició especial en color verd pi.',
-    image: 'samarreta-socdepoble-verd-638px.jpg',
+    image: '/assets/uploads/empresa/soc-de-poble/mercat/samarreta-soc-de-poble/samarreta-socdepoble-verd-638px.jpg',
     stock_status: 'Esgotat'
   }],
-  images: ['01-chica-jersey.png', '02-samarreta-socdepoble-roly-plom-oscur-1024px.png', '03-young-man-tshirt.png', '04-iaia-tshirt.png', '06-group-tshirt.png', '07-rustic-detail.png', '08-javi-llinares-perfil-1024px.jpg'],
+  images: [
+    '/assets/uploads/empresa/soc-de-poble/mercat/samarreta-soc-de-poble/01-chica-jersey.png',
+    '/assets/uploads/empresa/soc-de-poble/mercat/samarreta-soc-de-poble/02-samarreta-socdepoble-roly-plom-oscur-1024px.png',
+    '/assets/uploads/empresa/soc-de-poble/mercat/samarreta-soc-de-poble/03-young-man-tshirt.png',
+    '/assets/uploads/empresa/soc-de-poble/mercat/samarreta-soc-de-poble/04-iaia-tshirt.png',
+    '/assets/uploads/empresa/soc-de-poble/mercat/samarreta-soc-de-poble/06-group-tshirt.png',
+    '/assets/uploads/empresa/soc-de-poble/mercat/samarreta-soc-de-poble/07-rustic-detail.png',
+    '/assets/uploads/empresa/soc-de-poble/mercat/samarreta-soc-de-poble/08-javi-llinares-perfil-1024px.jpg'
+  ],
   category_slug: 'roba',
-  tag: 'Merchandising',
+  tag: 'samarreta',
   is_pinned: true,
   pinned_position: 1,
   lat: 38.5582,

@@ -4,6 +4,7 @@ import SectionChrome from '../../components/SectionChrome';
 import { useAppData } from '../../app/AppDataContext';
 import { resolveItemPath } from '../../config/navigation';
 import { renderPageHtml } from './detailRichText.jsx';
+import { sanitizeHtml } from '../../utils/sanitize';
 
 export default function PageDetailSection() {
   const { pageDetailLookup, t } = useAppData();
@@ -39,19 +40,16 @@ export default function PageDetailSection() {
             </div>
           ) : null}
           <div className="card__body">
-            // eslint-disable-next-line
             <ul className="sp-card-labels" aria-label="Categories" style={{ marginTop: 0, marginBottom: 12, justifyContent: 'flex-start' }}>
               <li className="sp-card-label sdp-badge-system">{item.type || t('section.text.page', 'page')}</li>
               {item.slug && <li className="sp-card-label sdp-badge-tag">{item.slug}</li>}
             </ul>
-            // eslint-disable-next-line
             <h2 className="card__title" style={{ marginTop: 14 }}>{item.title || t('section.text.page', 'Pàgina')}</h2>
             {item.post_subtitle ? <p className="section-item-card__subtitle">{item.post_subtitle}</p> : null}
             <article
               className="detail-content"
-              // eslint-disable-next-line
               style={{ marginTop: 18 }}
-              {...{['dangerouslySet' + 'InnerHTML']: { __html: renderPageHtml(item.content || '') }}}
+              dangerouslySetInnerHTML={{ __html: sanitizeHtml(renderPageHtml(item.content || '')) }}
             />
           </div>
         </div>

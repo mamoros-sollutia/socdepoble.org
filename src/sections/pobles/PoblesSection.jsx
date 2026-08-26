@@ -1,5 +1,4 @@
 import React from 'react';
-// eslint-disable-next-line no-unused-vars
 import { UniversalPage, UniversalCard } from '../../components/universal/UniversalComponents';
 import { useAppData } from '../../app/AppDataContext';
 import { getSectionItemPath } from '../../config/navigation';
@@ -20,7 +19,6 @@ export default function PoblesSection() {
       lead={t('section.pobles.subtitle', 'Explora els pobles i el seu context territorial.')}
       chrome="system"
       showLogos={true}
-      labels={[t('section.pobles.kicker', 'Pobles')]}
     >
       <div className="sdp-card-grid sdp-mb-12">
         {sortedTowns.map((town) => {
@@ -28,7 +26,11 @@ export default function PoblesSection() {
           return (
             <UniversalCard
               key={town.id}
-              author={`Gent de ${town.title}`}
+              author={(() => {
+                if (town.title === 'La Torre de les Maçanes') return 'Gent de La Torre';
+                if (/^[aeiouhàèéíòóú]/i.test(town.title)) return `Gent d'${town.title}`;
+                return `Gent de ${town.title}`;
+              })()}
               authorHref={getSectionItemPath('pobles', town.id)}
               avatarUrl={town.avatar_url || town.image_url}
               location={town.comarca}

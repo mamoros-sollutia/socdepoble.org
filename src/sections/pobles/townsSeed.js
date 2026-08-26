@@ -45,14 +45,14 @@ export const MOCK_TOWNS = [
     "avatar_url": "/assets/towns/la-torre-de-les-macanes/2.jpg",
     "lat": 38.5919,
     "lng": -0.4184,
-    "created_at": "2026-08-20T00:01:00.000Z"
+    "created_at": "2026-08-20T08:00:00.000Z"
   },
   {
     "id": "sella",
     "type": "town",
     "author": "Gent de Sella",
     "title": "Sella",
-    "comarca": "Marina Baixa",
+    "comarca": "La Marina Baixa",
     "content": "Sella és un municipi de la comarca de la Marina Baixa, al País Valencià.",
     "population": "570 hab",
     "linkTo": "Gent de Sella",
@@ -67,7 +67,7 @@ export const MOCK_TOWNS = [
     "type": "town",
     "author": "Gent d'Orxeta",
     "title": "Orxeta",
-    "comarca": "Marina Baixa",
+    "comarca": "La Marina Baixa",
     "content": "Orxeta és un municipi de la comarca de la Marina Baixa, al País Valencià. Amb 812 habitants segons l'INE del 2022.",
     "population": "820 hab",
     "linkTo": "Gent d'Orxeta",
@@ -82,7 +82,7 @@ export const MOCK_TOWNS = [
     "type": "town",
     "author": "Gent de Relleu",
     "title": "Relleu",
-    "comarca": "Marina Baixa",
+    "comarca": "La Marina Baixa",
     "content": "Relleu és un municipi de la comarca de la Marina Baixa, situat al bell mig d'una vall envoltada de muntanyes.",
     "population": "1200 hab",
     "linkTo": "Gent de Relleu",
@@ -120,7 +120,7 @@ export const MOCK_TOWNS = [
     "avatar_url": "/assets/towns/xixona/2.jpg",
     "lat": 38.5398,
     "lng": -0.5085,
-    "created_at": "2026-08-15T08:00:00.000Z"
+    "created_at": "2026-08-18T08:00:00.000Z"
   },
   {
     "id": "tibi",

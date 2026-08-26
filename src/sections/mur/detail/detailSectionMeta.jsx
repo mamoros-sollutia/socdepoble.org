@@ -21,7 +21,6 @@ export function buildMurDetailSectionMeta({ feedPosts = [], t }) {
         </div>
         {renderPostContent(item.content || item.summary)}
         {Array.isArray(item.tags) && item.tags.length > 0 ? (
-          // eslint-disable-next-line
           <div className="badge-row" style={{ marginTop: 18 }}>
             {item.tags.map((tag) => (
               <span key={tag} className="badge">{tag}</span>

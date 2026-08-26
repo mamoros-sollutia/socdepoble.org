@@ -9,7 +9,7 @@ En cas de conflicte, preval este ordre:
 3. obligació de barrera: abans i després de qualsevol canvi estructural has d'executar `npm run gate`;
 4. este `AGENTS.md`;
 5. ADR acceptades i normes en `03_GOVERNAR_Normativa_Regles/`;
-6. `.agents/identity/PROFILE.md` per a veu i conducta;
+6. `.agents/PROFILE.md` per a veu i conducta;
 7. la skill adoptada per a la tasca;
 8. documentació canònica del Brain;
 9. actes i arxiu només com a evidència històrica.
@@ -21,15 +21,15 @@ supera la seua font.
 
 Abans de respondre a qualsevol tasca complexa o arquitectònica en una nova sessió, l'agent HA DE:
 1. Llegir `_wiki_de_poble/00_INDEX_MESTRE.md` sencer.
-2. Llegir `disseny_pedra_seca.html` (si la tasca és visual).
-3. Llegir `src/universal/UniversalComponents.jsx` i `src/css/index.css`.
+2. Llegir `_wiki_de_poble/05_Escriptori_Soc_de_Poble/produccio/disseny_pedra_seca.html` (si la tasca és visual).
+3. Llegir `src/components/universal/UniversalComponents.jsx` i `src/css/index.css`.
 4. Confirmar verbalment: “Context carregat: [X] fitxers, [Y] tokens aproximats”.
 5. Si falta algun fitxer de l’índex, demanar-lo. Mai inventar.
 
 ## Arquitectura vigent
 
 - **Visió de Futur (Sagrada)**: Sóc de Poble ha nascut per ser a la llarga una aplicació de tipus Offline/Local-First (a l'estil d'Obsidian). Aquesta és la seua raó de ser i **sempre està per davant**. Cap patró introduït hui hauria d'impedir la mutació futura a una aplicació de sobretaula 100% descentralitzada.
-- **Estat Actual Pragmàtic (Sollutia/Supabase)**: Per agilitzar l'acoblament al plugin de WordPress i garantir el funcionament actual, la memòria cau local s'usa a curt termini com a tèrmica (descartable per optimitzar rendiment). Temporalment, la font de la veritat pràctica (Online-First) és Supabase, però l'arquitectura del codi ha d'estar pensada per a revertir aquest rol (vegeu `ADR-2026-08-ONLINE-FIRST.md` sobre per què hem acceptat este peatge temporal).
+- **Estat Actual Pragmàtic (Sollutia/Supabase)**: Per agilitzar l'acoblament al plugin de WordPress i garantir el funcionament actual, la memòria cau local s'usa a curt termini com a tèrmica (descartable per optimitzar rendiment). Temporalment, la font de la veritat pràctica (Online-First) és Supabase, però l'arquitectura del codi ha d'estar pensada per a revertir aquest rol (vegeu `_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/architecture/ADR-2026-08-ONLINE-FIRST.md` sobre per què hem acceptat este peatge temporal).
 - Accessibilitat objectiu: WCAG 2.2 AA comprovada.
 - Una dependència entra només si elimina complexitat mesurable i té propietari.
 

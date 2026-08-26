@@ -683,8 +683,9 @@ Gran</div>
       imageAlt="Samarreta"
       labels={[
         { text: 'Mercat', className: 'sdp-badge-system' },
-        { text: 'Roba', className: 'sdp-badge-category' },
-        { text: 'Samarreta', className: 'sdp-badge-tag' }
+        { text: '2 variants', className: 'sdp-badge-accent' },
+        { text: 'roba', className: 'sdp-badge-category' },
+        { text: 'samarreta', className: 'sdp-badge-tag' }
       ]}
       author="Sóc de Poble"
       location="La Torre de les Maçanes"
@@ -1135,6 +1136,25 @@ Gran</div>
     <button className="btn btn-primary btn-sm" style={{ borderRadius: '50%', width: '40px', height: '40px', padding: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }} title="Enviar">
       <svg viewBox="0 0 20 20" style={{ width: '1.2em', height: '1.2em' }}><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"></path></svg>
     </button>
+  </div>
+</ComponentDoc>
+</section>
+
+{/*  SECCIÓ 23: LÒGICA DEL MOTOR DE POBLES  */}
+<section className="design-block">
+<h3 className="sdp-mb-6">23. Lògica del Motor de Pobles</h3>
+<ComponentDoc
+  title="Ordenació Dinàmica (Rank per Activitat)"
+  description="La pàgina de Pobles no té publicadors oficials. El seu funcionament es basa en l'activitat orgànica dels usuaris de cada poble en la resta de l'aplicació (Mur, Mercat, Esdeveniments)."
+  technical="El context de dades (AppDataContext) escaneja totes les publicacions i detecta quina és la més recent de cada poble. La targeta del poble ('Gent de...') s'ordena de més recent a més antiga. Per això, si l'última publicació del sistema l'ha feta algú de La Torre de les Maçanes, la targeta de 'Gent de La Torre' pujarà a la primera posició automàticament."
+>
+  <div className="card sdp-p-4">
+    <h4 className="sdp-m-0 sdp-mb-2">Com funciona el rànquing?</h4>
+    <ol className="sdp-m-0" style={{ paddingLeft: '1rem' }}>
+      <li className="sdp-mb-2"><strong>Dades en temps real:</strong> L'aplicació agrupa l'activitat per poble.</li>
+      <li className="sdp-mb-2"><strong>La Targeta de Poble:</strong> Adopta dinàmicament el nom de l'autor (`Gent de La Torre`, `Gent d'Alcoleja`...) gestionant apòstrofs automàticament si comença per vocal.</li>
+      <li><strong>Posicionament:</strong> El poble que té l'última interacció de la comunitat es corona com el primer de la llista.</li>
+    </ol>
   </div>
 </ComponentDoc>
 </section>

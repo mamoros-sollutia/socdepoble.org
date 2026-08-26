@@ -29,7 +29,7 @@ L'esquelet de Sóc de Poble és de columnes flexibles tipus Desktop-first / Obsi
 
 ## 2. Llei de les Dues Capes de Tokens
 
-El nostre `.css` conté desenes de variables. **NO POTS USAR QUALSEVOL**. Existeix un mur de tallafocs entre la capa 1 i 2.
+El nostre codi CSS conté desenes de variables. **NO POTS USAR QUALSEVOL**. Existeix un mur de tallafocs entre la capa 1 i 2.
 
 ### Capa 1: Els Primitius (PROHIBITS EN COMPONENTS)
 Son els materials naturals (to i croma fix). Noms com `--sdp-pedra-900`, `--sdp-primary-500`, `--sdp-secondary-700`.
@@ -99,14 +99,14 @@ Qualsevol IA que desenvolupe un "mòdul" o secció de Sóc de Poble aplicarà el
 
 ***
 
-## 6. Llei de Preservació del Sistema de Disseny (DesignSection.jsx)
+## 6. Llei de Preservació del Sistema de Disseny (`src/sections/disseny/DesignSection.jsx`)
 
 El fitxer `src/sections/disseny/DesignSection.jsx` actua com el "Storybook" o manual vivent del sistema. La seua integritat és absolutament crítica.
 
 *   **Prohibició de Destrucció:** MAI sobreescriuràs o esborraràs variacions d'un component per substituir-lo per un altre a menys que siga una ordre explícita. Si s'afegeix un nou component o exemple, S'AFEGEIX, no es reemplaça l'anterior.
 *   **Targeta Mestra Canònica:** La targeta `20.4 Targeta Mestra: Pàgina de Mur (Disseny)` (amb la imatge de construcció de Pedra Seca) és la base i la referència canònica absoluta per entendre com s'estructura una `UniversalCard`. 
 *   **ComponentDoc:** S'usa exclusivament per a emmarcar els blocs mestres d'aprenentatge. En cas de la Targeta Mestra, `20.4` és l'única que ha d'estar dins del `<ComponentDoc>`, mentre que les variacions (20.1, 20.2, etc.) viuen al voltant com a exemples secundaris.
-*   **Modificacions Quirúrgiques:** Abans de fer canvis ací, fes un `git show HEAD:src/sections/disseny/DesignSection.jsx` si dubtes, o empra expressions regulars/substitucions de blocs concrets (`multi_replace_file_content`) per no danyar la resta del manual.
+*   **Modificacions Quirúrgiques:** Abans de fer canvis ací, fes un `git show la versió base` (o equivalent) si dubtes, o empra expressions regulars/substitucions de blocs concrets (`multi_replace_file_content`) per no danyar la resta del manual.
 
 ***
 
@@ -115,3 +115,12 @@ El fitxer `src/sections/disseny/DesignSection.jsx` actua com el "Storybook" o ma
 La "Barra Taronja" és l'espai de context (autor, ubicació) i meta-dades de les pàgines completes.
 * **Botó Data/Hora:** Indica exclusivament la **data de publicació** d'eixe contingut.
 * **Icona adjacent (Multiusos):** És un botó versàtil que, per defecte, allotja la icona del **Pin** (per indicar que una pàgina està ancorada a la part superior del Mur), però pot usar-se en futures iteracions per a altres funcions o icones d'alerta (p. ex., en altres tipus de targetes). Si la pàgina és una publicació normal (no ancorada), aquest botó simplement s'ha d'amagar.
+
+***
+
+## 8. Llei de la Veritat Única de les Targetes (Targeta Mestra)
+
+Com a lliçó extreta de l'historial (Tancament Seient 5): S'ha d'evitar absolutament l'ús de components morts, redundants o desfassats com `SectionChrome`. 
+*   **La UniversalCard i UniversalPage són la ÚNICA veritat:** Qualsevol nova targeta o vista (ja siga del Mercat, del Mur o de Disseny) ha d'usar aquests components. No es poden crear targetes a mida que es desconnecten de la sincronització de colors, etiquetes i enllaços.
+*   **Sincronització Estricta:** Les etiquetes (ex: el blau per a *Mercat*, el taronja per a *Variants*) s'han de parametritzar mitjançant aquests components universals, evitant brossa visual i garantint que l'ecosistema es comporte com un rellotge suís.
+

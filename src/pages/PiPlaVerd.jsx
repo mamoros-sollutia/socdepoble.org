@@ -18,7 +18,6 @@ export default function PiPlaVerd() {
         <img 
           src={resolveAsset("/assets/img/pi-pla-verd.jpg")} 
           alt="Pi del Pla Verd a poqueta nit" 
-          // eslint-disable-next-line
           style={{ width: '100%', height: 'auto', borderRadius: 'var(--sdp-radi-m)' }} 
         />
       </div>
@@ -48,7 +47,6 @@ export default function PiPlaVerd() {
         <img 
           src={resolveAsset("/assets/uploads/grup/soc-de-poble/pobles/pi-del-pla-verd/02-fitxa-arbre.jpg")} 
           alt="Fitxa tècnica de l'arbre monumental" 
-          // eslint-disable-next-line
           style={{ width: '100%', height: 'auto', borderRadius: 'var(--sdp-radi-m)', border: '1px solid var(--sdp-vora)' }} 
         />
       </div>

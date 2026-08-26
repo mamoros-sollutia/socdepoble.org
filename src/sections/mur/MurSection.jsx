@@ -49,7 +49,6 @@ export default function MurSection() {
       ...(sortedEvents || []),
       ...(sortedFeedPosts || []),
       ...(sortedMarketItems || []),
-      ...(sortedTowns || []),
       ...systemPages
     ].filter(Boolean);
 
@@ -118,7 +117,6 @@ export default function MurSection() {
       chrome="system"
       showLogos={true}
     >
-      // eslint-disable-next-line
       <div className="sdp-mx-auto" style={{ maxWidth: 'var(--sdp-amplada-article)' }}>
         
         {/* Switcher / Botonera */}
@@ -220,20 +218,27 @@ export default function MurSection() {
                 title={item.title || item.name}
                 subtitle={item.subtitle}
                 body={item.lead || <p className="sp-card-text">{item.description}</p>}
-                imageUrl={resolveAsset((typeof item.image_url === 'string' ? item.image_url : null) || (typeof item.image === 'string' ? item.image : null) || '')}
-                imageAlt={item.imageAlt || ''}
-                author={item.author_name || "Sóc de Poble"}
+                imageUrl={resolveAsset(item.image_url || item.image || item.images?.[0] || item.imageSrc || '')}
+                imageAlt={item.imageAlt || item.title || ''}
+                author={item.author_name || item.seller || "Sóc de Poble"}
                 authorHref={item.isSystem ? "/pobles" : undefined}
-                avatarUrl={resolveAsset((typeof item.author_avatar === 'string' ? item.author_avatar : null) || '/assets/system/ui/logo-socdepoble-cuadrat-verd.svg')}
-                location="La Torre de les Maçanes"
+                avatarUrl={resolveAsset(item.author_avatar || item.avatar_url || '/assets/system/ui/logo-socdepoble-cuadrat-verd.svg')}
+                location={item.author_location || item.population || "La Torre de les Maçanes"}
                 date={formatDate(rawDate)}
                 time={formatTime(item.time, rawDate)}
                 copyright="© Sóc de Poble / Fet per la IAIA i Nano Banana"
                 calendarBadge={null}
+                price={item.price}
                 labels={item.labels || [
-                  { text: item.isSystem ? 'Sistema' : (item.type || 'Publicació'), className: item.isSystem ? 'sdp-badge-system' : 'sdp-badge-category' }
-                ]}
-                mainHref={item.mainHref || getSectionItemPath(item.type === 'event' ? 'events' : (item.type === 'market' ? 'mercat' : (item.type === 'poble' ? 'pobles' : 'mur')), item.id)}
+                  { 
+                    text: item.isSystem ? 'Sistema' : ((item.type === 'market' || item.type === 'product') ? 'Mercat' : (item.type || 'Publicació')), 
+                    className: (item.isSystem || item.type === 'market' || item.type === 'product') ? 'sdp-badge-system' : 'sdp-badge-category' 
+                  },
+                  (item.type === 'market' || item.type === 'product') && item.variations?.length ? { text: `${item.variations.length} ${t('section.mercat.variations', 'variants')}`, className: 'sdp-badge-accent' } : null,
+                  (item.type === 'market' || item.type === 'product') && item.category_slug ? { text: item.category_slug, className: 'sdp-badge-category' } : null,
+                  (item.type === 'market' || item.type === 'product') && item.tag ? { text: item.tag, className: 'sdp-badge-tag' } : null
+                ].filter(Boolean)}
+                mainHref={item.mainHref || getSectionItemPath(item.type === 'event' ? 'events' : ((item.type === 'market' || item.type === 'product') ? 'mercat' : (item.type === 'poble' ? 'pobles' : 'mur')), item.id)}
                 showPin={item.isAvis}
                 hasFooter={true}
                 showTranslate={true}

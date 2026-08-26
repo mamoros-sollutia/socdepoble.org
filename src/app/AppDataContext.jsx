@@ -292,12 +292,13 @@ export function AppDataProvider({ children, externalConfig = {} }) {
     (rawData.events || []).forEach(processItem);
     
     return [...rawData.towns].sort((a, b) => {
-      const timeA = townActivity.get(a.title) || new Date(a.created_at).getTime() || 0;
-      const timeB = townActivity.get(b.title) || new Date(b.created_at).getTime() || 0;
+      const timeA = Math.max(townActivity.get(a.title) || 0, new Date(a.created_at).getTime() || 0);
+      const timeB = Math.max(townActivity.get(b.title) || 0, new Date(b.created_at).getTime() || 0);
       return timeB - timeA;
     }).map(town => {
       const latestActivity = townActivity.get(town.title);
-      const activityDate = latestActivity ? new Date(latestActivity) : new Date(town.created_at);
+      const baseTime = new Date(town.created_at).getTime() || 0;
+      const activityDate = latestActivity && latestActivity > baseTime ? new Date(latestActivity) : new Date(town.created_at);
       
       const dynamicTime = !isNaN(activityDate.getTime()) 
         ? activityDate.toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit' })

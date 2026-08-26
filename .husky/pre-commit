@@ -21,4 +21,6 @@ node tooling/gates/rossec.mjs
 # 5. Tractors i guàrdies
 node tooling/gates/tractor-manual.mjs || exit 1
 node tooling/gates/tractor-consell.mjs || exit 1
+node tooling/gates/tractor-registre.mjs || exit 1
+node tooling/gates/tractor-doctrina.mjs || exit 1
 node tooling/wiki/pre-commit.mjs || exit 1

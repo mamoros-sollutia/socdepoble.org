@@ -16,8 +16,6 @@ freshness:
   reviewed_at: '2026-08-25'
   review_after: '2026-11-25'
 tests:
-- tests/triggers.yaml
-- tests/behavior.yaml
 triggers_on:
   - core-bounded-action
 ---

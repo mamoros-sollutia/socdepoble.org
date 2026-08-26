@@ -35,7 +35,6 @@ export default function SectionItemCard({
   const metaString = meta.filter(Boolean).join(' · ');
 
   return (
-    // eslint-disable-next-line
     <div className={className} style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
       <UniversalCard
         title={title}

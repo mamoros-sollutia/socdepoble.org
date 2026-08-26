@@ -15,7 +15,6 @@ export default function TranslationsSection() {
       showLogos={true}
       labels={[{ text: 'Sistema' }]}
     >
-      // eslint-disable-next-line
       <div className="sdp-card-grid" style={{ maxWidth: '600px', margin: '0 auto' }}>
         {SUPPORTED_LANGUAGES.map((item) => {
           const isActive = item.code === language;
@@ -23,7 +22,6 @@ export default function TranslationsSection() {
             <button
               key={item.code}
               onClick={() => setLanguage(item.code)}
-              // eslint-disable-next-line
               style={{
                 display: 'flex',
                 alignItems: 'center',
@@ -38,21 +36,16 @@ export default function TranslationsSection() {
                 textAlign: 'left'
               }}
             >
-              // eslint-disable-next-line
               <div style={{ display: 'flex', flexDirection: 'column' }}>
-                // eslint-disable-next-line
                 <span style={{ fontWeight: '700', fontSize: '1.2rem', color: isActive ? 'var(--sdp-accent)' : 'var(--sdp-text-titol)' }}>
                   {item.name}
                 </span>
-                // eslint-disable-next-line
                 <span style={{ fontSize: '0.9rem', color: 'var(--sdp-text-suau)', marginTop: 'var(--sdp-space-1)' }}>
                   {item.code.toUpperCase()}
                 </span>
               </div>
               
-              // eslint-disable-next-line
               <div style={{ display: 'flex', alignItems: 'center' }}>
-                // eslint-disable-next-line
                 <span style={{ 
                   fontSize: '0.85rem', 
                   fontWeight: '600',

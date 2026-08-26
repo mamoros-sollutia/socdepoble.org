@@ -12,7 +12,7 @@ La lectura, cerca, auditoria en memòria i impressió per stdout són lliures. C
 
 ## P-03. Seqüència obligatòria
 
-1. Executar `reflex_petorreta.mjs open` amb intenció, risc, operacions exactes i scopes mínims.
+1. Executar `tooling/wiki/reflex_petorreta.mjs open` amb intenció, risc, operacions exactes i scopes mínims.
 2. Llegir completament les regles que el Reflex imprimix.
 3. Crear una Petorreta i un manifest de context nous com els únics dos fitxers dins del directori exacte `.sdp-reflex/bootstrap/<sessionId>/` que `open` ha reservat i imprés. No formen part dels scopes.
 4. Incloure en la Petorreta els marcadors exactes `Reflex-Session`, `Intent-SHA256` i `Rules-SHA256`; per a l’Autoneteja, també `Plan-SHA256`.
@@ -58,7 +58,7 @@ no contra un agent adversarial amb accés a la mateixa clau.
 
 ## P-10. Activació local i bootstrap únic
 
-`reflex_petorreta.mjs init` és l'única excepció d'activació: de forma idempotent crea només l'estat privat ignorat `.sdp-reflex/` (directoris `0700`, clau `0600`) i configura `core.hooksPath=.githooks`. No autoritza cap altra escriptura ni convertix un `doctor` roig en verd. En CI, `doctor --ci` valida el sistema durable sense exigir estat o configuració locals.
+`tooling/wiki/reflex_petorreta.mjs init` és l'única excepció d'activació: de forma idempotent crea només l'estat privat ignorat `.sdp-reflex/` (directoris `0700`, clau `0600`) i configura `core.hooksPath=.githooks`. No autoritza cap altra escriptura ni convertix un `doctor` roig en verd. En CI, `doctor --ci` valida el sistema durable sense exigir estat o configuració locals.
 
 `open` crea i vincula criptogràficament un directori nou i buit `.sdp-reflex/bootstrap/<sessionId>/`. Entre `open` i `seal`, eixe directori ha de conservar la mateixa identitat física i contindre exactament dos fills directes: la Petorreta i el manifest declarats, tots dos fitxers regulars, no symlinks ni hardlinks. Cap dels dos viu en la Wiki ni dins dels scopes. El snapshot dels scopes ha de ser idèntic segons el mateix contracte signat: exclou explícitament estat intern i derivats regenerables (`.git`, `.sdp-reflex`, `.wiki-safety`, snapshots, dependències i builds) i registra eixes exclusions en el rebut. Els `role: target` del manifest sí que han de quedar dins dels scopes.
 

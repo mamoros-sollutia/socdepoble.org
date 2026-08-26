@@ -37,78 +37,49 @@ export default function RealitatSection() {
       chrome="system"
       showLogos={false}
     >
-      // eslint-disable-next-line
-      <div className="sdp-card-grid" style={{ maxWidth: '600px', margin: '0 auto' }}>
+      <div className="sdp-card-grid sdp-mx-auto" style={{ maxWidth: '600px' }}>
         {[
           { id: 0, label: 'Apagada', desc: 'Sense intervenció de la intel·ligència artificial.' },
           { id: 1, label: 'Passiva', desc: 'Només recomanacions i accions a petició teua.' },
           { id: 2, label: 'Interactiva (Selecció)', desc: 'Conversa activa amb acompanyants específics.' },
           { id: 3, label: 'Connexió Total', desc: 'Connexió total amb tots els agents de la Masia.' }
         ].map((lvl) => (
-          // eslint-disable-next-line
-          <div key={lvl.id} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sdp-space-2)' }}>
+          <div key={lvl.id} className="sdp-flex-col sdp-gap-2">
             <button
               onClick={() => setLevel(lvl.id)}
-              // eslint-disable-next-line
-              style={{
-                textAlign: 'left',
-                padding: 'var(--sdp-space-5)',
-                borderRadius: 'var(--sdp-radi-targeta)',
-                border: level === lvl.id ? '2px solid var(--sdp-accent)' : '1px solid var(--sdp-vora-control)',
-                background: level === lvl.id ? 'var(--sdp-fons-subtil)' : 'var(--sdp-fons-targeta)',
-                cursor: 'pointer',
-                transition: 'all var(--sdp-t)'
-              }}
+              className={`btn-realitat ${level === lvl.id ? 'active' : ''}`}
             >
-              // eslint-disable-next-line
-              <div style={{ fontWeight: '700', fontSize: '1.1rem', color: level === lvl.id ? 'var(--sdp-accent)' : 'var(--sdp-text-titol)' }}>
+              <div className="realitat-titol">
                 Nivell {lvl.id}: {lvl.label}
               </div>
-              // eslint-disable-next-line
-              <div style={{ fontSize: '0.9rem', color: 'var(--sdp-text-suau)', marginTop: 'var(--sdp-space-1)' }}>
+              <div className="realitat-desc">
                 {lvl.desc}
               </div>
             </button>
             
             {level === 2 && lvl.id === 2 && (
-              // eslint-disable-next-line
-              <div style={{ 
-                padding: 'var(--sdp-space-4)', 
-                background: 'var(--sdp-fons-invers)', 
-                borderRadius: 'var(--sdp-radi-targeta)',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 'var(--sdp-space-3)',
-                marginTop: 'var(--sdp-space-2)'
-              }}>
-                // eslint-disable-next-line
-                <p style={ { color: 'var(--sdp-text-invers)', fontSize: '0.9rem', fontWeight: 'bold', marginBottom: 'var(--sdp-space-1)' }}>
+              <div className="realitat-companions">
+                <p className="realitat-companions-titol">
                   Tria els teus acompanyants:
                 </p>
                 {aiAgents.map(agent => {
                   const isSelected = selectedCompanions.includes(agent.id);
                   return (
-                    // eslint-disable-next-line
-                    <label key={agent.id} style={{ display: 'flex', alignItems: 'center', gap: 'var(--sdp-space-4)', color: 'var(--sdp-text-invers)', cursor: 'pointer', padding: 'var(--sdp-space-2) 0' }}>
+                    <label key={agent.id} className="companion-label">
                       <input 
                         type="checkbox" 
                         checked={isSelected}
                         onChange={() => toggleCompanion(agent.id)}
-                        // eslint-disable-next-line
-                        style={{ accentColor: 'var(--sdp-accent)', width: '20px', height: '20px' }}
+                        className="companion-checkbox"
                       />
                       <img 
                         src={resolveAsset(agent.avatar_url)} 
                         alt={agent.name}
-                        // eslint-disable-next-line
-                        style={{ width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover' }}
+                        className="companion-avatar"
                       />
-                      // eslint-disable-next-line
-                      <div style={{ display: 'flex', flexDirection: 'column' }}>
-                        // eslint-disable-next-line
-                        <span style={{ fontSize: '1rem', fontWeight: '600' }}>{agent.name}</span>
-                        // eslint-disable-next-line
-                        <span style={{ fontSize: '0.85rem', opacity: 0.8 }}>{agent.role}</span>
+                      <div className="sdp-flex-col">
+                        <span className="companion-name">{agent.name}</span>
+                        <span className="companion-role">{agent.role}</span>
                       </div>
                     </label>
                   );

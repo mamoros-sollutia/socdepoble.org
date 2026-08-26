@@ -10,41 +10,39 @@ export function buildMercatDetailSectionMeta({ marketItems = [], t }) {
     items: marketItems,
     getTitle: (item) => item.title || t('section.detail.mercat.itemTitle', 'Producte'),
     getSubtitle: (item) => item.subtitle || item.description || item.summary || '',
-    getImage: (item) => getFirstImage(item.imageSrc || item.image_url || item.image || item.avatar_url) || null,
+    getImage: (item) => getFirstImage(item.imageSrc || item.image_url || item.image || item.images?.[0] || item.avatar_url) || null,
     renderBody: (item) => (
       <>
+        {item.description && (
+          <div className="sdp-mb-8">
+            {renderRichText(item.description)}
+          </div>
+        )}
         {Array.isArray(item.variations) && item.variations.length > 0 ? (
-          // eslint-disable-next-line
-          <div className="stack-grid" style={{ marginTop: 18 }}>
+          <div className="stack-grid sdp-mt-5">
             {item.variations.map((variation) => (
-              // eslint-disable-next-line
-              <div key={variation.name} className="note-card sdp-text-center" style={{ padding: '24px 16px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <div key={variation.name} className="note-card sdp-text-center sdp-flex-col sdp-items-center sdp-p-4">
                 {variation.image && (
                   <img 
-                    src={`/assets/uploads/empresa/soc-de-poble/mercat/samarreta-soc-de-poble/${variation.image}`} 
+                    src={variation.image} 
                     alt={variation.name} 
-                    // eslint-disable-next-line
-                    style={{ borderRadius: 16, marginBottom: 16, width: 120, height: 'auto', objectFit: 'contain' }} 
+                    className="sdp-mb-4 sdp-radi-xl sdp-object-contain"
+                    width={120}
                   />
                 )}
-                // eslint-disable-next-line
-                <h3 className="sdp-text-accent" style={{ marginBottom: 4 }}>
+                <h3 className="sdp-text-accent sdp-mb-1">
                   {variation.name}
                 </h3>
-                // eslint-disable-next-line
-                <p className="card__text" style={{ marginBottom: 4 }}>
+                <p className="card__text sdp-mb-1">
                   {variation.description}
                 </p>
-                // eslint-disable-next-line
-                <p style={ { color: 'var(--sdp-color-muted, gray)', textTransform: 'uppercase', fontSize: '0.8rem', marginBottom: 16 }}>
-                  VENEDOR: SÓC DE POBLE
+                <p className="sdp-text-muted sdp-uppercase sdp-text-sm sdp-mb-4">
+                  VENEDOR: {item.seller || 'SÓC DE POBLE'}
                 </p>
-                // eslint-disable-next-line
-                <div className="sp-card-price" style={{ fontSize: '1.5rem', marginBottom: 8, color: 'var(--sdp-accent)' }}>
+                <div className="sp-card-price sdp-text-accent sdp-text-2xl sdp-mb-2">
                   {variation.price}
                 </div>
-                // eslint-disable-next-line
-                <button className="btn btn-secondary" style={{ width: '100%', maxWidth: 320, textTransform: 'uppercase', marginTop: 8, justifyContent: 'center', textAlign: 'center' }}>
+                <button className="btn btn-secondary sdp-w-full sdp-max-w-xs sdp-uppercase sdp-mt-2 sdp-justify-center sdp-text-center">
                   Afegeix al cabàs
                 </button>
               </div>

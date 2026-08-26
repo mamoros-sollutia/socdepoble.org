@@ -95,6 +95,7 @@ const ALIES_CANONIC = {
   ruta: 'roadmap',
   anima: 'ia', iaia: 'ia',
   accedir: 'login', 'crear-compte': 'registre',
+  poblacio: 'pobles',
 };
 
 /* ────────────────────── 3 · Rutes de detall (seeds) ────────────────────── */

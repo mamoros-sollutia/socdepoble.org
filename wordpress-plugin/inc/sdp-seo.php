@@ -60,7 +60,7 @@ function sdp_route_pattern() {
     'crear-compte', 'perfil', 'control', 'connectar', 'projecte',
     'el-projecte', 'skills', 'constitucio', 'disseny', 'legal',
     'roadmap', 'ruta', 'versions', 'traduccions', 'realitat',
-    'ia', 'anima', 'iaia'
+    'ia', 'anima', 'iaia', 'poblacio'
   );
 
   $lists = implode( '|', array_map(

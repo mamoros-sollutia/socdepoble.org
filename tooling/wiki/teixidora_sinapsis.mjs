@@ -342,66 +342,12 @@ function cusDocument(doc, index) {
  * 5. MOTOR PRINCIPAL                                                  *
  * ------------------------------------------------------------------ */
 export async function teixeix(wikiDir = WIKI_DIR) {
-  if (PROCEDEIX) {
-    // throw new Error removed for direct write
-  }
+
   let receiptPath = null;
   let claimToken = null;
   if (PROCEDEIX) {
     console.log('🤖 Sol·licitant permís al Reflex per operar la Teixidora...');
     throw new Error('La teixidora està temporalment desactivada per escriptura fins que es complete la migració a Reflex.');
-    const opened = { receiptPath: 'NO_BYPASS_ALLOWED', session: { bootstrap: { path: '.sdp-reflex/bootstrap' } } };
-    const bootstrapDir = path.resolve(wikiDir, '..', opened.session.bootstrap.path);
-    await fs.mkdir(bootstrapDir, { recursive: true });
-    
-    const ts = getTimestamp();
-    const petorretaPath = path.join(bootstrapDir, `${ts}_PROMPT_Teixidora_Automatitzada_Generacio_Massiva_De_Taxonomia_I_Sinapsis.md`);
-    const petorretaContent = `---
-estat: "canonic"
-tipus: "petorreta"
-description: "Petorreta automatitzada de la Teixidora per generar Taxonomia i Sinapsis massivament a la línia base."
----
-
-# Petorreta Automatitzada: Generació Massiva de Taxonomia
-
-## Context
-Aquesta Petorreta és generada automàticament per l'script \`teixidora_sinapsis.mjs\`. L'objectiu és complir amb el mandat de l'Acta de Tancament de la Gran Auditoria (260715_0400), on s'estipula que la taxonomia (Categories i Etiquetes) ha de viure en el cos del text Markdown i no en el frontmatter. Això permet que el graf de coneixement d'Obsidian connecte correctament les notes, al mateix temps que respecta el nou esquema ultra-estricte de metadades. Aquest procés afecta a tota la línia base de les 92 notes operatives, requerint per tant una intervenció massiva controlada per aquest Reflex V2. Aquesta acció assegura que els components transversals no queden orfes i mantenen la seua traçabilitat estructural.
-
-## Tasques
-1. Connectar les mencions de conceptes canònics (ex. Regles, Genotip, BIOS) en el cos dels documents com a enllaços vius.
-2. Afegir un bloc de \`## Taxonomia\` al final de cada fitxer de la línia base que encara no el tinga.
-3. Inferir la Categoria de la taxonomia basant-se en la ubicació del fitxer dins de l'estructura de pilars (Identitat, Coneixement, Màquina, Govern, Arxiu).
-4. Guardar tots els canvis amb l'autorització del sistema Reflex, garantint la integritat del dipòsit i de l'arbre preparat.
-
-## Riscos
-L'operació és de risc \`alt\` perquè pot arribar a escriure en fins a 92 fitxers simultàniament. Hi ha risc de trencar la sintaxi d'enllaços existents si l'script no mascara correctament el contingut (com blocs de codi, URLs nues, etc.). Un altre risc és afegir blocs de taxonomia duplicats si l'execució falla parcialment. Per mitigar-ho, l'script fa anàlisi estructural abans d'intervenir i utilitza el mecanisme transaccional del Reflex (dry-run previ, hashes criptogràfics, *rollback* si el claim no es completa correctament, i consum del rebut amb *pre-commit*). 
-
-## Criteris d'acceptació
-- Els 92 fitxers han de contenir la secció \`## Taxonomia\` amb la seua categoria corresponent, generada programàticament.
-- Els enllaços de Markdown no han d'estar trencats. Els codis inline i blocs de text no han de rebre injeccions no desitjades.
-- El sistema de Reflex ha d'expedir i validar el rebut, consumint-lo al finalitzar sense deixar \`locks\` fantasma al directori de seguretat.
-- L'script finalitza amb un codi d'eixida \`0\` si totes les injeccions s'han realitzat correctament.
-
-## Dades Mecàniques de la Transacció
-Reflex-Session: ${opened.session.sessionId}
-Intent-SHA256: ${opened.session.intentSha256}
-Rules-SHA256: ${opened.session.rulesDigest}
-`;
-    await fs.writeFile(petorretaPath, petorretaContent, 'utf8');
-    const manifestContent = JSON.stringify({
-      sources: [
-        {
-          path: "tooling/wiki/teixidora_sinapsis.mjs",
-          reason: "Script executor de la teixidora",
-          classification: "public",
-          role: "reference"
-        }
-      ]
-    });
-    await fs.writeFile(path.join(bootstrapDir, 'manifest.json'), manifestContent, 'utf8');
-    
-    // sealReflex bypassed
-    
   }
   const { mdDocs } = await buildWikiIndex(wikiDir);
   const index = await construixIndexDestins(mdDocs);
@@ -442,14 +388,6 @@ Rules-SHA256: ${opened.session.rulesDigest}
 
   if (PROCEDEIX && docsToUpdate.length > 0) {
     throw new Error('La teixidora està temporalment desactivada per escriptura fins que es complete la migració a Reflex.');
-    const claim = { claimToken: 'NO_BYPASS_ALLOWED' };
-    claimToken = claim.claimToken;
-    
-    for (const { doc, nouContingut } of docsToUpdate) {
-      await fs.writeFile(doc.fullPath, nouContingut, 'utf8');
-    }
-    
-    console.log({ receiptPath, operation: 'teixidora_sinapsis' }, claimToken);
   }
 
   /* Acta a l'Escriptori (sempre en dry-run; en escriptura, com a registre). */

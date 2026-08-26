@@ -2305,3 +2305,81 @@ button.sp-card-calendar-badge:hover {
   align-items: center;
   gap: var(--sdp-space-3);
 }
+
+/* Realitat Section Styles */
+.btn-realitat {
+  text-align: left;
+  padding: var(--sdp-space-5);
+  border-radius: var(--sdp-radi-targeta);
+  border: 1px solid var(--sdp-vora-control);
+  background: var(--sdp-fons-targeta);
+  cursor: pointer;
+  transition: all var(--sdp-t);
+  width: 100%;
+}
+.btn-realitat.active {
+  border: 2px solid var(--sdp-accent);
+  background: var(--sdp-fons-subtil);
+}
+.realitat-titol {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--sdp-text-titol);
+}
+.btn-realitat.active .realitat-titol {
+  color: var(--sdp-accent);
+}
+.realitat-desc {
+  font-size: 0.9rem;
+  color: var(--sdp-text-suau);
+  margin-top: var(--sdp-space-1);
+}
+.realitat-companions {
+  padding: var(--sdp-space-4);
+  background: var(--sdp-fons-invers);
+  border-radius: var(--sdp-radi-targeta);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sdp-space-3);
+  margin-top: var(--sdp-space-2);
+}
+.realitat-companions-titol {
+  color: var(--sdp-text-invers);
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-bottom: var(--sdp-space-1);
+}
+.companion-label {
+  display: flex;
+  align-items: center;
+  gap: var(--sdp-space-4);
+  color: var(--sdp-text-invers);
+  cursor: pointer;
+  padding: var(--sdp-space-2) 0;
+}
+.companion-checkbox {
+  accent-color: var(--sdp-accent);
+  width: 20px;
+  height: 20px;
+}
+.companion-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.companion-name {
+  font-size: 1rem;
+  font-weight: 600;
+}
+.companion-role {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+.page-content-quote {
+  border-left: 4px solid var(--sdp-accent);
+  padding-left: var(--sdp-space-4);
+  margin: var(--sdp-space-6) 0;
+  font-style: italic;
+  color: var(--sdp-text-suau);
+}

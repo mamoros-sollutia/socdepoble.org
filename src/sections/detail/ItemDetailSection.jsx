@@ -22,16 +22,18 @@ export default function ItemDetailSection() {
 
   if (!section || !item) {
     return (
-      <SectionChrome
-        kicker={t('section.detail.noFound.kicker', 'No trobat')}
+      <UniversalPage
         title={t('section.detail.noFound.title', 'Element no trobat')}
         subtitle={t('section.detail.noFound.subtitle', 'L’enllaç no apunta a cap element existent.')}
-        meta={['Error', t('section.detail.invalidLink', 'Enllaç no vàlid')]}
+        labels={[{ text: 'Error', className: 'sdp-badge-system' }]}
+        chrome="system"
       >
-        <button type="button" className="pill pill--primary" onClick={() => navigate(section?.listPath || '/chats')}>
-          {t('common.back', 'Torna')}
-        </button>
-      </SectionChrome>
+        <div style={{ maxWidth: '800px', margin: '0 auto', padding: 'var(--sdp-space-8)' }}>
+          <button type="button" className="btn btn-primary" onClick={() => navigate(section?.listPath || '/xat')}>
+            {t('common.back', 'Torna')}
+          </button>
+        </div>
+      </UniversalPage>
     );
   }
 
@@ -57,27 +59,14 @@ export default function ItemDetailSection() {
       copyright="© Sóc de Poble / Fet per la IAIA i Nano Banana"
       authorName={item.author_name}
       authorLocation={item.author_location || item.location}
-      authorAvatar={item.author_avatar}
-      time={item.time}
-      date={item.date}
+      authorAvatar={item.author_avatar || item.avatar_url || item.avatarUrl}
+      time={item.time || (item.created_at ? new Date(item.created_at).toLocaleTimeString('ca-ES', {hour: '2-digit', minute: '2-digit'}) : undefined)}
+      date={item.date || (item.created_at ? new Date(item.created_at).toLocaleDateString('ca-ES') : undefined)}
       chrome="context"
     >
       <div style={{ maxWidth: '800px', margin: '0 auto', padding: '0 var(--sdp-space-4) var(--sdp-space-8)' }}>
         {section.renderBody(item)}
         
-        <div className="detail-actions">
-          <Link className="pill" to={section.listPath} state={{ preloadedItem: item }}>
-            <ChevronLeft size={16} /> {t('section.detail.backToList', 'Tornar al llistat')}
-          </Link>
-          <div className="detail-actions__nav">
-            <button type="button" className="pill" onClick={() => previous && navigate(getSectionItemPath(sectionId, previous.id), { state: { preloadedItem: previous } })} disabled={!previous}>
-              <ChevronLeft size={16} /> {t('section.detail.previous', 'Anterior')}
-            </button>
-            <button type="button" className="pill" onClick={() => next && navigate(getSectionItemPath(sectionId, next.id), { state: { preloadedItem: next } })} disabled={!next}>
-              {t('section.detail.next', 'Següent')} <ChevronRight size={16} />
-            </button>
-          </div>
-        </div>
       </div>
     </UniversalPage>
   );

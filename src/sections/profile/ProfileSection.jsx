@@ -16,22 +16,17 @@ export default function ProfileSection({ agents = [] }) {
       meta={[t('section.profile.directory', 'Directori'), `${agents.length} agents`, t('nav.perfil', 'Perfil')]}
     >
       {selectedAgent ? (
-        // eslint-disable-next-line
         <div className="card card--soft" style={{ marginBottom: 18 }}>
           <div className="split-grid">
-            // eslint-disable-next-line
             <div className="media-frame" style={{ aspectRatio: '1 / 1' }}>
               <img src={selectedAgent.avatar_url} alt={selectedAgent.name} />
             </div>
-            // eslint-disable-next-line
             <div className="card__body" style={{ display: 'grid', alignContent: 'center' }}>
-              // eslint-disable-next-line
               <ul className="sp-card-labels" aria-label="Categories" style={{ marginTop: 0, marginBottom: 12, justifyContent: 'center' }}>
                 <li className="sp-card-label sdp-badge-system">Nivell {selectedAgent.level}</li>
                 {selectedAgent.tag && <li className="sp-card-label sdp-badge-category">{selectedAgent.tag}</li>}
                 {selectedAgent.type && <li className="sp-card-label sdp-badge-tag">{selectedAgent.type}</li>}
               </ul>
-              // eslint-disable-next-line
               <h2 className="card__title" style={{ marginTop: 14 }}>{selectedAgent.name}</h2>
               <p className="card__text">{selectedAgent.role}</p>
               {selectedAgent.short_bio ? <p className="card__text">{selectedAgent.short_bio}</p> : null}

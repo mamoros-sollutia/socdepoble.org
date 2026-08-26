@@ -358,7 +358,6 @@ export default function DevicesSection() {
         <div className="devices-summary-grid">
           {summary.map((item) => (
             <article key={item.label} className="card card--soft">
-              // eslint-disable-next-line
               <div className="card__body" style={{ display: 'grid', gap: 8 }}>
                 <span className="devices-summary-label">{item.label}</span>
                 <strong className="devices-summary-value">{item.value}</strong>
@@ -380,7 +379,6 @@ export default function DevicesSection() {
             </div>
             <div className="devices-panel__body">
               <article className="card card--soft">
-                // eslint-disable-next-line
                 <div className="card__body" style={{ display: 'grid', gap: 14 }}>
                   <div className="badge-row">
                     <span className="badge">
@@ -424,11 +422,9 @@ export default function DevicesSection() {
                   const state = connections[device.id]?.state || 'idle';
                   return (
                     <article key={device.id} className={`card device-card ${selectedPeerId === device.id ? 'device-card--active' : ''}`}>
-                      // eslint-disable-next-line
                       <div className="card__body" style={{ display: 'grid', gap: 12 }}>
                         <div className="devices-row">
                           <div>
-                            // eslint-disable-next-line
                             <strong className="card__title" style={{ fontSize: '1rem' }}>{device.name}</strong>
                             <p className="card__text">
                               ID curt {device.id.slice(0, 8)}
@@ -490,11 +486,9 @@ export default function DevicesSection() {
               {activeChatPeer ? (
                 <div className="devices-chat-shell">
                   <article className="card card--soft">
-                    // eslint-disable-next-line
                     <div className="card__body" style={{ display: 'grid', gap: 12 }}>
                       <div className="devices-row">
                         <div>
-                          // eslint-disable-next-line
                           <strong className="card__title" style={{ fontSize: '1rem' }}>{activeChatPeer.name}</strong>
                           <p className="card__text">Estat: {connectionLabel(activeChatPeer.id)}</p>
                         </div>

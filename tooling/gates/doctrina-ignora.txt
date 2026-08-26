@@ -1,0 +1,17 @@
+# doctrina-ignora.txt
+# Camins que `tractor-doctrina.mjs` no ha d'exigir dins d'aquest repositori.
+# Un prefix per línia. `#` per a comentaris.
+#
+# Regla d'ús: açò NO és per a amagar camins trencats. És exclusivament per a
+# rutes que viuen legítimament fora del repo auditat. Si una entrada d'ací
+# hauria de ser un fitxer real, la solució és crear el fitxer, no exemptar-lo.
+
+# Arxiu històric, fora de l'arbre viu (Llei del Mas Viu, AGENTS.md)
+_arxiu_wiki_de_poble
+
+# Wiki d'Obsidian, repositori separat
+_wiki_de_poble
+
+# Exemples il·lustratius de skills sense jurisdicció sobre el projecte.
+# Si esborreu design-taste-frontend com recomana l'auditoria, lleveu esta línia.
+.agents/cervells/inicial_2026-08-24T21-26-15-657Z/design-taste-frontend

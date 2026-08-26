@@ -25,11 +25,8 @@ export default function SearchSection() {
       showLogos={true}
       labels={[t('section.search.label', 'Cercador')]}
     >
-      // eslint-disable-next-line
       <div style={{ margin: 'var(--sdp-space-8) 0', padding: '0 var(--sdp-space-5)' }}>
-        // eslint-disable-next-line
         <div style={{ display: 'flex', alignItems: 'center', background: 'var(--sdp-fons-subtil)', borderRadius: 'var(--sdp-radi-pastilla)', padding: '0 var(--sdp-space-4)', border: '1px solid var(--sdp-vora-control)' }}>
-          // eslint-disable-next-line
           <Search size={20} color="var(--sdp-text-suau)" style={{ flexShrink: 0 }} />
           <input
             type="search"
@@ -37,7 +34,6 @@ export default function SearchSection() {
             aria-label={t('section.search.searchPlaceholder', 'Cerca persones, pobles, posts...')}
             onChange={(event) => setQuery(event.target.value)}
             placeholder={t('section.search.searchPlaceholder', 'Cerca persones, pobles, posts...')}
-            // eslint-disable-next-line
             style={{
               flex: 1,
               background: 'transparent',
@@ -51,7 +47,6 @@ export default function SearchSection() {
         </div>
       </div>
 
-      // eslint-disable-next-line
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sdp-space-6)', padding: '0 var(--sdp-space-4)', paddingBottom: 'var(--sdp-space-12)' }}>
         {results.map((item) => {
           const path = resolveItemPath(item);
@@ -70,7 +65,6 @@ export default function SearchSection() {
           );
         })}
         {query && results.length === 0 && (
-          // eslint-disable-next-line
           <div style={{ textAlign: 'center', padding: 'var(--sdp-space-8)', color: 'var(--sdp-text-suau)' }}>
             {t('section.search.noResults', 'Cap resultat.')}
           </div>
