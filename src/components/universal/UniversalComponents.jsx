@@ -577,7 +577,7 @@ export function UniversalPage(props) {
               </IconButton>
             </div>
             <ActionControl
-              className="btn btn-primary btn-connectar sp-card-connect"
+              className="btn-connectar sp-card-connect"
               label={connectLabel}
               onClick={handleConnect}
             >
@@ -909,7 +909,7 @@ function CardFooter({ hasIconActions, translateVisible, handleTranslate, comment
       )}
       {connectVisible && (
         <ActionControl
-          className="btn btn-primary sp-card-connect"
+          className="btn-connectar sp-card-connect"
           label={connectLabel}
           onClick={handleConnect}
           aria-label={connectAriaLabel}

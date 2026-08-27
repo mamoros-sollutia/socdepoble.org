@@ -2877,3 +2877,19 @@ button.sp-card-calendar-badge:hover {
   flex: 1;
   justify-content: center;
 }
+
+/* ── COMPORTAMENT SCROLL EN EMBED (WORDPRESS) ──
+   Forcem que l'arrel delegue l'scroll a la finestra del navegador host,
+   permetent que els `position: sticky` de .bar-black i .bar-blue funcionen. */
+:host main.app-main,
+:host .app-main-content {
+  overflow: visible !important;
+  height: auto !important;
+}
+:host nav.app-sidebar {
+  position: sticky !important;
+  top: 0 !important;
+  height: 100vh !important;
+  overflow-y: auto !important;
+}
+
