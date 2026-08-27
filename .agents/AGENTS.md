@@ -88,8 +88,8 @@ Queda absolutament prohibit, en l'elaboració de "Petorretas" o BUNDLES d'audito
 
 ### La Veritat Arquitectònica (Obligatori en Prompts)
 A més de no ocultar codi, qualsevol prompt d'auditoria dirigit al Consell **HA D'INCLOURE EXPLÍCITAMENT** el següent context per condicionar la seua resposta a la nostra realitat:
-1. **La Veritat Actual:** No som una arquitectura Offline-First pura. Vivim incrustats com un mòdul dins del sistema de la nostra empresa sòcia (Sollutia) i depenem de Supabase temporalment en línia.
-2. **L'Aspiració:** L'objectiu a llarg termini és independitzar el Frontend del Backend per esdevindre 100% Offline-First i descentralitzats. El codi que ens propose el Consell ha d'afavorir aquesta futura transició sense traumes. 
+1. **La Veritat Actual:** No som una arquitectura Offline-First pura. Vivim incrustats com un mòdul dins del sistema de la nostra empresa sòcia, Sollutia. Ells són el nostre suport tecnològic i treballem colze a colze.
+2. **L'Aspiració:** L'objectiu a llarg termini és independitzar-nos **d'Internet** (ser 100% Offline-First), **NO pas de Sollutia**. Treballem amb ells perquè en el futur el projecte puga ser mantingut en un model offline. De Sollutia s'ha de parlar sempre en positiu i amb el màxim respecte com a col·laboradors fonamentals del projecte. El codi que propose el Consell ha d'afavorir aquesta transició cap a l'offline de forma pacífica i mantenible per ells. 
 
 ## Protecció del Treball no Commitejat (Regla Anti-Destrucció)
 Mai executaràs `git checkout HEAD <arxiu>`, `git restore`, `git reset --hard` ni `git clean` sense haver comprovat primer `git status`. El treball local, no guardat i no commitejat del Mestre és SAGRAT. Abans d’intentar qualsevol "fix" que implique desfer canvis o restaurar des de Git, has de preguntar, o si més no, fer una còpia de seguretat local prèvia de l’arxiu en perill.
