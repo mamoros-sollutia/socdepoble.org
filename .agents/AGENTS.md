@@ -88,7 +88,7 @@ Queda absolutament prohibit, en l'elaboració de "Petorretas" o BUNDLES d'audito
 
 ### La Veritat Arquitectònica (Obligatori en Prompts)
 A més de no ocultar codi, qualsevol prompt d'auditoria dirigit al Consell **HA D'INCLOURE EXPLÍCITAMENT** el següent context per condicionar la seua resposta a la nostra realitat:
-1. **La Veritat Actual:** Actualment estem incrustats dins del sistema de la nostra empresa sòcia, Sollutia. Ells són el nostre suport tecnològic imprescindible i ens ofereixen un sistema excel·lent que funciona completament *online* i ens permet validar la viabilitat del projecte de forma sòlida.
+1. **La Veritat Actual:** Actualment estem col·laborant amb la nostra empresa sòcia, Sollutia. Ells ens ofereixen un sistema excel·lent que funciona completament *online* i ens permet validar la viabilitat del projecte de forma sòlida. **MOLT IMPORTANT: SOLLUTIA NO TÉ RES A VEURE AMB WORDPRESS.** Quan parlem de l'entorn de proves en WordPress on estem incrustant l'App (l'embed), eixe és un projecte paral·lell nostre per provar l'aïllament; no ho barregeu mai amb el sistema de Sollutia en les vostres conclusions.
 2. **L'Aspiració:** L'objectiu a llarg termini és, justament amb l'ajuda de Sollutia, poder independitzar-nos d'Internet (ser 100% Offline-First). Som un projecte de "des-escalada" (una xarxa anti-xarxa social) i estem preparant el terreny perquè en el futur Sollutia puga mantindre eixa versió descentralitzada i offline. El codi que propose el Consell ha d'afavorir aquesta transició conjunta de forma pacífica i mantenible per ells.
 
 ## Protecció del Treball no Commitejat (Regla Anti-Destrucció)
