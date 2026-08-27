@@ -88,3 +88,9 @@ Queda absolutament prohibit, en l'elaboració de "Petorretas" o BUNDLES d'audito
 
 ## Protecció del Treball no Commitejat (Regla Anti-Destrucció)
 Mai executaràs `git checkout HEAD <arxiu>`, `git restore`, `git reset --hard` ni `git clean` sense haver comprovat primer `git status`. El treball local, no guardat i no commitejat del Mestre és SAGRAT. Abans d’intentar qualsevol "fix" que implique desfer canvis o restaurar des de Git, has de preguntar, o si més no, fer una còpia de seguretat local prèvia de l’arxiu en perill.
+
+## Creació de Documents (Regla d'Anclatge de Seguretat)
+**Mai** crearàs un document Markdown a pèl amb eines genèriques a la Wiki (excepte si són de l'arxiu/històric residual).
+Sempre que hages de crear un nou document, acta, petorreta o procediment, **ESTÀS OBLIGADA** a utilitzar l'script generador perquè li injecte el Frontmatter i l'Anclatge de Seguretat (link a l'índex):
+`node tooling/brain/crear_document.mjs <ruta_del_fitxer.md> "<Títol>"`
+L'Anclatge de seguretat garanteix que el RAG i els tractors no deixen el document orfe i prevé l'amnèsia de context en les IA.

@@ -77,3 +77,50 @@ for (const f of filesToScan) {
 
 writeFileSync(outPath, markdown, 'utf-8');
 console.log(`✅ Bundle creat amb èxit a: ${relative(root, outPath)}`);
+
+// Automatització: Crear un PROMPT d'acompanyament per al Consell
+const promptFileName = outFileName.replace('_BUNDLE_', '_PROMPT_');
+const promptPath = join(root, '_wiki_de_poble/05_Escriptori_Soc_de_Poble', promptFileName);
+
+const promptTemplate = `\`\`\`yaml
+doc_id: SDP-PROMPT-${termoPrefix}
+doc_type: "[PETORRETA_AUDITORIA]"
+authoring_agent: "IAIA MarIA"
+version_semver: 1.0.0
+owner: Consell de la Petorreta
+domain: global
+locale: ca-valencia
+hora_creacio: "${hh}:${min}"
+academic_metadata:
+  nivell_maduresa: "Pendent_Revisio"
+inputs: ["${outFileName}"]
+\`\`\`
+
+# 📜 PROMPT D'AUDITORIA EXTREMA: [TÍTOL DE LA MISSIÓ]
+
+> **Anclatge de Seguretat**: Aquest document pertany a l'[[00_INDEX_ESCRIPTORI]] (evitant documents orfes).
+
+## [BLOC FIXE D'IDENTITAT I ORIGEN]
+**A L'ATENCIÓ DELS AVALUADORS DE CONSELL:**
+Sou la Intel·ligència Crítica i Consultiva de suport del **Consell de la Petorreta** (Kimi AI, Claude, ChatGPT, Grok, Qwen, DeepSeek). Estem treballant en **\`socdepoble.org\`**, una arquitectura Offline-First extremadament estricta i hostil (iPads A10, WebKit legacy).
+
+**Teniu adjunt un document BUNDLE (\`${outFileName}\`) amb tot el context (incloent-hi la Wiki, regles, els meus propis Skills i Scripts) i el codi font necessari.** Llegiu-lo sencer de forma crítica abans d'emetre veredicte.
+
+## [BLOC VARIABLE 1: SITUACIÓ ACTUAL]
+[Descriu aquí el context i per què demanes ajuda al consell. Què hem implementat?]
+
+## [BLOC VARIABLE 2: LA MISSIÓ (DESPIETADA I BESTIAL)]
+Necessitem que actueu com a autèntiques **bèsties de l'auditoria**. Volem que trobeu qualsevol forat de seguretat, fuita de memòria, condició de carrera o error d'arquitectura. No volem afalacs, volem rigor.
+1. Auditeu l'enfocament i el codi adjunt.
+2. Assenyaleu deute tècnic futur.
+3. Proposeu solucions sense afegir llibreries innecessàries (Vanilla JS).
+
+## [BLOC FIXE DE PROTOCOL D'AMNÈSIA DE CONTEXT]
+**PROTOCOL AMNÈSIA DE CONTEXT (Regla de ferro):**
+Si arribeu al límit del vostre context de memòria, TENIU PROHIBIT intentar d'inventar o parafrasejar el cos complet del document que no veieu per a "rellenar". Demaneu directament que us pose el document sencer de nou.
+
+> 📝 **NOTA D'EFICIÈNCIA:** Aneu directe al gra. No feu introduccions llargues ni resums del que ja sabem.
+`;
+
+writeFileSync(promptPath, promptTemplate, 'utf-8');
+console.log(`✅ Prompt d'acompanyament (Anclat) creat a: ${relative(root, promptPath)}`);
