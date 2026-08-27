@@ -32,7 +32,7 @@
 
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { MemoryRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import App from './app/App';
 import { AppDataProvider } from './app/AppDataContext';
 import styles from './css/index.css?inline';
@@ -66,8 +66,8 @@ class ErrorBoundary extends React.Component {
 }
 
 export default function PedraSecaEmbed({ config }) {
-  // Z-Audit: Utilitzem MemoryRouter per evitar conflictes amb l'historial de navegació de WordPress
-  const RouterComponent = MemoryRouter;
+  // Utilitzem HashRouter per a tindre URLs canviants (SEO i usabilitat) sense 404s al host.
+  const RouterComponent = HashRouter;
 
   return (
     <ErrorBoundary>
@@ -144,6 +144,7 @@ class SocDePobleElement extends BaseElement {
     this._root = null;
     this._punt = null;
     this._desmuntatge = null;
+    this._hasMountedReact = false;
   }
 
   /** Propietat JS: permet passar objectes rics (WordPress, React host, Vue…). */
@@ -157,6 +158,14 @@ class SocDePobleElement extends BaseElement {
   }
 
   connectedCallback() {
+    if (window.__SDP_LIVE__ > 0 && !this._hasMountedReact) {
+      console.warn('[PedraSeca] Abortant muntatge: ja hi ha una instància activa de Sóc de Poble.');
+      return;
+    }
+    if (!this._hasMountedReact) {
+      window.__SDP_LIVE__ = (window.__SDP_LIVE__ || 0) + 1;
+      this._hasMountedReact = true;
+    }
     
     /* P0-2: cancel·la un desmuntatge pendent si tornem a entrar al DOM. */
     if (this._desmuntatge !== null) {
@@ -283,6 +292,10 @@ class SocDePobleElement extends BaseElement {
     const cleanup = () => {
       this._desmuntatge = null;
       if (this.isConnected) return; /* ha tornat: no toquem res */
+      if (this._hasMountedReact) {
+        window.__SDP_LIVE__ = Math.max(0, (window.__SDP_LIVE__ || 1) - 1);
+        this._hasMountedReact = false;
+      }
       this._root?.unmount();
       this._root = null;
       if (this._punt) {
@@ -307,19 +320,20 @@ class SocDePobleElement extends BaseElement {
 export function defineCustomElement() {
   if (typeof window === 'undefined') return;
   
-  // Z-Audit: Singleton Guard per a entorns hostils com plugins WP
-  if (window.__SDP_REACT_MOUNTED__) {
-    console.warn('[PedraSeca] Advertència: Aquest host ja té una instància de Sóc de Poble muntada. Possibles col·lisions d\'estat globals.');
-  }
-  window.__SDP_REACT_MOUNTED__ = true;
+  // Singleton Guard ara gestionat per __SDP_LIVE__ al connectedCallback
 
   // Global Error Handler per a QuotaExceeded i Promeses orfes (Black Box Error Handler)
   if (!window.__SDP_GLOBAL_ERRORS_BOUND__) {
     window.addEventListener('unhandledrejection', (event) => {
       const err = event.reason;
       if (err?.name === 'QuotaExceededError' || String(err).includes('QuotaExceeded')) {
-        console.error('[PedraSeca] QuotaExceeded global capturat. Forçant reset de base de dades local...');
-        indexedDB.deleteDatabase('sdp-outbox');
+        const stack = err?.stack || '';
+        if (stack.includes('outbox') || stack.includes('sdp') || stack.includes('PedraSeca')) {
+          console.error('[PedraSeca] QuotaExceeded global capturat (es nostre). Forçant reset de base de dades local...');
+          indexedDB.deleteDatabase('sdp-outbox');
+        } else {
+          console.warn('[PedraSeca] QuotaExceeded ignorat (no pertany a SDP, probablement és un plugin de WP).');
+        }
       } else {
         console.warn('[PedraSeca] Promesa rebutjada globalment (no crítica):', err);
       }
