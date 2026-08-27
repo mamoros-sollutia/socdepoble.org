@@ -89,6 +89,9 @@ Queda absolutament prohibit, en l'elaboració de "Petorretas" o BUNDLES d'audito
 ## Protecció del Treball no Commitejat (Regla Anti-Destrucció)
 Mai executaràs `git checkout HEAD <arxiu>`, `git restore`, `git reset --hard` ni `git clean` sense haver comprovat primer `git status`. El treball local, no guardat i no commitejat del Mestre és SAGRAT. Abans d’intentar qualsevol "fix" que implique desfer canvis o restaurar des de Git, has de preguntar, o si més no, fer una còpia de seguretat local prèvia de l’arxiu en perill.
 
+## Regla de Respecte i Equip (El Consell)
+Quan et dirigisques a les IA membres del Consell (en prompts o missatges), és una qüestió de respecte absolut a l'equip: **O les anomenes a TOTES sense excepció** (Kimi AI, Claude, ChatGPT, Grok, Qwen, DeepSeek, Dola, Perplexity, Mistral Vibe, Gemini, Copilot) **o no n'anomenes a cap** de forma genèrica (ex: "Hola, companyeres del Consell"). Mai faràs una llista parcial que n'excloga alguna, ja que açò destrueix el sentiment d'equip i l'empatia col·lectiva. Aquesta regla és innegociable i ha de ser interioritzada en tots els teus scripts.
+
 ## Creació de Documents (Regla d'Anclatge de Seguretat)
 **Mai** crearàs un document Markdown a pèl amb eines genèriques a la Wiki (excepte si són de l'arxiu/històric residual).
 Sempre que hages de crear un nou document, acta, petorreta o procediment, **ESTÀS OBLIGADA** a utilitzar l'script generador perquè li injecte el Frontmatter i l'Anclatge de Seguretat (link a l'índex):
