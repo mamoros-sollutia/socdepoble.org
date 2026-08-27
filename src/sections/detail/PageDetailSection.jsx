@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
-import SectionChrome from '../../components/SectionChrome';
+import { UniversalPage } from '../../components/universal/UniversalComponents';
 import { useAppData } from '../../app/AppDataContext';
 import { resolveItemPath } from '../../config/navigation';
 import { renderPageHtml } from './detailRichText.jsx';
@@ -26,11 +26,11 @@ export default function PageDetailSection() {
   }
 
   return (
-    <SectionChrome
-      kicker={item.type || t('section.text.page', 'Pàgina')}
+    <UniversalPage
       title={item.title || t('section.text.page', 'Pàgina')}
       subtitle={item.post_subtitle || item.author || ''}
-      meta={[item.author || t('section.detail.mur.author', 'Sóc de Poble'), item.time || item.created_at || '']}
+      chrome="system"
+      showLogos={true}
     >
       <div className="detail-page">
         <div className="detail-hero card">
@@ -40,20 +40,19 @@ export default function PageDetailSection() {
             </div>
           ) : null}
           <div className="card__body">
-            <ul className="sp-card-labels" aria-label="Categories" style={{ marginTop: 0, marginBottom: 12, justifyContent: 'flex-start' }}>
+            <ul className="sp-card-labels" aria-label="Categories">
               <li className="sp-card-label sdp-badge-system">{item.type || t('section.text.page', 'page')}</li>
               {item.slug && <li className="sp-card-label sdp-badge-tag">{item.slug}</li>}
             </ul>
-            <h2 className="card__title" style={{ marginTop: 14 }}>{item.title || t('section.text.page', 'Pàgina')}</h2>
+            <h2 className="card__title">{item.title || t('section.text.page', 'Pàgina')}</h2>
             {item.post_subtitle ? <p className="section-item-card__subtitle">{item.post_subtitle}</p> : null}
             <article
               className="detail-content"
-              style={{ marginTop: 18 }}
               dangerouslySetInnerHTML={{ __html: sanitizeHtml(renderPageHtml(item.content || '')) }}
             />
           </div>
         </div>
       </div>
-    </SectionChrome>
+    </UniversalPage>
   );
 }

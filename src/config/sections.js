@@ -3,7 +3,7 @@ import { BrainCircuit, CalendarDays, FileText, GalleryVerticalEnd, LandPlot, Map
 export const SECTION_ORDER = ['xat', 'mur', 'mercat', 'pobles', 'multimedia', 'notes', 'dispositius', 'projecte', 'constitucio', 'disseny', 'skills', 'ia', 'roadmap', 'versions', 'legal'];
 
 export const SECTIONS = [
-  { id: 'xat', path: '/chat', label: 'Xat', shortLabel: 'Xat', icon: MessageSquare, kind: 'xat' },
+  { id: 'xat', path: '/xat', label: 'Xat', shortLabel: 'Xat', icon: MessageSquare, kind: 'xat' },
   { id: 'mur', path: '/mur', label: 'Mur', shortLabel: 'Mur', icon: Newspaper, kind: 'mur' },
   { id: 'mercat', path: '/mercat', label: 'Mercat', shortLabel: 'Mercat', icon: ShoppingCart, kind: 'market' },
   { id: 'pobles', path: '/pobles', label: 'Pobles', shortLabel: 'Pobles', icon: LandPlot, kind: 'pobles' },

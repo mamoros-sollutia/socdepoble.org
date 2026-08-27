@@ -1,54 +1,56 @@
 #!/usr/bin/env node
 /**
- * tractor-shim.mjs — Porta del Runtime de JSX
+ * tractor-shim.mjs — Porta del Runtime de JSX (versió conductual)
  *
- * PER QUÈ EXISTEIX. `src/shims/jsx-runtime.js` ha estat un àlies directe de
- * `React.createElement` dues vegades. Les signatures no lliguen:
- *     jsx(type, props, key)               → la key és el 3r argument
- *     createElement(type, props, ...fills) → el 3r argument són els FILLS
- * Conseqüència: cada element amb `key` pinta la clau i PERD el contingut.
- * Només al build de WordPress (`vite.standalone.config.js` fa l'àlies; el de
- * dev, no). Per això sobreviu: `npm run dev` es veu perfecte.
- *
- * COM HO COMPROVA. No busca text: importa el shim i li fa preguntes. Un
- * comentari no pot enganyar esta porta. Saber ≠ Fer.
+ * La versió anterior comprovava `shim.jsx === React.createElement`. Això només
+ * atrapa l'àlies literal. Un embolcall d'una línia que reproduïx exactament el
+ * mateix error passava la porta amb exit 0:
+ *     export const jsx = (t, p, k) => React.createElement(t, p, k);
+ * Esta versió no mira qui és la funció: la crida i li mira el resultat.
+ * Verificada contra el shim bo (exit 0) i contra l'embolcall dolent (exit 1).
  */
+import path from 'node:path';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
-import path from 'path';
-import { fileURLToPath } from 'url';
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const ARREL = path.resolve(__dirname, '../../');
+const RUTA = process.env.SHIM_PATH || path.join(ARREL, 'src/shims/jsx-runtime.js');
+const errors = [];
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const projectRoot = path.resolve(__dirname, '../../');
-const shimPath = path.join(projectRoot, 'src/shims/jsx-runtime.js');
+try {
+  const shim = await import(pathToFileURL(RUTA).href);
 
-async function testShim() {
-    try {
-        const shim = await import(shimPath);
-        if (!shim.jsx) {
-            console.error('❌ TRACTOR-SHIM: El shim no exporta `jsx`.');
-            process.exit(1);
-        }
+  for (const nom of ['jsx', 'jsxs', 'Fragment']) {
+    if (!shim[nom]) errors.push(`El shim no exporta \`${nom}\`.`);
+  }
 
-        // Simulem una crida jsx de Babel o ESBuild: jsx('div', { children: 'hola' }, 'clau-123')
-        // El resultat de createElement normal de React no ho posaria bé si l'àlies és directe.
-        // No podem verificar realment sense un clon de React que intercepte crides, però
-        // en lloc d'això comprovem si `jsx` és exactament `React.createElement`.
+  if (shim.jsx) {
+    const a = shim.jsx('li', { children: 'Contingut' }, 'clau-123');
+    if (a.key !== 'clau-123')
+      errors.push(`key perduda: esperava 'clau-123', he obtingut ${JSON.stringify(a.key)}.`);
+    if (a.props.children !== 'Contingut')
+      errors.push(`FILLS CONTAMINATS PER LA KEY: props.children = ${JSON.stringify(a.props.children)}. És l'error del 25/08/2026.`);
 
-        const React = await import('react');
-        
-        if (shim.jsx === React.createElement) {
-             console.error('❌ TRACTOR-SHIM: ALERTA ROJA! `jsx` és un àlies DIRECTE de `React.createElement`. Això trenca les llistes en producció perquè el tercer argument és `key` en `jsx` però `children` en `createElement`. Cal reescriure el shim.');
-             process.exit(1);
-        }
+    const b = shim.jsx('p', { children: 'Text' });
+    if (b.props.children !== 'Text' || b.key !== null)
+      errors.push("Sense key el shim altera l'element.");
 
-        console.log('✅ TRACTOR-SHIM: El shim JSX és segur. No és un àlies perillós.');
-        process.exit(0);
+    const c = (shim.jsxs || shim.jsx)('ul', { children: ['u'] }, 'k');
+    if (!Array.isArray(c.props.children))
+      errors.push(`jsxs amb un sol fill torna ${JSON.stringify(c.props.children)} en compte d'una llista: divergix del runtime real i trenca Children.map/count al build de WordPress.`);
 
-    } catch (e) {
-        console.error('❌ TRACTOR-SHIM: Error executant el shim:', e.message);
-        process.exit(1);
-    }
+    const d = shim.jsx('a', { href: '/x', className: 'sdp-enllac', children: 'anar' }, 'k2');
+    if (d.props.href !== '/x' || d.props.className !== 'sdp-enllac')
+      errors.push('El shim perd props.');
+  }
+} catch (e) {
+  errors.push(`No s'ha pogut importar el shim: ${e.message}`);
 }
 
-testShim();
+if (errors.length) {
+  console.error('❌ TRACTOR-SHIM: el runtime JSX no és equivalent al de React.');
+  errors.forEach((e) => console.error(`   · ${e}`));
+  process.exit(1);
+}
+console.log('✅ TRACTOR-SHIM: el runtime JSX es comporta com el de React (key, fills, llistes, props).');
+process.exit(0);

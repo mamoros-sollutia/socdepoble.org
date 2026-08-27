@@ -19,12 +19,13 @@
     "porta:shim": "node tooling/gates/tractor-shim.mjs",
     "porta:manual": "node tooling/gates/tractor-manual.mjs",
     "porta:consell": "node tooling/gates/tractor-consell.mjs",
-    "porta": "npm run porta:manual && npm run porta:consell && npm run porta:shim",
-    "gate": "node tooling/wiki/tractor-cognitiu.mjs --arrel=. && npm run porta",
+    "porta": "node tooling/wiki/tractor-cognitiu.mjs --arrel=. && npm run porta:manual && npm run porta:consell && node tooling/gates/tractor-registre.mjs && node tooling/gates/tractor-doctrina.mjs && node tooling/brain/tractor-pedra-seca.mjs && node tooling/gates/design_guard.mjs && node tooling/gates/tractor-persistencia.mjs && npm run porta:shim",
+    "gate": "npm run porta",
     "dev": "vite --host 0.0.0.0 --port 3340 --strictPort",
     "rag:build": "node -e \"import('./tooling/wiki/core/build_rag_index.mjs').then(m => m.run({root: '.'}))\"",
-    "build": "npm run gate && npm run rag:build && npm run build:web && npm run build:wp && npm run build:seo",
-    "build:seo": "node scripts/build-seo-routes.mjs",
+    "slugs:build": "node tooling/wiki/core/build_slug_index.mjs",
+    "build": "npm run gate && npm run rag:build && npm run slugs:build && npm run build:web && npm run build:wp && npm run build:seo",
+    "build:seo": "node tooling/gates/build-seo-manifest.mjs --escriu",
     "build:web": "vite build",
     "build:wp": "vite build -c vite.standalone.config.js && mkdir -p wordpress-plugin/assets/fonts wordpress-plugin/assets/img && cp -r src/assets/fonts/* wordpress-plugin/assets/fonts/ && cp -r assets/img/* wordpress-plugin/assets/img/",
     "prepare": "husky",
@@ -36,7 +37,7 @@
     "brain:distill": "python3 tooling/brain/brain_distill.py",
     "pdf:render": "sh tooling/pdf/render_pdf.sh",
     "test": "vitest",
-    "lint": "eslint src"
+    "lint": "eslint src tooling scripts"
   },
   "dependencies": {
     "dompurify": "^3.4.14",
@@ -66,7 +67,9 @@
     "react-dom": "^19.2.0",
     "react-router-dom": "^7.12.0",
     "vite": "^7.1.0",
-    "vite-plugin-pwa": "^1.3.0",
     "vitest": "^4.1.10"
+  },
+  "engines": {
+    "node": ">=20"
   }
 }

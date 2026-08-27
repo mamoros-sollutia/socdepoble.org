@@ -178,7 +178,10 @@ for (const [base, rutes] of nodes) {
 /* ══════════ P3 · C-4 — Guardes importades i mai cridades ══════════ */
 
 const GUARDES = ['openReflex', 'sealReflex', 'claimReceiptForMutation', 'completeMutationClaim'];
-const fontsJs = camina(path.join(ARREL, 'tooling'), /\.(mjs|js|cjs)$/);
+const fontsJs = [
+  ...camina(path.join(ARREL, 'tooling'), /\.(mjs|js|cjs)$/),
+  ...camina(path.join(ARREL, 'scripts'), /\.(mjs|js|cjs)$/)
+];
 
 for (const f of fontsJs) {
   const src = fs.readFileSync(f, 'utf8');

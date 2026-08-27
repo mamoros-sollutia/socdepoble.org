@@ -58,10 +58,15 @@ export async function buildIndex(root, options = {}) {
   const df = new Map();
   const perDocTf = [];
 
+  let malformedCount = 0;
   for (const file of files) {
     const raw = await readFile(file, 'utf8');
     const parsed = parseFrontmatter(raw);
-    if (parsed.malformed || parsed.errors.length) continue;
+    if (parsed.malformed || parsed.errors.length) {
+      console.warn(`[WARN] Frontmatter trencat o parsat amb errors a ${file}`);
+      malformedCount++;
+      continue;
+    }
     const body = parsed.body;
     const tokens = tokenize(body, stopwords, minLen);
     const tf = termFreq(tokens);
@@ -87,13 +92,17 @@ export async function buildIndex(root, options = {}) {
     norms[docId] = Math.sqrt(sumSq) || 1e-9;
   });
 
-  return { docs: meta, inverted, idf, norms, stopwords: [...stopwords], minLen, docCount: meta.length };
+  return { docs: meta, inverted, idf, norms, stopwords: [...stopwords], minLen, docCount: meta.length, malformedCount };
 }
 
 export async function run(options) {
   const root = options.root || '.';
   console.log('Construint índex RAG...');
   const index = await buildIndex(root);
+  if (index.malformedCount > 0) {
+    console.error(`[FATAL] S'han detectat ${index.malformedCount} fitxers amb frontmatter trencat. Corregiu-los.`);
+    process.exit(1);
+  }
   const outFile = join(root, 'public', 'rag-index.json');
   await writeFile(outFile, JSON.stringify(index), 'utf8');
   console.log(`Índex construït amb ${index.docCount} documents a ${outFile}`);

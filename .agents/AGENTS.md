@@ -5,25 +5,25 @@
 En cas de conflicte, preval este ordre:
 
 1. instrucció humana explícita de la tasca actual;
-2. jurisdicció suprema: `design-taste-frontend` no té jurisdicció sobre Sóc de Poble. En conflictes de xat i UI, Pedra Seca preval sense excepció;
-3. obligació de barrera: abans i després de qualsevol canvi estructural has d'executar `npm run gate`;
-4. este `AGENTS.md`;
-5. ADR acceptades i normes en `03_GOVERNAR_Normativa_Regles/`;
-6. `.agents/PROFILE.md` per a veu i conducta;
-7. la skill adoptada per a la tasca;
-8. documentació canònica del Brain;
-9. actes i arxiu només com a evidència històrica.
+2. obligació de barrera: abans i després de qualsevol canvi estructural has d'executar `npm run gate`;
+3. este `AGENTS.md`;
+4. ADR acceptades i normes en `03_GOVERNAR_Normativa_Regles/`;
+5. `.agents/PROFILE.md` per a veu i conducta;
+6. la skill adoptada per a la tasca;
+7. documentació canònica del Brain;
+8. actes i arxiu només com a evidència històrica.
 
 L’última acta no és automàticament autoritat. Un mirall o fitxer generat mai
 supera la seua font.
 
 ## 🛑 Protocol d'Arrencada Obligatori (Anti-Amnèsia)
 
-Abans de respondre a qualsevol tasca complexa o arquitectònica en una nova sessió, l'agent HA DE:
-1. Llegir `_wiki_de_poble/00_INDEX_MESTRE.md` sencer.
-2. Llegir `_wiki_de_poble/05_Escriptori_Soc_de_Poble/produccio/disseny_pedra_seca.html` (si la tasca és visual).
-3. Llegir `src/components/universal/UniversalComponents.jsx` i `src/css/index.css`.
-4. Confirmar verbalment: “Context carregat: [X] fitxers, [Y] tokens aproximats”.
+Abans de respondre a qualsevol tasca complexa o arquitectònica en una nova sessió, l'agent HA DE COMPLIR ESTRICTAMENT l'ancoratge de `.agents/BOOTSTRAP.md`.
+El teu BIOS cognitiu exigeix:
+1. Llegir `.agents/BOOTSTRAP.md` sencer. Aquest és el forrellat determinista.
+2. Llegir aquest mateix arxiu `AGENTS.md`, que és la **Font Única de Veritat Executiva**. Cap document de la Wiki pot contradir aquest contracte.
+3. Si has de tocar disseny, llegir la llei a `.agents/skills/pedra-seca/SKILL.md`.
+4. Confirmar verbalment que l'arrencada s'ha complert amb èxit.
 5. Si falta algun fitxer de l’índex, demanar-lo. Mai inventar.
 
 ## Arquitectura vigent
@@ -65,25 +65,13 @@ i elimina la documentació que ja no és certa.
 
 No faces que l'usuari treballe per a tu. Si has d'executar un comandament, arrencar un servidor (`npm start`), comprovar l'estat d'una tasca, o fer canvis de fitxers, **FES-HO TU MATEIXA** usant les teues eines (`run_command`, etc.). El temps humà és or, els tokens de l'API són barats. Assumeix la responsabilitat plena d'actuar per estalviar temps a l'usuari.
 
-## Disseny Pedra Seca: Regla de Capçaleres (H1 i H2)
-
-El marc principal (decoratiu) de la pàgina (`header.page-title`) està dissenyat exclusivament per albergar l'element `<h1>` i els seus elements immediats relacionats (imatge superior, i possibles etiquetes/categories inferiors). 
-
-**Norma Estructural:**
-- **SÍ**: L'`<h1>` va dins del `header.page-title`.
-- **MAI**: L'`<h2>` i la seua entradilla (el `p.lead` que l'acompanya normalment per davall) NO poden anar mai dins d'aquest marc. Han de situar-se sempre FORA del `header.page-title`, agrupats en un contenidor (per exemple, `div.sdp-text-center`) directament en el cos de la pàgina, just davall de la capçalera principal.
-
-- **Espaiat Harmònic**: El marge inferior de  s'ha de mantindre contingut (ex:  en comptes d'excessos de 16). Igualment, el contenidor de l'H2 i entradilla tindrà un marge inferior màxim de  per a no allunyar-lo excessivament del primer contingut ().
-
-- **Espaiat Harmònic**: El marge inferior de `header.page-title` s'ha de mantindre contingut (ex: `var(--sdp-space-8)` en comptes d'excessos de 16). Igualment, el contenidor de l'H2 i entradilla tindrà un marge inferior màxim de `sdp-mb-6` per a no allunyar-lo excessivament del primer contingut (`H3`).
-
 ## Protocol de Tancament de Sessió (Neteja Automàtica)
 
-Abans de donar per finalitzada qualsevol sessió de treball (Tancament / Acta de la Marmota), l'agent **HA DE**:
+Abans de donar per finalitzada qualsevol sessió de treball, l'agent **HA DE**:
 1. Esborrar fitxers HTML temporals, `.diff` residuals o arxius brossa de la Bandeja d'Entrada.
-2. Moure tots els scripts temporals d'un sol ús (`fix_*.py`, `clean_*.py`, etc.) creats a l'arrel directament FORA del sistema cap a `../_arxiu_wiki_de_poble/` (o esborrar-los directament).
-3. **Puresa de la Wiki (Llei del Mas Viu):** Allò que et fa ser qui eres (Genoma, Regles, Identitat, Índexs, Skills) es queda a `_wiki_de_poble`. Tot el que ja és purament històric i del que ja hem après (Actes, Reflexions Forenses passades, llibres negres, logs) S'HA DE TRAURE FORA del repositori de `socdepoble.org` i moure-ho a `../_arxiu_wiki_de_poble/`. El directori `90_arxiu_historic/` dins del repo i `12_actes/` s'han de buidar constantment per no engreixar l'arbre viu de la Wiki.
-4. Assegurar que l'Escriptori i el directori arrel queden totalment nets de "punts separats" i brossa per a l'inici de la sessió de l'endemà.
+2. Moure tots els scripts temporals d'un sol ús i actes velles a `../_arxiu_wiki_de_poble/` (FORA del repositori).
+3. **Llei de la Wiki Lleugera:** El sistema no ha d'emmagatzemar cap historial històric ni actes de sessions anteriors al propi repositori; s'ha de mantenir àgil. Tot s'envia a l'arxiu extern.
+4. Assegurar que l'Escriptori i el directori arrel queden totalment nets per a l'inici de la sessió de l'endemà.
 
 ## Integració amb Sollutia (Llei de l'Enxufabilitat)
 - **Màxim respecte al codi base:** El sistema de disseny Pedra Seca i qualsevol component nou han de ser **100% enxufables (pluggables)** a l'arquitectura creada per Sollutia.

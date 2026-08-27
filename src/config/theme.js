@@ -1,3 +1,5 @@
+import { getVal, setVal } from './storage.js';
+
 export const THEME_KEY = 'sdp-theme';
 const LEGACY_KEYS = ['socdepoble-theme-mode'];
 const VALID = new Set(['light', 'dark', 'system']);
@@ -20,12 +22,9 @@ export function readThemePreference(configured) {
   if (htmlTheme && VALID.has(htmlTheme)) return htmlTheme;
 
   // 2. Fallback a LocalStorage (text cru)
-  try {
-    const raw = window.localStorage.getItem(THEME_KEY);
-    if (raw && VALID.has(raw)) return raw;
-  } catch {
-    // Ignorar errors de localStorage
-  }
+  const raw = getVal(THEME_KEY);
+  if (raw && VALID.has(raw)) return raw;
+
   return 'light'; // Fallback final
 }
 
@@ -36,11 +35,5 @@ export function resolveTheme(preference) {
 }
 
 export function writeThemePreference(preference) {
-  if (typeof window !== 'undefined') {
-    try {
-      window.localStorage.setItem(THEME_KEY, preference);
-    } catch {
-      // Ignorar errors de localStorage
-    }
-  }
+  setVal(THEME_KEY, preference);
 }

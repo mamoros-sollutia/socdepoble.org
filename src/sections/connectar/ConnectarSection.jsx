@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CheckCircle2, Globe, Lock, Plus, Tag } from 'lucide-react';
-import SectionChrome from '../../components/SectionChrome';
+import { UniversalPage } from '../../components/universal/UniversalComponents';
 import { useAppData } from '../../app/AppDataContext';
 
 const TAGS = ['Història local', 'Patrimoni', 'Gent del poble', 'Debat', 'Mercat', 'Tecnologia'];
@@ -118,7 +118,7 @@ export default function ConnectarSection({ agents = [] }) {
 
   const handleConnect = async () => {
     if (selectedArea === 'xat') {
-      navigate('/chats');
+      navigate('/xat');
       return;
     }
 
@@ -146,11 +146,11 @@ export default function ConnectarSection({ agents = [] }) {
   };
 
   return (
-    <SectionChrome
-      kicker={t('section.connectar.kicker', 'Connectar')}
+    <UniversalPage
       title={t('section.connectar.title', 'On vols continuar?')}
       subtitle={t('section.connectar.subtitle', 'Tria l’espai on vols entrar i continua navegant.')}
-      meta={[t('section.connectar.privacy', 'Connexió'), 'Portal', t('nav.login', 'Accés ràpid')]}
+      chrome="system"
+      showLogos={true}
     >
       <div className="connect-layout">
         <section className="connect-panel">
@@ -226,7 +226,7 @@ export default function ConnectarSection({ agents = [] }) {
             </div>
 
             {customTags.length > 0 ? (
-              <div className="badge-row" style={{ marginTop: 12 }}>
+              <div className="badge-row">
                 {customTags.map((tag) => (
                   <span key={tag} className="badge">
                     {tag}
@@ -248,7 +248,7 @@ export default function ConnectarSection({ agents = [] }) {
               </div>
               <span className="pill">Es guardarà i quedarà visible en recarregar</span>
             </div>
-            <div className="connect-panel__body" style={{ display: 'grid', gap: 16 }}>
+            <div className="connect-panel__body">
               <input
                 type="text"
                 value={entryTitle}
@@ -270,7 +270,6 @@ export default function ConnectarSection({ agents = [] }) {
                     : 'Descriu l’esdeveniment o la convocatòria...'}
                 className="section-search"
                 rows={4}
-                style={{ minHeight: 120, resize: 'vertical' }}
               />
             </div>
           </section>
@@ -322,6 +321,6 @@ export default function ConnectarSection({ agents = [] }) {
           </div>
         </section>
       </div>
-    </SectionChrome>
+    </UniversalPage>
   );
 }

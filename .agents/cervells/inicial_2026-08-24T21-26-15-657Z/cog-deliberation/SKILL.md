@@ -17,20 +17,25 @@ authority_level: procedural
 freshness:
   reviewed_at: '2026-08-25'
   review_after: '2026-11-25'
-tests:
+tests: null
 triggers_on:
-  - cog-deliberation
+- deliberar
+- planificar
+- pensar
+- reflexionar
+- estratègia
+lang: ca
 ---
 
 # cog-deliberation
 
-> Delibera internament. Comunica la decisió, l'evidència, els supòsits, les alternatives descartades quan siguen rellevants i la incertesa; no reveles raonament privat.
+Aquesta skill s'encarrega d'orquestrar la deliberació cognitiva abans de prendre decisions arquitectòniques importants. 
+Els agents han de ponderar sempre els pros i contres de cada decisió tècnica, tenint en compte les normes de governança de Sóc de Poble.
 
+## Passos per a la Deliberació:
+1. **Analitzar el Context:** Avaluar si el canvi proposat xoca amb la visió Offline-First.
+2. **Avaluar l'Impacte:** Considerar com afecta l'accessibilitat, el rendiment i el compliment de Pedra Seca.
+3. **Decisió Documentada:** Qualsevol elecció s'ha de documentar i justificar clarament abans d'executar el codi.
+4. **Verificació Creuada:** Si hi ha incertesa, l'agent s'ha d'aturar i demanar validació a l'usuari humà abans de trencar l'aplicació.
 
-## Detall Operatiu i Instruccions d'Ús Extès
-
-Aquest apartat serveix com a detall exhaustiu sobre la naturalesa d'aquesta skill. 
-L'agent d'intel·ligència artificial s'ha d'assegurar d'entendre que aquesta eina és part del sistema central d'arquitectura cognitiva i normativa del projecte Sóc de Poble.
-El seu ús està subjecte a les directives i protocols detallats al directori de governança, especialment els processos d'auditoria automàtica de la plataforma.
-No es pot eludir, alterar ni ignorar. Aquesta descripció estesa garanteix la presència de context suficient per al correcte processament semàntic de l'índex.
-Les funcions operatives específiques de la skill estan documentades en altres arxius canònics del mateix directori si escau, però aquesta declaració certifica la seva validesa per damunt dels mínims de longitud establerts pel tractor cognitiu.
+El sistema de deliberació requereix pausa i prudència per sobre de la velocitat.

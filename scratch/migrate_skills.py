@@ -1,59 +1,60 @@
 import os
-import shutil
-from pathlib import Path
+import yaml
+import re
 
-SKILLS_DIR = Path('.agents/skills')
+SKILLS_DIR = '.agents/cervells/inicial_2026-08-24T21-26-15-657Z'
 
-MAPPING = {
-    'evi-grounding-dades': ['grounding-en-forza-de-dades'],
-    'evi-chain-verification': ['chain-of-verification', 'verificacio-en-cadena-qwen', 'evidence-first-reasoning', 'hallucination-guard', 'anti-hallucination-guard'],
-    'evi-multi-model': ['multi-model-consensus'],
-    'cog-trellat-deliberation': ['trellat-reasoning', 'raonament-pas-a-pas', 'chain-of-thought-moderation', 'socdepoble-cot-profund'],
-    'cog-context-curator': ['semantic-compression', 'progressive-disclosure', 'socdepoble-context-forensics'],
-    'sec-application-security': ['pedra-seca-security-audit', 'socdepoble-adversarial-code-review', 'socdepoble-contract-consistency'],
-    'sec-trust-boundary': ['engany-de-restriccions'],
-    'arc-pedra-seca-ui': ['pedra-seca-code', 'socdepoble-criteri-visual'],
-    'arc-react-thermodynamics': ['react-memory-thermodynamics', 'thermodynamic-optimization', 'consola-termodinamica'],
-    'arc-offline-resilience': ['offline-first-resilience-engineer', 'sovereign-offline'],
-    'arc-embedded-boundary': ['code-stability-refactor', 'memory-leak-detector'],
-    'ops-safe-mutation': ['socdepoble-safe-patch-planning', 'trust-verify-execute', 'codi-corrector-segons-esquema', 'socdepoble-autosanacio', 'socdepoble-llm-wiki', 'socdepoble-zero-slop'],
-    'ops-mechanical-gates': ['code-guardian', 'anti-collapse-audit', 'destructive-architecture-audit'],
-    'ops-defuddle': ['defuddle'],
-    'prm-craft-architecture': ['prompt-architecture-council', 'prompt-safety-and-context'],
-    'ux-rural-dialogue': ['rural-empathy', 'socdepoble-sociologia-whatsapp', 'socdepoble-civic']
+SKILL_TRIGGERS = {
+    'cog-deliberation': ['deliberar', 'planificar', 'pensar', 'reflexionar', 'estratègia'],
+    'core-bounded-action': ['bucle', 'acció', 'límits', 'execució', 'seguretat', 'aturar'],
+    'core-trust-boundary': ['confiança', 'permisos', 'frontera', 'secrets', 'dades personals', 'privacitat'],
+    'core-verified-change': ['canvi', 'verificar', 'tests', 'gate', 'ci', 'aprovació'],
+    'identity-iaia-voice': ['veu', 'iaia', 'maria', 'personalitat', 'to', 'valencià'],
+    'multi-agent-review': ['consell', 'qwen', 'claude', 'revisió', 'agents', 'auditoria'],
+    'socdepoble-workflow': ['workflow', 'flux', 'procés', 'passos', 'guia'],
+    'pedra-seca': ['disseny', 'css', 'ui', 'pedra', 'seca', 'estil', 'colors', 'components']
 }
 
-def migrate():
-    # 1. Create new super-skills
-    for super_skill, old_skills in MAPPING.items():
-        super_dir = SKILLS_DIR / super_skill
-        super_dir.mkdir(exist_ok=True)
-        
-        merged_content = f"---\nestat: actiu\ntipus: skill\ndescription: Lòbul {super_skill} (Fusionat)\n---\n\n# {super_skill}\n\n"
-        
-        for old in old_skills:
-            old_dir = SKILLS_DIR / old
-            skill_file = old_dir / 'SKILL.md'
-            if skill_file.exists():
-                content = skill_file.read_text('utf-8')
-                merged_content += f"\n## Antic: {old}\n\n{content}\n"
-                
-                # Copy other files if they exist (except SKILL.md)
-                for f in old_dir.iterdir():
-                    if f.name != 'SKILL.md':
-                        dest = super_dir / f.name
-                        if f.is_dir():
-                            shutil.copytree(f, dest, dirs_exist_ok=True)
-                        else:
-                            shutil.copy2(f, dest)
-            
-            # Remove old directory
-            if old_dir.exists():
-                shutil.rmtree(old_dir)
-                
-        # Write merged SKILL.md
-        (super_dir / 'SKILL.md').write_text(merged_content, 'utf-8')
+def process_skill(skill_name):
+    path = os.path.join(SKILLS_DIR, skill_name, 'SKILL.md')
+    if not os.path.exists(path):
+        return
+    
+    with open(path, 'r', encoding='utf-8') as f:
+        content = f.read()
 
-if __name__ == '__main__':
-    migrate()
-    print("Migració completada.")
+    # Split frontmatter
+    match = re.match(r'^---\n(.*?)\n---\n(.*)', content, re.DOTALL)
+    if not match:
+        return
+
+    frontmatter_text = match.group(1)
+    body = match.group(2)
+
+    try:
+        meta = yaml.safe_load(frontmatter_text)
+    except:
+        return
+
+    # Update metadata
+    meta['lang'] = 'ca'
+    if skill_name in SKILL_TRIGGERS:
+        meta['triggers_on'] = SKILL_TRIGGERS[skill_name]
+    
+    new_frontmatter = yaml.dump(meta, allow_unicode=True, sort_keys=False)
+
+    # Remove fluff
+    # Fluff section starts with ## Detall Operatiu i Instruccions d'Ús Extès
+    # and ends at the next ## or end of file.
+    body = re.sub(r'## Detall Operatiu i Instruccions d\'Ús Extès.*?(?=## |\Z)', '', body, flags=re.DOTALL)
+
+    new_content = f"---\n{new_frontmatter}---\n{body.strip()}\n"
+
+    with open(path, 'w', encoding='utf-8') as f:
+        f.write(new_content)
+    
+    print(f"Processed {skill_name}")
+
+for skill in os.listdir(SKILLS_DIR):
+    if os.path.isdir(os.path.join(SKILLS_DIR, skill)):
+        process_skill(skill)

@@ -28,7 +28,7 @@ export function AvisadorEfimer({ missatge, durada = 3000, onClose }) {
         color: 'var(--sdp-text-invers)',
         padding: 'var(--sdp-space-3) var(--sdp-space-5)',
         borderRadius: 'var(--sdp-radi-pill, 9999px)',
-        boxShadow: 'var(--sdp-ombra-2, 0 4px 6px rgba(0,0,0,0.1))',
+        boxShadow: 'var(--sdp-ombra-2)',
         zIndex: 9999,
         fontWeight: '500',
         transition: 'opacity 0.3s ease',
@@ -40,22 +40,26 @@ export function AvisadorEfimer({ missatge, durada = 3000, onClose }) {
   );
 }
 
+let sharedRoot = null;
+let sharedContainer = null;
+
 export function showToast(missatge, durada = 3000) {
   if (typeof document === 'undefined') return;
-  const container = document.createElement('div');
-  document.body.appendChild(container);
   
-  const root = createRoot(container);
-  root.render(
+  if (!sharedContainer) {
+    const target = document.getElementById('socdepoble-app') || document.body;
+    sharedContainer = document.createElement('div');
+    target.appendChild(sharedContainer);
+    sharedRoot = createRoot(sharedContainer);
+  }
+  
+  sharedRoot.render(
     <AvisadorEfimer 
       missatge={missatge} 
       durada={durada} 
       onClose={() => {
         setTimeout(() => {
-          root.unmount();
-          if (container.parentNode) {
-            container.parentNode.removeChild(container);
-          }
+          sharedRoot.render(null);
         }, 300); // Wait for transition if any
       }}
     />

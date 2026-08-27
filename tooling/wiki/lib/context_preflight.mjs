@@ -23,7 +23,7 @@ export async function preflight(taskContext) {
   const canonicalRegistry = await loadCanonicalRegistry();
   const skills = routeSkills(contract, canonicalRegistry);
   
-  const globalRules = ['00_BIOS_COGNITIU.md']; 
+  const globalRules = ['.agents/BOOTSTRAP.md', '.agents/AGENTS.md'];
   const dependencies = extractDependencies(skills);
   
   const mandatory = new Set([...explicitSources, ...globalRules, ...dependencies]);
@@ -54,13 +54,21 @@ export async function preflight(taskContext) {
 }
 
 function parseTaskContract(taskContext) {
-  // Mock parser
-  return { questions: [] };
+  try {
+    const parsed = typeof taskContext === 'string' ? JSON.parse(taskContext) : taskContext;
+    return { questions: parsed?.questions || [] };
+  } catch {
+    return { questions: [] };
+  }
 }
 
 function extractExplicitSources(taskContext) {
-  // Extract user paths and attachments
-  return [];
+  try {
+    const parsed = typeof taskContext === 'string' ? JSON.parse(taskContext) : taskContext;
+    return Array.isArray(parsed?.files) ? parsed.files : [];
+  } catch {
+    return [];
+  }
 }
 
 async function loadCanonicalRegistry() {
@@ -107,7 +115,13 @@ async function readFullAndHash(paths) {
 }
 
 async function requireFreshCorpusDigest() {
-  return "fresh_sha256_placeholder";
+  try {
+    const indexPath = path.resolve(process.cwd(), '.agents/BOOTSTRAP.md');
+    const content = await fs.readFile(indexPath, 'utf8');
+    return hashContent(content);
+  } catch (err) {
+    return "missing_bootstrap_digest";
+  }
 }
 
 async function retrieveJIT(questions, indexDigest) {

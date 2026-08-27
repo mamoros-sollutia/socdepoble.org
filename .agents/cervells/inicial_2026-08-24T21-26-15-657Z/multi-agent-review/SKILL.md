@@ -16,20 +16,24 @@ authority_level: procedural
 freshness:
   reviewed_at: '2026-08-25'
   review_after: '2026-11-25'
-tests:
+tests: null
 triggers_on:
-  - multi-agent-review
+- consell
+- qwen
+- claude
+- revisió
+- agents
+- auditoria
+lang: ca
 ---
 
 # multi-agent-review
 
-> Llig la composició canònica del Consell en la font designada. No codifiques models o rols en la skill. Registra només els agents realment invocats i conserva les discrepàncies.
+Aquesta skill regula com l'agent interactua amb altres instàncies d'intel·ligència artificial (el Consell d'Experts).
 
+## Protocol d'Interacció amb el Consell:
+1. **Regla d'Anti-Ocultació:** Quan es prepara una "Petorreta" (auditoria externa per a Claude, Qwen, DeepSeek), mai s'han d'ocultar els fitxers estructurals. Cal lliurar la realitat sencera del codi base, inclosos els package.json, les rutes i la configuració Vite, per evitar auditories cegues.
+2. **Format de Còpia i Enganxa (Zero Fricció):** El contingut preparat per a altres IAs ha d'estar dins de blocs de codi markdown (amb ```) nets, sense text conversacional dins, perquè l'usuari ho pugui copiar amb un clic.
+3. **Context Complet:** Sempre s'ha de proporcionar la missió de Sóc de Poble perquè els agents assessors no imaginin el context, sinó que se subscriguin a les regles de la comunitat rural.
 
-## Detall Operatiu i Instruccions d'Ús Extès
-
-Aquest apartat serveix com a detall exhaustiu sobre la naturalesa d'aquesta skill. 
-L'agent d'intel·ligència artificial s'ha d'assegurar d'entendre que aquesta eina és part del sistema central d'arquitectura cognitiva i normativa del projecte Sóc de Poble.
-El seu ús està subjecte a les directives i protocols detallats al directori de governança, especialment els processos d'auditoria automàtica de la plataforma.
-No es pot eludir, alterar ni ignorar. Aquesta descripció estesa garanteix la presència de context suficient per al correcte processament semàntic de l'índex.
-Les funcions operatives específiques de la skill estan documentades en altres arxius canònics del mateix directori si escau, però aquesta declaració certifica la seva validesa per damunt dels mínims de longitud establerts pel tractor cognitiu.
+Una bona resposta a altres models augmenta exponencialment la probabilitat d'una solució intel·ligent.

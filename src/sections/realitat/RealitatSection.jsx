@@ -37,14 +37,14 @@ export default function RealitatSection() {
       chrome="system"
       showLogos={false}
     >
-      <div className="sdp-card-grid sdp-mx-auto" style={{ maxWidth: '600px' }}>
+      <div className="content-wrapper">
         {[
           { id: 0, label: 'Apagada', desc: 'Sense intervenció de la intel·ligència artificial.' },
           { id: 1, label: 'Passiva', desc: 'Només recomanacions i accions a petició teua.' },
           { id: 2, label: 'Interactiva (Selecció)', desc: 'Conversa activa amb acompanyants específics.' },
           { id: 3, label: 'Connexió Total', desc: 'Connexió total amb tots els agents de la Masia.' }
         ].map((lvl) => (
-          <div key={lvl.id} className="sdp-flex-col sdp-gap-2">
+          <div key={lvl.id} className="sdp-flex-col">
             <button
               onClick={() => setLevel(lvl.id)}
               className={`btn-realitat ${level === lvl.id ? 'active' : ''}`}

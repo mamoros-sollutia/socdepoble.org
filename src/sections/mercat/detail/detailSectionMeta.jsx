@@ -19,14 +19,14 @@ export function buildMercatDetailSectionMeta({ marketItems = [], t }) {
           </div>
         )}
         {Array.isArray(item.variations) && item.variations.length > 0 ? (
-          <div className="stack-grid sdp-mt-5">
+          <div className="stack-grid sdp-mt-4">
             {item.variations.map((variation) => (
               <div key={variation.name} className="note-card sdp-text-center sdp-flex-col sdp-items-center sdp-p-4">
                 {variation.image && (
                   <img 
                     src={variation.image} 
                     alt={variation.name} 
-                    className="sdp-mb-4 sdp-radi-xl sdp-object-contain"
+                    className="sdp-mb-4"
                     width={120}
                   />
                 )}
@@ -36,13 +36,13 @@ export function buildMercatDetailSectionMeta({ marketItems = [], t }) {
                 <p className="card__text sdp-mb-1">
                   {variation.description}
                 </p>
-                <p className="sdp-text-muted sdp-uppercase sdp-text-sm sdp-mb-4">
+                <p className="sdp-mb-4" style={{ fontSize: '0.875rem', opacity: 0.7, textTransform: 'uppercase' }}>
                   VENEDOR: {item.seller || 'SÓC DE POBLE'}
                 </p>
-                <div className="sp-card-price sdp-text-accent sdp-text-2xl sdp-mb-2">
+                <div className="sp-card-price sdp-text-accent sdp-mb-2" style={{ fontSize: '1.5rem' }}>
                   {variation.price}
                 </div>
-                <button className="btn btn-secondary sdp-w-full sdp-max-w-xs sdp-uppercase sdp-mt-2 sdp-justify-center sdp-text-center">
+                <button className="btn btn-secondary sdp-w-full sdp-mt-2 sdp-justify-center sdp-text-center" style={{ maxWidth: '20rem', textTransform: 'uppercase' }}>
                   Afegeix al cabàs
                 </button>
               </div>

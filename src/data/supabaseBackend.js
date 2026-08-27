@@ -1,14 +1,12 @@
-import { APP_SEED, APP_SEED_VERSION, CHAT_MESSAGE_SEED, CHAT_THREADS, DEFAULT_USER_ID } from './appSeed.js';
+import { APP_SEED, APP_SEED_VERSION, CHAT_MESSAGE_SEED, CHAT_THREADS, getDefaultUserId } from './appSeed.js';
 import DOMPurify from 'dompurify';
-import { getVal, setVal } from '../config/storage.js';
+import { getVal, setVal, delVal } from '../config/storage.js';
+import { getSnapshot, saveSnapshot } from './outbox.js';
 
 
 const DEV_FALLBACK_STORAGE_KEY = 'socdepoble-dev-chat-messages';
 const APP_SNAPSHOT_STORAGE_KEY = 'socdepoble-app-snapshot-v1';
-const CHAT_CONVERSATION_MAP_KEY = 'socdepoble-chat-conversation-map';
-const getChatRemoteWriteDisabledKey = (config) => `socdepoble-chat-remote-write-disabled::${getResolvedConfig(config).supabaseUrl || 'none'}`;
 const SECTION_SUBMISSIONS_STORAGE_KEY = 'socdepoble-section-submissions-v1';
-const getSectionRemoteWriteDisabledKey = (config) => `socdepoble-section-remote-write-disabled::${getResolvedConfig(config).supabaseUrl || 'none'}`;
 const DATA_SYNC_CHANNEL_NAME = 'socdepoble-data-sync-v1';
 
 function generateUUID() {
@@ -117,7 +115,7 @@ export async function requestMaybe(path, config, options = {}) {
 function mapContentRowsToData(rows) {
   const lookup = new Map(rows.map((row) => [row.key, row.payload]));
   return {
-    ownerUserId: DEFAULT_USER_ID,
+    ownerUserId: getDefaultUserId(),
     agents: lookup.get('agents') || [],
     chatThreads: CHAT_THREADS,
     feedPosts: lookup.get('feedPosts') || [],
@@ -133,7 +131,7 @@ function mapContentRowsToData(rows) {
   };
 }
 
-async function buildSeedAppData(ownerUserId = DEFAULT_USER_ID) {
+async function buildSeedAppData(ownerUserId = getDefaultUserId()) {
   return {
     ownerUserId,
     agents: APP_SEED.agents,
@@ -162,18 +160,18 @@ function sanitizeSnapshotArray(value, fallback) {
 async function saveLocalAppSnapshot(snapshot) {
   if (typeof window === 'undefined') return;
   try {
-    await setVal(APP_SNAPSHOT_STORAGE_KEY + '-' + snapshot.ownerUserId, snapshot);
+    await saveSnapshot(APP_SNAPSHOT_STORAGE_KEY + '-' + snapshot.ownerUserId, snapshot);
   } catch (error) {
     console.warn('saveLocalAppSnapshot error:', error);
   }
 }
 
-async function loadLocalAppSnapshot(ownerUserId = DEFAULT_USER_ID) {
+async function loadLocalAppSnapshot(ownerUserId = getDefaultUserId()) {
   const fallback = await buildSeedAppData(ownerUserId);
   if (typeof window === 'undefined') return fallback;
 
   try {
-    const parsed = await getVal(APP_SNAPSHOT_STORAGE_KEY + '-' + ownerUserId);
+    const parsed = await getSnapshot(APP_SNAPSHOT_STORAGE_KEY + '-' + ownerUserId);
     if (!parsed)  {
       await saveLocalAppSnapshot(fallback);
       return fallback;
@@ -219,7 +217,7 @@ async function loadLocalAppSnapshot(ownerUserId = DEFAULT_USER_ID) {
   }
 }
 
-async function persistMessagesToLocalSnapshot(messages, ownerUserId = DEFAULT_USER_ID) {
+async function persistMessagesToLocalSnapshot(messages, ownerUserId = getDefaultUserId()) {
   const current = await loadLocalAppSnapshot(ownerUserId);
   const merged = mergeChatMessages(current.chatMessages, messages);
   const nextSnapshot = {
@@ -232,13 +230,13 @@ async function persistMessagesToLocalSnapshot(messages, ownerUserId = DEFAULT_US
   return merged;
 }
 
-async function loadDevFallbackMessages(ownerUserId = DEFAULT_USER_ID) {
+async function loadDevFallbackMessages(ownerUserId = getDefaultUserId()) {
   if (typeof window === 'undefined') {
     return CHAT_MESSAGE_SEED;
   }
 
   try {
-    const parsed = await getVal(DEV_FALLBACK_STORAGE_KEY + '-' + ownerUserId);
+    const parsed = await getSnapshot(DEV_FALLBACK_STORAGE_KEY + '-' + ownerUserId);
     if (!parsed)  return CHAT_MESSAGE_SEED;
     
     if (!Array.isArray(parsed)) return CHAT_MESSAGE_SEED;
@@ -251,17 +249,17 @@ async function loadDevFallbackMessages(ownerUserId = DEFAULT_USER_ID) {
 async function saveDevFallbackMessages(messages) {
   if (typeof window === 'undefined') return;
   try {
-    await setVal(DEV_FALLBACK_STORAGE_KEY + '-' + (messages[0]?.ownerUserId || DEFAULT_USER_ID), messages);
+    await saveSnapshot(DEV_FALLBACK_STORAGE_KEY + '-' + (messages[0]?.ownerUserId || getDefaultUserId()), messages);
   } catch (error) {
     console.warn('saveDevFallbackMessages error:', error);
   }
 }
 
-async function loadLocalSectionSubmissions(ownerUserId = DEFAULT_USER_ID) {
+async function loadLocalSectionSubmissions(ownerUserId = getDefaultUserId()) {
   if (typeof window === 'undefined') return [];
 
   try {
-    const parsed = await getVal(SECTION_SUBMISSIONS_STORAGE_KEY + '-' + ownerUserId);
+    const parsed = await getSnapshot(SECTION_SUBMISSIONS_STORAGE_KEY + '-' + ownerUserId);
     if (!parsed)  return [];
     
     if (!Array.isArray(parsed)) return [];
@@ -274,31 +272,17 @@ async function loadLocalSectionSubmissions(ownerUserId = DEFAULT_USER_ID) {
 async function saveLocalSectionSubmissions(submissions) {
   if (typeof window === 'undefined') return;
   try {
-    await setVal(SECTION_SUBMISSIONS_STORAGE_KEY + '-' + (submissions[0]?.ownerUserId || DEFAULT_USER_ID), submissions);
+    await saveSnapshot(SECTION_SUBMISSIONS_STORAGE_KEY + '-' + (submissions[0]?.ownerUserId || getDefaultUserId()), submissions);
   } catch (error) {
     console.warn('saveLocalSectionSubmissions error:', error);
   }
 }
 
-async function persistSectionSubmissionToLocal(submission, ownerUserId = DEFAULT_USER_ID) {
+async function persistSectionSubmissionToLocal(submission, ownerUserId = getDefaultUserId()) {
   const current = await loadLocalSectionSubmissions(ownerUserId);
   const next = mergeById(current, [submission]);
   await saveLocalSectionSubmissions(next);
   return next;
-}
-
-function persistRemoteSectionWriteDisabled(config) {
-  if (typeof window === 'undefined') return;
-  try {
-    setVal(getSectionRemoteWriteDisabledKey(config), true);
-  } catch (error) {
-    console.warn('persistRemoteSectionWriteDisabled error:', error);
-  }
-}
-
-function isRemoteSectionWriteAvailable(config) {
-  if (typeof window === 'undefined') return true;
-  return getVal(getSectionRemoteWriteDisabledKey(config), false) !== true;
 }
 
 function mergeById(primary = [], secondary = []) {
@@ -407,7 +391,7 @@ function mapSectionSubmissionToItem(submission) {
   return baseItem;
 }
 
-async function applySectionSubmissionsToData(data, ownerUserId = DEFAULT_USER_ID) {
+async function applySectionSubmissionsToData(data, ownerUserId = getDefaultUserId()) {
   const remoteSubmissions = Array.isArray(data.sectionSubmissions) ? data.sectionSubmissions : [];
   const localSubmissions = await loadLocalSectionSubmissions(ownerUserId);
   const mergedSubmissions = mergeById(remoteSubmissions, localSubmissions);
@@ -430,37 +414,7 @@ async function applySectionSubmissionsToData(data, ownerUserId = DEFAULT_USER_ID
   };
 }
 
-async function loadChatConversationMap() {
-  if (typeof window === 'undefined') return {};
-  try {
-    const parsed = await getVal(CHAT_CONVERSATION_MAP_KEY);
-    if (!parsed)  return {};
-    
-    return parsed && typeof parsed === 'object' ? parsed : {};
-  } catch {
-    return {};
-  }
-}
-
-async function saveChatConversationMap(map) {
-  if (typeof window === 'undefined') return;
-  try {
-    await setVal(CHAT_CONVERSATION_MAP_KEY, map);
-  } catch (error) {
-    console.warn('saveChatConversationMap error:', error);
-  }
-}
-
-function persistRemoteChatWriteDisabled(config) {
-  if (typeof window === 'undefined') return;
-  try {
-    setVal(getChatRemoteWriteDisabledKey(config), true);
-  } catch (error) {
-    console.warn('persistRemoteChatWriteDisabled error:', error);
-  }
-}
-
-
+// Removed chat conversation map per lint
 
 function mergeChatMessages(primary = [], secondary = []) {
   const map = new Map();
@@ -484,7 +438,7 @@ function mergeChatMessages(primary = [], secondary = []) {
 
 
 async function loadStructuredSupabaseData(config, ownerUserId) {
-  const safeOwnerId = ownerUserId || DEFAULT_USER_ID;
+  const safeOwnerId = ownerUserId || getDefaultUserId();
   const { tenantId } = getResolvedConfig(config);
   const [contentRows, chatThreads, chatMessages, sectionSubmissionsResponse] = await Promise.all([
     request(`/rest/v1/app_content?select=key,payload,version&tenant_id=eq.${encodeURIComponent(tenantId)}`, config, { signal: config.signal }),
@@ -524,7 +478,7 @@ async function loadStructuredSupabaseData(config, ownerUserId) {
   };
 }
 
-async function loadRemoteAppData(config, ownerUserId = DEFAULT_USER_ID) {
+async function loadRemoteAppData(config, ownerUserId = getDefaultUserId()) {
   const { hasSupabaseConfig } = getResolvedConfig(config);
   if (!hasSupabaseConfig) {
     throw new Error('Falten VITE_SUPABASE_URL i/o VITE_SUPABASE_ANON_KEY.');
@@ -533,7 +487,7 @@ async function loadRemoteAppData(config, ownerUserId = DEFAULT_USER_ID) {
   return loadStructuredSupabaseData(config, ownerUserId);
 }
 
-export async function loadAppData(ownerUserId = DEFAULT_USER_ID, config = {}) {
+export async function loadAppData(ownerUserId = getDefaultUserId(), config = {}) {
   const loadAndMerge = async (loader) => await applySectionSubmissionsToData(await loader, ownerUserId);
   const { runtimeDataMode, hasSupabaseConfig } = getResolvedConfig(config);
 
@@ -566,13 +520,14 @@ export async function loadAppData(ownerUserId = DEFAULT_USER_ID, config = {}) {
 
 export async function appendChatMessages(messages, config = {}) {
   const { runtimeDataMode, hasSupabaseConfig } = getResolvedConfig(config);
+  const ownerUserId = messages[0]?.ownerUserId || getDefaultUserId();
   if (runtimeDataMode === 'local' || runtimeDataMode === 'hybrid') {
-    const localMerged = await persistMessagesToLocalSnapshot(messages, DEFAULT_USER_ID);
+    const localMerged = await persistMessagesToLocalSnapshot(messages, ownerUserId);
     if (runtimeDataMode === 'local') return localMerged;
   }
 
   if (runtimeDataMode === 'seed' || !hasSupabaseConfig) {
-    const current = await loadDevFallbackMessages(DEFAULT_USER_ID);
+    const current = await loadDevFallbackMessages(ownerUserId);
     const merged = [...current, ...messages];
     await saveDevFallbackMessages(merged);
     return merged;
@@ -583,7 +538,7 @@ export async function appendChatMessages(messages, config = {}) {
     const rows = messages.map((message) => ({
       id: String(message.id),
       tenant_id: tenantId,
-      owner_user_id: message.ownerUserId || DEFAULT_USER_ID,
+      owner_user_id: message.ownerUserId || getDefaultUserId(),
       thread_id: String(message.threadId),
       message_id: String(message.messageId || message.id),
       text: message.text,
@@ -600,7 +555,7 @@ export async function appendChatMessages(messages, config = {}) {
       body: rows
     });
 
-    const current = await loadDevFallbackMessages(DEFAULT_USER_ID);
+    const current = await loadDevFallbackMessages(ownerUserId);
     const merged = mergeChatMessages(current, messages);
     await saveDevFallbackMessages(merged);
     return merged;
@@ -609,7 +564,6 @@ export async function appendChatMessages(messages, config = {}) {
     const isRlsDenied =
       message.includes('row-level security policy') ||
       message.includes('"42501"') ||
-      message.includes('401') ||
       message.includes('403');
 
     if (!isRlsDenied) {
@@ -617,18 +571,18 @@ export async function appendChatMessages(messages, config = {}) {
     }
 
     if (runtimeDataMode === 'hybrid') {
-      return await persistMessagesToLocalSnapshot(messages, DEFAULT_USER_ID);
+      return await persistMessagesToLocalSnapshot(messages, ownerUserId);
     }
-    const current = await loadDevFallbackMessages(DEFAULT_USER_ID);
+    const current = await loadDevFallbackMessages(ownerUserId);
     const merged = mergeChatMessages(current, messages);
     await saveDevFallbackMessages(merged);
     return merged;
   }
 }
 
-export async function appendSectionSubmission(submission, config = {}) {
+export async function appendSectionSubmissionNetworkOnly(submission, config = {}) {
   const { runtimeDataMode, hasSupabaseConfig } = getResolvedConfig(config);
-  const ownerUserId = submission?.ownerUserId || DEFAULT_USER_ID;
+  const ownerUserId = submission?.ownerUserId || getDefaultUserId();
   const sectionId = String(submission?.sectionId || '').trim();
   if (!CONNECTABLE_SECTION_IDS.has(sectionId)) {
     throw new Error('Secció no suportada per a connectar.');
@@ -667,9 +621,7 @@ export async function appendSectionSubmission(submission, config = {}) {
     return storedSubmission;
   }
 
-  if (!isRemoteSectionWriteAvailable(config)) {
-    return storedSubmission;
-  }
+
 
   try {
     const { tenantId } = getResolvedConfig(config);
@@ -705,7 +657,6 @@ export async function appendSectionSubmission(submission, config = {}) {
     if (isRemoteUnavailable) {
       // S'ha eliminat el bloqueig remot permanent a localStorage seguint la directiva de Claude
       // perquè en cas de fallada de xarxa temporal, no deixe l'iPad sense capacitat d'escriure per sempre.
-      setVal(getSectionRemoteWriteDisabledKey(config), true);
     }
 
     return storedSubmission;
@@ -715,13 +666,15 @@ export async function appendSectionSubmission(submission, config = {}) {
 export {
   APP_SNAPSHOT_STORAGE_KEY,
   DATA_SYNC_CHANNEL_NAME,
-  DEFAULT_USER_ID,
+  getDefaultUserId,
   SECTION_SUBMISSIONS_STORAGE_KEY,
 };
 
 export function getHasSupabaseConfig(config = {}) {
   return getResolvedConfig(config).hasSupabaseConfig;
 }
+
+
 
 export function getRuntimeDataMode(config = {}) {
   return getResolvedConfig(config).runtimeDataMode;
@@ -736,7 +689,7 @@ export function getResolvedConfig(config = {}) {
   const supabaseAnonKey = config.supabaseAnonKey || (typeof import.meta !== 'undefined' && import.meta.env ? import.meta.env.VITE_SUPABASE_ANON_KEY?.trim() : '') || '';
   let dataMode = String(config.dataMode || (typeof import.meta !== 'undefined' && import.meta.env ? import.meta.env.VITE_DATA_MODE : 'local') || 'local').trim().toLowerCase();
   
-  if (!['auto', 'seed', 'local', 'hybrid'].includes(dataMode)) {
+  if (!['auto', 'seed', 'local', 'hybrid', 'remote'].includes(dataMode)) {
     dataMode = 'local';
   }
 
@@ -757,3 +710,46 @@ export function getResolvedConfig(config = {}) {
 }
 
 
+
+export async function registerWithEmail(email, password, name, config = {}) {
+  const { tenantId } = getResolvedConfig(config);
+  const result = await request('/auth/v1/signup', config, {
+    method: 'POST',
+    body: {
+      email,
+      password,
+      data: { name, tenant_id: tenantId }
+    }
+  });
+
+  if (result?.access_token) {
+    setVal('socdepoble-jwt', result.access_token);
+    setVal('socdepoble-refresh-token', result.refresh_token);
+    setVal('socdepoble-user', result.user);
+  }
+  return result;
+}
+
+export async function loginWithEmail(email, password, config = {}) {
+  const result = await request('/auth/v1/token?grant_type=password', config, {
+    method: 'POST',
+    body: { email, password }
+  });
+
+  if (result?.access_token) {
+    setVal('socdepoble-jwt', result.access_token);
+    setVal('socdepoble-refresh-token', result.refresh_token);
+    setVal('socdepoble-user', result.user);
+  }
+  return result;
+}
+
+export function logout() {
+  delVal('socdepoble-jwt');
+  delVal('socdepoble-refresh-token');
+  delVal('socdepoble-user');
+}
+
+export function getCurrentUser() {
+  return getVal('socdepoble-user', null);
+}

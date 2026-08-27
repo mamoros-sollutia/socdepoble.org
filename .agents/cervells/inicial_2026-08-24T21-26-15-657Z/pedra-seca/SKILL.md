@@ -1,11 +1,20 @@
 ---
 name: pedra-seca
-description: Design System canònic de Sóc de Poble. Obligatori llegir i aplicar aquestes regles per a qualsevol modificació de Frontend (React/CSS) o disseny d'interfícies.
-triggers_ca: css, react, disseny, ui, frontend
+description: Design System canònic de Sóc de Poble. Obligatori llegir i aplicar aquestes
+  regles per a qualsevol modificació de Frontend (React/CSS) o disseny d'interfícies.
 version: 1.0.0
 status: canonic
+lang: ca
+triggers_on:
+- disseny
+- css
+- ui
+- pedra
+- seca
+- estil
+- colors
+- components
 ---
-
 # 🪨 Llei de Pedra Seca (Design System per a IA)
 
 Benvingut a "Pedra Seca", l'arquitectura de disseny de la plataforma **Sóc de Poble**. 
@@ -124,3 +133,9 @@ Com a lliçó extreta de l'historial (Tancament Seient 5): S'ha d'evitar absolut
 *   **La UniversalCard i UniversalPage són la ÚNICA veritat:** Qualsevol nova targeta o vista (ja siga del Mercat, del Mur o de Disseny) ha d'usar aquests components. No es poden crear targetes a mida que es desconnecten de la sincronització de colors, etiquetes i enllaços.
 *   **Sincronització Estricta:** Les etiquetes (ex: el blau per a *Mercat*, el taronja per a *Variants*) s'han de parametritzar mitjançant aquests components universals, evitant brossa visual i garantint que l'ecosistema es comporte com un rellotge suís.
 
+***
+
+## 9. Ombres i Radis (Profunditat i Amabilitat)
+Tot i que el disseny busca una rigidesa rústica, s'admet la profunditat per donar jerarquia i amabilitat a la interfície.
+* **Radis:** Ús exclusiu dels tokens de radi (`--sdp-radi-s`, `--sdp-radi-m`, `--sdp-radi-g`, `--sdp-radi-xl`, `--sdp-radi-pill`). Prohibit usar valors en píxels de forma ad-hoc.
+* **Ombres:** S'accepten les ombres per crear jerarquia (barres, targetes). Ús exclusiu dels tokens `--sdp-ombra-1` a `--sdp-ombra-3`. Prohibit l'ús de `box-shadow` ad-hoc o classes tipus Tailwind. Tot ha de dependre del token per adaptar-se al Mode Fosc.

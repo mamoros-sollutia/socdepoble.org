@@ -30,7 +30,7 @@ export function getGuestSessionId() {
   }
 }
 
-export const DEFAULT_USER_ID = getGuestSessionId();
+export const getDefaultUserId = () => getGuestSessionId();
 
 export const NOTE_FOLDERS_SEED = [
   { id: 'f-root', name: 'General', parentId: null },
@@ -67,8 +67,8 @@ export const CHAT_MESSAGE_SEED = Object.entries(CHAT_MESSAGES)
   .flatMap(([threadId, messages]) =>
     messages.map((message, index) => ({
       ...message,
-      id: `${DEFAULT_USER_ID}::${threadId}::${message.id ?? index + 1}`,
-      ownerUserId: DEFAULT_USER_ID,
+      id: `${getDefaultUserId()}::${threadId}::${message.id ?? index + 1}`,
+      ownerUserId: getDefaultUserId(),
       threadId,
       messageId: String(message.id ?? index + 1),
       createdAtTs: index

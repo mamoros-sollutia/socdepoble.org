@@ -15,15 +15,25 @@ authority_level: procedural
 freshness:
   reviewed_at: '2026-08-25'
   review_after: '2026-11-25'
-tests:
+tests: null
 triggers_on:
-  - core-bounded-action
+- bucle
+- acció
+- límits
+- execució
+- seguretat
+- aturar
+lang: ca
 ---
 
-# core-bounded-action (Acció Limitada)
+# core-bounded-action
 
-## Regles Operatives
-1. **Blast Radius (Radi d'Explosió)**: Restringir l'abast explosiu de qualsevol canvi. Un sol commit no pot afectar a components globals i notes de disseny de forma simultània sense aprovació explícita i multi-etapa.
-2. **Pressupost Estricte**: Les cerques i modificacions en massa han de tindre un límit dur (exemple: màxim de 10-12 fitxers per lot).
-3. **Punts de Parada (Stop Conditions)**: Si una modificació en un fitxer genera errors estructurals o l'analitzador de *frontmatter* detecta anomalies, l'execució s'atura immediatament (Fail-Closed).
-4. **Resolució Aïllada**: Els errors s'han de solucionar aïlladament abans de reprendre l'acció massiva.
+Aquesta skill defineix els límits operatius de l'agent per assegurar que no faci accions destructives de forma autònoma.
+
+## Principis d'Acció Limitada:
+1. **No Destrucció:** Mai executar `rm -rf` en directoris no temporals sense llistar el contingut primer i demanar permís.
+2. **Reversibilitat:** Tots els canvis importants han de ser fàcilment reversibles mitjançant Git. 
+3. **Límits de Temps i Intents:** Els bucles d'automatització han de tenir condicions de sortida clares per no caure en cicles infinits.
+4. **Alerta de Risc:** Si una acció pot sobreescriure codi canònic o desfer la feina no guardada del Mestre, cal demanar permís explícit.
+
+L'acció autònoma està permesa, però sempre dins d'una caixa de sorra de seguretat estricta.

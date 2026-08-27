@@ -1,9 +1,11 @@
 import { useState } from 'react';
-import { ArrowRight, Chrome, Lock, LogIn, Mail, UserPlus, UserRound } from 'lucide-react';
+import { ArrowRight, Chrome, Lock, LogIn, Mail, UserPlus, UserRound, Loader2 } from 'lucide-react';
 import BrandMark from '../../components/BrandMark';
-import SectionChrome from '../../components/SectionChrome';
+import { UniversalPage } from '../../components/universal/UniversalComponents';
 import { useAppData } from '../../app/AppDataContext';
-
+import { loginWithEmail, registerWithEmail } from '../../data/supabaseBackend';
+import { showToast } from '../../components/universal/AvisadorEfimer';
+import { useNavigate } from 'react-router-dom';
 function LoginCard({ mode, activeMode, children }) {
   return (
     <article className={`card login-card ${activeMode === mode.id ? 'login-card--active' : ''}`}>
@@ -13,8 +15,54 @@ function LoginCard({ mode, activeMode, children }) {
 }
 
 export default function LoginSection() {
-  const { t } = useAppData();
+  const { t, externalConfig } = useAppData();
+  const navigate = useNavigate();
   const [activeMode, setActiveMode] = useState('login');
+  const [isLoading, setIsLoading] = useState(false);
+  const [formData, setFormData] = useState({ name: '', email: '', password: '' });
+
+  const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const handleLogin = async (event) => {
+    event.preventDefault();
+    if (!formData.email || !formData.password) {
+      showToast(t('section.login.error.empty', 'Emplena tots els camps'), 'error');
+      return;
+    }
+    setIsLoading(true);
+    try {
+      const res = await loginWithEmail(formData.email, formData.password, externalConfig);
+      if (res.error) throw new Error(res.error.message);
+      showToast(t('section.login.success.login', 'Benvingut de nou!'), 'success');
+      window.dispatchEvent(new CustomEvent('sdp:auth-change'));
+      navigate('/xat', { replace: true });
+    } catch (error) {
+      showToast(error.message, 'error');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleRegister = async (event) => {
+    event.preventDefault();
+    if (!formData.name || !formData.email || !formData.password) {
+      showToast(t('section.login.error.empty', 'Emplena tots els camps'), 'error');
+      return;
+    }
+    setIsLoading(true);
+    try {
+      const res = await registerWithEmail(formData.email, formData.password, formData.name, externalConfig);
+      if (res.error) throw new Error(res.error.message);
+      showToast(t('section.login.success.register', 'Compte creat amb èxit! Benvingut!'), 'success');
+      window.dispatchEvent(new CustomEvent('sdp:auth-change'));
+      navigate('/xat', { replace: true });
+    } catch (error) {
+      showToast(error.message, 'error');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const MODES = [
     {
       id: 'login',
@@ -56,11 +104,11 @@ export default function LoginSection() {
   const currentMode = MODES.find((item) => item.id === activeMode) || MODES[0];
 
   return (
-    <SectionChrome
-      kicker={t('section.login.kicker', 'Accés')}
+    <UniversalPage
       title={t('section.login.title', 'Login, registre i Google')}
       subtitle={t('section.login.subtitle', 'Accés al portal per a entrar, crear un compte o continuar amb Google.')}
-      meta={[t('nav.login', 'Accés'), t('section.login.meta.account', 'Compte'), t('section.login.meta.google', 'Google')]}
+      chrome="system"
+      showLogos={true}
     >
       <div className="login-layout">
         <div className="login-switcher" role="tablist" aria-label="Opcions d’accés">
@@ -104,7 +152,7 @@ export default function LoginSection() {
 
         <div className="login-grid">
           <LoginCard mode={MODES[0]} activeMode={activeMode}>
-            <form className="login-form" onSubmit={(event) => event.preventDefault()}>
+            <form className="login-form" onSubmit={handleLogin}>
               <div className="login-form__head">
                 <LogIn size={18} />
                 <h3 className="card__title">{t('section.login.loginTitle', 'Entrar')}</h3>
@@ -113,18 +161,27 @@ export default function LoginSection() {
 
               <label className="login-field">
                 <span>{t('section.login.loginEmail', 'Correu electrònic')}</span>
-                <input className="section-search" type="email" name="email" placeholder={t('section.login.placeholder.email', 'nom@exemple.com')} autoComplete="email" />
+                <input className="section-search" type="email" name="email" value={formData.email} onChange={handleChange} placeholder={t('section.login.placeholder.email', 'nom@exemple.com')} autoComplete="email" disabled={isLoading} />
               </label>
 
-              <button type="submit" className="pill pill--primary login-action">
-                {t('section.login.loginButton', 'Entrar')}
-                <ArrowRight size={16} />
+              <label className="login-field">
+                <span>{t('section.login.loginPassword', 'Contrasenya')}</span>
+                <input className="section-search" type="password" name="password" value={formData.password} onChange={handleChange} placeholder="••••••••" autoComplete="current-password" disabled={isLoading} />
+              </label>
+
+              <button type="submit" className="pill pill--primary login-action" disabled={isLoading}>
+                {isLoading ? <Loader2 className="spinner" size={16} /> : (
+                  <>
+                    {t('section.login.loginButton', 'Entrar')}
+                    <ArrowRight size={16} />
+                  </>
+                )}
               </button>
             </form>
           </LoginCard>
 
           <LoginCard mode={MODES[1]} activeMode={activeMode}>
-            <form className="login-form" onSubmit={(event) => event.preventDefault()}>
+            <form className="login-form" onSubmit={handleRegister}>
               <div className="login-form__head">
                 <UserPlus size={18} />
                 <h3 className="card__title">{t('section.login.registerTitle', 'Crear compte')}</h3>
@@ -133,17 +190,26 @@ export default function LoginSection() {
 
               <label className="login-field">
                 <span>{t('section.login.registerName', 'Nom')}</span>
-                <input className="section-search" type="text" name="name" placeholder={t('section.login.placeholder.name', 'Nom i cognoms')} autoComplete="name" />
+                <input className="section-search" type="text" name="name" value={formData.name} onChange={handleChange} placeholder={t('section.login.placeholder.name', 'Nom i cognoms')} autoComplete="name" disabled={isLoading} />
               </label>
 
               <label className="login-field">
                 <span>{t('section.login.loginEmail', 'Correu electrònic')}</span>
-                <input className="section-search" type="email" name="email" placeholder={t('section.login.placeholder.email', 'nom@exemple.com')} autoComplete="email" />
+                <input className="section-search" type="email" name="email" value={formData.email} onChange={handleChange} placeholder={t('section.login.placeholder.email', 'nom@exemple.com')} autoComplete="email" disabled={isLoading} />
+              </label>
+              
+              <label className="login-field">
+                <span>{t('section.login.loginPassword', 'Contrasenya')}</span>
+                <input className="section-search" type="password" name="password" value={formData.password} onChange={handleChange} placeholder="••••••••" autoComplete="new-password" disabled={isLoading} />
               </label>
 
-              <button type="submit" className="pill pill--primary login-action">
-                {t('section.login.registerButton', 'Crear compte')}
-                <ArrowRight size={16} />
+              <button type="submit" className="pill pill--primary login-action" disabled={isLoading}>
+                {isLoading ? <Loader2 className="spinner" size={16} /> : (
+                  <>
+                    {t('section.login.registerButton', 'Crear compte')}
+                    <ArrowRight size={16} />
+                  </>
+                )}
               </button>
             </form>
           </LoginCard>
@@ -182,6 +248,6 @@ export default function LoginSection() {
           </LoginCard>
         </div>
       </div>
-    </SectionChrome>
+    </UniversalPage>
   );
 }

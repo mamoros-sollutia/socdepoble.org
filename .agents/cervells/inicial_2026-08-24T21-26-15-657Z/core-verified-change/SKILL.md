@@ -17,15 +17,25 @@ authority_level: procedural
 freshness:
   reviewed_at: '2026-08-25'
   review_after: '2026-11-25'
-tests:
+tests: null
 triggers_on:
-  - core-verified-change
+- canvi
+- verificar
+- tests
+- gate
+- ci
+- aprovació
+lang: ca
 ---
 
-# core-verified-change (Canvi Verificat)
+# core-verified-change
 
-## Regles Operatives
-1. **Obligatorietat del Dry-Run**: Qualsevol operació destructiva, massiva o de mutació (Purgador, Teixidora, etc.) ha d'executar-se obligatòriament primer en mode `Dry-Run`. Si no s'ofereix `Dry-Run`, no hi ha acció.
-2. **Revisió de Diffs**: Després d'un `Dry-Run`, s'han d'oferir els `diffs` clars del que es pretén modificar perquè s'aprove abans de procedir.
-3. **Validació d'Integritat**: Abans de donar una tasca per finalitzada, s'han de passar els tests pertinents i el codi (o Markdown) no ha d'incomplir les regles de validació canònica.
-4. **Rollback i Rebuts**: Si una escriptura falla o és rebutjada pel Llevataques (Mutation Kernel), ha de ser reversible, utilitzant els bloquejos (locks) i rebuts propis de l'arquitectura.
+Aquesta skill assegura que qualsevol canvi aportat al codi sigui testejat, compilat i complerts els requisits abans de donar-lo per vàlid.
+
+## Procés de Canvi Verificat:
+1. **Executar Validacions (Gate):** Abans de finalitzar el torn, s'ha d'executar `npm run gate` si s'ha tocat codi font JSX, CSS o configuracions.
+2. **Arreglar el Deute:** Si el `gate` informa de classes òrfenes o augments de deute tècnic, l'agent ha d'arreglar-ho abans de considerar la tasca feta.
+3. **Construcció Completa:** S'ha de verificar que `npm run build` passa correctament. Un codi que no compila és pitjor que codi no escrit.
+4. **Tancament Correcte:** Esborrar fitxers residuals, diffs temporals i tancar els recursos oberts abans d'avisar l'usuari.
+
+Un canvi no és un canvi fins que el Tractor Cognitiu i les lleis de Pedra Seca li donen la benedicció.

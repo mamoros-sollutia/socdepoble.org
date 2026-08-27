@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { UniversalPage, UniversalCard, ActionControl, IconButton } from '../../components/universal/UniversalComponents';
+import { UniversalPage, UniversalCard, ActionControl, IconButton, ContentProvider } from '../../components/universal/UniversalComponents';
 import { EventCard } from '../../components/universal/EventCard';
 import { useAppData } from '../../app/AppDataContext';
 import { useSEO } from '../../hooks/useSEO';
@@ -109,15 +109,18 @@ export default function MurSection() {
     return d.toLocaleTimeString('ca-ES', { hour: '2-digit', minute: '2-digit' });
   };
 
+  const config = {
+    title: t('section.mur.kicker', 'Mur'),
+    subtitle: t('section.mur.title', 'Publicacions recents'),
+    lead: t('section.mur.subtitle', 'Llig el mur públic amb les darreres publicacions del poble.'),
+    chrome: "system",
+    showLogos: true
+  };
+
   return (
-    <UniversalPage
-      title={t('section.mur.kicker', 'Mur')}
-      subtitle={t('section.mur.title', 'Publicacions recents')}
-      lead={t('section.mur.subtitle', 'Llig el mur públic amb les darreres publicacions del poble.')}
-      chrome="system"
-      showLogos={true}
-    >
-      <div className="sdp-mx-auto" style={{ maxWidth: 'var(--sdp-amplada-article)' }}>
+    <ContentProvider initialConfig={config}>
+      <UniversalPage>
+      <div className="content-wrapper">
         
         {/* Switcher / Botonera */}
         <section className="sdp-filtres" aria-label="Filtres del mur">
@@ -251,5 +254,6 @@ export default function MurSection() {
         </div>
       </div>
     </UniversalPage>
+    </ContentProvider>
   );
 }

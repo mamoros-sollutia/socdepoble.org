@@ -2,12 +2,11 @@ import { lazy, Suspense, useEffect, useLayoutEffect, useState, memo, useRef } fr
 import { Navigate, NavLink, Route, Routes, useNavigate, useParams } from 'react-router-dom';
 import { Globe, MoonStar, Plus, Search, Settings, Sun, UserRound } from 'lucide-react';
 import BrandMark from '../components/BrandMark';
-import SectionChrome from '../components/SectionChrome';
 import { useAppData } from './AppDataContext';
 import { APP_NAME } from '../config/app';
 import { DEFAULT_SECTION_PATH, SECTIONS, SECTION_ORDER } from '../config/sections';
 import { getSectionLabels } from '../config/i18n';
-import { IaiaIcon } from '../components/universal/UniversalComponents';
+import { IaiaIcon, UniversalPage } from '../components/universal/UniversalComponents';
 
 const XatSection = lazy(() => import('../sections/xat/XatSection'));
 const MurSection = lazy(() => import('../sections/mur/MurSection'));
@@ -26,9 +25,9 @@ const TextSection = lazy(() => import('../sections/text/TextSection'));
 const DesignSection = lazy(() => import('../sections/disseny/DesignSection'));
 const SearchSection = lazy(() => import('../sections/search/SearchSection'));
 const ProfileSection = lazy(() => import('../sections/profile/ProfileSection'));
+const MyProfileSection = lazy(() => import('../sections/profile/MyProfileSection'));
 const ItemDetailSection = lazy(() => import('../sections/detail/ItemDetailSection'));
 const PageDetailSection = lazy(() => import('../sections/detail/PageDetailSection'));
-const PiPlaVerd = lazy(() => import('../pages/PiPlaVerd'));
 const RealitatSection = lazy(() => import('../sections/realitat/RealitatSection'));
 import NotFoundPage from '../pages/NotFoundPage';
 
@@ -85,6 +84,7 @@ function AppShell({ children, mobileNav }) {
         const host = rootNode instanceof ShadowRoot ? rootNode.host : (document.querySelector('.sdp-root') || document.documentElement);
         host.setAttribute('lang', language || 'ca');
       }
+      document.documentElement.setAttribute('lang', language || 'ca');
     }
   }, [language]);
 
@@ -258,11 +258,10 @@ function LegacySectionDetailRedirect({ sectionId }) {
 function LoadError() {
   const { error, hasSupabaseConfig, dataMode, t } = useAppData();
   return (
-    <SectionChrome
-      kicker="Base de dades"
+    <UniversalPage
       title={t('error.loadPortal', "No s'ha pogut carregar el portal")}
       subtitle={error?.message || (hasSupabaseConfig ? 'Error desconegut.' : 'Falta configurar Supabase.')}
-      meta={['Error', hasSupabaseConfig ? 'Supabase' : dataMode || 'seed']}
+      labels={['Error', hasSupabaseConfig ? 'Supabase' : dataMode || 'seed']}
     />
   );
 }
@@ -289,12 +288,12 @@ function AppRoutes() {
     <Suspense fallback={<RouteFallback />}>
       <Routes>
         <Route path="/" element={<Navigate to={DEFAULT_SECTION_PATH} replace />} />
-        <Route path="/chat" element={<XatSection />} />
-        <Route path="/chat/:threadId" element={<XatSection />} />
-        <Route path="/xat" element={<Navigate to="/chat" replace />} />
-        <Route path="/xat/:threadId" element={<Navigate to="/chat/:threadId" replace />} />
-        <Route path="/chats" element={<Navigate to="/chat" replace />} />
-        <Route path="/chats/:threadId" element={<Navigate to="/chat/:threadId" replace />} />
+        <Route path="/xat" element={<XatSection />} />
+        <Route path="/xat/:threadId" element={<XatSection />} />
+        <Route path="/chat" element={<Navigate to="/xat" replace />} />
+        <Route path="/chat/:threadId" element={<Navigate to="/xat/:threadId" replace />} />
+        <Route path="/chats" element={<Navigate to="/xat" replace />} />
+        <Route path="/chats/:threadId" element={<Navigate to="/xat/:threadId" replace />} />
         <Route path="/mur" element={<MurSection />} />
         <Route path="/post/:itemId" element={<LegacySectionDetailRedirect sectionId="mur" />} />
         <Route path="/mercat" element={<MercatSection />} />
@@ -313,6 +312,7 @@ function AppRoutes() {
         <Route path="/accedir" element={<LoginSection />} />
         <Route path="/registre" element={<LoginSection />} />
         <Route path="/crear-compte" element={<LoginSection />} />
+        <Route path="/el-meu-perfil" element={<MyProfileSection />} />
         <Route path="/perfil" element={<ProfileSection agents={agents} />} />
         <Route path="/perfil/:agentId" element={<ProfileSection agents={agents} />} />
           <Route path="/gent/:agentId" element={<ProfileSection agents={agents} />} />
@@ -320,7 +320,6 @@ function AppRoutes() {
           <Route path="/ajuntament/:agentId" element={<ProfileSection agents={agents} />} />
           <Route path="/grup/:agentId" element={<ProfileSection agents={agents} />} />
           
-          <Route path="/arbres/pi-pla-verd" element={<PiPlaVerd />} />
           <Route path="/control" element={<ControlSection />} />
           <Route path="/connectar" element={<ConnectarSection agents={agents} />} />
           <Route path="/projecte" element={<TextRoute pageKey="projecte" />} />
@@ -338,7 +337,7 @@ function AppRoutes() {
           <Route path="/realitat" element={<RealitatSection />} />
           <Route path="/ia" element={<TextRoute pageKey="anima" />} />
           <Route path="/anima" element={<Navigate to="/ia" replace />} />
-          <Route path="/iaia" element={<Navigate to="/chat/iaia-maria" replace />} />
+          <Route path="/iaia" element={<Navigate to="/xat/iaia-maria" replace />} />
           <Route path="/:sectionId/:itemId" element={<ItemDetailSection />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

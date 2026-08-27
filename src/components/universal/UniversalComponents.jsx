@@ -3,6 +3,9 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useEffect, useState, useRef } from 'react';
 import { useAppData } from '../../app/AppDataContext';
 import { showToast } from './AvisadorEfimer';
+import { useContent, ContentProvider } from './ContentProvider';
+
+export { useContent, ContentProvider };
 
 const PAGE_CHROME_MODES = new Set(['none', 'page', 'context', 'full', 'system']);
 
@@ -42,14 +45,6 @@ export function ActionControl({
 }) {
   const presentationOnly = !onClick;
 
-  if (presentationOnly) {
-    return (
-      <span className={className} aria-label={label} title={title}>
-        {children}
-      </span>
-    );
-  }
-
   return (
     <button
       type="button"
@@ -57,7 +52,7 @@ export function ActionControl({
       aria-label={label}
       title={title}
       onClick={onClick}
-      disabled={disabled}
+      disabled={disabled || presentationOnly}
     >
       {children}
     </button>
@@ -79,7 +74,7 @@ export function DateTimeControl({ time, date, dateTime, label, onClick }) {
     return (
       <button
         type="button"
-        className="btn-date-time sp-card-time sdp-flex-col"
+        className="btn-date-time sp-card-time"
         aria-label={accessibleLabel}
         title={accessibleLabel}
         onClick={onClick}
@@ -91,7 +86,7 @@ export function DateTimeControl({ time, date, dateTime, label, onClick }) {
 
   return (
     <time
-      className="btn-date-time sp-card-time sdp-flex-col"
+      className="btn-date-time sp-card-time"
       dateTime={dateTime}
       aria-label={accessibleLabel}
     >
@@ -386,47 +381,50 @@ export function TableOfContentsDrawer({ isOpen, onClose }) {
   );
 }
 
-export function UniversalPage({
-  title,
-  subtitle,
-  lead,
-  labels = [],
-  copyright,
-  showLogos = false,
-  tone,
-  chrome = 'page',
-  showTopBars,
-  topBarData = {},
-  heroImage,
-  heroAlt = '',
-  authorName = DEFAULT_AUTHOR.name,
-  authorLocation = DEFAULT_AUTHOR.location,
-  authorAvatar = DEFAULT_AUTHOR.avatarUrl,
-  authorAvatarAlt = '',
-  time,
-  date,
-  dateTime,
-  viewerAvatarUrl = DEFAULT_AUTHOR.avatarUrl,
-  viewerAvatarAlt = 'Sóc de Poble',
-  themeMode = 'light',
-  onLanguage,
-  onIaia,
-  onSearch,
-  onTheme,
-  onProfile,
-  onBack,
-  onForward,
-  onIndex,
-  onTranslate,
-  onComment,
-  onShare,
-  onConnect,
-  onPin,
-  onDateTime,
-  connectLabel = 'Connectar',
-  price,
-  children
-}) {
+export function UniversalPage(props) {
+  const contentContext = useContent();
+  const config = contentContext?.config || {};
+
+  const title = props.title ?? config.title;
+  const subtitle = props.subtitle ?? config.subtitle;
+  const lead = props.lead ?? config.lead;
+  const labels = props.labels ?? config.labels ?? [];
+  const copyright = props.copyright ?? config.copyright;
+  const showLogos = props.showLogos ?? config.showLogos ?? false;
+  const tone = props.tone ?? config.tone;
+  const chrome = props.chrome ?? config.chrome ?? 'page';
+  const showTopBars = props.showTopBars ?? config.showTopBars;
+  const topBarData = props.topBarData ?? config.topBarData ?? {};
+  const heroImage = props.heroImage ?? config.heroImage;
+  const heroAlt = props.heroAlt ?? config.heroAlt ?? '';
+  const authorName = props.authorName ?? config.authorName ?? DEFAULT_AUTHOR.name;
+  const authorLocation = props.authorLocation ?? config.authorLocation ?? DEFAULT_AUTHOR.location;
+  const authorAvatar = props.authorAvatar ?? config.authorAvatar ?? DEFAULT_AUTHOR.avatarUrl;
+  const authorAvatarAlt = props.authorAvatarAlt ?? config.authorAvatarAlt ?? '';
+  const time = props.time ?? config.time;
+  const date = props.date ?? config.date;
+  const dateTime = props.dateTime ?? config.dateTime;
+  const viewerAvatarUrl = props.viewerAvatarUrl ?? config.viewerAvatarUrl ?? DEFAULT_AUTHOR.avatarUrl;
+  const viewerAvatarAlt = props.viewerAvatarAlt ?? config.viewerAvatarAlt ?? 'Sóc de Poble';
+  const themeMode = props.themeMode ?? config.themeMode ?? 'light';
+  const onLanguage = props.onLanguage ?? config.onLanguage;
+  const onIaia = props.onIaia ?? config.onIaia;
+  const onSearch = props.onSearch ?? config.onSearch;
+  const onTheme = props.onTheme ?? config.onTheme;
+  const onProfile = props.onProfile ?? config.onProfile ?? (() => navigate('/el-meu-perfil'));
+  const onBack = props.onBack ?? config.onBack;
+  const onForward = props.onForward ?? config.onForward;
+  const onIndex = props.onIndex ?? config.onIndex;
+  const onTranslate = props.onTranslate ?? config.onTranslate;
+  const onComment = props.onComment ?? config.onComment;
+  const onShare = props.onShare ?? config.onShare;
+  const onConnect = props.onConnect ?? config.onConnect;
+  const onPin = props.onPin ?? config.onPin;
+  const onDateTime = props.onDateTime ?? config.onDateTime;
+  const connectLabel = props.connectLabel ?? config.connectLabel ?? 'Connectar';
+  const price = props.price ?? config.price;
+  const children = props.children;
+
   const [isTocOpen, setIsTocOpen] = useState(false);
   const navigate = useNavigate();
   const appData = useAppData();
@@ -501,7 +499,7 @@ export function UniversalPage({
       {showBlackBar && (
         <header className="bar-black">
           <div
-            className="mobile-logo-wrapper sdp-flex sdp-items-center sdp-justify-center"
+            className="mobile-logo-wrapper"
             id="mobile-sidebar-toggle"
           >
             <img
@@ -552,7 +550,7 @@ export function UniversalPage({
       {showBlueBar && (
         <>
           <header className="bar-blue">
-            <div className="bar-blue-left sdp-flex sdp-items-center">
+            <div className="bar-blue-left">
               <IconButton label="Tornar arrere" onClick={handleBack} presentation>
                 <BackIcon className="icon" />
               </IconButton>
@@ -579,7 +577,7 @@ export function UniversalPage({
               </IconButton>
             </div>
             <ActionControl
-              className="sp-card-connect"
+              className="btn-connectar sp-card-connect"
               label={connectLabel}
               onClick={handleConnect}
             >
@@ -613,7 +611,7 @@ export function UniversalPage({
                   <div className="sp-card-author-location">{barAuthorLocation}</div>
                 </div>
               </div>
-              <div className="bar-actions sdp-flex sdp-items-center sdp-gap-8">
+              <div className="bar-actions">
                 {topBarData?.showPin !== false && (
                   <ActionControl
                     className="btn-icon-orange"
@@ -690,7 +688,7 @@ export function UniversalPage({
 
       <article className="content-wrapper">
         {(subtitle || lead) && (
-          <div className="page-intro sdp-text-center sdp-mb-6 sdp-mx-auto">
+          <div className="page-intro">
             {subtitle && <h2>{subtitle}</h2>}
             {lead && <p className="lead">{lead}</p>}
           </div>

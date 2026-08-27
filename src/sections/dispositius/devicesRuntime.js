@@ -23,25 +23,45 @@ const createDeviceId = () => {
   return `device-${Date.now()}-${randomToken()}`;
 };
 
-const buildDefaultName = () => `Portal ${randomToken().slice(0, 4).toUpperCase()}`;
+const buildDefaultName = (ownerName = null) => {
+  const isMobile = typeof navigator !== 'undefined' && /Mobi|Android/i.test(navigator.userAgent);
+  const deviceType = isMobile ? 'Mòbil' : 'Ordinador';
+  if (ownerName) {
+    return `${deviceType} de ${ownerName}`;
+  }
+  return `Portal ${randomToken().slice(0, 4).toUpperCase()}`;
+};
 
-export function loadDeviceProfile(tenantId) {
+export function loadDeviceProfile(tenantId, ownerName = null) {
   const fallback = {
     id: createDeviceId(),
-    name: buildDefaultName(),
+    name: buildDefaultName(ownerName),
     kind: 'portal',
+    isVisible: false,
     createdAt: Date.now()
   };
 
-  const stored = getVal(getProfileKey(tenantId), fallback);
+  const stored = getVal(getProfileKey(tenantId), null);
+  
+  if (!stored) {
+    setVal(getProfileKey(tenantId), fallback);
+    return fallback;
+  }
+
   const profile = {
     ...fallback,
     ...stored,
-    id: stored?.id || fallback.id,
-    name: stored?.name || fallback.name
+    id: stored.id || fallback.id,
+    name: stored.name || fallback.name,
+    isVisible: stored.isVisible !== undefined ? stored.isVisible : false
   };
 
-  setVal(getProfileKey(tenantId), profile);
+  // Actualitzar automàticament noms críptics vells (ex: "Portal H2MH") pel nou format si tenim el nom de la persona
+  if (ownerName && profile.name.startsWith('Portal ')) {
+    profile.name = buildDefaultName(ownerName);
+    setVal(getProfileKey(tenantId), profile);
+  }
+
   return profile;
 }
 
@@ -98,6 +118,8 @@ export function createDeviceBridge(tenantId, selfDevice, handlers) {
   };
 
   const announcePresence = () => {
+    if (!selfDevice.isVisible) return; // Mode privat, no anunciem
+
     post({
       type: 'presence:announce',
       device: {

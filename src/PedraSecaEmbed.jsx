@@ -32,7 +32,7 @@
 
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import App from './app/App';
 import { AppDataProvider } from './app/AppDataContext';
 import styles from './css/index.css?inline';
@@ -48,10 +48,13 @@ class ErrorBoundary extends React.Component {
   static getDerivedStateFromError(error) {
     return { hasError: true, error };
   }
+  componentDidCatch(error, errorInfo) {
+    console.error('[PedraSeca] Error capturat pel límit de React:', error, errorInfo);
+  }
   render() {
     if (this.state.hasError) {
       return (
-        <div className="sdp-p-4">
+        <div className="alert">
           <h2>No s'ha pogut carregar Sóc de Poble</h2>
           <p>Torna a carregar la pàgina. Si continua, avisa l'administrador del lloc.</p>
           <pre>{this.state.error?.toString()}</pre>
@@ -63,14 +66,12 @@ class ErrorBoundary extends React.Component {
 }
 
 export default function PedraSecaEmbed({ config }) {
-  const basePath = config?.basePath || '/';
-
-  const RouterComponent = BrowserRouter;
-  const routerProps = { basename: basePath === '/' ? '' : basePath };
+  // Z-Audit: Utilitzem MemoryRouter per evitar conflictes amb l'historial de navegació de WordPress
+  const RouterComponent = MemoryRouter;
 
   return (
     <ErrorBoundary>
-      <RouterComponent {...routerProps}>
+      <RouterComponent>
         <AppDataProvider externalConfig={config}>
           <App />
         </AppDataProvider>
@@ -291,6 +292,9 @@ class SocDePobleElement extends BaseElement {
     };
 
     this._desmuntatge = requestAnimationFrame(cleanup);
+    if (this._desmuntatgeTimeout !== undefined) {
+      clearTimeout(this._desmuntatgeTimeout);
+    }
     this._desmuntatgeTimeout = setTimeout(() => {
       if (this._desmuntatge !== null) {
         cancelAnimationFrame(this._desmuntatge);
@@ -302,6 +306,27 @@ class SocDePobleElement extends BaseElement {
 
 export function defineCustomElement() {
   if (typeof window === 'undefined') return;
+  
+  // Z-Audit: Singleton Guard per a entorns hostils com plugins WP
+  if (window.__SDP_REACT_MOUNTED__) {
+    console.warn('[PedraSeca] Advertència: Aquest host ja té una instància de Sóc de Poble muntada. Possibles col·lisions d\'estat globals.');
+  }
+  window.__SDP_REACT_MOUNTED__ = true;
+
+  // Global Error Handler per a QuotaExceeded i Promeses orfes (Black Box Error Handler)
+  if (!window.__SDP_GLOBAL_ERRORS_BOUND__) {
+    window.addEventListener('unhandledrejection', (event) => {
+      const err = event.reason;
+      if (err?.name === 'QuotaExceededError' || String(err).includes('QuotaExceeded')) {
+        console.error('[PedraSeca] QuotaExceeded global capturat. Forçant reset de base de dades local...');
+        indexedDB.deleteDatabase('sdp-outbox');
+      } else {
+        console.warn('[PedraSeca] Promesa rebutjada globalment (no crítica):', err);
+      }
+    });
+    window.__SDP_GLOBAL_ERRORS_BOUND__ = true;
+  }
+
   if (!customElements.get('soc-de-poble')) {
     customElements.define('soc-de-poble', SocDePobleElement);
   }

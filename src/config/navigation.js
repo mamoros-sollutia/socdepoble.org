@@ -39,7 +39,7 @@ export const getSectionItemPath = (sectionId, itemId) => {
   return `/${sectionId}/${encodeURIComponent(String(itemId))}`;
 };
 
-export const getSectionListPath = (sectionId) => (sectionId === 'xat' ? '/chat' : `/${sectionId}`);
+export const getSectionListPath = (sectionId) => (sectionId === 'xat' ? '/xat' : `/${sectionId}`);
 
 export const getSectionItems = (sectionId) => SECTION_ITEMS[sectionId] || [];
 

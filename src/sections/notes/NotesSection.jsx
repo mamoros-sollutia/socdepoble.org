@@ -1,6 +1,6 @@
 import { useDeferredValue, useMemo, useState } from 'react';
 import { ChevronLeft, FileText, Folder, List } from 'lucide-react';
-import SectionChrome from '../../components/SectionChrome';
+import { UniversalPage } from '../../components/universal/UniversalComponents';
 import { useAppData } from '../../app/AppDataContext';
 
 const CATEGORIES = ['Trellat', 'Patrimoni', 'Dades', 'Social'];
@@ -66,18 +66,18 @@ export default function NotesSection() {
   const getCategoryLabel = (category) => t(`section.notes.category.${category}`, category);
 
   return (
-    <SectionChrome
-      kicker={t('section.notes.kicker', 'Notes')}
+    <UniversalPage
       title={t('section.notes.title', 'Quadern')}
       subtitle={t('section.notes.subtitle', 'Notes i apunts del projecte organitzats per carpetes.')}
-      meta={[t('nav.notes', 'Notes'), `${noteFolders.length} ${t('section.notes.folders', 'carpetes')}`, `${notes.length} ${t('section.notes.note', 'notes')}`]}
+      chrome="system"
+      showLogos={true}
     >
-      <article className="card" style={{ padding: 0, overflow: 'hidden' }}>
-        <div className="topbar" style={{ position: 'static', borderRadius: 0, borderLeft: 0, borderRight: 0, borderTop: 0, background: 'var(--sdp-fons-roca)', color: 'var(--sdp-sobre-roca)' }}>
-          <div className="topbar__title" style={ { color: 'var(--sdp-sobre-roca)' }}>
-            <strong style={ { color: 'var(--sdp-sobre-roca)' }}>{t('section.notes.mobileTitle', 'Quadern')}</strong>
+      <article className="card">
+        <div className="topbar">
+          <div className="topbar__title">
+            <strong>{t('section.notes.mobileTitle', 'Quadern')}</strong>
           </div>
-          <div className="topbar__actions" style={{ gap: 6 }}>
+          <div className="topbar__actions">
             <button type="button" className={`pill ${mobileView === 'folders' ? 'pill--primary' : ''}`} onClick={() => setMobileView('folders')}>
               <Folder size={16} /> {t('section.notes.mobileFolders', 'Carpetes')}
             </button>
@@ -108,7 +108,7 @@ export default function NotesSection() {
               </div>
 
               <div className="notes-category-block">
-                <div className="notes-column__head" style={{ paddingInline: 0, paddingTop: 18 }}>{t('section.notes.categories', 'Categories')}</div>
+                <div className="notes-column__head">{t('section.notes.categories', 'Categories')}</div>
                 <div className="folders-list">
                   {CATEGORIES.map((category) => (
                     <button
@@ -136,7 +136,7 @@ export default function NotesSection() {
                 className="section-search"
               />
 
-              <div className="note-list" style={{ marginTop: 16 }}>
+              <div className="note-list">
                 {filteredNotes.map((note) => {
                   const isActive = note.id === activeNote?.id;
                   return (
@@ -144,7 +144,6 @@ export default function NotesSection() {
                       key={note.id}
                       type="button"
                       className={`conversation-button ${isActive ? 'conversation-button--active' : ''}`}
-                      style={{ gridTemplateColumns: '1fr', alignItems: 'start' }}
                       onClick={() => {
                         setActiveNoteId(note.id);
                         setMobileView('editor');
@@ -172,27 +171,26 @@ export default function NotesSection() {
             <div className="notes-column__body notes-editor">
               {activeNote ? (
                 <>
-                  <h2 className="card__title" style={{ fontSize: '2rem', marginTop: 0 }}>{activeNote.title}</h2>
-                  <div className="badge-row" style={{ marginTop: 12 }}>
+                  <h2 className="card__title">{activeNote.title}</h2>
+                  <div className="badge-row">
                     <span className="badge">{getCategoryLabel(activeNote.category)}</span>
                     {activeNote.tags?.map((tag) => <span key={tag} className="badge">{tag}</span>)}
                   </div>
                   <article
                     className="app-note-content"
-                    style={{ marginTop: 24 }}
                     children={ activeNote.content }
                   />
                 </>
               ) : (
                 <div className="chat-empty">
                   <FileText size={64} />
-                  <h2 className="section-title" style={ { color: 'inherit' }}>{t('section.notes.open', 'Obre un solc')}</h2>
+                  <h2 className="section-title">{t('section.notes.open', 'Obre un solc')}</h2>
                 </div>
               )}
             </div>
           </main>
         </div>
       </article>
-    </SectionChrome>
+    </UniversalPage>
   );
 }

@@ -1,10 +1,8 @@
 import { createContext, useContext, useEffect, useMemo, useState, useRef } from 'react';
 import {
-  appendChatMessages,
-  appendSectionSubmission,
+
   APP_SNAPSHOT_STORAGE_KEY,
-  DATA_SYNC_CHANNEL_NAME,
-  DEFAULT_USER_ID,
+  getDefaultUserId,
   getHasSupabaseConfig,
   SECTION_SUBMISSIONS_STORAGE_KEY,
   loadAppData,
@@ -13,9 +11,10 @@ import {
 import { normalizeSearchText, sortPinnedContent } from '../config/contentHelpers';
 import { resolveAsset as baseResolveAsset } from '../config/assetResolver';
 import { createTranslator, readStoredLanguage, writeStoredLanguage, normalizeLanguage } from '../config/i18n';
-import { getVal, setVal } from '../config/storage.js';
-import { makeChatReply } from '../sections/xat/chatRuntime';
+import { getVal } from '../config/storage.js';
 import { readThemePreference, resolveTheme, writeThemePreference } from '../config/theme';
+import { uuid, encua } from '../data/outbox.js';
+import { buida } from '../data/sincronitzador.js';
 
 const AppStateContext = createContext(null);
 const AppActionsContext = createContext(null);
@@ -79,8 +78,8 @@ const buildMessageMap = (messages) =>
 
 const buildFallbackMessages = (thread) => [
   {
-    id: `${DEFAULT_USER_ID}::${thread.id}::fallback-1`,
-    ownerUserId: DEFAULT_USER_ID,
+    id: `${getDefaultUserId()}::${thread.id}::fallback-1`,
+    ownerUserId: getDefaultUserId(),
     threadId: thread.id,
     messageId: 'fallback-1',
     createdAtTs: 0,
@@ -89,8 +88,8 @@ const buildFallbackMessages = (thread) => [
     time: 'Ara'
   },
   {
-    id: `${DEFAULT_USER_ID}::${thread.id}::fallback-2`,
-    ownerUserId: DEFAULT_USER_ID,
+    id: `${getDefaultUserId()}::${thread.id}::fallback-2`,
+    ownerUserId: getDefaultUserId(),
     threadId: thread.id,
     messageId: 'fallback-2',
     createdAtTs: 1,
@@ -111,6 +110,7 @@ export function AppDataProvider({ children, externalConfig = {} }) {
   const [status, setStatus] = useState('loading');
   const [error, setError] = useState(null);
   const [rawData, setRawData] = useState(null);
+  const [authTick, setAuthTick] = useState(0);
   const [language, setLanguage] = useState(() => {
     if (externalConfig?.language) return normalizeLanguage(externalConfig.language);
     if (typeof document !== 'undefined' && document.documentElement.lang) {
@@ -131,7 +131,14 @@ export function AppDataProvider({ children, externalConfig = {} }) {
     setSystemDark(mq.matches);
     const handler = (e) => setSystemDark(e.matches);
     mq.addEventListener('change', handler);
-    return () => mq.removeEventListener('change', handler);
+
+    const onAuthChange = () => setAuthTick(t => t + 1);
+    window.addEventListener('sdp:auth-change', onAuthChange);
+
+    return () => {
+      mq.removeEventListener('change', handler);
+      window.removeEventListener('sdp:auth-change', onAuthChange);
+    };
   }, []);
 
   const themeMode = resolveTheme(themePreference === 'system' ? (systemDark ? 'dark' : 'light') : themePreference);
@@ -146,7 +153,8 @@ export function AppDataProvider({ children, externalConfig = {} }) {
   };
 
   const tenantId = externalConfig?.tenantId || 'default-tenant';
-  const userId = externalConfig?.user?.id || externalConfig?.userId || DEFAULT_USER_ID;
+  const localUser = getVal('socdepoble-user');
+  const userId = externalConfig?.user?.id || externalConfig?.userId || localUser?.id || getDefaultUserId();
   const channelNamespace = `sdp:${tenantId}:${userId}:v2`;
   
   // Stabilize externalConfig per evitar infinite re-renders sense usar JSON.stringify sencer que peta amb referències circulars
@@ -160,7 +168,8 @@ export function AppDataProvider({ children, externalConfig = {} }) {
     externalConfig?.version,
     externalConfig?.manageDocumentHead,
     externalConfig?.supabaseUrl,
-    externalConfig?.supabaseAnonKey
+    externalConfig?.supabaseAnonKey,
+    authTick
   ]);
 
   const broadcastChannelRef = useRef(null);
@@ -335,7 +344,7 @@ export function AppDataProvider({ children, externalConfig = {} }) {
       return {
         status,
         error,
-        ownerUserId: DEFAULT_USER_ID,
+        ownerUserId: getDefaultUserId(),
         hasSupabaseConfig: getHasSupabaseConfig(stableExternalConfig),
         dataMode: getRuntimeDataMode(stableExternalConfig),
         language,
@@ -427,41 +436,42 @@ export function AppDataProvider({ children, externalConfig = {} }) {
 
     const sendChatMessage = async (thread, text) => {
       const nowTs = Date.now();
-      const messageId = `${nowTs}`;
+      const messageId = uuid();                       // ← UUID, no Date.now()
       const userMessage = {
-        id: `${rawData.ownerUserId}::${thread.id}::${messageId}-me`,
+        id: `${rawData.ownerUserId}::${thread.id}::${messageId}`,
         ownerUserId: rawData.ownerUserId,
         threadId: thread.id,
-        messageId: `${messageId}-me`,
+        messageId,
         createdAtTs: nowTs,
         text,
         sender: 'me',
+        estatEnviament: 'pendent',                    // ← per a la marca visual
         time: new Date().toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit' })
       };
-      const replyBase = makeChatReply(thread, text);
-      const replyMessage = {
-        id: `${rawData.ownerUserId}::${thread.id}::${replyBase.id}`,
-        ownerUserId: rawData.ownerUserId,
-        threadId: thread.id,
-        messageId: replyBase.id,
-        createdAtTs: nowTs + 1,
-        ...replyBase
-      };
 
-      await appendChatMessages([userMessage, replyMessage], stableExternalConfig);
-
+      // 1r la pantalla. Sempre. Passe el que passe amb la xarxa.
       setRawData((current) => ({
         ...current,
-        chatMessages: [...current.chatMessages, userMessage, replyMessage]
+        chatMessages: [...current.chatMessages, userMessage]
       }));
-      
+
+      // 2n el disc, amb el seu propi tallafocs.
+      try {
+        await encua({ id: userMessage.id, tipus: 'chat', carrega: userMessage });
+      } catch (e) {
+        console.error('[OUTBOX] escriptura fallida', e);
+      }
+
+      // 3r la xarxa, que ja no pot bloquejar res.
+      buida(stableExternalConfig);
+
       try {
         broadcastChannelRef.current?.postMessage({ type: 'content:updated', tenantId });
       } catch (e) {
         // ignore
       }
 
-      return [userMessage, replyMessage];
+      return [userMessage];
     };
 
     const getThreadMessages = (threadId, fallbackThread = null) => {
@@ -472,20 +482,24 @@ export function AppDataProvider({ children, externalConfig = {} }) {
     };
 
     const sendSectionSubmission = async (submission) => {
+      const nowTs = Date.now();
+      const id = submission.id || uuid();
       const preparedSubmission = {
         ...submission,
-        ownerUserId: rawData.ownerUserId
+        id,
+        ownerUserId: rawData.ownerUserId,
+        createdAt: new Date(nowTs).toISOString()
       };
-      const persistedSubmission = await appendSectionSubmission(preparedSubmission, stableExternalConfig);
-      const item = persistedSubmission.payload || preparedSubmission.payload || preparedSubmission;
-      const sectionId = String(persistedSubmission.sectionId || item.sectionId || '').trim();
+      
+      const item = preparedSubmission.payload || preparedSubmission;
+      const sectionId = String(preparedSubmission.sectionId || item.sectionId || '').trim();
 
       setRawData((current) => {
         if (!current) return current;
 
         const next = {
           ...current,
-          sectionSubmissions: appendUniqueById(current.sectionSubmissions || [], persistedSubmission)
+          sectionSubmissions: appendUniqueById(current.sectionSubmissions || [], preparedSubmission)
         };
 
         if (sectionId === 'mur') {
@@ -498,6 +512,16 @@ export function AppDataProvider({ children, externalConfig = {} }) {
 
         return next;
       });
+
+      // Z-Audit: 2n el disc (Outbox) amb el seu propi tallafocs
+      try {
+        await encua({ id, tipus: 'submission', payload: preparedSubmission });
+      } catch (e) {
+        console.error('[OUTBOX] escriptura fallida per a submission', e);
+      }
+
+      // 3r la xarxa
+      buida(stableExternalConfig);
       
       try {
         broadcastChannelRef.current?.postMessage({ type: 'content:updated', tenantId });
@@ -505,7 +529,7 @@ export function AppDataProvider({ children, externalConfig = {} }) {
         // ignore
       }
 
-      return persistedSubmission;
+      return preparedSubmission;
     };
 
     const resolveAsset = (path) => {

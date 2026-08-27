@@ -1437,19 +1437,19 @@ async function doctor({ ci = false } = {}) {
   else if (!rootStat.isFile() || rootStat.isSymbolicLink()) findings.push('AGENTS.md ha de ser un fitxer regular, no un symlink.');
   if (!ci) {
     const hooksPath = (await git(['config', '--get', 'core.hooksPath'], { allowFailure: true })).trim();
-    if (hooksPath !== '.githooks') findings.push(`core.hooksPath=${hooksPath || '(buit)'}; s’esperava .githooks.`);
+    if (hooksPath !== '.husky') findings.push(`core.hooksPath=${hooksPath || '(buit)'}; s’esperava .husky.`);
   }
   for (const [hook, markers] of REQUIRED_HOOKS) {
-    const file = path.join(PROJECT_DIR, '.githooks', hook);
+    const file = path.join(PROJECT_DIR, '.husky', hook);
     const stat = await fs.lstat(file).catch(() => null);
-    if (!stat) findings.push(`Falta .githooks/${hook}.`);
+    if (!stat) findings.push(`Falta .husky/${hook}.`);
     else if (!stat.isFile() || stat.isSymbolicLink() || stat.nlink !== 1) {
-      findings.push(`.githooks/${hook} ha de ser un fitxer regular únic, no symlink/hardlink.`);
+      findings.push(`.husky/${hook} ha de ser un fitxer regular únic, no symlink/hardlink.`);
     } else {
-      if (!(stat.mode & 0o111)) findings.push(`.githooks/${hook} no és executable.`);
+      if (!(stat.mode & 0o111)) findings.push(`.husky/${hook} no és executable.`);
       const content = await fs.readFile(file, 'utf8');
       for (const marker of markers) {
-        if (!marker.test(content)) findings.push(`.githooks/${hook} no conté el marcador semàntic ${marker}.`);
+        if (!marker.test(content)) findings.push(`.husky/${hook} no conté el marcador semàntic ${marker}.`);
       }
     }
   }
