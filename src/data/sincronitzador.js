@@ -1,6 +1,7 @@
 import { reclama, confirma, ajorna, pendents } from './outbox.js';
 import { appendChatMessages, appendSectionSubmissionNetworkOnly } from './supabaseBackend.js';
 
+const TAB_ID = crypto.randomUUID?.() || Date.now().toString(36) + '-' + Math.random().toString(36).slice(2);
 let corrent = false;
 
 export async function buida(config) {
@@ -8,7 +9,7 @@ export async function buida(config) {
   corrent = true;
   try {
     let lot;
-    while ((lot = await reclama()).length > 0) {
+    while ((lot = await reclama(20, TAB_ID)).length > 0) {
       for (const r of lot) {
         try {
           if (r.tipus === 'submission') {
@@ -22,6 +23,8 @@ export async function buida(config) {
           console.warn('[SINCRONITZADOR] Error enviant registre, s\'ajorna:', e);
           await ajorna(r);
         }
+        // Cedim el fil per evitar l'error de bloqueig de la IU en A10
+        await new Promise(r => setTimeout(r, 0));
       }
       if (!navigator.onLine) break;
     }
