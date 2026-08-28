@@ -14,7 +14,7 @@ import { createTranslator, readStoredLanguage, writeStoredLanguage, normalizeLan
 import { getVal } from '../config/storage.js';
 import { readThemePreference, resolveTheme, writeThemePreference } from '../config/theme';
 import { uuid, encua } from '../data/outbox.js';
-import { buida } from '../data/sincronitzador.js';
+import { buida, arrancaSincronitzador } from '../data/sincronitzador.js';
 
 const AppStateContext = createContext(null);
 const AppActionsContext = createContext(null);
@@ -265,6 +265,13 @@ export function AppDataProvider({ children, externalConfig = {} }) {
       broadcastChannelRef.current = null;
     };
   }, [stableExternalConfig, channelNamespace, tenantId, userId]);
+
+  /* P0-3: sense esta crida, `outbox.js` és una cua d'escriptura només:
+     guarda els missatges i no els envia mai quan torna la cobertura. */
+  useEffect(
+    () => arrancaSincronitzador(stableExternalConfig),
+    [stableExternalConfig]
+  );
 
   useEffect(() => {
     writeStoredLanguage(language);

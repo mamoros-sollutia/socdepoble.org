@@ -1,0 +1,29 @@
+--- a/src/app/AppDataContext.jsx
++++ b/src/app/AppDataContext.jsx
+@@ -13,9 +13,9 @@
+ import { createTranslator, readStoredLanguage, writeStoredLanguage, normalizeLanguage } from '../config/i18n';
+ import { getVal } from '../config/storage.js';
+ import { readThemePreference, resolveTheme, writeThemePreference } from '../config/theme';
+ import { uuid, encua } from '../data/outbox.js';
+-import { buida } from '../data/sincronitzador.js';
++import { buida, arrancaSincronitzador } from '../data/sincronitzador.js';
+ 
+ const AppStateContext = createContext(null);
+ const AppActionsContext = createContext(null);
+ const DATA_SYNC_STORAGE_KEYS = new Set([APP_SNAPSHOT_STORAGE_KEY, SECTION_SUBMISSIONS_STORAGE_KEY]);
+@@ -264,8 +264,15 @@
+       channel?.close();
+       broadcastChannelRef.current = null;
+     };
+   }, [stableExternalConfig, channelNamespace, tenantId, userId]);
++
++  /* P0-3: sense esta crida, `outbox.js` és una cua d'escriptura només:
++     guarda els missatges i no els envia mai quan torna la cobertura. */
++  useEffect(
++    () => arrancaSincronitzador(stableExternalConfig),
++    [stableExternalConfig]
++  );
+ 
+   useEffect(() => {
+     writeStoredLanguage(language);
+   }, [language]);

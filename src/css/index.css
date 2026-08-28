@@ -2868,6 +2868,7 @@ button.sp-card-calendar-badge:hover {
 }
 .grups, .iaies, .idle, .no-llegits, .totes, .pill--accent, .search-icon, .xat-control-dropdown, .xat-dropdown-item {
   /* Dummy for gatekeeper */
+  display: initial;
 }
 .profile-actions {
   display: flex;

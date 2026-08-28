@@ -327,13 +327,7 @@ export function defineCustomElement() {
     window.addEventListener('unhandledrejection', (event) => {
       const err = event.reason;
       if (err?.name === 'QuotaExceededError' || String(err).includes('QuotaExceeded')) {
-        const stack = err?.stack || '';
-        if (stack.includes('outbox') || stack.includes('sdp') || stack.includes('PedraSeca')) {
-          console.error('[PedraSeca] QuotaExceeded global capturat (es nostre). Forçant reset de base de dades local...');
-          indexedDB.deleteDatabase('sdp-outbox');
-        } else {
-          console.warn('[PedraSeca] QuotaExceeded ignorat (no pertany a SDP, probablement és un plugin de WP).');
-        }
+        console.warn('[PedraSeca] QuotaExceeded global capturat. No esborrem la BD per seguretat davant de tercers (WordPress). Confiem en els fallbacks interns.');
       } else {
         console.warn('[PedraSeca] Promesa rebutjada globalment (no crítica):', err);
       }
