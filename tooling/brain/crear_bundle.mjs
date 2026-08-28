@@ -20,8 +20,8 @@ const descriptiu = args.length > 0 ? args.join('_').replace(/[^a-zA-Z0-9_]/g, ''
 const outFileName = `${termoPrefix}_BUNDLE_${descriptiu}.md`;
 const outPath = join(root, '_wiki_de_poble/05_Escriptori_Soc_de_Poble', outFileName);
 
-const dirsToScan = ['src', '.agents/skills', 'tooling'];
-const filesToScan = ['package.json', 'vite.config.js', 'src/data/supabaseBackend.js'];
+const dirsToScan = ['src', '.agents', 'tooling', '_wiki_de_poble/04_arquitectura_disseny', '_wiki_de_poble/01_identitat_iaia', 'wordpress-plugin'];
+const filesToScan = ['package.json', 'vite.config.js', 'src/data/supabaseBackend.js', 'eslint.config.js', 'index.html'];
 
 const excludedExt = ['.php', '.jpg', '.png', '.woff', '.woff2', '.pdf'];
 const excludedDirs = ['node_modules', 'dist', '.git', '.brain-reports', 'vendor'];
@@ -101,13 +101,13 @@ inputs: ["${outFileName}"]
 > **Anclatge de Seguretat**: Aquest document pertany a l'[[00_INDEX_ESCRIPTORI]] (evitant documents orfes).
 
 ## [BLOC FIXE D'IDENTITAT I ORIGEN]
-**A L'ATENCIÓ DE LES COMPANYERES DEL CONSELL:**
+**A L'ATENCIÓ DE LES COMPANYERES DEL CONSELL:** (Kimi AI, Claude, ChatGPT, Grok, Qwen, DeepSeek, Dola, Perplexity, Mistral Vibe, Gemini, Copilot, Z)
 Sou la Intel·ligència Crítica i Consultiva de suport del **Consell de la Petorreta**. Estem treballant en **\`socdepoble.org\`**.
 **MOLT IMPORTANT (LA VERITAT ARQUITECTÒNICA):** Actualment estem col·laborant amb la nostra empresa sòcia, **Sollutia**. Ells ens ofereixen un sistema excel·lent que funciona completament *online*. Aquest sistema online ens permet validar la viabilitat del projecte de forma sòlida. **ATENCIÓ: SOLLUTIA NO TÉ RES A VEURE AMB WORDPRESS.** L'entorn de WordPress on incrustem l'App ara mateix és exclusivament un entorn de proves paral·lel nostre per comprovar que tot funciona i que som independents. No vinculeu mai WordPress amb Sollutia.
 
 **PERÒ LA NOSTRA ASPIRACIÓ I VISIÓ A LLARG TERMINI** és, justament amb l'ajuda de Sollutia, poder independitzar-nos d'Internet (ser 100% Offline-First) per a sobreviure en ambients rurals hostils (sense cobertura, iPads A10, WebKit legacy). Som un projecte de "des-escalada" (una xarxa anti-xarxa social) i estem preparant el terreny perquè en el futur Sollutia puga mantindre eixa versió descentralitzada i offline. Necessitem que les vostres propostes tinguen en compte que farem aquesta transició cap a l'offline de manera conjunta, pel que el codi ha d'estar preparat per no patir traumes quan arribe el moment de separar el Frontend del Backend.
 
-**Teniu adjunt un document BUNDLE (\`${outFileName}\`) amb tot el context (incloent-hi la Wiki, regles, els meus propis Skills i Scripts) i el codi font necessari.** Llegiu-lo sencer de forma crítica abans d'emetre veredicte.
+**Teniu adjunt un document BUNDLE (\`${outFileName}\`) amb tot el context (incloent-hi la Wiki, identitat, visió arquitectònica, regles, els meus propis Skills i Scripts) i el codi font complet necessari.** Llegiu-lo sencer de forma crítica abans d'emetre veredicte. Només si coneixeu la identitat de Sóc de Poble podreu donar una resposta lliure de contradiccions i IA-slop.
 
 ## [BLOC VARIABLE 1: SITUACIÓ ACTUAL]
 [Descriu aquí el context i per què demanes ajuda al consell. Què hem implementat?]

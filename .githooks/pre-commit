@@ -1,63 +1,21 @@
-#!/usr/bin/env node
+#!/bin/sh
+# Hook de pre-commit de Sóc de Poble (Les Portes Mecàniques)
 
-import { execSync } from 'child_process';
-import path from 'path';
+echo "🚪 Executant Portes Mecàniques..."
 
-const FORBIDDEN_ROOT_PATTERNS = [
-  /^\d{6}_\d{4}_PROMPT_/i,
-  /^\d{6}_\d{4}_BUNDLE_/i,
-  /^generate_bundle.*\.mjs$/i,
-  /^fix_.*\.(py|mjs|js)$/i,
-  /^clean_.*\.(py|mjs|js)$/i,
-  /.*BUNDLE.*/i,
-  /.*PROMPT.*/i
-];
+npm run gate
 
-const ALLOWED_ROOT_MD = [
-  'README.md',
-  'AGENTS.md',
-  'CHANGELOG.md'
-];
+if [ $? -ne 0 ]; then
+  echo "❌ El codi no passa les portes mecàniques (tractor-persistencia o lint). Commit avortat."
+  exit 1
+fi
 
-try {
-  const ROOT = process.cwd();
-  
-  // Check staged files
-  const staged = execSync('git diff --cached --name-only', { encoding: 'utf8' })
-    .trim().split('\n').filter(Boolean);
+# Validar BIOS (Regles de l'Ecosistema)
+node tooling/verify-bios.mjs
+if [ $? -ne 0 ]; then
+  echo "❌ El BIOS està danyat o incomplet. Commit avortat."
+  exit 1
+fi
 
-  const violations = staged.filter(f => {
-    const relative = path.relative(ROOT, f);
-    const basename = path.basename(relative);
-    
-    // Check if it's at the root
-    if (!relative.includes('/')) {
-      // If it's a markdown file not in the allowed list
-      if (basename.endsWith('.md') && !ALLOWED_ROOT_MD.includes(basename)) {
-        return true;
-      }
-      // If it matches any of the forbidden patterns
-      if (FORBIDDEN_ROOT_PATTERNS.some(p => p.test(basename))) {
-        return true;
-      }
-    }
-    return false;
-  });
-
-  if (violations.length > 0) {
-    console.error('\n🚫 VIOLACIÓ DE WORKFLOW (Canonada Cognitiva):');
-    console.error('Has intentat commitejar fitxers no permesos a l\'arrel del repositori:');
-    violations.forEach(v => console.error(`   - ${v}`));
-    console.error('\n👉 SOLUCIÓ:');
-    console.error('   - Els documents van a: 05_Escriptori_Soc_de_Poble/');
-    console.error('   - Els scripts temporals van a: 90_arxiu_historic/scripts/');
-    console.error('   Si us plau, mou o elimina aquests fitxers abans de commitejar.\n');
-    process.exit(1);
-  }
-
-  process.exit(0);
-
-} catch (error) {
-  // If there's an error running git diff, we just exit 0 to not block the commit on a non-workflow issue
-  process.exit(0);
-}
+echo "✅ Portes superades. Endavant."
+exit 0

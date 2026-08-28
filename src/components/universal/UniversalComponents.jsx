@@ -11,12 +11,20 @@ const PAGE_CHROME_MODES = new Set(['none', 'page', 'context', 'full', 'system'])
 
 function isSafeUrl(url) {
   if (!url) return false;
+  const cleanUrl = url.replace(/[\u0000-\u001F\u007F-\u009F]/g, '');
+  if (cleanUrl.startsWith('//')) return false;
   try {
-    const u = new URL(url, window.location.origin);
-    return u.protocol === 'http:' || u.protocol === 'https:';
+    const u = new URL(cleanUrl, window.location.origin);
+    return (u.protocol === 'http:' || u.protocol === 'https:') && !cleanUrl.toLowerCase().startsWith('javascript:');
   } catch {
     return false;
   }
+}
+
+function isSafeAsset(url) {
+  if (!url) return false;
+  if (url.startsWith('data:image/')) return true;
+  return isSafeUrl(url);
 }
 
 function isValidDate(dd, mm, yy) {
@@ -663,16 +671,17 @@ export function UniversalPage(props) {
                 const text = typeof label === 'string' ? label : label.text;
                 const className = typeof label === 'string' ? 'sdp-badge-tag' : label.className || 'sdp-badge-tag';
                 const href = typeof label === 'string' ? null : label.href;
+                const safeHref = href && isSafeUrl(href) ? href : null;
                 return (
                   <li
                     key={`${text}-${index}`}
                     className={['sp-card-label', className].join(' ')}
                   >
-                    {href ? (
-                      href.startsWith('http') ? (
-                        <a href={href} target="_blank" rel="noopener noreferrer" style={ { color: 'inherit', textDecoration: 'none' }}>{text}</a>
+                    {safeHref ? (
+                      safeHref.startsWith('http') ? (
+                        <a href={safeHref} target="_blank" rel="noopener noreferrer" style={ { color: 'inherit', textDecoration: 'none' }}>{text}</a>
                       ) : (
-                        <Link to={href} style={ { color: 'inherit', textDecoration: 'none' }}>{text}</Link>
+                        <Link to={safeHref} style={ { color: 'inherit', textDecoration: 'none' }}>{text}</Link>
                       )
                     ) : text}
                   </li>
@@ -862,16 +871,17 @@ function CardBody({ imageUrl, imageAlt, calendarBadge, price, title, titleConten
               const text = typeof label === 'string' ? label : label.text;
               const className = typeof label === 'string' ? 'sdp-badge-tag' : label.className || 'sdp-badge-tag';
               const href = typeof label === 'string' ? null : label.href;
+              const safeHref = href && isSafeUrl(href) ? href : null;
               return (
                 <li
                   key={`${text}-${index}`}
                   className={['sp-card-label', className].join(' ')}
                 >
-                  {href ? (
-                    href.startsWith('http') ? (
-                      <a href={href} target="_blank" rel="noopener noreferrer" style={ { color: 'inherit', textDecoration: 'none' }}>{text}</a>
+                  {safeHref ? (
+                    safeHref.startsWith('http') ? (
+                      <a href={safeHref} target="_blank" rel="noopener noreferrer" style={ { color: 'inherit', textDecoration: 'none' }}>{text}</a>
                     ) : (
-                      <Link to={href} style={ { color: 'inherit', textDecoration: 'none' }}>{text}</Link>
+                      <Link to={safeHref} style={ { color: 'inherit', textDecoration: 'none' }}>{text}</Link>
                     )
                   ) : text}
                 </li>
@@ -958,13 +968,24 @@ export function UniversalCard({
   onConnect,
   connectLabel = 'Connectar'
 }) {
+  const safeMainHref = mainHref && isSafeUrl(mainHref) ? mainHref : null;
+  const safeAuthorHref = authorHref && isSafeUrl(authorHref) ? authorHref : null;
+  const safeImageUrl = imageUrl && isSafeAsset(imageUrl) ? imageUrl : null;
+  const safeAvatarUrl = avatarUrl && isSafeAsset(avatarUrl) ? avatarUrl : null;
+
   const navigate = useNavigate();
   const handleConnect = onConnect || (() => navigate('/connectar?item_id=' + encodeURIComponent(title || 'card')));
   const handleTranslate = onTranslate || (() => navigate('/traduccions'));
   const handleComment = onComment || (() => navigate('/xat'));
   const handleShare = onShare || (() => {
-    const safeHref = isSafeUrl(mainHref) ? mainHref : null;
-    const fullUrl = safeHref ? (window.location.origin + safeHref) : window.location.href;
+    let fullUrl = window.location.href;
+    if (safeMainHref) {
+      try {
+        fullUrl = new URL(safeMainHref, window.location.origin).href;
+      } catch {
+        fullUrl = window.location.href;
+      }
+    }
     
     if (navigator.share) {
       navigator.share({ title: title || document.title, url: fullUrl }).catch(console.error);
@@ -1016,11 +1037,11 @@ export function UniversalCard({
 
   const authorContent = hasAuthor && (
     <span className="sp-card-author">
-      {avatarUrl && (
+      {safeAvatarUrl && (
         <img
           alt={avatarAlt}
           className="sp-card-avatar"
-          src={avatarUrl}
+          src={safeAvatarUrl}
           width="48"
           height="48"
         />
@@ -1043,7 +1064,7 @@ export function UniversalCard({
       {hasHeader && (
         <CardHeader 
           hasAuthor={hasAuthor}
-          authorHref={authorHref}
+          authorHref={safeAuthorHref}
           authorContent={authorContent}
           hasMeta={hasMeta}
           pinVisible={pinVisible}
@@ -1057,14 +1078,14 @@ export function UniversalCard({
         />
       )}
 
-      {mainHref ? (
-        <Link className="sp-card-link-overlay" to={mainHref} onClick={onMainClick} aria-label={title || 'Obrir detall'} />
+      {safeMainHref ? (
+        <Link className="sp-card-link-overlay" to={safeMainHref} onClick={onMainClick} aria-label={title || 'Obrir detall'} />
       ) : onMainClick ? (
         <button type="button" className="sp-card-link-overlay" onClick={onMainClick} aria-label={title || 'Obrir detall'} />
       ) : null}
 
       <CardBody
-        imageUrl={imageUrl}
+        imageUrl={safeImageUrl}
         imageAlt={imageAlt}
         calendarBadge={calendarBadge}
         price={price}

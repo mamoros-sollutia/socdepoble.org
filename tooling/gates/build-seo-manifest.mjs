@@ -64,17 +64,17 @@ const srcSections = fs.readFileSync(FONT_SECTIONS, 'utf8');
 
 /* sections.js importa lucide-react: no es pot import(). El llegim per text.
    Si el format canvia i deixem de trobar rutes, parem (fail-closed). */
-const RE_SECCIO = /\{\s*id:\s*'([^']+)'\s*,\s*path:\s*'([^']+)'\s*,\s*label:\s*'([^']*)'[^}]*?\}/g;
+const RE_SECCIO = /\{\s*id:\s*'([^']+)'\s*,\s*path:\s*'([^']+)'\s*,\s*label:\s*(['"])(.*?)\3[^}]*?\}/g;
 
 const seccions = [];
 for (const m of srcSections.matchAll(RE_SECCIO)) {
-  const [, id, ruta, etiqueta] = m;
+  const [, id, ruta, quote, etiqueta] = m;
   const kind = /kind:\s*'([^']+)'/.exec(m[0])?.[1] || 'text';
   seccions.push({ id, ruta: ruta.replace(/^\//, ''), etiqueta, kind });
 }
 
-if (seccions.length === 0) {
-  fatal('El lector de sections.js no ha trobat cap secció. El format ha canviat i el manifest eixiria buit.');
+if (seccions.length < 15) {
+  fatal(`El lector de sections.js no ha trobat suficients seccions (trobades: ${seccions.length}). El format ha canviat o la regex ha fallat. El manifest eixiria trencat.`);
 }
 
 /* ────────────────────── 2 · Sinònims declarats al PHP ────────────────────── */

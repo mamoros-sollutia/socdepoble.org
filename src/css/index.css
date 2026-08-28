@@ -9,7 +9,7 @@
    Col·loca'ls a  assets/fonts/  amb estos noms exactes.
    ───────────────────────────────────────────────────────────────── */
 /* L'import s'ha mogut fora de React */
-@import './legacy-components.css';
+
 /* ═══════════════════════════════════════════════════════════════════
    PEDRA SECA · Full d'estils base — v2.0
    Sóc de Poble · CSS natiu, sense frameworks (substitueix el base)
@@ -550,12 +550,14 @@ main.app-main {
   -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
   scrollbar-color: var(--sdp-text-suau) transparent;
+  position: relative;
 }
 
 .app-main-content {
   flex: 1 0 auto;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 /* ── 3. COLUMNA 1 · SIDEBAR ────────────────────────────────────── */
@@ -592,8 +594,13 @@ nav.app-sidebar > div:last-child {
 .sidebar-control-btn {
   display: flex;
   text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  padding: 0 16px;
+  white-space: nowrap;
+  gap: var(--sdp-space-3);
   flex: none;
   height: var(--sdp-alt-accio);
   background: var(--sdp-accio-forta);
@@ -618,7 +625,9 @@ nav.app-sidebar > div:last-child {
 .sidebar-control-btn:active { background: var(--sdp-accio-forta); }
 
 .nav-item {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: var(--sdp-space-3);
   padding: var(--sdp-space-3) var(--sdp-space-4);
   margin-bottom: var(--sdp-space-1);
   border-radius: var(--sdp-radi-m);
@@ -630,6 +639,19 @@ nav.app-sidebar > div:last-child {
 .nav-item:hover { background: rgba(255,255,255,0.09); color: var(--sdp-text-invers); }
 .nav-item.active { background: var(--sdp-accent); color: var(--sdp-sobre-accent); }
 .nav-item.active:hover { background: var(--sdp-accent-hover); }
+
+.nav-item.nav-item--system {
+  background-color: transparent;
+  color: rgba(255, 230, 100, 0.9);
+}
+.nav-item.nav-item--system:hover {
+  background-color: transparent;
+  color: rgba(255, 230, 100, 1);
+}
+.nav-item.nav-item--system.active {
+  background-color: rgba(255, 230, 100, 0.1);
+  color: #fff;
+}
 
 /* ── 4. COLUMNA 2 · LLISTA CONTEXTUAL (opcional) ───────────────
    Esta demo no la inclou; l'app real (xats, llocs…) només ha de
@@ -1920,6 +1942,7 @@ nav.mobile-nav { display: none; }
    FASE 4: EXPERIÈNCIA PRÈMIUM (PEDRA SECA UX)
    ========================================================================== */
 
+
 /* --- 1. View Transitions API (La Pedra Lliscant) --- */
 @supports (view-transition-name: root) {
   @media (prefers-reduced-motion: no-preference) {
@@ -2423,12 +2446,11 @@ button.sp-card-calendar-badge:hover {
    ========================================================================= */
 
 .xat-layout {
-  flex: 1;
+  position: absolute;
+  inset: 0;
   display: flex;
   background: var(--sdp-fons-targeta);
   overflow: hidden;
-  position: relative;
-  min-height: 0;
 }
 
 .xat-sidebar {
@@ -2446,9 +2468,8 @@ button.sp-card-calendar-badge:hover {
   justify-content: space-between;
   align-items: center;
   background: var(--sdp-accio);
-  position: relative;
   margin-right: -1px; /* Cobreix la vora dreta per connectar fons blau */
-  z-index: 2;
+  z-index: 12;
 }
 
 .search-bar-basic {
@@ -2523,9 +2544,8 @@ button.sp-card-calendar-badge:hover {
   gap: 8px;
   overflow-x: auto;
   background: var(--sdp-accent);
-  position: relative;
   margin-right: -1px;
-  z-index: 1;
+  z-index: 11;
 }
 
 .btn-taronja-fort {
@@ -2664,6 +2684,7 @@ button.sp-card-calendar-badge:hover {
   gap: 12px;
   background: var(--sdp-accio);
   color: var(--sdp-text-invers);
+  z-index: 12;
 }
 
 .xat-header-btn {
@@ -2880,3 +2901,56 @@ button.sp-card-calendar-badge:hover {
   justify-content: center;
 }
 
+/* ==========================================
+   UTILITATS SDP 
+========================================== */
+.sdp-unstyled-btn {
+  background: transparent;
+  border: none;
+  padding: 0;
+  width: 100%;
+}
+
+.sdp-ptr-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--sdp-fons-subtil);
+  color: var(--sdp-text-suau);
+  font-size: 0.85rem;
+  font-weight: 600;
+  z-index: 10;
+  transition: transform 0.3s ease-out;
+  transform: translateY(0px);
+}
+
+.app-sidebar-nav {
+  padding: var(--sdp-space-4);
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+.sdp-flex-1 {
+  flex: 1;
+}
+
+.sdp-quarantena-badge {
+  color: var(--sdp-avis-text);
+  font-weight: bold;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 1rem;
+  padding: 0.2rem 0.5rem;
+  background-color: var(--sdp-blanc);
+  border: 1px solid var(--sdp-avis-500);
+  border-radius: var(--sdp-radi-s);
+}

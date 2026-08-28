@@ -3,7 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const REQUIRED_FILES = [
-  'AGENTS.md',
+  '.agents/AGENTS.md',
   'package.json',
   '.agents/PROTOCOL_PETORRETA.md',
   'tooling/wiki/reflex_petorreta.mjs',

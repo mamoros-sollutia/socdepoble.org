@@ -969,14 +969,15 @@ Gran</div>
 <h3>26. Embeddings i Media Externa</h3>
 <h4>26.1 Vídeo embebint (HTML5 natiu)</h4>
 <div className="embed-container">
-<div dangerouslySetInnerHTML={{ __html: sanitizeHtml(`<i` + `frame 
-  src="https://www.youtube-nocookie.com/embed/Fadaa7Kyxm0?si=G_xGeA1VqR0cX_IP" 
-  title="Sóc de Poble: Portal de pobles connectats" 
-  frameBorder="0" 
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-  referrerPolicy="strict-origin-when-cross-origin" 
-  allowFullScreen>
-</i` + `frame>`) }} />
+{React.createElement('iframe', {
+  src: "https://www.youtube-nocookie.com/embed/Fadaa7Kyxm0?si=G_xGeA1VqR0cX_IP",
+  title: "Sóc de Poble: Portal de pobles connectats",
+  frameBorder: "0",
+  allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",
+  referrerPolicy: "strict-origin-when-cross-origin",
+  allowFullScreen: true,
+  style: { position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }
+})}
 </div>
 <div className="embed-caption">Sóc de Poble: Portal de pobles connectats (2013)</div>
 <details className="accordion sdp-mb-6">
@@ -1028,7 +1029,14 @@ Gran</div>
 <h4>26.2 Mapa embebint (iframe amb fallback)</h4>
 <div className="sdp-w-full sdp-mb-4">
   <div className="sdp-w-full sdp-mb-4">
-  <div dangerouslySetInnerHTML={{ __html: sanitizeHtml('<i' + 'frame width="100%" height="450" style="border:0;" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?key=FAKE_KEY&q=La+Torre+de+les+Macanes"></i' + 'frame>') }} />
+  {React.createElement('iframe', {
+    width: "100%",
+    height: "450",
+    style: { border: 0 },
+    loading: "lazy",
+    allowFullScreen: true,
+    src: "https://www.google.com/maps/embed/v1/place?key=FAKE_KEY&q=La+Torre+de+les+Macanes"
+  })}
 </div>
 </div>
 <div className="embed-caption"><a href="#">Veure mapa més gran a OpenStreetMap →</a></div>

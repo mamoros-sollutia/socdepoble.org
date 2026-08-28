@@ -4,7 +4,8 @@ description: Skill for core-verified-change operations.
 version: 2.0.0
 status: active
 owner: project-governance
-purpose: Aplica precondicions, proves proporcionals al risc, comparació abans/després,
+purpose: >
+  Aplica precondicions, proves proporcionals al risc, comparació abans/després,
   rollback i rebut.
 use_when: []
 skip_when: []
@@ -14,9 +15,6 @@ requires:
 - core-bounded-action
 conflicts_with: []
 authority_level: procedural
-freshness:
-  reviewed_at: '2026-08-25'
-  review_after: '2026-11-25'
 tests: null
 triggers_on:
 - canvi

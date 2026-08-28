@@ -4,7 +4,8 @@ description: Skill for multi-agent-review operations.
 version: 2.0.0
 status: active
 owner: project-governance
-purpose: Organitza la revisió de treballs definint rols independents, contrastant
+purpose: >
+  Organitza la revisió de treballs definint rols independents, contrastant
   evidències i discrepàncies.
 use_when: []
 skip_when: []
@@ -13,9 +14,6 @@ effects: []
 requires: []
 conflicts_with: []
 authority_level: procedural
-freshness:
-  reviewed_at: '2026-08-25'
-  review_after: '2026-11-25'
 tests: null
 triggers_on:
 - consell

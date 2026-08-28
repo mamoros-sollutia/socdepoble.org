@@ -46,22 +46,71 @@ let sharedContainer = null;
 export function showToast(missatge, durada = 3000) {
   if (typeof document === 'undefined') return;
   
-  if (!sharedContainer) {
-    const target = document.getElementById('socdepoble-app') || document.body;
+  // Neteja qualsevol timer pendent de destrucció
+  if (sharedContainer && sharedContainer.__destroyTimer) {
+    clearTimeout(sharedContainer.__destroyTimer);
+    sharedContainer.__destroyTimer = null;
+  }
+  
+  if (!sharedContainer || !sharedContainer.isConnected) {
+    let target = null;
+    const sdpElement = document.querySelector('soc-de-poble');
+    if (sdpElement && sdpElement.shadowRoot) {
+      target = sdpElement.shadowRoot.querySelector('.sdp-root');
+    }
+    if (!target) {
+      target = document.querySelector('.sdp-root') || document.getElementById('socdepoble-app') || document.body;
+    }
+    
+    if (sharedRoot) {
+      try { sharedRoot.unmount(); } catch (e) { /* ignore */ }
+      sharedRoot = null;
+    }
+    if (sharedContainer && sharedContainer.parentNode) {
+      sharedContainer.parentNode.removeChild(sharedContainer);
+    }
+    
     sharedContainer = document.createElement('div');
     target.appendChild(sharedContainer);
     sharedRoot = createRoot(sharedContainer);
+    
+    renderToast();
+    return;
   }
   
-  sharedRoot.render(
-    <AvisadorEfimer 
-      missatge={missatge} 
-      durada={durada} 
-      onClose={() => {
-        setTimeout(() => {
-          sharedRoot.render(null);
-        }, 300); // Wait for transition if any
-      }}
-    />
-  );
+  renderToast();
+  
+  function renderToast() {
+    if (!sharedRoot) return;
+    sharedRoot.render(
+      <AvisadorEfimer 
+        missatge={missatge} 
+        durada={durada} 
+        onClose={() => {
+          if (sharedContainer) {
+            sharedContainer.__destroyTimer = setTimeout(() => {
+              if (sharedRoot) {
+                try { sharedRoot.render(null); } catch (e) { /* ignore */ }
+              }
+            }, 300);
+          }
+        }}
+      />
+    );
+  }
+}
+
+export function destroyToastSystem() {
+  if (sharedContainer && sharedContainer.__destroyTimer) {
+    clearTimeout(sharedContainer.__destroyTimer);
+    sharedContainer.__destroyTimer = null;
+  }
+  if (sharedRoot) {
+    try { sharedRoot.unmount(); } catch (e) { /* ignore */ }
+    sharedRoot = null;
+  }
+  if (sharedContainer && sharedContainer.parentNode) {
+    sharedContainer.parentNode.removeChild(sharedContainer);
+  }
+  sharedContainer = null;
 }

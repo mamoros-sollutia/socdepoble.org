@@ -12,9 +12,6 @@ effects: []
 requires: []
 conflicts_with: []
 authority_level: procedural
-freshness:
-  reviewed_at: '2026-08-25'
-  review_after: '2026-11-25'
 tests: null
 triggers_on:
 - bucle

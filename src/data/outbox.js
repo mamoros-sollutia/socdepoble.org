@@ -71,29 +71,33 @@ function resetCircuitBreaker() {
   engineErrors = 0;
 }
 
-function tripCircuitBreaker() {
+function isRecoverableError(err) {
+  const name = err?.name || '';
+  return name !== 'QuotaExceededError' && 
+         name !== 'ConstraintError' &&
+         name !== 'VersionError';
+}
+
+function tripCircuitBreaker(err) {
+  if (isRecoverableError(err)) return; // No comptem errors genèrics
   if (purgant) return;            // no comptem els errors de la mateixa purga
   engineErrors += 1;
   if (engineErrors < LLINDAR_ERRORS) return;
   engineErrors = 0;
   purgant = true;
-  purgaCua().finally(() => { purgant = false; });
-}
-
-/**
- * Disparador del Circuit Breaker. Buida NOMÉS la cua d'eixida.
- * Els snapshots són el contingut offline de la persona: no es toquen mai
- * automàticament.
- */
-async function purgaCua() {
-  try {
-    const db = await obri();
-    await transaccio(db, MAGATZEM, 'readwrite', (m) => m.clear());
-    console.error('[OUTBOX] Circuit Breaker: cua buidada. Els snapshots es conserven.');
-  } catch (err) {
-    console.error('[OUTBOX] Circuit Breaker: buidatge fallit; es tanca la connexió.', err);
-    await tancaConnexio();
+  
+  // Pedaç Gemini (Fase 4) + Dola: Quarantena temporal amb auto-eixida
+  console.error('[OUTBOX] Circuit Breaker: errors crítics d\'IDB. Entrem en QUARANTENA (5 min).');
+  if (typeof window !== 'undefined') {
+    window.__SDP_OUTBOX_QUARANTINED__ = true;
+    window.dispatchEvent(new CustomEvent('sdp:outbox-quarantena', { detail: true }));
+    setTimeout(() => {
+      window.__SDP_OUTBOX_QUARANTINED__ = false;
+      purgant = false;
+      window.dispatchEvent(new CustomEvent('sdp:outbox-quarantena', { detail: false }));
+    }, 5 * 60 * 1000);
   }
+  tancaConnexio();
 }
 
 /** Tanca la connexió i força una reobertura neta a la pròxima crida. */
@@ -107,6 +111,9 @@ export async function tancaConnexio() {
     /* ja estava tancada */
   }
 }
+
+/** Àlies de compatibilitat per evitar memory leaks (Requisit Kimi) */
+export const destroy = tancaConnexio;
 
 /**
  * Esborrat total de la base de dades. NO es crida mai automàticament:
@@ -192,7 +199,7 @@ function obri() {
       if (tancada) return;
       tancada = true;
       if (dbPromesa === meua) dbPromesa = null;
-      tripCircuitBreaker();
+      tripCircuitBreaker(p.error || new Error('IDB open error'));
       rebutja(p.error || new Error('IDB open error'));
     };
 
@@ -244,8 +251,9 @@ function transaccio(db, magatzem, mode, fn) {
 
     const rellotge = setTimeout(() => acaba(() => {
       try { t?.abort(); } catch { /* res */ }
-      tripCircuitBreaker();
-      rebutja(new Error(`IDB Vigilant: '${magatzem}' encallat ${VIGILANT_MS} ms`));
+      const err = new Error(`IDB Vigilant: '${magatzem}' encallat ${VIGILANT_MS} ms`);
+      tripCircuitBreaker(err);
+      rebutja(err);
     }), VIGILANT_MS);
 
     try {
@@ -260,12 +268,14 @@ function transaccio(db, magatzem, mode, fn) {
       resol(desembolica(valor));
     });
     t.onerror = () => acaba(() => {
-      tripCircuitBreaker();
-      rebutja(t.error || new Error(`IDB error a '${magatzem}'`));
+      const err = t.error || new Error(`IDB error a '${magatzem}'`);
+      tripCircuitBreaker(err);
+      rebutja(err);
     });
     t.onabort = () => acaba(() => {
-      tripCircuitBreaker();
-      rebutja(t.error || new Error(`IDB abort a '${magatzem}'`));
+      const err = t.error || new Error(`IDB abort a '${magatzem}'`);
+      tripCircuitBreaker(err);
+      rebutja(err);
     });
 
     try {
@@ -283,9 +293,14 @@ const tx = async (mode, fn) => transaccio(await obri(), MAGATZEM, mode, fn);
 
 /* ─────────────────────────────────── API ───────────────────────────────── */
 
-export const uuid = () =>
-  (crypto.randomUUID?.() ??
-    `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`);
+export const uuid = () => {
+  if (typeof crypto !== 'undefined' && crypto.randomUUID) {
+    return crypto.randomUUID();
+  }
+  return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+    (c ^ (typeof crypto !== 'undefined' && crypto.getRandomValues ? crypto.getRandomValues(new Uint8Array(1))[0] : Math.random() * 256) & 15 >> c / 4).toString(16)
+  );
+};
 
 /**
  * Encua. L'id ve del cridador i NO es regenera mai en cap reintent, de manera
@@ -297,6 +312,9 @@ export const uuid = () =>
  * disc (a l'iPad A10 això es nota).
  */
 export const encua = async (registre) => {
+  if (typeof window !== 'undefined' && window.__SDP_OUTBOX_QUARANTINED__) {
+    throw new Error('[OUTBOX] En quarantena temporal.');
+  }
   if (!registre || registre.id === undefined || registre.id === null || registre.id === '') {
     throw new Error('[OUTBOX] encua() exigix un id estable del cridador.');
   }
@@ -326,25 +344,19 @@ export const encua = async (registre) => {
  * val més un registre orfe que un missatge duplicat a la paret del poble.
  */
 export async function confirma(id) {
-  try {
-    await tx('readwrite', (m) => m.delete(id));
-    return true;
-  } catch (err) {
-    console.warn('[OUTBOX] Esborrat fallit; es marca com a confirmat.', id, err);
-    try {
-      await tx('readwrite', (m) => {
-        const p = m.get(id);
-        p.onsuccess = () => {
-          if (p.result) m.put({ ...p.result, estat: 'confirmat', confirmatTs: Date.now() });
-        };
-        return () => true;
-      });
-      return true;
-    } catch (err2) {
-      console.error('[OUTBOX] Tampoc s\'ha pogut marcar com a confirmat.', id, err2);
-      throw err;
-    }
-  }
+  return tx('readwrite', (m) => {
+    const p = m.get(id);
+    p.onsuccess = () => {
+      if (!p.result) return;
+      if (p.result.estat === 'confirmat') return;
+      try {
+        m.delete(id);
+      } catch {
+        m.put({ ...p.result, estat: 'confirmat', confirmatTs: Date.now() });
+      }
+    };
+    return () => true;
+  });
 }
 
 export const pendents = () => tx('readonly', (m) => m.getAll());
@@ -358,36 +370,46 @@ export const pendents = () => tx('readonly', (m) => m.getAll());
  * un registre que fa petar l'enviador es reclama per sempre.
  */
 export async function reclama(limit = LOT_MAX) {
+  if (typeof window !== 'undefined' && window.__SDP_OUTBOX_QUARANTINED__) return [];
   const ara = Date.now();
   const lot = [];
 
   await tx('readwrite', (m) => {
-    m.openCursor().onsuccess = (e) => {
+    const index = m.index('estat');
+    
+    // 1r: registres 'pendent' que ja toca
+    index.openCursor('pendent').onsuccess = (e) => {
       const c = e.target.result;
       if (!c || lot.length >= limit) return;
       const r = c.value;
-
-      const caducat = r.estat === 'enviant' && ara - (r.arrendamentTs || 0) > ARRENDAMENT_MS;
-      const toca = r.estat === 'pendent' && ara >= (r.seguentIntentTs || 0);
-
-      if (caducat) {
-        const intents = (r.intents || 0) + 1;
-        if (intents > MAX_INTENTS) {
-          console.warn(`[OUTBOX] Missatge mort per arrendaments caducats: ${r.id}`);
-          c.update({ ...r, estat: 'mort', intents });
-        } else {
-          const reclamat = { ...r, estat: 'enviant', intents, arrendamentTs: ara };
-          c.update(reclamat);
-          lot.push(reclamat);
-        }
-      } else if (toca) {
+      if (ara >= (r.seguentIntentTs || 0)) {
         const reclamat = { ...r, estat: 'enviant', arrendamentTs: ara };
         c.update(reclamat);
         lot.push(reclamat);
       }
-
       c.continue();
     };
+    
+    // 2n: registres 'enviant' amb arrendament caducat
+    if (lot.length < limit) {
+      index.openCursor('enviant').onsuccess = (e) => {
+        const c = e.target.result;
+        if (!c || lot.length >= limit) return;
+        const r = c.value;
+        if (ara - (r.arrendamentTs || 0) > ARRENDAMENT_MS) {
+          const intents = (r.intents || 0) + 1;
+          if (intents > MAX_INTENTS) {
+            console.warn(`[OUTBOX] Missatge mort per arrendaments caducats: ${r.id}`);
+            c.update({ ...r, estat: 'mort', intents });
+          } else {
+            const reclamat = { ...r, estat: 'enviant', intents, arrendamentTs: ara };
+            c.update(reclamat);
+            lot.push(reclamat);
+          }
+        }
+        c.continue();
+      };
+    }
     return () => lot;
   });
 
@@ -466,3 +488,15 @@ export const saveSnapshot = async (id, data) => {
   const db = await obri();
   await transaccio(db, SNAPSHOTS, 'readwrite', (m) => m.put({ id, data, ts: Date.now() }));
 };
+
+/** Zeta F-4 & Dola: Comptador de Quarantena i Errors */
+export async function compta() {
+  const lot = await tx('readonly', (m) => m.getAll());
+  const totals = lot.length;
+  const morts = lot.filter(r => r.estat === 'mort').length;
+  return {
+    totals,
+    morts,
+    quarantena: typeof window !== 'undefined' ? !!window.__SDP_OUTBOX_QUARANTINED__ : false
+  };
+}

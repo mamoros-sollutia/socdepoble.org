@@ -1,6 +1,7 @@
 ---
 name: pedra-seca
-description: Design System canònic de Sóc de Poble. Obligatori llegir i aplicar aquestes
+description: >
+  Design System canònic de Sóc de Poble. Obligatori llegir i aplicar aquestes
   regles per a qualsevol modificació de Frontend (React/CSS) o disseny d'interfícies.
 version: 1.0.0
 status: canonic

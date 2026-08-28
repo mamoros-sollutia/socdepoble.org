@@ -21,15 +21,19 @@ Aquestes skills s'apliquen sempre per validar l'entorn abans d'executar tasques 
 - `core-trust-boundary`: Frontera de confiança i aïllament d'evidència.
 - `core-bounded-action`: Control d'accions (sense ampliació d'autoritat).
 - `core-verified-change`: Modificacions validades (dry-run, rollback).
+- `abocament-total`: Protocol per evitar mutilació de context i garantir la Veritat Completa.
+- `guia-ampliacio`: Guia d'Ampliació i Modularitat (Com afegir funcionalitat).
 
 ## Skills de Tasca
 - `cog-deliberation`: Raonament privat, output justificat.
 - `multi-agent-review`: Avaluacions entre membres del Consell.
 - `socdepoble-workflow`: Flux de treball per a Soc de Poble.
+- `trellat`: Protocol obligatori de reflexió prèvia.
 
 ## Skills de Domini
 - `pedra-seca`: Sistema de disseny visual i criteris estètics autòctons.
 - `identity-iaia-voice`: To de veu de la IAIA MarIA (rural, no paternalista).
+- `actitud-dafo`: Humilitat radical i anàlisi DAFO de solucions.
 
 ## Linter i Compilador
 Aquest índex serveix de referència per al compilador en temps d'execució. Si s'introdueixen triggers duplicats, fitxers d'habilitat malformats o codi incrustat, la fase de compilació (o el Linter de skills) ho rebutjarà categòricament.

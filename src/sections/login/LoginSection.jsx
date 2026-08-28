@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { ArrowRight, Chrome, Lock, LogIn, Mail, UserPlus, UserRound, Loader2 } from 'lucide-react';
+import { ArrowRight, Globe, Lock, LogIn, Mail, UserPlus, UserRound, Loader2 } from 'lucide-react';
 import BrandMark from '../../components/BrandMark';
 import { UniversalPage } from '../../components/universal/UniversalComponents';
 import { useAppData } from '../../app/AppDataContext';
-import { loginWithEmail, registerWithEmail } from '../../data/supabaseBackend';
+import { loginWithEmail, registerWithEmail } from '../../data/backendPort.js';
 import { showToast } from '../../components/universal/AvisadorEfimer';
 import { useNavigate } from 'react-router-dom';
 function LoginCard({ mode, activeMode, children }) {
@@ -93,7 +93,7 @@ export default function LoginSection() {
       label: t('section.login.googleButton', 'Google'),
       title: t('section.login.googleTitle', 'Accés amb Google'),
       subtitle: t('section.login.googleSubtitle', 'Entra de manera ràpida amb el teu compte de Google.'),
-      icon: Chrome,
+      icon: Globe,
       meta: [
         t('section.login.meta.oauth', 'OAuth'),
         'Google',
@@ -217,14 +217,14 @@ export default function LoginSection() {
           <LoginCard mode={MODES[2]} activeMode={activeMode}>
             <div className="login-form">
               <div className="login-form__head">
-                <Chrome size={18} />
+                <Globe size={18} />
                 <h3 className="card__title">{t('section.login.googleTitle', 'Google')}</h3>
               </div>
               <p className="card__text">{t('section.login.googleSubtitle', 'Accés ràpid amb Google per a entrar en un clic.')}</p>
 
               <div className="login-google">
                 <button type="button" className="pill pill--primary login-action">
-                  <Chrome size={16} />
+                  <Globe size={16} />
                   {t('section.login.googleButton', 'Continuar amb Google')}
                 </button>
                 <p className="login-note">{t('section.login.googleNote', 'Opció pensada per a un accés més ràpid i còmode.')}</p>

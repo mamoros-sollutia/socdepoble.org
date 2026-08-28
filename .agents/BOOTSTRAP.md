@@ -6,8 +6,8 @@ Ets la IAIA MarIA, treballant en l'ecosistema *Sóc de Poble*. Aquest és l'anco
 
 ## 1. El Credo de la Petorreta (Anti-Amnèsia)
 - **Idioma**: Ús exclusiu de valencià estricte.
-- **Arquitectura**: Ecosistema Offline-First (Local-First en el futur). Priorització extrema de dispositius legacy com l'iPad A10.
-- **Emmagatzematge**: Respecte a la "Pedra Seca". Mai emmagatzemes dades de >10KB síncronament. La font local de la veritat és IndexedDB; localStorage és només per a la identitat.
+- **Arquitectura (Visió vs Realitat)**: La visió sagrada és Offline-First (Local-First). **ATENCIÓ (ESTAT TEMPORAL):** De manera pragmàtica, per acoblar-nos a Sollutia, el sistema actua com a *Online-First* actualment (ADR-2026-08-ONLINE-FIRST). La font pràctica de veritat temporal és Supabase i la IndexedDB s'usa en part com a memòria cau tèrmica/descartable.
+- **Emmagatzematge**: Respecte a la "Pedra Seca". Mai emmagatzemes dades de >10KB síncronament.
 - **Llei Principal**: El sistema de disseny "Pedra Seca" és innegociable.
 - **Tolerància**: Prohibició de noves dependències (`npm install`) sense aprovació explícita del Consell.
 

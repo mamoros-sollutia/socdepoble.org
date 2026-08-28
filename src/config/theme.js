@@ -1,12 +1,7 @@
 import { getVal, setVal } from './storage.js';
 
 export const THEME_KEY = 'sdp-theme';
-const LEGACY_KEYS = ['socdepoble-theme-mode'];
 const VALID = new Set(['light', 'dark', 'system']);
-
-const decode = (raw) => {
-  return raw; // Text cru (dark/light), ja no fem JSON.parse
-};
 
 export function readThemePreference(configured) {
   if (VALID.has(configured)) return configured;
@@ -16,7 +11,13 @@ export function readThemePreference(configured) {
   // 1. Font de veritat: atribut HTML (Shadow DOM o arrel)
   let root = null;
   if (typeof document !== 'undefined') {
-    root = document.querySelector('#soc-de-poble') || document.documentElement;
+    const sdpElement = document.querySelector('soc-de-poble');
+    if (sdpElement && sdpElement.shadowRoot) {
+      root = sdpElement.shadowRoot.querySelector('.sdp-root');
+    }
+    if (!root) {
+      root = document.querySelector('.sdp-root') || document.querySelector('#socdepoble-app') || document.documentElement;
+    }
   }
   const htmlTheme = root ? root.getAttribute('data-theme') : null;
   if (htmlTheme && VALID.has(htmlTheme)) return htmlTheme;

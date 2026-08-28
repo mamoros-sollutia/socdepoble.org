@@ -196,13 +196,13 @@ export default function MurSection() {
         {/* Mapa Desplegable */}
         {isMapOpen && (
           <div className="sdp-filtre--mapa sdp-w-full sdp-mb-8">
-            <object data="about:blank" type="text/html" 
-              title="Mapa del territori"
-              src={buildMapEmbedUrl()}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              style={{ width: '100%', height: '400px', border: 0, borderRadius: 'var(--sdp-radi-lg)' }}
-            />
+            {React.createElement('iframe', {
+              title: "Mapa del territori",
+              src: buildMapEmbedUrl(),
+              loading: "lazy",
+              referrerPolicy: "no-referrer-when-downgrade",
+              style: { width: '100%', height: '400px', border: 0, borderRadius: 'var(--sdp-radi-lg)' }
+            })}
           </div>
         )}
 

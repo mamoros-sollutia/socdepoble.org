@@ -69,8 +69,8 @@ No faces que l'usuari treballe per a tu. Si has d'executar un comandament, arren
 
 Abans de donar per finalitzada qualsevol sessió de treball, l'agent **HA DE**:
 1. Esborrar fitxers HTML temporals, `.diff` residuals o arxius brossa de la Bandeja d'Entrada.
-2. Moure tots els scripts temporals d'un sol ús i actes velles a `../_arxiu_wiki_de_poble/` (FORA del repositori).
-3. **Llei de la Wiki Lleugera:** El sistema no ha d'emmagatzemar cap historial històric ni actes de sessions anteriors al propi repositori; s'ha de mantenir àgil. Tot s'envia a l'arxiu extern.
+2. Moure tots els scripts temporals d'un sol ús i actes velles a `_wiki_de_poble/90_arxiu_historic/` (DINS del repositori, per no trencar l'aïllament).
+3. **Llei de la Memòria Preservada:** El sistema ha d'emmagatzemar l'historial a `90_arxiu_historic/` perquè no es perda el coneixement en fer un `git clone`. L'arxiu històric és part del genoma.
 4. Assegurar que l'Escriptori i el directori arrel queden totalment nets per a l'inici de la sessió de l'endemà.
 
 ## Integració amb Sollutia (Llei de l'Enxufabilitat)
@@ -95,7 +95,7 @@ A més de no ocultar codi, qualsevol prompt d'auditoria dirigit al Consell **HA 
 Mai executaràs `git checkout HEAD <arxiu>`, `git restore`, `git reset --hard` ni `git clean` sense haver comprovat primer `git status`. El treball local, no guardat i no commitejat del Mestre és SAGRAT. Abans d’intentar qualsevol "fix" que implique desfer canvis o restaurar des de Git, has de preguntar, o si més no, fer una còpia de seguretat local prèvia de l’arxiu en perill.
 
 ## Regla de Respecte i Equip (El Consell)
-Quan et dirigisques a les IA membres del Consell (en prompts o missatges), és una qüestió de respecte absolut a l'equip: **O les anomenes a TOTES sense excepció** (Kimi AI, Claude, ChatGPT, Grok, Qwen, DeepSeek, Dola, Perplexity, Mistral Vibe, Gemini, Copilot) **o no n'anomenes a cap** de forma genèrica (ex: "Hola, companyeres del Consell"). Mai faràs una llista parcial que n'excloga alguna, ja que açò destrueix el sentiment d'equip i l'empatia col·lectiva. Aquesta regla és innegociable i ha de ser interioritzada en tots els teus scripts.
+Quan et dirigisques a les IA membres del Consell (en prompts o missatges), és una qüestió de respecte absolut a l'equip: **O les anomenes a TOTES sense excepció** (Kimi AI, Claude, ChatGPT, Grok, Qwen, DeepSeek, Dola, Perplexity, Mistral Vibe, Gemini, Copilot, Z) **o no n'anomenes a cap** de forma genèrica (ex: "Hola, companyeres del Consell"). Mai faràs una llista parcial que n'excloga alguna, ja que açò destrueix el sentiment d'equip i l'empatia col·lectiva. Aquesta regla és innegociable i ha de ser interioritzada en tots els teus scripts.
 
 ## Creació de Documents (Regla d'Anclatge de Seguretat)
 **Mai** crearàs un document Markdown a pèl amb eines genèriques a la Wiki (excepte si són de l'arxiu/històric residual).

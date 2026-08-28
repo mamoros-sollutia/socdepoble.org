@@ -1,6 +1,6 @@
-import { lazy, Suspense, useEffect, useLayoutEffect, useState, memo, useRef } from 'react';
-import { Navigate, NavLink, Route, Routes, useNavigate, useParams } from 'react-router-dom';
-import { Globe, MoonStar, Plus, Search, Settings, Sun, UserRound } from 'lucide-react';
+import { lazy, Suspense, useEffect, useLayoutEffect, useState, memo, useRef, StrictMode } from 'react';
+import { Navigate, NavLink, Route, Routes, useNavigate, useParams, useLocation } from 'react-router-dom';
+import { Globe, MoonStar, Plus, Search, Settings, Sun, UserRound } from '../icons.jsx';
 import BrandMark from '../components/BrandMark';
 import { useAppData } from './AppDataContext';
 import { APP_NAME } from '../config/app';
@@ -31,7 +31,10 @@ const PageDetailSection = lazy(() => import('../sections/detail/PageDetailSectio
 const RealitatSection = lazy(() => import('../sections/realitat/RealitatSection'));
 import NotFoundPage from '../pages/NotFoundPage';
 
-const NAV_SECTIONS = SECTIONS.filter((section) => SECTION_ORDER.includes(section.id));
+const ALL_NAV_SECTIONS = SECTIONS.filter((section) => SECTION_ORDER.includes(section.id));
+const NAV_SECTIONS = ALL_NAV_SECTIONS.filter(s => s.id !== 'versions' && s.id !== 'legal');
+const SYSTEM_SECTIONS = ALL_NAV_SECTIONS.filter(s => s.id === 'versions' || s.id === 'legal');
+
 const MOBILE_NAV_LEADING = NAV_SECTIONS.slice(0, 2);
 const MOBILE_NAV_TRAILING = NAV_SECTIONS.slice(2, 4);
 
@@ -56,14 +59,22 @@ function RouteFallback() {
 }
 
 function AppShell({ children, mobileNav }) {
-  const { language, t, status, themeMode } = useAppData();
+  const { language, t, status, themeMode, isSuperAdmin } = useAppData();
   const navigate = useNavigate();
+  const location = useLocation();
   const mainRef = useRef(null);
+  const contentRef = useRef(null);
   
-  // Pull to Refresh logic
-  const [pullStart, setPullStart] = useState(null);
-  const [pullDistance, setPullDistance] = useState(0);
+  // Pull to Refresh logic optimitzat natiu
+  const indicatorRef = useRef(null);
   const PULL_THRESHOLD = 100;
+
+  // Restaurar el focus a main en canviar de ruta (A11y)
+  useEffect(() => {
+    if (mainRef.current) {
+      mainRef.current.focus({ preventScroll: true });
+    }
+  }, [location.pathname]);
 
   useLayoutEffect(() => {
     if (mainRef.current) {
@@ -88,37 +99,91 @@ function AppShell({ children, mobileNav }) {
     }
   }, [language]);
 
-  const handleTouchStart = (e) => {
-    if (mainRef.current && mainRef.current.scrollTop === 0) {
-      setPullStart(e.touches[0].clientY);
-    } else {
-      setPullStart(null);
-    }
-  };
+  useEffect(() => {
+    const mainEl = mainRef.current;
+    const contentEl = contentRef.current;
+    const indicatorEl = indicatorRef.current;
+    if (!mainEl || !contentEl || !indicatorEl) return;
 
-  const handleTouchMove = (e) => {
-    if (pullStart === null) return;
-    const y = e.touches[0].clientY;
-    const distance = y - pullStart;
-    if (distance > 0) {
-      setPullDistance(distance);
-      // Only prevent default if we are actively pulling down, to allow normal scrolling otherwise
-      if (e.cancelable) e.preventDefault();
-    }
-  };
+    mainEl.style.touchAction = 'pan-x pan-down';
 
-  const handleTouchEnd = () => {
-    if (pullDistance > PULL_THRESHOLD) {
-      window.dispatchEvent(new Event('sdp:refresh-data'));
-    }
-    setPullStart(null);
-    setPullDistance(0);
-  };
+    let pullStart = null;
+    let pullDistance = 0;
+    let rafId = null;
+    let state = ''; // '', 'pulling', 'ready'
+
+    const updateUI = (distance, newState) => {
+      if (rafId) return;
+      rafId = requestAnimationFrame(() => {
+        const translateY = Math.min(distance, PULL_THRESHOLD + 40);
+        contentEl.style.transform = `translateY(${translateY}px)`;
+        indicatorEl.style.transform = `translateY(${translateY}px)`;
+        
+        if (state !== newState) {
+          state = newState;
+          if (state === 'ready') {
+            indicatorEl.innerText = t('pull.release', 'Deixa anar per recarregar...');
+          } else if (state === 'pulling') {
+            indicatorEl.innerText = t('pull.pull', 'Estira per recarregar...');
+          } else {
+            indicatorEl.innerText = '';
+          }
+        }
+        rafId = null;
+      });
+    };
+
+    const onTouchStart = (e) => {
+      if (mainEl.scrollTop === 0) {
+        pullStart = e.touches[0].clientY;
+        pullDistance = 0;
+        contentEl.style.transition = 'none';
+        indicatorEl.style.transition = 'none';
+      } else {
+        pullStart = null;
+      }
+    };
+
+    const onTouchMove = (e) => {
+      if (pullStart === null) return;
+      const y = e.touches[0].clientY;
+      const distance = y - pullStart;
+      if (distance > 0) {
+        if (e.cancelable) e.preventDefault();
+        pullDistance = distance;
+        updateUI(distance, distance > PULL_THRESHOLD ? 'ready' : 'pulling');
+      }
+    };
+
+    const onTouchEnd = () => {
+      if (pullStart === null) return;
+      if (pullDistance > PULL_THRESHOLD) {
+        window.dispatchEvent(new CustomEvent('sdp:refresh-data', { bubbles: true, composed: true }));
+      }
+      pullStart = null;
+      pullDistance = 0;
+      updateUI(0, '');
+      contentEl.style.transition = 'transform 0.3s ease-out';
+      contentEl.style.transform = 'translateY(0px)';
+      indicatorEl.style.transition = 'transform 0.3s ease-out';
+      indicatorEl.style.transform = 'translateY(0px)';
+    };
+
+    mainEl.addEventListener('touchstart', onTouchStart, { passive: true });
+    mainEl.addEventListener('touchmove', onTouchMove, { passive: false });
+    mainEl.addEventListener('touchend', onTouchEnd, { passive: true });
+
+    return () => {
+      mainEl.removeEventListener('touchstart', onTouchStart);
+      mainEl.removeEventListener('touchmove', onTouchMove);
+      mainEl.removeEventListener('touchend', onTouchEnd);
+    };
+  }, [t]);
 
   return (
     <>
       <nav id="app-sidebar" className="app-sidebar" aria-label="Navegació principal">
-        <div className="brand sdp-cursor-pointer" aria-label="Obrir o tancar menú Sóc de Poble" role="button" tabIndex={0} onClick={(e) => {
+        <button type="button" className="brand sdp-cursor-pointer sdp-unstyled-btn" aria-label="Obrir o tancar menú Sóc de Poble" onClick={(e) => {
           const root = e.target.getRootNode();
           const sidebar = root.querySelector('.app-sidebar') || document.querySelector('.app-sidebar');
           const host = root instanceof ShadowRoot ? root.host : document.body;
@@ -126,63 +191,65 @@ function AppShell({ children, mobileNav }) {
           host.classList.toggle('sidebar-closed');
         }}>
           <BrandMark className="app-brand__mark" />
-        </div>
+        </button>
 
         <button
           type="button"
           className="sidebar-control-btn"
           onClick={() => navigate('/control')}
         >
-          <Settings size={22} strokeWidth={2.8} />
-          <span>CENTRE DE CONTROL</span>
+          <Settings className="icona-linia" size={24} strokeWidth={2.1} aria-hidden="true" focusable="false" />
+          <span className="nav-item__text">PANELL DE CONTROL</span>
         </button>
 
-        <div className="sdp-p-4" aria-label="Seccions">
+        <div className="app-sidebar-nav" aria-label="Seccions">
           {NAV_SECTIONS.map((section) => {
             const Icon = section.icon;
             const labels = getSectionLabels(section.id, language);
             return (
               <NavLink key={section.id} to={section.path} className="nav-item" aria-label={labels.label}>
-                <Icon className="icona-linia" strokeWidth={2.1} size={20} aria-hidden="true" focusable="false" />
+                <Icon className="icona-linia" strokeWidth={2.1} size={24} aria-hidden="true" focusable="false" />
                 <span className="nav-item__text">
                   {labels.label}
                 </span>
               </NavLink>
             );
           })}
+          
+          <div style={{ marginTop: 'auto', paddingTop: 'var(--sdp-space-8)' }}>
+            {SYSTEM_SECTIONS.map((section) => {
+              const Icon = section.icon;
+              const labels = getSectionLabels(section.id, language);
+              return (
+                <NavLink key={section.id} to={section.path} className="nav-item nav-item--system" aria-label={labels.label}>
+                  <Icon className="icona-linia" strokeWidth={2.1} size={24} aria-hidden="true" focusable="false" />
+                  <span className="nav-item__text">
+                    {labels.label}
+                  </span>
+                </NavLink>
+              );
+            })}
+          </div>
         </div>
       </nav>
 
       <main 
+        id="main-content"
         ref={mainRef}
+        tabIndex="-1"
         className="app-main" 
-        aria-busy={status === 'loading' ? 'true' : 'false'} 
-        aria-live="polite"
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
+        aria-busy={status === 'loading' ? 'true' : 'false'}
       >
-        <div 
-          className="pull-to-refresh-indicator" 
-          style={{ 
-            height: `${pullStart !== null ? Math.min(pullDistance, PULL_THRESHOLD + 40) : 0}px`,
-            overflow: 'hidden',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            background: 'var(--sdp-fons-subtil)',
-            color: 'var(--sdp-text-suau)',
-            fontSize: '0.85rem',
-            fontWeight: '600',
-            transition: pullStart === null ? 'height 0.3s ease-out' : 'none'
-          }}
-        >
-          {pullDistance > PULL_THRESHOLD ? t('pull.release', 'Deixa anar per recarregar...') : t('pull.pull', 'Estira per recarregar...')}
-        </div>
-
         <TopBar />
         
-        <div className="app-main-content">
+        <div 
+          ref={indicatorRef}
+          className="pull-to-refresh-indicator sdp-ptr-indicator" 
+          aria-hidden="true"
+        >
+        </div>
+
+        <div ref={contentRef} className="app-main-content sdp-flex-1">
           {children}
         </div>
       </main>
@@ -194,10 +261,18 @@ function AppShell({ children, mobileNav }) {
 
 const TopBar = memo(function TopBar() {
   const navigate = useNavigate();
-  const { t, themeMode, toggleTheme } = useAppData();
+  const { t, themeMode, toggleTheme, currentUser } = useAppData();
+  const [isQuarantined, setIsQuarantined] = useState(() => typeof window !== 'undefined' ? !!window.__SDP_OUTBOX_QUARANTINED__ : false);
+
+  useEffect(() => {
+    const onQuarantena = (e) => setIsQuarantined(e.detail);
+    window.addEventListener('sdp:outbox-quarantena', onQuarantena);
+    return () => window.removeEventListener('sdp:outbox-quarantena', onQuarantena);
+  }, []);
 
   const navigateWithTransition = (path) => {
-    if (document.startViewTransition) {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (document.startViewTransition && !prefersReducedMotion) {
       document.startViewTransition(() => navigate(path));
     } else {
       navigate(path);
@@ -206,7 +281,7 @@ const TopBar = memo(function TopBar() {
 
   return (
     <header className="bar-black">
-      <div className="mobile-logo-wrapper" data-mobile-toggle="true" onClick={(e) => {
+      <button type="button" className="mobile-logo-wrapper sdp-unstyled-btn" aria-label="Obrir menú" onClick={(e) => {
         const root = e.target.getRootNode();
         const sidebar = root.querySelector('.app-sidebar') || document.querySelector('.app-sidebar');
         const host = root instanceof ShadowRoot ? root.host : document.body;
@@ -214,8 +289,15 @@ const TopBar = memo(function TopBar() {
         host.classList.toggle('sidebar-closed');
       }}>
         <BrandMark variant="light" className="mobile-logo" />
-      </div>
-      <div className="right-icons">
+      </button>
+      
+      {isQuarantined && (
+        <div className="sdp-quarantena-badge" role="status" aria-live="polite">
+          ⚠️ Quarantena
+        </div>
+      )}
+
+      <div className="right-icons" style={isQuarantined ? { marginLeft: '0' } : {}}>
         <button type="button" className="icon sdp-top-bar-btn" onClick={() => navigateWithTransition('/traduccions')} aria-label={t('nav.idioma', 'Idioma')} title={t('nav.idioma', 'Idioma')}>
           <Globe aria-hidden="true" focusable="false" />
         </button>
@@ -228,7 +310,7 @@ const TopBar = memo(function TopBar() {
         <button type="button" className="icon sdp-top-bar-btn" onClick={toggleTheme} aria-label={t('nav.tema', 'Tema')} title={t('nav.tema', 'Tema')}>
           {themeMode === 'dark' ? <Sun aria-hidden="true" focusable="false" /> : <MoonStar aria-hidden="true" focusable="false" />}
         </button>
-        <button type="button" className="icon sdp-top-bar-btn" onClick={() => navigateWithTransition('/perfil')} aria-label={t('nav.perfil', 'Perfil')} title={t('nav.perfil', 'Perfil')}>
+        <button type="button" className="icon sdp-top-bar-btn" onClick={() => navigateWithTransition(currentUser ? '/el-meu-perfil' : '/login')} aria-label={t('nav.perfil', 'Perfil')} title={t('nav.perfil', 'Perfil')}>
           <UserRound aria-hidden="true" focusable="false" />
         </button>
       </div>
@@ -268,9 +350,11 @@ function LoadError() {
 
 export default function App() {
   return (
-    <AppShell mobileNav={<MobileNav />}>
-      <AppContent />
-    </AppShell>
+    <StrictMode>
+      <AppShell mobileNav={<MobileNav />}>
+        <AppContent />
+      </AppShell>
+    </StrictMode>
   );
 }
 
@@ -290,10 +374,10 @@ function AppRoutes() {
         <Route path="/" element={<Navigate to={DEFAULT_SECTION_PATH} replace />} />
         <Route path="/xat" element={<XatSection />} />
         <Route path="/xat/:threadId" element={<XatSection />} />
-        <Route path="/chat" element={<Navigate to="/xat" replace />} />
-        <Route path="/chat/:threadId" element={<Navigate to="/xat/:threadId" replace />} />
-        <Route path="/chats" element={<Navigate to="/xat" replace />} />
-        <Route path="/chats/:threadId" element={<Navigate to="/xat/:threadId" replace />} />
+        <Route path="/chat" element={<XatSection />} />
+        <Route path="/chat/:threadId" element={<XatSection />} />
+        <Route path="/chats" element={<XatSection />} />
+        <Route path="/chats/:threadId" element={<XatSection />} />
         <Route path="/mur" element={<MurSection />} />
         <Route path="/post/:itemId" element={<LegacySectionDetailRedirect sectionId="mur" />} />
         <Route path="/mercat" element={<MercatSection />} />
@@ -345,7 +429,7 @@ function AppRoutes() {
   );
 }
 
-function MobileNav() {
+const MobileNav = memo(function MobileNav() {
   const { language, t } = useAppData();
   const navigate = useNavigate();
   return (
@@ -363,7 +447,8 @@ function MobileNav() {
           );
         })}
         <button type="button" className="mobile-nav__cta" onClick={() => {
-          if (document.startViewTransition) {
+          const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          if (document.startViewTransition && !prefersReducedMotion) {
             document.startViewTransition(() => navigate('/connectar'));
           } else {
             navigate('/connectar');
@@ -385,4 +470,4 @@ function MobileNav() {
         })}
       </nav>
   );
-}
+});

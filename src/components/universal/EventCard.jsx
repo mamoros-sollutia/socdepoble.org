@@ -38,17 +38,13 @@ function formatTime(timeStr, dateString) {
 }
 
 export function EventCard({ item }) {
-  const rawDate = item.date || item.publish_date || item.created_at || "2026-08-21T00:00:00.000Z";
+  const rawDate = item.date || item.publish_date || item.created_at;
   
   // Use entradilla if available, then lead, then description
-  const bodyContent = item.entradilla || item.lead || <p className="sp-card-text">{item.description}</p>;
+  const bodyContent = item.entradilla || item.lead || (item.description ? <p className="sp-card-text">{item.description}</p> : null);
   
   // Custom badges for event
-  const labels = item.labels || [
-    { text: 'Events', className: 'sdp-badge-system' },
-    { text: item.location || 'Localització', className: 'sdp-badge-accent' },
-    { text: item.category || 'Aplec', className: 'sdp-badge-category' }
-  ];
+  const labels = item.labels || [];
 
   return (
     <UniversalCard
@@ -57,13 +53,13 @@ export function EventCard({ item }) {
       body={bodyContent}
       imageUrl={resolveAsset((typeof item.image_url === 'string' ? item.image_url : null) || (typeof item.image === 'string' ? item.image : null) || '')}
       imageAlt={item.imageAlt || item.title || item.name || ''}
-      author={item.author_name || "Sóc de Poble"}
+      author={item.author_name}
       authorHref={item.isSystem ? "/pobles" : undefined}
-      avatarUrl={resolveAsset((typeof item.author_avatar === 'string' ? item.author_avatar : null) || '/assets/system/ui/logo-socdepoble-cuadrat-verd.svg')}
-      location={item.author_location || item.location || "La Torre de les Maçanes"}
+      avatarUrl={resolveAsset((typeof item.author_avatar === 'string' ? item.author_avatar : null) || '')}
+      location={item.author_location || item.location}
       date={formatDate(rawDate)}
       time={formatTime(item.time, rawDate)}
-      copyright="© Sóc de Poble / Fet per la IAIA i Nano Banana"
+      copyright={item.copyright}
       calendarBadge={getCalendarBadge(rawDate)}
       labels={labels}
       mainHref={item.mainHref || `/events/${item.id}`}

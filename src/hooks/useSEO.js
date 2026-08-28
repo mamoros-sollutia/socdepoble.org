@@ -7,7 +7,7 @@ export function useSEO({ title, description, canonical, image, type = 'WebPage',
   const jsonLdString = useMemo(() => jsonLd ? JSON.stringify(jsonLd) : null, [jsonLd]);
 
   useEffect(() => {
-    const shouldManageHead = externalConfig?.manageDocumentHead ?? !externalConfig?.pluginUrl;
+    const shouldManageHead = externalConfig?.manageDocumentHead === true;
     if (!shouldManageHead) return;
 
     const defaultImage = resolveAsset('/assets/system/ui/logo-socdepoble-cuadrat-verd.svg');

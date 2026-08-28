@@ -32,10 +32,12 @@
 
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { HashRouter } from 'react-router-dom';
+import { HashRouter, BrowserRouter, MemoryRouter } from 'react-router-dom';
 import App from './app/App';
 import { AppDataProvider } from './app/AppDataContext';
+import { destroyToastSystem } from './components/universal/AvisadorEfimer.jsx';
 import styles from './css/index.css?inline';
+import legacyStyles from './css/legacy-components.css?inline';
 import { readThemePreference, resolveTheme } from './config/theme';
 
 /* ───────────────────────────── Error boundary ──────────────────────────── */
@@ -66,12 +68,13 @@ class ErrorBoundary extends React.Component {
 }
 
 export default function PedraSecaEmbed({ config }) {
-  // Utilitzem HashRouter per a tindre URLs canviants (SEO i usabilitat) sense 404s al host.
-  const RouterComponent = HashRouter;
+  const RouterComponent = config.routerType === 'browser' ? BrowserRouter : 
+                          config.routerType === 'memory' ? MemoryRouter : HashRouter;
+  const routerProps = config.basename ? { basename: config.basename } : {};
 
   return (
     <ErrorBoundary>
-      <RouterComponent>
+      <RouterComponent {...routerProps}>
         <AppDataProvider externalConfig={config}>
           <App />
         </AppDataProvider>
@@ -90,8 +93,10 @@ function obtenirFull() {
   try {
     const full = new CSSStyleSheet();
     full.replaceSync(`:host{display:block;width:100%;}\n${styles}`);
-    fullCompartit = full;
-    return full;
+    const fullLegacy = new CSSStyleSheet();
+    fullLegacy.replaceSync(legacyStyles);
+    fullCompartit = [full, fullLegacy];
+    return fullCompartit;
   } catch {
     return null; /* navegador sense adoptedStyleSheets → recurs de <style> */
   }
@@ -99,28 +104,40 @@ function obtenirFull() {
 
 /* ─────────────────────── Fonts al document (P0-3) ──────────────────────── */
 
+const fontRefCount = new Map();
+
 function carregarFonts(href) {
   if (!href || typeof document === 'undefined') return;
-  if (!document.querySelector(`link[data-sdp-fonts="${CSS.escape(href)}"]`)) {
+  const key = encodeURIComponent(href);
+  const current = fontRefCount.get(key) || 0;
+  fontRefCount.set(key, current + 1);
+
+  if (current === 0 && !document.querySelector(`link[data-sdp-fonts="${key}"]`)) {
     const link = document.createElement('link');
     link.rel = 'stylesheet';
     link.href = href;
-    link.setAttribute('data-sdp-fonts', href);
+    link.setAttribute('data-sdp-fonts', key);
     document.head.appendChild(link);
   }
 }
 
 function descarregarFonts(href) {
   if (!href || typeof document === 'undefined') return;
-  const numInstancies = document.getElementsByTagName('soc-de-poble').length;
-  if (numInstancies > 0) return;
-  const link = document.querySelector(`link[data-sdp-fonts="${CSS.escape(href)}"]`);
-  if (link) link.remove();
+  const key = encodeURIComponent(href);
+  const current = fontRefCount.get(key) || 0;
+  fontRefCount.set(key, Math.max(0, current - 1));
+
+  if (fontRefCount.get(key) === 0) {
+    const link = document.querySelector(`link[data-sdp-fonts="${key}"]`);
+    if (link) link.remove();
+  }
 }
 
 /* ───────────────────────────── Element custom ──────────────────────────── */
 
 const BaseElement = typeof HTMLElement !== 'undefined' ? HTMLElement : class {};
+
+export const activeElements = new Set();
 
 const ATRIBUTS = {
   'base-path': 'basePath',
@@ -131,6 +148,31 @@ const ATRIBUTS = {
   'fonts-href': 'fontsHref',
   'plugin-url': 'pluginUrl'
 };
+
+const CLAUS_PERMESES = new Set([
+  'basePath','supabaseUrl','supabaseAnonKey','dataMode','botApiUrl',
+  'fontsHref','pluginUrl','routerType','basename','tenantId','language','themeMode',
+  'user', 'userId'
+]);
+
+function sanejaConfig(cru) {
+  const net = {};
+  for (const clau of CLAUS_PERMESES) {
+    if (clau in cru) net[clau] = cru[clau];
+  }
+  const CAMPOS_URL = ['supabaseUrl', 'botApiUrl', 'basePath', 'pluginUrl', 'fontsHref'];
+  for (const field of CAMPOS_URL) {
+    if (net[field]) {
+      try {
+        const u = new URL(net[field], window.location.origin);
+        if (u.protocol !== 'https:' && u.protocol !== 'http:' && !net[field].startsWith('/')) {
+          delete net[field];
+        }
+      } catch { delete net[field]; }
+    }
+  }
+  return net;
+}
 
 class SocDePobleElement extends BaseElement {
   static get observedAttributes() {
@@ -143,8 +185,10 @@ class SocDePobleElement extends BaseElement {
     this._configProp = {};
     this._root = null;
     this._punt = null;
-    this._desmuntatge = null;
+    this._pendingUnmount = false;
+    this._graceTimer = null;
     this._hasMountedReact = false;
+    this._manualLanguage = null;
   }
 
   /** Propietat JS: permet passar objectes rics (WordPress, React host, Vue…). */
@@ -158,21 +202,20 @@ class SocDePobleElement extends BaseElement {
   }
 
   connectedCallback() {
-    if (window.__SDP_LIVE__ > 0 && !this._hasMountedReact) {
-      console.warn('[PedraSeca] Abortant muntatge: ja hi ha una instància activa de Sóc de Poble.');
-      return;
+    this._pendingUnmount = false;
+
+    for (const old of activeElements) {
+      if (old !== this && old.isConnected && typeof old._desmuntaAra === 'function') {
+        old._desmuntaAra(); // Últim que arriba guanya: desmuntatge SÍNCRON
+      }
+      // Netejem possibles zombis
+      if (old !== this && !old.isConnected) {
+        if (typeof old._desmuntaAra === 'function') old._desmuntaAra();
+      }
     }
-    if (!this._hasMountedReact) {
-      window.__SDP_LIVE__ = (window.__SDP_LIVE__ || 0) + 1;
-      this._hasMountedReact = true;
-    }
-    
-    /* P0-2: cancel·la un desmuntatge pendent si tornem a entrar al DOM. */
-    if (this._desmuntatge !== null) {
-      cancelAnimationFrame(this._desmuntatge);
-      clearTimeout(this._desmuntatgeTimeout);
-      this._desmuntatge = null;
-    }
+
+    activeElements.add(this);
+    this._hasMountedReact = true;
 
     /* El shadow root sobreviu als moviments: es reaprofita, no es recrea. */
     if (!this.shadowRoot) this.attachShadow({ mode: 'open' });
@@ -181,9 +224,11 @@ class SocDePobleElement extends BaseElement {
     const full = obtenirFull();
     if (full && 'adoptedStyleSheets' in arrel) {
       try {
-        if (!arrel.adoptedStyleSheets.includes(full)) {
-          arrel.adoptedStyleSheets = [...arrel.adoptedStyleSheets, full];
-        }
+        let currentSheets = Array.from(arrel.adoptedStyleSheets);
+        full.forEach(sheet => {
+          if (!currentSheets.includes(sheet)) currentSheets.push(sheet);
+        });
+        arrel.adoptedStyleSheets = currentSheets;
       } catch {
         // Fallback robust per a certs entorns (WP editor) que trenquen adoptedStyleSheets
       }
@@ -193,7 +238,7 @@ class SocDePobleElement extends BaseElement {
       if (!arrel.querySelector('style[data-sdp]')) {
         const style = document.createElement('style');
         style.setAttribute('data-sdp', '');
-        style.textContent = `:host{display:block;width:100%;}\n${styles}`;
+        style.textContent = `:host{display:block;width:100%;}\n${styles}\n${legacyStyles}`;
         arrel.appendChild(style);
       }
     }
@@ -214,8 +259,9 @@ class SocDePobleElement extends BaseElement {
 
   attributeChangedCallback() {
     if (!this.isConnected) return;
-    this._recalcularConfig();
-    this._render();
+    if (this._recalcularConfig()) {
+      this._render();
+    }
   }
 
   /** P0-5: objecte nou cada vegada; llevar un atribut esborra el valor. */
@@ -250,11 +296,14 @@ class SocDePobleElement extends BaseElement {
       }
     }
 
-    const rawConfig = { ...desDeJson, ...desDAtributs, ...this._configProp };
+    const configObject = { ...desDeJson, ...desDAtributs, ...this._configProp };
+    if (!configObject.pluginUrl && this.getAttribute('plugin-url')) {
+      configObject.pluginUrl = this.getAttribute('plugin-url');
+    }
     
-    // Assegurem que pluginUrl arriba sempre si està a l'atribut HTML
-    if (!rawConfig.pluginUrl && this.getAttribute('plugin-url')) {
-      rawConfig.pluginUrl = this.getAttribute('plugin-url');
+    const rawConfig = sanejaConfig(configObject);
+    if (this._manualLanguage) {
+      rawConfig.language = this._manualLanguage;
     }
     
     let canviat = false;
@@ -270,9 +319,16 @@ class SocDePobleElement extends BaseElement {
     }
 
     if (canviat) {
+      const oldFontsHref = this._config?.fontsHref;
       this._config = { ...rawConfig };
+      if (oldFontsHref && oldFontsHref !== this._config.fontsHref) {
+        descarregarFonts(oldFontsHref);
+      }
+      if (this._config.fontsHref) {
+        carregarFonts(this._config.fontsHref);
+      }
     }
-    carregarFonts(this._config.fontsHref);
+    return canviat;
   }
 
   _render() {
@@ -282,54 +338,90 @@ class SocDePobleElement extends BaseElement {
     );
   }
 
-  disconnectedCallback() {
-    if (this._config.fontsHref) {
+  // API Pública per a Sollutia
+  refreshData() {
+    if (this._punt) {
+      this._punt.dispatchEvent(new CustomEvent('sdp:refresh-data', { bubbles: true, composed: true }));
+    }
+  }
+  
+  getShadowRoot() {
+    return this.shadowRoot;
+  }
+  
+  getInternalRoot() {
+    return this._punt;
+  }
+  
+  setLanguage(lang) {
+    this._manualLanguage = lang;
+    this._config = { ...this._config, language: lang };
+    this._render();
+  }
+
+  _forcaDesmuntatge() {
+    this._desmuntaAra();
+  }
+  
+  _desmuntaAra() {
+    this._pendingUnmount = false;
+    
+    if (this._config && this._config.fontsHref) {
       descarregarFonts(this._config.fontsHref);
     }
-
-    if (!this._root || this._desmuntatge !== null) return;
     
-    const cleanup = () => {
-      this._desmuntatge = null;
-      if (this.isConnected) return; /* ha tornat: no toquem res */
-      if (this._hasMountedReact) {
-        window.__SDP_LIVE__ = Math.max(0, (window.__SDP_LIVE__ || 1) - 1);
-        this._hasMountedReact = false;
-      }
-      this._root?.unmount();
-      this._root = null;
-      if (this._punt) {
-        this._punt.remove();
-        this._punt = null;
-      }
-    };
+    try { this._root?.unmount(); } catch { /* WebKit legacy pot plorar */ }
+    this._root = null;
+    this._punt?.remove();
+    this._punt = null;
+    this._hasMountedReact = false;
+    
+    activeElements.delete(this);
+    
+    destroyToastSystem();
+  }
 
-    this._desmuntatge = requestAnimationFrame(cleanup);
-    if (this._desmuntatgeTimeout !== undefined) {
-      clearTimeout(this._desmuntatgeTimeout);
-    }
-    this._desmuntatgeTimeout = setTimeout(() => {
-      if (this._desmuntatge !== null) {
-        cancelAnimationFrame(this._desmuntatge);
-        cleanup();
+  disconnectedCallback() {
+    if (!this._root || this._pendingUnmount) return;
+    
+    this._pendingUnmount = true;
+    queueMicrotask(() => {
+      if (!this._pendingUnmount) return;
+      this._pendingUnmount = false;
+      if (this.isConnected) return;
+      
+      if (document.visibilityState === 'visible') {
+        this._desmuntaAra();
+      } else {
+        const unmountOnVisible = () => {
+          if (document.visibilityState === 'visible') {
+            document.removeEventListener('visibilitychange', unmountOnVisible);
+            if (!this.isConnected) this._desmuntaAra();
+          }
+        };
+        document.addEventListener('visibilitychange', unmountOnVisible);
       }
-    }, 500);
+    });
   }
 }
 
 export function defineCustomElement() {
   if (typeof window === 'undefined') return;
-  
-  // Singleton Guard ara gestionat per __SDP_LIVE__ al connectedCallback
 
-  // Global Error Handler per a QuotaExceeded i Promeses orfes (Black Box Error Handler)
   if (!window.__SDP_GLOBAL_ERRORS_BOUND__) {
     window.addEventListener('unhandledrejection', (event) => {
       const err = event.reason;
-      if (err?.name === 'QuotaExceededError' || String(err).includes('QuotaExceeded')) {
-        console.warn('[PedraSeca] QuotaExceeded global capturat. No esborrem la BD per seguretat davant de tercers (WordPress). Confiem en els fallbacks interns.');
-      } else {
-        console.warn('[PedraSeca] Promesa rebutjada globalment (no crítica):', err);
+      const strErr = String(err);
+      
+      // Kimi: Només engolir si té a veure amb Sóc de Poble i no som en dev
+      if (strErr.includes('sdp') || strErr.includes('soc-de-poble') || err?.stack?.includes('soc-de-poble')) {
+        if (err?.name === 'QuotaExceededError' || strErr.includes('QuotaExceeded')) {
+          console.warn('[PedraSeca] QuotaExceeded global capturat. Confiem en fallbacks.');
+          event.preventDefault(); // Evitem que embrute la consola del WP
+        } else {
+          // Si no som a Vite env (process env no existeix fàcilment ací a no ser que ho fiquem), ens callem l'error 
+          console.warn('[PedraSeca] Promesa rebutjada globalment:', err);
+        }
       }
     });
     window.__SDP_GLOBAL_ERRORS_BOUND__ = true;

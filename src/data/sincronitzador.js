@@ -33,7 +33,7 @@
  * ---------------------------------------------------------------------------
  */
 import { reclama, confirma, ajorna, pendents, enviaSigneVida, escombra } from './outbox.js';
-import { appendChatMessages, appendSectionSubmissionNetworkOnly } from './supabaseBackend.js';
+import { appendChatMessages, appendSectionSubmissionNetworkOnly } from './backendPort.js';
 
 const MAX_VOLTES = 50;
 const INTERVAL_MS = 30_000;

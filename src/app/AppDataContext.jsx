@@ -6,8 +6,9 @@ import {
   getHasSupabaseConfig,
   SECTION_SUBMISSIONS_STORAGE_KEY,
   loadAppData,
-  getRuntimeDataMode
-} from '../data/supabaseBackend';
+  getRuntimeDataMode,
+  getCurrentUser
+} from '../data/backendPort.js';
 import { normalizeSearchText, sortPinnedContent } from '../config/contentHelpers';
 import { resolveAsset as baseResolveAsset } from '../config/assetResolver';
 import { createTranslator, readStoredLanguage, writeStoredLanguage, normalizeLanguage } from '../config/i18n';
@@ -67,14 +68,17 @@ const buildSearchCollections = (data) => [
 const buildPageCopy = (pages) =>
   Object.fromEntries(pages.map((page) => [page.key, { title: page.title, subtitle: page.subtitle, lead: page.lead, image: page.image, imageAlt: page.imageAlt, html: page.html }]));
 
-const buildMessageMap = (messages) =>
-  messages.reduce((accumulator, message) => {
-    const current = accumulator[message.threadId] || [];
-    current.push(message);
-    current.sort((a, b) => (a.createdAtTs || 0) - (b.createdAtTs || 0));
-    accumulator[message.threadId] = current;
-    return accumulator;
-  }, {});
+const buildMessageMap = (messages) => {
+  const map = {};
+  for (const message of messages) {
+    if (!map[message.threadId]) map[message.threadId] = [];
+    map[message.threadId].push(message);
+  }
+  for (const threadId in map) {
+    map[threadId].sort((a, b) => (a.createdAtTs || 0) - (b.createdAtTs || 0));
+  }
+  return map;
+};
 
 const buildFallbackMessages = (thread) => [
   {
@@ -154,41 +158,52 @@ export function AppDataProvider({ children, externalConfig = {} }) {
 
   const tenantId = externalConfig?.tenantId || 'default-tenant';
   const localUser = getVal('socdepoble-user');
-  const userId = externalConfig?.user?.id || externalConfig?.userId || localUser?.id || getDefaultUserId();
+  // Identitat (Zeta F-9): La identitat ha de derivar només de la sessió validada (localUser del JWT), no de variables inyectades al DOM
+  const userId = localUser?.id || getDefaultUserId();
   const channelNamespace = `sdp:${tenantId}:${userId}:v2`;
   
-  // Stabilize externalConfig per evitar infinite re-renders sense usar JSON.stringify sencer que peta amb referències circulars
-  const stableExternalConfig = useMemo(() => ({ ...externalConfig }), [
-    externalConfig?.language,
-    externalConfig?.themeMode,
-    externalConfig?.tenantId,
-    externalConfig?.userId,
-    externalConfig?.basePath,
-    externalConfig?.pluginUrl,
-    externalConfig?.version,
-    externalConfig?.manageDocumentHead,
-    externalConfig?.supabaseUrl,
-    externalConfig?.supabaseAnonKey,
-    authTick
-  ]);
+  const configHash = useMemo(() => {
+    try {
+      return JSON.stringify(externalConfig, (key, val) => typeof val === 'function' ? undefined : val);
+    } catch {
+      return String(authTick); // Fallback si hi ha referències circulars
+    }
+  }, [externalConfig, authTick]);
+
+  const stableExternalConfig = useMemo(() => ({ ...externalConfig }), [configHash]);
 
   const broadcastChannelRef = useRef(null);
+  const loadGenerationRef = useRef(0);
 
   useEffect(() => {
     let cancelled = false;
     const controller = new AbortController();
+    const myGen = ++loadGenerationRef.current;
 
     const loadData = async () => {
+      const timeoutId = setTimeout(() => {
+        controller.abort();
+      }, 15000);
       try {
         const data = await loadAppData(userId, { ...externalConfig, signal: controller.signal });
-        if (cancelled) return;
+        clearTimeout(timeoutId);
+        if (cancelled || myGen !== loadGenerationRef.current) return;
         setRawData(data);
         setStatus('ready');
         setError(null);
       } catch (loadError) {
+        clearTimeout(timeoutId);
         if (cancelled) return;
-        setError(loadError);
+        console.warn('[PedraSeca] Mode degradat extrem. loadAppData ha fallat:', loadError);
+        // Injectem dades per defecte si cau per complet per a no trencar la UI
+        setRawData({
+          ownerUserId: userId,
+          agents: [], chatThreads: [], chatMessages: [], feedPosts: [], marketItems: [], 
+          events: [], towns: [], mediaItems: [], noteFolders: [], 
+          notes: [], pages: [], sectionSubmissions: []
+        });
         setStatus('error');
+        setError(loadError);
       }
     };
 
@@ -207,11 +222,12 @@ export function AppDataProvider({ children, externalConfig = {} }) {
     let channel = null;
     let refreshTimeout = null;
     const controller = new AbortController();
-
+    
     const refreshData = async () => {
+      const myGen = ++loadGenerationRef.current;
       try {
         const data = await loadAppData(userId, { ...stableExternalConfig, signal: controller.signal });
-        if (cancelled) return;
+        if (cancelled || myGen !== loadGenerationRef.current) return;
         setRawData(data);
         setStatus('ready');
       } catch {
@@ -219,13 +235,19 @@ export function AppDataProvider({ children, externalConfig = {} }) {
       }
     };
 
+    const isRefreshingRef = { current: false };
+
     const attemptRefresh = () => {
       if (refreshTimeout) clearTimeout(refreshTimeout);
       if (document.hidden) return; // Thundering Herd: visibility gate
+      if (isRefreshingRef.current) return;
       
       const jitter = Math.floor(Math.random() * 200) + 50;
       refreshTimeout = setTimeout(() => {
-        refreshData();
+        isRefreshingRef.current = true;
+        refreshData().finally(() => {
+          isRefreshingRef.current = false;
+        });
       }, jitter);
     };
 
@@ -239,9 +261,16 @@ export function AppDataProvider({ children, externalConfig = {} }) {
     };
 
     const onManualRefresh = () => attemptRefresh();
+    
+    const onOutboxStatus = (event) => {
+      if (event.detail?.status === 'confirmed') {
+        attemptRefresh();
+      }
+    };
 
     window.addEventListener('storage', onStorage);
     window.addEventListener('sdp:refresh-data', onManualRefresh);
+    window.addEventListener('sdp:outbox-status', onOutboxStatus);
     document.addEventListener('visibilitychange', onVisibilityChange);
 
     if (typeof BroadcastChannel !== 'undefined') {
@@ -260,6 +289,7 @@ export function AppDataProvider({ children, externalConfig = {} }) {
       if (refreshTimeout) clearTimeout(refreshTimeout);
       window.removeEventListener('storage', onStorage);
       window.removeEventListener('sdp:refresh-data', onManualRefresh);
+      window.removeEventListener('sdp:outbox-status', onOutboxStatus);
       document.removeEventListener('visibilitychange', onVisibilityChange);
       channel?.close();
       broadcastChannelRef.current = null;
@@ -268,10 +298,12 @@ export function AppDataProvider({ children, externalConfig = {} }) {
 
   /* P0-3: sense esta crida, `outbox.js` és una cua d'escriptura només:
      guarda els missatges i no els envia mai quan torna la cobertura. */
-  useEffect(
-    () => arrancaSincronitzador(stableExternalConfig),
-    [stableExternalConfig]
-  );
+  useEffect(() => {
+    const atura = arrancaSincronitzador(stableExternalConfig);
+    return () => {
+      if (typeof atura === 'function') atura();
+    };
+  }, [stableExternalConfig]);
 
   useEffect(() => {
     writeStoredLanguage(language);
@@ -307,13 +339,14 @@ export function AppDataProvider({ children, externalConfig = {} }) {
     (rawData.marketItems || []).forEach(processItem);
     (rawData.events || []).forEach(processItem);
     
-    return [...rawData.towns].sort((a, b) => {
-      const timeA = Math.max(townActivity.get(a.title) || 0, new Date(a.created_at).getTime() || 0);
-      const timeB = Math.max(townActivity.get(b.title) || 0, new Date(b.created_at).getTime() || 0);
-      return timeB - timeA;
-    }).map(town => {
+    const townEntries = rawData.towns.map(town => {
       const latestActivity = townActivity.get(town.title);
       const baseTime = new Date(town.created_at).getTime() || 0;
+      const activityTime = latestActivity || baseTime;
+      return { town, activityTime, latestActivity, baseTime };
+    });
+
+    return townEntries.sort((a, b) => b.activityTime - a.activityTime).map(({ town, latestActivity, baseTime }) => {
       const activityDate = latestActivity && latestActivity > baseTime ? new Date(latestActivity) : new Date(town.created_at);
       
       const dynamicTime = !isNaN(activityDate.getTime()) 
@@ -347,6 +380,9 @@ export function AppDataProvider({ children, externalConfig = {} }) {
   const chatMessagesByThread = useMemo(() => rawData ? buildMessageMap(rawData.chatMessages) : {}, [rawData?.chatMessages]);
 
   const stateValue = useMemo(() => {
+    const currentUser = getCurrentUser();
+    const isSuperAdmin = currentUser?.user_metadata?.role === 'superadmin';
+
     if (!rawData) {
       return {
         status,
@@ -357,7 +393,9 @@ export function AppDataProvider({ children, externalConfig = {} }) {
         language,
         themeMode,
         t: translator,
-        externalConfig: stableExternalConfig
+        externalConfig: stableExternalConfig,
+        currentUser,
+        isSuperAdmin
       };
     }
 
@@ -390,13 +428,15 @@ export function AppDataProvider({ children, externalConfig = {} }) {
       featuredTowns,
       mediaTimelineGroups,
       globalSearchItems,
-      pageDetailLookup
+      pageDetailLookup,
+      currentUser,
+      isSuperAdmin
     };
   }, [
     error, language, rawData, status, stableExternalConfig,
     translator, sortedFeedPosts, sortedMarketItems, sortedEvents,
     sortedTowns, featuredTowns, mediaTimelineGroups, pageCopy, pageDetailLookup,
-    globalSearchItems, themeMode
+    globalSearchItems, themeMode, authTick
   ]);
 
   const actionsValue = useMemo(() => {
@@ -456,18 +496,20 @@ export function AppDataProvider({ children, externalConfig = {} }) {
         time: new Date().toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit' })
       };
 
-      // 1r la pantalla. Sempre. Passe el que passe amb la xarxa.
-      setRawData((current) => ({
-        ...current,
-        chatMessages: [...current.chatMessages, userMessage]
-      }));
-
-      // 2n el disc, amb el seu propi tallafocs.
+      // 1r el disc (Outbox), amb el seu propi tallafocs.
+      // Z-Audit: Si el disc falla, NO ho ensenyem a la pantalla per no donar falsos positius d'enviament.
       try {
         await encua({ id: userMessage.id, tipus: 'chat', carrega: userMessage });
       } catch (e) {
-        console.error('[OUTBOX] escriptura fallida', e);
+        console.error('[OUTBOX] escriptura fallida. Avortant enviament de xat.', e);
+        throw e;
       }
+
+      // 2n la pantalla.
+      setRawData((current) => ({
+        ...current,
+        chatMessages: [...(current.chatMessages || []), userMessage]
+      }));
 
       // 3r la xarxa, que ja no pot bloquejar res.
       buida(stableExternalConfig);
@@ -501,6 +543,15 @@ export function AppDataProvider({ children, externalConfig = {} }) {
       const item = preparedSubmission.payload || preparedSubmission;
       const sectionId = String(preparedSubmission.sectionId || item.sectionId || '').trim();
 
+      // Z-Audit: 1r el disc (Outbox) amb el seu propi tallafocs
+      try {
+        await encua({ id, tipus: 'submission', payload: preparedSubmission });
+      } catch (e) {
+        console.error('[OUTBOX] escriptura fallida per a submission. Avortant.', e);
+        throw e;
+      }
+
+      // 2n a la pantalla local
       setRawData((current) => {
         if (!current) return current;
 
@@ -519,13 +570,6 @@ export function AppDataProvider({ children, externalConfig = {} }) {
 
         return next;
       });
-
-      // Z-Audit: 2n el disc (Outbox) amb el seu propi tallafocs
-      try {
-        await encua({ id, tipus: 'submission', payload: preparedSubmission });
-      } catch (e) {
-        console.error('[OUTBOX] escriptura fallida per a submission', e);
-      }
 
       // 3r la xarxa
       buida(stableExternalConfig);

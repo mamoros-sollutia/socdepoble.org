@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { UniversalPage } from '../../components/universal/UniversalComponents';
 import { useAppData } from '../../app/AppDataContext';
-import { getCurrentUser, logout } from '../../data/supabaseBackend';
+import { getCurrentUser, logout } from '../../data/backendPort.js';
 import { showToast } from '../../components/universal/AvisadorEfimer';
 import { LogOut, User, Save, Loader2 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -60,7 +60,11 @@ export default function MyProfileSection() {
               </div>
               <div>
                 <h3 className="card__title" style={{ margin: 0 }}>{user.user_metadata?.name || 'Usuari Anònim'}</h3>
-                <span className="pill pill--active" style={{ marginTop: '8px' }}>Usuari Verificat</span>
+                {user.user_metadata?.role === 'superadmin' ? (
+                  <span className="pill pill--active" style={{ marginTop: '8px', background: 'var(--sdp-accent)', color: 'var(--sdp-sobre-accent)' }}>Super Admin</span>
+                ) : (
+                  <span className="pill pill--active" style={{ marginTop: '8px' }}>Usuari Verificat</span>
+                )}
               </div>
             </div>
 

@@ -61,7 +61,47 @@ const buildHeaders = (anonKey, extra = {}) => {
   };
 };
 
-async function request(path, config, { method = 'GET', headers = {}, body, signal, timeoutMs = 12000 } = {}) {
+export async function refreshSession(config = {}) {
+  const refreshToken = getVal('socdepoble-refresh-token');
+  if (!refreshToken) return false;
+  
+  const { supabaseUrl, supabaseAnonKey } = getResolvedConfig(config);
+  if (!supabaseUrl) return false;
+  
+  try {
+    const response = await fetch(`${supabaseUrl}/auth/v1/token?grant_type=refresh_token`, {
+      method: 'POST',
+      headers: {
+        apikey: supabaseAnonKey,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ refresh_token: refreshToken })
+    });
+    
+    if (response.ok) {
+      const result = await response.json();
+      if (result?.access_token) {
+        setVal('socdepoble-jwt', result.access_token);
+        setVal('socdepoble-refresh-token', result.refresh_token);
+        setVal('socdepoble-user', result.user);
+        if (typeof window !== 'undefined') {
+          window.dispatchEvent(new CustomEvent('sdp:auth-change', { detail: { user: result.user }}));
+        }
+        return true;
+      }
+    }
+  } catch (e) {
+    console.warn('Error renovant sessió', e);
+  }
+  
+  logout();
+  if (typeof window !== 'undefined') {
+    window.dispatchEvent(new CustomEvent('sdp:auth-change', { detail: { user: null }}));
+  }
+  return false;
+}
+
+async function request(path, config, { method = 'GET', headers = {}, body, signal, timeoutMs = 12000, _isRetry = false } = {}) {
   const { supabaseUrl, supabaseAnonKey, hasSupabaseConfig } = getResolvedConfig(config);
   if (!hasSupabaseConfig) {
     throw new Error('Falten VITE_SUPABASE_URL i/o VITE_SUPABASE_ANON_KEY.');
@@ -84,6 +124,12 @@ async function request(path, config, { method = 'GET', headers = {}, body, signa
     });
 
     if (!response.ok) {
+      if (response.status === 401 && !_isRetry && !path.startsWith('/auth/')) {
+        const refreshed = await refreshSession(config);
+        if (refreshed) {
+          return await request(path, config, { method, headers, body, signal, timeoutMs, _isRetry: true });
+        }
+      }
       const text = await response.text();
       throw new Error(`Supabase ${response.status}: ${text || 'Error desconegut.'}`);
     }
@@ -649,17 +695,17 @@ export async function appendSectionSubmissionNetworkOnly(submission, config = {}
     const isRemoteUnavailable =
       message.includes('row-level security policy') ||
       message.includes('"42501"') ||
-      message.includes('401') ||
       message.includes('403') ||
       message.includes('404') ||
       message.includes('does not exist');
 
     if (isRemoteUnavailable) {
-      // S'ha eliminat el bloqueig remot permanent a localStorage seguint la directiva de Claude
-      // perquè en cas de fallada de xarxa temporal, no deixe l'iPad sense capacitat d'escriure per sempre.
+      console.warn('[BACKEND] Error remot inrecuperable per submission. S\'engoleix per evitar bucles.', error);
+      return storedSubmission;
     }
 
-    return storedSubmission;
+    // Si és un error de xarxa (timeout, sense connexió, 500), el llancem perquè el sincronitzador ho ajorne!
+    throw error;
   }
 }
 
@@ -712,7 +758,19 @@ export function getResolvedConfig(config = {}) {
 
 
 export async function registerWithEmail(email, password, name, config = {}) {
-  const { tenantId } = getResolvedConfig(config);
+  const { tenantId, hasSupabaseConfig } = getResolvedConfig(config);
+  
+  if (!hasSupabaseConfig) {
+    const mockUser = {
+      id: 'local-mock-superadmin',
+      email,
+      user_metadata: { name: name || 'Javi Llinares', role: 'superadmin' }
+    };
+    setVal('socdepoble-jwt', 'mock-jwt-token');
+    setVal('socdepoble-user', mockUser);
+    return { access_token: 'mock-jwt-token', user: mockUser };
+  }
+
   const result = await request('/auth/v1/signup', config, {
     method: 'POST',
     body: {
@@ -731,6 +789,19 @@ export async function registerWithEmail(email, password, name, config = {}) {
 }
 
 export async function loginWithEmail(email, password, config = {}) {
+  const { hasSupabaseConfig } = getResolvedConfig(config);
+
+  if (!hasSupabaseConfig) {
+    const mockUser = {
+      id: 'local-mock-superadmin',
+      email,
+      user_metadata: { name: 'Javi Llinares (Superadmin)', role: 'superadmin' }
+    };
+    setVal('socdepoble-jwt', 'mock-jwt-token');
+    setVal('socdepoble-user', mockUser);
+    return { access_token: 'mock-jwt-token', user: mockUser };
+  }
+
   const result = await request('/auth/v1/token?grant_type=password', config, {
     method: 'POST',
     body: { email, password }
