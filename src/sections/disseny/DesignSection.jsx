@@ -1098,7 +1098,9 @@ Gran</div>
 <label>El teu missatge</label>
 <textarea placeholder="Com ens pots ajudar?" rows="4"></textarea>
 </div>
-<button className="btn btn-primary" style={{ width: '100%' }}>Enviar missatge</button>
+<div className="login-form">
+  <button className="pill pill--primary login-action">Enviar missatge</button>
+</div>
 </div>
 </section>
 

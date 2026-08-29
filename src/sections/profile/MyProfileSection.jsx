@@ -53,25 +53,25 @@ export default function MyProfileSection() {
     >
       <div className="card">
         <div className="card__body">
-          <form onSubmit={handleSave} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-            <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
-              <div style={{ width: 64, height: 64, borderRadius: '50%', background: 'var(--sdp-accent-subtil)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--sdp-accent)' }}>
+          <form onSubmit={handleSave} className="sdp-flex-col sdp-gap-5">
+            <div className="sdp-flex sdp-gap-4 sdp-items-center">
+              <div className="avatar avatar--large">
                 <User size={32} />
               </div>
               <div>
-                <h3 className="card__title" style={{ margin: 0 }}>{user.user_metadata?.name || 'Usuari Anònim'}</h3>
-                {user.user_metadata?.role === 'superadmin' ? (
-                  <span className="pill pill--active" style={{ marginTop: '8px', background: 'var(--sdp-accent)', color: 'var(--sdp-sobre-accent)' }}>Super Admin</span>
-                ) : (
-                  <span className="pill pill--active" style={{ marginTop: '8px' }}>Usuari Verificat</span>
+                <h3 className="card__title sdp-m-0">{user.user_metadata?.full_name || user.user_metadata?.name || 'Usuari Anònim'}</h3>
+                {user.user_metadata?.role === 'admin' && (
+                  <span className="pill pill--active sdp-text-sobre-accent sdp-mt-2">Super Admin</span>
+                )}
+                {user.user_metadata?.verified && (
+                  <span className="pill pill--active sdp-mt-2">Usuari Verificat</span>
                 )}
               </div>
             </div>
 
-            <label className="login-field">
+            <label className="form-group">
               <span>Nom</span>
               <input 
-                className="section-search" 
                 type="text" 
                 value={formData.name} 
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })} 
@@ -79,14 +79,13 @@ export default function MyProfileSection() {
               />
             </label>
 
-            <label className="login-field">
+            <label className="form-group">
               <span>Correu electrònic (no editable)</span>
               <input 
-                className="section-search" 
+                className={isSaving ? 'sdp-opacity-60' : ''}
                 type="email" 
                 value={user.email} 
-                disabled 
-                style={{ opacity: 0.6 }}
+                disabled={isSaving}
               />
             </label>
 
@@ -99,7 +98,7 @@ export default function MyProfileSection() {
                   </>
                 )}
               </button>
-              <button type="button" className="pill login-action" onClick={handleLogout} style={{ flex: 1, justifyContent: 'center', background: 'var(--sdp-error)', color: 'white' }}>
+              <button type="button" className="pill login-action pill--error sdp-flex-1 sdp-justify-center" onClick={handleLogout}>
                 <LogOut size={16} />
                 Tancar Sessió
               </button>
@@ -107,6 +106,23 @@ export default function MyProfileSection() {
           </form>
         </div>
       </div>
+
+      {user.user_metadata?.role === 'superadmin' && (
+        <div className="card sdp-mt-6 sdp-border-accent">
+          <div className="card__body">
+            <h3 className="card__title sdp-flex sdp-items-center sdp-gap-2">
+              <span className="sdp-text-xl">🛡️</span>
+              {t('section.myprofile.adminTitle', 'Centre de Comandament')}
+            </h3>
+            <p className="card__text sdp-mb-4">
+              {t('section.myprofile.adminDesc', 'Com a Super Administrador, tens accés complet a la configuració del sistema, moderació global i gestió de pobles.')}
+            </p>
+            <button type="button" className="pill pill--accent login-action" onClick={() => navigate('/configuracio')}>
+              {t('section.myprofile.adminButton', 'Obrir Administració del Portal')}
+            </button>
+          </div>
+        </div>
+      )}
     </UniversalPage>
   );
 }

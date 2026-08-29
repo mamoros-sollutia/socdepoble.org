@@ -1,6 +1,11 @@
 ---
 name: cog-deliberation
-description: Skill for cog-deliberation operations.
+description: >
+  Raonament privat abans de respondre. Obliga a separar el pensament de
+  l'eixida: es delibera en brut, es descarta el que no se sosté, i només
+  ix la conclusió amb la seua justificació. S'activa davant de decisions
+  d'arquitectura, diagnòstics amb més d'una causa possible, o quan la
+  resposta immediata seria una conjectura ben redactada.
 version: 2.0.0
 status: active
 owner: project-governance

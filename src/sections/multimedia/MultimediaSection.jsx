@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import SectionItemCard from '../../components/SectionItemCard';
 import { useAppData } from '../../app/AppDataContext';
 import { UniversalPage } from '../../components/universal/UniversalComponents';
+import { Link } from 'react-router-dom';
 import { getSectionItemPath } from '../../config/navigation';
 
 export default function MultimediaSection() {
@@ -17,51 +18,38 @@ export default function MultimediaSection() {
       chrome="system"
       showLogos={true}
     >
-      <div className="section-actions">
-        <button type="button" className={`pill ${viewMode === 'grid' ? 'pill--primary' : ''}`} onClick={() => setViewMode('grid')}>
-          {t('section.multimedia.gallery', 'Galeria')}
-        </button>
-        <button type="button" className={`pill ${viewMode === 'timeline' ? 'pill--primary' : ''}`} onClick={() => setViewMode('timeline')}>
-          {t('section.multimedia.timeline', 'Cronologia')}
-        </button>
+      <div className="bar-orange sdp-items-center" style={{ display: 'flex', position: 'relative', top: 0, zIndex: 10, margin: '-24px -24px 24px -24px', padding: '12px 24px', borderRadius: 'var(--sdp-radi-xl) var(--sdp-radi-xl) 0 0' }}>
+        <strong style={{ flex: 1 }}>{t('section.multimedia.all', 'TOTS')} ({mediaItems.length}) - {featured?.created_at ? new Date(featured.created_at).toLocaleDateString('ca-ES', { month: 'long', year: 'numeric' }) : ''}</strong>
+        <div className="section-actions" style={{ display: 'flex', gap: '8px' }}>
+          <button type="button" className={`pill ${viewMode === 'grid' ? 'pill--active' : ''}`} onClick={() => setViewMode('grid')}>
+            {t('section.multimedia.gallery', 'Galeria')}
+          </button>
+          <button type="button" className={`pill ${viewMode === 'timeline' ? 'pill--active' : ''}`} onClick={() => setViewMode('timeline')}>
+            {t('section.multimedia.timeline', 'Cronologia')}
+          </button>
+        </div>
       </div>
 
-      {featured ? (
-        <div className="card card--soft">
-          <div className="split-grid">
-            <div className="media-frame">
-              <img src={featured.src} alt={featured.title} />
-            </div>
-            <div>
-              <span className="badge">{featured.tag}</span>
-              <h2 className="card__title">{featured.title}</h2>
-              <p className="card__text">
-                {featured.description || t('section.multimedia.featuredFallback', 'Recurs visual destacat del projecte.')}
-              </p>
-              <div className="feed-card__meta">
-                <span>{featured.source}</span>
-                <span>{featured.created_at ? String(featured.created_at).slice(0, 10) : t('common.noDate', 'Sense data')}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      ) : null}
+
 
       {viewMode === 'grid' ? (
-        <div className="gallery-grid">
+        <div className="photo-grid">
           {mediaItems.map((item, index) => (
-            <SectionItemCard
+            <Link
               key={`${item.id}-${index}`}
               to={getSectionItemPath('multimedia', item.id)}
               state={{ preloadedItem: item }}
-              image={item.src}
-              title={item.title}
-              subtitle={item.subtitle || item.kind}
-              excerpt={item.description || item.tag}
-              eyebrow={t('nav.multimedia', 'Multimèdia')}
-              meta={[item.source, item.created_at ? String(item.created_at).slice(0, 10) : null]}
-              buttonLabel={t('section.multimedia.open', 'Obrir')}
-            />
+              className="photo-grid__item"
+            >
+              {item.src ? (
+                <img src={item.src} alt={item.title || item.tag} loading="lazy" onError={(e) => { e.target.style.display = 'none'; }} />
+              ) : (
+                <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--sdp-fons-subtil)', color: 'var(--sdp-text-suau)' }}>
+                  <span className="sdp-sr-only">{item.title || 'Sense imatge'}</span>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                </div>
+              )}
+            </Link>
           ))}
         </div>
       ) : (
@@ -73,20 +61,23 @@ export default function MultimediaSection() {
                   <h2 className="section-title">{group.label}</h2>
                   <span className="pill">{group.items.length} {t('section.multimedia.elements', 'elements')}</span>
                 </div>
-                <div className="gallery-grid">
+                <div className="photo-grid">
                   {group.items.map((item, idx) => (
-                    <SectionItemCard
+                    <Link
                       key={`${item.id}-${idx}`}
                       to={getSectionItemPath('multimedia', item.id)}
                       state={{ preloadedItem: item }}
-                      image={item.src}
-                      title={item.title}
-                      subtitle={item.subtitle || item.kind}
-                      excerpt={item.description || item.tag}
-                      eyebrow={item.tag}
-                      meta={[item.source]}
-                      buttonLabel={t('section.multimedia.open', 'Obrir')}
-                    />
+                      className="photo-grid__item"
+                    >
+                      {item.src ? (
+                        <img src={item.src} alt={item.title || item.tag} loading="lazy" onError={(e) => { e.target.style.display = 'none'; }} />
+                      ) : (
+                        <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--sdp-fons-subtil)', color: 'var(--sdp-text-suau)' }}>
+                          <span className="sdp-sr-only">{item.title || 'Sense imatge'}</span>
+                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                        </div>
+                      )}
+                    </Link>
                   ))}
                 </div>
               </div>

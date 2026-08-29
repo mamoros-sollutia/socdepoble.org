@@ -1,8 +1,8 @@
 import { useDeferredValue, useMemo, useState } from 'react';
 import { UniversalPage, UniversalCard } from '../../components/universal/UniversalComponents';
+import { UniversalSearch } from '../../components/ui/UniversalSearch.jsx';
 import { useAppData } from '../../app/AppDataContext';
 import { resolveItemPath } from '../../config/navigation';
-import { Search } from 'lucide-react';
 
 export default function SearchSection() {
   const { globalSearchItems, normalizeSearchText, t } = useAppData();
@@ -26,25 +26,12 @@ export default function SearchSection() {
       labels={[t('section.search.label', 'Cercador')]}
     >
       <div style={{ margin: 'var(--sdp-space-8) 0', padding: '0 var(--sdp-space-5)' }}>
-        <div style={{ display: 'flex', alignItems: 'center', background: 'var(--sdp-fons-subtil)', borderRadius: 'var(--sdp-radi-pastilla)', padding: '0 var(--sdp-space-4)', border: '1px solid var(--sdp-vora-control)' }}>
-          <Search size={20} color="var(--sdp-text-suau)" style={{ flexShrink: 0 }} />
-          <input
-            type="search"
-            value={query}
-            aria-label={t('section.search.searchPlaceholder', 'Cerca persones, pobles, posts...')}
-            onChange={(event) => setQuery(event.target.value)}
-            placeholder={t('section.search.searchPlaceholder', 'Cerca persones, pobles, posts...')}
-            style={{
-              flex: 1,
-              background: 'transparent',
-              border: 'none',
-              padding: 'var(--sdp-space-4)',
-              color: 'var(--sdp-text-titol)',
-              fontSize: '1rem',
-              outline: 'none'
-            }}
-          />
-        </div>
+        <UniversalSearch
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
+          placeholder={t('section.search.searchPlaceholder', 'Cerca persones, pobles, posts...')}
+          ariaLabel={t('section.search.searchPlaceholder', 'Cerca persones, pobles, posts...')}
+        />
       </div>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sdp-space-6)', padding: '0 var(--sdp-space-4)', paddingBottom: 'var(--sdp-space-12)' }}>

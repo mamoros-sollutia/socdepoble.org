@@ -1,6 +1,10 @@
 ---
 name: core-verified-change
-description: Skill for core-verified-change operations.
+description: >
+  Cap modificació sense verificació. Tota escriptura passa per dry-run,
+  radi d'explosió declarat, instantània prèvia i camí de reversió. Un
+  canvi que no es puga desfer no s'aplica. S'activa davant de codemods,
+  neteges massives, renoms i qualsevol edició de més d'un fitxer.
 version: 2.0.0
 status: active
 owner: project-governance

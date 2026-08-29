@@ -7,9 +7,14 @@ let currentImpl = {
   appendChatMessages: supabaseImpl.appendChatMessages,
   appendSectionSubmissionNetworkOnly: supabaseImpl.appendSectionSubmissionNetworkOnly,
   
+  loadLocalAppSnapshot: supabaseImpl.loadLocalAppSnapshot,
+  applySectionSubmissionsToData: supabaseImpl.applySectionSubmissionsToData,
+  
   // Auth
   registerWithEmail: supabaseImpl.registerWithEmail,
   loginWithEmail: supabaseImpl.loginWithEmail,
+  loginWithGoogle: supabaseImpl.loginWithGoogle,
+  recullTornadaOAuth: supabaseImpl.recullTornadaOAuth,
   logout: supabaseImpl.logout,
   getCurrentUser: supabaseImpl.getCurrentUser,
   
@@ -59,9 +64,13 @@ export const SECTION_SUBMISSIONS_STORAGE_KEY = supabaseImpl.SECTION_SUBMISSIONS_
 // consumisca això en compte de supabaseBackend.js
 export const loadAppData = (...args) => currentImpl.loadAppData(...args);
 export const appendChatMessages = (...args) => currentImpl.appendChatMessages(...args);
+export const loadLocalAppSnapshot = (...args) => currentImpl.loadLocalAppSnapshot(...args);
+export const applySectionSubmissionsToData = (...args) => currentImpl.applySectionSubmissionsToData(...args);
 export const appendSectionSubmissionNetworkOnly = (...args) => currentImpl.appendSectionSubmissionNetworkOnly(...args);
 export const registerWithEmail = (...args) => currentImpl.registerWithEmail(...args);
 export const loginWithEmail = (...args) => currentImpl.loginWithEmail(...args);
+export const loginWithGoogle = (...args) => currentImpl.loginWithGoogle(...args);
+export const recullTornadaOAuth = (...args) => currentImpl.recullTornadaOAuth(...args);
 export const logout = (...args) => currentImpl.logout(...args);
 export const getCurrentUser = (...args) => currentImpl.getCurrentUser(...args);
 export const getHasSupabaseConfig = (...args) => currentImpl.getHasSupabaseConfig(...args);

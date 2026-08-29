@@ -251,6 +251,7 @@ function transaccio(db, magatzem, mode, fn) {
 
     const rellotge = setTimeout(() => acaba(() => {
       try { t?.abort(); } catch { /* res */ }
+      tancaConnexio();   /* connexió encallada: recicla-la o cada escriptura tardarà VIGILANT_MS fins recarregar */
       const err = new Error(`IDB Vigilant: '${magatzem}' encallat ${VIGILANT_MS} ms`);
       tripCircuitBreaker(err);
       rebutja(err);
@@ -347,13 +348,20 @@ export async function confirma(id) {
   return tx('readwrite', (m) => {
     const p = m.get(id);
     p.onsuccess = () => {
-      if (!p.result) return;
-      if (p.result.estat === 'confirmat') return;
-      try {
-        m.delete(id);
-      } catch {
-        m.put({ ...p.result, estat: 'confirmat', confirmatTs: Date.now() });
-      }
+      const r = p.result;
+      if (!r || r.estat === 'confirmat') return;
+      /* IDB no llança: informa per `onerror` i, si ningú ho evita, avorta la
+         transacció sencera. `preventDefault` conserva la transacció i
+         `stopPropagation` evita que el gestor de la transacció la rebutge.
+         Un `try/catch` ací no atrapa res: el `catch` era codi mort. */
+      const lapida = () => m.put({ ...r, estat: 'confirmat', confirmatTs: Date.now() });
+      let d;
+      try { d = m.delete(id); } catch { lapida(); return; }   /* excepció síncrona: impossible a IDB real, però barata */
+      d.onerror = (ev) => {                                     /* fallada REAL: asíncrona */
+        ev.preventDefault?.();
+        ev.stopPropagation?.();
+        lapida();
+      };
     };
     return () => true;
   });
@@ -499,4 +507,24 @@ export async function compta() {
     morts,
     quarantena: typeof window !== 'undefined' ? !!window.__SDP_OUTBOX_QUARANTINED__ : false
   };
+}
+
+/** P0: Transfereix la cua de l'usuari antic (convidat) al nou */
+export async function canviaPropietari(idVell, idNou) {
+  if (!idVell || !idNou || idVell === idNou) return 0;
+  let canviats = 0;
+  await tx('readwrite', (m) => {
+    m.openCursor().onsuccess = (e) => {
+      const c = e.target.result;
+      if (!c) return;
+      const r = c.value;
+      if (r.ownerUserId === idVell) {
+        c.update({ ...r, ownerUserId: idNou });
+        canviats += 1;
+      }
+      c.continue();
+    };
+    return () => canviats;
+  });
+  return canviats;
 }

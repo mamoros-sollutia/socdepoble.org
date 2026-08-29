@@ -1,0 +1,38 @@
+{
+  "css-de-seccio": {
+    "max": 1,
+    "identitats": [
+      "css-de-seccio|src/sections/connectar/ConnectarSection.css|src/sections/connectar/ConnectarSection.css"
+    ]
+  },
+  "classe-forastera": {
+    "max": 27,
+    "identitats": [
+      "classe-forastera|src/sections/connectar/ConnectarSection.jsx|connect-card",
+      "classe-forastera|src/sections/connectar/ConnectarSection.jsx|connect-card--active",
+      "classe-forastera|src/sections/connectar/ConnectarSection.jsx|conversation-button--active",
+      "classe-forastera|src/sections/connectar/ConnectarSection.jsx|toggle-button",
+      "classe-forastera|src/sections/connectar/ConnectarSection.jsx|toggle-button--active",
+      "classe-forastera|src/sections/dispositius/DevicesSection.jsx|devices-bubble",
+      "classe-forastera|src/sections/dispositius/DevicesSection.jsx|devices-bubble--me",
+      "classe-forastera|src/sections/dispositius/DevicesSection.jsx|devices-bubble--other",
+      "classe-forastera|src/sections/dispositius/DevicesSection.jsx|devices-status",
+      "classe-forastera|src/sections/notes/NotesSection.jsx|conversation-button--active",
+      "classe-forastera|src/sections/notes/NotesSection.jsx|folder-button",
+      "classe-forastera|src/sections/notes/NotesSection.jsx|folder-button--active",
+      "classe-forastera|src/sections/notes/NotesSection.jsx|notes-column",
+      "classe-forastera|src/sections/notes/NotesSection.jsx|notes-column--editor",
+      "classe-forastera|src/sections/notes/NotesSection.jsx|notes-column--folders",
+      "classe-forastera|src/sections/notes/NotesSection.jsx|notes-column--list",
+      "classe-forastera|src/sections/notes/NotesSection.jsx|notes-column--mobile",
+      "classe-forastera|src/sections/profile/ProfileSection.jsx|card-link--active"
+    ]
+  },
+  "classe-opaca": {
+    "max": 3,
+    "identitats": [
+      "classe-opaca|src/components/universal/UniversalComponents.jsx|toc-level-${…}",
+      "classe-opaca|src/sections/dispositius/DevicesSection.jsx|devices-status--${…}"
+    ]
+  }
+}

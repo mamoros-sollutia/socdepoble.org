@@ -1,6 +1,11 @@
 ---
 name: multi-agent-review
-description: Skill for multi-agent-review operations.
+description: >
+  Avaluació creuada entre membres del Consell. Estableix com es llig el
+  veredicte d'una altra IA sense adoptar-lo per deferència: es reprodueix
+  l'evidència, es marca el que no s'ha pogut comprovar, i el desacord es
+  documenta en lloc de resoldre'l per consens. S'activa en rebre o emetre
+  una auditoria del Consell.
 version: 2.0.0
 status: active
 owner: project-governance

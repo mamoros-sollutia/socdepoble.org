@@ -611,10 +611,8 @@
 .pill--active { background-color: var(--sdp-accio); color: var(--sdp-sobre-accio); }
 .login-hero__note { margin-top: 16px; padding: 12px; background: var(--sdp-fons-app); border-radius: 8px; font-size: 0.9rem; }
 .login-grid { width: 100%; max-width: 400px; }
-.login-form { display: flex; flex-direction: column; gap: var(--sdp-space-4); }
 .login-form__head { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 8px; }
 .login-field { display: flex; flex-direction: column; gap: 6px; text-align: left; font-size: 0.95rem; }
-.login-action { margin-top: 8px; width: 100%; justify-content: center; }
 .login-google { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-bottom: 24px; }
 .login-note { font-size: 0.85rem; color: var(--sdp-text-suau); text-align: center; max-width: 280px; margin-inline: auto; }
 .login-summary { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; border-top: 1px solid var(--sdp-vora-suau); padding-top: 24px; }

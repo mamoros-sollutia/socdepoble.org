@@ -1,6 +1,10 @@
 ---
 name: core-bounded-action
-description: Skill for core-bounded-action operations.
+description: >
+  Control d'abast: cap acció amplia l'autoritat concedida. Fer una tasca
+  no autoritza a fer-ne la següent, ni a tocar fitxers que no s'han
+  nomenat, ni a "aprofitar" per netejar de passada. S'activa sempre que
+  una tasca implique escriure, esborrar, moure o executar.
 version: 2.0.0
 status: active
 owner: project-governance

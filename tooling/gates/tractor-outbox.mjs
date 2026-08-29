@@ -129,21 +129,27 @@ try {
 
 /* ── T8 · confirma deixa làpida si l'esborrat peta ───────────────────────── */
 try {
-  await ob.encua({ id: 'lap1', tipus: 'chat', carrega: {} });
+  await ob.encua({ id: 'lapR', tipus: 'chat', carrega: {} });
   const origDelete = IDBObjectStore.prototype.delete;
-  IDBObjectStore.prototype.delete = function fingit() { throw new Error('esborrat fingit KO'); };
+  IDBObjectStore.prototype.delete = function () {
+    const tx = this.transaction;
+    const req = { onsuccess: null, onerror: null, error: new DOMException('disc ple', 'UnknownError') };
+    queueMicrotask(() => {
+      const ev = { target: req, defaultPrevented: false, preventDefault() { ev.defaultPrevented = true; }, stopPropagation() {} };
+      req.onerror?.(ev);
+      if (!ev.defaultPrevented) { try { tx.abort(); } catch {} }
+    });
+    return req;
+  };
   let resultat;
-  try { resultat = await ob.confirma('lap1'); } finally {
-    IDBObjectStore.prototype.delete = origDelete;
-  }
-  const r = (await ob.pendents()).find((x) => x.id === 'lap1');
-  if (resultat !== true) falla('T8', 'confirma() no ha absorbit la fallada d\'esborrat.');
-  else if (r?.estat !== 'confirmat') falla('T8', `no hi ha làpida: estat=${r?.estat}. El missatge es reenviarà.`);
-  else passa('T8', 'esborrat fallit → làpida `confirmat`. Sense duplicats.');
-
+  try { resultat = await ob.confirma('lapR'); } finally { IDBObjectStore.prototype.delete = origDelete; }
+  const r = (await ob.pendents()).find(x => x.id === 'lapR');
   const lot = await ob.reclama();
-  if (lot.some((x) => x.id === 'lap1')) falla('T8', 'reclama() torna a agafar una làpida.');
-  else passa('T8', 'reclama() ignora les làpides.');
+  const reagafat = lot.some(x => x.id === 'lapR');
+
+  if (r?.estat !== 'confirmat') falla('T8', `no hi ha làpida asíncrona: estat=${r?.estat}`);
+  else if (reagafat) falla('T8', 'reclama() re-agafa la làpida asíncrona (duplicat!)');
+  else passa('T8', 'esborrat asíncron fallit → làpida `confirmat`. Sense duplicats.');
 } catch (e) { falla('T8', e.message); }
 
 /* ── T1 · onabort sense peticions pendents ───────────────────────────────── */

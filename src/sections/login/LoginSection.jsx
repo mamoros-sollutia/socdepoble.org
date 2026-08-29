@@ -1,18 +1,10 @@
 import { useState } from 'react';
-import { ArrowRight, Globe, Lock, LogIn, Mail, UserPlus, UserRound, Loader2 } from 'lucide-react';
-import BrandMark from '../../components/BrandMark';
+import { ArrowRight, Loader2 } from 'lucide-react';
 import { UniversalPage } from '../../components/universal/UniversalComponents';
 import { useAppData } from '../../app/AppDataContext';
-import { loginWithEmail, registerWithEmail } from '../../data/backendPort.js';
+import { loginWithEmail, registerWithEmail, loginWithGoogle } from '../../data/backendPort.js';
 import { showToast } from '../../components/universal/AvisadorEfimer';
 import { useNavigate } from 'react-router-dom';
-function LoginCard({ mode, activeMode, children }) {
-  return (
-    <article className={`card login-card ${activeMode === mode.id ? 'login-card--active' : ''}`}>
-      <div className="card__body login-card__body">{children}</div>
-    </article>
-  );
-}
 
 export default function LoginSection() {
   const { t, externalConfig } = useAppData();
@@ -43,6 +35,20 @@ export default function LoginSection() {
     }
   };
 
+  const handleGoogleLogin = async () => {
+    setIsLoading(true);
+    try {
+      await loginWithGoogle(externalConfig);
+      showToast(t('section.login.success.login', 'Benvingut de nou!'), 'success');
+      window.dispatchEvent(new CustomEvent('sdp:auth-change'));
+      navigate('/xat', { replace: true });
+    } catch (error) {
+      showToast(error.message, 'error');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const handleRegister = async (event) => {
     event.preventDefault();
     if (!formData.name || !formData.email || !formData.password) {
@@ -63,189 +69,126 @@ export default function LoginSection() {
     }
   };
 
-  const MODES = [
-    {
-      id: 'login',
-      label: t('section.login.loginButton', 'Entrar'),
-      title: t('section.login.loginTitle', 'Accés al teu espai'),
-      subtitle: t('section.login.loginSubtitle', 'Entra amb el teu compte per a continuar on ho vas deixar.'),
-      icon: LogIn,
-      meta: [
-        t('section.login.meta.session', 'Sessió'),
-        t('section.login.loginEmail', 'Correu electrònic'),
-        t('section.login.loginPassword', 'Contrasenya')
-      ]
-    },
-    {
-      id: 'register',
-      label: t('section.login.registerButton', 'Crear compte'),
-      title: t('section.login.registerTitle', 'Crea un compte'),
-      subtitle: t('section.login.registerSubtitle', 'Dona’t d’alta per a començar a usar el portal amb el teu perfil.'),
-      icon: UserPlus,
-      meta: [
-        t('section.login.registerName', 'Nom'),
-        t('section.login.loginEmail', 'Correu electrònic'),
-        t('section.login.loginPassword', 'Contrasenya')
-      ]
-    },
-    {
-      id: 'google',
-      label: t('section.login.googleButton', 'Google'),
-      title: t('section.login.googleTitle', 'Accés amb Google'),
-      subtitle: t('section.login.googleSubtitle', 'Entra de manera ràpida amb el teu compte de Google.'),
-      icon: Globe,
-      meta: [
-        t('section.login.meta.oauth', 'OAuth'),
-        'Google',
-        t('section.login.meta.quick', 'Accés ràpid')
-      ]
-    }
-  ];
-  const currentMode = MODES.find((item) => item.id === activeMode) || MODES[0];
+  const isLogin = activeMode === 'login';
+  const isRegister = activeMode === 'register';
+  const isGoogle = activeMode === 'google';
+
+  const dynamicTitle = isLogin
+    ? t('section.login.loginTitle', 'Entrar')
+    : isRegister
+      ? t('section.login.registerTitle', 'Registre personal')
+      : t('section.login.googleTitle', 'Google');
+
+  const dynamicSubtitle = isLogin
+    ? t('section.login.loginSubtitle', 'Accedeix al teu compte i recupera la teua sessió')
+    : isRegister
+      ? t('section.login.registerSubtitle', 'Obri un compte nou per a tindre el teu espai propi')
+      : t('section.login.googleSubtitle', 'Accedeix ràpidament amb el teu compte de Google en un sol clic');
 
   return (
     <UniversalPage
-      title={t('section.login.title', 'Login, registre i Google')}
-      subtitle={t('section.login.subtitle', 'Accés al portal per a entrar, crear un compte o continuar amb Google.')}
+      title={dynamicTitle}
+      subtitle={dynamicSubtitle}
+      lead={!isLogin ? t('section.login.registerEntradilla', 'Deus registrar-te amb el teu nom real com a persona física i el teu perfil serà sempre privat per defecte. Una vegada dins, podràs crear grups de treball i empreses de forma pública per a la teua comarca.') : null}
       chrome="system"
       showLogos={true}
     >
       <div className="login-layout">
+        
         <div className="login-switcher" role="tablist" aria-label="Opcions d’accés">
-          {MODES.map((mode) => {
-            const Icon = mode.icon;
-            return (
-              <button
-                key={mode.id}
-                type="button"
-                className={`pill ${activeMode === mode.id ? 'pill--active' : ''}`}
-                onClick={() => setActiveMode(mode.id)}
-                role="tab"
-                aria-selected={activeMode === mode.id}
-              >
-                <Icon size={16} />
-                {mode.label}
-              </button>
-            );
-          })}
+          <button
+            type="button"
+            className={`pill ${isLogin ? 'pill--active' : ''}`}
+            onClick={() => setActiveMode('login')}
+            role="tab"
+            aria-selected={activeMode === 'login'}
+          >
+            {t('section.login.loginButton', 'Entrar')}
+          </button>
+          <button
+            type="button"
+            className={`pill ${isRegister ? 'pill--active' : ''}`}
+            onClick={() => setActiveMode('register')}
+            role="tab"
+            aria-selected={activeMode === 'register'}
+          >
+            {t('section.login.registerButton', 'Crear compte')}
+          </button>
+          <button
+            type="button"
+            className={`pill ${isGoogle ? 'pill--active' : ''}`}
+            onClick={() => setActiveMode('google')}
+            role="tab"
+            aria-selected={activeMode === 'google'}
+          >
+            Google
+          </button>
         </div>
 
-        <section className="card login-hero">
-          <div className="login-hero__brand">
-            <BrandMark />
-          </div>
-          <div className="login-hero__copy">
-            <span className="pill pill--active">{t('section.login.private', 'Accés privat')}</span>
-            <h2 className="card__title">{currentMode.title}</h2>
-            <p className="card__text">{currentMode.subtitle}</p>
-            <div className="section-hero__meta">
-              {currentMode.meta.map((item) => (
-                <span key={item} className="pill">{item}</span>
-              ))}
-            </div>
-          </div>
-          <div className="login-hero__note">
-            <strong>{t('section.login.heroTitle', 'El teu accés, en un sol lloc.')}</strong>
-            <p>{t('section.login.heroText', 'Entra, crea el teu compte o continua amb Google segons el que et vaja millor.')}</p>
-          </div>
-        </section>
+        <div className="card">
+          <div className="card__body">
+            {activeMode === 'login' ? (
+              <form className="login-form" onSubmit={handleLogin}>
 
-        <div className="login-grid">
-          <LoginCard mode={MODES[0]} activeMode={activeMode}>
-            <form className="login-form" onSubmit={handleLogin}>
-              <div className="login-form__head">
-                <LogIn size={18} />
-                <h3 className="card__title">{t('section.login.loginTitle', 'Entrar')}</h3>
-              </div>
-              <p className="card__text">{t('section.login.loginSubtitle', 'Accedeix al teu compte i recupera la teua sessió.')}</p>
+                <label className="form-group">
+                  <span>{t('section.login.loginEmail', 'Correu electrònic')}</span>
+                  <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="nom@exemple.com" autoComplete="email" disabled={isLoading} />
+                </label>
 
-              <label className="login-field">
-                <span>{t('section.login.loginEmail', 'Correu electrònic')}</span>
-                <input className="section-search" type="email" name="email" value={formData.email} onChange={handleChange} placeholder={t('section.login.placeholder.email', 'nom@exemple.com')} autoComplete="email" disabled={isLoading} />
-              </label>
+                <label className="form-group">
+                  <span>{t('section.login.loginPassword', 'Contrasenya')}</span>
+                  <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="••••••••" autoComplete="current-password" disabled={isLoading} />
+                </label>
 
-              <label className="login-field">
-                <span>{t('section.login.loginPassword', 'Contrasenya')}</span>
-                <input className="section-search" type="password" name="password" value={formData.password} onChange={handleChange} placeholder="••••••••" autoComplete="current-password" disabled={isLoading} />
-              </label>
-
-              <button type="submit" className="pill pill--primary login-action" disabled={isLoading}>
-                {isLoading ? <Loader2 className="spinner" size={16} /> : (
-                  <>
-                    {t('section.login.loginButton', 'Entrar')}
-                    <ArrowRight size={16} />
-                  </>
-                )}
-              </button>
-            </form>
-          </LoginCard>
-
-          <LoginCard mode={MODES[1]} activeMode={activeMode}>
-            <form className="login-form" onSubmit={handleRegister}>
-              <div className="login-form__head">
-                <UserPlus size={18} />
-                <h3 className="card__title">{t('section.login.registerTitle', 'Crear compte')}</h3>
-              </div>
-              <p className="card__text">{t('section.login.registerSubtitle', 'Obri un compte nou per a tindre el teu espai propi.')}</p>
-
-              <label className="login-field">
-                <span>{t('section.login.registerName', 'Nom')}</span>
-                <input className="section-search" type="text" name="name" value={formData.name} onChange={handleChange} placeholder={t('section.login.placeholder.name', 'Nom i cognoms')} autoComplete="name" disabled={isLoading} />
-              </label>
-
-              <label className="login-field">
-                <span>{t('section.login.loginEmail', 'Correu electrònic')}</span>
-                <input className="section-search" type="email" name="email" value={formData.email} onChange={handleChange} placeholder={t('section.login.placeholder.email', 'nom@exemple.com')} autoComplete="email" disabled={isLoading} />
-              </label>
-              
-              <label className="login-field">
-                <span>{t('section.login.loginPassword', 'Contrasenya')}</span>
-                <input className="section-search" type="password" name="password" value={formData.password} onChange={handleChange} placeholder="••••••••" autoComplete="new-password" disabled={isLoading} />
-              </label>
-
-              <button type="submit" className="pill pill--primary login-action" disabled={isLoading}>
-                {isLoading ? <Loader2 className="spinner" size={16} /> : (
-                  <>
-                    {t('section.login.registerButton', 'Crear compte')}
-                    <ArrowRight size={16} />
-                  </>
-                )}
-              </button>
-            </form>
-          </LoginCard>
-
-          <LoginCard mode={MODES[2]} activeMode={activeMode}>
-            <div className="login-form">
-              <div className="login-form__head">
-                <Globe size={18} />
-                <h3 className="card__title">{t('section.login.googleTitle', 'Google')}</h3>
-              </div>
-              <p className="card__text">{t('section.login.googleSubtitle', 'Accés ràpid amb Google per a entrar en un clic.')}</p>
-
-              <div className="login-google">
-                <button type="button" className="pill pill--primary login-action">
-                  <Globe size={16} />
-                  {t('section.login.googleButton', 'Continuar amb Google')}
+                <button type="submit" className="pill pill--primary login-action" disabled={isLoading}>
+                  {isLoading ? <Loader2 className="spinner" size={16} /> : (
+                    <>
+                      {t('section.login.loginButton', 'Entrar')}
+                      <ArrowRight size={16} />
+                    </>
+                  )}
                 </button>
-                <p className="login-note">{t('section.login.googleNote', 'Opció pensada per a un accés més ràpid i còmode.')}</p>
-              </div>
+              </form>
+            ) : activeMode === 'register' ? (
+              <form className="login-form" onSubmit={handleRegister}>
 
-              <div className="login-summary">
-                <div className="login-summary__item">
-                  <UserRound size={16} />
-                  <span>{t('section.login.summary.futureUser', 'Usuari futur')}</span>
-                </div>
-                <div className="login-summary__item">
-                  <Mail size={16} />
-                  <span>{t('section.login.summary.verifiableEmail', 'Correu verificable')}</span>
-                </div>
-                <div className="login-summary__item">
-                  <Lock size={16} />
-                  <span>{t('section.login.summary.protectedAccess', 'Accés protegit')}</span>
-                </div>
+                <label className="form-group">
+                  <span>{t('section.login.registerName', 'Nom')}</span>
+                  <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Nom i cognoms" autoComplete="name" disabled={isLoading} />
+                </label>
+
+                <label className="form-group">
+                  <span>{t('section.login.loginEmail', 'Correu electrònic')}</span>
+                  <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="nom@exemple.com" autoComplete="email" disabled={isLoading} />
+                </label>
+                
+                <label className="form-group">
+                  <span>{t('section.login.loginPassword', 'Contrasenya')}</span>
+                  <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="••••••••" autoComplete="new-password" disabled={isLoading} />
+                </label>
+
+                <button type="submit" className="pill pill--primary login-action" disabled={isLoading}>
+                  {isLoading ? <Loader2 className="spinner" size={16} /> : (
+                    <>
+                      {t('section.login.registerButton', 'Crear compte')}
+                      <ArrowRight size={16} />
+                    </>
+                  )}
+                </button>
+              </form>
+            ) : (
+              <div className="login-form">
+                <button type="button" className="pill pill--primary login-action" disabled={isLoading} onClick={handleGoogleLogin}>
+                  {isLoading ? <Loader2 className="spinner" size={16} /> : (
+                    <>
+                      {t('section.login.loginTitle', 'Entrar')}
+                      <ArrowRight size={16} />
+                    </>
+                  )}
+                </button>
               </div>
-            </div>
-          </LoginCard>
+            )}
+          </div>
         </div>
       </div>
     </UniversalPage>

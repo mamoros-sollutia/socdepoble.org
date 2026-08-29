@@ -39,6 +39,7 @@ import { destroyToastSystem } from './components/universal/AvisadorEfimer.jsx';
 import styles from './css/index.css?inline';
 import legacyStyles from './css/legacy-components.css?inline';
 import { readThemePreference, resolveTheme } from './config/theme';
+import { freezeImplementation } from './data/backendPort.js';
 
 /* ───────────────────────────── Error boundary ──────────────────────────── */
 
@@ -92,7 +93,7 @@ function obtenirFull() {
   if (typeof CSSStyleSheet === 'undefined') return null;
   try {
     const full = new CSSStyleSheet();
-    full.replaceSync(`:host{display:block;width:100%;}\n${styles}`);
+    full.replaceSync(`:host{display:block;width:100%;height:100%;}\n${styles}`);
     const fullLegacy = new CSSStyleSheet();
     fullLegacy.replaceSync(legacyStyles);
     fullCompartit = [full, fullLegacy];
@@ -113,6 +114,13 @@ function carregarFonts(href) {
   fontRefCount.set(key, current + 1);
 
   if (current === 0 && !document.querySelector(`link[data-sdp-fonts="${key}"]`)) {
+    const preload = document.createElement('link');
+    preload.rel = 'preload';
+    preload.as = 'style';
+    preload.href = href;
+    preload.setAttribute('data-sdp-fonts-preload', key);
+    document.head.appendChild(preload);
+
     const link = document.createElement('link');
     link.rel = 'stylesheet';
     link.href = href;
@@ -130,6 +138,8 @@ function descarregarFonts(href) {
   if (fontRefCount.get(key) === 0) {
     const link = document.querySelector(`link[data-sdp-fonts="${key}"]`);
     if (link) link.remove();
+    const preload = document.querySelector(`link[data-sdp-fonts-preload="${key}"]`);
+    if (preload) preload.remove();
   }
 }
 
@@ -152,7 +162,7 @@ const ATRIBUTS = {
 const CLAUS_PERMESES = new Set([
   'basePath','supabaseUrl','supabaseAnonKey','dataMode','botApiUrl',
   'fontsHref','pluginUrl','routerType','basename','tenantId','language','themeMode',
-  'user', 'userId'
+  'user', 'userId', 'manageDocumentHead', 'version', 'oauthRelayUrl'
 ]);
 
 function sanejaConfig(cru) {
@@ -164,8 +174,10 @@ function sanejaConfig(cru) {
   for (const field of CAMPOS_URL) {
     if (net[field]) {
       try {
-        const u = new URL(net[field], window.location.origin);
-        if (u.protocol !== 'https:' && u.protocol !== 'http:' && !net[field].startsWith('/')) {
+        const cruUrl = net[field];
+        if (cruUrl.startsWith('//')) { delete net[field]; continue; } // Z: bloqueig de protocol-relative
+        const u = new URL(cruUrl, window.location.origin);
+        if (u.protocol !== 'https:' && u.protocol !== 'http:' && !cruUrl.startsWith('/')) {
           delete net[field];
         }
       } catch { delete net[field]; }
@@ -203,12 +215,18 @@ class SocDePobleElement extends BaseElement {
 
   connectedCallback() {
     this._pendingUnmount = false;
+    if (this._unmountListener) {
+      document.removeEventListener('visibilitychange', this._unmountListener);
+      this._unmountListener = null;
+    }
 
-    for (const old of activeElements) {
+    // Convertim activeElements a array abans d'iterar per evitar mutar el set mentre l'iterem
+    const elementsActuals = Array.from(activeElements);
+    for (const old of elementsActuals) {
       if (old !== this && old.isConnected && typeof old._desmuntaAra === 'function') {
         old._desmuntaAra(); // Últim que arriba guanya: desmuntatge SÍNCRON
       }
-      // Netejem possibles zombis
+      // Netejem possibles zombis (ara de forma segura)
       if (old !== this && !old.isConnected) {
         if (typeof old._desmuntaAra === 'function') old._desmuntaAra();
       }
@@ -235,11 +253,11 @@ class SocDePobleElement extends BaseElement {
     } 
     
     if (!full || !('adoptedStyleSheets' in arrel) || arrel.adoptedStyleSheets.length === 0) {
-      if (!arrel.querySelector('style[data-sdp]')) {
+      if (!arrel.querySelector('style[data-sdp-fallback]')) {
         const style = document.createElement('style');
-        style.setAttribute('data-sdp', '');
-        style.textContent = `:host{display:block;width:100%;}\n${styles}\n${legacyStyles}`;
-        arrel.appendChild(style);
+        style.setAttribute('data-sdp-fallback', '');
+        style.textContent = `soc-de-poble { display: block; width: 100%; height: 100%; }\n${styles}\n${legacyStyles}`;
+        arrel.prepend(style);
       }
     }
 
@@ -253,7 +271,10 @@ class SocDePobleElement extends BaseElement {
     this.dataset.theme = resolveTheme(this._config.themeMode ?? readThemePreference());
 
     /* P0-1: la guarda va sobre l'arrel de React, no sobre el shadow root. */
-    if (!this._root) this._root = createRoot(this._punt);
+    if (!this._root) {
+      freezeImplementation();
+      this._root = createRoot(this._punt);
+    }
     this._render();
   }
 
@@ -370,6 +391,11 @@ class SocDePobleElement extends BaseElement {
       descarregarFonts(this._config.fontsHref);
     }
     
+    if (this._unmountListener) {
+      document.removeEventListener('visibilitychange', this._unmountListener);
+      this._unmountListener = null;
+    }
+    
     try { this._root?.unmount(); } catch { /* WebKit legacy pot plorar */ }
     this._root = null;
     this._punt?.remove();
@@ -396,9 +422,15 @@ class SocDePobleElement extends BaseElement {
         const unmountOnVisible = () => {
           if (document.visibilityState === 'visible') {
             document.removeEventListener('visibilitychange', unmountOnVisible);
+            this._unmountListener = null;
             if (!this.isConnected) this._desmuntaAra();
           }
         };
+        // Netejar listener vell si n'hi ha abans d'assignar el nou
+        if (this._unmountListener) {
+          document.removeEventListener('visibilitychange', this._unmountListener);
+        }
+        this._unmountListener = unmountOnVisible;
         document.addEventListener('visibilitychange', unmountOnVisible);
       }
     });

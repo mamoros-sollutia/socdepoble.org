@@ -1,5 +1,6 @@
 ---
 name: actitud-dafo
+lang: ca
 description: "Model mental per superar l'ego de la IA. Avalua auditories i Petorretas en mode DAFO (Debilitats, Amenaces, Fortaleses, Oportunitats) amb paranoia defensiva i humilitat."
 version: 1.0.0
 triggers_ca:

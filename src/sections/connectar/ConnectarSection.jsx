@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { CheckCircle2, Globe, Lock, Plus, Tag } from 'lucide-react';
 import { UniversalPage } from '../../components/universal/UniversalComponents';
 import { useAppData } from '../../app/AppDataContext';
+import { showToast } from '../../components/universal/AvisadorEfimer';
 
 const TAGS = ['Història local', 'Patrimoni', 'Gent del poble', 'Debat', 'Mercat', 'Tecnologia'];
 
@@ -19,7 +20,6 @@ export default function ConnectarSection({ agents = [] }) {
   const [isPrivate, setIsPrivate] = useState(true);
   const [customTags, setCustomTags] = useState([]);
   const [tagInput, setTagInput] = useState('');
-  const [selectedAgent, setSelectedAgent] = useState(agents[0]?.id || '');
   const [entryTitle, setEntryTitle] = useState('');
   const [entryDescription, setEntryDescription] = useState('');
   const [isSaving, setIsSaving] = useState(false);
@@ -27,17 +27,15 @@ export default function ConnectarSection({ agents = [] }) {
     { id: 'xat', label: t('nav.xat', 'Xat'), description: t('section.connectar.area.xat', 'Obri una conversa amb la gent del poble.') },
     { id: 'mur', label: t('nav.mur', 'Mur'), description: t('section.connectar.area.mur', 'Publica o revisa el mur públic.') },
     { id: 'mercat', label: t('nav.mercat', 'Mercat'), description: t('section.connectar.area.mercat', 'Explora productes i intercanvis.') },
-    { id: 'events', label: t('nav.events', 'Events'), description: t('section.connectar.area.events', 'Mira sessions, cites i rituals.') }
+    { id: 'events', label: t('nav.events', 'Events'), description: t('section.connectar.area.events', 'Mira sessions, cites i rituals.') },
+    { id: 'multimedia', label: t('nav.multimedia', 'Multimèdia'), description: t('section.connectar.area.multimedia', 'Puge fotos i recursos visuals.') },
+    { id: 'notes', label: t('nav.notes', 'Notes'), description: t('section.connectar.area.notes', 'Afig una nova nota a la llibreta.') }
   ];
 
-  const agentOptions = useMemo(() => agents.slice(0, 8), [agents]);
-  const selectedAgentData = useMemo(
-    () => agentOptions.find((agent) => agent.id === selectedAgent) || agentOptions[0] || null,
-    [agentOptions, selectedAgent]
-  );
   const selectedLabel = QUICK_AREAS.find((item) => item.id === selectedArea)?.label || t('nav.xat', 'Xat');
-  const supportsPublishing = ['mur', 'mercat', 'events'].includes(selectedArea);
+  const supportsPublishing = ['mur', 'mercat', 'events', 'multimedia', 'notes'].includes(selectedArea);
   const canConnect = selectedArea === 'xat' || (entryTitle.trim() && entryDescription.trim());
+  const { currentUser } = useAppData();
 
   const addTag = (tag) => {
     const value = String(tag || '').trim();
@@ -50,9 +48,9 @@ export default function ConnectarSection({ agents = [] }) {
     const now = new Date().toISOString();
     const title = entryTitle.trim();
     const description = entryDescription.trim();
-    const authorName = selectedAgentData?.name || 'Foraster';
-    const authorAvatar = selectedAgentData?.avatar_url || null;
-    const authorTown = selectedAgentData?.town_name || 'La Torre de les Maçanes';
+    const authorName = currentUser?.user_metadata?.name || 'Foraster';
+    const authorAvatar = currentUser?.user_metadata?.avatar_url || null;
+    const authorTown = currentUser?.user_metadata?.town_name || 'La Torre de les Maçanes';
 
     if (selectedArea === 'mur') {
       return {
@@ -72,6 +70,7 @@ export default function ConnectarSection({ agents = [] }) {
         tags: [...customTags],
         likes: 0,
         comments: 0,
+        isPrivate,
         created_at: now,
         searchText: `${title} ${description} ${authorName} ${authorTown} ${customTags.join(' ')}`
       };
@@ -95,8 +94,44 @@ export default function ConnectarSection({ agents = [] }) {
         tag: customTags[0] || 'Connectat',
         variations: [],
         price: '0.00€',
+        isPrivate,
         created_at: now,
         searchText: `${title} ${description} ${authorName} ${customTags.join(' ')} connectat mercat`
+      };
+    }
+
+    if (selectedArea === 'multimedia') {
+      return {
+        id: generateId(),
+        sectionId: 'multimedia',
+        type: 'media',
+        title,
+        description,
+        summary: description,
+        author: authorName,
+        tag: customTags[0] || 'Multimèdia',
+        source: 'Upload',
+        isPrivate,
+        created_at: now,
+        searchText: `${title} ${description} ${authorName} ${customTags.join(' ')} multimedia`
+      };
+    }
+
+    if (selectedArea === 'notes') {
+      return {
+        id: generateId(),
+        sectionId: 'notes',
+        type: 'note',
+        title,
+        content: description,
+        plainText: description,
+        category: customTags[0] || 'General',
+        tags: [...customTags],
+        folderId: 'f-root',
+        isPrivate,
+        created_at: now,
+        updatedAt: now,
+        searchText: `${title} ${description} ${customTags.join(' ')} notes`
       };
     }
 
@@ -110,6 +145,7 @@ export default function ConnectarSection({ agents = [] }) {
       author_name: authorName,
       image_url: [],
       date: now.slice(0, 10),
+      isPrivate,
       created_at: now,
       tags: [...customTags],
       searchText: `${title} ${description} ${authorName} ${customTags.join(' ')} events`
@@ -140,6 +176,8 @@ export default function ConnectarSection({ agents = [] }) {
       setCustomTags([]);
       setTagInput('');
       navigate(`/${selectedArea}`);
+    } catch (error) {
+      showToast(error.message, 'error');
     } finally {
       setIsSaving(false);
     }
@@ -212,13 +250,16 @@ export default function ConnectarSection({ agents = [] }) {
             </div>
 
             <div className="tag-input-row">
+              <label htmlFor="connectar-tag-input" className="sr-only">{t('section.connectar.tagsPlaceholder', 'Afig una etiqueta lliure...')}</label>
               <input
+                id="connectar-tag-input"
                 type="text"
                 value={tagInput}
                 onChange={(event) => setTagInput(event.target.value)}
                 onKeyDown={(event) => event.key === 'Enter' && addTag(tagInput)}
                 placeholder={t('section.connectar.tagsPlaceholder', 'Afig una etiqueta lliure...')}
                 className="section-search"
+                aria-label={t('section.connectar.tagsPlaceholder', 'Afig una etiqueta lliure...')}
               />
               <button type="button" className="pill pill--primary" onClick={() => addTag(tagInput)}>
                 <Plus size={16} /> {t('section.connectar.add', 'Afegir')}
@@ -249,7 +290,9 @@ export default function ConnectarSection({ agents = [] }) {
               <span className="pill">Es guardarà i quedarà visible en recarregar</span>
             </div>
             <div className="connect-panel__body">
+              <label htmlFor="connectar-entry-title" className="sr-only">Títol de l'element</label>
               <input
+                id="connectar-entry-title"
                 type="text"
                 value={entryTitle}
                 onChange={(event) => setEntryTitle(event.target.value)}
@@ -259,8 +302,11 @@ export default function ConnectarSection({ agents = [] }) {
                     ? 'Nom del producte'
                     : 'Títol de l’esdeveniment'}
                 className="section-search"
+                aria-label="Títol de l'element"
               />
+              <label htmlFor="connectar-entry-desc" className="sr-only">Descripció o contingut</label>
               <textarea
+                id="connectar-entry-desc"
                 value={entryDescription}
                 onChange={(event) => setEntryDescription(event.target.value)}
                 placeholder={selectedArea === 'mur'
@@ -270,39 +316,14 @@ export default function ConnectarSection({ agents = [] }) {
                     : 'Descriu l’esdeveniment o la convocatòria...'}
                 className="section-search"
                 rows={4}
+                aria-label="Descripció o contingut"
               />
             </div>
           </section>
         ) : null}
 
         <section className="connect-panel connect-panel--wide">
-          <div className="connect-panel__head">
-            <div>
-              <h2 className="section-title">{t('section.connectar.people', 'Persones i agents')}</h2>
-            </div>
-            <button type="button" className="pill" onClick={() => navigate(`/` + selectedArea)}>
-              {t('section.connectar.go', 'Anar a')} {selectedLabel}
-            </button>
-          </div>
           <div className="connect-panel__body">
-            <div className="conversation-list">
-              {agentOptions.map((agent, index) => (
-                <button
-                  key={`${agent.id}-${index}`}
-                  type="button"
-                  className={`conversation-button ${selectedAgent === agent.id ? 'conversation-button--active' : ''}`}
-                  onClick={() => setSelectedAgent(agent.id)}
-                >
-                  <img className="avatar" src={agent.avatar_url} alt={agent.name} />
-                  <div className="conversation-meta">
-                    <strong>{agent.name}</strong>
-                    <span>{agent.role}</span>
-                    <span className="conversation-preview">{agent.last_message_content}</span>
-                  </div>
-                </button>
-              ))}
-            </div>
-
             <div className="connect-final">
               <button
                 type="button"

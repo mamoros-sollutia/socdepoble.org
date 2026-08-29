@@ -89,12 +89,14 @@ if (fs.existsSync(FONT_PHP)) {
 /* Sinònim → ruta canònica. El rewrite del PHP els accepta; sense àlies,
    sdp_resolve_request() els torna 404 en compte de redirigir. */
 const ALIES_CANONIC = {
-  xat: 'chat', chats: 'chat',
-  calendar: 'events', calendari: 'events',
+  chat: 'xat', chats: 'xat',
+  events: 'mur', calendar: 'mur', calendari: 'mur',
+  mapa: 'mur',
+  connectivitat: 'dispositius',
   'el-projecte': 'projecte',
   ruta: 'roadmap',
   anima: 'ia', iaia: 'ia',
-  accedir: 'login', 'crear-compte': 'registre',
+  accedir: 'login', 'crear-compte': 'login', registre: 'login',
   poblacio: 'pobles',
 };
 

@@ -1,0 +1,42 @@
+{
+  "literal-orfe": {
+    "max": 54,
+    "identitats": [
+      "literal-orfe|tooling/brain/crear_bundle.mjs|Literal «05_Escriptori_Soc_de_Poble» sen",
+      "literal-orfe|tooling/brain/crear_bundle.mjs|Literal «_wiki_de_poble» sense importar ",
+      "literal-orfe|tooling/brain/despertar.mjs|Literal «05_Escriptori_Soc_de_Poble» sen",
+      "literal-orfe|tooling/brain/despertar.mjs|Literal «_wiki_de_poble» sense importar ",
+      "literal-orfe|tooling/brain/generar_bundle.mjs|Literal «05_Escriptori_Soc_de_Poble» sen",
+      "literal-orfe|tooling/brain/generar_bundle.mjs|Literal «_wiki_de_poble» sense importar ",
+      "literal-orfe|tooling/crear_bundle_r3.mjs|Literal «05_Escriptori_Soc_de_Poble» sen",
+      "literal-orfe|tooling/crear_bundle_r3.mjs|Literal «_wiki_de_poble» sense importar ",
+      "literal-orfe|tooling/crear_bundle_r3_complet.mjs|Literal «05_Escriptori_Soc_de_Poble» sen",
+      "literal-orfe|tooling/crear_bundle_r3_complet.mjs|Literal «_wiki_de_poble» sense importar ",
+      "literal-orfe|tooling/gates/tractor-rutes.mjs|Literal «05_Escriptori_Soc_de_Poble» sen",
+      "literal-orfe|tooling/gates/tractor-rutes.mjs|Literal «_wiki_de_poble» sense importar ",
+      "literal-orfe|tooling/wiki/compile-wiki-to-system-prompt.mjs|Literal «_wiki_de_poble» sense importar ",
+      "literal-orfe|tooling/wiki/compiler/01_build_index.cjs|Literal «05_Escriptori_Soc_de_Poble» sen",
+      "literal-orfe|tooling/wiki/compiler/02_build_ontology.cjs|Literal «05_Escriptori_Soc_de_Poble» sen",
+      "literal-orfe|tooling/wiki/core/audit.mjs|Literal «_wiki_de_poble» sense importar ",
+      "literal-orfe|tooling/wiki/core/safety.mjs|Literal «05_Escriptori_Soc_de_Poble» sen",
+      "literal-orfe|tooling/wiki/entropia_zero_router.mjs|Literal «05_Escriptori_Soc_de_Poble» sen",
+      "literal-orfe|tooling/wiki/generar_genoma_v2.mjs|Literal «05_Escriptori_Soc_de_Poble» sen",
+      "literal-orfe|tooling/wiki/generar_genoma_v2.mjs|Literal «_wiki_de_poble» sense importar ",
+      "literal-orfe|tooling/wiki/generar_petorreta_inversa.mjs|Literal «05_Escriptori_Soc_de_Poble» sen",
+      "literal-orfe|tooling/wiki/generar_petorreta_inversa.mjs|Literal «_wiki_de_poble» sense importar ",
+      "literal-orfe|tooling/wiki/neteja_brain.mjs|Literal «_wiki_de_poble» sense importar ",
+      "literal-orfe|tooling/wiki/tests/reflex_petorreta.test.mjs|Literal «05_Escriptori_Soc_de_Poble» sen",
+      "literal-orfe|tooling/wiki/tests/reflex_petorreta.test.mjs|Literal «_wiki_de_poble» sense importar ",
+      "literal-orfe|tooling/wiki/tests/safety_dry_run.test.mjs|Literal «05_Escriptori_Soc_de_Poble» sen",
+      "literal-orfe|tooling/wiki/tests/smoke_cli.test.mjs|Literal «_wiki_de_poble» sense importar ",
+      "literal-orfe|tooling/wiki/tractor-cognitiu.mjs|Literal «_wiki_de_poble» sense importar ",
+      "literal-orfe|tooling/wiki/validate-wiki-compliance.mjs|Literal «_wiki_de_poble» sense importar "
+    ]
+  },
+  "porta-sense-cli": {
+    "max": 1,
+    "identitats": [
+      "porta-sense-cli|tooling/gates/design_guard.mjs|Declarat a `npm run porta` però no té pu"
+    ]
+  }
+}

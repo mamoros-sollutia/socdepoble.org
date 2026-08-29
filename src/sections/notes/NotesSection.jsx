@@ -1,6 +1,8 @@
 import { useDeferredValue, useMemo, useState } from 'react';
-import { ChevronLeft, FileText, Folder, List } from 'lucide-react';
-import { UniversalPage } from '../../components/universal/UniversalComponents';
+import { sanitizeHtml } from '../../utils/sanitize';
+import { ChevronLeft, ChevronDown, ChevronRight, FileText, Folder, List, Heading1, Heading2, Type, ListOrdered, CheckSquare, Image as ImageIcon, Video, Link, Bold, Italic, Strikethrough, Sparkles, Download, Plus, Bookmark, Hash, Globe } from 'lucide-react';
+import { UniversalPage, DateTimeControl } from '../../components/universal/UniversalComponents';
+import { UniversalSearch } from '../../components/ui/UniversalSearch.jsx';
 import { useAppData } from '../../app/AppDataContext';
 
 const CATEGORIES = ['Trellat', 'Patrimoni', 'Dades', 'Social'];
@@ -19,7 +21,13 @@ export default function NotesSection() {
   const [activeNoteId, setActiveNoteId] = useState('n1');
   const [searchQuery, setSearchQuery] = useState('');
   const deferredSearchQuery = useDeferredValue(searchQuery);
-  const [mobileView, setMobileView] = useState('folders');
+  const [mobileView, setMobileView] = useState('list'); // 'folders', 'list', 'editor'
+  const [showPublishMenu, setShowPublishMenu] = useState(false);
+  const [isFoldersOpen, setIsFoldersOpen] = useState(true); // sidebar collapse
+  const [isFoldersAccordionOpen, setIsFoldersAccordionOpen] = useState(true);
+  const [isCategoriesOpen, setIsCategoriesOpen] = useState(true);
+  const [isTagsOpen, setIsTagsOpen] = useState(true);
+  const [isNotesOpen, setIsNotesOpen] = useState(true);
   const locale = LANGUAGE_LOCALES[language] || 'ca-ES';
 
   const notes = useMemo(
@@ -30,7 +38,9 @@ export default function NotesSection() {
           ...note,
           plainText,
           searchText: normalizeSearchText(`${note.title} ${plainText}`),
-          formattedDate: new Date(note.updatedAt).toLocaleDateString(locale, { day: 'numeric', month: 'short' })
+          formattedDate: new Date(note.updatedAt).toLocaleDateString(locale, { day: 'numeric', month: 'short' }),
+          formattedTime: new Date(note.updatedAt).toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit' }),
+          formattedDateShort: `${String(new Date(note.updatedAt).getDate()).padStart(2, '0')}/${String(new Date(note.updatedAt).getMonth() + 1).padStart(2, '0')}/${String(new Date(note.updatedAt).getFullYear()).slice(-2)}`
         };
       }),
     [locale, normalizeSearchText, rawNotes]
@@ -65,36 +75,51 @@ export default function NotesSection() {
 
   const getCategoryLabel = (category) => t(`section.notes.category.${category}`, category);
 
+  const handleToggleFolders = () => {
+    const nextState = !isFoldersOpen;
+    setIsFoldersOpen(nextState);
+    if (nextState) setIsNotesOpen(true);
+  };
+
   return (
-    <UniversalPage
-      title={t('section.notes.title', 'Quadern')}
-      subtitle={t('section.notes.subtitle', 'Notes i apunts del projecte organitzats per carpetes.')}
-      chrome="system"
-      showLogos={true}
-    >
-      <article className="card">
-        <div className="topbar">
+    <UniversalPage chrome="system" hideHeader={true}>
+      <article className="notes-card" style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+        <div className="topbar mobile-only-topbar">
           <div className="topbar__title">
-            <strong>{t('section.notes.mobileTitle', 'Quadern')}</strong>
+            <strong>{t('section.notes.mobileTitle', 'Bloc de notes')}</strong>
           </div>
-          <div className="topbar__actions">
-            <button type="button" className={`pill ${mobileView === 'folders' ? 'pill--primary' : ''}`} onClick={() => setMobileView('folders')}>
+          <div className="sdp-switcher mobile-only" role="tablist">
+            <button type="button" role="tab" aria-selected={mobileView === 'folders'} className={`pill ${mobileView === 'folders' ? 'pill--active' : ''}`} onClick={() => setMobileView('folders')}>
               <Folder size={16} /> {t('section.notes.mobileFolders', 'Carpetes')}
             </button>
-            <button type="button" className={`pill ${mobileView === 'list' ? 'pill--primary' : ''}`} onClick={() => setMobileView('list')}>
+            <button type="button" role="tab" aria-selected={mobileView === 'list'} className={`pill ${mobileView === 'list' ? 'pill--active' : ''}`} onClick={() => setMobileView('list')}>
               <List size={16} /> {t('section.notes.mobileList', 'Llista')}
             </button>
-            <button type="button" className={`pill ${mobileView === 'editor' ? 'pill--primary' : ''}`} onClick={() => setMobileView('editor')}>
+            <button type="button" role="tab" aria-selected={mobileView === 'editor'} className={`pill ${mobileView === 'editor' ? 'pill--active' : ''}`} onClick={() => setMobileView('editor')}>
               <FileText size={16} /> {t('section.notes.mobileEditor', 'Editor')}
             </button>
           </div>
         </div>
 
-        <div className="notes-shell">
-          <aside className={`notes-column notes-column--folders ${mobileView === 'folders' ? 'notes-column--mobile' : ''}`}>
-            <div className="notes-column__head">{t('section.notes.archive', 'Arxiu del Poble')}</div>
+        <div className="notes-shell" style={{ marginTop: '24px', flex: 1, overflow: 'hidden' }}>
+          <aside role="complementary" aria-label={t('section.notes.folders', 'Carpetes')} className={`notes-column notes-column--folders ${mobileView === 'folders' ? 'notes-column--mobile' : ''} ${!isFoldersOpen ? 'notes-column--collapsed' : ''}`}>
+            <div className="notes-column__head" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }} onClick={() => setIsFoldersAccordionOpen(!isFoldersAccordionOpen)}>
+                <Folder size={16} />
+                <span className="column-title">{t('section.notes.folders', 'Carpetes')}</span>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <Plus size={16} style={{ cursor: 'pointer' }} onClick={() => {}} aria-label="Afegeix carpeta" />
+                <div style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }} onClick={() => setIsFoldersAccordionOpen(!isFoldersAccordionOpen)}>
+                  {isFoldersAccordionOpen ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
+                </div>
+                <div style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', paddingLeft: '4px', borderLeft: '1px solid var(--sdp-vora)' }} onClick={handleToggleFolders}>
+                  {isFoldersOpen ? <ChevronLeft size={16} className="collapse-icon" /> : <Folder size={16} className="collapse-icon" />}
+                </div>
+              </div>
+            </div>
             <div className="notes-column__body">
-              <div className="folders-list">
+              <nav role="navigation" aria-label={t('section.notes.folders', 'Carpetes')} className="folders-list" style={{ display: isFoldersAccordionOpen ? 'block' : 'none' }}>
                 {noteFolders.map((folder) => (
                   <button
                     key={folder.id}
@@ -105,19 +130,59 @@ export default function NotesSection() {
                     <Folder size={16} /> {folder.name}
                   </button>
                 ))}
-              </div>
+              </nav>
 
               <div className="notes-category-block">
-                <div className="notes-column__head">{t('section.notes.categories', 'Categories')}</div>
-                <div className="folders-list">
+                <div className="notes-column__head" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '1rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }} onClick={() => setIsCategoriesOpen(!isCategoriesOpen)}>
+                    <Bookmark size={16} />
+                    <span className="column-title">{t('section.notes.categories', 'Categories')}</span>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                    <Plus size={16} style={{ cursor: 'pointer' }} onClick={() => {}} aria-label="Afegeix categoria" />
+                    <div style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }} onClick={() => setIsCategoriesOpen(!isCategoriesOpen)}>
+                      {isCategoriesOpen ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
+                    </div>
+                  </div>
+                </div>
+                <div role="group" aria-label={t('section.notes.categories', 'Categories')} className="categories-list" style={{ display: isCategoriesOpen ? 'block' : 'none' }}>
                   {CATEGORIES.map((category) => (
                     <button
                       key={category}
                       type="button"
                       className={`folder-button ${category === activeCategory ? 'folder-button--active' : ''}`}
                       onClick={() => handleSelectCategory(category)}
+                      style={{ width: '100%', justifyContent: 'flex-start' }}
                     >
-                      {getCategoryLabel(category)}
+                      <Bookmark size={14} /> {getCategoryLabel(category)}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="notes-tags-block">
+                <div className="notes-column__head" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '1rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }} onClick={() => setIsTagsOpen(!isTagsOpen)}>
+                    <Hash size={16} />
+                    <span className="column-title">Etiquetes</span>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                    <Plus size={16} style={{ cursor: 'pointer' }} onClick={() => {}} aria-label="Afegeix etiqueta" />
+                    <div style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }} onClick={() => setIsTagsOpen(!isTagsOpen)}>
+                      {isTagsOpen ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
+                    </div>
+                  </div>
+                </div>
+                <div role="group" aria-label="Etiquetes" className="tags-list" style={{ display: isTagsOpen ? 'block' : 'none' }}>
+                  {/* Mock tags for now */}
+                  {['#important', '#idea', '#esborrany'].map((tag) => (
+                    <button
+                      key={tag}
+                      type="button"
+                      className="folder-button"
+                      style={{ width: '100%', justifyContent: 'flex-start' }}
+                    >
+                      <Hash size={14} /> {tag}
                     </button>
                   ))}
                 </div>
@@ -125,15 +190,25 @@ export default function NotesSection() {
             </div>
           </aside>
 
-          <section className={`notes-column notes-column--list ${mobileView === 'list' ? 'notes-column--mobile' : ''}`}>
-            <div className="notes-column__head">{t('nav.notes', 'Notes')}</div>
+          <section role="region" aria-label={t('nav.notes', 'Notes')} className={`notes-column notes-column--list ${mobileView === 'list' ? 'notes-column--mobile' : ''} ${!isNotesOpen ? 'notes-column--collapsed' : ''}`}>
+            <div className="notes-column__head" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }} onClick={() => setIsNotesOpen(!isNotesOpen)}>
+                <FileText size={16} />
+                <span className="column-title">{t('nav.notes', 'Notes')}</span>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <Plus size={16} style={{ cursor: 'pointer' }} onClick={() => {}} aria-label="Afegeix nota" />
+                <div style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', paddingLeft: '4px', borderLeft: '1px solid var(--sdp-vora)' }} onClick={() => setIsNotesOpen(!isNotesOpen)}>
+                  {isNotesOpen ? <ChevronLeft size={16} className="collapse-icon" /> : <List size={16} className="collapse-icon" />}
+                </div>
+              </div>
+            </div>
             <div className="notes-column__body">
-              <input
-                type="search"
+              <UniversalSearch
                 value={searchQuery}
                 onChange={(event) => setSearchQuery(event.target.value)}
                 placeholder={t('section.notes.searchPlaceholder', 'Cerca al bancal...')}
-                className="section-search"
+                ariaLabel={t('section.notes.searchAria', 'Cercador de notes')}
               />
 
               <div className="note-list">
@@ -143,16 +218,31 @@ export default function NotesSection() {
                     <button
                       key={note.id}
                       type="button"
-                      className={`conversation-button ${isActive ? 'conversation-button--active' : ''}`}
                       onClick={() => {
                         setActiveNoteId(note.id);
                         setMobileView('editor');
                       }}
+                      style={{
+                        width: '100%',
+                        textAlign: 'left',
+                        padding: '16px',
+                        background: isActive ? 'var(--sdp-fons-subtil)' : 'transparent',
+                        border: 'none',
+                        borderBottom: '1px solid var(--sdp-vora)',
+                        cursor: 'pointer'
+                      }}
                     >
-                      <div className="conversation-meta">
-                        <strong>{note.title}</strong>
-                        <span>{note.formattedDate}</span>
-                        <span className="conversation-preview">{note.plainText.slice(0, 100) || t('section.notes.emptyPreview', 'Sense contingut...')}</span>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', alignItems: 'baseline' }}>
+                        <strong style={{ fontSize: '1.1rem', color: 'var(--sdp-text-principal)' }}>{note.title}</strong>
+                        <span style={{ fontSize: '0.8rem', color: 'var(--sdp-text-secundari)' }}>{note.formattedDateShort}</span>
+                      </div>
+                      {note.subtitle && (
+                        <div style={{ fontSize: '0.95rem', color: 'var(--sdp-text-principal)', marginBottom: '8px', fontWeight: 600 }}>
+                          {note.subtitle}
+                        </div>
+                      )}
+                      <div style={{ fontSize: '0.85rem', color: 'var(--sdp-text-secundari)', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+                        {note.plainText.slice(0, 100) || t('section.notes.emptyPreview', 'Sense contingut...')}
                       </div>
                     </button>
                   );
@@ -162,24 +252,188 @@ export default function NotesSection() {
           </section>
 
           <main className={`notes-column notes-column--editor ${mobileView === 'editor' ? 'notes-column--mobile' : ''}`}>
-              <div className="notes-column__head notes-column__head--editor">
-                <button type="button" className="pill" onClick={handleBack}>
-                <ChevronLeft size={16} /> {t('section.notes.back', 'Tornar')}
-                </button>
-              <span>{activeNote?.category ? getCategoryLabel(activeNote.category) : t('section.notes.categoryLabel', 'Categoria')}</span>
+              <div className="notes-column__head notes-column__head--editor" style={{ display: 'flex', flexDirection: 'column', alignItems: 'stretch', padding: 0 }}>
+                {/* Top Row */}
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', minHeight: '52px', padding: '0 16px' }}>
+                  <button type="button" className="pill mobile-only" onClick={handleBack}>
+                  <ChevronLeft size={16} /> {t('section.notes.back', 'Tornar')}
+                  </button>
+                  <div className="editor-toolbar" style={{ display: 'flex', gap: '16px', alignItems: 'center', flex: 1 }}>
+                    <Sparkles size={20} style={{ cursor: 'pointer' }} />
+                    <Download size={20} style={{ cursor: 'pointer' }} />
+                    <Heading2 size={20} style={{ cursor: 'pointer' }} />
+                    <Type size={20} style={{ cursor: 'pointer' }} />
+                    <List size={20} style={{ cursor: 'pointer' }} />
+                    <ListOrdered size={20} style={{ cursor: 'pointer' }} />
+                    <CheckSquare size={20} style={{ cursor: 'pointer' }} />
+                    <ImageIcon size={20} style={{ cursor: 'pointer' }} />
+                    <Video size={20} style={{ cursor: 'pointer' }} />
+                    <Link size={20} style={{ cursor: 'pointer' }} />
+                    <Bold size={20} style={{ cursor: 'pointer' }} />
+                    <Italic size={20} style={{ cursor: 'pointer' }} />
+                    <Strikethrough size={20} style={{ cursor: 'pointer' }} />
+                  </div>
+                  <div className="editor-toolbar-actions" style={{ marginLeft: '16px' }}>
+                    <div 
+                      onClick={() => setShowPublishMenu(!showPublishMenu)}
+                      style={{ 
+                        display: 'flex', 
+                        alignItems: 'center', 
+                        gap: '6px',
+                        cursor: 'pointer',
+                        color: 'var(--sdp-text-principal)',
+                        fontWeight: 600,
+                        textTransform: 'uppercase',
+                        fontSize: '0.85rem'
+                      }}
+                      role="button"
+                      tabIndex={0}
+                    >
+                      <Globe size={20} />
+                      PUBLICAR
+                    </div>
+                  </div>
+                </div>
+
+                {/* Inline Expandable Menu */}
+                {showPublishMenu && (
+                  <div style={{ 
+                    borderTop: '1px solid var(--sdp-vora)', 
+                    background: 'var(--sdp-fons-subtil)', 
+                    padding: '8px 16px', 
+                    display: 'flex', 
+                    flexDirection: 'column', 
+                    gap: '4px' 
+                  }}>
+                    <button className="folder-button" style={{ width: '100%', justifyContent: 'flex-start', padding: '8px 12px' }}>
+                      Públicament al Mur
+                    </button>
+                    <button className="folder-button" style={{ width: '100%', justifyContent: 'flex-start', padding: '8px 12px' }}>
+                      Al teu Grup de Treball
+                    </button>
+                    <button className="folder-button" style={{ width: '100%', justifyContent: 'flex-start', padding: '8px 12px' }}>
+                      Només usuaris seleccionats
+                    </button>
+                  </div>
+                )}
               </div>
-            <div className="notes-column__body notes-editor">
+            <div className="notes-column__body notes-editor" style={{ padding: 0 }}>
               {activeNote ? (
                 <>
-                  <h2 className="card__title">{activeNote.title}</h2>
-                  <div className="badge-row">
-                    <span className="badge">{getCategoryLabel(activeNote.category)}</span>
-                    {activeNote.tags?.map((tag) => <span key={tag} className="badge">{tag}</span>)}
+                  <div style={{ display: 'flex', flexDirection: 'column', height: '100%', overflowY: 'auto' }}>
+                    
+                    {/* Media Insertion */}
+                    {activeNote.heroImage ? (
+                      <div className="editor-hero-image" style={{ width: '100%', flexShrink: 0 }}>
+                        <img 
+                          src={activeNote.heroImage} 
+                          alt="Imatge de capçalera" 
+                          style={{ width: '100%', maxHeight: '400px', objectFit: 'cover', display: 'block' }} 
+                        />
+                      </div>
+                    ) : (
+                      <div style={{ padding: '32px', paddingBottom: '16px' }}>
+                        <button type="button" className="pill" style={{ borderStyle: 'dashed', background: 'transparent' }}>
+                          <ImageIcon size={16} /> Inserir Imatge o Multimèdia
+                        </button>
+                      </div>
+                    )}
+
+                    <div style={{ flexShrink: 0 }}>
+                      {/* Orange Bar */}
+                      <section className="bar-orange" aria-label="Autoria i data" style={{ margin: 0, borderRadius: 0 }}>
+                        <div className="sp-card-author">
+                          <img className="sp-card-avatar" src="/assets/system/ui/logo-socdepoble-cuadrat-verd.svg" alt="Sóc de Poble" width="48" height="48" />
+                          <div className="sp-card-author-info">
+                            <div className="sp-card-author-name">Sóc de Poble</div>
+                            <div className="sp-card-author-location">La Torre de les Maçanes</div>
+                          </div>
+                        </div>
+                        <div className="bar-actions">
+                          <DateTimeControl 
+                            time={activeNote.formattedTime}
+                            date={new Date(activeNote.createdAt).toLocaleDateString('ca-ES')} 
+                            onClick={() => {
+                              // Obrirà el contextual del calendari
+                            }}
+                          />
+                        </div>
+                      </section>
+                    </div>
+
+                    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', paddingBottom: '32px' }}>
+                      {/* Inner Universal Card */}
+                      <article className="card universal-page" style={{ margin: '0 32px 32px 32px', padding: '0 32px 32px 32px', flex: 1, display: 'flex', flexDirection: 'column', borderTopLeftRadius: 0, borderTopRightRadius: 0, borderLeft: 'none', borderRight: 'none', boxShadow: 'var(--sdp-ombra-suau)' }}>
+                        
+                        <header className="page-title" style={{ margin: '0 0 24px 0', borderBottom: 'none' }}>
+                          <img alt="Logotip Sóc de Poble" className="page-title-logo light-only" src="/assets/system/ui/logo-socdepoble-rect-negre.svg" />
+                          <img alt="Logotip Sóc de Poble" className="page-title-logo dark-only" src="/assets/system/ui/logo-socdepoble-rect-blanc.svg" />
+
+                          {/* H1 Title */}
+                          <h1 
+                            className="editor-title-input"
+                            contentEditable
+                            suppressContentEditableWarning
+                            onBlur={(e) => {
+                              // Optional: handle title change logic here if needed
+                            }}
+                            style={{ outline: 'none', cursor: 'text' }}
+                            data-placeholder="Escriu el títol de l'article (H1)..."
+                            dangerouslySetInnerHTML={{ __html: sanitizeHtml(activeNote.title || '') }}
+                          />
+
+                          {/* Meta Labels (Categories/Tags) */}
+                          <ul className="sp-card-labels page-title-labels" style={{ marginTop: '16px', marginBottom: '16px', justifyContent: 'center' }}>
+                            {activeNote.category ? (
+                              <li className={`sp-card-label ${activeNote.category.toLowerCase() === 'sistema' ? 'sdp-badge-system' : 'sdp-badge-category'}`} style={{ cursor: 'pointer', border: 'none' }}>{activeNote.category}</li>
+                            ) : (
+                              <li className="sp-card-label sdp-badge-category" style={{ borderStyle: 'dashed', background: 'transparent', cursor: 'pointer' }}>+ Categoria</li>
+                            )}
+                            {activeNote.tags && activeNote.tags.length > 0 ? (
+                              activeNote.tags.map(tag => (
+                                <li key={tag} className="sp-card-label sdp-badge-tag" style={{ cursor: 'pointer' }}>{tag}</li>
+                              ))
+                            ) : (
+                              <li className="sp-card-label sdp-badge-tag" style={{ borderStyle: 'dashed', background: 'transparent', cursor: 'pointer' }}>+ Etiqueta</li>
+                            )}
+                          </ul>
+
+                          {/* Copyright */}
+                          <p className="sp-card-copyright page-title-copyright">© Sóc de Poble / Fet per la IAIA i Nano Banana</p>
+                        </header>
+
+                        <div className="page-intro" style={{ marginBottom: '24px' }}>
+                          {/* H2 Subtitle */}
+                          <h2 
+                            className="editor-subtitle-input"
+                            contentEditable
+                            suppressContentEditableWarning
+                            style={{ outline: 'none', cursor: 'text' }}
+                            data-placeholder="Escriu el subtítol (H2)..."
+                            dangerouslySetInnerHTML={{ __html: sanitizeHtml(activeNote.subtitle || '') }}
+                          />
+
+                          {/* Lead (Entradilla) */}
+                          <p 
+                            className="lead editor-lead-input"
+                            contentEditable
+                            suppressContentEditableWarning
+                            style={{ outline: 'none', cursor: 'text' }}
+                            data-placeholder="Escriu l'entradilla..."
+                            dangerouslySetInnerHTML={{ __html: sanitizeHtml(activeNote.lead || '') }}
+                          />
+                        </div>
+                        
+                        <div 
+                          className="editor-content page-content"
+                          contentEditable
+                          suppressContentEditableWarning
+                          style={{ outline: 'none', flex: 1 }}
+                          dangerouslySetInnerHTML={{ __html: sanitizeHtml(activeNote.content) }}
+                        />
+                      </article>
+                    </div>
                   </div>
-                  <article
-                    className="app-note-content"
-                    children={ activeNote.content }
-                  />
                 </>
               ) : (
                 <div className="chat-empty">

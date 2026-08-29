@@ -34,7 +34,7 @@ const KNOWN_PAGE_SLUGS = new Set(Object.keys(PAGE_ROUTE_MAP));
 
 export const getSectionItemPath = (sectionId, itemId) => {
   if (sectionId === 'xat') {
-    return `/chat/${encodeURIComponent(String(itemId))}`;
+    return `/xat/${encodeURIComponent(String(itemId))}`;
   }
   return `/${sectionId}/${encodeURIComponent(String(itemId))}`;
 };

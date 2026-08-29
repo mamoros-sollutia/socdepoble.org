@@ -1,7 +1,15 @@
 #!/usr/bin/env node
 
-import { readFileSync, writeFileSync, existsSync, statSync, readdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync, statSync, readdirSync, renameSync } from 'node:fs';
 import { join, relative } from 'node:path';
+import { execSync } from 'node:child_process';
+
+try {
+  execSync('node tooling/gates/tractor-escriptori.mjs', { stdio: 'inherit' });
+} catch (e) {
+  console.error("crear_bundle cancel·lat per tractor-escriptori. L'Escriptori està corrupte o el run_id no quadra.");
+  process.exit(1);
+}
 
 const root = process.cwd();
 const args = process.argv.slice(2);
@@ -21,22 +29,32 @@ const outFileName = `${termoPrefix}_BUNDLE_${descriptiu}.md`;
 const outPath = join(root, '_wiki_de_poble/05_Escriptori_Soc_de_Poble', outFileName);
 
 const dirsToScan = ['src', '.agents', 'tooling', '_wiki_de_poble/04_arquitectura_disseny', '_wiki_de_poble/01_identitat_iaia', 'wordpress-plugin'];
-const filesToScan = ['package.json', 'vite.config.js', 'src/data/supabaseBackend.js', 'eslint.config.js', 'index.html'];
+const filesToScan = ['package.json', 'vite.config.js', 'src/data/supabaseBackend.js', 'eslint.config.js', 'index.html', 'public/auth/callback.html', '.vocabulari-deute.json'];
 
-const excludedExt = ['.php', '.jpg', '.png', '.woff', '.woff2', '.pdf'];
-const excludedDirs = ['node_modules', 'dist', '.git', '.brain-reports', 'vendor'];
+const excludedExt = ['.jpg', '.png', '.woff', '.woff2', '.pdf', '.svg', '.lock'];
+/* Auditoria 260829 (Seient 5): abans hi havia una whitelist OCULTA que descartava .php, .sql, .sh, .py, .yml
+   i el capçal no ho deia. Ara la llista d'incloses ES DECLARA al capçal i farcell.mjs la verifica. */
+const EXT_INCLOSES = ['.js', '.jsx', '.mjs', '.cjs', '.ts', '.tsx', '.css', '.md', '.json', '.html', '.php', '.sql', '.sh', '.py', '.yml', '.yaml', '.txt'];
+const excludedDirs = ['node_modules', 'dist', '.git', '.brain-reports', 'vendor', 'cervells', '.gemini'];
 
 let markdown = '# BUNDLE D\'AUDITORIA PER AL CONSELL\n\n';
+markdown += '> **Anclatge de Seguretat**: Aquest document pertany a l\'[[00_INDEX_ESCRIPTORI]] (evitant documents orfes).\n\n';
 markdown += '> [!CAUTION]\n';
 markdown += '> **AVÍS DE TRANSPARÈNCIA I CONTEXT EXCLÒS:**\n';
 markdown += '> Per no superar el límit de tokens, aquest bundle **ha exclòs intencionadament** els següents elements. **NO assumiu que no existeixen**, simplement no estan en aquest fitxer:\n';
 markdown += `> - **Directoris exclosos:** ${excludedDirs.join(', ')}\n`;
 markdown += `> - **Extensions excloses:** ${excludedExt.join(', ')}\n`;
+markdown += `> - **Extensions incloses:** ${EXT_INCLOSES.join(', ')} (qualsevol altra extensió NO va al bundle)\n`;
 markdown += `> - **Altres exclusions:** Qualsevol directori que no siga explícitament (${dirsToScan.join(', ')}) o els fitxers arrel sol·licitats.\n\n`;
 markdown += '---\n\n';
 
+let fileCount = 0;
+
 function processDir(dirPath) {
-  if (!existsSync(dirPath)) return;
+  if (!existsSync(dirPath)) {
+    console.error(`❌ crear_bundle: el directori promés ${relative(root, dirPath)} no existix. Un bundle que promet el que no porta és un examen a cegues.`);
+    process.exit(1);
+  }
   const stat = statSync(dirPath);
   if (stat.isDirectory()) {
     const items = readdirSync(dirPath);
@@ -47,12 +65,12 @@ function processDir(dirPath) {
   } else {
     const ext = dirPath.slice(dirPath.lastIndexOf('.'));
     if (excludedExt.includes(ext)) return;
-    if (!['.js', '.jsx', '.css', '.md', '.json', '.html', '.mjs'].some(e => dirPath.endsWith(e))) return;
-    
+    if (!EXT_INCLOSES.includes(ext)) return;
     try {
       const content = readFileSync(dirPath, 'utf-8');
       const relPath = relative(root, dirPath);
       markdown += `## Fitxer: ${relPath}\n\n\`\`\`\n${content}\n\`\`\`\n\n`;
+      fileCount++;
     } catch (e) {
       markdown += `## Fitxer: ${relative(root, dirPath)}\n\n// Error llegint el fitxer: ${e.message}\n\n`;
     }
@@ -69,14 +87,25 @@ for (const f of filesToScan) {
     try {
       const content = readFileSync(fullPath, 'utf-8');
       markdown += `## Fitxer arrel/suelt: ${f}\n\n\`\`\`\n${content}\n\`\`\`\n\n`;
+      fileCount++;
     } catch(e) {
       // ignorar error silenciós o reportar
     }
   }
 }
 
-writeFileSync(outPath, markdown, 'utf-8');
-console.log(`✅ Bundle creat amb èxit a: ${relative(root, outPath)}`);
+const tmpOutPath = outPath + '.tmp';
+writeFileSync(tmpOutPath, markdown, 'utf-8');
+renameSync(tmpOutPath, outPath);
+console.log(`✅ Bundle creat a: ${relative(root, outPath)} (${fileCount} fitxers)`);
+
+/* Porta: el bundle no ix si farcell diu que és coix. */
+try {
+  execSync(`node tooling/brain/farcell.mjs --bundle="${outPath}" --arrel="${root}"`, { stdio: 'inherit' });
+} catch {
+  console.error('❌ crear_bundle: farcell ha tancat la porta. Arregla la causa; no toques la porta.');
+  process.exit(1);
+}
 
 // Automatització: Crear un PROMPT d'acompanyament per al Consell
 const promptFileName = outFileName.replace('_BUNDLE_', '_PROMPT_');
@@ -91,6 +120,7 @@ owner: Consell de la Petorreta
 domain: global
 locale: ca-valencia
 hora_creacio: "${hh}:${min}"
+run_id: "${process.env.RUN_ID || 'manual'}"
 academic_metadata:
   nivell_maduresa: "Pendent_Revisio"
 inputs: ["${outFileName}"]
@@ -125,5 +155,7 @@ Si arribeu al límit del vostre context de memòria, TENIU PROHIBIT intentar d'i
 > 📝 **NOTA D'EFICIÈNCIA:** Aneu directe al gra. No feu introduccions llargues ni resums del que ja sabem.
 `;
 
-writeFileSync(promptPath, promptTemplate, 'utf-8');
+const tmpPromptPath = promptPath + '.tmp';
+writeFileSync(tmpPromptPath, promptTemplate, 'utf-8');
+renameSync(tmpPromptPath, promptPath);
 console.log(`✅ Prompt d'acompanyament (Anclat) creat a: ${relative(root, promptPath)}`);

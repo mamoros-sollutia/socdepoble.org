@@ -401,6 +401,7 @@ export function UniversalPage(props) {
   const showLogos = props.showLogos ?? config.showLogos ?? false;
   const tone = props.tone ?? config.tone;
   const chrome = props.chrome ?? config.chrome ?? 'page';
+  const hideHeader = props.hideHeader ?? config.hideHeader ?? false;
   const showTopBars = props.showTopBars ?? config.showTopBars;
   const topBarData = props.topBarData ?? config.topBarData ?? {};
   const heroImage = props.heroImage ?? config.heroImage;
@@ -497,7 +498,7 @@ export function UniversalPage(props) {
   const showBlackBar = resolvedChrome === 'full';
   const showBlueBar = resolvedChrome === 'full' || resolvedChrome === 'context' || resolvedChrome === 'system';
   const showOrangeBar = resolvedChrome === 'full' || resolvedChrome === 'context';
-  const showPageHeader = resolvedChrome !== 'none';
+  const showPageHeader = resolvedChrome !== 'none' && !hideHeader;
   const hasHeader = Boolean(showPageHeader && (showLogos || title || labels.length || copyright));
 
 

@@ -334,7 +334,7 @@ body {
 :host {
   display: block;
   width: 100%;
-  height: 100dvh;
+  height: 100%;
   min-width: 0;
   min-height: 0;
   font-family: var(--sdp-font);
@@ -555,6 +555,7 @@ main.app-main {
 
 .app-main-content {
   flex: 1 0 auto;
+  min-height: 0;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -1601,6 +1602,14 @@ details[open] summary.accordion-header svg:last-child { transform: rotate(180deg
 .sdp-text-error { color: var(--sdp-error); }
 .sdp-text-avis { color: var(--sdp-avis); }
 .sdp-text-info { color: var(--sdp-info); }
+
+.app-sidebar-nav-footer {
+  margin-top: auto;
+  padding-top: var(--sdp-space-8);
+}
+.right-icons--quarantined {
+  margin-left: 0 !important;
+}
 
 /* ── 10. RESPONSIVE ────────────────────────────────────────────── */
 
@@ -2953,4 +2962,312 @@ button.sp-card-calendar-badge:hover {
   background-color: var(--sdp-blanc);
   border: 1px solid var(--sdp-avis-500);
   border-radius: var(--sdp-radi-s);
+}
+.sdp-text-suau { color: var(--sdp-text-suau); }
+.avatar--large { width: 64px; height: 64px; border-radius: 50%; background: var(--sdp-accent-subtil); color: var(--sdp-accent); font-size: 2rem; display: flex; align-items: center; justify-content: center; }
+.sdp-text-sobre-accent { color: var(--sdp-sobre-accent); }
+.pill--error { background: var(--sdp-error); color: var(--sdp-fons-principal); border: none; }
+.sdp-opacity-60 { opacity: 0.6; }
+.sdp-border-accent { border: 1px solid var(--sdp-accent); }
+.sdp-items-center { align-items: center; }
+.sdp-justify-center { justify-content: center; }
+.sdp-gap-2 { gap: 8px; }
+.sdp-gap-4 { gap: 16px; }
+.sdp-gap-5 { gap: 20px; }
+
+.sdp-text-xl { font-size: 1.25rem; }
+
+/* ── COMPONENT LOGIN ── */
+.login-form { display: flex; flex-direction: column; gap: var(--sdp-space-4); max-width: 400px; margin-inline: auto; width: 100%; }
+.login-action { margin-top: 8px; width: fit-content; justify-content: center; align-self: center; padding-left: 32px; padding-right: 32px; }
+
+/* ── FALS POSITIUS TRACTOR PEDRA SECA ── */
+.all {}
+.events {}
+.system {}
+
+/* ── MULTIMEDIA: PHOTO GRID (ESTIL GOOGLE PHOTOS) ── */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 8px;
+  padding: 8px;
+}
+.photo-grid__item {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--sdp-radi-s);
+  overflow: hidden;
+  background-color: var(--sdp-fons-subtil);
+  transition: transform var(--sdp-t), box-shadow var(--sdp-t);
+  cursor: pointer;
+}
+.photo-grid__item:hover {
+  transform: scale(1.02);
+  box-shadow: var(--sdp-ombra-2);
+  z-index: 2;
+}
+.photo-grid__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── NOTES: OBSIDIAN LAYOUT (3 COLUMNES) ── */
+.content-wrapper:has(.notes-card) {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.notes-card {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+.notes-shell {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  background: var(--sdp-fons-targeta);
+  border-radius: var(--sdp-radi-m);
+  border: 1px solid var(--sdp-vora);
+  overflow: hidden;
+}
+.sdp-switcher {
+  display: flex;
+  justify-content: center;
+  gap: var(--sdp-space-3);
+  background: var(--sdp-fons-targeta);
+  padding: 8px;
+  border-radius: 20px;
+  box-shadow: var(--sdp-ombra-1);
+  flex-wrap: wrap;
+}
+
+.notes-column {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-right: 1px solid var(--sdp-vora);
+  scrollbar-width: thin;
+  min-height: 0;
+}
+.notes-column:last-child {
+  border-right: none;
+}
+.notes-column--folders {
+  width: 200px;
+  background: var(--sdp-fons-subtil);
+  flex-shrink: 0;
+}
+.notes-column--list {
+  width: 260px;
+  background: var(--sdp-fons-superficie);
+  flex-shrink: 0;
+}
+.notes-column--editor {
+  flex-grow: 1;
+  background: var(--sdp-blanc-pur);
+  padding: 0;
+  transition: flex-grow 0.2s ease-out;
+}
+
+.notes-column--collapsed {
+  width: 52px !important;
+  flex-shrink: 0;
+  overflow: hidden;
+  transition: width 0.2s ease-out;
+}
+.notes-column--collapsed .notes-column__body {
+  display: none !important;
+}
+.notes-column--collapsed .notes-column__head {
+  padding: 12px 0;
+  justify-content: center !important;
+}
+.notes-column--collapsed .notes-column__head .column-title {
+  display: none;
+}
+.notes-column--collapsed .notes-column__head .collapse-icon {
+  margin: 0 auto;
+}
+
+.notes-column__head {
+  padding: 12px 16px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: var(--sdp-text-suau);
+  background: var(--sdp-fons-subtil);
+  border-bottom: 1px solid var(--sdp-vora);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 52px;
+}
+.notes-column__head--editor {
+  /* Inherits from notes-column__head for unified gray bar */
+}
+
+.editor-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  color: var(--sdp-text-suau);
+  align-items: center;
+}
+.editor-toolbar svg {
+  cursor: pointer;
+  transition: color var(--sdp-t);
+}
+.editor-toolbar svg:hover {
+  color: var(--sdp-text-fort);
+}
+
+.notes-column__body {
+  padding: 12px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+  min-height: 0;
+}
+.notes-editor {
+  padding: 0;
+}
+
+/* Rich Text de les notes - Fix fosc (Pedaç 8) */
+.app-note-content pre,
+.app-note-content code {
+  background: var(--sdp-fons-secundari);
+  color: var(--sdp-text-cos);
+  border-radius: var(--sdp-radi-s);
+  padding: 2px 4px;
+}
+.app-note-content pre {
+  padding: 12px;
+  overflow-x: auto;
+}
+.app-note-content pre code {
+  background: transparent;
+  padding: 0;
+}
+.app-note-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+  color: var(--sdp-text-cos);
+}
+.app-note-content th,
+.app-note-content td {
+  border: 1px solid var(--sdp-vora);
+  padding: 8px;
+}
+.app-note-content th {
+  background: var(--sdp-fons-subtil);
+}
+
+.folder-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 12px;
+  background: transparent;
+  border: none;
+  border-radius: var(--sdp-radi-s);
+  text-align: left;
+  color: var(--sdp-text-cos);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--sdp-t);
+}
+.folder-button:hover {
+  background: rgba(0,0,0,0.05);
+}
+.folder-button--active {
+  background: var(--sdp-accent-subtil);
+  color: var(--sdp-accent-text-hover);
+}
+.folder-button svg {
+  opacity: 0.7;
+}
+
+.note-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.notes-category-block {
+  margin-top: 16px;
+}
+
+/* Responsivitat mòbil */
+@media (max-width: 768px) {
+  .notes-shell {
+    flex-direction: column;
+  }
+  .notes-column {
+    display: none;
+    width: 100% !important;
+  }
+  .notes-column--mobile {
+    display: flex;
+  }
+}
+
+/* ── UNIVERSAL SEARCH COMPONENT ── */
+.universal-search-wrapper {
+  display: flex;
+  align-items: center;
+  background: var(--sdp-fons-subtil);
+  border-radius: var(--sdp-radi-pastilla);
+  padding: 0 var(--sdp-space-4);
+  border: 1px solid var(--sdp-vora-control);
+  width: 100%;
+}
+
+.universal-search-icon {
+  flex-shrink: 0;
+  color: var(--sdp-text-suau);
+}
+
+.universal-search-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: var(--sdp-space-4);
+  color: var(--sdp-text-titol);
+  font-size: 1rem;
+  outline: none;
+}
+.universal-search-input::placeholder {
+  color: var(--sdp-text-suau);
+}
+
+
+@media (min-width: 769px) {
+  .mobile-only-topbar {
+    display: none !important;
+  }
+}
+@media (max-width: 768px) {
+  .mobile-only-topbar {
+    display: flex !important;
+  }
+}
+
+[contenteditable]:empty::before {
+  content: attr(data-placeholder);
+  color: var(--sdp-text-suau);
+  opacity: 0.6;
+  pointer-events: none;
 }

@@ -7,6 +7,9 @@ import { APP_NAME } from '../config/app';
 import { DEFAULT_SECTION_PATH, SECTIONS, SECTION_ORDER } from '../config/sections';
 import { getSectionLabels } from '../config/i18n';
 import { IaiaIcon, UniversalPage } from '../components/universal/UniversalComponents';
+import { recullTornadaOAuth } from '../data/backendPort.js';
+import { reclamaContingutDelConvidat } from '../data/identitat.js';
+import { showToast } from '../components/universal/AvisadorEfimer';
 
 const XatSection = lazy(() => import('../sections/xat/XatSection'));
 const MurSection = lazy(() => import('../sections/mur/MurSection'));
@@ -59,7 +62,7 @@ function RouteFallback() {
 }
 
 function AppShell({ children, mobileNav }) {
-  const { language, t, status, themeMode, isSuperAdmin } = useAppData();
+  const { language, t, status, themeMode, isSuperAdmin, externalConfig } = useAppData();
   const navigate = useNavigate();
   const location = useLocation();
   const mainRef = useRef(null);
@@ -76,14 +79,43 @@ function AppShell({ children, mobileNav }) {
     }
   }, [location.pathname]);
 
+  const tornadaFeta = useRef(false);
+  useEffect(() => {
+    if (tornadaFeta.current) return;
+    tornadaFeta.current = true;
+    recullTornadaOAuth(externalConfig)
+      .then((sessio) => { if (sessio) showToast(t('section.login.success.login', 'Benvingut de nou!'), 'success'); })
+      .catch((e) => showToast(e.message, 'error'));
+  }, [externalConfig, t]);
+
+  useEffect(() => {
+    const onCanviAuth = (e) => {
+      const id = e?.detail?.user?.id;
+      if (!id) return;
+      reclamaContingutDelConvidat(String(id))
+        .then(({ migrat }) => { if (migrat) window.dispatchEvent(new CustomEvent('sdp:refresh-data')); })
+        .catch(() => {});
+    };
+    window.addEventListener('sdp:auth-change', onCanviAuth);
+
+    const onRebuig = (e) => {
+      showToast(t('error.rejected', `La publicació ha sigut rebutjada: ${e.detail.error}`), 'error');
+    };
+    window.addEventListener('sdp:submission-rejected', onRebuig);
+
+    return () => {
+      window.removeEventListener('sdp:auth-change', onCanviAuth);
+      window.removeEventListener('sdp:submission-rejected', onRebuig);
+    };
+  }, [t]);
+
   useLayoutEffect(() => {
     if (mainRef.current) {
       const rootNode = mainRef.current.getRootNode();
       if (rootNode instanceof ShadowRoot) {
         rootNode.host.setAttribute('data-theme', themeMode || 'light');
       } else {
-        const root = document.querySelector('.sdp-root') || document.documentElement;
-        root.setAttribute('data-theme', themeMode || 'light');
+        document.documentElement.setAttribute('data-theme', themeMode || 'light');
       }
     }
   }, [themeMode]);
@@ -92,10 +124,9 @@ function AppShell({ children, mobileNav }) {
     if (typeof window !== 'undefined') {
       if (mainRef.current) {
         const rootNode = mainRef.current.getRootNode();
-        const host = rootNode instanceof ShadowRoot ? rootNode.host : (document.querySelector('.sdp-root') || document.documentElement);
+        const host = rootNode instanceof ShadowRoot ? rootNode.host : document.documentElement;
         host.setAttribute('lang', language || 'ca');
       }
-      document.documentElement.setAttribute('lang', language || 'ca');
     }
   }, [language]);
 
@@ -104,8 +135,6 @@ function AppShell({ children, mobileNav }) {
     const contentEl = contentRef.current;
     const indicatorEl = indicatorRef.current;
     if (!mainEl || !contentEl || !indicatorEl) return;
-
-    mainEl.style.touchAction = 'pan-x pan-down';
 
     let pullStart = null;
     let pullDistance = 0;
@@ -162,11 +191,13 @@ function AppShell({ children, mobileNav }) {
       }
       pullStart = null;
       pullDistance = 0;
-      updateUI(0, '');
+      if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+      state = '';
       contentEl.style.transition = 'transform 0.3s ease-out';
       contentEl.style.transform = 'translateY(0px)';
       indicatorEl.style.transition = 'transform 0.3s ease-out';
       indicatorEl.style.transform = 'translateY(0px)';
+      indicatorEl.innerText = '';
     };
 
     mainEl.addEventListener('touchstart', onTouchStart, { passive: true });
@@ -216,7 +247,7 @@ function AppShell({ children, mobileNav }) {
             );
           })}
           
-          <div style={{ marginTop: 'auto', paddingTop: 'var(--sdp-space-8)' }}>
+          <div className="app-sidebar-nav-footer">
             {SYSTEM_SECTIONS.map((section) => {
               const Icon = section.icon;
               const labels = getSectionLabels(section.id, language);
@@ -297,7 +328,7 @@ const TopBar = memo(function TopBar() {
         </div>
       )}
 
-      <div className="right-icons" style={isQuarantined ? { marginLeft: '0' } : {}}>
+      <div className={`right-icons ${isQuarantined ? 'right-icons--quarantined' : ''}`}>
         <button type="button" className="icon sdp-top-bar-btn" onClick={() => navigateWithTransition('/traduccions')} aria-label={t('nav.idioma', 'Idioma')} title={t('nav.idioma', 'Idioma')}>
           <Globe aria-hidden="true" focusable="false" />
         </button>
@@ -337,6 +368,11 @@ function LegacySectionDetailRedirect({ sectionId }) {
   return <Navigate to={`/${sectionId}/${itemId}`} replace />;
 }
 
+function ThreadRedirect() {
+  const { threadId } = useParams();
+  return <Navigate to={`/xat/${threadId}`} replace />;
+}
+
 function LoadError() {
   const { error, hasSupabaseConfig, dataMode, t } = useAppData();
   return (
@@ -349,8 +385,29 @@ function LoadError() {
 }
 
 export default function App() {
+  useEffect(() => {
+    // Inject global styles to fix #root height dynamically via HMR without requiring a hard refresh
+    if (typeof document !== 'undefined') {
+      let style = document.getElementById('sdp-hmr-layout-fix');
+      if (!style) {
+        style = document.createElement('style');
+        style.id = 'sdp-hmr-layout-fix';
+        document.head.appendChild(style);
+      }
+      style.textContent = `
+        html, body { height: 100%; width: 100%; margin: 0; padding: 0; }
+        #root { height: 100%; width: 100%; display: flex; flex-direction: column; }
+      `;
+    }
+  }, []);
+
   return (
     <StrictMode>
+      <style>{`
+        :host { height: 100% !important; display: block !important; }
+        .sdp-root { height: 100% !important; display: flex !important; flex-direction: row !important; }
+        .app-main { flex: 1 1 0% !important; min-height: 0 !important; }
+      `}</style>
       <AppShell mobileNav={<MobileNav />}>
         <AppContent />
       </AppShell>
@@ -374,10 +431,10 @@ function AppRoutes() {
         <Route path="/" element={<Navigate to={DEFAULT_SECTION_PATH} replace />} />
         <Route path="/xat" element={<XatSection />} />
         <Route path="/xat/:threadId" element={<XatSection />} />
-        <Route path="/chat" element={<XatSection />} />
-        <Route path="/chat/:threadId" element={<XatSection />} />
-        <Route path="/chats" element={<XatSection />} />
-        <Route path="/chats/:threadId" element={<XatSection />} />
+        <Route path="/chat" element={<Navigate to="/xat" replace />} />
+        <Route path="/chat/:threadId" element={<ThreadRedirect />} />
+        <Route path="/chats" element={<Navigate to="/xat" replace />} />
+        <Route path="/chats/:threadId" element={<ThreadRedirect />} />
         <Route path="/mur" element={<MurSection />} />
         <Route path="/post/:itemId" element={<LegacySectionDetailRedirect sectionId="mur" />} />
         <Route path="/mercat" element={<MercatSection />} />
@@ -393,9 +450,9 @@ function AppRoutes() {
         <Route path="/connectivitat" element={<Navigate to="/dispositius" replace />} />
         <Route path="/cerca" element={<SearchSection />} />
         <Route path="/login" element={<LoginSection />} />
-        <Route path="/accedir" element={<LoginSection />} />
-        <Route path="/registre" element={<LoginSection />} />
-        <Route path="/crear-compte" element={<LoginSection />} />
+        <Route path="/accedir" element={<Navigate to="/login" replace />} />
+        <Route path="/registre" element={<Navigate to="/login" replace />} />
+        <Route path="/crear-compte" element={<Navigate to="/login" replace />} />
         <Route path="/el-meu-perfil" element={<MyProfileSection />} />
         <Route path="/perfil" element={<ProfileSection agents={agents} />} />
         <Route path="/perfil/:agentId" element={<ProfileSection agents={agents} />} />

@@ -7,7 +7,9 @@ import {
   SECTION_SUBMISSIONS_STORAGE_KEY,
   loadAppData,
   getRuntimeDataMode,
-  getCurrentUser
+  getCurrentUser,
+  loadLocalAppSnapshot,
+  applySectionSubmissionsToData
 } from '../data/backendPort.js';
 import { normalizeSearchText, sortPinnedContent } from '../config/contentHelpers';
 import { resolveAsset as baseResolveAsset } from '../config/assetResolver';
@@ -31,7 +33,13 @@ const LANGUAGE_LOCALES = {
 const groupMediaTimeline = (items, t, locale) => {
   const groups = new Map();
   items.forEach((item) => {
-    const key = item.created_at ? String(item.created_at).slice(0, 7) : 'sense-data';
+    let key = 'sense-data';
+    if (item.created_at) {
+      const d = new Date(item.created_at);
+      if (!Number.isNaN(d.getTime())) {
+        key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+      }
+    }
     if (!groups.has(key)) groups.set(key, []);
     groups.get(key).push(item);
   });
@@ -80,16 +88,16 @@ const buildMessageMap = (messages) => {
   return map;
 };
 
-const buildFallbackMessages = (thread) => [
+const buildFallbackMessages = (thread, t) => [
   {
     id: `${getDefaultUserId()}::${thread.id}::fallback-1`,
     ownerUserId: getDefaultUserId(),
     threadId: thread.id,
     messageId: 'fallback-1',
     createdAtTs: 0,
-    text: `Hola, soc ${thread.name}.`,
+    text: `${t('chat.fallback.hello', 'Hola, soc')} ${thread.name}.`,
     sender: 'other',
-    time: 'Ara'
+    time: t('chat.fallback.now', 'Ara')
   },
   {
     id: `${getDefaultUserId()}::${thread.id}::fallback-2`,
@@ -97,9 +105,9 @@ const buildFallbackMessages = (thread) => [
     threadId: thread.id,
     messageId: 'fallback-2',
     createdAtTs: 1,
-    text: thread.message || thread.role || 'Vols parlar una estona?',
+    text: thread.message || thread.role || t('chat.fallback.question', 'Vols parlar una estona?'),
     sender: 'other',
-    time: 'Ara'
+    time: t('chat.fallback.now', 'Ara')
   }
 ];
 
@@ -164,7 +172,7 @@ export function AppDataProvider({ children, externalConfig = {} }) {
   
   const configHash = useMemo(() => {
     try {
-      return JSON.stringify(externalConfig, (key, val) => typeof val === 'function' ? undefined : val);
+      return JSON.stringify(externalConfig, (key, val) => typeof val === 'function' ? undefined : val) + '|' + authTick;
     } catch {
       return String(authTick); // Fallback si hi ha referències circulars
     }
@@ -181,27 +189,34 @@ export function AppDataProvider({ children, externalConfig = {} }) {
     const myGen = ++loadGenerationRef.current;
 
     const loadData = async () => {
+      let networkFinished = false;
       const timeoutId = setTimeout(() => {
         controller.abort();
       }, 15000);
+
+      if (getRuntimeDataMode(stableExternalConfig) !== 'seed') {
+        loadLocalAppSnapshot(userId).then(async (snap) => {
+          if (!snap || cancelled || myGen !== loadGenerationRef.current || networkFinished) return;
+          const merged = await applySectionSubmissionsToData(snap, userId);
+          if (cancelled || myGen !== loadGenerationRef.current || networkFinished) return;
+          setRawData(merged);
+          setStatus('ready');
+        }).catch(() => {});
+      }
+
       try {
         const data = await loadAppData(userId, { ...externalConfig, signal: controller.signal });
+        networkFinished = true;
         clearTimeout(timeoutId);
         if (cancelled || myGen !== loadGenerationRef.current) return;
         setRawData(data);
         setStatus('ready');
         setError(null);
       } catch (loadError) {
+        networkFinished = true;
         clearTimeout(timeoutId);
         if (cancelled) return;
         console.warn('[PedraSeca] Mode degradat extrem. loadAppData ha fallat:', loadError);
-        // Injectem dades per defecte si cau per complet per a no trencar la UI
-        setRawData({
-          ownerUserId: userId,
-          agents: [], chatThreads: [], chatMessages: [], feedPosts: [], marketItems: [], 
-          events: [], towns: [], mediaItems: [], noteFolders: [], 
-          notes: [], pages: [], sectionSubmissions: []
-        });
         setStatus('error');
         setError(loadError);
       }
@@ -527,7 +542,7 @@ export function AppDataProvider({ children, externalConfig = {} }) {
       const messages = chatMessagesByThread[threadId] || [];
       if (messages.length > 0) return messages;
       const thread = fallbackThread || rawData.chatThreads.find((entry) => entry.id === threadId);
-      return thread ? buildFallbackMessages(thread) : [];
+      return thread ? buildFallbackMessages(thread, translator) : [];
     };
 
     const sendSectionSubmission = async (submission) => {
@@ -566,6 +581,10 @@ export function AppDataProvider({ children, externalConfig = {} }) {
           next.marketItems = appendUniqueById(current.marketItems || [], item);
         } else if (sectionId === 'events') {
           next.events = appendUniqueById(current.events || [], item);
+        } else if (sectionId === 'multimedia') {
+          next.mediaItems = appendUniqueById(current.mediaItems || [], item);
+        } else if (sectionId === 'notes') {
+          next.notes = appendUniqueById(current.notes || [], item);
         }
 
         return next;

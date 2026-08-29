@@ -123,74 +123,37 @@ export default function MurSection() {
       <div className="content-wrapper">
         
         {/* Switcher / Botonera */}
-        <section className="sdp-filtres" aria-label="Filtres del mur">
-          <div className="sdp-filtres__vistes">
+        <section className="sdp-filtres" aria-label="Filtres del mur" style={{ padding: '0 16px' }}>
+          <div className="login-switcher">
             <button
               type="button"
-              className="sdp-filtre--vista"
-              aria-pressed={filterType === 'all'}
+              className={['pill', filterType === 'all' && !isMapOpen ? 'pill--active' : ''].filter(Boolean).join(' ')}
               onClick={() => { setFilterType('all'); setIsMapOpen(false); }}
             >
               Mostrar Tot
             </button>
             <button
               type="button"
-              className="sdp-filtre--vista"
-              aria-pressed={filterType === 'events'}
+              className={['pill', filterType === 'events' && !isMapOpen ? 'pill--active' : ''].filter(Boolean).join(' ')}
               onClick={() => { setFilterType('events'); setIsMapOpen(false); }}
             >
               Esdeveniments
             </button>
             <button
               type="button"
-              className="sdp-filtre--vista"
-              aria-pressed={filterType === 'sistema'}
-              onClick={() => { setFilterType('sistema'); setIsMapOpen(false); }}
+              className={['pill', filterType === 'system' && !isMapOpen ? 'pill--active' : ''].filter(Boolean).join(' ')}
+              onClick={() => { setFilterType('system'); setIsMapOpen(false); }}
             >
               Sistema
             </button>
-          </div>
-
-          <div className="sdp-filtre--camp">
-            <label htmlFor="mur-data"><span>Data</span></label>
-            <input
-              id="mur-data"
-              type="date"
-              value={dateFilter || ''}
-              onChange={(e) => {
-                const newParams = new URLSearchParams(searchParams);
-                e.target.value ? newParams.set('date', e.target.value) : newParams.delete('date');
-                setSearchParams(newParams);
-              }}
-            />
-          </div>
-
-          <div className="sdp-filtre--camp">
-            <label htmlFor="mur-categoria"><span>Categoria</span></label>
-            <select
-              id="mur-categoria"
-              value={categoryFilter || ''}
-              onChange={(e) => {
-                const newParams = new URLSearchParams(searchParams);
-                e.target.value ? newParams.set('category', e.target.value) : newParams.delete('category');
-                setSearchParams(newParams);
-              }}
+            <button
+              type="button"
+              className={['pill', isMapOpen ? 'pill--active' : ''].filter(Boolean).join(' ')}
+              onClick={() => setIsMapOpen(!isMapOpen)}
             >
-              <option value="">Totes les categories</option>
-              <option value="Mur">Mur</option>
-              <option value="Mercat">Mercat</option>
-              <option value="Pobles">Pobles</option>
-            </select>
+              🗺️ Mapa
+            </button>
           </div>
-
-          <button
-            type="button"
-            className="sdp-filtre--accio"
-            onClick={() => setIsMapOpen(!isMapOpen)}
-            title={isMapOpen ? 'Tancar Mapa' : 'Obrir Mapa'}
-          >
-            {isMapOpen ? 'Tancar Mapa' : '🗺️ Mapa'}
-          </button>
         </section>
 
         {/* Mapa Desplegable */}

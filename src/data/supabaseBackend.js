@@ -1,8 +1,34 @@
 import { APP_SEED, APP_SEED_VERSION, CHAT_MESSAGE_SEED, CHAT_THREADS, getDefaultUserId } from './appSeed.js';
-import DOMPurify from 'dompurify';
 import { getVal, setVal, delVal } from '../config/storage.js';
-import { getSnapshot, saveSnapshot } from './outbox.js';
+import { getSnapshot, saveSnapshot, esborraTot } from './outbox.js';
+import { entraAmbGoogle, gestionaTornada } from './oauthRelay.js';
+import { mergeById, mapSectionSubmissionToItem } from './mapejadorSeccions.js';
 
+/**
+ * El mode simulat només ha d'existir en desenvolupament. En un build de
+ * producció sense config, l'aplicació ha de dir que no pot entrar — no
+ * regalar una sessió d'administrador.
+ */
+const MODE_SIMULAT_PERMES =
+  typeof import.meta !== 'undefined' && import.meta.env
+    ? import.meta.env.DEV === true
+    : false;
+
+function usuariSimulat(email, name) {
+  if (!MODE_SIMULAT_PERMES) {
+    throw new Error(
+      'No hi ha connexió configurada amb el servidor. ' +
+      'Falten VITE_SUPABASE_URL i VITE_SUPABASE_ANON_KEY, o l\'amfitrió no ha passat la configuració.'
+    );
+  }
+  console.warn('[SDP] MODE SIMULAT: sessió local sense servidor. Mai en producció.');
+  return {
+    id: 'local-mock-usuari',
+    email,
+    // Rol mínim, no superadmin. Per a provar l'administració, entra de veres.
+    user_metadata: { name: name || 'Usuari de proves', role: 'user' }
+  };
+}
 
 const DEV_FALLBACK_STORAGE_KEY = 'socdepoble-dev-chat-messages';
 const APP_SNAPSHOT_STORAGE_KEY = 'socdepoble-app-snapshot-v1';
@@ -25,19 +51,15 @@ function generateUUID() {
   });
 }
 
-const normalizeText = (value) =>
-  String(value || '')
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/\s+/g, ' ')
-    .trim();
+export class ErrorSupabase extends Error {
+  constructor(message, status) {
+    super(message);
+    this.name = 'ErrorSupabase';
+    this.status = status;
+  }
+}
 
-
-const firstAsset = (value) => (Array.isArray(value) ? value[0] || null : value || null);
-const buildSearchText = (parts) => normalizeText(parts.filter(Boolean).join(' '));
-
-const CONNECTABLE_SECTION_IDS = new Set(['mur', 'mercat', 'events']);
+const CONNECTABLE_SECTION_IDS = new Set(['mur', 'mercat', 'events', 'multimedia', 'notes']);
 
 
 
@@ -61,15 +83,24 @@ const buildHeaders = (anonKey, extra = {}) => {
   };
 };
 
-export async function refreshSession(config = {}) {
+let renovacioEnCurs = null;
+
+export function refreshSession(config = {}) {
+  if (renovacioEnCurs) return renovacioEnCurs;
+  renovacioEnCurs = _renova(config).finally(() => { renovacioEnCurs = null; });
+  return renovacioEnCurs;
+}
+
+async function _renova(config) {
   const refreshToken = getVal('socdepoble-refresh-token');
   if (!refreshToken) return false;
   
   const { supabaseUrl, supabaseAnonKey } = getResolvedConfig(config);
   if (!supabaseUrl) return false;
   
+  let response;
   try {
-    const response = await fetch(`${supabaseUrl}/auth/v1/token?grant_type=refresh_token`, {
+    response = await fetch(`${supabaseUrl}/auth/v1/token?grant_type=refresh_token`, {
       method: 'POST',
       headers: {
         apikey: supabaseAnonKey,
@@ -77,26 +108,30 @@ export async function refreshSession(config = {}) {
       },
       body: JSON.stringify({ refresh_token: refreshToken })
     });
-    
-    if (response.ok) {
-      const result = await response.json();
-      if (result?.access_token) {
-        setVal('socdepoble-jwt', result.access_token);
-        setVal('socdepoble-refresh-token', result.refresh_token);
-        setVal('socdepoble-user', result.user);
-        if (typeof window !== 'undefined') {
-          window.dispatchEvent(new CustomEvent('sdp:auth-change', { detail: { user: result.user }}));
-        }
-        return true;
-      }
-    }
   } catch (e) {
-    console.warn('Error renovant sessió', e);
+    console.warn('Error de xarxa renovant sessió', e);
+    // Xarxa caiguda != Sessió invàlida
+    return false;
   }
   
-  logout();
-  if (typeof window !== 'undefined') {
-    window.dispatchEvent(new CustomEvent('sdp:auth-change', { detail: { user: null }}));
+  if (response.ok) {
+    const result = await response.json();
+    if (result?.access_token) {
+      setVal('socdepoble-jwt', result.access_token);
+      setVal('socdepoble-refresh-token', result.refresh_token);
+      setVal('socdepoble-user', result.user);
+      if (typeof window !== 'undefined') {
+        window.dispatchEvent(new CustomEvent('sdp:auth-change', { detail: { user: result.user }}));
+      }
+      return true;
+    }
+  }
+
+  if (response.status === 400 || response.status === 401) {
+    logout();
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent('sdp:auth-change', { detail: { user: null }}));
+    }
   }
   return false;
 }
@@ -131,7 +166,7 @@ async function request(path, config, { method = 'GET', headers = {}, body, signa
         }
       }
       const text = await response.text();
-      throw new Error(`Supabase ${response.status}: ${text || 'Error desconegut.'}`);
+      throw new ErrorSupabase(`Supabase ${response.status}: ${text || 'Error desconegut.'}`, response.status);
     }
 
     if (response.status === 204) return null;
@@ -212,7 +247,7 @@ async function saveLocalAppSnapshot(snapshot) {
   }
 }
 
-async function loadLocalAppSnapshot(ownerUserId = getDefaultUserId()) {
+export async function loadLocalAppSnapshot(ownerUserId = getDefaultUserId()) {
   const fallback = await buildSeedAppData(ownerUserId);
   if (typeof window === 'undefined') return fallback;
 
@@ -272,7 +307,7 @@ async function persistMessagesToLocalSnapshot(messages, ownerUserId = getDefault
     chatMessages: merged
   };
   await saveLocalAppSnapshot(nextSnapshot);
-  await saveDevFallbackMessages(merged);
+  await saveDevFallbackMessages(merged, ownerUserId);
   return merged;
 }
 
@@ -292,10 +327,10 @@ async function loadDevFallbackMessages(ownerUserId = getDefaultUserId()) {
   }
 }
 
-async function saveDevFallbackMessages(messages) {
+async function saveDevFallbackMessages(messages, ownerUserId = getDefaultUserId()) {
   if (typeof window === 'undefined') return;
   try {
-    await saveSnapshot(DEV_FALLBACK_STORAGE_KEY + '-' + (messages[0]?.ownerUserId || getDefaultUserId()), messages);
+    await saveSnapshot(DEV_FALLBACK_STORAGE_KEY + '-' + ownerUserId, messages);
   } catch (error) {
     console.warn('saveDevFallbackMessages error:', error);
   }
@@ -315,10 +350,10 @@ async function loadLocalSectionSubmissions(ownerUserId = getDefaultUserId()) {
   }
 }
 
-async function saveLocalSectionSubmissions(submissions) {
+async function saveLocalSectionSubmissions(submissions, ownerUserId = getDefaultUserId()) {
   if (typeof window === 'undefined') return;
   try {
-    await saveSnapshot(SECTION_SUBMISSIONS_STORAGE_KEY + '-' + (submissions[0]?.ownerUserId || getDefaultUserId()), submissions);
+    await saveSnapshot(SECTION_SUBMISSIONS_STORAGE_KEY + '-' + ownerUserId, submissions);
   } catch (error) {
     console.warn('saveLocalSectionSubmissions error:', error);
   }
@@ -327,117 +362,13 @@ async function saveLocalSectionSubmissions(submissions) {
 async function persistSectionSubmissionToLocal(submission, ownerUserId = getDefaultUserId()) {
   const current = await loadLocalSectionSubmissions(ownerUserId);
   const next = mergeById(current, [submission]);
-  await saveLocalSectionSubmissions(next);
+  await saveLocalSectionSubmissions(next, ownerUserId);
   return next;
 }
 
-function mergeById(primary = [], secondary = []) {
-  const map = new Map();
-  [...primary, ...secondary].forEach((item) => {
-    if (!item) return;
-    map.set(String(item.id), item);
-  });
-  return Array.from(map.values());
-}
 
-function mapSectionSubmissionToItem(submission) {
-  const payload = submission?.payload && typeof submission.payload === 'object' ? submission.payload : {};
-  const sectionId = DOMPurify.sanitize(String(submission?.sectionId || payload.sectionId || '').trim());
-  const createdAt = DOMPurify.sanitize(submission?.createdAt || payload.created_at || new Date().toISOString());
-  
-  // Sanititzar tots els valors string de baseItem
-  const sanitizedPayload = Object.fromEntries(
-    Object.entries(payload).map(([k, v]) => [k, typeof v === 'string' ? DOMPurify.sanitize(v) : v])
-  );
 
-  const baseItem = {
-    ...sanitizedPayload,
-    id: sanitizedPayload.id || submission.id || generateUUID(),
-    sectionId,
-    created_at: sanitizedPayload.created_at || createdAt
-  };
-
-  if (sectionId === 'mur') {
-    return {
-      ...baseItem,
-      type: baseItem.type || 'post',
-      title: baseItem.title || 'Publicació',
-      summary: baseItem.summary || baseItem.post_subtitle || baseItem.description || '',
-      content: baseItem.content || baseItem.description || baseItem.post_subtitle || '',
-      post_subtitle: baseItem.post_subtitle || baseItem.description || '',
-      author: baseItem.author || baseItem.author_name || 'Foraster',
-      author_name: baseItem.author_name || baseItem.author || 'Foraster',
-      author_avatar: baseItem.author_avatar || baseItem.avatar_url || null,
-      town_name: baseItem.town_name || 'La Torre de les Maçanes',
-      imageSrc: baseItem.imageSrc || firstAsset(baseItem.image_url || baseItem.image || baseItem.avatar_url) || null,
-      image_url: baseItem.image_url || baseItem.image || baseItem.imageSrc || null,
-      searchText: baseItem.searchText || buildSearchText([
-        baseItem.title,
-        baseItem.post_subtitle,
-        baseItem.description,
-        baseItem.content,
-        baseItem.author,
-        baseItem.author_name,
-        baseItem.town_name,
-        baseItem.tag,
-        baseItem.sectionId
-      ])
-    };
-  }
-
-  if (sectionId === 'mercat') {
-    const imageSrc = baseItem.imageSrc || firstAsset(baseItem.image_url || baseItem.image || baseItem.avatar_url) || null;
-    return {
-      ...baseItem,
-      type: baseItem.type || 'product',
-      title: baseItem.title || 'Producte',
-      description: baseItem.description || baseItem.summary || '',
-      summary: baseItem.summary || baseItem.description || '',
-      seller: baseItem.seller || baseItem.author_name || 'Foraster',
-      avatar_url: baseItem.avatar_url || null,
-      imageSrc,
-      image_url: baseItem.image_url || baseItem.image || imageSrc || null,
-      image: baseItem.image || imageSrc || null,
-      category_slug: baseItem.category_slug || 'connectat',
-      tag: baseItem.tag || 'Connectat',
-      variations: Array.isArray(baseItem.variations) ? baseItem.variations : [],
-      searchText: baseItem.searchText || buildSearchText([
-        baseItem.title,
-        baseItem.description,
-        baseItem.summary,
-        baseItem.seller,
-        baseItem.tag,
-        baseItem.category_slug,
-        baseItem.sectionId
-      ])
-    };
-  }
-
-  if (sectionId === 'events') {
-    return {
-      ...baseItem,
-      type: baseItem.type || 'event',
-      title: baseItem.title || 'Esdeveniment',
-      description: baseItem.description || baseItem.summary || '',
-      summary: baseItem.summary || baseItem.description || '',
-      author_name: baseItem.author_name || baseItem.author || 'Foraster',
-      date: baseItem.date || createdAt.slice(0, 10),
-      image_url: baseItem.image_url || null,
-      searchText: baseItem.searchText || buildSearchText([
-        baseItem.title,
-        baseItem.description,
-        baseItem.summary,
-        baseItem.author_name,
-        baseItem.type,
-        baseItem.sectionId
-      ])
-    };
-  }
-
-  return baseItem;
-}
-
-async function applySectionSubmissionsToData(data, ownerUserId = getDefaultUserId()) {
+export async function applySectionSubmissionsToData(data, ownerUserId = getDefaultUserId()) {
   const remoteSubmissions = Array.isArray(data.sectionSubmissions) ? data.sectionSubmissions : [];
   const localSubmissions = await loadLocalSectionSubmissions(ownerUserId);
   const mergedSubmissions = mergeById(remoteSubmissions, localSubmissions);
@@ -456,7 +387,9 @@ async function applySectionSubmissionsToData(data, ownerUserId = getDefaultUserI
     sectionSubmissions: mergedSubmissions,
     feedPosts: mergeById(data.feedPosts || [], sectionItems.mur || []),
     marketItems: mergeById(data.marketItems || [], sectionItems.mercat || []),
-    events: mergeById(data.events || [], sectionItems.events || [])
+    events: mergeById(data.events || [], sectionItems.events || []),
+    mediaItems: mergeById(data.mediaItems || [], sectionItems.multimedia || []),
+    notes: mergeById(data.notes || [], sectionItems.notes || [])
   };
 }
 
@@ -533,6 +466,25 @@ async function loadRemoteAppData(config, ownerUserId = getDefaultUserId()) {
   return loadStructuredSupabaseData(config, ownerUserId);
 }
 
+/**
+ * Desa el remot com a snapshot REAL (`origen: 'remot'`). Sense esta línia
+ * la lectura offline era la llavor d'`appSeed.js`: un maniquí, no el poble.
+ */
+async function loadRemoteAndCache(config, ownerUserId) {
+  const data = await loadRemoteAppData(config, ownerUserId);
+  await saveLocalAppSnapshot({ ...data, ownerUserId, origen: 'remot', desatTs: Date.now() });
+  return data;
+}
+
+async function teSnapshotRemot(ownerUserId) {
+  try {
+    const s = await getSnapshot(APP_SNAPSHOT_STORAGE_KEY + '-' + ownerUserId);
+    return Boolean(s && s.origen === 'remot');
+  } catch {
+    return false;
+  }
+}
+
 export async function loadAppData(ownerUserId = getDefaultUserId(), config = {}) {
   const loadAndMerge = async (loader) => await applySectionSubmissionsToData(await loader, ownerUserId);
   const { runtimeDataMode, hasSupabaseConfig } = getResolvedConfig(config);
@@ -545,23 +497,20 @@ export async function loadAppData(ownerUserId = getDefaultUserId(), config = {})
     return loadAndMerge(await loadLocalAppSnapshot(ownerUserId));
   }
 
-  if (runtimeDataMode === 'hybrid') {
-    if (!hasSupabaseConfig) {
-      return loadAndMerge(await loadLocalAppSnapshot(ownerUserId));
-    }
-
-    try {
-      return await loadAndMerge(loadRemoteAppData(config, ownerUserId));
-    } catch {
-      return loadAndMerge(await loadLocalAppSnapshot(ownerUserId));
-    }
-  }
-
+  /* hybrid i remote: xarxa → desar → servir. Sense xarxa: l'última veritat REAL.
+     La llavor només en hybrid (mode de proves). En remote, sense snapshot real,
+     l'error és honest: AGENTS.md prohibix el fallback demo silenciós en producció. */
   if (!hasSupabaseConfig) {
-    return loadAndMerge(await buildSeedAppData(ownerUserId));
+    if (runtimeDataMode === 'remote') throw new Error('Falten VITE_SUPABASE_URL i/o VITE_SUPABASE_ANON_KEY.');
+    return loadAndMerge(runtimeDataMode === 'hybrid' ? await loadLocalAppSnapshot(ownerUserId) : await buildSeedAppData(ownerUserId));
   }
 
-  return loadAndMerge(loadRemoteAppData(config, ownerUserId));
+  try {
+    return await loadAndMerge(loadRemoteAndCache(config, ownerUserId));
+  } catch (error) {
+    if (runtimeDataMode === 'remote' && !(await teSnapshotRemot(ownerUserId))) throw error;
+    return loadAndMerge(await loadLocalAppSnapshot(ownerUserId));
+  }
 }
 
 export async function appendChatMessages(messages, config = {}) {
@@ -603,7 +552,7 @@ export async function appendChatMessages(messages, config = {}) {
 
     const current = await loadDevFallbackMessages(ownerUserId);
     const merged = mergeChatMessages(current, messages);
-    await saveDevFallbackMessages(merged);
+    await saveDevFallbackMessages(merged, ownerUserId);
     return merged;
   } catch (error) {
     const message = String(error?.message || '');
@@ -621,7 +570,7 @@ export async function appendChatMessages(messages, config = {}) {
     }
     const current = await loadDevFallbackMessages(ownerUserId);
     const merged = mergeChatMessages(current, messages);
-    await saveDevFallbackMessages(merged);
+    await saveDevFallbackMessages(merged, ownerUserId);
     return merged;
   }
 }
@@ -700,7 +649,15 @@ export async function appendSectionSubmissionNetworkOnly(submission, config = {}
       message.includes('does not exist');
 
     if (isRemoteUnavailable) {
-      console.warn('[BACKEND] Error remot inrecuperable per submission. S\'engoleix per evitar bucles.', error);
+      console.warn('[BACKEND] Error remot inrecuperable per submission. Marcant com a rebutjada.', error);
+      storedSubmission.syncStatus = 'quarantena-denegada';
+      storedSubmission.syncError = message;
+      await persistSectionSubmissionToLocal(storedSubmission, ownerUserId);
+      
+      if (typeof window !== 'undefined') {
+        window.dispatchEvent(new CustomEvent('sdp:submission-rejected', { detail: { id, title: storedSubmission.title, error: message } }));
+      }
+      
       return storedSubmission;
     }
 
@@ -761,11 +718,7 @@ export async function registerWithEmail(email, password, name, config = {}) {
   const { tenantId, hasSupabaseConfig } = getResolvedConfig(config);
   
   if (!hasSupabaseConfig) {
-    const mockUser = {
-      id: 'local-mock-superadmin',
-      email,
-      user_metadata: { name: name || 'Javi Llinares', role: 'superadmin' }
-    };
+    const mockUser = usuariSimulat(email, name);
     setVal('socdepoble-jwt', 'mock-jwt-token');
     setVal('socdepoble-user', mockUser);
     return { access_token: 'mock-jwt-token', user: mockUser };
@@ -792,11 +745,7 @@ export async function loginWithEmail(email, password, config = {}) {
   const { hasSupabaseConfig } = getResolvedConfig(config);
 
   if (!hasSupabaseConfig) {
-    const mockUser = {
-      id: 'local-mock-superadmin',
-      email,
-      user_metadata: { name: 'Javi Llinares (Superadmin)', role: 'superadmin' }
-    };
+    const mockUser = usuariSimulat(email, undefined);
     setVal('socdepoble-jwt', 'mock-jwt-token');
     setVal('socdepoble-user', mockUser);
     return { access_token: 'mock-jwt-token', user: mockUser };
@@ -815,10 +764,37 @@ export async function loginWithEmail(email, password, config = {}) {
   return result;
 }
 
-export function logout() {
+/**
+ * L'anterior enviava l'usuari a Google amb `redirect_to = origin + pathname`.
+ * Com que eixe origen no estava a la llista blanca, GoTrue no fallava: queia
+ * al SITE_URL i l'usuari acabava sempre a socdepoble.org. I ningú llegia la
+ * tornada, així que ni tan sols des d'allí s'hauria guardat la sessió.
+ *
+ * Ara: relé fix + PKCE + finestra emergent. Torna una promesa amb la sessió.
+ */
+export function loginWithGoogle(config = {}) {
+  return entraAmbGoogle(config, getResolvedConfig);
+}
+
+/** Crida-la una vegada quan l'app es munte. */
+export function recullTornadaOAuth(config = {}) {
+  return gestionaTornada(config, getResolvedConfig);
+}
+
+export async function logout() {
   delVal('socdepoble-jwt');
   delVal('socdepoble-refresh-token');
   delVal('socdepoble-user');
+  
+  // Apoptosi: destrucció de dades locals (RGPD art.17)
+  delVal(APP_SNAPSHOT_STORAGE_KEY);
+  delVal(SECTION_SUBMISSIONS_STORAGE_KEY);
+  
+  try {
+    await esborraTot();
+  } catch (e) {
+    console.warn('[LOGOUT] Error en esborraTot:', e);
+  }
 }
 
 export function getCurrentUser() {

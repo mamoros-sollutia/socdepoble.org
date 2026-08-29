@@ -140,3 +140,8 @@ Com a lliçó extreta de l'historial (Tancament Seient 5): S'ha d'evitar absolut
 Tot i que el disseny busca una rigidesa rústica, s'admet la profunditat per donar jerarquia i amabilitat a la interfície.
 * **Radis:** Ús exclusiu dels tokens de radi (`--sdp-radi-s`, `--sdp-radi-m`, `--sdp-radi-g`, `--sdp-radi-xl`, `--sdp-radi-pill`). Prohibit usar valors en píxels de forma ad-hoc.
 * **Ombres:** S'accepten les ombres per crear jerarquia (barres, targetes). Ús exclusiu dels tokens `--sdp-ombra-1` a `--sdp-ombra-3`. Prohibit l'ús de `box-shadow` ad-hoc o classes tipus Tailwind. Tot ha de dependre del token per adaptar-se al Mode Fosc.
+
+***
+
+## 10. Llei de l'Enquadrament Fotogràfic (Imatges)
+Tota imatge sol·licitada, generada o inserida en el codi ha de tindre una proporció estrictament **quadrada (1:1)**, a menys que l'usuari especifique explícitament el contrari. L'arquitectura de Sóc de Poble (targetes, capçaleres, avatars) confia de base en aquest enquadrament 1:1 per garantir l'alineació i simetria visual de l'ecosistema. A efectes pràctics: qualsevol crida a eines com `generate_image` ha d'aplicar per defecte `AspectRatio: '1:1'`.
