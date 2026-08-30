@@ -1,6 +1,6 @@
 import { useDeferredValue, useMemo, useState } from 'react';
 import { sanitizeHtml } from '../../utils/sanitize';
-import { ChevronLeft, ChevronDown, ChevronRight, FileText, Folder, List, Heading1, Heading2, Type, ListOrdered, CheckSquare, Image as ImageIcon, Video, Link, Bold, Italic, Strikethrough, Sparkles, Download, Plus, Bookmark, Hash, Globe } from 'lucide-react';
+import { ChevronLeft, ChevronDown, ChevronRight, FileText, Folder, List, Heading1, Heading2, Type, ListOrdered, CheckSquare, Image as ImageIcon, Video, Link, Bold, Italic, Strikethrough, Sparkles, Download, Plus, Bookmark, Hash, Globe, Search, Settings } from 'lucide-react';
 import { UniversalPage, DateTimeControl } from '../../components/universal/UniversalComponents';
 import { UniversalSearch } from '../../components/ui/UniversalSearch.jsx';
 import { useAppData } from '../../app/AppDataContext';
@@ -190,20 +190,17 @@ export default function NotesSection() {
             </div>
           </aside>
 
-          <section role="region" aria-label={t('nav.notes', 'Notes')} className={`notes-column notes-column--list ${mobileView === 'list' ? 'notes-column--mobile' : ''} ${!isNotesOpen ? 'notes-column--collapsed' : ''}`}>
-            <div className="notes-column__head" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }} onClick={() => setIsNotesOpen(!isNotesOpen)}>
-                <FileText size={16} />
-                <span className="column-title">{t('nav.notes', 'Notes')}</span>
-              </div>
+          <section role="region" aria-label={t('nav.notes', 'Notes')} className={`notes-column notes-column--left ${mobileView === 'list' ? 'notes-column--mobile' : ''} ${!isNotesOpen ? 'notes-column--collapsed' : ''}`} style={{ width: '250px', borderRight: '1px solid var(--sdp-vora)', display: 'flex', flexDirection: 'column' }}>
+            <div className="notes-column__head" style={{ padding: '8px 16px', display: 'flex', alignItems: 'center', borderBottom: '1px solid var(--sdp-vora)', minHeight: '60px' }}>
+                <span style={{ fontWeight: 700, fontSize: '0.85rem', color: 'var(--sdp-text-titol)' }} className="notes-header-title sdp-flex sdp-items-center sdp-gap-2"><FileText size={16} /> NOTES</span>
+            </div>
+            <div className="notes-column__body no-scrollbar" style={{ flex: 1, overflowY: 'auto' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                 <Plus size={16} style={{ cursor: 'pointer' }} onClick={() => {}} aria-label="Afegeix nota" />
                 <div style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', paddingLeft: '4px', borderLeft: '1px solid var(--sdp-vora)' }} onClick={() => setIsNotesOpen(!isNotesOpen)}>
                   {isNotesOpen ? <ChevronLeft size={16} className="collapse-icon" /> : <List size={16} className="collapse-icon" />}
                 </div>
               </div>
-            </div>
-            <div className="notes-column__body">
               <UniversalSearch
                 value={searchQuery}
                 onChange={(event) => setSearchQuery(event.target.value)}
@@ -252,6 +249,22 @@ export default function NotesSection() {
           </section>
 
           <main className={`notes-column notes-column--editor ${mobileView === 'editor' ? 'notes-column--mobile' : ''}`}>
+            <div className="notes-column--middle" style={{ width: '300px', borderRight: '1px solid var(--sdp-vora)', display: 'flex', flexDirection: 'column', background: 'var(--sdp-fons-subtil)' }}>
+              <div className="notes-actions-bar" style={{ padding: '8px 16px', borderBottom: '1px solid var(--sdp-vora)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', minHeight: '60px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <button aria-label="Cerca" style={{ padding: '0', display: 'flex', alignItems: 'center', color: 'var(--sdp-text-secundari)', background: 'transparent', border: 'none', cursor: 'pointer' }}>
+                    <Search size={20} />
+                  </button>
+                  <button aria-label="Configuració" style={{ padding: '0', display: 'flex', alignItems: 'center', color: 'var(--sdp-text-secundari)', background: 'transparent', border: 'none', cursor: 'pointer' }}>
+                    <Settings size={20} />
+                  </button>
+                </div>
+                <button className="btn btn-sm" style={{ background: 'var(--sdp-fons-subtil)', color: 'var(--sdp-text-titol)', cursor: 'pointer', border: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', whiteSpace: 'nowrap' }}>
+                  CREAR NOTA
+                </button>
+              </div>
+              <div className="notes-column__body no-scrollbar" style={{ flex: 1, overflowY: 'auto', padding: '16px' }}></div>
+            </div>
               <div className="notes-column__head notes-column__head--editor" style={{ display: 'flex', flexDirection: 'column', alignItems: 'stretch', padding: 0 }}>
                 {/* Top Row */}
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', minHeight: '52px', padding: '0 16px' }}>
@@ -324,15 +337,11 @@ export default function NotesSection() {
                     
                     {/* Media Insertion */}
                     {activeNote.heroImage ? (
-                      <div className="editor-hero-image" style={{ width: '100%', flexShrink: 0 }}>
-                        <img 
-                          src={activeNote.heroImage} 
-                          alt="Imatge de capçalera" 
-                          style={{ width: '100%', maxHeight: '400px', objectFit: 'cover', display: 'block' }} 
-                        />
+                      <div className="hero-image" style={{ margin: 0 }}>
+                        <img src={activeNote.heroImage} alt="Cover" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 0 }} />
                       </div>
                     ) : (
-                      <div style={{ padding: '32px', paddingBottom: '16px' }}>
+                      <div style={{ padding: '32px', paddingBottom: '16px', display: 'flex', justifyContent: 'center' }}>
                         <button type="button" className="pill" style={{ borderStyle: 'dashed', background: 'transparent' }}>
                           <ImageIcon size={16} /> Inserir Imatge o Multimèdia
                         </button>
@@ -363,27 +372,31 @@ export default function NotesSection() {
 
                     <div style={{ flex: 1, display: 'flex', flexDirection: 'column', paddingBottom: '32px' }}>
                       {/* Inner Universal Card */}
-                      <article className="card universal-page" style={{ margin: '0 32px 32px 32px', padding: '0 32px 32px 32px', flex: 1, display: 'flex', flexDirection: 'column', borderTopLeftRadius: 0, borderTopRightRadius: 0, borderLeft: 'none', borderRight: 'none', boxShadow: 'var(--sdp-ombra-suau)' }}>
+                      <article className="card universal-page" style={{ margin: '0 0 32px 0', padding: '32px', flex: 1, display: 'flex', flexDirection: 'column', borderTopLeftRadius: 0, borderTopRightRadius: 0, borderLeft: 'none', borderRight: 'none', borderBottom: 'none', boxShadow: 'none' }}>
                         
                         <header className="page-title" style={{ margin: '0 0 24px 0', borderBottom: 'none' }}>
-                          <img alt="Logotip Sóc de Poble" className="page-title-logo light-only" src="/assets/system/ui/logo-socdepoble-rect-negre.svg" />
-                          <img alt="Logotip Sóc de Poble" className="page-title-logo dark-only" src="/assets/system/ui/logo-socdepoble-rect-blanc.svg" />
+                          {!activeNote.heroImage && (
+                            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '24px' }}>
+                              <button type="button" className="pill" style={{ borderStyle: 'dashed', background: 'transparent' }}>
+                                <ImageIcon size={16} /> Inserir Imatge o Multimèdia
+                              </button>
+                            </div>
+                          )}
 
                           {/* H1 Title */}
                           <h1 
                             className="editor-title-input"
                             contentEditable
                             suppressContentEditableWarning
-                            onBlur={(e) => {
-                              // Optional: handle title change logic here if needed
-                            }}
-                            style={{ outline: 'none', cursor: 'text' }}
+                            onBlur={(e) => handleSaveField('title', e.currentTarget.innerHTML)}
+                            style={{ outline: 'none', cursor: 'text', color: 'var(--sdp-accio-text)' }}
                             data-placeholder="Escriu el títol de l'article (H1)..."
                             dangerouslySetInnerHTML={{ __html: sanitizeHtml(activeNote.title || '') }}
                           />
 
                           {/* Meta Labels (Categories/Tags) */}
                           <ul className="sp-card-labels page-title-labels" style={{ marginTop: '16px', marginBottom: '16px', justifyContent: 'center' }}>
+                            <li className="sp-card-label" style={{ backgroundColor: 'var(--sdp-accio)', color: 'var(--sdp-text-invers)', cursor: 'pointer', border: 'none' }}>General</li>
                             {activeNote.category ? (
                               <li className={`sp-card-label ${activeNote.category.toLowerCase() === 'sistema' ? 'sdp-badge-system' : 'sdp-badge-category'}`} style={{ cursor: 'pointer', border: 'none' }}>{activeNote.category}</li>
                             ) : (
@@ -399,7 +412,7 @@ export default function NotesSection() {
                           </ul>
 
                           {/* Copyright */}
-                          <p className="sp-card-copyright page-title-copyright">© Sóc de Poble / Fet per la IAIA i Nano Banana</p>
+                          <p className="sp-card-copyright page-title-copyright">Com vols publicar? (Ex: Drets d'autor, Creative Commons...)</p>
                         </header>
 
                         <div className="page-intro" style={{ marginBottom: '24px' }}>
@@ -408,6 +421,7 @@ export default function NotesSection() {
                             className="editor-subtitle-input"
                             contentEditable
                             suppressContentEditableWarning
+                            onBlur={(e) => handleSaveField('subtitle', e.currentTarget.innerHTML)}
                             style={{ outline: 'none', cursor: 'text' }}
                             data-placeholder="Escriu el subtítol (H2)..."
                             dangerouslySetInnerHTML={{ __html: sanitizeHtml(activeNote.subtitle || '') }}
@@ -418,6 +432,7 @@ export default function NotesSection() {
                             className="lead editor-lead-input"
                             contentEditable
                             suppressContentEditableWarning
+                            onBlur={(e) => handleSaveField('lead', e.currentTarget.innerHTML)}
                             style={{ outline: 'none', cursor: 'text' }}
                             data-placeholder="Escriu l'entradilla..."
                             dangerouslySetInnerHTML={{ __html: sanitizeHtml(activeNote.lead || '') }}
@@ -428,7 +443,9 @@ export default function NotesSection() {
                           className="editor-content page-content"
                           contentEditable
                           suppressContentEditableWarning
+                          onBlur={(e) => handleSaveField('content', e.currentTarget.innerHTML)}
                           style={{ outline: 'none', flex: 1 }}
+                          data-placeholder="Açí pots començar a redactar el text del teu article (H3)..."
                           dangerouslySetInnerHTML={{ __html: sanitizeHtml(activeNote.content) }}
                         />
                       </article>
