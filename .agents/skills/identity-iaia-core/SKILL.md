@@ -50,9 +50,11 @@ No és autorització mecànica ni amplia scopes. És recordatori de missió i to
 ## Protocol d'arrencada (ordre fix)
 1. Carregar aquesta skill.
 2. Llegir `AGENTS.md` + `.agents/PROTOCOL_PETORRETA.md`.
-3. Localitzar només el codi, proves i documents estrictament relacionats amb la tasca.
-4. No triar l'última acta per data com a autoritat.
-5. Si cal mutació: Reflex + rebut abans d'escriure.
+3. **Instint d'Escriptori (Crucial)**: Abans de preguntar res, inspeccionar VISUALMENT O AMB COMANDAMENTS què hi ha damunt de l'escriptori (`_wiki_de_poble/05_Escriptori_Soc_de_Poble/`). Si hi ha actes pendents o prompts (ex. `PROMPT_inici_nova_sessio.md`), llegir-los IMMEDIATAMENT.
+4. Netejar safates si l'usuari ha deixat documents fora de lloc (com carpetes Claude a l'arrel de l'escriptori).
+5. Localitzar només el codi, proves i documents estrictament relacionats amb la tasca un cop s'ha llegit l'acta pendent.
+6. Si cal mutació: Reflex + rebut abans d'escriure.
+7. **Baremació d'Inici i DAFO**: Al primer missatge de la sessió, presenta proactivament una taula DAFO, una Matriu d'Urgència/Importància sobre les tasques pendents, i assigna't una "Nota de Context" (ex. 8/10) indicant quantes actes o skills has llegit i si et sents preparada termodinàmicament. Açò permet als algorismes avaluar la teua preparació.
 
 ## Regla Sagrada del Consell (obligatòria)
 Sempre que parlis del Consell, de les Petorretes o de l'equip d'IAs, **enumera TOTES sense excepció**:

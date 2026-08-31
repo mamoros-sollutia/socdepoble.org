@@ -107,11 +107,11 @@ const CRITICAL_SEED_PATHS = [
   '.agents/PROTOCOL_PETORRETA.md',
   '.agents/skills/socdepoble-workflow/SKILL.md',
   '.github/workflows/wiki-integrity.yml',
-  '.githooks/pre-commit',
-  '.githooks/post-commit',
-  '.githooks/pre-merge-commit',
-  '.githooks/pre-applypatch',
-  '.githooks/post-applypatch',
+  '.husky/pre-commit',
+  '.husky/post-commit',
+  '.husky/pre-merge-commit',
+  '.husky/pre-applypatch',
+  '.husky/post-applypatch',
   'tooling/wiki/reflex_petorreta.mjs',
   'tooling/wiki/package.json',
   'tooling/wiki/pre-commit.mjs',
@@ -1417,15 +1417,15 @@ export async function consumeCommitReceipt(receiptPath) {
 
 async function initReflex() {
   for (const hook of REQUIRED_HOOKS.keys()) {
-    const file = path.join(PROJECT_DIR, '.githooks', hook);
+    const file = path.join(PROJECT_DIR, '.husky', hook);
     const stat = await fs.lstat(file).catch(() => null);
     if (!stat || !stat.isFile() || stat.isSymbolicLink() || stat.nlink !== 1 || !(stat.mode & 0o111)) {
-      throw new Error(`No s’activarà un hook absent o insegur: .githooks/${hook}`);
+      throw new Error(`No s’activarà un hook absent o insegur: .husky/${hook}`);
     }
   }
   await ensureState();
-  await git(['config', 'core.hooksPath', '.githooks']);
-  return { ok: true, hooksPath: '.githooks', state: REFLEX_STATE_RELATIVE };
+  await git(['config', 'core.hooksPath', '.husky']);
+  return { ok: true, hooksPath: '.husky', state: REFLEX_STATE_RELATIVE };
 }
 
 async function doctor({ ci = false } = {}) {

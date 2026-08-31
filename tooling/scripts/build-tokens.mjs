@@ -43,4 +43,7 @@ async function buildTokens() {
   console.log(`✅ [build-tokens] Generat ${cssPath} amb èxit.`);
 }
 
-buildTokens().catch(console.error);
+buildTokens().catch((error) => {
+  console.error('❌ [build-tokens] Error:', error);
+  process.exit(1);
+});

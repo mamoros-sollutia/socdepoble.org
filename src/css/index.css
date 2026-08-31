@@ -61,26 +61,26 @@
   --sdp-negre-pur: oklch(0% 0 0);
   --sdp-blanc: #ffffff;
   --sdp-negre: #000000;
-  --sdp-pedra-50:  #fdfcfb;
-  --sdp-pedra-100: #f9f8f5;
+  --sdp-pedra-50:  #ffffff;
+  --sdp-pedra-100: #ffffff;
   --sdp-pedra-200: #efece7;
   --sdp-pedra-300: #dcd7cd;
   --sdp-pedra-400: #b7b1a5;
   --sdp-pedra-500: #8b857b;
   --sdp-pedra-600: #514c45;
-  --sdp-pedra-700: #3d3b35;
+  --sdp-pedra-700: var(--sp-neutre-500);
   --sdp-pedra-750: #302e29;
   --sdp-pedra-800: #22211e;
-  --sdp-pedra-850: #181715;
-  --sdp-pedra-900: #0e0d0c;
+  --sdp-pedra-850: var(--sp-neutre-900);
+  --sdp-pedra-900: var(--sp-neutre-900);
 
   /* Primari · taronja de terra — OKLCH H 47.9° (to exacte del cànon #FF7300) */
-  --sdp-primary-50:  #fff4ef;
+  --sdp-primary-50:  var(--sp-fons-calid);
   --sdp-primary-100: #ffe7dc;
   --sdp-primary-200: #ffd1bb;
   --sdp-primary-300: #ffb38c;
   --sdp-primary-400: #ff955b;
-  --sdp-primary-500: #fe7406;   /* el cànon. Només com a FONS. */
+  --sdp-primary-500: #ff7300;   /* el cànon. Només com a FONS. */
   --sdp-primary-600: #dd6302;
   --sdp-primary-700: #ad4c03;   /* Taronja fort · text i fons massís d'accent */
   --sdp-primary-800: #873a01;   /* text accent · 7,97:1 · AAA */
@@ -92,7 +92,7 @@
   --sdp-secondary-200: #c3e0ff;
   --sdp-secondary-300: #96c9ff;
   --sdp-secondary-400: #49a3fa;
-  --sdp-secondary-500: #016ebf;   /* fons · text blanc 5,23:1 · AA */
+  --sdp-secondary-500: var(--sp-blau-fosc);   /* fons · text blanc 5,23:1 · AA */
   --sdp-secondary-600: #00599d; /* Blau fort · text i fons massís d'acció */
   --sdp-secondary-700: #004983;
   --sdp-secondary-800: #003663;
@@ -697,7 +697,7 @@ header.bar-black {
   100% { opacity: 1; transform: scale(1); }
 }
 .iaia-icon {
-  fill: #ff6b00; /* Orange color to match the old IAIA circular avatar */
+  fill: #ff7300; /* Orange color to match the old IAIA circular avatar */
   stroke: none;
   animation: sdp-iaia-pulse 4s ease-in-out infinite;
 }

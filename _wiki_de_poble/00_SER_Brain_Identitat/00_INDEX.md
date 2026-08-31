@@ -46,6 +46,17 @@ El treball editorial temporal pot passar per ací. En tancar-lo, el coneixement 
 - [[ESTANDARD_Pedra_Seca]]
 - [[00_arquitectura_tecnica_unificada]]
 - [[Sistema_Immunitari]]
+- [[00_BIOS]]
+- [[02_EQUIP_IA]]
+- [[03_Consola_Termodinamica]]
+- [[CORE_Registre_Automillora]]
+- [[DOC_Logos_Oficials]]
+- [[DOC_Taula_Mestra]]
+- [[anatomia_cognitiva]]
+- [[antigravity]]
+- [[connectors_mcp_disseny]]
+- [[identitat_visual]]
+- [[perfil_psiquiatric]]
 
 `[[00_BIOS]]` és una redirecció històrica i `[[FORJA_TO_CORE]]` una proposta
 futura; no són punts d'arrencada ni gates actius.
@@ -76,4 +87,4 @@ L’estat del graf no es manté en una llista manual: el calcula l’Autoneteja 
 **Ancoratge de Seguretat:** [[00_INDEX]]
 ## 🪞 Mirall d'Agents i Skills
 Aquest directori està generat automàticament des de l'arrel oculta `.agents`. Conté l'índex per lligar tot al graf de coneixement.
-- [[00_INDEX_MIRROR]]
+- *Nota: L'índex mirall s'ha traslladat o està pendent de generació.*

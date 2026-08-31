@@ -93,7 +93,7 @@ export default function DesignSection() {
 <div className="palette">
 <div className="swatch">
 <div className="swatch-color sw-primary-500">Taronja · fons</div>
-<div className="swatch-info">#fe7406<br/>--sdp-primary-500</div>
+<div className="swatch-info">#ff7300<br/>--sdp-primary-500</div>
 </div>
 <div className="swatch">
 <div className="swatch-color sw-primary-700">Taronja fort</div>
@@ -143,11 +143,11 @@ export default function DesignSection() {
 <div className="palette">
 <div className="swatch">
 <div className="swatch-color sw-pedra-50">Blanc trencat · 50</div>
-<div className="swatch-info">#fdfcfb<br/>--sdp-pedra-50</div>
+<div className="swatch-info">#ffffff<br/>--sdp-pedra-50</div>
 </div>
 <div className="swatch">
 <div className="swatch-color sw-pedra-100">Núvol · 100</div>
-<div className="swatch-info">#f9f8f5<br/>--sdp-pedra-100</div>
+<div className="swatch-info">#ffffff<br/>--sdp-pedra-100</div>
 </div>
 <div className="swatch">
 <div className="swatch-color sw-pedra-200">Arena · 200</div>

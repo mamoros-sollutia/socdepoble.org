@@ -1,20 +1,29 @@
 /* AUTO-GENERATED FROM design-tokens.json */
 :root, :host, .sdp-root {
   /* Color */
-  --sp-black-100: #000000;
-  --sp-white-100: #FFFFFF;
-  --sp-orange-100: #FF7300;
-  --sp-blue-100: #0984E3;
+  --sdp-black-100: #000000;
+  --sdp-white-100: #FFFFFF;
+  --sdp-orange-100: #FF7300;
+  --sdp-blue-100: #0984E3;
+  --sdp-neutre-50: #f5f5f4;
+  --sdp-neutre-200: #e7e5e4;
+  --sdp-neutre-500: #78716c;
+  --sdp-neutre-900: #1c1917;
+  --sdp-fons-calid: #fff4ef;
+  --sdp-marro-terra: #8b4513;
+  --sdp-blau-fosc: #016ebf;
+  --sdp-roig-error: #dc2626;
+  --sdp-verd-exit: #00662e;
 
   /* Radi */
-  --sp-radius-main: 1.75rem;
-  --sp-radius-secondary: 1.125rem;
+  --sdp-radius-main: 1.75rem;
+  --sdp-radius-secondary: 1.125rem;
 
   /* Tacte */
-  --sp-touch-min: 44px;
-  --sp-touch-cuspide: 56px;
+  --sdp-touch-min: 44px;
+  --sdp-touch-cuspide: 56px;
 
   /* Tipografia */
-  --sp-font-min: 16px;
-  --sp-font-heading-lg: 30px;
+  --sdp-font-min: 16px;
+  --sdp-font-heading-lg: 30px;
 }

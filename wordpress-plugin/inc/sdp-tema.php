@@ -13,7 +13,7 @@ function sdp_bootstrap_theme() {
   }
   ?>
   <meta name="color-scheme" content="light dark">
-  <meta name="theme-color" content="#fbfaf8" data-sdp-theme-color>
+  <meta name="theme-color" content="#ffffff" data-sdp-theme-color>
   <script>
   (function (d, w) {
     var key = 'socdepoble-theme-mode';
@@ -39,7 +39,7 @@ function sdp_bootstrap_theme() {
     d.documentElement.style.colorScheme = theme;
 
     var meta = d.querySelector('meta[data-sdp-theme-color]');
-    if (meta) meta.content = theme === 'dark' ? '#0e0d0c' : '#fbfaf8';
+    if (meta) meta.content = theme === 'dark' ? '#0e0d0c' : '#ffffff';
   })(document, window);
   </script>
   <?php

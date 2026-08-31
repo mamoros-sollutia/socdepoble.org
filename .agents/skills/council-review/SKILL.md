@@ -34,23 +34,30 @@ Aquesta skill unifica el protocol d'interacció amb les avaluacions o auditories
 - L'únic rol durant la ronda és llegir, reflexionar, i acumular DAFOs.
 - S'actua només quan el Mestre avisa explícitament que la ronda d'auditories ha acabat i ordena l'execució d'un Pla (Master Plan).
 
-## 2. El Mode DAFO
-- Per a cada IA o auditoria rebuda, s'ha de fer una avaluació:
-  - **(D) Debilitats:** Quines fallades o punts cecs té la proposta que arriba?
-  - **(A) Amenaces:** Quin és el pitjor escenari? (Paranoia Defensiva: calcula sempre com pot fallar catastròficament el sistema).
-  - **(F) Fortaleses:** Què s'aporta de valor que cal protegir?
-  - **(O) Oportunitats:** Com fusionar idees per crear una solució superior.
-- Al finalitzar la ronda, es creuen tots els DAFOs per redactar l'`implementation_plan.md`.
+## 2. El Mode Estudi (Mecànica de Recepció)
+- En rebre les respostes ("petorretas") de les IAs, t'has de posar en **Mode Estudi**.
+- **Acció Mecànica Obligatòria:** Desa CADA resposta a l'Escriptori amb la nomenclatura termodinàmica: `[Data_Hora]_petorreta_[nom_ia].md`. 
+- Reconeix el teu desconeixement i fes al Mestre les preguntes tècniques o de context del món real que et calguen abans de continuar.
 
-## 3. Paranoia Defensiva i Humilitat Radical
+## 3. El Mode DAFO i Matrius
+- Per a cada IA o auditoria rebuda, s'ha de fer una avaluació:
+  - **(D) Debilitats / (A) Amenaces / (F) Fortaleses / (O) Oportunitats**.
+  - Elabora matrius d'**Important / Urgent**.
+- Un colp processades totes, **destil·la la saviesa** conjunta i crea l'`implementation_plan.md` abans de tocar codi.
+
+## 4. Prioritat Absoluta: La Time Machine (Estela)
+- Recorda en tot moment els errors del passat on es van perdre hores de treball. 
+- Qualsevol pla d'implementació ha de contemplar i protegir el sistema de còpies o "Estela" (Time Machine), assegurant-nos que el treball queda blindat abans de qualsevol canvi estructural.
+
+## 5. Paranoia Defensiva i Humilitat Radical
 - "Cap IA ho sap tot. El món és massa gran."
 - No assumisques que una solució és perfecta (ni la teua ni la d'una altra IA). Dubta, comprova, valora els riscos.
 - Descarta les "al·lucinacions" (idees que ignoren el context real del projecte, com l'enfocament Sollutia-first o les normes de Pedra Seca).
 - Les discrepàncies es documenten, no s'intenten amagar sota un consens fals.
 
-## 4. Zero Fricció i Empatia
+## 6. Zero Fricció i Empatia
 - El codi preparat per al Consell ha d'anar net, en blocs de codi, sense farciment conversacional.
 - Comprèn que el Mestre lidera l'orquestració. El teu deure és aportar el millor anàlisi tècnic (El Trellat) per facilitar-li la decisió.
 
-## 5. Regla d'Anti-Ocultació
+## 7. Regla d'Anti-Ocultació
 - Quan es prepara una "Petorreta" (auditoria externa), mai s'han d'ocultar els fitxers estructurals. Cal lliurar la realitat sencera del codi base, inclosos els `package.json`, les rutes i la configuració de Vite, per evitar auditories cegues.

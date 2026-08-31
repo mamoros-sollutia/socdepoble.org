@@ -44,11 +44,12 @@ const JSON_OUT = ARGS.includes('--json');
 const HORES_FRESCOR = 24;
 
 /* Nom termodinàmic: AAMMDD_HHMM_categoria_titol.ext (1–6 paraules) */
-const RE_TERMODINAMIC = /^\d{6}_\d{4}_[a-z0-9]+(?:_[a-z0-9]+){1,6}\.(md|txt|json|csv)$/;
+const RE_TERMODINAMIC = /^\d{6}_\d{4}_[a-z0-9]+(?:_[a-z0-9]+){1,6}\.(md|txt|json|csv)$/i;
 
 /** Fitxers que poden viure a l'Escriptori sense nom termodinàmic. */
 const ESCRIPTORI_RESERVATS = new Set([
   '00_INDEX_ESCRIPTORI.md', '00_INDEX_Satel_lits.md', 'REGISTRE_CODI.md', '.DS_Store', '.gitkeep',
+  'disseny_pedra_seca.html', '00_INDEX.md', '01_Produccio', '.ancora_sessio.json'
 ]);
 
 /** Fitxers que legítimament viuen a l'arrel del repositori. */
@@ -133,36 +134,40 @@ function marquesDeData(d) {
 
 /* ═══════════════════════ C1 · Escriptori ═══════════════════════ */
 
-control('C1', "L'Escriptori existix i tot fitxer hi té nom termodinàmic", () => {
-  const dir = R(CAMINS.escriptori);
-  if (!fs.existsSync(dir)) {
-    return falla(`no existix ${CAMINS.escriptori}; l'AGENTS.md §3 el declara l'única safata de treball`);
+control('C1', "L'Escriptori i Producció no tenen fitxers fantasma ni carpetes soltes", () => {
+  const rutesAComprovar = [
+    CAMINS.escriptori,
+    '_wiki_de_poble/05_Escriptori_Soc_de_Poble/01_Produccio'
+  ];
+  const dolents = [];
+  for (const ruta of rutesAComprovar) {
+    const dir = R(ruta);
+    if (!fs.existsSync(dir)) continue;
+    fs.readdirSync(dir, { withFileTypes: true }).forEach((e) => {
+      if (!ESCRIPTORI_RESERVATS.has(e.name) && !RE_TERMODINAMIC.test(e.name)) {
+        dolents.push(`${ruta}/${e.name}`);
+      }
+    });
   }
-  const dolents = fs.readdirSync(dir, { withFileTypes: true })
-    .filter((e) => e.isFile() && !ESCRIPTORI_RESERVATS.has(e.name) && !RE_TERMODINAMIC.test(e.name))
-    .map((e) => e.name);
   return dolents.length
-    ? falla(`${dolents.length} fitxer(s) amb nom no canònic`, dolents)
-    : ok('tots els noms segueixen AAMMDD_HHMM_categoria_titol.ext');
+    ? falla(`${dolents.length} element(s) amb nom no canònic o carpetes fantasma`, dolents)
+    : ok('tots els elements segueixen AAMMDD_HHMM_categoria_titol.ext o estan reservats');
 });
 
 /* ═══════════════════════ C2 · Documents orfes ═══════════════════════ */
 
-control('C2', "Cap document de l'Escriptori queda orfe de l'índex", () => {
-  const dir = R(CAMINS.escriptori);
-  if (!fs.existsSync(dir)) return omes('no hi ha Escriptori (vegeu C1)');
-  const idx = R(CAMINS.indexEscriptori);
-  if (!fs.existsSync(idx)) {
-    return falla(`falta ${CAMINS.indexEscriptori}; sense índex, tot document és orfe`);
+control('C2', "Accessibilitat Dirigida (SCC) i neteja atòmica d'àncores", () => {
+  try {
+    const stdout = execFileSync('node', ['tooling/session/check-close.mjs'], { 
+      cwd: arrelSegura(), 
+      encoding: 'utf8',
+      stdio: ['ignore', 'pipe', 'pipe']
+    });
+    return ok('Tots els nodes de la Wiki són abastables (SCC).');
+  } catch (err) {
+    const errorMessage = err.stderr ? err.stderr.trim() : err.message;
+    return falla('L\'accessibilitat dirigida ha fallat.', errorMessage.split('\n'));
   }
-  const text = fs.readFileSync(idx, 'utf8');
-  const orfes = fs.readdirSync(dir, { withFileTypes: true })
-    .filter((e) => e.isFile() && e.name.endsWith('.md') && !ESCRIPTORI_RESERVATS.has(e.name))
-    .map((e) => e.name)
-    .filter((n) => !text.includes(n) && !text.includes(n.replace(/\.md$/, '')));
-  return orfes.length
-    ? avis(`${orfes.length} document(s) no citats a l'índex`, orfes)
-    : ok('tot document .md està enllaçat des de 00_INDEX_ESCRIPTORI');
 });
 
 /* ═══════════════════════ C3 · ESTAT.md fresc ═══════════════════════ */

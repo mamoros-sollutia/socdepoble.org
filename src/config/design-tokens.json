@@ -8,39 +8,48 @@
     "regla": "Cap altre arxiu del projecte (codi, Wiki, SKILL.md) pot contindre un valor numèric o hexadecimal de disseny en cru. Tot ha de citar un id d'este arxiu."
   },
   "color": {
-    "negre":   { "value": "#000000", "css_var": "--sp-black-100" },
-    "blanc":   { "value": "#FFFFFF", "css_var": "--sp-white-100" },
-    "taronja": { "value": "#FF7300", "css_var": "--sp-orange-100" },
-    "blau":    { "value": "#0984E3", "css_var": "--sp-blue-100" }
+    "negre":   { "value": "#000000", "css_var": "--sdp-black-100" },
+    "blanc":   { "value": "#FFFFFF", "css_var": "--sdp-white-100" },
+    "taronja": { "value": "#FF7300", "css_var": "--sdp-orange-100" },
+    "blau":    { "value": "#0984E3", "css_var": "--sdp-blue-100" },
+    "neutre_50": { "value": "#f5f5f4", "css_var": "--sdp-neutre-50" },
+    "neutre_200": { "value": "#e7e5e4", "css_var": "--sdp-neutre-200" },
+    "neutre_500": { "value": "#78716c", "css_var": "--sdp-neutre-500" },
+    "neutre_900": { "value": "#1c1917", "css_var": "--sdp-neutre-900" },
+    "fons_calid": { "value": "#fff4ef", "css_var": "--sdp-fons-calid" },
+    "marro_terra": { "value": "#8b4513", "css_var": "--sdp-marro-terra" },
+    "blau_fosc": { "value": "#016ebf", "css_var": "--sdp-blau-fosc" },
+    "roig_error": { "value": "#dc2626", "css_var": "--sdp-roig-error" },
+    "verd_exit": { "value": "#00662e", "css_var": "--sdp-verd-exit" }
   },
   "radi": {
-    "principal":  { "value_px": 28, "value_rem": "1.75rem", "css_var": "--sp-radius-main", "us": "Geometria 'Oli Suau' de botons i targetes." },
-    "secundari":  { "value_px": 18, "value_rem": "1.125rem", "css_var": "--sp-radius-secondary" }
+    "principal":  { "value_px": 28, "value_rem": "1.75rem", "css_var": "--sdp-radius-main", "us": "Geometria 'Oli Suau' de botons i targetes." },
+    "secundari":  { "value_px": 18, "value_rem": "1.125rem", "css_var": "--sdp-radius-secondary" }
   },
   "tacte": {
     "minim_absolut": {
       "value_px": 44,
-      "css_var": "--sp-touch-min",
+      "css_var": "--sdp-touch-min",
       "us": "Mínim absolut tàctil.",
       "nota_normativa": "Reduït a 44px."
     },
     "cuspide": {
       "value_px": 56,
-      "css_var": "--sp-touch-cuspide",
+      "css_var": "--sdp-touch-cuspide",
       "us": "EXCLUSIU per al Botó Cúspide (FAB) i l'acció primària d'una pantalla. No s'aplica a botons secundaris."
     }
   },
   "tipografia": {
     "minim_cos": {
       "value_px": 16,
-      "css_var": "--sp-font-min",
+      "css_var": "--sdp-font-min",
       "us": "Evita l'auto-zoom natiu d'iOS Safari en focus d'inputs."
     },
     "lectura_gran": {
       "value_px": 30,
-      "css_var": "--sp-font-heading-lg",
+      "css_var": "--sdp-font-heading-lg",
       "us": "Encapçalaments Mode Bancal, llegibilitat per a cataractes/sol de migdia.",
-      "nota_canvi": "CANVIAT de 28px a 30px deliberadament. Coincidia amb --sp-radius-main (28px) sense relació semàntica — la 'bomba de rellotgeria' del vostre mapa. Trencada per decret: cap token de tipografia tornarà a coincidir numèricament amb un token de radi."
+      "nota_canvi": "CANVIAT de 28px a 30px deliberadament. Coincidia amb --sdp-radius-main (28px) sense relació semàntica — la 'bomba de rellotgeria' del vostre mapa. Trencada per decret: cap token de tipografia tornarà a coincidir numèricament amb un token de radi."
     }
   }
 }

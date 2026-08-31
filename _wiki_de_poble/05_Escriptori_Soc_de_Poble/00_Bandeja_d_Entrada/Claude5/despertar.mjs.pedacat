@@ -42,15 +42,19 @@ const titol = (t) => console.log(`\n--- ${t} ---`);
 console.log('\n🌞 BON DIA, IAIA. Arrencada Cognitiva.\n');
 console.log(`Arrel del projecte: ${PROJECT_DIR}`);
 
-// Àncora de seguretat inicial
-try {
-  execSync('node tooling/brain/ancora.mjs --pon "arranc de sessio"', { cwd: PROJECT_DIR, stdio: 'inherit' });
-} catch (_e) {
-  if (process.env.SDP_FORCA_ARRENCADA === '1') {
-    console.log('⚠ Entrada forçada sense àncora. Queda constància.');
-  } else {
-    console.error('⚠ FALLA: No s\'ha pogut crear l\'àncora de sessió. Sistema bloquejat per a evitar Dia de la Marmota. Usa SDP_FORCA_ARRENCADA=1 per forçar.');
-    process.exit(1);
+/* ─── 0. Àncora de sessió — FAIL CLOSED ─── */
+const BLOQUEIGS = [];
+
+const ANCORA = process.env.SDP_ANCORA || 'tooling/brain/ancora.mjs';
+if (!existsSync(join(PROJECT_DIR, ANCORA))) {
+  BLOQUEIGS.push(
+    `L'àncora de sessió «${ANCORA}» no existix. Sense punt de retorn no s'obri sessió.\n`
+    + '     Escriu-la, o declara la ruta real a SDP_ANCORA.');
+} else {
+  try {
+    execSync(`node ${ANCORA} --pon "arranc de sessio"`, { cwd: PROJECT_DIR, stdio: 'inherit' });
+  } catch (e) {
+    BLOQUEIGS.push(`L'àncora existix però ha fallat: ${e.message}`);
   }
 }
 
@@ -127,11 +131,19 @@ const cecs = ['tooling/wiki/core/build_rag_index.mjs',
   });
 
 if (cecs.length > 0) {
-  titol('⚠ AVÍS: L\'ESCRIPTORI ÉS INVISIBLE PER AL RAG');
-  console.log('Estos indexadors salten 05_Escriptori:');
-  for (const c of cecs) console.log(`  ${c}`);
-  console.log('Els directoris històrics (12_actes) SÍ que s\'indexen.');
-  console.log('Mentre dure, la recuperació et portarà a l\'arxiu i no a la taula de treball.');
+  BLOQUEIGS.push(
+    `${cecs.length} indexador(s) salten 05_Escriptori: ${cecs.join(', ')}.\n`
+    + "     Els directoris històrics SÍ que s'indexen: la recuperació et portarà\n"
+    + "     a l'arxiu i no a la taula de treball.");
+}
+
+if (BLOQUEIGS.length > 0) {
+  titol('ARRENCADA REBUTJADA');
+  for (const b of BLOQUEIGS) console.error(`  ✗ ${b}`);
+  console.error(`\n${BLOQUEIGS.length} bloqueig(os). No hi ha «bon dia» sense àncora i sense RAG.`);
+  console.error("Si has d'entrar igualment, fes-ho explícit: SDP_FORCA_ARRENCADA=1\n");
+  if (process.env.SDP_FORCA_ARRENCADA !== '1') process.exit(1);
+  console.error('⚠ Entrada forçada. Queda constància.\n');
 }
 
 console.log('\n🤖 Context carregat. Tot el treball actiu va a ' + rel(ESCRIPTORI_DIR) + '\n');
