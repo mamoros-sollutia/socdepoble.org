@@ -1,0 +1,3146 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Disseny Pedra Seca | Sóc de Poble</title>
+<!-- SEO BÀSIC (només per al demo) -->
+<meta content="Manual oficial de disseny UX/UI per a Sóc de Poble. Arquitectura tècnica Pedra Seca, components semàntics, contrast WCAG 2.2 AAA en tot el text i AA en els colors d'interacció, i guies per a Intel·ligència Artificial." name="description"/>
+<meta content="disseny, UX, UI, Sóc de Poble, Pedra Seca, CSS, HTML, accessibilitat, WCAG 2.2, tokens semàntics, OKLCH, design system, web" name="keywords"/>
+<meta content="Sóc de Poble" name="author"/>
+<meta content="index, follow" name="robots"/>
+<link href="https://socdepoble.org/disseny-pedra-seca" rel="canonical"/>
+<!-- OPEN GRAPH · xarxes socials -->
+<meta content="article" property="og:type"/>
+<meta content="https://socdepoble.org/disseny-pedra-seca" property="og:url"/>
+<meta content="Disseny Pedra Seca | Sóc de Poble" property="og:title"/>
+<meta content="El manual mestre d'arquitectura UX/UI i desenvolupament web per a Sóc de Poble. Contrast AAA en el text, AA en la interacció, i offline-first de veritat." property="og:description"/>
+<meta content="https://socdepoble.org/assets/system/ui/pedra-seca-og.jpg" property="og:image"/>
+<meta content="Sóc de Poble" property="og:site_name"/>
+<meta content="ca_ES" property="og:locale"/>
+<!-- TARGETES DE XARXA -->
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Disseny Pedra Seca | Sóc de Poble" name="twitter:title"/>
+<meta content="El manual mestre d'arquitectura UX/UI i desenvolupament web per a Sóc de Poble. Contrast AAA en el text, AA en la interacció, i offline-first de veritat." name="twitter:description"/>
+<meta content="https://socdepoble.org/assets/system/ui/pedra-seca-og.jpg" name="twitter:image"/>
+<!-- SCHEMA.ORG (JSON-LD per a cercadors i IAs) -->
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Sistema de Disseny Pedra Seca",
+    "description": "Manual oficial de disseny, UX/UI, i arquitectura tècnica web de l'ecosistema Sóc de Poble.",
+    "inLanguage": "ca",
+    "author": {
+      "@type": "Organization",
+      "name": "Sóc de Poble",
+      "url": "https://socdepoble.org"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Sóc de Poble",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://socdepoble.org/assets/system/ui/logo-socdepoble-cuadrat-verd.svg"
+      } },
+    "about": [
+      { "@type": "Thing", "name": "Design System" },
+      { "@type": "Thing", "name": "Web Accessibility" },
+      { "@type": "Thing", "name": "User Experience" }
+    ]
+  }
+  </script>
+<!-- TIPOGRAFIA LOCAL · zero dependències externes, zero fuga de dades, funciona sense connexió -->
+<link as="font" crossorigin="" href="assets/fonts/noto-sans-400.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="assets/fonts/noto-sans-700.woff2" rel="preload" type="font/woff2"/>
+<!-- TEMA · resolt ABANS del primer pintat (mata el flaix blanc) -->
+<script>
+  (function () {
+    try {
+      var g = localStorage.getItem('sdp-theme');
+      var t = g || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  })();
+</script>
+<style id="pedra-seca-core">
+/* ── TIPOGRAFIA · allotjada en local ───────────────────────────────
+   Noto Sans · SIL Open Font License 1.1 · redistribució permesa.
+   Descàrrega dels fitxers (una sola vegada, mai en temps d'execució):
+     https://fonts.google.com/noto/specimen/Noto+Sans  →  «Get font»
+   Subconjunt recomanat per a valencià/català (redueix ~70% el pes):
+     pyftsubset NotoSans.ttf --unicodes="U+0000-00FF,U+0100-017F,U+0192,\
+       U+01FA-01FF,U+2013-2014,U+2018-201A,U+201C-201E,U+2022,U+2026,\
+       U+00B7,U+20AC" --flavor=woff2 --output-file=noto-sans-400.woff2
+   Col·loca'ls a  assets/fonts/  amb estos noms exactes.
+   ───────────────────────────────────────────────────────────────── */
+@font-face {
+  font-family: 'Noto Sans';
+  src: url('assets/fonts/noto-sans-400.woff2') format('woff2');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Noto Sans';
+  src: url('assets/fonts/noto-sans-600.woff2') format('woff2');
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Noto Sans';
+  src: url('assets/fonts/noto-sans-700.woff2') format('woff2');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Noto Sans';
+  src: url('assets/fonts/noto-sans-800.woff2') format('woff2');
+  font-weight: 800; font-style: normal; font-display: swap;
+}
+/* ═══════════════════════════════════════════════════════════════════
+   PEDRA SECA · Full d'estils base — v2.0
+   Sóc de Poble · CSS natiu, sense frameworks (substitueix el base)
+   ─────────────────────────────────────────────────────────────────────
+   ARQUITECTURA
+   0. Tokens de disseny (:root)  — nous --sdp-*, àlies legat --sp-*
+   1. Reset i base global        — scroll delegat, sense rubber-band
+   2. Esquelet de l'app          — 3 columnes: sidebar · llista · visor
+   3. Columna 1: Sidebar (La Roca)
+   4. Columna 2: Llista contextual (opcional, l'app real la injecta)
+   5. Columna 3: Visor — barres negra/blava/taronja, hero, títol
+   6. Contingut editorial (content-wrapper, design-block, CMS)
+   7. Components (botons, formularis, alertes, taules, targetes…)
+   8. FAB
+   9. Utilitats sdp-*
+   10. Responsive — breakpoint mestre 1100px + afinats 720px / 480px
+   11. Accessibilitat i moviment reduït
+   ─────────────────────────────────────────────────────────────────────
+   REGLA D'OR: el <body> NO fa scroll (overflow:hidden). Cada columna
+   gestiona el seu propi overflow-y — això elimina el rubber-band de
+   Safari/iOS i manté les barres sticky dins del visor.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── 0. TOKENS ─────────────────────────────────────────────────────
+   DOS CAPES. Esta separació és la llei del sistema.
+
+   CAPA 1 · PRIMITIUS  — la paleta física. Generada en OKLCH amb to i
+            croma de marca constants; només varia la lluminositat.
+            NO s'usen mai directament als components.
+   CAPA 2 · SEMÀNTICS  — el significat. És l'ÚNICA capa que toquen els
+            components, l'única que canvia el tema fosc i l'única
+            superfície que exposarà el tauler de control.
+
+   Regla mecànica: si un component escriu var(--sdp-pedra-*),
+   var(--sdp-primary-*) o var(--sdp-secondary-*), és un error.
+   ───────────────────────────────────────────────────────────────── */
+
+:root {
+  /* ═══ CAPA 1 · PRIMITIUS ═══════════════════════════════════════ */
+  --sdp-blanc-pur: oklch(100% 0 0);
+  --sdp-negre-pur: oklch(0% 0 0);
+
+  /* Pedra · neutre càlid — OKLCH H 84°, croma baix */
+  --sdp-pedra-50:  #fdfcfb;
+  --sdp-pedra-100: #f9f8f5;
+  --sdp-pedra-200: #efece7;
+  --sdp-pedra-300: #dcd7cd;
+  --sdp-pedra-400: #b7b1a5;
+  --sdp-pedra-500: #8b857b;
+  --sdp-pedra-600: #514c45;
+  --sdp-pedra-700: #3d3b35;
+  --sdp-pedra-750: #302e29;
+  --sdp-pedra-800: #22211e;
+  --sdp-pedra-850: #181715;
+  --sdp-pedra-900: #0e0d0c;
+
+  /* Primari · taronja de terra — OKLCH H 47.9° (to exacte del cànon #FF7300) */
+  --sdp-primary-50:  #fff4ef;
+  --sdp-primary-100: #ffe7dc;
+  --sdp-primary-200: #ffd1bb;
+  --sdp-primary-300: #ffb38c;
+  --sdp-primary-400: #ff955b;
+  --sdp-primary-500: #fe7406;   /* el cànon. Només com a FONS. */
+  --sdp-primary-600: #dd6302;
+  --sdp-primary-700: #ad4c03;   /* Taronja fort · text i fons massís d'accent */
+  --sdp-primary-800: #873a01;   /* text accent · 7,97:1 · AAA */
+  --sdp-primary-900: #602701;
+
+  /* Secundari · blau de mar — OKLCH H 250.6° (to exacte del cànon #0984E3) */
+  --sdp-secondary-50:  #f1f8ff;
+  --sdp-secondary-100: #e0efff;
+  --sdp-secondary-200: #c3e0ff;
+  --sdp-secondary-300: #96c9ff;
+  --sdp-secondary-400: #49a3fa;
+  --sdp-secondary-500: #016ebf;   /* fons · text blanc 5,23:1 · AA */
+  --sdp-secondary-600: #00599d;   /* Blau fort · text i fons massís d'acció */
+  --sdp-secondary-700: #004983;
+  --sdp-secondary-800: #003663;
+  --sdp-secondary-900: #002546;
+
+  /* Estat */
+  --sdp-error-500: #c2181d;  --sdp-error-50: #ffedeb;  --sdp-error-700: #92000c;
+  --sdp-avis-500:  #9c6902;  --sdp-avis-50:  #fff1df;  --sdp-avis-700:  #6e4901;
+  --sdp-exit-500:  #027e38;  --sdp-exit-50:  #e4f8e7;  --sdp-exit-700:  #005c27;
+
+  /* ═══ CAPA 2 · SEMÀNTICS · TEMA CLAR ═══════════════════════════
+     Cada línia porta el contrast mesurat i el nivell que compleix.  */
+
+  /* Fons */
+  --sdp-fons-app:        var(--sdp-pedra-100);
+  --sdp-fons-superficie: var(--sdp-blanc-pur);
+  --sdp-fons-elevat:     var(--sdp-blanc-pur);
+  --sdp-fons-targeta:    var(--sdp-blanc-pur);
+  
+  /* Estructura de marca: no canvia amb el tema */
+  --sdp-fons-roca:       var(--sdp-pedra-900);
+  --sdp-sobre-roca:      var(--sdp-pedra-50);
+  --sdp-fons-subtil:     var(--sdp-pedra-200);
+  --sdp-fons-invers:     var(--sdp-pedra-900);
+  --sdp-fons-vel:        rgba(14, 13, 12, 0.55);
+
+  /* Text — TOT compleix AAA (≥7:1) sobre la seua superfície */
+  --sdp-text-titol:  var(--sdp-pedra-900);   /* 19,42:1 */
+  --sdp-text-cos:    var(--sdp-pedra-700);   /* 11,20:1 */
+  --sdp-text-suau:   var(--sdp-pedra-600);   /*  7,24:1 */
+  --sdp-text-invers: var(--sdp-pedra-50);
+  --sdp-text-desactivat: var(--sdp-pedra-500);  /* només controls inactius (exempts WCAG) */
+
+  /* Vores */
+  --sdp-vora:         var(--sdp-pedra-300);   /* decorativa */
+  --sdp-vora-control: var(--sdp-pedra-500);   /* 3,66:1 · WCAG 1.4.11 */
+  --sdp-vora-forta:   var(--sdp-pedra-600);
+
+  /* Accent · taronja — identitat de marca */
+  --sdp-accent:            var(--sdp-primary-500);
+  --sdp-accent-hover:      var(--sdp-primary-600);
+  --sdp-accent-subtil:     var(--sdp-primary-50);
+  --sdp-sobre-accent:      var(--sdp-pedra-900);    /*  7,13:1 · AAA */
+  --sdp-accent-text:       var(--sdp-primary-700);  /*  5,51:1 · AA  (interacció) */
+  --sdp-accent-text-hover: var(--sdp-primary-800);  /*  7,97:1 · AAA */
+  --sdp-accent-titol:      var(--sdp-primary-800);  /*  7,97:1 · AAA (h2, h4) */
+
+  /* Acció · blau */
+  --sdp-accio:         var(--sdp-secondary-500);
+  --sdp-accio-hover:   var(--sdp-secondary-600);
+  --sdp-accio-forta:   var(--sdp-secondary-700);
+  --sdp-accio-subtil:  var(--sdp-secondary-50);
+  --sdp-sobre-accio:   #ffffff;                  /*  5,23:1 · AA */
+  --sdp-accio-text:    var(--sdp-secondary-600); /*  7,20:1 · AAA (h1, h3, h5) */
+  --sdp-focus:         var(--sdp-secondary-600);
+  --sdp-focus-invers:  var(--sdp-primary-400);
+
+  /* Estat semàntic */
+  --sdp-error: var(--sdp-error-500);  --sdp-error-fons: var(--sdp-error-50);  --sdp-error-text: var(--sdp-error-700);
+  --sdp-avis:  var(--sdp-avis-500);   --sdp-avis-fons:  var(--sdp-avis-50);   --sdp-avis-text:  var(--sdp-avis-700);
+  --sdp-exit:  var(--sdp-exit-500);   --sdp-exit-fons:  var(--sdp-exit-50);   --sdp-exit-text:  var(--sdp-exit-700);
+  --sdp-info:  var(--sdp-secondary-500); --sdp-info-fons: var(--sdp-secondary-50); --sdp-info-text: var(--sdp-secondary-700);
+
+  /* ═══ MÈTRIQUES, MOVIMENT, TIPOGRAFIA ═════════════════════════ */
+
+  /* Radis */
+  --sdp-radi-s: 8px;
+  --sdp-radi-m: 12px;
+  --sdp-radi-g: 16px;
+  --sdp-radi-xl: 24px;
+  --sdp-radi-pastilla: 999px;
+
+  /* Ombres · to pedra, mai negre pur */
+  --sdp-ombra-1: 0 1px 3px rgba(14, 13, 12, 0.05);
+  --sdp-ombra-2: 0 3px 10px rgba(14, 13, 12, 0.07);
+  --sdp-ombra-3: 0 10px 28px rgba(14, 13, 12, 0.10);
+  --sdp-ombra-4: 0 18px 44px rgba(14, 13, 12, 0.16);
+
+  /* Moviment */
+  --sdp-t: 0.18s ease;
+  --sdp-t-lenta: 0.3s cubic-bezier(0.2, 0.7, 0.3, 1);
+
+  /* Mètriques del layout */
+  --sdp-col-sidebar: 260px;
+  --sdp-col-llista: 380px;
+  --sdp-alt-negra: 64px;
+  --sdp-alt-accio: 58px;
+  --sdp-alt-barres: calc(var(--sdp-alt-negra) + var(--sdp-alt-accio) * 2);  /* 180px · pila sticky */
+  --sdp-alt-nav-mobil: 96px;                 /* nav inferior + separació */
+  --sdp-pad-contenidor: clamp(16px, 4vw, 40px);
+
+  /* LLEI DE VIDA · objectiu tàctil mínim. Cap control per davall. */
+  --sdp-touch: 44px;
+  --sdp-touch-comode: 48px;
+
+  /* Escala z-index · única font de veritat */
+  --z-barra-taronja: 80;
+  --z-barra-blava: 90;
+  --z-barra-negra: 100;
+  --z-sidebar: 200;
+  --z-fab: 500;
+  --z-nav-mobil: 950;
+  --z-vel: 960;
+  --z-calaix: 1000;
+
+  /* Tipografia */
+  --sdp-font: 'Noto Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --sdp-font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --sdp-text-h1: 2.5rem;
+  --sdp-text-h2: 2rem;
+  --sdp-text-h3: 1.75rem;
+  --sdp-text-h4: 1.5rem;
+  --sdp-text-h5: 1.25rem;
+  --sdp-text-h6: 1.125rem;
+  --sdp-text-lead: 1.25rem;
+  --sdp-text-base: 1.125rem;
+  --sdp-text-small: 1rem;
+  --sdp-text-meta: 0.875rem;   /* 14px · sòl absolut de mida de lletra */
+
+  --sdp-leading-tight: 1.15;
+  --sdp-leading-snug: 1.21;
+  --sdp-leading-body: 1.65;
+
+  /* Escala d'espaiat modular · base 4/8 */
+  --sdp-space-0: 0px;   --sdp-space-1: 4px;   --sdp-space-2: 8px;
+  --sdp-space-3: 12px;  --sdp-space-4: 16px;  --sdp-space-5: 20px;
+  --sdp-space-6: 24px;  --sdp-space-8: 32px;  --sdp-space-10: 40px;
+  --sdp-space-12: 48px; --sdp-space-16: 64px; --sdp-space-20: 80px;
+
+  /* ── RITME VERTICAL EDITORIAL ── */
+  --sdp-measure: 68ch;                 /* mesura de columna · APLICADA */
+  --sdp-leading-editorial: 1.65;
+  --sdp-leading-display: 1.15;
+  --sdp-mt-h1: 0;    --sdp-mb-h1: 16px;
+  --sdp-mt-h2: 48px; --sdp-mb-h2: 12px;   /* corregit: h2 domina h3 */
+  --sdp-mt-h3: 40px; --sdp-mb-h3: 12px;
+  --sdp-mt-h4: 32px; --sdp-mb-h4: 8px;
+  --sdp-mt-h5: 24px; --sdp-mb-h5: 6px;
+  --sdp-mt-h6: 20px; --sdp-mb-h6: 6px;
+  --sdp-mb-lead: 24px;
+  --sdp-mb-p: 20px;
+  --sdp-mb-ul: 20px;
+  --sdp-li-gap: 8px;
+  --sdp-bq-indent: 24px;
+
+  accent-color: var(--sdp-accio);
+  color-scheme: light;
+}
+
+/* ═══ CAPA 2 · SEMÀNTICS · TEMA FOSC ═══════════════════════════════
+   Un sol bloc. Redefinix NOMÉS semàntics: els primitius no es toquen
+   mai, per això l'escala pedra continua sent monòtona i res no es
+   torna invisible.
+
+   La resolució de la preferència del sistema la fa el script mínim
+   del <head>, que escriu data-theme a l'<html> abans del primer
+   pintat. Per això ACÍ NO hi ha cap @media (prefers-color-scheme):
+   duplicar-lo seria dos fonts de veritat per al mateix fet.
+
+   IDENTITAT ESTABLE: el taronja continua sent el taronja i el blau
+   continua sent el blau. Vegeu la nota D-4 de l'informe.
+   ───────────────────────────────────────────────────────────────── */
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --sdp-fons-app:        var(--sdp-pedra-900);
+  --sdp-fons-superficie: var(--sdp-pedra-850);
+  --sdp-fons-elevat:     var(--sdp-pedra-800);
+  --sdp-fons-subtil:     var(--sdp-pedra-750);
+  --sdp-fons-invers:     var(--sdp-pedra-100);
+  --sdp-fons-vel:        rgba(14, 13, 12, 0.72);
+
+  --sdp-text-titol:  var(--sdp-pedra-50);    /* 17,48:1 */
+  --sdp-text-cos:    var(--sdp-pedra-200);   /* 15,20:1 */
+  --sdp-text-suau:   var(--sdp-pedra-300);   /* 12,44:1 */
+  --sdp-text-invers: var(--sdp-pedra-900);
+  --sdp-text-desactivat: var(--sdp-pedra-500);
+
+  --sdp-vora:         var(--sdp-pedra-750);
+  --sdp-vora-control: var(--sdp-pedra-500);  /*  4,90:1 */
+  --sdp-vora-forta:   var(--sdp-pedra-400);
+
+  --sdp-accent:            var(--sdp-primary-500);
+  --sdp-accent-hover:      var(--sdp-primary-400);
+  --sdp-accent-subtil:     var(--sdp-primary-900);
+  --sdp-sobre-accent:      var(--sdp-pedra-900);   /*  7,13:1 */
+  --sdp-accent-text:       var(--sdp-primary-400); /*  8,24:1 */
+  --sdp-accent-text-hover: var(--sdp-primary-300); /* 10,26:1 */
+  --sdp-accent-titol:      var(--sdp-primary-300); /* 10,26:1 */
+
+  --sdp-accio:         var(--sdp-secondary-500);
+  --sdp-accio-hover:   var(--sdp-secondary-400);
+  --sdp-accio-forta:   var(--sdp-secondary-600);
+  --sdp-accio-subtil:  var(--sdp-secondary-900);
+  --sdp-sobre-accio:   #ffffff;
+  --sdp-accio-text:    var(--sdp-secondary-300);   /* 10,28:1 */
+  --sdp-focus:         var(--sdp-secondary-300);
+  --sdp-focus-invers:  var(--sdp-primary-400);
+
+  --sdp-error-fons: #2a0f11; --sdp-error-text: #ffb3b0;
+  --sdp-avis-fons:  #2a1e05; --sdp-avis-text:  #f5c96b;
+  --sdp-exit-fons:  #052213; --sdp-exit-text:  #86dfa4;
+  --sdp-info-fons:  #041f33; --sdp-info-text:  var(--sdp-secondary-300);
+
+  --sdp-ombra-1: 0 1px 3px rgba(0, 0, 0, 0.45);
+  --sdp-ombra-2: 0 3px 10px rgba(0, 0, 0, 0.55);
+  --sdp-ombra-3: 0 10px 28px rgba(0, 0, 0, 0.62);
+  --sdp-ombra-4: 0 18px 44px rgba(0, 0, 0, 0.72);
+}
+
+
+/* ── 1. RESET I BASE ───────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  height: 100%;
+  overscroll-behavior: none;           /* mata el rubber-band global */
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--sdp-font);
+  line-height: 1.5;
+  background: var(--sdp-fons-subtil);
+  color: var(--sdp-text-titol);
+  height: 100vh;
+  height: 100dvh;                      /* barres dinàmiques d'iOS */
+  overflow: hidden;                    /* el scroll viu a les columnes */
+  overscroll-behavior: none;
+  display: flex;                       /* esquelet de columnes */
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img { max-width: 100%; }
+button, input, select, textarea { font: inherit; }
+/* ═══════════════════════════════════════════════════════════════
+   TIPOGRAFIA EDITORIAL · TRELLAT PUR
+   Regles globals — ÚNICA FONT DE VERITAT.
+   Cap element de text necessita cap div embolcall ni estil inline.
+   El ritme vertical és implacable per cascada.
+   ═══════════════════════════════════════════════════════════════ */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--sdp-font);
+  color: var(--sdp-text-titol);
+  text-wrap: balance;
+  margin: 0;
+  padding: 0;
+  text-transform: none;
+}
+h1 {
+  font-size: var(--sdp-text-h1);
+  line-height: var(--sdp-leading-display);
+  font-weight: 800;
+  color: var(--sdp-accio-text);
+  text-align: center;
+  margin-top: var(--sdp-mt-h1);
+  margin-bottom: var(--sdp-mb-h1);
+  letter-spacing: -0.01em;
+}
+h2 {
+  font-size: var(--sdp-text-h2);
+  line-height: var(--sdp-leading-snug);
+  font-weight: 800;
+  color: var(--sdp-accent-titol);
+  text-align: center;
+  margin-top: var(--sdp-mt-h2);
+  margin-bottom: var(--sdp-mb-h2);
+  letter-spacing: -0.005em;
+}
+h3 {
+  font-size: var(--sdp-text-h3);
+  line-height: var(--sdp-leading-snug);
+  font-weight: 700;
+  color: var(--sdp-accio-text);
+  text-align: left;
+  margin-top: var(--sdp-mt-h3);
+  margin-bottom: var(--sdp-mb-h3);
+}
+h4 {
+  font-size: var(--sdp-text-h4);
+  line-height: var(--sdp-leading-snug);
+  font-weight: 700;
+  color: var(--sdp-accent-titol);
+  text-align: left;
+  margin-top: var(--sdp-mt-h4);
+  margin-bottom: var(--sdp-mb-h4);
+}
+h5 {
+  font-size: var(--sdp-text-h5);
+  line-height: var(--sdp-leading-editorial);
+  font-weight: 700;
+  color: var(--sdp-accio-text);
+  text-align: left;
+  margin-top: var(--sdp-mt-h5);
+  margin-bottom: var(--sdp-mb-h5);
+}
+h6 {
+  font-size: var(--sdp-text-h6);
+  line-height: var(--sdp-leading-editorial);
+  font-weight: 700;
+  color: var(--sdp-text-suau);
+  text-align: left;
+  margin-top: var(--sdp-mt-h6);
+  margin-bottom: var(--sdp-mb-h6);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+p {
+  font-size: var(--sdp-text-base);
+  line-height: var(--sdp-leading-editorial);
+  color: var(--sdp-text-cos);
+  margin-top: 0;
+  margin-bottom: var(--sdp-mb-p);
+  hyphens: auto;
+}
+.lead {
+  font-size: var(--sdp-text-lead);
+  line-height: 1.5;
+  font-weight: 600;
+  color: var(--sdp-text-suau);
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: var(--sdp-mb-lead);
+}
+/* ── LLISTES PURES (sense divs embolcall) ── */
+ul, ol {
+  font-size: var(--sdp-text-base);
+  line-height: var(--sdp-leading-editorial);
+  color: var(--sdp-text-cos);
+  margin-top: 0;
+  margin-bottom: var(--sdp-mb-ul);
+  padding-left: 28px;
+}
+ul { list-style: disc; }
+ol { list-style: decimal; }
+li {
+  margin-bottom: var(--sdp-li-gap);
+  padding-left: 4px;
+}
+li:last-child { margin-bottom: 0; }
+li > ul, li > ol {
+  margin-top: var(--sdp-li-gap);
+  margin-bottom: var(--sdp-li-gap);
+}
+/* ── CITA ── */
+blockquote {
+  margin: 32px auto;
+  padding: 4px 0 4px var(--sdp-bq-indent);
+  border-left: 4px solid var(--sdp-accent);
+  font-style: italic;
+  color: var(--sdp-text-suau);
+}
+blockquote p {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: inherit;
+  margin-bottom: 8px;
+}
+blockquote p:last-child { margin-bottom: 0; }
+/* ── REGLES ADJACENTS · TRANSICIONS EXACTES ── */
+h1 + .lead, h2 + .lead { margin-top: 0; }
+h1 + p, h2 + p { margin-top: 12px; }
+.lead + p { margin-top: 0; }
+h3 + p, h4 + p, h5 + p, h6 + p { margin-top: 0; }
+h3 + ul, h3 + ol, h4 + ul, h4 + ol,
+h5 + ul, h5 + ol, p + ul, p + ol { margin-top: -4px; }
+ul + p, ol + p { margin-top: 0; }
+h2 + h3 { margin-top: 24px; }
+h3 + h4 { margin-top: 16px; }
+/* ── FIRST / LAST CHILD ── */
+h1:first-child, h2:first-child, h3:first-child,
+h4:first-child, h5:first-child, h6:first-child,
+p:first-child, .lead:first-child,
+ul:first-child, ol:first-child,
+blockquote:first-child { margin-top: 0 !important; }
+h1:last-child, h2:last-child, h3:last-child,
+h4:last-child, h5:last-child, h6:last-child,
+p:last-child, .lead:last-child,
+ul:last-child, ol:last-child,
+blockquote:last-child { margin-bottom: 0 !important; }
+
+
+/* ── LLEI DE VIDA · cap control per davall de --sdp-touch ── */
+button, .btn, .nav-item, .sp-card-action, .page-btn,
+.download-card-btn, .audio-play-btn, .file-item-action, summary.accordion-header {
+  min-width: var(--sdp-touch);
+  min-height: var(--sdp-touch);
+}
+
+a { color: var(--sdp-accent-titol); text-decoration: none; transition: color var(--sdp-t); }
+a:hover { color: var(--sdp-accent-text-hover); }
+
+::selection { background: var(--sdp-accent); color: var(--sdp-text-titol); }
+
+:focus-visible { outline: 3px solid var(--sdp-focus); outline-offset: 2px; border-radius: 4px; }
+/* Sobre superfícies fosques, l'anell de focus és taronja */
+.app-sidebar :focus-visible,
+header.bar-black :focus-visible,
+header.bar-blue :focus-visible,
+.mobile-nav :focus-visible,
+.sp-card-footer :focus-visible,
+.fab-button:focus-visible { outline-color: var(--sdp-accent-text); }
+
+.sr-only, .sdp-sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+
+/* ── 2. ESQUELET DE 3 COLUMNES ─────────────────────────────────
+   body(flex) ─ nav.app-sidebar (fixa 260px)
+             ├─ aside.app-list  (opcional, llista contextual)
+             └─ main.app-main   (visor, flexible)
+   Flexbox i no grid: així el layout no es trenca quan la columna
+   central no existeix (com en esta demo).                        */
+
+main.app-main {
+  flex: 1 1 auto;
+  min-width: 0;                        /* evita desbordaments de flex */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: clip;
+  overscroll-behavior: contain;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--sdp-text-suau) transparent;
+}
+
+/* ── 3. COLUMNA 1 · SIDEBAR ────────────────────────────────────── */
+nav.app-sidebar {
+  flex: 0 0 var(--sdp-col-sidebar);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--sdp-fons-invers);
+  color: var(--sdp-text-invers);
+  position: relative;
+  z-index: var(--z-sidebar);
+  overscroll-behavior: contain;
+}
+/* L'últim bloc (menú) absorbeix l'alçada restant i fa scroll propi */
+nav.app-sidebar > div:last-child {
+  flex: 1;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--sdp-text-suau) transparent;
+}
+
+.brand {
+  height: var(--sdp-alt-negra);
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--sdp-space-6);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.brand img { width: 100%; max-width: 160px; height: auto; object-fit: contain; }
+
+.sidebar-control-btn {
+  display: flex;
+  text-transform: uppercase;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  height: var(--sdp-alt-accio);
+  background: var(--sdp-accio-forta);
+  color: var(--sdp-text-invers);
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 1rem;
+  padding: 0 var(--sdp-space-6);
+  border: none;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  
+  letter-spacing: 0.05em;
+  transition: background var(--sdp-t);
+}
+.sidebar-control-btn:hover { background: var(--sdp-accio-hover); }
+.sidebar-control-btn:active { background: var(--sdp-accio-forta); }
+
+.nav-item {
+  display: block;
+  padding: var(--sdp-space-3) var(--sdp-space-4);
+  margin-bottom: var(--sdp-space-1);
+  border-radius: var(--sdp-radi-m);
+  color: rgba(255,255,255,0.78);
+  text-decoration: none;
+  font-weight: 600;
+  transition: background var(--sdp-t), color var(--sdp-t);
+}
+.nav-item:hover { background: rgba(255,255,255,0.09); color: var(--sdp-text-invers); }
+.nav-item.active { background: var(--sdp-accent); color: var(--sdp-sobre-accent); }
+.nav-item.active:hover { background: var(--sdp-accent-hover); }
+
+/* ── 4. COLUMNA 2 · LLISTA CONTEXTUAL (opcional) ───────────────
+   Esta demo no la inclou; l'app real (xats, llocs…) només ha de
+   muntar <aside class="app-list"> entre la sidebar i el visor.   */
+aside.app-list {
+  flex: 0 0 var(--sdp-col-llista);
+  min-width: 0;
+  height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: var(--sdp-fons-superficie);
+  border-right: 1px solid var(--sdp-vora);
+  scrollbar-width: thin;
+  scrollbar-color: var(--sdp-vora-forta) transparent;
+}
+@media (max-width: 1440px) { aside.app-list { flex-basis: 320px; } }
+
+/* ── 5. COLUMNA 3 · VISOR — BARRES GLOBALS ─────────────────────── */
+header.bar-black {
+  height: var(--sdp-alt-negra);
+  flex: none;
+  background: var(--sdp-fons-invers);
+  color: var(--sdp-text-invers);
+  display: flex;
+  align-items: center;
+  padding: 0 var(--sdp-space-6);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  position: sticky;
+  top: 0;
+  z-index: var(--z-barra-negra);
+}
+.bar-black .right-icons { display: flex; align-items: center; gap: var(--sdp-space-4); margin-left: auto; }
+.bar-black .right-icons .icon { width: var(--sdp-touch); height: var(--sdp-touch); padding: 6px; opacity: 0.8; cursor: pointer; transition: opacity var(--sdp-t), transform var(--sdp-t); }
+.bar-black .right-icons .icon:hover { opacity: 1; transform: translateY(-1px); }
+.bar-black .right-icons .icon img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block; }
+.bar-black .right-icons .icon:has(img) { width: 48px !important; height: 48px !important; }
+.iaia-icon { fill: currentColor; stroke: none; }
+
+/* Botó logo: només visible en mòbil (obri la sidebar) o en escriptori tancat */
+.mobile-logo-wrapper { display: none !important; cursor: pointer; }
+.mobile-logo-wrapper img { height: 32px; width: auto; object-fit: contain; }
+
+
+header.bar-blue {
+  height: var(--sdp-alt-accio);
+  flex: none;
+  background: var(--sdp-accio);
+  color: var(--sdp-sobre-accio);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 0 var(--sdp-space-6);
+  position: sticky;
+  top: var(--sdp-alt-negra);
+  z-index: var(--z-barra-blava);
+}
+
+.bar-actions { display: flex; align-items: center; gap: var(--sdp-space-5); }
+.bar-actions .icon { cursor: pointer; opacity: 0.9; transition: opacity var(--sdp-t); }
+.bar-actions .icon:hover { opacity: 1; }
+
+.icon {
+  width: 24px; height: 24px;
+  fill: none; stroke: currentColor; stroke-width: 2;
+  stroke-linecap: round; stroke-linejoin: round;
+  flex: none;
+}
+
+/* Hero */
+.hero-image { width: 100%; flex: none; }
+.hero-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Barra taronja (context: autor i poble) */
+section.bar-orange {
+  height: var(--sdp-alt-accio);
+  flex: none;
+  background: var(--sdp-accent);
+  color: var(--sdp-text-titol);
+  padding: 0 var(--sdp-space-6);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--sdp-space-3);
+  font-size: 0.9rem;
+  position: sticky;
+  top: calc(var(--sdp-alt-negra) + var(--sdp-alt-accio));
+  z-index: var(--z-barra-taronja);
+}
+
+/* Col·locació explícita a la reixeta dels components atòmics */
+/* .bar-blue has 3 elements: Left, Center, Right */
+header.bar-blue > *:first-child { grid-column: 1; justify-self: start; }
+header.bar-blue > *:nth-child(2) { grid-column: 2; justify-self: center; }
+header.bar-blue > *:last-child { grid-column: 3; justify-self: end; }
+
+
+
+
+.bar-orange .bar-actions { flex: none; white-space: nowrap; }
+
+/* Títol de pàgina */
+header.page-title {
+  flex: none;
+  background: var(--sdp-fons-superficie);
+  border-radius: 0 0 var(--sdp-radi-xl) var(--sdp-radi-xl);
+  padding: var(--sdp-space-8) var(--sdp-space-10);
+  text-align: center;
+  margin: 0 var(--sdp-space-10) var(--sdp-space-8);
+  box-shadow: var(--sdp-ombra-2);
+}
+header.page-title h1 {
+  font-size: clamp(1.8rem, 4.5vw, 2.5rem);
+  color: var(--sdp-accio-text);
+  margin-bottom: var(--sdp-space-2);
+  letter-spacing: 0.02em;
+  max-width: none;
+}
+header.page-title h2 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+header.page-title .lead {
+  margin-bottom: 0;
+  color: var(--sdp-text-suau);
+}
+.page-title-logo { display: block; width: 600px; max-width: 100%; height: auto; margin: 0 auto 16px; object-fit: contain; }
+.page-title-labels { margin-top: 32px; margin-bottom: 32px; display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; }
+.page-title-copyright { margin-bottom: 0; text-align: center; color: var(--sdp-text-suau); font-size: var(--sdp-text-meta); letter-spacing: 0.05em; }
+
+
+
+/* ── 6. CONTINGUT EDITORIAL ────────────────────────────────────── */
+article.content-wrapper {
+  flex: none;
+  padding: 0 var(--sdp-pad-contenidor) var(--sdp-pad-contenidor);
+  width: 100%;
+}
+
+/* ── MESURA EDITORIAL · la columna de text no passa mai de 68ch ──────
+   S'aplica al TEXT, no al contenidor: així les reixetes, les taules,
+   les targetes i les paletes continuen ocupant tota l'amplària, i
+   només el text corrent es limita i es centra. Esta és la diferència
+   entre un manual llegible i una paret de caràcters.                */
+.content-wrapper > p,
+.content-wrapper > ul,
+.content-wrapper > ol,
+.content-wrapper > blockquote,
+.content-wrapper > .lead,
+.design-block > p,
+.design-block > ul,
+.design-block > ol,
+.design-block > blockquote,
+.design-block > .lead,
+.cms-preview > p,
+.cms-preview > ul,
+.cms-preview > ol {
+  max-width: var(--sdp-measure);
+  margin-inline: auto;
+}
+/* Els títols de secció acompanyen la columna, no la travessen */
+.design-block > h4,
+.design-block > h5,
+.design-block > h6 {
+  max-width: var(--sdp-measure);
+  margin-inline: auto;
+}
+/* Excepció explícita: el primer paràgraf de secció fa d'entradeta i
+   s'alinea amb el títol de la secció, que va a l'esquerra. */
+.design-block > p:first-of-type { margin-inline: 0; }
+
+section.design-block { margin-bottom: var(--sdp-space-16); }
+/* En .design-block la tipografia flueix PURA: hereta TOTES les regles globals.
+   Només centrem el flux i distingim els títols d'índex del manual. */
+
+/* Títols d'índex de cada secció del manual */
+section.design-block > h3:first-of-type,
+section.design-block > h3:first-child {
+  text-align: left;
+  margin-left: 0;
+  margin-right: 0;
+  max-width: none;
+  font-size: clamp(1.4rem, 2.4vw, 1.75rem);
+  border-bottom: 1px solid var(--sdp-vora);
+  padding-bottom: 12px;
+  margin-bottom: 28px;
+}
+section.design-block > h4 {
+  text-align: left;
+  max-width: var(--sdp-measure);
+  margin-inline: auto;
+}
+section.design-block > p:first-of-type {
+  text-align: left;
+  max-width: var(--sdp-measure);
+  margin-left: 0;
+  color: var(--sdp-text-suau);
+  margin-bottom: 28px;
+}
+
+/* Paleta de mostres */
+.palette { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 24px; }
+.swatch {
+  border-radius: var(--sdp-radi-m);
+  overflow: hidden;
+  background: var(--sdp-fons-superficie);
+  box-shadow: var(--sdp-ombra-1);
+  transition: transform var(--sdp-t), box-shadow var(--sdp-t);
+}
+.swatch:hover { transform: translateY(-3px); box-shadow: var(--sdp-ombra-3); }
+.swatch-color { height: 100px; padding: var(--sdp-space-4); font-weight: 700; display: flex; align-items: flex-end; }
+.swatch-info { padding: var(--sdp-space-4); font-family: var(--sdp-font-mono); font-size: 0.8rem; color: var(--sdp-text-suau); }
+
+
+/* Icona en línia amb el text · substituïx 16 estils inline idèntics.
+   El marge dret desapareix quan la icona és l'únic fill (botó rodó). */
+.icona-linia { display: inline-block; vertical-align: middle; margin-right: 4px; flex: none; }
+.icona-linia:only-child { margin-right: 0; }
+
+/* Mostres de paleta · sense cap estil inline */
+.sw-pedra-50 { background: var(--sdp-pedra-50); color: var(--sdp-pedra-900); }
+.sw-pedra-100 { background: var(--sdp-pedra-100); color: var(--sdp-pedra-900); }
+.sw-pedra-200 { background: var(--sdp-pedra-200); color: var(--sdp-pedra-900); }
+.sw-pedra-300 { background: var(--sdp-pedra-300); color: var(--sdp-pedra-900); }
+.sw-pedra-400 { background: var(--sdp-pedra-400); color: var(--sdp-pedra-900); }
+.sw-pedra-500 { background: var(--sdp-pedra-500); color: var(--sdp-pedra-50); }
+.sw-pedra-600 { background: var(--sdp-pedra-600); color: var(--sdp-pedra-50); }
+.sw-pedra-700 { background: var(--sdp-pedra-700); color: var(--sdp-pedra-50); }
+.sw-pedra-750 { background: var(--sdp-pedra-750); color: var(--sdp-pedra-50); }
+.sw-pedra-800 { background: var(--sdp-pedra-800); color: var(--sdp-pedra-50); }
+.sw-pedra-850 { background: var(--sdp-pedra-850); color: var(--sdp-pedra-50); }
+.sw-pedra-900 { background: var(--sdp-pedra-900); color: var(--sdp-pedra-50); }
+.sw-primary-500 { background: var(--sdp-primary-500); color: var(--sdp-pedra-900); }
+.sw-primary-700 { background: var(--sdp-primary-700); color: #ffffff; }
+.sw-secondary-500 { background: var(--sdp-secondary-500); color: #ffffff; }
+.sw-secondary-600 { background: var(--sdp-secondary-600); color: #ffffff; }
+.sw-error-500 { background: var(--sdp-error-500); color: #ffffff; }
+.sw-avis-500 { background: var(--sdp-avis-500); color: #ffffff; }
+.sw-exit-500 { background: var(--sdp-exit-500); color: #ffffff; }
+.swatch-info { line-height: 1.5; }
+
+/* Previsualització CMS (contingut editorial universal) */
+.cms-preview {
+  border: 1px solid var(--sdp-vora);
+  padding: var(--sdp-space-8);
+  border-radius: var(--sdp-radi-m);
+  background: var(--sdp-fons-superficie);
+  position: relative;
+  margin-top: var(--sdp-space-4);
+  box-shadow: var(--sdp-ombra-1);
+}
+.cms-badge {
+  position: absolute; top: 12px; right: 16px;
+  font-size: 0.7rem; font-weight: 700; color: var(--sdp-text-suau);
+   letter-spacing: 0.1em;
+}
+.cms-preview > * {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.cms-preview pre, .accordion pre {
+  background: var(--sdp-fons-subtil);
+  padding: var(--sdp-space-4);
+  border-radius: var(--sdp-radi-s);
+  border: 1px solid var(--sdp-vora);
+  font-family: var(--sdp-font-mono);
+  font-size: 0.85rem;
+  color: var(--sdp-text-suau);
+  overflow-x: auto;
+}
+
+/* Espaiat */
+.spacing-item { display: flex; align-items: center; gap: var(--sdp-space-4); margin-bottom: var(--sdp-space-3); }
+.spacing-bar { width: var(--mida, var(--sdp-space-4)); height: var(--sdp-space-4); background: var(--sdp-accent); border-radius: var(--sdp-space-1); flex: none; }
+.spacing-label { font-family: var(--sdp-font-mono); font-size: 0.85rem; color: var(--sdp-text-suau); }
+
+/* Grid demo */
+.grid-preview { display: flex; gap: var(--sdp-space-4); }
+.grid-col {
+  flex: 1;
+  background: var(--sdp-fons-superficie);
+  border: 1px solid var(--sdp-vora);
+  padding: 12px;
+  text-align: center;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  color: var(--sdp-text-suau);
+  font-weight: 600;
+}
+
+/* ── 7. COMPONENTS ─────────────────────────────────────────────── */
+
+/* 7.1 Botons */
+.btn-group { display: flex; flex-wrap: wrap; gap: var(--sdp-space-4); align-items: center; justify-content: flex-start; }
+.btn {
+  padding: var(--sdp-space-3) var(--sdp-space-6);
+  border-radius: var(--sdp-radi-pastilla);
+  font-family: var(--sdp-font);
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sdp-space-2);
+  transition: transform var(--sdp-t), box-shadow var(--sdp-t), background var(--sdp-t), border-color var(--sdp-t), color var(--sdp-t);
+}
+.btn:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(14,13,12,0.16); }
+.btn:active:not(:disabled) { transform: translateY(0); box-shadow: 0 2px 6px rgba(14,13,12,0.14); }
+.btn-primary { background: var(--sdp-accent); color: var(--sdp-text-titol); }
+.btn-primary:hover:not(:disabled) { background: var(--sdp-accent-hover); color: var(--sdp-sobre-accent); }
+.btn-secondary { background: var(--sdp-accio); color: var(--sdp-sobre-accio); }
+.btn-secondary:hover:not(:disabled) { background: var(--sdp-accio-hover); }
+.btn-outline-dark { background: transparent; border: 1px solid var(--sdp-vora-control); color: var(--sdp-text-titol); }
+.btn-outline-dark:hover:not(:disabled) { border-color: var(--sdp-text-suau); background: var(--sdp-fons-superficie); }
+.btn-base { background: var(--sdp-fons-invers); color: var(--sdp-text-invers); }
+.btn-base:hover:not(:disabled) { background: var(--sdp-fons-invers); }
+.btn-danger { background: var(--sdp-error); color: #ffffff; }
+.btn-danger:hover:not(:disabled) { background: var(--sdp-error-text); }
+.btn-ghost { background: transparent; color: var(--sdp-text-titol); border: 1px solid var(--sdp-vora); }
+.btn-ghost:hover:not(:disabled) { background: rgba(14,13,12,0.06); border-color: var(--sdp-text-suau); }
+.btn-sm { padding: var(--sdp-space-2) var(--sdp-space-4); font-size: 0.85rem; }
+.btn-lg { padding: var(--sdp-space-4) var(--sdp-space-8); font-size: 1.15rem; }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.icon-btn { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+
+.spinner { animation: spin 1s linear infinite; width: 18px; height: 18px; stroke-dasharray: 60; stroke-dashoffset: 20; }
+@keyframes spin { 100% { transform: rotate(360deg); } }
+
+/* 7.2 Formularis */
+.form-group { margin-bottom: var(--sdp-space-5); display: flex; flex-direction: column; gap: var(--sdp-space-2); }
+.form-group label { font-weight: 700; font-size: 0.9rem; color: var(--sdp-text-titol); }
+.form-group input, .form-group select, .form-group textarea {
+  padding: var(--sdp-space-3) var(--sdp-space-4);
+  border: 1px solid var(--sdp-vora-control);
+  border-radius: var(--sdp-radi-s);
+  font-family: var(--sdp-font);
+  font-size: 1rem;
+  background: var(--sdp-fons-superficie);
+  color: var(--sdp-text-titol);
+  outline: none;
+  transition: border-color var(--sdp-t), box-shadow var(--sdp-t);
+  width: 100%;
+}
+.form-group textarea { resize: vertical; }
+.form-group input:hover, .form-group select:hover, .form-group textarea:hover { border-color: var(--sdp-text-suau); }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+  border-color: var(--sdp-accio-text);
+  box-shadow: 0 0 0 3px rgba(1,110,191,0.16);
+}
+.form-group select, .search-filters select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%238b857b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 16px;
+  padding-right: 42px;
+}
+.checkbox-group { display: flex; align-items: center; gap: var(--sdp-space-2); margin-bottom: var(--sdp-space-2); }
+.checkbox-group input { width: 24px; height: 24px; accent-color: var(--sdp-accio-text); flex: none; }
+.form-group.has-error input { border-color: var(--sdp-error); background: var(--sdp-error-fons); }
+.form-group.has-error input:focus { box-shadow: 0 0 0 3px rgba(194,20,25,0.16); }
+.error-text { color: var(--sdp-error-text); font-size: var(--sdp-text-meta); font-weight: 600; }
+.form-group.is-disabled input { background: transparent; color: var(--sdp-text-suau); cursor: not-allowed; }
+
+/* 7.3 Alertes */
+.alert { padding: var(--sdp-space-4); border-radius: var(--sdp-radi-s); display: flex; gap: var(--sdp-space-3); margin-bottom: var(--sdp-space-3); }
+.alert-info { background: var(--sdp-info-fons); color: var(--sdp-info-text); }
+.alert-success { background: var(--sdp-exit-fons); color: var(--sdp-exit-text); }
+.alert-warning { background: var(--sdp-avis-fons); color: var(--sdp-avis-text); }
+.alert-error { background: var(--sdp-error-fons); color: var(--sdp-error-text); }
+.alert-icon { width: 24px; height: 24px; flex-shrink: 0; }
+.alert-content h4 { margin-bottom: var(--sdp-space-1); font-size: 1rem; text-transform: none; }
+.alert-content p { font-size: var(--sdp-text-meta); margin: 0; }
+
+/* 7.4 Badges */
+.badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: var(--sdp-radi-pastilla); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; white-space: nowrap; }
+.badge-default { background: var(--sdp-fons-subtil); color: var(--sdp-text-titol); }
+.badge-primary { background: var(--sdp-accent); color: var(--sdp-text-titol); }
+.badge-success { background: var(--sdp-exit-fons); color: var(--sdp-exit-text); }
+.badge-warning { background: var(--sdp-avis-fons); color: var(--sdp-avis-text); }
+.badge-danger { background: var(--sdp-error-fons); color: var(--sdp-error-text); }
+.badge-info { background: var(--sdp-info-fons); color: var(--sdp-info-text); }
+.badge-outline { background: transparent; border: 1px solid var(--sdp-vora-control); color: var(--sdp-text-titol); }
+
+/* 7.5 Taules */
+.table-wrapper { overflow-x: auto; margin-bottom: var(--sdp-space-8); border: 1px solid var(--sdp-vora); border-radius: var(--sdp-radi-s); background: var(--sdp-fons-superficie); }
+table { width: 100%; border-collapse: collapse; text-align: left; }
+th { background: var(--sdp-fons-subtil); padding: var(--sdp-space-4); font-size: 0.8rem; font-weight: 700;  color: var(--sdp-text-suau); border-bottom: 2px solid var(--sdp-vora); }
+td { padding: var(--sdp-space-4); border-bottom: 1px solid var(--sdp-vora); font-size: 0.95rem; }
+tr:last-child td { border-bottom: none; }
+tbody tr { transition: background var(--sdp-t); }
+tbody tr:hover { background: var(--sdp-accent-subtil); }
+.table-zebra tr:nth-child(even) { background: var(--sdp-fons-subtil); }
+.table-action { color: var(--sdp-accent-text); font-weight: 600; text-decoration: none; }
+.table-action:hover { color: var(--sdp-accent-text-hover); text-decoration: underline; }
+
+/* 7.6 Navegació */
+.nav-bar { display: flex; border-bottom: 1px solid var(--sdp-vora); margin-bottom: var(--sdp-space-6); }
+.nav-bar a { padding: 16px 24px; text-decoration: none; color: var(--sdp-text-suau); font-weight: 600; white-space: nowrap; transition: color var(--sdp-t); }
+.nav-bar a:hover { color: var(--sdp-text-titol); }
+.nav-bar a.active { color: var(--sdp-accent-text); border-bottom: 3px solid var(--sdp-accent); }
+.pagination { display: flex; gap: var(--sdp-space-2); align-items: center; flex-wrap: wrap; }
+.page-btn { padding: var(--sdp-space-2) var(--sdp-space-4); border: 1px solid var(--sdp-vora); border-radius: 4px; background: var(--sdp-fons-superficie); color: var(--sdp-text-titol); font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; transition: border-color var(--sdp-t), color var(--sdp-t), background var(--sdp-t); }
+.page-btn:hover:not(.active):not([disabled]) { border-color: var(--sdp-accent-text); color: var(--sdp-accent-titol); }
+.page-btn.active { background: var(--sdp-accent); color: var(--sdp-sobre-accent); border-color: var(--sdp-accent); }
+.page-btn[disabled] { opacity: 0.5; cursor: not-allowed; }
+
+/* 7.7 Modals */
+.modal-preview { background: var(--sdp-fons-vel); padding: 40px; display: flex; align-items: center; justify-content: center; border-radius: var(--sdp-radi-s); }
+.modal-box { background: var(--sdp-fons-superficie); padding: var(--sdp-space-8); border-radius: var(--sdp-radi-m); max-width: 400px; width: 100%; box-shadow: var(--sdp-ombra-4); }
+.modal-box h3 { margin-bottom: var(--sdp-space-3); font-size: 1.25rem; color: var(--sdp-text-titol); }
+.modal-box p { color: var(--sdp-text-suau); margin-bottom: var(--sdp-space-6); font-size: 0.95rem; line-height: 1.5; }
+.modal-actions { display: flex; justify-content: flex-end; gap: var(--sdp-space-3); flex-wrap: wrap; }
+
+/* 7.8 Indicadors de càrrega */
+.spinner-group { display: flex; align-items: flex-end; gap: 24px; margin-bottom: var(--sdp-space-8); }
+.spinner-sm { width: 16px; height: 16px; }
+.spinner-md { width: 24px; height: 24px; }
+.spinner-lg { width: 32px; height: 32px; }
+.skeleton { background: var(--sdp-fons-subtil); border-radius: 4px; animation: pulse 1.5s infinite; }
+.skeleton-title { height: 24px; width: 60%; margin-bottom: var(--sdp-space-4); }
+.skeleton-text { height: 12px; width: 100%; margin-bottom: var(--sdp-space-2); }
+@keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+
+/* 7.9 Avatars */
+.avatar-group { display: flex; align-items: center; gap: var(--sdp-space-4); flex-wrap: wrap; }
+.avatar { background: var(--sdp-fons-subtil); color: var(--sdp-text-titol); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.8rem; flex: none; }
+.avatar-xs { width: 24px; height: 24px; font-size: 0.6rem; }
+.avatar-sm { width: 32px; height: 32px; font-size: 0.7rem; }
+.avatar-md { width: 48px; height: 48px; }
+.avatar-lg { width: 64px; height: 64px; font-size: 1.2rem; }
+.avatar-xl { width: 80px; height: 80px; font-size: 1.5rem; }
+
+/* 7.10 Desplegables */
+.accordion { border: 1px solid var(--sdp-vora); border-radius: var(--sdp-radi-s); overflow: hidden; background: var(--sdp-fons-superficie); }
+.accordion-header, summary.accordion-header {
+  padding: 16px 24px;
+  background: var(--sdp-fons-subtil);
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--sdp-space-3);
+  border-bottom: 1px solid var(--sdp-vora);
+  transition: background var(--sdp-t);
+  list-style: none;
+}
+summary.accordion-header::-webkit-details-marker { display: none; }
+.accordion-header:hover, summary.accordion-header:hover { background: var(--sdp-fons-subtil); }
+.accordion-header svg, summary.accordion-header svg { flex: none; transition: transform var(--sdp-t); }
+details[open] summary.accordion-header svg { transform: rotate(180deg); }
+.accordion pre { margin: 0; border: 0; border-radius: 0; }
+
+/* 7.11 Pestanyes */
+.tabs { display: flex; border-bottom: 1px solid var(--sdp-vora); margin-bottom: var(--sdp-space-4); }
+.tab { padding: var(--sdp-space-3) var(--sdp-space-6); font-weight: 700; color: var(--sdp-text-suau); cursor: pointer; border-bottom: 3px solid transparent; white-space: nowrap; transition: color var(--sdp-t), border-color var(--sdp-t); }
+.tab:hover:not(.active) { color: var(--sdp-text-titol); }
+.tab.active { color: var(--sdp-accent-text); border-bottom-color: var(--sdp-accent-text); }
+.tab-content { padding: var(--sdp-space-4); background: var(--sdp-fons-subtil); border-radius: var(--sdp-radi-s); border: 1px solid var(--sdp-vora); }
+
+/* 7.12 Barra de progrés */
+.progress-container { margin-bottom: var(--sdp-space-6); }
+.progress-header { display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 700; margin-bottom: var(--sdp-space-2); color: var(--sdp-text-suau); }
+.progress-bar { height: 8px; background: var(--sdp-fons-subtil); border-radius: 4px; overflow: hidden; }
+.progress-fill { height: 100%; background: var(--sdp-accent); border-radius: 4px; transition: width 0.4s ease; }
+
+/* 7.13 Tooltips */
+.tooltip-preview { display: flex; gap: 32px; align-items: center; flex-wrap: wrap; }
+.tooltip-term { text-decoration: underline dotted; cursor: help; color: var(--sdp-text-suau); }
+
+/* 7.14 Llistes */
+.lists-preview {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr;
+  grid-auto-flow: column;
+  column-gap: var(--sdp-space-8);
+}
+.lists-preview h4 {
+  font-size: 1rem;
+  margin-bottom: var(--sdp-space-4);
+  margin-left: 0;
+  margin-right: 0;
+  text-align: left;
+}
+.lists-preview ul, .lists-preview ol {
+  margin-left: 0;
+  margin-right: 0;
+  max-width: none;
+}
+
+/* 7.15 Divisors */
+.divider-preview { margin-bottom: 40px; }
+.divider-label { font-size: 0.75rem; color: var(--sdp-text-suau);  margin-bottom: var(--sdp-space-2); }
+.divider-basic { height: 1px; background: var(--sdp-vora); margin: 16px 0; }
+.divider-text { display: flex; align-items: center; text-align: center; color: var(--sdp-text-suau); font-size: 0.85rem; font-weight: 700; margin: var(--sdp-space-6) 0; }
+.divider-text::before, .divider-text::after { content: ''; flex: 1; border-bottom: 1px solid var(--sdp-vora); }
+.divider-text:not(:empty)::before { margin-right: 16px; }
+.divider-text:not(:empty)::after { margin-left: 16px; }
+.divider-major { height: 2px; background: var(--sdp-accent); margin: 32px 0; }
+.divider-dashed { border-top: 1px dashed var(--sdp-vora); margin: 16px 0; }
+.divider-dotted { border-top: 2px dotted var(--sdp-vora); margin: var(--sdp-space-6) 0; }
+
+/* 7.18 Llistes de definició */
+.dl-horizontal { display: grid; grid-template-columns: 120px 1fr; gap: 8px 16px; margin-bottom: var(--sdp-space-6); }
+.dl-horizontal dt { font-weight: 700; color: var(--sdp-text-titol); }
+.dl-horizontal dd { margin: 0; color: var(--sdp-text-titol); }
+
+/* 7.21 Targeta Mestra (Sóc de Poble Card) */
+.sp-card {
+  background: var(--sdp-fons-superficie);
+  border-radius: var(--sdp-radi-m);
+  overflow: hidden;
+  box-shadow: var(--sdp-ombra-3);
+  margin: 0 auto 32px;
+  max-width: 500px;
+  transition: box-shadow var(--sdp-t-lenta);
+}
+
+/* Targeta Mestra enllaçable: overlay a z1, capa interactiva a z2 */
+.sp-card { position: relative; }
+.sp-card-link-overlay { position: absolute; inset: 0; z-index: 1; border-radius: inherit; outline: none; }
+.sp-card-link-overlay:focus-visible { box-shadow: 0 0 0 3px var(--sdp-focus) inset; }
+.sp-card-header, .sp-card-footer, .sp-card-author-link, .btn-icon-orange, .btn-date-time, .sp-card-action, .sp-card-connect { position: relative; z-index: 2; }
+.sp-card-author-link { display: flex; align-items: center; min-width: 0; }
+
+/* Etiquetes de la Targeta Mestra */
+.sp-card-labels { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--sdp-space-2); margin-top: var(--sdp-space-4); margin-bottom: var(--sdp-space-2); }
+.sp-card-label { padding: 4px 12px; border-radius: var(--sdp-radi-pastilla); font-size: 0.7rem; font-weight: 800;  letter-spacing: 0.05em; }
+.label-blue { background: var(--sdp-accio-subtil); color: var(--sdp-accio-text); }
+.label-green { background: var(--sdp-exit-fons); color: var(--sdp-exit-text); }
+.label-orange { background: var(--sdp-accent-subtil); color: var(--sdp-accent-text-hover); }
+
+/* Tooltip (Bocata) */
+.tooltip-container { position: relative; display: inline-flex; z-index: 3; }
+.tooltip-text {
+  visibility: hidden; opacity: 0;
+  background-color: var(--sdp-fons-invers); color: var(--sdp-text-invers);
+  text-align: center; border-radius: 4px; padding: 6px 10px;
+  position: absolute; z-index: 4;
+  top: 100%; left: 50%; transform: translateX(-50%) translateY(8px);
+  font-size: 0.75rem; font-weight: 700; white-space: nowrap;
+  transition: opacity var(--sdp-t), visibility var(--sdp-t), transform var(--sdp-t);
+  pointer-events: none;
+}
+.tooltip-container:hover .tooltip-text { visibility: visible; opacity: 1; transform: translateX(-50%) translateY(4px); }
+.tooltip-text::after {
+  content: ""; position: absolute; bottom: 100%; left: 50%; margin-left: -5px;
+  border-width: 5px; border-style: solid; border-color: transparent transparent var(--sdp-pedra-900) transparent;
+}
+
+.sp-card:hover { box-shadow: var(--sdp-ombra-4); }
+.sp-card-header { 
+  background: var(--sdp-accent); 
+  padding: var(--sdp-space-3) var(--sdp-space-4); 
+  display: flex; justify-content: space-between;
+  align-items: center; 
+  gap: var(--sdp-space-3); 
+}
+
+.sp-card-author { display: flex; align-items: center; gap: var(--sdp-space-3); min-width: 0; }
+.sp-card-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--sdp-fons-superficie); object-fit: cover; flex: none; box-shadow: var(--sdp-ombra-1); }
+.sp-card-author-info { display: flex; flex-direction: column; min-width: 0; }
+.sp-card-author-name { font-weight: 700; color: var(--sdp-text-titol); font-size: 1.05rem; line-height: 1.2; }
+.sp-card-author-location { font-size: 0.85rem; color: var(--sdp-text-titol); display: flex; align-items: center; gap: var(--sdp-space-1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sp-card-author-location svg { flex: none; }
+.sp-card-meta { display: flex; align-items: center; gap: var(--sdp-space-2); color: var(--sdp-sobre-accent); text-align: right; flex: none; }
+
+.sp-card-media { width: 100%; position: relative; background: var(--sdp-fons-subtil); }
+.sp-card-media img { width: 100%; aspect-ratio: 1 / 1; display: block; object-fit: cover; }
+
+.sp-card-body { padding: 22px 24px 16px; text-align: left; position: relative; }
+.sp-card-body:has(.sp-card-title:only-child) { text-align: center; }
+.sp-card-title { font-size: 1.4rem; color: var(--sdp-accio-text); font-weight: 800; line-height: var(--sdp-leading-tight); margin: 0 0 var(--sdp-space-2) 0; flex: 1; text-align: center; }
+
+.sp-card .sp-card-body h1 {
+  font-size: 1.6rem;
+  margin-top: 0;
+  margin-bottom: var(--sdp-space-2);
+  color: var(--sdp-accio-text);
+  line-height: var(--sdp-leading-tight);
+  font-weight: 800;
+}
+.sp-card .sp-card-body h2 {
+  font-size: 1.25rem; /* subtítol més menut */
+  margin-top: 16px;
+  margin-bottom: var(--sdp-space-4);
+  color: var(--sdp-accent-titol);
+  line-height: var(--sdp-leading-snug);
+  font-weight: 600;
+}
+/* Per defecte, tot centrat al cos de la targeta si no hi ha etiqueta a dalt a la dreta */
+.sp-card .sp-card-body h1,
+.sp-card .sp-card-body h2,
+.sp-card-body p,
+.sp-card-body .sp-card-text {
+  text-align: center;
+}
+/* Si hi ha preu o etiqueta a dalt a la dreta, tot s'alinea a l'esquerra per a equilibrar el pes visual */
+.sp-card .sp-card-body:has(.sp-card-price) h1,
+.sp-card .sp-card-body:has(.sp-card-price) h2,
+.sp-card-body:has(.sp-card-price) p,
+.sp-card-body:has(.sp-card-price) .sp-card-text {
+  text-align: left;
+}
+.sp-card-copyright {
+  text-align: center;
+}
+
+.sp-card-title:only-child { text-align: center; flex: none; width: 100%; }
+.sp-card-price { float: right; margin-left: 6px; margin-bottom: 6px; font-size: 1.2rem; font-weight: 800; color: var(--sdp-accio-text); background: var(--sdp-accio-subtil); padding: 4px 12px; border-radius: var(--sdp-radi-pastilla); white-space: nowrap; }
+.sp-card-subtitle { font-size: 1.15rem; color: var(--sdp-accent-titol); font-weight: 700; line-height: var(--sdp-leading-snug); margin-top: var(--sdp-space-4); margin-bottom: var(--sdp-space-3); text-align: center; }
+.sp-card-text { font-size: 1rem; color: var(--sdp-text-suau); font-weight: 500; line-height: var(--sdp-leading-body); margin-bottom: var(--sdp-space-6); text-align: center; margin-left: auto; margin-right: auto; }
+
+.sp-card-copyright { color: var(--sdp-text-suau); font-size: var(--sdp-text-meta);  letter-spacing: 0.05em; }
+.sp-card-footer { 
+  background: var(--sdp-accio); 
+  padding: var(--sdp-space-3) var(--sdp-space-4); 
+  display: flex; justify-content: space-between;
+  align-items: center; 
+  gap: var(--sdp-space-3); 
+  color: var(--sdp-sobre-accio); 
+  position: relative; 
+}
+
+.sp-card-actions { 
+  display: flex; 
+  align-items: center; 
+  gap: var(--sdp-space-2); 
+  justify-self: center;
+  margin: 0;
+  padding: 0;
+}
+.sp-card-footer .sp-card-actions { margin-left: var(--sdp-space-1); }
+.sp-card-action { background: transparent; border: none; color: currentColor; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0; height: var(--sdp-space-12); width: var(--sdp-space-12); opacity: 0.9; transition: opacity var(--sdp-t), transform var(--sdp-t); }
+.sp-card-action .icon { width: 30px; height: 30px; stroke-width: 2.5; }
+.sp-card-action:hover { opacity: 1; transform: translateY(-1px); }
+.sp-card-connect { background: var(--sdp-accio-forta); border: none; color: var(--sdp-text-invers); font-weight: 600; text-transform: uppercase; font-size: 0.8rem; cursor: pointer; letter-spacing: 0.5px; display: flex; align-items: center; justify-content: center; height: var(--sdp-space-12); padding: 0 var(--sdp-space-5); border-radius: var(--sdp-radi-pastilla); white-space: nowrap; transition: transform var(--sdp-t), opacity var(--sdp-t); margin-left: auto; }
+.sp-card-connect:hover { transform: scale(1.02); opacity: 0.95; }
+
+/* 7.22 Estadístiques i dashboards */
+.stat-card { display: flex; align-items: center; gap: var(--sdp-space-4); background: var(--sdp-fons-superficie); border: 1px solid var(--sdp-vora); padding: var(--sdp-space-4); border-radius: var(--sdp-radi-s); box-shadow: var(--sdp-ombra-1); transition: transform var(--sdp-t), box-shadow var(--sdp-t), border-color var(--sdp-t); }
+.stat-card:hover { transform: translateY(-2px); box-shadow: var(--sdp-ombra-2); border-color: var(--sdp-vora-control); }
+.stat-icon { font-size: 2rem; flex: none; }
+.stat-info { display: flex; flex-direction: column; min-width: 0; }
+.stat-value { font-size: 1.5rem; font-weight: 700; color: var(--sdp-text-titol); line-height: 1; margin-bottom: var(--sdp-space-1); }
+.stat-label { font-size: 0.85rem; color: var(--sdp-text-suau);  }
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: var(--sdp-space-4); margin-bottom: var(--sdp-space-6); }
+.dashboard-panel { background: var(--sdp-fons-superficie); border: 1px solid var(--sdp-vora); border-radius: var(--sdp-radi-s); overflow: hidden; margin-bottom: var(--sdp-space-6); }
+.dashboard-header { background: var(--sdp-fons-subtil); padding: var(--sdp-space-3) var(--sdp-space-4); border-bottom: 1px solid var(--sdp-vora); font-weight: 700; text-align: center; color: var(--sdp-text-titol); display: flex; align-items: center; justify-content: center; gap: var(--sdp-space-2); }
+.dashboard-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--sdp-vora); }
+.sdp-card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sdp-space-6); align-items: start; }
+@media (max-width: 1400px) { .sdp-card-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 800px) { .sdp-card-grid { grid-template-columns: 1fr; } }
+
+.dashboard-item { background: var(--sdp-fons-superficie); padding: 24px 16px; text-align: center; }
+.dashboard-item-value { font-size: 1.25rem; font-weight: 700; color: var(--sdp-text-titol); margin-bottom: var(--sdp-space-1); }
+.dashboard-item-label { font-size: 0.75rem; color: var(--sdp-text-suau);  }
+.dashboard-footer { padding: 8px; text-align: center; font-size: 0.75rem; color: var(--sdp-text-suau); background: var(--sdp-fons-subtil); border-top: 1px solid var(--sdp-vora); }
+
+/* 7.23 Cerca i filtratge */
+.search-bar-basic { display: flex; margin-bottom: var(--sdp-space-6); }
+.search-bar-basic input { flex: 1; min-width: 0; padding: var(--sdp-space-3) var(--sdp-space-4); border: 1px solid var(--sdp-vora); border-radius: var(--sdp-radi-s) 0 0 var(--sdp-radi-s); outline: none; font-size: 1rem; transition: border-color var(--sdp-t), box-shadow var(--sdp-t); }
+.search-bar-basic button { background: var(--sdp-fons-invers); color: var(--sdp-text-invers); border: none; padding: 0 var(--sdp-space-6); border-radius: 0 var(--sdp-radi-s) var(--sdp-radi-s) 0; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: var(--sdp-space-2); white-space: nowrap; transition: background var(--sdp-t); }
+.search-bar-basic button:hover { background: var(--sdp-fons-invers); }
+.search-filters { display: flex; gap: var(--sdp-space-4); margin-bottom: var(--sdp-space-6); }
+.search-filters input, .search-filters select { padding: var(--sdp-space-3) var(--sdp-space-4); border: 1px solid var(--sdp-vora-control); border-radius: var(--sdp-radi-s); outline: none; font-size: 1rem; background-color: var(--sdp-fons-superficie); color: var(--sdp-text-cos); transition: border-color var(--sdp-t), box-shadow var(--sdp-t); }
+.search-filters input { flex: 2; min-width: 0; }
+.search-filters select { flex: 1; min-width: 0; }
+.search-filters button { background: var(--sdp-fons-invers); color: var(--sdp-text-invers); border: none; padding: var(--sdp-space-3) var(--sdp-space-6); border-radius: var(--sdp-radi-s); font-weight: 700; cursor: pointer; transition: background var(--sdp-t); }
+.search-filters button:hover { background: var(--sdp-fons-invers); }
+.search-bar-basic input:focus, .search-filters input:focus, .search-filters select:focus { border-color: var(--sdp-accio-text); box-shadow: 0 0 0 3px rgba(1,110,191,0.16); }
+.search-result { margin-bottom: var(--sdp-space-6); }
+.search-result-title { font-size: 1.1rem; font-weight: 700; color: var(--sdp-accent-text); margin-bottom: var(--sdp-space-1); }
+.search-result-meta { font-size: 0.75rem; color: var(--sdp-text-suau);  margin-bottom: var(--sdp-space-2); letter-spacing: 0.05em; }
+.search-result-excerpt { color: var(--sdp-text-titol); font-size: 0.95rem; line-height: 1.5; }
+
+/* 7.20 Paginació simplificada */
+.pagination-simple { display: flex; justify-content: space-between; margin-top: 32px; gap: var(--sdp-space-4); }
+.pagination-simple a { display: flex; flex-direction: column; padding: var(--sdp-space-3) var(--sdp-space-4); border: 1px solid var(--sdp-vora); border-radius: var(--sdp-radi-s); text-decoration: none; color: var(--sdp-text-titol); flex: 1; background: var(--sdp-fons-superficie); transition: background var(--sdp-t), border-color var(--sdp-t), box-shadow var(--sdp-t); }
+.pagination-simple a:hover { background: var(--sdp-fons-subtil); border-color: var(--sdp-vora-control); box-shadow: var(--sdp-ombra-1); color: var(--sdp-text-titol); }
+.pagination-simple a.next { text-align: right; }
+.pagination-label { font-size: 0.75rem; color: var(--sdp-text-suau);  margin-bottom: var(--sdp-space-1); letter-spacing: 0.05em; }
+.pagination-title { font-weight: 700; font-size: 1rem; }
+
+/* 7.21 Checklists */
+.checklist-admin { background: var(--sdp-fons-superficie); border: 1px solid var(--sdp-vora); border-radius: var(--sdp-radi-s); overflow: hidden; margin-bottom: var(--sdp-space-6); }
+.checklist-item { padding: var(--sdp-space-3) var(--sdp-space-4); border-bottom: 1px solid var(--sdp-vora); display: flex; align-items: flex-start; gap: var(--sdp-space-3); transition: background var(--sdp-t); }
+.checklist-item:hover { background: var(--sdp-fons-subtil); }
+.checklist-item:last-child { border-bottom: none; }
+.checklist-item input[type="checkbox"] { margin-top: 4px; flex: none; }
+.checklist-item label { font-size: 0.95rem; color: var(--sdp-text-titol); flex: 1; line-height: 1.4; }
+.checklist-item .date-tag { font-size: 0.75rem; color: var(--sdp-accent-text); font-weight: 700; white-space: nowrap; }
+.checklist-item .date-tag.done { color: var(--sdp-text-suau); }
+
+/* 7.22 Upload i descàrregues */
+.upload-zone { border: 2px dashed var(--sdp-vora); border-radius: var(--sdp-radi-s); padding: var(--sdp-space-8); text-align: center; background: var(--sdp-fons-subtil); margin-bottom: var(--sdp-space-4); transition: border-color var(--sdp-t), background var(--sdp-t); }
+.upload-zone:hover { border-color: var(--sdp-accio-text); background: var(--sdp-accio-subtil); }
+.upload-zone-text { font-size: 1.1rem; font-weight: 700; color: var(--sdp-text-titol); margin-bottom: var(--sdp-space-2); display: flex; align-items: center; justify-content: center; gap: var(--sdp-space-2); }
+.upload-zone-sub { font-size: 0.85rem; color: var(--sdp-text-suau); }
+.upload-zone-sub span { color: var(--sdp-accent-text); cursor: pointer; font-weight: 600; }
+.upload-zone-sub span:hover { text-decoration: underline; }
+.file-item { display: flex; align-items: center; justify-content: space-between; gap: var(--sdp-space-3); padding: var(--sdp-space-3) var(--sdp-space-4); border: 1px solid var(--sdp-vora); border-radius: var(--sdp-radi-s); margin-bottom: var(--sdp-space-2); background: var(--sdp-fons-superficie); transition: border-color var(--sdp-t), box-shadow var(--sdp-t); }
+.file-item:hover { border-color: var(--sdp-vora-control); box-shadow: var(--sdp-ombra-1); }
+.file-item-info { display: flex; flex-direction: column; min-width: 0; }
+.file-item-name { font-size: 0.95rem; color: var(--sdp-text-titol); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.file-item-meta { font-size: 0.75rem; color: var(--sdp-text-suau); }
+.file-item-action { color: var(--sdp-text-suau); cursor: pointer; flex: none; transition: color var(--sdp-t), transform var(--sdp-t); }
+.file-item-action:hover { color: var(--sdp-error); transform: scale(1.1); }
+.download-card { display: flex; align-items: center; gap: var(--sdp-space-4); padding: var(--sdp-space-4); border: 1px solid var(--sdp-vora); border-radius: var(--sdp-radi-s); background: var(--sdp-fons-superficie); margin-bottom: var(--sdp-space-6); transition: box-shadow var(--sdp-t), border-color var(--sdp-t); }
+.download-card:hover { box-shadow: var(--sdp-ombra-2); border-color: var(--sdp-vora-control); }
+.download-card-icon { font-size: 2rem; color: var(--sdp-accio-text); flex: none; }
+.download-card-info { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+.download-card-title { font-size: 1.1rem; font-weight: 700; color: var(--sdp-text-titol); margin-bottom: var(--sdp-space-1); }
+.download-card-meta { font-size: 0.8rem; color: var(--sdp-text-suau); }
+.download-card-btn { color: var(--sdp-sobre-accio); background: var(--sdp-accio); width: var(--sdp-touch); height: var(--sdp-touch); flex: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: background var(--sdp-t), transform var(--sdp-t); }
+.download-card-btn:hover { background: var(--sdp-accio-hover); transform: scale(1.06); color: var(--sdp-sobre-accio); }
+
+/* 7.23 Embeddings i media */
+.embed-container { position: relative; padding-bottom: 56.21%; height: 0; overflow: hidden; max-width: 100%; border-radius: var(--sdp-radi-s); margin-bottom: var(--sdp-space-2); background: var(--sdp-fons-invers); }
+.embed-container iframe, .embed-container video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+.embed-caption { font-size: 0.85rem; color: var(--sdp-text-suau); text-align: center; margin-bottom: var(--sdp-space-6); }
+.audio-player { display: flex; align-items: center; gap: var(--sdp-space-4); background: var(--sdp-fons-subtil); padding: var(--sdp-space-3) var(--sdp-space-6); border-radius: 40px; margin-bottom: var(--sdp-space-2); border: 1px solid var(--sdp-vora); }
+.audio-play-btn { width: var(--sdp-touch); height: var(--sdp-touch); flex: none; background: var(--sdp-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--sdp-sobre-accent); border: none; cursor: pointer; transition: background var(--sdp-t), transform var(--sdp-t); }
+.audio-play-btn:hover { background: var(--sdp-accent-hover); transform: scale(1.06); }
+.audio-play-btn svg { width: 20px; height: 20px; fill: currentColor; margin-left: 2px; }
+.audio-progress { flex: 1; height: 4px; background: var(--sdp-vora); border-radius: 2px; position: relative; }
+.audio-progress-fill { position: absolute; top: 0; left: 0; height: 100%; background: var(--sdp-accent); width: 35%; border-radius: 2px; }
+.audio-time { font-size: 0.75rem; color: var(--sdp-text-suau); font-weight: 700; }
+
+/* 7.24 Caixes d'utilitats (documentació) */
+.utils-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: var(--sdp-space-6); }
+.utils-box { border: 1px solid var(--sdp-vora); border-radius: var(--sdp-radi-s); padding: var(--sdp-space-4); background: var(--sdp-fons-superficie); }
+.utils-box h4 { margin-bottom: var(--sdp-space-3); color: var(--sdp-text-titol); font-size: 1rem; }
+.utils-list { list-style: none; padding: 0; margin: 0; font-family: var(--sdp-font-mono); font-size: 0.85rem; color: var(--sdp-text-titol); line-height: 2; }
+.utils-list li strong { color: var(--sdp-accent-text); }
+
+/* ── 8. FAB (només escriptori) ─────────────────────────────────── */
+.fab-button {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--sdp-accio);
+  color: var(--sdp-sobre-accio);
+  border: none;
+  box-shadow: 0 4px 12px rgba(1,110,191,0.42);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: var(--z-fab);
+  transition: transform var(--sdp-t), box-shadow var(--sdp-t), background var(--sdp-t);
+}
+.fab-button:hover { transform: translateY(-2px) scale(1.05); box-shadow: 0 10px 24px rgba(1,110,191,0.48); background: var(--sdp-accio-hover); }
+.fab-button:active { transform: scale(0.96); }
+.fab-button svg { width: 24px; height: 24px; }
+
+/* ── 9. UTILITATS sdp-* ────────────────────────────────────────── */
+.text-center { text-align: center; }
+.sdp-ocult { display: none !important; }
+.sdp-text-exit { color: var(--sdp-exit); }
+.sdp-text-error { color: var(--sdp-error); }
+.sdp-text-avis { color: var(--sdp-avis); }
+.sdp-text-info { color: var(--sdp-info); }
+
+/* ── 10. RESPONSIVE ────────────────────────────────────────────── */
+
+/* Barra inferior mòbil: amagada per defecte (escriptori) */
+nav.mobile-nav { display: none; }
+
+/* ══ BREAKPOINT MESTRE · ≤1100px ══════════════════════════════ */
+@media (max-width: 1100px) {
+
+  /* Sidebar → calaix lliscant (s'obri amb el logo/hamburguesa) */
+  nav.app-sidebar {
+    position: fixed;
+    inset: 0 auto 0 0;
+    width: min(300px, 85vw);
+    height: auto;
+    z-index: var(--z-calaix);
+    transform: translateX(-102%);
+    visibility: hidden;
+    box-shadow: none;
+    transition: transform var(--sdp-t-lenta), box-shadow var(--sdp-t-lenta), visibility 0s linear 0.3s;
+  }
+  nav.app-sidebar.sidebar-open {
+    transform: translateX(0);
+    visibility: visible;
+    box-shadow: var(--sdp-ombra-4);
+    transition: transform var(--sdp-t-lenta), box-shadow var(--sdp-t-lenta), visibility 0s;
+  }
+
+  /* Vel fosc darrere del calaix (bloqueja i tanca en clicar fora) */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: var(--sdp-fons-vel);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--sdp-t-lenta);
+    z-index: var(--z-vel);
+  }
+  body:has(> nav.app-sidebar.sidebar-open)::after {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* El logo actua com a botó (sense hamburguesa addicional) */
+  .mobile-logo-wrapper { display: flex !important; }
+
+  /* El visor deixa espai per a la barra inferior fixa */
+  main.app-main { padding-bottom: calc(var(--sdp-alt-nav-mobil) + env(safe-area-inset-bottom, 0px)); }
+
+  /* Barra inferior: FIXA a baix, sempre visible, z-index alt */
+  nav.mobile-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sdp-space-1);
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+    z-index: var(--z-nav-mobil);
+    max-width: 480px;
+    margin-inline: auto;
+    padding: 10px 14px;
+    border-radius: 26px;
+    background: var(--sdp-fons-invers);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 12px 32px rgba(14,13,12,0.28), inset 0 1px 0 rgba(255,255,255,0.07);
+  }
+  .mobile-nav .nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    margin: 0;
+    padding: 6px 10px;
+    border-radius: 14px;
+    background: none;
+    color: #ffffff;
+    opacity: 0.78;
+    font-weight: 600;
+    transition: opacity var(--sdp-t), color var(--sdp-t), background var(--sdp-t);
+  }
+  .mobile-nav .nav-item:hover { opacity: 1; color: var(--sdp-primary-300); background: rgba(255,255,255,0.08); }
+  .mobile-nav .nav-item.active { opacity: 1; color: var(--sdp-primary-300); background: rgba(254,116,6,0.18); }
+  .mobile-nav .nav-item__icon {
+    width: 22px;
+    height: 22px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .mobile-nav .nav-item__text { font-size: 0.7rem; letter-spacing: 0.02em; }
+  .mobile-nav__cta {
+    width: 52px;
+    height: 52px;
+    flex: none;
+    margin: 0 4px;
+    border: 0;
+    border-radius: 50%;
+    background: var(--sdp-accio-forta);
+    color: var(--sdp-text-invers);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0,73,131,0.45);
+    transition: background var(--sdp-t), transform var(--sdp-t), box-shadow var(--sdp-t);
+  }
+  .mobile-nav__cta:hover { background: var(--sdp-accio-hover); }
+  .mobile-nav__cta:active { background: var(--sdp-accio-forta); transform: translateY(-8px) scale(0.94); }
+  .mobile-nav__cta svg { width: 24px; height: 24px; }
+
+  /* El FAB d'escriptori desapareix (el substitueix el CTA central) */
+  .fab-button { display: none !important; }
+
+  /* Densitat de les barres */
+  header.bar-black, header.bar-blue, section.bar-orange { padding: 0 var(--sdp-space-4); }
+  .brand { padding: 0 var(--sdp-space-5); }
+  header.page-title { margin: 0 var(--sdp-space-4) var(--sdp-space-5); padding: var(--sdp-space-6) var(--sdp-space-5); border-radius: 0 0 var(--sdp-radi-g) var(--sdp-radi-g); } }
+
+/* ══ TAULETA XICOTETA I MÒBIL · ≤720px ════════════════════════ */
+@media (max-width: 720px) {
+
+  .palette { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: var(--sdp-space-4); }
+  .grid-preview { flex-direction: column; }
+  .lists-preview, .utils-grid { grid-template-columns: 1fr; }
+  .dashboard-grid { grid-template-columns: repeat(2, 1fr); }
+  .search-filters { flex-direction: column; }
+  .search-filters input, .search-filters select, .search-filters button { flex: none; width: 100%; }
+  .pagination-simple { flex-direction: column; }
+  .steps-container { overflow-x: auto; justify-content: flex-start; padding-bottom: 8px; }
+  
+  .tabs, .nav-bar { overflow-x: auto; scrollbar-width: none; }
+  .cms-preview { padding: 20px; }
+  .modal-preview { padding: 20px; }
+  th, td { padding: 12px; }
+  .spinner-group { gap: var(--sdp-space-4); }
+  .btn-group { gap: var(--sdp-space-3); }
+  section.design-block { margin-bottom: var(--sdp-space-12); }
+  header.page-title { margin-bottom: var(--sdp-space-4); } }
+
+/* ══ MÒBIL ESTRET · ≤480px ════════════════════════════════════ */
+@media (max-width: 480px) {
+  /* Barra Negra - Escalat per pantalles minúscules */
+  .bar-black { padding: 0 var(--sdp-space-2); }
+  .mobile-logo-wrapper { width: 150px; }
+  .mobile-logo-btn img { width: 130px; }
+  .bar-black .right-icons { gap: var(--sdp-space-1); }
+  .bar-black .right-icons .icon { width: var(--sdp-touch); height: var(--sdp-touch); padding: 9px; }
+  .bar-black .right-icons img.icon { width: 32px; height: 32px; }
+
+  /* Barra Blava - Ajustament dens: les icones s'encongeixen, el touch-target de 48px es manté */
+  .bar-blue { padding: 0 var(--sdp-space-2); }
+  .bar-blue-left { gap: var(--sdp-space-1); }
+  .sp-card-actions { gap: var(--sdp-space-1); }
+  .bar-blue .sp-card-actions { position: static; transform: none; margin-left: var(--sdp-space-2); }
+  .sp-card-action .icon { width: 24px; height: 24px; stroke-width: 2; }
+  .sp-card-connect { padding: 0 var(--sdp-space-3); font-size: 0.75rem; letter-spacing: 0; }
+
+  .swatch-color { height: 80px; padding: 12px; }
+  .btn { padding: 11px 20px; font-size: 0.95rem; }
+  .btn-lg { padding: 14px 24px; font-size: 1.05rem; }
+  header.page-title { margin: 0 12px 14px; }
+  nav.mobile-nav { left: 8px; right: 8px; padding: 8px 10px; border-radius: 22px; }
+  .mobile-nav .nav-item { padding: 6px; }
+  .mobile-nav .nav-item__text { font-size: 0.65rem; }
+  .sp-card-body { padding: 20px 16px 12px; } }
+
+/* Utilitat responsive documentada al sistema */
+@media (max-width: 720px) {
+  .sdp-ocult-mobil { display: none !important; } }
+
+/* ── 11. MOVIMENT REDUÏT ───────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  main.app-main { scroll-behavior: auto; } }
+
+/* ── 12. IMATGES SEGONS TEMA ───────────────────────────────────── */
+.light-only { display: block; }
+.dark-only  { display: none; }
+:root[data-theme="dark"] .light-only { display: none; }
+:root[data-theme="dark"] .dark-only  { display: block; }
+
+/* Botons de la Barra Taronja i Targetes */
+.btn-icon-orange {
+  background: rgba(0,0,0,0.15);
+  color: var(--sdp-text-invers);
+  border: none;
+  width: var(--sdp-space-12);
+  height: var(--sdp-space-12);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background var(--sdp-t), transform var(--sdp-t);
+}
+.btn-icon-orange:hover {
+  background: rgba(0,0,0,0.21);
+  transform: scale(1.1);
+}
+
+.btn-date-time {
+  background: rgba(0,0,0,0.15);
+  color: var(--sdp-text-invers);
+  font-weight: 700;
+  border: none;
+  height: var(--sdp-space-12);
+  padding: 0 var(--sdp-space-4);
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--sdp-radi-pastilla);
+  font-size: 0.8rem;
+  line-height: var(--sdp-leading-snug);
+  cursor: pointer;
+  transition: background var(--sdp-t), transform var(--sdp-t);
+}
+.btn-date-time span { display: block; }
+.btn-date-time:hover {
+  background: rgba(0,0,0,0.21);
+  transform: scale(1.02);
+}
+
+/* ── TRUC PER A LA SIDEBAR EN ESCRIPTORI (TOGGLE) ── */
+@media (min-width: 1101px) {
+  body.sidebar-closed nav.app-sidebar {
+    display: none !important;
+  }
+  body.sidebar-closed header.bar-black {
+    padding-left: 0 !important;
+  }
+  body.sidebar-closed .mobile-logo-wrapper {
+    display: flex !important;
+    width: var(--sdp-col-sidebar);
+    height: var(--sdp-alt-negra);
+    align-items: center;
+    justify-content: center;
+  }
+  body.sidebar-closed .mobile-logo-wrapper img {
+    width: 100% !important;
+    max-width: 160px !important;
+    height: auto !important;
+    object-fit: contain !important;
+  } }
+
+/* ── 9. UTILITATS SDP-* ─────────────────────────────────────────── */
+.sdp-flex { display: flex; }
+.sdp-grid { display: grid; }
+.sdp-flex-col { display: flex; flex-direction: column; }
+.sdp-items-center { align-items: center; }
+.sdp-justify-center { justify-content: center; }
+.sdp-justify-between { justify-content: space-between; }
+.sdp-text-center { text-align: center; }
+.sdp-text-left { text-align: left; }
+
+.sdp-gap-4 { gap: var(--sdp-space-1); }
+.sdp-gap-8 { gap: var(--sdp-space-2); }
+.sdp-gap-12 { gap: var(--sdp-space-3); }
+.sdp-gap-16 { gap: var(--sdp-space-4); }
+.sdp-gap-20 { gap: var(--sdp-space-6); }
+.sdp-gap-28 { gap: var(--sdp-space-8); }
+.sdp-gap-48 { gap: var(--sdp-space-12); }
+
+.sdp-m-0 { margin: var(--sdp-space-0); }
+.sdp-mb-0 { margin-bottom: var(--sdp-space-0); }
+.sdp-mb-1 { margin-bottom: var(--sdp-space-1); }
+.sdp-mb-2 { margin-bottom: var(--sdp-space-2); }
+.sdp-mb-3 { margin-bottom: var(--sdp-space-3); }
+.sdp-mb-6 { margin-bottom: var(--sdp-space-6); }
+.sdp-mb-20 { margin-bottom: var(--sdp-space-20); }
+
+.sdp-mt-0 { margin-top: var(--sdp-space-0); }
+.sdp-mt-2 { margin-top: var(--sdp-space-2); }
+.sdp-mt-4 { margin-top: var(--sdp-space-4); }
+.sdp-mt-6 { margin-top: var(--sdp-space-6); }
+.sdp-mt-12 { margin-top: var(--sdp-space-12); }
+
+.sdp-p-0 { padding: var(--sdp-space-0); }
+.sdp-p-2 { padding: var(--sdp-space-2); }
+.sdp-p-4 { padding: var(--sdp-space-4); }
+.sdp-p-6 { padding: var(--sdp-space-6); }
+.sdp-p-10 { padding: var(--sdp-space-10); }
+
+</style>
+</head>
+<body>
+<!-- 1. SIDEBAR ESQUERRA -->
+<nav class="app-sidebar">
+<div class="brand">
+<img alt="Logotip Sóc de Poble" src="https://socdepoble.org/assets/system/ui/logo-socdepoble-rect-blanc.svg"/>
+<span class="sr-only">Sóc de Poble</span>
+</div>
+<button class="sidebar-control-btn">Centre de Control</button>
+<div class="sdp-p-4">
+<a class="nav-item" href="#">Xat</a>
+<a class="nav-item" href="mur_socdepoble.html">Mur</a>
+<a class="nav-item" href="mercat_socdepoble.html">Mercat</a>
+<a class="nav-item active" href="#">Disseny</a>
+</div>
+</nav>
+<!-- 2. MAIN -->
+<main class="app-main">
+<!-- 2.5 BARRA NEGRA -->
+<header class="bar-black">
+<div class="mobile-logo-wrapper sdp-flex sdp-items-center sdp-justify-center" id="mobile-sidebar-toggle">
+<img alt="Sóc de Poble" src="https://socdepoble.org/assets/system/ui/logo-socdepoble-rect-blanc.svg" />
+</div>
+<div class="right-icons">
+<!-- 0. Idioma de la Plataforma (Sóc de Poble) -->
+<svg class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 20 20">
+<circle cx="12" cy="12" r="10"></circle>
+<path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+<path d="M2 12h20"></path>
+</svg>
+<!-- 2. IAIA (Matriarca) -->
+<svg class="icon iaia-icon" viewbox="0 0 20 20"><circle cx="12" cy="5" r="2.5"></circle><circle cx="12" cy="2" r="1.5"></circle><path d="M 12 8 C 9.5 8 8.5 12 7.5 19 C 7.2 21 16.8 21 16.5 19 C 15.5 12 14.5 8 12 8 Z"></path><path d="M 9.5 9 C 7 10 5.5 11.5 5.5 13 L 5.5 14.5 C 5.5 15 6.5 15 6.5 14 L 7 12 C 8 11 9.5 10.5 9.5 10.5 Z"></path><path d="M 4.5 12.5 C 2.5 12.5 2.5 14.5 3.5 14.5 L 3.5 22 H 4.5 L 4.5 14.5 C 5.5 14.5 5.5 12.5 4.5 12.5 Z"></path><path d="M 14.5 9 C 17 10 18.5 11.5 18.5 13 L 18.5 14.5 C 18.5 15 17.5 15 17.5 14 L 17 12 C 16 11 14.5 10.5 14.5 10.5 Z"></path><rect height="4" rx="0.5" width="1.5" x="9.5" y="19"></rect><rect height="4" rx="0.5" width="1.5" x="13" y="19"></rect></svg>
+<!-- 3. Search -->
+<svg class="icon" viewbox="0 0 20 20"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+<!-- 4. Theme Toggle -->
+<svg class="icon" id="theme-toggle" viewbox="0 0 20 20"><path class="moon-path" d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path><path class="sun-path" d="M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z"></path><line class="sun-path" x1="12" x2="12" y1="1" y2="3"></line><line class="sun-path" x1="12" x2="12" y1="21" y2="23"></line><line class="sun-path" x1="4.22" x2="5.64" y1="4.22" y2="5.64"></line><line class="sun-path" x1="18.36" x2="19.78" y1="18.36" y2="19.78"></line><line class="sun-path" x1="1" x2="3" y1="12" y2="12"></line><line class="sun-path" x1="21" x2="23" y1="12" y2="12"></line><line class="sun-path" x1="4.22" x2="5.64" y1="19.78" y2="18.36"></line><line class="sun-path" x1="18.36" x2="19.78" y1="5.64" y2="4.22"></line></svg>
+<!-- 5. User Avatar -->
+<div class="icon">
+<img alt="Javi Llinares" src="https://socdepoble.org/assets/uploads/gent/javi-llinares/avatars/javi-llinares-perfil-1200px.jpg"/>
+</div>
+</div>
+</header>
+<!-- 3. BARRA BLAVA -->
+<header class="bar-blue">
+<!-- ESQUERRA: tornar arrere + índex -->
+<div class="bar-blue-left sdp-flex sdp-items-center sdp-gap-20">
+<button class="sp-card-action" title="Tornar arrere">
+<svg class="icon" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 20 20"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>
+</button>
+<button class="sp-card-action" title="Índex de secció">
+<svg class="icon" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 20 20"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path></svg>
+</button>
+</div>
+<!-- CENTRE: Traduir, Comentar, Compartir -->
+<div class="sp-card-actions">
+<button class="sp-card-action" title="Traduir">
+<svg class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 20 20"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg>
+</button>
+<button class="sp-card-action" title="Comentar (Xat Privat)">
+<svg class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 20 20"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg>
+</button>
+<button class="sp-card-action" title="Compartir">
+<svg class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 20 20"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line></svg>
+</button>
+</div>
+<!-- DRETA: Connectar -->
+<button class="sp-card-connect">Connectar</button>
+</header>
+<!-- IMATGE HERO (Entre Blava i Taronja) -->
+<div class="hero-image">
+<img alt="Construcció de Pedra Seca estil Ibáñez" src="assets/img/ibanez_pedra_seca_design_1780873465211.png"/>
+</div>
+<!-- 4. BARRA TARONJA -->
+<section class="bar-orange">
+<div class="sp-card-author">
+<img alt="Avatar" class="sp-card-avatar sdp-p-0" src="https://socdepoble.org/assets/system/ui/logo-socdepoble-cuadrat-verd.svg"/>
+<div class="sp-card-author-info">
+<div class="sp-card-author-name">Sóc de Poble</div>
+<div class="sp-card-author-location">La Torre de les Maçanes</div>
+</div>
+</div>
+<div class="bar-actions sdp-flex sdp-items-center sdp-gap-8">
+<!-- Icona d'Acció (Multiusos): En principi s'utilitza per al Pín (ancorar pàgines dalt), però és un botó versàtil que 
+     podrà rebre icones d'alerta o altres en futures targetes. Si la publicació és normal i no està ancorada, s'ha d'amagar. -->
+<button class="btn-icon-orange" title="Ancorar">
+<svg class="icon" viewbox="0 0 20 20"><path d="M16 11V7a4 4 0 0 0-8 0v4l-2 4h12l-2-4z"></path><path d="M12 15v7"></path></svg>
+</button>
+<!-- Data i Hora: Indica exclusivament la data de publicació d'aquest contingut -->
+<button class="btn-date-time">
+<span>23:29</span><span>22/3/22</span>
+</button>
+</div>
+</section>
+<header class="page-title">
+<!-- Logotip Mode Clar -->
+<img alt="Logotip Sóc de Poble" class="page-title-logo light-only" src="assets/img/logo-socdepoble-rect-negre.svg"/>
+<!-- Logotip Mode Fosc -->
+<img alt="Logotip Sóc de Poble" class="page-title-logo dark-only" src="https://socdepoble.org/assets/system/ui/logo-socdepoble-rect-blanc.svg"/>
+<h1>Disseny Pedra Seca</h1>
+<div class="sp-card-labels page-title-labels">
+<span class="sp-card-label label-orange">MUR</span>
+<span class="sp-card-label label-blue">Disseny UI</span>
+</div>
+<div class="sp-card-copyright page-title-copyright">© Sóc de Poble / Fet per la IAIA i Nano Banana</div>
+</header>
+<h2>Sistema oficial de disseny per a Sóc de Poble</h2>
+<p class="lead">Inclou la Targeta Mestra, els colors oficials, i tots els elements preparats, inclús els skills i scripts, perquè qualsevol IA puga entendre este sistema i reproduir-lo.</p>
+<!-- 5. CONTINGUT (Harmonia) -->
+<article class="content-wrapper">
+<section class="design-block">
+<h3>1. Identitat Cromàtica</h3>
+<p>La paleta es genera en <strong>OKLCH</strong>: el to i el croma de marca es mantenen constants i només varia la lluminositat. Per això l'escala és perceptivament regular i cada graó té un contrast previsible.</p>
+<div class="alert alert-info sdp-mb-6"><div class="alert-content"><h4>Contracte d'accessibilitat</h4>
+<p>Este sistema complix <strong>WCAG 2.2 nivell AAA (≥7:1) en tot el text, els fons i els grisos estructurals</strong>, i <strong>nivell AA (≥4,5:1) en els colors d'interacció</strong> — enllaços, pestanyes actives i botons primaris. Els límits dels controls complixen la norma 1.4.11 (≥3:1).</p>
+<p>Esta distinció és deliberada i honesta: AAA estricte en tot obligaria a abandonar el taronja de marca, perquè cap taronja reconeixible arriba a 7:1 sobre blanc. Preferim dir-ho que amagar-ho.</p>
+</div></div>
+<h4>1.1 Colors de marca</h4>
+<div class="palette">
+<div class="swatch">
+<div class="swatch-color sw-primary-500">Taronja · fons</div>
+<div class="swatch-info">#fe7406<br/>--sdp-primary-500</div>
+</div>
+<div class="swatch">
+<div class="swatch-color sw-primary-700">Taronja · text</div>
+<div class="swatch-info">#ad4c03<br/>--sdp-primary-700</div>
+</div>
+<div class="swatch">
+<div class="swatch-color sw-secondary-500">Blau · fons</div>
+<div class="swatch-info">#016ebf<br/>--sdp-secondary-500</div>
+</div>
+<div class="swatch">
+<div class="swatch-color sw-secondary-600">Blau · text</div>
+<div class="swatch-info">#00599d<br/>--sdp-secondary-600</div>
+</div>
+</div>
+<div class="table-wrapper"><table><thead><tr><th>Parella</th><th>Contrast</th><th>Nivell</th><th>Ús</th></tr></thead><tbody>
+<tr><td>Text fosc sobre taronja 500</td><td>7.13:1</td><td>AAA</td><td>Botons primaris, capçalera de targeta</td></tr>
+<tr><td>Taronja 700 sobre blanc</td><td>5.51:1</td><td>AA</td><td>Enllaços, pestanya activa</td></tr>
+<tr><td>Taronja 800 sobre blanc</td><td>7.97:1</td><td>AAA</td><td>Títols h2 i h4</td></tr>
+<tr><td>Blanc sobre blau 500</td><td>5.23:1</td><td>AA</td><td>Barra blava, peu de targeta</td></tr>
+<tr><td>Blau 600 sobre blanc</td><td>7.20:1</td><td>AAA</td><td>Títols h1, h3 i h5</td></tr>
+</tbody></table></div>
+<h4>1.2 Colors d'estat</h4>
+<div class="palette">
+<div class="swatch">
+<div class="swatch-color sw-error-500">Alerta</div>
+<div class="swatch-info">#c2181d<br/>--sdp-error-500</div>
+</div>
+<div class="swatch">
+<div class="swatch-color sw-avis-500">Avís</div>
+<div class="swatch-info">#9c6902<br/>--sdp-avis-500</div>
+</div>
+<div class="swatch">
+<div class="swatch-color sw-exit-500">Èxit</div>
+<div class="swatch-info">#027e38<br/>--sdp-exit-500</div>
+</div>
+</div>
+<h4>1.3 Escala Pedra</h4>
+<p>Neutre càlid, mai gris fred. El graó <strong>600</strong> és el sòl per a text secundari: és el primer que arriba a 7:1 sobre blanc.</p>
+<div class="palette">
+<div class="swatch">
+<div class="swatch-color sw-pedra-50">Blanc trencat · 50</div>
+<div class="swatch-info">#fdfcfb<br/>--sdp-pedra-50</div>
+</div>
+<div class="swatch">
+<div class="swatch-color sw-pedra-100">Núvol · 100</div>
+<div class="swatch-info">#f9f8f5<br/>--sdp-pedra-100</div>
+</div>
+<div class="swatch">
+<div class="swatch-color sw-pedra-200">Arena · 200</div>
+<div class="swatch-info">#efece7<br/>--sdp-pedra-200</div>
+</div>
+<div class="swatch">
+<div class="swatch-color sw-pedra-300">Calç · 300</div>
+<div class="swatch-info">#dcd7cd<br/>--sdp-pedra-300</div>
+</div>
+<div class="swatch">
+<div class="swatch-color sw-pedra-400">Cendra · 400</div>
+<div class="swatch-info">#b7b1a5<br/>--sdp-pedra-400</div>
+</div>
+<div class="swatch">
+<div class="swatch-color sw-pedra-500">Pedra · 500</div>
+<div class="swatch-info">#8b857b<br/>--sdp-pedra-500</div>
+</div>
+<div class="swatch">
+<div class="swatch-color sw-pedra-600">Pedra fosca · 600</div>
+<div class="swatch-info">#5b564e<br/>--sdp-pedra-600</div>
+</div>
+<div class="swatch">
+<div class="swatch-color sw-pedra-700">Grafit · 700</div>
+<div class="swatch-info">#3d3b35<br/>--sdp-pedra-700</div>
+</div>
+<div class="swatch">
+<div class="swatch-color sw-pedra-750">Pissarra · 750</div>
+<div class="swatch-info">#302e29<br/>--sdp-pedra-750</div>
+</div>
+<div class="swatch">
+<div class="swatch-color sw-pedra-800">Carbó · 800</div>
+<div class="swatch-info">#22211e<br/>--sdp-pedra-800</div>
+</div>
+<div class="swatch">
+<div class="swatch-color sw-pedra-850">Sutja · 850</div>
+<div class="swatch-info">#181715<br/>--sdp-pedra-850</div>
+</div>
+<div class="swatch">
+<div class="swatch-color sw-pedra-900">Negre · 900</div>
+<div class="swatch-info">#0e0d0c<br/>--sdp-pedra-900</div>
+</div>
+</div>
+</section>
+<!-- SECCIÓ: TIPOGRAFIA CMS -->
+<section class="design-block">
+<h3>2. Estudi Tipogràfic</h3>
+<p>Aquesta és l'arquitectura tipogràfica universal de l'ecosistema Sóc de Poble. S'ha dissenyat sota un rigorós estudi per a garantir l'accessibilitat AAA (lectura sota llum solar intensa per a gent gran).</p>
+
+<h4>Lleis Fonamentals:</h4>
+<ul>
+<li><strong>Arrel Mestra:</strong> <code>18px (1.125rem)</code> per a garantir touch-targets i visibilitat nativa sense zoom.</li>
+<li><strong>Font Única:</strong> <code>Noto Sans</code>, escollida per l'altura de la seua "x", les seues formes obertes i el suport multilingüe extrem.</li>
+<li><strong>Ample Màxim de Lectura:</strong> <code>68ch</code>, el límit científic abans de causar fatiga ocular al saltar de línia.</li>
+<li><strong>Interlineat (Line-height):</strong> <code>1.6</code> en paràgrafs per a donar oxigen; <code>1.2</code> en capçaleres per mantindre la compacitat.</li>
+</ul>
+<p>Dalt del títol pot anar una imatge o multimèdia d'un ample màxim de 600x600. Baix d'aquest H1 aniran exclusivament els components de presentació de la Targeta Mestra: categoria, etiqueta i copyright.</p>
+<p>L'H2 divideix els grans blocs temàtics de la pàgina.</p>
+<h1>H1: Títol Principal (40px)</h1>
+<div class="sdp-text-center">
+<h2>H2: Secció Major (32px)</h2>
+<p class="lead">
+Aquesta és l'<em>entradilla</em> (<code>&lt;p class="lead"&gt;</code>). S'usa exclusivament sota l'H2 per establir la premissa de la secció amb un cos superior al text normal.
+</p>
+</div>
+<h3>H3: Sub-secció Temàtica (24px)</h3>
+<p>L'H3 s'empra per donar jerarquia interna dins d'un bloc H2. Sol acompanyar llistes de dades o enumeracions llargues.</p>
+<p>El text de cos (<code>&lt;p&gt;</code>) funciona com a ciment. No pot baixar mai dels 16px en mòbil, però l'estàndard base d'este sistema és 18px. Este paràgraf demostra la llegibilitat continuada i serveix d\'exemple de com es veu un text normal després de l'entradilla.</p>
+<ul>
+<li>La llista no ordenada (<code>&lt;ul&gt;</code>) manté un marge esquerre net per diferenciar-se ràpidament del paràgraf.</li>
+<li>S'evita usar majúscules ("uppercase") en capçaleres per preservar la silueta de la paraula, fonamental per a la lectura ràpida.</li>
+</ul>
+<h4>H4: Component de Suport (20px)</h4>
+<p>L'H4 és útil per a targetes (cards) internes o petites cites que necessiten el seu propi títol sense trencar l'esquema de lectura.</p>
+<blockquote>
+<p>“Un poble sense memòria és com un arbre sense arrels, condemnat a caure al primer vent fort.”</p>
+</blockquote>
+<h5>H5: Títol de Widget o Metadada (16px, Negreta)</h5>
+<ol>
+<li>Títols que requereixen presència però no pertanyen al flux narratiu principal.</li>
+<li>S'usa sovint en barres laterals (sidebars).</li>
+</ol>
+<h6>H6: Micro-Etiqueta (14px, Majúscules)</h6>
+<p>L'H6 és l'única etiqueta on es permet l'ús de majúscules pel seu caràcter de "badge" visual (sobretítols, dates, categories pures).</p>
+
+</section>
+<!-- SECCIÓ: ESPAIAT I GRID -->
+<section class="design-block">
+<h3>3. Espaiat i Grid</h3>
+<h4>Sistema d'Espaiat (escala modular base 4/8)</h4>
+
+<div class="spacing-item">
+<div class="spacing-bar" style="--mida: var(--sdp-space-1);"></div>
+<div class="spacing-label">--sdp-space-1 = 4px</div>
+</div>
+<div class="spacing-item">
+<div class="spacing-bar" style="--mida: var(--sdp-space-2);"></div>
+<div class="spacing-label">--sdp-space-2 = 8px</div>
+</div>
+<div class="spacing-item">
+<div class="spacing-bar" style="--mida: var(--sdp-space-3);"></div>
+<div class="spacing-label">--sdp-space-3 = 12px</div>
+</div>
+<div class="spacing-item">
+<div class="spacing-bar" style="--mida: var(--sdp-space-4);"></div>
+<div class="spacing-label">--sdp-space-4 = 16px</div>
+</div>
+<div class="spacing-item">
+<div class="spacing-bar" style="--mida: var(--sdp-space-6);"></div>
+<div class="spacing-label">--sdp-space-6 = 24px</div>
+</div>
+<div class="spacing-item">
+<div class="spacing-bar" style="--mida: var(--sdp-space-8);"></div>
+<div class="spacing-label">--sdp-space-8 = 32px</div>
+</div>
+<div class="spacing-item">
+<div class="spacing-bar" style="--mida: var(--sdp-space-10);"></div>
+<div class="spacing-label">--sdp-space-10 = 40px</div>
+</div>
+<div class="spacing-item">
+<div class="spacing-bar" style="--mida: var(--sdp-space-12);"></div>
+<div class="spacing-label">--sdp-space-12 = 48px</div>
+</div>
+<div class="spacing-item">
+<div class="spacing-bar" style="--mida: var(--sdp-space-16);"></div>
+<div class="spacing-label">--sdp-space-16 = 64px</div>
+</div>
+<div class="spacing-item">
+<div class="spacing-bar" style="--mida: var(--sdp-space-20);"></div>
+<div class="spacing-label">--sdp-space-20 = 80px</div>
+</div>
+
+<h4>Grid Responsive</h4>
+<div class="grid-preview">
+<div class="grid-col">1 columna (mòbil)</div>
+<div class="grid-col">2 columnes (tauleta)</div>
+<div class="grid-col">3 columnes (escriptori)</div>
+</div>
+</section>
+<!-- SECCIÓ: BOTONS -->
+<section class="design-block">
+<h3>4. Botons</h3>
+<h4>Variants</h4>
+<div class="btn-group">
+<button class="btn btn-primary">Primari</button>
+<button class="btn btn-secondary">Secundari</button>
+<button class="btn btn-outline-dark">Terciari</button>
+<button class="btn btn-base">Neutral / Base</button>
+<button class="btn btn-danger">Perill</button>
+<button class="btn btn-ghost">Fantasma</button>
+</div>
+
+<h4>Mides</h4>
+<div class="btn-group">
+<button class="btn btn-primary btn-sm">Petit</button>
+<button class="btn btn-primary">Normal</button>
+<button class="btn btn-primary btn-lg">Gran</button>
+</div>
+<h4>Estats</h4>
+<div class="btn-group">
+<button class="btn btn-primary">Normal</button>
+<button class="btn btn-primary" disabled="">Desactivat</button>
+<button class="btn btn-primary">
+<svg class="spinner" viewbox="0 0 20 20"><circle cx="12" cy="12" fill="none" r="10" stroke="currentColor" stroke-width="3"></circle></svg>
+            Carregant...
+          </button>
+</div>
+<h4>Amb Icona</h4>
+<div class="btn-group">
+<button class="btn btn-primary">
+<svg class="icon-btn" viewbox="0 0 20 20"><path d="M12 5v14M5 12h14"></path></svg> Afegir
+          </button>
+<button class="btn btn-secondary">
+<svg class="icon-btn" viewbox="0 0 20 20"><path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg> Eliminar
+          </button>
+</div>
+</section>
+<!-- SECCIÓ: FORMULARIS -->
+<section class="design-block">
+<h3>5. Formularis i Inputs</h3>
+
+<div class="form-group">
+<label>Nom del poble</label>
+<input placeholder="Ex: Petrer" type="text"/>
+</div>
+<div class="form-group">
+<label>Província</label>
+<select>
+<option>Alacant</option>
+<option>València</option>
+<option>Castelló</option>
+</select>
+</div>
+<div class="form-group">
+<label>Descripció</label>
+<textarea placeholder="Escriu una breu descripció..." rows="4"></textarea>
+</div>
+<div class="checkbox-group">
+<input checked="" id="chk1" type="checkbox"/>
+<label for="chk1">Accepte els termes del Consell de la Petorreta</label>
+</div>
+<div class="checkbox-group sdp-mt-2">
+<input checked="" id="optA" name="opt" type="radio"/> <label for="optA">Opció A</label>
+<input id="optB" name="opt" type="radio"/> <label for="optB">Opció B</label>
+</div>
+<div class="form-group has-error sdp-mt-4">
+<label>Input amb error</label>
+<input type="text" value="valor incorrecte"/>
+<div class="error-text">Aquest camp és obligatori.</div>
+</div>
+<div class="form-group is-disabled sdp-mt-4">
+<label>Input desactivat</label>
+<input disabled="" type="text" value="No editable"/>
+</div>
+
+</section>
+<!-- SECCIÓ 7: ALERTES -->
+<section class="design-block">
+<h3>7. Alertes i Missatges</h3>
+<div class="alert alert-info">
+<div class="alert-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 20 20"><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="16" y2="12"></line><line x1="12" x2="12.01" y1="8" y2="8"></line></svg></div>
+<div class="alert-content">
+<h4>Informació</h4>
+<p>Aquesta és una alerta informativa per a destacar dades rellevants.</p>
+</div>
+</div>
+<div class="alert alert-success">
+<div class="alert-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 20 20"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div>
+<div class="alert-content">
+<h4>Èxit</h4>
+<p>L'operació s'ha completat correctament.</p>
+</div>
+</div>
+<div class="alert alert-warning">
+<div class="alert-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 20 20"><path d="M10.25 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" x2="12" y1="9" y2="13"></line><line x1="12" x2="12.01" y1="17" y2="17"></line></svg></div>
+<div class="alert-content">
+<h4>Avís</h4>
+<p>Revisa els camps abans de continuar.</p>
+</div>
+</div>
+<div class="alert alert-error">
+<div class="alert-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 20 20"><circle cx="12" cy="12" r="10"></circle><line x1="15" x2="9" y1="9" y2="15"></line><line x1="9" x2="15" y1="9" y2="15"></line></svg></div>
+<div class="alert-content">
+<h4>Error</h4>
+<p>No s'ha pogut connectar amb el servidor.</p>
+</div>
+</div>
+</section>
+<!-- SECCIÓ 8: BADGES -->
+<section class="design-block text-center">
+<h3>8. Badges i Etiquetes</h3>
+<div class="sdp-flex sdp-gap-12 sdp-justify-center sdp-mb-6">
+<span class="badge badge-default">Per defecte</span>
+<span class="badge badge-primary">Primari</span>
+<span class="badge badge-success">Èxit</span>
+<span class="badge badge-warning">Avís</span>
+<span class="badge badge-danger">Perill</span>
+<span class="badge badge-info">Informació</span>
+</div>
+<h4>Etiquetes de Poble</h4>
+<div class="sdp-flex sdp-gap-12">
+<span class="badge badge-outline"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="icona-linia" viewbox="0 0 20 20" width="16"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> Poble actiu</span>
+<span class="badge badge-outline"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="icona-linia" viewbox="0 0 20 20" width="16"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg> Fototeca</span>
+<span class="badge badge-outline"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="icona-linia" viewbox="0 0 20 20" width="16"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg> Arxiu</span>
+<span class="badge badge-outline"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="icona-linia" viewbox="0 0 20 20" width="16"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon><line x1="8" x2="8" y1="2" y2="18"></line><line x1="16" x2="16" y1="6" y2="22"></line></svg> Mapa</span>
+<span class="badge badge-outline"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="icona-linia" viewbox="0 0 20 20" width="16"><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="16" y2="12"></line><line x1="12" x2="12.01" y1="8" y2="8"></line></svg> Festes</span>
+</div>
+</section>
+<!-- SECCIÓ 9: TAULES -->
+<section class="design-block">
+<h3>9. Taules</h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr>
+<th>Poble</th>
+<th>Província</th>
+<th>Habitants</th>
+<th>Estat</th>
+<th>Accions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Petrer</td>
+<td>Alacant</td>
+<td>34.000</td>
+<td><span class="badge badge-success">Actiu</span></td>
+<td><a class="table-action" href="#">Editar</a></td>
+</tr>
+<tr>
+<td>Ontinyent</td>
+<td>València</td>
+<td>36.000</td>
+<td><span class="badge badge-warning">Pendent</span></td>
+<td><a class="table-action" href="#">Editar</a></td>
+</tr>
+<tr>
+<td>Morella</td>
+<td>Castelló</td>
+<td>2.500</td>
+<td><span class="badge badge-info">Revisió</span></td>
+<td><a class="table-action" href="#">Editar</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4>Taula Zebra (Alternada)</h4>
+<div class="table-wrapper">
+<table class="table-zebra">
+<thead>
+<tr>
+<th>Recurs</th>
+<th>Tipus</th>
+<th>Data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Festa de la Mare de Déu</td>
+<td>Esdeveniment</td>
+<td>15/08/2024</td>
+</tr>
+<tr>
+<td>Plaça Major</td>
+<td>Lloc</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Entrevista alcalde</td>
+<td>Notícia</td>
+<td>03/06/2024</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- SECCIÓ 10: NAVEGACIÓ -->
+<section class="design-block">
+<h3>10. Navegació</h3>
+<h4>Barra de Navegació</h4>
+<div class="nav-bar">
+<a class="active" href="#">Sóc de Poble</a>
+<a href="#">Inici</a>
+<a href="#">Pobles</a>
+<a href="#">Arxiu</a>
+</div>
+<h4>Paginació</h4>
+<div class="pagination">
+<button class="page-btn" disabled="">← Anterior</button>
+<button class="page-btn active">1</button>
+<button class="page-btn">2</button>
+<button class="page-btn">3</button>
+<span>...</span>
+<button class="page-btn">12</button>
+<button class="page-btn">Següent →</button>
+</div>
+</section>
+<!-- SECCIÓ 11: MODALS -->
+<section class="design-block">
+<h3>11. Modals i Diàlegs</h3>
+<div class="modal-preview">
+<div class="modal-box">
+<h4>Confirmar Eliminació</h4>
+<p>Esteu segur que voleu eliminar aquest element? Aquesta acció no es pot desfer.</p>
+<div class="modal-actions">
+<button class="btn btn-outline-dark btn-sm">Cancel·lar</button>
+<button class="btn btn-danger btn-sm">Eliminar</button>
+</div>
+</div>
+</div>
+</section>
+<!-- SECCIÓ 12: CÀRREGA -->
+<section class="design-block">
+<h3>12. Indicadors de Càrrega</h3>
+<div class="spinner-group">
+<div class="sdp-text-center"><svg class="spinner spinner-sm" viewbox="0 0 20 20"><circle cx="12" cy="12" fill="none" r="10" stroke="currentColor" stroke-width="3"></circle></svg>
+Petit</div>
+<div class="sdp-text-center"><svg class="spinner spinner-md" viewbox="0 0 20 20"><circle cx="12" cy="12" fill="none" r="10" stroke="currentColor" stroke-width="3"></circle></svg>
+Normal</div>
+<div class="sdp-text-center"><svg class="spinner spinner-lg" viewbox="0 0 20 20"><circle cx="12" cy="12" fill="none" r="10" stroke="currentColor" stroke-width="3"></circle></svg>
+Gran</div>
+</div>
+<h4>Esquelet (Skeleton)</h4>
+<div class="skeleton skeleton-title"></div>
+<div class="skeleton skeleton-text"></div>
+<div class="skeleton skeleton-text"></div>
+<div class="skeleton skeleton-text"></div>
+</section>
+<!-- SECCIÓ 13: AVATARS -->
+<section class="design-block">
+<h3>13. Avatars i Imatges</h3>
+<div class="avatar-group">
+<div class="avatar avatar-xs">AB</div>
+<div class="avatar avatar-sm">AB</div>
+<div class="avatar avatar-md">AB</div>
+<div class="avatar avatar-lg">AB</div>
+<div class="avatar avatar-xl">AB</div>
+</div>
+</section>
+<!-- SECCIÓ 14: DESPLEGABLES -->
+<section class="design-block">
+<h3>14. Desplegables</h3>
+<div class="accordion">
+<div class="accordion-header">
+            Què és Sóc de Poble?
+            <svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 20 20" width="20"><polyline points="6 9 12 15 18 9"></polyline></svg>
+</div>
+<div class="accordion-header">
+            Com puc col·laborar?
+            <svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 20 20" width="20"><polyline points="6 9 12 15 18 9"></polyline></svg>
+</div>
+</div>
+</section>
+<!-- SECCIÓ 15: PESTANYES -->
+<section class="design-block">
+<h3>15. Pestanyes</h3>
+<div class="tabs">
+<div class="tab active">General</div>
+<div class="tab">Fotografies</div>
+<div class="tab">Història</div>
+<div class="tab">Mapa</div>
+</div>
+<div class="tab-content">
+<p class="sdp-m-0">Contingut de la pestanya activa. Aquesta àrea canvia segons la selecció. Les pestanyes són accessibles via teclat (Tab + Enter/Espai).</p>
+</div>
+</section>
+<!-- SECCIÓ 16: PROGRÉS -->
+<section class="design-block">
+<h3>16. Barra de Progrés</h3>
+<div class="progress-container">
+<div class="progress-header"><span>Pujada d'imatges</span><span>45%</span></div>
+<div class="progress-bar"><div class="progress-fill"></div></div>
+</div>
+<div class="progress-container">
+<div class="progress-header"><span>Indexació de documents</span><span>78%</span></div>
+<div class="progress-bar"><div class="progress-fill"></div></div>
+</div>
+</section>
+<!-- SECCIÓ 17: TOOLTIPS -->
+<section class="design-block">
+<h3>17. Tooltips</h3>
+<div class="tooltip-preview">
+<button class="btn btn-primary" title="Això és un tooltip d'exemple">Passa per damunt</button>
+<span class="tooltip-term" title="Explicació addicional del terme">Terme amb ajuda</span>
+</div>
+</section>
+<!-- SECCIÓ 18: LLISTES -->
+<section class="design-block">
+<h3>18. Llistes</h3>
+<div class="lists-preview">
+<h4>Llista Ordenada</h4>
+<ol>
+<li>Registrar-se al portal</li>
+<li>Seleccionar el poble</li>
+<li>Pujar contingut històric</li>
+<li>Revisar i publicar</li>
+</ol>
+<h4>Llista Desordenada</h4>
+<ul>
+<li>Fotografies antigues</li>
+<li>Documents administratius</li>
+<li>Entrevistes orals</li>
+</ul>
+</div>
+</section>
+<!-- SECCIÓ 19: DIVISORS -->
+<section class="design-block sdp-mb-20">
+<h3>19. Divisors i Separadors</h3>
+<div class="divider-preview">
+<div class="divider-label">19.1 Divisor horitzontal bàsic</div>
+<div class="divider-basic"></div>
+</div>
+<div class="divider-preview">
+<div class="divider-label">19.2 Divisor amb text</div>
+<div class="divider-text">O BÉ</div>
+</div>
+<div class="divider-preview">
+<div class="divider-label">19.3 Separador de secció (major)</div>
+<div class="divider-major"></div>
+</div>
+<div class="divider-preview">
+<div class="divider-label">19.4 Separador puntejat</div>
+<div class="divider-dashed"></div>
+</div>
+<div class="divider-preview">
+<div class="divider-label">19.5 Separador de pàgina (salt visual)</div>
+<div class="divider-dotted"></div>
+</div>
+</section>
+<!-- SECCIÓ 20: TARGETES MESTRES -->
+<section class="design-block">
+<h3>20. Targeta Mestra (Sóc de Poble Universal Card)</h3>
+<p class="sdp-text-center sdp-mb-2">La Targeta Mestra és un bloc modular desmuntable i enllaçable (amb <code>&lt;a class="sp-card-main-link"&gt;</code> dins del títol). Qualsevol clic dins d'ella condueix a la pàgina, excepte els botons amb funcions específiques (z-index superior).</p>
+<h4>20.1 Targeta Mestra: Text pur i Etiquetes (Gestoria de Poble)</h4>
+<article class="sp-card">
+<header class="sp-card-header">
+<a class="sp-card-author-link" href="#" title="Anar al perfil de l'autor">
+<div class="sp-card-author">
+<img alt="Avatar" class="sp-card-avatar sdp-p-0" src="https://socdepoble.org/assets/system/ui/logo-socdepoble-cuadrat-verd.svg"/>
+<div class="sp-card-author-info">
+<div class="sp-card-author-name">Javi Llinares</div>
+<div class="sp-card-author-location">La Torre de les Maçanes</div>
+</div>
+</div>
+</a>
+<div class="sp-card-meta sdp-gap-8">
+<!-- Tooltip (Bocata) d'Avís o PIN -->
+<div class="tooltip-container">
+<button class="btn-icon-orange" title="Mode Privadesa">
+<svg class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 20 20"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="m9 12 2 2 4-4"></path></svg>
+</button>
+<div class="tooltip-text">Mode Privadesa actiu</div>
+</div>
+<button class="btn-date-time" title="Veure calendari d'este dia">
+<span>14:28</span><span>26/06/22</span>
+</button>
+</div>
+</header>
+<div class="sp-card-body">
+<div class="sp-card-price sdp-mb-6">***,** €</div>
+<h4 class="sp-card-title"><a href="#caixa-real" class="sp-card-main-link" title="Obrir Caixa Real">Caixa Real</a></h4>
+<p class="sp-card-subtitle">Saldo Disponible</p>
+<div class="sp-card-labels">
+<span class="sp-card-label label-blue">Gestoria</span>
+<span class="sp-card-label label-green">Caixa Real</span>
+</div>
+<div class="sp-card-copyright sdp-mt-4">© Sóc de Poble / Fet per la IAIA i Nano Banana</div>
+</div>
+<footer class="sp-card-footer">
+<div class="sp-card-actions">
+<button class="sp-card-action" title="Traduir">
+<svg class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 20 20"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg>
+</button>
+<button class="sp-card-action" title="Comentar (Xat Privat)">
+<svg class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 20 20"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg>
+</button>
+<button class="sp-card-action" title="Compartir">
+<svg class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 20 20"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line></svg>
+</button>
+</div>
+<button class="sp-card-connect" title="Connectar amb Caixa Real">Connectar</button>
+</footer>
+</article>
+<h4>20.2 Targeta Mestra: Text pur (Hisenda)</h4>
+<article class="sp-card">
+<header class="sp-card-header">
+<a class="sp-card-author-link" href="#" title="Anar al perfil de l'autor">
+<div class="sp-card-author">
+<img alt="Avatar" class="sp-card-avatar sdp-p-0" src="https://socdepoble.org/assets/system/ui/logo-socdepoble-cuadrat-verd.svg"/>
+<div class="sp-card-author-info">
+<div class="sp-card-author-name">Javi Llinares</div>
+<div class="sp-card-author-location">La Torre de les Maçanes</div>
+</div>
+</div>
+</a>
+<div class="sp-card-meta sdp-gap-8">
+<div class="tooltip-container">
+<button class="btn-icon-orange" title="Avís Important">
+<svg class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 20 20"><path d="m3 11 18-5v12L3 14v-3z"></path><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"></path></svg>
+</button>
+<div class="tooltip-text">Falten 3 dies per presentar el model</div>
+</div>
+<button class="btn-date-time" title="Veure calendari d'este dia">
+<span>14:28</span><span>26/06/22</span>
+</button>
+</div>
+</header>
+<div class="sp-card-body">
+<div class="sp-card-price sdp-mb-6">***,** €</div>
+<h4 class="sp-card-title"><a href="#hisenda" class="sp-card-main-link" title="Obrir Hisenda">Hisenda</a></h4>
+<p class="sp-card-subtitle">Model 303 / 130</p>
+<div class="sp-card-labels">
+<span class="sp-card-label label-blue">Gestoria</span>
+<span class="sp-card-label label-orange">Hisenda</span>
+</div>
+<div class="sp-card-copyright sdp-mt-4">© Sóc de Poble / Fet per la IAIA i Nano Banana</div>
+</div>
+<footer class="sp-card-footer">
+<div class="sp-card-actions">
+<button class="sp-card-action" title="Traduir">
+<svg class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 20 20"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg>
+</button>
+<button class="sp-card-action" title="Comentar (Xat Privat)">
+<svg class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 20 20"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg>
+</button>
+<button class="sp-card-action" title="Compartir">
+<svg class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 20 20"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line></svg>
+</button>
+</div>
+<button class="sp-card-connect" title="Connectar amb Hisenda">Connectar</button>
+</footer>
+</article>
+<h4>20.3 Targeta Mestra: Imatge Completa (Producte)</h4>
+<article class="sp-card">
+<header class="sp-card-header">
+<a class="sp-card-author-link" href="#" title="Anar al perfil de l'autor">
+<div class="sp-card-author">
+<img alt="Avatar" class="sp-card-avatar sdp-p-0" src="https://socdepoble.org/assets/system/ui/logo-socdepoble-cuadrat-verd.svg"/>
+<div class="sp-card-author-info">
+<div class="sp-card-author-name">Sóc de Poble</div>
+<div class="sp-card-author-location">La Torre de les Maçanes</div>
+</div>
+</div>
+</a>
+<div class="sp-card-meta sdp-gap-8">
+<button class="btn-icon-orange" title="Ancorar" style="z-index: 3; position: relative;">
+<svg class="icon" viewBox="0 0 20 20"><path d="M16 11V7a4 4 0 0 0-8 0v4l-2 4h12l-2-4z"></path><path d="M12 15v7"></path></svg>
+</button>
+<button class="btn-date-time" title="Veure calendari d'este dia">
+<span>00:29</span><span>23/3/22</span>
+</button>
+</div>
+</header>
+<div class="sp-card-media">
+<img alt="Samarreta" src="https://socdepoble.org/assets/uploads/brain/media__1776503825171.jpg"/>
+</div>
+<div class="sp-card-body">
+<div class="sp-card-price">15.00€</div>
+<h4 class="sp-card-title"><a href="#samarreta" class="sp-card-main-link" title="Obrir Samarreta Sóc de Poble">Samarreta Sóc de Poble</a></h4>
+<p class="sp-card-subtitle">L'edició definitiva amb el logotip complet</p>
+<p class="sp-card-text">Dibuix del mapa del tresor. Cotó Roly de màxima qualitat.</p>
+<div class="sp-card-labels">
+<span class="sp-card-label label-blue">Mercat</span>
+<span class="sp-card-label label-blue">Roba</span>
+<span class="sp-card-label label-green">Samarreta</span>
+</div>
+<div class="sp-card-copyright sdp-mt-4">© Sóc de Poble / Fet per la IAIA i Nano Banana</div>
+</div>
+<footer class="sp-card-footer">
+<div class="sp-card-actions">
+<button class="sp-card-action" title="Traduir">
+<svg class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 20 20"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg>
+</button>
+<button class="sp-card-action" title="Comentar (Xat Privat)">
+<svg class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 20 20"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg>
+</button>
+<button class="sp-card-action" title="Compartir">
+<svg class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 20 20"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line></svg>
+</button>
+</div>
+<button class="sp-card-connect" title="Connectar">Connectar</button>
+</footer>
+</article>
+<h4>20.4 Targeta Mestra: Pàgina de Mur (Disseny)</h4>
+<article class="sp-card">
+<header class="sp-card-header">
+<a class="sp-card-author-link" href="#" title="Anar al perfil de l'autor">
+<div class="sp-card-author">
+<img alt="Avatar" class="sp-card-avatar sdp-p-0" src="https://socdepoble.org/assets/system/ui/logo-socdepoble-cuadrat-verd.svg"/>
+<div class="sp-card-author-info">
+<div class="sp-card-author-name">Sóc de Poble</div>
+<div class="sp-card-author-location">La Torre de les Maçanes</div>
+</div>
+</div>
+</a>
+<div class="sp-card-meta sdp-gap-8">
+<button class="btn-icon-orange" title="Ancorar">
+<svg class="icon" viewbox="0 0 20 20"><path d="M16 11V7a4 4 0 0 0-8 0v4l-2 4h12l-2-4z"></path><path d="M12 15v7"></path></svg>
+</button>
+<button class="btn-date-time" title="Veure calendari d'este dia">
+<span>10:00</span><span>07/8/22</span>
+</button>
+</div>
+</header>
+<div class="sp-card-media">
+<img alt="Disseny Pedra Seca" src="assets/img/ibanez_pedra_seca_design_1780873465211.png"/>
+</div>
+<div class="sp-card-body">
+<h4 class="sp-card-title"><a href="#disseny" class="sp-card-main-link" title="Obrir Disseny Pedra Seca">Disseny Pedra Seca</a></h4>
+<p class="sp-card-subtitle">Sistema oficial de disseny per a Sóc de Poble</p>
+<p class="sp-card-text">Inclou la Targeta Mestra, els colors oficials, i tots els elements preparats, inclús els skills i scripts, perquè qualsevol IA puga entendre este sistema i reproduir-lo.</p>
+<div class="sp-card-labels">
+<span class="sp-card-label label-orange">MUR</span>
+<span class="sp-card-label label-blue">Disseny UI</span>
+</div>
+<div class="sp-card-copyright sdp-mt-4">© Sóc de Poble / Fet per la IAIA i Nano Banana</div>
+</div>
+<footer class="sp-card-footer">
+<div class="sp-card-actions">
+<button class="sp-card-action" title="Traduir">
+<svg class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 20 20"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg>
+</button>
+<button class="sp-card-action" title="Comentar (Xat Privat)">
+<svg class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 20 20"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg>
+</button>
+<button class="sp-card-action" title="Compartir">
+<svg class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 20 20"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line></svg>
+</button>
+</div>
+<button class="sp-card-connect" title="Connectar">Connectar</button>
+</footer>
+</article>
+</section>
+<!-- SECCIÓ 21: ESTADÍSTIQUES I DASHBOARDS -->
+<section class="design-block">
+<h3>21. Estadístiques i Dashboards</h3>
+<h4>21.1 Targeta d'estadística</h4>
+<div class="stat-card sdp-mb-6">
+<div class="stat-icon"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="icona-linia" viewbox="0 0 20 20" width="16"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
+<div class="stat-info">
+<div class="stat-value">5.847</div>
+<div class="stat-label">Habitants</div>
+</div>
+</div>
+<h4>21.2 Grid d'estadístiques</h4>
+<div class="stat-grid">
+<div class="stat-card">
+<div class="stat-icon"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="icona-linia" viewbox="0 0 20 20" width="16"><rect height="18" rx="2" ry="2" width="18" x="3" y="4"></rect><line x1="16" x2="16" y1="2" y2="6"></line><line x1="8" x2="8" y1="2" y2="6"></line><line x1="3" x2="21" y1="10" y2="10"></line></svg></div>
+<div class="stat-info">
+<div class="stat-value">776</div>
+<div class="stat-label">Anys d'història</div>
+</div>
+</div>
+<div class="stat-card">
+<div class="stat-icon"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="icona-linia" viewbox="0 0 20 20" width="16"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></div>
+<div class="stat-info">
+<div class="stat-value">2.341</div>
+<div class="stat-label">Habitatges</div>
+</div>
+</div>
+<div class="stat-card">
+<div class="stat-icon">🌳</div>
+<div class="stat-info">
+<div class="stat-value">29,4</div>
+<div class="stat-label">Km² de natura</div>
+</div>
+</div>
+<div class="stat-card">
+<div class="stat-icon">📖</div>
+<div class="stat-info">
+<div class="stat-value">142</div>
+<div class="stat-label">Documents històrics</div>
+</div>
+</div>
+</div>
+<h4>21.3 Panell d'Umami (Integració directa)</h4>
+<div class="dashboard-panel">
+<div class="dashboard-header"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="icona-linia" viewbox="0 0 20 20" width="16"><line x1="18" x2="18" y1="20" y2="10"></line><line x1="12" x2="12" y1="20" y2="4"></line><line x1="6" x2="6" y1="20" y2="14"></line></svg> Activitat del Portal</div>
+<div class="dashboard-grid">
+<div class="dashboard-item">
+<div class="dashboard-item-value">5.847</div>
+<div class="dashboard-item-label">Visitants únics</div>
+</div>
+<div class="dashboard-item">
+<div class="dashboard-item-value">23.412</div>
+<div class="dashboard-item-label">Pàgines vistes</div>
+</div>
+<div class="dashboard-item">
+<div class="dashboard-item-value">29,4%</div>
+<div class="dashboard-item-label">Taxa de rebuig</div>
+</div>
+<div class="dashboard-item">
+<div class="dashboard-item-value">2m 45s</div>
+<div class="dashboard-item-label">Duració mitjana</div>
+</div>
+</div>
+<div class="dashboard-footer">Dades d'<span>Umami Analytics</span> • Actualització en temps real</div>
+</div>
+</section>
+<!-- SECCIÓ 22: CERCA I FILTRATGE -->
+<section class="design-block">
+<h3>22. Cerca i Filtratge</h3>
+<h4>22.1 Barra de cerca bàsica</h4>
+<div class="search-bar-basic">
+<input placeholder="Cerca pobles, festes, documents..." type="text"/>
+<button>🔍 Cerca</button>
+</div>
+<h4>22.2 Cerca amb filtres</h4>
+<div class="search-filters">
+<input placeholder="Cerca..." type="text"/>
+<select>
+<option>Totes les categories</option>
+<option>Festes</option>
+<option>Llocs</option>
+</select>
+<button>Cerca</button>
+</div>
+<h4>22.3 Resultats de cerca</h4>
+<div class="sdp-mb-1">S'han trobat <strong>12 resultats</strong> per a "festa major"</div>
+<div class="search-result">
+<div class="search-result-title">Festa Major de Benigànim</div>
+<div class="search-result-meta">Festes • Benigànim • Agost 2024</div>
+<div class="search-result-excerpt">Del 15 al 20 d'agost celebrem les festes patronals amb més de 50 activitats per a tots els públics...</div>
+</div>
+<div class="search-result">
+<div class="search-result-title">Festa Major de Llutxent</div>
+<div class="search-result-meta">Festes • Llutxent • Setembre 2024</div>
+<div class="search-result-excerpt">La festa major de Llutxent destaca per la seua processó de les festes de la Mare de Déu...</div>
+</div>
+</section>
+<!-- SECCIÓ 23: PAGINACIÓ -->
+<section class="design-block">
+<h3>23. Paginació</h3>
+<h4>23.1 Paginació numèrica</h4>
+<div class="pagination">
+<a class="page-btn" href="#">← Primera</a>
+<a class="page-btn" href="#">2</a>
+<a class="page-btn active" href="#">3</a>
+<a class="page-btn" href="#">4</a>
+<a class="page-btn" href="#">5</a>
+<span>...</span>
+<a class="page-btn" href="#">20</a>
+<a class="page-btn" href="#">Següent →</a>
+</div>
+<h4>23.2 Paginació simplificada (anterior / següent)</h4>
+<div class="pagination-simple">
+<a href="#">
+<span class="pagination-label">← Article Anterior</span>
+<span class="pagination-title">Les festes de la Magdalena</span>
+</a>
+<a class="next" href="#">
+<span class="pagination-label">Article Següent →</span>
+<span class="pagination-title">La ruta del riu-rau</span>
+</a>
+</div>
+</section>
+<!-- SECCIÓ 24: TASQUES I CHECKLISTS -->
+<section class="design-block">
+<h3>24. Llistes de Tasques i Checklists</h3>
+<h4>24.1 Checklist d'administració</h4>
+<div class="checklist-admin">
+<div class="checklist-item">
+<input checked="" type="checkbox"/>
+<label><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="icona-linia" viewbox="0 0 20 20" width="16"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Verificació prèvia a publicar</label>
+</div>
+<div class="checklist-item">
+<input checked="" type="checkbox"/>
+<label>Revisar ortografia i valencià</label>
+</div>
+<div class="checklist-item">
+<input checked="" type="checkbox"/>
+<label>Comprovar imatges (alt text obligatori)</label>
+</div>
+<div class="checklist-item">
+<input type="checkbox"/>
+<label>Validar enllaços interns</label>
+</div>
+<div class="checklist-item">
+<input type="checkbox"/>
+<label>Revisar contrast de colors (WCAG 2.1 AA)</label>
+</div>
+</div>
+<h4>24.2 Llista de tasques amb progrés</h4>
+<div class="checklist-admin">
+<div class="checklist-item">
+<input checked="" type="checkbox"/>
+<label>Migrar base de dades històrica</label>
+<span class="date-tag done">15/01</span>
+</div>
+<div class="checklist-item">
+<input type="checkbox"/>
+<label>Digitalitzar fotografies del fons municipal</label>
+<span class="date-tag">01/02</span>
+</div>
+</div>
+</section>
+<!-- SECCIÓ 25: UPLOAD I DESCÀRREGUES -->
+<section class="design-block">
+<h3>25. Upload i Descàrregues</h3>
+<h4>25.1 Zona d'arrossegament d'arxius</h4>
+<div class="upload-zone">
+<div class="upload-zone-text">📎 Arrossega els arxius ací</div>
+<div class="upload-zone-sub">o <span>selecciona'ls del teu dispositiu</span></div>
+<div class="sdp-mt-2">Màxim 10MB per arxiu. Formats: JPG, PNG, PDF</div>
+</div>
+<div class="file-item">
+<div class="file-item-info">
+<div class="file-item-name">festa_major_2024.jpg</div>
+<div class="file-item-meta">2,4 MB</div>
+</div>
+<div class="file-item-action"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="icona-linia" viewbox="0 0 20 20" width="16"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></div>
+</div>
+<h4>25.2 Enllaç de descàrrega</h4>
+<div class="download-card">
+<div class="download-card-icon"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="icona-linia" viewbox="0 0 20 20" width="16"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></div>
+<div class="download-card-info">
+<div class="download-card-title">Carta Pobla de Benigànim (1248)</div>
+<div class="download-card-meta">PDF • 3,2 MB • Transcripció paleogràfica</div>
+</div>
+<a class="download-card-btn" href="#"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="icona-linia" viewbox="0 0 20 20" width="16"><line x1="12" x2="12" y1="5" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg></a>
+</div>
+</section>
+<!-- SECCIÓ 26: EMBEDDINGS I MEDIA EXTERNA -->
+<section class="design-block">
+<h3>26. Embeddings i Media Externa</h3>
+<h4>26.1 Vídeo embebint (HTML5 natiu)</h4>
+<div class="embed-container">
+<div class="sdp-flex sdp-items-center sdp-justify-center">
+<div class="sdp-flex sdp-items-center sdp-justify-center"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="icona-linia" viewbox="0 0 20 20" width="16"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></div>
+</div>
+</div>
+<div class="embed-caption">Sóc de Poble: Portal de pobles connectats (2013)</div>
+<div class="accordion sdp-mb-6">
+<div class="accordion-header">
+<svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="icona-linia" viewbox="0 0 20 20" width="16"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg> Descripció del vídeo original
+            <svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 20 20" width="20"><polyline points="6 9 12 15 18 9"></polyline></svg>
+</div>
+</div>
+<h4>26.2 Mapa embebint (iframe amb fallback)</h4>
+<div class="embed-container sdp-flex sdp-items-center sdp-justify-center">
+          [OpenStreetMap Iframe]
+        </div>
+<div class="embed-caption"><a href="#">Veure mapa més gran a OpenStreetMap →</a></div>
+<h4>26.3 Audio (podcast local)</h4>
+<div class="audio-player">
+<button class="audio-play-btn"><svg viewbox="0 0 20 20"><path d="M8 5v14l11-7z"></path></svg></button>
+<div class="audio-progress">
+<div class="audio-progress-fill"></div>
+</div>
+<div class="audio-time">12:45</div>
+</div>
+<div class="embed-caption sdp-text-left">Podcast «Històries de poble» · Episodi 1</div>
+</section>
+<!-- SECCIÓ 27: CLASSES UTILITÀRIES -->
+<section class="design-block">
+<h3>27. Classes Utilitàries</h3>
+<p class="sdp-text-center sdp-mb-6">Aquestes classes són recomanacions d'arquitectura css (no aplicades ací via Tailwind pur sinó com a concepte)</p>
+<div class="utils-grid">
+<div class="utils-box">
+<h4>Classes de Visibilitat</h4>
+<ul class="utils-list">
+<li><strong>.sdp-sr-only</strong> - Ocult visiblement, text per a screen readers</li>
+<li><strong>.sdp-visible-sr-only</strong> - Visible només per assistència</li>
+<li><strong>.sdp-ocult</strong> - display: none</li>
+<li><strong>.sdp-ocult-mobil</strong> - Amaga en xs/sm</li>
+</ul>
+</div>
+<div class="utils-box">
+<h4>Classes de Color</h4>
+<ul class="utils-list">
+<li><strong>.sdp-text-exit</strong> - ✓ Èxit</li>
+<li><strong>.sdp-text-error</strong> - ✕ Error</li>
+<li><strong>.sdp-text-avis</strong> - <svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="icona-linia" viewbox="0 0 20 20" width="16"><path d="M10.25 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" x2="12" y1="9" y2="13"></line><line x1="12" x2="12.01" y1="17" y2="17"></line></svg> Avís</li>
+<li><strong>.sdp-text-info</strong> - i Informació</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- SECCIÓ 28: PEUS DE PÀGINA -->
+<section class="design-block">
+<h3>28. Peus de pàgina (Footers)</h3>
+<h4>28.1 Peu de pàgina complet</h4>
+<div class="sdp-p-10">[Footer complet (Enllaços, Legal, Xarxes)]</div>
+<h4>28.2 Peu de pàgina minimalista</h4>
+<div class="sdp-p-4 sdp-text-center">© 2026 Sóc de Poble. Tots els drets reservats.</div>
+</section>
+<!-- SECCIÓ 29: EXEMPLES DE COMPOSICIÓ -->
+<section class="design-block sdp-mb-20">
+<h3>29. Exemples de Composició</h3>
+<h4>29.1 Formulari de contacte complet</h4>
+<div class="sdp-p-6">
+<h4>Contacta amb nosaltres</h4>
+<div class="sdp-mb-1">Les teues dades</div>
+<div class="form-group">
+<label>Nom complet <span>*</span></label>
+<input type="text"/>
+</div>
+<div class="form-group">
+<label>Correu electrònic <span>*</span></label>
+<input type="email"/>
+</div>
+<div class="form-group">
+<label>Motiu del contacte</label>
+<select>
+<option>Selecciona un motiu...</option>
+</select>
+</div>
+</div>
+</section>
+</article>
+</main>
+<!-- FAB (Només Desktop) -->
+<button class="fab-button">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 20 20"><path d="M12 19V5M5 12l7-7 7 7"></path></svg>
+</button>
+<!-- BARRA INFERIOR MÒBIL -->
+<nav aria-label="Navegació mòbil" class="mobile-nav">
+<a class="nav-item active" href="#xat" onclick="alert('Funcionalitat: Anar al Xat'); return false;">
+<svg class="nav-item__icon" viewbox="0 0 20 20"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+<span class="nav-item__text"><strong>Xat</strong></span>
+</a>
+<a class="nav-item" href="#mur" onclick="alert('Funcionalitat: Anar al Mur'); return false;">
+<svg class="nav-item__icon" viewbox="0 0 20 20"><rect height="18" rx="2" ry="2" width="18" x="3" y="3"></rect><line x1="3" x2="21" y1="9" y2="9"></line><line x1="9" x2="9" y1="21" y2="9"></line></svg>
+<span class="nav-item__text"><strong>Mur</strong></span>
+</a>
+<button aria-label="Centre de Control" class="mobile-nav__cta" onclick="alert('Funcionalitat: Obrir Centre de Control');" type="button">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 20 20"><line x1="12" x2="12" y1="5" y2="19"></line><line x1="5" x2="19" y1="12" y2="12"></line></svg>
+</button>
+<a class="nav-item" href="#mercat" onclick="alert('Funcionalitat: Anar al Mercat'); return false;">
+<svg class="nav-item__icon" viewbox="0 0 20 20"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" x2="21" y1="6" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+<span class="nav-item__text"><strong>Mercat</strong></span>
+</a>
+<a class="nav-item" href="#events" onclick="alert('Funcionalitat: Anar a Events (Calendari)'); return false;">
+<svg class="nav-item__icon" viewbox="0 0 20 20"><rect height="18" rx="2" ry="2" width="18" x="3" y="4"></rect><line x1="16" x2="16" y1="2" y2="6"></line><line x1="8" x2="8" y1="2" y2="6"></line><line x1="3" x2="21" y1="10" y2="10"></line><path d="M8 14h.01"></path><path d="M12 14h.01"></path><path d="M16 14h.01"></path><path d="M8 18h.01"></path><path d="M12 18h.01"></path><path d="M16 18h.01"></path></svg>
+<span class="nav-item__text"><strong>Events</strong></span>
+</a>
+</nav>
+<script>
+    // Gestió del comportament de la sidebar en mòbil
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggleBtn = document.getElementById('mobile-sidebar-toggle');
+      const sidebar = document.querySelector('.app-sidebar');
+      const main = document.querySelector('.app-main');
+      
+      if (toggleBtn && sidebar) {
+        // Toggle clicant al logo "Sóc de Poble" a la barra negra
+        toggleBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (window.innerWidth <= 1100) {
+            sidebar.classList.toggle('sidebar-open');
+          } else {
+            document.body.classList.remove('sidebar-closed');
+          } });
+        
+        // Clic al logo de la sidebar per tancar-la en escriptori
+        const sidebarLogo = document.querySelector('.brand img');
+        if (sidebarLogo) {
+          sidebarLogo.style.cursor = 'pointer';
+          sidebarLogo.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (window.innerWidth > 1100) {
+              document.body.classList.add('sidebar-closed');
+            } else {
+              sidebar.classList.remove('sidebar-open');
+            } });
+        }
+
+        // Tancar la sidebar si es fa clic fora (al content)
+        document.addEventListener('click', (e) => {
+          if (window.innerWidth <= 1100 && sidebar.classList.contains('sidebar-open')) {
+            if (!sidebar.contains(e.target)) {
+              sidebar.classList.remove('sidebar-open');
+            } }
+        });
+        
+        // Evitar que els clics dins de la sidebar la tanquin
+        sidebar.addEventListener('click', (e) => {
+          e.stopPropagation();
+        });
+      } });
+  </script>
+<script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const moonPaths = themeToggle.querySelectorAll('.moon-path');
+    const sunPaths = themeToggle.querySelectorAll('.sun-path');
+    
+    // Estat inicial
+    const savedTheme = localStorage.getItem('sdp-theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    let currentTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+    let isDark = currentTheme === 'dark';
+    document.documentElement.setAttribute('data-theme', currentTheme);
+
+    function updateIcon() {
+      if(isDark) {
+        moonPaths.forEach(p => p.style.display = 'none');
+        sunPaths.forEach(p => p.style.display = 'block');
+      } else {
+        moonPaths.forEach(p => p.style.display = 'block');
+        sunPaths.forEach(p => p.style.display = 'none');
+      } }
+    
+    // Icona inicial
+    updateIcon();
+
+    if (themeToggle) {
+      themeToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        isDark = !isDark;
+        currentTheme = isDark ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        localStorage.setItem('sdp-theme', currentTheme);
+        updateIcon();
+      });
+    }
+  </script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Botó flotant · pujar dalt
+    const fab = document.querySelector('.fab-button');
+    if (fab) {
+        fab.addEventListener('click', () => {
+            const scrollContainer = document.querySelector('.app-main');
+            if (scrollContainer) scrollContainer.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    // 2. Botó de tornar arrere
+    const backBtn = document.querySelector('button[title="Tornar arrere"]');
+    if (backBtn) {
+        backBtn.addEventListener('click', () => {
+            history.back();
+        });
+    }
+
+    // 3. Botó d'índex · calaix de continguts
+    const indexBtn = document.querySelector('button[title="Índex de secció"]');
+    if (indexBtn) {
+        indexBtn.addEventListener('click', () => {
+            let tocSidebar = document.getElementById('sdp-toc-sidebar');
+            let tocBackdrop = document.getElementById('sdp-toc-backdrop');
+            
+            if (!tocSidebar) {
+                // Crear el vel
+                tocBackdrop = document.createElement('div');
+                tocBackdrop.id = 'sdp-toc-backdrop';
+                tocBackdrop.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); z-index: 9998; opacity: 0; transition: opacity 0.3s ease; display: none;';
+                
+                // Crear el calaix
+                tocSidebar = document.createElement('div');
+                tocSidebar.id = 'sdp-toc-sidebar';
+                tocSidebar.style.cssText = 'position: fixed; top: 0; left: 0; width: 340px; max-width: 90vw; height: 100%; background: var(--sdp-fons-superficie); z-index: 9999; transform: translateX(-100%); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 4px 0 24px rgba(0,0,0,0.15); overflow-y: auto; padding: 0; display: flex; flex-direction: column;';
+                
+                // Capçalera del calaix
+                const sidebarHeader = document.createElement('div');
+                sidebarHeader.style.cssText = 'padding: 24px 24px 16px; border-bottom: 1px solid var(--sdp-vora); display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; background: var(--sdp-fons-superficie); z-index: 1;';
+                
+                const title = document.createElement('h2');
+                title.textContent = 'Índex de Contingut';
+                title.style.cssText = 'margin: 0; color: var(--sdp-text-titol); font-size: 1.25rem; font-family: var(--sdp-font);';
+                
+                const closeBtn = document.createElement('button');
+                closeBtn.innerHTML = '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>';
+                closeBtn.style.cssText = 'background: none; border: none; cursor: pointer; color: var(--sdp-text-suau); padding: 4px; display: flex; align-items: center; justify-content: center; border-radius: 4px; transition: background 0.2s;';
+                closeBtn.onmouseover = () => closeBtn.style.background = 'var(--sdp-fons-subtil)';
+                closeBtn.onmouseout = () => closeBtn.style.background = 'transparent';
+                
+                const closeSidebar = () => {
+                    tocSidebar.style.transform = 'translateX(-100%)';
+                    tocBackdrop.style.opacity = '0';
+                    setTimeout(() => { tocBackdrop.style.display = 'none'; }, 300);
+                };
+                
+                closeBtn.addEventListener('click', closeSidebar);
+                tocBackdrop.addEventListener('click', closeSidebar);
+                
+                sidebarHeader.appendChild(title);
+                sidebarHeader.appendChild(closeBtn);
+                
+                // Contingut del calaix (llista)
+                const listContainer = document.createElement('div');
+                listContainer.style.cssText = 'padding: 16px 24px 24px; flex-grow: 1;';
+                
+                const list = document.createElement('ul');
+                list.style.cssText = 'list-style: none; padding: 0; margin: 0; font-family: var(--sdp-font);';
+                
+                // Seleccionar H1, H2, H3 dins del visor
+                const headings = document.querySelectorAll('.app-main h1, .app-main h2, .app-main h3');
+                headings.forEach((h, i) => {
+                    // Saltar els títols buits o ocults visualment
+                    if (h.classList.contains('sr-only') || h.textContent.trim() === '') return;
+                    
+                    if (!h.id) h.id = 'sdp-heading-' + i;
+                    const li = document.createElement('li');
+                    
+                    let padding = '0';
+                    let fontSize = '1rem';
+                    let fontWeight = 'normal';
+                    let color = 'var(--sdp-accent-titol)';
+                    let marginTop = '12px';
+                    
+                    if (h.tagName === 'H1') {
+                        fontWeight = 'bold';
+                        fontSize = '1.05rem';
+                        marginTop = '24px';
+                        color = 'var(--sdp-text-titol)';
+                    } else if (h.tagName === 'H2') {
+                        padding = '12px';
+                        fontWeight = '600';
+                        color = 'var(--sdp-accent-text-hover)';
+                    } else if (h.tagName === 'H3') {
+                        padding = '24px';
+                        fontSize = '0.9rem';
+                        color = 'var(--sdp-text-suau)';
+                    }
+                    
+                    li.style.cssText = `margin-top: ${marginTop}; margin-bottom: 8px; padding-left: ${padding};`;
+                    
+                    const a = document.createElement('a');
+                    a.href = '#' + h.id;
+                    a.textContent = h.textContent.trim();
+                    a.style.cssText = `color: ${color}; text-decoration: none; font-weight: ${fontWeight}; font-size: ${fontSize}; transition: color var(--sdp-t); display: block; line-height: 1.4;`;
+                    
+                    a.addEventListener('mouseover', () => { a.style.color = 'var(--sdp-accent-text)'; });
+                    a.addEventListener('mouseout', () => { a.style.color = color; });
+                    
+                    a.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        closeSidebar();
+                        const scrollContainer = document.querySelector('.app-main');
+                        if (scrollContainer) {
+                            const scrollContainerRect = scrollContainer.getBoundingClientRect();
+                            const targetRect = h.getBoundingClientRect();
+                            const offsetTop = targetRect.top - scrollContainerRect.top + scrollContainer.scrollTop - 196;
+                            scrollContainer.scrollTo({ top: offsetTop, behavior: 'smooth' });
+                        } else {
+                            // Reserva
+                            const offsetTop = h.getBoundingClientRect().top + window.scrollY - 196;
+                            window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+                        }
+                    });
+                    
+                    li.appendChild(a);
+                    list.appendChild(li);
+                });
+                
+                if (list.children.length === 0) {
+                    const empty = document.createElement('p');
+                    empty.textContent = 'No hi ha cap secció disponible en esta pàgina.';
+                    empty.style.color = 'var(--sdp-text-suau)';
+                    list.appendChild(empty);
+                }
+                
+                listContainer.appendChild(list);
+                tocSidebar.appendChild(sidebarHeader);
+                tocSidebar.appendChild(listContainer);
+                
+                document.body.appendChild(tocBackdrop);
+                document.body.appendChild(tocSidebar);
+                
+                // Forçar el recàlcul perquè la transició funcione en la primera obertura
+                tocSidebar.offsetHeight;
+            }
+            
+            // Obrir el calaix
+            tocBackdrop.style.display = 'block';
+            setTimeout(() => {
+                tocBackdrop.style.opacity = '1';
+                tocSidebar.style.transform = 'translateX(0)';
+            }, 10);
+        });
+    }
+});
+</script>
+</body>
+</html>
