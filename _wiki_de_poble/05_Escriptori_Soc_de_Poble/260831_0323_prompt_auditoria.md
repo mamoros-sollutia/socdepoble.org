@@ -28,4 +28,7 @@ Com a Consell, auditeu l'arquitectura de regles (les skills a `.agents/skills/`,
 3. **Sobre els Colors a Obsidian**: Hi ha alguna forma enginyosa, potser alterant el `crear_bundle.mjs`, el `design-tokens.json` o la pròpia estructura dels fitxers Markdown, per evitar que Obsidian continue parsejant aquests hexadecimals com a etiquetes sense trencar la funcionalitat d'extracció de les IAs? 
 4. **Sobre el Sistema de Disseny**: Com hem d'abordar aquesta plaga de colors solts? Com millorem el sistema de disseny per a agrupar-los, limitar-los o unificar-los dins de l'estàndard *Pedra Seca* sense trencar l'estètica actual?
 
+A continuació us adjunte una captura de pantalla recent de la xarxa del cervell (Obsidian), on encara podeu veure els satèl·lits persistents que ens molesten:
+*[NOTA PER AL MESTRE: Quan copies aquest prompt al Consell, adjunta ací la imatge de la xarxa d'Obsidian manualment]*
+
 *Avís*: Aporteu respostes separades o col·legiades, però sigueu radicals. Volem automatitzar la higiene mental per no frustrar el Mestre, de manera que quan es tanque un torn, l'escriptori quede cristal·lí sense necessitat d'una ordre humana específica, i el codi siga 100% fidel als principis del disseny.
