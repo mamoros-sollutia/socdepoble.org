@@ -37,7 +37,6 @@ import App from './app/App';
 import { AppDataProvider } from './app/AppDataContext';
 import { destroyToastSystem } from './components/universal/AvisadorEfimer.jsx';
 import styles from './css/index.css?inline';
-import legacyStyles from './css/legacy-components.css?inline';
 import { readThemePreference, resolveTheme } from './config/theme';
 
 /* ───────────────────────────── Error boundary ──────────────────────────── */
@@ -255,7 +254,7 @@ class SocDePobleElement extends BaseElement {
       if (!arrel.querySelector('style[data-sdp-fallback]')) {
         const style = document.createElement('style');
         style.setAttribute('data-sdp-fallback', '');
-        style.textContent = `soc-de-poble { display: block; width: 100%; height: 100%; }\n${styles}\n${legacyStyles}`;
+        style.textContent = `soc-de-poble { display: block; width: 100%; height: 100%; }\n${styles}`;
         arrel.prepend(style);
       }
     }
