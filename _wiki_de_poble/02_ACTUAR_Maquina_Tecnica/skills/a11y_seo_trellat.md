@@ -19,7 +19,7 @@ Este document és una guia de qualitat, no un executor automàtic. Una afirmaci�
 
 - En crear o modificar una ruta pública, component interactiu, formulari o navegació.
 - En canviar contingut indexable, metadades socials o dades estructurades.
-- En homologar una vista per a dispositius antics, especialment l’iPad A10.
+- En homologar una vista al dispositiu de referència del Baseline 2022.
 
 ## Accessibilitat
 
@@ -40,7 +40,7 @@ Este document és una guia de qualitat, no un executor automàtic. Una afirmaci�
 
 ## Rendiment
 
-L’iPad A10 és el tribunal pràctic. LCP, INP, CLS, pes transferit i memòria són mètriques a mesurar, no garanties documentals. Qualsevol llindar de release ha de declarar dispositiu o perfil, xarxa, nombre de mostres i ferramenta; no es pot convertir una estimació puntual en una promesa universal.
+El dispositiu de referència del Baseline 2022 és el tribunal pràctic. LCP, INP, CLS, pes transferit i memòria són mètriques a mesurar, no garanties documentals. Qualsevol llindar de release ha de declarar dispositiu o perfil, xarxa, nombre de mostres i ferramenta; no es pot convertir una estimació puntual en una promesa universal.
 
 ## Evidència mínima d’homologació
 

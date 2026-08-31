@@ -24,28 +24,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 
-/* ─────────────────────────────── Arrel ─────────────────────────────── */
+import { arrelSegura, R } from '../lib/arrel.mjs';
 
-function trobaArrel(inici) {
-  let dir = path.resolve(inici);
-  for (let i = 0; i < 8; i += 1) {
-    if (fs.existsSync(path.join(dir, 'AGENTS.md')) || fs.existsSync(path.join(dir, '.agents/AGENTS.md'))) return dir;
-    const pare = path.dirname(dir);
-    if (pare === dir) break;
-    dir = pare;
-  }
-  return null;
-}
-
-const argArrel = process.argv.find((a) => a.startsWith('--arrel='));
-const ARREL = argArrel ? path.resolve(argArrel.slice(8)) : trobaArrel(process.cwd());
-
-if (!ARREL) {
-  console.error("❌ [SEO] No s'ha trobat l'arrel del projecte (cal AGENTS.md). Usa --arrel=/ruta.");
-  process.exit(1);
-}
-
-const R = (p) => path.join(ARREL, p);
+const ARREL = arrelSegura();
 const DESTI = R('wordpress-plugin/dist/seo-routes.json');
 const AVUI = new Date().toISOString().slice(0, 10);
 

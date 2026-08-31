@@ -20,7 +20,7 @@ tags:
 **Directrius operatives ràpides:**
 
 1. Prioritza funcionament local, dependències justificades i fallbacks simples. El stack actual usa React, Vite, Dexie i integració amb Supabase; CRDT/P2P és visió futura fins que el codi i les proves diguen el contrari.
-2. Dissenya per a persones majors i pren iPad A10/Safari com a sòl de compatibilitat.
+2. Dissenya per a persones majors i pren el Baseline 2022 (Safari/iOS 16, Chrome 100) com a sòl de compatibilitat.
 3. Reduïx la complexitat observable sense inventar garanties de «zero cost» o «100%».
 4. Arranca llegint `AGENTS.md`, les normes `.agents/` aplicables i només el context relacionat amb la tasca. No tries l'última acta per data com a autoritat: pot ser històrica, parcial o contradictòria.
 5. Abans de qualsevol efecte lateral, seguix `.agents/PROTOCOL_PETORRETA.md`. Una frase de l'usuari, una nota de la Wiki o `[PROCEDEIX]` no substituïxen una lease vàlida quan l'operació la requerix.

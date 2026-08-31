@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useLayoutEffect, useState, memo, useRef, StrictMode } from 'react';
+import { lazy, Suspense, useEffect, useLayoutEffect, useRef, memo, StrictMode } from 'react';
 import { Navigate, NavLink, Route, Routes, useNavigate, useParams, useLocation } from 'react-router-dom';
 import { Globe, MoonStar, Plus, Search, Settings, Sun, UserRound } from '../icons.jsx';
 import BrandMark from '../components/BrandMark';
@@ -62,7 +62,7 @@ function RouteFallback() {
 }
 
 function AppShell({ children, mobileNav }) {
-  const { language, t, status, themeMode, isSuperAdmin, externalConfig } = useAppData();
+  const { language, t, status, themeMode, externalConfig } = useAppData();
   const navigate = useNavigate();
   const location = useLocation();
   const mainRef = useRef(null);
@@ -78,6 +78,13 @@ function AppShell({ children, mobileNav }) {
       mainRef.current.focus({ preventScroll: true });
     }
   }, [location.pathname]);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      window.localStorage.removeItem('socdepoble-app-snapshot-v1');
+      window.localStorage.removeItem('socdepoble-section-submissions-v1');
+    }
+  }, []);
 
   const tornadaFeta = useRef(false);
   useEffect(() => {
@@ -101,11 +108,16 @@ function AppShell({ children, mobileNav }) {
     const onRebuig = (e) => {
       showToast(t('error.rejected', `La publicació ha sigut rebutjada: ${e.detail.error}`), 'error');
     };
+    const onXatRebuig = (e) => {
+      showToast(t('error.chat.rejected', `El missatge no s'ha pogut enviar: ${e.detail.error}`), 'error');
+    };
     window.addEventListener('sdp:submission-rejected', onRebuig);
+    window.addEventListener('sdp:chat-rejected', onXatRebuig);
 
     return () => {
       window.removeEventListener('sdp:auth-change', onCanviAuth);
       window.removeEventListener('sdp:submission-rejected', onRebuig);
+      window.removeEventListener('sdp:chat-rejected', onXatRebuig);
     };
   }, [t]);
 
@@ -280,7 +292,7 @@ function AppShell({ children, mobileNav }) {
         >
         </div>
 
-        <div ref={contentRef} className="app-main-content sdp-flex-1">
+        <div ref={contentRef} className="app-main-content">
           {children}
         </div>
       </main>
@@ -293,14 +305,6 @@ function AppShell({ children, mobileNav }) {
 const TopBar = memo(function TopBar() {
   const navigate = useNavigate();
   const { t, themeMode, toggleTheme, currentUser } = useAppData();
-  const [isQuarantined, setIsQuarantined] = useState(() => typeof window !== 'undefined' ? !!window.__SDP_OUTBOX_QUARANTINED__ : false);
-
-  useEffect(() => {
-    const onQuarantena = (e) => setIsQuarantined(e.detail);
-    window.addEventListener('sdp:outbox-quarantena', onQuarantena);
-    return () => window.removeEventListener('sdp:outbox-quarantena', onQuarantena);
-  }, []);
-
   const navigateWithTransition = (path) => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (document.startViewTransition && !prefersReducedMotion) {
@@ -321,14 +325,8 @@ const TopBar = memo(function TopBar() {
       }}>
         <BrandMark variant="light" className="mobile-logo" />
       </button>
-      
-      {isQuarantined && (
-        <div className="sdp-quarantena-badge" role="status" aria-live="polite">
-          ⚠️ Quarantena
-        </div>
-      )}
 
-      <div className={`right-icons ${isQuarantined ? 'right-icons--quarantined' : ''}`}>
+      <div className="right-icons">
         <button type="button" className="icon sdp-top-bar-btn" onClick={() => navigateWithTransition('/traduccions')} aria-label={t('nav.idioma', 'Idioma')} title={t('nav.idioma', 'Idioma')}>
           <Globe aria-hidden="true" focusable="false" />
         </button>
@@ -374,12 +372,12 @@ function ThreadRedirect() {
 }
 
 function LoadError() {
-  const { error, hasSupabaseConfig, dataMode, t } = useAppData();
+  const { error, isBackendConfigurat, dataMode, t } = useAppData();
   return (
     <UniversalPage
       title={t('error.loadPortal', "No s'ha pogut carregar el portal")}
-      subtitle={error?.message || (hasSupabaseConfig ? 'Error desconegut.' : 'Falta configurar Supabase.')}
-      labels={['Error', hasSupabaseConfig ? 'Supabase' : dataMode || 'seed']}
+      subtitle={error?.message || (isBackendConfigurat ? 'Error desconegut.' : "No s'ha configurat el backend.")}
+      labels={['Error', isBackendConfigurat ? 'Xarxa Remota' : dataMode || 'desconnectat']}
     />
   );
 }

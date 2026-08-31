@@ -38,7 +38,7 @@
  *   noms distints, es canvien en dos llocs i prou.
  */
 
-import { getVal, setVal, delVal, getEfimer, setEfimer, delEfimer } from '../config/storage.js';
+import { setVal, delVal, getEfimer, setEfimer, delEfimer } from '../config/storage.js';
 
 /* ───────────────────────── Configuració ───────────────────────── */
 
@@ -119,7 +119,7 @@ export async function entraAmbGoogle(config = {}, resolConfig) {
   const repte = await generaRepte(verificador);
   setEfimer(CLAU_VERIFICADOR, verificador);
 
-  const destiRelay = `${relayUrl(config)}?sdp_origin=${encodeURIComponent(window.location.origin)}`;
+  const destiRelay = `${relayUrl(config)}?sdp_origin=${encodeURIComponent(window.location.origin)}&sdp_path=${encodeURIComponent(window.location.pathname)}`;
   const url = `${supabaseUrl}/auth/v1/authorize`
     + `?provider=google`
     + `&code_challenge=${encodeURIComponent(repte)}`
@@ -134,7 +134,7 @@ export async function entraAmbGoogle(config = {}, resolConfig) {
 
   try {
     emergent.location.href = url;
-  } catch (e) {
+  } catch {
     // Fallback extrem si el navegador bloqueja mutar l'emergent
     window.location.href = url;
     return new Promise(() => {});
@@ -164,7 +164,7 @@ function esperaCodi(emergent, config) {
 
     // Camí 1 — l'emergent ha tornat a l'origen de l'app i ens parla.
     function perMissatge(e) {
-      if (e.origin !== origenRelay) return; // Validació estricta (només el relé pot enviar!)
+      if (e.origin !== origenRelay && e.origin !== window.location.origin) return; // Validació estricta
       if (e.source !== emergent) return;
       const d = e.data;
       if (!d || d.type !== 'sdp:oauth') return;
@@ -186,7 +186,7 @@ function esperaCodi(emergent, config) {
     const vigilant = setInterval(() => {
       try {
         if (emergent.closed) acaba(rebutja, new Error('S\'ha tancat la finestra abans d\'acabar d\'entrar.'));
-      } catch (err) {
+      } catch {
         // Bloqueig de COOP. No podem accedir a emergent.closed, confiem en storage o timeout.
       }
     }, 700);
@@ -215,9 +215,11 @@ function esperaCodi(emergent, config) {
 export async function gestionaTornada(config = {}, resolConfig) {
   if (typeof window === 'undefined') return null;
 
-  const q = new URLSearchParams(window.location.search);
-  const codi = q.get('sdp_code') || q.get('code');
-  const error = q.get('sdp_oauth_error') || q.get('error') || q.get('error_description');
+  const qSearch = new URLSearchParams(window.location.search);
+  const qHash = new URLSearchParams(window.location.hash.substring(1));
+  
+  const codi = qSearch.get('sdp_code') || qSearch.get('code') || qHash.get('sdp_code') || qHash.get('code');
+  const error = qSearch.get('sdp_oauth_error') || qSearch.get('error') || qSearch.get('error_description') || qHash.get('sdp_oauth_error') || qHash.get('error') || qHash.get('error_description');
   if (!codi && !error) return null;
 
   const somEmergent = (() => {
@@ -261,6 +263,11 @@ function netejaRetorn() {
   u.searchParams.delete('code');
   u.searchParams.delete('error');
   u.searchParams.delete('error_description');
+  
+  if (u.hash.includes('code=') || u.hash.includes('sdp_code=') || u.hash.includes('error=')) {
+    u.hash = '';
+  }
+  
   window.history.replaceState(null, '', u.pathname + u.search + u.hash);
 }
 

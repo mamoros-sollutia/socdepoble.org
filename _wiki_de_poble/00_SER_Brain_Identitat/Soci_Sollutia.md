@@ -120,7 +120,7 @@ Cap canvi nascut en Playground entra automàticament al Core.
 
 Tot pas de Playground a Core requereix:
 1. revisió tècnica
-2. validació iPad A10
+2. validació al Baseline 2022
 3. coherència amb Pedra Seca
 4. revisió de governança
 5. aprovació humana final del Mestre Javi quan afecte arquitectura sensible
@@ -152,7 +152,7 @@ Quan Sollutia propose o entregue una peça tècnica:
 
 1. Es rep amb respecte i sense actitud defensiva.
 2. Es compara amb els estàndards de `03_GOVERNAR`.
-3. Es comprova el pes real en iPad A10.
+3. Es comprova el pes real al dispositiu de referència del Baseline 2022.
 4. Es revisa si introdueix dependències, patrons o noms aliens al Mas.
 5. Es decideix si és:
    - adoptable directament

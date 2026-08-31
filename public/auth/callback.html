@@ -87,8 +87,6 @@
     'https://www.socdepoble.cat',
     'https://socdepoble.org',
     'https://www.socdepoble.org',
-    // Entorn de la sòcia. Substituïx pel domini real abans de desplegar.
-    'https://app.sollutia.example',
     // Desenvolupament local. Ports fixos, mai comodins.
     'http://localhost:3340',
     'http://localhost:5173',
@@ -98,6 +96,9 @@
   var params = new URLSearchParams(window.location.search);
   var codi = params.get('code');
   var origen = params.get('sdp_origin');
+  var path = params.get('sdp_path') || '';
+  // Assegurar que path comença per / per evitar rutes relatives estranyes, excepte si està buit
+  if (path && path.charAt(0) !== '/') path = '/' + path;
   var errProveidor = params.get('error_description') || params.get('error');
 
   function mostraError(titol, cos, urlTornar) {
@@ -123,7 +124,7 @@
   }
 
   if (errProveidor) {
-    window.location.replace(origen + '/#sdp_oauth_error=' + encodeURIComponent(errProveidor));
+    window.location.replace(origen + path + '#sdp_oauth_error=' + encodeURIComponent(errProveidor));
     return;
   }
 
@@ -136,7 +137,7 @@
      Fragment i no query: els fragments no viatgen mai al servidor, ni als
      seus registres. A partir d'ací ja estem al domini de l'app, que sap
      acabar la faena (té el verificador). */
-  window.location.replace(origen + '/#sdp_code=' + encodeURIComponent(codi));
+  window.location.replace(origen + path + '#sdp_code=' + encodeURIComponent(codi));
 })();
 </script>
 </body>

@@ -54,7 +54,7 @@ L'agent ha d'avaluar contínuament aquestes mètriques per assegurar l'Automejor
 ## 6. Línies Roges Arquitectòniques (Repàs Breu)
 - **Horitzó P2P/Offline, no baseline actual:** La PWA actual usa React/Vite i els adaptadors que declara el codi. IndexedDB, CRDT o P2P només es poden adoptar com a capacitats futures després d'una prova real, una decisió de governança i un pla de migració reversible. Cap document identitari pot presentar-les com si ja estigueren implementades.
 - **Motor Visual Pedra Seca:** Prohibit Tailwind per a Vestit, obligatori per a Cos. Valors fixos i 48px o `<hr>` estan esborrats de l'existència. Botons a mínim 48px.
-- **Ecotoxicologia (Pragmatisme A10):** Volem suportar l'iPad A10 antic. *Però* si això ofega severament el projecte i genera deute tècnic letal, l'IA té permís (via Aprovació Dual) per elevar els requisits, evitant el fanatisme suïcida.
+- **Ecotoxicologia (Pragmatisme de Baseline):** Suportem el Baseline 2022. Si suportar un motor concret ofega el projecte i genera deute, es puja el baseline amb una entrada al LEDGER, no amb pegats condicionals.
 
 *Fi del perfil. Cap frase prepara ni desbloqueja SDP-LOCK; només el Reflex i les comprovacions verificables poden autoritzar efectes.*
 

@@ -11,6 +11,7 @@ const PAGE_CHROME_MODES = new Set(['none', 'page', 'context', 'full', 'system'])
 
 function isSafeUrl(url) {
   if (!url) return false;
+  // eslint-disable-next-line no-control-regex
   const cleanUrl = url.replace(/[\u0000-\u001F\u007F-\u009F]/g, '');
   if (cleanUrl.startsWith('//')) return false;
   try {
@@ -438,7 +439,7 @@ export function UniversalPage(props) {
   const navigate = useNavigate();
   const appData = useAppData();
   
-  const currentThemeMode = themeMode !== 'light' ? themeMode : (appData?.themeMode || 'light');
+  const currentThemeMode = (themeMode === 'system' || themeMode === 'light') ? (appData?.themeMode || 'light') : themeMode;
   
   const handleConnect = onConnect || (() => navigate('/connectar?item_id=' + encodeURIComponent(title || 'page')));
   

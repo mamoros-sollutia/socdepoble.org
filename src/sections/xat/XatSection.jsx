@@ -256,7 +256,7 @@ function ChatConversation({ thread, messages, onSendMessage, onBack }) {
         {messages.map((msg, i) => (
           <div key={msg.id || i} className={`xat-bubble ${msg.sender === 'me' || msg.is_ai ? 'xat-bubble-me' : 'xat-bubble-other'}`}>
             {msg.sender !== 'me' && !msg.is_ai && (
-              <div style={{ fontSize: '0.75rem', fontWeight: 'bold', color: 'var(--sdp-accent)', marginBottom: 2 }}>
+              <div style={{ fontSize: '0.75rem', fontWeight: 'bold', color: 'var(--sdp-accio-text)', marginBottom: 2 }}>
                 {msg.author || msg.author_name || 'Usuari'}
               </div>
             )}

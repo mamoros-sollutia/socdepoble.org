@@ -6961,7 +6961,7 @@ necessiten revisió abans d'usar-les com a norma:
 - [[plantilla_modo_produccion|Plantilla Modo Producció]]
 - [[plantilla_planificacio|Plantilla Planificació]]
 - [[plantilla_acta_unica|Plantilla Acta Única]]
-- [[plantilla_prompt_iso|Plantilla Prompt ISO històrica]]
+- [[PLANTILLA_ISO_SDP.md|Plantilla Prompt ISO històrica]]
 - [[PLANTILLA_ISO_SDP|Plantilla ISO SDP v2]]
 
 ---
@@ -7373,7 +7373,7 @@ _Fent poble amb [[el_projecte|Sóc de Poble]]! © 2026_
 
 ---
 
-## [FILE: _wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_prompt_iso.md]
+## [FILE: _wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/PLANTILLA_ISO_SDP.md]
 
 
 ---

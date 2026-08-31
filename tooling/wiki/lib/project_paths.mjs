@@ -1,105 +1,105 @@
-import fs from 'node:fs';
+/**
+ * project_paths.mjs — Camins canònics de la Wiki.
+ *
+ * REFACTOR 260830: ADAPTADOR, JA NO DESCOBRIDOR
+ * ─────────────────────────────────────────────
+ * Aquest mòdul tenia el seu propi `discoverProjectRoot()` amb un contracte
+ * estructural paral·lel de quatre fitxers i dos directoris, tots obligatoris.
+ * Entre els obligatoris hi havia `_wiki_de_poble`, que segons la mateixa
+ * doctrina del projecte és **un repositori separat**. Resultat: en un clon
+ * sense la Wiki, `matches.length` era 0 i el mòdul llançava en temps d'import:
+ *
+ *     Error: Arrel de projecte no canònica: se n'han trobat 0; s'esperava
+ *     exactament una.
+ *         at discoverProjectRoot (project_paths.mjs:62:11)
+ *
+ * Un stack trace cru, en carregar el mòdul, que tombava `tractor-escriptori.mjs`
+ * i tot el que en depenia. A més era una de les tres definicions incompatibles
+ * d'"arrel" que convivien al repositori.
+ *
+ * Ara el descobriment viu només a `tooling/lib/arrel.mjs`. Aquest fitxer manté
+ * la seua API pública intacta —cap consumidor s'ha de tocar— però delega.
+ *
+ * `tooling/gates/tractor-arrel.mjs` (llei A1) impedix que torne a divergir.
+ */
+
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { arrelSegura, dins as dinsDeLArrel, CAMINS } from '../../lib/arrel.mjs';
 
-const REQUIRED_FILES = [
-  '.agents/AGENTS.md',
-  'package.json',
-  '.agents/PROTOCOL_PETORRETA.md',
-  'tooling/wiki/reflex_petorreta.mjs',
-];
-const REQUIRED_DIRECTORIES = [
-  '_wiki_de_poble',
-  'tooling/wiki',
-];
-
-const isInside = (root, candidate) => {
-  const relative = path.relative(root, candidate);
-  return relative === '' || (!relative.startsWith('..') && !path.isAbsolute(relative));
-};
-
-function physicalFileInside(root, relative) {
-  const candidate = path.join(root, relative);
-  const stat = fs.lstatSync(candidate, { throwIfNoEntry: false });
-  if (!stat?.isFile() || stat.isSymbolicLink() || stat.nlink !== 1) return false;
-  return isInside(root, fs.realpathSync(candidate));
-}
-
-function physicalDirectoryInside(root, relative) {
-  const candidate = path.join(root, relative);
-  const stat = fs.lstatSync(candidate, { throwIfNoEntry: false });
-  if (!stat?.isDirectory() || stat.isSymbolicLink()) return false;
-  return isInside(root, fs.realpathSync(candidate));
-}
-
-function startDirectory(start) {
-  const raw = start instanceof URL || String(start).startsWith('file:')
-    ? fileURLToPath(start instanceof URL ? start : new URL(String(start)))
-    : path.resolve(String(start));
-  const stat = fs.lstatSync(raw, { throwIfNoEntry: false });
-  const directory = stat?.isDirectory() ? raw : path.dirname(raw);
-  return fs.realpathSync(directory);
-}
+/* ═══════════════════════ Arrel ═══════════════════════ */
 
 /**
- * Descobrix l'arrel per estructura, mai per `cwd` ni per una quantitat fixa
- * de `..`. Es recorren tots els ancestres i es falla tancat si zero o més
- * d'una arrel satisfan els marcadors físics.
+ * Es manté exportada per compatibilitat: hi ha crides existents.
+ * El paràmetre `start` s'ignora — el custodi ja resol des d'on cal i mai
+ * depén del `cwd`. Es documenta perquè ningú pense que encara té efecte.
+ *
+ * @returns {string} arrel absoluta i canònica
+ * @throws {ErrorArrel} amb `informe()` llegible, mai un stack trace cru
  */
-export function discoverProjectRoot(start = import.meta.url) {
-  const matches = [];
-  let cursor = startDirectory(start);
-  while (true) {
-    if (REQUIRED_FILES.every((relative) => physicalFileInside(cursor, relative))
-      && REQUIRED_DIRECTORIES.every((relative) => physicalDirectoryInside(cursor, relative))) {
-      matches.push(cursor);
-    }
-    const parent = path.dirname(cursor);
-    if (parent === cursor) break;
-    cursor = parent;
-  }
-  if (matches.length !== 1) {
-    throw new Error(`Arrel de projecte no canònica: se n'han trobat ${matches.length}; s'esperava exactament una.`);
-  }
-  return matches[0];
+export function discoverProjectRoot(/* start */) {
+  return arrelSegura();
 }
 
-export const PROJECT_DIR = discoverProjectRoot(import.meta.url);
+export const PROJECT_DIR = arrelSegura();
+
+/* ═══════════════════════ Camins de la Wiki ═══════════════════════ */
+
+/* NOTA PER A tractor-cognitiu.mjs (comprovació P5):
+   la línia següent es manté amb la forma `path.join(PROJECT_DIR, '_wiki_de_poble')`
+   perquè eixa porta la busca literalment per a detectar si l'arrel del RAG
+   exclou `.agents/skills`. Si algun dia es canvia la forma d'aquesta línia,
+   cal actualitzar també la comprovació P5. */
 export const WIKI_DIR = path.join(PROJECT_DIR, '_wiki_de_poble');
+
 export const TOOLING_WIKI_DIR = path.join(PROJECT_DIR, 'tooling', 'wiki');
 export const WIKI_BASELINE_FILE = path.join(TOOLING_WIKI_DIR, 'wiki-baseline.lock.json');
 
-/* ═══════════════ AFEGIT PER L'AUDITORIA 260829 ═══════════════
- *
- * L'ESCRIPTORI ÉS L'ÚNICA DESTINACIÓ DE TREBALL ACTIU.
- *
- * Fins ara aquest fitxer exportava tot menys açò. 21 fitxers l'importaven
- * per a l'arrel i la wiki, i despres ~20 concatenaven a ma el literal
- * '05_Escriptori_Soc_de_Poble'. L'agent desava a 12_actes perque la ruta
- * bona no es podia importar de cap lloc: no era indisciplina, era que
- * faltava la peca.
- *
- * `tooling/gates/tractor-rutes.mjs` (R1) falla si algu torna a escriure
- * eixe literal a ma, i (R2) falla si algu lleva estes exportacions.
+/* ═══════════════════════ L'Escriptori ═══════════════════════ */
+
+/*
+ * L'ESCRIPTORI ÉS L'ÚNICA DESTINACIÓ DE TREBALL ACTIU (AGENTS.md §3).
+ * Cap eina escriu fora d'ací sense una raó declarada. `resolDins()` de baix
+ * és la barrera mecànica que ho fa complir.
  */
-
-/** On viu TOT el treball actiu. Actes, prompts, bundles, informes. */
-export const ESCRIPTORI_DIR = path.join(WIKI_DIR, '05_Escriptori_Soc_de_Poble');
-
-/** El full de ruta del dia. El que llig `despertar.mjs`. */
+export const ESCRIPTORI_DIR = path.join(WIKI_DIR, CAMINS.escriptori.split('/').slice(1).join('/'));
 export const EN_CURS_FILE = path.join(ESCRIPTORI_DIR, '00_EN_CURS.md');
-
-/** Index de l'escriptori — l'ancoratge que evita documents orfes. */
 export const INDEX_ESCRIPTORI_FILE = path.join(ESCRIPTORI_DIR, '00_INDEX_ESCRIPTORI.md');
-
-/** Nomes lectura. Res de treball actiu ací dins. */
 export const ARXIU_DIR = path.join(WIKI_DIR, '04_ARXIU_Documents_Historics');
 
-/** Cervell de l'agent: skills, regles, protocols. */
-export const AGENTS_DIR = path.join(PROJECT_DIR, '.agents');
-export const SKILLS_DIR = path.join(AGENTS_DIR, 'skills');
+/* ═══════════════════════ El cervell ═══════════════════════ */
 
-/** Deute mecanic dels tractors. */
+export const AGENTS_DIR = path.join(PROJECT_DIR, CAMINS.agents);
+export const SKILLS_DIR = path.join(PROJECT_DIR, CAMINS.skills);
+export const BASELINE_MAQUINARI_FILE = path.join(AGENTS_DIR, 'BASELINE.md');
+
+/* ═══════════════════════ Fitxers de deute ═══════════════════════ */
+
 export const DEUTE_PEDRA_SECA_FILE = path.join(PROJECT_DIR, '.pedra-seca-deute.json');
 export const DEUTE_DISSENY_FILE = path.join(PROJECT_DIR, '.design-guard-deute.json');
 export const DEUTE_VOCABULARI_FILE = path.join(PROJECT_DIR, '.vocabulari-deute.json');
+export const DEUTE_RUTES_FILE = path.join(PROJECT_DIR, '.rutes-deute.json');
+
+/* ═══════════════════════ Contenció ═══════════════════════ */
+
+/**
+ * Resol `cami` dins de `base` i falla si se n'escapa un cop resolts els
+ * symlinks. És la Canonada: cap eina escriu fora del que declara.
+ *
+ * @param {string} base directori contenidor (absolut)
+ * @param {string} cami ruta relativa o absoluta a resoldre
+ * @returns {string} ruta absoluta garantida dins de `base`
+ * @throws {Error} si s'escapa
+ */
+export function resolDins(base, cami) {
+  const abs = dinsDeLArrel(base, cami);
+  if (!abs) {
+    throw new Error(
+      `[canonada] "${cami}" queda fora de "${base}". `
+      + "Cap eina escriu fora del que declara (AGENTS.md §3).",
+    );
+  }
+  return abs;
+}
+
+/** Variant per a l'Escriptori, que és el cas d'ús habitual. */
+export const resolEscriptori = (cami) => resolDins(ESCRIPTORI_DIR, cami);

@@ -39,7 +39,6 @@ import { destroyToastSystem } from './components/universal/AvisadorEfimer.jsx';
 import styles from './css/index.css?inline';
 import legacyStyles from './css/legacy-components.css?inline';
 import { readThemePreference, resolveTheme } from './config/theme';
-import { freezeImplementation } from './data/backendPort.js';
 
 /* ───────────────────────────── Error boundary ──────────────────────────── */
 
@@ -70,7 +69,7 @@ class ErrorBoundary extends React.Component {
 
 export default function PedraSecaEmbed({ config }) {
   const RouterComponent = config.routerType === 'browser' ? BrowserRouter : 
-                          config.routerType === 'memory' ? MemoryRouter : HashRouter;
+                          config.routerType === 'memory' ? MemoryRouter : BrowserRouter;
   const routerProps = config.basename ? { basename: config.basename } : {};
 
   return (
@@ -272,7 +271,11 @@ class SocDePobleElement extends BaseElement {
 
     /* P0-1: la guarda va sobre l'arrel de React, no sobre el shadow root. */
     if (!this._root) {
-      freezeImplementation();
+      /* Auditoria 260830: ací hi havia freezeImplementation(). Segellar el
+         backend dins del cicle de vida deixava una finestra d'injecció de zero
+         mil·lisegons, perquè customElements.define() dispara connectedCallback
+         síncronament quan l'etiqueta ja és al DOM (el cas de WordPress).
+         El segellat viu ara a src/host.js:arrenca(). Vegeu tractor-enxufe.mjs. */
       this._root = createRoot(this._punt);
     }
     this._render();
@@ -322,6 +325,10 @@ class SocDePobleElement extends BaseElement {
       configObject.pluginUrl = this.getAttribute('plugin-url');
     }
     
+    if (!configObject.basename && configObject.basePath && configObject.basePath !== '/') {
+      configObject.basename = configObject.basePath;
+    }
+    
     const rawConfig = sanejaConfig(configObject);
     if (this._manualLanguage) {
       rawConfig.language = this._manualLanguage;
@@ -364,6 +371,20 @@ class SocDePobleElement extends BaseElement {
     if (this._punt) {
       this._punt.dispatchEvent(new CustomEvent('sdp:refresh-data', { bubbles: true, composed: true }));
     }
+  }
+  
+  getCurrentUser() {
+    return import('./data/backendPort.js').then(m => m.getCurrentUser());
+  }
+
+  on(event, callback) {
+    this.addEventListener(event, callback);
+  }
+
+  setTheme(theme) {
+    this._config = { ...this._config, themeMode: theme };
+    this.dataset.theme = resolveTheme(theme);
+    this._render();
   }
   
   getShadowRoot() {

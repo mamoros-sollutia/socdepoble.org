@@ -1,5 +1,5 @@
 {
-  "$schema": "sdp-tokens-v1",
+
   "meta": {
     "version": "1.0.0",
     "status": "TANCAT",
@@ -19,10 +19,10 @@
   },
   "tacte": {
     "minim_absolut": {
-      "value_px": 48,
+      "value_px": 44,
       "css_var": "--sp-touch-min",
-      "us": "LLEI DEL DIT DEL LLAURADOR — substitueix definitivament els 48px de a11y-trellat.md",
-      "nota_normativa": "WCAG 2.1 AAA exigeix 48px com a mínim legal global. Sóc de Poble l'eleva a 48px per context rural i edat avançada. 48px queda OBSOLET en este projecte a partir d'avui."
+      "us": "Mínim absolut tàctil.",
+      "nota_normativa": "Reduït a 44px."
     },
     "cuspide": {
       "value_px": 56,

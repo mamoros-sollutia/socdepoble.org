@@ -38,7 +38,7 @@ Les concordances entre l'origen i el Mas electrònic actual són totals:
 * **Productivitat i Recursos**
   * Assistència de la Ment Colmena per processar dades. La **[[03_Consola_Termodinamica|Consola Termodinàmica]]** és un marc d'observació; cada indicador necessita fórmula, font i llindar abans de considerar-se una mesura real.
 * **Sostenibilitat Rural**
-  * iPad A10 i Safari són el sòl de disseny. El funcionament offline extrem és un objectiu que només es pot declarar assegurat després de proves reproduïbles de desconnexió, persistència i recuperació.
+  * El Baseline 2022 (Safari/iOS 16, Chrome 100) és el sòl de disseny. El funcionament offline extrem és un objectiu que només es pot declarar assegurat després de proves reproduïbles de desconnexió, persistència i recuperació.
 * **Viver de Comunitat**
   * L'eina desapareix i no fa nosa gràcies a l'optimització de codi. Les persones recuperen el protagonisme a l'horta.
 

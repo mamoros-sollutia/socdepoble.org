@@ -1,6 +1,6 @@
 {
   "LLEI_01_CLASSE_ORFENA": {
-    "max": 106,
+    "max": 113,
     "coneguts": [
       ".app-brand__mark  →  src/app/App.jsx",
       ".badge-remove  →  src/sections/connectar/ConnectarSection.jsx",
@@ -11,6 +11,7 @@
       ".card__body  →  src/sections/detail/PageDetailSection.jsx",
       ".card__text  →  src/sections/connectar/ConnectarSection.jsx",
       ".card__title  →  src/sections/detail/PageDetailSection.jsx",
+      ".categories-list  →  src/sections/notes/NotesSection.jsx",
       ".chat-empty  →  src/sections/notes/NotesSection.jsx",
       ".connect-card  →  src/sections/connectar/ConnectarSection.jsx",
       ".connect-card--active  →  src/sections/connectar/ConnectarSection.jsx",
@@ -21,10 +22,6 @@
       ".connect-panel--wide  →  src/sections/connectar/ConnectarSection.jsx",
       ".connect-panel__body  →  src/sections/connectar/ConnectarSection.jsx",
       ".connect-panel__head  →  src/sections/connectar/ConnectarSection.jsx",
-      ".conversation-button  →  src/sections/notes/NotesSection.jsx",
-      ".conversation-button--active  →  src/sections/notes/NotesSection.jsx",
-      ".conversation-meta  →  src/sections/notes/NotesSection.jsx",
-      ".conversation-preview  →  src/sections/notes/NotesSection.jsx",
       ".detail-content  →  src/sections/detail/PageDetailSection.jsx",
       ".detail-content--plain  →  src/sections/detail/detailRichText.jsx",
       ".detail-content__paragraph  →  src/sections/detail/detailRichText.jsx",
@@ -50,6 +47,12 @@
       ".devices-status  →  src/sections/dispositius/DevicesSection.jsx",
       ".devices-status--  →  src/sections/dispositius/DevicesSection.jsx",
       ".editor  →  src/sections/notes/NotesSection.jsx",
+      ".editor-content  →  src/sections/notes/NotesSection.jsx",
+      ".editor-hero-image  →  src/sections/notes/NotesSection.jsx",
+      ".editor-lead-input  →  src/sections/notes/NotesSection.jsx",
+      ".editor-subtitle-input  →  src/sections/notes/NotesSection.jsx",
+      ".editor-title-input  →  src/sections/notes/NotesSection.jsx",
+      ".editor-toolbar-actions  →  src/sections/notes/NotesSection.jsx",
       ".feed-grid  →  src/sections/profile/ProfileSection.jsx",
       ".folders  →  src/sections/notes/NotesSection.jsx",
       ".folders-list  →  src/sections/notes/NotesSection.jsx",
@@ -63,6 +66,8 @@
       ".media-frame--contain  →  src/sections/detail/PageDetailSection.jsx",
       ".mobile-logo  →  src/app/App.jsx",
       ".note-card  →  src/sections/dispositius/DevicesSection.jsx",
+      ".notes-tags-block  →  src/sections/notes/NotesSection.jsx",
+      ".page-content  →  src/sections/notes/NotesSection.jsx",
       ".page-intro  →  src/components/universal/UniversalComponents.jsx",
       ".pill  →  src/sections/connectar/ConnectarSection.jsx",
       ".pill--active  →  src/sections/login/LoginSection.jsx",
@@ -92,12 +97,14 @@
       ".section-item-card__subtitle  →  src/sections/detail/PageDetailSection.jsx",
       ".section-search  →  src/sections/connectar/ConnectarSection.jsx",
       ".section-title  →  src/sections/connectar/ConnectarSection.jsx",
+      ".sistema  →  src/sections/notes/NotesSection.jsx",
       ".sp-card--avis  →  src/components/universal/UniversalComponents.jsx",
       ".sp-card-time  →  src/components/universal/UniversalComponents.jsx",
       ".split-grid  →  src/sections/profile/ProfileSection.jsx",
       ".stack-grid  →  src/sections/mercat/detail/detailSectionMeta.jsx",
       ".sw-pedra-50  →  src/sections/disseny/DesignSection.jsx",
       ".tag-input-row  →  src/sections/connectar/ConnectarSection.jsx",
+      ".tags-list  →  src/sections/notes/NotesSection.jsx",
       ".text-panel__head  →  src/sections/multimedia/MultimediaSection.jsx",
       ".timeline  →  src/sections/multimedia/MultimediaSection.jsx",
       ".toc-level-  →  src/components/universal/UniversalComponents.jsx",
@@ -105,13 +112,13 @@
       ".toggle-button--active  →  src/sections/connectar/ConnectarSection.jsx",
       ".toggle-row  →  src/sections/connectar/ConnectarSection.jsx",
       ".topbar  →  src/sections/notes/NotesSection.jsx",
-      ".topbar__actions  →  src/sections/notes/NotesSection.jsx",
       ".topbar__title  →  src/sections/notes/NotesSection.jsx",
-      ".universal-content  →  src/sections/disseny/DesignSection.jsx"
+      ".universal-content  →  src/sections/disseny/DesignSection.jsx",
+      ".universal-page  →  src/sections/notes/NotesSection.jsx"
     ]
   },
   "LLEI_02_TOKEN_FANTASMA": {
-    "max": 29,
+    "max": 32,
     "coneguts": [
       "--mida  →  src/css/index.css",
       "--sdp-bg-superficie  →  src/css/index.css",
@@ -122,6 +129,7 @@
       "--sdp-font-family-display  →  src/css/index.css",
       "--sdp-ombra-5  →  src/css/index.css",
       "--sdp-ombra-flotant  →  src/css/index.css",
+      "--sdp-ombra-suau  →  src/sections/notes/NotesSection.jsx",
       "--sdp-pedra-75  →  src/css/index.css",
       "--sdp-radi-2xl  →  src/css/legacy-components.css",
       "--sdp-radi-lg  →  src/css/index.css",
@@ -138,6 +146,8 @@
       "--sdp-text-fort  →  src/css/index.css",
       "--sdp-text-normal  →  src/css/index.css",
       "--sdp-text-principal  →  src/css/index.css",
+      "--sdp-text-principal  →  src/sections/notes/NotesSection.jsx",
+      "--sdp-text-secundari  →  src/sections/notes/NotesSection.jsx",
       "--sdp-vora-destacada  →  src/css/index.css",
       "--sdp-vora-div  →  src/css/index.css",
       "--sdp-vora-suau  →  src/css/legacy-components.css",
@@ -145,7 +155,7 @@
     ]
   },
   "LLEI_03_ESTIL_EN_LINIA": {
-    "max": 88,
+    "max": 165,
     "coneguts": [
       "src/components/SectionItemCard.jsx",
       "src/components/universal/AvisadorEfimer.jsx",
@@ -160,6 +170,7 @@
       "src/sections/mur/MurSection.jsx",
       "src/sections/mur/articles/Aplec2023Article.jsx",
       "src/sections/mur/detail/detailSectionMeta.jsx",
+      "src/sections/notes/NotesSection.jsx",
       "src/sections/search/SearchSection.jsx",
       "src/sections/text/TextSection.jsx",
       "src/sections/translations/TranslationsSection.jsx",
@@ -179,10 +190,11 @@
     "coneguts": []
   },
   "LLEI_06_ENCAPSULAMENT": {
-    "max": 12,
+    "max": 13,
     "coneguts": [
       "src/app/App.jsx  →  document.body",
       "src/app/App.jsx  →  document.documentElement",
+      "src/app/App.jsx  →  document.head",
       "src/app/AppDataContext.jsx  →  document.documentElement",
       "src/components/universal/AvisadorEfimer.jsx  →  document.body",
       "src/hooks/useSEO.js  →  document.head"
@@ -198,5 +210,11 @@
       "src/sections/connectar/ConnectarSection.css",
       "src/sections/disseny/markdown.js"
     ]
+  },
+  "_segell": {
+    "congelat": "2026-08-30T11:48:02.910Z",
+    "recompte": null,
+    "porta": "tooling/brain/tractor-pedra-seca.mjs",
+    "avis": "Açò és deute DECLARAT, no resolt. Aquest número només pot baixar. Regenerar el baseline per a fer passar una porta és tornar al problema de zero."
   }
 }

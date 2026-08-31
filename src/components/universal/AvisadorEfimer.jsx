@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 
-export function AvisadorEfimer({ missatge, durada = 3000, onClose }) {
+export function AvisadorEfimer({ missatge, tipus, durada = 3000, onClose }) {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
@@ -27,7 +27,7 @@ export function AvisadorEfimer({ missatge, durada = 3000, onClose }) {
         backgroundColor: 'var(--sdp-fons-invers)',
         color: 'var(--sdp-text-invers)',
         padding: 'var(--sdp-space-3) var(--sdp-space-5)',
-        borderRadius: 'var(--sdp-radi-pill, 9999px)',
+        borderRadius: 'var(--sdp-radi-pastilla)',
         boxShadow: 'var(--sdp-ombra-2)',
         zIndex: 9999,
         fontWeight: '500',
@@ -43,7 +43,11 @@ export function AvisadorEfimer({ missatge, durada = 3000, onClose }) {
 let sharedRoot = null;
 let sharedContainer = null;
 
-export function showToast(missatge, durada = 3000) {
+export function showToast(missatge, tipus, durada = 3000) {
+  if (typeof tipus === 'number') {
+    durada = tipus;
+    tipus = 'default';
+  }
   if (typeof document === 'undefined') return;
   
   // Neteja qualsevol timer pendent de destrucció
@@ -85,6 +89,7 @@ export function showToast(missatge, durada = 3000) {
     sharedRoot.render(
       <AvisadorEfimer 
         missatge={missatge} 
+        tipus={tipus}
         durada={durada} 
         onClose={() => {
           if (sharedContainer) {

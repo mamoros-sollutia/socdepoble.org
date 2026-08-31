@@ -14,7 +14,7 @@ tags:
 
 Este protocol **no està implementat en la baseline actual**. No existixen
 `src/forja/` ni `src/core/`, i tampoc hi ha una comanda operativa
-`sdp test --profile ipad-a10`. Per tant, cap agent pot usar este document per a
+`npm run porta`. Per tant, cap agent pot usar este document per a
 moure components, rebutjar React o declarar una homologació superada.
 
 La decisió canònica vigent és la de [[DOC_Governanca]] i
@@ -32,7 +32,7 @@ Abans d'activar este protocol caldria:
 1. una ADR que definisca el problema, la frontera i el cost de mantindre dos
    models de components;
 2. crear les rutes reals i adaptar les regles d'agents;
-3. implementar una prova reproduïble en iPad A10/Safari;
+3. implementar una prova reproduïble al Baseline 2022 (Safari/iOS 16);
 4. definir compatibilitat, accessibilitat i funcionament offline mesurables;
 5. integrar el gate en CI i demostrar-lo amb una regressió negativa;
 6. establir un rollback i una política que impedisca duplicar components.

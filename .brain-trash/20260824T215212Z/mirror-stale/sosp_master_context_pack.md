@@ -2503,7 +2503,7 @@ Els únics logos vàlids per al projecte s'ubiquen a `public/assets/system/ui/`.
 - **Rectangular Blanc (Per a Dark Mode):** `/assets/system/ui/logo-socdepoble-rect-blanc.svg`
 - **Rectangular ...
 
-### _wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_prompt_iso.md
+### _wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/PLANTILLA_ISO_SDP.md
 
 
 ### _wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_planificacio.md

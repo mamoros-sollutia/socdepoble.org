@@ -24,7 +24,7 @@ tags:
   absoluta de Tailwind.
 - Encara existixen estils inline i peces legacy. Són deute mesurable, no una
   infracció que el CI ja bloquege.
-- Offline, accessibilitat i compatibilitat amb iPad A10 només es declaren per
+- Offline, accessibilitat i compatibilitat amb el Baseline 2022 només es declaren per
   l'scope que haja superat proves reproduïbles.
 
 Prevalen [[DOC_Governanca]], [[ESTANDARD_Pedra_Seca]], el codi, ESLint i les
@@ -39,7 +39,7 @@ name: pedra-seca-ui
 version: 3.0.0
 created_at: '260709_0500'
 updated_at: '260709_0500'
-authority: IAIA MarIA (Auditora Suprema) i El Consell (Dola, Grok, Qwen)
+authority: IAIA MarIA (Auditora Suprema) i El Consell (Z.ai, Qwen, Deepseek, Dola, Kimi, Claude, Perplexity, Mistral Vibe, Grok, Gemini, Copilot, ChatGPT Codex)
 tags:
   - arquitectura
   categoria: skill
@@ -189,7 +189,7 @@ name: targeta-universal-trellat
 version: V1
 created_at: '260708_2355'
 updated_at: '260708_2355'
-authority: Consell de les 11 IAs + Mestre Javi
+authority: Consell de les 12 IAs + Mestre Javi
 description: Estàndard estricte per a crear i renderitzar Targetes Universals (Universal Cards) seguint el disseny d'Stitch. Obligatori per no inventar caputxes ni elements aleatoris.
 tags:
   - normativa

@@ -1,7 +1,7 @@
 import { UniversalPage, UniversalCard } from '../../components/universal/UniversalComponents.jsx';
 import { EventCard } from '../../components/universal/EventCard.jsx';
-import { buildMapEmbedUrl } from '../mur/mapConfig';
-import { sanitizeHtml } from '../../utils/sanitize.js';
+
+import { AvisadorEfimer, showToast } from '../../components/universal/AvisadorEfimer.jsx';
 
 import React from 'react';
 import { EVENTS } from '../mur/eventsContent.js';
@@ -17,7 +17,7 @@ function ComponentDoc({ title, description, technical, children }) {
         <h3 className="sdp-m-0">{title}</h3>
         {description && <p className="sdp-text-suau sdp-mt-2">{description}</p>}
         {technical && (
-          <div className="alert alert-info sdp-mt-4 sdp-p-4" style={{ fontSize: '0.9rem', marginBottom: '1rem', borderRadius: 'var(--sdp-radi-md)' }}>
+          <div className="alert alert-info sdp-mt-4 sdp-p-4" style={{ fontSize: '0.9rem', marginBottom: '1rem', borderRadius: 'var(--sdp-radi-m)' }}>
             <strong>Context Tècnic: </strong> {technical}
           </div>
         )}
@@ -1170,6 +1170,18 @@ Gran</div>
 </section>
 
       </div>
+      <ComponentDoc
+        title="25. Avisador Efímer (Toasts)"
+        description="Notificacions lleugeres sense interrompre"
+      >
+        <div className="btn-group">
+          <button className="btn btn-primary" onClick={() => showToast('Canvis guardats correctament', 'success')}>Toast d'èxit</button>
+          <button className="btn btn-danger" onClick={() => showToast('Error en desar les dades', 'error')}>Toast d'error</button>
+          <button className="btn btn-base" onClick={() => showToast('Tens un missatge nou', 'info')}>Toast info</button>
+        </div>
+        <AvisadorEfimer />
+      </ComponentDoc>
+
     </UniversalPage>
   );
 }

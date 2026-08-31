@@ -6,25 +6,27 @@
     ]
   },
   "classe-forastera": {
-    "max": 27,
+    "max": 23,
     "identitats": [
       "classe-forastera|src/sections/connectar/ConnectarSection.jsx|connect-card",
       "classe-forastera|src/sections/connectar/ConnectarSection.jsx|connect-card--active",
-      "classe-forastera|src/sections/connectar/ConnectarSection.jsx|conversation-button--active",
       "classe-forastera|src/sections/connectar/ConnectarSection.jsx|toggle-button",
       "classe-forastera|src/sections/connectar/ConnectarSection.jsx|toggle-button--active",
       "classe-forastera|src/sections/dispositius/DevicesSection.jsx|devices-bubble",
       "classe-forastera|src/sections/dispositius/DevicesSection.jsx|devices-bubble--me",
       "classe-forastera|src/sections/dispositius/DevicesSection.jsx|devices-bubble--other",
       "classe-forastera|src/sections/dispositius/DevicesSection.jsx|devices-status",
-      "classe-forastera|src/sections/notes/NotesSection.jsx|conversation-button--active",
-      "classe-forastera|src/sections/notes/NotesSection.jsx|folder-button",
-      "classe-forastera|src/sections/notes/NotesSection.jsx|folder-button--active",
-      "classe-forastera|src/sections/notes/NotesSection.jsx|notes-column",
-      "classe-forastera|src/sections/notes/NotesSection.jsx|notes-column--editor",
-      "classe-forastera|src/sections/notes/NotesSection.jsx|notes-column--folders",
-      "classe-forastera|src/sections/notes/NotesSection.jsx|notes-column--list",
-      "classe-forastera|src/sections/notes/NotesSection.jsx|notes-column--mobile",
+      "classe-forastera|src/sections/notes/NotesSection.jsx|categories-list",
+      "classe-forastera|src/sections/notes/NotesSection.jsx|editor-content",
+      "classe-forastera|src/sections/notes/NotesSection.jsx|editor-hero-image",
+      "classe-forastera|src/sections/notes/NotesSection.jsx|editor-lead-input",
+      "classe-forastera|src/sections/notes/NotesSection.jsx|editor-subtitle-input",
+      "classe-forastera|src/sections/notes/NotesSection.jsx|editor-title-input",
+      "classe-forastera|src/sections/notes/NotesSection.jsx|editor-toolbar-actions",
+      "classe-forastera|src/sections/notes/NotesSection.jsx|notes-tags-block",
+      "classe-forastera|src/sections/notes/NotesSection.jsx|page-content",
+      "classe-forastera|src/sections/notes/NotesSection.jsx|tags-list",
+      "classe-forastera|src/sections/notes/NotesSection.jsx|universal-page",
       "classe-forastera|src/sections/profile/ProfileSection.jsx|card-link--active"
     ]
   },
@@ -34,5 +36,11 @@
       "classe-opaca|src/components/universal/UniversalComponents.jsx|toc-level-${…}",
       "classe-opaca|src/sections/dispositius/DevicesSection.jsx|devices-status--${…}"
     ]
+  },
+  "_segell": {
+    "congelat": "2026-08-30T11:48:00.747Z",
+    "recompte": 27,
+    "porta": "tooling/gates/tractor-vocabulari.mjs",
+    "avis": "Açò és deute DECLARAT, no resolt. Aquest número només pot baixar. Regenerar el baseline per a fer passar una porta és tornar al problema de zero."
   }
 }

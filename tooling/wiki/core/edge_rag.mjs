@@ -1,7 +1,7 @@
 // core/edge_rag.mjs — Cercador semàntic local: TF-IDF + similitud cosinus. Zero dependències,
 // zero vector DB extern, pura matemàtica. Índex invertit (terme -> llista de docs) perquè una
 // consulta només toque els documents rellevants, no tot el corpus. A ~500 .md el corpus sencer
-// (Maps dispersos, mai els fitxers originals sencers) cap folgadament dins la RAM d'un iPad A10:
+// (Maps dispersos, mai els fitxers originals sencers) cap folgadament dins la RAM del dispositiu de referència:
 // el text cru de cada fitxer es descarta tan bon punt es tokenitza, no es reté enlloc.
 import { readFile, readdir } from 'node:fs/promises';
 import { join, relative } from 'node:path';

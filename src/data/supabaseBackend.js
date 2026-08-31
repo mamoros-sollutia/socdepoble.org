@@ -1,18 +1,13 @@
-import { APP_SEED, APP_SEED_VERSION, CHAT_MESSAGE_SEED, CHAT_THREADS, getDefaultUserId } from './appSeed.js';
+import { APP_SEED, APP_SEED_VERSION, CHAT_THREADS, getDefaultUserId } from './appSeed.js';
 import { getVal, setVal, delVal } from '../config/storage.js';
-import { getSnapshot, saveSnapshot, esborraTot } from './outbox.js';
 import { entraAmbGoogle, gestionaTornada } from './oauthRelay.js';
 import { mergeById, mapSectionSubmissionToItem } from './mapejadorSeccions.js';
 
-/**
- * El mode simulat només ha d'existir en desenvolupament. En un build de
+/** El mode simulat només ha d'existir en desenvolupament. En un build de
  * producció sense config, l'aplicació ha de dir que no pot entrar — no
  * regalar una sessió d'administrador.
  */
-const MODE_SIMULAT_PERMES =
-  typeof import.meta !== 'undefined' && import.meta.env
-    ? import.meta.env.DEV === true
-    : false;
+const MODE_SIMULAT_PERMES = false; // Bloquejat: cap simulació en producció
 
 function usuariSimulat(email, name) {
   if (!MODE_SIMULAT_PERMES) {
@@ -30,9 +25,6 @@ function usuariSimulat(email, name) {
   };
 }
 
-const DEV_FALLBACK_STORAGE_KEY = 'socdepoble-dev-chat-messages';
-const APP_SNAPSHOT_STORAGE_KEY = 'socdepoble-app-snapshot-v1';
-const SECTION_SUBMISSIONS_STORAGE_KEY = 'socdepoble-section-submissions-v1';
 const DATA_SYNC_CHANNEL_NAME = 'socdepoble-data-sync-v1';
 
 function generateUUID() {
@@ -217,10 +209,7 @@ async function buildSeedAppData(ownerUserId = getDefaultUserId()) {
     ownerUserId,
     agents: APP_SEED.agents,
     chatThreads: APP_SEED.chatThreads,
-    chatMessages: mergeChatMessages(
-      APP_SEED.chatMessages.filter((message) => message.ownerUserId === ownerUserId),
-      await loadDevFallbackMessages(ownerUserId)
-    ),
+    chatMessages: APP_SEED.chatMessages.filter((message) => message.ownerUserId === ownerUserId),
     feedPosts: APP_SEED.feedPosts,
     marketItems: APP_SEED.marketItems,
     events: APP_SEED.events,
@@ -234,164 +223,25 @@ async function buildSeedAppData(ownerUserId = getDefaultUserId()) {
   };
 }
 
-function sanitizeSnapshotArray(value, fallback) {
-  return Array.isArray(value) ? value : fallback;
-}
-
-async function saveLocalAppSnapshot(snapshot) {
-  if (typeof window === 'undefined') return;
-  try {
-    await saveSnapshot(APP_SNAPSHOT_STORAGE_KEY + '-' + snapshot.ownerUserId, snapshot);
-  } catch (error) {
-    console.warn('saveLocalAppSnapshot error:', error);
-  }
-}
-
-export async function loadLocalAppSnapshot(ownerUserId = getDefaultUserId()) {
-  const fallback = await buildSeedAppData(ownerUserId);
-  if (typeof window === 'undefined') return fallback;
-
-  try {
-    const parsed = await getSnapshot(APP_SNAPSHOT_STORAGE_KEY + '-' + ownerUserId);
-    if (!parsed)  {
-      await saveLocalAppSnapshot(fallback);
-      return fallback;
-    }
-
-    
-    if (!parsed || typeof parsed !== 'object') {
-      await saveLocalAppSnapshot(fallback);
-      return fallback;
-    }
-
-    const snapshot = {
-      ...fallback,
-      ...parsed,
-      ownerUserId,
-      agents: sanitizeSnapshotArray(parsed.agents, fallback.agents),
-      chatThreads: sanitizeSnapshotArray(parsed.chatThreads, fallback.chatThreads),
-      feedPosts: sanitizeSnapshotArray(parsed.feedPosts, fallback.feedPosts),
-      marketItems: sanitizeSnapshotArray(parsed.marketItems, fallback.marketItems),
-      events: sanitizeSnapshotArray(parsed.events, fallback.events),
-      towns: sanitizeSnapshotArray(parsed.towns, fallback.towns),
-      mediaItems: sanitizeSnapshotArray(parsed.mediaItems, fallback.mediaItems),
-      noteFolders: sanitizeSnapshotArray(parsed.noteFolders, fallback.noteFolders),
-      notes: sanitizeSnapshotArray(parsed.notes, fallback.notes),
-      pages: sanitizeSnapshotArray(parsed.pages, fallback.pages),
-      sectionSubmissions: sanitizeSnapshotArray(
-        parsed.sectionSubmissions,
-        await loadLocalSectionSubmissions(ownerUserId)
-      ),
-      chatMessages: mergeChatMessages(
-        sanitizeSnapshotArray(parsed.chatMessages, fallback.chatMessages).filter(
-          (message) => message.ownerUserId === ownerUserId
-        ),
-        await loadDevFallbackMessages(ownerUserId)
-      ),
-      seedVersion: APP_SEED_VERSION
-    };
-
-    return snapshot;
-  } catch {
-    await saveLocalAppSnapshot(fallback);
-    return fallback;
-  }
-}
-
-async function persistMessagesToLocalSnapshot(messages, ownerUserId = getDefaultUserId()) {
-  const current = await loadLocalAppSnapshot(ownerUserId);
-  const merged = mergeChatMessages(current.chatMessages, messages);
-  const nextSnapshot = {
-    ...current,
-    ownerUserId,
-    chatMessages: merged
-  };
-  await saveLocalAppSnapshot(nextSnapshot);
-  await saveDevFallbackMessages(merged, ownerUserId);
-  return merged;
-}
-
-async function loadDevFallbackMessages(ownerUserId = getDefaultUserId()) {
-  if (typeof window === 'undefined') {
-    return CHAT_MESSAGE_SEED;
-  }
-
-  try {
-    const parsed = await getSnapshot(DEV_FALLBACK_STORAGE_KEY + '-' + ownerUserId);
-    if (!parsed)  return CHAT_MESSAGE_SEED;
-    
-    if (!Array.isArray(parsed)) return CHAT_MESSAGE_SEED;
-    return parsed.filter((message) => message.ownerUserId === ownerUserId);
-  } catch {
-    return CHAT_MESSAGE_SEED;
-  }
-}
-
-async function saveDevFallbackMessages(messages, ownerUserId = getDefaultUserId()) {
-  if (typeof window === 'undefined') return;
-  try {
-    await saveSnapshot(DEV_FALLBACK_STORAGE_KEY + '-' + ownerUserId, messages);
-  } catch (error) {
-    console.warn('saveDevFallbackMessages error:', error);
-  }
-}
-
-async function loadLocalSectionSubmissions(ownerUserId = getDefaultUserId()) {
-  if (typeof window === 'undefined') return [];
-
-  try {
-    const parsed = await getSnapshot(SECTION_SUBMISSIONS_STORAGE_KEY + '-' + ownerUserId);
-    if (!parsed)  return [];
-    
-    if (!Array.isArray(parsed)) return [];
-    return parsed.filter((submission) => submission?.ownerUserId === ownerUserId || !submission?.ownerUserId);
-  } catch {
-    return [];
-  }
-}
-
-async function saveLocalSectionSubmissions(submissions, ownerUserId = getDefaultUserId()) {
-  if (typeof window === 'undefined') return;
-  try {
-    await saveSnapshot(SECTION_SUBMISSIONS_STORAGE_KEY + '-' + ownerUserId, submissions);
-  } catch (error) {
-    console.warn('saveLocalSectionSubmissions error:', error);
-  }
-}
-
-async function persistSectionSubmissionToLocal(submission, ownerUserId = getDefaultUserId()) {
-  const current = await loadLocalSectionSubmissions(ownerUserId);
-  const next = mergeById(current, [submission]);
-  await saveLocalSectionSubmissions(next, ownerUserId);
-  return next;
-}
 
 
 
-export async function applySectionSubmissionsToData(data, ownerUserId = getDefaultUserId()) {
-  const remoteSubmissions = Array.isArray(data.sectionSubmissions) ? data.sectionSubmissions : [];
-  const localSubmissions = await loadLocalSectionSubmissions(ownerUserId);
-  const mergedSubmissions = mergeById(remoteSubmissions, localSubmissions);
 
-  const sectionItems = mergedSubmissions.reduce((accumulator, submission) => {
-    const item = mapSectionSubmissionToItem(submission);
-    if (!CONNECTABLE_SECTION_IDS.has(item.sectionId)) return accumulator;
-    const items = accumulator[item.sectionId] || [];
-    items.push(item);
-    accumulator[item.sectionId] = items;
-    return accumulator;
-  }, {});
 
-  return {
-    ...data,
-    sectionSubmissions: mergedSubmissions,
-    feedPosts: mergeById(data.feedPosts || [], sectionItems.mur || []),
-    marketItems: mergeById(data.marketItems || [], sectionItems.mercat || []),
-    events: mergeById(data.events || [], sectionItems.events || []),
-    mediaItems: mergeById(data.mediaItems || [], sectionItems.multimedia || []),
-    notes: mergeById(data.notes || [], sectionItems.notes || [])
-  };
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Removed chat conversation map per lint
 
@@ -434,10 +284,23 @@ async function loadStructuredSupabaseData(config, ownerUserId) {
     throw new Error('Falten fils de xat en la BD remota. Executa supabase/seed.sql.');
   }
 
+  const sectionSubmissions = Array.isArray(sectionSubmissionsResponse?.data) ? sectionSubmissionsResponse.data : [];
   const baseData = mapContentRowsToData(contentRows || []);
+
+  const mergedFeedPosts = mergeById(baseData.feedPosts || [], sectionSubmissions.filter(s => s.section_id === 'mur').map(s => s.payload));
+  const mergedMarketItems = mergeById(baseData.marketItems || [], sectionSubmissions.filter(s => s.section_id === 'mercat').map(s => s.payload));
+  const mergedEvents = mergeById(baseData.events || [], sectionSubmissions.filter(s => s.section_id === 'events').map(s => s.payload));
+  const mergedMediaItems = mergeById(baseData.mediaItems || [], sectionSubmissions.filter(s => s.section_id === 'multimedia').map(s => s.payload));
+  const mergedNotes = mergeById(baseData.notes || [], sectionSubmissions.filter(s => s.section_id === 'notes').map(s => s.payload));
+
   return {
     ...baseData,
     ownerUserId,
+    feedPosts: mergedFeedPosts,
+    marketItems: mergedMarketItems,
+    events: mergedEvents,
+    mediaItems: mergedMediaItems,
+    notes: mergedNotes,
     chatThreads: (chatThreads || []).map((thread) => ({ id: thread.id, ...thread.payload })),
     chatMessages: mergeChatMessages(
       (chatMessages || []).map((message) => ({
@@ -450,9 +313,9 @@ async function loadStructuredSupabaseData(config, ownerUserId) {
       time: message.time_label,
       createdAtTs: message.created_at ? new Date(message.created_at).getTime() : 0
       })),
-      await loadDevFallbackMessages(ownerUserId)
+      []
     ),
-    sectionSubmissions: Array.isArray(sectionSubmissionsResponse?.data) ? sectionSubmissionsResponse.data : [],
+    sectionSubmissions,
     seedVersion: APP_SEED_VERSION
   };
 }
@@ -466,117 +329,58 @@ async function loadRemoteAppData(config, ownerUserId = getDefaultUserId()) {
   return loadStructuredSupabaseData(config, ownerUserId);
 }
 
-/**
- * Desa el remot com a snapshot REAL (`origen: 'remot'`). Sense esta línia
- * la lectura offline era la llavor d'`appSeed.js`: un maniquí, no el poble.
- */
-async function loadRemoteAndCache(config, ownerUserId) {
-  const data = await loadRemoteAppData(config, ownerUserId);
-  await saveLocalAppSnapshot({ ...data, ownerUserId, origen: 'remot', desatTs: Date.now() });
-  return data;
-}
-
-async function teSnapshotRemot(ownerUserId) {
-  try {
-    const s = await getSnapshot(APP_SNAPSHOT_STORAGE_KEY + '-' + ownerUserId);
-    return Boolean(s && s.origen === 'remot');
-  } catch {
-    return false;
-  }
-}
-
 export async function loadAppData(ownerUserId = getDefaultUserId(), config = {}) {
-  const loadAndMerge = async (loader) => await applySectionSubmissionsToData(await loader, ownerUserId);
   const { runtimeDataMode, hasSupabaseConfig } = getResolvedConfig(config);
 
   if (runtimeDataMode === 'seed') {
-    return loadAndMerge(await buildSeedAppData(ownerUserId));
+    return buildSeedAppData(ownerUserId);
   }
 
-  if (runtimeDataMode === 'local') {
-    return loadAndMerge(await loadLocalAppSnapshot(ownerUserId));
-  }
-
-  /* hybrid i remote: xarxa → desar → servir. Sense xarxa: l'última veritat REAL.
-     La llavor només en hybrid (mode de proves). En remote, sense snapshot real,
-     l'error és honest: AGENTS.md prohibix el fallback demo silenciós en producció. */
   if (!hasSupabaseConfig) {
     if (runtimeDataMode === 'remote') throw new Error('Falten VITE_SUPABASE_URL i/o VITE_SUPABASE_ANON_KEY.');
-    return loadAndMerge(runtimeDataMode === 'hybrid' ? await loadLocalAppSnapshot(ownerUserId) : await buildSeedAppData(ownerUserId));
+    return buildSeedAppData(ownerUserId);
   }
 
-  try {
-    return await loadAndMerge(loadRemoteAndCache(config, ownerUserId));
-  } catch (error) {
-    if (runtimeDataMode === 'remote' && !(await teSnapshotRemot(ownerUserId))) throw error;
-    return loadAndMerge(await loadLocalAppSnapshot(ownerUserId));
-  }
+  return loadStructuredSupabaseData(config, ownerUserId);
 }
 
 export async function appendChatMessages(messages, config = {}) {
-  const { runtimeDataMode, hasSupabaseConfig } = getResolvedConfig(config);
-  const ownerUserId = messages[0]?.ownerUserId || getDefaultUserId();
-  if (runtimeDataMode === 'local' || runtimeDataMode === 'hybrid') {
-    const localMerged = await persistMessagesToLocalSnapshot(messages, ownerUserId);
-    if (runtimeDataMode === 'local') return localMerged;
+  const { hasSupabaseConfig, tenantId } = getResolvedConfig(config);
+  
+  if (!hasSupabaseConfig) {
+    throw new Error('No es pot escriure xat sense connexió al servidor.');
   }
 
-  if (runtimeDataMode === 'seed' || !hasSupabaseConfig) {
-    const current = await loadDevFallbackMessages(ownerUserId);
-    const merged = [...current, ...messages];
-    await saveDevFallbackMessages(merged);
-    return merged;
-  }
+  const rows = messages.map((message) => ({
+    id: String(message.id),
+    tenant_id: tenantId,
+    owner_user_id: message.ownerUserId || getDefaultUserId(),
+    thread_id: String(message.threadId),
+    message_id: String(message.messageId || message.id),
+    text: message.text,
+    sender: message.sender === 'me' ? 'me' : 'other',
+    time_label: message.time || null,
+    created_at: new Date(message.createdAtTs || Date.now()).toISOString()
+  }));
 
-  try {
-    const { tenantId } = getResolvedConfig(config);
-    const rows = messages.map((message) => ({
-      id: String(message.id),
-      tenant_id: tenantId,
-      owner_user_id: message.ownerUserId || getDefaultUserId(),
-      thread_id: String(message.threadId),
-      message_id: String(message.messageId || message.id),
-      text: message.text,
-      sender: message.sender === 'me' ? 'me' : 'other',
-      time_label: message.time || null,
-      created_at: new Date(message.createdAtTs || Date.now()).toISOString()
-    }));
+  await request(`/rest/v1/chat_messages?on_conflict=${encodeURIComponent('id')}`, config, {
+    method: 'POST',
+    headers: {
+      Prefer: 'return=representation,resolution=merge-duplicates'
+    },
+    body: rows
+  });
 
-    await request(`/rest/v1/chat_messages?on_conflict=${encodeURIComponent('id')}`, config, {
-      method: 'POST',
-      headers: {
-        Prefer: 'resolution=merge-duplicates,return=representation'
-      },
-      body: rows
-    });
-
-    const current = await loadDevFallbackMessages(ownerUserId);
-    const merged = mergeChatMessages(current, messages);
-    await saveDevFallbackMessages(merged, ownerUserId);
-    return merged;
-  } catch (error) {
-    const message = String(error?.message || '');
-    const isRlsDenied =
-      message.includes('row-level security policy') ||
-      message.includes('"42501"') ||
-      message.includes('403');
-
-    if (!isRlsDenied) {
-      throw error;
-    }
-
-    if (runtimeDataMode === 'hybrid') {
-      return await persistMessagesToLocalSnapshot(messages, ownerUserId);
-    }
-    const current = await loadDevFallbackMessages(ownerUserId);
-    const merged = mergeChatMessages(current, messages);
-    await saveDevFallbackMessages(merged, ownerUserId);
-    return merged;
-  }
+  return messages;
 }
 
 export async function appendSectionSubmissionNetworkOnly(submission, config = {}) {
-  const { runtimeDataMode, hasSupabaseConfig } = getResolvedConfig(config);
+  const { hasSupabaseConfig, tenantId } = getResolvedConfig(config);
+  
+  if (!hasSupabaseConfig) {
+    throw new Error('No es pot escriure publicació sense connexió al servidor.');
+  }
+
   const ownerUserId = submission?.ownerUserId || getDefaultUserId();
   const sectionId = String(submission?.sectionId || '').trim();
   if (!CONNECTABLE_SECTION_IDS.has(sectionId)) {
@@ -600,6 +404,7 @@ export async function appendSectionSubmissionNetworkOnly(submission, config = {}
       created_at: basePayload.created_at || createdAt
     }
   });
+  
   const storedSubmission = {
     id,
     ownerUserId,
@@ -610,70 +415,34 @@ export async function appendSectionSubmissionNetworkOnly(submission, config = {}
     payload
   };
 
-  await persistSectionSubmissionToLocal(storedSubmission, ownerUserId);
-
-  if (runtimeDataMode === 'seed' || runtimeDataMode === 'local' || !hasSupabaseConfig) {
-    return storedSubmission;
-  }
-
-
-
-  try {
-    const { tenantId } = getResolvedConfig(config);
-    await request('/rest/v1/section_submissions?on_conflict=' + encodeURIComponent('id'), config, {
-      method: 'POST',
-      headers: {
-        Prefer: 'resolution=merge-duplicates,return=representation'
-      },
-      body: [
-        {
-          id,
-          tenant_id: tenantId,
-          owner_user_id: ownerUserId,
-          section_id: sectionId,
-          title: storedSubmission.title,
-          description: storedSubmission.description,
-          payload,
-          created_at: createdAt
-        }
-      ]
-    });
-    return storedSubmission;
-  } catch (error) {
-    const message = String(error?.message || '');
-    const isRemoteUnavailable =
-      message.includes('row-level security policy') ||
-      message.includes('"42501"') ||
-      message.includes('403') ||
-      message.includes('404') ||
-      message.includes('does not exist');
-
-    if (isRemoteUnavailable) {
-      console.warn('[BACKEND] Error remot inrecuperable per submission. Marcant com a rebutjada.', error);
-      storedSubmission.syncStatus = 'quarantena-denegada';
-      storedSubmission.syncError = message;
-      await persistSectionSubmissionToLocal(storedSubmission, ownerUserId);
-      
-      if (typeof window !== 'undefined') {
-        window.dispatchEvent(new CustomEvent('sdp:submission-rejected', { detail: { id, title: storedSubmission.title, error: message } }));
+  await request('/rest/v1/section_submissions?on_conflict=' + encodeURIComponent('id'), config, {
+    method: 'POST',
+    headers: {
+      Prefer: 'return=representation,resolution=merge-duplicates'
+    },
+    body: [
+      {
+        id,
+        tenant_id: tenantId,
+        owner_user_id: ownerUserId,
+        section_id: sectionId,
+        title: storedSubmission.title,
+        description: storedSubmission.description,
+        payload,
+        created_at: createdAt
       }
-      
-      return storedSubmission;
-    }
-
-    // Si és un error de xarxa (timeout, sense connexió, 500), el llancem perquè el sincronitzador ho ajorne!
-    throw error;
-  }
+    ]
+  });
+  
+  return storedSubmission;
 }
 
 export {
-  APP_SNAPSHOT_STORAGE_KEY,
   DATA_SYNC_CHANNEL_NAME,
   getDefaultUserId,
-  SECTION_SUBMISSIONS_STORAGE_KEY,
 };
 
-export function getHasSupabaseConfig(config = {}) {
+export function getBackendConfigurat(config = {}) {
   return getResolvedConfig(config).hasSupabaseConfig;
 }
 
@@ -688,27 +457,20 @@ export function normalizeDataMode(config = {}) {
 }
 
 export function getResolvedConfig(config = {}) {
-  const supabaseUrl = config.supabaseUrl || (typeof import.meta !== 'undefined' && import.meta.env ? import.meta.env.VITE_SUPABASE_URL?.trim() : '') || '';
-  const supabaseAnonKey = config.supabaseAnonKey || (typeof import.meta !== 'undefined' && import.meta.env ? import.meta.env.VITE_SUPABASE_ANON_KEY?.trim() : '') || '';
-  let dataMode = String(config.dataMode || (typeof import.meta !== 'undefined' && import.meta.env ? import.meta.env.VITE_DATA_MODE : 'local') || 'local').trim().toLowerCase();
-  
-  if (!['auto', 'seed', 'local', 'hybrid', 'remote'].includes(dataMode)) {
-    dataMode = 'local';
-  }
-
-  const tenantId = config.tenantId || (typeof import.meta !== 'undefined' && import.meta.env ? import.meta.env.VITE_TENANT_ID?.trim() : '') || '11111111-2222-3333-4444-555555555555';
+  const supabaseUrl = config.supabaseUrl || '';
+  const supabaseAnonKey = config.supabaseAnonKey || '';
+  const tenantId = config.tenantId || '11111111-2222-3333-4444-555555555555';
   
   const hasSupabaseConfig = Boolean(supabaseUrl && supabaseAnonKey);
-  const runtimeMode = dataMode === 'local' ? 'local' : (dataMode === 'auto' ? (hasSupabaseConfig ? 'hybrid' : 'seed') : dataMode);
+  const dataMode = config.dataMode || 'remote';
   
   return {
     supabaseUrl,
     supabaseAnonKey,
     tenantId,
-    dataMode: runtimeMode,
+    dataMode,
     hasSupabaseConfig,
-    
-    runtimeDataMode: runtimeMode
+    runtimeDataMode: dataMode
   };
 }
 
@@ -786,15 +548,8 @@ export async function logout() {
   delVal('socdepoble-refresh-token');
   delVal('socdepoble-user');
   
-  // Apoptosi: destrucció de dades locals (RGPD art.17)
-  delVal(APP_SNAPSHOT_STORAGE_KEY);
-  delVal(SECTION_SUBMISSIONS_STORAGE_KEY);
-  
-  try {
-    await esborraTot();
-  } catch (e) {
-    console.warn('[LOGOUT] Error en esborraTot:', e);
-  }
+
+
 }
 
 export function getCurrentUser() {

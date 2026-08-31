@@ -278,7 +278,7 @@ export async function captureWikiBaseline(wikiDir = WIKI_DIR) {
   async function walk(directory) {
     for (const entry of await fs.readdir(directory, { withFileTypes: true })) {
       const absolute = path.join(directory, entry.name);
-      if (entry.name.startsWith('.') || excludedDirs.has(entry.name)) continue;
+      if ((entry.name.startsWith('.') && entry.name !== '.agents') || excludedDirs.has(entry.name)) continue;
       if (entry.isSymbolicLink()) {
         findings.push(`Symlink prohibit dins del corpus: ${posix(path.relative(rootReal, absolute))}`);
         continue;

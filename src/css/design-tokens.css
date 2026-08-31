@@ -1,0 +1,20 @@
+/* AUTO-GENERATED FROM design-tokens.json */
+:root, :host, .sdp-root {
+  /* Color */
+  --sp-black-100: #000000;
+  --sp-white-100: #FFFFFF;
+  --sp-orange-100: #FF7300;
+  --sp-blue-100: #0984E3;
+
+  /* Radi */
+  --sp-radius-main: 1.75rem;
+  --sp-radius-secondary: 1.125rem;
+
+  /* Tacte */
+  --sp-touch-min: 44px;
+  --sp-touch-cuspide: 56px;
+
+  /* Tipografia */
+  --sp-font-min: 16px;
+  --sp-font-heading-lg: 30px;
+}

@@ -40,7 +40,7 @@ const ARREL_ARG = (args.find((a) => a.startsWith('--arrel=')) || '').split('=')[
 
 /* ─────────────────── Descobriment d'arrel (mai cwd) ─────────────────── */
 
-const MARCADORS = ['AGENTS.md', 'package.json'];
+const MARCADORS = ['.agents/AGENTS.md', 'package.json'];
 const DIRECTORIS = ['.agents/skills', 'tooling'];
 
 function descobreixArrel(inici) {

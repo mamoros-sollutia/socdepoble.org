@@ -68,7 +68,7 @@ function sdp_route_pattern() {
     $lists
   ) );
 
-  $details = '(?:chat|xat|chats|post|page|perfil|gent|empresa|ajuntament|grup|mur|mercat|multimedia|pobles|events|notes)/[^/]+';
+  $details = '(?:chat|xat|chats|post|page|perfil|gent|empresa|ajuntament|grup|mur|mercat|multimedia|pobles|events|notes)/[a-zA-Z0-9_\\-]+';
 
   return apply_filters(
     'sdp_route_pattern',
@@ -127,6 +127,15 @@ function sdp_resolve_request() {
   $context = $manifest['routes'][ $route ] ?? null;
 
   if ( ! is_array( $context ) || 200 !== (int) ( $context['status'] ?? 404 ) ) {
+    // FALLBACK DINÀMIC: Si la ruta no està al manifest estàtic, però és
+    // estructuralment vàlida per a l'App, no matem la petició amb un 404.
+    // Deixem que l'App carregue i React Router mostre el seu propi 404 o contingut.
+    if ( preg_match( '#^(?:' . sdp_route_pattern() . ')$#', $route ) ) {
+      $wp_query->is_404 = false;
+      status_header( 200 );
+      return;
+    }
+
     $wp_query->set_404();
     status_header( 404 );
     nocache_headers();
@@ -195,7 +204,7 @@ add_filter( 'rank_math/frontend/description', 'sdp_filter_description', 20 );
 
 add_filter( 'wp_robots', function ( $robots ) {
   $context = sdp_seo_context();
-  if ( is_array( $context ) && empty( $context['index'] ) ) {
+  if ( ! is_array( $context ) || empty( $context['index'] ) ) {
     unset( $robots['index'] );
     $robots['noindex'] = true;
     $robots['follow'] = true;
@@ -205,14 +214,14 @@ add_filter( 'wp_robots', function ( $robots ) {
 
 add_filter( 'wpseo_robots', function ( $robots ) {
   $context = sdp_seo_context();
-  return is_array( $context ) && empty( $context['index'] )
+  return ( ! is_array( $context ) || empty( $context['index'] ) )
     ? 'noindex, follow'
     : $robots;
 } );
 
 add_filter( 'rank_math/frontend/robots', function ( $robots ) {
   $context = sdp_seo_context();
-  if ( is_array( $context ) && empty( $context['index'] ) ) {
+  if ( ! is_array( $context ) || empty( $context['index'] ) ) {
     $robots['index'] = 'noindex';
     $robots['follow'] = 'follow';
   }

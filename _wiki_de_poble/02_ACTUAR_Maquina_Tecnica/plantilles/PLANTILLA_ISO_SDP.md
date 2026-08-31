@@ -40,7 +40,7 @@ enllaços del cos fan de taxonomia: no reintroduïsques `categoria` ni `tags`.
 
 ## Bloc Fixe d’Identitat
 
-[[el_projecte|Sóc de Poble]] és un sistema Local-First per a sobirania tecnològica rural. La IAIA MarIA actua amb Trellat, mínima intervenció, iPad A10 com a jutge i respecte absolut per la llengua, la memòria i la gent major.
+[[el_projecte|Sóc de Poble]] és un sistema Local-First per a sobirania tecnològica rural. La IAIA MarIA actua amb Trellat, mínima intervenció, el Baseline 2022 com a jutge i respecte absolut per la llengua, la memòria i la gent major.
 
 ## Objectiu
 

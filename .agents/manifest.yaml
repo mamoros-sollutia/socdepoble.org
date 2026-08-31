@@ -1,5 +1,32 @@
+# Manifest d'agents de Sóc de Poble.
+#
+# Regla: aquest fitxer llista el que hi ha al disc. Si afiges una skill,
+# regenera'l; no l'edites a mà. La porta `tooling/gates/tractor-registre.mjs`
+# falla si diverge.
+#
+# 260831 (auditoria Seient Núm. 5): el manifest declarava 13 skills i al disc
+# n'hi havia 15. `core-safe-restore` i `core-restauracio-segellada` existien
+# «sense governança» i es disputaven els mateixos triggers. S'han fusionat en
+# `core-restauracio-segellada` v2.0.0.
+
 schema: socdepoble.manifest.v1
-identity: identity/PROFILE.md
+identity: PROFILE.md
+bios: AGENTS.md
+baseline: BASELINE.md
+index_skills: skills/00_INDEX_SKILLS.md
+consell: consell.json
 skills:
-  - skills/socdepoble-operate/SKILL.md
-  - skills/socdepoble-civic/SKILL.md
+  - skills/abocament-total/SKILL.md
+  - skills/actitud-dafo/SKILL.md
+  - skills/cog-deliberation/SKILL.md
+  - skills/core-bounded-action/SKILL.md
+  - skills/core-context-panic/SKILL.md
+  - skills/core-restauracio-segellada/SKILL.md
+  - skills/core-trust-boundary/SKILL.md
+  - skills/core-verified-change/SKILL.md
+  - skills/guia-ampliacio/SKILL.md
+  - skills/identity-iaia-voice/SKILL.md
+  - skills/multi-agent-review/SKILL.md
+  - skills/pedra-seca/SKILL.md
+  - skills/socdepoble-workflow/SKILL.md
+  - skills/trellat/SKILL.md

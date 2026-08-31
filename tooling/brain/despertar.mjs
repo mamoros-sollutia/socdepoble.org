@@ -42,6 +42,13 @@ const titol = (t) => console.log(`\n--- ${t} ---`);
 console.log('\n🌞 BON DIA, IAIA. Arrencada Cognitiva.\n');
 console.log(`Arrel del projecte: ${PROJECT_DIR}`);
 
+// Àncora de seguretat inicial
+try {
+  execSync('node eines/ancora.mjs --pon "arranc de sessio"', { cwd: PROJECT_DIR, stdio: 'inherit' });
+} catch (e) {
+  console.log('⚠ Avís: no s\'ha pogut crear l\'àncora de sessió.');
+}
+
 /* ─── 1. Git ─── */
 titol('ESTAT DE GIT');
 try {

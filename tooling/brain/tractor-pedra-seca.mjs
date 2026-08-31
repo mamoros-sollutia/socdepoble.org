@@ -54,7 +54,7 @@ function arbre(dir, ext, acc = []) {
   const abs = join(ARREL, dir);
   if (!existsSync(abs)) return acc;
   for (const nom of readdirSync(abs)) {
-    if (nom === 'node_modules' || nom.startsWith('.')) continue;
+    if (nom === 'node_modules' || (nom.startsWith('.') && nom !== '.agents')) continue;
     const rel = join(dir, nom);
     if (statSync(join(ARREL, rel)).isDirectory()) arbre(rel, ext, acc);
     else if (ext.includes(extname(nom))) acc.push(rel);

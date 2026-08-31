@@ -34,6 +34,7 @@
  */
 
 import fs from 'node:fs';
+import { arrelSegura as arrelDelProjecte } from '../lib/arrel.mjs';
 import path from 'node:path';
 
 /* ─────────────────────────────── Configuració ─────────────────────────────── */
@@ -44,23 +45,13 @@ const MINIM_COS_DEFECTE = 400; // caràcters de cos útil per a no considerar-la
 
 /* ─────────────────────────────── Arrel ─────────────────────────────── */
 
-function trobaArrel(inici) {
-  let dir = path.resolve(inici);
-  for (let i = 0; i < 8; i += 1) {
-    if (fs.existsSync(path.join(dir, 'AGENTS.md')) || fs.existsSync(path.join(dir, '.agents/AGENTS.md'))) return dir;
-    const pare = path.dirname(dir);
-    if (pare === dir) break;
-    dir = pare;
-  }
-  return null;
-}
 
 const arg = (nom) => {
   const trobat = process.argv.find((a) => a.startsWith(`--${nom}=`));
   return trobat ? trobat.slice(nom.length + 3) : null;
 };
 
-const ARREL = arg('arrel') ? path.resolve(arg('arrel')) : trobaArrel(process.cwd());
+const ARREL = arrelDelProjecte();
 const JSON_OUT = process.argv.includes('--json');
 const AVISOS_FATALS = process.argv.includes('--avisos-com-error');
 const MINIM_COS = Number(arg('minim-cos') ?? MINIM_COS_DEFECTE);
@@ -155,28 +146,12 @@ function descita(v) {
 
 /* ─────────────────────────────── Localitza el cervell ─────────────────────────────── */
 
-const DIR_CERVELLS = R('.agents/cervells');
-if (!fs.existsSync(DIR_CERVELLS)) {
-  console.error(`❌ [REGISTRE] No existix ${rel(DIR_CERVELLS)}. Sense cervell no hi ha res a validar.`);
+const DIR = R('.agents/skills');
+const CERVELL = 'únic';
+if (!fs.existsSync(DIR)) {
+  console.error(`❌ [REGISTRE] No existix ${rel(DIR)}. Sense cervell no hi ha res a validar.`);
   process.exit(1);
 }
-
-const cervells = fs.readdirSync(DIR_CERVELLS, { withFileTypes: true })
-  .filter((e) => e.isDirectory())
-  .map((e) => e.name)
-  .sort();
-
-if (cervells.length === 0) {
-  console.error(`❌ [REGISTRE] ${rel(DIR_CERVELLS)} no conté cap cervell.`);
-  process.exit(1);
-}
-
-const CERVELL = arg('cervell') || cervells[cervells.length - 1];
-if (!cervells.includes(CERVELL)) {
-  console.error(`❌ [REGISTRE] El cervell '${CERVELL}' no existix. Disponibles: ${cervells.join(', ')}`);
-  process.exit(1);
-}
-const DIR = path.join(DIR_CERVELLS, CERVELL);
 
 /* ─────────────────────────────── Fonts ─────────────────────────────── */
 

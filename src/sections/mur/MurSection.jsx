@@ -164,7 +164,7 @@ export default function MurSection() {
               src: buildMapEmbedUrl(),
               loading: "lazy",
               referrerPolicy: "no-referrer-when-downgrade",
-              style: { width: '100%', height: '400px', border: 0, borderRadius: 'var(--sdp-radi-lg)' }
+              style: { width: '100%', height: '400px', border: 0, borderRadius: 'var(--sdp-radi-g)' }
             })}
           </div>
         )}

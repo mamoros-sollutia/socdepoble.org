@@ -25,7 +25,7 @@ correcte és `N/A`, no `100%` ni una estimació optimista.
 | Gate abans del commit | Implementat localment | `pre-commit.mjs` + Reflex; no és durable fins versionar hooks i CI. |
 | Índex/ontologia derivats | Implementats | `compiler/`; són cache regenerable, no font de veritat. |
 | “IT” de tres components del CLI | Retirat com a porta | `sdp check` falla tancat perquè combinava proxies incomplets i podia donar puntuació a un corpus buit. El codi legacy només és material d'estudi; no representa el [[index_trellat|marc humà complet]]. |
-| Accessibilitat, Web Vitals i RAM d'iPad | Sense telemetria integrada | Necessiten navegador/dispositiu, corpus de casos i resultats conservats. |
+| Accessibilitat, Web Vitals i RAM del dispositiu de referència | Sense telemetria integrada | Necessiten navegador/dispositiu, corpus de casos i resultats conservats. |
 | Resiliència offline funcional | Sense índex integral | Un snapshot de fitxers no prova que les funcions de la PWA continuen tenint sentit sense xarxa. |
 | Tombstones CRDT | No aplicable a la baseline | No hi ha motor CRDT actiu; no s'inventa una càrrega percentual. |
 | Panell web de salut i ritual setmanal | Futur | No hi ha pipeline que els alimente de manera verificable. |
@@ -42,7 +42,7 @@ Les portes mecàniques vigents són:
 
 El fitxer `scripts/rules/trellat-rules.json` conté pressupostos i llindars de
 disseny. Que un número aparega allí no prova que existisca l'instrument que el
-mesura. En particular, `itOptimal: 90`, `ramMbMaxA10: 1200` o
+mesura. En particular, `itOptimal: 90`, `ramMbMaxBaseline: 1200` o
 `tombstonePercentMax: 70` són hipòtesis de control fins que una prova documente
 origen i validesa.
 

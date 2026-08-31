@@ -59,12 +59,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 				$content = get_the_content();
 				if ( has_block( 'socdepoble/portal', $post ) || has_shortcode( $content, 'soc_de_poble' ) ) {
 					// Extraiem només el nostre bloc/shortcode de forma segura i ignorem la resta
+					$rendered = false;
 					$blocks = parse_blocks( $content );
 					foreach ( $blocks as $block ) {
 						if ( 'socdepoble/portal' === $block['blockName'] ) {
 							echo render_block( $block );
+							$rendered = true;
 							break;
 						}
+					}
+					if ( ! $rendered && has_shortcode( $content, 'soc_de_poble' ) ) {
+						echo do_shortcode( $content );
 					}
 				} else {
 					echo sdp_render();

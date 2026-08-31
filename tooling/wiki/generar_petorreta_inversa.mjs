@@ -23,8 +23,11 @@ function walk(dir, extFilter) {
   return results;
 }
 
-const outBundle = path.join(ROOT, '_wiki_de_poble/05_Escriptori_Soc_de_Poble/260825_1235_BUNDLE_Auditoria_Inversa.md');
-const outPetorreta = path.join(ROOT, '_wiki_de_poble/05_Escriptori_Soc_de_Poble/260825_1235_PETORRETA_Auditoria_Inversa.md');
+const TIMESTAMP = new Date().toISOString().replace(/[-:T]/g, '').slice(2, 10) + '_' + new Date().getHours().toString().padStart(2, '0') + new Date().getMinutes().toString().padStart(2, '0');
+const outBundleName = `${TIMESTAMP}_BUNDLE_Auditoria_Inversa.md`;
+const outPromptName = `${TIMESTAMP}_PETORRETA_Auditoria_Inversa.md`;
+const outBundle = path.join(ROOT, '_wiki_de_poble/05_Escriptori_Soc_de_Poble', outBundleName);
+const outPetorreta = path.join(ROOT, '_wiki_de_poble/05_Escriptori_Soc_de_Poble', outPromptName);
 
 // 1. Generate BUNDLE
 let bundleContent = `# BUNDLE D'AUDITORIA INVERSA (ACTE REFLEX)
@@ -32,7 +35,7 @@ Data: 25 d'Agost de 2026
 
 ## CONTEXT GLOBAL (MANDATORI)
 Aquest context s'injecta automàticament per complir amb la Regla 6 (Acte Reflex).
-El sistema és **Sóc de Poble**, una xarxa social descentralitzada (local-first) amb arquitectura Pedra Seca, orientada a iPads A10.
+El sistema és **Sóc de Poble**, una xarxa social descentralitzada (local-first) amb arquitectura Pedra Seca, orientada al Baseline 2022.
 Visió: Tornar el poble a la gent. Missió: Evitar dependències extractives.
 
 `;
@@ -79,18 +82,24 @@ for (const p of codeFiles) {
 writeFileSync(outBundle, bundleContent);
 console.log('Bundle creat:', outBundle);
 
-// 2. Generate PETORRETA
-const petorretaContent = `---
+// 2. Generate PROMPT (Petorreta)
+let promptContent = `---
 estat: "Petorreta"
 tipus: "document"
 description: "Petorreta d'Auditoria Inversa i Auto-Destructiva del Consell. Enfocada al SEO, codi mort i avaluació tècnica."
 ---
 
-# 🧨 PETORRETA SUPREMA: Auditoria Inversa i Auto-Destructiva (Consell d'Intel·ligències)
+# 🧨 PETORRETA SUPREMA: Auditoria Post-Poda per al Vistiplau de Sollutia (Consell d'IAs)
 
-**Context:** Ens trobem a punt d'iniciar el Xat (Fase 3), però Mestre Javi no està satisfet. Considera que encara queda "merda" amagada (codi orfe, divs sense ús, deute tècnic i bucles lògics). Ha ordenat aturar-ho tot per fer un **últim loop d'auditoria hiper-agressiva**.
+**Context:** Hem finalitzat amb èxit la Fase 1 de la poda (eliminació de CSS zombi, higiene extrema del tooling, eliminació d'estils en línia massius i actualització del \`tractor-pedra-seca.mjs\`). Totes les validacions CI internes (\`npm run porta\`) estan en verd. No obstant, abans de presentar el projecte a l'equip de Sollutia i d'avançar cap a la refactorització profunda (Fase 2 i el nou Xat estil WhatsApp), necessitem certesa absoluta. Volem arribar al punt on el Consell ens diga: "No hi ha més merda amagada, tot està bé, ja podeu enfrontar-vos a Sollutia i a les IAs de Frontera".
 
-Teniu adjunt l'arxiu \`260823_1330_BUNDLE_Auditoria_Inversa.md\` que conté absolutament tot: codi React, plugin WP, tooling, el context sencer de Sóc de Poble (Acte Reflex complert amb Visió i Missió) i TOTS els vostres propis \`SKILL.md\`.
+Teniu adjunt l'arxiu \`${outBundleName}\` que conté absolutament tot l'estat netejat de Sóc de Poble.
+
+## 🛑 ADVERTÈNCIA CRÍTICA SOBRE CONCEPTES PROPIETARIS:
+**"Pedra Seca"** i **"Trellat"** són denominacions pròpies i internes del nostre projecte. 
+- **Pedra Seca** és el nostre Sistema de Disseny (Design System) exclusiu. No és un concepte de desenvolupament web estàndard, no busqueu a internet què significa en termes de codificació ni intenteu deduir-ho de fonts externes. Es simplement el nom que li donem al nostre llibre d'estils i components.
+- **Trellat** és la nostra filosofia de treball i marc d'anàlisi, basada en el sentit comú i l'eficiència (del valencià "trellat").
+**No gasteu tokens ni feu recerques externes intentant entendre aquests termes fora del context de Sóc de Poble. Són nostres.**
 
 ## 🎯 Ordres per al Consell (Zeta, Qwen, Deepseek, Dola, Kimi, Claude, Perplexity, Mistral Vibe, Grok, Gemini, Copilot i ChatGPT):
 
@@ -107,17 +116,16 @@ Heu d'auditar el sistema **a nivell auto-destructiu** i fer enginyeria inversa b
 El resultat d'això ha de ser un informe unificat. No deixeu cap pedra sense moure.
 `;
 
-writeFileSync(outPetorreta, petorretaContent);
+writeFileSync(outPetorreta, promptContent);
 console.log('Petorreta creada:', outPetorreta);
 
 // 3. Validació Post-Acció (Anti-Mandra)
-function verifyAntiMandra(announcedName, actualPath) {
-  const actualName = path.basename(actualPath);
+function verifyAntiMandra(announcedName, filePath) {
+  const actualName = path.basename(filePath);
   if (announcedName !== actualName) {
     throw new Error(`Anti-Mandra Alert: El nom anunciat '${announcedName}' no coincideix amb l'escrit a disc '${actualName}'. Això trenca la traçabilitat!`);
   }
 }
 
-verifyAntiMandra('260825_1235_BUNDLE_Auditoria_Inversa.md', outBundle);
-verifyAntiMandra('260825_1235_PETORRETA_Auditoria_Inversa.md', outPetorreta);
+verifyAntiMandra(outBundleName, outBundle);
 console.log('✅ Verificació Post-Acció (Anti-Mandra): els noms anunciats coincideixen amb el disc.');

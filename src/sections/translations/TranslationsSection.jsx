@@ -27,7 +27,7 @@ export default function TranslationsSection() {
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 padding: 'var(--sdp-space-5)',
-                borderRadius: 'var(--sdp-radi-targeta)',
+                borderRadius: 'var(--sdp-radi-g)',
                 border: isActive ? '2px solid var(--sdp-accent)' : '1px solid var(--sdp-vora-control)',
                 background: isActive ? 'var(--sdp-fons-subtil)' : 'var(--sdp-fons-targeta)',
                 cursor: 'pointer',

@@ -54,7 +54,7 @@
     "itLock": 70,
     "tombstonePercentMax": 70,
     "tombstoneCompactBytes": 15728640,
-    "ramMbMaxA10": 1200,
+    "ramMbMaxBaseline": 1200,
     "fpsMin": 30,
     "lcpMaxSeconds": 2.5,
     "maxLinesPerFile": 150,

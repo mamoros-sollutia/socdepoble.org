@@ -1,0 +1,21 @@
+---
+tipus: estat
+actualitzat: 2026-08-29 19:30
+---
+# ESTAT — El present del projecte
+
+## Fase actual
+Operació "Tret al Cap": Implementant la Maquinària i Memòria Present (Fase 1). L'arquitectura s'està movent cap al model de les 4 capes.
+
+## Resum última sessió (màx. 5 línies)
+- S'han rebut les auditories de la totalitat del Consell (12 IAs), culminant amb Codex.
+- Codex ha assenyalat un forat P0 a `estela.sh` i problemes en la verificació del BIOS.
+- S'ha aprovat l'eliminació de la ref insegura i l'aplicació dels gates i l'IAO.
+
+## Bloquejos oberts
+- Rotar credencials reals que hagueren estat en `.env` (Ho ha de fer el Mestre manualment, segons recomanació de Codex).
+
+## Les 3 properes accions
+1. Completar la reconstrucció de l'AGENTS.md (Constitució).
+2. Substituir el sanador_orfes pel nou compilador de fitxers de Codex.
+3. Posar en marxa el hook de tancament.

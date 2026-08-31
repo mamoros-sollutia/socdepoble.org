@@ -12,4 +12,4 @@ Aquest document descriu la seqüència d'arrencada (boot) que ha de seguir quals
 ## CONFIGURACIÓ ACTIVA
 - **Model Arquitectònic**: Offline-First (Actualment Online-First Temporal amb Supabase, veure `_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/architecture/ADR-2026-08-ONLINE-FIRST.md`).
 - **Sistema de Disseny**: Pedra Seca (Llegir `.agents/skills/pedra-seca/SKILL.md`).
-- **Emmagatzematge Local**: IndexedDB via `src/data/outbox.js` (Escriptures Atòmiques, Circuit Breaker).
+- **Emmagatzematge Local**: Eliminat a favor del model Online-First. No hi ha emmagatzematge persistit local (Poda del Quadrant A).

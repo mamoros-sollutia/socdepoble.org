@@ -52,7 +52,6 @@ const ESCRIPTORI = '05_Escriptori_Soc_de_Poble';
 /** Jurisdiccions on la Teixidora NO cus per defecte (ni com a font ni destí). */
 const JURISDICCIONS_EXCLOSES = [
   '00_SER_Brain_Identitat/Sollutia',
-  '00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR',
 ];
 
 /** Pilars que mai es MODIFIQUEN (memòria morta o treball efímer). */
@@ -160,10 +159,12 @@ function emmascara(text) {
 const restaura = (text, rebost) => {
   let actual = text;
   for (let volta = 0; volta <= rebost.length; volta++) {
+    // eslint-disable-next-line no-control-regex
     const seguent = actual.replace(/\x01(\d+)\x01/g, (_, i) => rebost[Number(i)]);
     if (seguent === actual) return actual;
     actual = seguent;
   }
+  // eslint-disable-next-line no-control-regex
   if (/\x01\d+\x01/.test(actual)) throw new Error('Emmascarament niat no restaurable; es cancel·la sense escriure.');
   return actual;
 };
@@ -280,12 +281,14 @@ function cusDocument(doc, index) {
     };
 
     // 👉 Punter  /  → Punter
+    // eslint-disable-next-line no-control-regex
     t = t.replace(/(^|\n)(\s*(?:👉|→)\s*)([^\n\x01]+)/g, (m, pre, fletxa, resta) => {
       const peces = resta.split(/,\s*/).map(p => estructural(p) || p.trim());
       return `${pre}${fletxa}${peces.join(', ')}`;
     });
 
     // **Tornar a:** X, Y
+    // eslint-disable-next-line no-control-regex
     t = t.replace(/(\*\*Tornar a:\*\*\s*)([^\n\x01]+)/g, (m, pre, resta) => {
       const peces = resta.split(/,\s*/).map(p => estructural(p) || p.trim());
       return `${pre}${peces.join(', ')}`;
@@ -295,6 +298,7 @@ function cusDocument(doc, index) {
     // emmascarades, així que detectem el bloc per la línia original del segment).
     const teSinapsis = /#{2,3} .*(Sinapsi|Sinapsis|Veure també|Enllaços de Tornada)/i.test(seg.text);
     if (teSinapsis) {
+      // eslint-disable-next-line no-control-regex
       t = t.replace(/(^|\n)(\s*[-*]\s+)([^\n\x01[]+)$/gm, (m, pre, guio, nom) => {
         const cusit = estructural(nom);
         return cusit ? `${pre}${guio}${cusit}` : m;
@@ -343,8 +347,7 @@ function cusDocument(doc, index) {
  * ------------------------------------------------------------------ */
 export async function teixeix(wikiDir = WIKI_DIR) {
 
-  let receiptPath = null;
-  let claimToken = null;
+
   if (PROCEDEIX) {
     console.log('🤖 Sol·licitant permís al Reflex per operar la Teixidora...');
     throw new Error('La teixidora està temporalment desactivada per escriptura fins que es complete la migració a Reflex.');

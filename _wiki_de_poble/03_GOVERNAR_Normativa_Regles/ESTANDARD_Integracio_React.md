@@ -11,33 +11,41 @@ Aquest document estableix el contracte d'integració definitiu. Pedra Seca ja no
 
 ---
 
-### LLEI 1: El Component Mestre (`PedraSecaEmbed`)
+### LLEI 1: Integració Standalone via `<script>` i Injecció
 
-Sollutia NO ha de reconstruir el JSX ni cridar a `createRoot`. L'única via vàlida d'integració és importar el component `<PedraSecaEmbed />` dins de l'arbre React de Sollutia.
+Sollutia NO ha de reconstruir el JSX, ni fer un import ESM del mòdul, ja que l'aplicació s'empaqueta de forma hermètica i aïllada en un format IIFE (Standalone) per protegir les versions de React. 
 
-* **Ús previst:**
-  ```jsx
-  import PedraSecaEmbed from '@socdepoble/dist/pedraseca.js'; // O la ruta npm/local corresponent
-  import { BrowserRouter } from 'react-router-dom';
-  import '@socdepoble/src/css/index.css'; // O el CSS final compilat
+La integració en qualsevol host es fa incloent l'script compilat i injectant el backend o la configuració a través de l'API global abans de l'arrencada:
 
-  function AppSollutia() {
-    return (
-      <BrowserRouter>
-        {/* Sollutia pot muntar Pedra Seca on vulgui */}
-        <PedraSecaEmbed 
-          config={{
-            basePath: '/social', // Opcional: on es munta el sub-ruter
-            supabaseUrl: import.meta.env.VITE_SUPABASE_URL,
-            supabaseAnonKey: import.meta.env.VITE_SUPABASE_ANON_KEY
-          }}
-        />
-      </BrowserRouter>
-    );
-  }
+* **Ús previst (HTML / PHP Host):**
+  ```html
+  <!-- 1. Es crea l'etiqueta on es muntarà l'App -->
+  <soc-de-poble data-mode="produccio"></soc-de-poble>
+
+  <!-- 2. Es carrega l'script standalone compilat -->
+  <script src="/ruta/a/soc-de-poble.standalone.js"></script>
+
+  <!-- 3. S'injecta el backend personalitzat o configuració a través de l'API global -->
+  <script>
+    if (window.SocDePoble) {
+      window.SocDePoble.configura({
+        backend: {
+          loadAppData: async (...args) => {
+            // Lògica de Sollutia ací
+          },
+          getCurrentUser: () => {
+            // Retornar usuari loguejat en Sollutia
+          }
+          // ... qualsevol mètode del CONTRACTE_BACKEND a substituir
+        }
+      });
+      // El host no necessita cridar arrenca(), el mòdul standalone ho farà automàticament
+      // en el següent tick de microtasques.
+    }
+  </script>
   ```
-* **Enrutament:** Pedra Seca confia que Sollutia provingui el context del `BrowserRouter` (s'ofereix `react-router-dom` com a `peerDependency`).
-* **Configuració (`externalConfig`):** Tot allò que Sollutia vulgui sobreescriure (claus de Supabase, ruta base) s'ha de passar a través de la propietat `config`.
+* **Enrutament:** El mòdul ja encapsula el seu propi `HashRouter` (o `BrowserRouter` si es configura), protegit dins de la frontera del component.
+* **Configuració (`config`):** Es pot passar de tres maneres: atributs en `<soc-de-poble>`, atribut `config` (JSON) o mitjançant `window.SocDePoble.configura()`.
 
 ### LLEI 2: La Frontera del Mas (`.sdp-root`)
 

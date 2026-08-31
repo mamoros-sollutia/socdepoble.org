@@ -1,0 +1,15 @@
+{
+  "baseline": {
+    "nom": "2022",
+    "declaracio_canonica": ".agents/BASELINE.md",
+    "minims": {
+      "safari_ios": "16.0",
+      "chrome": "100",
+      "firefox": "100"
+    }
+  },
+  "stubs_css": {
+    "prohibit": false,
+    "motiu": "El projecte permet temporalment classes buides fins que s'estilitzen."
+  }
+}

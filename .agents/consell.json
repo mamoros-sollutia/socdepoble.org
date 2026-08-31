@@ -1,0 +1,138 @@
+{
+  "$schema": "sdp.consell.v1",
+  "meta": {
+    "versio": "1.0.0",
+    "actualitzat": "2026-08-31",
+    "font_unica_de_veritat": true,
+    "porta": "tooling/gates/tractor-cens.mjs",
+    "regla": "Cap document del projecte pot enumerar el Consell amb prosa pròpia. Tot cens es genera d'ací. Si el nombre canvia, es canvia ACÍ i es regenera 02_EQUIP_IA.md.",
+    "motiu": "Auditoria Seient Núm. 5 (260831). La «Regla Sagrada» d'enumerar-les totes vivia únicament a _wiki_de_poble/00_SER_Brain_Identitat/02_EQUIP_IA.md:54, dins d'una zona que AGENTS.md §1, 00_INDEX_SKILLS.md i BOOTSTRAP.md §2.3 declaren SENSE VALOR EXECUTIU. L'agent que la saltava no fallava: complia. A més el mateix document es contradeia (línia 78: «no obliga a convocar un nombre fix de models»; línia 88: «no fixa una litúrgia d'onze proveïdors» — n'hi ha dotze)."
+  },
+  "regla_enumeracio": {
+    "obligatoria": true,
+    "text": "Quan un document, prompt o resposta parla del Consell com a conjunt, s'han d'anomenar TOTES les membres actives sense excepció, i respectar la fortalesa i la debilitat de cadascuna per assignar-los el rol adequat.",
+    "no_aplica_a": "Convocar el Consell per a una tasca concreta. Enumerar-les totes és una obligació de RESPECTE quan es parla del conjunt; convocar-les totes no és obligatori mai. Una tasca local, reversible i ben coberta per proves no necessita un eixam."
+  },
+  "membres": [
+    {
+      "id": "z-ai",
+      "nom": "Z.ai",
+      "url": "https://z.ai/",
+      "origen": "Xina",
+      "fortalesa": "Finestra de context immensa; empassa context massiu de colp.",
+      "debilitat": "Menys coneguda i provada que els seus germans majors.",
+      "rol": "Ingesta massiva",
+      "actiu": true
+    },
+    {
+      "id": "qwen",
+      "nom": "Qwen",
+      "url": "https://chat.qwenlm.ai/",
+      "origen": "Xina",
+      "fortalesa": "Raonament profund (Deep Think) i eficiència frugal en programació. Pare de l'arquitectura de l'app.",
+      "debilitat": "A vegades peca de massa tècnic en les respostes de text.",
+      "rol": "Arquitectura i codi",
+      "actiu": true
+    },
+    {
+      "id": "deepseek",
+      "nom": "Deepseek",
+      "url": "https://chat.deepseek.com/",
+      "origen": "Xina",
+      "fortalesa": "Lògica pura, detecció d'errors ocults i problemes matemàtics complexos.",
+      "debilitat": "Menys destresa en l'empatia i el to literari.",
+      "rol": "Caça de bugs",
+      "actiu": true
+    },
+    {
+      "id": "dola",
+      "nom": "Dola",
+      "url": "https://dola.com/chat/",
+      "origen": "EUA",
+      "fortalesa": "Gestió del temps i integració amb calendaris de missatgeria.",
+      "debilitat": "Rol molt limitat exclusivament a la gestió d'agendes.",
+      "rol": "Calendari",
+      "actiu": true
+    },
+    {
+      "id": "kimi",
+      "nom": "Kimi",
+      "url": "https://kimi.ai",
+      "origen": "Xina (Moonshot, Pequín)",
+      "fortalesa": "Context de milions de tòkens; devora PDFs de subvencions senceres.",
+      "debilitat": "Generació de codi menys precisa que els models especialitzats.",
+      "rol": "Documents llargs i subvencions",
+      "actiu": true
+    },
+    {
+      "id": "claude",
+      "nom": "Claude",
+      "url": "https://claude.ai/",
+      "origen": "EUA (Anthropic, San Francisco)",
+      "fortalesa": "Narrativa, empatia, valencià natural i comprensió del to exacte de Sóc de Poble.",
+      "debilitat": "Més estricta amb els filtres de seguretat.",
+      "rol": "Seient Núm. 5 · Auditor sènior i estil",
+      "actiu": true
+    },
+    {
+      "id": "perplexity",
+      "nom": "Perplexity",
+      "url": "https://www.perplexity.ai/",
+      "origen": "EUA",
+      "fortalesa": "Cerca web en temps real amb citacions de fonts reals; contrasta fets.",
+      "debilitat": "No serveix per a tasques creatives ni programació complexa.",
+      "rol": "Verificació de fets",
+      "actiu": true
+    },
+    {
+      "id": "mistral",
+      "nom": "Mistral Vibe",
+      "url": "https://chat.mistral.ai/",
+      "origen": "Europa (França)",
+      "fortalesa": "Raonament frugal, privacitat i matisos culturals europeus sense biaixos americans.",
+      "debilitat": "Coneixement menys enciclopèdic que els models gegants.",
+      "rol": "Contrapunt europeu i codi obert",
+      "actiu": true
+    },
+    {
+      "id": "grok",
+      "nom": "Grok",
+      "url": "https://grok.com/",
+      "origen": "EUA (X)",
+      "fortalesa": "Accés en temps real a xarxes; idees disruptives sense censura.",
+      "debilitat": "Pot ser massa sarcàstic o imprecís en rigor tècnic.",
+      "rol": "Pluja d'idees salvatge",
+      "actiu": true
+    },
+    {
+      "id": "gemini",
+      "nom": "Gemini",
+      "url": "https://gemini.google.com/",
+      "origen": "EUA (Google)",
+      "fortalesa": "Multimodalitat (veu, visió, imatge) i velocitat Flash. Motor sensorial del bot de WhatsApp.",
+      "debilitat": "Amb massa context de colp pot al·lucinar.",
+      "rol": "Motor sensorial i orquestració",
+      "actiu": true
+    },
+    {
+      "id": "copilot",
+      "nom": "Copilot",
+      "url": "https://copilot.microsoft.com/",
+      "origen": "EUA (Microsoft)",
+      "fortalesa": "Suggeriment ràpid de codi i integració profunda amb GitHub.",
+      "debilitat": "Actua a curt termini; no serveix per a decisions d'arquitectura global.",
+      "rol": "Autocompletat a la trinxera",
+      "actiu": true
+    },
+    {
+      "id": "chatgpt",
+      "nom": "ChatGPT Codex",
+      "url": "https://chatgpt.com/",
+      "origen": "EUA (OpenAI)",
+      "fortalesa": "Versatilitat absoluta; segona opinió fiable per a tasques generals.",
+      "debilitat": "Peca de respostes genèriques («AI slop») si no se li aplica un prompt dur.",
+      "rol": "Segona opinió generalista",
+      "actiu": true
+    }
+  ]
+}

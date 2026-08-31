@@ -11,7 +11,7 @@ tags:
 - socdepoble
 - tecnica
 ---
-# Adaptació futura amb veto A10
+# Adaptació futura amb veto de Baseline
 
 Este document governa experiments; no afirma que WebNN, IA integrada al navegador o un RAG local estiguen implementats. Cap experiment es promociona a arquitectura activa sense codi, proves i fallback verificables.
 
@@ -20,7 +20,7 @@ Este document governa experiments; no afirma que WebNN, IA integrada al navegado
 1. **Compatibilitat abans que novetat.** La funció essencial continua disponible sense acceleració d’IA, sense una API experimental i sense descarregar un model.
 2. **Detecció de capacitats.** Es comprova en temps d’execució la disponibilitat real; no es deduïx pel navegador, la marca o l’any del dispositiu.
 3. **Descàrrega consentida.** Pes, consum i privacitat s’expliquen abans de descarregar models o corpus.
-4. **Veto A10.** Una millora que degrade arrencada, memòria, bateria o interacció en el dispositiu de referència queda fora del camí principal.
+4. **Veto de Baseline.** Una millora que degrade arrencada, memòria, bateria o interacció en el dispositiu de referència del Baseline 2022 queda fora del camí principal.
 5. **Proveïdor substituïble.** Cap API comercial o experimental es converteix en font de veritat ni en requisit d’arrencada.
 
 ## IA local i Web Workers
@@ -51,7 +51,7 @@ Qualsevol experiment que haja de modificar coneixement, configuració o codi seg
 
 - El build i el flux principal funcionen amb la capacitat desactivada.
 - No hi ha descàrregues ocultes ni transmissió de corpus no declarada.
-- L’iPad A10 manté els pressupostos acordats amb dades de prova.
+- El dispositiu de referència del Baseline 2022 manté els pressupostos acordats amb dades de prova.
 - Les respostes RAG són traçables a fragments concrets.
 - Hi ha cancel·lació, fallback i rollback provats.
 

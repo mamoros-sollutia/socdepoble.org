@@ -1,0 +1,5 @@
+schema: socdepoble.manifest.v1
+identity: identity/PROFILE.md
+skills:
+  - skills/socdepoble-operate/SKILL.md
+  - skills/socdepoble-civic/SKILL.md

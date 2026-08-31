@@ -114,9 +114,8 @@ drop policy if exists "public read app_content" on public.app_content;
 create policy "public read app_content" on public.app_content for select using (true);
 
 -- Policies for chat_threads
-drop policy if exists "private read chat_threads" on public.chat_threads;
-create policy "private read chat_threads" on public.chat_threads for select to authenticated
-using (owner_user_id = auth.uid() and exists (select 1 from public.town_memberships where town_id = tenant_id and user_id = auth.uid()));
+drop policy if exists "public read chat_threads" on public.chat_threads;
+create policy "public read chat_threads" on public.chat_threads for select using (true);
 
 drop policy if exists "private write chat_threads" on public.chat_threads;
 create policy "private write chat_threads" on public.chat_threads for insert to authenticated
@@ -130,6 +129,11 @@ with check (owner_user_id = auth.uid() and exists (select 1 from public.town_mem
 drop policy if exists "private delete chat_threads" on public.chat_threads;
 create policy "private delete chat_threads" on public.chat_threads for delete to authenticated
 using (owner_user_id = auth.uid() and exists (select 1 from public.town_memberships where town_id = tenant_id and user_id = auth.uid()));
+
+-- Policies for chat_messages
+drop policy if exists "public read guest chat_messages" on public.chat_messages;
+create policy "public read guest chat_messages" on public.chat_messages for select 
+using (owner_user_id = '00000000-0000-0000-0000-000000000000');
 
 -- Policies for chat_messages
 drop policy if exists "private read chat_messages" on public.chat_messages;
@@ -149,15 +153,14 @@ with check (
 
 -- Policies for section_submissions
 drop policy if exists "public read section_submissions" on public.section_submissions;
-create policy "public read section_submissions" on public.section_submissions for select using (true);
+create policy "public read section_submissions" on public.section_submissions for select
+using (section_id != 'notes' or owner_user_id = auth.uid());
 
 drop policy if exists "private write section_submissions" on public.section_submissions;
 create policy "private write section_submissions" on public.section_submissions for insert to authenticated
 with check (
   owner_user_id = auth.uid() 
-  and section_id in ('mur', 'mercat', 'events') 
-  and title is not null 
-  and title <> '' 
+  and section_id in ('mur', 'mercat', 'events', 'multimedia', 'notes') 
   and payload is not null
   and exists (select 1 from public.town_memberships where town_id = tenant_id and user_id = auth.uid())
 );

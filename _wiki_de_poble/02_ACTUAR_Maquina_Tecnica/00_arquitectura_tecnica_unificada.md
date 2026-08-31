@@ -39,7 +39,7 @@ Contractes de localització del codi:
 2. La configuració transversal viu en `src/config/`.
 3. La lectura, escriptura i fallback de dades viuen en `src/data/`.
 4. Una capacitat offline només es declara operativa quan té prova de desconnexió, persistència i recuperació.
-5. iPad A10 i Safari són el sòl de compatibilitat; una API nova necessita detecció i fallback lleuger.
+5. El Baseline 2022 és el sòl de compatibilitat; una API disponible al baseline s'usa directament, sense detecció ni fallback (vegeu `.agents/BASELINE.md`).
 
 ## 2. Estat de les tecnologies descentralitzades
 

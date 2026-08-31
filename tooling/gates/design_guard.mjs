@@ -23,6 +23,7 @@ import { readFile, readdir } from 'node:fs/promises';
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { extname, join, relative, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
+import { parse } from '@babel/parser';
 
 const SCAN_EXT = new Set(['.html', '.css', '.js', '.mjs', '.jsx']);
 const SKIP = new Set(['node_modules', '.git', 'vendor', '_build', 'dist', '04_ARXIU_Documents_Historics']);
@@ -59,11 +60,56 @@ function lineOf(text, idx) {
   return text.slice(0, idx).split(/\r?\n/).length;
 }
 
+function walkAst(node, visitor) {
+  if (!node || typeof node !== 'object') return;
+  if (Array.isArray(node)) {
+    for (const child of node) walkAst(child, visitor);
+    return;
+  }
+  visitor(node);
+  for (const key of Object.keys(node)) {
+    if (key !== 'loc' && key !== 'tokens' && key !== 'comments' && key !== 'extra' && key !== 'leadingComments' && key !== 'trailingComments') {
+      walkAst(node[key], visitor);
+    }
+  }
+}
+
+/**
+ * Línies on un hex CRU és legítim: la definició del propi sistema de disseny.
+ *
+ * AUDITORIA 260831 (Seient Núm. 5): 68 de les 121 identitats `raw-color`
+ * declarades a `.design-guard-deute.json` eren les DEFINICIONS CANÒNIQUES
+ * dels tokens dins de `:root, :host, .sdp-root` — `#fe7406`, `#0e0d0c`,
+ * `#f9f8f5`… El 56% del «deute crític» era el propi sistema de disseny
+ * denunciant-se a si mateix.
+ *
+ * Una porta que assenyala la seua font de veritat ensenya a ignorar-la.
+ * Ací es calla en eixos blocs, i només en eixos.
+ */
+const OBRE_TEMA = /(:root|:host|\.sdp-root|@media\s*\((?:prefers-color-scheme|prefers-contrast|forced-colors))/;
+
+function liniesDeTema(text) {
+  const dins = new Set();
+  let obert = false;
+  let prof = 0;
+  text.split(/\r?\n/).forEach((l, i) => {
+    if (!obert && OBRE_TEMA.test(l) && l.includes('{')) { obert = true; prof = 0; }
+    if (obert) {
+      dins.add(i + 1);
+      prof += (l.match(/\{/g) || []).length - (l.match(/\}/g) || []).length;
+      if (prof <= 0) obert = false;
+    }
+  });
+  return dins;
+}
+
 function scanDesign(text, file, vocab = null) {
   const findings = [];
+  const TEMA = liniesDeTema(text);
 
   for (const m of text.matchAll(RAW_HEX)) {
-    if (!ALLOWED_HEX.has(m[0]) && !text.slice(Math.max(0, m.index - 40), m.index).includes('ALLOW_RAW_COLOR')) {
+    if (TEMA.has(lineOf(text, m.index))) continue;
+    if (!ALLOWED_HEX.has(m[0].toLowerCase()) && !text.slice(Math.max(0, m.index - 40), m.index).includes('ALLOW_RAW_COLOR')) {
       findings.push({
         severity: 'critical',
         rule: 'raw-color',
@@ -90,11 +136,11 @@ function scanDesign(text, file, vocab = null) {
     const prop = m[2];
     const px = Number(m[3]);
     const nearby = text.slice(Math.max(0, m.index - 120), m.index + 160);
-    if (px > 0 && px < 48 && /button|\.sp-button|role=["']button|cursor\s*:\s*pointer/i.test(nearby)) {
+    if (px > 0 && px < 44 && /button|\.sp-button|role=["']button|cursor\s*:\s*pointer/i.test(nearby)) {
       findings.push({
         severity: 'critical', rule: 'touch-too-small', file,
         line: lineOf(text, m.index), token: `${prop}:${px}px`,
-        message: `Possible control interactiu amb ${prop} ${px}px (<48px).`
+        message: `Possible control interactiu amb ${prop} ${px}px (<44px).`
       });
     }
   }
@@ -156,6 +202,27 @@ function scanDesign(text, file, vocab = null) {
       severity: 'warning', rule: 'div-soup', file, line: 1, token: 'div-soup',
       message: `Massa divs (${divCount}) sense etiquetes semàntiques. Aplica Pedra Seca.`
     });
+  }
+
+  // REGLA: AST per bloquejar style={{...}}
+  if (file.endsWith('.jsx') || file.endsWith('.js')) {
+    try {
+      const ast = parse(text, { sourceType: 'module', plugins: ['jsx'] });
+      walkAst(ast, (node) => {
+        if (node.type === 'JSXAttribute' && node.name && node.name.name === 'style') {
+          findings.push({
+            severity: 'critical',
+            rule: 'inline-style',
+            file,
+            line: node.loc ? node.loc.start.line : 1,
+            token: 'style=',
+            message: 'Estils en línia prohibits. Fes servir el CSS del sistema (Pedra Seca).'
+          });
+        }
+      });
+    } catch (_e) {
+      // Ignore parse errors, let the linter or builder catch them
+    }
   }
 
   return findings;

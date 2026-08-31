@@ -1,27 +1,23 @@
 import { createContext, useContext, useEffect, useMemo, useState, useRef } from 'react';
 import {
-
-  APP_SNAPSHOT_STORAGE_KEY,
+  getBackendConfigurat,
   getDefaultUserId,
-  getHasSupabaseConfig,
-  SECTION_SUBMISSIONS_STORAGE_KEY,
   loadAppData,
   getRuntimeDataMode,
   getCurrentUser,
-  loadLocalAppSnapshot,
-  applySectionSubmissionsToData
+  appendChatMessages,
+  appendSectionSubmissionNetworkOnly
 } from '../data/backendPort.js';
 import { normalizeSearchText, sortPinnedContent } from '../config/contentHelpers';
 import { resolveAsset as baseResolveAsset } from '../config/assetResolver';
 import { createTranslator, readStoredLanguage, writeStoredLanguage, normalizeLanguage } from '../config/i18n';
 import { getVal } from '../config/storage.js';
 import { readThemePreference, resolveTheme, writeThemePreference } from '../config/theme';
-import { uuid, encua } from '../data/outbox.js';
-import { buida, arrancaSincronitzador } from '../data/sincronitzador.js';
+import { uuid } from '../utils/uuid.js';
 
 const AppStateContext = createContext(null);
 const AppActionsContext = createContext(null);
-const DATA_SYNC_STORAGE_KEYS = new Set([APP_SNAPSHOT_STORAGE_KEY, SECTION_SUBMISSIONS_STORAGE_KEY]);
+const DATA_SYNC_STORAGE_KEYS = new Set();
 const LANGUAGE_LOCALES = {
   ca: 'ca-ES',
   es: 'es-ES',
@@ -164,10 +160,9 @@ export function AppDataProvider({ children, externalConfig = {} }) {
     });
   };
 
-  const tenantId = externalConfig?.tenantId || 'default-tenant';
-  const localUser = getVal('socdepoble-user');
-  // Identitat (Zeta F-9): La identitat ha de derivar només de la sessió validada (localUser del JWT), no de variables inyectades al DOM
-  const userId = localUser?.id || getDefaultUserId();
+  const tenantId = externalConfig?.tenantId || '11111111-2222-3333-4444-555555555555';
+  const currentUser = getCurrentUser();
+  const userId = currentUser?.id || getDefaultUserId();
   const channelNamespace = `sdp:${tenantId}:${userId}:v2`;
   
   const configHash = useMemo(() => {
@@ -189,31 +184,20 @@ export function AppDataProvider({ children, externalConfig = {} }) {
     const myGen = ++loadGenerationRef.current;
 
     const loadData = async () => {
-      let networkFinished = false;
       const timeoutId = setTimeout(() => {
         controller.abort();
       }, 15000);
 
-      if (getRuntimeDataMode(stableExternalConfig) !== 'seed') {
-        loadLocalAppSnapshot(userId).then(async (snap) => {
-          if (!snap || cancelled || myGen !== loadGenerationRef.current || networkFinished) return;
-          const merged = await applySectionSubmissionsToData(snap, userId);
-          if (cancelled || myGen !== loadGenerationRef.current || networkFinished) return;
-          setRawData(merged);
-          setStatus('ready');
-        }).catch(() => {});
-      }
+
 
       try {
         const data = await loadAppData(userId, { ...externalConfig, signal: controller.signal });
-        networkFinished = true;
         clearTimeout(timeoutId);
         if (cancelled || myGen !== loadGenerationRef.current) return;
         setRawData(data);
         setStatus('ready');
         setError(null);
       } catch (loadError) {
-        networkFinished = true;
         clearTimeout(timeoutId);
         if (cancelled) return;
         console.warn('[PedraSeca] Mode degradat extrem. loadAppData ha fallat:', loadError);
@@ -277,15 +261,8 @@ export function AppDataProvider({ children, externalConfig = {} }) {
 
     const onManualRefresh = () => attemptRefresh();
     
-    const onOutboxStatus = (event) => {
-      if (event.detail?.status === 'confirmed') {
-        attemptRefresh();
-      }
-    };
-
     window.addEventListener('storage', onStorage);
     window.addEventListener('sdp:refresh-data', onManualRefresh);
-    window.addEventListener('sdp:outbox-status', onOutboxStatus);
     document.addEventListener('visibilitychange', onVisibilityChange);
 
     if (typeof BroadcastChannel !== 'undefined') {
@@ -304,21 +281,11 @@ export function AppDataProvider({ children, externalConfig = {} }) {
       if (refreshTimeout) clearTimeout(refreshTimeout);
       window.removeEventListener('storage', onStorage);
       window.removeEventListener('sdp:refresh-data', onManualRefresh);
-      window.removeEventListener('sdp:outbox-status', onOutboxStatus);
       document.removeEventListener('visibilitychange', onVisibilityChange);
       channel?.close();
       broadcastChannelRef.current = null;
     };
   }, [stableExternalConfig, channelNamespace, tenantId, userId]);
-
-  /* P0-3: sense esta crida, `outbox.js` és una cua d'escriptura només:
-     guarda els missatges i no els envia mai quan torna la cobertura. */
-  useEffect(() => {
-    const atura = arrancaSincronitzador(stableExternalConfig);
-    return () => {
-      if (typeof atura === 'function') atura();
-    };
-  }, [stableExternalConfig]);
 
   useEffect(() => {
     writeStoredLanguage(language);
@@ -395,7 +362,6 @@ export function AppDataProvider({ children, externalConfig = {} }) {
   const chatMessagesByThread = useMemo(() => rawData ? buildMessageMap(rawData.chatMessages) : {}, [rawData?.chatMessages]);
 
   const stateValue = useMemo(() => {
-    const currentUser = getCurrentUser();
     const isSuperAdmin = currentUser?.user_metadata?.role === 'superadmin';
 
     if (!rawData) {
@@ -403,7 +369,7 @@ export function AppDataProvider({ children, externalConfig = {} }) {
         status,
         error,
         ownerUserId: getDefaultUserId(),
-        hasSupabaseConfig: getHasSupabaseConfig(stableExternalConfig),
+        isBackendConfigurat: getBackendConfigurat(stableExternalConfig),
         dataMode: getRuntimeDataMode(stableExternalConfig),
         language,
         themeMode,
@@ -419,7 +385,7 @@ export function AppDataProvider({ children, externalConfig = {} }) {
       error,
       externalConfig: stableExternalConfig,
       ownerUserId: rawData.ownerUserId,
-      hasSupabaseConfig: getHasSupabaseConfig(stableExternalConfig),
+      isBackendConfigurat: getBackendConfigurat(stableExternalConfig),
       dataMode: getRuntimeDataMode(stableExternalConfig),
       language,
       themeMode,
@@ -511,27 +477,36 @@ export function AppDataProvider({ children, externalConfig = {} }) {
         time: new Date().toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit' })
       };
 
-      // 1r el disc (Outbox), amb el seu propi tallafocs.
-      // Z-Audit: Si el disc falla, NO ho ensenyem a la pantalla per no donar falsos positius d'enviament.
-      try {
-        await encua({ id: userMessage.id, tipus: 'chat', carrega: userMessage });
-      } catch (e) {
-        console.error('[OUTBOX] escriptura fallida. Avortant enviament de xat.', e);
-        throw e;
-      }
-
-      // 2n la pantalla.
+      // 1r la pantalla (Optimistic UI).
       setRawData((current) => ({
         ...current,
         chatMessages: [...(current.chatMessages || []), userMessage]
       }));
 
-      // 3r la xarxa, que ja no pot bloquejar res.
-      buida(stableExternalConfig);
+      // Ara enviem directament a la xarxa, mode Online-First.
+      try {
+        await appendChatMessages([userMessage], stableExternalConfig);
+        // Tanca el cicle visual
+        setRawData((current) => ({
+          ...current,
+          chatMessages: (current.chatMessages || []).map(m => m.id === userMessage.id ? { ...m, estatEnviament: 'enviat' } : m)
+        }));
+      } catch (e) {
+        console.error('[BACKEND] Error enviant xat.', e);
+        // Reversió de l'optimisme (Rollback)
+        setRawData((current) => ({
+          ...current,
+          chatMessages: (current.chatMessages || []).filter((m) => m.id !== userMessage.id)
+        }));
+        if (typeof window !== 'undefined') {
+          window.dispatchEvent(new CustomEvent('sdp:chat-rejected', { detail: { id: userMessage.id, error: e.message } }));
+        }
+        throw e;
+      }
 
       try {
         broadcastChannelRef.current?.postMessage({ type: 'content:updated', tenantId });
-      } catch (e) {
+      } catch {
         // ignore
       }
 
@@ -558,15 +533,7 @@ export function AppDataProvider({ children, externalConfig = {} }) {
       const item = preparedSubmission.payload || preparedSubmission;
       const sectionId = String(preparedSubmission.sectionId || item.sectionId || '').trim();
 
-      // Z-Audit: 1r el disc (Outbox) amb el seu propi tallafocs
-      try {
-        await encua({ id, tipus: 'submission', payload: preparedSubmission });
-      } catch (e) {
-        console.error('[OUTBOX] escriptura fallida per a submission. Avortant.', e);
-        throw e;
-      }
-
-      // 2n a la pantalla local
+      // 1. Optimistic UI: actualitzem la pantalla local
       setRawData((current) => {
         if (!current) return current;
 
@@ -590,12 +557,48 @@ export function AppDataProvider({ children, externalConfig = {} }) {
         return next;
       });
 
-      // 3r la xarxa
-      buida(stableExternalConfig);
+      // 2. Cridem al backend. Si falla, revertim l'optimisme (Rollback) i llancem l'error.
+      try {
+        await appendSectionSubmissionNetworkOnly(preparedSubmission, stableExternalConfig);
+        // Tanca el cicle visual
+        setRawData((current) => {
+          if (!current) return current;
+          return {
+            ...current,
+            sectionSubmissions: (current.sectionSubmissions || []).map(s => s.id === preparedSubmission.id ? { ...s, estatEnviament: 'enviat' } : s)
+          };
+        });
+      } catch (e) {
+        console.error('[BACKEND] Error enviant submission. Revertint de la UI.', e);
+        setRawData((current) => {
+          if (!current) return current;
+          const next = {
+            ...current,
+            sectionSubmissions: (current.sectionSubmissions || []).filter(s => s.id !== preparedSubmission.id)
+          };
+          if (sectionId === 'mur') {
+            next.feedPosts = (current.feedPosts || []).filter(i => i.id !== item.id);
+          } else if (sectionId === 'mercat') {
+            next.marketItems = (current.marketItems || []).filter(i => i.id !== item.id);
+          } else if (sectionId === 'events') {
+            next.events = (current.events || []).filter(i => i.id !== item.id);
+          } else if (sectionId === 'multimedia') {
+            next.mediaItems = (current.mediaItems || []).filter(i => i.id !== item.id);
+          } else if (sectionId === 'notes') {
+            next.notes = (current.notes || []).filter(i => i.id !== item.id);
+          }
+          return next;
+        });
+
+        if (typeof window !== 'undefined') {
+          window.dispatchEvent(new CustomEvent('sdp:submission-rejected', { detail: { id, title: submission.title || 'Sense títol', error: e.message } }));
+        }
+        throw e;
+      }
       
       try {
         broadcastChannelRef.current?.postMessage({ type: 'content:updated', tenantId });
-      } catch (e) {
+      } catch {
         // ignore
       }
 

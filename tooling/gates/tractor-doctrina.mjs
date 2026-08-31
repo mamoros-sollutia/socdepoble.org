@@ -32,27 +32,18 @@
  */
 
 import fs from 'node:fs';
+import { arrelSegura as arrelDelProjecte } from '../lib/arrel.mjs';
 import path from 'node:path';
 
 /* ─────────────────────────────── Arrel i arguments ─────────────────────────────── */
 
-function trobaArrel(inici) {
-  let dir = path.resolve(inici);
-  for (let i = 0; i < 8; i += 1) {
-    if (fs.existsSync(path.join(dir, 'AGENTS.md')) || fs.existsSync(path.join(dir, '.agents/AGENTS.md'))) return dir;
-    const pare = path.dirname(dir);
-    if (pare === dir) break;
-    dir = pare;
-  }
-  return null;
-}
 
 const arg = (nom) => {
   const trobat = process.argv.find((a) => a.startsWith(`--${nom}=`));
   return trobat ? trobat.slice(nom.length + 3) : null;
 };
 
-const ARREL = arg('arrel') ? path.resolve(arg('arrel')) : trobaArrel(process.cwd());
+const ARREL = arrelDelProjecte();
 const JSON_OUT = process.argv.includes('--json');
 const EXTERN_FATAL = process.argv.includes('--extern-fatal');
 const INCLOU_CODI = process.argv.includes('--tots');
@@ -69,7 +60,12 @@ const rel = (p) => path.relative(ARREL, p) || p;
 
 /* ─────────────────────────────── Exempcions ─────────────────────────────── */
 
-const FITXER_IGNORA = R('.agents/doctrina-ignora.txt');
+/* Auditoria 260830: aquesta ruta apuntava només a `.agents/`, on el fitxer
+   mai va estar. `ignorats` quedava buit i `esIgnorat()` retornava sempre
+   false, així que l'exempció de `_wiki_de_poble` (repositori separat) no
+   s'aplicava mai. Ara es busca als dos llocs i es diu quin s'ha usat. */
+const CANDIDATS_IGNORA = [R('.agents/doctrina-ignora.txt'), R('tooling/gates/doctrina-ignora.txt')];
+const FITXER_IGNORA = CANDIDATS_IGNORA.find((c) => fs.existsSync(c)) ?? CANDIDATS_IGNORA[0];
 const ignorats = fs.existsSync(FITXER_IGNORA)
   ? fs.readFileSync(FITXER_IGNORA, 'utf8').split(/\r?\n/)
       .map((l) => l.replace(/#.*$/, '').trim()).filter(Boolean)
