@@ -1,0 +1,29 @@
+--- /tmp/n.orig.jsx	2026-08-31 06:23:35.057357926 +0000
++++ src/sections/notes/NotesSection.jsx	2026-08-31 06:23:08.150834213 +0000
+@@ -296,7 +296,7 @@
+                     >
+                       <Settings size={20} />
+                       {timerActive && (
+-                        <span style={{ position: 'absolute', top: 0, right: 0, width: '8px', height: '8px', background: 'var(--sdp-error-500)', borderRadius: '50%', boxShadow: '0 0 0 2px var(--sdp-fons-superficie)' }} />
++                        <span style={{ position: 'absolute', top: 0, right: 0, width: '8px', height: '8px', background: 'var(--sdp-error)', borderRadius: '50%', boxShadow: '0 0 0 2px var(--sdp-fons-superficie)' }} />
+                       )}
+                     </button>
+                     {settingsOpen && (
+@@ -307,7 +307,7 @@
+                         </div>
+                         <button 
+                           onClick={() => setTimerActive(!timerActive)}
+-                          style={{ width: '100%', padding: '8px', textAlign: 'left', background: 'transparent', border: 'none', cursor: 'pointer', color: timerActive ? 'var(--sdp-error-500)' : 'var(--sdp-text-base)', fontSize: '0.85rem', borderRadius: '4px', fontWeight: '600' }}
++                          style={{ width: '100%', padding: '8px', textAlign: 'left', background: 'transparent', border: 'none', cursor: 'pointer', color: timerActive ? 'var(--sdp-error)' : 'var(--sdp-text-base)', fontSize: '0.85rem', borderRadius: '4px', fontWeight: '600' }}
+                           className="hover-bg"
+                         >
+                           {timerActive ? 'Aturar Temporitzador' : 'Iniciar Temporitzador'}
+@@ -414,7 +414,7 @@
+                 )}
+ 
+                 {/* Barra Taronja */}
+-                <section className="bar-orange" aria-label="Autoria i data" style={{ margin: 0, borderRadius: 0, background: 'var(--sdp-accent-text)', padding: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', color: 'var(--sdp-white-100)' }}>
++                <section className="bar-orange" aria-label="Autoria i data" style={{ margin: 0, borderRadius: 0, background: 'var(--sdp-accent-text)', padding: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', color: 'var(--sdp-text-invers)' }}>
+                   <div className="sp-card-author" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                     <img className="sp-card-avatar" src="/assets/system/ui/logo-socdepoble-cuadrat-verd.svg" alt="Sóc de Poble" width="48" height="48" style={{ borderRadius: '4px' }} />
+                     <div className="sp-card-author-info">

@@ -1,0 +1,153 @@
+--- /tmp/index.orig.css	2026-08-31 06:23:24.457357296 +0000
++++ src/css/index.css	2026-08-31 06:23:08.148505220 +0000
+@@ -49,10 +49,19 @@
+    var(--sdp-primary-*) o var(--sdp-secondary-*), és un error.
+    ───────────────────────────────────────────────────────────────── */
+ 
+-:host, .sdp-root {
++:host {
+   all: initial;
+ }
+ 
++/* El <body class="sdp-root"> NO porta `all: initial`: (0,1,0) guanyaria
++   la regla `body` (0,0,1) i li llevaria font, color i fons. Ací només
++   neutralitzem el que fa mal, sense tocar l'herència. */
++.sdp-root {
++  margin: 0;
++  padding: 0;
++  border: 0;
++}
++
+ :root, :host, .sdp-root {
+   /* ═══ CAPA 1 · PRIMITIUS ═══════════════════════════════════════ */
+ 
+@@ -67,20 +76,20 @@
+   --sdp-pedra-300: #dcd7cd;
+   --sdp-pedra-400: #b7b1a5;
+   --sdp-pedra-500: #8b857b;
+-  --sdp-pedra-600: #514c45;
+-  --sdp-pedra-700: var(--sdp-neutre-500);
++  --sdp-pedra-600: #5b564e;
++  --sdp-pedra-700: #3d3b35;
+   --sdp-pedra-750: #302e29;
+   --sdp-pedra-800: #22211e;
+-  --sdp-pedra-850: var(--sdp-neutre-900);
+-  --sdp-pedra-900: var(--sdp-neutre-900);
++  --sdp-pedra-850: #181715;
++  --sdp-pedra-900: #0e0d0c;
+ 
+   /* Primari · taronja de terra — OKLCH H 47.9° (to exacte del cànon #FF7300) */
+-  --sdp-primary-50:  var(--sdp-fons-calid);
++  --sdp-primary-50:  #fff4ef;
+   --sdp-primary-100: #ffe7dc;
+   --sdp-primary-200: #ffd1bb;
+   --sdp-primary-300: #ffb38c;
+   --sdp-primary-400: #ff955b;
+-  --sdp-primary-500: #ff7300;   /* el cànon. Només com a FONS. */
++  --sdp-primary-500: var(--sdp-canon-taronja);   /* el cànon. Només com a FONS. */
+   --sdp-primary-600: #dd6302;
+   --sdp-primary-700: #ad4c03;   /* Taronja fort · text i fons massís d'accent */
+   --sdp-primary-800: #873a01;   /* text accent · 7,97:1 · AAA */
+@@ -92,7 +101,7 @@
+   --sdp-secondary-200: #c3e0ff;
+   --sdp-secondary-300: #96c9ff;
+   --sdp-secondary-400: #49a3fa;
+-  --sdp-secondary-500: var(--sdp-blau-fosc);   /* fons · text blanc 5,23:1 · AA */
++  --sdp-secondary-500: var(--sdp-canon-blau);   /* fons · text blanc 5,23:1 · AA */
+   --sdp-secondary-600: #00599d; /* Blau fort · text i fons massís d'acció */
+   --sdp-secondary-700: #004983;
+   --sdp-secondary-800: #003663;
+@@ -136,7 +145,7 @@
+   --sdp-accent:            var(--sdp-primary-500);
+   --sdp-accent-hover:      var(--sdp-primary-600);
+   --sdp-accent-subtil:     var(--sdp-primary-50);
+-  --sdp-sobre-accent:      var(--sdp-pedra-900);    /*  7,13:1 · AAA */
++  --sdp-sobre-accent:      var(--sdp-pedra-900);    /*  7,12:1 · AAA */
+   --sdp-accent-text:       var(--sdp-primary-700);  /*  5,51:1 · AA  (interacció) */
+   --sdp-accent-text-hover: var(--sdp-primary-800);  /*  7,97:1 · AAA */
+   --sdp-accent-titol:      var(--sdp-primary-700);  /*  5,51:1 · AA (h2, h4) */
+@@ -147,7 +156,7 @@
+   --sdp-accio-forta:   var(--sdp-secondary-700);
+   --sdp-accio-subtil:  var(--sdp-secondary-50);
+   --sdp-sobre-accio:   #ffffff;                  /*  5,23:1 · AA */
+-  --sdp-accio-text:    var(--sdp-secondary-700); /*  7,20:1 · AAA (h1, h3, h5) */
++  --sdp-accio-text:    var(--sdp-secondary-700); /*  9,21:1 · AAA (h1, h3, h5) */
+   --sdp-focus:         var(--sdp-secondary-700);
+   --sdp-focus-invers:  var(--sdp-primary-400);
+ 
+@@ -652,7 +661,7 @@
+ }
+ .nav-item.nav-item--system.active {
+   background-color: rgba(255, 230, 100, 0.1);
+-  color: #fff;
++  color: var(--sdp-text-invers);
+ }
+ 
+ /* ── 4. COLUMNA 2 · LLISTA CONTEXTUAL (opcional) ───────────────
+@@ -697,7 +706,7 @@
+   100% { opacity: 1; transform: scale(1); }
+ }
+ .iaia-icon {
+-  fill: #ff7300; /* Orange color to match the old IAIA circular avatar */
++  fill: var(--sdp-accent); /* Orange color to match the old IAIA circular avatar */
+   stroke: none;
+   animation: sdp-iaia-pulse 4s ease-in-out infinite;
+ }
+@@ -995,7 +1004,7 @@
+ .btn-outline-dark:hover:not(:disabled) { border-color: var(--sdp-text-suau); background: var(--sdp-fons-targeta); }
+ .btn-base { background: var(--sdp-fons-invers); color: var(--sdp-text-invers); }
+ .btn-base:hover:not(:disabled) { background: var(--sdp-fons-invers); }
+-.btn-danger { background: var(--sdp-error); color: #ffffff; }
++.btn-danger { background: var(--sdp-error); color: var(--sdp-text-invers); }
+ .btn-danger:hover:not(:disabled) { background: var(--sdp-error-text); }
+ .btn-ghost { background: transparent; color: var(--sdp-text-titol); border: 1px solid var(--sdp-vora); }
+ .btn-ghost:hover:not(:disabled) { background: rgba(14,13,12,0.06); border-color: var(--sdp-text-suau); }
+@@ -1682,7 +1691,7 @@
+     padding: 6px 10px;
+     border-radius: 14px;
+     background: none;
+-    color: #ffffff;
++    color: var(--sdp-text-invers);
+     opacity: 0.78;
+     font-weight: 600;
+     transition: opacity var(--sdp-t), color var(--sdp-t), background var(--sdp-t);
+@@ -2007,12 +2016,6 @@
+ /* --- 3. Mode Bancal (Accessibilitat Visual) --- */
+ @media (prefers-contrast: more) {
+   :root, :host {
+-    --sdp-color-text-body: #000000;
+-    --sdp-color-text-heading: #000000;
+-    --sdp-color-border-subtle: #000000;
+-    --sdp-color-bg-base: #FFFFFF;
+-    --sdp-shadow-sm: none;
+-    --sdp-shadow-md: none;
+     --sdp-shadow-elevate: none;
+   }
+   
+@@ -2341,7 +2344,7 @@
+ .chat-bubble-ia { background-color: var(--sdp-fons-targeta); border: 1px solid var(--sdp-vora-control); border-radius: var(--sdp-radi-g) var(--sdp-radi-g) var(--sdp-radi-g) 0; padding: var(--sdp-space-3) var(--sdp-space-4); }
+ .chat-time-ia { font-size: var(--sdp-text-meta); color: var(--sdp-text-suau); display: block; margin-top: var(--sdp-space-1); }
+ .chat-avatar-jl { background-color: var(--sdp-accio-subtil); color: var(--sdp-accio-text); }
+-.chat-bubble-jl { background-color: var(--sdp-accio-text); color: #ffffff; border-radius: var(--sdp-radi-g) var(--sdp-radi-g) 0 var(--sdp-radi-g); padding: var(--sdp-space-3) var(--sdp-space-4); }
++.chat-bubble-jl { background-color: var(--sdp-accio-text); color: var(--sdp-text-invers); border-radius: var(--sdp-radi-g) var(--sdp-radi-g) 0 var(--sdp-radi-g); padding: var(--sdp-space-3) var(--sdp-space-4); }
+ .chat-time-jl { font-size: var(--sdp-text-meta); color: rgba(255,255,255,0.7); display: block; margin-top: var(--sdp-space-1); text-align: right; }
+ .chat-input-wrapper { display: flex; gap: var(--sdp-space-2); align-items: flex-end; background-color: var(--sdp-fons-targeta); padding: var(--sdp-space-3); border-radius: var(--sdp-radi-g); border: 1px solid var(--sdp-vora-control); }
+ .chat-input-textarea { width: 100%; resize: none; border: none; background-color: transparent; padding: var(--sdp-space-2) 0; outline: none; color: inherit; }
+@@ -2489,7 +2492,7 @@
+   flex: 1;
+   padding: 0 12px;
+   background: transparent;
+-  color: #ffffff;
++  color: var(--sdp-text-invers);
+   outline: none;
+   font-weight: 400;
+   line-height: normal;
+@@ -2497,7 +2500,7 @@
+ .search-bar-basic button {
+   border: none;
+   background: transparent;
+-  color: #ffffff;
++  color: var(--sdp-text-invers);
+   opacity: 0.8;
+   cursor: pointer;
+   padding: 0;

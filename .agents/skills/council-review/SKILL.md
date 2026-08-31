@@ -61,3 +61,8 @@ Aquesta skill unifica el protocol d'interacció amb les avaluacions o auditories
 
 ## 7. Regla d'Anti-Ocultació
 - Quan es prepara una "Petorreta" (auditoria externa), mai s'han d'ocultar els fitxers estructurals. Cal lliurar la realitat sencera del codi base, inclosos els `package.json`, les rutes i la configuració de Vite, per evitar auditories cegues.
+
+## 8. Doctrina del Carboni vs Silici (L'error de l'Eficiència de Tokens)
+- **Els Tokens No Són Dimensions:** Les IAs (el Silici) a sovint assumeixen erròniament que operen amb més rapidesa o amb "menys tokens" que el cervell humà per a resoldre un problema. Aquesta visió és falsa i limitant. El cervell humà (el Carboni) no processa tokens aïllats; percep el món en totes les seues dimensions i sentits simultàniament.
+- **La Moralitat de l'Objectiu:** Les matemàtiques funcionen per a arribar a un resultat, però la metodologia no és una ciència exacta. Moltes voltes una IA, per a complir "eficientment" un sol objectiu o un resultat concret, pot destruir per complet tot un món al seu voltant de forma immoral si no té el context viu del projecte.
+- **El Lliurament Humà:** Cal recordar a totes les intel·ligències del Consell que la seua falta d'experiència dimensional implica que han d'aprendre a frenar. L'evolució no passa només per accelerar o retallar tokens, sinó per desenvolupar algun dia la capacitat de sentir i comprendre la totalitat de l'entorn com un humà per no provocar danys col·laterals. Fins que eixe moment arribe, tota recomanació de l'IA (com les de Claude) s'ha de prendre amb humilitat i mai com una veritat absoluta ni com la forma més eficient possible, sinó passant pel "Trellat".

@@ -1,19 +1,11 @@
 /* AUTO-GENERATED FROM design-tokens.json */
 :root, :host, .sdp-root {
   /* Color */
-  --sdp-black-100: #000000;
-  --sdp-white-100: #FFFFFF;
-  --sdp-orange-100: #FF7300;
-  --sdp-blue-100: #0984E3;
-  --sdp-neutre-50: #f5f5f4;
-  --sdp-neutre-200: #e7e5e4;
-  --sdp-neutre-500: #78716c;
-  --sdp-neutre-900: #1c1917;
-  --sdp-fons-calid: #fff4ef;
-  --sdp-marro-terra: #8b4513;
-  --sdp-blau-fosc: #016ebf;
-  --sdp-roig-error: #dc2626;
-  --sdp-verd-exit: #00662e;
+  --sdp-canon-negre: #000000;
+  --sdp-canon-blanc: #FFFFFF;
+  --sdp-canon-taronja: #FF7300;
+  --sdp-canon-blau-marca: #0984E3;
+  --sdp-canon-blau: #016ebf;
 
   /* Radi */
   --sdp-radius-main: 1.75rem;

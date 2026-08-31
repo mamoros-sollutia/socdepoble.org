@@ -113,7 +113,7 @@ export default function DesignSection() {
 </div>
 <div className="swatch">
 <div className="swatch-color sw-negre-pur">Negre</div>
-<div className="swatch-info">#1a1918<br/>--sdp-pedra-900<br/>Text principal</div>
+<div className="swatch-info">#0e0d0c<br/>--sdp-pedra-900<br/>Text principal</div>
 </div>
 </div>
 <div className="table-wrapper"><table><thead><tr><th>Parella</th><th>Contrast</th><th>Nivell</th><th>Ús</th></tr></thead><tbody>
