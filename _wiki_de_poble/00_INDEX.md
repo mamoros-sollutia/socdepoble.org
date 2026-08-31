@@ -22,6 +22,13 @@
 ## Eines i Maquinària
 - *(Pendent d'indexar)*
 
+## Cervell i Agents
+- [[AGENTS]]
+- [[00_INDEX_SKILLS]]
+- [[BIOS]]
+- [[ESTAT]]
+- [[LEDGER]]
+
 ## Disseny i Arquitectura Actual (Pedra Seca)
 - [[model_arquitectonic_pedra_seca_dola]]
 - [[ESTANDARD_Integracio_React]]

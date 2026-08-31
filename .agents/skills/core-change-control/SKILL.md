@@ -4,7 +4,7 @@ description: "Fusió de les regles de control d'abast (bounded-action), verifica
 version: "1.0.0"
 status: canonic
 lang: ca
-triggers_ca:
+triggers_on:
   - "canvia"
   - "escriu"
   - "modifica"
@@ -14,7 +14,7 @@ triggers_ca:
   - "seguretat"
   - "proves"
   - "verificar"
-triggers_en:
+
   - "change"
   - "write"
   - "modify"

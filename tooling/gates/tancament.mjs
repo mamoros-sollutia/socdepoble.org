@@ -49,7 +49,7 @@ const RE_TERMODINAMIC = /^\d{6}_\d{4}_[a-z0-9]+(?:_[a-z0-9]+){1,6}\.(md|txt|json
 /** Fitxers que poden viure a l'Escriptori sense nom termodinàmic. */
 const ESCRIPTORI_RESERVATS = new Set([
   '00_INDEX_ESCRIPTORI.md', '00_INDEX_Satel_lits.md', 'REGISTRE_CODI.md', '.DS_Store', '.gitkeep',
-  'disseny_pedra_seca.html', '00_INDEX.md', '01_Produccio', '.ancora_sessio.json'
+  'disseny_pedra_seca.html', '00_INDEX.md', '01_Produccio', '.ancora_sessio.json', '00_Bandeja_d_Entrada'
 ]);
 
 /** Fitxers que legítimament viuen a l'arrel del repositori. */

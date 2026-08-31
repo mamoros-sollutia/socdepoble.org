@@ -17,7 +17,7 @@
    Sóc de Poble · CSS natiu, sense frameworks (substitueix el base)
    ─────────────────────────────────────────────────────────────────────
    ARQUITECTURA
-   0. Tokens de disseny (:root)  — nous --sdp-*, àlies legat --sp-*
+   0. Tokens de disseny (:root)  — nous --sdp-*, àlies legat --sdp-*
    1. Reset i base global        — scroll delegat, sense rubber-band
    2. Esquelet de l'app          — 3 columnes: sidebar · llista · visor
    3. Columna 1: Sidebar (La Roca)
@@ -68,14 +68,14 @@
   --sdp-pedra-400: #b7b1a5;
   --sdp-pedra-500: #8b857b;
   --sdp-pedra-600: #514c45;
-  --sdp-pedra-700: var(--sp-neutre-500);
+  --sdp-pedra-700: var(--sdp-neutre-500);
   --sdp-pedra-750: #302e29;
   --sdp-pedra-800: #22211e;
-  --sdp-pedra-850: var(--sp-neutre-900);
-  --sdp-pedra-900: var(--sp-neutre-900);
+  --sdp-pedra-850: var(--sdp-neutre-900);
+  --sdp-pedra-900: var(--sdp-neutre-900);
 
   /* Primari · taronja de terra — OKLCH H 47.9° (to exacte del cànon #FF7300) */
-  --sdp-primary-50:  var(--sp-fons-calid);
+  --sdp-primary-50:  var(--sdp-fons-calid);
   --sdp-primary-100: #ffe7dc;
   --sdp-primary-200: #ffd1bb;
   --sdp-primary-300: #ffb38c;
@@ -92,7 +92,7 @@
   --sdp-secondary-200: #c3e0ff;
   --sdp-secondary-300: #96c9ff;
   --sdp-secondary-400: #49a3fa;
-  --sdp-secondary-500: var(--sp-blau-fosc);   /* fons · text blanc 5,23:1 · AA */
+  --sdp-secondary-500: var(--sdp-blau-fosc);   /* fons · text blanc 5,23:1 · AA */
   --sdp-secondary-600: #00599d; /* Blau fort · text i fons massís d'acció */
   --sdp-secondary-700: #004983;
   --sdp-secondary-800: #003663;
@@ -568,8 +568,8 @@ nav.app-sidebar {
   display: flex;
   flex-direction: column;
   height: 100%;
-  background: var(--sdp-fons-invers);
-  color: var(--sdp-text-invers);
+  background: var(--sdp-pedra-900);
+  color: var(--sdp-pedra-50);
   position: relative;
   z-index: var(--z-sidebar);
   overscroll-behavior: contain;
@@ -638,7 +638,7 @@ nav.app-sidebar > div:last-child {
   font-weight: 600;
   transition: background var(--sdp-t), color var(--sdp-t);
 }
-.nav-item:hover { background: rgba(255,255,255,0.09); color: var(--sdp-text-invers); }
+.nav-item:hover { background: rgba(255,255,255,0.09); color: var(--sdp-pedra-50); }
 .nav-item.active { background: var(--sdp-accent); color: var(--sdp-sobre-accent); }
 .nav-item.active:hover { background: var(--sdp-accent-hover); }
 
@@ -675,8 +675,8 @@ aside.app-list {
 header.bar-black {
   height: var(--sdp-alt-negra);
   flex: none;
-  background: var(--sdp-fons-invers);
-  color: var(--sdp-text-invers);
+  background: var(--sdp-pedra-900);
+  color: var(--sdp-pedra-50);
   display: flex;
   align-items: center;
   padding: 0 var(--sdp-space-6);
@@ -2956,3 +2956,243 @@ button.sp-card-calendar-badge:hover {
   border: 1px solid var(--sdp-avis-500);
   border-radius: var(--sdp-radi-s);
 }
+
+/* ── TRASPASAT DE legacy-components.css ── */
+@keyframes sosp-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes sosp-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.pill {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 8px 16px; border-radius: 20px; font-weight: 700; font-size: 0.9rem; cursor: pointer; border: 1px solid var(--sdp-vora); background: var(--sdp-fons-targeta); color: var(--sdp-text-base); transition: all var(--sdp-t);
+}
+
+.pill:hover {
+  background: var(--sdp-fons-subtil);
+}
+
+.pill--primary {
+  background: var(--sdp-accio); color: var(--sdp-sobre-accio); border-color: var(--sdp-accio);
+}
+
+.pill--primary:hover {
+  background: var(--sdp-accio-hover);
+}
+
+.pill--accent {
+  background: var(--sdp-accent); color: var(--sdp-sobre-accent); border-color: var(--sdp-accent);
+}
+
+.pill--accent:hover {
+  filter: brightness(1.1);
+}
+
+.detail-page {
+  display: flex; flex-direction: column; gap: var(--sdp-space-6); max-width: 800px; margin: 0 auto; padding: var(--sdp-space-4);
+}
+
+.detail-hero {
+  background: var(--sdp-fons-superficie); border-radius: var(--sdp-radi-xl); box-shadow: var(--sdp-ombra-2); overflow: hidden;
+}
+
+.card__body {
+  padding: var(--sdp-space-6);
+}
+
+.card__title {
+  font-size: 2rem; color: var(--sdp-text-titol); font-weight: 800; line-height: 1.1; margin-bottom: var(--sdp-space-4);
+}
+
+.section-item-card__subtitle {
+  font-size: 1.2rem; color: var(--sdp-text-suau); font-weight: 500; margin-bottom: var(--sdp-space-6);
+}
+
+.media-frame {
+  width: 100%; position: relative;
+}
+
+.media-frame img {
+  width: 100%; height: auto; display: block;
+}
+
+.media-frame--contain img {
+  object-fit: contain; max-height: 60vh;
+}
+
+.detail-hero__media {
+  border-top: 1px solid var(--sdp-vora);
+}
+
+.detail-content__paragraph {
+  margin-bottom: var(--sdp-space-4); line-height: 1.6;
+}
+
+.badge-row {
+  display: flex; gap: var(--sdp-space-2); margin-bottom: var(--sdp-space-4); flex-wrap: wrap;
+}
+
+.badge {
+  display: inline-flex; align-items: center; justify-content: center; height: 24px; padding: 0 12px; border-radius: 12px; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.05em; background: var(--sdp-fons-subtil); color: var(--sdp-text-titol); white-space: nowrap;
+}
+
+.devices-shell h3 {
+  margin-top: 32px;
+}
+
+.devices-shell > div:first-child {
+  margin-bottom: 32px;
+}
+
+.card--soft {
+  text-align: center; background: var(--sdp-fons-targeta); border-radius: var(--sdp-radi-g); box-shadow: var(--sdp-ombra-1); padding: var(--sdp-space-4); border: 1px solid var(--sdp-vora);
+}
+
+.card--soft .card__body {
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+}
+
+.devices-layout {
+  display: flex; flex-direction: column; gap: var(--sdp-space-5);
+}
+
+.devices-panel__head {
+  display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: var(--sdp-space-4);
+}
+
+.devices-panel__head button {
+  margin-top: 12px;
+}
+
+.devices-panel__body {
+  display: flex; flex-direction: column; align-items: center;
+}
+
+.devices-name-row {
+  display: flex; flex-direction: column; align-items: center; gap: 12px; width: 100%;
+}
+
+.devices-name-row input {
+  text-align: center; width: 100%; max-width: 280px;
+}
+
+.note-card {
+  margin-top: 24px; padding: 1.5rem; margin-inline: auto; max-width: 600px; text-align: center;
+}
+
+.devices-list {
+  width: 100%; max-width: 400px; display: flex; flex-direction: column; gap: var(--sdp-space-4);
+}
+
+.devices-row {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+}
+
+.devices-row .card__text {
+  max-width: 280px; margin-inline: auto;
+}
+
+.devices-panel__head .badge-row,
+.card__body .badge-row {
+  justify-content: center; margin-top: 12px;
+}
+
+.devices-panel__body .card__body .badge-row {
+  align-content: center; justify-content: center; margin-top: 0;
+}
+
+.devices-panel__body .card__body p {
+  font-size: 0.8rem; color: var(--sdp-text-suau); margin: 8px 0 0 0; text-align: center;
+}
+
+.devices-panel__body .card__body .note-card {
+  width: 100%;
+}
+
+.login-layout {
+  display: flex; flex-direction: column; align-items: center; gap: var(--sdp-space-5); margin-top: var(--sdp-space-4); margin-bottom: var(--sdp-space-6);
+}
+
+.login-switcher {
+  display: flex; justify-content: center; gap: var(--sdp-space-3); background: var(--sdp-fons-targeta); padding: 8px; border-radius: 20px; box-shadow: var(--sdp-ombra-1); flex-wrap: wrap;
+}
+
+.pill--active {
+  background-color: var(--sdp-accio); color: var(--sdp-sobre-accio);
+}
+
+.login-form {
+  display: flex; flex-direction: column; gap: var(--sdp-space-4);
+}
+
+.login-action {
+  margin-top: 8px; width: 100%; justify-content: center;
+}
+
+.app-main__content article.card:has(.notes-shell) {
+  padding: 0; overflow: hidden;
+}
+
+.app-main__content article.card:has(.notes-shell) .topbar {
+  position: static; border-radius: 0; border-width: 0; background: var(--sdp-fons-roca); color: var(--sdp-sobre-roca);
+}
+
+.app-main__content article.card:has(.notes-shell) .topbar__title, .app-main__content article.card:has(.notes-shell) .topbar__title strong {
+  color: var(--sdp-sobre-roca);
+}
+
+.app-main__content article.card:has(.notes-shell) .topbar__actions {
+  gap: 6px;
+}
+
+.note-list {
+  margin-top: 16px;
+}
+
+.note-list .conversation-button {
+  grid-template-columns: 1fr; align-items: start;
+}
+
+.notes-editor .card__title {
+  font-size: 2rem; margin-top: 0;
+}
+
+.notes-editor .badge-row {
+  margin-top: 12px;
+}
+
+.chat-empty .section-title {
+  color: inherit;
+}
+
+.detail-hero .card__title {
+  margin-top: 14px;
+}
+
+.detail-hero .detail-content {
+  margin-top: 18px;
+}
+
+.card--soft .split-grid .media-frame {
+  aspect-ratio: 1/1;
+}
+
+.card--soft .split-grid .card__body {
+  display: grid; align-content: center;
+}
+
+.card--soft .split-grid .sp-card-labels {
+  margin-top: 0; margin-bottom: 12px; justify-content: center;
+}
+
+.card--soft .split-grid .card__title {
+  margin-top: 14px;
+}
+
+.card--soft + .feed-grid {
+  margin-top: 18px;
+}
+

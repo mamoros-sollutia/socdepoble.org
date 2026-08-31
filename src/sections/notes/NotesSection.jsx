@@ -1,5 +1,5 @@
-import { useDeferredValue, useMemo, useState } from 'react';
-import { FileText, Folder, List, Search, Settings, Image as ImageIcon, PanelLeftClose, Bookmark, Hash, Sparkles, Download, Heading2, Type, ListTodo, Video, Link, Bold, Italic, Strikethrough, Globe } from 'lucide-react';
+import { useDeferredValue, useMemo, useState, useEffect } from 'react';
+import { FileText, Folder, List, Search, Settings, Image as ImageIcon, PanelLeftClose, Bookmark, Hash, Sparkles, Download, Heading2, Type, ListTodo, Video, Link, Bold, Italic, Strikethrough, Globe, Clock } from 'lucide-react';
 import { UniversalPage } from '../../components/universal/UniversalComponents';
 import { useAppData } from '../../app/AppDataContext';
 import { sanitizeHtml } from '../../utils/sanitize.js';
@@ -29,6 +29,30 @@ export default function NotesSection() {
   const [colNotesCollapsed, setColNotesCollapsed] = useState(false);
   const [accCategoriesOpen, setAccCategoriesOpen] = useState(true);
   const [accTagsOpen, setAccTagsOpen] = useState(true);
+  const [settingsOpen, setSettingsOpen] = useState(false);
+
+  // Timer State
+  const [timerActive, setTimerActive] = useState(false);
+  const [timerSeconds, setTimerSeconds] = useState(0);
+
+  useEffect(() => {
+    let interval = null;
+    if (timerActive) {
+      interval = setInterval(() => {
+        setTimerSeconds(s => s + 1);
+      }, 1000);
+    } else if (!timerActive && timerSeconds !== 0) {
+      clearInterval(interval);
+    }
+    return () => clearInterval(interval);
+  }, [timerActive, timerSeconds]);
+
+  const formatTime = (totalSeconds) => {
+    const hrs = Math.floor(totalSeconds / 3600);
+    const mins = Math.floor((totalSeconds % 3600) / 60);
+    const secs = totalSeconds % 60;
+    return `${hrs > 0 ? hrs.toString().padStart(2, '0') + ':' : ''}${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+  };
 
   const notes = useMemo(
     () =>
@@ -264,9 +288,42 @@ export default function NotesSection() {
                       style={{ width: '100%', padding: '8px 12px 8px 36px', borderRadius: '20px', border: '1px solid var(--sdp-vora)', background: 'var(--sdp-fons-superficie)', fontSize: '0.9rem' }}
                     />
                   </div>
-                  <button style={{ background: 'transparent', border: 'none', cursor: 'pointer', color: 'var(--sdp-text-suau)', padding: '4px', display: 'flex' }}>
-                    <Settings size={20} />
-                  </button>
+                  <div style={{ position: 'relative' }}>
+                    <button 
+                      onClick={() => setSettingsOpen(!settingsOpen)}
+                      style={{ background: 'transparent', border: 'none', cursor: 'pointer', color: timerActive ? 'var(--sdp-accent-text)' : 'var(--sdp-text-suau)', padding: '4px', display: 'flex', position: 'relative' }}
+                      title="Ajustaments i Timer"
+                    >
+                      <Settings size={20} />
+                      {timerActive && (
+                        <span style={{ position: 'absolute', top: 0, right: 0, width: '8px', height: '8px', background: 'var(--sdp-error-500)', borderRadius: '50%', boxShadow: '0 0 0 2px var(--sdp-fons-superficie)' }} />
+                      )}
+                    </button>
+                    {settingsOpen && (
+                      <div style={{ position: 'absolute', top: '100%', right: 0, marginTop: '8px', background: 'var(--sdp-fons-elevat)', border: '1px solid var(--sdp-vora)', borderRadius: '8px', boxShadow: 'var(--sdp-ombra-3)', padding: '8px', minWidth: '180px', zIndex: 50 }}>
+                        <div style={{ padding: '8px', borderBottom: '1px solid var(--sdp-vora)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
+                          <span style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.85rem', fontWeight: 'bold', color: 'var(--sdp-text-suau)' }}><Clock size={14}/> Temps:</span>
+                          <span style={{ fontFamily: 'monospace', fontSize: '0.9rem', color: timerActive ? 'var(--sdp-accent-text)' : 'var(--sdp-text-base)' }}>{formatTime(timerSeconds)}</span>
+                        </div>
+                        <button 
+                          onClick={() => setTimerActive(!timerActive)}
+                          style={{ width: '100%', padding: '8px', textAlign: 'left', background: 'transparent', border: 'none', cursor: 'pointer', color: timerActive ? 'var(--sdp-error-500)' : 'var(--sdp-text-base)', fontSize: '0.85rem', borderRadius: '4px', fontWeight: '600' }}
+                          className="hover-bg"
+                        >
+                          {timerActive ? 'Aturar Temporitzador' : 'Iniciar Temporitzador'}
+                        </button>
+                        {timerSeconds > 0 && !timerActive && (
+                          <button 
+                            onClick={() => setTimerSeconds(0)}
+                            style={{ width: '100%', padding: '8px', textAlign: 'left', background: 'transparent', border: 'none', cursor: 'pointer', color: 'var(--sdp-text-base)', fontSize: '0.85rem', borderRadius: '4px' }}
+                            className="hover-bg"
+                          >
+                            Reiniciar Temps
+                          </button>
+                        )}
+                      </div>
+                    )}
+                  </div>
                   <button className="btn btn-sm" style={{ background: 'var(--sdp-accio)', color: 'var(--sdp-text-invers)', cursor: 'pointer', border: 'none', borderRadius: '20px', padding: '8px 16px', fontWeight: 'bold', fontSize: '0.8rem', whiteSpace: 'nowrap' }}>
                     CREAR NOTA
                   </button>
@@ -357,7 +414,7 @@ export default function NotesSection() {
                 )}
 
                 {/* Barra Taronja */}
-                <section className="bar-orange" aria-label="Autoria i data" style={{ margin: 0, borderRadius: 0, background: 'var(--sdp-accent-text)', padding: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', color: '#fff' }}>
+                <section className="bar-orange" aria-label="Autoria i data" style={{ margin: 0, borderRadius: 0, background: 'var(--sdp-accent-text)', padding: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', color: 'var(--sdp-white-100)' }}>
                   <div className="sp-card-author" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                     <img className="sp-card-avatar" src="/assets/system/ui/logo-socdepoble-cuadrat-verd.svg" alt="Sóc de Poble" width="48" height="48" style={{ borderRadius: '4px' }} />
                     <div className="sp-card-author-info">

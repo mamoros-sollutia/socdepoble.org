@@ -157,3 +157,7 @@ Tota imatge sol·licitada, generada o inserida en el codi ha de tindre una propo
 Abans de crear o implementar qualsevol nova funcionalitat, component o element visual a l'aplicació, has de fer-te una pregunta vital: **"Existix aquest component al Sistema de Disseny (`src/sections/disseny/DesignSection.jsx`)?"**
 - Si **SÍ** existix, l'has d'utilitzar aplicant les classes i estructures canòniques.
 - Si **NO** existix, **NO POTS IMPLEMENTAR-LO A CEGUES**. Primer has d'anar al Sistema de Disseny, dissenyar-lo, conceptualitzar-lo amb els *tokens* de Pedra Seca, validar-lo visualment i, només quan estiga afiançat al "Storybook" de la plataforma, el podràs portar i connectar a la secció corresponent de l'aplicació. Queda terminantment prohibit inventar codi CSS o JSX funcional sobre la marxa sense que el seu patró existisca prèviament al catàleg de disseny.
+
+### Lògica de la Sidebar Inmutable
+1. **Fons Negre Inmutable**: La Sidebar (`nav.app-sidebar`) i la Topbar (`header.bar-black`) són **sempre de fons negre inmutable**. Els seus colors no s'inverteixen en mode clar/fosc. Han d'utilitzar sempre les variables directes (`--sdp-pedra-900` per fons, `--sdp-pedra-50` per text), evitant usar tokens invertibles com `--sdp-fons-invers`.
+2. **Pàgines de Sistema al Menú**: Qualsevol pàgina o component que siga marcat amb la categoria "sistema" s'inclourà automàticament dins de la sidebar com un element més del menú. Això permet que el menú cresca de forma dinàmica basant-se en metadades de la pàgina en lloc de rutes *hardcoded*.

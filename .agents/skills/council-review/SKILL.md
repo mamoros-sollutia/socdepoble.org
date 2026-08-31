@@ -4,14 +4,14 @@ description: "Fusió de les regles de deliberació (cog-deliberation), revisió 
 version: "1.0.0"
 status: canonic
 lang: ca
-triggers_ca:
+triggers_on:
   - "consell"
   - "auditoria"
   - "revisió"
   - "dafo"
   - "petorreta"
   - "deliberar"
-triggers_en:
+
   - "council"
   - "audit"
   - "review"

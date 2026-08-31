@@ -382,6 +382,7 @@ export default function DevicesSection() {
           <p className="lead">
             Llança una connexió i envia missatges directes des d’esta mateixa pantalla.
           </p>
+          {/*
           <div>
             <h3>Per a què servix açò?</h3>
             <p>
@@ -389,6 +390,7 @@ export default function DevicesSection() {
               <strong>Per exemple:</strong> Pots obrir el portal al teu ordinador i al mateix temps al mòbil, o connectar-te amb la tauleta d'una veïna. Si ambdós esteu en la mateixa xarxa o a poca distància, podreu comunicar-vos i passar-vos informació en temps real.
             </p>
           </div>
+          */}
         </div>
 
         <div className="stat-grid">

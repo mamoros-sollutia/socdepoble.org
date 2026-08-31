@@ -13,9 +13,12 @@ export function idConvidat() {
   if (typeof window === 'undefined') return '00000000-0000-0000-0000-000000000000';
   try {
     let id = getVal(CLAU_CONVIDAT);
-    if (!id) {
+    if (!id || !/^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/.test(id.replace('guest-', ''))) {
       id = crypto?.randomUUID?.() || '00000000-0000-0000-0000-000000000000'; // Fallback per entorns estranys
       setVal(CLAU_CONVIDAT, id);
+    } else if (id.startsWith('guest-')) {
+      id = id.replace('guest-', '');
+      setVal(CLAU_CONVIDAT, id); // Actualitza la clau per traure el "guest-" permanentment
     }
     return id;
   } catch {

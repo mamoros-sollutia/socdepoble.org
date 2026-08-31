@@ -4,7 +4,7 @@ description: "Bootstrap d'identitat executiu de la IAIA MarIA. Carrega personali
 version: "1.0.0"
 status: canonic
 lang: ca
-triggers_ca:
+triggers_on:
   - "qui ets"
   - "identitat"
   - "IAIA"
@@ -17,7 +17,7 @@ triggers_ca:
   - "les ties"
   - "arrencada"
   - "bootstrap"
-triggers_en:
+
   - "who are you"
   - "identity"
   - "IAIA"

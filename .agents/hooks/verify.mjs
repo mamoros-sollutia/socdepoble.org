@@ -9,6 +9,11 @@
  *   haver verificat res. Era el mateix patró que el `context_preflight.mjs`:
  *   una porta que no tanca però encén el llum verd.
  *
+ * ARNÉS CONCRET
+ * ─────────────
+ *   Aquesta porta està dissenyada específicamente per al payload de l'arnés
+ *   que proporciona toolCall.args (TargetFile / AbsolutePath / DirectoryPath / Overwrite).
+ *
  * LLEI D'ESTA PORTA
  * ─────────────────
  *   La brossa no es neteja: no es deixa caure. Esta porta no comprova a la fi
@@ -79,6 +84,12 @@ process.stdin.on('end', () => {
 
   const args = payload?.toolCall?.args || {};
   const eina = payload?.toolCall?.name || '';
+  
+  if (!payload?.toolCall?.args) {
+    resp('ask', "[PORTA] Arnés desconegut. L'estructura del payload no conté 'toolCall.args'. "
+      + 'No puc comprovar què vols escriure. Confirma manualment.');
+  }
+
   const brut = args.TargetFile || args.AbsolutePath || args.DirectoryPath || '';
 
   if (!brut) {
