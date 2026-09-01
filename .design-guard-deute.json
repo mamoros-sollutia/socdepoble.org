@@ -1,8 +1,7 @@
 {
   "inline-style": {
-    "max": 186,
+    "max": 191,
     "identitats": [
-      "inline-style|components/DetailSectionMetaFactory.jsx|style=",
       "inline-style|components/SectionItemCard.jsx|style=",
       "inline-style|components/universal/AvisadorEfimer.jsx|style=",
       "inline-style|components/universal/UniversalComponents.jsx|style=",
@@ -24,39 +23,13 @@
     ]
   },
   "raw-color": {
-    "max": 70,
+    "max": 26,
     "identitats": [
       "raw-color|config/app.js|#00662e",
       "raw-color|config/app.js|#050505",
       "raw-color|config/app.js|#111111",
       "raw-color|config/app.js|#d8d2c8",
       "raw-color|config/app.js|#f4efe7",
-      "raw-color|css/legacy-components.css|#076aba",
-      "raw-color|css/legacy-components.css|#14532d",
-      "raw-color|css/legacy-components.css|#166534",
-      "raw-color|css/legacy-components.css|#1a1a1a",
-      "raw-color|css/legacy-components.css|#1e3a8a",
-      "raw-color|css/legacy-components.css|#1e40af",
-      "raw-color|css/legacy-components.css|#22c55e",
-      "raw-color|css/legacy-components.css|#292524",
-      "raw-color|css/legacy-components.css|#3b82f6",
-      "raw-color|css/legacy-components.css|#78350f",
-      "raw-color|css/legacy-components.css|#7f1d1d",
-      "raw-color|css/legacy-components.css|#854d0e",
-      "raw-color|css/legacy-components.css|#991b1b",
-      "raw-color|css/legacy-components.css|#b91c1c",
-      "raw-color|css/legacy-components.css|#d6d3d1",
-      "raw-color|css/legacy-components.css|#dbeafe",
-      "raw-color|css/legacy-components.css|#dcfce7",
-      "raw-color|css/legacy-components.css|#ea580c",
-      "raw-color|css/legacy-components.css|#ef4444",
-      "raw-color|css/legacy-components.css|#eff6ff",
-      "raw-color|css/legacy-components.css|#f0fdf4",
-      "raw-color|css/legacy-components.css|#f59e0b",
-      "raw-color|css/legacy-components.css|#fee2e2",
-      "raw-color|css/legacy-components.css|#fef2f2",
-      "raw-color|css/legacy-components.css|#fef9c3",
-      "raw-color|css/legacy-components.css|#fffbeb",
       "raw-color|sections/disseny/DesignSection.jsx|#00599d",
       "raw-color|sections/disseny/DesignSection.jsx|#016ebf",
       "raw-color|sections/disseny/DesignSection.jsx|#027e38",
@@ -64,7 +37,6 @@
       "raw-color|sections/disseny/DesignSection.jsx|#123",
       "raw-color|sections/disseny/DesignSection.jsx|#125",
       "raw-color|sections/disseny/DesignSection.jsx|#181715",
-      "raw-color|sections/disseny/DesignSection.jsx|#1a1918",
       "raw-color|sections/disseny/DesignSection.jsx|#22211e",
       "raw-color|sections/disseny/DesignSection.jsx|#302e29",
       "raw-color|sections/disseny/DesignSection.jsx|#3d3b35",
@@ -88,10 +60,9 @@
     ]
   },
   "focus-invisible": {
-    "max": 4,
+    "max": 3,
     "identitats": [
-      "focus-invisible|css/index.css|outline-none",
-      "focus-invisible|css/legacy-components.css|outline-none"
+      "focus-invisible|css/index.css|outline-none"
     ]
   },
   "h1-outside-header": {

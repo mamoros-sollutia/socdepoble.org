@@ -1,5 +1,5 @@
 import { mkdir, readFile, writeFile, rename, rm, stat, open } from 'node:fs/promises';
-import { dirname, isAbsolute, join, relative, resolve } from 'node:path';
+import { dirname, isAbsolute, join, relative, resolve, basename } from 'node:path';
 import { createHash, randomUUID } from 'node:crypto';
 
 export class SdpSafetyError extends Error {
@@ -39,7 +39,9 @@ export function resolveInside(root, target, label = 'path') {
     try {
       const parentReal = realpathSync(dirname(abs));
       abs = join(parentReal, basename(abs));
-    } catch (e2) {}
+    } catch (e2) {
+      /* ignore */
+    }
   }
 
   const rel = relative(rootAbs, abs);

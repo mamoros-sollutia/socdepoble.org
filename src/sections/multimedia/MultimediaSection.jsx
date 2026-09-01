@@ -57,7 +57,7 @@ export default function MultimediaSection() {
           {timelineGroups.map((group) => (
             <section key={group.key} className="card card--soft">
               <div className="card__body">
-                <div className="text-panel__head">
+                <div className="panel-head">
                   <h2 className="section-title">{group.label}</h2>
                   <span className="pill">{group.items.length} {t('section.multimedia.elements', 'elements')}</span>
                 </div>

@@ -56,6 +56,7 @@ const MIRROR_PREFIXES = [
 ];
 const VENDOR_PREFIXES = ['00_SER_Brain_Identitat/Sollutia'];
 const VISIBLE_QUARANTINE_RE = /^QUARANTENA(?:_|-)/i;
+// eslint-disable-next-line no-control-regex
 const CONTROL_RE = /[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/;
 const PLACEHOLDER_RE = /^(?:todo|tbd|wip|fixme|placeholder|pendent|per completar|pr[oò]ximament|sense contingut)[\s.!…:;-]*$/i;
 
@@ -173,13 +174,13 @@ export function extractInlineMarkdownLinks(text) {
 export function extractLinks(body) {
   const live = liveMarkdown(body);
   const links = [];
-  for (const match of live.matchAll(/(!?)\[\[([^\[\]\n]+)\]\]/g)) {
+  for (const match of live.matchAll(/(!?)\[\[([^[\]\n]+)\]\]/g)) {
     const inner = match[2];
     const pipe = inner.indexOf('|');
     const rawTarget = (pipe === -1 ? inner : inner.slice(0, pipe)).trim();
     links.push({ kind: 'wiki', raw: match[0], target: rawTarget, embed: Boolean(match[1]) });
   }
-  const withoutWiki = live.replace(/!?\[\[[^\[\]\n]+\]\]/g, '');
+  const withoutWiki = live.replace(/!?\[\[[^[\]\n]+\]\]/g, '');
   links.push(...extractInlineMarkdownLinks(withoutWiki));
   return links;
 }

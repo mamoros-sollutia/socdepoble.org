@@ -31,7 +31,9 @@ function init() {
   let stat;
   try {
     stat = fs.lstatSync(SKILLS_LINK);
-  } catch(e) {}
+  } catch (e) {
+    /* ignore */
+  }
   
   if (stat && stat.isSymbolicLink()) {
     console.log("Ja està inicialitzat amb symlink.");

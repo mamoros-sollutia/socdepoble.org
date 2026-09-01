@@ -130,10 +130,10 @@ function splitInlineList(inner) {
 function parseScalar(rawValue, errors, context) {
   const rawTrimmed = rawValue.trim();
   const value = stripYamlComment(rawTrimmed);
-  const quotedOrCollection = /^["'\[]/.test(value);
+  const quotedOrCollection = /^["'[]/.test(value);
   if (!quotedOrCollection && (
     /:\s|:$/.test(value)
-    || /^[*&!|>@`{},\[\]]/.test(value)
+    || /^[*&!|>@`{},[\]]/.test(value)
   )) {
     errors.push(`${context}: escalar pla ambigu o invàlid; cal citar-lo`);
   }

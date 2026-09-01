@@ -22,8 +22,7 @@ substitueix:
   - core-bounded-action (secció d'escriptura destructiva)
   - core-safe-restore (fusionada ací el 260831)
 eines_obligatories:
-  - eines/desenterrar.mjs
-  - eines/ancora.mjs
+  - tooling/brain/ancora.mjs
 triggers_on:
   - "restaura"
   - "restaurar"

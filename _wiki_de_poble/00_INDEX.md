@@ -34,7 +34,7 @@
 - [[ESTANDARD_Integracio_React]]
 
 ## Actes i Sessions (260809 - 260813)
-- *(Pendent d'indexar)*
+- [[00_INDEX_Actes]]
 
 
 ## Taxonomia

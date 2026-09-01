@@ -14,6 +14,7 @@ import { createTranslator, readStoredLanguage, writeStoredLanguage, normalizeLan
 import { getVal } from '../config/storage.js';
 import { readThemePreference, resolveTheme, writeThemePreference } from '../config/theme';
 import { uuid } from '../utils/uuid.js';
+import { showToast } from '../components/universal/AvisadorEfimer.jsx';
 
 const AppStateContext = createContext(null);
 const AppActionsContext = createContext(null);
@@ -485,7 +486,14 @@ export function AppDataProvider({ children, externalConfig = {} }) {
 
       // Ara enviem directament a la xarxa, mode Online-First.
       try {
-        await appendChatMessages([userMessage], stableExternalConfig);
+        if (!currentUser) {
+          // Simulació per a usuaris no registrats (Forasters)
+          await new Promise(resolve => setTimeout(resolve, 600));
+          showToast('Mode Foraster: Missatge simulat.', 'info');
+        } else {
+          await appendChatMessages([userMessage], stableExternalConfig);
+        }
+
         // Tanca el cicle visual
         setRawData((current) => ({
           ...current,

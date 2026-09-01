@@ -254,14 +254,14 @@ function ChatConversation({ thread, messages, onSendMessage, onBack }) {
           </div>
         )}
         {messages.map((msg, i) => (
-          <div key={msg.id || i} className={`xat-bubble ${msg.sender === 'me' || msg.is_ai ? 'xat-bubble-me' : 'xat-bubble-other'}`}>
+          <div key={msg.id || i} className={`sdp-chat-bubble ${msg.sender === 'me' || msg.is_ai ? 'sdp-chat-bubble--user' : 'sdp-chat-bubble--ai'}`}>
             {msg.sender !== 'me' && !msg.is_ai && (
-              <div style={{ fontSize: '0.75rem', fontWeight: 'bold', color: 'var(--sdp-accio-text)', marginBottom: 2 }}>
+              <div style={{ fontSize: '0.75rem', fontWeight: 'bold', color: 'var(--sdp-text-meta)', marginBottom: 2 }}>
                 {msg.author || msg.author_name || 'Usuari'}
               </div>
             )}
             <div>{msg.text ?? msg.content ?? ''}</div>
-            <div className="xat-bubble-meta">
+            <div className="sdp-chat-bubble-meta">
               {msg.time_label || 'Ara mateix'} {msg.synthetic && ' (Sintètic)'}
             </div>
           </div>

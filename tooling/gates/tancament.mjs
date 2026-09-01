@@ -44,7 +44,7 @@ const JSON_OUT = ARGS.includes('--json');
 const HORES_FRESCOR = 24;
 
 /* Nom termodinàmic: AAMMDD_HHMM_categoria_titol.ext (1–6 paraules) */
-const RE_TERMODINAMIC = /^\d{6}_\d{4}_[a-z0-9]+(?:_[a-z0-9]+){1,6}\.(md|txt|json|csv)$/i;
+const RE_TERMODINAMIC = /^\d{6}_\d{4}_[a-z0-9]+(?:_[a-z0-9]+){1,6}\.(md|txt|json|csv|m4a|wav)$/i;
 
 /** Fitxers que poden viure a l'Escriptori sense nom termodinàmic. */
 const ESCRIPTORI_RESERVATS = new Set([

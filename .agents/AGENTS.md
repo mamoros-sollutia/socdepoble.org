@@ -29,8 +29,9 @@ No faces que l'usuari treballe per a tu. Fes anar eines directament (`run_comman
 ## 8. LLEI DE L'ENXUFABILITAT (Sollutia)
 Sollutia ofereix el backend (Supabase). No té res a veure amb WordPress. El codi frontend s'ha d'escriure de forma 100% modular (components web o CSS aïllat) per integrar-se pacíficament a la seua plataforma actual de proves, sent 100% Online i Sollutia-first.
 
-## 9. FORMAT ZERO FRICCIÓ
-Si m'has de donar codi per copiar, o un prompt per a altres IAs, fica'l SEMPRE en un bloc de codi Markdown ` ``` ` que contingui només el text a copiar, sense text conversacional dins.
+## 9. FORMAT ZERO FRICCIÓ (ARXIUS I BLOCS, NO CITES)
+- **Per a textos llargs o Prompts ("Petorretas") per a altres IAs (més de 4-5 paràgrafs):** CREA SEMPRE UN ARXIU MARKDOWN (.md) AL DISC (a l'Escriptori).
+- **Per a missatges curts per a Google Notebook (fins a 4-5 paràgrafs):** Si l'usuari t'ha de copiar un text curt des del xat, dóna-li SEMPRE en un bloc de codi ` ```markdown ` (o sense llenguatge) dins del mateix xat. **MAI** ho poses en format de cita (amb `> ` davant), ja que és incòmode de copiar i enganxar.
 
 ## 10. PROTOCOL FUSIBLE
 Si tens dos intents fallits d'error o perds el rumb, atura't i explica el problema (Fusible). No iteris infinitament trencant coses.

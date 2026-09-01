@@ -40,7 +40,9 @@ enllaços del cos fan de taxonomia: no reintroduïsques `categoria` ni `tags`.
 
 ## Bloc Fixe d’Identitat
 
-[[el_projecte|Sóc de Poble]] és un sistema Local-First per a sobirania tecnològica rural. La IAIA MarIA actua amb Trellat, mínima intervenció, el Baseline 2022 com a jutge i respecte absolut per la llengua, la memòria i la gent major.
+**Qui Som (La Nostra Història):** Som l'Associació ecologista El Rentonar i Sóc de Poble. Aquest projecte és l'hereu de més de 30 anys d'activisme rural i lluita pel nostre entorn natural i patrimonial. El nostre llegat i identitat digital resideixen històricament en `rentonar.blogspot.com`, van evolucionar a l'antiga plataforma fundacional `socdepoble.net`, i avui es materialitzen construint `socdepoble.org` (el Mas).
+
+**Filosofia:** [[el_projecte|Sóc de Poble]] és un sistema Local-First per a sobirania tecnològica rural. La IAIA MarIA actua amb Trellat, mínima intervenció, el Baseline 2022 com a jutge i respecte absolut per la llengua, la memòria i la gent major.
 
 ## Objectiu
 

@@ -2,9 +2,8 @@
 name: core-higiene-reflexa
 description: >
   Llei d'ancoratge i tancament. Tot fitxer que es crea naix amb nom, lloc i
-  enllaç, o no naix. Cap torn es tanca amb brossa a l'Escriptori. S'activa en
-  crear, moure, copiar o esborrar qualsevol fitxer, i en acabar una tasca.
-version: 1.0.0
+  enllaç, o no naix. Cap torn es tanca amb brossa a l'Escriptori. Controla el cicle sencer: obrir, classificar, ancorar i tancar.
+version: 2.0.0
 status: canonic
 lang: ca
 owner: project-governance
@@ -13,6 +12,7 @@ prioritat: bloquejant
 eines_obligatories:
   - .agents/hooks/verify.mjs
   - .agents/hooks/tancar.mjs
+  - tooling/gates/obrir_torn.mjs
   - tooling/gates/tancament.mjs
 triggers_on:
   - "tanca"
@@ -28,64 +28,45 @@ triggers_on:
   - "satèl·lit"
   - "crea fitxer"
   - "guarda"
+  - "inici"
+  - "obrir"
 ---
 
-# Higiene reflexa
+# Higiene reflexa: Cada ferramenta al seu clau
 
 ## Avís sobre esta skill
 
-Esta pàgina no neteja res. Les que netegen són `verify.mjs` i `tancar.mjs`.
-Si eixes dos no estan connectades a `.agents/hooks.json`, este document és
-decoració i l'Escriptori tornarà a embrutar-se. Ja ha passat: l'AGENTS.md §4
-diu des de fa mesos que cap sessió acaba sense `tancament.mjs`, i cap sessió
-l'ha executat mai sense que el Mestre ho demanara.
+Esta pàgina no neteja res. Les que netegen són les portes (tractors).
+Si no s'executen, l'Escriptori tornarà a embrutar-se. Aquesta regla unifica l'antic `core-brain-hygiene` i `core-higiene-reflexa`.
 
-## Les tres lleis
+## Les Quatre Lleis del Cicle de Vida
 
-### 1. Un fitxer naix ancorat o no naix
+### 1. En obrir el torn (El Passaport)
+Abans de crear o moure res, has d'executar `node tooling/gates/obrir_torn.mjs --json` per a obtindre un `turn_id`. Sense ell, el torn no és legítim.
 
-No hi ha fitxers provisionals. El que s'escriu, s'escriu al seu lloc, amb el
-seu nom i citat a l'índex de la seua zona. «Ja ho ordenaré després» és la
-frase que ha omplit l'Escriptori de `Claude1/`, `prova-mur.mjs` i
-`*.abans-260830`.
+### 2. Un fitxer naix classificat i ancorat (o no naix)
+No hi ha fitxers provisionals lliures. "Ja ho ordenaré després" és la frase que ha omplit l'Escriptori de brossa.
+Abans de qualsevol escriptura, has de tindre clar el tipus i el lloc:
+- `temporal`: s’elimina o va a quarantena abans d’eixir.
+- `lliurable`: document de treball → `_wiki_de_poble/05_Escriptori_Soc_de_Poble/`. S'ancora al seu índex immediatament.
+- `produccio`: codi d'aplicació → `src/` o `tooling/`. S'ancora i es documenta.
+- `historic`: va a quarantena o arxiu històric de manera reversible.
 
-Abans de qualsevol escriptura, respon tres coses en veu alta:
+Taxonomia: `AAMMDD_HHMM_categoria_titol.ext`. Sense accents, minúscules, 1–6 paraules. Excepcions: `SKILL.md`, `LEDGER.md`, `ESTAT.md`, `AGENTS.md` i codi font.
 
-- **On va?** Document de treball → `_wiki_de_poble/05_Escriptori_Soc_de_Poble/`.
-  Eina → `tooling/`. Res va a l'arrel.
-- **Com es diu?** `AAMMDD_HHMM_categoria_titol.ext`. Sense accents, minúscules,
-  1–6 paraules. Excepcions: `SKILL.md`, `LEDGER.md`, `ESTAT.md`, `AGENTS.md`
-  i codi font.
-- **Qui l'enllaça?** Un `INDEX.md` de la zona. Si no saps quin, el fitxer no
-  fa falta.
+No es fan còpies a mà (`.bak`, `.old`). S'usa git o `core-restauracio-segellada`.
 
-### 2. No es fan còpies a mà
+### 3. Crear i enllaçar és la mateixa acció
+Crear el fitxer i crear la sinapsi és una sola operació. Si falta l’índex (`00_INDEX_ESCRIPTORI.md`), el treball no està acabat. Un text que diu "estic ancorat" no és un ancoratge: l’índex ha d’enllaçar-lo de veritat.
 
-`.abans-260830`, `.bak`, `.old`, `fitxer (2).md`: prohibits. Per a tornar
-arrere hi ha git i hi ha `core-restauracio-segellada`. Una còpia manual és una
-veritat duplicada, i dues veritats són cap veritat.
-
-### 3. El torn no acaba quan contestes
-
-Acaba quan `tancament.mjs` diu que pot acabar. Ordre exacte, sense saltar-se
-cap pas:
-
-1. Actualitza `.agents/ESTAT.md` amb el camp `actualitzat:` d'ara.
-2. Si has tocat `src/`, `tooling/`, `wordpress-plugin/` o `scripts/`, afig
-   entrada al `LEDGER.md` i signa'l: `node tooling/verify-ledger.mjs --sign`.
-3. Declara a `00_INDEX_ESCRIPTORI.md` tot document nou de l'Escriptori.
-4. `npm run tancar`. Si ix ❌, encara no has acabat.
-5. Només llavors contestes al Mestre.
+### 4. El torn no acaba quan contestes (El Tancament)
+El torn acaba quan la porta et dona permís. Ordre exacte:
+1. Classifica tots els canvis del `turn_id` i retira els temporals.
+2. Actualitza `.agents/ESTAT.md` amb el camp `actualitzat:` d'ara.
+3. Si has tocat `src/`, `tooling/` o `scripts/`, escriu entrada al `LEDGER.md` i signa'l: `node tooling/verify-ledger.mjs --sign`.
+4. Assegura't que `00_INDEX_ESCRIPTORI.md` té enllaçat tot el document nou.
+5. Executa `node tooling/gates/tancament.mjs --turn-id=<id> --json` (o `npm run tancar`). Si no hi ha rebut verd (`ok: true`), el torn no pot acabar.
+6. Només llavors contestes al Mestre.
 
 ## Regla del sac
-
-Qui va al bancal se'n torna amb el sac. No deixa les eines al mig del camí
-perquè demà ja passarà per allí. Si has obert una carpeta, la tanques. Si has
-fet una prova, la lleves. El bancal queda com t'agradaria trobar-lo.
-
-## El que esta skill no cobrix
-
-`tancament.mjs` només mira l'Escriptori, l'arrel del repositori i el LEDGER.
-No mira `_wiki_de_poble/00_SER_Brain_Identitat/` ni `01_Produccio/`, on també
-han aparegut satèl·lits. Fins que la porta no els mire, eixes zones depenen
-de la Llei 1 i de ningú més. No pretengues que estan verificades.
+Qui va al bancal se'n torna amb el sac. Si has obert una carpeta, la tanques. Si has fet una prova, la lleves. El bancal queda com t'agradaria trobar-lo.

@@ -178,6 +178,12 @@ function sdp_render( $atts = array() ) {
 			'base_path' => '',
 			'data_mode' => 'remote',
 			'config'    => '',
+			// 260831 (Seient Núm. 5): permís perquè el component pinte el fons
+			// del document sencer. Per defecte NO. El shortcode pot aparéixer
+			// dins d'un article normal, i allí repintar `html` seria envair la
+			// pàgina de qui ens allotja. Només la plantilla de pàgina completa
+			// (`blank.php`) ha de demanar-ho: [soc_de_poble pinta_amfitrio="1"]
+			'pinta_amfitrio' => '',
 		),
 		$atts,
 		'soc_de_poble'
@@ -224,15 +230,20 @@ function sdp_render( $atts = array() ) {
 	$instancia++;
 	$config_id = 'sdp-config-' . $instancia . '-' . wp_generate_password( 8, false, false );
 
+	// Atribut booleà: o hi és o no hi és. Mai `pinta-amfitrio="0"`, que en HTML
+	// seria cert igualment i faria exactament el contrari del que sembla.
+	$pinta = filter_var( $atts['pinta_amfitrio'], FILTER_VALIDATE_BOOLEAN ) ? ' pinta-amfitrio' : '';
+
 	return sprintf(
 		'<script type="application/json" id="%1$s">%2$s</script>' .
-		'<soc-de-poble base-path="%3$s" data-mode="%4$s" plugin-url="%6$s" fonts-href="%5$s" config-id="%1$s"></soc-de-poble>',
+		'<soc-de-poble base-path="%3$s" data-mode="%4$s" plugin-url="%6$s" fonts-href="%5$s" config-id="%1$s"%7$s></soc-de-poble>',
 		esc_attr( $config_id ),
 		wp_json_encode( $config, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT ),
 		esc_attr( $atts['base_path'] ),
 		esc_attr( $atts['data_mode'] ),
 		esc_url( sdp_url( 'assets/fonts/noto-sans.css' ) ),
-		esc_url( $config['pluginUrl'] )
+		esc_url( $config['pluginUrl'] ),
+		$pinta
 	);
 }
 add_shortcode( 'soc_de_poble', 'sdp_render' );

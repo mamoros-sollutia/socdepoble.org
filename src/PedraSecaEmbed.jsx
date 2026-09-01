@@ -32,7 +32,7 @@
 
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { HashRouter, BrowserRouter, MemoryRouter } from 'react-router-dom';
+import { BrowserRouter, MemoryRouter } from 'react-router-dom';
 import App from './app/App';
 import { AppDataProvider } from './app/AppDataContext';
 import { destroyToastSystem } from './components/universal/AvisadorEfimer.jsx';
@@ -92,9 +92,7 @@ function obtenirFull() {
   try {
     const full = new CSSStyleSheet();
     full.replaceSync(`:host{display:block;width:100%;height:100%;}\n${styles}`);
-    const fullLegacy = new CSSStyleSheet();
-    fullLegacy.replaceSync(legacyStyles);
-    fullCompartit = [full, fullLegacy];
+    fullCompartit = [full];
     return fullCompartit;
   } catch {
     return null; /* navegador sense adoptedStyleSheets → recurs de <style> */
@@ -186,7 +184,7 @@ function sanejaConfig(cru) {
 
 class SocDePobleElement extends BaseElement {
   static get observedAttributes() {
-    return [...Object.keys(ATRIBUTS), 'config', 'config-id'];
+    return [...Object.keys(ATRIBUTS), 'config', 'config-id', 'pinta-amfitrio'];
   }
 
   constructor() {
@@ -218,16 +216,27 @@ class SocDePobleElement extends BaseElement {
       this._unmountListener = null;
     }
 
-    // Convertim activeElements a array abans d'iterar per evitar mutar el set mentre l'iterem
+    /*
+     * P0-6 GERMÀ ASSASSINAT (260831, Seient Núm. 5).
+     *
+     * Ací hi havia dues branques. La segona neteja zombis —nodes que ja no són
+     * al document i el `disconnectedCallback` dels quals no ha arribat a
+     * desmuntar-los— i és correcta. La primera desmuntava germans amb
+     * `old.isConnected` CERT: és a dir, instàncies vives i sanes.
+     *
+     * El comentari deia «Últim que arriba guanya», que era una política
+     * d'instància única mai declarada enlloc. A WordPress no s'aguanta:
+     * Gutenberg permet posar dos blocs a la mateixa pàgina, i un editor del
+     * poble ho farà tard o d'hora. Muntar el segon deixava el primer en blanc,
+     * sense error a la consola i sense manera d'endevinar per què.
+     *
+     * Ara només es netegen zombis. Dues instàncies vives conviuen.
+     */
     const elementsActuals = Array.from(activeElements);
     for (const old of elementsActuals) {
-      if (old !== this && old.isConnected && typeof old._desmuntaAra === 'function') {
-        old._desmuntaAra(); // Últim que arriba guanya: desmuntatge SÍNCRON
-      }
-      // Netejem possibles zombis (ara de forma segura)
-      if (old !== this && !old.isConnected) {
-        if (typeof old._desmuntaAra === 'function') old._desmuntaAra();
-      }
+      if (old === this) continue;
+      if (old.isConnected) continue; // germà viu: no es toca
+      if (typeof old._desmuntaAra === 'function') old._desmuntaAra();
     }
 
     activeElements.add(this);
@@ -267,6 +276,8 @@ class SocDePobleElement extends BaseElement {
 
     this._recalcularConfig();
     this.dataset.theme = resolveTheme(this._config.themeMode ?? readThemePreference());
+    this._escoltaTemaDelSistema();
+    this._pintaAmfitrio();
 
     /* P0-1: la guarda va sobre l'arrel de React, no sobre el shadow root. */
     if (!this._root) {
@@ -280,8 +291,18 @@ class SocDePobleElement extends BaseElement {
     this._render();
   }
 
-  attributeChangedCallback() {
+  attributeChangedCallback(nom) {
     if (!this.isConnected) return;
+
+    /* `pinta-amfitrio` no viu a ATRIBUTS (no és configuració de l'app, és
+       un permís sobre el document). `_recalcularConfig()` tornaria fals i el
+       canvi en calent no faria res, així que s'atén a banda. */
+    if (nom === 'pinta-amfitrio') {
+      if (this.hasAttribute('pinta-amfitrio')) this._pintaAmfitrio();
+      else PedraSecaEmbed._despintaAmfitrio();
+      return;
+    }
+
     if (this._recalcularConfig()) {
       this._render();
     }
@@ -383,7 +404,88 @@ class SocDePobleElement extends BaseElement {
   setTheme(theme) {
     this._config = { ...this._config, themeMode: theme };
     this.dataset.theme = resolveTheme(theme);
+    this._pintaAmfitrio();
     this._render();
+  }
+
+  /* ══════════════════ P0-8 · MARC BRILLANT (260831) ══════════════════
+   *
+   * `blank.php` pinta `html, body` amb `background-color: var(--sdp-bg,…)`.
+   * `--sdp-bg` viu ara als blocs de tema del sistema de disseny, dins del
+   * shadow root. Però les propietats personalitzades hereten CAP AVALL: un
+   * token declarat a `:host` mai arriba a `html`, que és son pare. Per tant
+   * `blank.php` pintava sempre el fallback beix i, en mode fosc, l'app negra
+   * quedava emmarcada en clar. De nit, per a gent gran, això enlluerna.
+   *
+   * L'única via que travessa la frontera cap amunt és JavaScript. Es llig el
+   * valor JA CALCULAT pel tema actiu i es publica al document. Cap color viu
+   * al PHP ni al JS: la font de veritat continua sent el CSS.
+   *
+   * És OPT-IN (`pinta-amfitrio`). Sense la guarda, incrustar el component com
+   * un bloc més dins d'un article de WordPress repintaria el fons del lloc
+   * sencer. Només la plantilla de pàgina completa demana este comportament.
+   */
+  _pintaAmfitrio() {
+    if (typeof document === 'undefined') return;
+    if (!this.hasAttribute('pinta-amfitrio')) return;
+    const punt = this._punt;
+    if (!punt || !punt.isConnected) return;
+
+    let valor = '';
+    try {
+      valor = getComputedStyle(punt).getPropertyValue('--sdp-bg').trim();
+    } catch {
+      return; // entorns sense layout (jsdom parcial): millor no tocar res
+    }
+    if (!valor) return;
+
+    const arrel = document.documentElement;
+    /* Es guarda el valor previ una sola vegada per a poder-lo restituir:
+       la pàgina de WordPress pot tindre el seu i no és nostre. */
+    if (PedraSecaEmbed._fonsPrevi === undefined) {
+      PedraSecaEmbed._fonsPrevi = arrel.style.getPropertyValue('--sdp-bg');
+    }
+    arrel.style.setProperty('--sdp-bg', valor);
+    arrel.dataset.sdpTheme = this.dataset.theme || '';
+  }
+
+  /** Deixa el document com estava. La crida l'última instància que se'n va. */
+  static _despintaAmfitrio() {
+    if (typeof document === 'undefined') return;
+    const arrel = document.documentElement;
+    const previ = PedraSecaEmbed._fonsPrevi;
+    if (previ) arrel.style.setProperty('--sdp-bg', previ);
+    else arrel.style.removeProperty('--sdp-bg');
+    delete arrel.dataset.sdpTheme;
+    PedraSecaEmbed._fonsPrevi = undefined;
+  }
+
+  /* El tema «system» llegia `prefers-color-scheme` una sola vegada i es
+   * quedava congelat. Si l'usuària canvia el mode del telèfon amb la pàgina
+   * oberta, el component ha de seguir-la. */
+  _escoltaTemaDelSistema() {
+    if (typeof window === 'undefined' || !window.matchMedia) return;
+    if (this._mqTema) return;
+    const mq = window.matchMedia('(prefers-color-scheme: dark)');
+    const alCanviar = () => {
+      const mode = this._config.themeMode ?? readThemePreference();
+      if (mode !== 'system') return;
+      this.dataset.theme = resolveTheme('system');
+      this._pintaAmfitrio();
+      this._render();
+    };
+    /* Safari < 14 no té addEventListener a MediaQueryList. */
+    if (mq.addEventListener) mq.addEventListener('change', alCanviar);
+    else if (mq.addListener) mq.addListener(alCanviar);
+    this._mqTema = { mq, alCanviar };
+  }
+
+  _paraDEscoltarTema() {
+    if (!this._mqTema) return;
+    const { mq, alCanviar } = this._mqTema;
+    if (mq.removeEventListener) mq.removeEventListener('change', alCanviar);
+    else if (mq.removeListener) mq.removeListener(alCanviar);
+    this._mqTema = null;
   }
   
   getShadowRoot() {
@@ -423,8 +525,24 @@ class SocDePobleElement extends BaseElement {
     this._hasMountedReact = false;
     
     activeElements.delete(this);
-    
-    destroyToastSystem();
+
+    /*
+     * P0-7 AVISOS APAGATS ALS GERMANS (260831, Seient Núm. 5).
+     *
+     * `destroyToastSystem()` és global: hi ha un sol `sharedRoot` per document.
+     * Cridar-lo en desmuntar UNA instància apagava els avisos de totes les
+     * altres que encara estaven vives. La usuària de l'altre bloc deixava de
+     * rebre confirmacions i errors sense cap senyal.
+     *
+     * El sistema d'avisos és compartit, així que només es destruïx quan se'n va
+     * l'última instància.
+     */
+    this._paraDEscoltarTema();
+
+    if (activeElements.size === 0) {
+      destroyToastSystem();
+      PedraSecaEmbed._despintaAmfitrio();
+    }
   }
 
   disconnectedCallback() {

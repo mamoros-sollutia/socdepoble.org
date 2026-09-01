@@ -7,22 +7,9 @@
     "regla": "CAPA 0. Este arxiu declara les constants de marca i els mínims físics, res més. Les rampes i els semàntics viuen a src/css/index.css. Cap altre arxiu pot declarar un token --sdp-canon-*."
   },
   "color": {
-    "negre": {
-      "value": "#000000",
-      "css_var": "--sdp-canon-negre"
-    },
-    "blanc": {
-      "value": "#FFFFFF",
-      "css_var": "--sdp-canon-blanc"
-    },
     "taronja": {
       "value": "#FF7300",
       "css_var": "--sdp-canon-taronja"
-    },
-    "blau_marca": {
-      "value": "#0984E3",
-      "css_var": "--sdp-canon-blau-marca",
-      "us": "Logotip, paper, retolació. MAI com a fons de text: blanc a sobre dona 3,87:1 i no arriba a AA. La UI usa blau_accessible."
     },
     "blau_accessible": {
       "value": "#016ebf",
@@ -30,30 +17,13 @@
       "us": "El blau real de la interfície. Blanc a sobre: 5,27:1 · AA. Va substituir #0984E3 per accessibilitat i ningú ho va escriure ací fins a la iteració 006."
     }
   },
-  "radi": {
-    "principal": {
-      "value_px": 28,
-      "value_rem": "1.75rem",
-      "css_var": "--sdp-radius-main",
-      "us": "Geometria 'Oli Suau' de botons i targetes."
-    },
-    "secundari": {
-      "value_px": 18,
-      "value_rem": "1.125rem",
-      "css_var": "--sdp-radius-secondary"
-    }
-  },
+  "radi": {},
   "tacte": {
     "minim_absolut": {
       "value_px": 44,
       "css_var": "--sdp-touch-min",
       "us": "Mínim absolut tàctil.",
       "nota_normativa": "Reduït a 44px."
-    },
-    "cuspide": {
-      "value_px": 56,
-      "css_var": "--sdp-touch-cuspide",
-      "us": "EXCLUSIU per al Botó Cúspide (FAB) i l'acció primària d'una pantalla. No s'aplica a botons secundaris."
     }
   },
   "tipografia": {
@@ -61,12 +31,6 @@
       "value_px": 16,
       "css_var": "--sdp-font-min",
       "us": "Evita l'auto-zoom natiu d'iOS Safari en focus d'inputs."
-    },
-    "lectura_gran": {
-      "value_px": 30,
-      "css_var": "--sdp-font-heading-lg",
-      "us": "Encapçalaments Mode Bancal, llegibilitat per a cataractes/sol de migdia.",
-      "nota_canvi": "CANVIAT de 28px a 30px deliberadament. Coincidia amb --sdp-radius-main (28px) sense relació semàntica — la 'bomba de rellotgeria' del vostre mapa. Trencada per decret: cap token de tipografia tornarà a coincidir numèricament amb un token de radi."
     }
   }
 }

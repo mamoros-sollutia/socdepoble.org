@@ -17,13 +17,19 @@ requires: []
 conflicts_with: []
 authority_level: procedural
 tests: null
+# 260831 (Seient Núm. 5): `iaia` i `maria` col·lisionaven amb
+# identity-iaia-core. Esta skill governa el REGISTRE, no la identitat:
+# els gallets ho han de reflectir. Cada gallet, un sol amo.
+# 260831: cedix el gallet `people-pleasing` — core-context-panic posseïx el fusible; la veu només el descriu.
 triggers_on:
 - veu
-- iaia
-- maria
-- personalitat
 - to
-- valencià
+- to de veu
+- com parles
+- registre
+- personalitat
+- paternalisme
+- disculpa
 lang: ca
 ---
 

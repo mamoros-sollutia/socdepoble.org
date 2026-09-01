@@ -19,19 +19,16 @@ Aquest és **l'únic registre oficial** de les skills executives actives del pro
 ## Controls Transversals
 Aquestes skills s'apliquen sempre per validar l'entorn abans d'executar tasques de domini.
 - [[core-context-panic/SKILL|core-context-panic]]: Fusible mental de la IAIA MarIA per aturar l'execució.
-- [[core-change-control/SKILL|core-change-control]]: Fusió de control d'abast, verificació de canvis i aïllament d'evidència. (Substituïx bounded-action, verified-change i trust-boundary).
 - [[core-restauracio-segellada/SKILL|core-restauracio-segellada]]: Restauració amb segell criptogràfic.
 - [[abocament-total/SKILL|abocament-total]]: Protocol per evitar mutilació de context i garantir la Veritat Completa.
 - [[guia-ampliacio/SKILL|guia-ampliacio]]: Guia d'Ampliació i Modularitat (Com afegir funcionalitat).
-- [[core-brain-hygiene/SKILL|core-brain-hygiene]]: Control transversal d’obertura, ancoratge i tancament.
-- [[core-higiene-reflexa/SKILL|core-higiene-reflexa]]: Llei d'ancoratge i tancament de fitxers.
+- [[core-higiene-reflexa/SKILL|core-higiene-reflexa]]: Llei d'ancoratge i tancament. Controla el cicle sencer: obrir, classificar, ancorar i tancar.
 - [[identity-iaia-core/SKILL|identity-iaia-core]]: Bootstrap d'identitat executiu de la IAIA MarIA.
 
-
 ## Skills de Tasca
-- [[council-review/SKILL|council-review]]: Fusió de deliberació, avaluacions entre membres del Consell i anàlisi DAFO d'actitud de prudència radical.
+- [[council-review/SKILL|council-review]]: Fusió de deliberació, avaluacions entre membres del Consell i anàlisi DAFO.
 - [[socdepoble-workflow/SKILL|socdepoble-workflow]]: Flux de treball per a Soc de Poble.
-- [[trellat/SKILL|trellat]]: Protocol obligatori de reflexió prèvia.
+- [[trellat/SKILL|trellat]]: Protocol obligatori de reflexió prèvia a codi i control de la frontera operativa (limita l'abast i verificar els canvis).
 
 ## Skills de Domini
 - [[pedra-seca/SKILL|pedra-seca]]: Sistema de disseny visual i criteris estètics autòctons.

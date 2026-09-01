@@ -32,6 +32,7 @@
  * Eixides: 0 net · 1 infracció · 2 error d'execució.
  */
 
+import { senseComentaris } from '../lib/codi.mjs';
 import { readFileSync, existsSync, readdirSync, statSync } from 'node:fs';
 import path from 'node:path';
 
@@ -143,7 +144,7 @@ if (actiu('T1 · Token inexistent')) {
   const LLEI = 'T1 · Token inexistent';
   let net = true;
   for (const rel of FITXERS) {
-    readFileSync(R(rel), 'utf8').split('\n').forEach((l, i) => {
+    senseComentaris(readFileSync(R(rel), 'utf8'), rel).split('\n').forEach((l, i) => {
       for (const m of l.matchAll(/var\(\s*(--(?:sdp|z)-[\w-]+)\s*[,)]/g)) {
         const t = m[1];
         if (DEFINITS.has(t)) continue;
@@ -163,7 +164,7 @@ if (actiu('T2 · Fallback prohibit')) {
   const LLEI = 'T2 · Fallback prohibit';
   let net = true;
   for (const rel of FITXERS) {
-    readFileSync(R(rel), 'utf8').split('\n').forEach((l, i) => {
+    senseComentaris(readFileSync(R(rel), 'utf8'), rel).split('\n').forEach((l, i) => {
       for (const m of l.matchAll(/var\(\s*(--sdp-[\w-]+)\s*,\s*([^)]+)\)/g)) {
         net = false;
         falla(LLEI, rel, i + 1,
@@ -184,7 +185,7 @@ if (actiu('T3 · Font única')) {
     const norm3 = rel.replace(/\\/g, '/');
     if (norm3 === FONT_CANON) continue;   // capa 0 · generada, declaració legítima
     const esFont = norm3 === FONT_TOKENS;
-    readFileSync(R(rel), 'utf8').split('\n').forEach((l, i) => {
+    senseComentaris(readFileSync(R(rel), 'utf8'), rel).split('\n').forEach((l, i) => {
       for (const m of l.matchAll(/(--sdp-[\w-]+)\s*:/g)) {
         if (esFont && liniesTema.has(i + 1)) continue;
         net = false;
@@ -205,7 +206,7 @@ if (actiu('T4 · Dos capes')) {
   for (const rel of FITXERS) {
     const norm = rel.replace(/\\/g, '/');
     if (EXEMPTS_T4.has(norm)) continue;
-    readFileSync(R(rel), 'utf8').split('\n').forEach((l, i) => {
+    senseComentaris(readFileSync(R(rel), 'utf8'), rel).split('\n').forEach((l, i) => {
       for (const m of l.matchAll(/var\(\s*(--sdp-[\w-]+)\s*[,)]/g)) {
         if (!PRIMITIVA.test(m[1])) continue;
         net = false;
@@ -228,13 +229,34 @@ if (actiu('T5 · Capa 0 intocable')) {
   for (const rel of FITXERS) {
     const norm = rel.replace(/\\/g, '/');
     if (norm === FONT_TOKENS || norm === FONT_CANON) continue;
-    readFileSync(R(rel), 'utf8').split('\n').forEach((l, i) => {
+    senseComentaris(readFileSync(R(rel), 'utf8'), rel).split('\n').forEach((l, i) => {
       for (const m of l.matchAll(/var\(\s*(--sdp-canon-[\w-]+)\s*[,)]/g)) {
         net = false;
         falla(LLEI, rel, i + 1,
           `\`${m[1]}\` és capa 0: una constant de marca, no un color d'interfície. ` +
           `Només la rampa d'${FONT_TOKENS} la pot ancorar. Un component que la cita ` +
           `no es mou amb el tema fosc ni amb l'alt contrast.`);
+      }
+    });
+  }
+  if (net) passa(LLEI);
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   T6 · ZERO TAILWIND TÒXIC (bg-[#hex], text-[#hex])
+   Els colors fixos trencarien l'accessibilitat i el mode fosc.
+   ══════════════════════════════════════════════════════════════════ */
+if (actiu('T6 · Zero Tailwind Tòxic')) {
+  const LLEI = 'T6 · Zero Tailwind Tòxic';
+  let net = true;
+  for (const rel of FITXERS) {
+    if (!rel.endsWith('.jsx') && !rel.endsWith('.tsx')) continue;
+    senseComentaris(readFileSync(R(rel), 'utf8'), rel).split('\n').forEach((l, i) => {
+      const match = l.match(/(?:bg|text|border)-\[#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})\]/);
+      if (match) {
+        net = false;
+        falla(LLEI, rel, i + 1,
+          `Has hardcodejat el color \`#${match[1]}\` amb classes tòxiques de Tailwind. S'han d'utilitzar variables CSS semàntiques de la Capa 2 (Pedra Seca).`);
       }
     });
   }

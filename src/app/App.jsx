@@ -10,6 +10,7 @@ import { IaiaIcon, UniversalPage } from '../components/universal/UniversalCompon
 import { recullTornadaOAuth } from '../data/backendPort.js';
 import { reclamaContingutDelConvidat } from '../data/identitat.js';
 import { showToast } from '../components/universal/AvisadorEfimer';
+import { delVal } from '../config/storage';
 
 const XatSection = lazy(() => import('../sections/xat/XatSection'));
 const MurSection = lazy(() => import('../sections/mur/MurSection'));
@@ -80,10 +81,8 @@ function AppShell({ children, mobileNav }) {
   }, [location.pathname]);
 
   useEffect(() => {
-    if (typeof window !== 'undefined' && window.localStorage) {
-      window.localStorage.removeItem('socdepoble-app-snapshot-v1');
-      window.localStorage.removeItem('socdepoble-section-submissions-v1');
-    }
+    delVal('socdepoble-app-snapshot-v1');
+    delVal('socdepoble-section-submissions-v1');
   }, []);
 
   const tornadaFeta = useRef(false);

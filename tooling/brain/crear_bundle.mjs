@@ -79,14 +79,55 @@ const FITXERS_OBLIGATORIS = [
 ];
 
 /** Fitxers solts desitjables. Si falten, es reporta al bundle però no s'avorta. */
-const FITXERS_OPCIONALS = [
+const FITXERS_OPCIONALS_FIXOS = [
   'vite.standalone.config.js',
   'public/auth/callback.html',
-  '.vocabulari-deute.json',
-  '.design-guard-deute.json',
-  '.rutes-deute.json',
   'README.md',
   'LICENSE',
+];
+
+/*
+ * 260831 (Seient Núm. 5): els fitxers `.*-deute.json` estaven escrits a mà ací.
+ * N'hi havia tres de llistats i cinc portes que en generen. `.promesa-deute.json`,
+ * `.sollutia-deute.json` i `.estucat-deute.json` mai van entrar a cap bundle,
+ * així que un auditor no podia saber si existien —i la seua absència és
+ * precisament el que decapita `npm run porta`.
+ *
+ * Una llista escrita a mà d'una cosa que creix sola sempre acaba mentint. Es
+ * descobrixen del disc: qualsevol `.X-deute.json` a l'arrel entra.
+ */
+function deutesDelDisc() {
+  try {
+    return fs.readdirSync(arrelSegura())
+      .filter((f) => /^\.[a-z0-9-]+-deute\.json$/i.test(f))
+      .sort();
+  } catch {
+    return [];
+  }
+}
+
+/*
+ * A més dels que hi ha, es declaren els que les portes ESPEREN. Si una porta
+ * exigix `.promesa-deute.json` i no existix, el bundle ha de dir-ho
+ * explícitament a `absents_no_critics` en compte de callar.
+ */
+function deutesEsperats() {
+  const esperats = new Set();
+  for (const dir of ['tooling/gates', 'tooling/brain']) {
+    let fitxers = [];
+    try { fitxers = fs.readdirSync(R(dir)).filter((f) => f.endsWith('.mjs')); } catch { continue; }
+    for (const f of fitxers) {
+      let cos = '';
+      try { cos = fs.readFileSync(R(dir, f), 'utf8'); } catch { continue; }
+      for (const m of cos.matchAll(/['"`](\.[a-z0-9-]+-deute\.json)['"`]/gi)) esperats.add(m[1]);
+    }
+  }
+  return [...esperats].sort();
+}
+
+const FITXERS_OPCIONALS = [
+  ...FITXERS_OPCIONALS_FIXOS,
+  ...new Set([...deutesDelDisc(), ...deutesEsperats()]),
 ];
 
 /** Només aquestes extensions entren. Declarat ací i al manifest. */

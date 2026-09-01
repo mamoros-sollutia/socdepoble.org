@@ -84,7 +84,7 @@
   --sdp-pedra-900: #0e0d0c;
 
   /* Primari · taronja de terra — OKLCH H 47.9° (to exacte del cànon #FF7300) */
-  --sdp-primary-50:  var(--sdp-fons-calid);
+  --sdp-primary-50:  #fff6f0;
   --sdp-primary-100: #ffe7dc;
   --sdp-primary-200: #ffd1bb;
   --sdp-primary-300: #ffb38c;

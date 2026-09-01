@@ -62,8 +62,12 @@ async function main() {
           process.exit(1);
         }
       }
-    } catch(e) {}
-  } catch(e) {}
+    } catch (e) {
+      /* ignore */
+    }
+  } catch (e) {
+    /* ignore */
+  }
 
   step(1, 'Integritat d\'arrel (sol lectura)...');
   const orphanDir = wikiDir

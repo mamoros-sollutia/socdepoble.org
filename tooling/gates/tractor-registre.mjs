@@ -169,11 +169,33 @@ if (!fs.existsSync(FITXER_INDEX)) {
 }
 
 const crualIndex = fs.readFileSync(FITXER_INDEX, 'utf8');
-/* Format canònic de línia: "- `nom-skill`: descripció" */
+/*
+ * Formes acceptades d'una línia de registre. TOTES han de conviure: la Wiki és
+ * d'Obsidian i el wikilink és portador del graf; obligar a backticks trencaria
+ * les sinapsis. El lector s'adapta al registre, no al revés.
+ *
+ *   F1  - `nom-skill`: descripció
+ *   F2  - [[nom-skill/SKILL|nom-skill]]: descripció
+ *   F3  - [[nom-skill]]: descripció
+ *   F4  - **nom-skill**: descripció
+ *
+ * 260831 (Seient Núm. 5): només s'implementava F1. El registre real usa F2, així
+ * que el lector tornava 0 skills, disparava R0 i després acusava les 13 skills
+ * reals de clandestines (R2). Tretze falsos positius que tapaven els verdaders.
+ */
+const FORMES_REGISTRE = [
+  /^\s*[-*]\s*`([a-z0-9][a-z0-9._-]*)`\s*:/i,
+  /^\s*[-*]\s*\[\[([a-z0-9][a-z0-9._-]*)\/SKILL\s*\|[^\]]*\]\]\s*:/i,
+  /^\s*[-*]\s*\[\[([a-z0-9][a-z0-9._-]*)(?:\s*\|[^\]]*)?\]\]\s*:/i,
+  /^\s*[-*]\s*\*\*([a-z0-9][a-z0-9._-]*)\*\*\s*:/i,
+];
+
 const declarades = new Map(); // nom → { linia }
 for (const [i, linia] of crualIndex.split(/\r?\n/).entries()) {
-  const m = /^\s*[-*]\s*`([a-z0-9][a-z0-9._-]*)`\s*:/i.exec(linia);
-  if (m) declarades.set(m[1], { linia: i + 1 });
+  for (const forma of FORMES_REGISTRE) {
+    const m = forma.exec(linia);
+    if (m) { declarades.set(m[1], { linia: i + 1 }); break; }
+  }
 }
 
 if (declarades.size === 0) {
@@ -279,10 +301,38 @@ for (const [nom, { fm, ruta, cru }] of alDisc) {
     .flatMap((t) => String(t).split(',').map((x) => x.trim().toLowerCase()))
     .filter(Boolean);
 
+  /*
+   * R12 · un trigger repetit DINS de la mateixa skill no és una col·lisió entre
+   * skills: és brossa al frontmatter. Abans es colava a `triggers` dues vegades
+   * i R3 informava «compartit per 2 skills: X, X», que no vol dir res i fa
+   * desconfiar de la porta sencera. Es separa i es compta una sola vegada.
+   */
+  const vistosLocal = new Set();
   for (const t of llistaTriggers) {
     if (t === nom) continue; // `triggers_on: [<nom propi>]` és autoreferència, no col·lisió
+    if (vistosLocal.has(t)) {
+      falla('R12', nom, `Trigger \`${t}\` repetit dins del seu propi frontmatter. No col·lisiona amb ningú, però infla el registre i emmascara les col·lisions reals.`);
+      continue;
+    }
+    vistosLocal.add(t);
     if (!triggers.has(t)) triggers.set(t, []);
     triggers.get(t).push(nom);
+  }
+
+  /*
+   * R13 · `supersedes` / `substitueix` que apunta a una skill VIVA al disc.
+   * Declarar-se successora d'una skill que encara es carrega no desactiva res:
+   * queden les dues actives disputant-se els mateixos triggers, i qui guanya
+   * depén de l'ordre de lectura del directori.
+   */
+  for (const clau of ['supersedes', 'substitueix', 'replaces']) {
+    for (const s of [].concat(d[clau] || [])) {
+      const sn = String(s).trim().split(/[\s(]/)[0];
+      if (!sn || sn === nom) continue;
+      if (alDisc.has(sn)) {
+        falla('R13', nom, `Declara \`${clau}: ${sn}\` i '${sn}' continua al disc i al registre. Una successió que no esborra la predecessora no és una successió: són dues skills actives.`);
+      }
+    }
   }
 
   for (const c of [].concat(d.conflicts_with || [])) {

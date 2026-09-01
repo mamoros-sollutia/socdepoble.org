@@ -1,13 +1,10 @@
 # Manifest d'agents de Sóc de Poble.
 #
-# Regla: aquest fitxer llista el que hi ha al disc. Si afiges una skill,
-# regenera'l; no l'edites a mà. La porta `tooling/gates/tractor-registre.mjs`
-# falla si diverge.
+# GENERAT. No l'edites a mà.
+#   node tooling/gates/tractor-manifest.mjs --escriu
 #
-# 260831 (auditoria Seient Núm. 5): el manifest declarava 13 skills i al disc
-# n'hi havia 15. `core-safe-restore` i `core-restauracio-segellada` existien
-# «sense governança» i es disputaven els mateixos triggers. S'han fusionat en
-# `core-restauracio-segellada` v2.0.0.
+# La porta `tooling/gates/tractor-manifest.mjs` falla si diverge del disc
+# o de `skills/00_INDEX_SKILLS.md`. Eixa porta sí que obri este fitxer.
 
 schema: socdepoble.manifest.v1
 identity: PROFILE.md
@@ -17,16 +14,15 @@ index_skills: skills/00_INDEX_SKILLS.md
 consell: consell.json
 skills:
   - skills/abocament-total/SKILL.md
-  - skills/actitud-dafo/SKILL.md
-  - skills/cog-deliberation/SKILL.md
-  - skills/core-bounded-action/SKILL.md
+  - skills/core-brain-hygiene/SKILL.md
+  - skills/core-change-control/SKILL.md
   - skills/core-context-panic/SKILL.md
+  - skills/core-higiene-reflexa/SKILL.md
   - skills/core-restauracio-segellada/SKILL.md
-  - skills/core-trust-boundary/SKILL.md
-  - skills/core-verified-change/SKILL.md
+  - skills/council-review/SKILL.md
   - skills/guia-ampliacio/SKILL.md
+  - skills/identity-iaia-core/SKILL.md
   - skills/identity-iaia-voice/SKILL.md
-  - skills/multi-agent-review/SKILL.md
   - skills/pedra-seca/SKILL.md
   - skills/socdepoble-workflow/SKILL.md
   - skills/trellat/SKILL.md

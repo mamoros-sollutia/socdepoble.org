@@ -17,13 +17,33 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<?php wp_head(); ?>
 	<style>
-		/* Forcem l'eliminació de marges i barres de desplaçament del document */
+		/*
+		 * MARC DE LA PÀGINA (260831, Seient Núm. 5)
+		 *
+		 * `--sdp-bg` és un token del sistema de disseny i viu dins del shadow
+		 * root. Les propietats personalitzades hereten cap avall, així que mai
+		 * pot arribar sola fins ací: la puja `_pintaAmfitrio()` des del
+		 * component, que la publica sobre `document.documentElement`.
+		 *
+		 * El fallback d'aquesta declaració NO és una còpia del sistema de
+		 * disseny: és el valor d'arrancada, el que es veu durant els
+		 * mil·lisegons entre que es pinta l'HTML i s'hidrata el component.
+		 * Abans era beix fix, així que qui tenia el telèfon en mode fosc veia
+		 * un flaix blanc en cada càrrega. Ara l'arrancada ja respecta la
+		 * preferència del sistema i el flaix desapareix.
+		 */
 		html, body {
 			margin: 0 !important;
 			padding: 0 !important;
 			width: 100% !important;
 			min-height: 100dvh !important;
 			background-color: var(--sdp-bg, #f4eee6) !important;
+		}
+
+		@media (prefers-color-scheme: dark) {
+			html, body {
+				background-color: var(--sdp-bg, #0e0d0c) !important;
+			}
 		}
 		
 		/* Reseteja contenidors del tema per evitar el marge de 12px que posa Sollutia/Gutenberg */

@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { ArrowRight, Check, Link2, MessageSquare, Plus, RefreshCcw, ShieldCheck, Wifi, X, Eye, EyeOff } from 'lucide-react';
 import { UniversalPage } from '../../components/universal/UniversalComponents';
 import { useAppData } from '../../app/AppDataContext';
@@ -57,8 +56,7 @@ const MOCK_REPLIES = {
 };
 
 export default function DevicesSection() {
-  const navigate = useNavigate();
-  const { t, externalConfig, agents, ownerUserId } = useAppData();
+  const { externalConfig, agents, ownerUserId } = useAppData();
   const tenantId = externalConfig?.tenantId || 'default-tenant';
   const activeAgent = agents?.find(a => String(a.id) === String(ownerUserId));
   const activeName = activeAgent?.name || 'Javi Llinares';
@@ -103,11 +101,6 @@ export default function DevicesSection() {
   );
   const activeChatPeer = connectedPeers.find((device) => device.id === selectedPeerId) || null;
 
-  const selectedDevice =
-    mergedDevices.find((device) => device.id === selectedPeerId) ||
-    Object.values(devices).find((device) => device.id === selectedPeerId) ||
-    null;
-  const selectedConnection = selectedPeerId ? connections[selectedPeerId] : null;
   const activeChatConnection = activeChatPeer ? connections[activeChatPeer.id] : null;
   const activeChatMessages = activeChatPeer ? messagesByPeer[activeChatPeer.id] || [] : [];
 
@@ -393,12 +386,12 @@ export default function DevicesSection() {
           */}
         </div>
 
-        <div className="stat-grid">
+        <div className="sdp-stat-grid">
           {summary.map((item) => (
-            <article key={item.label} className="stat-card">
-              <div className="stat-info">
-                <div className="stat-value">{item.value}</div>
-                <div className="stat-label">{item.label}</div>
+            <article key={item.label} className="sdp-stat-card">
+              <div className="sdp-stat-info">
+                <div className="sdp-stat-value">{item.value}</div>
+                <div className="sdp-stat-label">{item.label}</div>
               </div>
             </article>
           ))}

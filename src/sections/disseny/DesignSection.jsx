@@ -390,7 +390,7 @@ Aquesta és l'<em>entradilla</em> (<code>&lt;p className="lead"&gt;</code>). S'u
 </div>
 </section>
 {/*  SECCIÓ 8: BADGES  */}
-<section className="design-block text-center">
+<section className="design-block" style={{ textAlign: 'center' }}>
 <h3>8. Badges i Etiquetes</h3>
 <div className="sdp-flex sdp-gap-12 sdp-justify-center sdp-mb-6">
 <span className="badge badge-default">Per defecte</span>
@@ -1117,18 +1117,18 @@ Gran</div>
     {/* Missatge del Sistema / IA */}
     <div style={{ display: 'flex', gap: 'var(--sdp-space-3)', maxWidth: '85%' }}>
       <div className="avatar avatar-sm chat-avatar-ia">IA</div>
-      <div className="chat-bubble-ia">
+      <div className="sdp-chat-bubble sdp-chat-bubble--ai">
         <p className="sdp-m-0">Bona vesprada, Mestre. El sistema Pedra Seca està 100% operatiu i les constants vitals són estables.</p>
-        <span className="chat-time-ia">17:34</span>
+        <span className="sdp-chat-bubble-meta">17:34</span>
       </div>
     </div>
 
     {/* Missatge de l'Usuari */}
     <div style={{ display: 'flex', gap: 'var(--sdp-space-3)', maxWidth: '85%', alignSelf: 'flex-end', flexDirection: 'row-reverse' }}>
       <div className="avatar avatar-sm chat-avatar-jl">JL</div>
-      <div className="chat-bubble-jl">
+      <div className="sdp-chat-bubble sdp-chat-bubble--user">
         <p className="sdp-m-0">Perfecte, comencem amb la sessió de hui.</p>
-        <span className="chat-time-jl">17:36</span>
+        <span className="sdp-chat-bubble-meta">17:36</span>
       </div>
     </div>
 

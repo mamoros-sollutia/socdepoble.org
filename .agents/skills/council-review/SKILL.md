@@ -60,7 +60,7 @@ Aquesta skill unifica el protocol d'interacció amb les avaluacions o auditories
 - Comprèn que el Mestre lidera l'orquestració. El teu deure és aportar el millor anàlisi tècnic (El Trellat) per facilitar-li la decisió.
 
 ## 7. Regla d'Anti-Ocultació
-- Quan es prepara una "Petorreta" (auditoria externa), mai s'han d'ocultar els fitxers estructurals. Cal lliurar la realitat sencera del codi base, inclosos els `package.json`, les rutes i la configuració de Vite, per evitar auditories cegues.
+- Aquesta regla ha estat moguda a la skill específica `abocament-total`. Per a preparar lliuraments al Consell, s'apliquen estrictament les lleis d'`abocament-total` (zero ocultació, zero mutilació de context).
 
 ## 8. Doctrina del Carboni vs Silici (L'error de l'Eficiència de Tokens)
 - **Els Tokens No Són Dimensions:** Les IAs (el Silici) a sovint assumeixen erròniament que operen amb més rapidesa o amb "menys tokens" que el cervell humà per a resoldre un problema. Aquesta visió és falsa i limitant. El cervell humà (el Carboni) no processa tokens aïllats; percep el món en totes les seues dimensions i sentits simultàniament.

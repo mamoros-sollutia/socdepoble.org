@@ -118,8 +118,38 @@ for (const f of EMBEDS) {
     afig('S2', `${f}:${linia}`,
       'connectedCallback desmunta germans encara connectats: dos <soc-de-poble> a la mateixa pàgina no poden conviure');
   }
-  if (/destroyToastSystem\s*\(\s*\)/.test(t) && /activeElements/.test(t)) {
-    afig('S2', f, 'destroyToastSystem() és global: desmuntar una instància apaga els avisos de les altres');
+  /*
+   * 260831 (Seient Núm. 5): esta comprovació era `test(destroyToastSystem())
+   * && test(activeElements)`. Això és una comprovació de PRESÈNCIA disfressada
+   * de comprovació de CORRECCIÓ: saltava igual amb la crida nua que amb la
+   * crida protegida, així que no hi havia cap manera d'escriure codi correcte
+   * i posar la porta en verd. Una porta que no es pot satisfer amb codi bo
+   * ensenya a ignorar-la, i llavors deixa de protegir res.
+   *
+   * Ara es mira el LLOC de la crida: ha d'estar dins d'una guarda que
+   * comprove que no queda cap instància viva. Sense AST (Pedra Seca): es
+   * llegixen les línies anteriors del mateix bloc.
+   *
+   * Els comentaris s'esborren abans d'escanejar, però es reemplacen per espais
+   * de la mateixa llargària per a no desplaçar els números de línia. Sense
+   * això, DOCUMENTAR un bug el tornava a denunciar: la nota que explica per
+   * què la crida ara està protegida disparava la mateixa llei que el bug.
+   */
+  const codi = t
+    .replace(/\/\*[\s\S]*?\*\//g, (c) => c.replace(/[^\n]/g, ' '))
+    .replace(/(^|[^:])\/\/[^\n]*/g, (c, p) => p + ' '.repeat(c.length - p.length));
+
+  for (const m of codi.matchAll(/destroyToastSystem\s*\(\s*\)/g)) {
+    const abans = codi.slice(0, m.index);
+    const linia = abans.split('\n').length;
+    const context = abans.split('\n').slice(-8).join('\n');
+    const protegida = /activeElements\.size\s*===?\s*0/.test(context)
+      || /!\s*activeElements\.size/.test(context)
+      || /activeElements\.size\s*<\s*1/.test(context);
+    if (!protegida) {
+      afig('S2', `${f}:${linia}`,
+        'destroyToastSystem() és global i es crida sense comprovar que no queden instàncies vives: desmuntar-ne una apaga els avisos de les altres');
+    }
   }
 }
 

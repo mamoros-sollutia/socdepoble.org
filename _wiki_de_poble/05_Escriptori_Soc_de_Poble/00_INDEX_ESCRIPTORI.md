@@ -1,30 +1,5 @@
-# Índex de l'Escriptori
+# 📥 L'ESCRIPTORI (SAFATA D'ENTRADA I TREBALL ACTIU)
+Ací només resideix la matèria viva. El que ha mort, descansa en l'arxiu.
 
-- [[260831_0323_bundle_auditoria]]
-- [[260831_0323_prompt_auditoria]]
-- [260831_0342_resposta_a_qwen.md](file:///Users/javillinares/Documents/Antigravity/Som%20de%20Poble/socdepoble.org/_wiki_de_poble/05_Escriptori_Soc_de_Poble/260831_0342_resposta_a_qwen.md)
-- [260831_0120_PROMPT_impuls_destructiu.md](file:///Users/javillinares/Documents/Antigravity/Som%20de%20Poble/socdepoble.org/_wiki_de_poble/05_Escriptori_Soc_de_Poble/260831_0120_PROMPT_impuls_destructiu.md)
-- [260831_0405_petorreta_copilot.md](file:///Users/javillinares/Documents/Antigravity/Som%20de%20Poble/socdepoble.org/_wiki_de_poble/05_Escriptori_Soc_de_Poble/260831_0405_petorreta_copilot.md)
-- [260831_0405_petorreta_grok.md](file:///Users/javillinares/Documents/Antigravity/Som%20de%20Poble/socdepoble.org/_wiki_de_poble/05_Escriptori_Soc_de_Poble/260831_0405_petorreta_grok.md)
-- [260831_0405_petorreta_vibe.md](file:///Users/javillinares/Documents/Antigravity/Som%20de%20Poble/socdepoble.org/_wiki_de_poble/05_Escriptori_Soc_de_Poble/260831_0405_petorreta_vibe.md)
-- [260831_0408_petorreta_kimi.md](file:///Users/javillinares/Documents/Antigravity/Som%20de%20Poble/socdepoble.org/_wiki_de_poble/05_Escriptori_Soc_de_Poble/260831_0408_petorreta_kimi.md)
-- [260831_0411_petorreta_dola.md](file:///Users/javillinares/Documents/Antigravity/Som%20de%20Poble/socdepoble.org/_wiki_de_poble/05_Escriptori_Soc_de_Poble/260831_0411_petorreta_dola.md)
-- [260831_0415_petorreta_deepseek.md](file:///Users/javillinares/Documents/Antigravity/Som%20de%20Poble/socdepoble.org/_wiki_de_poble/05_Escriptori_Soc_de_Poble/260831_0415_petorreta_deepseek.md)
-- [260831_0420_petorreta_z.md](file:///Users/javillinares/Documents/Antigravity/Som%20de%20Poble/socdepoble.org/_wiki_de_poble/05_Escriptori_Soc_de_Poble/260831_0420_petorreta_z.md)
-- [260831_0425_petorreta_qwen.md](file:///Users/javillinares/Documents/Antigravity/Som%20de%20Poble/socdepoble.org/_wiki_de_poble/05_Escriptori_Soc_de_Poble/260831_0425_petorreta_qwen.md)
-- [260831_0323_auditoria_higiene_ancoratge.md](file:///Users/javillinares/Documents/Antigravity/Som%20de%20Poble/socdepoble.org/_wiki_de_poble/05_Escriptori_Soc_de_Poble/01_Produccio/260831_0323_auditoria_higiene_ancoratge.md)
-- [260831_0430_acta_sessio_fortificacio.md](file:///Users/javillinares/Documents/Antigravity/Som%20de%20Poble/socdepoble.org/_wiki_de_poble/05_Escriptori_Soc_de_Poble/260831_0430_acta_sessio_fortificacio.md)
-- [260831_0445_PROMPT_inici_nova_sessio.md](file:///Users/javillinares/Documents/Antigravity/Som%20de%20Poble/socdepoble.org/_wiki_de_poble/05_Escriptori_Soc_de_Poble/260831_0445_PROMPT_inici_nova_sessio.md)
-- [[260831_0520_BUNDLE_auditoria]]
-- [[260831_0520_PROMPT_auditoria]]
-- [[260831_0550_petorreta_gemini_consell]]
-- [[260831_0551_petorreta_grok]]
-- [[260831_0552_petorreta_vibe]]
-- [[260831_0553_petorreta_codex]]
-- [[260831_0556_petorreta_claude_p1]]
-- [[260831_0558_petorreta_deepseek]]
-- [[260831_0559_petorreta_z]]
-- [[260831_0600_petorreta_qwen]]
-- [[260831_0604_petorreta_claude_p2]]
-- [[260831_0607_petorreta_dola]]
-- [[260831_0611_petorreta_copilot]]
+- [[00_Bandeja_d_Entrada]]
+- [[01_Produccio]]

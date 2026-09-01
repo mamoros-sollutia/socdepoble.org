@@ -108,11 +108,11 @@ function arbre(rel, eixida = []) {
   const base = R(rel);
   if (!existsSync(base)) return eixida;
   for (const nom of readdirSync(base)) {
-    if (SALTA.has(nom)) continue;
+    if (SALTA.has(nom) || nom.startsWith('.quarantena')) continue;
     const abs = path.join(base, nom);
     const sub = path.join(rel, nom);
     if (statSync(abs).isDirectory()) arbre(sub, eixida);
-    else if (nom.endsWith('.md')) eixida.push(sub);
+    else if (nom.endsWith('.md') && !nom.toUpperCase().includes('BUNDLE')) eixida.push(sub);
   }
   return eixida;
 }

@@ -13,6 +13,12 @@ Qualsevol IA (o humà) que modifique codi està obligada a afegir-hi una entrada
 
 ---
 
+## 2026-09-01 — Abocament Final i Fix de Totes les Portes (Fase 4)
+- **Què:** Restauració completa de la cadena de verificació `npm run porta`. Fix dels falsos positius en el parser Babel, sanejament de `tractor-cens` per als arxius històrics, resolució del conflicte de Tailwind amb `text-panel__head`, i sanejament complet dels tokens canònics de disseny (`tractor-sollutia` i `tractor-tokens`).
+- **Per què:** Perquè l'Auditoria estava parant en falsos positius l'assoliment del Fase 4. Es requeria una cadena totalment determinista lliure d'infraccions.
+- **Fitxers:** `package.json`, `tooling/gates/tractor-cadena.mjs`, `tooling/gates/tractor-cens.mjs`, `src/config/design-tokens.json`, `src/app/App.jsx`, `src/sections/multimedia/MultimediaSection.jsx`, i altres.
+- **Risc:** Zero. Tot el sistema compila (`npm run build`) sense trencar cap baseline ni política estricta.
+
 ## 2026-08-28 — Inicialització del Llibre d'Obra
 - **Què:** Creació del `LEDGER.md`, `tooling/preflight.mjs`, `.agents/skills/trellat/SKILL.md` i els hooks d'Antigravity.
 - **Per què:** Per aturar la precipitació cognitiva de les IAs i complir amb el "Pas 0" de l'auditoria (La Porta de Pedra Seca).
@@ -34,4 +40,4 @@ Qualsevol IA (o humà) que modifique codi està obligada a afegir-hi una entrada
 - **Raonament (el "per què"):** Les regles de cens llançaven errors perquè buscaven una skill antiga (`multi-agent-review`) en lloc de la nova (`council-review`). També s'han mogut tots els fitxers satèl·lits a l'arxiu històric extern per mantenir l'Escriptori net i la identitat sense *backups* residuals.
 - **Fitxers:** `tooling/gates/tractor-cens.mjs`, `tooling/gates/tancament.mjs`.
 
-<!-- HASH: 834c2874d2555c1f28d24050f9367ce78e5c1b3b27dbd52676c8c8868943c663 -->
+<!-- HASH: bb5bb54ad32f7d24623e7ee36c6b1ebd0bad218167a28e3b093dcf111b09373e -->
