@@ -1,0 +1,28 @@
+# Manifest d'agents de Sóc de Poble.
+#
+# GENERAT. No l'edites a mà.
+#   node tooling/gates/tractor-manifest.mjs --escriu
+#
+# La porta `tooling/gates/tractor-manifest.mjs` falla si diverge del disc
+# o de `skills/00_INDEX_SKILLS.md`. Eixa porta sí que obri este fitxer.
+
+schema: socdepoble.manifest.v1
+identity: PROFILE.md
+bios: AGENTS.md
+baseline: BASELINE.md
+index_skills: skills/00_INDEX_SKILLS.md
+consell: consell.json
+skills:
+  - skills/abocament-total/SKILL.md
+  - skills/core-brain-hygiene/SKILL.md
+  - skills/core-change-control/SKILL.md
+  - skills/core-context-panic/SKILL.md
+  - skills/core-higiene-reflexa/SKILL.md
+  - skills/core-restauracio-segellada/SKILL.md
+  - skills/council-review/SKILL.md
+  - skills/guia-ampliacio/SKILL.md
+  - skills/identity-iaia-core/SKILL.md
+  - skills/identity-iaia-voice/SKILL.md
+  - skills/pedra-seca/SKILL.md
+  - skills/socdepoble-workflow/SKILL.md
+  - skills/trellat/SKILL.md
