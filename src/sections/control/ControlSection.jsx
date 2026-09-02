@@ -9,10 +9,7 @@ export default function ControlSection() {
   const navigate = useNavigate();
   const { t } = useAppData();
 
-  const handleNavNotes = (e) => {
-    e?.stopPropagation();
-    navigate('/notes');
-  };
+
   const handleNavIA = (e) => {
     e?.stopPropagation();
     navigate('/ia');
@@ -79,9 +76,7 @@ export default function ControlSection() {
           <UniversalButton onClick={() => navigate('/xat')} variant="outline" icon={<MessageSquare size={18} />}>
             Missatges per a dubtes
           </UniversalButton>
-          <UniversalButton onClick={handleNavNotes} variant="primary" icon={<FileText size={18} />}>
-            Bloc de notes
-          </UniversalButton>
+
           <UniversalButton onClick={() => navigate('/projecte')} variant="secondary" icon={<Shield size={18} />}>
             El Projecte
           </UniversalButton>
