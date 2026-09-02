@@ -1,0 +1,3759 @@
+{
+  "esquema": "sdp.bundle.v2",
+  "generat": "2026-09-02T02:13:35.723Z",
+  "arrel": "socdepoble.org",
+  "verificat": true,
+  "contracte": {
+    "directoris": [
+      "src",
+      ".agents",
+      "tooling",
+      "scripts",
+      "wordpress-plugin",
+      "_wiki_de_poble",
+      "assets",
+      "supabase"
+    ],
+    "fitxers_obligatoris": [
+      "package.json",
+      "package-lock.json",
+      "vite.config.js",
+      "eslint.config.js",
+      "index.html"
+    ],
+    "fitxers_opcionals": [
+      "vite.standalone.config.js",
+      "public/auth/callback.html",
+      "README.md",
+      "LICENSE",
+      ".design-guard-deute.json",
+      ".estucat-deute.json",
+      ".pedra-seca-deute.json",
+      ".promesa-deute.json",
+      ".rutes-deute.json",
+      ".sollutia-deute.json",
+      ".teixit-deute.json",
+      ".vocabulari-deute.json",
+      ".X-deute.json"
+    ],
+    "extensions": [
+      ".cjs",
+      ".css",
+      ".html",
+      ".js",
+      ".json",
+      ".jsx",
+      ".md",
+      ".mjs",
+      ".php",
+      ".py",
+      ".sh",
+      ".sql",
+      ".ts",
+      ".tsx",
+      ".txt",
+      ".yaml",
+      ".yml"
+    ],
+    "dirs_exclosos": [
+      ".brain-reports",
+      ".gemini",
+      ".git",
+      ".githooks",
+      ".husky",
+      ".next",
+      ".obsidian",
+      ".sdp-paperera",
+      ".sdp-reflex",
+      "90_historic",
+      "build",
+      "cervells",
+      "coverage",
+      "dist",
+      "node_modules",
+      "vendor"
+    ]
+  },
+  "totals": {
+    "fitxers": 459,
+    "bytes": 3604944
+  },
+  "absents_no_critics": [
+    "LICENSE",
+    ".X-deute.json"
+  ],
+  "fitxers": [
+    {
+      "ruta": "_wiki_de_poble/00_INDEX.md",
+      "bytes": 2541,
+      "linies": 76,
+      "sha256": "35a76f7477bfa02414d5936f67d66945294a85bb4ec03c48ce1960952ffd4c78",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS_abocament-total.md",
+      "bytes": 1738,
+      "linies": 34,
+      "sha256": "05a7506fe5f10421bc74a50749916244c97b04165f6cca1810628af2604bfad7",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS_core-context-panic.md",
+      "bytes": 2437,
+      "linies": 49,
+      "sha256": "38b5489d347f37086cb4c523cbb7a95e0ed69cad7bb155fcf9d495a0bd811a7c",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS_core-higiene-reflexa.md",
+      "bytes": 4195,
+      "linies": 84,
+      "sha256": "e7b18c67b170be54ff9323124519df4e2d0ee07db6246db626b328525afd637b",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS_core-restauracio-segellada.md",
+      "bytes": 5744,
+      "linies": 180,
+      "sha256": "5883a38438a35b156c0757375e84d83f0b10ff88e8f5aa81c2929ffff5babf45",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS_council-review.md",
+      "bytes": 5196,
+      "linies": 72,
+      "sha256": "28bd6fd97dc99a44275920294777f226f8a40cf0d50fa2efd9f8b7840b0ea3c6",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS_guia-ampliacio.md",
+      "bytes": 2131,
+      "linies": 47,
+      "sha256": "4a58c5f25a39e92d32d41c66c4edfb84548d99e20ea6349b0dc08723c67e2407",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS_identity-iaia-core.md",
+      "bytes": 5140,
+      "linies": 104,
+      "sha256": "486d7587ac7fe3a0d2ad114f345d6477fb68c830cb8a4743d6a81f0cd39a9839",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS_identity-iaia-voice.md",
+      "bytes": 2457,
+      "linies": 41,
+      "sha256": "ad720d34f8d772c7b99d25f0e571decfe815a6f7a6478b5b7292340525e5537a",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS_pedra-seca.md",
+      "bytes": 12769,
+      "linies": 169,
+      "sha256": "38a74d86b1b07bd3be9d57e6badf020d863e2a1d13afe811b23617c4fd37895d",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS_reflexio-previa.md",
+      "bytes": 3346,
+      "linies": 63,
+      "sha256": "f6a1c06f871b840b0c353811f652d0742d585df30bb8aca938a91984dfb5100f",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS_socdepoble-workflow.md",
+      "bytes": 2685,
+      "linies": 38,
+      "sha256": "54b152fd9710ee1a93b8ae0fefec6fd5874b157d8e78700f81b9e61e93528991",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS_trellat.md",
+      "bytes": 3532,
+      "linies": 73,
+      "sha256": "b5fd26097fabed81c2fa272bbbe1693fb4e3f46b9c5b14d697da17361e311493",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/00_BIOS.md",
+      "bytes": 2886,
+      "linies": 67,
+      "sha256": "5de093a8c1235c07dc0947abf99b272c4facdf63a14266b1932eb9660afd4de3",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md",
+      "bytes": 7855,
+      "linies": 136,
+      "sha256": "8054e27b1c0996e1d47b01ce3e9d1922cbefb801fe4c38ec9a770da35b88e2db",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/01_IDENTITAT.md",
+      "bytes": 3636,
+      "linies": 68,
+      "sha256": "c1df97701677a77a6de9bcf227e8331724505b6f7297c118e2fcf732f0aea962",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/02_EQUIP_IA.md",
+      "bytes": 9033,
+      "linies": 116,
+      "sha256": "ca74210c4b8829e2eb0df74d76b37b46aaeb00e78db1c5f111156a40e299ee25",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/02_GENOTIP.md",
+      "bytes": 4490,
+      "linies": 61,
+      "sha256": "dfb873d8c0a29a1fc6ab26fc92b4cb54e4762c5664b79db8cd4c5d3c12befa8f",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/03_Consola_Termodinamica.md",
+      "bytes": 4704,
+      "linies": 96,
+      "sha256": "046d437ff424dc8414dd170f0d5e1b1b4dc1924ae0dada04ff25eb3bbace64cc",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/anatomia_cognitiva.md",
+      "bytes": 3174,
+      "linies": 56,
+      "sha256": "e58c212e12ecfdd256fc5bb61799bea67dc0f98aad0c21ae3831eb155d4098bd",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/antigravity.md",
+      "bytes": 2838,
+      "linies": 50,
+      "sha256": "20e825f1f1cf7705da7f983d438d3cd1980b655d83cd719e920fcbf9f16c220f",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/connectors_mcp_disseny.md",
+      "bytes": 3742,
+      "linies": 77,
+      "sha256": "d4d12c5b838684576bf8c9cd36b280552f35a84441e385fe552c636f6688813e",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/CORE_Registre_Automillora.md",
+      "bytes": 26779,
+      "linies": 72,
+      "sha256": "f6bb8fde4c649c68a18733f6998f654a503a32d285967f74201895d2189d58c0",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/DOC_Logos_Oficials.md",
+      "bytes": 2156,
+      "linies": 65,
+      "sha256": "041306b09afb964661399c041f2f6be725b93963acbf284000c7f9859edcbd5d",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/DOC_Taula_Mestra.md",
+      "bytes": 1737,
+      "linies": 52,
+      "sha256": "d365e25d02f1bc658210ab23e28014accc3e9a909e3d03b6e64c1eb606b015c4",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/el_projecte.md",
+      "bytes": 11289,
+      "linies": 117,
+      "sha256": "5f7d19d039a3ed16b2bea65fbd0f8ae73b9ac17fb18a54355cf0035310d543bc",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/identitat_visual.md",
+      "bytes": 6201,
+      "linies": 88,
+      "sha256": "26fa539fa951a40daaa9105ebe61de9ef1140b71f314e6589d70fb217e0c6e7f",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/perfil_psiquiatric.md",
+      "bytes": 11470,
+      "linies": 99,
+      "sha256": "c4a6a021a5aa52732da95315467b51bde5712a57ec1539dcca34b74f8440efd3",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/00_SER_Brain_Identitat/Soci_Sollutia.md",
+      "bytes": 7809,
+      "linies": 254,
+      "sha256": "12baaa350a818aacb3e70db1d04ce90a23b810457642989839917bbaac60b7fe",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/01_SABER_Cultura_Coneixement/00_visio_i_pilars.md",
+      "bytes": 3328,
+      "linies": 63,
+      "sha256": "00070c72d9a8300c3c9b9c769ed0b196fc3d22ee68d78f6c0ef86151f963c490",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/01_SABER_Cultura_Coneixement/01_trellat.md",
+      "bytes": 2426,
+      "linies": 61,
+      "sha256": "96c8204d0ea973764eac53cd84c40a72442c9629ff565cdd5dd29067eb750ff2",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/01_SABER_Cultura_Coneixement/codex_huma/Arquitectura_L_Anima.md",
+      "bytes": 3445,
+      "linies": 60,
+      "sha256": "44559955957a8be24f18bf16f1b439e57dc8fa0e050c6c96cff956982df32e5e",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/01_SABER_Cultura_Coneixement/codex_huma/Arquitectura_La_Forja.md",
+      "bytes": 2903,
+      "linies": 58,
+      "sha256": "c1a217fc6879d6ae7c2b13f7a35523d8a032e86c3bdc81a2a26196a21cc1bef8",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/01_SABER_Cultura_Coneixement/codex_huma/Arquitectura_Protocol_Lazaro.md",
+      "bytes": 4073,
+      "linies": 59,
+      "sha256": "93b4b48ee9cb073350b35741093ca31921d001017156d10258f40bbe513a0b3c",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/01_SABER_Cultura_Coneixement/codex_huma/Arquitectura_Sistema_Nervios.md",
+      "bytes": 2529,
+      "linies": 63,
+      "sha256": "27d4647a78ede46e60048cdad6f324d89e57cb7431273620d08870ff737be0b7",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/01_SABER_Cultura_Coneixement/Coneixement.md",
+      "bytes": 2032,
+      "linies": 33,
+      "sha256": "fdd1272efec1503312322a7af8c2000e0a1abff293520f8bae7c349ca57dde58",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/01_SABER_Cultura_Coneixement/connexio_radical.md",
+      "bytes": 2689,
+      "linies": 50,
+      "sha256": "67b63820d091490524a7afdfd70d695d625bca1d5c3a3f4916014989afdde9a5",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/01_SABER_Cultura_Coneixement/Govern.md",
+      "bytes": 1401,
+      "linies": 30,
+      "sha256": "e2388ea43a6e539148e4e3fc68ce8930e8bf5862acf62aac3182b9649492bd6f",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/01_SABER_Cultura_Coneixement/Graf.md",
+      "bytes": 6673,
+      "linies": 80,
+      "sha256": "aa9e5ed19ccdf61bdb1fb888586a6c64f5b28f5ce69ca8ab5429bb5a8f8ddecf",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/01_SABER_Cultura_Coneixement/Identitat.md",
+      "bytes": 2164,
+      "linies": 39,
+      "sha256": "bcef469f118296c7c07f9b3c49f9f019af939f3ba8e6d143742aaa28d9d0cb9d",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/01_SABER_Cultura_Coneixement/Llibre_Blanc_Produccio_Pedra_Seca.md",
+      "bytes": 4988,
+      "linies": 85,
+      "sha256": "c960846f2a275881f93af3a6bcc9d6853a016bb193601c8d98a85f9275155a19",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/01_SABER_Cultura_Coneixement/Maquina.md",
+      "bytes": 3328,
+      "linies": 46,
+      "sha256": "172e3d2aecca48c1e5a7bd5618f2bcf4625ede1e4deac6a3fa29159c402cbb63",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/01_SABER_Cultura_Coneixement/Sistema_Immunitari.md",
+      "bytes": 5587,
+      "linies": 92,
+      "sha256": "343abbb551cc69aaf907dd84582f5290827ee26c5a3d7ac78f8ef1472f4bb1b4",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/00_arquitectura_tecnica_unificada.md",
+      "bytes": 10253,
+      "linies": 168,
+      "sha256": "805764a2c930d3936715e6b44b16c4d63321cc4a642baf8b11e53387ee754692",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/00_plantilles.md",
+      "bytes": 2993,
+      "linies": 62,
+      "sha256": "5005fc06c8dd1411876c87de3075fe0273a7ddfd5683777b3800ff39deffe23e",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_acta_unica.md",
+      "bytes": 3943,
+      "linies": 73,
+      "sha256": "f5272a8ede90805ad7ccee4bbc8ef6a3a594316c0c7dadac6f0b2a138d3ed870",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_brainstorming.md",
+      "bytes": 2630,
+      "linies": 68,
+      "sha256": "464d87125f3cb197c3f1c96630e66f41e7ea677774c857ac0e1af5412c90524c",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_branding.md",
+      "bytes": 3311,
+      "linies": 89,
+      "sha256": "157b9615f7d6b060311f6ca30bb4852b1ec329e429dd35209765d375b478c7c9",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_creador_skills.md",
+      "bytes": 3113,
+      "linies": 76,
+      "sha256": "571a722573cc76034e5f58f2f5d6eabb137df9e660e769945b26443c4219000a",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_doc_to_app.md",
+      "bytes": 2614,
+      "linies": 69,
+      "sha256": "3c22bd6fb0608ec8e075bd1a603e35ebb470a1ccc64ae67a93088031ab95df9d",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_modo_produccion.md",
+      "bytes": 2647,
+      "linies": 65,
+      "sha256": "946890785c141a46751dcf842c73ee9d775c2a869a6a17575ea67f42041e4982",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_planificacio.md",
+      "bytes": 2422,
+      "linies": 62,
+      "sha256": "bb4cd446f36a6476f1ba8756359948923b7c7a10bcda15283645a027462506d7",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_skill_trellat.md",
+      "bytes": 2776,
+      "linies": 56,
+      "sha256": "9205c334fdf1733cc313f104b43a4cde4f22d9503e6468b2315cfb6c928ff450",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/architecture/ADR-2026-08-ONLINE-FIRST.md",
+      "bytes": 2480,
+      "linies": 64,
+      "sha256": "41f88c9e556c5aff5fb3e40f84ccb3e2fba4147da59263989585a6d8fc76782d",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/obsidian_plugins/Homepage.md",
+      "bytes": 2584,
+      "linies": 47,
+      "sha256": "6da9db373d3736abe9d17320adfd312b9d2f8b14d0da2b9531250b4beb9a5b5c",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/obsidian_plugins/Plugins.md",
+      "bytes": 9430,
+      "linies": 236,
+      "sha256": "c3ab902e026532549adb4fc2fffa49e21e6b50dfbfe9a7329ad94c2f4ca02242",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/plantilles/PLANTILLA_ISO_SDP.md",
+      "bytes": 4227,
+      "linies": 196,
+      "sha256": "1c9f8c7888bf511f33ed28706e4380f17b21708f90fb1707ba59e80c1732df62",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/SDP_LOCK.md",
+      "bytes": 2816,
+      "linies": 66,
+      "sha256": "67011c7459eb210fe393cf607bf81c039e94387d493b5c8cb3391648d8144401",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/a11y_seo_trellat.md",
+      "bytes": 4064,
+      "linies": 82,
+      "sha256": "c627257d7b93de11fbaece5abb2f77b6d806d81504fd1f3cee4ab9ffb4d86d95",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/AUDITORIA_CANONICA.md",
+      "bytes": 4385,
+      "linies": 121,
+      "sha256": "e5bf2ea6a794fa077c2297470d334cd5e44a83def88fb8ab9caa48346a7fa7f5",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/futur_adaptacio.md",
+      "bytes": 4353,
+      "linies": 88,
+      "sha256": "88d7b412590702ef4371ad63bb4ec6b2698be04fb2dbf83b253f0464189a4a96",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/index_trellat.md",
+      "bytes": 4281,
+      "linies": 94,
+      "sha256": "59b02c4ac2ac5185eb90436b6b18955898fb8cf00c543bfbb01c805e1e0cb188",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/MOTOR_OFFLINE.md",
+      "bytes": 5887,
+      "linies": 124,
+      "sha256": "36f42af2ca85b82167933d536cb861174e09f9c9d191f0b1c6b917ea77ede4d6",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/seguretat_execucio.md",
+      "bytes": 5500,
+      "linies": 137,
+      "sha256": "259d85edc4d566cbef297a2a8d44be1b4cd8ea8453d13ae200947b8d7388f5ed",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/self_repair.md",
+      "bytes": 5594,
+      "linies": 115,
+      "sha256": "4ca5b833450c2629b7c81961a98c2b74cd936e869d9012b896b4a4a85e0446f6",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/successio_lazaro_execucio.md",
+      "bytes": 5475,
+      "linies": 128,
+      "sha256": "85b68b3f3bfdc3816be15fa17945fa196e51e2f3374e6fe026eee6143231e1bf",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/DOC_Governanca.md",
+      "bytes": 4531,
+      "linies": 90,
+      "sha256": "73dc8594110f77995ce169573393446d1056b3fc23889b12bb84343c1a1bb0e4",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/ESTANDARD_Integracio_React.md",
+      "bytes": 5245,
+      "linies": 87,
+      "sha256": "60dd959025cc53e5ab04d7ff862e10a2dc94df08be7e68a1e28694c9e6d275b1",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/ESTANDARD_UI_Universal.md",
+      "bytes": 11688,
+      "linies": 269,
+      "sha256": "845398f71ac48422da6fd27afb9cede5c73a45343b00a5195faff4cc99cda2b3",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/FORJA_TO_CORE.md",
+      "bytes": 3023,
+      "linies": 74,
+      "sha256": "352ec53e2ddc826504f67fe5aafb26eaf3289a5a01c825094a87a9aa5be50c8e",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/LLEI_05_Privacitat.md",
+      "bytes": 3527,
+      "linies": 111,
+      "sha256": "0f425cb529cf7bfe34f79e4922ce7ea6c9dcebce8246b32673928758fb3d334f",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/PLA_DIRECTOR_Legal_i_Subvencions.md",
+      "bytes": 10081,
+      "linies": 106,
+      "sha256": "152a70ad7d269f68cb1f7b9a7fbc3c92ce2fc70be20b12677554d7d704f7b7da",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/03_GOVERNAR_Normativa_Regles/PLA_DIRECTOR_Viabilitat_Economica.md",
+      "bytes": 6468,
+      "linies": 107,
+      "sha256": "1adb41f5cb0d1ff0fd5cade0d215f3b1f292d5da563bedde4fc06ed77b257209",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md",
+      "bytes": 1909,
+      "linies": 59,
+      "sha256": "17489e94e99bac71ff6f0b19fa1800f46bcbac2e1ce48b66e777e724432c8561",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/01_Produccio/disseny_pedra_seca.html",
+      "bytes": 153328,
+      "linies": 3147,
+      "sha256": "3eebd3fbf3898755edac61bcb7b06c6a56545fd734a01602f3e434915baa9560",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260901_2359_ABSENTS_auditoria.json",
+      "bytes": 612,
+      "linies": 17,
+      "sha256": "66218469e5bb8f6114226733aa1ad5fdfa082959bf50c1170082ef7445b40d5c",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260901_2359_MANIFEST_auditoria.json",
+      "bytes": 102879,
+      "linies": 3393,
+      "sha256": "22f02f8470bad5806c2a07d02e6991683fb0c4f36c0d0ac0de194d2567f712cc",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260901_2359_PROMPT_auditoria.md",
+      "bytes": 2312,
+      "linies": 33,
+      "sha256": "a1c1d76457bfdc8f4620cd5b91829a40244c4e14c273b54d818fc58afacb7dd5",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260902_0001_ABSENTS_auditoria.json",
+      "bytes": 475,
+      "linies": 16,
+      "sha256": "1fe6fc7abcc529d6b2d9c5de9dfba8446f791ddb6b10d8326f500f3eccf97b43",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260902_0001_MANIFEST_auditoria.json",
+      "bytes": 103526,
+      "linies": 3416,
+      "sha256": "dd6ee57711fd3a5c90c6ebb4c2d618667d764a45d1bac8ca7b5c4145c676de63",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260902_0001_PROMPT_auditoria.md",
+      "bytes": 3208,
+      "linies": 45,
+      "sha256": "204cd7a77381f65cc451491e431df851b89efc7981ec3aa8fe5cf41bfe2100eb",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260902_0135_estudi_notebooklm.md",
+      "bytes": 7196,
+      "linies": 86,
+      "sha256": "1dd8049a9fdc891de920ebcea4fab76f136ab607888c167c137a5f9646429a8a",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260902_0136_estudi_claude.md",
+      "bytes": 6465,
+      "linies": 117,
+      "sha256": "19601bf267ffbcd8684c7ae29dca32e6064848c8eb461206774bc71251cf3ed8",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260902_0137_estudi_codex.md",
+      "bytes": 5563,
+      "linies": 137,
+      "sha256": "cd9b1c16ea59e86fa8788303a03b16bec88c462c1625ac232d684c55d00f4ba1",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260902_0140_estudi_gemini.md",
+      "bytes": 4814,
+      "linies": 73,
+      "sha256": "025f0b85b775ce05310df18850957b42d7686502d20012b245e28745518d55b8",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260902_0142_estudi_grok.md",
+      "bytes": 4726,
+      "linies": 85,
+      "sha256": "6f95be3f021b7dd964b39df616a450ad8d78bdbfa7cbc4fc3f4abebee93636dc",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260902_0146_estudi_vibe.md",
+      "bytes": 3942,
+      "linies": 77,
+      "sha256": "24d4586fd07fec9bc92644318630a8867b94382677ea613c91ff4ad2fd0392f3",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260902_0148_estudi_kimi.md",
+      "bytes": 4247,
+      "linies": 69,
+      "sha256": "89a5538bdfe14146ccd86ab12f1f438071d29691c4e1ba7cf34a41e63caafc51",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260902_0150_estudi_dola.md",
+      "bytes": 3925,
+      "linies": 79,
+      "sha256": "b73c02dcc276dfa52b3f7ccbbc2a1ec58f7d889fd94cbdc49ca6e684ca5174eb",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260902_0152_estudi_deepseek.md",
+      "bytes": 3708,
+      "linies": 66,
+      "sha256": "28c2e240e0d45ceb9220cadf7d4f5ad0581aa29518628e00c33e534be5280b41",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260902_0155_estudi_z.md",
+      "bytes": 3927,
+      "linies": 61,
+      "sha256": "a27be594cf9811843259e91fd8e093d3bccfd58aa5297fa3e200703d122e3d1b",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260902_0156_ABSENTS_auditoria_v7.json",
+      "bytes": 335,
+      "linies": 15,
+      "sha256": "25bd3dfd7f86fe4eaa4b6fb3c0dc58903720bcfcd523c217454fd12f106b4ee3",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260902_0156_PROMPT_auditoria_v7_del_consell_per_a_validar_el_sanejament_cognitiu.md",
+      "bytes": 3950,
+      "linies": 77,
+      "sha256": "3d6e4550d0bbc5f95c0059759f941747d25347e34e22c70c3e743ea94dbac8dc",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260902_0158_estudi_qwen.md",
+      "bytes": 3825,
+      "linies": 67,
+      "sha256": "b38c433d4dd0d2f8017df87aaf4bebad0120e7db7227e8aef82275c7d52a6481",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260902_0220_estudi_resposta_claude.md",
+      "bytes": 2313,
+      "linies": 36,
+      "sha256": "1eef8505dac77ef97060e1fce018788b854cbfb278c4d01361e6794da5819515",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260902_0232_estudi_notebook.md",
+      "bytes": 1163,
+      "linies": 28,
+      "sha256": "d3daa7ef00a54b9c6918dfe74615d9a7b4e5038741131ed49c28105d4a93d042",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260902_0234_estudi_copilot.md",
+      "bytes": 1246,
+      "linies": 26,
+      "sha256": "6000b9732add74cc8d3fc6ede754bc1f11407db170646eb1377732adea8816f7",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260902_0234_estudi_gemini.md",
+      "bytes": 1524,
+      "linies": 23,
+      "sha256": "5745f05c02735f60cc4f4f97ea4ad39fcb696f62153525ef0cf694e0d3d2f98f",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260902_0236_estudi_grok_v7.md",
+      "bytes": 1453,
+      "linies": 26,
+      "sha256": "3595a6fd90cc306ad88da68882a3389a797b5b18864348848c433a7af134659d",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260902_0238_estudi_vibe_v7.md",
+      "bytes": 1342,
+      "linies": 26,
+      "sha256": "cf037092d7ce6ea04dd36f9dc371b63715fa458739c6345ec15fe0ff17becb2b",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260902_0239_estudi_perplexity.md",
+      "bytes": 1625,
+      "linies": 26,
+      "sha256": "1b0ea70e8dd9f0cba197f00b5033acc7ea9db020ef9803578557d5492d28d9ae",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260902_0240_estudi_kimi_v7.md",
+      "bytes": 1696,
+      "linies": 27,
+      "sha256": "4a7821f7aa008bd92fe080b1125a53fc891cdb4e1ae5bdd805406a44df53247e",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260902_0241_estudi_dola_v7.md",
+      "bytes": 1706,
+      "linies": 26,
+      "sha256": "aae15ce11ebcbf30f97b8965a96cd7696ee085f9d79afd49308add2bda747dd6",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260902_0243_estudi_deepseek_v6.md",
+      "bytes": 1529,
+      "linies": 26,
+      "sha256": "474462be0addc030f0186d134f777cf30a841709821c2cabaa67a9d334753901",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260902_0245_estudi_resposta_qwen.md",
+      "bytes": 2448,
+      "linies": 33,
+      "sha256": "d5d72f18e9a62dc8e36776cfe8035d6dbdb3b4354147a61a3f5194f826e83a45",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260902_0246_estudi_z_v7.md",
+      "bytes": 1865,
+      "linies": 22,
+      "sha256": "53551e10367b9fc482b751b6f7ceeee721e9ddceedf5a13b86aacc0be4ac2eda",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260902_0248_estudi_codex_v7.md",
+      "bytes": 2124,
+      "linies": 27,
+      "sha256": "24c42057b647cdab8d24ac3d70e4e7a03af4bbbac4025d78ccf1452011007983",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260902_0252_estudi_claude_v7.md",
+      "bytes": 2082,
+      "linies": 27,
+      "sha256": "6e141c78abd9c2207e6eb2c7ad639acc73c939cf71f74db65913bd58509912c0",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260902_0254_estudi_qwen_v7.md",
+      "bytes": 1888,
+      "linies": 26,
+      "sha256": "a63fa383c4fb723f1b6ef61a65a31eda3d492adc752c8f84597c8491272ab290",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260902_0333_estudi_eines_selfhosted.md",
+      "bytes": 2398,
+      "linies": 34,
+      "sha256": "b3b23fcc51073729fa165390654b5feeba8dbd8276fd9d985bf715e2fefb748f",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260902_0412_ABSENTS_auditoria.json",
+      "bytes": 93,
+      "linies": 7,
+      "sha256": "62cd5d9405daa0a5dca8e88ad368a43a56d74b804af386dca8ffba742951c54d",
+      "nl_final": false,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260902_0412_MANIFEST_auditoria.json",
+      "bytes": 114574,
+      "linies": 3735,
+      "sha256": "b43a9889701ffd74c6c6af7815a04d29d7f9762599a00fe15d6c5eea020feca0",
+      "nl_final": false,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/05_Escriptori_Soc_de_Poble/260902_0412_PROMPT_auditoria.md",
+      "bytes": 160,
+      "linies": 5,
+      "sha256": "1e79f3a39ebdabd3e7b65b832d26ac7a2634c828a2a4c725e9f918a0b48e7434",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/10_actes/00_INDEX_Actes.md",
+      "bytes": 1650,
+      "linies": 37,
+      "sha256": "6f14431c43252093fe99e5050085bcc730e025abf56d7092ac7601eb920d29ed",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/10_actes/260901_1327_ACTA_Supervivencia_Futura_i_Relleu.md",
+      "bytes": 7560,
+      "linies": 62,
+      "sha256": "e6b8eeb95389c3ca6b9685ec3926475ffe3f3820997da1047ff06db5ad5521b9",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/10_actes/260901_1410_ACTA_Resum_NotebookLM_Audio_Overview.md",
+      "bytes": 6389,
+      "linies": 65,
+      "sha256": "6e7bd33c289c0ddb65d79ede18a816008d219ca5aba7e4b099877dbca2783c2b",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/10_actes/260901_1435_ACTA_SESSIO_Tancament.md",
+      "bytes": 2239,
+      "linies": 34,
+      "sha256": "77429618dd395f0ae976d123f92a87fdcb7820fbce6f6c72999d0bc2956b72ed",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/10_actes/260901_1511_ACTA_resposta_notebook.md",
+      "bytes": 4502,
+      "linies": 45,
+      "sha256": "5a1b18794b9ed14e3fad7ea626a5be1bbfe9cc0e932b8e346a040bc66b469093",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/10_actes/260901_1630_ACTA_MARMOTA_briefing_sollutia.md",
+      "bytes": 4623,
+      "linies": 59,
+      "sha256": "0879d6250d61d6772e8a2bccb864d6836807081cf5258a2db2dc6f5bcb044d65",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/10_actes/260901_2315_ACTA_SESSIO_Neteja_Profunda.md",
+      "bytes": 4195,
+      "linies": 53,
+      "sha256": "3b2aa2973f87cbde9dee80bd529a35e19823a683f3760fe5c029a7805bdcf701",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/10_actes/260902_0303_ACTA_MARMOTA_Gran_Sanejament_V7.md",
+      "bytes": 4988,
+      "linies": 64,
+      "sha256": "3531769441b3503482ca41ed6abf4276dd2e01244007a1e46f54a33a4e606a9b",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/90_revisar/00_INDEX_REVISAR.md",
+      "bytes": 287,
+      "linies": 15,
+      "sha256": "1094e526f4564b9a6cf5044128afc1566b54ef95314787ce84085245a7e30cb0",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/90_revisar/00_VISTA_GENERAL.md",
+      "bytes": 1145,
+      "linies": 16,
+      "sha256": "a159787bbe0daebaa76cd28aa3759ff4f991bd5184be927d6d82c41a1d7e0894",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/90_revisar/01_DECISIONS.md",
+      "bytes": 1581,
+      "linies": 20,
+      "sha256": "28b5d2e5f020588cbb068fd997c5084a3283d9012a028dd526cc2c6c4a8a4a2a",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/90_revisar/02_MODELS_DE_DADES.md",
+      "bytes": 1075,
+      "linies": 22,
+      "sha256": "85cf9c4f937ece89fee411820d621539406f1307878b36c7d20a6de9e2e0205b",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/90_revisar/260902_0126_INFORME_Auditoria_V6.md",
+      "bytes": 19366,
+      "linies": 386,
+      "sha256": "7b41cb19164fbcdf496f421233325e4cbc73b0c8fbd3c683c8f4de57ebc000ac",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "_wiki_de_poble/90_revisar/model_arquitectonic_pedra_seca_dola.md",
+      "bytes": 41186,
+      "linies": 162,
+      "sha256": "3347362c9f3f4786f6c891d34438fb5eabdca4caaf15a266216c4f5148a5744c",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": ".agents/AGENTS.md",
+      "bytes": 5565,
+      "linies": 57,
+      "sha256": "c2b967afae9e69f684116ab5204e28d99f03139b27e3b1116768f72466cc32e8",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": ".agents/BASELINE.md",
+      "bytes": 576,
+      "linies": 16,
+      "sha256": "78a5a630299c993874d9b4b17ad238242cbbcc99b5d159136b23e980871d32fc",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": ".agents/BIOS.md",
+      "bytes": 1445,
+      "linies": 21,
+      "sha256": "44ec1f9ae2765a3d9694fe5459e31a648c24556a056bd274ae761bd5c3f08cc8",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": ".agents/BOOTSTRAP.md",
+      "bytes": 1780,
+      "linies": 32,
+      "sha256": "c4fb82a349356f9d4d5f9b56a85c730b064b0b638c71028e47f9be4bc6a9ced9",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": ".agents/consell.json",
+      "bytes": 5807,
+      "linies": 139,
+      "sha256": "f71283a4b40ea3e57591da1cb91fba670837403675728c9cea8d72aa6070f0c8",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": ".agents/doctrina-ignora.txt",
+      "bytes": 457,
+      "linies": 29,
+      "sha256": "46755fe3107673a1759c1792fd5cc5271d07234d518016b5e47865b926c91145",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": ".agents/ESTAT.md",
+      "bytes": 1579,
+      "linies": 28,
+      "sha256": "24c36bc15c159e086693cb1ebfaec3270283c76f4cd17995d831dcb1af5d70be",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": ".agents/hooks.json",
+      "bytes": 498,
+      "linies": 26,
+      "sha256": "f54950ab06c6f73021fa8cbc7e2bec1284a746d7ce8e410eef9736ae7fbcf8df",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": ".agents/hooks/tancar.mjs",
+      "bytes": 1475,
+      "linies": 37,
+      "sha256": "b6eeedc06535b57d51191ab2835149aeed8c6661407b86aef1eb25336facc071",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": ".agents/hooks/verify.mjs",
+      "bytes": 7223,
+      "linies": 170,
+      "sha256": "af37ad028c7dc8d16b845d1a0b6674cbe3493a502690e6d70c9cfad69d462e1b",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": ".agents/index.md",
+      "bytes": 1113,
+      "linies": 30,
+      "sha256": "48d3ceca4922f1850e3eb1db3cdebce7618d68e6c0e190b90955b106d6c90e1b",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": ".agents/LEDGER.md",
+      "bytes": 5277,
+      "linies": 48,
+      "sha256": "47245f3a5d7947bdd661ae8cd5982c59cd3c8d165ec0ccf024e728d07df8983a",
+      "nl_final": false,
+      "is_base64": false
+    },
+    {
+      "ruta": ".agents/manifest.yaml",
+      "bytes": 923,
+      "linies": 29,
+      "sha256": "8e19c5ef41e461f33bbfbd404dd6f3eac9801c001e64d36035052430b6c2523f",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": ".agents/PROFILE.md",
+      "bytes": 2164,
+      "linies": 49,
+      "sha256": "8096ea9021f5c4481ec0533e474f9d68c41eb91e8924ae430272a8039933ab1a",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": ".agents/PROTOCOL_PETORRETA.md",
+      "bytes": 8087,
+      "linies": 93,
+      "sha256": "449d99eddbec6e6a04232458b6a573cd88755ea64099b5e3d82a011f82c4d41c",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": ".agents/rules/00_BIOS_COGNITIU.md",
+      "bytes": 726,
+      "linies": 17,
+      "sha256": "668ac8c110b8e8cb489fb1a386848028d03c9ac842de274dedc476bb6829aeec",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": ".agents/skills_index.json",
+      "bytes": 5543,
+      "linies": 201,
+      "sha256": "188a9d237d6495362448f164f08c4a3128d01944a8e18b8e59b7b9c7f071a8d1",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": ".agents/skills/00_INDEX_SKILLS.md",
+      "bytes": 2652,
+      "linies": 41,
+      "sha256": "8024f54db7e8f33f3247046715359d9c1e83f881d334286397e22a25033d156b",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": ".agents/skills/abocament-total/SKILL.md",
+      "bytes": 1636,
+      "linies": 31,
+      "sha256": "ee8c9239347dc0889287cc98e469eea8aff1cff8968a090f393b5cccd113ca67",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": ".agents/skills/core-context-panic/SKILL.md",
+      "bytes": 2332,
+      "linies": 46,
+      "sha256": "3ae55b7f5b1d9d66d6561dd3290dfa9a5bc4ae90b2bc7795b0b5673c87bc51a9",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": ".agents/skills/core-higiene-reflexa/SKILL.md",
+      "bytes": 4088,
+      "linies": 81,
+      "sha256": "9610c073215b7e429fa47c92c117610c6998f74c67f42ebd45b516b64351c8cf",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": ".agents/skills/core-restauracio-segellada/SKILL.md",
+      "bytes": 5631,
+      "linies": 177,
+      "sha256": "a9c99fb9061cabdc3856c55ab88a83347844de34dbde780b7bc1f31313e73088",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": ".agents/skills/council-review/SKILL.md",
+      "bytes": 5095,
+      "linies": 69,
+      "sha256": "0b9b527e0f4e3ccce013788b1aa95a1b2f9279ae34e2db7583962d641d40bb3e",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": ".agents/skills/guia-ampliacio/SKILL.md",
+      "bytes": 2030,
+      "linies": 44,
+      "sha256": "41078d83a2f7c7d150b8a22237721546641d57394bbddff9dcd909b0ed3bc14b",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": ".agents/skills/identity-iaia-core/SKILL.md",
+      "bytes": 5035,
+      "linies": 101,
+      "sha256": "61221fb7179bbe0d68568f14bc40bd7a551434e291bbe1bc2b61a8878e53734e",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": ".agents/skills/identity-iaia-voice/SKILL.md",
+      "bytes": 2351,
+      "linies": 38,
+      "sha256": "a73dfb336d522e612052ac3d6766b683d38c6983f4f9f6c5bf78992d6cd1467f",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": ".agents/skills/pedra-seca/SKILL.md",
+      "bytes": 12672,
+      "linies": 166,
+      "sha256": "64599dbbd0f5bae6e11f2868017118870b592a857b702184867cf7dc5a18556d",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": ".agents/skills/reflexio-previa/SKILL.md",
+      "bytes": 3244,
+      "linies": 60,
+      "sha256": "d5f69808a379bf10559770fbd71c3f51be8d9376871ec7f520fa8091e6d26024",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": ".agents/skills/socdepoble-workflow/SKILL.md",
+      "bytes": 2579,
+      "linies": 35,
+      "sha256": "4933a3f33370f5f85bee59721c6c95d09857fc8946185fb40449cdb20aa0f2f2",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": ".agents/skills/trellat/SKILL.md",
+      "bytes": 3438,
+      "linies": 70,
+      "sha256": "8d6cc16046a2f23c8351d0ce7a371ffe7e05d9c7884e636f9035fc9058361061",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": ".design-guard-deute.json",
+      "bytes": 3172,
+      "linies": 75,
+      "sha256": "efa3ba04a0e9249a1ebbf69fa0ef17e6c56c70f3eb7c1bb22212a8fc8ba0012a",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": ".estucat-deute.json",
+      "bytes": 2374,
+      "linies": 64,
+      "sha256": "846b881d08775821d813dc626c797f5eeea25b342d56e13b7df2fe62fef48693",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": ".pedra-seca-deute.json",
+      "bytes": 9698,
+      "linies": 181,
+      "sha256": "1d17574b9bc11e7c08f7cb3fb5216894d57e51b458a942786c830e179cf8bb3c",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": ".promesa-deute.json",
+      "bytes": 2000,
+      "linies": 23,
+      "sha256": "c2aaba370e04a038985058e5a3e7d17a909506756cdd35047ab8fb4ea039a23c",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": ".rutes-deute.json",
+      "bytes": 3670,
+      "linies": 44,
+      "sha256": "097c5ac798a0de8d142a1f1d5b721945e973fc4200dce0b42f5254bf2cfae8d5",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": ".sollutia-deute.json",
+      "bytes": 370,
+      "linies": 14,
+      "sha256": "b6565a41ff030fdec4f50afa3a6e8ef63bb69a86a5d6108aa62d9697192289bb",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": ".teixit-deute.json",
+      "bytes": 138,
+      "linies": 10,
+      "sha256": "4f0bcc1768b5586457bdb21cd6635351b209a55ef7f4cc29134551e55c78ddf1",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": ".vocabulari-deute.json",
+      "bytes": 9874,
+      "linies": 133,
+      "sha256": "612fa2d62a91ab1c15d9ecc0e373dfe4d4b80823d3c659f6bc32a82a5e015e06",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "eslint.config.js",
+      "bytes": 1330,
+      "linies": 42,
+      "sha256": "9207114135dcdc85c061e8fc7369b016436df73d7d70e0e152268e9bbcaac01b",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "index.html",
+      "bytes": 1023,
+      "linies": 23,
+      "sha256": "017b47373b085a13a5bf8e2a024036c26ac9f212c9da0cc6e9823309e576cb21",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "package-lock.json",
+      "bytes": 222718,
+      "linies": 6459,
+      "sha256": "df973a2ca9ebb572f1002cdf012d3732f4c5e69f12810118aa72a9adad037a44",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "package.json",
+      "bytes": 5005,
+      "linies": 102,
+      "sha256": "8fb9f3111bb1ebfc461d349efa3400845eef03b052b5911bc32f261d39a255c2",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "public/auth/callback.html",
+      "bytes": 7027,
+      "linies": 175,
+      "sha256": "e4fa3e89957f17c5a925052805b1a4532203b77cffbbcea46b75aa191e2ae5ac",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "README.md",
+      "bytes": 3395,
+      "linies": 91,
+      "sha256": "0587be367523f178f852d568d7e9cd62757f762c598680953852e798f8168301",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "scripts/audit-accessibility.sh",
+      "bytes": 391,
+      "linies": 9,
+      "sha256": "f06c1b11295fe336c896dcd6eca3d63a4cbeb3b57e5d4c3436264ae20a9e6977",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "scripts/audit-performance.sh",
+      "bytes": 309,
+      "linies": 8,
+      "sha256": "d6b16cdac76d26154ae80da28e40b80098d0eb71f0eb8eeb292a07cd8cddb1eb",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "scripts/enllacat-intelligent-wiki.mjs",
+      "bytes": 10986,
+      "linies": 292,
+      "sha256": "2bbb6202dc46f6d8d75a099f110afd01d4d88b628c06d582a75a3a03fba328b3",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "scripts/fetch_town_media.mjs",
+      "bytes": 7587,
+      "linies": 188,
+      "sha256": "7f338bc09a29f7ba7f8a99458aa1953e72eb9fc8b4f12ae0b76ecf89e1ee447b",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "scripts/generate-supabase-seed.mjs",
+      "bytes": 4613,
+      "linies": 159,
+      "sha256": "41733550e178a0b67aeda95f8b6f7dc3f573618c6c35c039460584809577fa9f",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "scripts/generate-supabase-seed.sh",
+      "bytes": 651,
+      "linies": 24,
+      "sha256": "53030e0746ef6aff42033e0746f7357032daabf35ff558f1040d1b81cec1b67e",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "scripts/immunitari/plaquetes.mjs",
+      "bytes": 14101,
+      "linies": 381,
+      "sha256": "053625d8f44b249cd307f9b9c29b41c1b763aebc7b54a000f0980852d0fb5788",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "scripts/migrate-component.sh",
+      "bytes": 314,
+      "linies": 8,
+      "sha256": "b6fce36ae862a978d338ecdf1d73ab597cc429614bd2cab07bf0690412af1482",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "scripts/sync_agents_to_wiki.mjs",
+      "bytes": 418,
+      "linies": 9,
+      "sha256": "b1a08ead096a86a80f61e6ff7cc77e981368fae16ce5386a336d520b14f36f31",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "scripts/sync_brain_to_wiki.sh",
+      "bytes": 275,
+      "linies": 6,
+      "sha256": "ba94b2fa4407b9cae8fb82d42ba9223aadc0b2c4e676b399f91a781d39380fbc",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "scripts/teixidor-backlinks.mjs",
+      "bytes": 7866,
+      "linies": 251,
+      "sha256": "003ac4cc1e60e25dff1cb7635fc0910f3b7211dc1724a4c7dbbfa55a92380923",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/app/App.jsx",
+      "bytes": 22706,
+      "linies": 528,
+      "sha256": "b12e4f2a0e114b6ebd0d79916e7007f82cbcfbbdaee14158266632beb01e0afa",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/app/AppDataContext.jsx",
+      "bytes": 23439,
+      "linies": 667,
+      "sha256": "8c1e3b22da64488ff79d66b9e2e21710b1878cd0416039dd44c3a68cd4f79c14",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/ARCHITECTURE.md",
+      "bytes": 2311,
+      "linies": 25,
+      "sha256": "f576f65db34de261a46a04e06205daea3766840ea21da47fb0cb253643f363b1",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/assets/fonts/noto-sans.css",
+      "bytes": 1640,
+      "linies": 41,
+      "sha256": "c9284cbaa4dc9a740268e9ce9473ddec2a42f4dc6f18b43ae55fc2a05e489e6c",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/components/BrandMark.jsx",
+      "bytes": 343,
+      "linies": 9,
+      "sha256": "8f59c43b96d794890b40ef2dfef32579520248dba2bbc371d635d27b8a66eedf",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/components/SectionItemCard.jsx",
+      "bytes": 1370,
+      "linies": 60,
+      "sha256": "e87bb75c22b8033db136a4457d89edcac0c2509c4c4198fe37b47d7b8aef14d9",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/components/ui/UniversalSearch.jsx",
+      "bytes": 496,
+      "linies": 18,
+      "sha256": "e0dcc781c42dd2fd12c245f11fb585f24045605b87bcd8ce85929391fcc989bd",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/components/universal/AvisadorEfimer.jsx",
+      "bytes": 3360,
+      "linies": 122,
+      "sha256": "247bd78396e9523a1866313366e4117814efeac230ca3a905e565bb7c99f0aaa",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/components/universal/ContentProvider.jsx",
+      "bytes": 608,
+      "linies": 28,
+      "sha256": "1f8e5724074e304aebb21c62d7e24f68252c6ac6f497235cc6efd1a2ae67b568",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/components/universal/EventCard.jsx",
+      "bytes": 2388,
+      "linies": 75,
+      "sha256": "ab857a2d76cf8fab60ed705d8d955c6ef254112235847f7ba30fc9e965528b2f",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/components/universal/UniversalComponents.jsx",
+      "bytes": 42467,
+      "linies": 1146,
+      "sha256": "42389c1224e2b8bfad4dc7828f0537b53e4cc8346df09a012772df3df83ba046",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/config/app.js",
+      "bytes": 658,
+      "linies": 24,
+      "sha256": "ff07219a9a5d81a4fecc5045164cf16930149e10dfc759daf35ccb85f1247d9b",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/config/assetResolver.js",
+      "bytes": 3385,
+      "linies": 83,
+      "sha256": "7b99fc1cd1c6419e33c72c140e0e5f79fe6c7b550978e8f32eceaa87dfa3b842",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/config/contentHelpers.js",
+      "bytes": 1781,
+      "linies": 57,
+      "sha256": "eb247f966cdc8997127220c493452956d52a8eb0f1d11d1488b5963b3965d75a",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/config/design-tokens.json",
+      "bytes": 1088,
+      "linies": 37,
+      "sha256": "ab70a6a654004085779608befd2dd913e676c870a237a79a3059b7fec5c23d3a",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/config/i18n.js",
+      "bytes": 83014,
+      "linies": 1653,
+      "sha256": "a604e07ce7c532f73b028e500c98df41306b6bd4c8052a71be17ecd8652b8bba",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/config/navigation.js",
+      "bytes": 2294,
+      "linies": 69,
+      "sha256": "bd380ffedb8e833398ccfd9f9aab2db825cb3bd0b49442b463ca910894058bad",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/config/README.md",
+      "bytes": 666,
+      "linies": 27,
+      "sha256": "8b53d1677740199d20be9fc6604e44de3b4f196123b674a2c0910fbc7033eb35",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/config/sections.js",
+      "bytes": 2873,
+      "linies": 29,
+      "sha256": "0058b4ebc0a636e78aa8f15c82e25d88fdaff09439319fb0a8b220b1be394aa9",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/config/storage.js",
+      "bytes": 2491,
+      "linies": 90,
+      "sha256": "68d9b3702afb6829afe585bb7b5dee20e8762b3adde24a53e15fd66422e1bac6",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/config/taxonomy-registry.json",
+      "bytes": 2033,
+      "linies": 91,
+      "sha256": "26a64d4c0e10db59fabb567876828b253285f849769b35cacc38765561f808c6",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/config/theme.js",
+      "bytes": 1436,
+      "linies": 41,
+      "sha256": "cd4623e7ee2233888f29a81e80fc66613e4756346a699ef773d79771f632599c",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/css/design-tokens.css",
+      "bytes": 467,
+      "linies": 22,
+      "sha256": "0ea84f5a8306a28d55b2087c62d7d6206bc66013a4bc66130985cbfc9e1ee14e",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/css/index.css",
+      "bytes": 117242,
+      "linies": 3202,
+      "sha256": "770c8d7d20ed5854139dfeb9805a32b18507484b9389f0974b8bc628bf9d1540",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/data/appSeed.js",
+      "bytes": 5684,
+      "linies": 137,
+      "sha256": "83dd3ac63fa76e95d1a54d06e979be73ff9f9009078e1143caafd8fe29beb77c",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/data/backendPort.js",
+      "bytes": 1797,
+      "linies": 52,
+      "sha256": "33668a37d57c133f170021f97a2c7cb6f64f0a7b822474894cd3524f1f9afed8",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/data/identitat.js",
+      "bytes": 1749,
+      "linies": 49,
+      "sha256": "9bd1806e25c7d46009d070ae45b27da85835be5a5a1fc053b8341f2e5aa51b62",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/data/mapejadorSeccions.js",
+      "bytes": 6911,
+      "linies": 154,
+      "sha256": "ebfeed7e76951bb2c505cd716e6d6efec8ab421b3a1c24387edcba08681dd76b",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/data/oauthRelay.js",
+      "bytes": 11570,
+      "linies": 276,
+      "sha256": "37a7d22d984b3bd46dafb63f90c1035ea066108fc0addb4b6e9c355f24c95f7a",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/data/sectionContent.js",
+      "bytes": 1137,
+      "linies": 42,
+      "sha256": "acff79b79227810701ea7ea249cb9a02c642ef49fb3ec5f97fe82231d27d824d",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/data/SELF-DESCRIBE.md",
+      "bytes": 1373,
+      "linies": 20,
+      "sha256": "b93ea4bd80bb966a620e12efe21083ad5d7b439fe0bccdbba98c453bba2ec44c",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/data/supabaseBackend.js",
+      "bytes": 17138,
+      "linies": 558,
+      "sha256": "89ed4e37e5c4bc446a72c817ecf9fa2d2b398e2618981aeec76a6851f8596c88",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/GLOSSARI.md",
+      "bytes": 1930,
+      "linies": 20,
+      "sha256": "0e4047a9df7f8075e243bed8499b2907d34027e9b35bff2a561fbaa2050373a2",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/hooks/useSEO.js",
+      "bytes": 4132,
+      "linies": 111,
+      "sha256": "0f7b0ea774cf32408cec5a4d768534f0f86d2c8857679ab55c09f739071953ac",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/host.js",
+      "bytes": 9789,
+      "linies": 222,
+      "sha256": "7e638c8f937d34e536876bc3b17043d287378c5554fb50b6703f9a8bbeab4a16",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/icons.jsx",
+      "bytes": 2337,
+      "linies": 79,
+      "sha256": "810a64390b7ecfe4b9e25cff6b250ad85edf2f1cda28e15477bd982e7b7fe37f",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/main.jsx",
+      "bytes": 2055,
+      "linies": 54,
+      "sha256": "d6d5eceead1f119403b3dea845c151f409fb49bdc5684333fcc5faa3abd5c461",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/pages/NotFoundPage.jsx",
+      "bytes": 1019,
+      "linies": 37,
+      "sha256": "706986b88ebe0d085bd0e4b41fb3af0968d63c1669ac6bbd30fcbe246fa98202",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/PedraSecaEmbed.jsx",
+      "bytes": 21767,
+      "linies": 604,
+      "sha256": "0b871e71bdf91061ca53af5ffd51307420fd79aacae82e53387c12681d1a6467",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/connectar/ConnectarSection.jsx",
+      "bytes": 13334,
+      "linies": 348,
+      "sha256": "b656f8c92ec72291d278509cdc614ffc3e6125ee2e72e56fb9b2f3b8302ce2c3",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/control/ControlSection.jsx",
+      "bytes": 7488,
+      "linies": 176,
+      "sha256": "c2f8da69ac8253ab8a9a6caa002f3194d8d7d96ba8bc775000990e98862e344c",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/detail/detailHelpers.jsx",
+      "bytes": 99,
+      "linies": 2,
+      "sha256": "ece09cae8b891becd5762b7514bb0cf8bcc24d24511040b687730473ec1e7437",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/detail/detailRichText.jsx",
+      "bytes": 1515,
+      "linies": 53,
+      "sha256": "3b53bad7ce03efc4efeb809976f761ca4a2cc04702e0e8cd2836fbdbc1526494",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/detail/detailSectionMeta.jsx",
+      "bytes": 1001,
+      "linies": 18,
+      "sha256": "2ad4a5e279f51425199b34339d97417e9bf7ad72ba240dbfa41c84ee8908a55a",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/detail/ItemDetailSection.jsx",
+      "bytes": 3255,
+      "linies": 74,
+      "sha256": "d87e5daf5fc034d32df48c5a9073cf89cf0ea1b53dbf5a82ec4511a8c816aa91",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/detail/PageDetailSection.jsx",
+      "bytes": 2364,
+      "linies": 59,
+      "sha256": "c456fcac731dfeaed912ac5fac208c0c05204de7ad9169d35772e89ce4c533fa",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/detail/README.md",
+      "bytes": 899,
+      "linies": 35,
+      "sha256": "e7d04a24e10ed7457d949b1831d11a8f17175decd5a1c6a9498b78cfbddabcff",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/dispositius/devicesRuntime.js",
+      "bytes": 6394,
+      "linies": 214,
+      "sha256": "3c141d01543ce8873b841c1c4db0fa519faa5fd5f56c947f45a0b8228b2b27b2",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/dispositius/DevicesSection.jsx",
+      "bytes": 25682,
+      "linies": 633,
+      "sha256": "883cda20df44d7cb8ec8f75e066df7ddac61ae065f7726b24f3a258714ea90bf",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/disseny/DesignSection.jsx",
+      "bytes": 57219,
+      "linies": 1189,
+      "sha256": "68cbaf1fa85f04906e007cf0396e1c63be09a44fb0eb76c8195ca539ebd55f25",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/disseny/markdown.js",
+      "bytes": 3104,
+      "linies": 123,
+      "sha256": "93374b6f23c21cc24ce415176010b9e4f154679500f382ddcb7144d8bae580de",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/login/LoginSection.jsx",
+      "bytes": 8373,
+      "linies": 197,
+      "sha256": "2a1fb3fc8ab0ec09cc9c6d32d4080c4ec1049a0228436f2f230902317c5a725f",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/mercat/detail/detailSectionMeta.jsx",
+      "bytes": 2371,
+      "linies": 56,
+      "sha256": "37d34f088bc5f92ed804021ad78e8e24924ea81f1005de49c46763bd0c7dbef7",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/mercat/marketContent.js",
+      "bytes": 646,
+      "linies": 25,
+      "sha256": "b435c5d5bd4b547a78fef884c7ba44d67aa1c31ff3cc97e86aaf260d87abe3f8",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/mercat/marketSeed.js",
+      "bytes": 2956,
+      "linies": 70,
+      "sha256": "9c9ef5712b6c946292a6ee7612b6574e40046fc819627d8f669ef68f1fa313a1",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/mercat/MercatSection.jsx",
+      "bytes": 2921,
+      "linies": 73,
+      "sha256": "e7029d9e8f8512ad1d942443c01ce5b0bdc2d4b888845e947d17b5a406ddff09",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/multimedia/detail/detailSectionMeta.jsx",
+      "bytes": 1410,
+      "linies": 31,
+      "sha256": "64c473c35f5e1fad3de50493c1bcd37791099457ed08c8099737855cf88fb894",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/multimedia/mediaContent.js",
+      "bytes": 2057,
+      "linies": 59,
+      "sha256": "e44bd43354c07890db312349342c9b682a2f7f146d66bd108f3acec7b6f63c44",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/multimedia/MultimediaSection.jsx",
+      "bytes": 5006,
+      "linies": 91,
+      "sha256": "ad1c3da3db6970c4202986ff2f9a67cbe4582b1dde5b03fca64c407425c3e882",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/mur/articles/Aplec2023Article.jsx",
+      "bytes": 6443,
+      "linies": 69,
+      "sha256": "4a1a44b64cea87849065d9a405a1c4cbcf16d1a1853d1808291c524eccbe840e",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/mur/detail/detailSectionMeta.jsx",
+      "bytes": 1580,
+      "linies": 34,
+      "sha256": "d1c4676fcde785df129bcca65dfac734d044caaae1634aff256e9b69babf99d6",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/mur/detail/eventsDetailSectionMeta.jsx",
+      "bytes": 1403,
+      "linies": 33,
+      "sha256": "0e7669305c9147e98122c90f59cb8b8205c8d8c17673c10b2c059c0d955729b3",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/mur/eventsContent.js",
+      "bytes": 389,
+      "linies": 10,
+      "sha256": "03f1b785aab20a1887a018723ec739185e804b648f3932ad31845a65adc2eb07",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/mur/eventsSeed.js",
+      "bytes": 668,
+      "linies": 14,
+      "sha256": "6a7995da87509eb7581a27a3c114102e77725d315814e475f6128d9c74d8f044",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/mur/feedContent.js",
+      "bytes": 644,
+      "linies": 25,
+      "sha256": "b46e30c928a0c58f95cec731292969efacd522c07ecb33e38676e5d46c5b2e13",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/mur/feedSeed.js",
+      "bytes": 29,
+      "linies": 2,
+      "sha256": "bf99ae8613345d4e2d0ef596198d02b71938f08344b1e982df7efb6125459008",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/mur/mapConfig.js",
+      "bytes": 247,
+      "linies": 7,
+      "sha256": "ba2cf34b191e17df9981b249eeb9a6be3fb1cec94aef6f12e01ff22cb241502e",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/mur/MurSection.jsx",
+      "bytes": 9406,
+      "linies": 223,
+      "sha256": "b6944e74f830f5ef1998e6ee5aa554885f200172aef16d6672c0fcf0b001ed75",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/notes/detail/detailSectionMeta.jsx",
+      "bytes": 798,
+      "linies": 23,
+      "sha256": "8a39efd67ed27c5db2d152103685813aa3f479d2e8e5e98e8983204c46dc5eef",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/notes/notesContent.js",
+      "bytes": 532,
+      "linies": 31,
+      "sha256": "b3d34f6c989ff218656a2560ae3157960c26c5b4e057ba39e69c29024b475e44",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/notes/NotesSection.jsx",
+      "bytes": 32121,
+      "linies": 535,
+      "sha256": "054e8f45c48ee4fc96279df8854cd94f819d2b9640e95fb5a8c32da9699e49d0",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/poblacio/PoblacioSection.jsx",
+      "bytes": 2352,
+      "linies": 68,
+      "sha256": "fb3d2b54295cec416c798afb333e095ad9f763e8b387cdd9ef185d79d571ada3",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/pobles/detail/detailSectionMeta.jsx",
+      "bytes": 968,
+      "linies": 24,
+      "sha256": "269ae1df5d4e414fdd4508120fb9279bf3c5fc155969bc88f907d17df16f6dd2",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/pobles/PoblesSection.jsx",
+      "bytes": 3071,
+      "linies": 76,
+      "sha256": "78cca890ffd3af18040bb74ee9fae831b5a1307cc02e1dfe93e6cf1dec00c8c0",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/pobles/townsContent.js",
+      "bytes": 600,
+      "linies": 12,
+      "sha256": "5ddcf9ede542597190ba364b2a11b1ffcefe5fd35fd9832a687f55bfa67cf2f3",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/pobles/townsSeed.js",
+      "bytes": 4835,
+      "linies": 141,
+      "sha256": "b5a52560dd60496007333b5b4e299c2ffc57427536950041c2993529c57ffe13",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/profile/agentsSeed.js",
+      "bytes": 22521,
+      "linies": 423,
+      "sha256": "3c025851904012af7ebf7b95fe80ce921230d2eece9be9cddf676def496e1180",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/profile/MyProfileSection.jsx",
+      "bytes": 4825,
+      "linies": 129,
+      "sha256": "58bd43b0ce3d1395233a6c64454bcb4e12f975e9f24b47616a47e6e7d3320169",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/profile/profileContent.js",
+      "bytes": 305,
+      "linies": 9,
+      "sha256": "1c9249f8a56b0240a7727790bc4ebd4caf7e8e0205f4bdf294e09613cd36e11e",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/profile/ProfileSection.jsx",
+      "bytes": 2365,
+      "linies": 58,
+      "sha256": "d5c2c79e8ce33fa0b17c73db9023f4ae8f8e7b752e9b4067d3379ec35243c2bf",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/README.md",
+      "bytes": 2157,
+      "linies": 61,
+      "sha256": "7a134076bf8b276f513d2e073c7b8b9fa11f50748285cfe8e279a916da68b4ab",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/realitat/RealitatSection.jsx",
+      "bytes": 3671,
+      "linies": 95,
+      "sha256": "a10e1bb8613b17171c192548c89b5831041413cb06755c26840c1c9ac1e38f8c",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/search/SearchSection.jsx",
+      "bytes": 2701,
+      "linies": 63,
+      "sha256": "68cdce6d8b6ff84a7fb2bd3dabd39a7a56e18335e55a8a4662103314219f2f2e",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/text/pageContent.js",
+      "bytes": 114032,
+      "linies": 105,
+      "sha256": "d5798a855f494bcd7f8c9678ed1e9454481fa2658b00ba7c6493efae187d00fc",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/text/TelemetryDashboard.jsx",
+      "bytes": 2572,
+      "linies": 57,
+      "sha256": "130408ed5da2d9686e39fac1846d331d1c99934fbe87a9796ff8c0a6fa2fe17e",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/text/TextSection.jsx",
+      "bytes": 1451,
+      "linies": 36,
+      "sha256": "39ede435a09440d615a201392c382ec9b2e4b871e82bd6ac5373fcc8ca0a595d",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/translations/TranslationsSection.jsx",
+      "bytes": 3005,
+      "linies": 67,
+      "sha256": "d8c382218d02e590358b0ccacdada63129a197874a5c37b6b4c3d58e03fc20ea",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/xat/chatContent.js",
+      "bytes": 1743,
+      "linies": 52,
+      "sha256": "602d34de8f22a9fdefbda28e40581dea083f6ded21cf61c6bdc10e936050d816",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/xat/chatSeed.js",
+      "bytes": 4416,
+      "linies": 167,
+      "sha256": "09bd85797024c85ff7bf327696c9bbcd0850985ca2bf2262e3f0fb76b80dab43",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/sections/xat/XatSection.jsx",
+      "bytes": 12297,
+      "linies": 290,
+      "sha256": "c1ba7eff937f76c149e9429a088e9718a79dea7f5030dac59d5cfbd89fcf60b4",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/shims/jsx-runtime.js",
+      "bytes": 1672,
+      "linies": 40,
+      "sha256": "e26b755a79141028445556644e6c4efaf544c92a6b46c72ed555e87b473594bf",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/utils/sanitize.js",
+      "bytes": 2933,
+      "linies": 83,
+      "sha256": "c40edc52528b6e05da57150a8ddc3dc9ddf8d3b68b224ef4d366d5e4bc4db071",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/utils/uuid.js",
+      "bytes": 61,
+      "linies": 4,
+      "sha256": "d1f90131b212ad8420478f87f229446875cc62c11aa464050cfcbea9ba285635",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "src/wp-standalone.js",
+      "bytes": 633,
+      "linies": 17,
+      "sha256": "7c16cbaaabf15ab6e4c0274beec3271648765f86e3f449cc8b0df2dc26bdaf22",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "supabase/README.md",
+      "bytes": 1194,
+      "linies": 38,
+      "sha256": "3e5976d55b2188ddb00cd1123c0b33d04cbeeefd188e0597c9b7a9d3d5322a86",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "supabase/schema.sql",
+      "bytes": 8163,
+      "linies": 176,
+      "sha256": "e0f16afd2427b6e25119da54f0ef2c0c52870fdfa418c41f1909f5af8a1c3c9e",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "supabase/seed.sql",
+      "bytes": 161972,
+      "linies": 84,
+      "sha256": "ee78a688a64a72c59811e735efff2166e3edf014aff1c0623398c301280039b1",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/agents/autoneteja_safata_produccio.sh",
+      "bytes": 1001,
+      "linies": 36,
+      "sha256": "bf7dfe5c147950b45038fc8e73e6c7eece49946e558eea210fa44dbb34aee9b6",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/agents/force_read_petorreta_rules.sh",
+      "bytes": 582,
+      "linies": 10,
+      "sha256": "00968fa504461494cd4e9e81dd0a48842f5a6a232ab1f62897e02a422c5c4752",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/brain/260830_neteja_deute.mjs",
+      "bytes": 15329,
+      "linies": 351,
+      "sha256": "16af1bb380ca094af9fa95c3b9f98b0b66cac794f212cdeef98be0fc4bedcf58",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/brain/260830_pedacos_arrel.mjs",
+      "bytes": 8353,
+      "linies": 215,
+      "sha256": "c114bf25a90309064c6941b13ca8fd6348837f6a0621adb194120b71947464b9",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/brain/260830_purga_maquinari.mjs",
+      "bytes": 16545,
+      "linies": 390,
+      "sha256": "2144d711d1fdf7e208fcf39ac546d516b04dce1e77ca2d3b5801b122a1611a86",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/brain/260831_rescat_tokens.mjs",
+      "bytes": 6308,
+      "linies": 178,
+      "sha256": "26c70b95e4995388aad6085d9b6ded26c9ff86399fc2765ffe66c864d1326fb0",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/brain/add_frontmatter_to_agents.mjs",
+      "bytes": 896,
+      "linies": 36,
+      "sha256": "0b3b64dee3e442771ea28c038b26fb0171148fad77a0ce3e82a5099aa1221145",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/brain/ancora.mjs",
+      "bytes": 860,
+      "linies": 26,
+      "sha256": "2434329883c3523bb9908b50aced6499f4fac0f3a3f0e348de4e86ca723e388d",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/brain/brain_distill.py",
+      "bytes": 15199,
+      "linies": 366,
+      "sha256": "5d09a746857893ace4d66502e6faa7083d471ae1feb0a2cf97da414004e3b55e",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/brain/brain_policy.json",
+      "bytes": 1236,
+      "linies": 67,
+      "sha256": "d341ebdafdde5a6a4e034c2c7ef2c1271dbb3103476abe5d7ce2c471bcd5a7bc",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/brain/build_context_pack.py",
+      "bytes": 2693,
+      "linies": 72,
+      "sha256": "83628a41e4c4009464e6cc6178ac23ae81d5b590d5f61677c3a32c5221be8ca4",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/brain/build_skills_index.mjs",
+      "bytes": 5212,
+      "linies": 134,
+      "sha256": "cfda5db786fb12aae2e9f82dd630c9190ce460303d6bc636b370eb7edb39479e",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/brain/cens_cromatic.mjs",
+      "bytes": 8456,
+      "linies": 191,
+      "sha256": "f2453c64305ae347721508af557a10728fdecd41d7507d4bfe6490432d1b8281",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/brain/consolidar_baselines.mjs",
+      "bytes": 8635,
+      "linies": 220,
+      "sha256": "49966cb864087787126a8365b9e9055bda2d8fafd6645da641c66a9115e32c37",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/brain/crear_bundle.mjs",
+      "bytes": 19945,
+      "linies": 484,
+      "sha256": "db6520d96b18b401d1e10b20bab7074eeb276e387d720ad3a57e17386a6fb2ea",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/brain/crear_document.mjs",
+      "bytes": 1515,
+      "linies": 50,
+      "sha256": "d4f4f21907ae892e847961d2b9a0908c202d0a6087c3c1778365c2d22b2893eb",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/brain/desenterrar.mjs",
+      "bytes": 13104,
+      "linies": 305,
+      "sha256": "563dae5c3e934c67e41c858b6c758efe88cee70f567d63e1d980042de70a8d9d",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/brain/despertar.mjs",
+      "bytes": 5403,
+      "linies": 139,
+      "sha256": "e6c7f27db95d2e7b1993f0b8ef7124b2fde79cb443cfd00276b52c2eb3787f5d",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/brain/farcell.mjs",
+      "bytes": 6011,
+      "linies": 119,
+      "sha256": "131f7c05874720d8a01910b423c1765840a7e640356057a4db3f2d354fdedebe",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/brain/maintain.sh",
+      "bytes": 917,
+      "linies": 32,
+      "sha256": "520267007ff54e0594ca5f104d92383cccbc6a642558c55b9b4216adf51f5091",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/brain/migrate_skills.mjs",
+      "bytes": 1624,
+      "linies": 52,
+      "sha256": "b7265041f2c438472265d19705265ea717529057ef3379f7348e5ceaa45a98da",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/brain/persona_router.mjs",
+      "bytes": 3486,
+      "linies": 110,
+      "sha256": "fbeacd345844d854430084e039d1252570a6e0e2e5cbd3cc7736fae06efd729f",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/brain/reparar_frontmatter_skills.mjs",
+      "bytes": 9779,
+      "linies": 249,
+      "sha256": "5577c73477058398986e7de5e635d85ddee3b0268df2fb6054162a47ff453562",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/brain/sync_agent_mirror.py",
+      "bytes": 6558,
+      "linies": 170,
+      "sha256": "9fa2e7cfefb035799d5b22170094f3cd2def7bfc02f73a91a0e6196874958597",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/brain/tests/test_brain_tools.py",
+      "bytes": 8338,
+      "linies": 177,
+      "sha256": "288b86d28ba5f5dbae7c02af022d35186389f70f9c6619fccd11c268dce2ca5c",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/brain/time-machine.mjs",
+      "bytes": 4163,
+      "linies": 137,
+      "sha256": "26c3075c59b06487fefa57dfa889bce4fee30b936d9d3174ae3f3211adb7d40e",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/brain/tractor-pedra-seca.mjs",
+      "bytes": 15218,
+      "linies": 337,
+      "sha256": "f4bab5b4950cd2eac4f7840007b1834b886a22ce644b25cd0462c040f3a9cd9a",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/escala_sdp_root.mjs",
+      "bytes": 6496,
+      "linies": 194,
+      "sha256": "b2a331afe08f1239fe31a456419f1f48f14eadfa3ade61f22b74f33394f78815",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/gates/build-seo-manifest.mjs",
+      "bytes": 10153,
+      "linies": 247,
+      "sha256": "391b6ba68cb8209c11aaf4e462944ad5674917f37a0d33383d21d62e39ba0403",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/gates/design_guard.mjs",
+      "bytes": 13638,
+      "linies": 364,
+      "sha256": "98be3bce094b43f16cbbfc57d526efaca01dbcb62df4ca20a2f8fb54faeca380",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/gates/doctrina-ignora.txt",
+      "bytes": 761,
+      "linies": 18,
+      "sha256": "08aa60af32e1910f7659ae3a62a7fdb4fdf72bf6fe2de7d74c8d7ce4fed7696b",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/gates/esquema_frontmatter.json",
+      "bytes": 3839,
+      "linies": 81,
+      "sha256": "7a6a9c65f327756d747ffef767c0dd942be1a042ff9d20e1231b804f5a731961",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/gates/maquinari-baseline.json",
+      "bytes": 319,
+      "linies": 16,
+      "sha256": "fced355489f5acfdacd431dc4f42d232066dcbd34dd3321240100f4e36f986d2",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/gates/obrir_torn.mjs",
+      "bytes": 1822,
+      "linies": 49,
+      "sha256": "d264cc01dc53d5763aefdbc1447d0c9e0e206b704564800deefd668974d8f389",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/gates/run-portes.mjs",
+      "bytes": 3921,
+      "linies": 68,
+      "sha256": "d92aa9499159acf64ac7cd5632afb339c52a7ce198e110dbc48d869a4a3b9703",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/gates/tancament.mjs",
+      "bytes": 2341,
+      "linies": 69,
+      "sha256": "f3a7f2b5fd479f6f2ef113dc164bf635bbdae464b7b3f2ee163ce32b44f65353",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/gates/tractor-arrel.mjs",
+      "bytes": 13236,
+      "linies": 304,
+      "sha256": "eee279c0f060ee58536054ebf5126f725be15d618bd060eb1728432100301642",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/gates/tractor-build-previ.mjs",
+      "bytes": 3747,
+      "linies": 95,
+      "sha256": "6c1698df3852ebde0edb75d7e38009a81804e584044cc97dd90b10e147113010",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/gates/tractor-cadena.mjs",
+      "bytes": 13775,
+      "linies": 325,
+      "sha256": "7dfdc167a0be6d15b585901bc39964b3798eb612ee52c543507ad65f1c03f522",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/gates/tractor-cens.mjs",
+      "bytes": 12974,
+      "linies": 281,
+      "sha256": "7f6866decd2eb38c19d646de60b35d09872ad82a0e7c3c2452f01940933f5ec2",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/gates/tractor-consell.mjs",
+      "bytes": 18669,
+      "linies": 407,
+      "sha256": "129bac29c9ed6974f23f654ba67906c37d0b6c0f3e209351c247cafab886aa9e",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/gates/tractor-cromatic.mjs",
+      "bytes": 15965,
+      "linies": 372,
+      "sha256": "c427eeeda66ee546c157817fa592d6e55388ab8fc2a7c9cbdf0c45a4572b817e",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/gates/tractor-doctrina-maquinari.mjs",
+      "bytes": 11001,
+      "linies": 258,
+      "sha256": "6f88f7ff4380d25df8e7ed76a3de3424e4922cdd6ca8f32030393ecdb4c232c0",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/gates/tractor-doctrina.mjs",
+      "bytes": 13899,
+      "linies": 318,
+      "sha256": "6e094c28a7b10bf45e99617fd27317d19f4f883600fcee96d29fde1919e1d7f1",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/gates/tractor-enxufe.mjs",
+      "bytes": 7722,
+      "linies": 175,
+      "sha256": "2272d0ebdfbfbcd61b9400bf5570375dbf74426f2a5842820a48785554b554f7",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/gates/tractor-estucat.mjs",
+      "bytes": 10585,
+      "linies": 258,
+      "sha256": "f6374912bb82469d6f2528b1351a64db15cf89df823e9bfc6f64a31a4b0abf18",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/gates/tractor-innerhtml.mjs",
+      "bytes": 1674,
+      "linies": 48,
+      "sha256": "bca6e8a16b6e97d0c595d7dba083b85d5616b52e4e2fe6786d1a7ba765a39df8",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/gates/tractor-manifest.mjs",
+      "bytes": 12313,
+      "linies": 304,
+      "sha256": "61653f4f94153e515f961be6b39b6ceb5c7fdbd3654255e8a94d33161ebcab21",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/gates/tractor-persistencia.mjs",
+      "bytes": 3903,
+      "linies": 105,
+      "sha256": "445432171ab070c4db27496d4d249c7b5b4814067f3767eb4c4888c8b2777cbf",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/gates/tractor-promesa.mjs",
+      "bytes": 10658,
+      "linies": 243,
+      "sha256": "1f4adc8fa6e67d327864a3dadf665a5cded573203fb609255a8829e874240abf",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/gates/tractor-registre.mjs",
+      "bytes": 17483,
+      "linies": 412,
+      "sha256": "16fbc8c9d6aa591b1f48aca595ff1492695eceeab732b8298b5d85c5086570b3",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/gates/tractor-rutes-web.mjs",
+      "bytes": 9040,
+      "linies": 149,
+      "sha256": "d156f0fa62b7d40f5c4850c76af11fa4b5ba96ce7edbfd4d7f71e2b1fb5f0b92",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/gates/tractor-rutes.mjs",
+      "bytes": 7586,
+      "linies": 198,
+      "sha256": "31c6deb9aec2f0cf0edc6d9dba14c10c10b89005374e98467b2d5115754599be",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/gates/tractor-shim.mjs",
+      "bytes": 2472,
+      "linies": 57,
+      "sha256": "60bb61772f2d379e98744a553f62db52a010d294a4160f22e4cbf97ea2abb85a",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/gates/tractor-sollutia.mjs",
+      "bytes": 10907,
+      "linies": 239,
+      "sha256": "d7b3ae27375125c39dcc43959bed608abd1e6298f516a6a94ef9bd19ddbbce1d",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/gates/tractor-tdz.mjs",
+      "bytes": 4486,
+      "linies": 120,
+      "sha256": "0355a5f31534ba1c08f1aeea2a1d9ff755d743b699345f79c369d1f57e3fd362",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/gates/tractor-tokens.mjs",
+      "bytes": 13932,
+      "linies": 303,
+      "sha256": "f2fdd72c3888fa07f981a1dfc8dc2a2cedce8a4a60d72a2bba3d342fb12b1b85",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/gates/tractor-vocabulari.mjs",
+      "bytes": 11779,
+      "linies": 318,
+      "sha256": "e8d4d677dd7e0f106ffb9d0af1a75da23ca2163790ff6a0582469159716ad758",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/gates/verificador-scc.mjs",
+      "bytes": 8041,
+      "linies": 229,
+      "sha256": "5124919a4a376b4b0c5185074e13eee7d98abe7d918639cb604b53f6f4e0636b",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/lib/arrel.mjs",
+      "bytes": 14305,
+      "linies": 372,
+      "sha256": "9bc93b0ab36d4b8ae7bc7dcab973f3364d904bb76473bc3ab731142a39563e20",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/lib/codi.mjs",
+      "bytes": 6489,
+      "linies": 193,
+      "sha256": "6aac0d42764e5871d0b46b7754290c60db3bd9f5a466dcb89406f5ddf13d4059",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/mocks/sollutiaBackend.js",
+      "bytes": 2116,
+      "linies": 72,
+      "sha256": "38f00950e3f64c81d91bce19a1567c3fa6587ea60724d58dcf707df0430a3407",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/pdf/render_pdf.sh",
+      "bytes": 2598,
+      "linies": 78,
+      "sha256": "1cb0d5f0a84f411cdc23d86fe8dbc8d04e25c9849a250d64e419504688b6a175",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/preflight.mjs",
+      "bytes": 2852,
+      "linies": 71,
+      "sha256": "859033f20d481f22fc1ff956a9819d469d3d04402a62e92b1f88349b0801c7b6",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/scripts/build-tokens.mjs",
+      "bytes": 1531,
+      "linies": 50,
+      "sha256": "ec4559ad4b3b1d1d0d7618ce662c65988b5df1ed5cb140277922b76ff74f83dc",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/session/check-close.mjs",
+      "bytes": 3555,
+      "linies": 101,
+      "sha256": "ab5f89e0a2370e76172280d7405f9ca2f27ca3556d24b2a7eb9bebdd51467b53",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/session/persona_router.mjs",
+      "bytes": 1681,
+      "linies": 63,
+      "sha256": "fa8ba8a02779e9d8cab1bfa53357a7a40ebbf6e5b026c166dd2acc58d6a67d7c",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/verify-bios.mjs",
+      "bytes": 1990,
+      "linies": 60,
+      "sha256": "7a2d5f610cd7c2510944f8a4df13edc81804061cedc8b3df2ab094209be5ed7f",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/verify-ledger.mjs",
+      "bytes": 1816,
+      "linies": 58,
+      "sha256": "3cff7b01b286ec08d3115e72a8a1f77264508c1cfb70004950c7d23c2455c82b",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/audit_estructura.mjs",
+      "bytes": 2538,
+      "linies": 56,
+      "sha256": "dc9bd4c268255812a5fddb3860331d8ab6315ab245642d17cb02544ce855e302",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/autoneteja_wiki.mjs",
+      "bytes": 772,
+      "linies": 23,
+      "sha256": "2d8f1bb11cc3f23ab447aef777981f742c239616f313a5528ef7e212c33deff6",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/build_context_pack.py",
+      "bytes": 1767,
+      "linies": 38,
+      "sha256": "05d0aca7c11a9924b213dea0dec2b8714618c398d98fda8b1472424737df1d74",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/codemod_frontmatter.mjs",
+      "bytes": 8707,
+      "linies": 202,
+      "sha256": "b9a125c7b7eb420abf4df96caa88f9d4b3681cc5f6aaa6e263031a6e0c4ae20f",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/compile-cultura.mjs",
+      "bytes": 2438,
+      "linies": 68,
+      "sha256": "b22d6bd86b4b8269f99a238b78963bb78f6b4c49cd95f7084c37f1719f0ffca2",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/compile-wiki-to-system-prompt.mjs",
+      "bytes": 2802,
+      "linies": 72,
+      "sha256": "f762c0ccd5e4e5173d9fc3905b7e494f117280790e992ca218492cd11ea5fa0b",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/compiler/01_build_index.cjs",
+      "bytes": 13429,
+      "linies": 352,
+      "sha256": "53a92acdada60d177ec7cd892c47e54e99b15d3906b51083c95bb31f8cd93ebf",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/compiler/02_build_ontology.cjs",
+      "bytes": 17281,
+      "linies": 445,
+      "sha256": "dad84b68ee20c0b7fdf63a42ebc3c2877159f5fa91b209e32311ec8bd32d7dad",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/compiler/build_file_catalog.py",
+      "bytes": 14870,
+      "linies": 416,
+      "sha256": "d9fd8d522951fd95bc19888cbb4575a4c26f5eae5b8bc9f9de59cde6f6ded97f",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/compiler/build.cjs",
+      "bytes": 2988,
+      "linies": 84,
+      "sha256": "c2fdabbd2431d1f9b177cdc60f91db1da38ab3b3fd77635a87e758b9bdb13553",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/consolidar_etiquetes.mjs",
+      "bytes": 560,
+      "linies": 18,
+      "sha256": "c50a78655da30da08753466279218ab3e670549abefb3ae138bf7c64b5baa723",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/contradiction_engine.mjs",
+      "bytes": 7132,
+      "linies": 192,
+      "sha256": "88f12c4ee5337d52fc59bcc8fdeaaca4f96f7d2bbb0eb045edbb1f019091b133",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/core/a11y_seo.mjs",
+      "bytes": 3951,
+      "linies": 129,
+      "sha256": "4d6f8c2c9f633cd0c4710c41c509e4ce9c8321db753cf7c94e2ec888f638cef9",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/core/audit.mjs",
+      "bytes": 2053,
+      "linies": 45,
+      "sha256": "cd0e1c9a090072556db12e82e1d131df4b10e11d19c7a7894a99c3d587f16999",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/core/autoneteja_audit.mjs",
+      "bytes": 41485,
+      "linies": 835,
+      "sha256": "9517ae40b4e302ddd5cba4c86bae601c730dbba5a5cdc032b6267feafbbc9d7a",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/core/build_rag_index.mjs",
+      "bytes": 3782,
+      "linies": 111,
+      "sha256": "9d2c3460fa1e68be2127dd58d6872b7fad596f824de1d271ee7bf13043733b3f",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/core/build_slug_index.mjs",
+      "bytes": 2686,
+      "linies": 77,
+      "sha256": "8f3829dfb2d4d028294abeb8bc267bb5f011cd1b7c9c793c714581631c95671e",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/core/corpus_snapshot.mjs",
+      "bytes": 6137,
+      "linies": 151,
+      "sha256": "0a7201eda86157dfa3b3c4fe6ccb245dd62fda28b91485e91e67f38a2beb8877",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/core/edge_rag.mjs",
+      "bytes": 6010,
+      "linies": 151,
+      "sha256": "725f36581ba90be811e896f3d8219945717aed88a8d150ee2450c7d70471f198",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/core/lint.mjs",
+      "bytes": 2662,
+      "linies": 62,
+      "sha256": "348c4f392b9927171fa3a052b31a1f85e2251b30d5b8642760974fb6dc49bc61",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/core/mutation_kernel.mjs",
+      "bytes": 8429,
+      "linies": 211,
+      "sha256": "669b6d94a013507201341d256fc2ac05a684189d77c4ce6db5bab141c8247975",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/core/ontology.json",
+      "bytes": 789,
+      "linies": 46,
+      "sha256": "4d3c328cc7d387b84d35149215ea15ff60f1495c7ce14adbff8f99e5d3f1a094",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/core/parse.mjs",
+      "bytes": 22458,
+      "linies": 539,
+      "sha256": "2410cea82fcaf7d0f3907b08a59552ae60bb09be9f866ebeeceefeb6fcf8d737",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/core/pattern_extractor.mjs",
+      "bytes": 5892,
+      "linies": 172,
+      "sha256": "1f5347d18685ef8e59f738eff1aab0bd835e6ea19884ad1e3687cd08ee770c9d",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/core/runner.mjs",
+      "bytes": 1117,
+      "linies": 41,
+      "sha256": "7dee2168373ecb84674b232c2c293e87ad07089ba8503fec082f3a7475255ca8",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/core/safety.mjs",
+      "bytes": 6315,
+      "linies": 206,
+      "sha256": "1aca4d48fc38bf859c2507e52c3a6ab993bef9509b17195a6696ba2668c8dfbf",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/core/search_cli.mjs",
+      "bytes": 920,
+      "linies": 26,
+      "sha256": "fece42026474703a5e9e262cbdf1ef71af2b04a3f10d7c6ddc1780921a9666e2",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/core/self_repair.mjs",
+      "bytes": 349,
+      "linies": 10,
+      "sha256": "8d8c650396ada6c79c1108aa9885a30133c26ab4d18186311c2a3d39fee04e1c",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/core/sistema_nervios.mjs",
+      "bytes": 18500,
+      "linies": 487,
+      "sha256": "0beef1a49f7122ade81ccde3314c2cd10daac4582045c1a7fc4dfda896df08db",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/core/snapshot_engine.mjs",
+      "bytes": 5360,
+      "linies": 120,
+      "sha256": "a0c8eeb38272064ddf17c35f8d56363880fcd7c455f2d9df5e80d5e1d7d3d564",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/core/tanca.mjs",
+      "bytes": 1267,
+      "linies": 36,
+      "sha256": "4e644ac2be2bc8a7a6729e940592a66a55f1a9fe09213e3bf99df9a8cc05fd75",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/core/translate.mjs",
+      "bytes": 2400,
+      "linies": 66,
+      "sha256": "01f1cdd3f8b029602f5ee8c69e4dec75608df03709ac575cdd6c9d3c41f7848e",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/core/trellat_metrics.mjs",
+      "bytes": 4485,
+      "linies": 97,
+      "sha256": "2219da1cde9333699f70388af6679d56f69de5a034192d6f9e52454e1d9d300b",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/cura_robotomia.mjs",
+      "bytes": 5409,
+      "linies": 129,
+      "sha256": "160fc170beb4a4687e45c8e141b1e84f10bb426f4abb1dedf6677f243d4c38ce",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/entropia_zero_router.mjs",
+      "bytes": 6162,
+      "linies": 174,
+      "sha256": "95c4bf36f6f2a0e22bff2ef718b200c6b07de7751cf61154016c601aa77dc6a3",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/escriptori_to_wiki.js",
+      "bytes": 248,
+      "linies": 5,
+      "sha256": "d5963de149bd2a1850a4be5646f43b77c4e48a0c6df3c098cea0ae3361d6bd12",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/esquema_frontmatter.json",
+      "bytes": 5610,
+      "linies": 168,
+      "sha256": "6f334e5d2d3b8b94b66301dada1bb35b2baab1024ce0a77df2cea68c0c9bb677",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/gen_targeta_universal.mjs",
+      "bytes": 8736,
+      "linies": 236,
+      "sha256": "9e890426210dc154c8b78fec1bcae2364545422fef9327fa278221c2e71d6646",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/generar_genoma_v2.mjs",
+      "bytes": 8577,
+      "linies": 195,
+      "sha256": "bd4544b400445ee762075a495c6901d28698ed0f128b672291ad5d6b642b14bc",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/generar_petorreta_inversa.mjs",
+      "bytes": 7680,
+      "linies": 132,
+      "sha256": "c5d5a9760de9671263587a9494568beb5d0c017af2a0f0bc24cfcd11b8904110",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/hidratar_genoma.mjs",
+      "bytes": 4132,
+      "linies": 94,
+      "sha256": "c83b6ed08a105a854ae905e14d7b6d32296d4ab79847b4f5a37393fd6b9dbd88",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/lib/context_preflight.mjs",
+      "bytes": 3572,
+      "linies": 130,
+      "sha256": "1f405ff48e791bf885f3151da71bc733b0a13708433a5e43e00807fcc1f3dee9",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/lib/enllacos.mjs",
+      "bytes": 1398,
+      "linies": 56,
+      "sha256": "5d7ca08b11e9e274770302034d50f124bf3784cf6db0dc45b943548bea56b7cc",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/lib/frontmatter_pla.mjs",
+      "bytes": 3037,
+      "linies": 83,
+      "sha256": "2e8ea8049f5216774120c464b2ac76ef22dff7ac2803088a08fc2ccd174a3002",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/lib/frontmatter.mjs",
+      "bytes": 9152,
+      "linies": 304,
+      "sha256": "9d6a80ff45966dd2f00fc9d86ba6303067af53f36f2363bec8b36f2c54f46947",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/lib/persona_router.mjs",
+      "bytes": 975,
+      "linies": 32,
+      "sha256": "13fab012677d7bac68aff702e43ce9f02585f590dfcc15cbcf98365a8cd5d4b1",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/lib/project_paths.mjs",
+      "bytes": 5241,
+      "linies": 106,
+      "sha256": "87b4c7be6c5d720eacaaf82eecf4d7315fee18bdeb465bf88515406d1f089785",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/lib/resolutor.mjs",
+      "bytes": 2240,
+      "linies": 58,
+      "sha256": "8c397f1d88fd8b490418f1cab6c1876dcd4cbd1f6338a70dd742ba45d8a3162e",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/lib/termodinamic.mjs",
+      "bytes": 5216,
+      "linies": 122,
+      "sha256": "70bbe69fc93041fbf477f30f5878d2bd7c8fb7ef59744b78dd794078a3e209e7",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/lib/text.mjs",
+      "bytes": 840,
+      "linies": 35,
+      "sha256": "304fc0200cda629e54ca99aeb3ea2d750c9121007b5d126fbf71e5ce8978b099",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/lib/wiki_walker.mjs",
+      "bytes": 2294,
+      "linies": 61,
+      "sha256": "a10ae29665307fc4d4e6d6684871cdebb9b0d1b54e49ad320c6ebd220d494dbf",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/llaurador_indexs.mjs",
+      "bytes": 14056,
+      "linies": 324,
+      "sha256": "64839322e4f8091572f31674c5ec2b8203f9e0be1d6b3633627c4156eebe74a3",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/neteja_arrel.mjs",
+      "bytes": 422,
+      "linies": 9,
+      "sha256": "e2095c037440a5ba8634160fafd6fa791801e97bda0530a446762238f5454579",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/neteja_brain.mjs",
+      "bytes": 13220,
+      "linies": 289,
+      "sha256": "38856e8a90d96f8c5c08047e3cb3ef8a096cd655e1f74c04d3ba1b2a81b5d34b",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/neteja_termodinamica.mjs",
+      "bytes": 261,
+      "linies": 5,
+      "sha256": "d3afb0adc125f687808fc5711c45a1f7eb487019a95f04f187090d3b2a7138bc",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/package.json",
+      "bytes": 514,
+      "linies": 21,
+      "sha256": "c81abec725e6263b287ebcfed19a407d3d5aaf68b7589bbcb1446657a1f55ae1",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/pre-commit.mjs",
+      "bytes": 6268,
+      "linies": 142,
+      "sha256": "2dfe3fb04c3c1242fea2e1f0f832ac30f6ce0a06d7b316288c2f1e6dea813530",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/purga_fantasmes_ui.mjs",
+      "bytes": 12942,
+      "linies": 414,
+      "sha256": "6b45640990fa9a636fe24483b6fc280beacd44d9d13458cedc122b647f12642c",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/purge_empty_nodes.mjs",
+      "bytes": 600,
+      "linies": 17,
+      "sha256": "f7878ca21c1bfe3e836cfcd08b64a54a1a0f9d9348200d44904ca77eb233fda5",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/purge_ghost_links.mjs",
+      "bytes": 3918,
+      "linies": 121,
+      "sha256": "540984fea0cbc728da7c775e459303692985f3369cecadd5aee06650913352ae",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/reflex_petorreta.mjs",
+      "bytes": 72328,
+      "linies": 1590,
+      "sha256": "885bfc2d2256a6d5cfa9c0d3212ab348ca4318ab32c8da5c43b3c7183e93dd9e",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/rules/trellat-rules.json",
+      "bytes": 3823,
+      "linies": 90,
+      "sha256": "0cc08840d7a8f03f50c3c1146d3ac1ce95afd9d6fb2b1d52c39c3dd6305e6bf1",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/run-portes.mjs",
+      "bytes": 4620,
+      "linies": 110,
+      "sha256": "d61a47b1db34009b56b1b59d6139078c0a093fd0b2cdac6a727c20587892bfc4",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/sanador_wiki.mjs",
+      "bytes": 4835,
+      "linies": 123,
+      "sha256": "2aea451860947f4451fded78f97514406d8432698c37ed7e8d16e16fec2af2ba",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/schema-cutover.lock.json",
+      "bytes": 1603,
+      "linies": 37,
+      "sha256": "e6ddc7e741e03dc35002e5080d2d3a119db7271934f9cdab8334380e75b7abdf",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/schema.json",
+      "bytes": 1619,
+      "linies": 73,
+      "sha256": "fec003e5b672fd3725939edfbf3795007ceef6237370783ca0dca04cc5e12aaf",
+      "nl_final": false,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/sdp-cli.mjs",
+      "bytes": 9374,
+      "linies": 196,
+      "sha256": "7b79bb17fb99d568a562e9244a17670546f49dd94b819f571fc17c04c2420678",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/sdp.mjs",
+      "bytes": 4342,
+      "linies": 130,
+      "sha256": "46c6bb72be7c4f45ffbe7b43b348bd8aa8f21992ce5516eb71d491edc4a65283",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/semantic_auditor.mjs",
+      "bytes": 5941,
+      "linies": 153,
+      "sha256": "5e1dd427a7aee809be113e763e607f0dfc6ac1ee1a1b7c365a439da2b15b8776",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/seo_auditor.mjs",
+      "bytes": 503,
+      "linies": 17,
+      "sha256": "534d7332776a586b1983ded5488881ab76cc31f149a4eb5b64663e6386dcd301",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/sincronitzar_skills.mjs",
+      "bytes": 1706,
+      "linies": 46,
+      "sha256": "84c5b3c155d13e6b5089d8f3618fde481d840e255650f92323d3cf0f3a0ff385",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/sistema_nervios.mjs",
+      "bytes": 3099,
+      "linies": 68,
+      "sha256": "1b6150591f1f2fca0e41a65f7abf6072051a1ca8658ee3f0672ee3bc818fe03d",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/sync_brain_termodinamic.sh",
+      "bytes": 197,
+      "linies": 5,
+      "sha256": "9f770758a7279c254b40df44fe315a26c2caa5e759ea621f70956a3405d8fce1",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/sync_brain.sh",
+      "bytes": 159,
+      "linies": 5,
+      "sha256": "418ca44a5cae42299b221d103627012e4544b7368bfbb86a9bd1d5356480f2e6",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/sync_sollutia_skills.mjs",
+      "bytes": 2062,
+      "linies": 52,
+      "sha256": "cd58b9875c7ec0f377b87d05661fa424e0c7ec9f5ccaba38c60b21499085d569",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/tallafocs.cjs",
+      "bytes": 308,
+      "linies": 7,
+      "sha256": "77bf3c6a6acc33832bc3c5ba6e8c8a560031cd7d277515c4e35a49f40e97d1b2",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/teixidor.mjs",
+      "bytes": 10128,
+      "linies": 241,
+      "sha256": "cd0b2d4737e4b31c0421b042ad54cf99c46c6085161c58f9996a99c47f01ad0a",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/teixidora_sinapsis.mjs",
+      "bytes": 19252,
+      "linies": 456,
+      "sha256": "849c5e4d6a5a2683572a8a9d7602a6fb59dfc4b111be3a56a5a8812399f9dc96",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/tests/frontmatter_autoneteja.test.mjs",
+      "bytes": 15963,
+      "linies": 379,
+      "sha256": "a0041b88d600ccb06ef50d5543cd7c5196f5b3f329eb9e8d0a5ca336335a9a8d",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/tests/reflex_petorreta.test.mjs",
+      "bytes": 45252,
+      "linies": 928,
+      "sha256": "fc9d7c4a6599804faebb806378dccb908754d19b90305b8dc4c918ec378e15f2",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/tests/safety_dry_run.test.mjs",
+      "bytes": 2987,
+      "linies": 69,
+      "sha256": "72dc3a9d93af177569eb2659e42f67e4616d6acf71e6989e9ae73bd9dc7a9261",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/tests/sistema_nervios.test.mjs",
+      "bytes": 6278,
+      "linies": 170,
+      "sha256": "0f6969cab5526f1df65f1aada58f54b4d320e268a6013f74619c95c4472ed66a",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/tests/smoke_cli.test.mjs",
+      "bytes": 2587,
+      "linies": 56,
+      "sha256": "df09068e00096f757dc847f3e697df939450add740609bb5431a5258d5630b8b",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/tractor-cadena.mjs",
+      "bytes": 14332,
+      "linies": 336,
+      "sha256": "8e81e78d62fe7abf91ec1547a4ad56cb0c08e8c78b173200f1c0aa87684b8aa0",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/tractor-cognitiu.mjs",
+      "bytes": 18325,
+      "linies": 426,
+      "sha256": "adcbc35b9459b0c9035356e75cde5b6f8cab7be4ec89b806fb3bc6521129818c",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/tractor-esquemes.mjs",
+      "bytes": 5722,
+      "linies": 140,
+      "sha256": "02ecd6d0426117872477baac0f337ab748c18b9b745c252a24798e575d9ee719",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/tractor-frontera-auth.mjs",
+      "bytes": 10127,
+      "linies": 219,
+      "sha256": "1a0119fbd46ea4c46281d9b5f755ff0a440c3cc4ca838a905a98e5f74f335022",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/tractor-frontmatter.mjs",
+      "bytes": 8873,
+      "linies": 201,
+      "sha256": "79be2f4d933ea0d8b5707f39807067713452ea1433677af09271c1d18ffe4ad0",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/update_glossari.cjs",
+      "bytes": 238,
+      "linies": 5,
+      "sha256": "303a8866b93d08bdc58c26be06dd9ce3cfc2fdfc6b60b0b8a4a34f1d07763189",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/validate_taxonomia.mjs",
+      "bytes": 1373,
+      "linies": 40,
+      "sha256": "da6f88dbccc3fb4536fe66aaf0854ec24eb53126fc8a446f7cf13e9f91d79f91",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/validate_trellat.cjs",
+      "bytes": 881,
+      "linies": 22,
+      "sha256": "28cec6568234db2dc1c705919656d4f63b828d8828ae94a4c3b39ea8d7cf5768",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/validate-wiki-compliance.mjs",
+      "bytes": 2194,
+      "linies": 84,
+      "sha256": "5e949a032265e3d234840cafb8740ca72a48f309a9eb05c4dc39853272c8ad36",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/wiki_integritat.mjs",
+      "bytes": 2396,
+      "linies": 59,
+      "sha256": "a1ee03a113369248fe89318aab69982e735be02d36dc787d859f849aa40b55af",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "tooling/wiki/wiki-baseline.lock.json",
+      "bytes": 522,
+      "linies": 18,
+      "sha256": "eb311ee2499ee3a35d9cf068c85bc7ffb80cdc17df523fafab26483c3edacaba",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "vite.config.js",
+      "bytes": 662,
+      "linies": 33,
+      "sha256": "74f5afba463017b184cc1495953a760e29b6a2a8d1d151980912ac708b244df7",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "vite.standalone.config.js",
+      "bytes": 1348,
+      "linies": 55,
+      "sha256": "d32fc9de250f069bfe00bf1c2f7baac4855c5ff2836f0f4cb7552061ef049e6e",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "wordpress-plugin/assets/fonts/noto-sans.css",
+      "bytes": 1640,
+      "linies": 41,
+      "sha256": "c9284cbaa4dc9a740268e9ce9473ddec2a42f4dc6f18b43ae55fc2a05e489e6c",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "wordpress-plugin/assets/uploads/poble/alacant/summary.txt",
+      "bytes": 536,
+      "linies": 1,
+      "sha256": "f55b691b02f9d794c7869d999526f22b27393c90b3a5358f103f78feaf6f5ee2",
+      "nl_final": false,
+      "is_base64": false
+    },
+    {
+      "ruta": "wordpress-plugin/assets/uploads/poble/alzira/summary.txt",
+      "bytes": 322,
+      "linies": 1,
+      "sha256": "85ae05f470cdd319a01859c4f7b81cf59d42a7b626374fc3740d3ef31e7d67cc",
+      "nl_final": false,
+      "is_base64": false
+    },
+    {
+      "ruta": "wordpress-plugin/assets/uploads/poble/benialfaqui/summary.txt",
+      "bytes": 119,
+      "linies": 1,
+      "sha256": "1c54f3975d72f35943d40451e7aa902152438b55ff4af9b275e9c14d45d62e54",
+      "nl_final": false,
+      "is_base64": false
+    },
+    {
+      "ruta": "wordpress-plugin/assets/uploads/poble/benidorm/summary.txt",
+      "bytes": 284,
+      "linies": 1,
+      "sha256": "32575894fbaa31059d99e436955432a832fe430aecd6654ac2a4486301877ce9",
+      "nl_final": false,
+      "is_base64": false
+    },
+    {
+      "ruta": "wordpress-plugin/assets/uploads/poble/benifallim/summary.txt",
+      "bytes": 75,
+      "linies": 1,
+      "sha256": "ad794144e42b3751d8baeee2d48be685d257372f6373c1c46c6f7e169a0a4838",
+      "nl_final": false,
+      "is_base64": false
+    },
+    {
+      "ruta": "wordpress-plugin/assets/uploads/poble/elda/summary.txt",
+      "bytes": 287,
+      "linies": 1,
+      "sha256": "870510f21095aafd01e9dc1622196d825d56e1d90b5ceb5864ffa98ed9cf4f6d",
+      "nl_final": false,
+      "is_base64": false
+    },
+    {
+      "ruta": "wordpress-plugin/assets/uploads/poble/elx/summary.txt",
+      "bytes": 721,
+      "linies": 1,
+      "sha256": "703a160571d4cd542721c139d8ca072f0273fc008692421607d70db0b7199380",
+      "nl_final": false,
+      "is_base64": false
+    },
+    {
+      "ruta": "wordpress-plugin/assets/uploads/poble/la-torre/summary.txt",
+      "bytes": 150,
+      "linies": 1,
+      "sha256": "028687917f3a6a33deaa2287ad8d607a8b5959056407c5042bf348b673c8d136",
+      "nl_final": false,
+      "is_base64": false
+    },
+    {
+      "ruta": "wordpress-plugin/assets/uploads/poble/sogorb/summary.txt",
+      "bytes": 75,
+      "linies": 1,
+      "sha256": "ca73661deaac5e70d4cabc90d13b0f51aba2401fffb7f678e6829c19dc7e64c6",
+      "nl_final": false,
+      "is_base64": false
+    },
+    {
+      "ruta": "wordpress-plugin/assets/uploads/poble/villena/summary.txt",
+      "bytes": 407,
+      "linies": 1,
+      "sha256": "1ba32955c2d72a33e48c69d09cb8c5070b3948c9ebe6444a40dfe7672b9db5ec",
+      "nl_final": false,
+      "is_base64": false
+    },
+    {
+      "ruta": "wordpress-plugin/inc/sdp-seo.php",
+      "bytes": 12203,
+      "linies": 405,
+      "sha256": "1cfc361c3b5f4b6dbb8023eb72ac06160fd54c7337b13576c8a0eed2955f9e1c",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "wordpress-plugin/inc/sdp-tema.php",
+      "bytes": 1267,
+      "linies": 48,
+      "sha256": "16385867541f0f5c8a18bcbb8744715285f440df4aac259fe10a22652e5c1995",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "wordpress-plugin/soc-de-poble.php",
+      "bytes": 12552,
+      "linies": 366,
+      "sha256": "4dc471d918073d008a3a748621a910bc317287cb8ebef049d193640d722e31dd",
+      "nl_final": true,
+      "is_base64": false
+    },
+    {
+      "ruta": "wordpress-plugin/templates/blank.php",
+      "bytes": 3217,
+      "linies": 106,
+      "sha256": "370e9556fb5632ba9444bd8426dcdd6e5d486725c40fa135b62762a8a00952ae",
+      "nl_final": true,
+      "is_base64": false
+    }
+  ]
+}
