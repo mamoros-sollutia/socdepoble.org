@@ -511,20 +511,13 @@ export default function NotesSection() {
 
                       {/* Etiquetes de Sistema i Categories */}
                       <ul className="sp-card-labels page-title-labels" style={{ margin: '24px 0 24px 0', justifyContent: 'center', display: 'flex', gap: '8px', listStyle: 'none', padding: 0, flexWrap: 'wrap' }}>
-                        <li className="sp-card-label" style={{ cursor: 'pointer', border: 'none', padding: '4px 16px', borderRadius: '20px', backgroundColor: 'var(--sdp-accio)', color: 'var(--sdp-sobre-accio)' }}>Sistema</li>
                         {activeNote.category && (
-                          <li className="sp-card-label" style={{ cursor: 'pointer', border: 'none', padding: '4px 16px', borderRadius: '20px', backgroundColor: 'var(--sdp-primary)', color: 'var(--sdp-text-invers)' }}>{activeNote.category}</li>
+                          <li className="sp-card-label sdp-badge-system">{activeNote.category}</li>
                         )}
-                        {activeNote.tags?.map(tag => {
-                          // Force exact background colors to ensure they are visible
-                          const isProd = tag === 'Productivitat';
-                          const bg = isProd ? '#e0f2fe' : 'transparent';
-                          const color = isProd ? '#0369a1' : 'inherit';
-                          const border = isProd ? 'none' : '1px solid var(--sdp-vora)';
-                          return (
-                            <li key={tag} className="sp-card-label" style={{ cursor: 'pointer', border, padding: '4px 16px', borderRadius: '20px', backgroundColor: bg, color }}>{tag}</li>
-                          );
-                        })}
+                        <li className="sp-card-label sdp-badge-category">Sistema</li>
+                        {activeNote.tags?.map(tag => (
+                          <li key={tag} className="sp-card-label sdp-badge-neutral" style={{ border: '1px solid var(--sdp-vora)', backgroundColor: 'transparent' }}>{tag}</li>
+                        ))}
                       </ul>
 
                       {/* Copyright */}

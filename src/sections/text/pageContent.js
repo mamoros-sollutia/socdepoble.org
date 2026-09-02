@@ -88,7 +88,10 @@ export const PAGE_COPY = {
     "subtitle": "El teu estudi d'escriptura privat i lliure de distraccions",
     "lead": "Benvingut al teu nou espai editorial. Aquest és un espai on pots escriure, esborrar i organitzar-te com vulgues sense que ningú ho veja. A continuació t'expliquem com funciona la màquina d'escriure de Sóc de Poble.",
     "labels": [
-      { "text": "Sistema", "className": "sdp-badge-system" }
+      { "text": "Sistema", "className": "sdp-badge-system" },
+      { "text": "Sistema", "className": "sdp-badge-category" },
+      { "text": "Productivitat", "className": "sdp-badge-neutral", "style": { "border": "1px solid var(--sdp-vora)", "backgroundColor": "transparent" } },
+      { "text": "Manual", "className": "sdp-badge-neutral", "style": { "border": "1px solid var(--sdp-vora)", "backgroundColor": "transparent" } }
     ]
   },
   "versions": {
