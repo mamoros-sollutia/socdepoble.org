@@ -511,8 +511,11 @@ export default function NotesSection() {
 
                       {/* Etiquetes de Sistema i Categories */}
                       <ul className="sp-card-labels page-title-labels" style={{ margin: '24px 0 24px 0', justifyContent: 'center', display: 'flex', gap: '8px', listStyle: 'none', padding: 0, flexWrap: 'wrap' }}>
-                        <li className="sp-card-label sdp-badge-system">Mur</li>
-                        <li className="sp-card-label sdp-badge-category">{activeNote.category || 'General'}</li>
+                        <li className="sp-card-label sdp-badge-system">{noteFolders.find(f => f.id === activeNote.folderId)?.name || 'General'}</li>
+                        <li className="sp-card-label sdp-badge-category">Mur</li>
+                        {activeNote.category && (
+                          <li className="sp-card-label sdp-badge-category">{activeNote.category}</li>
+                        )}
                         {activeNote.tags?.map(tag => (
                           <li key={tag} className="sp-card-label sdp-badge-neutral" style={{ border: '1px solid var(--sdp-vora)', backgroundColor: 'transparent' }}>{tag}</li>
                         ))}

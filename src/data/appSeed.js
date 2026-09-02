@@ -58,8 +58,8 @@ export const NOTES_SEED = [
       <p>Ara, torna a la barra lateral esquerra i clica sobre la "Nota Buida" per començar a escriure la teua pròpia història. El llenç és teu!</p>
     `,
     folderId: 'f-root',
-    category: 'Sistema',
-    tags: ['Productivitat'],
+    category: 'Productivitat',
+    tags: ['Tutorial'],
     heroImage: '/assets/notes/bloc_notes_vintage.jpg',
     createdAt: '2026-04-25T09:00:00.000Z',
     updatedAt: '2026-04-25T09:00:00.000Z'

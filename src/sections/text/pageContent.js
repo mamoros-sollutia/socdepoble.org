@@ -88,10 +88,10 @@ export const PAGE_COPY = {
     "subtitle": "El teu estudi d'escriptura privat i lliure de distraccions",
     "lead": "Benvingut al teu nou espai editorial. Aquest és un espai on pots escriure, esborrar i organitzar-te com vulgues sense que ningú ho veja. A continuació t'expliquem com funciona la màquina d'escriure de Sóc de Poble.",
     "labels": [
-      { "text": "Mur", "className": "sdp-badge-system" },
-      { "text": "General", "className": "sdp-badge-category" },
-      { "text": "Productivitat", "className": "sdp-badge-neutral", "style": { "border": "1px solid var(--sdp-vora)", "backgroundColor": "transparent" } },
-      { "text": "Manual", "className": "sdp-badge-neutral", "style": { "border": "1px solid var(--sdp-vora)", "backgroundColor": "transparent" } }
+      { "text": "General", "className": "sdp-badge-system" },
+      { "text": "Mur", "className": "sdp-badge-category" },
+      { "text": "Productivitat", "className": "sdp-badge-category" },
+      { "text": "Tutorial", "className": "sdp-badge-neutral", "style": { "border": "1px solid var(--sdp-vora)", "backgroundColor": "transparent" } }
     ],
     "image": "/assets/uploads/brain/forensic_psychiatry_ai_1775882113147.png",
     "imageAlt": "Bloc de notes"
