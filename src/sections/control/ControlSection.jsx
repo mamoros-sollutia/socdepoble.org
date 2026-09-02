@@ -77,9 +77,7 @@ export default function ControlSection() {
             Missatges per a dubtes
           </UniversalButton>
 
-          <UniversalButton onClick={() => navigate('/projecte')} variant="secondary" icon={<Shield size={18} />}>
-            El Projecte
-          </UniversalButton>
+
           <UniversalButton variant="ghost" icon={<LogOut size={18} />}>
             Eixir del poble
           </UniversalButton>
