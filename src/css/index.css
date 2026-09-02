@@ -410,6 +410,8 @@ h3, .h3 {
   text-align: left;
   margin-top: var(--sdp-mt-h3);
   margin-bottom: var(--sdp-mb-h3);
+  border-bottom: 1px solid var(--sdp-vora);
+  padding-bottom: 12px;
 }
 h4, .h4 {
   font-size: var(--sdp-text-h4);
@@ -871,9 +873,10 @@ section.design-block > h3:first-child {
   margin-right: 0;
   max-width: none;
   font-size: clamp(1.4rem, 2.4vw, 1.75rem);
-  border-bottom: 1px solid var(--sdp-vora);
-  padding-bottom: 12px;
-  margin-bottom: 28px;
+}
+
+.page-intro {
+  margin-bottom: 48px;
 }
 
 section.design-block > p:first-of-type {
