@@ -11,7 +11,7 @@ import {
 } from './sectionContent.js';
 import { getVal, setVal } from '../config/storage.js';
 
-export const APP_SEED_VERSION = 250027;
+export const APP_SEED_VERSION = 250028;
 import { getDefaultUserId, idConvidat } from './identitat.js';
 export { getDefaultUserId, idConvidat };
 

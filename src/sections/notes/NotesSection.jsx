@@ -5,6 +5,7 @@ import StarterKit from '@tiptap/starter-kit';
 import { UniversalPage, DateTimeControl, Dropdown, DropdownItem } from '../../components/universal/UniversalComponents';
 import { useAppData } from '../../app/AppDataContext';
 import { sanitizeHtml } from '../../utils/sanitize.js';
+import { showToast } from '../../components/universal/AvisadorEfimer.jsx';
 
 const CATEGORIES = ['Trellat', 'Patrimoni', 'Dades', 'Social'];
 const LANGUAGE_LOCALES = {
@@ -16,7 +17,7 @@ const LANGUAGE_LOCALES = {
 };
 
 export default function NotesSection() {
-  const { language, normalizeSearchText, noteFolders, notes: rawNotes, t, showToast, sendSectionSubmission } = useAppData();
+  const { language, normalizeSearchText, noteFolders, notes: rawNotes, t, sendSectionSubmission } = useAppData();
   
   // State
   const [activeFolderId, setActiveFolderId] = useState('f-root');
