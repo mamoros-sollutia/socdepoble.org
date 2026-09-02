@@ -382,7 +382,6 @@ export default function NotesSection() {
                     })}
                   </div>
                 </div>
-              </div>
               </>
             )}
           </section>
@@ -447,14 +446,29 @@ export default function NotesSection() {
                     </div>
                   </div>
                   <div className="bar-actions" style={{ position: 'relative', opacity: 0.9, display: 'flex', gap: '8px', alignItems: 'center' }}>
-                    <button type="button" className="btn-date-time sp-card-time" title="Aquesta és una targeta especial d'exemple." onClick={() => setShowLockPopup(!showLockPopup)} onBlur={() => setShowLockPopup(false)} style={{ borderRadius: '50%', width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 0, color: '#fff', cursor: 'pointer' }}>
-                      <Lock size={16} />
-                    </button>
-                    {showLockPopup && (
-                      <div style={{ position: 'absolute', top: '100%', right: '0', marginTop: '8px', width: '280px', backgroundColor: 'var(--sdp-negre, #181715)', color: '#fff', padding: '12px 16px', borderRadius: '8px', fontSize: '0.85rem', lineHeight: '1.4', boxShadow: '0 4px 12px rgba(0,0,0,0.15)', zIndex: 50, textAlign: 'left', pointerEvents: 'none' }}>
-                        Aquesta és una targeta especial d'exemple. Tota aquesta estructura simula com quedarà publicada la teua nota en el Mur o el Mercat. No pots editar-la directament açí, has d'escriure en l'editor d'avall.
-                      </div>
-                    )}
+                    <div style={{ position: 'relative' }}>
+                      <button 
+                        type="button" 
+                        className={`btn-date-time sp-card-time ${showLockPopup ? 'active' : ''}`} 
+                        onClick={() => setShowLockPopup(!showLockPopup)} 
+                        onBlur={() => setTimeout(() => setShowLockPopup(false), 200)}
+                        style={{ borderRadius: '50%', width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 0, color: '#fff', cursor: 'pointer' }}
+                      >
+                        <Lock size={16} />
+                      </button>
+                      {showLockPopup && (
+                        <div className="xat-header-dropdown" style={{ minWidth: '320px', right: 0, top: '100%', marginTop: '8px' }}>
+                           <div style={{ padding: '8px 16px 12px 16px', borderBottom: '1px solid var(--sdp-vora-control)', marginBottom: '4px' }}>
+                             <strong style={{ display: 'block', marginBottom: '8px', color: 'var(--sdp-text-titol)' }}>Mode Edició</strong>
+                             <p style={{ margin: 0, fontSize: '0.85rem', color: 'var(--sdp-text-cos)', lineHeight: '1.4' }}>
+                               Aquesta targeta és una previsualització de com quedarà al Mur. Utilitza l'editor inferior per modificar el contingut.
+                             </p>
+                           </div>
+                           <button className="xat-dropdown-item" onClick={() => {}} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><Lock size={16} /> Privada (Oculta)</button>
+                           <button className="xat-dropdown-item" onClick={() => {}} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><Globe size={16} /> Pública al Mur</button>
+                        </div>
+                      )}
+                    </div>
                     <DateTimeControl time={activeNote.formattedTime} date={activeNote.formattedDate} />
                   </div>
                 </section>
