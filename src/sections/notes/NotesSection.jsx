@@ -1,6 +1,8 @@
 import { useDeferredValue, useMemo, useState, useEffect } from 'react';
-import { FileText, Folder, List, Search, Settings, Image as ImageIcon, PanelLeftClose, Bookmark, Hash, Sparkles, Download, Heading2, Type, ListTodo, Video, Link, Bold, Italic, Strikethrough, Globe, Clock } from 'lucide-react';
-import { UniversalPage } from '../../components/universal/UniversalComponents';
+import { FileText, Folder, List, Search, Settings, Image as ImageIcon, PanelLeftClose, Bookmark, Hash, Sparkles, Download, Heading2, Type, ListTodo, Video, Link, Bold, Italic, Strikethrough, Globe, Clock, Lock } from 'lucide-react';
+import { useEditor, EditorContent } from '@tiptap/react';
+import StarterKit from '@tiptap/starter-kit';
+import { UniversalPage, DateTimeControl } from '../../components/universal/UniversalComponents';
 import { useAppData } from '../../app/AppDataContext';
 import { sanitizeHtml } from '../../utils/sanitize.js';
 
@@ -14,7 +16,7 @@ const LANGUAGE_LOCALES = {
 };
 
 export default function NotesSection() {
-  const { language, normalizeSearchText, noteFolders, notes: rawNotes, t } = useAppData();
+  const { language, normalizeSearchText, noteFolders, notes: rawNotes, t, showToast } = useAppData();
   
   // State
   const [activeFolderId, setActiveFolderId] = useState('f-root');
@@ -29,6 +31,8 @@ export default function NotesSection() {
   const [colNotesCollapsed, setColNotesCollapsed] = useState(false);
   const [accCategoriesOpen, setAccCategoriesOpen] = useState(true);
   const [accTagsOpen, setAccTagsOpen] = useState(true);
+  const [showMobileSidebar, setShowMobileSidebar] = useState(false);
+  const [showLockPopup, setShowLockPopup] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
 
   // Timer State
@@ -79,6 +83,25 @@ export default function NotesSection() {
 
   const activeNote = filteredNotes.find((note) => note.id === activeNoteId) || filteredNotes[0] || notes[0];
 
+  const editor = useEditor({
+    extensions: [StarterKit],
+    content: activeNote?.content || '',
+    editorProps: {
+      attributes: {
+        class: 'editor-content page-content sdp-text-cos sdp-prose focus:outline-none',
+        style: 'min-height: 300px; outline: none; flex: 1; line-height: 1.8;'
+      },
+    },
+  });
+
+  useEffect(() => {
+    if (editor && activeNote) {
+      if (editor.getHTML() !== activeNote.content) {
+        editor.commands.setContent(activeNote.content || '');
+      }
+    }
+  }, [activeNote?.id, editor]);
+
   const handleSelectFolder = (id) => {
     setActiveFolderId(id);
     setActiveCategory(null);
@@ -105,12 +128,11 @@ export default function NotesSection() {
 
   return (
     <UniversalPage
-      title={t('section.notes.title', 'Quadern')}
-      subtitle={t('section.notes.subtitle', 'Notes i apunts del projecte organitzats per carpetes.')}
+      title={t('section.notes.title', 'Bloc de notes')}
       chrome="system"
       showLogos={true}
     >
-      <article className="card" style={{ padding: 0, overflow: 'hidden', display: 'flex', flexDirection: 'column', height: '100%' }}>
+      <article style={{ padding: 0, overflow: 'hidden', display: 'flex', flexDirection: 'column', height: '100%', backgroundColor: 'var(--sdp-pedra-100)' }}>
         
         {/* CONTENIDOR 3 COLUMNES */}
         <div className="notes-shell" style={{ display: 'flex', flex: 1, overflow: 'hidden' }}>
@@ -122,17 +144,17 @@ export default function NotesSection() {
               width: colFoldersCollapsed ? '64px' : '250px', 
               transition: 'width 0.2s ease', 
               flexShrink: 0, 
-              overflowY: 'auto', 
+              overflowY: 'hidden', 
               overflowX: 'hidden',
               borderRight: '1px solid var(--sdp-vora)',
               display: 'flex',
               flexDirection: 'column'}}
           >
             {colFoldersCollapsed ? (
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '16px 0' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '8px 0', backgroundColor: 'var(--sdp-pedra-700)', color: 'white', height: '56px', flexShrink: 0 }}>
                 <button 
                   onClick={() => setColFoldersCollapsed(false)}
-                  style={{  width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center', border: 'none',  cursor: 'pointer',  borderRadius: '8px'  }}
+                  style={{  width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center', border: 'none', background: 'transparent', color: 'inherit', cursor: 'pointer',  borderRadius: '8px'  }}
                   title="Expandir Carpetes"
                   className="hover-bg"
                 >
@@ -141,14 +163,14 @@ export default function NotesSection() {
               </div>
             ) : (
               <>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '16px' }}>
-                  <div style={{     textTransform: 'uppercase'  }}>CARPETES</div>
-                  <button onClick={() => setColFoldersCollapsed(true)} style={{   border: 'none', cursor: 'pointer'}} title="Replegar Columna">
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 16px', height: '56px', backgroundColor: 'var(--sdp-pedra-700)', color: 'white', flexShrink: 0 }}>
+                  <div style={{ fontWeight: 'bold', textTransform: 'uppercase', fontSize: '13px', letterSpacing: '0.05em' }}>CARPETES</div>
+                  <button onClick={() => setColFoldersCollapsed(true)} style={{ background: 'transparent', color: 'inherit', border: 'none', cursor: 'pointer'}} title="Replegar Columna">
                     <PanelLeftClose size={18} />
                   </button>
                 </div>
                 
-                <div className="notes-column__body" style={{ padding: '0 16px 16px 16px' }}>
+                <div className="notes-column__body" style={{ padding: '16px', flex: 1, overflowY: 'auto' }}>
                   
                   {/* LLISTA CARPETES */}
                   <div className="folders-list" style={{ display: 'flex', flexDirection: 'column', gap: '4px', marginBottom: '24px' }}>
@@ -242,7 +264,7 @@ export default function NotesSection() {
               transition: 'width 0.2s ease', 
               flexShrink: 0, 
                
-              overflowY: 'auto', 
+              overflowY: 'hidden', 
               overflowX: 'hidden',
               borderRight: '1px solid var(--sdp-vora)', 
               display: 'flex', 
@@ -250,10 +272,10 @@ export default function NotesSection() {
              }}
           >
             {colNotesCollapsed ? (
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '16px 0' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '8px 0', backgroundColor: 'var(--sdp-pedra-700)', color: 'white', height: '56px', flexShrink: 0 }}>
                 <button 
                   onClick={() => setColNotesCollapsed(false)}
-                  style={{  width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center', border: 'none',  cursor: 'pointer',  borderRadius: '8px'  }}
+                  style={{  width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center', border: 'none', background: 'transparent', color: 'inherit', cursor: 'pointer',  borderRadius: '8px'  }}
                   title="Expandir Notes"
                   className="hover-bg"
                 >
@@ -263,11 +285,11 @@ export default function NotesSection() {
             ) : (
               <>
                 {/* Capçalera Column 2 */}
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px', borderBottom: '1px solid var(--sdp-vora)' }}>
-                  <div style={{   textTransform: 'uppercase'}}>NOTES</div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0 16px', height: '56px', backgroundColor: 'var(--sdp-pedra-700)', color: 'white', flexShrink: 0 }}>
+                  <div style={{ fontWeight: 'bold', textTransform: 'uppercase', fontSize: '13px', letterSpacing: '0.05em' }}>NOTES</div>
                   <button 
                     onClick={() => setColNotesCollapsed(true)} 
-                    style={{   border: 'none', cursor: 'pointer'}}
+                    style={{ background: 'transparent', color: 'inherit', border: 'none', cursor: 'pointer'}}
                     title="Replegar Columna"
                   >
                     <PanelLeftClose size={18} />
@@ -275,7 +297,8 @@ export default function NotesSection() {
                 </div>
                 
                 {/* Cerca i accions */}
-                <div style={{ padding: '16px', display: 'flex', gap: '8px', alignItems: 'center' }}>
+                <div className="notes-column__body" style={{ flex: 1, display: 'flex', flexDirection: 'column', overflowY: 'hidden' }}>
+                  <div style={{ padding: '16px', display: 'flex', gap: '8px', alignItems: 'center', flexShrink: 0 }}>
                   <div style={{ position: 'relative', flex: 1 }}>
                     <Search size={16} style={{  position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)'}} />
                     <input
@@ -322,12 +345,13 @@ export default function NotesSection() {
                       </div>
                     )}
                   </div>
+                  </div>
                   <button className="btn btn-sm" style={{    cursor: 'pointer', border: 'none', borderRadius: '20px', padding: '8px 16px',   whiteSpace: 'nowrap'  }}>
                     CREAR NOTA
                   </button>
                 </div>
 
-                <div className="notes-column__body" style={{ flex: 1, padding: '0 16px 16px 16px' }}>
+                <div className="notes-column__scroll" style={{ flex: 1, padding: '0 16px 16px 16px', overflowY: 'auto' }}>
                   <div className="note-list" style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                     {filteredNotes.map((note) => {
                       const isActive = note.id === activeNote?.id;
@@ -358,6 +382,7 @@ export default function NotesSection() {
                     })}
                   </div>
                 </div>
+              </div>
               </>
             )}
           </section>
@@ -365,47 +390,48 @@ export default function NotesSection() {
           {/* COL 3: EDITOR PRINCIPAL */}
           <main 
             className="notes-column--editor no-scrollbar"
-            style={{  flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column'}}
+            style={{  flex: 1, overflowY: 'hidden', display: 'flex', flexDirection: 'column'}}
           >
             {activeNote ? (
               <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
                 
                 {/* TOOLBAR EDITOR */}
-                <div className="editor-toolbar" style={{  display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 24px', borderBottom: '1px solid var(--sdp-vora)',  position: 'sticky', top: 0, zIndex: 10  }}>
+                <div className="editor-toolbar" style={{  display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0 24px', height: '56px', backgroundColor: 'var(--sdp-pedra-800)', color: 'white', flexShrink: 0 }}>
                   <div style={{  display: 'flex', gap: '16px'}}>
                     <div style={{ display: 'flex', gap: '8px' }}>
-                      <button style={{   border: 'none', cursor: 'pointer'}}><Sparkles size={18} /></button>
-                      <button style={{   border: 'none', cursor: 'pointer'}}><Download size={18} /></button>
+                      <button style={{ background: 'transparent', color: 'inherit', border: 'none', cursor: 'pointer'}}><Sparkles size={18} /></button>
+                      <button style={{ background: 'transparent', color: 'inherit', border: 'none', cursor: 'pointer'}}><Download size={18} /></button>
                     </div>
-                    <div style={{  width: '1px'}}></div>
+                    <div style={{  width: '1px', backgroundColor: 'var(--sdp-pedra-600)'}}></div>
                     <div style={{ display: 'flex', gap: '8px' }}>
-                      <button style={{   border: 'none', cursor: 'pointer'}}><Heading2 size={18} /></button>
-                      <button style={{   border: 'none', cursor: 'pointer'}}><Type size={18} /></button>
-                      <button style={{   border: 'none', cursor: 'pointer'}}><List size={18} /></button>
-                      <button style={{   border: 'none', cursor: 'pointer'}}><ListTodo size={18} /></button>
+                      <button onClick={() => editor?.chain().focus().toggleHeading({ level: 2 }).run()} style={{ background: 'transparent', border: 'none', cursor: 'pointer', color: editor?.isActive('heading', { level: 2 }) ? 'var(--sdp-accent)' : 'inherit' }}><Heading2 size={18} /></button>
+                      <button style={{ background: 'transparent', color: 'inherit', border: 'none', cursor: 'pointer'}}><Type size={18} /></button>
+                      <button onClick={() => editor?.chain().focus().toggleBulletList().run()} style={{ background: 'transparent', border: 'none', cursor: 'pointer', color: editor?.isActive('bulletList') ? 'var(--sdp-accent)' : 'inherit' }}><List size={18} /></button>
+                      <button style={{ background: 'transparent', color: 'inherit', border: 'none', cursor: 'pointer'}}><ListTodo size={18} /></button>
                     </div>
-                    <div style={{  width: '1px'}}></div>
+                    <div style={{  width: '1px', backgroundColor: 'var(--sdp-pedra-600)'}}></div>
                     <div style={{ display: 'flex', gap: '8px' }}>
-                      <button style={{   border: 'none', cursor: 'pointer'}}><ImageIcon size={18} /></button>
-                      <button style={{   border: 'none', cursor: 'pointer'}}><Video size={18} /></button>
-                      <button style={{   border: 'none', cursor: 'pointer'}}><Link size={18} /></button>
+                      <button style={{ background: 'transparent', color: 'inherit', border: 'none', cursor: 'pointer'}}><ImageIcon size={18} /></button>
+                      <button style={{ background: 'transparent', color: 'inherit', border: 'none', cursor: 'pointer'}}><Video size={18} /></button>
+                      <button style={{ background: 'transparent', color: 'inherit', border: 'none', cursor: 'pointer'}}><Link size={18} /></button>
                     </div>
-                    <div style={{  width: '1px'}}></div>
+                    <div style={{  width: '1px', backgroundColor: 'var(--sdp-pedra-600)'}}></div>
                     <div style={{ display: 'flex', gap: '8px' }}>
-                      <button style={{   border: 'none', cursor: 'pointer'}}><Bold size={18} /></button>
-                      <button style={{   border: 'none', cursor: 'pointer'}}><Italic size={18} /></button>
-                      <button style={{   border: 'none', cursor: 'pointer'}}><Strikethrough size={18} /></button>
+                      <button onClick={() => editor?.chain().focus().toggleBold().run()} style={{ background: 'transparent', border: 'none', cursor: 'pointer', color: editor?.isActive('bold') ? 'var(--sdp-accent)' : 'inherit' }}><Bold size={18} /></button>
+                      <button onClick={() => editor?.chain().focus().toggleItalic().run()} style={{ background: 'transparent', border: 'none', cursor: 'pointer', color: editor?.isActive('italic') ? 'var(--sdp-accent)' : 'inherit' }}><Italic size={18} /></button>
+                      <button onClick={() => editor?.chain().focus().toggleStrike().run()} style={{ background: 'transparent', border: 'none', cursor: 'pointer', color: editor?.isActive('strike') ? 'var(--sdp-accent)' : 'inherit' }}><Strikethrough size={18} /></button>
                     </div>
                   </div>
                   <div>
-                    <button style={{  display: 'flex', alignItems: 'center', gap: '8px',  border: '1px solid var(--sdp-text-suau)',  borderRadius: '20px', padding: '6px 16px',  cursor: 'pointer'}}>
+                    <button style={{  display: 'flex', alignItems: 'center', gap: '8px', border: '1px solid var(--sdp-pedra-500)', background: 'transparent', color: 'white', borderRadius: '20px', padding: '6px 16px',  cursor: 'pointer'}}>
                       <Globe size={16} /> PUBLICAR
                     </button>
                   </div>
                 </div>
 
-                {/* Imatge Capçalera (Hero Image) */}
-                {activeNote.heroImage && (
+                <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column' }}>
+                  {/* Imatge Capçalera (Hero Image) */}
+                  {activeNote.heroImage && (
                   <div className="hero-image" style={{ margin: 0, width: '100%', flexShrink: 0 }}>
                     <img src={activeNote.heroImage} alt="Cover" style={{ width: '100%', maxHeight: '400px', objectFit: 'cover', display: 'block' }} />
                   </div>
@@ -414,36 +440,46 @@ export default function NotesSection() {
                 {/* Barra Taronja */}
                 <section className="bar-orange" aria-label="Autoria i data" style={{  margin: 0, borderRadius: 0,  padding: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
                   <div className="sp-card-author" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                    <img className="sp-card-avatar" src="/assets/system/ui/logo-socdepoble-cuadrat-verd.svg" alt="Sóc de Poble" width="48" height="48" style={{ borderRadius: '4px' }} />
+                    <img className="sp-card-avatar" src="/assets/system/ui/logo-socdepoble-cuadrat-verd.svg" alt="Sóc de Poble" width="48" height="48" />
                     <div className="sp-card-author-info">
                       <div className="sp-card-author-name" >Sóc de Poble</div>
                       <div className="sp-card-author-location" style={{   opacity: 0.9  }}>La Torre de les Maçanes</div>
                     </div>
                   </div>
-                  <div className="bar-actions" style={{  opacity: 0.9}}>
-                    {activeNote.formattedTime} · {activeNote.formattedDate}
+                  <div className="bar-actions" style={{ position: 'relative', opacity: 0.9, display: 'flex', gap: '8px', alignItems: 'center' }}>
+                    <button type="button" className="btn-date-time sp-card-time" title="Aquesta és una targeta especial d'exemple." onClick={() => setShowLockPopup(!showLockPopup)} onBlur={() => setShowLockPopup(false)} style={{ borderRadius: '50%', width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 0, color: '#fff', cursor: 'pointer' }}>
+                      <Lock size={16} />
+                    </button>
+                    {showLockPopup && (
+                      <div style={{ position: 'absolute', top: '100%', right: '0', marginTop: '8px', width: '280px', backgroundColor: 'var(--sdp-negre, #181715)', color: '#fff', padding: '12px 16px', borderRadius: '8px', fontSize: '0.85rem', lineHeight: '1.4', boxShadow: '0 4px 12px rgba(0,0,0,0.15)', zIndex: 50, textAlign: 'left', pointerEvents: 'none' }}>
+                        Aquesta és una targeta especial d'exemple. Tota aquesta estructura simula com quedarà publicada la teua nota en el Mur o el Mercat. No pots editar-la directament açí, has d'escriure en l'editor d'avall.
+                      </div>
+                    )}
+                    <DateTimeControl time={activeNote.formattedTime} date={activeNote.formattedDate} />
                   </div>
                 </section>
 
-                <div style={{ flex: 1, display: 'flex', flexDirection: 'column', padding: '32px', maxWidth: '800px', margin: '0 auto', width: '100%' }}>
+                <div style={{ flex: 1, display: 'flex', flexDirection: 'column', padding: '0 32px 32px 32px', maxWidth: '800px', margin: '0 auto', width: '100%' }}>
                   <article className="card universal-page" style={{  margin: 0, padding: 0, flex: 1, display: 'flex', flexDirection: 'column', border: 'none', boxShadow: 'none'}}>
                     
-                    <header className="page-title" style={{ margin: '0 0 24px 0', borderBottom: 'none' }}>
+                    <header className="page-title" style={{ margin: '0 0 24px 0', padding: 0, borderBottom: 'none' }}>
                       
                       {/* Logo Sóc de Poble Gran */}
-                      <img 
-                        src="/assets/system/ui/logo-socdepoble-rect-negre.svg" 
-                        alt="Sóc de Poble" 
-                        style={{ width: '300px', margin: '0 auto 32px auto', display: 'block' }} 
-                        className="light-only"
-                      />
-                      <img 
-                        src="/assets/system/ui/logo-socdepoble-rect-blanc.svg" 
-                        alt="Sóc de Poble" 
-                        style={{ width: '300px', margin: '0 auto 32px auto', display: 'block' }} 
-                        className="dark-only"
-                      />
-
+                      <div style={{ display: 'flex', justifyContent: 'center', margin: '24px 0' }}>
+                        <img 
+                          src="/assets/system/ui/logo-socdepoble-rect-negre.svg" 
+                          alt="Sóc de Poble" 
+                          style={{ width: '100%', maxWidth: '600px', height: 'auto', objectFit: 'contain' }} 
+                          className="light-only"
+                        />
+                        <img 
+                          src="/assets/system/ui/logo-socdepoble-rect-blanc.svg" 
+                          alt="Sóc de Poble" 
+                          style={{ width: '100%', maxWidth: '600px', height: 'auto', objectFit: 'contain' }} 
+                          className="dark-only"
+                        />
+                      </div>
+                      
                       {!activeNote.heroImage && (
                         <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '24px' }}>
                           <button type="button" className="pill" style={{  borderStyle: 'dashed',  cursor: 'pointer'}}>
@@ -464,14 +500,21 @@ export default function NotesSection() {
                       />
 
                       {/* Etiquetes de Sistema i Categories */}
-                      <ul className="sp-card-labels page-title-labels" style={{ marginTop: '24px', marginBottom: '16px', justifyContent: 'center', display: 'flex', gap: '8px', listStyle: 'none', padding: 0, flexWrap: 'wrap' }}>
-                        <li className="sp-card-label" style={{    cursor: 'pointer', border: 'none', padding: '4px 16px', borderRadius: '20px'}}>General</li>
+                      <ul className="sp-card-labels page-title-labels" style={{ margin: '24px 0 24px 0', justifyContent: 'center', display: 'flex', gap: '8px', listStyle: 'none', padding: 0, flexWrap: 'wrap' }}>
+                        <li className="sp-card-label" style={{ cursor: 'pointer', border: 'none', padding: '4px 16px', borderRadius: '20px', backgroundColor: 'var(--sdp-accio-forta)', color: 'var(--sdp-text-invers)' }}>General</li>
                         {activeNote.category && (
-                          <li className="sp-card-label" style={{  cursor: 'pointer', border: '1px solid var(--sdp-vora)', padding: '4px 16px', borderRadius: '20px'}}>{activeNote.category}</li>
+                          <li className="sp-card-label" style={{ cursor: 'pointer', border: 'none', padding: '4px 16px', borderRadius: '20px', backgroundColor: 'var(--sdp-primary)', color: 'var(--sdp-text-invers)' }}>{activeNote.category}</li>
                         )}
-                        {activeNote.tags?.map(tag => (
-                          <li key={tag} className="sp-card-label" style={{  cursor: 'pointer', border: '1px solid var(--sdp-vora)', padding: '4px 16px', borderRadius: '20px'}}>{tag}</li>
-                        ))}
+                        {activeNote.tags?.map(tag => {
+                          // Force exact background colors to ensure they are visible
+                          const isProd = tag === 'Productivitat';
+                          const bg = isProd ? '#e0f2fe' : 'transparent';
+                          const color = isProd ? '#0369a1' : 'inherit';
+                          const border = isProd ? 'none' : '1px solid var(--sdp-vora)';
+                          return (
+                            <li key={tag} className="sp-card-label" style={{ cursor: 'pointer', border, padding: '4px 16px', borderRadius: '20px', backgroundColor: bg, color }}>{tag}</li>
+                          );
+                        })}
                       </ul>
 
                       {/* Copyright */}
@@ -504,16 +547,10 @@ export default function NotesSection() {
                       />
                     </div>
                     
-                    {/* Contingut Ric */}
-                    <div 
-                      className="editor-content page-content"
-                      contentEditable
-                      suppressContentEditableWarning
-                      onBlur={(e) => handleSaveField('content', e.currentTarget.innerHTML)}
-                      style={{  outline: 'none', flex: 1,  lineHeight: '1.8'}}
-                      data-placeholder="Açí pots començar a redactar el text del teu article (H3)..."
-                      dangerouslySetInnerHTML={{ __html: sanitizeHtml(activeNote.content || '') }}
-                    />
+                    {/* Contingut Ric (TipTap) */}
+                    <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
+                      <EditorContent editor={editor} />
+                    </div>
                   </article>
                 </div>
               </div>
