@@ -1202,7 +1202,7 @@ details[open] summary.accordion-header svg:last-child { transform: rotate(180deg
 /* 7.20 Indicadors (UniversalIndicatorCard) */
 .sdp-indicator-card {
   background: var(--sdp-fons-targeta);
-  border: 1px solid transparent;
+  border: 1px solid var(--sdp-vora);
   border-radius: var(--sdp-radi-g);
   padding: var(--sdp-space-6) var(--sdp-space-4);
   display: flex;
@@ -1210,13 +1210,15 @@ details[open] summary.accordion-header svg:last-child { transform: rotate(180deg
   align-items: center;
   text-align: center;
   cursor: pointer;
+  box-shadow: var(--sdp-ombra-2);
   transition: all var(--sdp-t);
 }
 
 .sdp-indicator-card:hover {
   background: var(--sdp-fons-app);
-  border-color: var(--sdp-vora);
-  box-shadow: var(--sdp-ombra-1);
+  border-color: var(--sdp-vora-control);
+  box-shadow: var(--sdp-ombra-3);
+  transform: translateY(-2px);
 }
 
 .sdp-indicator-card.active {

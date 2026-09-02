@@ -1,4 +1,4 @@
-import { UniversalPage, UniversalCard } from '../../components/universal/UniversalComponents.jsx';
+import { UniversalPage, UniversalCard, Accordion, AccordionItem, Dropdown, DropdownItem } from '../../components/universal/UniversalComponents.jsx';
 import { EventCard } from '../../components/universal/EventCard.jsx';
 
 import { AvisadorEfimer, showToast } from '../../components/universal/AvisadorEfimer.jsx';
@@ -35,12 +35,10 @@ export default function DesignSection() {
       chrome="context"
       showLogos={true}
       title="Disseny"
+      category="Sistema"
+      tags={['UI']}
       subtitle="Sistema oficial de disseny per a Sóc de Poble"
       lead="Inclou la Targeta Mestra, els colors oficials, i tots els elements preparats, inclús els skills i scripts, perquè qualsevol IA puga entendre este sistema i reproduir-lo."
-      labels={[
-        { text: 'Mur', className: 'sdp-badge-system' },
-        { text: 'Disseny UI', className: 'sdp-badge-category' }
-      ]}
       copyright="© Sóc de Poble / Fet per la IAIA i Nano Banana"
       heroImage="/assets/uploads/brain/ibanez_pedra_seca_design_1780873465211.png"
       authorName="Sóc de Poble"
@@ -202,6 +200,7 @@ export default function DesignSection() {
 <li><strong>Font Única:</strong> <code>Noto Sans</code>, escollida per l'altura de la seua "x", les seues formes obertes i el suport multilingüe extrem.</li>
 <li><strong>Ample Màxim de Lectura:</strong> <code>68ch</code>, el límit científic abans de causar fatiga ocular al saltar de línia.</li>
 <li><strong>Interlineat (Line-height):</strong> <code>1.6</code> en paràgrafs per a donar oxigen; <code>1.2</code> en capçaleres per mantindre la compacitat.</li>
+<li><strong>Subtítols (H2):</strong> Mai porten punt final, ja que funcionen com a titulars estructurals i no com a paràgrafs (ex. el propòsit `subtitle` de la `UniversalPage`).</li>
 </ul>
 <p>Dalt del títol pot anar una imatge o multimèdia d'un ample màxim de 600x600. Baix d'aquest H1 aniran exclusivament els components de presentació de la Targeta Mestra: categoria, etiqueta i copyright.</p>
 <p>L'H2 divideix els grans blocs temàtics de la pàgina.</p>
@@ -541,18 +540,32 @@ Gran</div>
 <div className="avatar avatar-xl">AB</div>
 </div>
 </section>
-{/*  SECCIÓ 14: DESPLEGABLES  */}
+{/*  SECCIÓ 14: DESPLEGABLES I MENÚS FLOTANTS  */}
 <section className="design-block">
-<h3>14. Desplegables</h3>
-<div className="accordion">
-<div className="accordion-header">
-            Què és Sóc de Poble?
-            <svg fill="none" height="20" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 20 20" width="20"><polyline points="6 9 12 15 18 9"></polyline></svg>
+<h3>14. Desplegables i Menús Flotants</h3>
+<div className="sdp-mb-6">
+  <h4>Acordions</h4>
+  <Accordion>
+    <AccordionItem title="Què és Sóc de Poble?" defaultOpen={false}>
+      <p>Sóc de Poble és una iniciativa per a la preservació de la memòria i el patrimoni dels pobles valencians, utilitzant tecnologia descentralitzada i IA local.</p>
+    </AccordionItem>
+    <AccordionItem title="Com puc col·laborar?">
+      <p>Pots col·laborar aportant fotografies antigues, entrevistant els teus majors, o ajudant a transcriure documents històrics.</p>
+    </AccordionItem>
+  </Accordion>
 </div>
-<div className="accordion-header">
-            Com puc col·laborar?
-            <svg fill="none" height="20" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 20 20" width="20"><polyline points="6 9 12 15 18 9"></polyline></svg>
-</div>
+<div>
+  <h4>Menús Flotants (Dropdowns)</h4>
+  <p className="sdp-text-suau sdp-mb-4">Components usats per a menús contextuals, com les opcions d'una publicació o els ajustaments.</p>
+  <div style={{ display: 'flex', gap: '16px' }}>
+    <Dropdown 
+      trigger={<button className="btn btn-outline-dark">Opcions de la Nota</button>}
+    >
+      <DropdownItem>Fer Pública</DropdownItem>
+      <DropdownItem>Moure a Carpeta</DropdownItem>
+      <DropdownItem className="text-danger">Eliminar</DropdownItem>
+    </Dropdown>
+  </div>
 </div>
 </section>
 {/*  SECCIÓ 15: PESTANYES  */}
@@ -1181,6 +1194,64 @@ Gran</div>
         </div>
         <AvisadorEfimer />
       </ComponentDoc>
+
+      {/*  SECCIÓ 26: PÀGINES DE SISTEMA  */}
+      <section className="design-block">
+        <h3 className="sdp-mb-6">26. Pàgines de Sistema vs. Pàgines de Contingut</h3>
+        
+        <ComponentDoc
+          title="Lògica d'Etiquetatge (Labels)"
+          description="Normativa sobre quan i per què utilitzar etiquetes de categoria en una UniversalPage."
+          technical="Les Pàgines de Sistema (com el Panell de Control, Dispositius, Disseny, etc.) NO porten cap categoria ni etiqueta a la capçalera de la pàgina."
+        >
+          <div className="card sdp-p-4 sdp-mb-6">
+            <h4 className="sdp-m-0 sdp-mb-2">Regla de les Categories</h4>
+            <p className="sdp-m-0 sdp-mb-4">
+              Una pàgina només pot tenir etiquetes/categories si la seua naturalesa és ser una <strong>Targeta Publicable</strong> (una <em>card</em>) dins d'un <em>feed</em> (Mur, Mercat, Esdeveniments, Notes, etc.).
+            </p>
+            <ol className="sdp-m-0" style={{ paddingLeft: '1rem' }}>
+              <li className="sdp-mb-2"><strong>Pàgines de Contingut:</strong> Corresponen a una <em>card</em>. Aquestes <strong>SÍ</strong> que necessiten la seua categoria o etiqueta identificativa a dalt per mantenir la correspondència amb la targeta d'origen.</li>
+              <li><strong>Pàgines de Sistema:</strong> No són publicacions ni es presenten com a <em>cards</em> en cap secció. Per tant, <strong>NO</strong> necessiten ni han de dur categories inventades com "Sistema", "Admin", o "Local". Són rutes estructurals pures i la seua capçalera ha de ser neta.</li>
+            </ol>
+          </div>
+        </ComponentDoc>
+
+        <ComponentDoc
+          title="Catàleg de Pàgines i Motors Lògics"
+          description="Descripció del funcionament intern de cadascuna de les pàgines de sistema, perquè les IAs no es confonguen."
+        >
+          <div className="card sdp-p-4 sdp-mb-4">
+            <h4 className="sdp-m-0 sdp-mb-2">Panell de Control</h4>
+            <p className="sdp-m-0 sdp-text-sm text-muted"><strong>Tipus:</strong> Sistema (Sense Labels)</p>
+            <p className="sdp-mt-2">És el <em>Hub</em> o quadre de comandament central. No té cap feed ni <em>cards</em>. Servix exclusivament com a enrutador per a oferir accessos ràpids a la publicació i altres eines d'administració de l'ecosistema. A més, fa servir una <em>entradilla</em> (propietat `lead`) com a subtítol per mantenir la neteja visual i prescindir de títols amb estils <em>inline</em>.</p>
+          </div>
+          
+          <div className="card sdp-p-4 sdp-mb-4">
+            <h4 className="sdp-m-0 sdp-mb-2">Dispositius (Descoberta en viu)</h4>
+            <p className="sdp-m-0 sdp-text-sm text-muted"><strong>Tipus:</strong> Sistema (Sense Labels)</p>
+            <p className="sdp-mt-2">És el motor d'aparellament de la plataforma. La seua lògica s'encarrega d'escanejar la xarxa local, negociar les connexions WebRTC o per relé (Relay) i anunciar la presència del node local. No és una publicació, sinó la font de connectivitat estructural per al P2P offline-first.</p>
+          </div>
+
+          <div className="card sdp-p-4 sdp-mb-4">
+            <h4 className="sdp-m-0 sdp-mb-2">Cens de Població</h4>
+            <p className="sdp-m-0 sdp-text-sm text-muted"><strong>Tipus:</strong> Sistema (Sense Labels)</p>
+            <p className="sdp-mt-2">Un simple llistat estàtic de caràcter informatiu. Ordena la llista de pobles de forma purament descendent pel seu volum demogràfic (nombre d'habitants) i permet l'accés directe al perfil de cada localitat. Tampoc requereix etiquetes.</p>
+          </div>
+
+          <div className="card sdp-p-4">
+            <h4 className="sdp-m-0 sdp-mb-2">Bloc de Notes (Editor Universal)</h4>
+            <p className="sdp-m-0 sdp-text-sm text-muted"><strong>Tipus:</strong> Sistema (Sense Labels, Disseny Imbricat)</p>
+            <p className="sdp-mt-2">És la sala de redacció (<em>Composer</em>). Fa servir el motor TipTap per a l'edició de text ric. Tota la seua complexitat visual rau en simular amb exactitud com quedarà la publicació. Per aconseguir-ho, incrusta una targeta <strong>UniversalPage</strong> dins del propi editor, amb les següents excepcions estrictes:</p>
+            <ul className="sdp-mt-2" style={{ paddingLeft: '1rem' }}>
+              <li className="sdp-mb-1"><strong>Sense Barra Blava:</strong> La navegació superior de la `UniversalPage` interior s'obvia.</li>
+              <li className="sdp-mb-1"><strong>Ordre dels elements:</strong> La primera cosa visual sempre és la imatge de capçalera (<em>Hero Image</em>).</li>
+              <li className="sdp-mb-1"><strong>Barra de Publicador (Taronja):</strong> Se situa sota la imatge. No mostra el botó d'hora estàndard de les targetes normals, sinó un panell de metadades. El botó de 'pinejar' se substitueix ací obligatòriament per un <strong>Candau (`Lock`)</strong> que adverteix mitjançant un text que aquesta vista és només un exemple no editable estructuralment.</li>
+              <li className="sdp-mb-1"><strong>Capçalera i Logotips:</strong> Encara que la pàgina es construïsca sobre la base de la targeta mestra, <strong>no apareixerà el logotip de 'Sóc de Poble'</strong> dalt del títol, atès que no sabem qui serà el publicador definitiu. En el seu defecte, s'ofereix únicament l'acció d'inserir multimèdia.</li>
+            </ul>
+          </div>
+        </ComponentDoc>
+
+      </section>
 
     </UniversalPage>
   );

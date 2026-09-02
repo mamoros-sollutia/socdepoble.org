@@ -28,7 +28,6 @@ export default function PoblacioSection() {
       lead={t('section.poblacio.lead', 'Llistat de tots els pobles registrats al sistema, ordenats pel seu nombre d\'habitants.')}
       chrome="system"
       showLogos={true}
-      labels={[{ text: 'Població', className: 'sdp-badge-system' }]}
     >
       <div className="sdp-mb-12">
         <div className="sdp-table-container">

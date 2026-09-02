@@ -23,7 +23,6 @@ export default function SearchSection() {
       subtitle={t('section.search.subtitle', 'Busca persones, pobles, publicacions i pàgines en un sol lloc')}
       chrome="system"
       showLogos={true}
-      labels={[t('section.search.label', 'Cercador')]}
     >
       <div style={{ margin: 'var(--sdp-space-8) 0', padding: '0 var(--sdp-space-5)' }}>
         <UniversalSearch

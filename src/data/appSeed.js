@@ -59,7 +59,7 @@ export const NOTES_SEED = [
     `,
     folderId: 'f-root',
     category: 'Sistema',
-    tags: ['Productivitat', 'Manual'],
+    tags: ['Productivitat'],
     heroImage: '/assets/notes/bloc_notes_vintage.jpg',
     createdAt: '2026-04-25T09:00:00.000Z',
     updatedAt: '2026-04-25T09:00:00.000Z'

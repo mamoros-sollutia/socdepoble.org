@@ -364,10 +364,7 @@ export default function DevicesSection() {
     <UniversalPage
       chrome="system"
       showLogos={true}
-      labels={[
-        { text: supportsBridge ? 'Temps real local' : 'Navegador limitat', className: 'sdp-badge-system' },
-        { text: 'Descoberta en viu', className: 'sdp-badge-category' }
-      ]}
+
     >
       <div className="devices-shell">
         <div>

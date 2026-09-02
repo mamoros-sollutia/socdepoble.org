@@ -9,9 +9,13 @@ description: 📥 L'ESCRIPTORI (SAFATA D'ENTRADA I TREBALL ACTIU)
 Ací només resideix la matèria viva. El que ha mort, descansa en l'arxiu.
 
 - [[260902_0413_ABSENTS_Ancoratge_Automatic.json]]
-- [[260902_0413_BUNDLE_Ancoratge_Automatic.md]]
+- [[260902_0413_BUNDLE_Ancoratge_Automatic]]
 - [[260902_0413_MANIFEST_Ancoratge_Automatic.json]]
-- [[260902_0413_PROMPT_Ancoratge_Automatic.md]]
+- [[260902_0413_PROMPT_Ancoratge_Automatic]]
+- [[260902_0626_ABSENTS_auditoria.json]]
+- [[260902_0626_BUNDLE_auditoria]]
+- [[260902_0626_MANIFEST_auditoria.json]]
+- [[260902_0626_PROMPT_auditoria]]
 
 ## 00_Bandeja_d_Entrada
 

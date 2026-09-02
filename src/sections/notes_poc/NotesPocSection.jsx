@@ -24,12 +24,9 @@ export default function NotesPocSection() {
   return (
     <UniversalPage
       title="Prova de Concepte: Notes"
-      subtitle="Editor de text enriquit basat en TipTap (Block-based approach)"
+      subtitle="L'espai universal de redacció abans de publicar a qualsevol secció."
       chrome="system"
-      labels={[
-        { text: 'PoC', className: 'sdp-badge-system' },
-        { text: 'Experimental', className: 'sdp-badge-warning' }
-      ]}
+      showLogos={true}
     >
       <div style={{ maxWidth: '800px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 'var(--sdp-space-6)' }}>
         

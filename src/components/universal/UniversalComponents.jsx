@@ -1143,3 +1143,78 @@ export function UniversalIndicatorCard({
     </button>
   );
 }
+
+export function Accordion({ children, className = '' }) {
+  return <div className={`accordion ${className}`}>{children}</div>;
+}
+
+export function AccordionItem({ title, children, defaultOpen = false, className = '' }) {
+  const [isOpen, setIsOpen] = useState(defaultOpen);
+  return (
+    <div className={`accordion-item ${className}`} style={{ borderBottom: '1px solid var(--sdp-vora)' }}>
+      <button 
+        type="button"
+        className={`accordion-header ${isOpen ? 'active' : ''}`} 
+        onClick={() => setIsOpen(!isOpen)}
+        aria-expanded={isOpen}
+        style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'transparent', border: 'none', padding: '16px', cursor: 'pointer', color: 'inherit', fontWeight: 'bold' }}
+      >
+        <span>{title}</span>
+        <svg fill="none" height="20" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 20 20" width="20" style={{ transform: isOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}>
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
+      {isOpen && (
+        <div className="accordion-body" style={{ padding: '0 16px 16px 16px' }}>
+          {children}
+        </div>
+      )}
+    </div>
+  );
+}
+
+export function Dropdown({ trigger, children, className = '', right = false, minWidth = '200px' }) {
+  const [isOpen, setIsOpen] = useState(false);
+  
+  return (
+    <div style={{ position: 'relative', display: 'inline-flex' }} className={className}>
+      <div 
+        onClick={() => setIsOpen(!isOpen)} 
+        onBlur={(e) => {
+          // Only close if focus moves outside the dropdown
+          if (!e.currentTarget.contains(e.relatedTarget)) {
+            setTimeout(() => setIsOpen(false), 200);
+          }
+        }}
+      >
+        {trigger}
+      </div>
+      {isOpen && (
+        <div className="xat-header-dropdown" style={{ 
+          minWidth, 
+          right: right ? 0 : 'auto', 
+          left: right ? 'auto' : 0, 
+          top: '100%', 
+          marginTop: '8px',
+          zIndex: 100 
+        }}>
+          {children}
+        </div>
+      )}
+    </div>
+  );
+}
+
+export function DropdownItem({ children, onClick, className = '', icon }) {
+  return (
+    <button 
+      type="button" 
+      className={`xat-dropdown-item ${className}`} 
+      onClick={onClick} 
+      style={{ display: 'flex', alignItems: 'center', gap: '8px', width: '100%' }}
+    >
+      {icon && <span style={{ display: 'flex', alignItems: 'center' }}>{icon}</span>}
+      {children}
+    </button>
+  );
+}

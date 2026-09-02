@@ -2,7 +2,7 @@ import { useDeferredValue, useMemo, useState, useEffect } from 'react';
 import { FileText, Folder, List, Search, Settings, Image as ImageIcon, PanelLeftClose, Bookmark, Hash, Sparkles, Download, Heading2, Type, ListTodo, Video, Link, Bold, Italic, Strikethrough, Globe, Clock, Lock } from 'lucide-react';
 import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
-import { UniversalPage, DateTimeControl } from '../../components/universal/UniversalComponents';
+import { UniversalPage, DateTimeControl, Dropdown, DropdownItem } from '../../components/universal/UniversalComponents';
 import { useAppData } from '../../app/AppDataContext';
 import { sanitizeHtml } from '../../utils/sanitize.js';
 
@@ -32,7 +32,6 @@ export default function NotesSection() {
   const [accCategoriesOpen, setAccCategoriesOpen] = useState(true);
   const [accTagsOpen, setAccTagsOpen] = useState(true);
   const [showMobileSidebar, setShowMobileSidebar] = useState(false);
-  const [showLockPopup, setShowLockPopup] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
 
   // Timer State
@@ -353,6 +352,7 @@ export default function NotesSection() {
                       </button>
                     </div>
                   </div>
+                </div>
 
                 <div className="notes-column__scroll" style={{ flex: 1, padding: '0 16px 16px 16px', overflowY: 'auto' }}>
                   <div className="note-list" style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
@@ -450,29 +450,28 @@ export default function NotesSection() {
                     </div>
                   </div>
                   <div className="bar-actions" style={{ position: 'relative', opacity: 0.9, display: 'flex', gap: '8px', alignItems: 'center' }}>
-                    <div style={{ position: 'relative' }}>
-                      <button 
-                        type="button" 
-                        className={`btn-date-time sp-card-time ${showLockPopup ? 'active' : ''}`} 
-                        onClick={() => setShowLockPopup(!showLockPopup)} 
-                        onBlur={() => setTimeout(() => setShowLockPopup(false), 200)}
-                        style={{ borderRadius: '50%', width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 0, color: '#fff', cursor: 'pointer' }}
-                      >
-                        <Lock size={16} />
-                      </button>
-                      {showLockPopup && (
-                        <div className="xat-header-dropdown" style={{ minWidth: '320px', right: 0, top: '100%', marginTop: '8px' }}>
-                           <div style={{ padding: '8px 16px 12px 16px', borderBottom: '1px solid var(--sdp-vora-control)', marginBottom: '4px' }}>
-                             <strong style={{ display: 'block', marginBottom: '8px', color: 'var(--sdp-text-titol)' }}>Mode Edició</strong>
-                             <p style={{ margin: 0, fontSize: '0.85rem', color: 'var(--sdp-text-cos)', lineHeight: '1.4' }}>
-                               Aquesta targeta és una previsualització de com quedarà al Mur. Utilitza l'editor inferior per modificar el contingut.
-                             </p>
-                           </div>
-                           <button className="xat-dropdown-item" onClick={() => {}} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><Lock size={16} /> Privada (Oculta)</button>
-                           <button className="xat-dropdown-item" onClick={() => {}} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><Globe size={16} /> Pública al Mur</button>
-                        </div>
-                      )}
-                    </div>
+                    <Dropdown
+                      right
+                      minWidth="320px"
+                      trigger={
+                        <button 
+                          type="button" 
+                          className="btn-date-time sp-card-time"
+                          style={{ borderRadius: '50%', width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 0, color: '#fff', cursor: 'pointer' }}
+                        >
+                          <Lock size={16} />
+                        </button>
+                      }
+                    >
+                      <div style={{ padding: '8px 16px 12px 16px', borderBottom: '1px solid var(--sdp-vora)', marginBottom: '4px' }}>
+                        <strong style={{ display: 'block', marginBottom: '8px', color: 'var(--sdp-text-titol)' }}>Mode Edició</strong>
+                        <p style={{ margin: 0, fontSize: '0.85rem', color: 'var(--sdp-text-cos)', lineHeight: '1.4' }}>
+                          Aquesta targeta és una previsualització de com quedarà al Mur. Utilitza l'editor inferior per modificar el contingut.
+                        </p>
+                      </div>
+                      <DropdownItem icon={<Lock size={16} />} onClick={() => {}}>Privada (Oculta)</DropdownItem>
+                      <DropdownItem icon={<Globe size={16} />} onClick={() => {}}>Pública al Mur</DropdownItem>
+                    </Dropdown>
                     <DateTimeControl time={activeNote.formattedTime} date={activeNote.formattedDate} />
                   </div>
                 </section>

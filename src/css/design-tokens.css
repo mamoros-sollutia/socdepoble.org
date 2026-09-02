@@ -1,21 +1,14 @@
 /* AUTO-GENERATED FROM design-tokens.json */
 :root, :host, .sdp-root {
   /* Color */
-  --sdp-canon-negre: #000000;
-  --sdp-canon-blanc: #FFFFFF;
   --sdp-canon-taronja: #FF7300;
-  --sdp-canon-blau-marca: #0984E3;
   --sdp-canon-blau: #016ebf;
 
   /* Radi */
-  --sdp-radius-main: 1.75rem;
-  --sdp-radius-secondary: 1.125rem;
 
   /* Tacte */
   --sdp-touch-min: 44px;
-  --sdp-touch-cuspide: 56px;
 
   /* Tipografia */
   --sdp-font-min: 16px;
-  --sdp-font-heading-lg: 30px;
 }

@@ -13,7 +13,6 @@ export default function TranslationsSection() {
       lead="Aquesta pàgina et permet canviar l'idioma global de la interfície del sistema. Tingues en compte que el contingut d'una publicació o fitxa específica es tradueix des dels botons que trobaràs dins de cada publicació, no des d'ací."
       chrome="system"
       showLogos={true}
-      labels={[{ text: 'Sistema' }]}
     >
       <div className="sdp-card-grid" style={{ maxWidth: '600px', margin: '0 auto' }}>
         {SUPPORTED_LANGUAGES.map((item) => {

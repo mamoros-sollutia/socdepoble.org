@@ -33,122 +33,43 @@ export default function ControlSection() {
   return (
     <UniversalPage
       title={t('section.control.title', 'Panell de Control')}
-      subtitle={t('section.control.subtitle', 'Node principal i accés a les eines d\'administració i gestió.')}
-      labels={[
-        { text: t('section.control.meta1', 'Admin'), className: 'sdp-badge-system' },
-        { text: t('section.control.meta2', 'Sistema'), className: 'sdp-badge-category' }
-      ]}
+      subtitle={t('section.control.subtitle', 'Node principal i accés a les eines d\'administració i gestió')}
+      lead={t('section.control.lead', 'Tria on vols publicar i crea nous continguts des de l\'editor universal.')}
       chrome="system"
     >
       <div style={{ padding: 'var(--sdp-space-8) var(--sdp-space-4)', maxWidth: '1000px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 'var(--sdp-space-12)' }}>
         
         {/* Accions Principals - Quadres de Comandament */}
         <section>
-          <div style={{ textAlign: 'center', marginBottom: 'var(--sdp-space-6)' }}>
-            <h4 style={{    textTransform: 'uppercase', letterSpacing: '0.05em', margin: 0  }}>Accessos Ràpids</h4>
-          </div>
           
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: 'var(--sdp-space-4)' }}>
             <UniversalIndicatorCard 
               icon={<FileText size={40} strokeWidth={1.5} />}
-              title="Mur"
+              title="Publicar al Mur"
               subtitle="Compartir novetats"
-              onClick={() => navigate('/mur')}
+              onClick={() => navigate('/notes-poc')}
               iconColor="var(--sdp-accent)"
             />
             <UniversalIndicatorCard 
               icon={<Store size={40} strokeWidth={1.5} />}
-              title="Mercat"
+              title="Publicar al Mercat"
               subtitle="Vendre productes"
-              onClick={() => navigate('/mercat')}
+              onClick={() => navigate('/notes-poc')}
               iconColor="var(--sdp-accent)"
             />
             <UniversalIndicatorCard 
               icon={<Calendar size={40} strokeWidth={1.5} />}
-              title="Esdeveniments"
+              title="Publicar Esdeveniments"
               subtitle="Crear agenda"
-              onClick={() => navigate('/events')}
+              onClick={() => navigate('/notes-poc')}
               iconColor="var(--sdp-accent)"
             />
             <UniversalIndicatorCard 
               icon={<MapPin size={40} strokeWidth={1.5} />}
-              title="Mapes"
+              title="Publicar al Mapa"
               subtitle="Veure rutes"
-              onClick={() => navigate('/mapes')}
+              onClick={() => navigate('/notes-poc')}
               iconColor="var(--sdp-accent)"
-            />
-          </div>
-        </section>
-
-        {/* Nodes d'Administració (antic control-grid) */}
-        <section>
-          <div style={{ textAlign: 'center', marginBottom: 'var(--sdp-space-6)' }}>
-            <h4 style={{    textTransform: 'uppercase', letterSpacing: '0.05em', margin: 0  }}>Nodes d'Administració</h4>
-          </div>
-          
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'var(--sdp-space-6)' }}>
-            <UniversalCard
-              title="JAVI LLINARES"
-              subtitle="EL TEU ESPAI PERSONAL"
-              author="Javi Llinares"
-              location="La Torre de les Maçanes"
-              avatarUrl={resolveAsset("/assets/uploads/gent/javi-llinares/avatars/javi-llinares-perfil-1200px.jpg")}
-              avatarAlt="Avatar Javi Llinares"
-              onMainClick={handleNavNotes}
-              onConnect={handleNavConnectar}
-              body={
-                <div style={{  display: 'flex', justifyContent: 'center', margin: '24px 0 16px'}}>
-                  <User size={64} strokeWidth={1.5} />
-                </div>
-              }
-            />
-
-            <UniversalCard
-              title="IAIA MarIA"
-              subtitle="ÀNIMA I CONSCIÈNCIA DEL SISTEMA"
-              author="IAIA MarIA"
-              location="La Torre de les Maçanes"
-              avatarUrl={resolveAsset("/assets/images/nano_anima_mas_ibanez_v3_1781060081431.webp")}
-              avatarAlt="Avatar IAIA MarIA"
-              onMainClick={handleNavIA}
-              onConnect={handleNavConnectar}
-              body={
-                <div style={{  display: 'flex', justifyContent: 'center', margin: '24px 0 16px'}}>
-                  <Cpu size={64} strokeWidth={1.5} />
-                </div>
-              }
-            />
-
-            <UniversalCard
-              title="TERMODINÀMICA"
-              subtitle="MONITORATGE DE RECURSOS"
-              author="Sóc de Poble"
-              location="La Torre de les Maçanes"
-              avatarUrl={resolveAsset("/assets/images/nano_porta_masia_roure_1774195469079.png")}
-              avatarAlt="Termodinàmica"
-              onMainClick={handleNavTermo}
-              onConnect={handleNavConnectar}
-              body={
-                <div style={{  display: 'flex', justifyContent: 'center', margin: '24px 0 16px'}}>
-                  <Network size={64} strokeWidth={1.5} />
-                </div>
-              }
-            />
-
-            <UniversalCard
-              title="GESTORIA"
-              subtitle="ADMINISTRACIÓ I FINANCES"
-              author="Sóc de Poble"
-              location="La Torre de les Maçanes"
-              avatarUrl={resolveAsset("/assets/images/nano_porta_del_mas.png")}
-              avatarAlt="Gestoria"
-              onMainClick={handleNavGestoria}
-              onConnect={handleNavConnectar}
-              body={
-                <div style={{  display: 'flex', justifyContent: 'center', margin: '24px 0 16px'}}>
-                  <Receipt size={64} strokeWidth={1.5} />
-                </div>
-              }
             />
           </div>
         </section>
