@@ -11,16 +11,16 @@ import {
 } from './sectionContent.js';
 import { getVal, setVal } from '../config/storage.js';
 
-export const APP_SEED_VERSION = 250026;
+export const APP_SEED_VERSION = 250027;
 import { getDefaultUserId, idConvidat } from './identitat.js';
 export { getDefaultUserId, idConvidat };
 
 export const NOTE_FOLDERS_SEED = [
   { id: 'f-root', name: 'General', parentId: null },
-  { id: 'f-art', name: 'Articles', parentId: null },
-  { id: 'f-poble', name: 'Histories del Poble', parentId: null },
-  { id: 'f-prompts', name: 'Prompts de Recerca', parentId: null },
-  { id: 'f-captures', name: 'Captures', parentId: null }
+  { id: 'f-mur', name: 'Mur', parentId: null },
+  { id: 'f-mercat', name: 'Mercat', parentId: null },
+  { id: 'f-event', name: 'Esdeveniments', parentId: null },
+  { id: 'f-mapa', name: 'Mapa', parentId: null }
 ];
 
 export const NOTES_SEED = [
