@@ -47,28 +47,28 @@ export default function ControlSection() {
               icon={<FileText size={40} strokeWidth={1.5} />}
               title="Publicar al Mur"
               subtitle="Compartir novetats"
-              onClick={() => navigate('/notes-poc')}
+              onClick={() => navigate('/notes')}
               iconColor="var(--sdp-accent)"
             />
             <UniversalIndicatorCard 
               icon={<Store size={40} strokeWidth={1.5} />}
               title="Publicar al Mercat"
               subtitle="Vendre productes"
-              onClick={() => navigate('/notes-poc')}
+              onClick={() => navigate('/notes')}
               iconColor="var(--sdp-accent)"
             />
             <UniversalIndicatorCard 
               icon={<Calendar size={40} strokeWidth={1.5} />}
               title="Publicar Esdeveniments"
               subtitle="Crear agenda"
-              onClick={() => navigate('/notes-poc')}
+              onClick={() => navigate('/notes')}
               iconColor="var(--sdp-accent)"
             />
             <UniversalIndicatorCard 
               icon={<MapPin size={40} strokeWidth={1.5} />}
               title="Publicar al Mapa"
               subtitle="Veure rutes"
-              onClick={() => navigate('/notes-poc')}
+              onClick={() => navigate('/notes')}
               iconColor="var(--sdp-accent)"
             />
           </div>
