@@ -34,13 +34,14 @@ ${customHeader}
       content += `- [[${nameForLink}]]\n`;
     }
     
+    let hasContent = visibleFiles.length > 0;
+    
     // Also include subdirectories
     const subdirs = files.filter(f => !f.includes('.') && !f.startsWith('_') && f !== 'node_modules');
     for (const subdir of subdirs) {
       const subdirPath = path.join(fullDirPath, subdir);
       const stat = await fs.stat(subdirPath);
       if (stat.isDirectory()) {
-        content += `\n## ${subdir}\n`;
         const subFiles = await fs.readdir(subdirPath);
         const subVisibleFiles = [];
         for (const f of subFiles) {
@@ -49,17 +50,30 @@ ${customHeader}
             if (stat.isFile()) subVisibleFiles.push(f);
           }
         }
-        for (const file of subVisibleFiles) {
-           const ext = path.extname(file);
-           const isMd = ext === '.md';
-           const nameForLink = isMd ? file.replace('.md', '') : file;
-           content += `- [[${subdir}/${nameForLink}]]\n`;
+        if (subVisibleFiles.length > 0) {
+          hasContent = true;
+          content += `\n## ${subdir}\n`;
+          for (const file of subVisibleFiles) {
+             const ext = path.extname(file);
+             const isMd = ext === '.md';
+             const nameForLink = isMd ? file.replace('.md', '') : file;
+             content += `- [[${subdir}/${nameForLink}]]\n`;
+          }
         }
       }
     }
 
-    await fs.writeFile(indexFilePath, content, 'utf8');
-    console.log(`Índex creat a ${indexFilePath}`);
+    if (hasContent || dirPath.includes('05_Escriptori_Soc_de_Poble')) {
+      await fs.writeFile(indexFilePath, content, 'utf8');
+      console.log(`Índex creat a ${indexFilePath}`);
+    } else {
+      try {
+        await fs.unlink(indexFilePath);
+        console.log(`Índex esborrat perquè la carpeta està buida: ${indexFilePath}`);
+      } catch(e) {
+        // Ignorar si l'arxiu no existia
+      }
+    }
   } catch (e) {
     console.error(`Error generant índex per ${dirPath}:`, e.message);
   }
