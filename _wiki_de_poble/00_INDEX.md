@@ -5,6 +5,11 @@ description: 00INDEX
 ---
 # 00_INDEX
 
+## 🔗 Índexs Connectats (Xarxa Neuronal)
+- [[00_INDEX_IDENTITAT]] (Nucli d'Identitat)
+- [[00_INDEX_ESCRIPTORI]] (Safata i Treball Actiu)
+- [[00_INDEX_Actes]] (Registre d'Actes)
+
 
 ## Adopcions de Les Plaquetes
 - [[CORE_Registre_Automillora]]

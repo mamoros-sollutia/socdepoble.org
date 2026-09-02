@@ -4,8 +4,13 @@ estat: esborrany
 description: Índex d'Actes
 ---
 # Índex d'Actes
-Aquest és l'índex per als documents generats i actes registrades a l'escriptori.
 
+## 🔗 Índexs Connectats (Xarxa Neuronal)
+- [[00_INDEX]] (Índex Principal)
+- [[00_INDEX_IDENTITAT]] (Nucli d'Identitat)
+- [[00_INDEX_ESCRIPTORI]] (Safata i Treball Actiu)
+
+Aquest és l'índex per als documents generats i actes registrades a l'escriptori.
 - [[260901_1327_ACTA_Supervivencia_Futura_i_Relleu]]
 - [[260901_1410_ACTA_Resum_NotebookLM_Audio_Overview]]
 - [[260901_1435_ACTA_SESSIO_Tancament]]

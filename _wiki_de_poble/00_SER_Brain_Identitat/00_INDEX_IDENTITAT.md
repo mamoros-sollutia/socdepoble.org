@@ -9,6 +9,11 @@ tags:
 ---
 # Índex de la Wiki
 
+## 🔗 Índexs Connectats (Xarxa Neuronal)
+- [[00_INDEX]] (Índex Principal)
+- [[00_INDEX_ESCRIPTORI]] (Safata i Treball Actiu)
+- [[00_INDEX_Actes]] (Registre d'Actes)
+
 Entrada estàtica a la Wiki de Sóc de Poble.
 
 ## 4 pilars operatius

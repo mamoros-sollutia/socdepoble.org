@@ -88,7 +88,7 @@ async function main() {
     '📥 L\'ESCRIPTORI (SAFATA D\'ENTRADA I TREBALL ACTIU)', 
     '00_INDEX_ESCRIPTORI.md',
     '📥 L\'ESCRIPTORI (SAFATA D\'ENTRADA I TREBALL ACTIU)',
-    'Ací només resideix la matèria viva. El que ha mort, descansa en l\'arxiu.\n'
+    'Ací només resideix la matèria viva. El que ha mort, descansa en l\'arxiu.\n\n## 🔗 Índexs Connectats (Xarxa Neuronal)\n- [[00_INDEX]] (Índex Principal)\n- [[00_INDEX_IDENTITAT]] (Nucli d\'Identitat)\n- [[00_INDEX_Actes]] (Registre d\'Actes)\n'
   );
 }
 

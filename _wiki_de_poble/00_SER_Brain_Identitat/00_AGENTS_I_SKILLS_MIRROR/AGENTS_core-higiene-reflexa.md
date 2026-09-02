@@ -75,7 +75,7 @@ El torn acaba quan la porta et dona permís. Ordre exacte:
 Qui va al bancal se'n torna amb el sac. Si has obert una carpeta, la tanques. Si has fet una prova, la lleves. El bancal queda com t'agradaria trobar-lo.
 
 ## 6. La Destil·lació Diària (El xiquet que aprén)
-L'Escriptori i l'Arxiu Històric (`90_historic`) no són abocadors d'auditories ni de respostes d'IAs. Sóc de Poble aprén com un xiquet, no rebutja com un porter de discoteca. 
+L'Escriptori permet mantenir arxius (com actes, petorretas o documents en curs) que siguen rellevants per a la següent sessió, sempre que estiguen ancorats. No cal esborrar-lo tot de colp. El que SÍ s'ha de buidar obligatòriament i de forma estricta és la `00_Bandeja_d_Entrada`. No obstant això, l'Escriptori no és un abocador permanent:
 Cada dia o al final d'una sessió complexa:
 1. Llig els estudis, auditories o respostes temporals generades per tu o pel Consell (ex: `260901_2232_estudi_claude.md`).
 2. **Destil·la el coneixement**: Si hi ha alguna millora arquitectònica o patró útil, afig-ho immediatament a la `SKILL.md` corresponent (o crea'n una de nova).

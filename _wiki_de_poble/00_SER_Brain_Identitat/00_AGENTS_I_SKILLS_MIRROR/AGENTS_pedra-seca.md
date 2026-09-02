@@ -82,6 +82,7 @@ Som una plataforma de lectura de textos extensos de pobles i tradicions, la lect
 *   **La Llei de l'Harmonia (H1/H2):** 
     *   L'`<h1>` descansa **exclusivament** dins del marc decoratiu principal del component `<header className="page-title">`. Aquest cap d'H1 pot dur logo o etiqueta.
     *   L'`<h2>` i el seu acompanyant (text `p.lead`) **no van dins del component decoratiu**, sinó al seu propi `div.sdp-text-center` fora de la capçalera (generalment tot just baix), preparant ja la narració del cos. 
+    *   **Prohibició de punt i final:** Els Títols (H1) i els Subtítols (H2) **MAI** porten punt i final. Un títol amb punt deixa de ser un títol.
 
 ***
 
