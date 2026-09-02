@@ -73,7 +73,7 @@ export default function ControlSection() {
 
         {/* Eines i Recursos (Opcions secundàries) */}
         <section style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sdp-space-4)', maxWidth: '400px', margin: '0 auto' }}>
-          <UniversalButton onClick={() => navigate('/xat/001')} variant="primary" icon={<MessageSquare size={18} />}>
+          <UniversalButton onClick={() => navigate('/xat/0001')} variant="primary" icon={<MessageSquare size={18} />}>
             Missatges per a dubtes
           </UniversalButton>
 
