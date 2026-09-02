@@ -511,7 +511,7 @@ export default function NotesSection() {
 
                       {/* Etiquetes de Sistema i Categories */}
                       <ul className="sp-card-labels page-title-labels" style={{ margin: '24px 0 24px 0', justifyContent: 'center', display: 'flex', gap: '8px', listStyle: 'none', padding: 0, flexWrap: 'wrap' }}>
-                        <li className="sp-card-label" style={{ cursor: 'pointer', border: 'none', padding: '4px 16px', borderRadius: '20px', backgroundColor: 'var(--sdp-accio-forta)', color: 'var(--sdp-text-invers)' }}>General</li>
+                        <li className="sp-card-label" style={{ cursor: 'pointer', border: 'none', padding: '4px 16px', borderRadius: '20px', backgroundColor: 'var(--sdp-accio)', color: 'var(--sdp-sobre-accio)' }}>Sistema</li>
                         {activeNote.category && (
                           <li className="sp-card-label" style={{ cursor: 'pointer', border: 'none', padding: '4px 16px', borderRadius: '20px', backgroundColor: 'var(--sdp-primary)', color: 'var(--sdp-text-invers)' }}>{activeNote.category}</li>
                         )}

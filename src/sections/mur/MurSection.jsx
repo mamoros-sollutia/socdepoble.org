@@ -29,6 +29,7 @@ export default function MurSection() {
     { key: 'skills', isAvis: false, href: '/skills' },
     { key: 'anima', isAvis: false, href: '/ia' },
     { key: 'roadmap', isAvis: false, href: '/roadmap' },
+    { key: 'notes', isAvis: false, href: '/notes' },
     { key: 'versions', isAvis: false, href: '/versions' },
     { key: 'legal', isAvis: false, href: '/legal' }
   ].map(item => {

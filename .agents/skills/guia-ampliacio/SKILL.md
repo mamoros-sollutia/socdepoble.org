@@ -41,3 +41,6 @@ Tot component visual ha de consumir els tokens de `src/config/design-tokens.json
 - No deixar estats enganxats a `window` si no és absolutament necessari per comunicar amb l'exterior (com amb Sollutia).
 
 Sempre referiu-vos a l'índex de `_wiki_de_poble/` abans d'iniciar tasques complexes.
+
+## 7. Excepcions Arquitectòniques (La Pàgina de Notes)
+La secció de Notes (`/notes`) té una excepció estructural única: l'estat buit (quan no hi ha cap nota seleccionada) mostra una previsualització que simula ser una targeta de `UniversalPage`, però **no és editable ni és una pàgina del sistema estàndard**. Això es fa per mantenir la coherència visual dins l'editor de tres columnes de Notes. La card publicada al Mur (que enllaça a `/notes`) actua com un reflex exacte d'aquesta previsualització. Qualsevol IA ha de respectar aquesta diferenciació entre la pàgina de Notes (que conté una UniversalPage aniuada no editable) i la resta de pàgines pures del sistema.
