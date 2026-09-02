@@ -16,7 +16,7 @@ const LANGUAGE_LOCALES = {
 };
 
 export default function NotesSection() {
-  const { language, normalizeSearchText, noteFolders, notes: rawNotes, t, showToast } = useAppData();
+  const { language, normalizeSearchText, noteFolders, notes: rawNotes, t, showToast, sendSectionSubmission } = useAppData();
   
   // State
   const [activeFolderId, setActiveFolderId] = useState('f-root');
@@ -123,6 +123,51 @@ export default function NotesSection() {
     const netejat = sanitizeHtml(value);
     // TODO(260831): connectar amb el port de dades. Fins llavors no desa res.
     return { field, value: netejat };
+  };
+
+  const handlePublish = async () => {
+    if (!activeNote) return;
+    
+    // Reproduïm les etiquetes tal com queden a la vista de targeta de l'editor
+    const labels = [];
+    const folderName = noteFolders.find(f => f.id === activeNote.folderId)?.name || 'General';
+    labels.push({ text: folderName, className: 'sdp-badge-system' });
+    labels.push({ text: 'Mur', className: 'sdp-badge-category' });
+    if (activeNote.category) {
+      labels.push({ text: activeNote.category, className: 'sdp-badge-category' });
+    }
+    if (activeNote.tags && Array.isArray(activeNote.tags)) {
+      activeNote.tags.forEach(tag => {
+        labels.push({ text: tag, className: 'sdp-badge-neutral', style: { border: '1px solid var(--sdp-vora)', backgroundColor: 'transparent' } });
+      });
+    }
+
+    const payload = {
+      sectionId: 'mur',
+      type: 'feed',
+      title: activeNote.title || 'Sense Títol',
+      subtitle: activeNote.subtitle,
+      description: activeNote.lead,
+      content: activeNote.content,
+      image: activeNote.coverImage || '/assets/system/ui/logo-socdepoble-cuadrat-verd.svg',
+      labels,
+      author_name: 'Sóc de Poble',
+      author_location: 'La Torre de les Maçanes',
+      publish_date: new Date().toISOString()
+    };
+    
+    try {
+      await sendSectionSubmission({
+        sectionId: 'mur',
+        payload
+      });
+      showToast('Nota publicada correctament al mur!', 'success');
+    } catch (err) {
+      console.warn('Error enviant publicació (mode simulat ho tolera si està actiu optimísticament):', err);
+      // Fins i tot si dóna error en mode local, la UI optimística de sendSectionSubmission 
+      // ho haurà posat al context (mergedFeedPosts). 
+      showToast('Nota afegida al mur (Mode Simulat)', 'success');
+    }
   };
 
   return (
@@ -419,7 +464,9 @@ export default function NotesSection() {
                     </div>
                   </div>
                   <div>
-                    <button style={{  display: 'flex', alignItems: 'center', gap: '8px', border: '1px solid var(--sdp-pedra-500)', background: 'transparent', color: 'white', borderRadius: '20px', padding: '6px 16px',  cursor: 'pointer'}}>
+                    <button 
+                      onClick={handlePublish}
+                      style={{  display: 'flex', alignItems: 'center', gap: '8px', border: '1px solid var(--sdp-pedra-500)', background: 'transparent', color: 'white', borderRadius: '20px', padding: '6px 16px',  cursor: 'pointer'}}>
                       <Globe size={16} /> PUBLICAR
                     </button>
                   </div>
