@@ -1,11 +1,11 @@
 ---
 tipus: acta
 estat: actiu
-description: Acta de generació de Petorretas i tancament de sessió
-tags: [petorreta, consell, bugfix]
+description: Acta Marmota de generació de Petorretas i tancament de sessió
+tags: [petorreta, consell, bugfix, marmota]
 ---
 
-# ACTA: Generació de Petorretas i Neteja
+# ACTA MARMOTA: Generació de Petorretas i Neteja
 
 ## Context
 El Mestre ha requerit deixar preparat l'escriptori amb els paquets necessaris perquè el Consell de les IAs (Auditoria Externa) resolga els dubtes i dissenye l'arquitectura pendent. També s'ha detectat l'existència d'un índex orfe (`00_INDEX_REVISAR.md`) i una incidència visual en el botó de publicar notes.

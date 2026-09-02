@@ -17,7 +17,8 @@ description: Tasca Actual
 ## Pròxims Passos (Per a la següent sessió)
 1. **Auditoria del Consell (Bloc de Notes):** Executar la Petorreta (`260902_0626_PROMPT_auditoria.md`) i aplicar els canvis d'integració recomanats al Tiptap.
 2. **Ancoratge Automàtic (Nova Petorreta):** Preparar i executar el prompt per a crear l'script d'ancoratge automàtic de la safata d'entrada a l'escriptori.
-3. Iniciar la migració de Sollutia (Implementar Proxy JS amb Circuit Breaker 2500ms a IndexedDB).
+3. **Cohesió del Graf (Etiquetes i Propietats):** Auditar totes les pàgines i skills per assignar-los 2-4 etiquetes i revisar les seues propietats/categories, de manera que el *Brain* augmente dràsticament la seua connectivitat i forma redona.
+4. Iniciar la migració de Sollutia (Implementar Proxy JS amb Circuit Breaker 2500ms a IndexedDB).
 
 ## Bloquejos oberts
 - Falta integrar l'Editor i la persistència real al Bloc de Notes.
