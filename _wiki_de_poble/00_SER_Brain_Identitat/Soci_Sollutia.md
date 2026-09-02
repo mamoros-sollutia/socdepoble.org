@@ -1,16 +1,13 @@
 ---
-estat: canonic
 tipus: document
-description: "Defineix el paper, els límits i el protocol de col·laboració amb el soci tecnològic Sollutia."
-temes:
-- sistema
+estat: canonic
+description: Defineix el paper, els límits i el protocol de col·laboració amb el soci tecnològic Sollutia.
 tags:
-- core
-- genoma
-- identitat
-- socdepoble
-- sollutia
-- subvencions
+  - core
+  - genoma
+  - identitat
+  - legal
+  - sollutia
 ---
 # Soci Tecnològic: Sollutia
 
@@ -239,9 +236,18 @@ Aquestes eines configuren l'instrumental de la Forja.
 - **Etiquetes:** [[Graf]]
 
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX_IDENTITAT]]
 
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX_IDENTITAT]]
+
+## Sinapsis Entrants (Autogenerat)
+
+- [[00_INDEX_IDENTITAT|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[Soci_Sollutia]]
+- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[Soci_Sollutia]]
+- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[Soci_Sollutia]]
+- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[Soci_Sollutia]]
+
+<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

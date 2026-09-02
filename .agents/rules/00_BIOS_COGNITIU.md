@@ -1,3 +1,8 @@
+---
+tipus: document
+estat: canonic
+description: 00 BIOS COGNITIU
+---
 # BIOS Cognitiu de les Portes Mecàniques
 # BIOS Cognitiu de les Portes Mecàniques
 

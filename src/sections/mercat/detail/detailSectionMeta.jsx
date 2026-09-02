@@ -36,10 +36,10 @@ export function buildMercatDetailSectionMeta({ marketItems = [], t }) {
                 <p className="card__text sdp-mb-1">
                   {variation.description}
                 </p>
-                <p className="sdp-mb-4" style={{ fontSize: '0.875rem', opacity: 0.7, textTransform: 'uppercase' }}>
+                <p className="sdp-mb-4" style={{   opacity: 0.7, textTransform: 'uppercase'  }}>
                   VENEDOR: {item.seller || 'SÓC DE POBLE'}
                 </p>
-                <div className="sp-card-price sdp-text-accent sdp-mb-2" style={{ fontSize: '1.5rem' }}>
+                <div className="sp-card-price sdp-text-accent sdp-mb-2" >
                   {variation.price}
                 </div>
                 <button className="btn btn-secondary sdp-w-full sdp-mt-2 sdp-justify-center sdp-text-center" style={{ maxWidth: '20rem', textTransform: 'uppercase' }}>

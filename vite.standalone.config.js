@@ -9,11 +9,7 @@ export default defineConfig(({ command }) => ({
   plugins: [react()],
 
   define: {
-    'process.env.NODE_ENV': JSON.stringify('production'),
-    ...(command === 'build' ? {
-      'import.meta.env.VITE_SUPABASE_URL': '""',
-      'import.meta.env.VITE_SUPABASE_ANON_KEY': '""'
-    } : {})
+    'process.env.NODE_ENV': JSON.stringify('production')
   },
 
   resolve: {

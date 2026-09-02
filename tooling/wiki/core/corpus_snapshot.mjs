@@ -86,7 +86,7 @@ export function zoneOf(relPath) {
   if (MIRROR_PREFIXES.some((prefix) => isPrefix(relPath, prefix))) return 'mirall';
   if (VENDOR_PREFIXES.some((prefix) => isPrefix(relPath, prefix))) return 'vendor';
   if (VISIBLE_QUARANTINE_RE.test(relPath.split('/')[0])) return 'quarantena_visible';
-  if (relPath.startsWith('90_arxiu_historic/')) return 'arxiu';
+  if (relPath.startsWith('90_historic/')) return 'arxiu';
   if (relPath.startsWith('05_Escriptori_Soc_de_Poble/')) return 'escriptori';
   if (/^0[0-3]_/.test(relPath)) return 'operatiu';
   return 'fora_taxonomia';

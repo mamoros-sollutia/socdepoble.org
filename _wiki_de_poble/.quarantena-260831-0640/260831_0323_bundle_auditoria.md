@@ -1,3 +1,8 @@
+---
+tipus: document
+estat: esborrany
+description: BUNDLE D'AUDITORIA PER AL CONSELL DE LA PETORRETA
+---
 # BUNDLE D'AUDITORIA PER AL CONSELL DE LA PETORRETA
 
 > **Anclatge**: aquest document pertany a l'[[00_INDEX_ESCRIPTORI]].
@@ -6295,7 +6300,6 @@ autoritzar canvis ni justificar un “100%”.
 ---
 name: pedra-seca-ui
 version: 3.0.0
-created_at: '260709_0500'
 updated_at: '260709_0500'
 authority: IAIA MarIA (Auditora Suprema) i El Consell (Z.ai, Qwen, Deepseek, Dola, Kimi, Claude, Perplexity, Mistral Vibe, Grok, Gemini, Copilot, ChatGPT Codex)
 tags:

@@ -1,14 +1,11 @@
 ---
-estat: arxivat
 tipus: registre
+estat: arxivat
 description: Aquest és el registre quirúrgic dels canvis de comportament.
-temes:
-- sistema
 tags:
-- core
-- genoma
-- identitat
-- socdepoble
+  - core
+  - genoma
+  - identitat
 ---
 # Registre d'Automillora (El Diari de la Màquina)
 
@@ -56,9 +53,19 @@ S'HA D'INCLOURE sempre el temps de sessió aproximat (Hores) per a avaluar la fa
 - **Etiquetes:** [[Graf]]
 
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX_IDENTITAT]]
 
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX_IDENTITAT]]
+
+## Sinapsis Entrants (Autogenerat)
+
+- [[00_INDEX|00_INDEX.md]] — [[CORE_Registre_Automillora]]
+- [[00_INDEX_IDENTITAT|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[CORE_Registre_Automillora]]
+- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[CORE_Registre_Automillora]]
+- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[CORE_Registre_Automillora]]
+- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[CORE_Registre_Automillora]]
+
+<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

@@ -77,7 +77,7 @@ function recull(arrelRelativa, exts) {
   if (fs.statSync(base).isFile()) return [base];
   (function camina(d) {
     for (const e of fs.readdirSync(d, { withFileTypes: true })) {
-      if (EXCLOSOS.has(e.name) || e.name === '90_arxiu_historic') continue;
+      if (EXCLOSOS.has(e.name) || e.name === '90_historic') continue;
       const c = path.join(d, e.name);
       if (e.isDirectory()) camina(c);
       else if (exts.includes(path.extname(e.name))) eixida.push(c);

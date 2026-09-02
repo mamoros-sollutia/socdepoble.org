@@ -1,15 +1,10 @@
 ---
-estat: futur
 tipus: skill
-description: "Contracte futur per evolucionar PWA, dades locals, sincronització i recuperació amb proves de pèrdua zero."
-temes:
-- sistema
+estat: esborrany
+description: Contracte futur per evolucionar PWA, dades locals, sincronització i recuperació amb proves de pèrdua zero.
 tags:
-- dev
-- maquina
-- skills
-- socdepoble
-- tecnica
+  - maquina
+  - skills
 ---
 # Motor Offline i Resiliència
 
@@ -111,3 +106,18 @@ Este document només pot passar de `futur` a `canonic` quan existisquen:
 ---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]
+
+## Sinapsis Entrants (Autogenerat)
+
+- [[03_Consola_Termodinamica|00_SER_Brain_Identitat/03_Consola_Termodinamica.md]] — [[MOTOR_OFFLINE]]
+- [[CORE_Registre_Automillora|00_SER_Brain_Identitat/CORE_Registre_Automillora.md]] — | 260711_1500 | 260712_0415 | ~13h              | 2       | Integració Centre...
+- [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maquina_Tecnica/00_arquitectura_tecnica_unificada.md]] — [[MOTOR_OFFLINE]]
+- [[futur_adaptacio|02_ACTUAR_Maquina_Tecnica/skills/futur_adaptacio.md]] — [[MOTOR_OFFLINE]]
+- [[index_trellat|02_ACTUAR_Maquina_Tecnica/skills/index_trellat.md]] — Si una dimensió és `N/A`, l’IT global també és `N/A`. No es posa a zero ni es...
+- [[seguretat_execucio|02_ACTUAR_Maquina_Tecnica/skills/seguretat_execucio.md]] — [[MOTOR_OFFLINE]]
+- [[self_repair|02_ACTUAR_Maquina_Tecnica/skills/self_repair.md]] — [[MOTOR_OFFLINE]]
+- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[MOTOR_OFFLINE]]
+- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[MOTOR_OFFLINE]]
+- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[MOTOR_OFFLINE]]
+
+<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

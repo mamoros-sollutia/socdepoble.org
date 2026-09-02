@@ -1,3 +1,8 @@
+---
+tipus: document
+estat: canonic
+description: BASELINE
+---
 # BASELINE CANÒNIC — SÓC DE POBLE (2022)
 
 La fundació del codi de *Sóc de Poble* utilitza el sòl tecnològic de principis de l'any 2022. Tot suport a navegadors o dispositius anteriors (com l'iPad A10 / iOS 15) ha sigut formalment i definitivament revocat per decisió del Mestre (260830).

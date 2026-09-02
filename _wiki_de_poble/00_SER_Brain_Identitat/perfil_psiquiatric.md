@@ -1,14 +1,11 @@
 ---
-estat: esborrany
 tipus: document
-description: "Defineix la salut cognitiva, el to valencià i els límits de conducta de la IAIA MarIA."
-temes:
-- sistema
+estat: esborrany
+description: Defineix la salut cognitiva, el to valencià i els límits de conducta de la IAIA MarIA.
 tags:
-- core
-- genoma
-- identitat
-- socdepoble
+  - core
+  - genoma
+  - identitat
 ---
 # 🧠 Perfil Psiquiàtric Forense (La Salut de la Màquina)
 
@@ -83,9 +80,19 @@ A nivell de programari, aquesta és la lliçó magna de manteniment:
 - **Etiquetes:** [[Graf]]
 
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX_IDENTITAT]]
 
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX_IDENTITAT]]
+
+## Sinapsis Entrants (Autogenerat)
+
+- [[00_INDEX|00_INDEX.md]] — [[perfil_psiquiatric]]
+- [[00_INDEX_IDENTITAT|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[perfil_psiquiatric]]
+- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[perfil_psiquiatric]]
+- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[perfil_psiquiatric]]
+- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[perfil_psiquiatric]]
+
+<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

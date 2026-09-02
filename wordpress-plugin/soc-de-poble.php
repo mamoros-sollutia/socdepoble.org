@@ -184,6 +184,8 @@ function sdp_render( $atts = array() ) {
 			// pàgina de qui ens allotja. Només la plantilla de pàgina completa
 			// (`blank.php`) ha de demanar-ho: [soc_de_poble pinta_amfitrio="1"]
 			'pinta_amfitrio' => '',
+			'supabase_url' => defined('SDP_SUPABASE_URL') ? SDP_SUPABASE_URL : '',
+			'supabase_anon_key' => defined('SDP_SUPABASE_ANON_KEY') ? SDP_SUPABASE_ANON_KEY : '',
 		),
 		$atts,
 		'soc_de_poble'
@@ -236,14 +238,16 @@ function sdp_render( $atts = array() ) {
 
 	return sprintf(
 		'<script type="application/json" id="%1$s">%2$s</script>' .
-		'<soc-de-poble base-path="%3$s" data-mode="%4$s" plugin-url="%6$s" fonts-href="%5$s" config-id="%1$s"%7$s></soc-de-poble>',
+		'<soc-de-poble base-path="%3$s" data-mode="%4$s" plugin-url="%6$s" fonts-href="%5$s" config-id="%1$s"%7$s supabase-url="%8$s" supabase-anon-key="%9$s"></soc-de-poble>',
 		esc_attr( $config_id ),
 		wp_json_encode( $config, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT ),
 		esc_attr( $atts['base_path'] ),
 		esc_attr( $atts['data_mode'] ),
 		esc_url( sdp_url( 'assets/fonts/noto-sans.css' ) ),
 		esc_url( $config['pluginUrl'] ),
-		$pinta
+		$pinta,
+		esc_attr( $atts['supabase_url'] ),
+		esc_attr( $atts['supabase_anon_key'] )
 	);
 }
 add_shortcode( 'soc_de_poble', 'sdp_render' );
@@ -276,6 +280,8 @@ function sdp_registrar_bloc() {
 				'base_path' => array( 'type' => 'string', 'default' => '' ),
 				'data_mode' => array( 'type' => 'string', 'default' => 'remote' ),
 				'config'    => array( 'type' => 'string', 'default' => '' ),
+				'supabase_url' => array( 'type' => 'string', 'default' => '' ),
+				'supabase_anon_key' => array( 'type' => 'string', 'default' => '' ),
 			),
 		)
 	);

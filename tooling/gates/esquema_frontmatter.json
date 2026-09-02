@@ -1,0 +1,80 @@
+{
+  "esquema": "sdp.frontmatter.v1",
+  "generat": "2026-09-01",
+  "origen": "Cens empíric de 96 documents (_wiki_de_poble + .agents), auditoria 260901.",
+
+  "principi": [
+    "Les CLAUS són interfície. Van en anglés només quan una eina externa ho exigix (Obsidian: tags, aliases). La resta, en valencià.",
+    "Els VALORS són la llengua del projecte: valencià sempre.",
+    "Una clau amb entropia 0 (un únic valor en tot el corpus) no prediu res. Fora.",
+    "El que ja guarda git (data, autor, versió) no es duplica a mà. Duplicar-ho només garantix deriva."
+  ],
+
+  "universal": {
+    "obligatories": {
+      "tipus": {
+        "enum": ["document", "index", "hub", "norma", "protocol", "acta", "plantilla", "skill", "registre"],
+        "nota": "Derivable de la ruta al 73%. El 27% restant (norma, protocol, hub, acta, registre) és informació real i per això la clau es queda."
+      },
+      "estat": {
+        "enum": ["esborrany", "actiu", "canonic", "arxivat"],
+        "nota": "Absorbix `status`. `active` → `actiu`. `futur` i `auditat` es reassignen a `esborrany`/`canonic`: eren estats de procés, no del document."
+      },
+      "description": {
+        "tipus": "text",
+        "max": 200,
+        "nota": "Una línia. Absorbix `purpose` i `title`. El títol ja és l'H1 del cos."
+      }
+    },
+    "opcionals": {
+      "tags": {
+        "tipus": "llista",
+        "vocabulari_tancat": [
+          "acta", "core", "disseny", "escriptori", "genoma", "govern", "graf",
+          "identitat", "legal", "maquina", "saber", "skills", "sollutia", "temporal"
+        ],
+        "nota": "Clau nativa d'Obsidian: et regala el panell d'etiquetes i la cerca sense cap dependència. Absorbix `temes`, que portava 51 bits contra els 220 de `tags` i coincidia amb ell en 0 de 51 fitxers. 30 termes reals → 14. Fora `socdepoble` (58 de 96 documents) i `sistema` (53): una etiqueta que porta quasi tot el corpus no distingix res."
+      },
+      "aliases": {
+        "tipus": "llista",
+        "nota": "Clau nativa d'Obsidian per a resolució d'enllaços. Hui no l'usa cap enllaç, però si la lleves i algú n'escriu un, es trencarà en silenci. Es queda."
+      }
+    }
+  },
+
+  "extensio_agent": {
+    "abast": ".agents/skills/*/SKILL.md",
+    "obligatories": {
+      "name": { "tipus": "text", "nota": "Identificador de la skill. Ha de coincidir amb el nom de la carpeta." },
+      "triggers_on": { "tipus": "llista", "nota": "Clau canònica. `triggers_ca` NO existix: una skill amb eixa clau està morta en silenci." },
+      "core": { "tipus": "booleà" }
+    }
+  },
+
+  "migracio": {
+    "renomena": {
+      "status": "estat",
+      "temes": "tags",
+      "purpose": "description"
+    },
+    "valors": {
+      "estat": { "active": "actiu", "futur": "esborrany", "auditat": "canonic" },
+      "tipus": { "normativa": "norma", "estat": "registre" }
+    },
+    "esborra_entropia_zero": [
+      "lang", "owner", "authority_level", "authority", "prioritat", "requires",
+      "conflicts_with", "related", "use_when", "skip_when", "scope", "effects",
+      "tests", "author", "published", "created", "actualitzat", "revisat", "updated_at"
+    ],
+    "esborra_ho_guarda_git": ["version", "supersedes", "substitueix", "source"],
+    "esborra_redundant_amb_el_cos": ["title", "cssclasses"],
+    "conserva_fora_d_esquema": ["eines_obligatories"],
+    "nota_eines_obligatories": "2 usos, entropia 2.32, i les 5 rutes que declara existixen totes al disc. No és cerimònia: és un contracte viu de la skill. Es queda com a clau opcional de l'extensió d'agent fins que un tractor verifique eixes rutes; llavors passa a obligatòria."
+  },
+
+  "recompte": {
+    "abans": 34,
+    "despres": 8,
+    "detall": "5 universals (3 obligatòries + 2 opcionals) + 3 de l'extensió d'agent. `eines_obligatories` fa la novena, opcional."
+  }
+}

@@ -219,8 +219,8 @@ function ChatConversation({ thread, messages, onSendMessage, onBack }) {
         </button>
         <Avatar kind={thread?.type} src={thread?.avatar_url} size={40} />
         <div style={{ flex: 1 }}>
-          <strong style={{ fontSize: '1.05rem' }}>{thread?.name || thread?.title}</strong>
-          <span style={{ fontSize: '0.8rem', opacity: 0.8, display: 'block' }}>Prem ací per a més informació</span>
+          <strong >{thread?.name || thread?.title}</strong>
+          <span style={{   opacity: 0.8, display: 'block'  }}>Prem ací per a més informació</span>
         </div>
         <div className="xat-header-actions">
            <button className="xat-header-btn"><Video size={20} color="currentColor" /></button>
@@ -256,7 +256,7 @@ function ChatConversation({ thread, messages, onSendMessage, onBack }) {
         {messages.map((msg, i) => (
           <div key={msg.id || i} className={`sdp-chat-bubble ${msg.sender === 'me' || msg.is_ai ? 'sdp-chat-bubble--user' : 'sdp-chat-bubble--ai'}`}>
             {msg.sender !== 'me' && !msg.is_ai && (
-              <div style={{ fontSize: '0.75rem', fontWeight: 'bold', color: 'var(--sdp-text-meta)', marginBottom: 2 }}>
+              <div style={{     marginBottom: 2  }}>
                 {msg.author || msg.author_name || 'Usuari'}
               </div>
             )}

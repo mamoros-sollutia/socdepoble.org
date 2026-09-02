@@ -1,15 +1,19 @@
 ---
-name: socdepoble-workflow
+tipus: skill
+estat: actiu
 description: Flux de treball per a Soc de Poble
-status: active
-version: 1.0.0
-lang: ca
+name: socdepoble-workflow
 triggers_on:
-- workflow
-- flux
-- procés
-- passos
-- guia
+  - workflow
+  - flux
+  - procés
+  - passos
+  - guia
+  - socdepoble workflow
+core: false
+tags:
+  - skill
+  - flux
 ---
 
 # socdepoble-workflow

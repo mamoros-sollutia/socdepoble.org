@@ -1,15 +1,10 @@
 ---
-estat: canonic
 tipus: skill
-description: "Contracte verificable d’accessibilitat, SEO i rendiment per a les interfícies públiques."
-temes:
-- sistema
+estat: canonic
+description: Contracte verificable d’accessibilitat, SEO i rendiment per a les interfícies públiques.
 tags:
-- dev
-- maquina
-- skills
-- socdepoble
-- tecnica
+  - maquina
+  - skills
 ---
 # A11y i SEO amb Trellat
 
@@ -74,3 +69,13 @@ El dispositiu de referència del Baseline 2022 és el tribunal pràctic. LCP, IN
 ---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]
+
+## Sinapsis Entrants (Autogenerat)
+
+- [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maquina_Tecnica/00_arquitectura_tecnica_unificada.md]] — [[a11y_seo_trellat]]
+- [[index_trellat|02_ACTUAR_Maquina_Tecnica/skills/index_trellat.md]] — [[a11y_seo_trellat]]
+- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[a11y_seo_trellat]]
+- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[a11y_seo_trellat]]
+- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[a11y_seo_trellat]]
+
+<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

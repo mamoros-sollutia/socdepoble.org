@@ -1,3 +1,8 @@
+---
+tipus: document
+estat: canonic
+description: Llibre d'Obra (LEDGER) de Sóc de Poble
+---
 # Llibre d'Obra (LEDGER) de Sóc de Poble
 
 Aquest és el registre immutable de tots els canvis estructurals i tècnics del projecte.

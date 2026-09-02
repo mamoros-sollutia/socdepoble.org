@@ -1,17 +1,12 @@
 ---
-estat: canonic
 tipus: skill
-description: "Descriu controls tècnics de seguretat i recuperació sense substituir la privacitat ni autoritzar mutacions."
-aliases:
-- Seguretat d'execució
-temes:
-- sistema
+estat: canonic
+description: Descriu controls tècnics de seguretat i recuperació sense substituir la privacitat ni autoritzar mutacions.
 tags:
-- dev
-- maquina
-- skills
-- socdepoble
-- tecnica
+  - maquina
+  - skills
+aliases:
+  - Seguretat d'execució
 ---
 # Seguretat d'execució
 
@@ -128,3 +123,14 @@ Esta eixida és un diagnòstic. Només un rebut vigent pot autoritzar una operac
 ---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]
+
+## Sinapsis Entrants (Autogenerat)
+
+- [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maquina_Tecnica/00_arquitectura_tecnica_unificada.md]] — [[seguretat_execucio]]
+- [[self_repair|02_ACTUAR_Maquina_Tecnica/skills/self_repair.md]] — [[seguretat_execucio]]
+- [[LLEI_05_Privacitat|03_GOVERNAR_Normativa_Regles/LLEI_05_Privacitat.md]] — [[seguretat_execucio]]
+- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[seguretat_execucio]]
+- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[seguretat_execucio]]
+- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[seguretat_execucio]]
+
+<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

@@ -1,9 +1,9 @@
 {
-  "generat": "2026-09-01T09:47:36.864Z",
+  "generat": "2026-09-01T19:22:41.455Z",
   "max": {
     "P1": 0,
     "P2": 3,
-    "P3": 13
+    "P3": 9
   },
   "ids": [
     "P2|tooling/brain/despertar.mjs|executa «tooling/brain/ancora.mjs» i el catch només registra: la fallada es degrada a avís",
@@ -14,13 +14,9 @@
     "P3|_wiki_de_poble/.quarantena-260831-0640/260831_0323_bundle_auditoria.md|promet arreglar «tooling/brain/despertar.mjs» i cap porta ho fa complir",
     "P3|_wiki_de_poble/.quarantena-260831-0640/260831_0520_BUNDLE_auditoria.md|promet arreglar «tooling/brain/despertar.mjs» citant línia exacta i cap porta ho fa complir",
     "P3|_wiki_de_poble/.quarantena-260831-0640/260831_0520_BUNDLE_auditoria.md|promet arreglar «tooling/brain/despertar.mjs» i cap porta ho fa complir",
-    "P3|_wiki_de_poble/05_Escriptori_Soc_de_Poble/260831_0634_BUNDLE_auditoria.md|promet arreglar «tooling/brain/despertar.mjs» citant línia exacta i cap porta ho fa complir",
-    "P3|_wiki_de_poble/05_Escriptori_Soc_de_Poble/260831_0634_BUNDLE_auditoria.md|promet arreglar «tooling/brain/despertar.mjs» i cap porta ho fa complir",
-    "P3|_wiki_de_poble/05_Escriptori_Soc_de_Poble/260831_0723_BUNDLE_auditoria.md|promet arreglar «tooling/brain/despertar.mjs» citant línia exacta i cap porta ho fa complir",
-    "P3|_wiki_de_poble/05_Escriptori_Soc_de_Poble/260831_0723_BUNDLE_auditoria.md|promet arreglar «tooling/brain/despertar.mjs» i cap porta ho fa complir",
-    "P3|_wiki_de_poble/05_Escriptori_Soc_de_Poble/260831_0803_BUNDLE_auditoria.md|promet arreglar «tooling/brain/despertar.mjs» citant línia exacta i cap porta ho fa complir",
-    "P3|_wiki_de_poble/05_Escriptori_Soc_de_Poble/260831_0803_BUNDLE_auditoria.md|promet arreglar «tooling/brain/despertar.mjs» i cap porta ho fa complir",
-    "P3|_wiki_de_poble/05_Escriptori_Soc_de_Poble/260831_1306_BUNDLE_auditoria.md|promet arreglar «tooling/brain/despertar.mjs» citant línia exacta i cap porta ho fa complir",
-    "P3|_wiki_de_poble/05_Escriptori_Soc_de_Poble/260831_1306_BUNDLE_auditoria.md|promet arreglar «tooling/brain/despertar.mjs» i cap porta ho fa complir"
+    "P3|_wiki_de_poble/05_Escriptori_Soc_de_Poble/260901_2007_BUNDLE_auditoria_global.md|promet arreglar «tooling/brain/despertar.mjs» citant línia exacta i cap porta ho fa complir",
+    "P3|_wiki_de_poble/05_Escriptori_Soc_de_Poble/260901_2007_BUNDLE_auditoria_global.md|promet arreglar «tooling/brain/despertar.mjs» i cap porta ho fa complir",
+    "P3|_wiki_de_poble/05_Escriptori_Soc_de_Poble/260901_2031_BUNDLE_auditoria_global_v3.md|promet arreglar «tooling/brain/despertar.mjs» citant línia exacta i cap porta ho fa complir",
+    "P3|_wiki_de_poble/05_Escriptori_Soc_de_Poble/260901_2031_BUNDLE_auditoria_global_v3.md|promet arreglar «tooling/brain/despertar.mjs» i cap porta ho fa complir"
   ]
 }

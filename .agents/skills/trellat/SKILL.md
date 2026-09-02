@@ -1,18 +1,20 @@
 ---
-name: trellat
+tipus: skill
+estat: canonic
 description: Protocol obligatori de reflexió prèvia a qualsevol modificació de codi i frontera operativa. Fusiona Les Tres Pedres, verificació de canvis i control d'abast.
-version: 2.0.0
-status: canonic
-owner: project-governance
-purpose: Forçar una pausa reflexiva abans de cada acció i marcar les línies roges operatives.
+name: trellat
 triggers_on:
-- "codi"
-- "crea"
-- "arquitectura"
-- "canvia"
-- "modifica"
-- "esborra"
-lang: ca
+  - codi
+  - crea
+  - arquitectura
+  - canvia
+  - modifica
+  - esborra
+core: true
+tags:
+  - skill
+  - core
+  - qualitat
 ---
 
 # SKILL: TRELLAT — El ritme del picapedrer i la frontera de confiança

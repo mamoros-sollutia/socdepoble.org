@@ -1,14 +1,9 @@
 ---
-estat: canonic
 tipus: document
+estat: canonic
 description: Font Única de Veritat per a la direcció del projecte.
-temes:
-- sistema
 tags:
-- coneixement
-- cultura
-- saber
-- socdepoble
+  - saber
 ---
 # 🏡 VISIÓ I MISSIÓ DE SÒC DE POBLE
 *Font Única de Veritat per a la direcció del projecte.*
@@ -55,3 +50,13 @@ Crear una **Xarxa Social Descentralitzada de Programari Lliure** on:
 ---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]
+
+## Sinapsis Entrants (Autogenerat)
+
+- [[DOC_Logos_Oficials|00_SER_Brain_Identitat/DOC_Logos_Oficials.md]] — [[00_visio_i_pilars]]
+- [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maquina_Tecnica/00_arquitectura_tecnica_unificada.md]] — [[00_visio_i_pilars|Visió i pilars]]
+- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[00_visio_i_pilars]]
+- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[00_visio_i_pilars]]
+- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[00_visio_i_pilars]]
+
+<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

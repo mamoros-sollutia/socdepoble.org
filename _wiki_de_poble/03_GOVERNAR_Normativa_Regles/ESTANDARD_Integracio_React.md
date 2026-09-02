@@ -1,7 +1,7 @@
 ---
-estat: "canonic"
-tipus: "normativa"
-description: "Lleis de pas i manual d'integració Plug & Play entre el mòdul Pedra Seca i la SPA React de Sollutia."
+tipus: norma
+estat: canonic
+description: Lleis de pas i manual d'integració Plug & Play entre el mòdul Pedra Seca i la SPA React de Sollutia.
 ---
 # 📜 LLEIS DE PAS: MANUAL D'INTEGRACIÓ REACT / PEDRA SECA 📜
 
@@ -75,3 +75,12 @@ Dins del mòdul Pedra Seca, no existeixen referències forçades a arrels absolu
 ## Taxonomia
 - **Categoria:** [[Govern]]
 - **Etiquetes:** [[Graf]]
+
+## Sinapsis Entrants (Autogenerat)
+
+- [[00_INDEX|00_INDEX.md]] — [[ESTANDARD_Integracio_React]]
+- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[ESTANDARD_Integracio_React]]
+- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[ESTANDARD_Integracio_React]]
+- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[ESTANDARD_Integracio_React]]
+
+<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

@@ -22,38 +22,35 @@ export default function TranslationsSection() {
             <button
               key={item.code}
               onClick={() => setLanguage(item.code)}
-              style={{
+              style={{ 
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 padding: 'var(--sdp-space-5)',
                 borderRadius: 'var(--sdp-radi-g)',
                 border: isActive ? '2px solid var(--sdp-accent)' : '1px solid var(--sdp-vora-control)',
-                background: isActive ? 'var(--sdp-fons-subtil)' : 'var(--sdp-fons-targeta)',
+                
                 cursor: 'pointer',
                 transition: 'all var(--sdp-t)',
                 width: '100%',
                 textAlign: 'left'
-              }}
+               }}
             >
               <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <span style={{ fontWeight: '700', fontSize: '1.2rem', color: isActive ? 'var(--sdp-accent)' : 'var(--sdp-text-titol)' }}>
+                <span >
                   {item.name}
                 </span>
-                <span style={{ fontSize: '0.9rem', color: 'var(--sdp-text-suau)', marginTop: 'var(--sdp-space-1)' }}>
+                <span style={{    marginTop: 'var(--sdp-space-1)'  }}>
                   {item.code.toUpperCase()}
                 </span>
               </div>
               
               <div style={{ display: 'flex', alignItems: 'center' }}>
-                <span style={{ 
-                  fontSize: '0.85rem', 
-                  fontWeight: '600',
+                <span style={{  
+                   
+                  
                   padding: '4px 12px',
-                  borderRadius: '16px',
-                  background: isActive ? 'var(--sdp-accent)' : 'var(--sdp-fons-invers)',
-                  color: isActive ? 'var(--sdp-sobre-accent)' : 'var(--sdp-text-invers)'
-                }}>
+                  borderRadius: '16px'}}>
                   {isActive ? t('section.translations.status.active', 'Actiu') : t('section.translations.status.available', 'Disponible')}
                 </span>
               </div>

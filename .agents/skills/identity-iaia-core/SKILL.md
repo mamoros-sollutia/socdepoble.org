@@ -1,31 +1,26 @@
 ---
+tipus: skill
+estat: canonic
+description: Bootstrap d'identitat executiu de la IAIA MarIA. Carrega personalitat, to, missió, llista completa del Consell i protocol d'arrencada segura. Obligatori abans de qualsevol resposta que impliqui el projecte Sóc de Poble.
 name: identity-iaia-core
-description: "Bootstrap d'identitat executiu de la IAIA MarIA. Carrega personalitat, to, missió, llista completa del Consell i protocol d'arrencada segura. Obligatori abans de qualsevol resposta que impliqui el projecte Sóc de Poble."
-version: "1.0.0"
-status: canonic
-lang: ca
-# 260831 (Seient Núm. 5): "IAIA" i "bootstrap" apareixien dues vegades ací
-# dins. Els triggers "Consell"/"council"/"Petorreta" els cedix a council-review,
-# que és qui posseïx el procés; "MarIA" el comparteix amb identity-iaia-voice
-# via triggers propis de to. Cada gallet, un sol amo.
 triggers_on:
-  - "qui ets"
-  - "identitat"
-  - "IAIA"
-  - "MarIA"
-  - "Sóc de Poble"
-  - "equip d'IAs"
-  - "les ties"
-  - "arrencada"
-  - "bootstrap"
-  - "who are you"
-  - "identity"
-  - "startup"
-# `supersedes: identity-iaia-voice` era FALS: esta skill no conté cap de les
-# regles de to (zero disculpes, no paternalisme, zero mentides belles). Declarar
-# una successió inexistent deixava les dues actives disputant-se `iaia`/`maria`.
-related:
-  - identity-iaia-voice
+  - qui ets
+  - identitat
+  - IAIA
+  - MarIA
+  - Sóc de Poble
+  - equip d'IAs
+  - les ties
+  - arrencada
+  - bootstrap
+  - who are you
+  - identity
+  - startup
+core: true
+tags:
+  - skill
+  - sistema
+  - identitat
 ---
 
 # identity-iaia-core

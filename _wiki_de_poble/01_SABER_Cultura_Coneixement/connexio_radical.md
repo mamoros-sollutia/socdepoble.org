@@ -1,14 +1,9 @@
 ---
-estat: canonic
 tipus: document
-description: "Defineix una interacció centrada en connectar recursos, sense mètriques socials d'aprovació."
-temes:
-- sistema
+estat: canonic
+description: Defineix una interacció centrada en connectar recursos, sense mètriques socials d'aprovació.
 tags:
-- coneixement
-- cultura
-- saber
-- socdepoble
+  - saber
 ---
 # Connexió Radical (Anti-Me-Gusta)
 
@@ -43,3 +38,12 @@ Hi ha un concepte horitzontal que travessa tot el projecte i totes les "cards": 
 ---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]
+
+## Sinapsis Entrants (Autogenerat)
+
+- [[00_INDEX|00_INDEX.md]] — [[connexio_radical]]
+- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[connexio_radical]]
+- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[connexio_radical]]
+- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[connexio_radical]]
+
+<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

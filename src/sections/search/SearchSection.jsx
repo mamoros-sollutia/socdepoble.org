@@ -52,7 +52,7 @@ export default function SearchSection() {
           );
         })}
         {query && results.length === 0 && (
-          <div style={{ textAlign: 'center', padding: 'var(--sdp-space-8)', color: 'var(--sdp-text-suau)' }}>
+          <div style={{  textAlign: 'center', padding: 'var(--sdp-space-8)'}}>
             {t('section.search.noResults', 'Cap resultat.')}
           </div>
         )}

@@ -1,3 +1,8 @@
+---
+tipus: document
+estat: esborrany
+description: Petorreta del Consell (Vibe / Dola)
+---
 Ancoratge: [[00_INDEX_ESCRIPTORI]]
 
 # Petorreta del Consell (Vibe / Dola)

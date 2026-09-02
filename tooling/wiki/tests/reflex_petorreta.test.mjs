@@ -140,7 +140,7 @@ async function setupFixture(t) {
   await write(root, 'tooling/wiki/tests/doctor_dependency.mjs', '// dependència transitiva canària\n');
   await write(root, CANARY_REL, '---\nestat: "canonic"\ntipus: "document"\ndescription: "Document canari de baseline per a les proves del Reflex."\n---\n# Canari\n\n[[Canari_Restore]]\n');
   await write(root, GRAPH_REL, `${JSON.stringify({
-    search: '-path:"90_arxiu_historic" -path:"05_Escriptori_Soc_de_Poble" -path:"00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR" -path:"00_SER_Brain_Identitat/Sollutia" -path:"03_GOVERNAR_Normativa_Regles/agents_actius"',
+    search: '-path:"90_historic" -path:"05_Escriptori_Soc_de_Poble" -path:"00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR" -path:"00_SER_Brain_Identitat/Sollutia" -path:"03_GOVERNAR_Normativa_Regles/agents_actius"',
     showAttachments: false,
     hideUnresolved: true,
     showOrphans: false,

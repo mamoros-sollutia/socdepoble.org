@@ -6,7 +6,7 @@ description: "Documentació canònica de Sóc de Poble."
 # Sóc de Poble: Portal de Pobles Connectats
 **The Civic Hosting Stack for Rural Resilience**
 
-Sóc de Poble és una infraestructura digital cívica, concebuda i dissenyada mitjançant el [Sistema de Disseny Pedra Seca](/tooling/wiki/arquitectura/03-design.md).
+Sóc de Poble és una infraestructura digital cívica, concebuda i dissenyada mitjançant el Sistema de Disseny Pedra Seca.
 El projecte empra un empaquetament com a Llibreria (UMD/ESM) per oferir una integració fluïda i resistent en qualsevol lloc web (especialment WordPress), utilitzant Supabase com a font única de veritat.
 
 La missió és proporcionar una eina on l'intercanvi cultural federat i la comunicació cívica (alertes, agenda) puguen funcionar de manera resilients, àgils i directes per al món rural.
@@ -22,12 +22,12 @@ La missió és proporcionar una eina on l'intercanvi cultural federat i la comun
 ## Arrencar
 
 ```bash
-pnpm install --frozen-lockfile
-pnpm dev
+npm install
+npm run dev
 ```
 
 La instal·lació només genera derivats ignorats i reproduïbles; no ha de canviar
-`package.json`, `pnpm-lock.yaml` ni l'índex Git. S'exigeix l'ús de `pnpm` per al control estricte de dependències (monorepo).
+`package.json` ni l'índex Git. S'exigeix l'ús de `npm` per al control estricte de dependències.
 
 ## Base de dades
 
@@ -37,7 +37,7 @@ El projecte usa **Supabase** com a base de dades remota canònica i font única 
 
 Si vols entendre com està repartit el projecte i on tocar cada cosa, mira:
 
-- [El Cervell Tècnic: Wiki de Poble](_wiki_de_poble/00_index.md)
+- [El Cervell Tècnic: Wiki de Poble](_wiki_de_poble/00_INDEX.md)
 - [Regles de Seguretat i Agents](.agents/AGENTS.md)
 - [Protocol de la Petorreta](.agents/PROTOCOL_PETORRETA.md)
 
@@ -62,7 +62,7 @@ Passos mínims:
 1. Crear un projecte a Supabase.
 2. Executar `supabase/schema.sql`.
 3. Executar `supabase/seed.sql`.
-4. Crear un `.env` basat en `.env.example`.
+4. Crear un `.env` amb les variables corresponents.
 5. Arrancar el projecte.
 
 Exemple de `.env`:
@@ -77,14 +77,14 @@ Regenerar el SQL de dades seed és una mutació governada, que requereix el sege
 
 ## Integritat de la Wiki
 
-La definició local de CI de `.github/workflows/wiki-integrity.yml` comprova l'auditoria estricta. Només quedarà activa en GitHub després de versionar-la.
+La integritat de la Wiki està garantida mitjançant un contracte rígid auditat abans de cada commit. Totes les notes han de complir amb un esquema reduït de 9 propietats YAML i cap arxiu operatiu pot quedar orfe sense un índex d'ancoratge.
 
 ## Privacitat i la "Gestoria de Poble"
 
 Aquest repositori conté el codi i el cervell tècnic (`_wiki_de_poble`). L'arquitectura informàtica està totalment separada de la burocràcia del teu grup. 
 
-Per a mantenir la privacitat dels documents de la teua associació o poble, lliurem una plantilla verge anomenada `_templates/gestoria_base`. Hauràs de moure aquesta carpeta **fora del repositori** i utilitzar-la com un "Vault" d'Obsidian independent per a arxivar la teua burocràcia, contractes, assumptes privats i multimèdia sense perill que es pugen a GitHub.
+Per a mantenir la privacitat dels documents de la teua associació o poble, hauràs de crear una carpeta **fora del repositori** i utilitzar-la com un "Vault" d'Obsidian independent per a arxivar la teua burocràcia, contractes, assumptes privats i multimèdia sense perill que es pugen a GitHub.
 
 ---
 
-**Ancoratge de Seguretat:** [[00_index]]
+**Ancoratge de Seguretat:** [[00_INDEX]]

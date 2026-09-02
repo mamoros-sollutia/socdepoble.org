@@ -1,18 +1,11 @@
 ---
-title: Homepage
-source: https://community.obsidian.md/plugins/homepage
-author: null
-published: null
-created: 2026-07-22
-description: "Open a note, base, or workspace on startup, or set it for quick access later."
-tags:
-- actes
-- clippings
-- escriptori
-- socdepoble
-- temporal
-estat: auditat
 tipus: document
+estat: canonic
+description: Open a note, base, or workspace on startup, or set it for quick access later.
+tags:
+  - acta
+  - escriptori
+  - temporal
 ---
 [mirnovov](https://community.obsidian.md/users/mirnovov) 1.2M downloads
 
@@ -42,3 +35,12 @@ Additionally, pre-release versions can be either installed manually or via tools
 ## Taxonomia
 - **Categoria:** [[Maquina]]
 - **Etiquetes:** [[Graf]]
+
+## Sinapsis Entrants (Autogenerat)
+
+- [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maquina_Tecnica/00_arquitectura_tecnica_unificada.md]] — [[Homepage]]
+- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[Homepage]]
+- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[Homepage]]
+- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[Homepage]]
+
+<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

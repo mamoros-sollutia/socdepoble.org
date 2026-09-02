@@ -45,7 +45,7 @@ const DEUTE = path.join(ARREL, '.promesa-deute.json');
 
 const DIRS = ['tooling', 'scripts', '.agents'];
 const EXT = new Set(['.mjs', '.js', '.cjs', '.sh', '.py']);
-const EXCLOU = /(^|\/)(node_modules|\.git|dist|build|coverage|90_arxiu_historic)(\/|$)/;
+const EXCLOU = /(^|\/)(node_modules|\.git|dist|build|coverage|90_historic)(\/|$)/;
 
 /* ─────────────────────────── Recollida de fonts ─────────────────────────── */
 

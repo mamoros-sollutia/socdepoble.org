@@ -21,7 +21,7 @@ export const PILARS_OPERATIUS = [
 ];
 
 export const ZONES_CICLE = [
-  '90_arxiu_historic',
+  '90_historic',
   '05_Escriptori_Soc_de_Poble',
 ];
 
@@ -49,7 +49,7 @@ function semanticZone(relPath) {
   const rel = posix(relPath);
   if (MIRROR_PREFIXES.some((prefix) => isPrefix(rel, prefix))) return 'mirall';
   if (VENDOR_PREFIXES.some((prefix) => isPrefix(rel, prefix))) return 'vendor';
-  if (rel.startsWith('90_arxiu_historic/')) return 'arxiu';
+  if (rel.startsWith('90_historic/')) return 'arxiu';
   if (rel.startsWith('05_Escriptori_Soc_de_Poble/')) return 'escriptori';
   if (/^0[0-3]_/.test(rel)) return 'operatiu';
   return 'suport';

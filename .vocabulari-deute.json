@@ -1,6 +1,6 @@
 {
   "classe-forastera": {
-    "max": 152,
+    "max": 162,
     "identitats": [
       "classe-forastera|src/app/App.jsx|app-brand__mark",
       "classe-forastera|src/app/App.jsx|app-sidebar-nav-footer",
@@ -53,6 +53,10 @@
       "classe-forastera|src/sections/dispositius/DevicesSection.jsx|sdp-stat-info",
       "classe-forastera|src/sections/dispositius/DevicesSection.jsx|sdp-stat-label",
       "classe-forastera|src/sections/dispositius/DevicesSection.jsx|sdp-stat-value",
+      "classe-forastera|src/sections/disseny/DesignSection.jsx|sdp-chat-bubble",
+      "classe-forastera|src/sections/disseny/DesignSection.jsx|sdp-chat-bubble--ai",
+      "classe-forastera|src/sections/disseny/DesignSection.jsx|sdp-chat-bubble--user",
+      "classe-forastera|src/sections/disseny/DesignSection.jsx|sdp-chat-bubble-meta",
       "classe-forastera|src/sections/disseny/DesignSection.jsx|sdp-design-system",
       "classe-forastera|src/sections/disseny/DesignSection.jsx|sdp-manual-disseny",
       "classe-forastera|src/sections/disseny/DesignSection.jsx|sdp-mb-12",
@@ -111,7 +115,11 @@
       "classe-forastera|src/sections/profile/MyProfileSection.jsx|sdp-text-sobre-accent",
       "classe-forastera|src/sections/profile/MyProfileSection.jsx|sdp-text-xl",
       "classe-forastera|src/sections/profile/ProfileSection.jsx|card-link--active",
-      "classe-forastera|src/sections/text/TextSection.jsx|sdp-text-content"
+      "classe-forastera|src/sections/text/TextSection.jsx|sdp-text-content",
+      "classe-forastera|src/sections/xat/XatSection.jsx|sdp-chat-bubble",
+      "classe-forastera|src/sections/xat/XatSection.jsx|sdp-chat-bubble--ai",
+      "classe-forastera|src/sections/xat/XatSection.jsx|sdp-chat-bubble--user",
+      "classe-forastera|src/sections/xat/XatSection.jsx|sdp-chat-bubble-meta"
     ]
   },
   "classe-opaca": {

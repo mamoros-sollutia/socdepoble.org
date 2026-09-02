@@ -31,7 +31,9 @@
     redirector obert. Això és robatori de sessions.
 
   DESPLEGAMENT:
-    Servix-lo com a fitxer estàtic a https://auth.socdepoble.cat/callback
+    Servix-lo com a fitxer estàtic a https://auth.socdepoble.org/callback
+    (ÚNICA font de veritat: RELAY_PER_DEFECTE de src/data/oauthRelay.js.
+     Ho verifica tooling/gates/tractor-frontera-auth.mjs.)
     i registra EIXA adreça (i només eixa) a Supabase › Authentication ›
     URL Configuration › Redirect URLs. A Google Cloud Console no cal tocar
     res: allí ja hi ha el callback de Supabase.
@@ -83,11 +85,27 @@
   /* ─── LLISTA BLANCA D'ORÍGENS ───
      Afegix ací cada entorn nou. Igualtat exacta, sense barra final. */
   var ORIGENS_PERMESOS = [
+    /* ── Domini propi ── */
     'https://socdepoble.cat',
     'https://www.socdepoble.cat',
     'https://socdepoble.org',
     'https://www.socdepoble.org',
-    // Desenvolupament local. Ports fixos, mai comodins.
+
+    /* ── Amfitrions de Sollutia ──────────────────────────────────────────
+       CADA WordPress on s'incrusta el component és un origen distint, i cap
+       origen absent d'esta llista pot entrar amb Google. Fins que no
+       s'òmpliga, l'entrada només funciona als dominis propis i en local.
+
+       Afegix ací l'origen EXACTE de cada desplegament, sense barra final i
+       amb el port si en té. Un per línia. Res de comodins.
+
+       Exemple:
+         'https://elrentonar.example',
+         'https://poble.clientdesollutia.example',
+    ── */
+    // ← AFIG ACÍ ELS ORÍGENS DE SOLLUTIA
+
+    /* ── Desenvolupament local. Ports fixos, mai comodins. ── */
     'http://localhost:3340',
     'http://localhost:5173',
     'http://127.0.0.1:3340'
@@ -96,9 +114,21 @@
   var params = new URLSearchParams(window.location.search);
   var codi = params.get('code');
   var origen = params.get('sdp_origin');
+  /* `sdp_path` és tan controlable per l'atacant com `sdp_origin`, i fins a la
+     V7.1 només se li forçava una barra inicial. No pot creuar d'origen (el
+     host ja el fixa `origen`), però un `#` dins seu trencava el fragment i
+     matava l'entrada en silenci, i un `//` inicial obri camins protocol-relatius.
+     Ara: només camí, i qualsevol cosa dubtosa cau a l'arrel. */
   var path = params.get('sdp_path') || '';
-  // Assegurar que path comença per / per evitar rutes relatives estranyes, excepte si està buit
-  if (path && path.charAt(0) !== '/') path = '/' + path;
+  if (path) {
+    if (path.charAt(0) !== '/') path = '/' + path;
+    var camiValid = path.indexOf('#') === -1
+      && path.indexOf('\\') === -1
+      && path.indexOf('..') === -1
+      && path.slice(0, 2) !== '//'
+      && path.length <= 512;
+    if (!camiValid) path = '/';
+  }
   var errProveidor = params.get('error_description') || params.get('error');
 
   function mostraError(titol, cos, urlTornar) {

@@ -1,14 +1,9 @@
 ---
-estat: canonic
 tipus: document
-description: "Descriu la forja tècnica de la PWA i les decisions d'arquitectura del projecte."
-temes:
-- sistema
+estat: canonic
+description: Descriu la forja tècnica de la PWA i les decisions d'arquitectura del projecte.
 tags:
-- coneixement
-- cultura
-- saber
-- socdepoble
+  - saber
 ---
 # La Forja de la PWA i la seua Arquitectura (Volum II)
 **Categoria:** Arquitectura
@@ -51,3 +46,12 @@ La configuració PWA pot emmagatzemar l'esquelet estàtic mitjançant un Service
 ---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]
+
+## Sinapsis Entrants (Autogenerat)
+
+- [[00_INDEX|00_INDEX.md]] — [[Arquitectura_La_Forja]]
+- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[Arquitectura_La_Forja]]
+- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[Arquitectura_La_Forja]]
+- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[Arquitectura_La_Forja]]
+
+<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

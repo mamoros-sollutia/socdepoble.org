@@ -1,14 +1,9 @@
 ---
-estat: canonic
 tipus: document
+estat: canonic
 description: "Defineix el Trellat com a prudència verificable: simplicitat, accessibilitat, reversibilitat i evidència abans d''afirmar."
-temes:
-- sistema
 tags:
-- coneixement
-- cultura
-- saber
-- socdepoble
+  - saber
 ---
 # El Trellat — patró de disseny rústic
 
@@ -54,3 +49,12 @@ convertisca en dogma.
 ---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]
+
+## Sinapsis Entrants (Autogenerat)
+
+- [[00_INDEX_IDENTITAT|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[01_trellat]]
+- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[01_trellat]]
+- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[01_trellat]]
+- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[01_trellat]]
+
+<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

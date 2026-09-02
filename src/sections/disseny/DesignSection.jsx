@@ -17,7 +17,7 @@ function ComponentDoc({ title, description, technical, children }) {
         <h3 className="sdp-m-0">{title}</h3>
         {description && <p className="sdp-text-suau sdp-mt-2">{description}</p>}
         {technical && (
-          <div className="alert alert-info sdp-mt-4 sdp-p-4" style={{ fontSize: '0.9rem', marginBottom: '1rem', borderRadius: 'var(--sdp-radi-m)' }}>
+          <div className="alert alert-info sdp-mt-4 sdp-p-4" style={{   marginBottom: '1rem', borderRadius: 'var(--sdp-radi-m)'  }}>
             <strong>Context Tècnic: </strong> {technical}
           </div>
         )}

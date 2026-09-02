@@ -1,14 +1,9 @@
 ---
-estat: futur
 tipus: document
-description: "Descriu com a visió futura una sincronització CRDT/P2P i explicita que Y.js i WebRTC no estan implementats."
-temes:
-- sistema
+estat: esborrany
+description: Descriu com a visió futura una sincronització CRDT/P2P i explicita que Y.js i WebRTC no estan implementats.
 tags:
-- coneixement
-- cultura
-- saber
-- socdepoble
+  - saber
 ---
 # Sistema nerviós CRDT/P2P — visió futura
 
@@ -56,3 +51,12 @@ PWA i integració Supabase amb fallbacks.
 ---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]
+
+## Sinapsis Entrants (Autogenerat)
+
+- [[00_INDEX|00_INDEX.md]] — [[Arquitectura_Sistema_Nervios]]
+- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[Arquitectura_Sistema_Nervios]]
+- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[Arquitectura_Sistema_Nervios]]
+- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[Arquitectura_Sistema_Nervios]]
+
+<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

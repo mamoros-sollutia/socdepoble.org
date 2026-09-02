@@ -1,11 +1,19 @@
 ---
-name: abocament-total
+tipus: skill
+estat: actiu
 description: Skill per evitar la mutilació de context i garantir la Veritat Completa a les IAs.
-lang: ca
-status: active
-version: 1.0.0
-# 260831: cedix el gallet `petorreta` — council-review posseïx el procés de Consell.
-triggers_on: ["bundle", "abocament", "context total", "veritat completa"]
+name: abocament-total
+triggers_on:
+  - bundle
+  - abocament
+  - context total
+  - veritat completa
+  - abocament total
+core: false
+tags:
+  - skill
+  - sistema
+  - context
 ---
 
 # Llei de la Completitud (Anti-Ocultació)

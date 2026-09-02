@@ -118,6 +118,31 @@ function expandix(nom, vist = new Set(), profunditat = 0) {
   if (!cos) return [{ tipus: 'inexistent', nom }];
 
   const passos = [];
+  
+  if (cos.includes('run-portes.mjs')) {
+    const runPortesPath = path.join(ARREL, 'tooling/gates/run-portes.mjs');
+    if (fs.existsSync(runPortesPath)) {
+      const runPortesCos = fs.readFileSync(runPortesPath, 'utf8');
+      const arrayMatch = runPortesCos.match(/const passos = \[([\s\S]*?)\];/);
+      if (arrayMatch) {
+        const lines = arrayMatch[1].split('\n');
+        for (const line of lines) {
+          const npmRunMatch = line.match(/args:\s*\[['"]run['"],\s*['"](.*?)['"]/);
+          if (npmRunMatch) {
+            passos.push({ tipus: 'script', nom: npmRunMatch[1], ordre: passos.length });
+            passos.push(...expandix(npmRunMatch[1], vist, profunditat + 1));
+          } else {
+            const nodeMatch = line.match(/cmd:\s*['"](.*?)['"].*?args:\s*\[['"](.*?)['"]/);
+            if (nodeMatch) {
+               passos.push({ tipus: 'ordre', ordre: `${nodeMatch[1]} ${nodeMatch[2]}` });
+            }
+          }
+        }
+        return passos;
+      }
+    }
+  }
+
   for (const tros of cos.split(/&&|\|\||;/).map((s) => s.trim()).filter(Boolean)) {
     const run = /^npm\s+run\s+([a-z0-9:_-]+)/i.exec(tros);
     if (run) {

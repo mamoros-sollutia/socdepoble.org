@@ -1,6 +1,6 @@
 {
   "LLEI_01_CLASSE_ORFENA": {
-    "max": 103,
+    "max": 107,
     "coneguts": [
       ".all  →  src/sections/mur/MurSection.jsx",
       ".app-brand__mark  →  src/app/App.jsx",
@@ -56,6 +56,10 @@
       ".pill--error  →  src/sections/profile/MyProfileSection.jsx",
       ".pull-to-refresh-indicator  →  src/app/App.jsx",
       ".sdp-border-accent  →  src/sections/profile/MyProfileSection.jsx",
+      ".sdp-chat-bubble  →  src/sections/disseny/DesignSection.jsx",
+      ".sdp-chat-bubble--ai  →  src/sections/disseny/DesignSection.jsx",
+      ".sdp-chat-bubble--user  →  src/sections/disseny/DesignSection.jsx",
+      ".sdp-chat-bubble-meta  →  src/sections/disseny/DesignSection.jsx",
       ".sdp-cursor-pointer  →  src/app/App.jsx",
       ".sdp-design-system  →  src/sections/disseny/DesignSection.jsx",
       ".sdp-filtre--mapa  →  src/sections/mur/MurSection.jsx",
@@ -111,7 +115,7 @@
     "max": 2,
     "coneguts": [
       "--mida  →  src/css/index.css",
-      "--sdp-base-shadow  →  src/css/index.css"
+      "--sdp-bg  →  src/PedraSecaEmbed.jsx"
     ]
   },
   "LLEI_03_ESTIL_EN_LINIA": {

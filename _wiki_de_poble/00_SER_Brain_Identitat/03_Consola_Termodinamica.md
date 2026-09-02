@@ -1,14 +1,11 @@
 ---
-estat: canonic
 tipus: document
-description: "Separa els controls de salut implementats de les mètriques conceptuals i prohibix fabricar percentatges sense evidència."
-temes:
-- sistema
+estat: canonic
+description: Separa els controls de salut implementats de les mètriques conceptuals i prohibix fabricar percentatges sense evidència.
 tags:
-- core
-- genoma
-- identitat
-- socdepoble
+  - core
+  - genoma
+  - identitat
 ---
 # Consola Termodinàmica
 
@@ -75,9 +72,24 @@ i una eixida que explique exactament què ha fallat.
 - **Etiquetes:** [[Graf]]
 
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX_IDENTITAT]]
 
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX_IDENTITAT]]
+
+## Sinapsis Entrants (Autogenerat)
+
+- [[00_INDEX_IDENTITAT|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[03_Consola_Termodinamica]]
+- [[CORE_Registre_Automillora|00_SER_Brain_Identitat/CORE_Registre_Automillora.md]] — | 260707_1000 | 260707_1100 | ~23h              | 4       | Exigència Matemàt...
+- [[el_projecte|00_SER_Brain_Identitat/el_projecte.md]] — Assistència de la Ment Colmena per processar dades. La **[[03_Consola_Termodi...
+- [[a11y_seo_trellat|02_ACTUAR_Maquina_Tecnica/skills/a11y_seo_trellat.md]] — [[03_Consola_Termodinamica]]
+- [[futur_adaptacio|02_ACTUAR_Maquina_Tecnica/skills/futur_adaptacio.md]] — [[03_Consola_Termodinamica]]
+- [[index_trellat|02_ACTUAR_Maquina_Tecnica/skills/index_trellat.md]] — [[03_Consola_Termodinamica]]
+- [[MOTOR_OFFLINE|02_ACTUAR_Maquina_Tecnica/skills/MOTOR_OFFLINE.md]] — [[03_Consola_Termodinamica]]
+- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[03_Consola_Termodinamica]]
+- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[03_Consola_Termodinamica]]
+- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[03_Consola_Termodinamica]]
+
+<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

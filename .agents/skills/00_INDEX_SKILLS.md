@@ -1,6 +1,7 @@
 ---
-estat: canonic
 tipus: index
+estat: canonic
+description: ÍNDEX CANÒNIC DE SKILLS
 ---
 # ÍNDEX CANÒNIC DE SKILLS
 
@@ -24,6 +25,7 @@ Aquestes skills s'apliquen sempre per validar l'entorn abans d'executar tasques 
 - [[guia-ampliacio/SKILL|guia-ampliacio]]: Guia d'Ampliació i Modularitat (Com afegir funcionalitat).
 - [[core-higiene-reflexa/SKILL|core-higiene-reflexa]]: Llei d'ancoratge i tancament. Controla el cicle sencer: obrir, classificar, ancorar i tancar.
 - [[identity-iaia-core/SKILL|identity-iaia-core]]: Bootstrap d'identitat executiu de la IAIA MarIA.
+- [[reflexio-previa/SKILL|reflexio-previa]]: Filtre de seguretat cognitiva abans d'iniciar qualsevol tasca.
 
 ## Skills de Tasca
 - [[council-review/SKILL|council-review]]: Fusió de deliberació, avaluacions entre membres del Consell i anàlisi DAFO.

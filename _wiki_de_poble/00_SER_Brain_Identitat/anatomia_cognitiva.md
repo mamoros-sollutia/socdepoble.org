@@ -1,14 +1,11 @@
 ---
-estat: esborrany
 tipus: document
-description: "Descriu una metàfora de control agentiu sempre subordinada al Reflex i a l'autorització humana."
-temes:
-- sistema
+estat: esborrany
+description: Descriu una metàfora de control agentiu sempre subordinada al Reflex i a l'autorització humana.
 tags:
-- core
-- genoma
-- identitat
-- socdepoble
+  - core
+  - genoma
+  - identitat
 ---
 # 🧠 SKILL: Anatomia Cognitiva (Cerebel, Cingulat i Executiu)
 
@@ -40,9 +37,19 @@ L'aprenentatge per reforç local (Epigenètica de la màquina). En lloc de repen
 - **Etiquetes:** [[Graf]]
 
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX_IDENTITAT]]
 
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX_IDENTITAT]]
+
+## Sinapsis Entrants (Autogenerat)
+
+- [[00_INDEX_IDENTITAT|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[anatomia_cognitiva]]
+- [[self_repair|02_ACTUAR_Maquina_Tecnica/skills/self_repair.md]] — [[anatomia_cognitiva|Cingulat Anterior]]
+- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[anatomia_cognitiva]]
+- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[anatomia_cognitiva]]
+- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[anatomia_cognitiva]]
+
+<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

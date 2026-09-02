@@ -1,0 +1,45 @@
+import fs from 'fs';
+import path from 'path';
+
+const SKILLS_DIR = path.join(process.cwd(), '.agents/skills');
+const DEST_DIR = path.join(process.cwd(), '_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR');
+
+if (!fs.existsSync(DEST_DIR)) {
+  fs.mkdirSync(DEST_DIR, { recursive: true });
+}
+
+console.log('🧠 [Sincronitzador] Iniciant bolcat del cervell a la Wiki (Identitat)...');
+
+if (!fs.existsSync(SKILLS_DIR)) {
+  console.error('❌ No s\'ha trobat el directori de skills:', SKILLS_DIR);
+  process.exit(1);
+}
+
+const skillsDirs = fs.readdirSync(SKILLS_DIR).filter(file => {
+  return fs.statSync(path.join(SKILLS_DIR, file)).isDirectory();
+});
+
+let count = 0;
+
+for (const skillName of skillsDirs) {
+  const skillPath = path.join(SKILLS_DIR, skillName, 'SKILL.md');
+  if (fs.existsSync(skillPath)) {
+    let content = fs.readFileSync(skillPath, 'utf8');
+    const destPath = path.join(DEST_DIR, `AGENTS_${skillName}.md`);
+    
+    // Injectem el títol a sota del frontmatter per no trencar les metadades YAML
+    let finalContent = content;
+    const fmMatch = content.match(/^---\n[\s\S]*?\n---\n/);
+    if (fmMatch) {
+      finalContent = content.replace(fmMatch[0], `${fmMatch[0]}\n<!-- Aquest fitxer és un ESPILL (mirror) automàtic de .agents/skills/${skillName}/SKILL.md -->\n\n`);
+    } else {
+      finalContent = `<!-- Aquest fitxer és un ESPILL (mirror) automàtic de .agents/skills/${skillName}/SKILL.md -->\n\n` + content;
+    }
+    
+    fs.writeFileSync(destPath, finalContent, 'utf8');
+    console.log(`✅ Espill creat: AGENTS_${skillName}.md`);
+    count++;
+  }
+}
+
+console.log(`🎉 [Sincronitzador] ${count} skills sincronitzats correctament a l'arrel de la Identitat.`);

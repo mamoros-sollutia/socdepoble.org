@@ -1,3 +1,8 @@
+---
+tipus: document
+estat: esborrany
+description: 🏛️ PROMPT D'AUDITORIA PER AL CONSELL DE LES PETORRETAS
+---
 # 🏛️ PROMPT D'AUDITORIA PER AL CONSELL DE LES PETORRETAS
 *(Esborrany preparat per a la Fase 2)*
 

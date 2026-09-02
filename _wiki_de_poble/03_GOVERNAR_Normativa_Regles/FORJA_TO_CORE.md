@@ -1,14 +1,9 @@
 ---
-estat: futur
 tipus: protocol
-description: "Conserva com a proposta futura l'homologació de peces pures sense contradir la carcassa React/Vite actual."
-temes:
-- sistema
+estat: esborrany
+description: Conserva com a proposta futura l'homologació de peces pures sense contradir la carcassa React/Vite actual.
 tags:
-- govern
-- normativa
-- regles
-- socdepoble
+  - govern
 ---
 # Forja a Core — proposta futura
 
@@ -66,3 +61,13 @@ Només després de l'activació anterior, una peça candidata podria exigir:
 ---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]
+
+## Sinapsis Entrants (Autogenerat)
+
+- [[00_INDEX_IDENTITAT|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — `[[00_BIOS]]` és una redirecció històrica i `[[FORJA_TO_CORE]]` una proposta
+- [[AUDITORIA_CANONICA|02_ACTUAR_Maquina_Tecnica/skills/AUDITORIA_CANONICA.md]] — [[FORJA_TO_CORE]]
+- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — `[[00_BIOS]]` és una redirecció històrica i `[[FORJA_TO_CORE]]` una proposta
+- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — `[[00_BIOS]]` és una redirecció històrica i `[[FORJA_TO_CORE]]` una proposta
+- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — `[[00_BIOS]]` és una redirecció històrica i `[[FORJA_TO_CORE]]` una proposta
+
+<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

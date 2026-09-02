@@ -1,14 +1,11 @@
 ---
-estat: futur
 tipus: document
-description: "Especifica una possible integració futura amb connectors de disseny que sempre requerix discovery real."
-temes:
-- sistema
+estat: esborrany
+description: Especifica una possible integració futura amb connectors de disseny que sempre requerix discovery real.
 tags:
-- core
-- genoma
-- identitat
-- socdepoble
+  - core
+  - genoma
+  - identitat
 ---
 # 04. Connectors MCP de Disseny (Arquitectura PWA i Visual)
 
@@ -61,9 +58,19 @@ Mentre que Affinity és la nostra eina de base vectorial, **Stitch** actua com e
 - **Etiquetes:** [[Graf]]
 
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX_IDENTITAT]]
 
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX_IDENTITAT]]
+
+## Sinapsis Entrants (Autogenerat)
+
+- [[00_INDEX|00_INDEX.md]] — [[connectors_mcp_disseny]]
+- [[00_INDEX_IDENTITAT|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[connectors_mcp_disseny]]
+- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[connectors_mcp_disseny]]
+- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[connectors_mcp_disseny]]
+- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[connectors_mcp_disseny]]
+
+<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

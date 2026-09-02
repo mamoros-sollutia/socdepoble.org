@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import fs from 'fs';
 import path from 'path';
-import { execSync } from 'child_process';
+import { execFileSync } from 'child_process';
 import crypto from 'crypto';
 import os from 'os';
 
@@ -14,8 +14,23 @@ function ensureDirs() {
   if (!fs.existsSync(SITJA_DIR)) fs.mkdirSync(SITJA_DIR, { recursive: true });
 }
 
+function getFilesRecursively(dir) {
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
+  const files = [];
+  for (const entry of entries) {
+    if (entry.name === '.DS_Store') continue;
+    const res = path.resolve(dir, entry.name);
+    if (entry.isDirectory()) {
+      files.push(...getFilesRecursively(res));
+    } else {
+      files.push(res);
+    }
+  }
+  return files;
+}
+
 function getTreeHash(dirPath) {
-  const files = execSync(`find "${dirPath}" -type f | sort`).toString().trim().split('\n');
+  const files = getFilesRecursively(dirPath).sort();
   const hash = crypto.createHash('sha256');
   for (const file of files) {
     if (!file) continue;
@@ -68,7 +83,7 @@ function snapshot() {
   const tarPath = path.join(SITJA_DIR, tarName);
   
   if (!fs.existsSync(tarPath)) {
-    execSync(`tar -czf "${tarPath}" -C "${path.dirname(fullPath)}" "${path.basename(fullPath)}"`);
+    execFileSync('tar', ['-czf', tarPath, '-C', path.dirname(fullPath), path.basename(fullPath)]);
     console.log(`Snapshot creat: ${tarPath}`);
   } else {
     console.log(`Snapshot ja existeix: ${tarPath}`);
@@ -93,7 +108,7 @@ function restore(hash) {
   
   const tempExtract = path.join(CERVELLS_DIR, `extract_${timestamp}`);
   fs.mkdirSync(tempExtract);
-  execSync(`tar -xzf "${tarPath}" -C "${tempExtract}"`);
+  execFileSync('tar', ['-xzf', tarPath, '-C', tempExtract]);
   
   const extractedFolders = fs.readdirSync(tempExtract);
   if (extractedFolders.length !== 1) {

@@ -1,3 +1,8 @@
+---
+tipus: document
+estat: esborrany
+description: Petorreta del Consell (Claude - Part 2 i Lliurament)
+---
 Ancoratge: [[00_INDEX_ESCRIPTORI]]
 
 # Petorreta del Consell (Claude - Part 2 i Lliurament)

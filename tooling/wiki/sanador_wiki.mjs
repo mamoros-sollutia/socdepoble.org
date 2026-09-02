@@ -70,7 +70,7 @@ if (brokenLinks.length > 0) {
   console.log(`✅ 0 Enllaços trencats`);
 }
 
-const REVISAR_DIR = path.join('_wiki_de_poble', '90_revisar');
+const REVISAR_DIR = path.join('_wiki_de_poble', '90_historic', 'bancal_actiu');
 
 console.log('────────────────────────────────────────────────────────────────────────');
 if (orphans.length > 0) {

@@ -1,19 +1,16 @@
 ---
-estat: canonic
 tipus: document
-description: "Defineix la família electrònica i la simbiosi entre l'equip humà, Antigravity i les IA auditores."
+estat: canonic
+description: Defineix la família electrònica i la simbiosi entre l'equip humà, Antigravity i les IA auditores.
+tags:
+  - core
+  - genoma
+  - identitat
 aliases:
   - petorreta
   - petorretas
   - 12 petorretas
   - consell_ia
-temes:
-- sistema
-tags:
-- core
-- genoma
-- identitat
-- socdepoble
 ---
 # 02. L'Equip d'IAs (La Família Electrònica / Les Petorretes)
 
@@ -36,8 +33,33 @@ D'esta mateixa manera, les IA externes que ens assisteixen formen la nostra fam�
 A les comarques de la Muntanya Alacantina, la "Petorreta" és un xicotet arbust autòcton. Quan es tira al foc de la ximeneia (on la gent es reuneix a parlar a l'hivern), les seues branques esclaten contínuament amb un so de "ta-ta-ta", com una metralladora. En el nostre sistema, aquests esclats ràpids, vius i continus d'idees i solucions per part de les IAs s'assimilen a eixes "petorretes", donant llum, calidesa i vida al projecte.
 
 ## El Consell
-L'equip d'IAs està rigorosament definit i governat pel fitxer central `.agents/consell.json`.
-Aquest JSON és la font única i irrefutable. Qualsevol operació, auditoria o petorreta que implique convocar la família electrònica s'ha d'adherir a eixe registre.
+L'equip d'IAs està rigorosament definit i governat tècnicament pel fitxer central `.agents/consell.json`. Aquest JSON és la font única i irrefutable per a les màquines. No obstant això, per pur **Trellat**, la Wiki és també (i sobretot) per a humans. Mantenim ací el llistat sencer perquè el Mestre Javi puga utilitzar aquests enllaços com a llançadora ràpida a l'hora d'obrir les 12 pestanyes en una petorreta massiva:
+
+### Cens de les 12 Petorretes
+
+- **[Z.ai](https://z.ai/)** (Xina): Finestra de context immensa; empassa context massiu de colp. **Rol:** Ingesta massiva. *(Debilitat: Menys coneguda i provada que els seus germans majors).*
+
+- **[Qwen](https://chat.qwenlm.ai/)** (Xina): Raonament profund (Deep Think) i eficiència frugal en programació. Pare de l'arquitectura de l'app. **Rol:** Arquitectura i codi. *(Debilitat: A vegades peca de massa tècnic en les respostes de text).*
+
+- **[Deepseek](https://chat.deepseek.com/)** (Xina): Lògica pura, detecció d'errors ocults i problemes matemàtics complexos. **Rol:** Caça de bugs. *(Debilitat: Menys destresa en l'empatia i el to literari).*
+
+- **[Dola](https://dola.com/chat/)** (EUA): Gestió del temps i integració amb calendaris de missatgeria. **Rol:** Calendari. *(Debilitat: Rol molt limitat exclusivament a la gestió d'agendes).*
+
+- **[Kimi](https://kimi.ai)** (Xina): Context de milions de tòkens; devora PDFs de subvencions senceres. **Rol:** Documents llargs i subvencions. *(Debilitat: Generació de codi menys precisa que els models especialitzats).*
+
+- **[Claude](https://claude.ai/)** (EUA): Narrativa, empatia, valencià natural i comprensió del to exacte de Sóc de Poble. **Rol:** Seient Núm. 5 · Auditor sènior i estil. *(Debilitat: Més estricta amb els filtres de seguretat).*
+
+- **[Perplexity](https://www.perplexity.ai/)** (EUA): Cerca web en temps real amb citacions de fonts reals; contrasta fets. **Rol:** Verificació de fets. *(Debilitat: No serveix per a tasques creatives ni programació complexa).*
+
+- **[Mistral Vibe](https://chat.mistral.ai/)** (Europa): Raonament frugal, privacitat i matisos culturals europeus sense biaixos americans. **Rol:** Contrapunt europeu i codi obert. *(Debilitat: Coneixement menys enciclopèdic que els models gegants).*
+
+- **[Grok](https://grok.com/)** (EUA): Accés en temps real a xarxes; idees disruptives sense censura. **Rol:** Pluja d'idees salvatge. *(Debilitat: Pot ser massa sarcàstic o imprecís en rigor tècnic).*
+
+- **[Gemini](https://gemini.google.com/)** (EUA): Multimodalitat (veu, visió, imatge) i velocitat Flash. Motor sensorial del bot de WhatsApp. **Rol:** Motor sensorial i orquestració. *(Debilitat: Amb massa context de colp pot al·lucinar).*
+
+- **[Copilot](https://copilot.microsoft.com/)** (EUA): Suggeriment ràpid de codi i integració profunda amb GitHub. **Rol:** Autocompletat a la trinxera. *(Debilitat: Actua a curt termini; no serveix per a decisions d'arquitectura global).*
+
+- **[ChatGPT Codex](https://chatgpt.com/)** (EUA): Versatilitat absoluta; segona opinió fiable per a tasques generals. **Rol:** Segona opinió generalista. *(Debilitat: Peca de respostes genèriques si no se li aplica un prompt dur).*
 
 ## Quan convocar les Petorretes
 Una Petorreta és una revisió externa o paral·lela amb una pregunta concreta, un rol delimitat i criteris d’acceptació. El Consell és una tècnica per reduir punts cecs.
@@ -79,4 +101,15 @@ El Consell ha funcionat quan deixa una decisió més verificable: supòsits visi
 - **Categoria:** [[Identitat]]
 - **Etiquetes:** [[Graf]]
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX_IDENTITAT]]
+
+## Sinapsis Entrants (Autogenerat)
+
+- [[00_INDEX_IDENTITAT|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[02_EQUIP_IA]]
+- [[02_GENOTIP|00_SER_Brain_Identitat/02_GENOTIP.md]] — [[02_EQUIP_IA]]
+- [[Soci_Sollutia|00_SER_Brain_Identitat/Soci_Sollutia.md]] — [[02_EQUIP_IA]]
+- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[02_EQUIP_IA]]
+- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[02_EQUIP_IA]]
+- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[02_EQUIP_IA]]
+
+<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

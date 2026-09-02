@@ -1,15 +1,10 @@
 ---
-estat: canonic
 tipus: plantilla
-description: "Plantilla mestra per definir una skill amb missió, gallets, regles i contracte d'eixida."
-temes:
-- sistema
+estat: canonic
+description: Plantilla mestra per definir una skill amb missió, gallets, regles i contracte d'eixida.
 tags:
-- dev
-- maquina
-- skills
-- socdepoble
-- tecnica
+  - maquina
+  - skills
 ---
 # ⚙️ SDP SKILL MASTER TEMPLATE
 **Nom de la Skill:** [Ex: Maquetador d'Esdeveniments Offline]
@@ -49,3 +44,12 @@ Abans de finalitzar la resposta, l'Agent ha de validar en silenci:
 **Categoria:** [[00_plantilles|07_plantilles]]
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
 **Ancoratge de Seguretat:** [[00_INDEX]]
+
+## Sinapsis Entrants (Autogenerat)
+
+- [[00_INDEX|00_INDEX.md]] — [[plantilla_skill_trellat]]
+- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[plantilla_skill_trellat]]
+- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[plantilla_skill_trellat]]
+- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[plantilla_skill_trellat]]
+
+<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

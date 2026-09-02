@@ -1,14 +1,9 @@
 ---
-estat: canonic
 tipus: plantilla
+estat: canonic
 description: Guia sessions de pluja d'idees amb criteris de Trellat, impacte i viabilitat.
-temes:
-- sistema
 tags:
-- dev
-- maquina
-- socdepoble
-- tecnica
+  - maquina
 ---
 # Brainstorming Pro (El Trellat Creatiu)
 **Categoria:** Plantilla
@@ -61,3 +56,12 @@ _Fent poble amb [[el_projecte|Sóc de Poble]]! © 2026_
 **Categoria:** [[00_plantilles|07_plantilles]]
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
 **Ancoratge de Seguretat:** [[00_INDEX]]
+
+## Sinapsis Entrants (Autogenerat)
+
+- [[00_plantilles|02_ACTUAR_Maquina_Tecnica/07_plantilles/00_plantilles.md]] — [[plantilla_brainstorming|Plantilla Brainstorming]]
+- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[plantilla_brainstorming|Plantilla Brainstorming]]
+- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[plantilla_brainstorming|Plantilla Brainstorming]]
+- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[plantilla_brainstorming|Plantilla Brainstorming]]
+
+<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

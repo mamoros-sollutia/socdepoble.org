@@ -1,14 +1,9 @@
 ---
-estat: canonic
 tipus: protocol
-description: "Defineix els bloquejos fail-closed reals que impedixen confondre una auditoria incompleta amb un sistema saludable."
-temes:
-- sistema
+estat: canonic
+description: Defineix els bloquejos fail-closed reals que impedixen confondre una auditoria incompleta amb un sistema saludable.
 tags:
-- dev
-- maquina
-- socdepoble
-- tecnica
+  - maquina
 ---
 # SDP-LOCK — bloqueig de protecció verificable
 
@@ -58,3 +53,13 @@ són necessaris per a fer durable el control.
 ---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]
+
+## Sinapsis Entrants (Autogenerat)
+
+- [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maquina_Tecnica/00_arquitectura_tecnica_unificada.md]] — [[SDP_LOCK|Límits de seguretat]]
+- [[DOC_Governanca|03_GOVERNAR_Normativa_Regles/DOC_Governanca.md]] — actual. El contracte executiu detallat és [[SDP_LOCK]].
+- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[SDP_LOCK|Límits de seguretat]]
+- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[SDP_LOCK|Límits de seguretat]]
+- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[SDP_LOCK|Límits de seguretat]]
+
+<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

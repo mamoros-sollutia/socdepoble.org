@@ -6,7 +6,7 @@ import { validarFrontmatter } from '../entropia_zero_router.mjs';
 import { isValidContentFile } from '../lib/termodinamic.mjs';
 import { PROJECT_DIR } from '../lib/project_paths.mjs';
 
-const ACTA_DIR = '90_arxiu_historic/actes_arxivades';
+const ACTA_DIR = '90_historic/actes_arxivades';
 const REGISTRE = '00_SER_Brain_Identitat/CORE_Registre_Automillora.md';
 const PATTERN = /^\s*(?:[-*]\s*)?(Nova regla:|Patró detectat:|Acte reflex afegit:)\s*(.+?)\s*$/i;
 

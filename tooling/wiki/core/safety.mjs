@@ -18,7 +18,7 @@ export const WRITE_ZONES = {
     '02_ACTUAR_Maquina_Tecnica',
     '03_GOVERNAR_Normativa_Regles'
   ],
-  archive: ['90_arxiu_historic'],
+  archive: ['90_historic'],
   ephemeral: ['05_Escriptori_Soc_de_Poble'],
   generated: [
     '_build',
@@ -154,7 +154,7 @@ export async function withLock(root, name, fn, options = {}) {
 }
 
 export async function withRollback(root, name, fn) {
-  const journalDir = assertWriteZone(root, '90_arxiu_historic/01_logs_termodinamics', 'archive');
+  const journalDir = assertWriteZone(root, '90_historic/01_logs_termodinamics', 'archive');
   const journal = join(journalDir, 'rollback.ndjson');
   const touched = [];
 

@@ -20,7 +20,7 @@
  *      edge_rag.mjs i build_slug_index.mjs. Mentre això dure, l'agent NO
  *      pot recuperar per RAG res del seu propi lloc de treball, i sí que
  *      pot recuperar els directoris històrics. Per això acabava desant a
- *      12_actes. Aquest script avisa cada matí fins que es corregisca.
+ *      10_actes. Aquest script avisa cada matí fins que es corregisca.
  */
 
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
@@ -130,7 +130,7 @@ if (cecs.length > 0) {
   titol('⚠ AVÍS: L\'ESCRIPTORI ÉS INVISIBLE PER AL RAG');
   console.log('Estos indexadors salten 05_Escriptori:');
   for (const c of cecs) console.log(`  ${c}`);
-  console.log('Els directoris històrics (12_actes) SÍ que s\'indexen.');
+  console.log('Els directoris històrics (10_actes) SÍ que s\'indexen.');
   console.log('Mentre dure, la recuperació et portarà a l\'arxiu i no a la taula de treball.');
 }
 

@@ -2,7 +2,7 @@ import { readFile, readdir } from 'node:fs/promises';
 import { extname, join, relative } from 'node:path';
 
 const SCAN_EXT = new Set(['.html']);
-const SKIP = new Set(['node_modules', '.git', 'vendor', '_build', '90_arxiu_historic']);
+const SKIP = new Set(['node_modules', '.git', 'vendor', '_build', '90_historic']);
 
 // RegExp simplistes (per a un analitzador més robust caldria un parsejador HTML)
 const HTML_TAG = /<html[^>]*>/gi;

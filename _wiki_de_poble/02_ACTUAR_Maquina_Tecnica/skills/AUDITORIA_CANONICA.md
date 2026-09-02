@@ -1,15 +1,10 @@
 ---
-estat: canonic
 tipus: skill
-description: "Protocol de lectura per auditar l’arquitectura 4+2, el frontmatter v2 i el graf sense modificar la Wiki."
-temes:
-- sistema
+estat: canonic
+description: Protocol de lectura per auditar l’arquitectura 4+2, el frontmatter v2 i el graf sense modificar la Wiki.
 tags:
-- dev
-- maquina
-- skills
-- socdepoble
-- tecnica
+  - maquina
+  - skills
 ---
 # Auditoria canònica de la Wiki
 
@@ -110,3 +105,16 @@ Auditar no modifica fitxers. Escriure un informe, corregir YAML, moure una nota,
 ---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]
+
+## Sinapsis Entrants (Autogenerat)
+
+- [[03_Consola_Termodinamica|00_SER_Brain_Identitat/03_Consola_Termodinamica.md]] — [[AUDITORIA_CANONICA]]
+- [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maquina_Tecnica/00_arquitectura_tecnica_unificada.md]] — [[AUDITORIA_CANONICA]]
+- [[index_trellat|02_ACTUAR_Maquina_Tecnica/skills/index_trellat.md]] — [[AUDITORIA_CANONICA]]
+- [[seguretat_execucio|02_ACTUAR_Maquina_Tecnica/skills/seguretat_execucio.md]] — [[AUDITORIA_CANONICA]]
+- [[successio_lazaro_execucio|02_ACTUAR_Maquina_Tecnica/skills/successio_lazaro_execucio.md]] — [[AUDITORIA_CANONICA]]
+- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[AUDITORIA_CANONICA]]
+- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[AUDITORIA_CANONICA]]
+- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[AUDITORIA_CANONICA]]
+
+<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

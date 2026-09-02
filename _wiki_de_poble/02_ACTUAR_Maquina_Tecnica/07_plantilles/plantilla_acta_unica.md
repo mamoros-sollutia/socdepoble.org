@@ -1,15 +1,9 @@
 ---
-estat: esborrany
 tipus: plantilla
-description: "Plantilla per registrar decisions, canvis, riscos i continuïtat entre sessions de treball."
-temes:
-- sistema
+estat: esborrany
+description: Plantilla per registrar decisions, canvis, riscos i continuïtat entre sessions de treball.
 tags:
-- acta_marmota
-- dev
-- maquina
-- socdepoble
-- tecnica
+  - maquina
 ---
 <!-- Nom en disc ha de seguir OBLIGATÒRIAMENT: YYMMDD_HHMM_ACTA_Sessio_Titol_Hiper_Descriptiu_Llarg_Fins_A_20_Paraules.md -->
 <!-- És VITAL que el títol siga molt llarg i descriptiu (8-20 paraules) perquè en llegir el nom de l'arxiu des del mur o el graf sàpigues exactament què hi ha dins sense necessitat d'obrir-lo per reduir l'I/O. -->
@@ -67,3 +61,12 @@ requereix_auditoria: false
 **Categoria:** [[00_plantilles|07_plantilles]]
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
 **Ancoratge de Seguretat:** [[00_INDEX]]
+
+## Sinapsis Entrants (Autogenerat)
+
+- [[00_plantilles|02_ACTUAR_Maquina_Tecnica/07_plantilles/00_plantilles.md]] — [[plantilla_acta_unica|Plantilla Acta Única]]
+- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[plantilla_acta_unica|Plantilla Acta Única]]
+- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[plantilla_acta_unica|Plantilla Acta Única]]
+- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[plantilla_acta_unica|Plantilla Acta Única]]
+
+<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

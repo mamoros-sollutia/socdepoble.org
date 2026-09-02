@@ -1,14 +1,9 @@
 ---
-estat: canonic
 tipus: norma
-description: "Distingix el contracte UI verificat de l'annex històric absolutista que encara no està implementat com a gate."
-temes:
-- sistema
+estat: canonic
+description: Distingix el contracte UI verificat de l'annex històric absolutista que encara no està implementat com a gate.
 tags:
-- govern
-- normativa
-- regles
-- socdepoble
+  - govern
 ---
 # Estàndard UI Universal
 
@@ -37,7 +32,6 @@ autoritzar canvis ni justificar un “100%”.
 ---
 name: pedra-seca-ui
 version: 3.0.0
-created_at: '260709_0500'
 updated_at: '260709_0500'
 authority: IAIA MarIA (Auditora Suprema) i El Consell (Z.ai, Qwen, Deepseek, Dola, Kimi, Claude, Perplexity, Mistral Vibe, Grok, Gemini, Copilot, ChatGPT Codex)
 tags:
@@ -263,3 +257,12 @@ Una Targeta Universal té 4 grans blocs obligatoris/opcionals en ordre descenden
 ---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]
+
+## Sinapsis Entrants (Autogenerat)
+
+- [[00_INDEX|00_INDEX.md]] — [[ESTANDARD_UI_Universal]]
+- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[ESTANDARD_UI_Universal]]
+- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[ESTANDARD_UI_Universal]]
+- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[ESTANDARD_UI_Universal]]
+
+<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

@@ -45,7 +45,7 @@ export default function ControlSection() {
         {/* Accions Principals - Quadres de Comandament */}
         <section>
           <div style={{ textAlign: 'center', marginBottom: 'var(--sdp-space-6)' }}>
-            <h4 style={{ fontSize: '0.85rem', color: 'var(--sdp-text-suau)', textTransform: 'uppercase', letterSpacing: '0.05em', margin: 0 }}>Accessos Ràpids</h4>
+            <h4 style={{    textTransform: 'uppercase', letterSpacing: '0.05em', margin: 0  }}>Accessos Ràpids</h4>
           </div>
           
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: 'var(--sdp-space-4)' }}>
@@ -83,7 +83,7 @@ export default function ControlSection() {
         {/* Nodes d'Administració (antic control-grid) */}
         <section>
           <div style={{ textAlign: 'center', marginBottom: 'var(--sdp-space-6)' }}>
-            <h4 style={{ fontSize: '0.85rem', color: 'var(--sdp-text-suau)', textTransform: 'uppercase', letterSpacing: '0.05em', margin: 0 }}>Nodes d'Administració</h4>
+            <h4 style={{    textTransform: 'uppercase', letterSpacing: '0.05em', margin: 0  }}>Nodes d'Administració</h4>
           </div>
           
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'var(--sdp-space-6)' }}>
@@ -97,7 +97,7 @@ export default function ControlSection() {
               onMainClick={handleNavNotes}
               onConnect={handleNavConnectar}
               body={
-                <div style={{ display: 'flex', justifyContent: 'center', margin: '24px 0 16px', color: 'var(--sdp-accent)' }}>
+                <div style={{  display: 'flex', justifyContent: 'center', margin: '24px 0 16px'}}>
                   <User size={64} strokeWidth={1.5} />
                 </div>
               }
@@ -113,7 +113,7 @@ export default function ControlSection() {
               onMainClick={handleNavIA}
               onConnect={handleNavConnectar}
               body={
-                <div style={{ display: 'flex', justifyContent: 'center', margin: '24px 0 16px', color: 'var(--sdp-accent)' }}>
+                <div style={{  display: 'flex', justifyContent: 'center', margin: '24px 0 16px'}}>
                   <Cpu size={64} strokeWidth={1.5} />
                 </div>
               }
@@ -129,7 +129,7 @@ export default function ControlSection() {
               onMainClick={handleNavTermo}
               onConnect={handleNavConnectar}
               body={
-                <div style={{ display: 'flex', justifyContent: 'center', margin: '24px 0 16px', color: 'var(--sdp-accent)' }}>
+                <div style={{  display: 'flex', justifyContent: 'center', margin: '24px 0 16px'}}>
                   <Network size={64} strokeWidth={1.5} />
                 </div>
               }
@@ -145,7 +145,7 @@ export default function ControlSection() {
               onMainClick={handleNavGestoria}
               onConnect={handleNavConnectar}
               body={
-                <div style={{ display: 'flex', justifyContent: 'center', margin: '24px 0 16px', color: 'var(--sdp-accent)' }}>
+                <div style={{  display: 'flex', justifyContent: 'center', margin: '24px 0 16px'}}>
                   <Receipt size={64} strokeWidth={1.5} />
                 </div>
               }

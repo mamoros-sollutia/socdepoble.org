@@ -1,3 +1,8 @@
+---
+tipus: document
+estat: esborrany
+description: Petorreta del Consell (Codex)
+---
 Ancoratge: [[00_INDEX_ESCRIPTORI]]
 
 # Petorreta del Consell (Codex)

@@ -1,3 +1,8 @@
+---
+tipus: document
+estat: esborrany
+description: PROMPT INICI DE NOVA SESSIÓ (Copiar i Enganxar al xat nou)
+---
 # PROMPT INICI DE NOVA SESSIÓ (Copiar i Enganxar al xat nou)
 
 **Instruccions pel Mestre: Copia des d'ací baix i enganxa-ho al primer missatge del nou xat.**

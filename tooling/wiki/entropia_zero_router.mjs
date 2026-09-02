@@ -143,7 +143,7 @@ export function determinarCarpeta(fm, { currentPath } = {}) {
   const currentDirectory = currentOperationalDirectory(currentPath);
   if (currentDirectory) return currentDirectory;
 
-  if (fm.estat === 'arxivat') return '90_arxiu_historic/';
+  if (fm.estat === 'arxivat') return '90_historic/';
   if (fm.estat === 'esborrany' || fm.estat === 'futur') {
     return '05_Escriptori_Soc_de_Poble/';
   }

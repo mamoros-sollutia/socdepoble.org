@@ -1,6 +1,6 @@
 export function Aplec2023Article() {
   return (
-    <article className="detail-content detail-content--plain" style={{ fontSize: '1rem' }}>
+    <article className="detail-content detail-content--plain" >
       <div className="media-frame" style={{ marginBottom: 'var(--sdp-space-6)', borderRadius: 'var(--sdp-radi-xl)', overflow: 'hidden' }}>
         <img src="/assets/events/aplec_2023_ponents.png" alt="Cartell Ponents Aplec" />
       </div>
@@ -9,7 +9,7 @@ export function Aplec2023Article() {
         El proper diumenge 29 de gener, a Benillup, a les 11 del matí les associacions Coordinadora d’Estudis Eòlics del Comtat i Rentonar han organitzat un Aplec pel territori motivat per l’incendi d’aquest estiu, però per a intentar tractar temes de més calat com són el despoblament rural i l’abandonament agrícola.
       </p>
       
-      <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: 'var(--sdp-space-4)', marginTop: 'var(--sdp-space-8)' }}>El format de l’Aplec és innovador</h3>
+      <h3 style={{    marginBottom: 'var(--sdp-space-4)', marginTop: 'var(--sdp-space-8)'  }}>El format de l’Aplec és innovador</h3>
       <p className="detail-content__paragraph">
         No volem que facen discursos els ponents convidats sinó que escolten preguntes, inquietuds i suggeriments que la gent dels pobles els vulga formular. Només Enric Moltó, geògraf i climatòleg, farà una intervenció de 30 min.
       </p>

@@ -1,3 +1,8 @@
+---
+tipus: document
+estat: canonic
+description: BIOS
+---
 # BIOS Cognitiu Executable (Sóc de Poble)
 
 Aquest document descriu la seqüència d'arrencada (boot) que ha de seguir qualsevol Intel·ligència Artificial o nou desenvolupador en entrar a treballar al codi base. No és només text, és verificable pel `tooling/verify-bios.mjs`.

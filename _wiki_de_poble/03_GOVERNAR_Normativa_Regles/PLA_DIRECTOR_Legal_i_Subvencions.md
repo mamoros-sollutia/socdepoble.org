@@ -1,19 +1,11 @@
 ---
-estat: canonic
 tipus: document
-description: "Pla Director d'Estratègia Jurídica i de Finançament per a Sóc de Poble (2026-2027)."
-temes:
-- governanca
-- finançament
-- associacio
-- estrategia
+estat: canonic
+description: Pla Director d'Estratègia Jurídica i de Finançament per a Sóc de Poble (2026-2027).
 tags:
-- govern
-- normativa
-- regles
-- socdepoble
-- sollutia
-- subvencions
+  - govern
+  - legal
+  - sollutia
 ---
 
 # Pla Director de Finançament i Governança (2026-2027)
@@ -101,3 +93,13 @@ El pressupost complet per garantir la independència, incloent els honoraris d'A
 ## Taxonomia
 - **Categoria:** [[Govern]]
 - **Etiquetes:** [[Graf]]
+
+## Sinapsis Entrants (Autogenerat)
+
+- [[00_INDEX|00_INDEX.md]] — [[PLA_DIRECTOR_Legal_i_Subvencions]]
+- [[PLA_DIRECTOR_Viabilitat_Economica|03_GOVERNAR_Normativa_Regles/PLA_DIRECTOR_Viabilitat_Economica.md]] — (Veure [[PLA_DIRECTOR_Legal_i_Subvencions]] per a les línies exactes).*
+- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[PLA_DIRECTOR_Legal_i_Subvencions]]
+- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[PLA_DIRECTOR_Legal_i_Subvencions]]
+- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[PLA_DIRECTOR_Legal_i_Subvencions]]
+
+<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

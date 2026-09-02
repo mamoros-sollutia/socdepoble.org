@@ -19,21 +19,21 @@ export function AvisadorEfimer({ missatge, tipus, durada = 3000, onClose }) {
       className="sdp-avisador-efimer"
       role="alert" 
       aria-live="assertive"
-      style={{
+      style={{ 
         position: 'fixed',
         bottom: 'var(--sdp-space-6)',
         left: '50%',
         transform: 'translateX(-50%)',
-        backgroundColor: 'var(--sdp-fons-invers)',
-        color: 'var(--sdp-text-invers)',
+        
+        
         padding: 'var(--sdp-space-3) var(--sdp-space-5)',
         borderRadius: 'var(--sdp-radi-pastilla)',
         boxShadow: 'var(--sdp-ombra-2)',
         zIndex: 9999,
-        fontWeight: '500',
+        
         transition: 'opacity 0.3s ease',
         pointerEvents: 'none'
-      }}
+       }}
     >
       {missatge}
     </div>

@@ -71,7 +71,7 @@ async function main() {
 
   step(1, 'Integritat d\'arrel (sol lectura)...');
   const orphanDir = wikiDir
-    ? path.join(wikiDir, '90_arxiu_historic', 'bancal_actiu')
+    ? path.join(wikiDir, '90_historic', 'bancal_actiu')
     : undefined;
   const rootOrphans = await auditRootHygiene(wikiDir, orphanDir, { dryRun: true });
   if (rootOrphans > 0) {

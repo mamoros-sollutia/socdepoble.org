@@ -75,8 +75,9 @@ const HIGH_RISK_OPERATIONS = new Set([
   'tombstone-gc',
   'code-translate',
   'supabase-seed',
+  'restauracio-segellada',
 ]);
-const SNAPSHOT_SKIP_DIRS = new Set(['.git', '.sdp-reflex', '.wiki-safety', '.snapshots', 'node_modules', 'dist', 'build', '_build', 'coverage']);
+const SNAPSHOT_SKIP_DIRS = new Set(['.git', '.sdp-reflex', '.sdp-paperera', '.wiki-safety', '.snapshots', 'node_modules', 'dist', 'build', '_build', 'coverage']);
 const REFLEX_STATE_RELATIVE = '.sdp-reflex';
 const ALLOWED_INDEX_MODES = new Set(['100644', '100755']);
 const REQUIRED_HOOKS = new Map([
@@ -236,7 +237,7 @@ function validateGraphContract(graph) {
   if (graph.hideUnresolved !== true) findings.push('hideUnresolved ha de ser true');
   if (graph.showAttachments !== false) findings.push('showAttachments ha de ser false');
   const requiredFilters = [
-    '90_arxiu_historic',
+    '90_historic',
     '05_Escriptori_Soc_de_Poble',
     '00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR',
     '00_SER_Brain_Identitat/Sollutia',
@@ -538,7 +539,6 @@ async function stagedIndexChanges() {
 
 function ruleCandidates() {
   return [
-    ['AGENTS.md'],
     ['.agents/AGENTS.md'],
     ['.agents/PROTOCOL_PETORRETA.md'],
     ['.agents/skills/socdepoble-workflow/SKILL.md'],

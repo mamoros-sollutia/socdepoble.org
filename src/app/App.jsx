@@ -19,6 +19,7 @@ const PoblesSection = lazy(() => import('../sections/pobles/PoblesSection'));
 const PoblacioSection = lazy(() => import('../sections/poblacio/PoblacioSection'));
 const MultimediaSection = lazy(() => import('../sections/multimedia/MultimediaSection'));
 const NotesSection = lazy(() => import('../sections/notes/NotesSection'));
+const NotesPocSection = lazy(() => import('../sections/notes_poc/NotesPocSection'));
 const DevicesSection = lazy(() => import('../sections/dispositius/DevicesSection'));
 const ConnectarSection = lazy(() => import('../sections/connectar/ConnectarSection'));
 const ControlSection = lazy(() => import('../sections/control/ControlSection'));
@@ -443,6 +444,7 @@ function AppRoutes() {
         <Route path="/calendari" element={<Navigate to="/mur" replace />} />
         <Route path="/mapa" element={<Navigate to="/mur" replace />} />
         <Route path="/notes" element={<NotesSection />} />
+        <Route path="/notes-poc" element={<NotesPocSection />} />
         <Route path="/dispositius" element={<DevicesSection />} />
         <Route path="/connectivitat" element={<Navigate to="/dispositius" replace />} />
         <Route path="/cerca" element={<SearchSection />} />

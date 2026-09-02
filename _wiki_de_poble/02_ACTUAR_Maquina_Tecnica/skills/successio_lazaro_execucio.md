@@ -1,17 +1,12 @@
 ---
-estat: canonic
 tipus: skill
-description: "Guia consultiva per diagnosticar i proposar la continuïtat del projecte sense concedir capacitat d'escriptura."
-aliases:
-- Successió Lázaro
-temes:
-- sistema
+estat: canonic
+description: Guia consultiva per diagnosticar i proposar la continuïtat del projecte sense concedir capacitat d'escriptura.
 tags:
-- dev
-- maquina
-- skills
-- socdepoble
-- tecnica
+  - maquina
+  - skills
+aliases:
+  - Successió Lázaro
 ---
 # Successió Lázaro: continuïtat i reconstrucció
 
@@ -121,3 +116,12 @@ Queden derogades tres idees heretades: abolir `.agents`, considerar que «el cod
 ---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]
+
+## Sinapsis Entrants (Autogenerat)
+
+- [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maquina_Tecnica/00_arquitectura_tecnica_unificada.md]] — [[successio_lazaro_execucio]]
+- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[successio_lazaro_execucio]]
+- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[successio_lazaro_execucio]]
+- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[successio_lazaro_execucio]]
+
+<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

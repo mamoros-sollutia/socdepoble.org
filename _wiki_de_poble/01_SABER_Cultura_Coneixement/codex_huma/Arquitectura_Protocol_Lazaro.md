@@ -1,14 +1,9 @@
 ---
-estat: canonic
 tipus: document
-description: "Defineix com reconstruir el projecte des de fonts canòniques quan es perd context o infraestructura."
-temes:
-- sistema
+estat: canonic
+description: Defineix com reconstruir el projecte des de fonts canòniques quan es perd context o infraestructura.
 tags:
-- coneixement
-- cultura
-- saber
-- socdepoble
+  - saber
 ---
 # El Protocol Lázaro: Reconstrucció de Gènesi (Volum V)
 **Categoria:** Arquitectura
@@ -52,3 +47,12 @@ No tens gens ni mica de coneixement informàtic? No cal! Digues-li directament a
 ---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]
+
+## Sinapsis Entrants (Autogenerat)
+
+- [[Soci_Sollutia|00_SER_Brain_Identitat/Soci_Sollutia.md]] — [[Arquitectura_Protocol_Lazaro]]
+- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[Arquitectura_Protocol_Lazaro]]
+- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[Arquitectura_Protocol_Lazaro]]
+- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[Arquitectura_Protocol_Lazaro]]
+
+<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

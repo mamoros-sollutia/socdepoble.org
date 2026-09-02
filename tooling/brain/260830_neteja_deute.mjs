@@ -57,7 +57,7 @@ const nota = (id, estat, detall, llista) => registre.push({ id, estat, detall, l
     const citadors = [];
     (function camina(d) {
       for (const e of fs.readdirSync(d, { withFileTypes: true })) {
-        if (['node_modules', '.git', '90_arxiu_historic'].includes(e.name)) continue;
+        if (['node_modules', '.git', '90_historic'].includes(e.name)) continue;
         const c = path.join(d, e.name);
         if (e.isDirectory()) { camina(c); continue; }
         // Només documentació: reescriure cites dins de codi o de dades de

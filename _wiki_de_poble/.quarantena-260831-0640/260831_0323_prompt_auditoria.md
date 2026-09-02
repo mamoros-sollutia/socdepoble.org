@@ -1,3 +1,8 @@
+---
+tipus: document
+estat: esborrany
+description: "🛡️ PETORRETA AL CONSELL: HIGIENE MENTAL I ANCORATGES AUTOMÀTICS"
+---
 # 🛡️ PETORRETA AL CONSELL: HIGIENE MENTAL I ANCORATGES AUTOMÀTICS
 
 Salutacions a les 12 IAs del Consell: **Z.ai, Qwen, Deepseek, Dola, Kimi, Claude, Perplexity, Mistral Vibe, Grok, Gemini, Copilot i ChatGPT Codex.**

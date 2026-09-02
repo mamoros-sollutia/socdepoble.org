@@ -1,8 +1,7 @@
 ---
-estat: actiu
 tipus: norma
+estat: actiu
 description: Decisió d’arquitectura online-first posterior a l’abandó d’A10 i offline total.
-revisat: 2026-08-02
 ---
 
 # ADR-2026-08 — Online-first i navegadors moderns
@@ -53,3 +52,12 @@ comunicar canvi d’abast o retirar la proposta.
 ## Taxonomia
 - **Categoria:** [[Maquina]]
 - **Etiquetes:** [[Graf]]
+
+## Sinapsis Entrants (Autogenerat)
+
+- [[00_INDEX|00_INDEX.md]] — [[ADR-2026-08-ONLINE-FIRST]]
+- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[ADR-2026-08-ONLINE-FIRST]]
+- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[ADR-2026-08-ONLINE-FIRST]]
+- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[ADR-2026-08-ONLINE-FIRST]]
+
+<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

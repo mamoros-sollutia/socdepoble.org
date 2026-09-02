@@ -9,7 +9,7 @@
  *    es mossegava la pota ell mateix.
  * 2. .mjs pur (abans .cjs amb require, ara import — coherent amb la resta
  *    del bundle si el projecte és "type": "module").
- * 3. ORPHAN_DIR apunta al pilar 90_arxiu_historic (Big Bang de
+ * 3. ORPHAN_DIR apunta al pilar 90_historic (Big Bang de
  *    4 pilars operatius + 2 zones). Abans col·lidia numèricament amb 04_arquitectura_disseny,
  *    que ja no existeix amb eixe nom.
  */
@@ -20,7 +20,7 @@ import { getTimestamp } from './lib/termodinamic.mjs';
 import { WIKI_DIR } from './lib/project_paths.mjs';
 
 const ROOT = WIKI_DIR;
-const ORPHAN_DIR = path.join(ROOT, '90_arxiu_historic', 'bancal_actiu');
+const ORPHAN_DIR = path.join(ROOT, '90_historic', 'bancal_actiu');
 const ALLOWED_ROOT_FILES = new Set(['README.md', '00_index.md', '00_INDEX.md', '.gitignore', '.DS_Store']);
 
 export async function auditRootHygiene(rootDir = ROOT, orphanDir = ORPHAN_DIR, { dryRun = true } = {}) {

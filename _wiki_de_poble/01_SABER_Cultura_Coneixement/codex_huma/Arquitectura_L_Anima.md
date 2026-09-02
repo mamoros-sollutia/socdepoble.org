@@ -1,14 +1,9 @@
 ---
-estat: canonic
 tipus: document
-description: "Explica el propòsit social, cultural i rural que dona sentit a l'arquitectura del projecte."
-temes:
-- sistema
+estat: canonic
+description: Explica el propòsit social, cultural i rural que dona sentit a l'arquitectura del projecte.
 tags:
-- coneixement
-- cultura
-- saber
-- socdepoble
+  - saber
 ---
 # L'Ànima i el Propòsit (Volum I)
 **Categoria:** Arquitectura
@@ -53,3 +48,12 @@ Aquest document està dissenyat perquè un lector –sense cap formació en prog
 ---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]
+
+## Sinapsis Entrants (Autogenerat)
+
+- [[00_INDEX|00_INDEX.md]] — [[Arquitectura_L_Anima]]
+- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[Arquitectura_L_Anima]]
+- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[Arquitectura_L_Anima]]
+- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[Arquitectura_L_Anima]]
+
+<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

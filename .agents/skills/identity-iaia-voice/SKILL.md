@@ -1,36 +1,21 @@
 ---
+tipus: skill
+estat: actiu
+description: "Veu i to de la IAIA MarIA"
 name: identity-iaia-voice
-description: >
-  To de veu de la IAIA MarIA: valencià d'ús, rural, directe i sense
-  paternalisme. Ni condescendència amb l'uelo ni floritura corporativa.
-  Es diu «no ho sé» quan la font no arriba. S'activa en tota redacció
-  destinada a persones: interfície, documentació, actes i missatges.
-version: 2.0.0
-status: active
-owner: project-governance
-purpose: Manteniment de la veu rural autèntica, sense paternalismes, evitant IA-slop.
-use_when: []
-skip_when: []
-scope: []
-effects: []
-requires: []
-conflicts_with: []
-authority_level: procedural
-tests: null
-# 260831 (Seient Núm. 5): `iaia` i `maria` col·lisionaven amb
-# identity-iaia-core. Esta skill governa el REGISTRE, no la identitat:
-# els gallets ho han de reflectir. Cada gallet, un sol amo.
-# 260831: cedix el gallet `people-pleasing` — core-context-panic posseïx el fusible; la veu només el descriu.
 triggers_on:
-- veu
-- to
-- to de veu
-- com parles
-- registre
-- personalitat
-- paternalisme
-- disculpa
-lang: ca
+  - veu
+  - to
+  - to de veu
+  - com parles
+  - registre
+  - personalitat
+  - paternalisme
+  - disculpa
+core: true
+tags:
+  - skill
+  - identitat
 ---
 
 # identity-iaia-voice

@@ -46,7 +46,7 @@ test('la higiene d’arrel reporta Markdown solt sense moure’l', async (t) => 
   const loose = path.join(root, 'Solt.md');
   await fs.writeFile(loose, '# Solt\n', 'utf8');
 
-  const count = await auditRootHygiene(root, path.join(root, '90_arxiu_historic'), { dryRun: true });
+  const count = await auditRootHygiene(root, path.join(root, '90_historic'), { dryRun: true });
   assert.equal(count, 1);
   assert.equal(await fs.readFile(loose, 'utf8'), '# Solt\n');
 });

@@ -1,0 +1,200 @@
+{
+  "core": [
+    {
+      "name": "core-context-panic",
+      "description": "Fusible mental de la IAIA MarIA per aturar l'execució quan hi ha desincronització de context (People-Pleasing o Al·lucinació per fatiga). S'activa davant errors cíclics, incapacitat per complir l'objectiu directe de l'usuari o context esgotat.",
+      "triggers_on": [
+        "panic",
+        "error",
+        "people-pleasing",
+        "al·lucinació",
+        "fatiga"
+      ],
+      "path": ".agents/skills/core-context-panic/SKILL.md"
+    },
+    {
+      "name": "core-higiene-reflexa",
+      "description": "Protocol d'higiene cognitiva",
+      "triggers_on": [
+        "tanca",
+        "tancar",
+        "acaba",
+        "acabat",
+        "fet",
+        "neteja",
+        "escriptori",
+        "ancorar",
+        "ancoratge",
+        "orfe",
+        "satèl·lit",
+        "crea fitxer",
+        "guarda",
+        "inici",
+        "obrir"
+      ],
+      "path": ".agents/skills/core-higiene-reflexa/SKILL.md"
+    },
+    {
+      "name": "core-restauracio-segellada",
+      "description": "Core skill per a restauració segura",
+      "triggers_on": [
+        "restaura",
+        "restaurar",
+        "còpia de seguretat",
+        "copia de seguretat",
+        "backup",
+        "torna arrere",
+        "tornar arrere",
+        "revertir",
+        "revert",
+        "rollback",
+        "checkout",
+        "restore",
+        "recupera la versió",
+        "recuperar versió",
+        "com estava abans",
+        "git checkout",
+        "git reset",
+        "git revert"
+      ],
+      "path": ".agents/skills/core-restauracio-segellada/SKILL.md"
+    },
+    {
+      "name": "identity-iaia-core",
+      "description": "Bootstrap d'identitat executiu de la IAIA MarIA. Carrega personalitat, to, missió, llista completa del Consell i protocol d'arrencada segura. Obligatori abans de qualsevol resposta que impliqui el projecte Sóc de Poble.",
+      "triggers_on": [
+        "qui ets",
+        "identitat",
+        "IAIA",
+        "MarIA",
+        "Sóc de Poble",
+        "equip d'IAs",
+        "les ties",
+        "arrencada",
+        "bootstrap",
+        "who are you",
+        "identity",
+        "startup"
+      ],
+      "path": ".agents/skills/identity-iaia-core/SKILL.md"
+    },
+    {
+      "name": "identity-iaia-voice",
+      "description": "Veu i to de la IAIA MarIA",
+      "triggers_on": [
+        "veu",
+        "to",
+        "to de veu",
+        "com parles",
+        "registre",
+        "personalitat",
+        "paternalisme",
+        "disculpa"
+      ],
+      "path": ".agents/skills/identity-iaia-voice/SKILL.md"
+    },
+    {
+      "name": "pedra-seca",
+      "description": "Llei de disseny visual Pedra Seca",
+      "triggers_on": [
+        "disseny",
+        "css",
+        "ui",
+        "pedra",
+        "seca",
+        "estil",
+        "colors",
+        "components"
+      ],
+      "path": ".agents/skills/pedra-seca/SKILL.md"
+    },
+    {
+      "name": "reflexio-previa",
+      "description": "Skill de reflexió abans d'actuar",
+      "triggers_on": [
+        "crea un prompt",
+        "crea un document",
+        "prepara",
+        "nova funcionalitat",
+        "què sé jo",
+        "abans de començar",
+        "petorreta",
+        "auditoria",
+        "informe",
+        "bundle"
+      ],
+      "path": ".agents/skills/reflexio-previa/SKILL.md"
+    },
+    {
+      "name": "trellat",
+      "description": "Protocol obligatori de reflexió prèvia a qualsevol modificació de codi i frontera operativa. Fusiona Les Tres Pedres, verificació de canvis i control d'abast.",
+      "triggers_on": [
+        "codi",
+        "crea",
+        "arquitectura",
+        "canvia",
+        "modifica",
+        "esborra"
+      ],
+      "path": ".agents/skills/trellat/SKILL.md"
+    }
+  ],
+  "plugins": {
+    "abocament-total": {
+      "name": "abocament-total",
+      "description": "Skill per evitar la mutilació de context i garantir la Veritat Completa a les IAs.",
+      "triggers_on": [
+        "bundle",
+        "abocament",
+        "context total",
+        "veritat completa",
+        "abocament total"
+      ],
+      "path": ".agents/skills/abocament-total/SKILL.md"
+    },
+    "council-review": {
+      "name": "council-review",
+      "description": "Fusió de les regles de deliberació (cog-deliberation), revisió creuada (multi-agent-review) i actitud de prudència radical (actitud-dafo). Regula com interactuar amb les auditories d'altres IAs.",
+      "triggers_on": [
+        "consell",
+        "auditoria",
+        "revisió",
+        "dafo",
+        "petorreta",
+        "deliberar",
+        "council",
+        "audit",
+        "review",
+        "deliberate",
+        "council review"
+      ],
+      "path": ".agents/skills/council-review/SKILL.md"
+    },
+    "guia-ampliacio": {
+      "name": "guia-ampliacio",
+      "description": "Com entendre i ampliar l'arquitectura de Sóc de Poble seguint la doctrina Pedra Seca.",
+      "triggers_on": [
+        "afegir funcionalitat",
+        "nova feature",
+        "ampliar arquitectura",
+        "crear skill",
+        "com afegir",
+        "guia ampliacio"
+      ],
+      "path": ".agents/skills/guia-ampliacio/SKILL.md"
+    },
+    "socdepoble-workflow": {
+      "name": "socdepoble-workflow",
+      "description": "Flux de treball per a Soc de Poble",
+      "triggers_on": [
+        "workflow",
+        "flux",
+        "procés",
+        "passos",
+        "guia",
+        "socdepoble workflow"
+      ],
+      "path": ".agents/skills/socdepoble-workflow/SKILL.md"
+    }
+  }
+}

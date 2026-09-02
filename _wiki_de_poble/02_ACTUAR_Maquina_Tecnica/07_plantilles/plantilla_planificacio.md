@@ -1,14 +1,9 @@
 ---
-estat: canonic
 tipus: plantilla
-description: "Plantilla per convertir un objectiu en fases, dependències, riscos i criteris d'acceptació."
-temes:
-- sistema
+estat: canonic
+description: Plantilla per convertir un objectiu en fases, dependències, riscos i criteris d'acceptació.
 tags:
-- dev
-- maquina
-- socdepoble
-- tecnica
+  - maquina
 ---
 # Planificació Pro (L'Arquitectura del Marge)
 **Categoria:** Plantilla
@@ -55,3 +50,12 @@ _Fent poble amb [[el_projecte|Sóc de Poble]]! © 2026_
 **Categoria:** [[00_plantilles|07_plantilles]]
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
 **Ancoratge de Seguretat:** [[00_INDEX]]
+
+## Sinapsis Entrants (Autogenerat)
+
+- [[00_plantilles|02_ACTUAR_Maquina_Tecnica/07_plantilles/00_plantilles.md]] — [[plantilla_planificacio|Plantilla Planificació]]
+- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[plantilla_planificacio|Plantilla Planificació]]
+- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[plantilla_planificacio|Plantilla Planificació]]
+- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[plantilla_planificacio|Plantilla Planificació]]
+
+<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

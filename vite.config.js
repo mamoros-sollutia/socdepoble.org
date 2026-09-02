@@ -10,10 +10,7 @@ export default defineConfig(({ command }) => ({
   plugins: [
     react()
   ],
-  define: command === 'build' ? {
-    'import.meta.env.VITE_SUPABASE_URL': '""',
-    'import.meta.env.VITE_SUPABASE_ANON_KEY': '""'
-  } : {},
+
   server: {
     host: true,
     port: 3340,

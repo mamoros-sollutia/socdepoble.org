@@ -1,48 +1,34 @@
 ---
+tipus: skill
+estat: actiu
+description: "Core skill per a restauració segura"
 name: core-restauracio-segellada
-description: >
-  Inspecciona, compara, prova i aplica restauracions de fitxers, commits o
-  snapshots sense sobreescriptures cegues. La petició inicial només autoritza
-  INSPECCIÓ. L'aplicació exigix un segell criptogràfic emés per
-  desenterrar.mjs en la mateixa sessió i una confirmació humana posterior al
-  diff. S'activa davant qualsevol petició de restaurar, revertir, tornar
-  arrere o recuperar una còpia.
-version: 2.0.0
-status: active
-owner: project-governance
-purpose: >
-  Evitar escriptures destructives durant operacions de restauració mitjançant
-  un segell no deduïble i un radi d'explosió presentat literalment.
-prioritat: bloquejant
-authority_level: procedural
-requires: []
-conflicts_with: []
-substitueix:
-  - core-verified-change (secció de restauració)
-  - core-bounded-action (secció d'escriptura destructiva)
-  - core-safe-restore (fusionada ací el 260831)
+triggers_on:
+  - restaura
+  - restaurar
+  - còpia de seguretat
+  - copia de seguretat
+  - backup
+  - torna arrere
+  - tornar arrere
+  - revertir
+  - revert
+  - rollback
+  - checkout
+  - restore
+  - recupera la versió
+  - recuperar versió
+  - com estava abans
+  - git checkout
+  - git reset
+  - git revert
+core: true
 eines_obligatories:
   - tooling/brain/ancora.mjs
-triggers_on:
-  - "restaura"
-  - "restaurar"
-  - "còpia de seguretat"
-  - "copia de seguretat"
-  - "backup"
-  - "torna arrere"
-  - "tornar arrere"
-  - "revertir"
-  - "revert"
-  - "rollback"
-  - "checkout"
-  - "restore"
-  - "recupera la versió"
-  - "recuperar versió"
-  - "com estava abans"
-  - "git checkout"
-  - "git reset"
-  - "git revert"
-lang: ca
+tags:
+  - skill
+  - sistema
+  - core
 ---
 
 # Restauració segellada
@@ -85,7 +71,7 @@ Encara que l'usuari haja dit «restaura», la primera fase és consultiva.
 ## Fase 1 — Àncora i immobilització
 
 ```bash
-node eines/ancora.mjs --pon "abans de <el que siga>"
+node tooling/brain/ancora.mjs --pon "abans de <el que siga>"
 git status --short -- <ruta>
 git rev-parse HEAD
 shasum -a 256 <ruta>
@@ -98,7 +84,7 @@ ruta. **Si hi ha canvis locals, no es fa `stash` automàticament.**
 ## Fase 2 — Autòpsia
 
 ```bash
-node eines/desenterrar.mjs --ref <sha> --fitxer <ruta>
+node tooling/brain/desenterrar.mjs --ref <sha> --fitxer <ruta>
 ```
 
 No escriu res. Torna: data del commit, **data real del contingut**, línies
@@ -141,7 +127,7 @@ i vinculada al pla.
 Només amb un sí explícit:
 
 ```bash
-node eines/desenterrar.mjs --ref <sha> --fitxer <ruta> --segell <segell>
+node tooling/brain/desenterrar.mjs --ref <sha> --fitxer <ruta> --segell <segell>
 ```
 
 Immediatament abans d'escriure: comprova que HEAD no ha canviat i que el hash
@@ -187,7 +173,4 @@ Si `desenterrar.mjs` no existix o no s'executa, la resposta correcta és
 **aturar-se i dir-ho**, no continuar a mà. Una porta que no es pot obrir
 significa que no es passa.
 
-> **Avís d'auditoria 260831:** `tooling/brain/despertar.mjs:47` crida
-> `eines/ancora.mjs` dins d'un `try/catch` que degrada la fallada a un avís.
-> Mentre això dure, l'àncora de sessió pot no existir i l'arrencada et dirà
-> «Bon dia» igualment. Cal fer que `despertar.mjs` falle tancat.
+

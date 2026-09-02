@@ -101,7 +101,7 @@ const N = membres.length;
    ══════════════════════════════════════════════════════════════════ */
 const SALTA = new Set([
   'node_modules', 'dist', 'build', 'coverage', '.git',
-  '90_arxiu_historic', '_arxiu_wiki_de_poble', '.sdp-paperera'
+  '90_historic', '_arxiu_wiki_de_poble', '.sdp-paperera'
 ]);
 
 function arbre(rel, eixida = []) {

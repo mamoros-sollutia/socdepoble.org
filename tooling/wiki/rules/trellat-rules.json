@@ -6,7 +6,7 @@
     "01_SABER_Cultura_Coneixement",
     "02_ACTUAR_Maquina_Tecnica",
     "03_GOVERNAR_Normativa_Regles",
-    "90_arxiu_historic",
+    "90_historic",
     "05_Escriptori_Soc_de_Poble"
   ],
   "requiredFrontmatter": ["estat", "tipus", "description"],
@@ -64,8 +64,8 @@
   "auditRules": {
     "carpeta": [
       { "match": "*produccio*|*build*", "expectAt": "02_ACTUAR_Maquina_Tecnica/scripts/", "severity": "warning" },
-      { "match": "*vella*|*old*", "expectAt": "90_arxiu_historic/", "severity": "warning" },
-      { "match": "*bancal*", "expectAt": "90_arxiu_historic/", "severity": "warning" },
+      { "match": "*vella*|*old*", "expectAt": "90_historic/", "severity": "warning" },
+      { "match": "*bancal*", "expectAt": "90_historic/", "severity": "warning" },
       { "match": "^(?!00_|01_|02_|03_|04_|05_).+", "expectAt": null, "severity": "critical" }
     ]
   },

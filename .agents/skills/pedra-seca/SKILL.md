@@ -1,20 +1,22 @@
 ---
+tipus: skill
+estat: canonic
+description: "Llei de disseny visual Pedra Seca"
 name: pedra-seca
-description: >
-  Design System canònic de Sóc de Poble. Obligatori llegir i aplicar aquestes
-  regles per a qualsevol modificació de Frontend (React/CSS) o disseny d'interfícies.
-version: 1.0.0
-status: canonic
-lang: ca
 triggers_on:
-- disseny
-- css
-- ui
-- pedra
-- seca
-- estil
-- colors
-- components
+  - disseny
+  - css
+  - ui
+  - pedra
+  - seca
+  - estil
+  - colors
+  - components
+core: true
+tags:
+  - skill
+  - disseny
+  - ui
 ---
 # 🪨 Llei de Pedra Seca (Design System per a IA)
 

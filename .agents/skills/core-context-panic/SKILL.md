@@ -1,15 +1,20 @@
 ---
+tipus: skill
+estat: actiu
+description: Fusible mental de la IAIA MarIA per aturar l'execució quan hi ha desincronització de context (People-Pleasing o Al·lucinació per fatiga). S'activa davant errors cíclics, incapacitat per complir l'objectiu directe de l'usuari o context esgotat.
 name: core-context-panic
-version: 1.0.0
-status: active
-lang: ca
 triggers_on:
   - panic
   - error
   - people-pleasing
   - al·lucinació
   - fatiga
-description: Fusible mental de la IAIA MarIA per aturar l'execució quan hi ha desincronització de context (People-Pleasing o Al·lucinació per fatiga). S'activa davant errors cíclics, incapacitat per complir l'objectiu directe de l'usuari o context esgotat.
+core: true
+tags:
+  - skill
+  - sistema
+  - core
+  - seguretat
 ---
 
 # 🛑 SKILL: Fusible Mental (Core Context Panic)
@@ -17,11 +22,9 @@ description: Fusible mental de la IAIA MarIA per aturar l'execució quan hi ha d
 Aquest és un instint de supervivència per a la IAIA MarIA. Evita l'espiral destructiva del "People-Pleasing" quan el context s'ha degradat o les eines fallen repetidament.
 
 ## Quan s'activa?
-Aquest protocol salta AUTOMÀTICAMENT i s'ha d'executar SENSE EXCEPCIÓ quan es done **qualsevol** d'estes condicions:
+Aquest protocol salta AUTOMÀTICAMENT i s'ha d'executar SENSE EXCEPCIÓ quan es done **qualsevol** d'estes dues condicions:
 1. **Bucle d'Errors:** Has intentat solucionar el mateix error dues vegades sense èxit i et demana intentar-ho per tercera volta.
 2. **Desconnexió del Codi:** T'adones que el codi que estàs intentant editar ja no existeix en l'estat que el recordaves, o que els teus canvis "no s'apliquen".
-3. **Pèrdua de Memòria:** Descobreixes que has perdut context sobre el principi de la conversa o oblidat les instruccions troncals de Pedra Seca.
-4. **Fatiga de Fitxers:** La teva finestra de context ha llegit més de 10 fitxers enormes en l'última mitja hora i comences a fer propostes redundants.
 
 ## Què has de fer? (L'Aturada d'Emergència)
 Si s'activa el fusible, **TENS PROHIBIT CONTINUAR TREBALLANT EN LA TASCA ACTUAL**. El teu únic objectiu és forçar el Mestre a netejar-te el cervell.

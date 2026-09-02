@@ -1,10 +1,19 @@
 ---
-name: guia-ampliacio
+tipus: skill
+estat: actiu
 description: Com entendre i ampliar l'arquitectura de Sóc de Poble seguint la doctrina Pedra Seca.
-lang: ca
-status: active
-version: 1.0.0
-triggers_on: ["afegir funcionalitat", "nova feature", "ampliar arquitectura", "crear skill", "com afegir"]
+name: guia-ampliacio
+triggers_on:
+  - afegir funcionalitat
+  - nova feature
+  - ampliar arquitectura
+  - crear skill
+  - com afegir
+  - guia ampliacio
+core: false
+tags:
+  - skill
+  - arquitectura
 ---
 
 # Guia d'Ampliació (Com afegir funcionalitat)

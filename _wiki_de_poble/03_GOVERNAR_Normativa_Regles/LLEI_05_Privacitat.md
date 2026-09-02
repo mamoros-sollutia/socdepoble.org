@@ -1,14 +1,9 @@
 ---
-estat: canonic
 tipus: norma
+estat: canonic
 description: La privacitat és per defecte.
-temes:
-- sistema
 tags:
-- govern
-- normativa
-- regles
-- socdepoble
+  - govern
 ---
 # LLEI 05 Privacitat
 
@@ -102,3 +97,14 @@ Activa SDP-LOCK si:
 ---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]
+
+## Sinapsis Entrants (Autogenerat)
+
+- [[seguretat_execucio|02_ACTUAR_Maquina_Tecnica/skills/seguretat_execucio.md]] — Esta pàgina és una **fitxa consultiva** de `02_ACTUAR_Maquina_Tecnica`. No és...
+- [[self_repair|02_ACTUAR_Maquina_Tecnica/skills/self_repair.md]] — [[LLEI_05_Privacitat]]
+- [[successio_lazaro_execucio|02_ACTUAR_Maquina_Tecnica/skills/successio_lazaro_execucio.md]] — [[LLEI_05_Privacitat]]
+- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — Esta pàgina és una **fitxa consultiva** de `02_ACTUAR_Maquina_Tecnica`. No és...
+- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — Esta pàgina és una **fitxa consultiva** de `02_ACTUAR_Maquina_Tecnica`. No és...
+- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — Esta pàgina és una **fitxa consultiva** de `02_ACTUAR_Maquina_Tecnica`. No és...
+
+<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

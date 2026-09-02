@@ -68,7 +68,7 @@ async function run() {
   const unreachable = unreachableFrom(graph, roots).filter(r => {
     // Excepcions legítimes que no cal que estiguen al graf principal
     if (r.includes('00_plantilles')) return false;
-    if (r.includes('90_arxiu_historic')) return false;
+    if (r.includes('90_historic')) return false;
     if (r.includes('.quarantena')) return false;
     if (r.includes('00_Bandeja_d_Entrada')) return false;
     if (r.includes('05_Escriptori_Soc_de_Poble') && !r.includes('01_Produccio')) return false;

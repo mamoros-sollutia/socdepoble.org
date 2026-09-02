@@ -1,15 +1,10 @@
 ---
-estat: canonic
 tipus: skill
-description: "Defineix com experimentar amb IA local i RAG sense convertir prototips futurs en garanties del sistema."
-temes:
-- sistema
+estat: canonic
+description: Defineix com experimentar amb IA local i RAG sense convertir prototips futurs en garanties del sistema.
 tags:
-- dev
-- maquina
-- skills
-- socdepoble
-- tecnica
+  - maquina
+  - skills
 ---
 # Adaptació futura amb veto de Baseline
 
@@ -80,3 +75,13 @@ Qualsevol experiment que haja de modificar coneixement, configuració o codi seg
 ---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]
+
+## Sinapsis Entrants (Autogenerat)
+
+- [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maquina_Tecnica/00_arquitectura_tecnica_unificada.md]] — [[futur_adaptacio]]
+- [[MOTOR_OFFLINE|02_ACTUAR_Maquina_Tecnica/skills/MOTOR_OFFLINE.md]] — [[futur_adaptacio]]
+- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[futur_adaptacio]]
+- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[futur_adaptacio]]
+- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[futur_adaptacio]]
+
+<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

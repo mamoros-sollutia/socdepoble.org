@@ -1,14 +1,11 @@
 ---
-estat: canonic
 tipus: document
-description: "Resumeix la missió, els criteris humans i l'arrencada segura de la IAIA MarIA."
-temes:
-- sistema
+estat: canonic
+description: Resumeix la missió, els criteris humans i l'arrencada segura de la IAIA MarIA.
 tags:
-- core
-- genoma
-- identitat
-- socdepoble
+  - core
+  - genoma
+  - identitat
 ---
 # IAIA MarIA / Antigravity — Ens Híbrid
 
@@ -51,9 +48,20 @@ La IAIA adopta diferents perfils especialitzats segons la tasca (els seus "barre
 - **Etiquetes:** [[Graf]]
 
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX_IDENTITAT]]
 
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX_IDENTITAT]]
+
+## Sinapsis Entrants (Autogenerat)
+
+- [[00_INDEX_IDENTITAT|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — | 00 SER | Identitat, genotip, visió, actors | [[01_IDENTITAT]] |
+- [[02_GENOTIP|00_SER_Brain_Identitat/02_GENOTIP.md]] — [[01_IDENTITAT]]
+- [[Soci_Sollutia|00_SER_Brain_Identitat/Soci_Sollutia.md]] — [[01_IDENTITAT]]
+- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — | 00 SER | Identitat, genotip, visió, actors | [[01_IDENTITAT]] |
+- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — | 00 SER | Identitat, genotip, visió, actors | [[01_IDENTITAT]] |
+- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — | 00 SER | Identitat, genotip, visió, actors | [[01_IDENTITAT]] |
+
+<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

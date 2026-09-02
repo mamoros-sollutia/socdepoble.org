@@ -55,10 +55,10 @@ const JURISDICCIONS_EXCLOSES = [
 ];
 
 /** Pilars que mai es MODIFIQUEN (memòria morta o treball efímer). */
-const PILARS_NO_MODIFICAR = ['90_arxiu_historic', ESCRIPTORI];
+const PILARS_NO_MODIFICAR = ['90_historic', ESCRIPTORI];
 
 /** Pilars que mai són DESTÍ d'enllaç automàtic (noms efímers). */
-const PILARS_NO_DESTI = ['90_arxiu_historic', ESCRIPTORI];
+const PILARS_NO_DESTI = ['90_historic', ESCRIPTORI];
 
 /** Documents Troncals (Tier 0): guanyen tota col·lisió. Font: 00_INDEX. */
 const TRONCALS = new Set([

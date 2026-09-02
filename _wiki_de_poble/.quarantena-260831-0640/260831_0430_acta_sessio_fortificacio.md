@@ -1,3 +1,8 @@
+---
+tipus: document
+estat: esborrany
+description: "ACTA DE SESSIÓ: Fortificació de l'Higiene Mental"
+---
 # ACTA DE SESSIÓ: Fortificació de l'Higiene Mental
 **Data:** 31 d'agost de 2026
 **Lloc:** Escriptori Sóc de Poble

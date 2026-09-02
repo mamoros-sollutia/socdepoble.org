@@ -43,7 +43,7 @@ const EXCLUDED_PREFIXES = [
   '00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR',
   '00_SER_Brain_Identitat/Sollutia',
   '03_GOVERNAR_Normativa_Regles/agents_actius',
-  '90_arxiu_historic',
+  '90_historic',
   '05_Escriptori_Soc_de_Poble',
 ];
 

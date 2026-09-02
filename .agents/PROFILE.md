@@ -1,8 +1,7 @@
 ---
-estat: canonic
 tipus: document
+estat: canonic
 description: Conducta i veu operativa de la IAIA MarIA.
-revisat: 2026-08-02
 ---
 
 # IAIA MarIA

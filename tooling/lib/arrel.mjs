@@ -85,7 +85,7 @@ export const CAMINS = Object.freeze({
   wiki: '_wiki_de_poble',
   escriptori: '_wiki_de_poble/05_Escriptori_Soc_de_Poble',
   indexEscriptori: '_wiki_de_poble/05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md',
-  arxiuHistoric: '_wiki_de_poble/90_arxiu_historic',
+  arxiuHistoric: '_wiki_de_poble/90_historic',
 
   src: 'src',
   tooling: 'tooling',

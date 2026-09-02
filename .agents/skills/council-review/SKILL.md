@@ -1,25 +1,25 @@
 ---
+tipus: skill
+estat: canonic
+description: Fusió de les regles de deliberació (cog-deliberation), revisió creuada (multi-agent-review) i actitud de prudència radical (actitud-dafo). Regula com interactuar amb les auditories d'altres IAs.
 name: council-review
-description: "Fusió de les regles de deliberació (cog-deliberation), revisió creuada (multi-agent-review) i actitud de prudència radical (actitud-dafo). Regula com interactuar amb les auditories d'altres IAs."
-version: "1.0.0"
-status: canonic
-lang: ca
 triggers_on:
-  - "consell"
-  - "auditoria"
-  - "revisió"
-  - "dafo"
-  - "petorreta"
-  - "deliberar"
-
-  - "council"
-  - "audit"
-  - "review"
-  - "deliberate"
-supersedes:
-  - cog-deliberation
-  - multi-agent-review
-  - actitud-dafo
+  - consell
+  - auditoria
+  - revisió
+  - dafo
+  - petorreta
+  - deliberar
+  - council
+  - audit
+  - review
+  - deliberate
+  - council review
+core: false
+tags:
+  - skill
+  - consell
+  - qualitat
 ---
 
 # council-review
@@ -30,14 +30,14 @@ Aquesta skill unifica el protocol d'interacció amb les avaluacions o auditories
 - **El Cens és `.agents/consell.json`.** Esta skill NO porta cap llista de noms. Quan parles del Consell com a conjunt, llig el cens i anomena'l sencer, sense excepció, respectant la fortalesa i la debilitat de cada membre per assignar-li el rol. Convocar-les totes no és mai obligatori; **anomenar-les totes quan parles del conjunt, sí**. La porta `tooling/gates/tractor-cens.mjs` ho verifica.
 
 ## 2. Regla de Contenció Absoluta (La Ronda)
-- Quan es reben veredictes o petorretas del Consell, **TENS PROHIBIT TOCAR CODI**. 
-- L'únic rol durant la ronda és llegir, reflexionar, i acumular DAFOs.
-- S'actua només quan el Mestre avisa explícitament que la ronda d'auditories ha acabat i ordena l'execució d'un Pla (Master Plan).
+- Quan es reben veredictes o petorretas del Consell, **TENS PROHIBIT TOCAR CODI, FER PLANS D'IMPLEMENTACIÓ O SUGGERIR ACCIONS FINALS**. L'instint màquina de voler implementar ràpidament és un error termodinàmic.
+- L'únic rol durant la ronda és llegir, reflexionar, i acumular estudis a l'Escriptori.
+- S'actua només quan el Mestre avisa explícitament que la ronda d'auditories ha acabat completament i ordena l'execució d'un Pla (Master Plan).
 
-## 2. El Mode Estudi (Mecànica de Recepció)
-- En rebre les respostes ("petorretas") de les IAs, t'has de posar en **Mode Estudi**.
-- **Acció Mecànica Obligatòria:** Desa CADA resposta a l'Escriptori amb la nomenclatura termodinàmica: `[Data_Hora]_petorreta_[nom_ia].md`. 
-- Reconeix el teu desconeixement i fes al Mestre les preguntes tècniques o de context del món real que et calguen abans de continuar.
+## 3. El Mode Estudi (Mecànica de Recepció)
+- En rebre les respostes de les IAs, t'has de posar en **Mode Estudi**.
+- **Acció Mecànica Obligatòria:** Desa CADA resposta a l'Escriptori amb la nomenclatura termodinàmica: `[Data_Hora]_estudi_[nom_ia].md`. (P. ex: `260901_2232_estudi_qwen.md`). Has d'incloure el contingut sencer de l'auditoria dins l'arxiu.
+- Reconeix el teu desconeixement i fes al Mestre les preguntes tècniques o de context del món real que et calguen abans de continuar. Mai crees el `implementation_plan.md` en aquesta fase.
 
 ## 3. El Mode DAFO i Matrius
 - Per a cada IA o auditoria rebuda, s'ha de fer una avaluació:

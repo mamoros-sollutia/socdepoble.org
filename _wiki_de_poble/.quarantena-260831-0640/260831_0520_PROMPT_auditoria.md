@@ -1,3 +1,8 @@
+---
+tipus: document
+estat: esborrany
+description: "🛡️ PETORRETA AL CONSELL: AUDITORIA CAP A SOLLUTIA"
+---
 Ancoratge: [[00_INDEX_ESCRIPTORI]]
 
 # 🛡️ PETORRETA AL CONSELL: AUDITORIA CAP A SOLLUTIA

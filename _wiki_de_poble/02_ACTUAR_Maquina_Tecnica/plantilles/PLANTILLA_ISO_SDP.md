@@ -1,14 +1,9 @@
 ---
-estat: esborrany
 tipus: plantilla
-description: "Plantilla base per crear documents coherents amb l'esquema de metadades v2 de la Wiki."
-temes:
-- sistema
+estat: esborrany
+description: Plantilla base per crear documents coherents amb l'esquema de metadades v2 de la Wiki.
 tags:
-- dev
-- maquina
-- socdepoble
-- tecnica
+  - maquina
 ---
 # PLANTILLA ISO SDP
 
@@ -188,3 +183,13 @@ La skill ha de retornar:
 
 
 **Ancoratge de Seguretat:** [[00_INDEX]]
+
+## Sinapsis Entrants (Autogenerat)
+
+- [[DOC_Logos_Oficials|00_SER_Brain_Identitat/DOC_Logos_Oficials.md]] — [[PLANTILLA_ISO_SDP]]
+- [[00_plantilles|02_ACTUAR_Maquina_Tecnica/07_plantilles/00_plantilles.md]] — [[PLANTILLA_ISO_SDP.md|Plantilla Prompt ISO històrica]]
+- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[PLANTILLA_ISO_SDP]]
+- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[PLANTILLA_ISO_SDP]]
+- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[PLANTILLA_ISO_SDP]]
+
+<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

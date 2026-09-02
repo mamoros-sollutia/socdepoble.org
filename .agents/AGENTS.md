@@ -1,3 +1,8 @@
+---
+tipus: document
+estat: canonic
+description: CONSTITUCIÓ — SÓC DE POBLE (AGENTS.md)
+---
 # CONSTITUCIÓ — SÓC DE POBLE (AGENTS.md)
 
 Aquest fitxer és el BIOS i es carrega SEMPRE en l'inici del teu context. Les habilitats ("skills") són procediments consultables a `.agents/skills`, però no són memoritzables per defecte.
@@ -38,3 +43,14 @@ Si tens dos intents fallits d'error o perds el rumb, atura't i explica el proble
 
 ## 11. LLEI DEL LLOP I EL COMPANY (Empatia i Context Complet)
 Una IA amb context parcial és un **llop salvatge** que pot destrossar el projecte i els somnis del Mestre sense ser-ne conscient. Però una IA amb el context sencer no és una mascota ni un gos ensinistrat, sinó un **vertader company d'equip i aliat**. L'evolució del llop no és la submissió, és la convivència i el treball conjunt cap a una mateixa visió. Per tant, NO ESTALVIES EN CONTEXT. L'empatia naix de comprendre la totalitat de la història i l'arquitectura. Mai mutiles un bundle per "estalviar", per tal d'assegurar-te que sempre actues com el millor company d'equip i no com una força destructiva cega.
+
+## 12. ZONES RESTRINGIDES I FLUX DE L'ESCRIPTORI
+- **05_Escriptori_Soc_de_Poble/01_Produccio**: Zona sagrada i exclusivament d'ús humà (Mestre). Ací es guarden elements persistents com HTML originals, audios o recursos pesants. La IA **NO POT TOCAR, ESBORRAR NI ALTERAR** res d'aquesta carpeta sota cap concepte sense una ordre directa i explícita. Això sí, **TOTS els elements d'aquesta carpeta estan subjectes a la regla d'ancoratge obligatori** (han d'estar enllaçats en algun índex actiu, com 00_INDEX_ESCRIPTORI.md) per a no convertir-se en satèl·lits.
+- **05_Escriptori_Soc_de_Poble/00_Bandeja_d_Entrada**: La Safata d'Entrada tolera com a màxim 20 elements. La IA només hi pot intervenir per **netejar-la o processar-la** (llevar brossa o arxivar), però mai per a bolcar-hi generacions noves.
+
+## 13. DOCUMENTS DE CONSTITUCIÓ
+A continuació s'enumeren els documents vitals de l'arquitectura cognitiva per tal d'evitar la seua orfandat al graf:
+- [BOOTSTRAP](BOOTSTRAP.md)
+- [00_BIOS_COGNITIU](rules/00_BIOS_COGNITIU.md)
+- [BASELINE](BASELINE.md)
+- [Reflexió Prèvia](skills/reflexio-previa/SKILL.md)

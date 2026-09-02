@@ -1,18 +1,11 @@
 ---
-title: Plugins
-source: https://community.obsidian.md/search?type=plugin
-author: null
-published: null
-created: 2026-07-22
+tipus: document
+estat: canonic
 description: Discover plugins, themes, and more for Obsidian
 tags:
-- actes
-- clippings
-- escriptori
-- socdepoble
-- temporal
-estat: auditat
-tipus: document
+  - acta
+  - escriptori
+  - temporal
 ---
 5946 results
 
@@ -231,3 +224,12 @@ AI chat with note context, smart writing assistance, and one-click edits for you
 ## Taxonomia
 - **Categoria:** [[Maquina]]
 - **Etiquetes:** [[Graf]]
+
+## Sinapsis Entrants (Autogenerat)
+
+- [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maquina_Tecnica/00_arquitectura_tecnica_unificada.md]] — [[Plugins]]
+- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[Plugins]]
+- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[Plugins]]
+- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[Plugins]]
+
+<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

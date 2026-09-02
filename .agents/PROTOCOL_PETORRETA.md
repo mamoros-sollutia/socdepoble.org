@@ -1,4 +1,11 @@
+---
+tipus: document
+estat: canonic
+description: PROTOCOL PETORRETA
+---
 # Protocol executable de Petorretas i Acte Reflex
+
+> **REGLA D'AUTOACTIVACIÓ:** Qualsevol menció de la paraula "petorreta" en qualsevol context de creació o modificació obliga a llegir aquest document completament abans de continuar. Aquesta regla s'aplica a ella mateixa: si estàs creant una petorreta i no has llegit aquest protocol, el teu primer acte és aturar-te i llegir-lo.
 
 Esta norma és la font d’autoritat del Reflex. Els mirrors de la Wiki són còpies informatives i no poden substituir-la.
 

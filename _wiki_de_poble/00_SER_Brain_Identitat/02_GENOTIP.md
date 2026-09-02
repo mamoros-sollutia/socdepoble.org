@@ -1,14 +1,11 @@
 ---
-estat: canonic
 tipus: document
-description: "Establix les nou lleis cognitives que governen la IAIA MarIA i els agents del projecte."
-temes:
-- sistema
+estat: canonic
+description: Establix les nou lleis cognitives que governen la IAIA MarIA i els agents del projecte.
 tags:
-- core
-- genoma
-- identitat
-- socdepoble
+  - core
+  - genoma
+  - identitat
 ---
 # 🧬 EL GENOTIP: LES 9 LLEIS INAMOVIBLES
 
@@ -39,9 +36,25 @@ L’autoritat executable d’estes lleis és `.agents/PROTOCOL_PETORRETA.md`; es
 - **Etiquetes:** [[Graf]]
 
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX_IDENTITAT]]
 
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX_IDENTITAT]]
+
+## Sinapsis Entrants (Autogenerat)
+
+- [[00_BIOS|00_SER_Brain_Identitat/00_BIOS.md]] — no pot demostrar seguretat. La resta queda subordinada a [[02_GENOTIP]] i a
+- [[00_INDEX_IDENTITAT|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[02_GENOTIP]]
+- [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maquina_Tecnica/00_arquitectura_tecnica_unificada.md]] — [[02_GENOTIP|Genotip cognitiu]]
+- [[PLANTILLA_ISO_SDP|02_ACTUAR_Maquina_Tecnica/plantilles/PLANTILLA_ISO_SDP.md]] — [[02_GENOTIP]]
+- [[AUDITORIA_CANONICA|02_ACTUAR_Maquina_Tecnica/skills/AUDITORIA_CANONICA.md]] — [[02_GENOTIP]]
+- [[successio_lazaro_execucio|02_ACTUAR_Maquina_Tecnica/skills/successio_lazaro_execucio.md]] — [[02_GENOTIP]]
+- [[LLEI_05_Privacitat|03_GOVERNAR_Normativa_Regles/LLEI_05_Privacitat.md]] — [[02_GENOTIP]]
+- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — no pot demostrar seguretat. La resta queda subordinada a [[02_GENOTIP]] i a
+- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — no pot demostrar seguretat. La resta queda subordinada a [[02_GENOTIP]] i a
+- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — no pot demostrar seguretat. La resta queda subordinada a [[02_GENOTIP]] i a
+- [[260902_0156_PROMPT_auditoria_v7_del_consell_per_a_validar_el_sanejament_cognitiu|05_Escriptori_Soc_de_Poble/260902_0156_PROMPT_auditoria_v7_del_consell_per_a_validar_el_sanejament_cognitiu.md]] — [[02_GENOTIP]]
+
+<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

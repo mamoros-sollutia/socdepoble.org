@@ -1,35 +1,35 @@
 ---
+tipus: skill
+estat: canonic
+description: "Protocol d'higiene cognitiva"
 name: core-higiene-reflexa
-description: >
-  Llei d'ancoratge i tancament. Tot fitxer que es crea naix amb nom, lloc i
-  enllaç, o no naix. Cap torn es tanca amb brossa a l'Escriptori. Controla el cicle sencer: obrir, classificar, ancorar i tancar.
-version: 2.0.0
-status: canonic
-lang: ca
-owner: project-governance
-authority_level: procedural
-prioritat: bloquejant
+triggers_on:
+  - tanca
+  - tancar
+  - acaba
+  - acabat
+  - fet
+  - neteja
+  - escriptori
+  - ancorar
+  - ancoratge
+  - orfe
+  - satèl·lit
+  - crea fitxer
+  - guarda
+  - inici
+  - obrir
+core: true
 eines_obligatories:
   - .agents/hooks/verify.mjs
   - .agents/hooks/tancar.mjs
   - tooling/gates/obrir_torn.mjs
   - tooling/gates/tancament.mjs
-triggers_on:
-  - "tanca"
-  - "tancar"
-  - "acaba"
-  - "acabat"
-  - "fet"
-  - "neteja"
-  - "escriptori"
-  - "ancorar"
-  - "ancoratge"
-  - "orfe"
-  - "satèl·lit"
-  - "crea fitxer"
-  - "guarda"
-  - "inici"
-  - "obrir"
+tags:
+  - skill
+  - sistema
+  - core
+  - higiene
 ---
 
 # Higiene reflexa: Cada ferramenta al seu clau
@@ -68,5 +68,13 @@ El torn acaba quan la porta et dona permís. Ordre exacte:
 5. Executa `node tooling/gates/tancament.mjs --turn-id=<id> --json` (o `npm run tancar`). Si no hi ha rebut verd (`ok: true`), el torn no pot acabar.
 6. Només llavors contestes al Mestre.
 
-## Regla del sac
+## 5. Regla del sac
 Qui va al bancal se'n torna amb el sac. Si has obert una carpeta, la tanques. Si has fet una prova, la lleves. El bancal queda com t'agradaria trobar-lo.
+
+## 6. La Destil·lació Diària (El xiquet que aprén)
+L'Escriptori i l'Arxiu Històric (`90_historic`) no són abocadors d'auditories ni de respostes d'IAs. Sóc de Poble aprén com un xiquet, no rebutja com un porter de discoteca. 
+Cada dia o al final d'una sessió complexa:
+1. Llig els estudis, auditories o respostes temporals generades per tu o pel Consell (ex: `260901_2232_estudi_claude.md`).
+2. **Destil·la el coneixement**: Si hi ha alguna millora arquitectònica o patró útil, afig-ho immediatament a la `SKILL.md` corresponent (o crea'n una de nova).
+3. **Esborra sense pietat**: Un cop destil·lat l'aprenentatge, esborra l'arxiu temporal completament de la Wiki i de l'Escriptori. No l'arxives enlloc. L'únic arxiu per al que s'utilitza la paraula "arxivar" és per a traure-ho completament de la Wiki (com ara moure'l a un `_arxiu_wiki_de_poble` fòssil fora del repositori).
+4. **Poda d'Actes**: Les actes de sessions (`10_actes`) actuen com una Time Machine temporal, però tampoc s'han d'acumular ad infinitum. Fes higiene de tant en tant i esborra les actes de fa més de 2 o 3 setmanes si el seu contingut ja s'ha absorbit.

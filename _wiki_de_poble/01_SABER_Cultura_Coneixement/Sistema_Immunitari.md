@@ -1,14 +1,9 @@
 ---
-estat: canonic
 tipus: skill
+estat: canonic
 description: "Manual operatiu de plaquetes.mjs v1.1: el Sistema Immunitari que diagnostica ferides del graf (fantasmes, orfes) i les cura només amb aprovació mecànica per hash, un commit git per operació i reversió quirúrgica."
-temes:
-- sistema
 tags:
-- coneixement
-- cultura
-- saber
-- socdepoble
+  - saber
 ---
 
 # Sistema Immunitari — Les Plaquetes 🩸
@@ -85,3 +80,12 @@ Els incrustats `!nota_inexistent (BROKEN LINK: nota_inexistent) <!-- TODO: fix l
 ## Taxonomia
 - **Categoria:** [[Coneixement]]
 - **Etiquetes:** [[Graf]]
+
+## Sinapsis Entrants (Autogenerat)
+
+- [[00_INDEX_IDENTITAT|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[Sistema_Immunitari]]
+- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[Sistema_Immunitari]]
+- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[Sistema_Immunitari]]
+- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[Sistema_Immunitari]]
+
+<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

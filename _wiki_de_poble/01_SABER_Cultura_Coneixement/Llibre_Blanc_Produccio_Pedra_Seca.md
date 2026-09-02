@@ -1,15 +1,10 @@
 ---
-estat: esborrany
 tipus: document
+estat: esborrany
 description: Documenta el mètode Pedra Seca per produir una PWA mantenible sense sobreenginyeria.
-temes:
-- sistema
 tags:
-- coneixement
-- cultura
-- pedra_seca
-- saber
-- socdepoble
+  - disseny
+  - saber
 ---
 # Llibre Blanc de Producció (El Mètode Pedra Seca)
 
@@ -78,3 +73,12 @@ Les bones intencions no frenen l'entropia; només els processos mecànics ho fan
 ---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]
+
+## Sinapsis Entrants (Autogenerat)
+
+- [[00_INDEX|00_INDEX.md]] — [[Llibre_Blanc_Produccio_Pedra_Seca]]
+- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[Llibre_Blanc_Produccio_Pedra_Seca]]
+- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[Llibre_Blanc_Produccio_Pedra_Seca]]
+- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[Llibre_Blanc_Produccio_Pedra_Seca]]
+
+<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

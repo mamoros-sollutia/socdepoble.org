@@ -1,18 +1,13 @@
 ---
-estat: canonic
 tipus: skill
-description: "Reunix criteris consultius de reparació segura, contenció d'errors i resiliència local sense autoexecució."
-aliases:
-- Self Repair
-- SDP Stop
-temes:
-- sistema
+estat: canonic
+description: Reunix criteris consultius de reparació segura, contenció d'errors i resiliència local sense autoexecució.
 tags:
-- dev
-- maquina
-- skills
-- socdepoble
-- tecnica
+  - maquina
+  - skills
+aliases:
+  - Self Repair
+  - SDP Stop
 ---
 # Autoreparació i contenció d'errors
 
@@ -106,3 +101,14 @@ Els antics frontmatters v1 incrustats, `pre_commit_trellat.mjs` com a autoritat,
 ---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]
+
+## Sinapsis Entrants (Autogenerat)
+
+- [[CORE_Registre_Automillora|00_SER_Brain_Identitat/CORE_Registre_Automillora.md]] — | 260706_0900 | 260707_0645 | ~19h              | 1       | Agents Autònoms, ...
+- [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maquina_Tecnica/00_arquitectura_tecnica_unificada.md]] — [[self_repair]]
+- [[seguretat_execucio|02_ACTUAR_Maquina_Tecnica/skills/seguretat_execucio.md]] — [[self_repair]]
+- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — | 260706_0900 | 260707_0645 | ~19h              | 1       | Agents Autònoms, ...
+- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — | 260706_0900 | 260707_0645 | ~19h              | 1       | Agents Autònoms, ...
+- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — | 260706_0900 | 260707_0645 | ~19h              | 1       | Agents Autònoms, ...
+
+<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

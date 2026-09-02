@@ -48,6 +48,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
+import { execSync } from 'node:child_process';
 import { R, rel, CAMINS, EXCLOSOS, arrelSegura, diagnostic, ErrorArrel } from '../lib/arrel.mjs';
 
 /* ═══════════════════════ EL CONTRACTE ═══════════════════════
@@ -64,15 +65,15 @@ const DIRECTORIS = [
   CAMINS.tooling,
   'scripts',
   CAMINS.plugin,
-  `${CAMINS.wiki}/00_SER_Brain_Identitat`,
-  `${CAMINS.wiki}/02_ACTUAR_Maquina_Tecnica`,
-  `${CAMINS.wiki}/03_GOVERNAR_Normativa_Regles`,
-  `${CAMINS.wiki}/04_arquitectura_disseny`,
+  CAMINS.wiki,
+  'assets',
+  'supabase',
 ];
 
 /** Fitxers solts obligatoris. Si un falta, s'avorta (skill abocament-total, regla 4). */
 const FITXERS_OBLIGATORIS = [
   'package.json',
+  'package-lock.json',
   'vite.config.js',
   'eslint.config.js',
   'index.html',
@@ -137,7 +138,7 @@ const EXTENSIONS = new Set([
 ]);
 
 /** Directoris que no es trepitgen mai (a més dels globals d'arrel.mjs). */
-const DIRS_EXCLOSOS = new Set([...EXCLOSOS, 'cervells', '90_arxiu_historic', '.husky', '.githooks']);
+const DIRS_EXCLOSOS = new Set([...EXCLOSOS, 'cervells', '90_historic', '.husky', '.githooks']);
 
 /** Sostre termodinàmic orientatiu, en MB. Mai poda: només avisa. */
 const SOSTRE_MB = 2.5;
@@ -167,11 +168,12 @@ function tanca(text) {
 
 function camina(absDir, acc) {
   for (const e of fs.readdirSync(absDir, { withFileTypes: true }).sort((a, b) => a.name.localeCompare(b.name))) {
-    if (DIRS_EXCLOSOS.has(e.name)) continue;
+    if (DIRS_EXCLOSOS.has(e.name) || e.name.startsWith('.quarantena')) continue;
     const complet = path.join(absDir, e.name);
     if (e.isSymbolicLink()) continue; // un bundle no seguix enllaços: podria eixir del repo
     if (e.isDirectory()) { camina(complet, acc); continue; }
     if (!EXTENSIONS.has(path.extname(e.name))) continue;
+    if (e.name.includes('BUNDLE')) continue; // Mai s'aboca un abocament
     acc.push(complet);
   }
   return acc;
@@ -208,16 +210,26 @@ function recull() {
       absents.push({ cami: ruta, tipus: 'fitxer', critic: true, motiu: e.message });
       continue;
     }
-    const text = cru.toString('utf8');
+    const ext = path.extname(abs).toLowerCase();
+    const isBinary = ['.png', '.jpg', '.jpeg', '.gif', '.woff2', '.ttf'].includes(ext);
+    
+    let text;
+    if (isBinary) {
+      text = cru.toString('base64');
+    } else {
+      text = cru.toString('utf8');
+    }
+    
     entrades.push({
       ruta,
       bytes: cru.length,
-      linies: text.split('\n').length,
+      linies: isBinary ? 1 : text.split('\n').length,
       sha256: sha(cru),
       // Cal recordar-ho: la tanca de tancament exigix un salt de línia davant,
       // així que sense aquest bit no es pot reconstruir un fitxer que no
       // n'acabava amb cap. Sense això el round-trip és lossy i les sumes menten.
-      nl_final: text.endsWith('\n'),
+      nl_final: isBinary ? false : text.endsWith('\n'),
+      is_base64: isBinary,
       text,
     });
   }
@@ -252,7 +264,7 @@ function construeix({ entrades, absents }, meta) {
     },
     totals: { fitxers: entrades.length, bytes: totalBytes },
     absents_no_critics: absents.filter((a) => !a.critic).map((a) => a.cami),
-    fitxers: entrades.map(({ ruta, bytes, linies, sha256, nl_final }) => ({ ruta, bytes, linies, sha256, nl_final })),
+    fitxers: entrades.map(({ ruta, bytes, linies, sha256, nl_final, is_base64 }) => ({ ruta, bytes, linies, sha256, nl_final, is_base64 })),
   };
 
   const l = [];
@@ -295,7 +307,7 @@ function construeix({ entrades, absents }, meta) {
     const t = tanca(e.text);
     l.push(`## Fitxer: ${e.ruta}`);
     l.push('');
-    l.push(`<!-- sha256:${e.sha256} bytes:${e.bytes} -->`);
+    l.push(`<!-- sha256:${e.sha256} bytes:${e.bytes}${e.is_base64 ? ' encoding:base64' : ''} -->`);
     l.push('');
     // Emissió verbatim. La tanca de tancament necessita un salt davant, per
     // això s'afig quan el fitxer no n'acaba amb cap; `nl_final` ho recorda.
@@ -341,8 +353,10 @@ function verifica(text, manifest) {
     if (!cos.has(f.ruta)) { inf.push(`V1 · al manifest però absent del cos: ${f.ruta}`); continue; }
     // Reconstrucció exacta: el bloc capturat sempre ha perdut el salt que
     // precedix la tanca de tancament, i `nl_final` diu si tornar-l'hi a posar.
+    const isBase64 = f.is_base64;
     const reconstruit = cos.get(f.ruta) + (f.nl_final ? '\n' : '');
-    if (sha(Buffer.from(reconstruit, 'utf8')) !== f.sha256) {
+    const buf = isBase64 ? Buffer.from(reconstruit.trim(), 'base64') : Buffer.from(reconstruit, 'utf8');
+    if (sha(buf) !== f.sha256) {
       inf.push(`V3 · suma no quadra: ${f.ruta}`);
     }
     // Un fitxer buit al disc no és un defecte del bundle: és una troballa
@@ -421,7 +435,16 @@ function principal() {
   fs.writeFileSync(tmp, text, 'utf8');
   fs.renameSync(tmp, nomBundle); // escriptura atòmica: mai un bundle a mitges
 
+  // Escriure manifest i absents solts per documentació estricta (Codex)
+  const baseDir = path.dirname(nomBundle);
+  const manifestFile = path.join(baseDir, `${meta.prefix}_MANIFEST_${sufix}.json`);
+  const absentsFile = path.join(baseDir, `${meta.prefix}_ABSENTS_${sufix}.json`);
+  fs.writeFileSync(manifestFile, JSON.stringify(manifest, null, 2), 'utf8');
+  fs.writeFileSync(absentsFile, JSON.stringify({ absents_critics: critics, absents_no_critics: manifest.absents_no_critics }, null, 2), 'utf8');
+
   console.log(`\n✅ Bundle: ${rel(nomBundle)}`);
+  console.log(`✅ Manifest separat: ${rel(manifestFile)}`);
+  console.log(`✅ Absents separat: ${rel(absentsFile)}`);
   
   if (nomPrompt && !fs.existsSync(nomPrompt)) {
     const plantillaPrompt = `# 🛡️ PETORRETA AL CONSELL: ${sufix.replace(/_/g, ' ').toUpperCase()}
@@ -438,6 +461,15 @@ Salutacions, membres del Consell.
     console.log('   No s\'ha podat res. Si cal retallar, fes-ho canviant el contracte');
     console.log('   (DIRECTORIS / FITXERS_*) de forma semàntica i declarada, mai en silenci.');
   }
+  
+  // Ancoratge automàtic: evitar orfes a l'Escriptori
+  try {
+    execSync('node generar_indexs.mjs', { cwd: arrelSegura() });
+    console.log('✅ Ancoratge automàtic: L\'Escriptori ha sigut reindexat.');
+  } catch (e) {
+    console.log('⚠️ Error en l\'ancoratge automàtic:', e.message);
+  }
+  
   console.log('');
   return 0;
 }

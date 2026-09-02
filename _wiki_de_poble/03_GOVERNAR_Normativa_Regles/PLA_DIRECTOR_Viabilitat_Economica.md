@@ -1,17 +1,10 @@
 ---
-estat: canonic
 tipus: document
+estat: canonic
 description: Pla Director de Viabilitat Econòmica i Model de Negoci per a Sóc de Poble.
-temes:
-- governanca
-- economia
-- viabilitat
-- pressupost
 tags:
-- govern
-- normativa
-- regles
-- socdepoble
+  - govern
+  - legal
 ---
 
 # Pla Director de Viabilitat Econòmica
@@ -102,3 +95,12 @@ Les subvencions NO paguen manteniment estructural. Financen innovació i project
 ## Taxonomia
 - **Categoria:** [[Govern]]
 - **Etiquetes:** [[Graf]]
+
+## Sinapsis Entrants (Autogenerat)
+
+- [[PLA_DIRECTOR_Legal_i_Subvencions|03_GOVERNAR_Normativa_Regles/PLA_DIRECTOR_Legal_i_Subvencions.md]] — 👉 **[[PLA_DIRECTOR_Viabilitat_Economica]]**
+- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — 👉 **[[PLA_DIRECTOR_Viabilitat_Economica]]**
+- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — 👉 **[[PLA_DIRECTOR_Viabilitat_Economica]]**
+- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — 👉 **[[PLA_DIRECTOR_Viabilitat_Economica]]**
+
+<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

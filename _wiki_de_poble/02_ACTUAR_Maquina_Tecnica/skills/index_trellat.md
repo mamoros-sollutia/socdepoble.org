@@ -1,15 +1,10 @@
 ---
-estat: canonic
 tipus: skill
-description: "Defineix l’Índex de Trellat com a marc de decisió auditable i prohibix convertir estimacions en salut automàtica."
-temes:
-- sistema
+estat: canonic
+description: Defineix l’Índex de Trellat com a marc de decisió auditable i prohibix convertir estimacions en salut automàtica.
 tags:
-- dev
-- maquina
-- skills
-- socdepoble
-- tecnica
+  - maquina
+  - skills
 ---
 # Índex de Trellat
 
@@ -86,3 +81,13 @@ L’IT no crea etiquetes de frontmatter. L’esquema v2 només admet `estat`, `t
 ---
 
 **Ancoratge de Seguretat:** [[00_INDEX]]
+
+## Sinapsis Entrants (Autogenerat)
+
+- [[03_Consola_Termodinamica|00_SER_Brain_Identitat/03_Consola_Termodinamica.md]] — | “IT” de tres components del CLI | Retirat com a porta | `sdp check` falla t...
+- [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maquina_Tecnica/00_arquitectura_tecnica_unificada.md]] — [[index_trellat]]
+- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — | “IT” de tres components del CLI | Retirat com a porta | `sdp check` falla t...
+- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — | “IT” de tres components del CLI | Retirat com a porta | `sdp check` falla t...
+- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — | “IT” de tres components del CLI | Retirat com a porta | `sdp check` falla t...
+
+<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

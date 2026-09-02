@@ -1,14 +1,11 @@
 ---
-estat: canonic
 tipus: document
+estat: canonic
 description: Aquest document és la font de veritat dels logos oficials.
-temes:
-- sistema
 tags:
-- core
-- genoma
-- identitat
-- socdepoble
+  - core
+  - genoma
+  - identitat
 ---
 # DOC Logos Oficials
 
@@ -48,9 +45,20 @@ Cap plantilla ha d’incrustar blocs repetits de logos. Les plantilles han d’e
 - **Etiquetes:** [[Graf]]
 
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX_IDENTITAT]]
 
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX_IDENTITAT]]
+
+## Sinapsis Entrants (Autogenerat)
+
+- [[00_INDEX_IDENTITAT|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[DOC_Logos_Oficials]]
+- [[PLANTILLA_ISO_SDP|02_ACTUAR_Maquina_Tecnica/plantilles/PLANTILLA_ISO_SDP.md]] — Consulta sempre: [[DOC_Logos_Oficials]]
+- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[DOC_Logos_Oficials]]
+- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[DOC_Logos_Oficials]]
+- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[DOC_Logos_Oficials]]
+- [[260902_0156_PROMPT_auditoria_v7_del_consell_per_a_validar_el_sanejament_cognitiu|05_Escriptori_Soc_de_Poble/260902_0156_PROMPT_auditoria_v7_del_consell_per_a_validar_el_sanejament_cognitiu.md]] — [[DOC_Logos_Oficials]]
+
+<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->
