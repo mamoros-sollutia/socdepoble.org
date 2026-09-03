@@ -101,7 +101,7 @@ export default function NotesSidebar() {
   }
 
   const totFolder = noteFolders.find(f => f.id === 'f-tot');
-  const otherFolders = noteFolders.filter(f => f.id !== 'f-tot');
+  const otherFolders = noteFolders.filter(f => f.id !== 'f-tot' && !f.name.toLowerCase().includes('històries') && !f.name.toLowerCase().includes('histories'));
 
   return (
     <aside className="notes-column notes-column--left" hidden={isCompact && mobilePanel !== 'folders'}>
