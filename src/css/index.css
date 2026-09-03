@@ -787,6 +787,9 @@ section.bar-orange {
   top: calc(var(--sdp-alt-negra) + var(--sdp-alt-accio));
   z-index: var(--z-barra-taronja);
 }
+section.bar-orange.bar-orange--embed {
+  position: static;
+}
 
 /* Col·locació explícita a la reixeta dels components atòmics */
 /* .bar-blue has 3 elements: Left, Center, Right */

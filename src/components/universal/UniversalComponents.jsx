@@ -606,7 +606,7 @@ export function UniversalPage(props) {
           ) : null}
 
           {showOrangeBar && (
-            <section className="bar-orange" aria-label="Autoria i data">
+            <section className={`bar-orange ${variant === 'embed' ? 'bar-orange--embed' : ''}`.trim()} aria-label="Autoria i data">
               <div className="sp-card-author">
                 <img
                   className="sp-card-avatar"
