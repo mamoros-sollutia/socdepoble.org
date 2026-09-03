@@ -13,6 +13,13 @@
   --notes-col-collapsed: 56px;
   --notes-header-height: var(--sdp-alt-accio);
   background: var(--sdp-fons-app);
+  --notes-bg-carpetes: var(--sdp-pedra-300); /* Calç 300 */
+  --notes-bg-llista: var(--sdp-pedra-200);   /* Arena 200 */
+}
+
+[data-theme="dark"] .notes-page {
+  --notes-bg-carpetes: var(--sdp-pedra-900);
+  --notes-bg-llista: var(--sdp-pedra-850);
 }
 .notes-page > .content-wrapper {
   display: flex;
@@ -39,28 +46,39 @@
 .notes-page .notes-column[hidden] { display: none; }
 .notes-page .notes-column--left {
   flex: 0 0 var(--notes-col-sidebar);
-  background: var(--sdp-fons-subtil);
-  border-right: 1px solid var(--sdp-vora);
+  background: var(--notes-bg-carpetes);
 }
 .notes-page .notes-column--middle {
   flex: 0 0 var(--notes-col-list);
-  background: var(--sdp-fons-targeta);
-  border-right: 1px solid var(--sdp-vora);
+  background: var(--notes-bg-llista);
 }
 .notes-page .notes-column.collapsed { flex-basis: var(--notes-col-collapsed); }
 .notes-page .notes-column--editor { flex: 1 1 0; background: var(--sdp-fons-app); }
-.notes-page .notes-column-header,
+:root[data-theme="dark"] .notes-page .notes-column--editor,
+:host([data-theme="dark"]) .notes-page .notes-column--editor { background: var(--sdp-pedra-800); }
+.notes-page .notes-column-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: none;
+  height: var(--notes-header-height);
+  gap: var(--sdp-space-2);
+  padding: 0 var(--sdp-space-3);
+  background: var(--sdp-pedra-800);
+  color: var(--sdp-sobre-roca);
+  border-bottom: 1px solid var(--sdp-vora-control);
+}
 .notes-page .editor-toolbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex: none;
-  min-height: var(--notes-header-height);
+  height: var(--notes-header-height);
   gap: var(--sdp-space-2);
-  padding: var(--sdp-space-1) var(--sdp-space-3);
-  background: var(--sdp-fons-roca);
+  padding: 0 var(--sdp-space-3);
+  background: var(--sdp-pedra-800);
   color: var(--sdp-sobre-roca);
-  border-bottom: 1px solid var(--sdp-vora-control);
+  border-bottom: none;
 }
 .notes-page .notes-column-header--collapsed { justify-content: center; padding: var(--sdp-space-1); }
 .notes-page .notes-column-title { font-size: var(--sdp-text-meta); font-weight: 700; letter-spacing: .04em; }
@@ -95,21 +113,26 @@
 .notes-page .folder-item svg { flex: none; }
 .notes-page .folder-item:hover { background: var(--sdp-fons-targeta); }
 .notes-page .folder-item.active { background: var(--sdp-fons-targeta); border-color: var(--sdp-accio-text); color: var(--sdp-accio-text); }
+.notes-page .folder-item--global { font-weight: 600; color: var(--sdp-text-titol); font-size: 0.95rem; }
 .notes-page .accordion { margin-top: var(--sdp-space-4); }
 .notes-page .accordion-toggle {
-  width: 100%;
-  min-height: var(--sdp-touch);
-  padding: var(--sdp-space-2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 calc(var(--sdp-space-3) * -1);
+  padding: 0 var(--sdp-space-3);
+  height: var(--notes-header-height);
   border: 0;
-  background: transparent;
-  color: var(--sdp-text-suau);
+  background: var(--sdp-pedra-800);
+  color: var(--sdp-sobre-roca);
   text-align: left;
   font-size: var(--sdp-text-meta);
   font-weight: 700;
+  letter-spacing: .04em;
   cursor: pointer;
 }
 .notes-page .notes-list-container { display: flex; flex-direction: column; padding: 0; overflow: hidden; }
-.notes-page .notes-list-actions { display: flex; flex: none; justify-content: space-between; gap: var(--sdp-space-1); padding: var(--sdp-space-2); border-bottom: 1px solid var(--sdp-vora); }
+.notes-page .notes-list-actions { display: flex; flex: none; justify-content: space-between; align-items: center; gap: var(--sdp-space-1); height: var(--notes-header-height); padding: 0 var(--sdp-space-2); border-bottom: 1px solid var(--sdp-vora); }
 .notes-page .notes-actions-left { display: flex; align-items: center; color: var(--sdp-text-cos); }
 .notes-page .notes-column__scroll { padding: var(--sdp-space-3); }
 .notes-page .note-list { display: flex; flex-direction: column; gap: var(--sdp-space-2); margin: 0; }
@@ -158,10 +181,6 @@
 .notes-page .editor-toolbar :focus-visible,
 .notes-page .notes-column-header :focus-visible { outline-color: var(--sdp-focus-invers); }
 .notes-page .editor-scroll-area { padding-bottom: env(safe-area-inset-bottom, 0px); }
-.notes-page .page-article { padding: var(--sdp-space-4); border: 0; border-radius: 0; box-shadow: none; background: var(--sdp-fons-targeta); }
-.notes-page .page-title { margin: 0 0 var(--sdp-space-6); padding: var(--sdp-space-6) var(--sdp-space-4); }
-.notes-page .page-intro,
-.notes-page .editor-tiptap-container { width: 100%; max-width: var(--sdp-measure); margin-inline: auto; }
 .notes-page .editor-content { min-height: 300px; overflow-wrap: anywhere; line-height: var(--sdp-leading-editorial); }
 .notes-page .editor-content pre { max-width: 100%; overflow-x: auto; }
 .notes-page [contenteditable] { overflow-wrap: anywhere; }

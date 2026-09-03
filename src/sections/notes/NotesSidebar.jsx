@@ -1,7 +1,19 @@
 import { useNotes } from './NotesContext';
-import { Folder, Bookmark, Hash, PanelLeftClose } from 'lucide-react';
+import { Folder, Bookmark, Hash, PanelLeftClose, MessageSquare, Newspaper, ShoppingCart, LandPlot, GalleryVerticalEnd, NotebookPen, CalendarDays, Calendar, MapPinned } from 'lucide-react';
 
 const CATEGORIES = ['Trellat', 'Patrimoni', 'Dades', 'Social'];
+
+const FOLDER_ICONS = {
+  'f-xat': MessageSquare,
+  'f-mur': Newspaper,
+  'f-mercat': ShoppingCart,
+  'f-pobles': LandPlot,
+  'f-media': GalleryVerticalEnd,
+  'f-events': Calendar,
+  'f-calendari': CalendarDays,
+  'f-mapa': MapPinned,
+  'f-notes': NotebookPen
+};
 
 export default function NotesSidebar() {
   const { 
@@ -45,17 +57,22 @@ export default function NotesSidebar() {
         
         {/* LLISTA CARPETES */}
         <div className="folders-list">
-          {noteFolders.map((folder) => (
-            <button
-              key={folder.id}
-              type="button"
-              onClick={() => handleSelectFolder(folder.id)}
-              className={`folder-item ${folder.id === activeFolderId ? 'active' : ''}`}
-            >
-              <Folder size={16} />
-              <span>{folder.name}</span>
-            </button>
-          ))}
+          {noteFolders.map((folder) => {
+            const isGlobal = !!FOLDER_ICONS[folder.id];
+            const Icon = FOLDER_ICONS[folder.id] || Folder;
+            
+            return (
+              <button
+                key={folder.id}
+                type="button"
+                onClick={() => handleSelectFolder(folder.id)}
+                className={`folder-item ${isGlobal ? 'folder-item--global' : ''} ${folder.id === activeFolderId ? 'active' : ''}`}
+              >
+                <Icon size={isGlobal ? 24 : 16} strokeWidth={isGlobal ? 2.1 : 2} />
+                <span>{folder.name}</span>
+              </button>
+            );
+          })}
         </div>
 
         {/* ACCORDION CATEGORIES */}

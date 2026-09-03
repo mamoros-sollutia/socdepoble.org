@@ -4,7 +4,7 @@ import StarterKit from '@tiptap/starter-kit';
 import { Image as ImageIcon, Lock, Globe, FileText, Pencil, ArrowLeft } from 'lucide-react';
 import { useNotes } from './NotesContext';
 import NotesToolbar from './NotesToolbar';
-import { DateTimeControl, Dropdown, DropdownItem } from '../../components/universal/UniversalComponents';
+import { DateTimeControl, Dropdown, DropdownItem, UniversalPage } from '../../components/universal/UniversalComponents';
 import { sanitizeHtml } from '../../utils/sanitize.js';
 
 export default function NotesEditor() {
@@ -68,116 +68,87 @@ export default function NotesEditor() {
       <NotesToolbar editor={editor} />
 
       <div className="editor-scroll-area">
-        {activeNote.heroImage ? (
-          <div className="hero-image">
-            <img src={activeNote.heroImage} alt="Cover" className="hero-image-img" />
-          </div>
-        ) : (
-          <div className="sdp-p-6 sdp-mb-4" style={{ display: 'flex', justifyContent: 'center' }}>
-            <button type="button" className="pill dashed-pill pointer">
-              <ImageIcon size={16} /> Inserir Imatge o Multimèdia
-            </button>
-          </div>
-        )}
-
-        <section className="bar-orange" aria-label="Autoria i data">
-          <div className="sp-card-author">
-            {activeNote.authorAvatar ? (
-              <img className="sp-card-avatar" src={activeNote.authorAvatar} alt={activeNote.author || "Usuari"} width="48" height="48" />
+        <UniversalPage 
+          chrome="context" 
+          variant="embed"
+          showLogos={true}
+          topBarData={{
+            heroComponent: activeNote.heroImage ? (
+              <img src={activeNote.heroImage} alt="Cover" className="hero-image-img" />
             ) : (
-              <div className="sp-card-avatar" style={{ backgroundColor: 'var(--sdp-secondary-500)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold' }}>
-                {activeNote.author ? activeNote.author.substring(0,2).toUpperCase() : 'UP'}
-              </div>
-            )}
-            <div className="sp-card-author-info">
-              <div className="sp-card-author-name">{activeNote.author || 'Usuari de prova'}</div>
-              <div className="sp-card-author-location">{activeNote.location || "Poble de l'usuari"}</div>
-            </div>
-          </div>
-          <div className="bar-actions">
-            <Dropdown
-              right
-              minWidth="320px"
-              trigger={
-                <button type="button" className="btn-date-time sp-card-time btn-round-icon text-white">
-                  {activeNote.isPublished ? <Lock size={16} /> : <Pencil size={16} />}
+              <div className="sdp-p-6 sdp-mb-4" style={{ display: 'flex', justifyContent: 'center', background: 'var(--sdp-fons-app)' }}>
+                <button type="button" className="pill dashed-pill pointer">
+                  <ImageIcon size={16} /> Inserir Imatge o Multimèdia
                 </button>
-              }
-            >
-              <div className="dropdown-info-header">
-                <strong>{activeNote.isPublished ? 'Exemple de Publicació' : 'Pàgina en Edició'}</strong>
-                <p>Aquesta targeta és una previsualització de com quedarà al Mur. Utilitza l'editor inferior per modificar el contingut.</p>
               </div>
-              <DropdownItem icon={<Lock size={16} />} onClick={() => {}}>Privada (Oculta)</DropdownItem>
-              <DropdownItem icon={<Globe size={16} />} onClick={() => {}}>Pública al Mur</DropdownItem>
-            </Dropdown>
-            <DateTimeControl time={activeNote.formattedTime} date={activeNote.formattedDate} />
+            ),
+            barActions: (
+              <>
+                <Dropdown
+                  right
+                  minWidth="320px"
+                  trigger={
+                    <button type="button" className="btn-date-time sp-card-time btn-round-icon text-white">
+                      <Lock size={16} />
+                    </button>
+                  }
+                >
+                  <div className="dropdown-info-header">
+                    <strong>{activeNote.isPublished ? 'Exemple de Publicació' : 'Pàgina en Edició'}</strong>
+                    <p>Aquesta targeta és una previsualització de com quedarà al Mur. Utilitza l'editor inferior per modificar el contingut.</p>
+                  </div>
+                  <DropdownItem icon={<Lock size={16} />} onClick={() => {}}>Privada (Oculta)</DropdownItem>
+                  <DropdownItem icon={<Globe size={16} />} onClick={() => {}}>Pública al Mur</DropdownItem>
+                </Dropdown>
+                <DateTimeControl time={activeNote.formattedTime} date={activeNote.formattedDate} />
+              </>
+            )
+          }}
+          title={
+            <span
+              className="editor-title-input"
+              contentEditable
+              suppressContentEditableWarning
+              onBlur={(e) => saveNoteField(activeNote.id, 'title', e.currentTarget.innerHTML)}
+              data-placeholder="Escriu el títol de l'article (H1)..."
+              dangerouslySetInnerHTML={{ __html: sanitizeHtml(activeNote.title || '') }}
+              style={{ display: 'inline-block', minWidth: '10px' }}
+            />
+          }
+          labels={[
+             { text: noteFolders.find(f => f.id === activeNote.folderId)?.name || 'General', className: 'sdp-badge-system' },
+             { text: 'Mur', className: 'sdp-badge-category' },
+             ...(activeNote.category ? [{ text: activeNote.category, className: 'sdp-badge-category' }] : []),
+             ...(activeNote.tags || []).map(t => ({ text: t, className: 'sdp-badge-neutral outline-badge' }))
+          ]}
+          copyright="© Sóc de Poble / Fet per la IAIA i Nano Banana"
+          subtitle={
+            <span
+              className="editor-subtitle-input"
+              contentEditable
+              suppressContentEditableWarning
+              onBlur={(e) => saveNoteField(activeNote.id, 'subtitle', e.currentTarget.innerHTML)}
+              data-placeholder="Escriu el subtítol (H2)..."
+              dangerouslySetInnerHTML={{ __html: sanitizeHtml(activeNote.subtitle || '') }}
+              style={{ display: 'block', minWidth: '10px' }}
+            />
+          }
+          lead={
+            <span
+              className="editor-lead-input"
+              contentEditable
+              suppressContentEditableWarning
+              onBlur={(e) => saveNoteField(activeNote.id, 'lead', e.currentTarget.innerHTML)}
+              data-placeholder="Escriu l'entradilla..."
+              dangerouslySetInnerHTML={{ __html: sanitizeHtml(activeNote.lead || '') }}
+              style={{ display: 'block', minWidth: '10px' }}
+            />
+          }
+        >
+          <div className="editor-tiptap-container">
+            <EditorContent editor={editor} />
           </div>
-        </section>
-
-          <article className="card universal-page page-article">
-            <header className="page-title">
-              {!activeNote.headerImage ? (
-                <div className="notes-header-media" style={{ display: 'flex', justifyContent: 'center' }}>
-                  <button type="button" className="pill dashed-pill pointer">
-                    <ImageIcon size={16} /> Inserir Imatge o Multimèdia
-                  </button>
-                </div>
-              ) : (
-                <div className="notes-header-media" style={{ display: 'flex', justifyContent: 'center' }}>
-                  <img src={activeNote.headerImage} alt="Imatge de capçalera" style={{ maxWidth: '600px', width: '100%', height: 'auto', maxHeight: '600px', objectFit: 'contain' }} />
-                </div>
-              )}
-
-              <h1 
-                className="editor-title-input sdp-text-center"
-                contentEditable
-                suppressContentEditableWarning
-                onBlur={(e) => saveNoteField(activeNote.id, 'title', e.currentTarget.innerHTML)}
-                data-placeholder="Escriu el títol de l'article (H1)..."
-                dangerouslySetInnerHTML={{ __html: sanitizeHtml(activeNote.title || '') }}
-              />
-
-              <ul className="sp-card-labels page-title-labels">
-                <li className="sp-card-label sdp-badge-system">{noteFolders.find(f => f.id === activeNote.folderId)?.name || 'General'}</li>
-                <li className="sp-card-label sdp-badge-category">Mur</li>
-                {activeNote.category && (
-                  <li className="sp-card-label sdp-badge-category">{activeNote.category}</li>
-                )}
-                {activeNote.tags?.map(tag => (
-                  <li key={tag} className="sp-card-label sdp-badge-neutral outline-badge">{tag}</li>
-                ))}
-              </ul>
-
-              <p className="sp-card-copyright page-title-copyright">
-                © Sóc de Poble / Fet per la IAIA i Nano Banana
-              </p>
-            </header>
-
-            <div className="page-intro">
-              <h2 
-                className="editor-subtitle-input"
-                contentEditable
-                suppressContentEditableWarning
-                onBlur={(e) => saveNoteField(activeNote.id, 'subtitle', e.currentTarget.innerHTML)}
-                data-placeholder="Escriu el subtítol (H2)..."
-                dangerouslySetInnerHTML={{ __html: sanitizeHtml(activeNote.subtitle || '') }}
-              />
-
-              <p 
-                className="lead editor-lead-input"
-                contentEditable
-                suppressContentEditableWarning
-                onBlur={(e) => saveNoteField(activeNote.id, 'lead', e.currentTarget.innerHTML)}
-                data-placeholder="Escriu l'entradilla..."
-                dangerouslySetInnerHTML={{ __html: sanitizeHtml(activeNote.lead || '') }}
-              />
-            </div>
-            
-            <div className="editor-tiptap-container">
-              <EditorContent editor={editor} />
-            </div>
-          </article>
+        </UniversalPage>
       </div>
     </section>
   );

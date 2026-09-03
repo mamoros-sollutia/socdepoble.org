@@ -9,7 +9,7 @@ const NotesContext = createContext(null);
 export function NotesProvider({ children }) {
   const { language, normalizeSearchText, noteFolders, notes: rawNotes, t, sendSectionSubmission, externalConfig } = useAppData();
   
-  const [activeFolderId, setActiveFolderId] = useState('f-root');
+  const [activeFolderId, setActiveFolderId] = useState('f-mur');
   const [activeCategory, setActiveCategory] = useState(null);
   const [activeNoteId, setActiveNoteId] = useState('n1');
   const [searchQuery, setSearchQuery] = useState('');
@@ -84,7 +84,7 @@ export function NotesProvider({ children }) {
     if (!activeNote) return;
     
     const labels = [];
-    const folderName = noteFolders.find(f => f.id === activeNote.folderId)?.name || 'General';
+    const folderName = noteFolders.find(f => f.id === activeNote.folderId)?.name || 'Altres notes';
     labels.push({ text: folderName, className: 'sdp-badge-system' });
     labels.push({ text: 'Mur', className: 'sdp-badge-category' });
     if (activeNote.category) {

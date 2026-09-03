@@ -9,18 +9,21 @@ import {
   PAGE_COPY,
   TOWNS
 } from './sectionContent.js';
-import { getVal, setVal } from '../config/storage.js';
 
-export const APP_SEED_VERSION = 250029;
+export const APP_SEED_VERSION = 250033;
 import { getDefaultUserId, idConvidat } from './identitat.js';
 export { getDefaultUserId, idConvidat };
 
 export const NOTE_FOLDERS_SEED = [
-  { id: 'f-root', name: 'General', parentId: null },
+  { id: 'f-xat', name: 'Xat', parentId: null },
   { id: 'f-mur', name: 'Mur', parentId: null },
   { id: 'f-mercat', name: 'Mercat', parentId: null },
-  { id: 'f-event', name: 'Esdeveniments', parentId: null },
-  { id: 'f-mapa', name: 'Mapa', parentId: null }
+  { id: 'f-pobles', name: 'Pobles', parentId: null },
+  { id: 'f-media', name: 'Multimèdia', parentId: null },
+  { id: 'f-events', name: 'Esdeveniments', parentId: null },
+  { id: 'f-calendari', name: 'Calendari', parentId: null },
+  { id: 'f-mapa', name: 'Mapa', parentId: null },
+  { id: 'f-notes', name: 'Altres notes', parentId: null }
 ];
 
 export const NOTES_SEED = [
@@ -34,6 +37,7 @@ export const NOTES_SEED = [
     location: 'La Torre de les Maçanes',
     headerImage: '/assets/system/ui/logo-socdepoble-rect-negre.svg',
     lead: 'Benvingut al teu nou espai editorial. Aquest és un espai on pots escriure, esborrar i organitzar-te com vulgues sense que ningú ho veja. A continuació t\'expliquem com funciona la màquina d\'escriure de Sóc de Poble.',
+    folderId: 'f-mur',
     categoryId: 'c-sistema',
     type: 'rich-text',
     content: `
@@ -61,7 +65,6 @@ export const NOTES_SEED = [
       
       <p>Ara, torna a la barra lateral esquerra i clica sobre la "Nota Buida" per començar a escriure la teua pròpia història. El llenç és teu!</p>
     `,
-    folderId: 'f-root',
     category: 'Productivitat',
     tags: ['Tutorial'],
     heroImage: '/assets/notes/bloc_notes_vintage.jpg',
@@ -71,25 +74,13 @@ export const NOTES_SEED = [
   {
     id: 'n2',
     isPublished: false,
-    title: 'H1 - Títol',
-    subtitle: 'H2 - Subtítol',
-    lead: 'ENTRADILLA: Pots posar un paràgraf de presentació. Aquest text es veu també en la targeta, que és la miniatura de la pàgina al mur. Pots esborrar tot aquest text predeterminat i començar a escriure el teu propi article.',
+    title: '',
+    subtitle: '',
+    lead: '',
     categoryId: null,
+    folderId: 'f-mur',
     type: 'rich-text',
-    content: `
-      <h3>H3 - Subtítol. Ací pots posar tot el contingut que vulgues</h3>
-      <p>Aquest és un text de prova per a veure com queda el paràgraf sota un encapçalament de nivell 3. Ací pots esborrar tot i escriure el que necessites.</p>
-
-      <h4>H4 - Encapçalament menor</h4>
-      <p>Aquest és un text de prova per a veure com queda el paràgraf sota un encapçalament de nivell 4. Pots esborrar tot i escriure el que necessites.</p>
-
-      <h5>H5 - Encapçalament xicotet</h5>
-      <p>Aquest és un text de prova per a veure com queda el paràgraf sota un encapçalament de nivell 5. Pots esborrar tot i escriure el que necessites.</p>
-
-      <h6>H6 - Encapçalament mínim</h6>
-      <p>Aquest és un text de prova per a veure com queda el paràgraf sota un encapçalament de nivell 6. Pots esborrar tot i escriure el que necessites.</p>
-    `,
-    folderId: 'f-root',
+    content: '',
     category: null,
     tags: [],
     createdAt: '2026-06-25T10:00:00.000Z',

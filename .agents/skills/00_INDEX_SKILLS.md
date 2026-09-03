@@ -35,6 +35,7 @@ Aquestes skills s'apliquen sempre per validar l'entorn abans d'executar tasques 
 ## Skills de Domini
 - [[pedra-seca/SKILL|pedra-seca]]: Sistema de disseny visual i criteris estètics autòctons.
 - [[identity-iaia-voice/SKILL|identity-iaia-voice]]: To de veu de la IAIA MarIA (rural, no paternalista).
+- [[universal-page/SKILL|universal-page]]: Estàndard d'arquitectura, anatomia i comportament de la UniversalPage.
 
 ## Linter i Compilador
 Aquest índex serveix de referència per al compilador en temps d'execució. Si s'introdueixen triggers duplicats, fitxers d'habilitat malformats o codi incrustat, la fase de compilació (o el Linter de skills) ho rebutjarà categòricament.

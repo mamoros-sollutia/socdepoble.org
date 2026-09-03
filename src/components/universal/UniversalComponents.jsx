@@ -623,21 +623,25 @@ export function UniversalPage(props) {
                 </div>
               </div>
               <div className="bar-actions">
-                {topBarData?.showPin !== false && (
-                  <ActionControl
-                    className="btn-icon-orange"
-                    label="Ancorar"
-                    onClick={onPin}
-                  >
-                    <PinIcon className="icon" />
-                  </ActionControl>
+                {topBarData?.barActions ? topBarData.barActions : (
+                  <>
+                    {topBarData?.showPin !== false && (
+                      <ActionControl
+                        className="btn-icon-orange"
+                        label="Ancorar"
+                        onClick={onPin}
+                      >
+                        <PinIcon className="icon" />
+                      </ActionControl>
+                    )}
+                    <DateTimeControl
+                      time={barTime}
+                      date={barDate}
+                      dateTime={barDateTime}
+                      onClick={handleDateTime}
+                    />
+                  </>
                 )}
-                <DateTimeControl
-                  time={barTime}
-                  date={barDate}
-                  dateTime={barDateTime}
-                  onClick={handleDateTime}
-                />
               </div>
             </section>
           )}

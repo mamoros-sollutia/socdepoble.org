@@ -1,4 +1,4 @@
-import { ArrowLeft, List, Globe } from 'lucide-react';
+import { ArrowLeft, List, Globe, Heading2, Bold, Italic, Strikethrough } from 'lucide-react';
 import { useEditorState } from '@tiptap/react';
 import { useNotes } from './NotesContext';
 
@@ -29,7 +29,7 @@ export default function NotesToolbar({ editor }) {
           onClick={() => editor?.chain().focus().toggleHeading({ level: 2 }).run()} 
           className={`btn-icon ${editor?.isActive('heading', { level: 2 }) ? 'active-text' : ''}`}
         >
-          <span className="sdp-notes__glif">H₂</span>
+          <Heading2 {...iconProps} />
         </button>
         <button 
           aria-label={t('section.notes.format.list', 'Llista')}
@@ -43,21 +43,21 @@ export default function NotesToolbar({ editor }) {
           onClick={() => editor?.chain().focus().toggleBold().run()} 
           className={`btn-icon ${editor?.isActive('bold') ? 'active-text' : ''}`}
         >
-          <span className="sdp-notes__glif">B</span>
+          <Bold {...iconProps} />
         </button>
         <button 
           aria-label={t('section.notes.format.italic', 'Cursiva')}
           onClick={() => editor?.chain().focus().toggleItalic().run()} 
           className={`btn-icon ${editor?.isActive('italic') ? 'active-text' : ''}`}
         >
-          <span className="sdp-notes__glif">I</span>
+          <Italic {...iconProps} />
         </button>
         <button 
           aria-label={t('section.notes.format.strike', 'Ratllat')}
           onClick={() => editor?.chain().focus().toggleStrike().run()} 
           className={`btn-icon ${editor?.isActive('strike') ? 'active-text' : ''}`}
         >
-          <span className="sdp-notes__glif">S</span>
+          <Strikethrough {...iconProps} />
         </button>
       </div>
       <button type="button" aria-label="Publicar nota" onClick={publishNote} disabled={!activeNote}

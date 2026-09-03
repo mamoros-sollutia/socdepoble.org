@@ -74,6 +74,7 @@
   --sdp-negre: #000000;
   --sdp-pedra-50:  #ffffff;
   --sdp-pedra-100: #ffffff;
+  --sdp-pedra-150: #f8f6f4; /* Inventat (intermig entre Nuvol i Arena) */
   --sdp-pedra-200: #efece7;
   --sdp-pedra-300: #dcd7cd;
   --sdp-pedra-400: #b7b1a5;
@@ -118,7 +119,7 @@
      Cada línia porta el contrast mesurat i el nivell que compleix.  */
 
   /* Fons */
-  --sdp-fons-app:        var(--sdp-pedra-100);
+  --sdp-fons-app:        var(--sdp-pedra-150);
   --sdp-fons-targeta:    var(--sdp-blanc-pur);
   --sdp-fons-elevat:     var(--sdp-blanc-pur);
   --sdp-fons-superficie: var(--sdp-blanc-pur);
@@ -645,8 +646,8 @@ nav.app-sidebar > div:last-child {
 .nav-item {
   display: flex;
   align-items: center;
-  gap: var(--sdp-space-3);
-  padding: var(--sdp-space-3) var(--sdp-space-4);
+  gap: var(--sdp-space-2);
+  padding: var(--sdp-space-2) var(--sdp-space-3);
   margin-bottom: var(--sdp-space-1);
   border-radius: var(--sdp-radi-m);
   color: rgba(255,255,255,0.78);
@@ -767,6 +768,7 @@ header.bar-blue.bar-blue--embed {
   display: block;
   width: 100%;
   height: auto;
+  margin-bottom: -1px; /* Evita filets blancs per arrodoniment de subpíxels */
 }
 
 /* Barra taronja (context: autor i poble) */
@@ -834,6 +836,12 @@ article.content-wrapper {
   flex: none;
   padding: 0 var(--sdp-pad-contenidor) var(--sdp-pad-contenidor);
   width: 100%;
+}
+.content-wrapper > .hero-image,
+.content-wrapper > section.bar-orange {
+  margin-left: calc(var(--sdp-pad-contenidor) * -1);
+  margin-right: calc(var(--sdp-pad-contenidor) * -1);
+  width: auto;
 }
 
 /* ── MESURA EDITORIAL · la columna de text no passa mai de 68ch ──────

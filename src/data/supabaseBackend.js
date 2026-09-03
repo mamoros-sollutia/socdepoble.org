@@ -196,8 +196,25 @@ function mapContentRowsToData(rows) {
     events: lookup.get('events') || [],
     towns: lookup.get('towns') || [],
     mediaItems: lookup.get('mediaItems') || [],
-    noteFolders: lookup.get('noteFolders') || [],
-    notes: lookup.get('notes') || [],
+    noteFolders: (() => {
+      const remote = lookup.get('noteFolders') || [];
+      const ghostIds = new Set(['f-root', 'f-general', 'f-articles', 'f-histories', 'f-prompts', 'f-captures', 'f-event', 'f-mapa']);
+      const filteredRemote = remote.filter(f => !ghostIds.has(f.id));
+      
+      const merged = APP_SEED.noteFolders.map(seedF => filteredRemote.find(f => f.id === seedF.id) || seedF);
+      const custom = filteredRemote.filter(f => !APP_SEED.noteFolders.find(s => s.id === f.id));
+      
+      return [...merged, ...custom];
+    })(),
+    notes: (() => {
+      const remote = lookup.get('notes') || [];
+      const seedNotes = APP_SEED.notes.map(seedN => {
+        const remoteN = remote.find(n => n.id === seedN.id);
+        return { ...(remoteN || seedN), folderId: 'f-mur' };
+      });
+      const customNotes = remote.filter(n => !APP_SEED.notes.find(s => s.id === n.id));
+      return [...seedNotes, ...customNotes];
+    })(),
     pages: lookup.get('pages') || [],
     sectionSubmissions: [],
     chatMessages: []
