@@ -11,7 +11,7 @@
   --notes-col-sidebar: 224px;
   --notes-col-list: 280px;
   --notes-col-collapsed: 56px;
-  --notes-header-height: var(--sdp-alt-accio);
+  --notes-header-height: calc(var(--sdp-alt-accio) + 1px);
   background: var(--sdp-fons-app);
   --notes-bg-carpetes: var(--sdp-pedra-300); /* Calç 300 */
   --notes-bg-llista: var(--sdp-pedra-200);   /* Arena 200 */

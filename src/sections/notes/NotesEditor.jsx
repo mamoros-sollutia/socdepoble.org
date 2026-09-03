@@ -32,10 +32,13 @@ export default function NotesEditor() {
   });
 
   useEffect(() => {
-    if (editor && activeNote) {
+    if (!editor || editor.isDestroyed || !activeNote) return;
+    try {
       if (editor.getHTML() !== activeNote.content) {
         editor.commands.setContent(activeNote.content || '');
       }
+    } catch (err) {
+      console.warn('Editor sync skipped (Fast Refresh / not ready)', err);
     }
   }, [activeNote?.id, editor]);
 
