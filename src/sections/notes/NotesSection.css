@@ -53,6 +53,8 @@
 .notes-page .notes-column--middle {
   flex: 0 0 var(--notes-col-list);
   background: var(--notes-bg-llista);
+  position: relative;
+  z-index: 10;
 }
 .notes-page .notes-column.collapsed { flex-basis: var(--notes-col-collapsed); }
 .notes-page .notes-column--editor { flex: 1 1 0; background: var(--sdp-fons-app); }
