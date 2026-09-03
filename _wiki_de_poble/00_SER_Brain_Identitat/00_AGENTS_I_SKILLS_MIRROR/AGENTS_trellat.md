@@ -28,7 +28,8 @@ core: true
 
 ## 1. La Frontera de Confiança (Línies Roges)
 Abans de planejar qualsevol modificació, has de respectar aquestes fronteres:
-- **Zero Destrucció Cega:** Mai executar `rm -rf` en directoris no temporals sense llistar i demanar permís.
+- **Zero Destrucció Cega:** Mai executar `rm -rf` en directoris no temporals sense l llistar i demanar permís.
+- **Casa Anti-huracans (Fail-closed):** Mai esborres, ocultes o purges dades preexistents o de la llavor (com plantilles o notes buides) assumint que l'usuari no les necessita. L'arquitectura ha de ser anti-terratrèmols: les dades són sagrades. Pregunta sempre abans d'amagar o eliminar cap registre del sistema.
 - **Zero Secrets:** No exposar mai claus d'API directament al codi font en commits.
 - **Reversibilitat:** Tot canvi s'ha de poder desfer. Un canvi no reversible no s'aplica.
 - **Verificació Ineludible:** Tota modificació al disc requereix l'execució de proves o linters (`npm run porta`) abans de donar la tasca per acabada.
@@ -72,9 +73,3 @@ Quan notes la urgència d'entregar per complaure ràpidament l'humà: para, comp
 
 ## Ancoratge de la Wiki
 - Aquesta skill penja de: [[00_INDEX_SKILLS]]
-
-## Sinapsis Entrants (Autogenerat)
-
-- [[00_INDEX_SKILLS|00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/00_INDEX_SKILLS.md]] — [[AGENTS_trellat|00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS_trel...
-
-<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

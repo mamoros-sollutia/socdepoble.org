@@ -27,3 +27,5 @@ Hem portat l'estructura de la **Sidebar de Notes** cap al cànon Pedra Seca i he
 *   **Segell:** La memòria ha sigut destil·lada correctament. Tot està a punt per a tancar la persiana.
 
 _Bona nit i bon trellat, Mestre._
+
+Ancoratge de Seguretat: [[00_INDEX_Actes]]

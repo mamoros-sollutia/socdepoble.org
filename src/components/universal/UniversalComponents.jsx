@@ -11,7 +11,6 @@ const PAGE_CHROME_MODES = new Set(['none', 'page', 'context', 'full', 'system'])
 
 function isSafeUrl(url) {
   if (!url) return false;
-  // eslint-disable-next-line no-control-regex
   const cleanUrl = url.replace(/[\u0000-\u001F\u007F-\u009F]/g, '');
   if (cleanUrl.startsWith('//')) return false;
   try {
@@ -1162,7 +1161,7 @@ export function AccordionItem({ title, children, defaultOpen = false, className 
         className={`accordion-header ${isOpen ? 'active' : ''}`} 
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
-        style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'transparent', border: 'none', padding: '16px', cursor: 'pointer', color: 'inherit', fontWeight: 'bold' }}
+        style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px', cursor: 'pointer' }}
       >
         <span>{title}</span>
         <svg fill="none" height="20" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 20 20" width="20" style={{ transform: isOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}>

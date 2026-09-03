@@ -35,10 +35,3 @@ Quan un usuari o una IA demana preparar un "Bundle" o una "Petorreta" per al Con
 
 ## Ancoratge de la Wiki
 - Aquesta skill penja de: [[00_INDEX_SKILLS]]
-
-## Sinapsis Entrants (Autogenerat)
-
-- [[00_INDEX_SKILLS|00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/00_INDEX_SKILLS.md]] — [[AGENTS_abocament-total|00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGE...
-- [[00_INDEX_ESCRIPTORI|05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md]] — [[AGENTS_abocament-total|00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGE...
-
-<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

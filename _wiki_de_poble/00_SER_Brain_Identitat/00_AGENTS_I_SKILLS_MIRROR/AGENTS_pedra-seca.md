@@ -169,9 +169,3 @@ Abans de crear o implementar qualsevol nova funcionalitat, component o element v
 
 ## Ancoratge de la Wiki
 - Aquesta skill penja de: [[00_INDEX_SKILLS]]
-
-## Sinapsis Entrants (Autogenerat)
-
-- [[00_INDEX_SKILLS|00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/00_INDEX_SKILLS.md]] — [[AGENTS_pedra-seca|00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS_p...
-
-<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

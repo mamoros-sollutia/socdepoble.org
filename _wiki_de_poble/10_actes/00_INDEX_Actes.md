@@ -26,8 +26,7 @@ Aquest és l'índex per als documents generats i actes registrades a l'escriptor
 > llevarà d'ací tot sol a la següent passada. Si el bloc queda buit,
 > desapareix: vol dir que la wiki està cosida a mà.
 
-- [[10_actes/260902_0810_ACTA_MARMOTA_Petorretas_i_Neteja|260902_0810_ACTA_MARMOTA_Petorretas_i_Neteja]] — Acta Marmota de generació de Petorretas i tancament de sessió
-- [[10_actes/260903_0240_ACTA_MARMOTA_Auditoria_Notes_i_Neteja_de_Satellits|260903_0240_ACTA_MARMOTA_Auditoria_Notes_i_Neteja_de_Satellits]] — Acta de tancament després de preparar la Petorreta d'Auditoria del Bloc de Notes i netejar la Wiki.
+- [[10_actes/260903_0605_ACTA_MARMOTA_Unificacio_Notes_i_UI|260903_0605_ACTA_MARMOTA_Unificacio_Notes_i_UI]] — ACTA MARMOTA — Tancament Sessió Matinada (260903)
 
 <!-- LLAURADOR:ADOPCIONS:FI -->
 

@@ -51,9 +51,3 @@ La secció de Notes (`/notes`) té una excepció estructural única: l'estat bui
 
 ## Ancoratge de la Wiki
 - Aquesta skill penja de: [[00_INDEX_SKILLS]]
-
-## Sinapsis Entrants (Autogenerat)
-
-- [[00_INDEX_SKILLS|00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/00_INDEX_SKILLS.md]] — [[AGENTS_guia-ampliacio|00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGEN...
-
-<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

@@ -38,28 +38,20 @@ Aquestes skills s'apliquen sempre per validar l'entorn abans d'executar tasques 
 ## Skills de Domini
 - [[pedra-seca/SKILL|pedra-seca]]: Sistema de disseny visual i criteris estètics autòctons.
 - [[identity-iaia-voice/SKILL|identity-iaia-voice]]: To de veu de la IAIA MarIA (rural, no paternalista).
+- [[universal-page/SKILL|universal-page]]: Estàndard d'arquitectura, anatomia i comportament de la UniversalPage.
 
 ## Linter i Compilador
 Aquest índex serveix de referència per al compilador en temps d'execució. Si s'introdueixen triggers duplicats, fitxers d'habilitat malformats o codi incrustat, la fase de compilació (o el Linter de skills) ho rebutjarà categòricament.
 
-## Sinapsis Entrants (Autogenerat)
+<!-- LLAURADOR:ADOPCIONS:INICI -->
 
-- [[00_INDEX|00_INDEX.md]] — [[00_INDEX_SKILLS]]
-- [[00_INDEX_SKILLS|00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/00_INDEX_SKILLS.md]] — [[00_INDEX|00_INDEX.md]] — [[00_INDEX_SKILLS]]
-- [[AGENTS_abocament-total|00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS_abocament-total.md]] — Aquesta skill penja de: [[00_INDEX_SKILLS]]
-- [[AGENTS_core-context-panic|00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS_core-context-panic.md]] — Aquesta skill penja de: [[00_INDEX_SKILLS]]
-- [[AGENTS_core-higiene-reflexa|00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS_core-higiene-reflexa.md]] — Aquesta skill penja de: [[00_INDEX_SKILLS]]
-- [[AGENTS_core-restauracio-segellada|00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS_core-restauracio-segellada.md]] — Aquesta skill penja de: [[00_INDEX_SKILLS]]
-- [[AGENTS_council-review|00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS_council-review.md]] — Aquesta skill penja de: [[00_INDEX_SKILLS]]
-- [[AGENTS_efecte-matrix|00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS_efecte-matrix.md]] — Aquesta skill penja de: [[00_INDEX_SKILLS]]
-- [[AGENTS_guia-ampliacio|00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS_guia-ampliacio.md]] — Aquesta skill penja de: [[00_INDEX_SKILLS]]
-- [[AGENTS_identity-iaia-core|00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS_identity-iaia-core.md]] — Aquesta skill penja de: [[00_INDEX_SKILLS]]
-- [[AGENTS_identity-iaia-voice|00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS_identity-iaia-voice.md]] — Aquesta skill penja de: [[00_INDEX_SKILLS]]
-- [[AGENTS_pedra-seca|00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS_pedra-seca.md]] — Aquesta skill penja de: [[00_INDEX_SKILLS]]
-- [[AGENTS_reflexio-previa|00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS_reflexio-previa.md]] — Aquesta skill penja de: [[00_INDEX_SKILLS]]
-- [[AGENTS_socdepoble-workflow|00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS_socdepoble-workflow.md]] — Aquesta skill penja de: [[00_INDEX_SKILLS]]
-- [[AGENTS_trellat|00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS_trellat.md]] — Aquesta skill penja de: [[00_INDEX_SKILLS]]
-- [[00_INDEX_IDENTITAT|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/00_INDEX_SKILLS|00_INDEX_S...
-- [[plantilla_skill_agent|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_skill_agent.md]] — Aquesta skill penja de: [[00_INDEX_SKILLS]]
+## Adopcions del Llaurador
 
-<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->
+> Bloc generat per `tooling/wiki/llaurador_indexs.mjs`. No l'edites a mà.
+> Mou cada enllaç a la secció temàtica que li toque i el llaurador el
+> llevarà d'ací tot sol a la següent passada. Si el bloc queda buit,
+> desapareix: vol dir que la wiki està cosida a mà.
+
+- [[.agents/skills/efecte-matrix/SKILL|SKILL]] — Obligació de consultar la Wiki abans de generar cap document (Efecte Matrix)
+
+<!-- LLAURADOR:ADOPCIONS:FI -->

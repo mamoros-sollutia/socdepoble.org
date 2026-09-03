@@ -179,9 +179,3 @@ significa que no es passa.
 
 ## Ancoratge de la Wiki
 - Aquesta skill penja de: [[00_INDEX_SKILLS]]
-
-## Sinapsis Entrants (Autogenerat)
-
-- [[00_INDEX_SKILLS|00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/00_INDEX_SKILLS.md]] — [[AGENTS_core-restauracio-segellada|00_SER_Brain_Identitat/00_AGENTS_I_SKILLS...
-
-<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

@@ -87,10 +87,3 @@ Cada dia o al final d'una sessió complexa:
 Abans de donar per finalitzada qualsevol jornada o tancar una conversa, l'Agent HA DE recordar proactivament a l'usuari que s'ha d'anar a dormir per a destil·lar el coneixement i netejar l'escriptori. 
 L'Agent ha de dir: "Mestre, m'oblidava que he d'anar-me'n a dormir! Puc activar el Somiador per consolidar el cervell i netejar l'Escriptori?".
 Si l'usuari dóna permís, s'ha d'executar el script `node tooling/brain/somiador.mjs`. Aquest script purga l'escriptori, guarda la memòria a l'històric i reestructura el graf de la Wiki perquè l'endemà arranque fresca i neta.
-
-## Sinapsis Entrants (Autogenerat)
-
-- [[00_INDEX_SKILLS|00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/00_INDEX_SKILLS.md]] — [[AGENTS_core-higiene-reflexa|00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRRO...
-- [[00_INDEX_ESCRIPTORI|05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md]] — [[AGENTS_core-higiene-reflexa|00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRRO...
-
-<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

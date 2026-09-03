@@ -72,10 +72,3 @@ Aquesta skill unifica el protocol d'interacció amb les avaluacions o auditories
 
 ## Ancoratge de la Wiki
 - Aquesta skill penja de: [[00_INDEX_SKILLS]]
-
-## Sinapsis Entrants (Autogenerat)
-
-- [[00_INDEX_SKILLS|00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/00_INDEX_SKILLS.md]] — [[AGENTS_council-review|00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGEN...
-- [[00_INDEX_ESCRIPTORI|05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md]] — [[AGENTS_council-review|00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGEN...
-
-<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

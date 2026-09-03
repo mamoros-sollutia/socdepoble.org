@@ -55,9 +55,3 @@ No omitis mai aquest procés. La neteja de la Wiki depèn de tu.
 
 ## Ancoratge de la Wiki
 - Aquesta skill penja de: [[00_INDEX_SKILLS]]
-
-## Sinapsis Entrants (Autogenerat)
-
-- [[00_INDEX_SKILLS|00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/00_INDEX_SKILLS.md]] — [[AGENTS_efecte-matrix|00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENT...
-
-<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

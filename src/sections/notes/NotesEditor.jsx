@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
-import { Image as ImageIcon, Lock, Globe, FileText, Pencil, ArrowLeft } from 'lucide-react';
+import { Image as ImageIcon, Lock, Globe, FileText, ArrowLeft } from 'lucide-react';
 import { useNotes } from './NotesContext';
 import NotesToolbar from './NotesToolbar';
 import { DateTimeControl, Dropdown, DropdownItem, UniversalPage } from '../../components/universal/UniversalComponents';
@@ -76,7 +76,7 @@ export default function NotesEditor() {
             heroComponent: activeNote.heroImage ? (
               <img src={activeNote.heroImage} alt="Cover" className="hero-image-img" />
             ) : (
-              <div className="sdp-p-6 sdp-mb-4" style={{ display: 'flex', justifyContent: 'center', background: 'var(--sdp-fons-app)' }}>
+              <div className="sdp-p-6 sdp-mb-4 notes-editor-cover-placeholder" style={{ display: 'flex', justifyContent: 'center' }}>
                 <button type="button" className="pill dashed-pill pointer">
                   <ImageIcon size={16} /> Inserir Imatge o Multimèdia
                 </button>

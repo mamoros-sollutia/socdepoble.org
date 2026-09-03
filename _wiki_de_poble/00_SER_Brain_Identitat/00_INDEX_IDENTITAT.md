@@ -135,3 +135,4 @@ Aquest directori està generat automàticament des de l'arrel oculta `.agents`. 
 - [[00_INDEX_Actes|10_actes/00_INDEX_Actes.md]] — [[00_INDEX_IDENTITAT]] (Nucli d'Identitat)
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->
+- [[00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS_universal-page]]
