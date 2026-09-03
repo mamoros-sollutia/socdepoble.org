@@ -1,21 +1,22 @@
+import { useState } from 'react';
 import { useNotes } from './NotesContext';
-import { Folder, Bookmark, Hash, PanelLeftClose, MessageSquare, Newspaper, ShoppingCart, LandPlot, GalleryVerticalEnd, NotebookPen, CalendarDays, Calendar, MapPinned } from 'lucide-react';
+import { Folder, Bookmark, Hash, PanelLeftClose, MessageSquare, Newspaper, ShoppingCart, LandPlot, GalleryVerticalEnd, NotebookPen, CalendarDays, Calendar, MapPinned, Inbox } from 'lucide-react';
 
-const CATEGORIES = ['Trellat', 'Patrimoni', 'Dades', 'Social'];
+const CATEGORIES = ['Sistema'];
 
 const FOLDER_ICONS = {
-  'f-xat': MessageSquare,
+  'f-tot': Inbox,
   'f-mur': Newspaper,
   'f-mercat': ShoppingCart,
   'f-pobles': LandPlot,
   'f-media': GalleryVerticalEnd,
   'f-events': Calendar,
-  'f-calendari': CalendarDays,
   'f-mapa': MapPinned,
   'f-notes': NotebookPen
 };
 
 export default function NotesSidebar() {
+  const [accFoldersOpen, setAccFoldersOpen] = useState(true);
   const { 
     noteFolders, activeFolderId, handleSelectFolder, 
     activeCategory, handleSelectCategory,
@@ -46,88 +47,95 @@ export default function NotesSidebar() {
 
   return (
     <aside className="notes-column notes-column--left" hidden={isCompact && mobilePanel !== 'folders'}>
-      <div className="notes-column-header">
-        <div className="notes-column-title">CARPETES</div>
-        <button onClick={() => setColFoldersCollapsed(true)} className="btn-icon btn-icon--transparent d-desktop-only" title="Replegar Columna">
-          <PanelLeftClose size={18} />
-        </button>
-      </div>
-      
-      <div className="notes-column__body">
+      <div className="notes-column__body" style={{ padding: 0 }}>
         
         {/* LLISTA CARPETES */}
-        <div className="folders-list">
-          {noteFolders.map((folder) => {
-            const isGlobal = !!FOLDER_ICONS[folder.id];
-            const Icon = FOLDER_ICONS[folder.id] || Folder;
-            
-            return (
-              <button
-                key={folder.id}
-                type="button"
-                onClick={() => handleSelectFolder(folder.id)}
-                className={`folder-item ${isGlobal ? 'folder-item--global' : ''} ${folder.id === activeFolderId ? 'active' : ''}`}
-              >
-                <Icon size={isGlobal ? 24 : 16} strokeWidth={isGlobal ? 2.1 : 2} />
-                <span>{folder.name}</span>
-              </button>
-            );
-          })}
+        <div 
+          className="notes-column-header cursor-pointer" 
+          onClick={() => setAccFoldersOpen(!accFoldersOpen)}
+          title="Plegar/Desplegar Carpetes"
+        >
+          <div className="notes-column-title">CARPETES</div>
+          <button 
+            onClick={(e) => { e.stopPropagation(); setColFoldersCollapsed(true); }} 
+            className="btn-icon btn-icon--transparent d-desktop-only" 
+            title="Replegar Columna"
+          >
+            <PanelLeftClose size={18} />
+          </button>
         </div>
+        
+        {accFoldersOpen && (
+          <div className="folders-list">
+            {noteFolders.map((folder) => {
+              const isGlobal = !!FOLDER_ICONS[folder.id];
+              const Icon = FOLDER_ICONS[folder.id] || Folder;
+              
+              return (
+                <button
+                  key={folder.id}
+                  type="button"
+                  onClick={() => handleSelectFolder(folder.id)}
+                  className={`folder-item ${isGlobal ? 'folder-item--global' : ''} ${folder.id === activeFolderId ? 'active' : ''}`}
+                >
+                  <Icon size={isGlobal ? 24 : 16} strokeWidth={isGlobal ? 2.1 : 2} />
+                  <span>{folder.name}</span>
+                </button>
+              );
+            })}
+          </div>
+        )}
 
         {/* ACCORDION CATEGORIES */}
-        <div className="accordion">
-          <button 
-            type="button"
-            onClick={() => setAccCategoriesOpen(!accCategoriesOpen)}
-            className="accordion-toggle"
-            title="Plegar/Desplegar Categories"
-          >
-            <span>CATEGORIES</span>
-          </button>
-          {accCategoriesOpen && (
-            <div className="folders-list accordion-content">
-              {CATEGORIES.map((category) => (
-                <button
-                  key={category}
-                  type="button"
-                  onClick={() => handleSelectCategory(category)}
-                  className={`folder-item ${category === activeCategory ? 'active' : ''}`}
-                >
-                  <Bookmark size={16} />
-                  <span>{getCategoryLabel(category)}</span>
-                </button>
-              ))}
-            </div>
-          )}
+        <div 
+          className="notes-column-header cursor-pointer" 
+          onClick={() => setAccCategoriesOpen(!accCategoriesOpen)}
+          title="Plegar/Desplegar Categories"
+          style={{ borderTop: '1px solid var(--sdp-vora-control)' }}
+        >
+          <div className="notes-column-title">CATEGORIES</div>
         </div>
+        
+        {accCategoriesOpen && (
+          <div className="folders-list">
+            {CATEGORIES.map((category) => (
+              <button
+                key={category}
+                type="button"
+                onClick={() => handleSelectCategory(category)}
+                className={`folder-item ${category === activeCategory ? 'active' : ''}`}
+              >
+                <Bookmark size={16} />
+                <span>{getCategoryLabel(category)}</span>
+              </button>
+            ))}
+          </div>
+        )}
 
         {/* ACCORDION ETIQUETES */}
-        <div className="accordion">
-          <button 
-            type="button"
-            onClick={() => setAccTagsOpen(!accTagsOpen)}
-            className="accordion-toggle"
-            title="Plegar/Desplegar Etiquetes"
-          >
-            <span>ETIQUETES</span>
-          </button>
-          {accTagsOpen && (
-            <div className="folders-list accordion-content">
-              {['#important', '#idea', '#esborrany'].map((tag) => (
-                <button
-                  key={tag}
-                  type="button"
-                  className="folder-item"
-                >
-                  <Hash size={16} />
-                  <span>{tag}</span>
-                </button>
-              ))}
-            </div>
-          )}
+        <div 
+          className="notes-column-header cursor-pointer" 
+          onClick={() => setAccTagsOpen(!accTagsOpen)}
+          title="Plegar/Desplegar Etiquetes"
+          style={{ borderTop: '1px solid var(--sdp-vora-control)' }}
+        >
+          <div className="notes-column-title">ETIQUETES</div>
         </div>
 
+        {accTagsOpen && (
+          <div className="folders-list">
+            {['Productivitat', 'Tutorial'].map((tag) => (
+              <button
+                key={tag}
+                type="button"
+                className="folder-item"
+              >
+                <Hash size={16} />
+                <span>{tag}</span>
+              </button>
+            ))}
+          </div>
+        )}
       </div>
     </aside>
   );

@@ -9,7 +9,7 @@ const NotesContext = createContext(null);
 export function NotesProvider({ children }) {
   const { language, normalizeSearchText, noteFolders, notes: rawNotes, t, sendSectionSubmission, externalConfig } = useAppData();
   
-  const [activeFolderId, setActiveFolderId] = useState('f-mur');
+  const [activeFolderId, setActiveFolderId] = useState('f-tot');
   const [activeCategory, setActiveCategory] = useState(null);
   const [activeNoteId, setActiveNoteId] = useState('n1');
   const [searchQuery, setSearchQuery] = useState('');
@@ -42,7 +42,7 @@ export function NotesProvider({ children }) {
   const filteredNotes = useMemo(() => {
     const query = normalizeSearchText(deferredSearchQuery);
     return notes
-      .filter((note) => (activeFolderId ? note.folderId === activeFolderId : true))
+      .filter((note) => (activeFolderId && activeFolderId !== 'f-tot' ? note.folderId === activeFolderId : true))
       .filter((note) => (activeCategory ? note.category === activeCategory : true))
       .filter((note) => (!query ? true : note.searchText.includes(query)));
   }, [activeCategory, activeFolderId, deferredSearchQuery, notes, normalizeSearchText]);
