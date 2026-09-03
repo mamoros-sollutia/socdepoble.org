@@ -10,7 +10,7 @@ import {
   TOWNS
 } from './sectionContent.js';
 
-export const APP_SEED_VERSION = 250033;
+export const APP_SEED_VERSION = 250034;
 import { getDefaultUserId, idConvidat } from './identitat.js';
 export { getDefaultUserId, idConvidat };
 
