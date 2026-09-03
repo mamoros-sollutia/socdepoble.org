@@ -21,6 +21,12 @@
   --notes-bg-carpetes: var(--sdp-pedra-900);
   --notes-bg-llista: var(--sdp-pedra-850);
 }
+
+/* Tiptap / ProseMirror fixes */
+.ProseMirror {
+  white-space: pre-wrap;
+}
+
 .notes-page > .content-wrapper {
   display: flex;
   flex: 1 1 0;
