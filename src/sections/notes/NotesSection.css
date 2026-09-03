@@ -128,7 +128,7 @@
 .notes-page .folder-item span { overflow-wrap: anywhere; }
 .notes-page .folder-item svg { flex: none; }
 .notes-page .folder-item:hover { background: var(--sdp-fons-targeta); }
-.notes-page .folder-item.active { background: var(--sdp-fons-targeta); border-color: var(--sdp-accio-text); color: var(--sdp-accio-text); }
+.notes-page .folder-item.active { background: var(--sdp-fons-targeta); color: var(--sdp-accio-text); }
 .notes-page .folder-item--global { /* Removed font overrides so all text looks the same */ }
 .notes-page .accordion { margin-top: var(--sdp-space-4); }
 .notes-page .accordion-toggle {
