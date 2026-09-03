@@ -3,27 +3,7 @@ import { getVal, setVal, delVal } from '../config/storage.js';
 import { entraAmbGoogle, gestionaTornada } from './oauthRelay.js';
 import { mergeById, mapSectionSubmissionToItem } from './mapejadorSeccions.js';
 
-/** El mode simulat només ha d'existir en desenvolupament. En un build de
- * producció sense config, l'aplicació ha de dir que no pot entrar — no
- * regalar una sessió d'administrador.
- */
-const MODE_SIMULAT_PERMES = false; // Bloquejat: cap simulació en producció
 
-function usuariSimulat(email, name) {
-  if (!MODE_SIMULAT_PERMES) {
-    throw new Error(
-      'No hi ha connexió configurada amb el servidor. ' +
-      'Falten VITE_SUPABASE_URL i VITE_SUPABASE_ANON_KEY, o l\'amfitrió no ha passat la configuració.'
-    );
-  }
-  console.warn('[SDP] MODE SIMULAT: sessió local sense servidor. Mai en producció.');
-  return {
-    id: 'local-mock-usuari',
-    email,
-    // Rol mínim, no superadmin. Per a provar l'administració, entra de veres.
-    user_metadata: { name: name || 'Usuari de proves', role: 'user' }
-  };
-}
 
 const DATA_SYNC_CHANNEL_NAME = 'socdepoble-data-sync-v1';
 
@@ -199,7 +179,8 @@ function mapContentRowsToData(rows) {
     noteFolders: (() => {
       const remote = lookup.get('noteFolders') || [];
       const ghostIds = new Set(['f-root', 'f-general', 'f-articles', 'f-histories', 'f-prompts', 'f-captures', 'f-event', 'f-mapa']);
-      const filteredRemote = remote.filter(f => !ghostIds.has(f.id));
+      const ghostNames = new Set(['Articles', 'Històries del Poble', 'Captures de recerca', 'Receptes']);
+      const filteredRemote = remote.filter(f => !ghostIds.has(f.id) && !ghostNames.has(f.name));
       
       const merged = APP_SEED.noteFolders.map(seedF => filteredRemote.find(f => f.id === seedF.id) || seedF);
       const custom = filteredRemote.filter(f => !APP_SEED.noteFolders.find(s => s.id === f.id));
@@ -535,10 +516,7 @@ export async function registerWithEmail(email, password, name, config = {}) {
   const { tenantId, hasSupabaseConfig } = getResolvedConfig(config);
   
   if (!hasSupabaseConfig) {
-    const mockUser = usuariSimulat(email, name);
-    setVal('socdepoble-jwt', 'mock-jwt-token');
-    setVal('socdepoble-user', mockUser);
-    return { access_token: 'mock-jwt-token', user: mockUser };
+    throw new Error('No hi ha connexió configurada amb el servidor Supabase. Registre impossible.');
   }
 
   const result = await request('/auth/v1/signup', config, {
@@ -562,10 +540,7 @@ export async function loginWithEmail(email, password, config = {}) {
   const { hasSupabaseConfig } = getResolvedConfig(config);
 
   if (!hasSupabaseConfig) {
-    const mockUser = usuariSimulat(email, undefined);
-    setVal('socdepoble-jwt', 'mock-jwt-token');
-    setVal('socdepoble-user', mockUser);
-    return { access_token: 'mock-jwt-token', user: mockUser };
+    throw new Error('No hi ha connexió configurada amb el servidor Supabase. Identificació impossible.');
   }
 
   const result = await request('/auth/v1/token?grant_type=password', config, {
