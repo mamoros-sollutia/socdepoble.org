@@ -9,6 +9,7 @@ import { sanitizeHtml } from '../../utils/sanitize.js';
 
 export default function NotesEditor() {
   const { activeNote, saveNoteField, setLocalNoteField, noteFolders, t, isCompact, mobilePanel, setMobilePanel, handleSelectCategory, handleSelectFolder, handleSelectTag } = useNotes();
+  const [isEditingImage, setIsEditingImage] = useState(false);
   const timeoutRef = useRef(null);
   const pendingSaveRef = useRef({ id: null, content: null });
   const currentNoteRef = useRef({ id: null, title: '', subtitle: '', lead: '' });
@@ -65,6 +66,11 @@ export default function NotesEditor() {
     };
   }, [activeNote?.id]);
 
+  // Reset image editing state when switching notes
+  useEffect(() => {
+    setIsEditingImage(false);
+  }, [activeNote?.id]);
+
   if (!activeNote) {
     return (
       <section className="notes-column notes-column--editor" hidden={isCompact && mobilePanel !== 'editor'}>
@@ -87,13 +93,29 @@ export default function NotesEditor() {
           variant="embed"
           showLogos={true}
           topBarData={{
-            heroComponent: activeNote.heroImage ? (
-              <img src={activeNote.heroImage} alt="Cover" className="hero-image-img" />
+            heroComponent: (activeNote.heroImage && !isEditingImage) ? (
+              <img 
+                src={activeNote.heroImage} 
+                alt="Cover" 
+                className="hero-image-img pointer" 
+                onClick={() => setIsEditingImage(true)}
+                title="Clica per canviar la imatge"
+              />
             ) : (
-              <div className="sdp-p-6 sdp-mb-4 notes-editor-cover-placeholder" style={{ display: 'flex', justifyContent: 'center' }}>
+              <div className="sdp-p-6 sdp-mb-4 notes-editor-cover-placeholder" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', background: 'var(--sdp-fons-subtil)' }}>
                 <button type="button" className="pill dashed-pill pointer">
                   <ImageIcon size={16} /> Inserir Imatge o Multimèdia
                 </button>
+                {activeNote.heroImage && (
+                  <div style={{ display: 'flex', gap: '8px', marginTop: '8px' }}>
+                    <button type="button" className="pill pointer" style={{ border: '1px solid var(--sdp-vora)', background: 'transparent' }} onClick={() => setIsEditingImage(false)}>
+                      Tornar enrere
+                    </button>
+                    <button type="button" className="pill pointer" style={{ border: '1px solid var(--sdp-error)', color: 'var(--sdp-error)', background: 'transparent' }} onClick={() => { saveNoteField(activeNote.id, 'heroImage', ''); setIsEditingImage(false); }}>
+                      Esborrar contingut
+                    </button>
+                  </div>
+                )}
               </div>
             ),
             barActions: (

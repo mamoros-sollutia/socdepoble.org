@@ -40,7 +40,11 @@ Una `UniversalPage` completa està formada pels següents blocs estratificats, q
 
 ### B. El Frame de Capçalera (Hero Image)
 - **Amplària Completa (Full Width):** La imatge Hero (o element multimèdia equivalent) **ha d'ocupar el 100% de l'ample del contenidor**. NO té marge. NO té padding.
-- Si en algun moment hi ha un padding lateral fantasma (p. ex. 40px), s'ha d'eliminar exclusivament per a la imatge Hero, permetent-li tocar les vores de la pantalla o del panell de l'editor. L'altura serà proporcional.
+- **Adaptabilitat del Format:** El contenidor de l'element multimèdia s'adapta proporcionalment a les dimensions de l'arxiu. Encara que a les targetes habituals de "Pobles" s'acostumen a gastar imatges quadrades, el sistema suporta qualsevol format (com un foli A4 per a un document PDF o una foto panoràmica), ajustant l'altura automàticament sense deformar-lo.
+- **Mode Edició i Placeholder:** Quan no hi ha imatge, o quan l'usuari fa clic damunt d'una imatge existent per a canviar-la, l'espai s'ha de transformar en un menú d'accions clares. Han d'aparèixer tres botons:
+  1. **"Inserir Imatge o Multimèdia"**: Per pujar un arxiu nou o reemplaçar l'actual.
+  2. **"Tornar enrere"** (només si ja n'hi ha una): Per a cancel·lar el mode d'edició sense modificar res.
+  3. **"Esborrar contingut"** (només si ja n'hi ha una): Un botó d'alerta (roig) per a eliminar la imatge actual i deixar l'espai en blanc.
 
 ### C. La Barra Taronja (`bar-orange`)
 - Conté l'autoria de l'usuari, el seu poble i la data/hora de la publicació.
