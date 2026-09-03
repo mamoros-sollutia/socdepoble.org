@@ -77,8 +77,9 @@ Les bones intencions no frenen l'entropia; només els processos mecànics ho fan
 ## Sinapsis Entrants (Autogenerat)
 
 - [[00_INDEX|00_INDEX.md]] — [[Llibre_Blanc_Produccio_Pedra_Seca]]
-- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[Llibre_Blanc_Produccio_Pedra_Seca]]
-- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[Llibre_Blanc_Produccio_Pedra_Seca]]
-- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[Llibre_Blanc_Produccio_Pedra_Seca]]
+- [[el_projecte|00_SER_Brain_Identitat/el_projecte.md]] — [[Llibre_Blanc_Produccio_Pedra_Seca|01_SABER_Cultura_Coneixement/Llibre_Blanc...
+- [[Coneixement|01_SABER_Cultura_Coneixement/Coneixement.md]] — [[Llibre_Blanc_Produccio_Pedra_Seca|01_SABER_Cultura_Coneixement/Llibre_Blanc...
+- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[Llibre_Blanc_Produccio_Pedra_Seca|01_SABER_Cultura_Coneixement/Llibre_Blanc...
+- [[Llibre_Blanc_Produccio_Pedra_Seca|01_SABER_Cultura_Coneixement/Llibre_Blanc_Produccio_Pedra_Seca.md]] — [[00_INDEX|00_INDEX.md]] — [[Llibre_Blanc_Produccio_Pedra_Seca]]
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

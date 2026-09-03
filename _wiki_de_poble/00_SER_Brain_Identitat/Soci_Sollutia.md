@@ -245,9 +245,14 @@ Aquestes eines configuren l'instrumental de la Forja.
 
 ## Sinapsis Entrants (Autogenerat)
 
+- [[00_BIOS|00_SER_Brain_Identitat/00_BIOS.md]] — [[Soci_Sollutia|00_SER_Brain_Identitat/Soci_Sollutia.md]] — [[00_BIOS]]
 - [[00_INDEX_IDENTITAT|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[Soci_Sollutia]]
-- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[Soci_Sollutia]]
-- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[Soci_Sollutia]]
-- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[Soci_Sollutia]]
+- [[01_IDENTITAT|00_SER_Brain_Identitat/01_IDENTITAT.md]] — [[Soci_Sollutia|00_SER_Brain_Identitat/Soci_Sollutia.md]] — [[01_IDENTITAT]]
+- [[02_EQUIP_IA|00_SER_Brain_Identitat/02_EQUIP_IA.md]] — [[Soci_Sollutia|00_SER_Brain_Identitat/Soci_Sollutia.md]] — [[02_EQUIP_IA]]
+- [[el_projecte|00_SER_Brain_Identitat/el_projecte.md]] — [[Soci_Sollutia|00_SER_Brain_Identitat/Soci_Sollutia.md]] — Aquest document p...
+- [[Soci_Sollutia|00_SER_Brain_Identitat/Soci_Sollutia.md]] — [[00_BIOS|00_SER_Brain_Identitat/00_BIOS.md]] — [[Soci_Sollutia|00_SER_Brain_...
+- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[Soci_Sollutia|00_SER_Brain_Identitat/Soci_Sollutia.md]] — Etiquetes: [[Graf]]
+- [[Identitat|01_SABER_Cultura_Coneixement/Identitat.md]] — [[Soci_Sollutia|00_SER_Brain_Identitat/Soci_Sollutia.md]] — Categoria: [[Iden...
+- [[DOC_Governanca|03_GOVERNAR_Normativa_Regles/DOC_Governanca.md]] — [[Soci_Sollutia|00_SER_Brain_Identitat/Soci_Sollutia.md]] — [[DOC_Governanca]]
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

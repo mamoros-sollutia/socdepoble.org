@@ -1,7 +1,9 @@
 ---
 tipus: skill
 estat: actiu
-description: "Core skill per a restauració segura"
+description: Core skill per a restauració segura
+tags:
+  - core
 name: core-restauracio-segellada
 triggers_on:
   - restaura
@@ -25,10 +27,6 @@ triggers_on:
 core: true
 eines_obligatories:
   - tooling/brain/ancora.mjs
-tags:
-  - skill
-  - sistema
-  - core
 ---
 
 <!-- Aquest fitxer és un ESPILL (mirror) automàtic de .agents/skills/core-restauracio-segellada/SKILL.md -->
@@ -177,3 +175,13 @@ Si `desenterrar.mjs` no existix o no s'executa, la resposta correcta és
 significa que no es passa.
 
 
+
+
+## Ancoratge de la Wiki
+- Aquesta skill penja de: [[00_INDEX_SKILLS]]
+
+## Sinapsis Entrants (Autogenerat)
+
+- [[00_INDEX_SKILLS|00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/00_INDEX_SKILLS.md]] — [[AGENTS_core-restauracio-segellada|00_SER_Brain_Identitat/00_AGENTS_I_SKILLS...
+
+<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

@@ -81,6 +81,7 @@ export const CONTRACTE_BACKEND = Object.freeze([
   'loadAppData',
   'appendChatMessages',
   'appendSectionSubmissionNetworkOnly',
+  'updateNote',
   'registerWithEmail',
   'loginWithEmail',
   'loginWithGoogle',

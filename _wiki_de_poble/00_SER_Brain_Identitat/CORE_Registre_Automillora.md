@@ -63,9 +63,11 @@ S'HA D'INCLOURE sempre el temps de sessió aproximat (Hores) per a avaluar la fa
 ## Sinapsis Entrants (Autogenerat)
 
 - [[00_INDEX|00_INDEX.md]] — [[CORE_Registre_Automillora]]
+- [[00_BIOS|00_SER_Brain_Identitat/00_BIOS.md]] — [[CORE_Registre_Automillora|00_SER_Brain_Identitat/CORE_Registre_Automillora....
 - [[00_INDEX_IDENTITAT|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[CORE_Registre_Automillora]]
-- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[CORE_Registre_Automillora]]
-- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[CORE_Registre_Automillora]]
-- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[CORE_Registre_Automillora]]
+- [[CORE_Registre_Automillora|00_SER_Brain_Identitat/CORE_Registre_Automillora.md]] — [[00_INDEX|00_INDEX.md]] — [[CORE_Registre_Automillora]]
+- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[CORE_Registre_Automillora|00_SER_Brain_Identitat/CORE_Registre_Automillora....
+- [[Identitat|01_SABER_Cultura_Coneixement/Identitat.md]] — [[CORE_Registre_Automillora|00_SER_Brain_Identitat/CORE_Registre_Automillora....
+- [[MOTOR_OFFLINE|02_ACTUAR_Maquina_Tecnica/skills/MOTOR_OFFLINE.md]] — [[CORE_Registre_Automillora|00_SER_Brain_Identitat/CORE_Registre_Automillora....
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

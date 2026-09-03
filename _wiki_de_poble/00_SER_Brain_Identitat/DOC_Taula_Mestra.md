@@ -42,10 +42,11 @@ SORT (length(file.inlinks) + length(file.outlinks)) ASC
 
 ## Sinapsis Entrants (Autogenerat)
 
+- [[00_INDEX|00_INDEX.md]] — [[01_IDENTITAT|00_SER_Brain_Identitat/01_IDENTITAT.md]] — Tornar a:[[00_INDEX...
 - [[00_INDEX_IDENTITAT|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[DOC_Taula_Mestra]]
-- [[01_IDENTITAT|00_SER_Brain_Identitat/01_IDENTITAT.md]] — Tornar a:**[[00_INDEX|00_index]], [[DOC_Taula_Mestra]]
-- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[DOC_Taula_Mestra]]
-- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[DOC_Taula_Mestra]]
-- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[DOC_Taula_Mestra]]
+- [[01_IDENTITAT|00_SER_Brain_Identitat/01_IDENTITAT.md]] — Tornar a:[[00_INDEX|00_index]], [[DOC_Taula_Mestra]]
+- [[DOC_Taula_Mestra|00_SER_Brain_Identitat/DOC_Taula_Mestra.md]] — [[00_INDEX_IDENTITAT|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[DOC_T...
+- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[DOC_Taula_Mestra|00_SER_Brain_Identitat/DOC_Taula_Mestra.md]] — Etiquetes: ...
+- [[Identitat|01_SABER_Cultura_Coneixement/Identitat.md]] — [[DOC_Taula_Mestra|00_SER_Brain_Identitat/DOC_Taula_Mestra.md]] — Categoria: ...
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

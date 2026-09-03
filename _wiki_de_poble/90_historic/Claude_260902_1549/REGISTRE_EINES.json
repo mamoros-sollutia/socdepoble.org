@@ -1,0 +1,2017 @@
+{
+ "esquema": "sdp.registre_eines.v1",
+ "generat": "2026-09-02",
+ "nota": "Un .mjs no pot portar frontmatter d'Obsidian. Este registre és l'equivalent executable: mateix vocabulari tancat que esquema_frontmatter.json.",
+ "vocabulari_tancat": [
+  "acta",
+  "arquitectura",
+  "core",
+  "disseny",
+  "escriptori",
+  "genoma",
+  "govern",
+  "graf",
+  "identitat",
+  "legal",
+  "maquina",
+  "saber",
+  "seguretat",
+  "skills",
+  "sollutia",
+  "temporal"
+ ],
+ "totals": {
+  "fitxers": 164
+ },
+ "fitxers": [
+  {
+   "ruta": "scripts/audit-accessibility.sh",
+   "tipus": "eina",
+   "estat": "orfe",
+   "tags": [
+    "maquina"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "scripts/audit-performance.sh",
+   "tipus": "eina",
+   "estat": "orfe",
+   "tags": [
+    "maquina"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "scripts/enllacat-intelligent-wiki.mjs",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "graf",
+    "maquina"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "scripts/fetch_town_media.mjs",
+   "tipus": "eina",
+   "estat": "orfe",
+   "tags": [
+    "maquina"
+   ],
+   "escriu": true,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "scripts/fix_pedra_seca.mjs",
+   "tipus": "eina",
+   "estat": "mort",
+   "tags": [
+    "maquina"
+   ],
+   "escriu": true,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "scripts/generate-supabase-seed.mjs",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "maquina"
+   ],
+   "escriu": true,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "scripts/generate-supabase-seed.sh",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "maquina"
+   ],
+   "escriu": false,
+   "falla_tancat": true,
+   "invocadors": [
+    "db:seed:generate"
+   ]
+  },
+  {
+   "ruta": "scripts/immunitari/plaquetes.mjs",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "maquina"
+   ],
+   "escriu": true,
+   "falla_tancat": true,
+   "invocadors": []
+  },
+  {
+   "ruta": "scripts/migrate-component.sh",
+   "tipus": "eina",
+   "estat": "orfe",
+   "tags": [
+    "maquina"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "scripts/sync_agents_to_wiki.mjs",
+   "tipus": "eina",
+   "estat": "orfe",
+   "tags": [
+    "maquina"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "scripts/sync_brain_to_wiki.sh",
+   "tipus": "eina",
+   "estat": "orfe",
+   "tags": [
+    "maquina"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "scripts/teixidor-backlinks.mjs",
+   "tipus": "eina",
+   "estat": "orfe",
+   "tags": [
+    "graf",
+    "maquina"
+   ],
+   "escriu": true,
+   "falla_tancat": true,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/agents/autoneteja_safata_produccio.sh",
+   "tipus": "eina",
+   "estat": "orfe",
+   "tags": [
+    "escriptori",
+    "genoma"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/agents/force_read_petorreta_rules.sh",
+   "tipus": "eina",
+   "estat": "orfe",
+   "tags": [
+    "genoma",
+    "govern"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/brain/260830_neteja_deute.mjs",
+   "tipus": "migracio",
+   "estat": "actiu",
+   "tags": [
+    "escriptori",
+    "genoma"
+   ],
+   "escriu": true,
+   "falla_tancat": true,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/brain/260830_pedacos_arrel.mjs",
+   "tipus": "migracio",
+   "estat": "actiu",
+   "tags": [
+    "genoma"
+   ],
+   "escriu": true,
+   "falla_tancat": true,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/brain/260830_purga_maquinari.mjs",
+   "tipus": "migracio",
+   "estat": "actiu",
+   "tags": [
+    "escriptori",
+    "genoma"
+   ],
+   "escriu": true,
+   "falla_tancat": true,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/brain/260831_rescat_tokens.mjs",
+   "tipus": "migracio",
+   "estat": "orfe",
+   "tags": [
+    "disseny",
+    "genoma"
+   ],
+   "escriu": true,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/brain/add_frontmatter_to_agents.mjs",
+   "tipus": "eina",
+   "estat": "orfe",
+   "tags": [
+    "genoma",
+    "saber"
+   ],
+   "escriu": true,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/brain/ancora.mjs",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "genoma",
+    "graf",
+    "seguretat"
+   ],
+   "escriu": true,
+   "falla_tancat": true,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/brain/brain_distill.py",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "core",
+    "genoma"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": [
+    "brain:distill"
+   ]
+  },
+  {
+   "ruta": "tooling/brain/build_context_pack.py",
+   "tipus": "eina",
+   "estat": "orfe",
+   "tags": [
+    "core",
+    "genoma"
+   ],
+   "escriu": true,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/brain/build_skills_index.mjs",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "genoma",
+    "graf",
+    "skills"
+   ],
+   "escriu": true,
+   "falla_tancat": true,
+   "invocadors": [
+    "skills:index"
+   ]
+  },
+  {
+   "ruta": "tooling/brain/cens_cromatic.mjs",
+   "tipus": "eina",
+   "estat": "orfe",
+   "tags": [
+    "disseny",
+    "genoma"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/brain/consolidar_baselines.mjs",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "genoma"
+   ],
+   "escriu": true,
+   "falla_tancat": false,
+   "invocadors": [
+    "deute:revisa"
+   ]
+  },
+  {
+   "ruta": "tooling/brain/crear_bundle.mjs",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "core",
+    "genoma"
+   ],
+   "escriu": true,
+   "falla_tancat": false,
+   "invocadors": [
+    "bundle"
+   ]
+  },
+  {
+   "ruta": "tooling/brain/crear_document.mjs",
+   "tipus": "eina",
+   "estat": "orfe",
+   "tags": [
+    "genoma"
+   ],
+   "escriu": true,
+   "falla_tancat": true,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/brain/desenterrar.mjs",
+   "tipus": "eina",
+   "estat": "orfe",
+   "tags": [
+    "genoma",
+    "seguretat"
+   ],
+   "escriu": true,
+   "falla_tancat": true,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/brain/despertar.mjs",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "genoma",
+    "skills"
+   ],
+   "escriu": false,
+   "falla_tancat": true,
+   "invocadors": [
+    "despertar"
+   ]
+  },
+  {
+   "ruta": "tooling/brain/farcell.mjs",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "core",
+    "genoma"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/brain/maintain.sh",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "genoma"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": [
+    "brain:maintain"
+   ]
+  },
+  {
+   "ruta": "tooling/brain/migrate_skills.mjs",
+   "tipus": "eina",
+   "estat": "orfe",
+   "tags": [
+    "genoma",
+    "skills"
+   ],
+   "escriu": true,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/brain/persona_router.mjs",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "genoma",
+    "identitat",
+    "skills"
+   ],
+   "escriu": false,
+   "falla_tancat": true,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/brain/reparar_frontmatter_skills.mjs",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "genoma",
+    "saber",
+    "skills"
+   ],
+   "escriu": true,
+   "falla_tancat": true,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/brain/sync_agent_mirror.py",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "genoma"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/brain/tests/test_brain_tools.py",
+   "tipus": "prova",
+   "estat": "actiu",
+   "tags": [
+    "genoma"
+   ],
+   "escriu": true,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/brain/time-machine.mjs",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "genoma",
+    "temporal"
+   ],
+   "escriu": true,
+   "falla_tancat": true,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/brain/tractor-pedra-seca.mjs",
+   "tipus": "porta",
+   "estat": "actiu",
+   "tags": [
+    "disseny",
+    "genoma"
+   ],
+   "escriu": true,
+   "falla_tancat": true,
+   "invocadors": [
+    "porta:baseline",
+    "porta:pedra-seca"
+   ]
+  },
+  {
+   "ruta": "tooling/escala_sdp_root.mjs",
+   "tipus": "eina",
+   "estat": "orfe",
+   "tags": [
+    "maquina"
+   ],
+   "escriu": true,
+   "falla_tancat": true,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/gates/build-seo-manifest.mjs",
+   "tipus": "porta",
+   "estat": "actiu",
+   "tags": [
+    "legal",
+    "maquina",
+    "skills"
+   ],
+   "escriu": true,
+   "falla_tancat": true,
+   "invocadors": [
+    "porta:seo",
+    "build:seo"
+   ]
+  },
+  {
+   "ruta": "tooling/gates/design_guard.mjs",
+   "tipus": "porta",
+   "estat": "actiu",
+   "tags": [
+    "disseny",
+    "maquina"
+   ],
+   "escriu": true,
+   "falla_tancat": true,
+   "invocadors": [
+    "porta:baseline",
+    "porta:design-guard"
+   ]
+  },
+  {
+   "ruta": "tooling/gates/obrir_torn.mjs",
+   "tipus": "porta",
+   "estat": "actiu",
+   "tags": [
+    "escriptori",
+    "maquina",
+    "temporal"
+   ],
+   "escriu": false,
+   "falla_tancat": true,
+   "invocadors": [
+    "torn:obrir"
+   ]
+  },
+  {
+   "ruta": "tooling/gates/run-portes.mjs",
+   "tipus": "porta",
+   "estat": "actiu",
+   "tags": [
+    "maquina"
+   ],
+   "escriu": false,
+   "falla_tancat": true,
+   "invocadors": [
+    "porta"
+   ]
+  },
+  {
+   "ruta": "tooling/gates/tancament.mjs",
+   "tipus": "porta",
+   "estat": "actiu",
+   "tags": [
+    "escriptori",
+    "maquina"
+   ],
+   "escriu": false,
+   "falla_tancat": true,
+   "invocadors": [
+    "tancar"
+   ]
+  },
+  {
+   "ruta": "tooling/gates/tractor-arrel.mjs",
+   "tipus": "porta",
+   "estat": "actiu",
+   "tags": [
+    "maquina"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": [
+    "porta:arrel"
+   ]
+  },
+  {
+   "ruta": "tooling/gates/tractor-build-previ.mjs",
+   "tipus": "porta",
+   "estat": "actiu",
+   "tags": [
+    "maquina"
+   ],
+   "escriu": false,
+   "falla_tancat": true,
+   "invocadors": [
+    "porta:build"
+   ]
+  },
+  {
+   "ruta": "tooling/gates/tractor-cadena.mjs",
+   "tipus": "porta",
+   "estat": "actiu",
+   "tags": [
+    "maquina"
+   ],
+   "escriu": false,
+   "falla_tancat": true,
+   "invocadors": [
+    "porta:cadena"
+   ]
+  },
+  {
+   "ruta": "tooling/gates/tractor-cens.mjs",
+   "tipus": "porta",
+   "estat": "actiu",
+   "tags": [
+    "maquina"
+   ],
+   "escriu": false,
+   "falla_tancat": true,
+   "invocadors": [
+    "porta:cens"
+   ]
+  },
+  {
+   "ruta": "tooling/gates/tractor-consell.mjs",
+   "tipus": "porta",
+   "estat": "actiu",
+   "tags": [
+    "govern",
+    "maquina"
+   ],
+   "escriu": false,
+   "falla_tancat": true,
+   "invocadors": [
+    "porta:consell"
+   ]
+  },
+  {
+   "ruta": "tooling/gates/tractor-cromatic.mjs",
+   "tipus": "porta",
+   "estat": "actiu",
+   "tags": [
+    "disseny",
+    "maquina"
+   ],
+   "escriu": false,
+   "falla_tancat": true,
+   "invocadors": [
+    "porta:cromatic"
+   ]
+  },
+  {
+   "ruta": "tooling/gates/tractor-doctrina-maquinari.mjs",
+   "tipus": "porta",
+   "estat": "actiu",
+   "tags": [
+    "govern",
+    "maquina"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": [
+    "porta:maquinari"
+   ]
+  },
+  {
+   "ruta": "tooling/gates/tractor-doctrina.mjs",
+   "tipus": "porta",
+   "estat": "actiu",
+   "tags": [
+    "govern",
+    "maquina"
+   ],
+   "escriu": false,
+   "falla_tancat": true,
+   "invocadors": [
+    "porta:doctrina"
+   ]
+  },
+  {
+   "ruta": "tooling/gates/tractor-enxufe.mjs",
+   "tipus": "porta",
+   "estat": "actiu",
+   "tags": [
+    "maquina"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": [
+    "porta:enxufe"
+   ]
+  },
+  {
+   "ruta": "tooling/gates/tractor-estucat.mjs",
+   "tipus": "porta",
+   "estat": "actiu",
+   "tags": [
+    "disseny",
+    "maquina"
+   ],
+   "escriu": true,
+   "falla_tancat": true,
+   "invocadors": [
+    "porta:estucat"
+   ]
+  },
+  {
+   "ruta": "tooling/gates/tractor-innerhtml.mjs",
+   "tipus": "porta",
+   "estat": "actiu",
+   "tags": [
+    "maquina",
+    "seguretat"
+   ],
+   "escriu": false,
+   "falla_tancat": true,
+   "invocadors": [
+    "porta:innerhtml"
+   ]
+  },
+  {
+   "ruta": "tooling/gates/tractor-manifest.mjs",
+   "tipus": "porta",
+   "estat": "actiu",
+   "tags": [
+    "maquina",
+    "skills"
+   ],
+   "escriu": true,
+   "falla_tancat": true,
+   "invocadors": [
+    "porta:manifest"
+   ]
+  },
+  {
+   "ruta": "tooling/gates/tractor-persistencia.mjs",
+   "tipus": "porta",
+   "estat": "actiu",
+   "tags": [
+    "maquina"
+   ],
+   "escriu": false,
+   "falla_tancat": true,
+   "invocadors": [
+    "porta:persistencia"
+   ]
+  },
+  {
+   "ruta": "tooling/gates/tractor-promesa.mjs",
+   "tipus": "porta",
+   "estat": "actiu",
+   "tags": [
+    "maquina"
+   ],
+   "escriu": true,
+   "falla_tancat": true,
+   "invocadors": [
+    "porta:baseline",
+    "porta:promesa"
+   ]
+  },
+  {
+   "ruta": "tooling/gates/tractor-registre.mjs",
+   "tipus": "porta",
+   "estat": "actiu",
+   "tags": [
+    "maquina",
+    "skills"
+   ],
+   "escriu": false,
+   "falla_tancat": true,
+   "invocadors": [
+    "porta:registre"
+   ]
+  },
+  {
+   "ruta": "tooling/gates/tractor-rutes-web.mjs",
+   "tipus": "porta",
+   "estat": "actiu",
+   "tags": [
+    "maquina"
+   ],
+   "escriu": false,
+   "falla_tancat": true,
+   "invocadors": [
+    "porta:rutes-web"
+   ]
+  },
+  {
+   "ruta": "tooling/gates/tractor-rutes.mjs",
+   "tipus": "porta",
+   "estat": "actiu",
+   "tags": [
+    "maquina"
+   ],
+   "escriu": true,
+   "falla_tancat": true,
+   "invocadors": [
+    "porta:rutes"
+   ]
+  },
+  {
+   "ruta": "tooling/gates/tractor-shim.mjs",
+   "tipus": "porta",
+   "estat": "actiu",
+   "tags": [
+    "maquina"
+   ],
+   "escriu": false,
+   "falla_tancat": true,
+   "invocadors": [
+    "porta:shim"
+   ]
+  },
+  {
+   "ruta": "tooling/gates/tractor-sollutia.mjs",
+   "tipus": "porta",
+   "estat": "actiu",
+   "tags": [
+    "maquina",
+    "sollutia"
+   ],
+   "escriu": false,
+   "falla_tancat": true,
+   "invocadors": [
+    "porta:frontera"
+   ]
+  },
+  {
+   "ruta": "tooling/gates/tractor-tdz.mjs",
+   "tipus": "porta",
+   "estat": "actiu",
+   "tags": [
+    "maquina"
+   ],
+   "escriu": false,
+   "falla_tancat": true,
+   "invocadors": [
+    "porta:tdz"
+   ]
+  },
+  {
+   "ruta": "tooling/gates/tractor-tokens.mjs",
+   "tipus": "porta",
+   "estat": "actiu",
+   "tags": [
+    "disseny",
+    "maquina"
+   ],
+   "escriu": false,
+   "falla_tancat": true,
+   "invocadors": [
+    "porta:tokens"
+   ]
+  },
+  {
+   "ruta": "tooling/gates/tractor-vocabulari.mjs",
+   "tipus": "porta",
+   "estat": "actiu",
+   "tags": [
+    "maquina",
+    "saber"
+   ],
+   "escriu": true,
+   "falla_tancat": true,
+   "invocadors": [
+    "porta:vocabulari",
+    "porta:baseline"
+   ]
+  },
+  {
+   "ruta": "tooling/gates/verificador-scc.mjs",
+   "tipus": "porta",
+   "estat": "actiu",
+   "tags": [
+    "graf",
+    "maquina"
+   ],
+   "escriu": false,
+   "falla_tancat": true,
+   "invocadors": [
+    "porta:scc"
+   ]
+  },
+  {
+   "ruta": "tooling/lib/arrel.mjs",
+   "tipus": "llibreria",
+   "estat": "actiu",
+   "tags": [
+    "maquina"
+   ],
+   "escriu": false,
+   "falla_tancat": true,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/lib/codi.mjs",
+   "tipus": "llibreria",
+   "estat": "actiu",
+   "tags": [
+    "maquina"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/mocks/sollutiaBackend.js",
+   "tipus": "simulacre",
+   "estat": "orfe",
+   "tags": [
+    "sollutia"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/pdf/render_pdf.sh",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "maquina"
+   ],
+   "escriu": false,
+   "falla_tancat": true,
+   "invocadors": [
+    "pdf:render"
+   ]
+  },
+  {
+   "ruta": "tooling/preflight.mjs",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "maquina"
+   ],
+   "escriu": false,
+   "falla_tancat": true,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/scripts/build-tokens.mjs",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "disseny"
+   ],
+   "escriu": true,
+   "falla_tancat": true,
+   "invocadors": [
+    "build:tokens"
+   ]
+  },
+  {
+   "ruta": "tooling/session/check-close.mjs",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "genoma"
+   ],
+   "escriu": true,
+   "falla_tancat": true,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/session/persona_router.mjs",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "genoma",
+    "identitat",
+    "skills"
+   ],
+   "escriu": false,
+   "falla_tancat": true,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/verify-bios.mjs",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "identitat",
+    "seguretat"
+   ],
+   "escriu": false,
+   "falla_tancat": true,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/verify-ledger.mjs",
+   "tipus": "eina",
+   "estat": "orfe",
+   "tags": [
+    "govern",
+    "seguretat"
+   ],
+   "escriu": true,
+   "falla_tancat": true,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/audit_estructura.mjs",
+   "tipus": "eina",
+   "estat": "orfe",
+   "tags": [
+    "graf"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/autoneteja_wiki.mjs",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "escriptori",
+    "graf"
+   ],
+   "escriu": false,
+   "falla_tancat": true,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/build_context_pack.py",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "core",
+    "graf"
+   ],
+   "escriu": true,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/codemod_frontmatter.mjs",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "graf",
+    "saber"
+   ],
+   "escriu": true,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/compile-cultura.mjs",
+   "tipus": "eina",
+   "estat": "orfe",
+   "tags": [
+    "graf"
+   ],
+   "escriu": true,
+   "falla_tancat": true,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/compile-wiki-to-system-prompt.mjs",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "graf"
+   ],
+   "escriu": true,
+   "falla_tancat": true,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/compiler/01_build_index.cjs",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "graf"
+   ],
+   "escriu": true,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/compiler/02_build_ontology.cjs",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "graf",
+    "saber"
+   ],
+   "escriu": true,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/compiler/build.cjs",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "graf"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/compiler/build_file_catalog.py",
+   "tipus": "eina",
+   "estat": "orfe",
+   "tags": [
+    "graf"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/consolidar_etiquetes.mjs",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "graf",
+    "saber"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/contradiction_engine.mjs",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "graf"
+   ],
+   "escriu": true,
+   "falla_tancat": true,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/core/a11y_seo.mjs",
+   "tipus": "nucli",
+   "estat": "actiu",
+   "tags": [
+    "disseny",
+    "graf",
+    "legal"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/core/audit.mjs",
+   "tipus": "nucli",
+   "estat": "actiu",
+   "tags": [
+    "graf"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/core/autoneteja_audit.mjs",
+   "tipus": "nucli",
+   "estat": "actiu",
+   "tags": [
+    "escriptori",
+    "graf"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/core/build_rag_index.mjs",
+   "tipus": "nucli",
+   "estat": "actiu",
+   "tags": [
+    "graf"
+   ],
+   "escriu": true,
+   "falla_tancat": true,
+   "invocadors": [
+    "rag:build"
+   ]
+  },
+  {
+   "ruta": "tooling/wiki/core/build_slug_index.mjs",
+   "tipus": "nucli",
+   "estat": "actiu",
+   "tags": [
+    "graf"
+   ],
+   "escriu": true,
+   "falla_tancat": true,
+   "invocadors": [
+    "slugs:build"
+   ]
+  },
+  {
+   "ruta": "tooling/wiki/core/corpus_snapshot.mjs",
+   "tipus": "nucli",
+   "estat": "actiu",
+   "tags": [
+    "graf",
+    "seguretat"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/core/edge_rag.mjs",
+   "tipus": "nucli",
+   "estat": "actiu",
+   "tags": [
+    "graf"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/core/lint.mjs",
+   "tipus": "nucli",
+   "estat": "actiu",
+   "tags": [
+    "graf"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/core/mutation_kernel.mjs",
+   "tipus": "nucli",
+   "estat": "actiu",
+   "tags": [
+    "graf"
+   ],
+   "escriu": true,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/core/parse.mjs",
+   "tipus": "nucli",
+   "estat": "actiu",
+   "tags": [
+    "graf"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/core/pattern_extractor.mjs",
+   "tipus": "nucli",
+   "estat": "actiu",
+   "tags": [
+    "graf"
+   ],
+   "escriu": false,
+   "falla_tancat": true,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/core/runner.mjs",
+   "tipus": "nucli",
+   "estat": "actiu",
+   "tags": [
+    "graf"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/core/safety.mjs",
+   "tipus": "nucli",
+   "estat": "actiu",
+   "tags": [
+    "graf",
+    "seguretat"
+   ],
+   "escriu": true,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/core/search_cli.mjs",
+   "tipus": "nucli",
+   "estat": "actiu",
+   "tags": [
+    "graf"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/core/self_repair.mjs",
+   "tipus": "nucli",
+   "estat": "actiu",
+   "tags": [
+    "graf"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/core/sistema_nervios.mjs",
+   "tipus": "nucli",
+   "estat": "actiu",
+   "tags": [
+    "graf"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/core/snapshot_engine.mjs",
+   "tipus": "nucli",
+   "estat": "actiu",
+   "tags": [
+    "graf",
+    "seguretat"
+   ],
+   "escriu": true,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/core/tanca.mjs",
+   "tipus": "nucli",
+   "estat": "actiu",
+   "tags": [
+    "graf"
+   ],
+   "escriu": false,
+   "falla_tancat": true,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/core/translate.mjs",
+   "tipus": "nucli",
+   "estat": "actiu",
+   "tags": [
+    "graf"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/core/trellat_metrics.mjs",
+   "tipus": "nucli",
+   "estat": "orfe",
+   "tags": [
+    "graf"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/cura_robotomia.mjs",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "graf"
+   ],
+   "escriu": false,
+   "falla_tancat": true,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/entropia_zero_router.mjs",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "graf"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/escriptori_to_wiki.js",
+   "tipus": "eina",
+   "estat": "orfe",
+   "tags": [
+    "escriptori",
+    "graf"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/gen_targeta_universal.mjs",
+   "tipus": "eina",
+   "estat": "orfe",
+   "tags": [
+    "graf"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/generar_genoma_v2.mjs",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "graf",
+    "identitat"
+   ],
+   "escriu": true,
+   "falla_tancat": true,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/generar_petorreta_inversa.mjs",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "govern",
+    "graf"
+   ],
+   "escriu": true,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/hidratar_genoma.mjs",
+   "tipus": "eina",
+   "estat": "orfe",
+   "tags": [
+    "graf",
+    "identitat"
+   ],
+   "escriu": true,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/lib/context_preflight.mjs",
+   "tipus": "llibreria",
+   "estat": "actiu",
+   "tags": [
+    "graf"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/lib/enllacos.mjs",
+   "tipus": "llibreria",
+   "estat": "orfe",
+   "tags": [
+    "graf"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/lib/frontmatter.mjs",
+   "tipus": "llibreria",
+   "estat": "actiu",
+   "tags": [
+    "graf",
+    "saber"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/lib/frontmatter_pla.mjs",
+   "tipus": "llibreria",
+   "estat": "actiu",
+   "tags": [
+    "graf",
+    "saber"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/lib/persona_router.mjs",
+   "tipus": "llibreria",
+   "estat": "actiu",
+   "tags": [
+    "graf",
+    "identitat",
+    "skills"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/lib/project_paths.mjs",
+   "tipus": "llibreria",
+   "estat": "actiu",
+   "tags": [
+    "graf"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/lib/resolutor.mjs",
+   "tipus": "llibreria",
+   "estat": "actiu",
+   "tags": [
+    "graf"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/lib/termodinamic.mjs",
+   "tipus": "llibreria",
+   "estat": "actiu",
+   "tags": [
+    "graf"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/lib/text.mjs",
+   "tipus": "llibreria",
+   "estat": "actiu",
+   "tags": [
+    "graf"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/lib/wiki_walker.mjs",
+   "tipus": "llibreria",
+   "estat": "actiu",
+   "tags": [
+    "graf"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/llaurador_indexs.mjs",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "graf"
+   ],
+   "escriu": true,
+   "falla_tancat": true,
+   "invocadors": [
+    "porta:llaurador"
+   ]
+  },
+  {
+   "ruta": "tooling/wiki/neteja_arrel.mjs",
+   "tipus": "eina",
+   "estat": "orfe",
+   "tags": [
+    "escriptori",
+    "graf"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/neteja_brain.mjs",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "escriptori",
+    "graf"
+   ],
+   "escriu": true,
+   "falla_tancat": true,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/neteja_termodinamica.mjs",
+   "tipus": "eina",
+   "estat": "orfe",
+   "tags": [
+    "escriptori",
+    "graf"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/pre-commit.mjs",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "graf"
+   ],
+   "escriu": true,
+   "falla_tancat": true,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/purga_fantasmes_ui.mjs",
+   "tipus": "eina",
+   "estat": "orfe",
+   "tags": [
+    "escriptori",
+    "graf"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/purge_empty_nodes.mjs",
+   "tipus": "eina",
+   "estat": "orfe",
+   "tags": [
+    "escriptori",
+    "graf"
+   ],
+   "escriu": false,
+   "falla_tancat": true,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/purge_ghost_links.mjs",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "escriptori",
+    "graf"
+   ],
+   "escriu": true,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/reflex_petorreta.mjs",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "govern",
+    "graf"
+   ],
+   "escriu": true,
+   "falla_tancat": false,
+   "invocadors": [
+    "porta:reflex"
+   ]
+  },
+  {
+   "ruta": "tooling/wiki/run-portes.mjs",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "graf"
+   ],
+   "escriu": false,
+   "falla_tancat": true,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/sanador_wiki.mjs",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "graf"
+   ],
+   "escriu": true,
+   "falla_tancat": true,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/sdp-cli.mjs",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "graf"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/sdp.mjs",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "graf"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/semantic_auditor.mjs",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "graf"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/seo_auditor.mjs",
+   "tipus": "eina",
+   "estat": "orfe",
+   "tags": [
+    "graf",
+    "legal"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/sincronitzar_skills.mjs",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "graf",
+    "skills"
+   ],
+   "escriu": true,
+   "falla_tancat": true,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/sistema_nervios.mjs",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "graf"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/sync_brain.sh",
+   "tipus": "eina",
+   "estat": "orfe",
+   "tags": [
+    "graf"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/sync_brain_termodinamic.sh",
+   "tipus": "eina",
+   "estat": "orfe",
+   "tags": [
+    "graf"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/sync_sollutia_skills.mjs",
+   "tipus": "eina",
+   "estat": "orfe",
+   "tags": [
+    "graf",
+    "skills",
+    "sollutia"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/tallafocs.cjs",
+   "tipus": "eina",
+   "estat": "orfe",
+   "tags": [
+    "graf",
+    "seguretat"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/teixidor.mjs",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "graf"
+   ],
+   "escriu": true,
+   "falla_tancat": true,
+   "invocadors": [
+    "porta:baseline",
+    "porta:teixit"
+   ]
+  },
+  {
+   "ruta": "tooling/wiki/teixidora_sinapsis.mjs",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "graf"
+   ],
+   "escriu": true,
+   "falla_tancat": true,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/tests/frontmatter_autoneteja.test.mjs",
+   "tipus": "prova",
+   "estat": "actiu",
+   "tags": [
+    "escriptori",
+    "graf",
+    "saber"
+   ],
+   "escriu": true,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/tests/reflex_petorreta.test.mjs",
+   "tipus": "prova",
+   "estat": "actiu",
+   "tags": [
+    "govern",
+    "graf"
+   ],
+   "escriu": true,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/tests/safety_dry_run.test.mjs",
+   "tipus": "prova",
+   "estat": "actiu",
+   "tags": [
+    "graf",
+    "seguretat"
+   ],
+   "escriu": true,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/tests/sistema_nervios.test.mjs",
+   "tipus": "prova",
+   "estat": "actiu",
+   "tags": [
+    "graf"
+   ],
+   "escriu": true,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/tests/smoke_cli.test.mjs",
+   "tipus": "prova",
+   "estat": "actiu",
+   "tags": [
+    "graf"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/tractor-cadena.mjs",
+   "tipus": "porta",
+   "estat": "actiu",
+   "tags": [
+    "graf"
+   ],
+   "escriu": false,
+   "falla_tancat": true,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/tractor-cognitiu.mjs",
+   "tipus": "porta",
+   "estat": "actiu",
+   "tags": [
+    "graf",
+    "skills"
+   ],
+   "escriu": true,
+   "falla_tancat": true,
+   "invocadors": [
+    "porta:cognitiu"
+   ]
+  },
+  {
+   "ruta": "tooling/wiki/tractor-esquemes.mjs",
+   "tipus": "porta",
+   "estat": "actiu",
+   "tags": [
+    "graf"
+   ],
+   "escriu": false,
+   "falla_tancat": true,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/tractor-frontera-auth.mjs",
+   "tipus": "porta",
+   "estat": "actiu",
+   "tags": [
+    "graf",
+    "seguretat",
+    "sollutia"
+   ],
+   "escriu": false,
+   "falla_tancat": true,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/tractor-frontmatter.mjs",
+   "tipus": "porta",
+   "estat": "actiu",
+   "tags": [
+    "graf",
+    "saber"
+   ],
+   "escriu": true,
+   "falla_tancat": true,
+   "invocadors": [
+    "porta:frontmatter"
+   ]
+  },
+  {
+   "ruta": "tooling/wiki/update_glossari.cjs",
+   "tipus": "eina",
+   "estat": "orfe",
+   "tags": [
+    "graf",
+    "saber"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/validate-wiki-compliance.mjs",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "graf"
+   ],
+   "escriu": false,
+   "falla_tancat": true,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/validate_taxonomia.mjs",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "graf",
+    "saber"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/validate_trellat.cjs",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "graf"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  },
+  {
+   "ruta": "tooling/wiki/wiki_integritat.mjs",
+   "tipus": "eina",
+   "estat": "actiu",
+   "tags": [
+    "graf"
+   ],
+   "escriu": false,
+   "falla_tancat": false,
+   "invocadors": []
+  }
+ ]
+}

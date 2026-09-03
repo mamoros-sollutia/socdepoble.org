@@ -437,6 +437,44 @@ export async function appendSectionSubmissionNetworkOnly(submission, config = {}
   return storedSubmission;
 }
 
+export async function updateNote(id, updates, config = {}) {
+  const { hasSupabaseConfig, tenantId } = getResolvedConfig(config);
+  
+  if (!hasSupabaseConfig) {
+    console.warn('Simulant updateNote sense servidor.', { id, updates });
+    return { id, ...updates, updated_at: new Date().toISOString() };
+  }
+
+  const payload = {
+    ...updates,
+    updated_at: new Date().toISOString()
+  };
+
+  // Lectura prèvia per mantenir la integritat de l'array de notes
+  const current = await request(`/rest/v1/app_content?key=eq.notes&tenant_id=eq.${encodeURIComponent(tenantId)}&select=payload`, config);
+  let notesArray = [];
+  if (Array.isArray(current) && current.length > 0) {
+    notesArray = current[0].payload || [];
+  }
+
+  const idx = notesArray.findIndex(n => n.id === id);
+  if (idx >= 0) {
+    notesArray[idx] = { ...notesArray[idx], ...payload };
+  } else {
+    notesArray.push({ id, ...payload });
+  }
+
+  await request(`/rest/v1/app_content?key=eq.notes&tenant_id=eq.${encodeURIComponent(tenantId)}`, config, {
+    method: 'PATCH',
+    headers: {
+      Prefer: 'return=minimal'
+    },
+    body: { payload: notesArray }
+  });
+  
+  return { id, ...payload };
+}
+
 export {
   DATA_SYNC_CHANNEL_NAME,
   getDefaultUserId,

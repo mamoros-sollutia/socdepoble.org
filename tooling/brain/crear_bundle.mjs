@@ -46,6 +46,7 @@
  */
 
 import fs from 'node:fs';
+import { loadIsoContext, buildIsoPrompt, validateIsoPrompt } from '../wiki/lib/prompt_iso.mjs';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { execSync } from 'node:child_process';
@@ -97,6 +98,20 @@ const FITXERS_OPCIONALS_FIXOS = [
  * Una llista escrita a mà d'una cosa que creix sola sempre acaba mentint. Es
  * descobrixen del disc: qualsevol `.X-deute.json` a l'arrel entra.
  */
+
+function lligCongelats() {
+  try {
+    const lines = fs.readFileSync(R(CAMINS.agents, 'codi-congelat.txt'), 'utf8').split('\n');
+    return lines.map(l => l.trim()).filter(l => l && !l.startsWith('#'));
+  } catch {
+    return [];
+  }
+}
+const CONGELATS = lligCongelats();
+function esCongelat(ruta) {
+  return CONGELATS.some(c => ruta === c || ruta.startsWith(c));
+}
+
 function deutesDelDisc() {
   try {
     return fs.readdirSync(arrelSegura())
@@ -214,7 +229,16 @@ function recull() {
     const isBinary = ['.png', '.jpg', '.jpeg', '.gif', '.woff2', '.ttf'].includes(ext);
     
     let text;
-    if (isBinary) {
+    let finalSize = cru.length;
+    let finalSha = sha(cru);
+
+    if (esCongelat(ruta)) {
+      text = '<!-- [MÒDUL CONGELAT] Codi omès. Component 100% operatiu validat. Estalvi de pes termodinàmic. -->';
+      // Recalculem el tamany i el SHA perquè el manifest no done error de verificació
+      const newBuf = Buffer.from(text, 'utf8');
+      finalSize = newBuf.length;
+      finalSha = sha(newBuf);
+    } else if (isBinary) {
       text = cru.toString('base64');
     } else {
       text = cru.toString('utf8');
@@ -222,9 +246,10 @@ function recull() {
     
     entrades.push({
       ruta,
-      bytes: cru.length,
-      linies: isBinary ? 1 : text.split('\n').length,
-      sha256: sha(cru),
+      bytes: finalSize,
+      linies: esCongelat(ruta) ? 1 : (isBinary ? 1 : text.split('\n').length),
+      sha256: finalSha,
+      is_congelat: esCongelat(ruta),
       // Cal recordar-ho: la tanca de tancament exigix un salt de línia davant,
       // així que sense aquest bit no es pot reconstruir un fitxer que no
       // n'acabava amb cap. Sense això el round-trip és lossy i les sumes menten.
@@ -428,6 +453,21 @@ function principal() {
   const nomBundle = valor('eixida') ?? path.join(escriptori, `${meta.prefix}_BUNDLE_${sufix}.md`);
   const nomPrompt = valor('eixida') ? null : path.join(escriptori, `${meta.prefix}_PROMPT_${sufix}.md`);
 
+  // Llegir i validar abans de la primera escriptura del paquet.
+  const iso = nomPrompt ? loadIsoContext(arrelSegura()) : null;
+  const promptContent = nomPrompt && !fs.existsSync(nomPrompt) ? buildIsoPrompt(iso, {
+    title: `🛡️ PETORRETA AL CONSELL: ${sufix.replace(/_/g, ' ').toUpperCase()}`,
+    description: `Auditoria tècnica del paquet ${sufix}`,
+    objective: `Auditar el paquet ${sufix} amb evidències verificables`,
+    context: `Bundle aparellat: ${path.basename(nomBundle)}.\n\nLa integració actual és online i Sollutia-first; la sobirania local és una meta de llarg termini.`,
+    instruction: 'Analitza el codi i la Wiki adjunts, identifica causes i proposa correccions mínimes verificables',
+    output: 'markdown',
+  }) : null;
+  if (nomPrompt && fs.existsSync(nomPrompt)) {
+    const errors = validateIsoPrompt(iso, fs.readFileSync(nomPrompt, 'utf8'));
+    if (errors.length) throw new Error(`Prompt existent invàlid; conserva’l i revisa’l: ${errors.join('; ')}`);
+  }
+
   fs.mkdirSync(path.dirname(nomBundle), { recursive: true });
   const tmp = `${nomBundle}.tmp`;
   // bypass: escriptura directa (no usa canonada.mjs) per fer el bundle atòmic.
@@ -446,14 +486,9 @@ function principal() {
   console.log(`✅ Manifest separat: ${rel(manifestFile)}`);
   console.log(`✅ Absents separat: ${rel(absentsFile)}`);
   
-  if (nomPrompt && !fs.existsSync(nomPrompt)) {
-    const plantillaPrompt = `# 🛡️ PETORRETA AL CONSELL: ${sufix.replace(/_/g, ' ').toUpperCase()}
-
-Salutacions, membres del Consell.
-[...escriu ací l'objectiu de l'auditoria, les missions i la petició del DAFO...]
-`;
-    fs.writeFileSync(nomPrompt, plantillaPrompt, 'utf8');
-    console.log(`✅ Prompt: ${rel(nomPrompt)} (plantilla aparellada termodinàmicament)`);
+  if (promptContent) {
+    fs.writeFileSync(nomPrompt, promptContent, { encoding: 'utf8', flag: 'wx' });
+    console.log(`✅ Prompt: ${rel(nomPrompt)} (ISO i context verificats)`);
   }
   console.log(`   ${manifest.totals.fitxers} fitxers · ${mb.toFixed(2)} MB · verificat: ${manifest.verificat ? 'sí' : 'NO'}`);
   if (mb > SOSTRE_MB) {

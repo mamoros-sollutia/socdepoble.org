@@ -11,7 +11,7 @@ import {
 } from './sectionContent.js';
 import { getVal, setVal } from '../config/storage.js';
 
-export const APP_SEED_VERSION = 250028;
+export const APP_SEED_VERSION = 250029;
 import { getDefaultUserId, idConvidat } from './identitat.js';
 export { getDefaultUserId, idConvidat };
 
@@ -29,6 +29,10 @@ export const NOTES_SEED = [
     isPublished: true,
     title: 'Bloc de notes',
     subtitle: 'El teu estudi d\'escriptura privat i lliure de distraccions',
+    author: 'Sóc de Poble',
+    authorAvatar: '/assets/system/ui/logo-socdepoble-cuadrat-verd.svg',
+    location: 'La Torre de les Maçanes',
+    headerImage: '/assets/system/ui/logo-socdepoble-rect-negre.svg',
     lead: 'Benvingut al teu nou espai editorial. Aquest és un espai on pots escriure, esborrar i organitzar-te com vulgues sense que ningú ho veja. A continuació t\'expliquem com funciona la màquina d\'escriure de Sóc de Poble.',
     categoryId: 'c-sistema',
     type: 'rich-text',
@@ -67,12 +71,24 @@ export const NOTES_SEED = [
   {
     id: 'n2',
     isPublished: false,
-    title: '',
-    subtitle: '',
-    lead: '',
+    title: 'H1 - Títol',
+    subtitle: 'H2 - Subtítol',
+    lead: 'ENTRADILLA: Pots posar un paràgraf de presentació. Aquest text es veu també en la targeta, que és la miniatura de la pàgina al mur. Pots esborrar tot aquest text predeterminat i començar a escriure el teu propi article.',
     categoryId: null,
     type: 'rich-text',
-    content: '',
+    content: `
+      <h3>H3 - Subtítol. Ací pots posar tot el contingut que vulgues</h3>
+      <p>Aquest és un text de prova per a veure com queda el paràgraf sota un encapçalament de nivell 3. Ací pots esborrar tot i escriure el que necessites.</p>
+
+      <h4>H4 - Encapçalament menor</h4>
+      <p>Aquest és un text de prova per a veure com queda el paràgraf sota un encapçalament de nivell 4. Pots esborrar tot i escriure el que necessites.</p>
+
+      <h5>H5 - Encapçalament xicotet</h5>
+      <p>Aquest és un text de prova per a veure com queda el paràgraf sota un encapçalament de nivell 5. Pots esborrar tot i escriure el que necessites.</p>
+
+      <h6>H6 - Encapçalament mínim</h6>
+      <p>Aquest és un text de prova per a veure com queda el paràgraf sota un encapçalament de nivell 6. Pots esborrar tot i escriure el que necessites.</p>
+    `,
     folderId: 'f-root',
     category: null,
     tags: [],

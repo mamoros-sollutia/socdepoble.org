@@ -227,9 +227,10 @@ AI chat with note context, smart writing assistance, and one-click edits for you
 
 ## Sinapsis Entrants (Autogenerat)
 
+- [[00_INDEX|00_INDEX.md]] — [[Plugins|02_ACTUAR_Maquina_Tecnica/obsidian_plugins/Plugins.md]] — Ancoratge...
+- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[Plugins|02_ACTUAR_Maquina_Tecnica/obsidian_plugins/Plugins.md]] — Etiquetes...
+- [[Maquina|01_SABER_Cultura_Coneixement/Maquina.md]] — [[Plugins|02_ACTUAR_Maquina_Tecnica/obsidian_plugins/Plugins.md]] — Categoria...
 - [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maquina_Tecnica/00_arquitectura_tecnica_unificada.md]] — [[Plugins]]
-- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[Plugins]]
-- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[Plugins]]
-- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[Plugins]]
+- [[Plugins|02_ACTUAR_Maquina_Tecnica/obsidian_plugins/Plugins.md]] — [[00_INDEX|00_INDEX.md]] — [[Plugins|02_ACTUAR_Maquina_Tecnica/obsidian_plugi...
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

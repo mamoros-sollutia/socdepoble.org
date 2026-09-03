@@ -52,9 +52,10 @@ convertisca en dogma.
 
 ## Sinapsis Entrants (Autogenerat)
 
+- [[00_INDEX|00_INDEX.md]] — [[01_trellat|01_SABER_Cultura_Coneixement/01_trellat.md]] — Ancoratge de Segu...
 - [[00_INDEX_IDENTITAT|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[01_trellat]]
-- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[01_trellat]]
-- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[01_trellat]]
-- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[01_trellat]]
+- [[01_trellat|01_SABER_Cultura_Coneixement/01_trellat.md]] — [[00_INDEX|00_INDEX.md]] — [[01_trellat|01_SABER_Cultura_Coneixement/01_trell...
+- [[Coneixement|01_SABER_Cultura_Coneixement/Coneixement.md]] — [[01_trellat|01_SABER_Cultura_Coneixement/01_trellat.md]] — Categoria: [[Cone...
+- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[01_trellat|01_SABER_Cultura_Coneixement/01_trellat.md]] — Etiquetes: [[Graf]]
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

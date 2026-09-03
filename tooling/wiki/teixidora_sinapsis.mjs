@@ -159,12 +159,10 @@ function emmascara(text) {
 const restaura = (text, rebost) => {
   let actual = text;
   for (let volta = 0; volta <= rebost.length; volta++) {
-    // eslint-disable-next-line no-control-regex
     const seguent = actual.replace(/\x01(\d+)\x01/g, (_, i) => rebost[Number(i)]);
     if (seguent === actual) return actual;
     actual = seguent;
   }
-  // eslint-disable-next-line no-control-regex
   if (/\x01\d+\x01/.test(actual)) throw new Error('Emmascarament niat no restaurable; es cancel·la sense escriure.');
   return actual;
 };
@@ -214,6 +212,7 @@ async function construixIndexDestins(mdDocs) {
     if (dinsDe(rel, JURISDICCIONS_EXCLOSES)) continue;
     if (PILARS_NO_DESTI.some(p => rel.startsWith(p + '/'))) continue;
     const base = doc.name.replace(/\.md$/, '');
+    if (base.includes('_BUNDLE_') || base.includes('BUNDLE_') || base.includes('_PETORRETA_') || base.includes('PETORRETA_')) continue;
     const { data } = parseFrontmatter(doc.content);
     const estat = (data.estat || '').toLowerCase();
     if (estat === 'arxivat' || estat === 'deprecated') continue; // no enllacem cap a morts
@@ -281,14 +280,12 @@ function cusDocument(doc, index) {
     };
 
     // 👉 Punter  /  → Punter
-    // eslint-disable-next-line no-control-regex
     t = t.replace(/(^|\n)(\s*(?:👉|→)\s*)([^\n\x01]+)/g, (m, pre, fletxa, resta) => {
       const peces = resta.split(/,\s*/).map(p => estructural(p) || p.trim());
       return `${pre}${fletxa}${peces.join(', ')}`;
     });
 
     // **Tornar a:** X, Y
-    // eslint-disable-next-line no-control-regex
     t = t.replace(/(\*\*Tornar a:\*\*\s*)([^\n\x01]+)/g, (m, pre, resta) => {
       const peces = resta.split(/,\s*/).map(p => estructural(p) || p.trim());
       return `${pre}${peces.join(', ')}`;
@@ -298,7 +295,6 @@ function cusDocument(doc, index) {
     // emmascarades, així que detectem el bloc per la línia original del segment).
     const teSinapsis = /#{2,3} .*(Sinapsi|Sinapsis|Veure també|Enllaços de Tornada)/i.test(seg.text);
     if (teSinapsis) {
-      // eslint-disable-next-line no-control-regex
       t = t.replace(/(^|\n)(\s*[-*]\s+)([^\n\x01[]+)$/gm, (m, pre, guio, nom) => {
         const cusit = estructural(nom);
         return cusit ? `${pre}${guio}${cusit}` : m;
@@ -370,6 +366,7 @@ export async function teixeix(wikiDir = WIKI_DIR) {
   for (const doc of mdDocs) {
     const rel = aPosix(doc.relPath);
     if (NOMES_FITXER && rel !== aPosix(NOMES_FITXER)) continue;
+    if (doc.name.includes('_BUNDLE_') || doc.name.includes('BUNDLE_') || doc.name.includes('_PETORRETA_') || doc.name.includes('PETORRETA_')) continue;
     if (dinsDe(rel, JURISDICCIONS_EXCLOSES)) continue;
     if (PILARS_NO_MODIFICAR.some(p => rel.startsWith(p + '/'))) continue;
 

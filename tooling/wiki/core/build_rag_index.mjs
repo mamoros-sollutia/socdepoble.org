@@ -18,7 +18,7 @@ async function walk(dir, acc = []) {
 
     const full = join(dir, e.name);
     if (e.isDirectory()) {
-      if (full.includes('bot/var') || full.includes('05_Escriptori') || full.includes('04_ARXIU')) continue;
+      if (full.includes('bot/var') || full.includes('04_ARXIU')) continue;
       await walk(full, acc);
     } else if (e.name.endsWith('.md')) {
       acc.push(full);
@@ -67,8 +67,18 @@ export async function buildIndex(root, options = {}) {
       malformedCount++;
       continue;
     }
-    const body = parsed.body;
-    const tokens = tokenize(body, stopwords, minLen);
+    let indexableText = parsed.body;
+    const attr = parsed.attributes || {};
+    if (attr.tags) {
+      const tagsStr = Array.isArray(attr.tags) ? attr.tags.join(' ') : String(attr.tags);
+      indexableText += ' ' + tagsStr;
+    }
+    if (attr.aliases) {
+      const aliasesStr = Array.isArray(attr.aliases) ? attr.aliases.join(' ') : String(attr.aliases);
+      indexableText += ' ' + aliasesStr;
+    }
+    
+    const tokens = tokenize(indexableText, stopwords, minLen);
     const tf = termFreq(tokens);
     for (const term of tf.keys()) df.set(term, (df.get(term) || 0) + 1);
     meta.push({ id: meta.length, path: relative(root, file), length: tokens.length });

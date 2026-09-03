@@ -8,7 +8,7 @@
  *
  *   · tooling/wiki/schema.json          → el llig validarFrontmatter(), que
  *                                          crida el Reflex a validatePetorreta().
- *   · tooling/gates/esquema_frontmatter.json → el llig tractor-frontmatter.mjs.
+ *   · tooling/wiki/esquema_frontmatter.json → el llig tractor-frontmatter.mjs.
  *
  * A la V7 el primer admetia `tipus: petorreta` i el segon no. Resultat: una
  * Petorreta vàlida per al Reflex era sempre invàlida per a la porta, i a
@@ -41,7 +41,7 @@ try { ARREL = arrelSegura(); } catch (e) {
 }
 
 const V2 = 'tooling/wiki/schema.json';
-const V1 = 'tooling/gates/esquema_frontmatter.json';
+const V1 = 'tooling/wiki/esquema_frontmatter.json';
 const REFLEX = 'tooling/wiki/reflex_petorreta.mjs';
 
 const infraccions = [];

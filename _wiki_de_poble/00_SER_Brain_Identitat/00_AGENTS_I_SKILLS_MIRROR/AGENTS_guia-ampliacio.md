@@ -12,8 +12,8 @@ triggers_on:
   - guia ampliacio
 core: false
 tags:
+  - agent
   - skill
-  - arquitectura
 ---
 
 <!-- Aquest fitxer és un ESPILL (mirror) automàtic de .agents/skills/guia-ampliacio/SKILL.md -->
@@ -47,3 +47,13 @@ Sempre referiu-vos a l'índex de `_wiki_de_poble/` abans d'iniciar tasques compl
 
 ## 7. Excepcions Arquitectòniques (La Pàgina de Notes)
 La secció de Notes (`/notes`) té una excepció estructural única: l'estat buit (quan no hi ha cap nota seleccionada) mostra una previsualització que simula ser una targeta de `UniversalPage`, però **no és editable ni és una pàgina del sistema estàndard**. Això es fa per mantenir la coherència visual dins l'editor de tres columnes de Notes. La card publicada al Mur (que enllaça a `/notes`) actua com un reflex exacte d'aquesta previsualització. Qualsevol IA ha de respectar aquesta diferenciació entre la pàgina de Notes (que conté una UniversalPage aniuada no editable) i la resta de pàgines pures del sistema.
+
+
+## Ancoratge de la Wiki
+- Aquesta skill penja de: [[00_INDEX_SKILLS]]
+
+## Sinapsis Entrants (Autogenerat)
+
+- [[00_INDEX_SKILLS|00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/00_INDEX_SKILLS.md]] — [[AGENTS_guia-ampliacio|00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGEN...
+
+<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

@@ -1,7 +1,9 @@
 ---
 tipus: skill
 estat: actiu
-description: "Core skill per a restauració segura"
+description: Core skill per a restauració segura
+tags:
+  - core
 name: core-restauracio-segellada
 triggers_on:
   - restaura
@@ -25,10 +27,6 @@ triggers_on:
 core: true
 eines_obligatories:
   - tooling/brain/ancora.mjs
-tags:
-  - skill
-  - sistema
-  - core
 ---
 
 # Restauració segellada
@@ -174,3 +172,7 @@ Si `desenterrar.mjs` no existix o no s'executa, la resposta correcta és
 significa que no es passa.
 
 
+
+
+## Ancoratge de la Wiki
+- Aquesta skill penja de: [[00_INDEX_SKILLS]]

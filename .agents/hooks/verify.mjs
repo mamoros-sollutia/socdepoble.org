@@ -163,6 +163,22 @@ process.stdin.on('end', () => {
     }
   }
 
+  /* ── LLEI 5 · Zero !important (Invariant de Z) ── */
+  if (ext === '.css') {
+    let contingut = '';
+    if (args.CodeContent) contingut += args.CodeContent;
+    if (args.ReplacementContent) contingut += args.ReplacementContent;
+    if (Array.isArray(args.ReplacementChunks)) {
+      args.ReplacementChunks.forEach(c => {
+        if (c.ReplacementContent) contingut += c.ReplacementContent;
+      });
+    }
+    if (contingut.includes('!important')) {
+      resp('deny', `[PORTA · INVARIANT CSS] Has intentat injectar un '!important' a ${base}. `
+        + 'Això viola la política d\'arquitectura Pedra Seca (Cascade Layers). Fes servir @layer o augmenta l\'especificitat del selector de forma neta.');
+    }
+  }
+
   /* ── Autoritzat: queda anotat al diari de sessió ── */
   anotaDiari({ t: new Date().toISOString(), eina, ruta: rel });
   resp('allow', `ruta ${rel} conforme a §2/§3/§5`);

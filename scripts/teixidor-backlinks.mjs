@@ -112,7 +112,7 @@ function extractContext(content, linkName) {
   const lines = content.split('\n');
   for (const line of lines) {
     if (line.includes(`[[${linkName}`)) {
-      let clean = line.replace(/^[\s#*>-]+/, '').trim();
+      let clean = line.replace(/[*~`]/g, '').replace(/^[\s#>-]+/, '').trim();
       if (clean.length > 80) clean = clean.substring(0, 77) + '...';
       return clean;
     }
@@ -137,6 +137,7 @@ function weaveBacklinks(baseDir, dryRun = false) {
         
         const fullPath = resolve(dir, entry.name);
         if (entry.isFile() && entry.name.endsWith('.md')) {
+          if (entry.name.includes('_BUNDLE_') || entry.name.includes('BUNDLE_')) continue;
           mdFiles.push(fullPath);
         } else if (entry.isDirectory()) {
           collectFiles(fullPath);
@@ -200,19 +201,22 @@ function weaveBacklinks(baseDir, dryRun = false) {
     }
     
     const newSection = generateBacklinkSection(backlinks);
-    if (!newSection) continue;
-    
     const existing = getExistingBacklinks(content);
     
     let newContent;
-    if (existing) {
-      if (existing.content === newSection) {
-        skipped_nochange++;
-        continue;
-      }
-      newContent = content.substring(0, existing.start) + newSection + content.substring(existing.end);
+    if (!newSection) {
+      if (!existing) continue;
+      newContent = content.substring(0, existing.start).trimEnd() + '\n' + content.substring(existing.end);
     } else {
-      newContent = content.trimEnd() + '\n\n' + newSection + '\n';
+      if (existing) {
+        if (existing.content === newSection) {
+          skipped_nochange++;
+          continue;
+        }
+        newContent = content.substring(0, existing.start) + newSection + content.substring(existing.end);
+      } else {
+        newContent = content.trimEnd() + '\n\n' + newSection + '\n';
+      }
     }
     
     if (dryRun) {

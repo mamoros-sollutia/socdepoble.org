@@ -26,16 +26,18 @@ Aquest és l'índex per als documents generats i actes registrades a l'escriptor
 > llevarà d'ací tot sol a la següent passada. Si el bloc queda buit,
 > desapareix: vol dir que la wiki està cosida a mà.
 
-- [[10_actes/260901_1630_ACTA_MARMOTA_briefing_sollutia|260901_1630_ACTA_MARMOTA_briefing_sollutia]] — 📜 ACTA DE SESSIÓ I BRIEFING: El Cadenat i l'Horitzó Sollutia
-- [[10_actes/260901_2315_ACTA_SESSIO_Neteja_Profunda|260901_2315_ACTA_SESSIO_Neteja_Profunda]] — Sessió de resolució d'orfes (Llaurador), neteja d'entropia YAML i purga de l'Escriptori i Històric.
+- [[10_actes/260902_0810_ACTA_MARMOTA_Petorretas_i_Neteja|260902_0810_ACTA_MARMOTA_Petorretas_i_Neteja]] — Acta Marmota de generació de Petorretas i tancament de sessió
+- [[10_actes/260903_0240_ACTA_MARMOTA_Auditoria_Notes_i_Neteja_de_Satellits|260903_0240_ACTA_MARMOTA_Auditoria_Notes_i_Neteja_de_Satellits]] — Acta de tancament després de preparar la Petorreta d'Auditoria del Bloc de Notes i netejar la Wiki.
 
 <!-- LLAURADOR:ADOPCIONS:FI -->
 
 ## Sinapsis Entrants (Autogenerat)
 
-- [[00_INDEX|00_INDEX.md]] — [[00_INDEX_Actes]]
-- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[00_INDEX_Actes]]
-- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[00_INDEX_Actes]]
-- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[00_INDEX_Actes]]
+- [[00_INDEX|00_INDEX.md]] — [[00_INDEX_Actes]] (Registre d'Actes)
+- [[00_INDEX_IDENTITAT|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[00_INDEX_Actes]] (Registre d'Actes)
+- [[00_INDEX_ESCRIPTORI|05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md]] — [[00_INDEX_Actes]] (Registre d'Actes)
+- [[00_INDEX_Actes|10_actes/00_INDEX_Actes.md]] — [[00_INDEX|00_INDEX.md]] — [[00_INDEX_Actes]] (Registre d'Actes)
+- [[260902_0810_ACTA_MARMOTA_Petorretas_i_Neteja|10_actes/260902_0810_ACTA_MARMOTA_Petorretas_i_Neteja.md]] — [[00_INDEX_Actes|10_actes/00_INDEX_Actes.md]] — [[10_actes/260902_0810_ACTA_M...
+- [[260903_0240_ACTA_MARMOTA_Auditoria_Notes_i_Neteja_de_Satellits|10_actes/260903_0240_ACTA_MARMOTA_Auditoria_Notes_i_Neteja_de_Satellits.md]] — Ancoratge de Seguretat: [[00_INDEX_Actes]]
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

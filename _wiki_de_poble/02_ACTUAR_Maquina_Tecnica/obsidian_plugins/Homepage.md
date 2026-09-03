@@ -38,9 +38,10 @@ Additionally, pre-release versions can be either installed manually or via tools
 
 ## Sinapsis Entrants (Autogenerat)
 
+- [[00_INDEX|00_INDEX.md]] — [[Homepage|02_ACTUAR_Maquina_Tecnica/obsidian_plugins/Homepage.md]] — Ancorat...
+- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[Homepage|02_ACTUAR_Maquina_Tecnica/obsidian_plugins/Homepage.md]] — Etiquet...
+- [[Maquina|01_SABER_Cultura_Coneixement/Maquina.md]] — [[Homepage|02_ACTUAR_Maquina_Tecnica/obsidian_plugins/Homepage.md]] — Categor...
 - [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maquina_Tecnica/00_arquitectura_tecnica_unificada.md]] — [[Homepage]]
-- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[Homepage]]
-- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[Homepage]]
-- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[Homepage]]
+- [[Homepage|02_ACTUAR_Maquina_Tecnica/obsidian_plugins/Homepage.md]] — [[00_INDEX|00_INDEX.md]] — [[Homepage|02_ACTUAR_Maquina_Tecnica/obsidian_plug...
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

@@ -40,6 +40,7 @@ export const loadAppData = asseguraMetode('loadAppData');
 export const appendChatMessages = asseguraMetode('appendChatMessages');
 
 export const appendSectionSubmissionNetworkOnly = asseguraMetode('appendSectionSubmissionNetworkOnly');
+export const updateNote = asseguraMetode('updateNote');
 export const registerWithEmail = asseguraMetode('registerWithEmail');
 export const loginWithEmail = asseguraMetode('loginWithEmail');
 export const loginWithGoogle = asseguraMetode('loginWithGoogle');

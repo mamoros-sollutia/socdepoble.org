@@ -91,7 +91,7 @@ function obtenirFull() {
   if (typeof CSSStyleSheet === 'undefined') return null;
   try {
     const full = new CSSStyleSheet();
-    full.replaceSync(`:host{display:block;width:100%;height:100%;}\n${styles}`);
+    full.replaceSync(styles);
     fullCompartit = [full];
     return fullCompartit;
   } catch {
@@ -263,7 +263,7 @@ class SocDePobleElement extends BaseElement {
       if (!arrel.querySelector('style[data-sdp-fallback]')) {
         const style = document.createElement('style');
         style.setAttribute('data-sdp-fallback', '');
-        style.textContent = `soc-de-poble { display: block; width: 100%; height: 100%; }\n${styles}`;
+        style.textContent = styles;
         arrel.prepend(style);
       }
     }
@@ -433,7 +433,7 @@ class SocDePobleElement extends BaseElement {
 
     let valor = '';
     try {
-      valor = getComputedStyle(punt).getPropertyValue('--sdp-bg').trim();
+      valor = getComputedStyle(punt).getPropertyValue('--sdp-fons-app').trim();
     } catch {
       return; // entorns sense layout (jsdom parcial): millor no tocar res
     }

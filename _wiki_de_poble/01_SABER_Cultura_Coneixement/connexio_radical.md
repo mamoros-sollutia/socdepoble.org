@@ -42,8 +42,9 @@ Hi ha un concepte horitzontal que travessa tot el projecte i totes les "cards": 
 ## Sinapsis Entrants (Autogenerat)
 
 - [[00_INDEX|00_INDEX.md]] — [[connexio_radical]]
-- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[connexio_radical]]
-- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[connexio_radical]]
-- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[connexio_radical]]
+- [[el_projecte|00_SER_Brain_Identitat/el_projecte.md]] — [[connexio_radical|01_SABER_Cultura_Coneixement/connexio_radical.md]] — Aques...
+- [[Coneixement|01_SABER_Cultura_Coneixement/Coneixement.md]] — [[connexio_radical|01_SABER_Cultura_Coneixement/connexio_radical.md]] — Categ...
+- [[connexio_radical|01_SABER_Cultura_Coneixement/connexio_radical.md]] — [[00_INDEX|00_INDEX.md]] — [[connexio_radical]]
+- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[connexio_radical|01_SABER_Cultura_Coneixement/connexio_radical.md]] — Etiqu...
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

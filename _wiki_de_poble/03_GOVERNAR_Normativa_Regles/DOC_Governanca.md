@@ -69,21 +69,22 @@ actual. El contracte executiu detallat és [[SDP_LOCK]].
 
 ## Sinapsis Entrants (Autogenerat)
 
+- [[00_INDEX|00_INDEX.md]] — [[DOC_Governanca|03_GOVERNAR_Normativa_Regles/DOC_Governanca.md]] — Ancoratge...
 - [[00_INDEX_IDENTITAT|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — | 03 GOVERNAR | Lleis, estàndards, protocols, veto | [[DOC_Governanca]] |
 - [[Soci_Sollutia|00_SER_Brain_Identitat/Soci_Sollutia.md]] — [[DOC_Governanca]]
+- [[Govern|01_SABER_Cultura_Coneixement/Govern.md]] — [[Govern|01_SABER_Cultura_Coneixement/Govern.md]] — [[Govern|01_SABER_Cultura...
+- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[DOC_Governanca|03_GOVERNAR_Normativa_Regles/DOC_Governanca.md]] — Etiquetes...
 - [[PLANTILLA_ISO_SDP|02_ACTUAR_Maquina_Tecnica/plantilles/PLANTILLA_ISO_SDP.md]] — [[DOC_Governanca]]
 - [[AUDITORIA_CANONICA|02_ACTUAR_Maquina_Tecnica/skills/AUDITORIA_CANONICA.md]] — [[DOC_Governanca]]
-- [[futur_adaptacio|02_ACTUAR_Maquina_Tecnica/skills/futur_adaptacio.md]] — La jerarquia de [[DOC_Governanca]] resol conflictes; un `.md` qualsevol no és...
+- [[futur_adaptacio|02_ACTUAR_Maquina_Tecnica/skills/futur_adaptacio.md]] — La jerarquia de [[DOC_Governanca]] resol conflictes; un .md qualsevol no és d...
 - [[MOTOR_OFFLINE|02_ACTUAR_Maquina_Tecnica/skills/MOTOR_OFFLINE.md]] — [[DOC_Governanca]]
 - [[seguretat_execucio|02_ACTUAR_Maquina_Tecnica/skills/seguretat_execucio.md]] — [[DOC_Governanca]]
 - [[self_repair|02_ACTUAR_Maquina_Tecnica/skills/self_repair.md]] — [[DOC_Governanca]]
 - [[successio_lazaro_execucio|02_ACTUAR_Maquina_Tecnica/skills/successio_lazaro_execucio.md]] — [[DOC_Governanca]]
+- [[DOC_Governanca|03_GOVERNAR_Normativa_Regles/DOC_Governanca.md]] — [[00_INDEX|00_INDEX.md]] — [[DOC_Governanca|03_GOVERNAR_Normativa_Regles/DOC_...
 - [[ESTANDARD_UI_Universal|03_GOVERNAR_Normativa_Regles/ESTANDARD_UI_Universal.md]] — Prevalen [[DOC_Governanca]], [[ESTANDARD_Pedra_Seca]], el codi, ESLint i les
 - [[FORJA_TO_CORE|03_GOVERNAR_Normativa_Regles/FORJA_TO_CORE.md]] — La decisió canònica vigent és la de [[DOC_Governanca]] i
 - [[LLEI_05_Privacitat|03_GOVERNAR_Normativa_Regles/LLEI_05_Privacitat.md]] — [[DOC_Governanca]]
-- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — | 03 GOVERNAR | Lleis, estàndards, protocols, veto | [[DOC_Governanca]] |
-- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — | 03 GOVERNAR | Lleis, estàndards, protocols, veto | [[DOC_Governanca]] |
-- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — | 03 GOVERNAR | Lleis, estàndards, protocols, veto | [[DOC_Governanca]] |
-- [[260902_0156_PROMPT_auditoria_v7_del_consell_per_a_validar_el_sanejament_cognitiu|05_Escriptori_Soc_de_Poble/260902_0156_PROMPT_auditoria_v7_del_consell_per_a_validar_el_sanejament_cognitiu.md]] — [[DOC_Governanca]]
+- [[260903_0223_PROMPT_auditoria_notes|05_Escriptori_Soc_de_Poble/260903_0223_PROMPT_auditoria_notes.md]] — [[DOC_Governanca]]
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

@@ -401,6 +401,7 @@ export function UniversalPage(props) {
   const copyright = props.copyright ?? config.copyright;
   const showLogos = props.showLogos ?? config.showLogos ?? false;
   const tone = props.tone ?? config.tone;
+  const variant = props.variant ?? config.variant;
   const chrome = props.chrome ?? config.chrome ?? 'page';
   const hideHeader = props.hideHeader ?? config.hideHeader ?? false;
   const showTopBars = props.showTopBars ?? config.showTopBars;
@@ -559,7 +560,7 @@ export function UniversalPage(props) {
 
       {showBlueBar && (
         <>
-          <header className="bar-blue">
+          <header className={`bar-blue ${variant === 'embed' ? 'bar-blue--embed' : ''}`.trim()}>
             <div className="bar-blue-left">
               <IconButton label="Tornar arrere" onClick={handleBack} presentation>
                 <BackIcon className="icon" />

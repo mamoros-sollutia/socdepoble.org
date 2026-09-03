@@ -1,0 +1,186 @@
+/* Bloc de notes · CSS local per al document i per al Shadow DOM.
+   Contracte: .app-main-content proporciona un bloc posicionat i l'alçada
+   disponible després de TopBar; cap segon càlcul de viewport ni sticky. */
+.notes-page {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  --notes-col-sidebar: 224px;
+  --notes-col-list: 280px;
+  --notes-col-collapsed: 56px;
+  --notes-header-height: var(--sdp-alt-accio);
+  background: var(--sdp-fons-app);
+}
+.notes-page > .content-wrapper {
+  display: flex;
+  flex: 1 1 0;
+  min-height: 0;
+  min-width: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.notes-page .notes-shell {
+  display: flex;
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+.notes-page .notes-column {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+.notes-page .notes-column[hidden] { display: none; }
+.notes-page .notes-column--left {
+  flex: 0 0 var(--notes-col-sidebar);
+  background: var(--sdp-fons-subtil);
+  border-right: 1px solid var(--sdp-vora);
+}
+.notes-page .notes-column--middle {
+  flex: 0 0 var(--notes-col-list);
+  background: var(--sdp-fons-targeta);
+  border-right: 1px solid var(--sdp-vora);
+}
+.notes-page .notes-column.collapsed { flex-basis: var(--notes-col-collapsed); }
+.notes-page .notes-column--editor { flex: 1 1 0; background: var(--sdp-fons-app); }
+.notes-page .notes-column-header,
+.notes-page .editor-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: none;
+  min-height: var(--notes-header-height);
+  gap: var(--sdp-space-2);
+  padding: var(--sdp-space-1) var(--sdp-space-3);
+  background: var(--sdp-fons-roca);
+  color: var(--sdp-sobre-roca);
+  border-bottom: 1px solid var(--sdp-vora-control);
+}
+.notes-page .notes-column-header--collapsed { justify-content: center; padding: var(--sdp-space-1); }
+.notes-page .notes-column-title { font-size: var(--sdp-text-meta); font-weight: 700; letter-spacing: .04em; }
+.notes-page .notes-column__body,
+.notes-page .notes-column__scroll,
+.notes-page .editor-scroll-area {
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+}
+.notes-page .notes-column__body { padding: var(--sdp-space-3); }
+.notes-page .folders-list { display: flex; flex-direction: column; gap: var(--sdp-space-1); }
+.notes-page .folder-item {
+  display: flex;
+  align-items: center;
+  gap: var(--sdp-space-2);
+  width: 100%;
+  min-height: var(--sdp-touch);
+  padding: var(--sdp-space-2) var(--sdp-space-3);
+  background: transparent;
+  color: var(--sdp-text-cos);
+  border: 1px solid transparent;
+  border-radius: var(--sdp-radi-s);
+  text-align: left;
+  cursor: pointer;
+}
+.notes-page .folder-item span { overflow-wrap: anywhere; }
+.notes-page .folder-item svg { flex: none; }
+.notes-page .folder-item:hover { background: var(--sdp-fons-targeta); }
+.notes-page .folder-item.active { background: var(--sdp-fons-targeta); border-color: var(--sdp-accio-text); color: var(--sdp-accio-text); }
+.notes-page .accordion { margin-top: var(--sdp-space-4); }
+.notes-page .accordion-toggle {
+  width: 100%;
+  min-height: var(--sdp-touch);
+  padding: var(--sdp-space-2);
+  border: 0;
+  background: transparent;
+  color: var(--sdp-text-suau);
+  text-align: left;
+  font-size: var(--sdp-text-meta);
+  font-weight: 700;
+  cursor: pointer;
+}
+.notes-page .notes-list-container { display: flex; flex-direction: column; padding: 0; overflow: hidden; }
+.notes-page .notes-list-actions { display: flex; flex: none; justify-content: space-between; gap: var(--sdp-space-1); padding: var(--sdp-space-2); border-bottom: 1px solid var(--sdp-vora); }
+.notes-page .notes-actions-left { display: flex; align-items: center; color: var(--sdp-text-cos); }
+.notes-page .notes-column__scroll { padding: var(--sdp-space-3); }
+.notes-page .note-list { display: flex; flex-direction: column; gap: var(--sdp-space-2); margin: 0; }
+.notes-page .note-card { width: 100%; padding: var(--sdp-space-3); text-align: left; border: 1px solid var(--sdp-vora); border-radius: var(--sdp-radi-m); background: var(--sdp-fons-targeta); color: var(--sdp-text-cos); cursor: pointer; }
+.notes-page .note-card:hover { background: var(--sdp-fons-subtil); }
+.notes-page .note-card.active { border-color: var(--sdp-accio-text); background: var(--sdp-accio-subtil); }
+.notes-page .note-card-header { display: flex; align-items: baseline; gap: var(--sdp-space-2); }
+.notes-page .note-card-header strong { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.notes-page .note-card-date { flex: none; margin-left: auto; color: var(--sdp-text-suau); font-size: var(--sdp-text-meta); }
+.notes-page .conversation-preview { color: var(--sdp-text-suau); font-size: var(--sdp-text-meta); overflow-wrap: anywhere; }
+.notes-page .line-clamp { display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.notes-page .btn-icon,
+.notes-page .notes-format-button,
+.notes-page .btn-create,
+.notes-page .btn-publish {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  gap: var(--sdp-space-1);
+  min-width: var(--sdp-touch);
+  min-height: var(--sdp-touch);
+  padding: var(--sdp-space-2);
+  border: 1px solid transparent;
+  border-radius: var(--sdp-radi-s);
+  background: transparent;
+  color: inherit;
+  font-size: var(--sdp-text-meta);
+  cursor: pointer;
+}
+.notes-page .btn-icon { width: var(--sdp-touch); height: var(--sdp-touch); padding: 0; }
+.notes-page .btn-icon svg,
+.notes-page .notes-format-button svg,
+.notes-page .btn-publish svg { flex: none; }
+.notes-page .btn-create,
+.notes-page .btn-publish { background: var(--sdp-accio); color: var(--sdp-sobre-accio); border-radius: var(--sdp-radi-pastilla); font-weight: 700; }
+.notes-page .btn-create:hover,
+.notes-page .btn-publish:hover { background: var(--sdp-accio-hover); }
+.notes-page .editor-toolbar { flex-wrap: wrap; justify-content: flex-start; }
+.notes-page .toolbar-actions { display: flex; flex: 1 1 240px; flex-wrap: wrap; gap: var(--sdp-space-1); min-width: 0; }
+.notes-page .editor-toolbar .active-text { background: var(--sdp-accent); color: var(--sdp-sobre-accent); border-color: currentColor; }
+.notes-page .notes-format-button:hover,
+.notes-page .notes-column-header .btn-icon:hover { outline: 1px solid currentColor; outline-offset: -2px; }
+.notes-page button:disabled { opacity: .5; cursor: default; }
+.notes-page :focus-visible { outline: 2px solid var(--sdp-focus); outline-offset: -2px; }
+.notes-page .editor-toolbar :focus-visible,
+.notes-page .notes-column-header :focus-visible { outline-color: var(--sdp-focus-invers); }
+.notes-page .editor-scroll-area { padding-bottom: env(safe-area-inset-bottom, 0px); }
+.notes-page .page-article { padding: var(--sdp-space-4); border: 0; border-radius: 0; box-shadow: none; background: var(--sdp-fons-targeta); }
+.notes-page .page-title { margin: 0 0 var(--sdp-space-6); padding: var(--sdp-space-6) var(--sdp-space-4); }
+.notes-page .page-intro,
+.notes-page .editor-tiptap-container { width: 100%; max-width: var(--sdp-measure); margin-inline: auto; }
+.notes-page .editor-content { min-height: 300px; overflow-wrap: anywhere; line-height: var(--sdp-leading-editorial); }
+.notes-page .editor-content pre { max-width: 100%; overflow-x: auto; }
+.notes-page [contenteditable] { overflow-wrap: anywhere; }
+.notes-page [contenteditable]:empty::before { content: attr(data-placeholder); color: var(--sdp-text-suau); pointer-events: none; }
+.notes-page .notes-column--editor .bar-orange { position: static; display: flex; flex-wrap: wrap; height: auto; gap: var(--sdp-space-2); padding: var(--sdp-space-2) var(--sdp-space-4); background: var(--sdp-accent); color: var(--sdp-sobre-accent); }
+.notes-page .bar-actions { display: flex; flex-wrap: wrap; gap: var(--sdp-space-2); }
+.notes-page .chat-empty { display: flex; flex: 1; flex-direction: column; align-items: center; justify-content: center; gap: var(--sdp-space-3); padding: var(--sdp-space-4); color: var(--sdp-text-suau); }
+.notes-page .btn-icon--settings,
+.notes-page .dropdown-container { position: relative; }
+.notes-page .timer-indicator { position: absolute; top: var(--sdp-space-1); right: var(--sdp-space-1); width: var(--sdp-space-2); height: var(--sdp-space-2); border-radius: var(--sdp-radi-pastilla); background: var(--sdp-accent); }
+.notes-page .dropdown-menu { position: absolute; top: 100%; left: 0; width: 200px; max-width: calc(100vw - var(--sdp-space-8)); z-index: 3; padding: var(--sdp-space-2); border: 1px solid var(--sdp-vora); border-radius: var(--sdp-radi-s); background: var(--sdp-fons-elevat); box-shadow: var(--sdp-ombra-3); }
+.notes-page .dropdown-header { display: flex; justify-content: space-between; gap: var(--sdp-space-2); font-size: var(--sdp-text-meta); color: var(--sdp-text-suau); }
+.notes-page .dropdown-item { width: 100%; min-height: var(--sdp-touch); padding: var(--sdp-space-2); border: 0; border-radius: var(--sdp-radi-s); text-align: left; background: transparent; color: var(--sdp-text-cos); font-size: var(--sdp-text-meta); cursor: pointer; }
+.notes-page .dropdown-item:hover { background: var(--sdp-fons-subtil); }
+.notes-page .d-mobile-only { display: none; }
+/* La mida és la del mòdul: funciona també dins d'un host estret en escriptori.
+   Els panells inactius usen hidden i ixen també de la navegació per teclat. */
+.notes-page--compact .notes-column { flex: 1 1 0; border-right: 0; }
+.notes-page--compact .d-mobile-only { display: inline-flex; }
+.notes-page--compact .d-desktop-only { display: none; }
+
+.notes-page .notes-header-media { margin: var(--sdp-space-4) 0 var(--sdp-space-6); }

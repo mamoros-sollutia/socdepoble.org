@@ -91,8 +91,10 @@ A nivell de programari, aquesta és la lliçó magna de manteniment:
 
 - [[00_INDEX|00_INDEX.md]] — [[perfil_psiquiatric]]
 - [[00_INDEX_IDENTITAT|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[perfil_psiquiatric]]
-- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[perfil_psiquiatric]]
-- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[perfil_psiquiatric]]
-- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[perfil_psiquiatric]]
+- [[el_projecte|00_SER_Brain_Identitat/el_projecte.md]] — [[perfil_psiquiatric|00_SER_Brain_Identitat/perfil_psiquiatric.md]] — Aquest ...
+- [[perfil_psiquiatric|00_SER_Brain_Identitat/perfil_psiquiatric.md]] — [[00_INDEX|00_INDEX.md]] — [[perfil_psiquiatric]]
+- [[Coneixement|01_SABER_Cultura_Coneixement/Coneixement.md]] — [[perfil_psiquiatric|00_SER_Brain_Identitat/perfil_psiquiatric.md]] — Simbios...
+- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[perfil_psiquiatric|00_SER_Brain_Identitat/perfil_psiquiatric.md]] — Etiquet...
+- [[Identitat|01_SABER_Cultura_Coneixement/Identitat.md]] — [[perfil_psiquiatric|00_SER_Brain_Identitat/perfil_psiquiatric.md]] — Categor...
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

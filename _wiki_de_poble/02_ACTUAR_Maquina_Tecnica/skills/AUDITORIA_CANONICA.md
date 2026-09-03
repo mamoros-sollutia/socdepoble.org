@@ -108,13 +108,16 @@ Auditar no modifica fitxers. Escriure un informe, corregir YAML, moure una nota,
 
 ## Sinapsis Entrants (Autogenerat)
 
+- [[00_INDEX|00_INDEX.md]] — [[AUDITORIA_CANONICA|02_ACTUAR_Maquina_Tecnica/skills/AUDITORIA_CANONICA.md]]...
+- [[02_GENOTIP|00_SER_Brain_Identitat/02_GENOTIP.md]] — [[AUDITORIA_CANONICA|02_ACTUAR_Maquina_Tecnica/skills/AUDITORIA_CANONICA.md]]...
 - [[03_Consola_Termodinamica|00_SER_Brain_Identitat/03_Consola_Termodinamica.md]] — [[AUDITORIA_CANONICA]]
+- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[AUDITORIA_CANONICA|02_ACTUAR_Maquina_Tecnica/skills/AUDITORIA_CANONICA.md]]...
+- [[Maquina|01_SABER_Cultura_Coneixement/Maquina.md]] — [[AUDITORIA_CANONICA|02_ACTUAR_Maquina_Tecnica/skills/AUDITORIA_CANONICA.md]]...
 - [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maquina_Tecnica/00_arquitectura_tecnica_unificada.md]] — [[AUDITORIA_CANONICA]]
+- [[AUDITORIA_CANONICA|02_ACTUAR_Maquina_Tecnica/skills/AUDITORIA_CANONICA.md]] — [[00_INDEX|00_INDEX.md]] — [[AUDITORIA_CANONICA|02_ACTUAR_Maquina_Tecnica/ski...
 - [[index_trellat|02_ACTUAR_Maquina_Tecnica/skills/index_trellat.md]] — [[AUDITORIA_CANONICA]]
 - [[seguretat_execucio|02_ACTUAR_Maquina_Tecnica/skills/seguretat_execucio.md]] — [[AUDITORIA_CANONICA]]
 - [[successio_lazaro_execucio|02_ACTUAR_Maquina_Tecnica/skills/successio_lazaro_execucio.md]] — [[AUDITORIA_CANONICA]]
-- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[AUDITORIA_CANONICA]]
-- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[AUDITORIA_CANONICA]]
-- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[AUDITORIA_CANONICA]]
+- [[DOC_Governanca|03_GOVERNAR_Normativa_Regles/DOC_Governanca.md]] — [[AUDITORIA_CANONICA|02_ACTUAR_Maquina_Tecnica/skills/AUDITORIA_CANONICA.md]]...
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

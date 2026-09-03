@@ -261,8 +261,10 @@ Una Targeta Universal té 4 grans blocs obligatoris/opcionals en ordre descenden
 ## Sinapsis Entrants (Autogenerat)
 
 - [[00_INDEX|00_INDEX.md]] — [[ESTANDARD_UI_Universal]]
-- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[ESTANDARD_UI_Universal]]
-- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[ESTANDARD_UI_Universal]]
-- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[ESTANDARD_UI_Universal]]
+- [[el_projecte|00_SER_Brain_Identitat/el_projecte.md]] — [[ESTANDARD_UI_Universal|03_GOVERNAR_Normativa_Regles/ESTANDARD_UI_Universal....
+- [[Govern|01_SABER_Cultura_Coneixement/Govern.md]] — [[ESTANDARD_UI_Universal|03_GOVERNAR_Normativa_Regles/ESTANDARD_UI_Universal....
+- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[ESTANDARD_UI_Universal|03_GOVERNAR_Normativa_Regles/ESTANDARD_UI_Universal....
+- [[DOC_Governanca|03_GOVERNAR_Normativa_Regles/DOC_Governanca.md]] — [[ESTANDARD_UI_Universal|03_GOVERNAR_Normativa_Regles/ESTANDARD_UI_Universal....
+- [[ESTANDARD_UI_Universal|03_GOVERNAR_Normativa_Regles/ESTANDARD_UI_Universal.md]] — [[00_INDEX|00_INDEX.md]] — [[ESTANDARD_UI_Universal]]
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

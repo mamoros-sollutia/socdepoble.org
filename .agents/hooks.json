@@ -1,4 +1,12 @@
 {
+  "preflight-matrix": {
+    "PreInvocation": [
+      {
+        "type": "command",
+        "command": "node .agents/hooks/preflight_matrix_wrapper.mjs"
+      }
+    ]
+  },
   "trellat-gate": {
     "PreToolUse": [
       {

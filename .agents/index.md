@@ -24,6 +24,15 @@ Aquest directori conté els contractes d'operació i els arxius de governança p
 - [[.agents/BOOTSTRAP|BOOTSTRAP]] — BOOTSTRAP (Sóc de Poble)
 - [[.agents/PROFILE|PROFILE]] — Conducta i veu operativa de la IAIA MarIA.
 - [[.agents/cervells/placeholder|placeholder]] — placeholder
+- [[.agents/codi-congelat.txt|codi-congelat.txt]]
+- [[.agents/consell.json|consell.json]]
+- [[.agents/doctrina-ignora.txt|doctrina-ignora.txt]]
+- [[.agents/hooks.json|hooks.json]]
+- [[.agents/hooks/preflight_matrix_wrapper.mjs|preflight_matrix_wrapper.mjs]]
+- [[.agents/hooks/tancar.mjs|tancar.mjs]]
+- [[.agents/hooks/verify.mjs|verify.mjs]]
 - [[.agents/rules/00_BIOS_COGNITIU|00_BIOS_COGNITIU]] — 00 BIOS COGNITIU
+- [[.agents/skills/00_INDEX_SKILLS|00_INDEX_SKILLS]] — ÍNDEX CANÒNIC DE SKILLS
+- [[.agents/skills_index.json|skills_index.json]]
 
 <!-- LLAURADOR:ADOPCIONS:FI -->

@@ -106,10 +106,11 @@ El Consell ha funcionat quan deixa una decisió més verificable: supòsits visi
 ## Sinapsis Entrants (Autogenerat)
 
 - [[00_INDEX_IDENTITAT|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[02_EQUIP_IA]]
+- [[02_EQUIP_IA|00_SER_Brain_Identitat/02_EQUIP_IA.md]] — [[00_INDEX_IDENTITAT|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[02_EQ...
 - [[02_GENOTIP|00_SER_Brain_Identitat/02_GENOTIP.md]] — [[02_EQUIP_IA]]
+- [[el_projecte|00_SER_Brain_Identitat/el_projecte.md]] — [[02_EQUIP_IA|00_SER_Brain_Identitat/02_EQUIP_IA.md]] — La identitat d'aquest...
 - [[Soci_Sollutia|00_SER_Brain_Identitat/Soci_Sollutia.md]] — [[02_EQUIP_IA]]
-- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[02_EQUIP_IA]]
-- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[02_EQUIP_IA]]
-- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[02_EQUIP_IA]]
+- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[02_EQUIP_IA|00_SER_Brain_Identitat/02_EQUIP_IA.md]] — Etiquetes: [[Graf]]
+- [[Identitat|01_SABER_Cultura_Coneixement/Identitat.md]] — [[02_EQUIP_IA|00_SER_Brain_Identitat/02_EQUIP_IA.md]] — Categoria: [[Identitat]]
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

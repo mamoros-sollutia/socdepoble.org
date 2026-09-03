@@ -401,11 +401,6 @@ export default function App() {
 
   return (
     <StrictMode>
-      <style>{`
-        :host { height: 100% !important; display: block !important; }
-        .sdp-root { height: 100% !important; display: flex !important; flex-direction: row !important; }
-        .app-main { flex: 1 1 0% !important; min-height: 0 !important; }
-      `}</style>
       <AppShell mobileNav={<MobileNav />}>
         <AppContent />
       </AppShell>

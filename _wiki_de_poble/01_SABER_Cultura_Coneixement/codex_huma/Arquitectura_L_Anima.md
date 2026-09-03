@@ -52,8 +52,9 @@ Aquest document està dissenyat perquè un lector –sense cap formació en prog
 ## Sinapsis Entrants (Autogenerat)
 
 - [[00_INDEX|00_INDEX.md]] — [[Arquitectura_L_Anima]]
-- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[Arquitectura_L_Anima]]
-- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[Arquitectura_L_Anima]]
-- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[Arquitectura_L_Anima]]
+- [[el_projecte|00_SER_Brain_Identitat/el_projecte.md]] — [[Arquitectura_L_Anima|01_SABER_Cultura_Coneixement/codex_huma/Arquitectura_L...
+- [[Arquitectura_L_Anima|01_SABER_Cultura_Coneixement/codex_huma/Arquitectura_L_Anima.md]] — [[00_INDEX|00_INDEX.md]] — [[Arquitectura_L_Anima]]
+- [[Coneixement|01_SABER_Cultura_Coneixement/Coneixement.md]] — [[Arquitectura_L_Anima|01_SABER_Cultura_Coneixement/codex_huma/Arquitectura_L...
+- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[Arquitectura_L_Anima|01_SABER_Cultura_Coneixement/codex_huma/Arquitectura_L...
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

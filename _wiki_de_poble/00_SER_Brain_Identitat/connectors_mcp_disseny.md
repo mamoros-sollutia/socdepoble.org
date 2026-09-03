@@ -69,8 +69,9 @@ Mentre que Affinity és la nostra eina de base vectorial, **Stitch** actua com e
 
 - [[00_INDEX|00_INDEX.md]] — [[connectors_mcp_disseny]]
 - [[00_INDEX_IDENTITAT|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[connectors_mcp_disseny]]
-- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[connectors_mcp_disseny]]
-- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[connectors_mcp_disseny]]
-- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[connectors_mcp_disseny]]
+- [[connectors_mcp_disseny|00_SER_Brain_Identitat/connectors_mcp_disseny.md]] — [[00_INDEX|00_INDEX.md]] — [[connectors_mcp_disseny]]
+- [[el_projecte|00_SER_Brain_Identitat/el_projecte.md]] — [[connectors_mcp_disseny|00_SER_Brain_Identitat/connectors_mcp_disseny.md]] —...
+- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[connectors_mcp_disseny|00_SER_Brain_Identitat/connectors_mcp_disseny.md]] —...
+- [[Identitat|01_SABER_Cultura_Coneixement/Identitat.md]] — [[connectors_mcp_disseny|00_SER_Brain_Identitat/connectors_mcp_disseny.md]] —...
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

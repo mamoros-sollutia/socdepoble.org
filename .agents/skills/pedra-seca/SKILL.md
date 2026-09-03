@@ -1,7 +1,9 @@
 ---
 tipus: skill
 estat: canonic
-description: "Llei de disseny visual Pedra Seca"
+description: Llei de disseny visual Pedra Seca
+tags:
+  - disseny
 name: pedra-seca
 triggers_on:
   - disseny
@@ -13,10 +15,6 @@ triggers_on:
   - colors
   - components
 core: true
-tags:
-  - skill
-  - disseny
-  - ui
 ---
 # 🪨 Llei de Pedra Seca (Design System per a IA)
 
@@ -164,3 +162,7 @@ Abans de crear o implementar qualsevol nova funcionalitat, component o element v
 ### Lògica de la Sidebar Inmutable
 1. **Fons Negre Inmutable**: La Sidebar (`nav.app-sidebar`) i la Topbar (`header.bar-black`) són **sempre de fons negre inmutable**. Els seus colors no s'inverteixen en mode clar/fosc. Han d'utilitzar sempre les variables directes (`--sdp-pedra-900` per fons, `--sdp-pedra-50` per text), evitant usar tokens invertibles com `--sdp-fons-invers`.
 2. **Pàgines de Sistema al Menú**: Qualsevol pàgina o component que siga marcat amb la categoria "sistema" s'inclourà automàticament dins de la sidebar com un element més del menú. Això permet que el menú cresca de forma dinàmica basant-se en metadades de la pàgina en lloc de rutes *hardcoded*.
+
+
+## Ancoratge de la Wiki
+- Aquesta skill penja de: [[00_INDEX_SKILLS]]

@@ -57,11 +57,14 @@ La IAIA adopta diferents perfils especialitzats segons la tasca (els seus "barre
 
 ## Sinapsis Entrants (Autogenerat)
 
+- [[00_INDEX|00_INDEX.md]] — [[01_IDENTITAT|00_SER_Brain_Identitat/01_IDENTITAT.md]] — Tornar a:[[00_INDEX...
 - [[00_INDEX_IDENTITAT|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — | 00 SER | Identitat, genotip, visió, actors | [[01_IDENTITAT]] |
+- [[01_IDENTITAT|00_SER_Brain_Identitat/01_IDENTITAT.md]] — [[00_INDEX|00_INDEX.md]] — [[01_IDENTITAT|00_SER_Brain_Identitat/01_IDENTITAT...
 - [[02_GENOTIP|00_SER_Brain_Identitat/02_GENOTIP.md]] — [[01_IDENTITAT]]
+- [[DOC_Taula_Mestra|00_SER_Brain_Identitat/DOC_Taula_Mestra.md]] — [[00_INDEX|00_INDEX.md]] — [[01_IDENTITAT|00_SER_Brain_Identitat/01_IDENTITAT...
+- [[el_projecte|00_SER_Brain_Identitat/el_projecte.md]] — [[01_IDENTITAT|00_SER_Brain_Identitat/01_IDENTITAT.md]] — (Per al llegat de 3...
 - [[Soci_Sollutia|00_SER_Brain_Identitat/Soci_Sollutia.md]] — [[01_IDENTITAT]]
-- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — | 00 SER | Identitat, genotip, visió, actors | [[01_IDENTITAT]] |
-- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — | 00 SER | Identitat, genotip, visió, actors | [[01_IDENTITAT]] |
-- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — | 00 SER | Identitat, genotip, visió, actors | [[01_IDENTITAT]] |
+- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[01_IDENTITAT|00_SER_Brain_Identitat/01_IDENTITAT.md]] — Etiquetes: [[Graf]]
+- [[Identitat|01_SABER_Cultura_Coneixement/Identitat.md]] — [[01_IDENTITAT|00_SER_Brain_Identitat/01_IDENTITAT.md]] — Categoria: [[Identi...
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

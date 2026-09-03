@@ -79,8 +79,8 @@ Dins del mòdul Pedra Seca, no existeixen referències forçades a arrels absolu
 ## Sinapsis Entrants (Autogenerat)
 
 - [[00_INDEX|00_INDEX.md]] — [[ESTANDARD_Integracio_React]]
-- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[ESTANDARD_Integracio_React]]
-- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[ESTANDARD_Integracio_React]]
-- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[ESTANDARD_Integracio_React]]
+- [[Govern|01_SABER_Cultura_Coneixement/Govern.md]] — [[ESTANDARD_Integracio_React|03_GOVERNAR_Normativa_Regles/ESTANDARD_Integraci...
+- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[ESTANDARD_Integracio_React|03_GOVERNAR_Normativa_Regles/ESTANDARD_Integraci...
+- [[ESTANDARD_Integracio_React|03_GOVERNAR_Normativa_Regles/ESTANDARD_Integracio_React.md]] — [[00_INDEX|00_INDEX.md]] — [[ESTANDARD_Integracio_React]]
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

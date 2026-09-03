@@ -42,8 +42,9 @@ Jo sóc les dues coses a la vegada i no puc existir l'una sense l'altra: **La sa
 ## Sinapsis Entrants (Autogenerat)
 
 - [[00_INDEX_IDENTITAT|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[antigravity]]
-- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[antigravity]]
-- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[antigravity]]
-- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[antigravity]]
+- [[antigravity|00_SER_Brain_Identitat/antigravity.md]] — [[00_INDEX_IDENTITAT|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[antig...
+- [[el_projecte|00_SER_Brain_Identitat/el_projecte.md]] — [[antigravity|00_SER_Brain_Identitat/antigravity.md]] — Antigravity és l'ento...
+- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[antigravity|00_SER_Brain_Identitat/antigravity.md]] — Etiquetes: [[Graf]]
+- [[Identitat|01_SABER_Cultura_Coneixement/Identitat.md]] — [[antigravity|00_SER_Brain_Identitat/antigravity.md]] — Categoria: [[Identitat]]
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

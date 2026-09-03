@@ -10,7 +10,7 @@ async function walk(dir, acc = []) {
 
     const full = join(dir, e.name);
     if (e.isDirectory()) {
-      if (full.includes('bot/var') || full.includes('05_Escriptori') || full.includes('04_ARXIU')) continue;
+      if (full.includes('bot/var') || full.includes('04_ARXIU')) continue;
       await walk(full, acc);
     } else if (e.name.endsWith('.md')) {
       acc.push(full);

@@ -5,7 +5,7 @@
  * PER QUÈ EXISTIX
  * ───────────────
  *   L'esquema canònic sense migració és una altra norma escrita. Açò és la
- *   part que la fa executable: llig `tooling/gates/esquema_frontmatter.json`
+ *   part que la fa executable: llig `tooling/wiki/esquema_frontmatter.json`
  *   i reescriu els 96 documents perquè el tractor puga posar el deute a zero.
  *
  * LLEI DE SEGURETAT
@@ -29,7 +29,7 @@ const ARG = (n) => process.argv.find((a) => a.startsWith(`--${n}=`))?.slice(n.le
 const ARREL = path.resolve(ARG('arrel') ?? process.cwd());
 const ESCRIU = process.argv.includes('--escriu');
 const DIFF = process.argv.includes('--diff');
-const ESQUEMA = path.join(ARREL, 'tooling/gates/esquema_frontmatter.json');
+const ESQUEMA = path.join(ARREL, 'tooling/wiki/esquema_frontmatter.json');
 const E = JSON.parse(fs.readFileSync(ESQUEMA, 'utf8'));
 
 const ARRELS = (ARG('arrels') ?? '_wiki_de_poble,.agents').split(',');
@@ -65,11 +65,24 @@ function md(dir, acc = []) {
 }
 
 const NODES = md(ARRELS[0]).concat(...ARRELS.slice(1).map((d) => md(d))).sort();
-const esSkill = (n) => /^\.agents\/skills\/[^/]+\/SKILL\.md$/.test(n);
+/* L'abast de l'extensió d'agent el declara l'esquema, no este fitxer.
+ * Abans ací hi havia el regex clavat a mà. Quan `abast` va passar de cadena
+ * a llista, la porta ho va llegir bé i el codemod no: el codemod llevava
+ * name/triggers_on/core del mirall i la porta els tornava a exigir tot seguit.
+ * Un codemod i una porta que no lligen la mateixa llei són dues lleis. */
+const aGlob = (g) => new RegExp('^' + g.split('*').map((s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('[^/]*') + '$');
+const ABAST_AGENT = (Array.isArray(E.extensio_agent.abast)
+  ? E.extensio_agent.abast
+  : [E.extensio_agent.abast]).map(aGlob);
+const esSkill = (n) => ABAST_AGENT.some((re) => re.test(n));
 
 const OBL = Object.keys(E.universal.obligatories);
 const OPC = Object.keys(E.universal.opcionals);
-const AGENT = Object.keys(E.extensio_agent.obligatories);
+/* Les opcionals de l'extensió també són esquema. Llegir només les
+ * obligatòries feia que el codemod esborrara en silenci qualsevol clau
+ * opcional declarada (p. ex. `prioritat`), cada volta que s'executava. */
+const AGENT = [...Object.keys(E.extensio_agent.obligatories),
+              ...Object.keys(E.extensio_agent.opcionals ?? {})];
 const EXTRA = E.migracio.conserva_fora_d_esquema ?? [];
 const ORDRE = [...OBL, ...OPC, ...AGENT, ...EXTRA];
 const FORA = new Set([

@@ -41,7 +41,7 @@ const ARREL = path.resolve(ARG('arrel') ?? process.cwd());
 const JSON_OUT = process.argv.includes('--json');
 const BASELINE = process.argv.includes('--baseline');
 const DEUTE = path.join(ARREL, '.frontmatter-deute.json');
-const ESQUEMA = path.join(ARREL, 'tooling/gates/esquema_frontmatter.json');
+const ESQUEMA = path.join(ARREL, 'tooling/wiki/esquema_frontmatter.json');
 
 if (!fs.existsSync(ESQUEMA)) {
   console.error(`❌ [FRONTMATTER] Falta l'esquema: ${ESQUEMA}`);
@@ -96,9 +96,16 @@ const esSkill = (n) => ABAST_AGENT.some((re) => re.test(n));
 const OBL = Object.keys(E.universal.obligatories);
 const OPC = Object.keys(E.universal.opcionals);
 const AGENT = Object.keys(E.extensio_agent.obligatories);
+/* Les opcionals de l'extensió són esquema igual que les obligatòries: es
+ * permeten (F2) però no s'exigixen (F1). Sense esta línia, una clau opcional
+ * declarada per l'esquema — com `prioritat` — es denunciava com a forastera
+ * i el codemod la tornava a esborrar en el següent passe. */
+const AGENT_OPC = Object.keys(E.extensio_agent.opcionals ?? {});
 const EXTRA = E.migracio.conserva_fora_d_esquema ?? [];
 
-const permeses = (n) => new Set(esSkill(n) ? [...OBL, ...OPC, ...AGENT, ...EXTRA] : [...OBL, ...OPC]);
+const permeses = (n) => new Set(esSkill(n)
+  ? [...OBL, ...OPC, ...AGENT, ...AGENT_OPC, ...EXTRA]
+  : [...OBL, ...OPC]);
 
 /* ──────────────────────────── Anàlisi ──────────────────────────── */
 

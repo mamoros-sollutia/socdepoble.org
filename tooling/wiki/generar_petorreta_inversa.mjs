@@ -1,5 +1,6 @@
 import { writeFileSync, readFileSync, readdirSync, statSync, existsSync } from 'node:fs';
 import path from 'node:path';
+import { loadIsoContext, buildIsoPrompt } from './lib/prompt_iso.mjs';
 import { fileURLToPath } from 'node:url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -23,9 +24,11 @@ function walk(dir, extFilter) {
   return results;
 }
 
-const TIMESTAMP = new Date().toISOString().replace(/[-:T]/g, '').slice(2, 10) + '_' + new Date().getHours().toString().padStart(2, '0') + new Date().getMinutes().toString().padStart(2, '0');
-const outBundleName = `${TIMESTAMP}_BUNDLE_Auditoria_Inversa.md`;
-const outPromptName = `${TIMESTAMP}_PETORRETA_Auditoria_Inversa.md`;
+const instant = new Date();
+const pad = value => String(value).padStart(2, '0');
+const TIMESTAMP = `${String(instant.getFullYear()).slice(-2)}${pad(instant.getMonth() + 1)}${pad(instant.getDate())}_${pad(instant.getHours())}${pad(instant.getMinutes())}`;
+const outBundleName = `${TIMESTAMP}_BUNDLE_auditoria_inversa.md`;
+const outPromptName = `${TIMESTAMP}_PROMPT_auditoria_inversa.md`;
 const outBundle = path.join(ROOT, '_wiki_de_poble/05_Escriptori_Soc_de_Poble', outBundleName);
 const outPetorreta = path.join(ROOT, '_wiki_de_poble/05_Escriptori_Soc_de_Poble', outPromptName);
 
@@ -35,8 +38,8 @@ Data: 25 d'Agost de 2026
 
 ## CONTEXT GLOBAL (MANDATORI)
 Aquest context s'injecta automàticament per complir amb la Regla 6 (Acte Reflex).
-El sistema és **Sóc de Poble**, una xarxa social descentralitzada (local-first) amb arquitectura Pedra Seca, orientada al Baseline 2022.
-Visió: Tornar el poble a la gent. Missió: Evitar dependències extractives.
+El sistema és **Sóc de Poble**, una xarxa social per a pobles integrada amb l'ecosistema **Sollutia**, amb arquitectura Pedra Seca, orientada al Baseline 2022.
+Visió: Tornar el poble a la gent teixint comunitat. Missió: Evitar dependències extractives.
 
 `;
 
@@ -79,7 +82,7 @@ for (const p of codeFiles) {
   bundleContent += `\n### FITXER: ${rel}\n\`\`\`${ext}\n${readFileSync(p, 'utf8')}\n\`\`\`\n`;
 }
 
-writeFileSync(outBundle, bundleContent);
+// L’escriptura espera que el prompt ISO haja passat la validació.
 console.log('Bundle creat:', outBundle);
 
 // 2. Generate PROMPT (Petorreta)
@@ -116,7 +119,18 @@ Heu d'auditar el sistema **a nivell auto-destructiu** i fer enginyeria inversa b
 El resultat d'això ha de ser un informe unificat. No deixeu cap pedra sense moure.
 `;
 
-writeFileSync(outPetorreta, promptContent);
+const context = loadIsoContext(ROOT);
+const isoPrompt = buildIsoPrompt(context, {
+  title: '🛡️ PETORRETA AL CONSELL: AUDITORIA INVERSA',
+  description: 'Auditoria inversa del codi, la Wiki i la integració online amb Sollutia',
+  objective: 'Identificar defectes verificables del sistema i proposar reparacions mínimes',
+  context: promptContent.replace(/^---\n[\s\S]*?\n---\n/, '').replace(/^# /gm, '### ').replace(/^## /gm, '### '),
+  instruction: 'Audita les missions descrites en el context i separa evidències, riscos i propostes',
+  output: 'markdown',
+});
+if (existsSync(outBundle) || existsSync(outPetorreta)) throw new Error('El paquet ja existix; no es sobreescriu');
+writeFileSync(outBundle, bundleContent, { flag: 'wx' });
+writeFileSync(outPetorreta, isoPrompt, { flag: 'wx' });
 console.log('Petorreta creada:', outPetorreta);
 
 // 3. Validació Post-Acció (Anti-Mandra)

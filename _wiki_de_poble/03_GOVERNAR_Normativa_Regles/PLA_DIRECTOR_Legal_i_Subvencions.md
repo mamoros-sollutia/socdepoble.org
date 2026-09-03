@@ -97,9 +97,10 @@ El pressupost complet per garantir la independència, incloent els honoraris d'A
 ## Sinapsis Entrants (Autogenerat)
 
 - [[00_INDEX|00_INDEX.md]] — [[PLA_DIRECTOR_Legal_i_Subvencions]]
-- [[PLA_DIRECTOR_Viabilitat_Economica|03_GOVERNAR_Normativa_Regles/PLA_DIRECTOR_Viabilitat_Economica.md]] — (Veure [[PLA_DIRECTOR_Legal_i_Subvencions]] per a les línies exactes).*
-- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[PLA_DIRECTOR_Legal_i_Subvencions]]
-- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[PLA_DIRECTOR_Legal_i_Subvencions]]
-- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[PLA_DIRECTOR_Legal_i_Subvencions]]
+- [[el_projecte|00_SER_Brain_Identitat/el_projecte.md]] — [[PLA_DIRECTOR_Legal_i_Subvencions|03_GOVERNAR_Normativa_Regles/PLA_DIRECTOR_...
+- [[Govern|01_SABER_Cultura_Coneixement/Govern.md]] — [[PLA_DIRECTOR_Legal_i_Subvencions|03_GOVERNAR_Normativa_Regles/PLA_DIRECTOR_...
+- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[PLA_DIRECTOR_Legal_i_Subvencions|03_GOVERNAR_Normativa_Regles/PLA_DIRECTOR_...
+- [[PLA_DIRECTOR_Legal_i_Subvencions|03_GOVERNAR_Normativa_Regles/PLA_DIRECTOR_Legal_i_Subvencions.md]] — [[00_INDEX|00_INDEX.md]] — [[PLA_DIRECTOR_Legal_i_Subvencions]]
+- [[PLA_DIRECTOR_Viabilitat_Economica|03_GOVERNAR_Normativa_Regles/PLA_DIRECTOR_Viabilitat_Economica.md]] — (Veure [[PLA_DIRECTOR_Legal_i_Subvencions]] per a les línies exactes).
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

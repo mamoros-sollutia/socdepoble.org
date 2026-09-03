@@ -83,9 +83,10 @@ Els incrustats `!nota_inexistent (BROKEN LINK: nota_inexistent) <!-- TODO: fix l
 
 ## Sinapsis Entrants (Autogenerat)
 
+- [[00_INDEX|00_INDEX.md]] — [[Sistema_Immunitari|01_SABER_Cultura_Coneixement/Sistema_Immunitari.md]] — A...
 - [[00_INDEX_IDENTITAT|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[Sistema_Immunitari]]
-- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[Sistema_Immunitari]]
-- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[Sistema_Immunitari]]
-- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[Sistema_Immunitari]]
+- [[Coneixement|01_SABER_Cultura_Coneixement/Coneixement.md]] — [[Sistema_Immunitari|01_SABER_Cultura_Coneixement/Sistema_Immunitari.md]] — C...
+- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[Sistema_Immunitari|01_SABER_Cultura_Coneixement/Sistema_Immunitari.md]] — E...
+- [[Sistema_Immunitari|01_SABER_Cultura_Coneixement/Sistema_Immunitari.md]] — [[00_INDEX|00_INDEX.md]] — [[Sistema_Immunitari|01_SABER_Cultura_Coneixement/...
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

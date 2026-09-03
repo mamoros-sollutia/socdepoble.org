@@ -14,8 +14,6 @@ index_skills: skills/00_INDEX_SKILLS.md
 consell: consell.json
 skills:
   - skills/abocament-total/SKILL.md
-  - skills/core-brain-hygiene/SKILL.md
-  - skills/core-change-control/SKILL.md
   - skills/core-context-panic/SKILL.md
   - skills/core-higiene-reflexa/SKILL.md
   - skills/core-restauracio-segellada/SKILL.md
@@ -24,5 +22,6 @@ skills:
   - skills/identity-iaia-core/SKILL.md
   - skills/identity-iaia-voice/SKILL.md
   - skills/pedra-seca/SKILL.md
+  - skills/reflexio-previa/SKILL.md
   - skills/socdepoble-workflow/SKILL.md
   - skills/trellat/SKILL.md

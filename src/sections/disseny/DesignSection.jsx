@@ -1247,8 +1247,8 @@ Gran</div>
             <ul className="sdp-mt-2" style={{ paddingLeft: '1rem' }}>
               <li className="sdp-mb-1"><strong>Sense Barra Blava:</strong> La navegació superior de la `UniversalPage` interior s'obvia.</li>
               <li className="sdp-mb-1"><strong>Ordre dels elements:</strong> La primera cosa visual sempre és la imatge de capçalera (<em>Hero Image</em>).</li>
-              <li className="sdp-mb-1"><strong>Barra de Publicador (Taronja):</strong> Se situa sota la imatge. No mostra el botó d'hora estàndard de les targetes normals, sinó un panell de metadades. El botó de 'pinejar' se substitueix ací obligatòriament per un <strong>Candau (`Lock`)</strong> que adverteix mitjançant un text que aquesta vista és només un exemple no editable estructuralment.</li>
-              <li className="sdp-mb-1"><strong>Capçalera i Logotips:</strong> Encara que la pàgina es construïsca sobre la base de la targeta mestra, <strong>no apareixerà el logotip de 'Sóc de Poble'</strong> dalt del títol, atès que no sabem qui serà el publicador definitiu. En el seu defecte, s'ofereix únicament l'acció d'inserir multimèdia.</li>
+              <li className="sdp-mb-1"><strong>Barra de Publicador (Taronja):</strong> Se situa sota la imatge. Mostra el botó d'hora estàndard. Hi haurà un botó de 'pinejar' que obrirà un desplegable per a triar icones (pinejar, candau, i altres), funcionalitat que s'ampliarà en el futur.</li>
+              <li className="sdp-mb-1"><strong>Capçalera i Logotips:</strong> En aquest exemple de «Bloc de Notes» <strong>sí que apareix el logotip de 'Sóc de Poble'</strong>, ja que representa una nota propietat de Sóc de Poble. L'ocultació del logotip en favor de l'acció d'inserir multimèdia només s'aplica en la vista de redacció d'una <em>nova nota</em> buida.</li>
             </ul>
           </div>
         </ComponentDoc>

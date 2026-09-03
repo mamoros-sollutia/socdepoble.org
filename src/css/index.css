@@ -35,6 +35,8 @@
    Safari/iOS i manté les barres sticky dins del visor.
    ═══════════════════════════════════════════════════════════════════ */
 
+@layer reset, tokens, base, components, notes, utilities;
+
 /* ── 0. TOKENS ─────────────────────────────────────────────────────
    DOS CAPES. Esta separació és la llei del sistema.
 
@@ -272,7 +274,10 @@
    continua sent el blau. Vegeu la nota D-4 de l'informe.
    ───────────────────────────────────────────────────────────────── */
 
-:root[data-theme="dark"], :host([data-theme="dark"]) {
+:root[data-theme="dark"],
+:root[data-theme="dark"] .sdp-root,
+:host([data-theme="dark"]),
+:host([data-theme="dark"]) .sdp-root {
   color-scheme: dark;
 
   --sdp-fons-app:        var(--sdp-pedra-900);
@@ -728,9 +733,12 @@ header.bar-blue {
   align-items: center;
   padding: 0 var(--sdp-space-6);
   position: -webkit-sticky;
-  position: sticky;
-  top: var(--sdp-alt-negra);
+  position: var(--sdp-barra-posicio, sticky);
+  top: var(--sdp-barra-dalt, var(--sdp-alt-negra));
   z-index: var(--z-barra-blava);
+}
+header.bar-blue.bar-blue--embed {
+  position: static;
 }
 
 .bar-blue-left { display: flex; align-items: center; gap: var(--sdp-space-3); }

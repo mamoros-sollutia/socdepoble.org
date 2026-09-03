@@ -60,6 +60,21 @@
       "path": ".agents/skills/core-restauracio-segellada/SKILL.md"
     },
     {
+      "name": "efecte-matrix",
+      "description": "Obligació de consultar la Wiki abans de generar cap document (Efecte Matrix)",
+      "triggers_on": [
+        "crear acta",
+        "crear informe",
+        "crear prompt",
+        "crear petorreta",
+        "crear bundle",
+        "crear estudi",
+        "nou document",
+        "generar arxiu"
+      ],
+      "path": ".agents/skills/efecte-matrix/SKILL.md"
+    },
+    {
       "name": "identity-iaia-core",
       "description": "Bootstrap d'identitat executiu de la IAIA MarIA. Carrega personalitat, to, missió, llista completa del Consell i protocol d'arrencada segura. Obligatori abans de qualsevol resposta que impliqui el projecte Sóc de Poble.",
       "triggers_on": [

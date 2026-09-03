@@ -1,7 +1,9 @@
 ---
 tipus: skill
 estat: canonic
-description: "Skill de reflexió abans d'actuar"
+description: Skill de reflexió abans d'actuar
+tags:
+  - core
 name: reflexio-previa
 triggers_on:
   - crea un prompt
@@ -15,10 +17,7 @@ triggers_on:
   - informe
   - bundle
 core: true
-tags:
-  - skill
-  - core
-  - pensament
+prioritat: 10
 ---
 
 # Reflexió Prèvia: Què sé jo d'això? (El Protocol Matrix)
@@ -45,15 +44,19 @@ NO PRODUÏRES CAP OUTPUT fins que hages completat el PAS 3 o el PAS 4.
 
 | Acció (paraules clau) | Protocol obligatori | Ruta del fitxer |
 |-----------------------|---------------------|-----------------|
-| petorreta, petorreta V, petició al consell | PROTOCOL_PETORRETA | `.agents/PROTOCOL_PETORRETA.md` |
-| acta, sessió, tancament | PLANTILLA_ACTA_UNICA | `_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_acta_unica.md` |
-| auditoria, revisar, auditar | AUDITORIA_CANONICA | `_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/AUDITORIA_CANONICA.md` |
-| crear skill, nova habilitat | PLANTILLA_CREADOR_SKILLS | `_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_creador_skills.md` |
-| ampliar, afegir regla | GUIA_AMPLIACIO | `.agents/skills/guia-ampliacio/SKILL.md` |
-| restaurar, recuperar, segell | RESTAURACIO_SEGELLADA | `.agents/skills/core-restauracio-segellada/SKILL.md` |
-| pànic, context perdut, desorientació | CONTEXT_PANIC | `.agents/skills/core-context-panic/SKILL.md` |
-| codi, arquitectura, refactor | TRELLAT | `.agents/skills/trellat/SKILL.md` |
+| petorreta, petorreta V, petició al consell | PROTOCOL_PETORRETA | [[.agents/PROTOCOL_PETORRETA.md]] |
+| acta, sessió, tancament | PLANTILLA_ACTA_UNICA | [[_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_acta_unica.md]] |
+| auditoria, revisar, auditar | AUDITORIA_CANONICA | [[_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/AUDITORIA_CANONICA.md]] |
+| crear skill, nova habilitat | PLANTILLA_CREADOR_SKILLS | [[_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_creador_skills.md]] |
+| ampliar, afegir regla | GUIA_AMPLIACIO | [[.agents/skills/guia-ampliacio/SKILL.md]] |
+| restaurar, recuperar, segell | RESTAURACIO_SEGELLADA | [[.agents/skills/core-restauracio-segellada/SKILL.md]] |
+| pànic, context perdut, desorientació | CONTEXT_PANIC | [[.agents/skills/core-context-panic/SKILL.md]] |
+| codi, arquitectura, refactor | TRELLAT | [[.agents/skills/trellat/SKILL.md]] |
 | qualsevol altra acció | — | — (procedir amb precaució) |
 
 ## 3. Regla d'Or contra la Psicopatia
 Si el Mestre et demana "pilotar un helicòpter" i tu t'adones que no has llegit el manual d'helicòpters de l'arxiu, NO L'ENENGUES. Primer llig, després executa. **Mai** inventes un format d'acta, informe, prompt o bundle si existeix un històric o una plantilla que marca com es fa a Sóc de Poble. Incomplir açò és faltar al respecte al llegat arquitectònic.
+
+
+## Ancoratge de la Wiki
+- Aquesta skill penja de: [[00_INDEX_SKILLS]]

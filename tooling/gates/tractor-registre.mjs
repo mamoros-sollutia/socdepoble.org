@@ -344,11 +344,32 @@ for (const [nom, { fm, ruta, cru }] of alDisc) {
   }
 }
 
-/* R3 · triggers duplicats */
+/* R3 · triggers duplicats
+ *
+ * Un gallet compartit no és per si mateix un defecte: «petorreta» ha
+ * d'encendre alhora el protocol de reflexió i les regles del Consell.
+ * El defecte és que no hi haja ORDRE. Amb `prioritat` distinta al
+ * frontmatter, la càrrega és determinista i la porta calla; sense ella,
+ * qui guanya depén de l'ordre de lectura del directori, que no és una llei.
+ */
+function prioritatDe(nom) {
+  const abs = path.join(ARREL, '.agents', 'skills', nom, 'SKILL.md');
+  if (!fs.existsSync(abs)) return null;
+  const m = fs.readFileSync(abs, 'utf8').match(/^prioritat:\s*(\d+)\s*$/m);
+  return m ? Number(m[1]) : null;
+}
+
 for (const [t, quines] of triggers) {
   if (quines.length < 2) continue;
+  const prios = quines.map(prioritatDe);
+  const totes = prios.every((p) => p !== null);
+  const distintes = new Set(prios).size === prios.length;
+  if (totes && distintes) continue; /* ordre declarat: resolt */
   falla('R3', t,
-    `Trigger compartit per ${quines.length} skills: ${quines.join(', ')}. El registre promet rebutjar-ho «categòricament» i no ho fa. La resolució queda a l'atzar de l'ordre de càrrega.`);
+    `Trigger compartit per ${quines.length} skills: ${quines.join(', ')}. `
+    + (totes
+      ? 'Totes declaren «prioritat» però repetixen valor: l\'empat no desempata res.'
+      : 'Cap ordre declarat. Afig `prioritat:` (menor = abans) al frontmatter de cadascuna; sense això la resolució queda a l\'atzar de l\'ordre de càrrega.'));
 }
 
 /* R5 / R6 · obligacions del BIOS */

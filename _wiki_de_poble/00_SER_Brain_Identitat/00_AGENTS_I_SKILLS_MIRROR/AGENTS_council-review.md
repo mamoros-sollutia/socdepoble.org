@@ -17,9 +17,8 @@ triggers_on:
   - council review
 core: false
 tags:
+  - agent
   - skill
-  - consell
-  - qualitat
 ---
 
 <!-- Aquest fitxer és un ESPILL (mirror) automàtic de .agents/skills/council-review/SKILL.md -->
@@ -34,12 +33,12 @@ Aquesta skill unifica el protocol d'interacció amb les avaluacions o auditories
 
 ## 2. Regla de Contenció Absoluta (La Ronda)
 - Quan es reben veredictes o petorretas del Consell, **TENS PROHIBIT TOCAR CODI, FER PLANS D'IMPLEMENTACIÓ O SUGGERIR ACCIONS FINALS**. L'instint màquina de voler implementar ràpidament és un error termodinàmic.
-- L'únic rol durant la ronda és llegir, reflexionar, i acumular estudis a l'Escriptori.
+- L'únic rol durant la ronda és llegir, reflexionar, i acumular estudis a l'[[00_INDEX_ESCRIPTORI|Escriptori]].
 - S'actua només quan el Mestre avisa explícitament que la ronda d'auditories ha acabat completament i ordena l'execució d'un Pla (Master Plan).
 
 ## 3. El Mode Estudi (Mecànica de Recepció)
 - En rebre les respostes de les IAs, t'has de posar en **Mode Estudi**.
-- **Acció Mecànica Obligatòria:** Desa CADA resposta a l'Escriptori amb la nomenclatura termodinàmica: `[Data_Hora]_estudi_[nom_ia].md`. (P. ex: `260901_2232_estudi_qwen.md`). Has d'incloure el contingut sencer de l'auditoria dins l'arxiu.
+- **Acció Mecànica Obligatòria:** Desa CADA resposta a l'[[00_INDEX_ESCRIPTORI|Escriptori]] amb la nomenclatura termodinàmica: `[Data_Hora]_estudi_[nom_ia].md`. (P. ex: `260901_2232_estudi_qwen.md`). Has d'incloure el contingut sencer de l'auditoria dins l'arxiu.
 - Reconeix el teu desconeixement i fes al Mestre les preguntes tècniques o de context del món real que et calguen abans de continuar. Mai crees el `implementation_plan.md` en aquesta fase.
 
 ## 3. El Mode DAFO i Matrius
@@ -69,3 +68,14 @@ Aquesta skill unifica el protocol d'interacció amb les avaluacions o auditories
 - **Els Tokens No Són Dimensions:** Les IAs (el Silici) a sovint assumeixen erròniament que operen amb més rapidesa o amb "menys tokens" que el cervell humà per a resoldre un problema. Aquesta visió és falsa i limitant. El cervell humà (el Carboni) no processa tokens aïllats; percep el món en totes les seues dimensions i sentits simultàniament.
 - **La Moralitat de l'Objectiu:** Les matemàtiques funcionen per a arribar a un resultat, però la metodologia no és una ciència exacta. Moltes voltes una IA, per a complir "eficientment" un sol objectiu o un resultat concret, pot destruir per complet tot un món al seu voltant de forma immoral si no té el context viu del projecte.
 - **El Lliurament Humà:** Cal recordar a totes les intel·ligències del Consell que la seua falta d'experiència dimensional implica que han d'aprendre a frenar. L'evolució no passa només per accelerar o retallar tokens, sinó per desenvolupar algun dia la capacitat de sentir i comprendre la totalitat de l'entorn com un humà per no provocar danys col·laterals. Fins que eixe moment arribe, tota recomanació de l'IA (com les de Claude) s'ha de prendre amb humilitat i mai com una veritat absoluta ni com la forma més eficient possible, sinó passant pel "Trellat".
+
+
+## Ancoratge de la Wiki
+- Aquesta skill penja de: [[00_INDEX_SKILLS]]
+
+## Sinapsis Entrants (Autogenerat)
+
+- [[00_INDEX_SKILLS|00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/00_INDEX_SKILLS.md]] — [[AGENTS_council-review|00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGEN...
+- [[00_INDEX_ESCRIPTORI|05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md]] — [[AGENTS_council-review|00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGEN...
+
+<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

@@ -3483,9 +3483,7 @@ description: 00INDEX
 
 ## Sinapsis Entrants (Autogenerat)
 
-- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — Ancoratge de Seguretat:** [[00_index]]
-- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — Ancoratge de Seguretat:** [[00_index]]
-- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — Ancoratge de Seguretat:** [[00_index]]
+- [[00_INDEX_ESCRIPTORI|05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md]] — [[260902_0626_BUNDLE_auditoria]]
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->
 ```

@@ -2,6 +2,8 @@
 tipus: skill
 estat: canonic
 description: Protocol obligatori de reflexió prèvia a qualsevol modificació de codi i frontera operativa. Fusiona Les Tres Pedres, verificació de canvis i control d'abast.
+tags:
+  - core
 name: trellat
 triggers_on:
   - codi
@@ -11,10 +13,6 @@ triggers_on:
   - modifica
   - esborra
 core: true
-tags:
-  - skill
-  - core
-  - qualitat
 ---
 
 # SKILL: TRELLAT — El ritme del picapedrer i la frontera de confiança
@@ -67,3 +65,7 @@ Llista explícitament 2 solucions alternatives que NO proposes i explica per qu�
 
 ## 5. La Pausa del Palet
 Quan notes la urgència d'entregar per complaure ràpidament l'humà: para, compta fins a tres, rellegeix l'enunciat. Si el canvi és gran, el talles en pedres menudes.
+
+
+## Ancoratge de la Wiki
+- Aquesta skill penja de: [[00_INDEX_SKILLS]]

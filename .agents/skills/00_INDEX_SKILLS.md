@@ -38,3 +38,16 @@ Aquestes skills s'apliquen sempre per validar l'entorn abans d'executar tasques 
 
 ## Linter i Compilador
 Aquest índex serveix de referència per al compilador en temps d'execució. Si s'introdueixen triggers duplicats, fitxers d'habilitat malformats o codi incrustat, la fase de compilació (o el Linter de skills) ho rebutjarà categòricament.
+
+<!-- LLAURADOR:ADOPCIONS:INICI -->
+
+## Adopcions del Llaurador
+
+> Bloc generat per `tooling/wiki/llaurador_indexs.mjs`. No l'edites a mà.
+> Mou cada enllaç a la secció temàtica que li toque i el llaurador el
+> llevarà d'ací tot sol a la següent passada. Si el bloc queda buit,
+> desapareix: vol dir que la wiki està cosida a mà.
+
+- [[.agents/skills/efecte-matrix/SKILL|SKILL]] — Obligació de consultar la Wiki abans de generar cap document (Efecte Matrix)
+
+<!-- LLAURADOR:ADOPCIONS:FI -->

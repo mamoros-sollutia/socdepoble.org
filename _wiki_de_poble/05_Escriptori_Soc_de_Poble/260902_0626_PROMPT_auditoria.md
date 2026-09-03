@@ -20,3 +20,10 @@ Us demanem que analitzeu a fons l'estat de `NotesSection.jsx`, la implementació
 Si us plau, ingeriu el BUNDLE adjunt per comprendre la nostra arquitectura i cultura (la Llei de Pedra Seca i la identitat de Sóc de Poble). Després, genereu un informe o DAFO amb les vostres visions més agudes i els passos concrets que ens suggeriu seguir.
 
 Esperem el vostre Trellat.
+
+## Sinapsis Entrants (Autogenerat)
+
+- [[00_INDEX_ESCRIPTORI|05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md]] — [[260902_0626_PROMPT_auditoria]]
+- [[260902_0626_PROMPT_auditoria|05_Escriptori_Soc_de_Poble/260902_0626_PROMPT_auditoria.md]] — [[00_INDEX_ESCRIPTORI|05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md]] — [...
+
+<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

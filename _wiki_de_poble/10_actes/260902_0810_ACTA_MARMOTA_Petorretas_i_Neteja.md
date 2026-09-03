@@ -28,3 +28,9 @@ El Mestre ha requerit deixar preparat l'escriptori amb els paquets necessaris pe
 - Llançar l'script d'auditoria general (`node tooling/gates/tancament.mjs`) per certificar el Mas Viu lliure de deutes d'arquitectura.
 
 Mantenim el compromís amb la puresa, el Trellat i la salut cognitiva del Mas. Sessió blindada i netejada per complet.
+
+## Sinapsis Entrants (Autogenerat)
+
+- [[00_INDEX_Actes|10_actes/00_INDEX_Actes.md]] — [[10_actes/260902_0810_ACTA_MARMOTA_Petorretas_i_Neteja|260902_0810_ACTA_MARM...
+
+<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

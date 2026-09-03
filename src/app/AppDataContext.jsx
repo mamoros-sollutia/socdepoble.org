@@ -538,6 +538,14 @@ export function AppDataProvider({ children, externalConfig = {} }) {
         createdAt: new Date(nowTs).toISOString()
       };
       
+      if (preparedSubmission.payload) {
+         preparedSubmission.payload = {
+            ...preparedSubmission.payload,
+            id,
+            ownerUserId: rawData.ownerUserId
+         };
+      }
+      
       const item = preparedSubmission.payload || preparedSubmission;
       const sectionId = String(preparedSubmission.sectionId || item.sectionId || '').trim();
 

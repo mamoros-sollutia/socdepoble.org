@@ -58,7 +58,7 @@ const JSON_OUT = process.argv.includes('--json');
  * documents. Des de `00_INDEX`, 81. L'escriptori és una fulla, no una arrel. */
 const ANCORES = (ARG('ancores') ?? '_wiki_de_poble/00_INDEX.md').split(',');
 const ARRELS = (ARG('arrels') ?? '_wiki_de_poble,.agents').split(',');
-const EXCLOU = /(^|\/)(node_modules|\.git|\.obsidian|dist|build|90_historic|\.sdp-paperera)(\/|$)/;
+const EXCLOU = /(^|\/)(node_modules|\.git|\.obsidian|dist|build|\.sdp-paperera)(\/|$)/;
 
 const INICI = '<!-- LLAURADOR:ADOPCIONS:INICI -->';
 const FI = '<!-- LLAURADOR:ADOPCIONS:FI -->';
@@ -72,7 +72,7 @@ function md(dir, acc = []) {
     const rel = path.posix.join(dir, e.name);
     if (EXCLOU.test(rel)) continue;
     if (e.isDirectory()) md(rel, acc);
-    else if (e.name.endsWith('.md')) acc.push(rel);
+    else if (e.name.match(/\.(md|mjs|json|png|jpg|jpeg|gif|svg|pdf|docx|txt|html|css|js)$/i)) acc.push(rel);
   }
   return acc;
 }
@@ -122,6 +122,7 @@ function arestes(n, txt, desti, registra) {
 }
 
 for (const n of NODES) {
+  if (!n.endsWith('.md') || n.includes('/90_historic/')) continue;
   const brut = fs.readFileSync(path.join(ARREL, n), 'utf8');
   const { fora, dins } = talla(brut);
   arestes(n, fora, out, true);
@@ -166,6 +167,7 @@ function indexAdoptant(n) {
 
 /* Títol curt per a l'enllaç: description del frontmatter, si no el primer H1. */
 function retol(n) {
+  if (!n.endsWith('.md')) return '';
   const txt = fs.readFileSync(path.join(ARREL, n), 'utf8');
   let desc = null;
   if (txt.startsWith('---')) {

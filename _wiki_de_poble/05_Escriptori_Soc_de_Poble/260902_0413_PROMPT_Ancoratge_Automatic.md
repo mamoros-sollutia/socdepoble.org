@@ -21,3 +21,10 @@ Cal desenvolupar un **Script d'Ancoratge Automàtic** en Node.js (que s'integrar
 - Recordeu actualitzar o enriquir l'script del "Llaurador" (tooling/wiki/llaurador_indexs.mjs) si veieu que les vostres millores hi encaixen naturalment.
 
 Espere la vostra cirurgia de codi. Llum i Trellat!
+
+## Sinapsis Entrants (Autogenerat)
+
+- [[00_INDEX_ESCRIPTORI|05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md]] — [[260902_0413_PROMPT_Ancoratge_Automatic]]
+- [[260902_0413_PROMPT_Ancoratge_Automatic|05_Escriptori_Soc_de_Poble/260902_0413_PROMPT_Ancoratge_Automatic.md]] — [[00_INDEX_ESCRIPTORI|05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI.md]] — [...
+
+<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

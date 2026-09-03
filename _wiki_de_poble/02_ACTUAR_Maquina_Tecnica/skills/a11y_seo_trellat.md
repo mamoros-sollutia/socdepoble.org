@@ -72,10 +72,11 @@ El dispositiu de referència del Baseline 2022 és el tribunal pràctic. LCP, IN
 
 ## Sinapsis Entrants (Autogenerat)
 
+- [[00_INDEX|00_INDEX.md]] — [[a11y_seo_trellat|02_ACTUAR_Maquina_Tecnica/skills/a11y_seo_trellat.md]] — A...
+- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[a11y_seo_trellat|02_ACTUAR_Maquina_Tecnica/skills/a11y_seo_trellat.md]] — E...
+- [[Maquina|01_SABER_Cultura_Coneixement/Maquina.md]] — [[a11y_seo_trellat|02_ACTUAR_Maquina_Tecnica/skills/a11y_seo_trellat.md]] — C...
 - [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maquina_Tecnica/00_arquitectura_tecnica_unificada.md]] — [[a11y_seo_trellat]]
+- [[a11y_seo_trellat|02_ACTUAR_Maquina_Tecnica/skills/a11y_seo_trellat.md]] — [[00_INDEX|00_INDEX.md]] — [[a11y_seo_trellat|02_ACTUAR_Maquina_Tecnica/skill...
 - [[index_trellat|02_ACTUAR_Maquina_Tecnica/skills/index_trellat.md]] — [[a11y_seo_trellat]]
-- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[a11y_seo_trellat]]
-- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[a11y_seo_trellat]]
-- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[a11y_seo_trellat]]
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

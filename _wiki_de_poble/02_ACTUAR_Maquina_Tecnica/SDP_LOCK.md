@@ -56,10 +56,12 @@ són necessaris per a fer durable el control.
 
 ## Sinapsis Entrants (Autogenerat)
 
+- [[00_INDEX|00_INDEX.md]] — [[SDP_LOCK|02_ACTUAR_Maquina_Tecnica/SDP_LOCK.md]] — Ancoratge de Seguretat: ...
+- [[el_projecte|00_SER_Brain_Identitat/el_projecte.md]] — [[SDP_LOCK|02_ACTUAR_Maquina_Tecnica/SDP_LOCK.md]] — 4. un path travessa [[el...
+- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[SDP_LOCK|02_ACTUAR_Maquina_Tecnica/SDP_LOCK.md]] — Etiquetes: [[Graf]]
+- [[Maquina|01_SABER_Cultura_Coneixement/Maquina.md]] — [[SDP_LOCK|02_ACTUAR_Maquina_Tecnica/SDP_LOCK.md]] — Categoria: [[Maquina]]
 - [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maquina_Tecnica/00_arquitectura_tecnica_unificada.md]] — [[SDP_LOCK|Límits de seguretat]]
+- [[SDP_LOCK|02_ACTUAR_Maquina_Tecnica/SDP_LOCK.md]] — [[00_INDEX|00_INDEX.md]] — [[SDP_LOCK|02_ACTUAR_Maquina_Tecnica/SDP_LOCK.md]]...
 - [[DOC_Governanca|03_GOVERNAR_Normativa_Regles/DOC_Governanca.md]] — actual. El contracte executiu detallat és [[SDP_LOCK]].
-- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[SDP_LOCK|Límits de seguretat]]
-- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[SDP_LOCK|Límits de seguretat]]
-- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[SDP_LOCK|Límits de seguretat]]
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

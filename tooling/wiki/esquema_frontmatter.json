@@ -93,7 +93,13 @@
         "tipus": "booleà"
       }
     },
-    "nota_abast": "El mirall és una còpia byte a byte de les skills, generada per sincronitzar_skills.mjs. Porta les mateixes claus i per tant ha de viure sota les mateixes lleis. Deixar-lo fora d'abast produïa 38 falses infraccions F2 i amagava les reals."
+    "nota_abast": "El mirall és una còpia byte a byte de les skills, generada per sincronitzar_skills.mjs. Porta les mateixes claus i per tant ha de viure sota les mateixes lleis. Deixar-lo fora d'abast produïa 38 falses infraccions F2 i amagava les reals.",
+    "opcionals": {
+      "prioritat": {
+        "tipus": "enter",
+        "nota": "Desempata gallets compartits. Menor = es carrega abans. Sense ell, dues skills amb el mateix gallet es resolen a l'atzar (tractor-registre R3)."
+      }
+    }
   },
   "migracio": {
     "renomena": {
@@ -119,7 +125,8 @@
         "context": "core",
         "pensament": "saber",
         "qualitat": "core",
-        "sistema": null
+        "sistema": null,
+        "flux": "maquina"
       }
     },
     "esborra_entropia_zero": [
@@ -127,7 +134,6 @@
       "owner",
       "authority_level",
       "authority",
-      "prioritat",
       "requires",
       "conflicts_with",
       "related",
@@ -161,7 +167,7 @@
   },
   "recompte": {
     "abans": 34,
-    "despres": 8,
-    "detall": "5 universals (3 obligatòries + 2 opcionals) + 3 de l'extensió d'agent. `eines_obligatories` fa la novena, opcional."
+    "despres": 10,
+    "detall": "5 universals + 4 de l'extensio d'agent (name, triggers_on, core, prioritat) + eines_obligatories opcional."
   }
 }

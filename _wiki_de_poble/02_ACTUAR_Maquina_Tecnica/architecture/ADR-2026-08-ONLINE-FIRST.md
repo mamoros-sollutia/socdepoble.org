@@ -56,8 +56,8 @@ comunicar canvi d’abast o retirar la proposta.
 ## Sinapsis Entrants (Autogenerat)
 
 - [[00_INDEX|00_INDEX.md]] — [[ADR-2026-08-ONLINE-FIRST]]
-- [[260901_2359_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260901_2359_BUNDLE_auditoria.md]] — [[ADR-2026-08-ONLINE-FIRST]]
-- [[260902_0001_BUNDLE_auditoria|05_Escriptori_Soc_de_Poble/260902_0001_BUNDLE_auditoria.md]] — [[ADR-2026-08-ONLINE-FIRST]]
-- [[260902_0156_BUNDLE_auditoria_v7|05_Escriptori_Soc_de_Poble/260902_0156_BUNDLE_auditoria_v7.md]] — [[ADR-2026-08-ONLINE-FIRST]]
+- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[ADR-2026-08-ONLINE-FIRST|02_ACTUAR_Maquina_Tecnica/architecture/ADR-2026-08...
+- [[Maquina|01_SABER_Cultura_Coneixement/Maquina.md]] — [[ADR-2026-08-ONLINE-FIRST|02_ACTUAR_Maquina_Tecnica/architecture/ADR-2026-08...
+- [[ADR-2026-08-ONLINE-FIRST|02_ACTUAR_Maquina_Tecnica/architecture/ADR-2026-08-ONLINE-FIRST.md]] — [[00_INDEX|00_INDEX.md]] — [[ADR-2026-08-ONLINE-FIRST]]
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->
