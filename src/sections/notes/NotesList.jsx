@@ -1,5 +1,5 @@
 import { useNotes } from './NotesContext';
-import { List, Search, Settings, PanelLeftClose, Clock, ArrowLeft } from 'lucide-react';
+import { List, Search, Settings, PanelLeftClose, Clock, ArrowLeft, NotebookPen } from 'lucide-react';
 
 export default function NotesList() {
   const { 
@@ -29,8 +29,15 @@ export default function NotesList() {
             className="btn-icon hover-bg"
             title="Expandir Notes"
           >
-            <List size={20} />
+            <NotebookPen size={20} />
           </button>
+        </div>
+        <div className="notes-column__body notes-list-container" style={{ padding: 0 }}>
+          <div className="notes-list-actions" style={{ justifyContent: 'center' }}>
+            <button type="button" className="btn-icon" title="Cercar">
+              <Search size={20} />
+            </button>
+          </div>
         </div>
       </section>
     );
@@ -47,7 +54,12 @@ export default function NotesList() {
         >
           <ArrowLeft size={18} />
         </button>
-        <div className="notes-column-title">NOTES</div>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <div className="btn-icon" style={{ pointerEvents: 'none', background: 'transparent' }}>
+            <NotebookPen size={20} />
+          </div>
+          <div className="notes-column-title">NOTES</div>
+        </div>
         <button 
           onClick={() => setColNotesCollapsed(true)} 
           className="btn-icon btn-icon--transparent d-desktop-only"
@@ -60,46 +72,9 @@ export default function NotesList() {
       <div className="notes-column__body notes-list-container">
         <div className="notes-list-actions">
           <div className="notes-actions-left">
-            <button type="button" className="btn-icon text-muted" title="Cercar">
-              <Search size={18} />
+            <button type="button" className="btn-icon" title="Cercar">
+              <Search size={20} />
             </button>
-            <div className="dropdown-container">
-              <button 
-                type="button"
-                onClick={() => setSettingsOpen(!settingsOpen)}
-                className="btn-icon btn-icon--settings text-muted"
-                title="Ajustaments i Timer"
-              >
-                <Settings size={20} />
-                {timerActive && (
-                  <span className="timer-indicator" />
-                )}
-              </button>
-              {settingsOpen && (
-                <div className="dropdown-menu">
-                  <div className="dropdown-header">
-                    <span className="flex-center gap-6"><Clock size={14}/> Temps:</span>
-                    <span>{formatTime(timerSeconds)}</span>
-                  </div>
-                  <button 
-                    type="button"
-                    onClick={() => setTimerActive(!timerActive)}
-                    className="dropdown-item"
-                  >
-                    {timerActive ? 'Aturar Temporitzador' : 'Iniciar Temporitzador'}
-                  </button>
-                  {timerSeconds > 0 && !timerActive && (
-                    <button 
-                      type="button"
-                      onClick={() => setTimerSeconds(0)}
-                      className="dropdown-item"
-                    >
-                      Reiniciar Temps
-                    </button>
-                  )}
-                </div>
-              )}
-            </div>
           </div>
           <button type="button" className="btn-create">
             CREAR NOTA
@@ -115,16 +90,21 @@ export default function NotesList() {
                   key={note.id}
                   type="button"
                   onClick={() => setActiveNoteId(note.id)}
-                  className={`note-card ${isActive ? 'active' : ''}`}
+                  className={`note-card ${isActive ? 'active' : ''} ${note.coverImage ? 'has-thumbnail' : ''}`}
                 >
+                  {note.coverImage && (
+                    <div className="note-card-thumbnail">
+                      <img src={note.coverImage} alt={note.title || ''} />
+                    </div>
+                  )}
                   <div className="conversation-meta">
                     <div className="note-card-header">
-                      <strong>{note.title || 'Sense títol'}</strong>
                       <span className="note-card-date">{note.formattedDate}</span>
+                      <strong>{note.title || 'Sense títol'}</strong>
                     </div>
-                    <span className="conversation-preview line-clamp">
-                      {note.subtitle || t('section.notes.emptyPreview', 'Sense contingut...')}
-                    </span>
+                    {note.subtitle && (
+                      <div className="note-card-subtitle">{note.subtitle}</div>
+                    )}
                   </div>
                 </button>
               );

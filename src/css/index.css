@@ -203,7 +203,7 @@
   --sdp-pad-contenidor: clamp(16px, 4vw, 40px);
 
   /* LLEI DE VIDA · objectiu tàctil mínim. Cap control per davall. */
-  --sdp-touch: 44px;
+  --sdp-touch: var(--sdp-touch-min, 44px);
   --sdp-touch-comode: 48px;
 
   /* Escala z-index · única font de veritat */
@@ -646,10 +646,10 @@ nav.app-sidebar > div:last-child {
 .nav-item {
   display: flex;
   align-items: center;
-  gap: var(--sdp-space-2);
-  padding: var(--sdp-space-2) var(--sdp-space-3);
+  gap: 10px;
+  padding: var(--sdp-space-2) 18px;
   margin-bottom: var(--sdp-space-1);
-  border-radius: var(--sdp-radi-m);
+  border-radius: var(--sdp-radi-pastilla);
   color: rgba(255,255,255,0.78);
   text-decoration: none;
   font-weight: 600;
@@ -1496,11 +1496,11 @@ details[open] summary.accordion-header svg:last-child { transform: rotate(180deg
 
 /* 7.23 Cerca i filtratge */
 .search-bar-basic { display: flex; margin-bottom: var(--sdp-space-6); }
-.search-bar-basic input { flex: 1; min-width: 0; padding: var(--sdp-space-3) var(--sdp-space-4); border: 1px solid var(--sdp-vora); border-radius: var(--sdp-radi-s) 0 0 var(--sdp-radi-s); outline: none; font-size: 1rem; transition: border-color var(--sdp-t), box-shadow var(--sdp-t); }
+.search-bar-basic input { flex: 1; min-width: 0; padding: var(--sdp-space-3) var(--sdp-space-4); border: 1px solid var(--sdp-vora); border-radius: var(--sdp-radi-s) 0 0 var(--sdp-radi-s); outline: none; font-size: var(--sdp-font-min, 1rem); transition: border-color var(--sdp-t), box-shadow var(--sdp-t); }
 .search-bar-basic button { background: var(--sdp-fons-invers); color: var(--sdp-text-invers); border: none; padding: 0 var(--sdp-space-6); border-radius: 0 var(--sdp-radi-s) var(--sdp-radi-s) 0; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: var(--sdp-space-2); white-space: nowrap; transition: background var(--sdp-t); }
 .search-bar-basic button:hover { background: var(--sdp-fons-invers); }
 .search-filters { display: flex; gap: var(--sdp-space-4); margin-bottom: var(--sdp-space-6); }
-.search-filters input, .search-filters select { padding: var(--sdp-space-3) var(--sdp-space-4); border: 1px solid var(--sdp-vora-control); border-radius: var(--sdp-radi-s); outline: none; font-size: 1rem; background-color: var(--sdp-fons-targeta); color: var(--sdp-text-cos); transition: border-color var(--sdp-t), box-shadow var(--sdp-t); }
+.search-filters input, .search-filters select { padding: var(--sdp-space-3) var(--sdp-space-4); border: 1px solid var(--sdp-vora-control); border-radius: var(--sdp-radi-s); outline: none; font-size: var(--sdp-font-min, 1rem); background-color: var(--sdp-fons-targeta); color: var(--sdp-text-cos); transition: border-color var(--sdp-t), box-shadow var(--sdp-t); }
 .search-filters input { flex: 2; min-width: 0; }
 .search-filters select { flex: 1; min-width: 0; }
 .search-filters button { background: var(--sdp-fons-invers); color: var(--sdp-text-invers); border: none; padding: var(--sdp-space-3) var(--sdp-space-6); border-radius: var(--sdp-radi-s); font-weight: 700; cursor: pointer; transition: background var(--sdp-t); }
@@ -2067,6 +2067,7 @@ nav.mobile-nav { display: none; }
   transform: translateY(-2px);
   box-shadow: var(--sdp-shadow-elevate);
 }
+
 
 /* === TOC DRAWER === */
 .toc-overlay {
@@ -3053,6 +3054,14 @@ button.sp-card-calendar-badge:hover {
 
 .detail-content__paragraph {
   margin-bottom: var(--sdp-space-4); line-height: 1.6;
+}
+
+.detail-content__img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--sdp-radi-m);
+  margin: var(--sdp-space-5) 0;
 }
 
 .badge-row {

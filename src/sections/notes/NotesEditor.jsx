@@ -8,9 +8,19 @@ import { DateTimeControl, Dropdown, DropdownItem, UniversalPage } from '../../co
 import { sanitizeHtml } from '../../utils/sanitize.js';
 
 export default function NotesEditor() {
-  const { activeNote, saveNoteField, noteFolders, t, isCompact, mobilePanel, setMobilePanel } = useNotes();
+  const { activeNote, saveNoteField, setLocalNoteField, noteFolders, t, isCompact, mobilePanel, setMobilePanel } = useNotes();
   const timeoutRef = useRef(null);
   const pendingSaveRef = useRef({ id: null, content: null });
+  const currentNoteRef = useRef({ id: null, title: '', subtitle: '', lead: '' });
+
+  if (currentNoteRef.current.id !== activeNote?.id) {
+    currentNoteRef.current = {
+      id: activeNote?.id,
+      title: activeNote?.title || '',
+      subtitle: activeNote?.subtitle || '',
+      lead: activeNote?.lead || ''
+    };
+  }
 
   const editor = useEditor({
     extensions: [StarterKit],
@@ -18,6 +28,7 @@ export default function NotesEditor() {
     onUpdate: ({ editor }) => {
       const html = editor.getHTML();
       pendingSaveRef.current = { id: activeNote?.id, content: html };
+      setLocalNoteField(activeNote?.id, 'content', html);
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
       timeoutRef.current = setTimeout(() => {
         saveNoteField(activeNote?.id, 'content', html);
@@ -109,12 +120,14 @@ export default function NotesEditor() {
           }}
           title={
             <span
+              key={`title-${activeNote.id}`}
               className="editor-title-input"
               contentEditable
               suppressContentEditableWarning
+              onInput={(e) => setLocalNoteField(activeNote.id, 'title', e.currentTarget.innerHTML)}
               onBlur={(e) => saveNoteField(activeNote.id, 'title', e.currentTarget.innerHTML)}
               data-placeholder="Escriu el títol de l'article (H1)..."
-              dangerouslySetInnerHTML={{ __html: sanitizeHtml(activeNote.title || '') }}
+              dangerouslySetInnerHTML={{ __html: sanitizeHtml(currentNoteRef.current.title) }}
               style={{ display: 'inline-block', minWidth: '10px' }}
             />
           }
@@ -127,23 +140,27 @@ export default function NotesEditor() {
           copyright="© Sóc de Poble / Fet per la IAIA i Nano Banana"
           subtitle={
             <span
+              key={`subtitle-${activeNote.id}`}
               className="editor-subtitle-input"
               contentEditable
               suppressContentEditableWarning
+              onInput={(e) => setLocalNoteField(activeNote.id, 'subtitle', e.currentTarget.innerHTML)}
               onBlur={(e) => saveNoteField(activeNote.id, 'subtitle', e.currentTarget.innerHTML)}
               data-placeholder="Escriu el subtítol (H2)..."
-              dangerouslySetInnerHTML={{ __html: sanitizeHtml(activeNote.subtitle || '') }}
+              dangerouslySetInnerHTML={{ __html: sanitizeHtml(currentNoteRef.current.subtitle) }}
               style={{ display: 'block', minWidth: '10px' }}
             />
           }
           lead={
             <span
+              key={`lead-${activeNote.id}`}
               className="editor-lead-input"
               contentEditable
               suppressContentEditableWarning
+              onInput={(e) => setLocalNoteField(activeNote.id, 'lead', e.currentTarget.innerHTML)}
               onBlur={(e) => saveNoteField(activeNote.id, 'lead', e.currentTarget.innerHTML)}
               data-placeholder="Escriu l'entradilla..."
-              dangerouslySetInnerHTML={{ __html: sanitizeHtml(activeNote.lead || '') }}
+              dangerouslySetInnerHTML={{ __html: sanitizeHtml(currentNoteRef.current.lead) }}
               style={{ display: 'block', minWidth: '10px' }}
             />
           }

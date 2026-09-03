@@ -26,18 +26,29 @@ export function NotesProvider({ children }) {
   const [isCompact, setIsCompact] = useState(false);
   const [mobilePanel, setMobilePanel] = useState('folders'); // 'folders' | 'notes' | 'editor'
 
+  const [localNoteOverrides, setLocalNoteOverrides] = useState({});
+  const setLocalNoteField = (id, field, value) => {
+    setLocalNoteOverrides(prev => ({
+      ...prev,
+      [id]: { ...prev[id], [field]: value }
+    }));
+  };
+
   const notes = useMemo(() => {
-    return rawNotes.map((note) => {
+    return rawNotes.map((rawNote) => {
+      const overrides = localNoteOverrides[rawNote.id] || {};
+      const note = { ...rawNote, ...overrides };
       const plainText = String(note.content || '').replace(/<[^>]*>/g, ' ').trim();
       return {
         ...note,
         plainText,
+        coverImage: note.heroImage || undefined,
         searchText: normalizeSearchText(`${note.title} ${plainText}`),
         formattedDate: new Date(note.updatedAt || Date.now()).toLocaleDateString(locale, { day: '2-digit', month: '2-digit', year: '2-digit' }),
         formattedTime: new Date(note.updatedAt || Date.now()).toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit' })
       };
     });
-  }, [locale, normalizeSearchText, rawNotes]);
+  }, [locale, normalizeSearchText, rawNotes, localNoteOverrides]);
 
   const filteredNotes = useMemo(() => {
     const query = normalizeSearchText(deferredSearchQuery);
@@ -133,7 +144,7 @@ export function NotesProvider({ children }) {
       timerActive, setTimerActive,
       timerSeconds, setTimerSeconds,
       mobilePanel, setMobilePanel, isCompact, setIsCompact,
-      saveNoteField, publishNote,
+      saveNoteField, setLocalNoteField, publishNote,
       t, noteFolders
     }}>
       {children}
