@@ -58,14 +58,15 @@ export default function DesignSection() {
 <h4>1.1 Arquitectura de la Pàgina Universal (UniversalPage)</h4>
 <div className="alert alert-info sdp-mb-6">
   <div className="alert-content">
-    <p><strong>Estructura Anatòmica Inviolable</strong><br/>L'element rarel que engloba qualsevol Targeta Mestra (o qualsevol contingut detallat del Mur). Aquesta pàgina és l'esquelet perfecte i immutable del disseny Pedra Seca.</p>
+    <p><strong>Estructura Anatòmica Inviolable (FONT ÚNICA DE VERITAT)</strong><br/>Aquesta secció i el component <code>UniversalComponents.jsx</code> (on es defineix la UniversalPage) són la font única de veritat per a qualsevol agent o IA. Tota nova pàgina ha d'estendre exclusivament aquesta arquitectura, sense excepcions.</p>
     <ol className="sdp-mt-4" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sdp-space-4)' }}>
-      <li><strong>Barres Superiors (Controls):</strong> La barra blava de navegació (context) i la barra taronja d'autoria (dades meta, data, connectar).</li>
-      <li><strong>Imatge Hero (Opcional):</strong> Es renderitza immediatament davall de les barres. Ocupa l'ample disponible amb cantons arredonits.</li>
-      <li><strong>La Targeta de Decoració Blanca (Header):</strong> Un bloc blanc que embolica de forma segura el logotip de Sóc de Poble (max 600px), l'element <strong>H1</strong> (H3 a la card), les etiquetes de categorització, i el <strong>Copyright</strong> de tancament.
-      <br/><small className="sdp-text-gray-500">Nota: Quan aquesta decoració blanca es tanca (amb els cantons arredonits inferiors), <em>s'acaba l'espai protegit de la capçalera</em>.</small></li>
-      <li><strong>H2 i Entradilla (Fora de la targeta blanca):</strong> Situats directament sobre el fons gris (o general de la pàgina). Això ofereix un respir visual i actua de pont entre l'H1 i el contingut profund.</li>
-      <li><strong>H3 i Contingut Base (article):</strong> El text enriquit, estructurat harmònicament cap avall. Totes les Targetes, ja siguen Esdeveniments, Projectes o Skills, utilitzen exactament aquest patró arquitectònic sense excepcions.</li>
+      <li><strong>Barres Superiors (Controls):</strong> La barra blava de navegació (context) i la barra taronja d'autoria (dades meta, data, connectar). En mode normal (pàgina completa), aquestes barres fan <em>sticky</em> a la part superior (es queden fixades).</li>
+      <li><strong>Excepció (Mode Incrustat):</strong> Quan la UniversalPage s'incrusta en un editor (com el Bloc de Notes), la barra blava i la taronja adopten classe <code>--embed</code> (<em>position: static</em>) i s'amaguen naturalment amb l'scroll del document per afavorir l'edició lliure i evitar un "doble scroll". Aquesta és l'única excepció permesa.</li>
+      <li><strong>Imatge Hero (Opcional):</strong> Es renderitza immediatament davall de les barres. Ocupa l'ample disponible (100%) sense marges.</li>
+      <li><strong>La Targeta de Decoració Blanca (Header):</strong> Un bloc blanc amb <em>box-shadow</em> que embolica el logotip de Sóc de Poble (max 600px), l'element <strong>H1</strong> (H3 a la card), les etiquetes de categorització, i el <strong>Copyright</strong> de tancament.
+      <br/><small className="sdp-text-gray-500">Nota: El tancament d'aquesta targeta delimita el final de la decoració del títol.</small></li>
+      <li><strong>H2 i Entradilla (Fora de la targeta blanca):</strong> Actuen de pont i preàmbul visual abans d'endinsar-se en l'article profund.</li>
+      <li><strong>H3 i Contingut Base (article):</strong> El text enriquit, estructurat harmònicament cap avall amb una amplària màxima centrada (~68 caràcters) per afavorir la llegibilitat (<em>var(--sdp-measure)</em>). La resta d'elements (targetes, graelles) flueixen a tota l'amplària disponible del contenidor respectant els marges de 40px (<em>var(--sdp-pad-contenidor)</em>).</li>
     </ol>
   </div>
 </div>
