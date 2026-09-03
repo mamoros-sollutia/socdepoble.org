@@ -4,8 +4,6 @@ estat: canonic
 description: Estàndard d'arquitectura, anatomia i configuració de la UniversalPage de Sóc de Poble. Defineix l'estructura visual, el comportament del scroll i els blocs que la formen.
 tags:
   - core
-  - components
-  - ui
 name: universal-page
 triggers_on:
   - UniversalPage
@@ -50,7 +48,7 @@ Una `UniversalPage` completa està formada pels següents blocs estratificats, q
 La `UniversalPage` està dissenyada per a ser incrustada (embedded) com si fóra el document de contingut d'un editor (com ara dins del `NotesEditor`). 
 
 - **Amplària adaptativa:** Quan s'incrusta com una columna més (ex: a la dreta de la llista de notes i de les carpetes), la barra blava NO ocupa de part a part de l'aplicació, sinó només de part a part del seu propi contenidor (l'editor de notes). Així s'evita xafar l'espai de navegació lateral.
-- **Zero Doble Scroll:** La barra blava s'ha d'amagar de forma natural a través de l'scroll **del propi document incrustat**. No s'ha d'exigir un scroll global a l'usuari primer i un de secundari després per al contingut. Quan l'usuari desplaça cap avall la nota, la barra blava puja i s'amaga, fixant l'atenció exclusivament en l'edició del contingut.
+- **Zero Doble Scroll i Barres no fixes:** A diferència de la pàgina completa (on les barres blava i taronja es queden fixes a dalt, sent *sticky*), en mode incrustat **la barra blava i la barra taronja s'han d'amagar de forma natural a través de l'scroll del propi document incrustat**. Quan l'usuari desplaça cap avall la nota, tant la barra blava com la taronja pugen i s'amaguen, alliberant tot l'espai vertical i fixant l'atenció exclusivament en l'edició del contingut. Aquesta és l'única excepció de comportament d'una UniversalPage incrustada respecte a la versió independent.
 
 ## 3. L'Entorn d'Edició (Foraster vs. Connectat)
 Quan un usuari ("Foraster") fa proves en un bloc de notes, està interactuant visualment amb una `UniversalPage`. Tot i que no estiga autenticat i la nota "desaparega" després, la UI ha de tindre una anatomia idèntica a la versió publicada per garantir consistència mental i anticipació del resultat.
