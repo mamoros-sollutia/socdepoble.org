@@ -116,7 +116,9 @@
   padding: var(--sdp-space-2) 18px;
   margin-bottom: var(--sdp-space-1);
   background: transparent;
-  color: var(--sdp-text-cos);
+  color: var(--sdp-text-titol);
+  font-weight: 600;
+  font-size: 0.95rem;
   border: 1px solid transparent;
   border-radius: var(--sdp-radi-pastilla);
   text-align: left;
