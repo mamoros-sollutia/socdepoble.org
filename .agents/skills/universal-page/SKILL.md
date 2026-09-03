@@ -17,6 +17,11 @@ core: true
 
 Aquest manual defineix l'arquitectura i les regles inviolables de la `UniversalPage`, el component base per construir pàgines i vistes de lectura/edició dins de Sóc de Poble.
 
+> [!IMPORTANT]
+> **FONT DE VERITAT ÚNICA (Single Source of Truth):**
+> L'única referència vàlida i òptima per copiar i replicar el codi de la `UniversalPage` (amb tots els seus blocs, filtres, targetes i estructura) és la pàgina oficial de Disseny: `src/sections/disseny/DesignSection.jsx`. Qualsevol IA o agent ha de consultar exclusivament el codi d'aquesta pàgina per entendre i reproduir la implementació canònica de la `UniversalPage`. Cap altra secció o component s'ha d'utilitzar com a referència.
+
+
 ## 1. Anatomia Estàndard (Els Blocs)
 
 Una `UniversalPage` completa està formada pels següents blocs estratificats, que han d'aparèixer en aquest ordre i respectar aquestes regles de maquetació:
@@ -52,3 +57,18 @@ La `UniversalPage` està dissenyada per a ser incrustada (embedded) com si fóra
 
 ## 3. L'Entorn d'Edició (Foraster vs. Connectat)
 Quan un usuari ("Foraster") fa proves en un bloc de notes, està interactuant visualment amb una `UniversalPage`. Tot i que no estiga autenticat i la nota "desaparega" després, la UI ha de tindre una anatomia idèntica a la versió publicada per garantir consistència mental i anticipació del resultat.
+
+## 4. Sistema de Classificació (Carpetes, Categories i Etiquetes)
+Tota Targeta i Pàgina Universal (`UniversalPage`) exposa de manera prominent els seus metadades de classificació mitjançant píndoles (badges) sota el títol principal (H1). L'estructura semàntica i interactiva segueix sempre el següent patró estricte, renderitzant-se en aquest ordre:
+
+1. **La Carpeta (Sistema):** És el contenidor lògic on s'arxiva el document (ex: *Mur*, *Mercat*, *Pobles*, *Esdeveniments*).
+   - Estil: Fons blau fosc (`sdp-badge-system`).
+   - Comportament: Si l'usuari la clica (`onClick`), ha de filtrar/navegar cap al contingut d'eixa carpeta (ex: `handleSelectFolder`).
+2. **La Categoria Temàtica:** Classifica el document dins d'un àmbit temàtic transversal (ex: *Sistema*, *Productivitat*, *Manual*).
+   - Estil: Fons blau clar/grisenc (`sdp-badge-category`).
+   - Comportament: Al fer-hi clic, ha de filtrar i mostrar només els documents d'eixa categoria en l'àmbit actual (ex: `handleSelectCategory`).
+3. **Les Etiquetes (Tags):** Definicions lliures o semàntiques del contingut (ex: *Tutorial*, *Notícia*, *Vibe*).
+   - Estil: Sense fons sòlid, només contorn (`sdp-badge-neutral outline-badge`).
+   - Comportament: Clicables. Filtren el llistat per paraules clau específiques (ex: `handleSelectTag`).
+
+*Regla de disseny visual:* Cap píndola decorativa s'ha de duplicar (ex: si el context ja es troba a la Carpeta "Mur", no s'afegeix un badge idèntic "Mur" com a Categoria). Cada element visual compleix el seu rol estricte dins del DOM de la UniversalPage per facilitar el filtratge de dades.

@@ -8,7 +8,7 @@ import { DateTimeControl, Dropdown, DropdownItem, UniversalPage } from '../../co
 import { sanitizeHtml } from '../../utils/sanitize.js';
 
 export default function NotesEditor() {
-  const { activeNote, saveNoteField, setLocalNoteField, noteFolders, t, isCompact, mobilePanel, setMobilePanel } = useNotes();
+  const { activeNote, saveNoteField, setLocalNoteField, noteFolders, t, isCompact, mobilePanel, setMobilePanel, handleSelectCategory, handleSelectFolder, handleSelectTag } = useNotes();
   const timeoutRef = useRef(null);
   const pendingSaveRef = useRef({ id: null, content: null });
   const currentNoteRef = useRef({ id: null, title: '', subtitle: '', lead: '' });
@@ -132,10 +132,21 @@ export default function NotesEditor() {
             />
           }
           labels={[
-             { text: noteFolders.find(f => f.id === activeNote.folderId)?.name || 'General', className: 'sdp-badge-system' },
-             { text: 'Mur', className: 'sdp-badge-category' },
-             ...(activeNote.category ? [{ text: activeNote.category, className: 'sdp-badge-category' }] : []),
-             ...(activeNote.tags || []).map(t => ({ text: t, className: 'sdp-badge-neutral outline-badge' }))
+             { 
+               text: noteFolders.find(f => f.id === activeNote.folderId)?.name || 'General', 
+               className: 'sdp-badge-system',
+               onClick: () => handleSelectFolder(activeNote.folderId)
+             },
+             ...(activeNote.category ? [{ 
+               text: activeNote.category, 
+               className: 'sdp-badge-category',
+               onClick: () => handleSelectCategory(activeNote.category)
+             }] : []),
+             ...(activeNote.tags || []).map(t => ({ 
+               text: t, 
+               className: 'sdp-badge-neutral outline-badge',
+               onClick: () => handleSelectTag(t)
+             }))
           ]}
           copyright="© Sóc de Poble / Fet per la IAIA i Nano Banana"
           subtitle={

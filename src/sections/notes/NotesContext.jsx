@@ -11,6 +11,7 @@ export function NotesProvider({ children }) {
   
   const [activeFolderId, setActiveFolderId] = useState('f-tot');
   const [activeCategory, setActiveCategory] = useState(null);
+  const [activeTag, setActiveTag] = useState(null);
   const [activeNoteId, setActiveNoteId] = useState('n1');
   const [searchQuery, setSearchQuery] = useState('');
   const deferredSearchQuery = useDeferredValue(searchQuery);
@@ -55,14 +56,16 @@ export function NotesProvider({ children }) {
     return notes
       .filter((note) => (activeFolderId && activeFolderId !== 'f-tot' ? note.folderId === activeFolderId : true))
       .filter((note) => (activeCategory ? note.category === activeCategory : true))
+      .filter((note) => (activeTag ? (note.tags || []).includes(activeTag) : true))
       .filter((note) => (!query ? true : note.searchText.includes(query)));
-  }, [activeCategory, activeFolderId, deferredSearchQuery, notes, normalizeSearchText]);
+  }, [activeCategory, activeFolderId, activeTag, deferredSearchQuery, notes, normalizeSearchText]);
 
   const activeNote = filteredNotes.find((note) => note.id === activeNoteId) || filteredNotes[0] || notes[0];
 
   const handleSelectFolder = (id) => {
     setActiveFolderId(id);
     setActiveCategory(null);
+    setActiveTag(null);
     if (colNotesCollapsed) setColNotesCollapsed(false);
     setMobilePanel('notes');
   };
@@ -70,6 +73,15 @@ export function NotesProvider({ children }) {
   const handleSelectCategory = (category) => {
     setActiveCategory(category);
     setActiveFolderId(null);
+    setActiveTag(null);
+    if (colNotesCollapsed) setColNotesCollapsed(false);
+    setMobilePanel('notes');
+  };
+
+  const handleSelectTag = (tag) => {
+    setActiveTag(tag);
+    setActiveFolderId(null);
+    setActiveCategory(null);
     if (colNotesCollapsed) setColNotesCollapsed(false);
     setMobilePanel('notes');
   };
@@ -135,6 +147,7 @@ export function NotesProvider({ children }) {
       notes, filteredNotes, activeNote, activeNoteId, setActiveNoteId: handleSelectNote,
       activeFolderId, handleSelectFolder,
       activeCategory, handleSelectCategory,
+      activeTag, handleSelectTag,
       searchQuery, setSearchQuery,
       colFoldersCollapsed, setColFoldersCollapsed,
       colNotesCollapsed, setColNotesCollapsed,
