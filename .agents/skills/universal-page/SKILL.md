@@ -68,7 +68,7 @@ Tota Targeta i Pàgina Universal (`UniversalPage`) exposa de manera prominent el
    - Estil: Fons blau clar/grisenc (`sdp-badge-category`).
    - Comportament: Al fer-hi clic, ha de filtrar i mostrar només els documents d'eixa categoria en l'àmbit actual (ex: `handleSelectCategory`).
 3. **Les Etiquetes (Tags):** Definicions lliures o semàntiques del contingut (ex: *Tutorial*, *Notícia*, *Vibe*).
-   - Estil: Sense fons sòlid, només contorn (`sdp-badge-neutral outline-badge`).
+   - Estil: Fons taronja suau corporatiu (`sdp-badge-tag`).
    - Comportament: Clicables. Filtren el llistat per paraules clau específiques (ex: `handleSelectTag`).
 
 *Regla de disseny visual:* Cap píndola decorativa s'ha de duplicar (ex: si el context ja es troba a la Carpeta "Mur", no s'afegeix un badge idèntic "Mur" com a Categoria). Cada element visual compleix el seu rol estricte dins del DOM de la UniversalPage per facilitar el filtratge de dades.

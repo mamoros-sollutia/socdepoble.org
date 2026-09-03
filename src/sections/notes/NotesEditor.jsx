@@ -144,7 +144,7 @@ export default function NotesEditor() {
              }] : []),
              ...(activeNote.tags || []).map(t => ({ 
                text: t, 
-               className: 'sdp-badge-neutral outline-badge',
+               className: 'sdp-badge-tag',
                onClick: () => handleSelectTag(t)
              }))
           ]}
