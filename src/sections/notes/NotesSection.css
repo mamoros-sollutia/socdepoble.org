@@ -297,7 +297,7 @@
 .notes-page .btn-icon--settings,
 .notes-page .dropdown-container { position: relative; }
 .notes-page .timer-indicator { position: absolute; top: var(--sdp-space-1); right: var(--sdp-space-1); width: var(--sdp-space-2); height: var(--sdp-space-2); border-radius: var(--sdp-radi-pastilla); background: var(--sdp-accent); }
-.notes-page .dropdown-menu { position: absolute; top: 100%; left: 0; width: 200px; max-width: calc(100vw - var(--sdp-space-8)); z-index: 3; padding: var(--sdp-space-2); border: 1px solid var(--sdp-vora); border-radius: var(--sdp-radi-s); background: var(--sdp-fons-elevat); box-shadow: var(--sdp-ombra-3); }
+.notes-page .dropdown-menu { position: absolute; top: 100%; left: 0; width: 200px; max-width: calc(100vw - var(--sdp-space-8)); z-index: 999; padding: var(--sdp-space-2); border: 1px solid var(--sdp-vora); border-radius: var(--sdp-radi-s); background: var(--sdp-fons-elevat); box-shadow: var(--sdp-ombra-3); }
 .notes-page .dropdown-header { display: flex; justify-content: space-between; gap: var(--sdp-space-2); font-size: var(--sdp-text-meta); color: var(--sdp-text-suau); }
 .notes-page .dropdown-item { width: 100%; min-height: var(--sdp-touch); padding: var(--sdp-space-2); border: 0; border-radius: var(--sdp-radi-s); text-align: left; background: transparent; color: var(--sdp-text-cos); font-size: var(--sdp-text-meta); cursor: pointer; }
 .notes-page .dropdown-item:hover { background: var(--sdp-fons-subtil); }
