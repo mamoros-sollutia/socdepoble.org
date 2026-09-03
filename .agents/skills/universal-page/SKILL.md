@@ -27,11 +27,15 @@ Aquest manual defineix l'arquitectura i les regles inviolables de la `UniversalP
 Una `UniversalPage` completa està formada pels següents blocs estratificats, que han d'aparèixer en aquest ordre i respectar aquestes regles de maquetació:
 
 ### A. La Barra Blava (`bar-blue`)
-És el centre de control i navegació de la pàgina/document. Les accions es divideixen en tres grups:
-- **Esquerra:** Tornar arrere, Tornar avant, **Índex**.
-  - *Regla Sagrada:* El botó d'Índex és fonamental. Gràcies a ell, no cal omplir la pàgina de múltiples etiquetes `<h1>` per a separar contingut. L'Índex navega per les seccions internes, garantint que **només hi haja un H1 per pàgina**, complint de manera estricta amb l'estàndard SEO i d'arquitectura d'informació de Sóc de Poble.
-- **Centre:** Traduir, Comentar (Xat Privat), Compartir.
-- **Dreta:** Botó Connectar.
+És el centre de control i navegació de la pàgina/document. Les accions atòmiques i la disposició es divideixen estrictament en tres grups:
+- **Esquerra (Navegació):** Un trio d'icones compost per "Tornar arrere", "Tornar avant" i l'**Índex**.
+  - *Regla Sagrada de l'Índex:* Aquest botó és fonamental. Evita haver d'omplir la pàgina de múltiples etiquetes `<h1>` per a separar contingut, permetent navegar per les subseccions (`<h2>`, `<h3>`). Això garanteix que **només hi haja un únic H1 per pàgina**, mantenint la puresa SEO i l'arquitectura d'informació.
+- **Centre (Interacció):** Un trio d'icones centrat compost per "Traductor", "Comentar (Xat)" i "Compartir".
+- **Dreta (Acció Principal):** El botó "Connectar".
+
+> [!IMPORTANT]
+> **Equivalència Atòmica (La Targeta i la Pàgina):**
+> L'equivalent directe de la Barra Blava (`bar-blue`) en la versió reduïda del component és **el peu de la Targeta Universal (`UniversalCard footer`)**. Són atòmicament els mateixos elements. Les accions que s'afigen, canvien o s'eliminen a la Barra Blava s'han de reflectir exactament igual al peu de la Targeta Universal, i viceversa. Formen part del mateix sistema d'interacció.
 
 ### B. El Frame de Capçalera (Hero Image)
 - **Amplària Completa (Full Width):** La imatge Hero (o element multimèdia equivalent) **ha d'ocupar el 100% de l'ample del contenidor**. NO té marge. NO té padding.
