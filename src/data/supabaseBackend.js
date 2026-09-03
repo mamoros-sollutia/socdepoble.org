@@ -179,8 +179,8 @@ function mapContentRowsToData(rows) {
     noteFolders: (() => {
       const remote = lookup.get('noteFolders') || [];
       const ghostIds = new Set(['f-root', 'f-general', 'f-articles', 'f-histories', 'f-prompts', 'f-captures', 'f-event', 'f-mapa']);
-      const ghostNames = new Set(['Articles', 'Històries del Poble', 'Captures de recerca', 'Receptes']);
-      const filteredRemote = remote.filter(f => !ghostIds.has(f.id) && !ghostNames.has(f.name));
+      const ghostNames = new Set(['articles', 'històries del poble', 'captures de recerca', 'receptes']);
+      const filteredRemote = remote.filter(f => !ghostIds.has(f.id) && !ghostNames.has((f.name || '').trim().toLowerCase()));
       
       const merged = APP_SEED.noteFolders.map(seedF => filteredRemote.find(f => f.id === seedF.id) || seedF);
       const custom = filteredRemote.filter(f => !APP_SEED.noteFolders.find(s => s.id === f.id));
