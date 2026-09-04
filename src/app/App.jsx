@@ -23,7 +23,7 @@ const NotesSection = lazy(() => import('../sections/notes/NotesSection'));
 const DevicesSection = lazy(() => import('../sections/dispositius/DevicesSection'));
 const ConnectarSection = lazy(() => import('../sections/connectar/ConnectarSection'));
 const ControlSection = lazy(() => import('../sections/control/ControlSection'));
-const LoginSection = lazy(() => import('../sections/login/LoginSection'));
+const OnboardingSection = lazy(() => import('../sections/onboarding/OnboardingSection'));
 
 const TranslationsSection = lazy(() => import('../sections/translations/TranslationsSection'));
 const TextSection = lazy(() => import('../sections/text/TextSection'));
@@ -199,7 +199,7 @@ function AppShell({ children, mobileNav }) {
     const onTouchEnd = () => {
       if (pullStart === null) return;
       if (pullDistance > PULL_THRESHOLD) {
-        window.dispatchEvent(new CustomEvent('sdp:refresh-data', { bubbles: true, composed: true }));
+        window.location.reload();
       }
       pullStart = null;
       pullDistance = 0;
@@ -339,7 +339,7 @@ const TopBar = memo(function TopBar() {
         <button type="button" className="icon sdp-top-bar-btn" onClick={toggleTheme} aria-label={t('nav.tema', 'Tema')} title={t('nav.tema', 'Tema')}>
           {themeMode === 'dark' ? <Sun aria-hidden="true" focusable="false" /> : <MoonStar aria-hidden="true" focusable="false" />}
         </button>
-        <button type="button" className="icon sdp-top-bar-btn" onClick={() => navigateWithTransition(currentUser ? '/el-meu-perfil' : '/login')} aria-label={t('nav.perfil', 'Perfil')} title={t('nav.perfil', 'Perfil')}>
+        <button type="button" className="icon sdp-top-bar-btn" onClick={() => navigateWithTransition(currentUser ? '/el-meu-perfil' : '/registre')} aria-label={t('nav.perfil', 'Perfil')} title={t('nav.perfil', 'Perfil')}>
           <UserRound aria-hidden="true" focusable="false" />
         </button>
       </div>
@@ -428,10 +428,10 @@ function AppRoutes() {
         <Route path="/dispositius" element={<DevicesSection />} />
         <Route path="/connectivitat" element={<Navigate to="/dispositius" replace />} />
         <Route path="/cerca" element={<SearchSection />} />
-        <Route path="/login" element={<LoginSection />} />
-        <Route path="/accedir" element={<Navigate to="/login" replace />} />
-        <Route path="/registre" element={<Navigate to="/login" replace />} />
-        <Route path="/crear-compte" element={<Navigate to="/login" replace />} />
+        <Route path="/login" element={<Navigate to="/registre" replace />} />
+        <Route path="/accedir" element={<Navigate to="/registre" replace />} />
+        <Route path="/registre" element={<OnboardingSection />} />
+        <Route path="/crear-compte" element={<Navigate to="/registre" replace />} />
         <Route path="/el-meu-perfil" element={<MyProfileSection />} />
         <Route path="/perfil" element={<ProfileSection agents={agents} />} />
         <Route path="/perfil/:agentId" element={<ProfileSection agents={agents} />} />
