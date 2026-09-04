@@ -2,14 +2,6 @@
 tipus: plantilla
 estat: canonic
 description: Plantilla oficial per a crear noves skills (habilitats) per als agents d'Antigravity.
-name: "[nom-de-la-skill]"
-triggers_on:
-  - "gallet 1"
-  - "gallet 2"
-core: false
-tags:
-  - agent
-  - skill
 ---
 # 🧠 [Títol Formatejat de la Skill]
 

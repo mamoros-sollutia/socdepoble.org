@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import { Image as ImageIcon, Lock, Globe, FileText, ArrowLeft } from 'lucide-react';
-import { useNotes } from './NotesContext';
+import { useNotes, etiquetesDeNota } from './NotesContext';
 import NotesToolbar from './NotesToolbar';
 import { DateTimeControl, Dropdown, DropdownItem, UniversalPage } from '../../components/universal/UniversalComponents';
 import { sanitizeHtml } from '../../utils/sanitize.js';
@@ -13,6 +13,30 @@ export default function NotesEditor() {
   const timeoutRef = useRef(null);
   const pendingSaveRef = useRef({ id: null, content: null });
   const currentNoteRef = useRef({ id: null, title: '', subtitle: '', lead: '' });
+  const fileInputRef = useRef(null);
+
+  const LIMIT_HERO = 512 * 1024;
+
+  const triaImatge = (e) => {
+    const fitxer = e.target.files?.[0];
+    e.target.value = '';
+    if (!fitxer) return;
+    if (!fitxer.type.startsWith('image/')) return alert('Només imatges, de moment.');
+    if (fitxer.size > LIMIT_HERO) return alert('La imatge passa de 512 KB. Redueix-la abans.');
+    const lector = new FileReader();
+    lector.onload = () => { 
+      saveNoteField(activeNote.id, 'heroImage', String(lector.result)); 
+      setIsEditingImage(false); 
+    };
+    lector.onerror = () => alert("No s'ha pogut llegir el fitxer.");
+    lector.readAsDataURL(fitxer);
+  };
+
+  const handleDeleteHero = () => {
+    if (!window.confirm('Esborrar definitivament la imatge de capçalera?')) return;
+    saveNoteField(activeNote.id, 'heroImage', ''); 
+    setIsEditingImage(false);
+  };
 
   if (currentNoteRef.current.id !== activeNote?.id) {
     currentNoteRef.current = {
@@ -24,7 +48,7 @@ export default function NotesEditor() {
   }
 
   const editor = useEditor({
-    extensions: [StarterKit],
+    extensions: [StarterKit.configure({ heading: { levels: [2, 3, 4] } })],
     content: activeNote?.content || '',
     onUpdate: ({ editor }) => {
       const html = editor.getHTML();
@@ -89,29 +113,31 @@ export default function NotesEditor() {
 
       <div className="editor-scroll-area">
         <UniversalPage 
+          titleText={activeNote.title || 'Sense Títol'}
           chrome="context" 
           variant="embed"
-          showLogos={true}
+          showLogos={!activeNote.heroImage}
           topBarData={{
             heroComponent: (activeNote.heroImage && !isEditingImage) ? (
               <img 
                 src={activeNote.heroImage} 
-                alt="Cover" 
-                className="hero-image-img pointer" 
+                alt="Capçalera" 
+                className="hero-editable" 
                 onClick={() => setIsEditingImage(true)}
                 title="Clica per canviar la imatge"
               />
             ) : (
-              <div className="sdp-p-6 sdp-mb-4 notes-editor-cover-placeholder" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', background: 'var(--sdp-fons-subtil)' }}>
-                <button type="button" className="pill dashed-pill pointer">
+              <div className="hero-accions">
+                <input type="file" accept="image/*" ref={fileInputRef} onChange={triaImatge} className="sdp-ocult" style={{display: 'none'}} />
+                <button type="button" className="pill hero-accions__inserir" onClick={() => fileInputRef.current?.click()}>
                   <ImageIcon size={16} /> Inserir Imatge o Multimèdia
                 </button>
                 {activeNote.heroImage && (
-                  <div style={{ display: 'flex', gap: '8px', marginTop: '8px' }}>
-                    <button type="button" className="pill pointer" style={{ border: '1px solid var(--sdp-vora)', background: 'transparent' }} onClick={() => setIsEditingImage(false)}>
+                  <div className="hero-accions__grup">
+                    <button type="button" className="pill hero-accions__cancelar" onClick={() => setIsEditingImage(false)}>
                       Tornar enrere
                     </button>
-                    <button type="button" className="pill pointer" style={{ border: '1px solid var(--sdp-error)', color: 'var(--sdp-error)', background: 'transparent' }} onClick={() => { saveNoteField(activeNote.id, 'heroImage', ''); setIsEditingImage(false); }}>
+                    <button type="button" className="pill hero-accions__esborrar" onClick={handleDeleteHero}>
                       Esborrar contingut
                     </button>
                   </div>
@@ -124,7 +150,7 @@ export default function NotesEditor() {
                   right
                   minWidth="320px"
                   trigger={
-                    <button type="button" className="btn-date-time sp-card-time btn-round-icon text-white">
+                    <button type="button" className="btn-icon-orange sp-card-time">
                       <Lock size={16} />
                     </button>
                   }
@@ -133,8 +159,6 @@ export default function NotesEditor() {
                     <strong>{activeNote.isPublished ? 'Exemple de Publicació' : 'Pàgina en Edició'}</strong>
                     <p>Aquesta targeta és una previsualització de com quedarà al Mur. Utilitza l'editor inferior per modificar el contingut.</p>
                   </div>
-                  <DropdownItem icon={<Lock size={16} />} onClick={() => {}}>Privada (Oculta)</DropdownItem>
-                  <DropdownItem icon={<Globe size={16} />} onClick={() => {}}>Pública al Mur</DropdownItem>
                 </Dropdown>
                 <DateTimeControl time={activeNote.formattedTime} date={activeNote.formattedDate} />
               </>
@@ -153,23 +177,11 @@ export default function NotesEditor() {
               style={{ display: 'inline-block', minWidth: '10px' }}
             />
           }
-          labels={[
-             { 
-               text: noteFolders.find(f => f.id === activeNote.folderId)?.name || 'General', 
-               className: 'sdp-badge-system',
-               onClick: () => handleSelectFolder(activeNote.folderId)
-             },
-             ...(activeNote.category ? [{ 
-               text: activeNote.category, 
-               className: 'sdp-badge-category',
-               onClick: () => handleSelectCategory(activeNote.category)
-             }] : []),
-             ...(activeNote.tags || []).map(t => ({ 
-               text: t, 
-               className: 'sdp-badge-tag',
-               onClick: () => handleSelectTag(t)
-             }))
-          ]}
+          labels={etiquetesDeNota(activeNote, noteFolders, {
+             carpeta: handleSelectFolder,
+             categoria: handleSelectCategory,
+             etiqueta: handleSelectTag
+          })}
           copyright="© Sóc de Poble / Fet per la IAIA i Nano Banana"
           subtitle={
             <span

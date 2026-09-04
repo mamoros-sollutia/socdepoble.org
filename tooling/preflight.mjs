@@ -24,7 +24,7 @@ function camina(dir, out = []) {
         out.push(ruta);
       }
     }
-  } catch (e) {
+  } catch {
     // Ignorar carpetes sense permisos
   }
   return out;
@@ -53,7 +53,9 @@ try {
       avisos.push(`SENSE LLIBRE (Avís): «${f}» és nou i no consta al LEDGER.md.`);
     }
   }
-} catch { /* sense git, la porta segueix tancada per la resta de controls */ }
+} catch {
+  throw new Error("Git no disponible o error al llegir l'estat.");
+}
 
 console.log(`\n[PORTA D'OBRA] ${fitxers.length} fitxers revisats.`);
 if (avisos.length) {

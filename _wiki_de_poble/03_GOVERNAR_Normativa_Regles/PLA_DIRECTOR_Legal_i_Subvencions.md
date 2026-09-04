@@ -14,7 +14,7 @@ tags:
 
 ---
 
-## 1. Veredicte Jurídic (L'Estructura de [[ESTANDARD_Pedra_Seca|Pedra Seca]])
+## 1. Veredicte Jurídic (L'Estructura de Pedra Seca)
 
 L'arquitectura legal del projecte ha de complir tres premisses: permetre la captació de fons sense ànim de lucre, garantir la sobirania del codi i minimitzar la burocràcia per a un sol Mestre d'Obra inicial. Aquest document s'ancora a l'[[00_INDEX|Índex Principal]].
 

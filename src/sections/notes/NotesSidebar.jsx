@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNotes } from './NotesContext';
-import { Folder, Bookmark, Hash, PanelLeftClose, MessageSquare, Newspaper, ShoppingCart, LandPlot, GalleryVerticalEnd, NotebookPen, CalendarDays, Calendar, MapPinned, Inbox, Settings, Clock, ChevronDown, ChevronRight } from 'lucide-react';
+import { Folder, Bookmark, Hash, PanelLeftClose, Newspaper, ShoppingCart, LandPlot, GalleryVerticalEnd, NotebookPen, Calendar, MapPinned, Inbox, Settings, Clock, ChevronDown, ChevronRight } from 'lucide-react';
 
 const CATEGORIES = ['Sistema'];
 
@@ -55,7 +55,7 @@ export default function NotesSidebar() {
       {settingsOpen && (
         <div className="dropdown-menu">
           <div className="dropdown-header">
-            <span className="flex-center gap-6"><Clock size={14}/> Temps:</span>
+            <span className="sdp-flex sdp-items-center sdp-gap-8"><Clock size={14}/> Temps:</span>
             <span>{formatTime(timerSeconds)}</span>
           </div>
           <button 
@@ -92,7 +92,7 @@ export default function NotesSidebar() {
           </button>
         </div>
         <div className="notes-column__body" style={{ padding: 0 }}>
-          <div className="sidebar-actions" style={{ justifyContent: 'center' }}>
+          <div className="sidebar-actions sdp-justify-center">
             <SettingsDropdown />
           </div>
         </div>
@@ -106,7 +106,7 @@ export default function NotesSidebar() {
   return (
     <aside className="notes-column notes-column--left" hidden={isCompact && mobilePanel !== 'folders'}>
       <div className="notes-column-header cursor-pointer" onClick={() => setAccFoldersOpen(!accFoldersOpen)} title="Plegar/Desplegar Carpetes">
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <div className="sdp-flex sdp-items-center sdp-gap-8">
           {accFoldersOpen ? <ChevronDown size={20} /> : <ChevronRight size={20} />}
           <div className="notes-column-title">CARPETES</div>
         </div>
@@ -163,7 +163,7 @@ export default function NotesSidebar() {
           onClick={() => setAccCategoriesOpen(!accCategoriesOpen)}
           title="Plegar/Desplegar Categories"
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <div className="sdp-flex sdp-items-center sdp-gap-8">
             {accCategoriesOpen ? <ChevronDown size={20} /> : <ChevronRight size={20} />}
             <div className="notes-column-title">CATEGORIES</div>
           </div>
@@ -191,7 +191,7 @@ export default function NotesSidebar() {
           onClick={() => setAccTagsOpen(!accTagsOpen)}
           title="Plegar/Desplegar Etiquetes"
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <div className="sdp-flex sdp-items-center sdp-gap-8">
             {accTagsOpen ? <ChevronDown size={20} /> : <ChevronRight size={20} />}
             <div className="notes-column-title">ETIQUETES</div>
           </div>

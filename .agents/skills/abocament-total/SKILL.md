@@ -10,9 +10,6 @@ triggers_on:
   - veritat completa
   - abocament total
 core: false
-tags:
-  - agent
-  - skill
 ---
 
 # Llei de la Completitud (Anti-Ocultació)

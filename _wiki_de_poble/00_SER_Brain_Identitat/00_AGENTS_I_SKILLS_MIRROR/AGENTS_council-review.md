@@ -16,9 +16,6 @@ triggers_on:
   - deliberate
   - council review
 core: false
-tags:
-  - agent
-  - skill
 ---
 
 <!-- Aquest fitxer és un ESPILL (mirror) automàtic de .agents/skills/council-review/SKILL.md -->

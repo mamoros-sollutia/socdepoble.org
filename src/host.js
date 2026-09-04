@@ -38,17 +38,20 @@
  *
  * COM L'USA SOLLUTIA
  * ──────────────────
- *   import { configura, arrenca } from 'socdepoble';
+ * Si s'empra `type="module"`, el host carrega de forma diferida. Per evitar
+ * curses, Sollutia ha d'esperar l'esdeveniment `socdepoble-ready` o
+ * comprovar si ja està llest:
  *
- *   configura({
- *     backend: {
- *       loadAppData:      (...a) => elMeuBackend.carrega(...a),
- *       appendChatMessages: (...a) => elMeuBackend.xat(...a),
- *       getCurrentUser:   () => elMeuBackend.usuari(),
- *       // …la resta del contracte; el que no es passe cau a Supabase.
- *     },
- *   });
- *   arrenca();
+ *   function bootSollutia() {
+ *     window.SocDePoble.configura({ backend: { ... } });
+ *     window.SocDePoble.arrenca();
+ *   }
+ *
+ *   if (window.SocDePoble && window.SocDePoble.isReady) {
+ *     bootSollutia();
+ *   } else {
+ *     window.addEventListener('socdepoble-ready', bootSollutia);
+ *   }
  *
  * Per a substituir Supabase del tot (l'objectiu d'integració amb Sollutia), es passa el
  * contracte sencer i `supabaseBackend.js` deixa de tocar-se en temps d'execució.
@@ -67,6 +70,14 @@
  * Vegeu `tooling/gates/tractor-enxufe.mjs` per a la comprovació estàtica.
  */
 
+if (typeof window !== 'undefined') {
+  window.addEventListener('vite:preloadError', (event) => {
+    console.error('[host] Error de xarxa en la càrrega diferida de mòduls Vite:', event);
+    // El catch de l'arrenca pintarà això si passa durant l'arrencada, 
+    // però això ens cobreix canvis de ruta asíncrons.
+  });
+}
+
 import { setBackendImplementation, freezeImplementation, getBackendImplementation } from './data/backendPort.js';
 import { defineCustomElement } from './PedraSecaEmbed.jsx';
 
@@ -75,6 +86,7 @@ import { defineCustomElement } from './PedraSecaEmbed.jsx';
 const FASE = { CONFIGURABLE: 'configurable', SEGELLAT: 'segellat' };
 let fase = FASE.CONFIGURABLE;
 let autoProgramada = false;
+let arrencada = null;
 
 /** Mètodes que un backend complet ha d'oferir. Documenta el contracte. */
 export const CONTRACTE_BACKEND = Object.freeze([
@@ -141,52 +153,78 @@ export function configura({ backend } = {}) {
 /**
  * Congela el backend i defineix `<soc-de-poble>`. Idempotent.
  *
- * A partir d'ací `configura()` llança. Aquest és el punt on abans es feia el
- * `freezeImplementation()` — dins de `connectedCallback` — i per això no hi
- * havia finestra d'injecció.
+ * CURSA CORREGIDA (260903): `fase` es marcava DESPRÉS de l'`await import()`.
+ * Durant eixa finestra:
+ *   · un segon `arrenca()` travessava el guard i cridava `defineCustomElement()`
+ *     dos voltes → NotSupportedError;
+ *   · un `configura()` tardà passava net i després quedava sobreescrit en
+ *   silenci pel backend de Supabase.
+ * Ara el segellat es marca SÍNCRONAMENT i la faena asíncrona viu en una
+ * promesa memoritzada.
  *
- * @returns {{fase: string, backend: string[]}}
+ * @returns {Promise<{fase: string, backend: string[]}>}
  */
-export async function arrenca() {
-  if (fase === FASE.SEGELLAT) return { fase, backend: Object.keys(getBackendImplementation()) };
-  
-  const currentInjected = getBackendImplementation();
-  const injectedKeys = Object.keys(currentInjected);
-  
-  if (injectedKeys.length > 0) {
-    // Si s'ha injectat un backend, exigim que siga complet (mode estricte)
-    const pendents = CONTRACTE_BACKEND.filter(k => !injectedKeys.includes(k));
-    if (pendents.length > 0) {
-      throw new Error(`[host] Injecció incompleta. No es permet fusió amb Supabase. Falten mètodes: ${pendents.join(', ')}`);
-    }
-  } else {
-    // Si no hi ha cap injecció, carreguem el backend per defecte
-    try {
+export function arrenca() {
+  if (arrencada) return arrencada;
+
+  fase = FASE.SEGELLAT;
+
+  arrencada = (async () => {
+    const injectats = Object.keys(getBackendImplementation());
+
+    if (injectats.length > 0) {
+      // Mode estricte: si s'ha injectat, ha de ser el contracte sencer.
+      const pendents = CONTRACTE_BACKEND.filter((k) => !injectats.includes(k));
+      if (pendents.length > 0) {
+        throw new Error(
+          `[host] Injecció incompleta. No es permet fusió amb Supabase. Falten mètodes: ${pendents.join(', ')}`,
+        );
+      }
+    } else {
+      // Fail-closed: si el backend per defecte no carrega, NO congelem una
+      // implementació buida ni pintem l'element. Abans es feia console.error
+      // i es continuava: l'app es muntava sencera amb totes les crides de
+      // dades fallant, que és pitjor que no muntar-se.
       const supabaseImpl = await import('./data/supabaseBackend.js');
       setBackendImplementation(supabaseImpl);
-    } catch (e) {
-      console.error('[host] Error fatal carregant el backend per defecte:', e);
     }
-  }
 
-  freezeImplementation();
-  fase = FASE.SEGELLAT;
-  defineCustomElement();
-  return { fase, backend: Object.keys(getBackendImplementation()) };
+    freezeImplementation();
+    defineCustomElement();
+    return { fase, backend: Object.keys(getBackendImplementation()) };
+  })();
+
+  return arrencada;
 }
 
 /**
  * Arrencada automàtica per als entorns que no configuren res (WordPress).
  *
- * Es programa per al següent tick de microtasques en compte de fer-se de
- * seguida: així un `<script>` del host col·locat DESPRÉS del bundle encara
- * arriba a temps de cridar `configura()`. És la diferència entre una finestra
- * d'injecció de zero mil·lisegons i una d'utilitzable.
+ * `setTimeout(…, 0)` és una MACROtasca, no una microtasca: la finestra
+ * d'injecció és més ampla del que deia el comentari anterior. Tot i així
+ * només arriba a temps un `<script>` SÍNCRON del host. Amb `defer`, `async`
+ * o `type="module"` —el que fa `wp_enqueue_script` amb estratègia diferida—
+ * el host arriba tard i `configura()` llançarà.
  */
 export function arrencaAuto() {
   if (autoProgramada || fase === FASE.SEGELLAT) return;
   autoProgramada = true;
-  const fes = () => { if (fase !== FASE.SEGELLAT) arrenca(); };
+  const fes = () => {
+    if (fase === FASE.SEGELLAT) return;
+    arrenca().catch((e) => {
+      console.error('[host] Arrencada fallida. El component no es muntarà:', e);
+      if (typeof document !== 'undefined') {
+        const sdpTags = document.querySelectorAll('soc-de-poble');
+        sdpTags.forEach(tag => {
+          tag.innerHTML = `<div style="padding: 1.5rem; color: #b91c1c; background: #fee2e2; border: 1px solid #ef4444; margin: 1rem; border-radius: 6px; font-family: sans-serif;">
+            <h3 style="margin-top: 0; font-size: 1.25rem;">Error crític d'arrencada</h3>
+            <p style="margin-bottom: 0.5rem;">Sóc de Poble no ha pogut connectar amb el backend.</p>
+            <pre style="white-space: pre-wrap; font-size: 0.875rem; background: rgba(255,255,255,0.5); padding: 0.5rem; border-radius: 4px;">${e.message || e}</pre>
+          </div>`;
+        });
+      }
+    });
+  };
   if (typeof document !== 'undefined' && document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => setTimeout(fes, 0), { once: true });
   } else {
@@ -211,12 +249,24 @@ export function estat() {
  * `<script>` pla necessita un global. És l'ÚNICA assignació a `window` del
  * projecte i està declarada ací, no escampada.
  *
- * `tooling/gates/tractor-enxufe.mjs` verifica que aquest objecte exposa
- * exactament l'API pública i res més.
+ * IDEMPOTENT (260903): amb `configurable:false` i `writable:false`, una
+ * segona crida —bloc i shortcode alhora en la mateixa pàgina, o dos
+ * muntatges del bundle— llançava TypeError i matava el segon muntatge
+ * sencer. Ara la segona crida torna l'API ja exposada.
  */
 export function exposaGlobal(objectiu = (typeof window !== 'undefined' ? window : undefined)) {
   if (!objectiu) return null;
-  const api = Object.freeze({ configura, arrenca, estat, CONTRACTE_BACKEND });
+
+  const existent = Object.getOwnPropertyDescriptor(objectiu, 'SocDePoble');
+  if (existent) return existent.value ?? null;
+
+  const api = Object.freeze({ configura, arrenca, estat, CONTRACTE_BACKEND, isReady: true });
   Object.defineProperty(objectiu, 'SocDePoble', { value: api, writable: false, configurable: false });
+  
+  // Avisar a Sollutia o qualsevol integrador que l'API ja està llesta
+  if (typeof window !== 'undefined') {
+    window.dispatchEvent(new CustomEvent('socdepoble-ready', { detail: api }));
+  }
+  
   return api;
 }

@@ -64,6 +64,6 @@ les fonts d'autoritat actuals.
 - [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maquina_Tecnica/00_arquitectura_tecnica_unificada.md]] — [[00_BIOS|00_SER_Brain_Identitat/00_BIOS.md]] — Les fonts mecàniques són [[00...
 - [[PLANTILLA_ISO_SDP|02_ACTUAR_Maquina_Tecnica/plantilles/PLANTILLA_ISO_SDP.md]] — [[00_BIOS]]
 - [[FORJA_TO_CORE|03_GOVERNAR_Normativa_Regles/FORJA_TO_CORE.md]] — [[00_BIOS|00_SER_Brain_Identitat/00_BIOS.md]] — [[FORJA_TO_CORE|03_GOVERNAR_N...
-- [[260903_0223_PROMPT_auditoria_notes|05_Escriptori_Soc_de_Poble/260903_0223_PROMPT_auditoria_notes.md]] — [[00_BIOS]]
+- 05_Escriptori_Soc_de_Poble/260903_0223_PROMPT_auditoria_notes.md — [[00_BIOS]]
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

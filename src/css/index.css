@@ -1305,9 +1305,26 @@ details[open] summary.accordion-header svg:last-child { transform: rotate(180deg
 .sdp-badge-accent { background: var(--sdp-accent); color: var(--sdp-sobre-accent); }
 :root[data-theme="dark"] .sdp-badge-accent, :host([data-theme="dark"]) .sdp-badge-accent { background: var(--sdp-accio); color: var(--sdp-sobre-accio); }
 .sdp-badge-category { background: var(--sdp-accio-subtil); color: var(--sdp-accio-text); }
-.sdp-badge-tag { background: var(--sdp-exit-fons); color: var(--sdp-exit-text); }
+.sdp-badge-tag { background: var(--sdp-accent-subtil); color: var(--sdp-accent-text-hover); }
 .sdp-badge-neutral { background: var(--sdp-fons-subtil); color: var(--sdp-text-titol); }
 
+/* Píndoles Accessibles (Botó) */
+.sp-card-label:has(.sp-card-label__action) { padding: 0; overflow: hidden; }
+.sp-card-label__action {
+  border: 0;
+  padding: 0 12px;
+  min-height: var(--sdp-touch); /* 44px LLEI_04_VIDA */
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.sp-card-label__action:hover { background: rgba(0,0,0,0.05); }
+:root[data-theme="dark"] .sp-card-label__action:hover, :host([data-theme="dark"]) .sp-card-label__action:hover { background: rgba(255,255,255,0.05); }
 /* Retrocompatibilitat */
 
 /* Tooltip (Bocata) */
@@ -1935,6 +1952,9 @@ nav.mobile-nav { display: none; }
 .sdp-gap-28 { gap: var(--sdp-space-8); }
 .sdp-gap-48 { gap: var(--sdp-space-12); }
 
+.sdp-pointer-events-none { pointer-events: none; }
+.sdp-bg-transparent { background-color: transparent; }
+
 .sdp-m-0 { margin: var(--sdp-space-0); }
 .sdp-mb-0 { margin-bottom: var(--sdp-space-0); }
 .sdp-mb-1 { margin-bottom: var(--sdp-space-1); }
@@ -1976,7 +1996,12 @@ nav.mobile-nav { display: none; }
 /* ==========================================================================
    FASE 4: EXPERIÈNCIA PRÈMIUM (PEDRA SECA UX)
    ========================================================================== */
-
+.sdp-flex-1 { flex: 1; }
+.sdp-flex-row-reverse { flex-direction: row-reverse; }
+.sdp-self-end { align-self: flex-end; }
+.sdp-whitespace-pre-wrap { white-space: pre-wrap; }
+.sdp-max-w-600 { max-width: 600px; }
+.sdp-max-w-85 { max-width: 85%; }
 
 /* --- 1. View Transitions API (La Pedra Lliscant) --- */
 @supports (view-transition-name: root) {

@@ -43,7 +43,7 @@ const OPERACIO = 'restauracio-segellada';
 const DOMINI_SEGELL = 'sdp.desenterrar.segell.v2';
 const PAPERERA = '.sdp-paperera';
 const MODES_ADMESOS = new Set(['100644', '100755']);
-const RE_REF = /^[A-Za-z0-9._\/^~@{}-]{1,255}$/;
+const RE_REF = /^[A-Za-z0-9._/^~@{}-]{1,255}$/;
 
 const sha256 = (v) => createHash('sha256').update(v).digest('hex');
 const posix = (v) => v.split(path.sep).join('/');

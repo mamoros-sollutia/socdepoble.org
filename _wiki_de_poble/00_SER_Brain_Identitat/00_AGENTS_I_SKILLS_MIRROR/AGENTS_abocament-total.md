@@ -10,9 +10,6 @@ triggers_on:
   - veritat completa
   - abocament total
 core: false
-tags:
-  - agent
-  - skill
 ---
 
 <!-- Aquest fitxer és un ESPILL (mirror) automàtic de .agents/skills/abocament-total/SKILL.md -->

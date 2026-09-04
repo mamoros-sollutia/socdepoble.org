@@ -72,6 +72,7 @@ function resolveWikiLink(linkName, sourceDir, baseDir) {
         }
       }
     } catch (e) {
+      // Ignorar errors de lectura de directori
     }
     return null;
   }
@@ -144,6 +145,7 @@ function weaveBacklinks(baseDir, dryRun = false) {
         }
       }
     } catch (e) {
+      // Ignorar errors
     }
   }
   

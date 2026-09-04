@@ -13,11 +13,10 @@ Ací només resideix la matèria viva. El que ha mort, descansa en l'arxiu.
 - [[00_INDEX_IDENTITAT]] (Nucli d'Identitat)
 - [[00_INDEX_Actes]] (Registre d'Actes)
 
-- [[260903_0635_acta_marmota_tancament]]
-- [[260903_1908_ABSENTS_auditoria.json]]
-- [[260903_1908_BUNDLE_auditoria]]
-- [[260903_1908_MANIFEST_auditoria.json]]
-- [[260903_1908_PROMPT_auditoria]]
+- [[260904_0230_ABSENTS_disseny_notes_editor.json]]
+- [[260904_0230_BUNDLE_disseny_notes_editor]]
+- [[260904_0230_MANIFEST_disseny_notes_editor.json]]
+- [[260904_0230_PROMPT_disseny_notes_editor]]
 
 ## 01_Produccio
 - [[01_Produccio/260901_1348_AUDIO_Trellat_NotebookLM.m4a]]

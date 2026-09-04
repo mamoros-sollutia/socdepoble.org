@@ -11,9 +11,6 @@ triggers_on:
   - guia
   - socdepoble workflow
 core: false
-tags:
-  - agent
-  - skill
 ---
 
 <!-- Aquest fitxer és un ESPILL (mirror) automàtic de .agents/skills/socdepoble-workflow/SKILL.md -->

@@ -11,9 +11,6 @@ triggers_on:
   - com afegir
   - guia ampliacio
 core: false
-tags:
-  - agent
-  - skill
 ---
 
 <!-- Aquest fitxer és un ESPILL (mirror) automàtic de .agents/skills/guia-ampliacio/SKILL.md -->

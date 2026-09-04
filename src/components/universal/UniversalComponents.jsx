@@ -441,7 +441,8 @@ export function UniversalPage(props) {
   
   const currentThemeMode = (themeMode === 'system' || themeMode === 'light') ? (appData?.themeMode || 'light') : themeMode;
   
-  const handleConnect = onConnect || (() => navigate('/connectar?item_id=' + encodeURIComponent(title || 'page')));
+  const actualTitleText = props.titleText || config.titleText || (typeof title === 'string' ? title : '');
+  const handleConnect = onConnect || (() => navigate('/connectar?item_id=' + encodeURIComponent(actualTitleText || 'page')));
   
   const handleBack = onBack || (() => navigate(-1));
   const handleForward = onForward || (() => navigate(1));
@@ -558,7 +559,6 @@ export function UniversalPage(props) {
       )}
 
       {showBlueBar && (
-        <>
           <header className={`bar-blue ${variant === 'embed' ? 'bar-blue--embed' : ''}`.trim()}>
             <div className="bar-blue-left">
               <IconButton label="Tornar arrere" onClick={handleBack} presentation>
@@ -594,19 +594,20 @@ export function UniversalPage(props) {
               {connectLabel}
             </ActionControl>
           </header>
+      )}
 
-          {topBarData?.heroComponent ? (
-            <div className="hero-image">
-              {topBarData.heroComponent}
-            </div>
-          ) : barHeroImage ? (
-            <div className="hero-image">
-              <img alt={barHeroAlt} src={resolveAsset(barHeroImage)} />
-            </div>
-          ) : null}
+      {topBarData?.heroComponent ? (
+        <div className="hero-image">
+          {topBarData.heroComponent}
+        </div>
+      ) : barHeroImage ? (
+        <div className="hero-image">
+          <img alt={barHeroAlt} src={resolveAsset(barHeroImage)} />
+        </div>
+      ) : null}
 
-          {showOrangeBar && (
-            <section className={`bar-orange ${variant === 'embed' ? 'bar-orange--embed' : ''}`.trim()} aria-label="Autoria i data">
+      {showOrangeBar && (
+        <section className={`bar-orange ${variant === 'embed' ? 'bar-orange--embed' : ''}`.trim()} aria-label="Autoria i data">
               <div className="sp-card-author">
                 <img
                   className="sp-card-avatar"
@@ -644,8 +645,6 @@ export function UniversalPage(props) {
               </div>
             </section>
           )}
-        </>
-      )}
 
       {hasHeader && (
         <header
@@ -681,15 +680,21 @@ export function UniversalPage(props) {
                 return (
                   <li
                     key={`${text}-${index}`}
-                    className={['sp-card-label', className].join(' ')}
+                    className={['sp-card-label', className].filter(Boolean).join(' ')}
                   >
-                    {safeHref ? (
+                    {label.onClick ? (
+                      <button type="button" className="sp-card-label__action" onClick={label.onClick}>
+                        {text}
+                      </button>
+                    ) : safeHref ? (
                       safeHref.startsWith('http') ? (
-                        <a href={safeHref} target="_blank" rel="noopener noreferrer" style={ { color: 'inherit', textDecoration: 'none' }}>{text}</a>
+                        <a href={safeHref} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>{text}</a>
                       ) : (
-                        <Link to={safeHref} style={ { color: 'inherit', textDecoration: 'none' }}>{text}</Link>
+                        <Link to={safeHref} style={{ color: 'inherit', textDecoration: 'none' }}>{text}</Link>
                       )
-                    ) : text}
+                    ) : (
+                      text
+                    )}
                   </li>
                 );
               })}

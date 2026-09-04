@@ -45,9 +45,17 @@ function posaGanxos() {
   });
 }
 
+/**
+ * P0 · 260903 — el ganxo s'arma en CARREGAR EL MÒDUL, no dins de
+ * sanitizeHtml(). `DOMPurify.addHook` és estat global: mentres depenia
+ * d'una crida, qualsevol camí que tocara DOMPurify directament corria
+ * amb ganxo o sense segons quina pàgina s'haguera pintat primer. Un
+ * control de seguretat no pot dependre de l'ordre de renderitzat.
+ */
+posaGanxos();
+
 export function sanitizeHtml(html) {
   if (!html) return '';
-  posaGanxos();
   return DOMPurify.sanitize(String(html), {
     ALLOWED_TAGS: [
       'p', 'br', 'strong', 'em', 'a', 'ul', 'ol', 'li',
@@ -79,4 +87,19 @@ export function netejaText(valor, maxim = 4000) {
     .normalize('NFC')
     .trim()
     .slice(0, maxim);
+}
+
+/** Font d'imatge admissible: data-URI d'imatge, ruta pròpia o http(s). '' = esborrat legítim. */
+export function esFontImatgeSegura(url) {
+  if (!url) return false;
+  const net = String(url).trim();
+  if (net.startsWith('data:image/')) return true;
+  if (net.startsWith('//')) return false;
+  if (net.startsWith('/')) return true;
+  try {
+    const u = new URL(net, window.location.origin);
+    return u.protocol === 'https:' || u.protocol === 'http:';
+  } catch {
+    return false;
+  }
 }

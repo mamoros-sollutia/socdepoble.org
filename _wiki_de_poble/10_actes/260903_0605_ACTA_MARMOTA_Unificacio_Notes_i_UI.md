@@ -1,7 +1,7 @@
 ---
 tipus: acta
-data: 260903_0605
-descripcio: "Sessió matinada: Restauració del disseny de l'editor, unificació de sidebars i higiene arquitectònica (Casa anti-huracans)"
+estat: esborrany
+description: ACTA MARMOTA — Tancament Sessió Matinada (260903)
 ---
 
 # ACTA MARMOTA — Tancament Sessió Matinada (260903)

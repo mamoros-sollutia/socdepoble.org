@@ -62,6 +62,6 @@ Cap plantilla ha d’incrustar blocs repetits de logos. Les plantilles han d’e
 - [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[DOC_Logos_Oficials|00_SER_Brain_Identitat/DOC_Logos_Oficials.md]] — Etiquet...
 - [[Identitat|01_SABER_Cultura_Coneixement/Identitat.md]] — [[DOC_Logos_Oficials|00_SER_Brain_Identitat/DOC_Logos_Oficials.md]] — Categor...
 - [[PLANTILLA_ISO_SDP|02_ACTUAR_Maquina_Tecnica/plantilles/PLANTILLA_ISO_SDP.md]] — Consulta sempre: [[DOC_Logos_Oficials]]
-- [[260903_0223_PROMPT_auditoria_notes|05_Escriptori_Soc_de_Poble/260903_0223_PROMPT_auditoria_notes.md]] — Consulta sempre: [[DOC_Logos_Oficials]]
+- 05_Escriptori_Soc_de_Poble/260903_0223_PROMPT_auditoria_notes.md — Consulta sempre: [[DOC_Logos_Oficials]]
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

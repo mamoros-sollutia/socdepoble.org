@@ -37,12 +37,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 			padding: 0 !important;
 			width: 100% !important;
 			min-height: 100dvh !important;
-			background-color: var(--sdp-bg, #f4eee6) !important;
+			background-color: var(--sdp-fons-app, #f4eee6) !important;
 		}
 
 		@media (prefers-color-scheme: dark) {
 			html, body {
-				background-color: var(--sdp-bg, #0e0d0c) !important;
+				background-color: var(--sdp-fons-app, #0e0d0c) !important;
 			}
 		}
 		

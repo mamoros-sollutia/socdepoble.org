@@ -17,7 +17,6 @@ triggers_on:
   - informe
   - bundle
 core: true
-prioritat: 10
 ---
 
 <!-- Aquest fitxer és un ESPILL (mirror) automàtic de .agents/skills/reflexio-previa/SKILL.md -->

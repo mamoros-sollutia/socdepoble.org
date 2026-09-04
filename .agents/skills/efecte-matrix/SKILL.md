@@ -13,9 +13,6 @@ triggers_on:
   - nou document
   - generar arxiu
 core: true
-tags:
-  - agent
-  - skill
 ---
 
 # L'Efecte Matrix (Verificació Prèvia Obligatòria)

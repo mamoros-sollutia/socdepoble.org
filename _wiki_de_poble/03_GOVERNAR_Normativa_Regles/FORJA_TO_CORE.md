@@ -13,7 +13,7 @@ Este protocol **no està implementat en la baseline actual**. No existixen
 moure components, rebutjar React o declarar una homologació superada.
 
 La decisió canònica vigent és la de [[DOC_Governanca]] i
-[[ESTANDARD_Pedra_Seca]]: React/Vite és la carcassa productiva legítima. El codi
+ESTANDARD_Pedra_Seca: React/Vite és la carcassa productiva legítima. El codi
 es localitza en `src/sections/`, `src/components/`, `src/config/` i `src/data/`.
 
 ## Hipòtesi que es conserva
@@ -45,7 +45,6 @@ Només després de l'activació anterior, una peça candidata podria exigir:
 
 ## Sinapsis
 
-- [[ESTANDARD_Pedra_Seca]]
 - [[DOC_Governanca]]
 - [[00_arquitectura_tecnica_unificada]]
 

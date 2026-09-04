@@ -29,7 +29,7 @@ Entrada estàtica a la Wiki de Sóc de Poble.
 
 | Zona | Funció | Enllaç |
 |---|---|---|
-| 04 ARXIU | Memòria històrica curada i consultiva | [[00_INDEX_ARXIU]] |
+| 04 ARXIU | Memòria històrica curada i consultiva | 00_INDEX_ARXIU |
 | 05 ESCRIPTORI | Treball editorial temporal, no autoritat | Buit en esta baseline; ruta `05_Escriptori_Soc_de_Poble/` |
 
 ## Escriptori de Sessió (L'Era)
@@ -45,7 +45,6 @@ El treball editorial temporal pot passar per ací. En tancar-lo, el coneixement 
 - [[Soci_Sollutia]]
 - [[01_trellat]]
 - [[DOC_Governanca]]
-- [[ESTANDARD_Pedra_Seca]]
 - [[00_arquitectura_tecnica_unificada]]
 - [[Sistema_Immunitari]]
 - [[00_BIOS]]

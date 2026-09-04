@@ -2,7 +2,6 @@
 tipus: acta
 estat: actiu
 description: Acta Marmota de generació de Petorretas i tancament de sessió
-tags: [petorreta, consell, bugfix, marmota]
 ---
 
 # ACTA MARMOTA: Generació de Petorretas i Neteja

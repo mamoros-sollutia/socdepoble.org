@@ -15,7 +15,10 @@ export default defineConfig(({ command }) => ({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src'),
-      'react/jsx-runtime': path.resolve(__dirname, 'src/shims/jsx-runtime.js')
+      'react': 'preact/compat',
+      'react-dom/test-utils': 'preact/test-utils',
+      'react-dom': 'preact/compat',
+      'react/jsx-runtime': 'preact/jsx-runtime'
     }
   },
 
@@ -33,21 +36,16 @@ export default defineConfig(({ command }) => ({
     lib: {
       entry: path.resolve(__dirname, 'src/wp-standalone.js'),
       name: 'SocDePoble',
-      formats: ['iife'],
+      formats: ['es'],
       fileName: () => 'soc-de-poble.standalone.js'
     },
 
     rollupOptions: {
-      external: ['react', 'react-dom', 'react-dom/client'],
       output: {
-        inlineDynamicImports: true,
+        inlineDynamicImports: false,
         entryFileNames: 'soc-de-poble.standalone.js',
-        assetFileNames: 'assets/[name][extname]',
-        globals: {
-          'react': 'wp.element',
-          'react-dom': 'wp.element',
-          'react-dom/client': 'wp.element'
-        }
+        chunkFileNames: 'assets/[name]-[hash].js',
+        assetFileNames: 'assets/[name][extname]'
       }
     }
   }

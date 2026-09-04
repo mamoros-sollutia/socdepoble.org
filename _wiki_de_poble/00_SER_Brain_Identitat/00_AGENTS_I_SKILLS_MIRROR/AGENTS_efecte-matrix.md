@@ -13,9 +13,6 @@ triggers_on:
   - nou document
   - generar arxiu
 core: true
-tags:
-  - agent
-  - skill
 ---
 
 <!-- Aquest fitxer és un ESPILL (mirror) automàtic de .agents/skills/efecte-matrix/SKILL.md -->

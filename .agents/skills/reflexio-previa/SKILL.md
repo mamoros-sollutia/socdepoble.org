@@ -17,7 +17,6 @@ triggers_on:
   - informe
   - bundle
 core: true
-prioritat: 10
 ---
 
 # Reflexió Prèvia: Què sé jo d'això? (El Protocol Matrix)

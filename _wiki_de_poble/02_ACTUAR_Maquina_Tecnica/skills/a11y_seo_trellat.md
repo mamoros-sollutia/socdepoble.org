@@ -47,7 +47,6 @@ El dispositiu de referència del Baseline 2022 és el tribunal pràctic. LCP, IN
 
 ## Sinapsis
 
-- [[ESTANDARD_Pedra_Seca]]
 - [[03_Consola_Termodinamica]]
 - [[00_arquitectura_tecnica_unificada]]
 

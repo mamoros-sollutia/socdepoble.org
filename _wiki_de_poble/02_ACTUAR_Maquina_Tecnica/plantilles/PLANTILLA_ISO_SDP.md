@@ -172,7 +172,6 @@ La skill ha de retornar:
 - [[00_BIOS]]
 - [[02_GENOTIP]]
 - [[DOC_Governanca]]
-- [[ESTANDARD_Pedra_Seca]]
 - [[DOC_Logos_Oficials]]
 - enginyeria_inversa_mit
 

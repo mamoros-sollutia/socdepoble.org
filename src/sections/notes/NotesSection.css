@@ -135,7 +135,6 @@
 .notes-page .folder-item svg { flex: none; }
 .notes-page .folder-item:hover { background: var(--sdp-fons-targeta); }
 .notes-page .folder-item.active { background: var(--sdp-fons-targeta); color: var(--sdp-accio-text); }
-.notes-page .folder-item--global { /* Removed font overrides so all text looks the same */ }
 .notes-page .accordion { margin-top: var(--sdp-space-4); }
 .notes-page .accordion-toggle {
   width: 100%;
@@ -145,7 +144,7 @@
   padding: var(--sdp-space-2) var(--sdp-space-3);
   background: transparent;
   border: 0;
-  color: var(--sdp-text-secundari);
+  color: var(--sdp-text-suau);
   font-weight: 600;
   font-size: var(--sdp-text-meta);
   text-transform: uppercase;
@@ -314,3 +313,50 @@
 .notes-page--compact .d-desktop-only { display: none; }
 
 .notes-page .notes-header-media { margin: var(--sdp-space-4) 0 var(--sdp-space-6); }
+
+.editable-heading { display: inline-block; min-width: 10px; }
+
+/* ── HERO IMAGE EDITOR ── */
+.hero-editable {
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+  transition: opacity var(--sdp-t), filter var(--sdp-t);
+}
+.hero-editable:hover { opacity: 0.9; filter: brightness(0.95); }
+
+.hero-accions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sdp-space-3);
+  padding: var(--sdp-space-6) var(--sdp-space-4);
+  background: var(--sdp-fons-subtil);
+  border: 1px dashed var(--sdp-vora-control);
+  min-height: 200px;
+}
+.hero-accions__grup {
+  display: flex;
+  gap: var(--sdp-space-2);
+  margin-top: var(--sdp-space-2);
+}
+.hero-accions .pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sdp-space-2);
+  min-height: var(--sdp-touch);
+  padding: 0 var(--sdp-space-4);
+  border-radius: var(--sdp-radi-pastilla);
+  font-size: var(--sdp-text-meta);
+  font-weight: 700;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all var(--sdp-t);
+}
+.hero-accions__inserir { background: var(--sdp-fons-elevat); color: var(--sdp-text-titol); border-color: var(--sdp-vora-control); }
+.hero-accions__inserir:hover { background: var(--sdp-fons-subtil); }
+.hero-accions__cancelar { background: transparent; color: var(--sdp-text-cos); }
+.hero-accions__cancelar:hover { background: rgba(0,0,0,0.05); }
+.hero-accions__esborrar { background: var(--sdp-error-fons); color: var(--sdp-error-text); }
+.hero-accions__esborrar:hover { background: var(--sdp-error); color: #fff; }

@@ -43,22 +43,22 @@ if (filesToMove.length > 0) {
 console.log("🧹 [SOMIADOR] Passant l'escombra d'enllaços penjats per esborrar rastres d'arxius fantasma...");
 try {
   execSync('node tooling/wiki/escombra_penjats.mjs', { stdio: 'inherit' });
-} catch (e) {
-  console.error("Error passant l'escombra.");
+} catch {
+  throw new Error("Error passant l'escombra.");
 }
 
 console.log("🚜 [SOMIADOR] Reancorant el sistema amb el Llaurador...");
 try {
   execSync('node tooling/wiki/llaurador_indexs.mjs --escriu', { stdio: 'inherit' });
-} catch (e) {
-  console.error("Error al llaurador.");
+} catch {
+  throw new Error("Error al llaurador.");
 }
 
 console.log("🧶 [SOMIADOR] Verificant teixit final...");
 try {
   execSync('node tooling/wiki/teixidor.mjs --baseline', { stdio: 'inherit' });
-} catch (e) {
-  console.error("Error congelant baseline teixit.");
+} catch {
+  throw new Error("Error congelant baseline teixit.");
 }
 
 console.log("💤 [SOMIADOR] Cicle de son finalitzat. El cervell ha madurat i descansat.");

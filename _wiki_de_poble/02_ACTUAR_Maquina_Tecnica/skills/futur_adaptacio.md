@@ -53,7 +53,6 @@ Qualsevol experiment que haja de modificar coneixement, configuració o codi seg
 ## Sinapsis
 
 - [[03_Consola_Termodinamica]]
-- [[ESTANDARD_Pedra_Seca]]
 - [[MOTOR_OFFLINE]]
 - [[DOC_Governanca]]
 

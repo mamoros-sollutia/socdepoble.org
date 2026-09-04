@@ -74,7 +74,7 @@ export function escriu(valors, ordre) {
     } else {
       if (v === '' || v == null) continue;
       /* Citem només quan cal: dos punts seguits d'espai, o cometes al principi. */
-      const cal = /:\s/.test(v) || /^["'#\[{&*!|>%@`]/.test(v);
+      const cal = /:\s/.test(v) || /^["'#[{&*!|>%@`]/.test(v);
       linies.push(`${k}: ${cal ? JSON.stringify(v) : v}`);
     }
   }

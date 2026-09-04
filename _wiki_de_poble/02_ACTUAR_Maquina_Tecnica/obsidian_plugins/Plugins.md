@@ -3,7 +3,6 @@ tipus: document
 estat: canonic
 description: Discover plugins, themes, and more for Obsidian
 tags:
-  - acta
   - escriptori
   - temporal
 ---

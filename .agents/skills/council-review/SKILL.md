@@ -16,9 +16,6 @@ triggers_on:
   - deliberate
   - council review
 core: false
-tags:
-  - agent
-  - skill
 ---
 
 # council-review

@@ -11,9 +11,6 @@ triggers_on:
   - guia
   - socdepoble workflow
 core: false
-tags:
-  - agent
-  - skill
 ---
 
 # socdepoble-workflow

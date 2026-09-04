@@ -1,8 +1,36 @@
-import { createContext, useContext, useState, useMemo, useDeferredValue } from 'react';
+import { createContext, useContext, useState, useMemo, useDeferredValue, useCallback } from 'react';
 import { useAppData } from '../../app/AppDataContext';
 import { updateNote } from '../../data/backendPort';
 import { showToast } from '../../components/universal/AvisadorEfimer.jsx';
-import { sanitizeHtml } from '../../utils/sanitize.js';
+import { sanitizeHtml, netejaText, esFontImatgeSegura } from '../../utils/sanitize.js';
+
+const CAMPS_HTML = new Set(['title', 'subtitle', 'lead', 'content']);
+
+function netejaCamp(field, value) {
+  if (CAMPS_HTML.has(field)) return sanitizeHtml(value);
+  if (field === 'heroImage') return esFontImatgeSegura(value) ? String(value).trim() : '';
+  return netejaText(value);
+}
+
+/** Font única de les píndoles d'una nota. Sense accions → serialitzable (payload). */
+export function etiquetesDeNota(note, noteFolders, accions = {}) {
+  const carpeta = noteFolders.find((f) => f.id === note.folderId)?.name || null;
+  const eixida = [];
+  if (carpeta) {
+    eixida.push({ text: carpeta, className: 'sdp-badge-system',
+      onClick: accions.carpeta ? () => accions.carpeta(note.folderId) : undefined });
+  }
+  // Regla de no-duplicació de la SKILL §4, mecànica i no comentada.
+  if (note.category && note.category !== carpeta) {
+    eixida.push({ text: note.category, className: 'sdp-badge-category',
+      onClick: accions.categoria ? () => accions.categoria(note.category) : undefined });
+  }
+  for (const etiqueta of note.tags || []) {
+    eixida.push({ text: etiqueta, className: 'sdp-badge-tag',
+      onClick: accions.etiqueta ? () => accions.etiqueta(etiqueta) : undefined });
+  }
+  return eixida;
+}
 
 const NotesContext = createContext(null);
 
@@ -28,12 +56,12 @@ export function NotesProvider({ children }) {
   const [mobilePanel, setMobilePanel] = useState('folders'); // 'folders' | 'notes' | 'editor'
 
   const [localNoteOverrides, setLocalNoteOverrides] = useState({});
-  const setLocalNoteField = (id, field, value) => {
+  const setLocalNoteField = useCallback((id, field, value) => {
     setLocalNoteOverrides(prev => ({
       ...prev,
       [id]: { ...prev[id], [field]: value }
     }));
-  };
+  }, []);
 
   const notes = useMemo(() => {
     return rawNotes.map((rawNote) => {
@@ -62,71 +90,66 @@ export function NotesProvider({ children }) {
 
   const activeNote = filteredNotes.find((note) => note.id === activeNoteId) || filteredNotes[0] || notes[0];
 
-  const handleSelectFolder = (id) => {
+  const handleSelectFolder = useCallback((id) => {
     setActiveFolderId(id);
     setActiveCategory(null);
     setActiveTag(null);
     if (colNotesCollapsed) setColNotesCollapsed(false);
     setMobilePanel('notes');
-  };
+  }, [colNotesCollapsed]);
 
-  const handleSelectCategory = (category) => {
+  const handleSelectCategory = useCallback((category) => {
     setActiveCategory(category);
     setActiveFolderId(null);
     setActiveTag(null);
     if (colNotesCollapsed) setColNotesCollapsed(false);
     setMobilePanel('notes');
-  };
+  }, [colNotesCollapsed]);
 
-  const handleSelectTag = (tag) => {
+  const handleSelectTag = useCallback((tag) => {
     setActiveTag(tag);
     setActiveFolderId(null);
     setActiveCategory(null);
     if (colNotesCollapsed) setColNotesCollapsed(false);
     setMobilePanel('notes');
-  };
+  }, [colNotesCollapsed]);
   
-  const handleSelectNote = (id) => {
+  const handleSelectNote = useCallback((id) => {
     setActiveNoteId(id);
     setMobilePanel('editor');
-  };
+  }, []);
 
-  const saveNoteField = async (noteId, field, value) => {
-    if (!noteId) return;
-    const netejat = sanitizeHtml(value);
+  const saveNoteField = useCallback(async (noteId, field, value) => {
+    if (!noteId) return false;
+    const netejat = netejaCamp(field, value);
     
-    // Optimístic update a nivell local seria ideal, però ara només ho enviem al backend.
+    // Optimístic update a nivell local
+    setLocalNoteField(noteId, field, netejat);
+    
     try {
       await updateNote(noteId, { [field]: netejat }, externalConfig);
+      return true;
     } catch (e) {
       console.warn("No s'ha pogut guardar la nota en remot:", e);
+      showToast('El canvi no ha arribat al servidor. Reintenta-ho.', 'error');
+      return false;
     }
-  };
+  }, [setLocalNoteField, externalConfig]);
 
-  const publishNote = async () => {
+  const publishNote = useCallback(async () => {
     if (!activeNote) return;
     
-    const labels = [];
-    const folderName = noteFolders.find(f => f.id === activeNote.folderId)?.name || 'Altres notes';
-    labels.push({ text: folderName, className: 'sdp-badge-system' });
-    labels.push({ text: 'Mur', className: 'sdp-badge-category' });
-    if (activeNote.category) {
-      labels.push({ text: activeNote.category, className: 'sdp-badge-category' });
-    }
-    if (activeNote.tags && Array.isArray(activeNote.tags)) {
-      activeNote.tags.forEach(tag => {
-        labels.push({ text: tag, className: 'sdp-badge-neutral', style: { border: '1px solid var(--sdp-vora)', backgroundColor: 'transparent' } });
-      });
-    }
+    const labels = etiquetesDeNota(activeNote, noteFolders)
+      .map(({ text, className }) => ({ text, className })); // només text i class
 
     const payload = {
       sectionId: 'mur',
       type: 'feed',
-      title: activeNote.title || 'Sense Títol',
-      subtitle: activeNote.subtitle,
-      description: activeNote.lead,
-      content: activeNote.content,
-      image: activeNote.coverImage || '/assets/system/ui/logo-socdepoble-cuadrat-verd.svg',
+      title: netejaCamp('title', activeNote.title) || 'Sense Títol',
+      subtitle: netejaCamp('subtitle', activeNote.subtitle),
+      description: netejaCamp('lead', activeNote.lead),
+      content: netejaCamp('content', activeNote.content),
+      image: netejaCamp('heroImage', activeNote.coverImage) || '/assets/system/ui/logo-socdepoble-cuadrat-verd.svg',
       labels,
       author_name: 'Sóc de Poble',
       author_location: 'La Torre de les Maçanes',
@@ -140,7 +163,7 @@ export function NotesProvider({ children }) {
       console.error('Error enviant publicació:', err);
       showToast('Error publicant al mur. Verifica la connexió o l\'entorn.', 'error');
     }
-  };
+  }, [activeNote, noteFolders, sendSectionSubmission]);
 
   return (
     <NotesContext.Provider value={{

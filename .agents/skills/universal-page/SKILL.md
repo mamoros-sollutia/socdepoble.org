@@ -38,13 +38,16 @@ Una `UniversalPage` completa està formada pels següents blocs estratificats, q
 > **Equivalència Atòmica (La Targeta i la Pàgina):**
 > L'equivalent directe de la Barra Blava (`bar-blue`) en la versió reduïda del component és **el peu de la Targeta Universal (`UniversalCard footer`)**. Són atòmicament els mateixos elements. Les accions que s'afigen, canvien o s'eliminen a la Barra Blava s'han de reflectir exactament igual al peu de la Targeta Universal, i viceversa. Formen part del mateix sistema d'interacció.
 
-### B. El Frame de Capçalera (Hero Image)
+### B. El Frame de Capçalera (Imatge Principal / SEO)
+Aquest element visual no només encapçala la pàgina, sinó que és **la Imatge SEO** que es mostrarà en compartir l'enllaç per WhatsApp o xarxes socials.
 - **Amplària Completa (Full Width):** La imatge Hero (o element multimèdia equivalent) **ha d'ocupar el 100% de l'ample del contenidor**. NO té marge. NO té padding.
-- **Adaptabilitat del Format:** El contenidor de l'element multimèdia s'adapta proporcionalment a les dimensions de l'arxiu. Encara que a les targetes habituals de "Pobles" s'acostumen a gastar imatges quadrades, el sistema suporta qualsevol format (com un foli A4 per a un document PDF o una foto panoràmica), ajustant l'altura automàticament sense deformar-lo.
-- **Mode Edició i Placeholder:** Quan no hi ha imatge, o quan l'usuari fa clic damunt d'una imatge existent per a canviar-la, l'espai s'ha de transformar en un menú d'accions clares. Han d'aparèixer tres botons:
-  1. **"Inserir Imatge o Multimèdia"**: Per pujar un arxiu nou o reemplaçar l'actual.
-  2. **"Tornar enrere"** (només si ja n'hi ha una): Per a cancel·lar el mode d'edició sense modificar res.
-  3. **"Esborrar contingut"** (només si ja n'hi ha una): Un botó d'alerta (roig) per a eliminar la imatge actual i deixar l'espai en blanc.
+- **Adaptabilitat del Format:** El contenidor s'adapta proporcionalment a les dimensions de l'arxiu. Encara que a la "Universal Card" normalment s'usen imatges quadrades, el sistema suporta qualsevol format (com un foli A4 o imatge rectangular), ajustant l'altura automàticament.
+- **Interfície de Creació / Edició:** A l'hora de crear o editar una `UniversalPage` o `UniversalCard`, la imatge SEO es gestiona *des de la mateixa pàgina* on es previsualitza, amb aquest comportament:
+  - **Estat Buit:** Si no hi ha cap imatge, només es mostra un únic botó: **"Inserir Imatge o Multimèdia"**.
+  - **Estat d'Edició:** Si ja hi ha una imatge, l'usuari fa clic al damunt per a editar-la. La imatge desapareix temporalment per mostrar el menú d'accions amb tres botons:
+    1. **"Inserir Imatge o Multimèdia"**: Per pujar o triar un arxiu nou (reemplaçant l'actual).
+    2. **"Tornar enrere"**: Per a cancel·lar l'edició i tornar a veure la imatge actual sense canvis.
+    3. **"Esborrar contingut"**: Un botó d'alerta per a eliminar la imatge actual i tornar a l'estat buit.
 
 ### C. La Barra Taronja (`bar-orange`)
 - Conté l'autoria de l'usuari, el seu poble i la data/hora de la publicació.

@@ -22,7 +22,7 @@ tags:
 - Offline, accessibilitat i compatibilitat amb el Baseline 2022 només es declaren per
   l'scope que haja superat proves reproduïbles.
 
-Prevalen [[DOC_Governanca]], [[ESTANDARD_Pedra_Seca]], el codi, ESLint i les
+Prevalen [[DOC_Governanca]], ESTANDARD_Pedra_Seca, el codi, ESLint i les
 proves reals. El text següent es conserva com a **annex històric no normatiu**:
 descriu una aspiració fusionada, conté rutes i gates que no existixen i no pot
 autoritzar canvis ni justificar un “100%”.

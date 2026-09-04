@@ -86,7 +86,7 @@ Abans de crear context o modificar [[el_projecte|el projecte]], seguix [[PROTOCO
 3. `seal` emet una lease vinculada als bytes, regles, Git i targets.
 4. Cada script mutador valida el rebut; el hook Git és l’última barrera.
 
-Les Petorretas editorials ordinàries poden passar per `05_Escriptori_Soc_de_Poble`; les massives i els feixos forenses viuen en `_arxiu_wiki_de_poble`, fora del vault. Exemple a l'arxiu: [[00_INDEX_CONSELL_SUBVENCIO|Consell de les 12 IAs (Subvenció 50k)]].
+Les Petorretas editorials ordinàries poden passar per `05_Escriptori_Soc_de_Poble`; les massives i els feixos forenses viuen en `_arxiu_wiki_de_poble`, fora del vault. Exemple a l'arxiu: Consell de les 12 IAs (Subvenció 50k).
 
 ## Selecció de revisors
 Tria el model o professional segons la llista oficial definida a `.agents/consell.json`.

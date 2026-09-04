@@ -5,7 +5,7 @@
  */
 
 import { VerificadorSCC } from './verificador-scc.mjs';
-import { CAMINS, R } from '../lib/arrel.mjs';
+import { R } from '../lib/arrel.mjs';
 
 import { execSync } from 'node:child_process';
 
@@ -20,7 +20,7 @@ async function main() {
     if (!isJsonMode) console.log("🧠 Sincronitzant skills a la Wiki...");
     execSync('node tooling/wiki/sincronitzar_skills.mjs', { cwd: rootDir, stdio: isJsonMode ? 'ignore' : 'pipe' });
   } catch (e) {
-    if (!isJsonMode) console.error("⚠️ Error sincronitzant skills:", e.message);
+    throw new Error(`Error sincronitzant skills: ${e.message}`);
   }
 
   // 0. Auto-generar els índexs de carpetes dinàmiques abans d'auditar
@@ -28,7 +28,7 @@ async function main() {
     if (!isJsonMode) console.log("🔄 Actualitzant índexs automàtics...");
     execSync('node generar_indexs.mjs', { cwd: rootDir, stdio: isJsonMode ? 'ignore' : 'pipe' });
   } catch (e) {
-    if (!isJsonMode) console.error("⚠️ Error actualitzant índexs:", e.message);
+    throw new Error(`Error actualitzant índexs: ${e.message}`);
   }
   
   const verificador = new VerificadorSCC(rootDir);

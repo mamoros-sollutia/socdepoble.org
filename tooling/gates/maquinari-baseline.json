@@ -1,15 +1,37 @@
 {
   "baseline": {
-    "nom": "2022",
+    "nom": "Dispositius 4-5 anys (2021-2022)",
     "declaracio_canonica": ".agents/BASELINE.md",
     "minims": {
-      "safari_ios": "16.0",
-      "chrome": "100",
-      "firefox": "100"
+      "safari_ios": "15.0",
+      "chrome": "90",
+      "firefox": "88"
     }
   },
+  "abast_doctrina": [
+    ".agents"
+  ],
+  "termes_prohibits_en_doctrina": [
+    {
+      "patro": "iPad A10",
+      "motiu": "El cisma de l'A10 està resolt: no mirem més enllà de 4-5 anys (2021) per evitar deute tècnic."
+    }
+  ],
+  "prohibits_css": [
+    {
+      "patro": "-webkit-border-radius|-moz-border-radius|-webkit-box-shadow",
+      "gravetat": "avis",
+      "motiu": "Prefixos vells no necessaris. El baseline de 2021-2022 ho porta natiu."
+    }
+  ],
+  "prohibits_js": [
+    {
+      "patro": "import.*core-js|require.*core-js",
+      "motiu": "Prohibit carregar polyfills globals per a dispositius antics. Generen un monstre (Frankenstein)."
+    }
+  ],
   "stubs_css": {
-    "prohibit": false,
-    "motiu": "El projecte permet temporalment classes buides fins que s'estilitzen."
+    "prohibit": true,
+    "motiu": "Una regla CSS buida embruta l'entorn. S'ha de netejar."
   }
 }

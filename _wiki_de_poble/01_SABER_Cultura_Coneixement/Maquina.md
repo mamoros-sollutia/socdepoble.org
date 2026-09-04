@@ -39,7 +39,7 @@ tags:
 - [[seguretat_execucio|02_ACTUAR_Maquina_Tecnica/skills/seguretat_execucio.md]] — Categoria: [[Maquina]]
 - [[self_repair|02_ACTUAR_Maquina_Tecnica/skills/self_repair.md]] — Categoria: [[Maquina]]
 - [[successio_lazaro_execucio|02_ACTUAR_Maquina_Tecnica/skills/successio_lazaro_execucio.md]] — Categoria: [[Maquina]]
-- [[260903_0223_PROMPT_auditoria_notes|05_Escriptori_Soc_de_Poble/260903_0223_PROMPT_auditoria_notes.md]] — Categoria: [[Maquina]]
+- 05_Escriptori_Soc_de_Poble/260903_0223_PROMPT_auditoria_notes.md — Categoria: [[Maquina]]
 - [[260903_0240_ACTA_MARMOTA_Auditoria_Notes_i_Neteja_de_Satellits|10_actes/260903_0240_ACTA_MARMOTA_Auditoria_Notes_i_Neteja_de_Satellits.md]] — Categoria: [[Maquina]]
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

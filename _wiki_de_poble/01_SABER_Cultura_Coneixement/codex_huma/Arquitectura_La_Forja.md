@@ -24,7 +24,7 @@ L'arquitectura es descriu amb tres peces principals:
 Són els motors de construcció actuals. Vite empaqueta els arxius i React permet compondre interfícies reutilitzables. La seua presència és una decisió tècnica revisable, no la identitat del projecte.
 
 ### 2. El Disseny de la Plaça: GEM MODERN
-La direcció visual busca calidesa, llegibilitat i espai. Tailwind existix a la pila com a bastida condicionada; segons [[ESTANDARD_Pedra_Seca]], no és la marca ni la font de veritat visual, que continua en tokens i CSS revisables.
+La direcció visual busca calidesa, llegibilitat i espai. Tailwind existix a la pila com a bastida condicionada; segons ESTANDARD_Pedra_Seca, no és la marca ni la font de veritat visual, que continua en tokens i CSS revisables.
 
 ### 3. Les Llavors de les Dades: estat verificable
 El codi declara Dexie i modes `seed`, `local`, `hybrid` i Supabase. Això aporta adaptadors i fallback, però no prova que totes les operacions productives persistisquen primer en IndexedDB. Cada flux ha d'indicar quin backend usa, què ocorre sense xarxa i com recupera les dades abans de promocionar-lo a Local-First.

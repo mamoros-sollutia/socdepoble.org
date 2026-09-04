@@ -45,7 +45,7 @@ console.log(`Arrel del projecte: ${PROJECT_DIR}`);
 // Àncora de seguretat inicial
 try {
   execSync('node tooling/brain/ancora.mjs --pon "arranc de sessio"', { cwd: PROJECT_DIR, stdio: 'inherit' });
-} catch (_e) {
+} catch {
   if (process.env.SDP_FORCA_ARRENCADA === '1') {
     console.log('⚠ Entrada forçada sense àncora. Queda constància.');
   } else {
@@ -61,8 +61,8 @@ try {
   const estat = execSync('git status --short', { cwd: PROJECT_DIR }).toString().trim();
   console.log(`Branca: ${branca}`);
   console.log(estat ? `Canvis no confirmats:\n${estat}` : 'Arbre de treball net.');
-} catch {
-  console.log('No s\'ha pogut llegir Git.');
+} catch (e) {
+  throw new Error(`No s'ha pogut llegir Git: ${e.message}`);
 }
 
 /* ─── 2. Deute mecànic ─── */

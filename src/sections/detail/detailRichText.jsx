@@ -1,4 +1,3 @@
-import DOMPurify from 'dompurify';
 import { sanitizeHtml } from '../../utils/sanitize';
 
 export function renderRichText(text) {
@@ -41,12 +40,12 @@ export function renderPostContent(text) {
 }
 
 export function renderPageHtml(text) {
-  let html = String(text || '')
-    .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" style="max-width:100%;border-radius:18px;margin:18px 0;" />')
+  const html = String(text || '')
+    .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" class="detail-content__img" />')
     .replace(/\n\n/g, '</p><p>')
     .replace(/\n/g, '<br />')
     .replace(/^/, '<p>')
     .replace(/$/, '</p>');
-    
-  return DOMPurify.sanitize(html);
+
+  return sanitizeHtml(html);
 }

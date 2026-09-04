@@ -1,24 +1,13 @@
 import { useNotes } from './NotesContext';
-import { List, Search, Settings, PanelLeftClose, Clock, ArrowLeft, NotebookPen } from 'lucide-react';
+import { Search, PanelLeftClose, ArrowLeft, NotebookPen } from 'lucide-react';
 
 export default function NotesList() {
   const { 
     filteredNotes, activeNote, setActiveNoteId,
     colNotesCollapsed, setColNotesCollapsed,
-    settingsOpen, setSettingsOpen,
-    timerActive, setTimerActive,
-    timerSeconds, setTimerSeconds,
     setMobilePanel,
-    isCompact, mobilePanel,
-    t
+    isCompact, mobilePanel
   } = useNotes();
-
-  const formatTime = (totalSeconds) => {
-    const hrs = Math.floor(totalSeconds / 3600);
-    const mins = Math.floor((totalSeconds % 3600) / 60);
-    const secs = totalSeconds % 60;
-    return `${hrs > 0 ? hrs.toString().padStart(2, '0') + ':' : ''}${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-  };
 
   if (colNotesCollapsed && !isCompact) {
     return (
@@ -32,8 +21,8 @@ export default function NotesList() {
             <NotebookPen size={20} />
           </button>
         </div>
-        <div className="notes-column__body notes-list-container" style={{ padding: 0 }}>
-          <div className="notes-list-actions" style={{ justifyContent: 'center' }}>
+        <div className="notes-column__body notes-list-container sdp-p-0">
+          <div className="notes-list-actions sdp-justify-center">
             <button type="button" className="btn-icon" title="Cercar">
               <Search size={20} />
             </button>
@@ -54,8 +43,8 @@ export default function NotesList() {
         >
           <ArrowLeft size={18} />
         </button>
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-          <div className="btn-icon" style={{ pointerEvents: 'none', background: 'transparent' }}>
+        <div className="sdp-flex sdp-items-center">
+          <div className="btn-icon sdp-pointer-events-none sdp-bg-transparent">
             <NotebookPen size={20} />
           </div>
           <div className="notes-column-title">NOTES</div>

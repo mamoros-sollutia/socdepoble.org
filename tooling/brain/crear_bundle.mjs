@@ -471,7 +471,7 @@ function principal() {
   fs.mkdirSync(path.dirname(nomBundle), { recursive: true });
   const tmp = `${nomBundle}.tmp`;
   // bypass: escriptura directa (no usa canonada.mjs) per fer el bundle atòmic.
-  const _bypassCanonada = "no es fa servir canonada.mjs";
+  // const _bypassCanonada = "no es fa servir canonada.mjs";
   fs.writeFileSync(tmp, text, 'utf8');
   fs.renameSync(tmp, nomBundle); // escriptura atòmica: mai un bundle a mitges
 
@@ -502,7 +502,7 @@ function principal() {
     execSync('node generar_indexs.mjs', { cwd: arrelSegura() });
     console.log('✅ Ancoratge automàtic: L\'Escriptori ha sigut reindexat.');
   } catch (e) {
-    console.log('⚠️ Error en l\'ancoratge automàtic:', e.message);
+    throw new Error(`Error en l'ancoratge automàtic: ${e.message}`);
   }
   
   console.log('');

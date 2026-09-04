@@ -40,7 +40,6 @@ description: 00INDEX
 - [[LEDGER]]
 
 ## Disseny i Arquitectura Actual (Pedra Seca)
-- [[model_arquitectonic_pedra_seca_dola]]
 - [[ESTANDARD_Integracio_React]]
 
 ## Actes i Sessions (260809 - 260813)
@@ -64,7 +63,7 @@ description: 00INDEX
 
 - [[.agents/index|index]] — index
 - [[.quarantena-260830/plantilla_prompt_iso|plantilla_prompt_iso]] — Plantilla base de Prompt ISO
-- [[.quarantena-260831-0640/00_INDEX_Satel_lits|00_INDEX_Satel_lits]] — Índex de seguretat per a ancorar els arxius satèl·lit no-Markdown generats per IAs a la xarxa neuronal del Bra
+- 00_INDEX_Satel_lits — Índex de seguretat per a ancorar els arxius satèl·lit no-Markdown generats per IAs a la xarxa neuronal del Bra
 - [[02_ACTUAR_Maquina_Tecnica/00_INDEX_Maquina|00_INDEX_Maquina]]
 
 <!-- LLAURADOR:ADOPCIONS:FI -->

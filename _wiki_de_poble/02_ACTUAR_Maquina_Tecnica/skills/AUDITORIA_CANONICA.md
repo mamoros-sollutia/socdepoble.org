@@ -83,7 +83,6 @@ Auditar no modifica fitxers. Escriure un informe, corregir YAML, moure una nota,
 ## Sinapsis
 
 - [[DOC_Governanca]]
-- [[ESTANDARD_Pedra_Seca]]
 - [[FORJA_TO_CORE]]
 - [[02_GENOTIP]]
 

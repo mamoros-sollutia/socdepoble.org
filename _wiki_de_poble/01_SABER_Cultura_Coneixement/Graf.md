@@ -71,7 +71,7 @@ tags:
 - [[LLEI_05_Privacitat|03_GOVERNAR_Normativa_Regles/LLEI_05_Privacitat.md]] — Etiquetes: [[Graf]]
 - [[PLA_DIRECTOR_Legal_i_Subvencions|03_GOVERNAR_Normativa_Regles/PLA_DIRECTOR_Legal_i_Subvencions.md]] — Etiquetes: [[Graf]]
 - [[PLA_DIRECTOR_Viabilitat_Economica|03_GOVERNAR_Normativa_Regles/PLA_DIRECTOR_Viabilitat_Economica.md]] — Etiquetes: [[Graf]]
-- [[260903_0223_PROMPT_auditoria_notes|05_Escriptori_Soc_de_Poble/260903_0223_PROMPT_auditoria_notes.md]] — Etiquetes: [[Graf]]
+- 05_Escriptori_Soc_de_Poble/260903_0223_PROMPT_auditoria_notes.md — Etiquetes: [[Graf]]
 - [[260903_0240_ACTA_MARMOTA_Auditoria_Notes_i_Neteja_de_Satellits|10_actes/260903_0240_ACTA_MARMOTA_Auditoria_Notes_i_Neteja_de_Satellits.md]] — Hem refusat l'ús d'etiquetes clàssiques de frontmatter (tags: [graf]) per ref...
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

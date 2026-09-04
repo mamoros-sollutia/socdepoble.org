@@ -1,6 +1,6 @@
 {
   "inline-style": {
-    "max": 103,
+    "max": 105,
     "identitats": [
       "inline-style|components/SectionItemCard.jsx|style=",
       "inline-style|components/universal/AvisadorEfimer.jsx|style=",
@@ -16,6 +16,7 @@
       "inline-style|sections/mur/articles/Aplec2023Article.jsx|style=",
       "inline-style|sections/mur/detail/detailSectionMeta.jsx|style=",
       "inline-style|sections/notes/NotesEditor.jsx|style=",
+      "inline-style|sections/notes/NotesSidebar.jsx|style=",
       "inline-style|sections/search/SearchSection.jsx|style=",
       "inline-style|sections/text/TelemetryDashboard.jsx|style=",
       "inline-style|sections/text/TextSection.jsx|style=",
@@ -24,7 +25,7 @@
     ]
   },
   "raw-color": {
-    "max": 33,
+    "max": 30,
     "identitats": [
       "raw-color|config/app.js|#00662e",
       "raw-color|config/app.js|#050505",
@@ -49,8 +50,6 @@
       "raw-color|sections/disseny/DesignSection.jsx|#c2181d",
       "raw-color|sections/disseny/DesignSection.jsx|#dcd7cd",
       "raw-color|sections/disseny/DesignSection.jsx|#efece7",
-      "raw-color|sections/notes/NotesSection.css|#c5c4c0",
-      "raw-color|sections/notes/NotesSection.css|#e5e4e0",
       "raw-color|sections/text/TelemetryDashboard.jsx|#3b82f6",
       "raw-color|sections/text/TelemetryDashboard.jsx|#8b5cf6",
       "raw-color|sections/text/TelemetryDashboard.jsx|#ef4444",
@@ -67,21 +66,16 @@
     ]
   },
   "focus-invisible": {
-    "max": 7,
+    "max": 3,
     "identitats": [
-      "focus-invisible|css/index.css|outline-none",
-      "focus-invisible|sections/notes/NotesEditor.jsx|outline-none",
-      "focus-invisible|sections/notes/NotesSection.css|outline-none"
+      "focus-invisible|css/index.css|outline-none"
     ]
   },
   "tailwind-visual": {
-    "max": 11,
+    "max": 8,
     "identitats": [
       "tailwind-visual|sections/disseny/DesignSection.jsx|text-danger",
       "tailwind-visual|sections/disseny/DesignSection.jsx|text-muted",
-      "tailwind-visual|sections/notes/NotesEditor.jsx|border-bottom-none",
-      "tailwind-visual|sections/notes/NotesEditor.jsx|border-none",
-      "tailwind-visual|sections/notes/NotesEditor.jsx|shadow-none",
       "tailwind-visual|sections/notes/NotesEditor.jsx|text-white",
       "tailwind-visual|sections/notes/NotesList.jsx|text-muted"
     ]

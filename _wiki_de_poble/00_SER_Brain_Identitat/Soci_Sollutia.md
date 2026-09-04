@@ -227,7 +227,6 @@ Aquestes eines configuren l'instrumental de la Forja.
 - [[02_EQUIP_IA]]
 - [[00_BIOS]]
 - [[DOC_Governanca]]
-- [[ESTANDARD_Pedra_Seca]]
 - [[Arquitectura_Protocol_Lazaro]]
 
 

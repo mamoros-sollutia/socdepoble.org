@@ -141,20 +141,23 @@ function sdp_registrar_actius() {
 		SDP_VERSIO
 	);
 
-	// IIFE que depèn de wp-element per al React extern
 	wp_register_script(
 		SDP_HANDLE,
 		sdp_url( 'dist/soc-de-poble.standalone.js' ),
-		array( 'wp-element' ),
+		array(),
 		SDP_VERSIO,
 		true
 	);
-
-	if ( function_exists( 'wp_script_add_data' ) ) {
-		wp_script_add_data( SDP_HANDLE, 'strategy', 'defer' );
-	}
 }
 add_action( 'init', 'sdp_registrar_actius' );
+
+/** Afig type="module" al script perquè Vite puga fer lazy loading de chunks (ESM). */
+add_filter( 'script_loader_tag', function ( $tag, $handle, $src ) {
+	if ( SDP_HANDLE === $handle ) {
+		return sprintf( "<script type='module' src='%s' id='%s-js'></script>\n", esc_url( $src ), esc_attr( $handle ) );
+	}
+	return $tag;
+}, 10, 3 );
 
 /**
  * Encuem abans de `wp_head` quan sabem que la pàgina és l'app. Encuar només
@@ -175,17 +178,11 @@ add_action( 'wp_enqueue_scripts', 'sdp_encuar_aviat' );
 function sdp_render( $atts = array() ) {
 	$atts = shortcode_atts(
 		array(
-			'base_path' => '',
-			'data_mode' => 'remote',
-			'config'    => '',
-			// 260831 (Seient Núm. 5): permís perquè el component pinte el fons
-			// del document sencer. Per defecte NO. El shortcode pot aparéixer
-			// dins d'un article normal, i allí repintar `html` seria envair la
-			// pàgina de qui ens allotja. Només la plantilla de pàgina completa
-			// (`blank.php`) ha de demanar-ho: [soc_de_poble pinta_amfitrio="1"]
+			'base_path'      => '',
+			'data_mode'      => 'remote',
+			'config'         => '',
+			// Només `blank.php` ha de demanar-ho: [soc_de_poble pinta_amfitrio="1"]
 			'pinta_amfitrio' => '',
-			'supabase_url' => defined('SDP_SUPABASE_URL') ? SDP_SUPABASE_URL : '',
-			'supabase_anon_key' => defined('SDP_SUPABASE_ANON_KEY') ? SDP_SUPABASE_ANON_KEY : '',
 		),
 		$atts,
 		'soc_de_poble'
@@ -197,7 +194,7 @@ function sdp_render( $atts = array() ) {
 		$base_path = sdp_base_path();
 	}
 
-	$base_path = '/' . trim( $base_path, '/' );
+	$base_path         = '/' . trim( $base_path, '/' );
 	$atts['base_path'] = '/' === $base_path ? '/' : untrailingslashit( $base_path );
 
 	// Idempotent: si `sdp_encuar_aviat` ja ho ha fet, no passa res.
@@ -208,8 +205,6 @@ function sdp_render( $atts = array() ) {
 	if ( '' !== $atts['config'] ) {
 		$desat = json_decode( $atts['config'], true );
 		if ( is_array( $desat ) ) {
-			// Qwenb: Validació de la Frontera de Confiança.
-			// Evitar la injecció de metadades no autoritzades des del shortcode.
 			$permeses = array( 'theme', 'lang', 'dataMode', 'showMenu', 'layout' );
 			foreach ( $permeses as $key ) {
 				if ( isset( $desat[ $key ] ) ) {
@@ -227,6 +222,19 @@ function sdp_render( $atts = array() ) {
 	 * Tot el que s'injecte per este filtre serà públic al codi font de la pàgina.
 	 */
 	$config = apply_filters( 'sdp_config_publica', $config, $atts );
+
+	/**
+	 * FRONTERA DE CREDENCIALS (P0 · 260903).
+	 * L'origen de Supabase ix NOMÉS de constants del servidor. Mai d'un
+	 * atribut de shortcode ni de bloc: `shortcode_atts()` deixa que
+	 * l'atribut escrit sobreescriga el valor per defecte, i qualsevol
+	 * autor amb `publish_posts` podia apuntar el component a un origen
+	 * forà. `sanejaConfig()` valida el protocol, no l'origen: un
+	 * `https://collidor.exemple` passava net i s'enduia les credencials
+	 * escrites al formulari d'entrada.
+	 */
+	$supabase_url      = defined( 'SDP_SUPABASE_URL' ) ? SDP_SUPABASE_URL : '';
+	$supabase_anon_key = defined( 'SDP_SUPABASE_ANON_KEY' ) ? SDP_SUPABASE_ANON_KEY : '';
 
 	static $instancia = 0;
 	$instancia++;
@@ -246,8 +254,8 @@ function sdp_render( $atts = array() ) {
 		esc_url( sdp_url( 'assets/fonts/noto-sans.css' ) ),
 		esc_url( $config['pluginUrl'] ),
 		$pinta,
-		esc_attr( $atts['supabase_url'] ),
-		esc_attr( $atts['supabase_anon_key'] )
+		esc_url( $supabase_url ),
+		esc_attr( $supabase_anon_key )
 	);
 }
 add_shortcode( 'soc_de_poble', 'sdp_render' );
@@ -280,8 +288,6 @@ function sdp_registrar_bloc() {
 				'base_path' => array( 'type' => 'string', 'default' => '' ),
 				'data_mode' => array( 'type' => 'string', 'default' => 'remote' ),
 				'config'    => array( 'type' => 'string', 'default' => '' ),
-				'supabase_url' => array( 'type' => 'string', 'default' => '' ),
-				'supabase_anon_key' => array( 'type' => 'string', 'default' => '' ),
 			),
 		)
 	);

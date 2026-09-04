@@ -17,7 +17,7 @@ function ComponentDoc({ title, description, technical, children }) {
         <h3 className="sdp-m-0">{title}</h3>
         {description && <p className="sdp-text-suau sdp-mt-2">{description}</p>}
         {technical && (
-          <div className="alert alert-info sdp-mt-4 sdp-p-4" style={{   marginBottom: '1rem', borderRadius: 'var(--sdp-radi-m)'  }}>
+          <div className="alert alert-info sdp-mt-4 sdp-p-4 sdp-mb-4">
             <strong>Context Tècnic: </strong> {technical}
           </div>
         )}
@@ -59,7 +59,7 @@ export default function DesignSection() {
 <div className="alert alert-info sdp-mb-6">
   <div className="alert-content">
     <p><strong>Estructura Anatòmica Inviolable (FONT ÚNICA DE VERITAT)</strong><br/>Aquesta secció i el component <code>UniversalComponents.jsx</code> (on es defineix la UniversalPage) són la font única de veritat per a qualsevol agent o IA. Tota nova pàgina ha d'estendre exclusivament aquesta arquitectura, sense excepcions.</p>
-    <ol className="sdp-mt-4" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sdp-space-4)' }}>
+    <ol className="sdp-mt-4 sdp-flex sdp-flex-col sdp-gap-4">
       <li><strong>Barres Superiors (Controls):</strong> La barra blava de navegació (context) i la barra taronja d'autoria (dades meta, data, connectar). En mode normal (pàgina completa), aquestes barres fan <em>sticky</em> a la part superior (es queden fixades).</li>
       <li><strong>Excepció (Mode Incrustat):</strong> Quan la UniversalPage s'incrusta en un editor (com el Bloc de Notes), la barra blava i la taronja adopten classe <code>--embed</code> (<em>position: static</em>) i s'amaguen naturalment amb l'scroll del document per afavorir l'edició lliure i evitar un "doble scroll". Aquesta és l'única excepció permesa.</li>
       <li><strong>Imatge Hero (Opcional):</strong> Es renderitza immediatament davall de les barres. Ocupa l'ample disponible (100%) sense marges.</li>
@@ -207,7 +207,7 @@ export default function DesignSection() {
 </ul>
 <p>Dalt del títol pot anar una imatge o multimèdia d'un ample màxim de 600x600. Baix d'aquest H1 aniran exclusivament els components de presentació de la Targeta Mestra: categoria, etiqueta i copyright.</p>
 <p>L'H2 divideix els grans blocs temàtics de la pàgina.</p>
-<h1>H1: Títol Principal (40px)</h1>
+<div className="h1">H1: Títol Principal (40px)</div>
 <div className="sdp-text-center">
 <h2>H2: Secció Major (32px)</h2>
 <p className="lead">
@@ -312,7 +312,7 @@ Aquesta és l'<em>entradilla</em> (<code>&lt;p className="lead"&gt;</code>). S'u
     <button className="btn btn-primary">Normal</button>
     <button className="btn btn-primary" disabled>Desactivat</button>
     <button className="btn btn-primary" disabled>
-      <svg className="spinner sdp-mr-2" viewBox="0 0 20 20" style={{display: 'inline-block', width: '1.2em', height: '1.2em', verticalAlign: 'middle', marginRight: '8px'}}>
+      <svg className="spinner spinner-sm sdp-mr-2" viewBox="0 0 20 20">
         <circle cx="12" cy="12" fill="none" r="10" stroke="currentColor" strokeWidth="3"></circle>
       </svg>
       <span>Carregant...</span>
@@ -392,7 +392,7 @@ Aquesta és l'<em>entradilla</em> (<code>&lt;p className="lead"&gt;</code>). S'u
 </div>
 </section>
 {/*  SECCIÓ 8: BADGES  */}
-<section className="design-block" style={{ textAlign: 'center' }}>
+<section className="design-block sdp-text-center">
 <h3>8. Badges i Etiquetes</h3>
 <div className="sdp-flex sdp-gap-12 sdp-justify-center sdp-mb-6">
 <span className="badge badge-default">Per defecte</span>
@@ -560,7 +560,7 @@ Gran</div>
 <div>
   <h4>Menús Flotants (Dropdowns)</h4>
   <p className="sdp-text-suau sdp-mb-4">Components usats per a menús contextuals, com les opcions d'una publicació o els ajustaments.</p>
-  <div style={{ display: 'flex', gap: '16px' }}>
+  <div className="sdp-flex sdp-gap-4">
     <Dropdown 
       trigger={<button className="btn btn-outline-dark">Opcions de la Nota</button>}
     >
@@ -656,7 +656,7 @@ Gran</div>
   description="L'estructura base de qualsevol publicació al Mur. Tot el text (títol, subtítol i cos) està centrat per defecte per oferir una lectura pausada i harmoniosa."
   technical="Quan no hi ha cap element superior dret (com un preu o una etiqueta de data), el text de la targeta manté la seua naturalesa centrada. Esta és la targeta sobre la qual s'afegeixen o lleven elements."
 >
-  <div style={{ maxWidth: '400px', margin: '0 auto' }}>
+  <>
     <UniversalCard
       title="Disseny Pedra Seca"
       subtitle="Sistema oficial de disseny per a Sóc de Poble"
@@ -681,7 +681,7 @@ Gran</div>
       showConnect={true}
       mainHref="#disseny"
     />
-  </div>
+  </>
 </ComponentDoc>
 
 <ComponentDoc
@@ -689,7 +689,7 @@ Gran</div>
   description="Variació dissenyada per al comerç de proximitat. Afig un distintiu a la cantonada superior dreta de l'àrea de text i alinea automàticament tot el contingut a l'esquerra."
   technical="En passar la propietat `price`, la targeta afig la classe `.has-price` al contenidor del text. Esta classe trenca el centratge per defecte i alinea el text a l'esquerra (justify-content: flex-start) per equilibrar el pes visual del botó flotant del preu/intercanvi."
 >
-  <div style={{ maxWidth: '400px', margin: '0 auto' }}>
+  <>
     <UniversalCard
       title="Samarreta Sóc de Poble"
       subtitle="L'edició definitiva amb el logotip complet"
@@ -717,14 +717,14 @@ Gran</div>
       showConnect={true}
       mainHref="#samarreta"
     />
-  </div>
+  </>
 </ComponentDoc>
 
 <ComponentDoc
   title="20.3 Targeta Mestra: Esdeveniment"
   description="Variació per a dates assenyalades. La data es destaca mitjançant un 'Badge' de calendari, bevent de la font de dades oficial."
 >
-  <div style={{ maxWidth: '400px', margin: '0 auto' }}>
+  <>
     {(() => {
       const eventItem = EVENTS.find(e => e.id === 'aplec-2023') || {};
       
@@ -732,14 +732,14 @@ Gran</div>
         <EventCard item={eventItem} />
       );
     })()}
-  </div>
+  </>
 </ComponentDoc>
 
 <ComponentDoc
   title="20.4 Targeta Mestra sense imatge (Exemple: Hisenda / Gestoria)"
   description="Quan la publicació no disposa d'imatge principal, el focus recau completament sobre la tipografia i les dades meta. S'acostuma a emprar per a avisos del sistema o procediments burocràtics."
 >
-  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+  <div className="sdp-flex sdp-flex-col sdp-gap-8">
     <UniversalCard
       title="Hisenda"
       subtitle="Model 303 / 130"

@@ -11,9 +11,6 @@ triggers_on:
   - com afegir
   - guia ampliacio
 core: false
-tags:
-  - agent
-  - skill
 ---
 
 # Guia d'Ampliació (Com afegir funcionalitat)

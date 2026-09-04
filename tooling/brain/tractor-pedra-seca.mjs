@@ -175,9 +175,9 @@ const ombra = analitzaCss([FULL_OMBRA]);
 const totCss = analitzaCss(CSS_TOTS);
 const accessible = grafAccessible();
 
-/* LLEI 1 · CLASSE ÒRFENA — classe al JSX sense regla al full de l'ombra. */
+/* LLEI 1 · CLASSE ÒRFENA — classe al JSX sense regla a cap full d'estils. */
 for (const [c, ocurrencies] of escrites)
-  if (!ombra.classes.has(c))
+  if (!totCss.classes.has(c))
     registra('LLEI_01_CLASSE_ORFENA', `.${c}  →  ${ocurrencies[0]}${ocurrencies.length > 1 ? ` (+${ocurrencies.length - 1})` : ''}`);
 
 /* LLEI 2 · TOKEN FANTASMA — var(--x) sense declaració enlloc. */
@@ -209,7 +209,7 @@ for (const f of JSX) {
 }
 
 /* LLEI 4 · LLEI DE VIDA — cap control per davall de --sdp-touch. */
-const touchDecl = ombra.regles.flatMap((r) => [...r.cos.matchAll(/--sdp-touch\s*:\s*(\d+)px/g)]).map((m) => +m[1]);
+const touchDecl = ombra.regles.flatMap((r) => [...r.cos.matchAll(/--sdp-touch\s*:\s*(?:var\([^,]+,\s*)?(\d+)px/g)]).map((m) => +m[1]);
 const TOUCH = touchDecl.length ? touchDecl[0] : 44;
 for (const r of ombra.regles) {
   // Només el SUBJECTE del selector (l'última part) és el control. Una icona

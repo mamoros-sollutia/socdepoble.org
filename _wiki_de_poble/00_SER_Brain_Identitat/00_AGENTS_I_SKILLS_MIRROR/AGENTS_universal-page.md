@@ -4,8 +4,6 @@ estat: canonic
 description: Estàndard d'arquitectura, anatomia i configuració de la UniversalPage de Sóc de Poble. Defineix l'estructura visual, el comportament del scroll i els blocs que la formen.
 tags:
   - core
-  - components
-  - ui
 name: universal-page
 triggers_on:
   - UniversalPage

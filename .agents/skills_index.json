@@ -152,6 +152,17 @@
         "esborra"
       ],
       "path": ".agents/skills/trellat/SKILL.md"
+    },
+    {
+      "name": "universal-page",
+      "description": "Estàndard d'arquitectura, anatomia i configuració de la UniversalPage de Sóc de Poble. Defineix l'estructura visual, el comportament del scroll i els blocs que la formen.",
+      "triggers_on": [
+        "UniversalPage",
+        "chrome",
+        "bar-blue",
+        "page-header"
+      ],
+      "path": ".agents/skills/universal-page/SKILL.md"
     }
   ],
   "plugins": {

@@ -383,21 +383,6 @@ function LoadError() {
 }
 
 export default function App() {
-  useEffect(() => {
-    // Inject global styles to fix #root height dynamically via HMR without requiring a hard refresh
-    if (typeof document !== 'undefined') {
-      let style = document.getElementById('sdp-hmr-layout-fix');
-      if (!style) {
-        style = document.createElement('style');
-        style.id = 'sdp-hmr-layout-fix';
-        document.head.appendChild(style);
-      }
-      style.textContent = `
-        html, body { height: 100%; width: 100%; margin: 0; padding: 0; }
-        #root { height: 100%; width: 100%; display: flex; flex-direction: column; }
-      `;
-    }
-  }, []);
 
   return (
     <StrictMode>
