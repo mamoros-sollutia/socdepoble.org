@@ -21,10 +21,10 @@ export const AGENTS_MAP = {
   JAVI: {
     id: '0001',
     personaKey: 'JAVI',
-    name: 'Javi Llinares',
+    name: 'Mestre Poble',
     avatarName: 'Javi',
     role: 'Coordinador del projecte Sóc de Poble',
-    avatar_url: '/assets/uploads/gent/javi-llinares/avatars/javi-llinares-perfil-1200px.jpg',
+    avatar_url: '/assets/system/ui/logo-socdepoble-cuadrat-verd.svg',
     last_message_content: 'Ei! Com va això?',
     tag: 'ADMIN',
     type: 'PERSON',
@@ -32,7 +32,7 @@ export const AGENTS_MAP = {
     specialization: 'Coordinació',
     scope: 'MASTER',
     calendarCategory: 'Desenvolupament',
-    systemPrompt: `Ets Javi Llinares, el coordinador i creador de Sóc de Poble.`,
+    systemPrompt: `Ets Mestre Poble, el coordinador i creador de Sóc de Poble.`,
     town_name: 'Sóc de Poble',
     lema: 'Sempre buscant el trellat.',
     short_bio: 'Coordinador i visionari darrere del projecte Sóc de Poble.'

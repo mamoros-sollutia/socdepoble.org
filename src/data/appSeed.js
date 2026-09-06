@@ -14,6 +14,40 @@ export const APP_SEED_VERSION = 250034;
 import { getDefaultUserId, idConvidat } from './identitat.js';
 export { getDefaultUserId, idConvidat };
 
+const ONBOARDING_TEMPLATE = {
+  company: {
+    kind: 'company',
+    name: 'Sóc de Poble',
+    slug: 'soc-de-poble',
+    description: 'Xarxa rural per connectar persones, pobles i projectes amb trellat.'
+  },
+  group: {
+    kind: 'group',
+    name: 'Rentonar',
+    slug: 'rentonar',
+    parentSlug: 'soc-de-poble',
+    lema: 'Natura i Patrimoni',
+    description: 'Grup de treball de l’Associació ecologista El Rentonar.'
+  }
+};
+
+/**
+ * Genera una còpia neta del pla d'alta. No incorpora usuaris, correus ni cap
+ * altra dada personal: els identificadors i la propietat els fixa la BD amb
+ * auth.uid() quan s'executa create_organization.
+ */
+export function createOnboardingSeed() {
+  return {
+    company: { ...ONBOARDING_TEMPLATE.company },
+    group: { ...ONBOARDING_TEMPLATE.group }
+  };
+}
+
+export const ONBOARDING_SEED = Object.freeze({
+  company: Object.freeze({ ...ONBOARDING_TEMPLATE.company }),
+  group: Object.freeze({ ...ONBOARDING_TEMPLATE.group })
+});
+
 export const NOTE_FOLDERS_SEED = [
   { id: 'f-tot', name: 'Tot', parentId: null },
   { id: 'f-mur', name: 'Mur', parentId: null },
@@ -123,7 +157,8 @@ export const APP_SEED = {
   mediaItems: MEDIA_ITEMS,
   noteFolders: NOTE_FOLDERS_SEED,
   notes: NOTES_SEED,
-  pages: PAGES_SEED
+  pages: PAGES_SEED,
+  onboarding: ONBOARDING_SEED
 };
 
 export const APP_CONTENT_ROWS = [
@@ -135,8 +170,11 @@ export const APP_CONTENT_ROWS = [
   { key: 'mediaItems', payload: MEDIA_ITEMS },
   { key: 'noteFolders', payload: NOTE_FOLDERS_SEED },
   { key: 'notes', payload: NOTES_SEED },
-  { key: 'pages', payload: PAGES_SEED }
+  { key: 'pages', payload: PAGES_SEED },
+  { key: 'onboarding', payload: ONBOARDING_SEED }
 ].map((row) => ({
   ...row,
   version: APP_SEED_VERSION
 }));
+
+export const CHAT_MESSAGE_SEED = APP_SEED.chatMessages;

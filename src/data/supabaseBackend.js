@@ -66,10 +66,10 @@ export function refreshSession(config = {}) {
 async function _renova(config) {
   const refreshToken = getVal('socdepoble-refresh-token');
   if (!refreshToken) return false;
-  
+
   const { supabaseUrl, supabaseAnonKey } = getResolvedConfig(config);
   if (!supabaseUrl) return false;
-  
+
   let response;
   try {
     response = await fetch(`${supabaseUrl}/auth/v1/token?grant_type=refresh_token`, {
@@ -85,7 +85,7 @@ async function _renova(config) {
     // Xarxa caiguda != Sessió invàlida
     return false;
   }
-  
+
   if (response.ok) {
     const result = await response.json();
     if (result?.access_token) {
@@ -267,11 +267,12 @@ function mergeChatMessages(primary = [], secondary = []) {
 async function loadStructuredSupabaseData(config, ownerUserId) {
   const safeOwnerId = ownerUserId || getDefaultUserId();
   const { tenantId } = getResolvedConfig(config);
-  const [contentRows, chatThreads, chatMessages, sectionSubmissionsResponse] = await Promise.all([
+  const [contentRows, chatThreads, chatMessages, sectionSubmissionsResponse, notesResponse] = await Promise.all([
     request(`/rest/v1/app_content?select=key,payload,version&tenant_id=eq.${encodeURIComponent(tenantId)}`, config, { signal: config.signal }),
-    request(`/rest/v1/chat_threads?select=id,payload&tenant_id=eq.${encodeURIComponent(tenantId)}`, config, { signal: config.signal }),
-    request(`/rest/v1/chat_messages?select=id,owner_user_id,thread_id,message_id,text,sender,time_label,created_at&tenant_id=eq.${encodeURIComponent(tenantId)}&owner_user_id=eq.${encodeURIComponent(safeOwnerId)}&order=created_at.asc`, config, { signal: config.signal }),
-    requestMaybe(`/rest/v1/section_submissions?select=*&tenant_id=eq.${encodeURIComponent(tenantId)}&owner_user_id=eq.${encodeURIComponent(safeOwnerId)}&order=created_at.asc`, config, { signal: config.signal })
+    request(`/rest/v1/chat_threads?select=id,payload&tenant_id=eq.${encodeURIComponent(tenantId)}&limit=50`, config, { signal: config.signal }),
+    request(`/rest/v1/chat_messages?select=id,owner_user_id,thread_id,message_id,text,sender,time_label,created_at&tenant_id=eq.${encodeURIComponent(tenantId)}&owner_user_id=eq.${encodeURIComponent(safeOwnerId)}&order=created_at.desc&limit=50`, config, { signal: config.signal }),
+    requestMaybe(`/rest/v1/section_submissions?select=*&tenant_id=eq.${encodeURIComponent(tenantId)}&owner_user_id=eq.${encodeURIComponent(safeOwnerId)}&order=created_at.desc&limit=50`, config, { signal: config.signal }),
+    requestMaybe(`/rest/v1/notes?select=*&tenant_id=eq.${encodeURIComponent(tenantId)}&owner_user_id=eq.${encodeURIComponent(safeOwnerId)}&order=updated_at.desc&limit=50`, config, { signal: config.signal })
   ]);
 
   if (!Array.isArray(contentRows) || contentRows.length === 0) {
@@ -289,7 +290,27 @@ async function loadStructuredSupabaseData(config, ownerUserId) {
   const mergedMarketItems = mergeById(baseData.marketItems || [], sectionSubmissions.filter(s => s.section_id === 'mercat').map(s => s.payload));
   const mergedEvents = mergeById(baseData.events || [], sectionSubmissions.filter(s => s.section_id === 'events').map(s => s.payload));
   const mergedMediaItems = mergeById(baseData.mediaItems || [], sectionSubmissions.filter(s => s.section_id === 'multimedia').map(s => s.payload));
-  const mergedNotes = mergeById(baseData.notes || [], sectionSubmissions.filter(s => s.section_id === 'notes').map(s => s.payload));
+
+  const dbNotes = Array.isArray(notesResponse?.data) ? notesResponse.data.map(n => ({
+    id: n.id,
+    folderId: n.folder_id,
+    title: n.title,
+    subtitle: n.subtitle,
+    lead: n.lead,
+    content: n.content,
+    categories: n.categories,
+    tags: n.tags,
+    heroImage: n.hero_image,
+    logoImage: n.logo_image,
+    isPublished: n.is_published,
+    publishedSubmissionId: n.published_submission_id,
+    revision: n.revision,
+    createdAt: n.created_at,
+    updatedAt: n.updated_at
+  })) : [];
+
+  const notesSource = mergeById(baseData.notes || [], dbNotes);
+  const mergedNotes = mergeById(notesSource, sectionSubmissions.filter(s => s.section_id === 'notes').map(s => s.payload));
 
   return {
     ...baseData,
@@ -318,14 +339,7 @@ async function loadStructuredSupabaseData(config, ownerUserId) {
   };
 }
 
-async function loadRemoteAppData(config, ownerUserId = getDefaultUserId()) {
-  const { hasSupabaseConfig } = getResolvedConfig(config);
-  if (!hasSupabaseConfig) {
-    throw new Error('Falten VITE_SUPABASE_URL i/o VITE_SUPABASE_ANON_KEY.');
-  }
 
-  return loadStructuredSupabaseData(config, ownerUserId);
-}
 
 export async function loadAppData(ownerUserId = getDefaultUserId(), config = {}) {
   const { runtimeDataMode, hasSupabaseConfig } = getResolvedConfig(config);
@@ -435,7 +449,7 @@ export async function appendSectionSubmissionNetworkOnly(submission, config = {}
   return storedSubmission;
 }
 
-export async function updateNote(id, updates, config = {}) {
+export async function updateNote(id, updates, expectedRevision, config = {}) {
   const { hasSupabaseConfig, tenantId } = getResolvedConfig(config);
   
   if (!hasSupabaseConfig) {
@@ -444,33 +458,50 @@ export async function updateNote(id, updates, config = {}) {
   }
 
   const payload = {
-    ...updates,
-    updated_at: new Date().toISOString()
+    folder_id: updates.folderId,
+    title: updates.title,
+    subtitle: updates.subtitle,
+    lead: updates.lead,
+    content: updates.content,
+    categories: updates.categories,
+    tags: updates.tags,
+    hero_image: updates.heroImage,
+    logo_image: updates.logoImage,
+    is_published: updates.isPublished,
+    published_submission_id: updates.publishedSubmissionId
   };
 
-  // Lectura prèvia per mantenir la integritat de l'array de notes
-  const current = await request(`/rest/v1/app_content?key=eq.notes&tenant_id=eq.${encodeURIComponent(tenantId)}&select=payload`, config);
-  let notesArray = [];
-  if (Array.isArray(current) && current.length > 0) {
-    notesArray = current[0].payload || [];
-  }
-
-  const idx = notesArray.findIndex(n => n.id === id);
-  if (idx >= 0) {
-    notesArray[idx] = { ...notesArray[idx], ...payload };
-  } else {
-    notesArray.push({ id, ...payload });
-  }
-
-  await request(`/rest/v1/app_content?key=eq.notes&tenant_id=eq.${encodeURIComponent(tenantId)}`, config, {
-    method: 'PATCH',
-    headers: {
-      Prefer: 'return=minimal'
-    },
-    body: { payload: notesArray }
+  Object.keys(payload).forEach(key => {
+    if (payload[key] === undefined) delete payload[key];
   });
-  
-  return { id, ...payload };
+
+  const revFilter = expectedRevision ? `&revision=eq.${expectedRevision}` : '';
+  const response = await request(`/rest/v1/notes?id=eq.${encodeURIComponent(id)}&tenant_id=eq.${encodeURIComponent(tenantId)}${revFilter}`, config, {
+    method: 'PATCH',
+    headers: { Prefer: 'return=representation' },
+    body: payload
+  });
+
+  if (!Array.isArray(response) || response.length === 0) {
+    throw new ErrorSupabase("No s'ha pogut actualitzar la nota. Conflicte de concurrència o nota no trobada (0 files afectades).", 409);
+  }
+
+  const n = response[0];
+  return {
+    id: n.id,
+    folderId: n.folder_id,
+    title: n.title,
+    subtitle: n.subtitle,
+    lead: n.lead,
+    content: n.content,
+    categories: n.categories,
+    tags: n.tags,
+    isPublished: n.is_published,
+    publishedSubmissionId: n.published_submission_id,
+    revision: n.revision,
+    createdAt: n.created_at,
+    updatedAt: n.updated_at
+  };
 }
 
 export {
@@ -511,6 +542,96 @@ export function getResolvedConfig(config = {}) {
 }
 
 
+export async function listMyOrganizations(config = {}) {
+  const { tenantId, hasSupabaseConfig } = getResolvedConfig(config);
+  if (!hasSupabaseConfig) {
+    return [];
+  }
+  if (!getCurrentUser()?.id) {
+    return [];
+  }
+
+  const result = await request('/rest/v1/rpc/list_my_organizations', config, {
+    method: 'POST',
+    body: { p_tenant_id: tenantId }
+  });
+
+  return Array.isArray(result) ? result : [];
+}
+
+export async function createOrganization(organization, config = {}) {
+  const { tenantId, hasSupabaseConfig } = getResolvedConfig(config);
+  if (!hasSupabaseConfig) {
+    throw new Error('No es pot crear una organització sense connexió al servidor.');
+  }
+  if (!getCurrentUser()?.id) {
+    throw new Error('Cal iniciar sessió per crear una organització.');
+  }
+
+  const result = await request('/rest/v1/rpc/create_organization', config, {
+    method: 'POST',
+    body: {
+      p_tenant_id: tenantId,
+      p_kind: organization?.kind,
+      p_name: organization?.name,
+      p_slug: organization?.slug,
+      p_description: organization?.description || '',
+      p_parent_organization_id: organization?.parentOrganizationId || null
+    }
+  });
+
+  return Array.isArray(result) ? result[0] : result;
+}
+
+export async function updateOrganization(id, updates, config = {}) {
+  const result = await request(`/rest/v1/organizations?id=eq.${encodeURIComponent(id)}`, config, {
+    method: 'PATCH',
+    headers: { Prefer: 'return=representation' },
+    body: updates
+  });
+
+  if (!Array.isArray(result) || result.length === 0) {
+    throw new Error('No s\'ha pogut actualitzar l\'organització.');
+  }
+  return result[0];
+}
+
+export async function getProfile(config = {}) {
+  const user = getCurrentUser();
+  if (!user) return null;
+
+  const result = await request(`/rest/v1/profiles?id=eq.${encodeURIComponent(user.id)}`, config);
+  if (!Array.isArray(result) || result.length === 0) return null;
+  return result[0];
+}
+
+export async function updateProfile(updates, config = {}) {
+  const user = getCurrentUser();
+  if (!user) throw new Error('No hi ha sessió.');
+
+  const result = await request(`/rest/v1/profiles?id=eq.${encodeURIComponent(user.id)}`, config, {
+    method: 'PATCH',
+    headers: { Prefer: 'return=representation' },
+    body: updates
+  });
+
+  if (!Array.isArray(result) || result.length === 0) {
+    throw new Error('No s\'ha pogut actualitzar el perfil.');
+  }
+  return result[0];
+}
+
+export async function updateUserPassword(newPassword, config = {}) {
+  const result = await request('/auth/v1/user', config, {
+    method: 'PUT',
+    body: { password: newPassword }
+  });
+
+  if (!result || result.error) {
+    throw new Error(result?.error_description || 'Error en canviar contrasenya.');
+  }
+  return true;
+}
 
 export async function registerWithEmail(email, password, name, config = {}) {
   const { tenantId, hasSupabaseConfig } = getResolvedConfig(config);
@@ -522,9 +643,9 @@ export async function registerWithEmail(email, password, name, config = {}) {
   const result = await request('/auth/v1/signup', config, {
     method: 'POST',
     body: {
-      email,
+      email: String(email || '').trim().toLowerCase(),
       password,
-      data: { name, tenant_id: tenantId }
+      data: { name: String(name || '').trim(), tenant_id: tenantId }
     }
   });
 

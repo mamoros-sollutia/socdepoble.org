@@ -8,6 +8,11 @@
     "regla": "Cap document del projecte pot enumerar el Consell amb prosa pròpia. Tot cens es genera d'ací. Si el nombre canvia, es canvia ACÍ i es regenera 02_EQUIP_IA.md.",
     "motiu": "Auditoria Seient Núm. 5 (260831). La «Regla Sagrada» d'enumerar-les totes vivia únicament a _wiki_de_poble/00_SER_Brain_Identitat/02_EQUIP_IA.md:54, dins d'una zona que AGENTS.md §1, 00_INDEX_SKILLS.md i BOOTSTRAP.md §2.3 declaren SENSE VALOR EXECUTIU. L'agent que la saltava no fallava: complia. A més el mateix document es contradeia (línia 78: «no obliga a convocar un nombre fix de models»; línia 88: «no fixa una litúrgia d'onze proveïdors» — n'hi ha dotze)."
   },
+  "seguretat": {
+    "max_tokens": 4096,
+    "timeout_ms": 30000,
+    "descripcio": "Límits de seguretat per evitar atacs per exhauriment i bucles infinits."
+  },
   "regla_enumeracio": {
     "obligatoria": true,
     "text": "Quan un document, prompt o resposta parla del Consell com a conjunt, s'han d'anomenar TOTES les membres actives sense excepció, i respectar la fortalesa i la debilitat de cadascuna per assignar-los el rol adequat.",

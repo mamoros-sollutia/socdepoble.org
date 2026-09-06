@@ -433,6 +433,7 @@ export function UniversalPage(props) {
   const onDateTime = props.onDateTime ?? config.onDateTime;
   const connectLabel = props.connectLabel ?? config.connectLabel ?? 'Connectar';
   const price = props.price ?? config.price;
+  const noPadding = props.noPadding ?? config.noPadding ?? false;
   const children = props.children;
 
   const [isTocOpen, setIsTocOpen] = useState(false);
@@ -650,7 +651,11 @@ export function UniversalPage(props) {
         <header
           className={['page-title', tone && `is-${tone}`].filter(Boolean).join(' ')}
         >
-          {(showLogos || chrome === 'system') && (
+          {topBarData?.logoComponent ? (
+            <div className="page-title-logo-wrapper">
+              {topBarData.logoComponent}
+            </div>
+          ) : (showLogos || chrome === 'system') ? (
             <>
               <img
                 alt="Logotip Sóc de Poble"
@@ -663,7 +668,7 @@ export function UniversalPage(props) {
                 src={resolveAsset("/assets/system/ui/logo-socdepoble-rect-blanc.svg")}
               />
             </>
-          )}
+          ) : null}
           {title && (
             <h1>
               {title}
@@ -706,7 +711,7 @@ export function UniversalPage(props) {
         </header>
       )}
 
-      <article className="content-wrapper">
+      <article className={`content-wrapper${noPadding ? ' no-padding' : ''}`}>
         {(subtitle || lead) && (
           <div className="page-intro">
             {subtitle && <h2>{subtitle}</h2>}

@@ -1,6 +1,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
+throw new Error("🚨 [SDP-LOCK] Aquest mutador (sanador_wiki.mjs) està bloquejat per la Llei de Pedra Seca. Tota mutació cega està prohibida. 🚨");
+
 const WIKI_DIR = '.'; // Ara explora tota l'arrel de socdepoble.org
 const IGNORED_DIRS = ['.obsidian', '.quarantena-260830', '.git', 'node_modules', 'dist', 'scratch', 'assets'];
 const IGNORED_EXTENSIONS = ['.png', '.jpg', '.jpeg', '.webp', '.ico', '.pdf', '.woff', '.woff2', '.ttf'];
@@ -116,7 +118,5 @@ removeEmptyDirectories(WIKI_DIR);
 console.log('────────────────────────────────────────────────────────────────────────');
 
 if (brokenLinks.length > 0) {
-  process.exit(1);
-} else {
-  process.exit(0);
+  throw new Error(`Sanador ha trobat ${brokenLinks.length} enllaços trencats. Resol-ho abans de continuar.`);
 }

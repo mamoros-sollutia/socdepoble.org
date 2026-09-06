@@ -10,6 +10,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
+throw new Error("🚨 [SDP-LOCK] Aquest mutador (escombra_penjats.mjs) està bloquejat per la Llei de Pedra Seca. Tota mutació cega està prohibida. 🚨");
+
 const ARREL = path.resolve(process.cwd());
 const EXCLOU = /(^|\/)(node_modules|\.git|\.obsidian|dist|build|90_historic)(\/|$)/;
 const ARRELS = ['_wiki_de_poble', '.agents'];

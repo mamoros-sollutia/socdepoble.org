@@ -156,6 +156,11 @@ export default function OnboardingSection() {
               <p>
                 Crea o entra al teu compte amb un sol clic sense contrasenyes.
               </p>
+
+              <p style={{ marginTop: '1.5rem', opacity: 0.8 }}>
+                En entrar o crear compte, acceptes el tractament de dades (RGPD Llei 05) per a Sóc de Poble. 
+                També comprens que estem en <strong>fase Beta</strong> (proves) i que les teues dades podrien patir reinicis o pèrdues.
+              </p>
               <button 
                 type="button" 
                 className="btn btn-secondary onboarding-card__action" 
@@ -173,7 +178,6 @@ export default function OnboardingSection() {
           </>
         )}
 
-        <OnboardingProgress activeStep={activeStep} />
 
         {isLoadingOrganizations ? (
           <div className="onboarding-loading" role="status" aria-live="polite">
@@ -187,6 +191,7 @@ export default function OnboardingSection() {
             confirmationEmail={confirmationEmail}
             onRegister={register}
             onLogin={login}
+            onClearError={() => setError('')}
           />
         ) : activeStep === 1 ? (
           <OrganizationStep
@@ -195,6 +200,7 @@ export default function OnboardingSection() {
             isBusy={busyStep === 'company'}
             error={error}
             onCreate={createCompany}
+            onClearError={() => setError('')}
           />
         ) : activeStep === 2 ? (
           <OrganizationStep
@@ -204,6 +210,7 @@ export default function OnboardingSection() {
             isBusy={busyStep === 'group'}
             error={error}
             onCreate={createGroup}
+            onClearError={() => setError('')}
           />
         ) : (
           <OnboardingComplete

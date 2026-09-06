@@ -132,9 +132,17 @@ function expandix(nom, vist = new Set(), profunditat = 0) {
             passos.push({ tipus: 'script', nom: npmRunMatch[1], ordre: passos.length });
             passos.push(...expandix(npmRunMatch[1], vist, profunditat + 1));
           } else {
-            const nodeMatch = line.match(/cmd:\s*['"](.*?)['"].*?args:\s*\[['"](.*?)['"]/);
+            const nodeMatch = line.match(/cmd:\s*['"](.*?)['"].*?args:\s*\[([\s\S]*?)\]/);
             if (nodeMatch) {
-               passos.push({ tipus: 'ordre', ordre: `${nodeMatch[1]} ${nodeMatch[2]}` });
+               // Aconseguim l'argument principal de node
+               const argString = nodeMatch[2].split(',')[0].replace(/['"]/g, '').trim();
+               const runCommand = `${nodeMatch[1]} ${argString}`;
+               // Cerquem a package.json quin script de porta correspon
+               const scriptEntry = Object.entries(scripts).find(([k, v]) => v.includes(argString) && k.startsWith('porta:'));
+               if (scriptEntry) {
+                   passos.push({ tipus: 'script', nom: scriptEntry[0], ordre: passos.length });
+               }
+               passos.push({ tipus: 'ordre', ordre: runCommand });
             }
           }
         }

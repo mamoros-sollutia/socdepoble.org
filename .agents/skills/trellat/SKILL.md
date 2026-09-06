@@ -48,7 +48,7 @@ Abans de finalitzar qualsevol canvi, has d'aplicar aquestes tres proves:
 
 ### Primera Pedra — L'Alternativa No Triada
 Llista explícitament 2 solucions alternatives que NO proposes i explica per què.
-- **Sollutia-first:** L'opció triada garanteix que estem integrats amb el backend Sollutia?
+- **Integració amb Sollutia:** L'opció triada garanteix que estem perfectament integrats amb el backend Sollutia?
 - **Minimalisme:** Ens hem mantingut fidels a Vanilla CSS / JS sense afegir paquets superflus?
 
 ### Segona Pedra — L'Empatia amb el Mantenidor

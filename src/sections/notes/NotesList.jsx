@@ -1,26 +1,24 @@
 import { useNotes } from './NotesContext';
-import { Search, PanelLeftClose, ArrowLeft, NotebookPen } from 'lucide-react';
+import { useAppGrid } from '../../components/layout/AppGridShell';
+import { Search, NotebookPen } from 'lucide-react';
+import AppGridColumn from '../../components/layout/AppGridColumn';
 
 export default function NotesList() {
   const { 
     filteredNotes, activeNote, setActiveNoteId,
-    colNotesCollapsed, setColNotesCollapsed,
-    setMobilePanel,
-    isCompact, mobilePanel
+    colNotesCollapsed, setColNotesCollapsed
   } = useNotes();
+  const { mida, tancaPanells } = useAppGrid();
 
-  if (colNotesCollapsed && !isCompact) {
+  if (colNotesCollapsed && mida === 'ample') {
     return (
       <section className="notes-column notes-column--middle collapsed">
-        <div className="notes-column-header notes-column-header--collapsed">
-          <button 
-            onClick={() => setColNotesCollapsed(false)}
-            className="btn-icon hover-bg"
-            title="Expandir Notes"
-          >
-            <NotebookPen size={20} />
-          </button>
-        </div>
+        <AppGridColumn
+          variant="collapsed"
+          titol="Notes"
+          icona={NotebookPen}
+          onReplega={() => setColNotesCollapsed(false)}
+        />
         <div className="notes-column__body notes-list-container sdp-p-0">
           <div className="notes-list-actions sdp-justify-center">
             <button type="button" className="btn-icon" title="Cercar">
@@ -33,30 +31,12 @@ export default function NotesList() {
   }
 
   return (
-    <section className="notes-column notes-column--middle" hidden={isCompact && mobilePanel !== 'notes'}>
-      <div className="notes-column-header">
-        <button 
-          onClick={() => setMobilePanel('folders')} 
-          className="btn-icon btn-icon--transparent d-mobile-only"
-          title="Tornar a Carpetes"
-          aria-label="Tornar a Carpetes"
-        >
-          <ArrowLeft size={18} />
-        </button>
-        <div className="sdp-flex sdp-items-center">
-          <div className="btn-icon sdp-pointer-events-none sdp-bg-transparent">
-            <NotebookPen size={20} />
-          </div>
-          <div className="notes-column-title">NOTES</div>
-        </div>
-        <button 
-          onClick={() => setColNotesCollapsed(true)} 
-          className="btn-icon btn-icon--transparent d-desktop-only"
-          title="Replegar Columna"
-        >
-          <PanelLeftClose size={18} />
-        </button>
-      </div>
+    <section className="notes-column notes-column--middle">
+      <AppGridColumn
+        titol="NOTES"
+        icona={NotebookPen}
+        onReplega={() => setColNotesCollapsed(true)}
+      />
       
       <div className="notes-column__body notes-list-container">
         <div className="notes-list-actions">
@@ -78,7 +58,10 @@ export default function NotesList() {
                 <button
                   key={note.id}
                   type="button"
-                  onClick={() => setActiveNoteId(note.id)}
+                  onClick={() => {
+                    setActiveNoteId(note.id);
+                    tancaPanells();
+                  }}
                   className={`note-card ${isActive ? 'active' : ''} ${note.coverImage ? 'has-thumbnail' : ''}`}
                 >
                   {note.coverImage && (

@@ -10,9 +10,8 @@
  *
  *   1 · `setBackendImplementation` no s'exposava a cap global. Zero
  *       assignacions `window.*` en tot `src/`.
- *   2 · El build de WordPress és `soc-de-poble.standalone.js`, i el plugin
- *       declara explícitament que NO és un mòdul ESM. Sense ESM i sense
- *       global, no hi ha cap superfície de crida des de fora.
+ *   2 · El build standalone declara explícitament que NO és un mòdul ESM.
+ *       Sense ESM i sense global, no hi ha cap superfície de crida.
  *   3 · Encara que n'hi haguera: `freezeImplementation()` es crida dins de
  *       `connectedCallback`, que dispara SÍNCRONAMENT durant
  *       `customElements.define()` quan l'etiqueta ja és al DOM — que és
@@ -31,7 +30,7 @@
  *   Fase 2 · SEGELLAT       `arrenca()` congela el backend i defineix
  *                           l'element. A partir d'ací, res es pot injectar.
  *
- * Per a WordPress, que necessita arrencada sense configuració, `arrencaAuto()`
+ * Per a entorns que necessiten arrencada sense configuració, `arrencaAuto()`
  * fa la fase 2 sola en el següent tick. Un `<script>` del host col·locat
  * després del bundle encara arriba a temps per a la fase 1, perquè el tick
  * no s'ha consumit.
@@ -56,10 +55,10 @@
  * Per a substituir Supabase del tot (l'objectiu d'integració amb Sollutia), es passa el
  * contracte sencer i `supabaseBackend.js` deixa de tocar-se en temps d'execució.
  *
- * COM L'USA WORDPRESS (cap canvi al plugin)
- * ─────────────────────────────────────────
+ * COM S'USA EN ENTORN ESTÀNDARD
+ * ─────────────────────────────
  *   El build standalone acaba cridant `arrencaAuto()`. Si ningú ha configurat
- *   res, s'arrenca amb Supabase, exactament com fins ara.
+ *   res, s'arrenca amb Supabase de forma autònoma.
  *
  * NOTA D'HONESTEDAT
  * ─────────────────
@@ -97,6 +96,8 @@ export const CONTRACTE_BACKEND = Object.freeze([
   'registerWithEmail',
   'loginWithEmail',
   'loginWithGoogle',
+  'listMyOrganizations',
+  'createOrganization',
   'recullTornadaOAuth',
   'logout',
   'getCurrentUser',
@@ -198,13 +199,12 @@ export function arrenca() {
 }
 
 /**
- * Arrencada automàtica per als entorns que no configuren res (WordPress).
+ * Arrencada automàtica per als entorns que no configuren res.
  *
  * `setTimeout(…, 0)` és una MACROtasca, no una microtasca: la finestra
  * d'injecció és més ampla del que deia el comentari anterior. Tot i així
  * només arriba a temps un `<script>` SÍNCRON del host. Amb `defer`, `async`
- * o `type="module"` —el que fa `wp_enqueue_script` amb estratègia diferida—
- * el host arriba tard i `configura()` llançarà.
+ * o `type="module"` el host arriba tard i `configura()` llançarà.
  */
 export function arrencaAuto() {
   if (autoProgramada || fase === FASE.SEGELLAT) return;

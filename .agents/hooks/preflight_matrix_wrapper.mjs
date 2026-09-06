@@ -77,7 +77,7 @@ try {
     console.log(JSON.stringify({
       injectSteps: [
         {
-          ephemeralMessage: `[MATRIX BLOCK] No pots respondre encara. Matrix ha aturat l'execució perquè falta context o hi ha errors al Brain. Corregeix-ho!\n${reportStr}\n${stderr}`
+          ephemeralMessage: `[MATRIX ROIG] El bootloader ha eixit amb ready:false: el context NO s'ha carregat.\nAquest hook no bloqueja res (PreInvocation no admet decisions); qui bloqueja és la\nLlei 6 de .agents/hooks/verify.mjs, que denegarà qualsevol document nou fins que\nhi haja rebut. Corregeix això primer.\n${reportStr}\n${stderr}`
         }
       ]
     }));

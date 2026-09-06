@@ -26,6 +26,7 @@ Aquestes skills s'apliquen sempre per validar l'entorn abans d'executar tasques 
 - [[core-higiene-reflexa/SKILL|core-higiene-reflexa]]: Llei d'ancoratge i tancament. Controla el cicle sencer: obrir, classificar, ancorar i tancar.
 - [[identity-iaia-core/SKILL|identity-iaia-core]]: Bootstrap d'identitat executiu de la IAIA MarIA.
 - [[reflexio-previa/SKILL|reflexio-previa]]: Filtre de seguretat cognitiva abans d'iniciar qualsevol tasca.
+- [[efecte-matrix/SKILL|efecte-matrix]]: Obligació de consultar la Wiki abans de generar cap document.
 
 ## Skills de Tasca
 - [[council-review/SKILL|council-review]]: Fusió de deliberació, avaluacions entre membres del Consell i anàlisi DAFO.
@@ -48,7 +49,5 @@ Aquest índex serveix de referència per al compilador en temps d'execució. Si 
 > Mou cada enllaç a la secció temàtica que li toque i el llaurador el
 > llevarà d'ací tot sol a la següent passada. Si el bloc queda buit,
 > desapareix: vol dir que la wiki està cosida a mà.
-
-- [[.agents/skills/efecte-matrix/SKILL|SKILL]] — Obligació de consultar la Wiki abans de generar cap document (Efecte Matrix)
 
 <!-- LLAURADOR:ADOPCIONS:FI -->

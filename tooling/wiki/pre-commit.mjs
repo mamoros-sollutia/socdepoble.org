@@ -13,7 +13,7 @@ import { auditWiki } from './autoneteja_wiki.mjs';
 import { runSemanticAudit } from './semantic_auditor.mjs';
 import { verifyWikiBaselineLock } from './reflex_petorreta.mjs';
 import path from 'node:path';
-import { execSync } from 'node:child_process';
+import { execSync, spawnSync } from 'node:child_process';
 
 const step = (n, msg) => console.log(`\n[${n}/4] ${msg}`);
 
@@ -43,23 +43,28 @@ async function main() {
   try {
     // 1. Cercar camins fràgils a tooling/wiki ignorant project_paths
     try {
-      const out = execSync("grep -rnl 'process\\.cwd()\\|\\.\\./\\.\\.' tooling/wiki | grep -v 'project_paths'", { encoding: 'utf8' });
-      if (out.trim()) {
-        console.error(`SDP-LOCK: Fitxers usant camins absoluts o cwd:\n${out}`);
-        process.exit(1);
+      const grep1 = spawnSync('grep', ['-rnl', '-E', 'process\\.cwd\\(\\)|\\.\\./\\.\\.', 'tooling/wiki'], { encoding: 'utf8' });
+      if (grep1.stdout) {
+        const outLines = grep1.stdout.trim().split('\n').filter(l => l && !l.includes('project_paths'));
+        if (outLines.length > 0) {
+          console.error(`SDP-LOCK: Fitxers usant camins absoluts o cwd:\n${outLines.join('\n')}`);
+          throw new Error('Camins fràgils detectats.');
+        }
       }
     } catch (e) { /* grep falla si no troba res, la qual cosa és bo */ }
 
     // 2. Anti-tombstone: cercar si algun import invoca fitxers amb TOMBSTONE
     try {
-      const tombstones = execSync("grep -rl 'SDP-LOCK: .* retirat' tooling/wiki", { encoding: 'utf8' }).trim().split('\n').filter(Boolean).map(p => path.basename(p));
+      const grep2 = spawnSync('grep', ['-rl', 'SDP-LOCK: .* retirat', 'tooling/wiki'], { encoding: 'utf8' });
+      const tombstones = grep2.stdout ? grep2.stdout.trim().split('\n').filter(Boolean).map(p => path.basename(p)) : [];
       if (tombstones.length > 0) {
-        const grepPattern = tombstones.join('\\|');
-        const references = execSync(`grep -rnl '${grepPattern}' tooling/wiki .agents package.json`, { encoding: 'utf8' });
-        const badRefs = references.trim().split('\n').filter(p => !tombstones.includes(path.basename(p)) && p);
+        const grepPattern = tombstones.join('|');
+        const grep3 = spawnSync('grep', ['-rnl', '-E', grepPattern, 'tooling/wiki', '.agents', 'package.json'], { encoding: 'utf8' });
+        const references = grep3.stdout || '';
+        const badRefs = references.trim().split('\n').filter(p => p && !tombstones.includes(path.basename(p)));
         if (badRefs.length > 0) {
           console.error(`SDP-LOCK: Els següents fitxers referencien tombstones inactius:\n${badRefs.join('\n')}`);
-          process.exit(1);
+          throw new Error('Tombstones inactius referenciats.');
         }
       }
     } catch (e) {

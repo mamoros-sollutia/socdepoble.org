@@ -566,7 +566,7 @@ Gran</div>
     >
       <DropdownItem>Fer Pública</DropdownItem>
       <DropdownItem>Moure a Carpeta</DropdownItem>
-      <DropdownItem className="text-danger">Eliminar</DropdownItem>
+      <DropdownItem className="sdp-text-error">Eliminar</DropdownItem>
     </Dropdown>
   </div>
 </div>
@@ -748,7 +748,7 @@ Gran</div>
         { text: 'Gestoria', className: 'sdp-badge-system' },
         { text: 'Hisenda', className: 'sdp-badge-category' }
       ]}
-      author="Javi Llinares"
+      author="Mestre Poble"
       location="La Torre de les Maçanes"
       avatarUrl="/assets/system/ui/logo-socdepoble-cuadrat-verd.svg"
       time="14:28"
@@ -771,7 +771,7 @@ Gran</div>
         { text: 'Mercat', className: 'sdp-badge-system' },
         { text: 'Sóc de Poble', className: 'sdp-badge-category' }
       ]}
-      author="Javi Llinares"
+      author="Mestre Poble"
       location="La Torre de les Maçanes"
       avatarUrl="/assets/system/ui/logo-socdepoble-cuadrat-verd.svg"
       time="14:28"
@@ -1226,18 +1226,19 @@ Gran</div>
           <div className="card sdp-p-4 sdp-mb-4">
             <h4 className="sdp-m-0 sdp-mb-2">Panell de Control</h4>
             <p className="sdp-m-0 sdp-text-sm text-muted"><strong>Tipus:</strong> Sistema (Sense Labels)</p>
+            <p className="sdp-m-0 sdp-text-sm sdp-text-suau"><strong>Tipus:</strong> Sistema (Sense Labels)</p>
             <p className="sdp-mt-2">És el <em>Hub</em> o quadre de comandament central. No té cap feed ni <em>cards</em>. Servix exclusivament com a enrutador per a oferir accessos ràpids a la publicació i altres eines d'administració de l'ecosistema. A més, fa servir una <em>entradilla</em> (propietat `lead`) com a subtítol per mantenir la neteja visual i prescindir de títols amb estils <em>inline</em>.</p>
           </div>
           
           <div className="card sdp-p-4 sdp-mb-4">
             <h4 className="sdp-m-0 sdp-mb-2">Dispositius (Descoberta en viu)</h4>
-            <p className="sdp-m-0 sdp-text-sm text-muted"><strong>Tipus:</strong> Sistema (Sense Labels)</p>
+            <p className="sdp-m-0 sdp-text-sm sdp-text-suau"><strong>Tipus:</strong> Sistema (Sense Labels)</p>
             <p className="sdp-mt-2">És el motor d'aparellament de la plataforma. La seua lògica s'encarrega d'escanejar la xarxa local, negociar les connexions WebRTC o per relé (Relay) i anunciar la presència del node local. No és una publicació, sinó la font de connectivitat estructural per al P2P offline-first.</p>
           </div>
 
           <div className="card sdp-p-4 sdp-mb-4">
             <h4 className="sdp-m-0 sdp-mb-2">Cens de Població</h4>
-            <p className="sdp-m-0 sdp-text-sm text-muted"><strong>Tipus:</strong> Sistema (Sense Labels)</p>
+            <p className="sdp-m-0 sdp-text-sm sdp-text-suau"><strong>Tipus:</strong> Sistema (Sense Labels)</p>
             <p className="sdp-mt-2">Un simple llistat estàtic de caràcter informatiu. Ordena la llista de pobles de forma purament descendent pel seu volum demogràfic (nombre d'habitants) i permet l'accés directe al perfil de cada localitat. Tampoc requereix etiquetes.</p>
           </div>
 

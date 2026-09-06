@@ -28,7 +28,7 @@
  *   2. Emergent + esdeveniment `storage` — quan Google talla l'`opener` amb
  *      capçaleres COOP. Passa de veres; no és teòric.
  *   3. Redirecció completa — iPads amb emergents bloquejats.
- *   La finestra amfitriona (Sollutia, WordPress, local) no navega mai fora
+ *   La finestra amfitriona (Sollutia, local) no navega mai fora
  *   en els casos 1 i 2.
  *
  * ⚠ A VERIFICAR CONTRA LA TEUA VERSIÓ DE GOTRUE ABANS DE DESPLEGAR:
@@ -51,8 +51,14 @@ const EXCHANGE_GRANT = 'pkce';
 const EXCHANGE_FIELD = 'auth_code';
 const TEMPS_MAXIM_MS = 180000;
 
-const relayUrl = (config) => config?.oauthRelayUrl || RELAY_PER_DEFECTE;
-const relayOrigin = (config) => new URL(relayUrl(config)).origin;
+const relayUrl = (config) => {
+  // Bypassem el relé per defecte si estem en local perquè auth.socdepoble.org no existix al DNS
+  if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
+    return window.location.origin + '/callback';
+  }
+  return config?.oauthRelayUrl || RELAY_PER_DEFECTE;
+};
+const relayOrigin = (config) => typeof window !== 'undefined' && window.location.hostname === 'localhost' ? window.location.origin : new URL(relayUrl(config)).origin;
 
 /* ───────────────────────── PKCE ───────────────────────── */
 
@@ -119,7 +125,12 @@ export async function entraAmbGoogle(config = {}, resolConfig) {
   const repte = await generaRepte(verificador);
   setEfimer(CLAU_VERIFICADOR, verificador);
 
-  const destiRelay = `${relayUrl(config)}?sdp_origin=${encodeURIComponent(window.location.origin)}&sdp_path=${encodeURIComponent(window.location.pathname)}`;
+  // Si estem en localhost, bypass del relay (usem la URL actual per tornar directament ací)
+  const isLocal = window.location.hostname === 'localhost';
+  const destiRelay = isLocal 
+    ? `${window.location.origin}${window.location.pathname}`
+    : `${relayUrl(config)}?sdp_origin=${encodeURIComponent(window.location.origin)}&sdp_path=${encodeURIComponent(window.location.pathname)}`;
+  
   const url = `${supabaseUrl}/auth/v1/authorize`
     + `?provider=google`
     + `&code_challenge=${encodeURIComponent(repte)}`

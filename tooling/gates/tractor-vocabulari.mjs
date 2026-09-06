@@ -64,7 +64,13 @@ function arbre(dir, exts, acc = []) {
 function llegirVocabulari() {
   const vocab = new Set();
   const buides = new Set();
-  for (const full of [FULL_CANONIC, ...FULLS_TRANSICIO]) {
+  
+  const fitxersCSS = [FULL_CANONIC, ...FULLS_TRANSICIO];
+  for (const dir of ABAST) {
+    fitxersCSS.push(...arbre(dir, ['.css']));
+  }
+  
+  for (const full of fitxersCSS) {
     const abs = join(ARREL, full);
     if (!existsSync(abs)) continue;
     const css = readFileSync(abs, 'utf8');

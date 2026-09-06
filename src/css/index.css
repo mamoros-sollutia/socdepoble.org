@@ -3229,70 +3229,7 @@ button.sp-card-calendar-badge:hover {
   gap: var(--sdp-space-6);
 }
 
-.onboarding-progress {
-  border: 1px solid var(--sdp-vora);
-  border-radius: var(--sdp-radi-g);
-  background: var(--sdp-fons-targeta);
-  box-shadow: var(--sdp-ombra-1);
-  overflow: hidden;
-}
 
-.onboarding-progress__list {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.onboarding-progress__step {
-  min-width: 0;
-  display: flex;
-  align-items: center;
-  gap: var(--sdp-space-3);
-  padding: var(--sdp-space-4);
-  color: var(--sdp-text-suau);
-  font-size: var(--sdp-text-meta);
-  font-weight: 700;
-  border-right: 1px solid var(--sdp-vora);
-}
-
-.onboarding-progress__step:last-child {
-  border-right: 0;
-}
-
-.onboarding-progress__step.is-current {
-  background: var(--sdp-accio-subtil);
-  color: var(--sdp-accio-text);
-}
-
-.onboarding-progress__step.is-complete {
-  color: var(--sdp-exit-text);
-}
-
-.onboarding-progress__icon {
-  width: var(--sdp-touch-min);
-  height: var(--sdp-touch-min);
-  flex: 0 0 var(--sdp-touch-min);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid var(--sdp-vora-control);
-  border-radius: var(--sdp-radi-pastilla);
-  background: var(--sdp-fons-targeta);
-}
-
-.onboarding-progress__step.is-current .onboarding-progress__icon {
-  color: var(--sdp-sobre-accio);
-  border-color: var(--sdp-accio);
-  background: var(--sdp-accio);
-}
-
-.onboarding-progress__step.is-complete .onboarding-progress__icon {
-  color: var(--sdp-exit-text);
-  border-color: var(--sdp-exit);
-  background: var(--sdp-exit-fons);
-}
 
 .onboarding-card {
   padding: clamp(var(--sdp-space-5), 5vw, var(--sdp-space-10));
@@ -3340,11 +3277,17 @@ button.sp-card-calendar-badge:hover {
   text-transform: uppercase;
 }
 
+.onboarding-card__heading h2,
+.onboarding-card__heading h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 .onboarding-card__intro {
-  max-width: 65ch;
   margin: 0 0 var(--sdp-space-6);
   color: var(--sdp-text-suau);
   line-height: var(--sdp-leading-body);
+  text-align: center;
 }
 
 .onboarding-form {
@@ -3484,18 +3427,15 @@ button.sp-card-calendar-badge:hover {
     flex-direction: column;
   }
 
-  .onboarding-progress__list,
   .onboarding-summary {
     grid-template-columns: 1fr;
   }
 
-  .onboarding-progress__step,
   .onboarding-summary div {
     border-right: 0;
     border-bottom: 1px solid var(--sdp-vora);
   }
 
-  .onboarding-progress__step:last-child,
   .onboarding-summary div:last-child {
     border-bottom: 0;
   }
@@ -3602,3 +3542,108 @@ button.sp-card-calendar-badge:hover {
   outline: 3px solid var(--sdp-focus);
   outline-offset: 1px;
 }
+
+/* --- Perfil Universal (Formularis Pedra Seca) --- */
+.form-trellat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sdp-space-3);
+  margin-top: var(--sdp-space-2);
+}
+
+.form-trellat label {
+  font-weight: 500;
+  color: var(--sdp-text-cos);
+}
+
+.input-trellat {
+  padding: var(--sdp-space-3) var(--sdp-space-4);
+  border: 1px solid var(--sdp-vora-control);
+  border-radius: var(--sdp-radi-s);
+  background-color: var(--sdp-fons-targeta);
+  color: var(--sdp-text-cos);
+  outline: none;
+  transition: border-color var(--sdp-t), box-shadow var(--sdp-t);
+  font: inherit;
+  width: 100%;
+}
+
+.input-trellat:focus {
+  border-color: var(--sdp-accio-text);
+  box-shadow: 0 0 0 3px rgba(1, 110, 191, 0.16);
+}
+
+/* Universal Toolbar (shared between Notes and Profiles) */
+.editor-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: none;
+  height: 56px;
+  gap: var(--sdp-space-2);
+  padding: 0 var(--sdp-space-4);
+  background: var(--sdp-pedra-800);
+  color: var(--sdp-sobre-roca);
+  border-bottom: none;
+}
+.editor-toolbar .btn-icon { color: var(--sdp-sobre-roca); }
+.editor-toolbar .btn-icon:hover { background: var(--sdp-pedra-700); }
+.editor-toolbar .separator { width: 1px; height: 24px; background: var(--sdp-vora-control); margin: 0 var(--sdp-space-1); }
+
+/* Universal Toolbar buttons */
+.btn-icon,
+.btn-publish,
+.btn-create {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  gap: var(--sdp-space-1);
+  min-width: var(--sdp-touch);
+  min-height: var(--sdp-touch);
+  padding: var(--sdp-space-2);
+  border: 1px solid transparent;
+  border-radius: var(--sdp-radi-pastilla);
+  background: transparent;
+  color: inherit;
+  font-size: var(--sdp-text-meta);
+  cursor: pointer;
+}
+.btn-create { background: var(--sdp-accio); color: var(--sdp-sobre-accio); font-weight: 700; padding: var(--sdp-space-2) 22px; }
+.btn-create:hover { background: var(--sdp-accio-hover); }
+
+/* Universal Action Bars (Graelles) */
+.notes-list-actions,
+.sidebar-actions { 
+  display: flex; 
+  flex: none; 
+  justify-content: space-between; 
+  align-items: center; 
+  gap: var(--sdp-space-1); 
+  height: 56px; 
+  padding: 0 var(--sdp-space-4); 
+  background: var(--sdp-pedra-700); 
+  border-bottom: 1px solid var(--sdp-vora-control); 
+  position: relative;
+  z-index: 10;
+}
+.sidebar-actions { margin-right: -1px; }
+.sidebar-actions .folder-item {
+  width: auto; margin: 0; color: var(--sdp-sobre-roca);
+  padding: var(--sdp-space-2) 18px; gap: 10px; border-radius: var(--sdp-radi-pastilla);
+  display: flex; align-items: center; background: transparent; border: none; cursor: pointer;
+}
+.sidebar-actions .folder-item:hover, .sidebar-actions .folder-item.active { background: var(--sdp-pedra-800); color: var(--sdp-text-principal); }
+.notes-actions-left { display: flex; align-items: center; }
+.sidebar-actions .btn-icon,
+.notes-list-actions .btn-icon { color: var(--sdp-sobre-roca); }
+.btn-icon--settings, .dropdown-container { position: relative; }
+.btn-icon { width: var(--sdp-touch); height: var(--sdp-touch); padding: 0; }
+.btn-icon svg,
+.btn-publish svg { flex: none; }
+.btn-publish { background: var(--sdp-accio); color: var(--sdp-sobre-accio); font-weight: 700; padding: var(--sdp-space-2) 22px; }
+.btn-publish:hover { background: var(--sdp-accio-hover); }
+.editor-toolbar .toolbar-actions { display: flex; flex: 1 1 240px; flex-wrap: wrap; gap: var(--sdp-space-1); min-width: 0; }
+.editor-toolbar .active-text { background: var(--sdp-accent); color: var(--sdp-sobre-accent); border-color: currentColor; }
+.btn-icon:hover { outline: 1px solid currentColor; outline-offset: -2px; }
+.editor-toolbar button:disabled { opacity: .5; cursor: default; }

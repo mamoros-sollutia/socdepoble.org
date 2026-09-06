@@ -3,6 +3,7 @@ tipus: skill
 estat: actiu
 description: Skill per evitar la mutilació de context i garantir la Veritat Completa a les IAs.
 name: abocament-total
+prioritat: 45
 triggers_on:
   - bundle
   - abocament

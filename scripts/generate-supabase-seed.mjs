@@ -121,7 +121,7 @@ set payload = excluded.payload,
 insert into public.chat_threads (id, tenant_id, owner_user_id, payload)
 values
 ${chatThreadValues}
-on conflict (id) do update
+on conflict (tenant_id, id) do update
 set tenant_id = excluded.tenant_id,
     owner_user_id = excluded.owner_user_id,
     payload = excluded.payload,
@@ -140,7 +140,7 @@ insert into public.chat_messages (
 )
 values
 ${chatMessageValues}
-on conflict (id) do update
+on conflict (tenant_id, id) do update
 set tenant_id = excluded.tenant_id,
     owner_user_id = excluded.owner_user_id,
     thread_id = excluded.thread_id,

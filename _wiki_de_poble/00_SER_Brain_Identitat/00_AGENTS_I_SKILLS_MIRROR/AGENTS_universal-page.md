@@ -20,20 +20,37 @@ core: true
 
 Aquest manual defineix l'arquitectura i les regles inviolables de la `UniversalPage`, el component base per construir pàgines i vistes de lectura/edició dins de Sóc de Poble.
 
+> [!IMPORTANT]
+> **FONT DE VERITAT ÚNICA (Single Source of Truth):**
+> L'única referència vàlida i òptima per copiar i replicar el codi de la `UniversalPage` (amb tots els seus blocs, filtres, targetes i estructura) és la pàgina oficial de Disseny: `src/sections/disseny/DesignSection.jsx`. Qualsevol IA o agent ha de consultar exclusivament el codi d'aquesta pàgina per entendre i reproduir la implementació canònica de la `UniversalPage`. Cap altra secció o component s'ha d'utilitzar com a referència.
+
+
 ## 1. Anatomia Estàndard (Els Blocs)
 
 Una `UniversalPage` completa està formada pels següents blocs estratificats, que han d'aparèixer en aquest ordre i respectar aquestes regles de maquetació:
 
 ### A. La Barra Blava (`bar-blue`)
-És el centre de control i navegació de la pàgina/document. Les accions es divideixen en tres grups:
-- **Esquerra:** Tornar arrere, Tornar avant, **Índex**.
-  - *Regla Sagrada:* El botó d'Índex és fonamental. Gràcies a ell, no cal omplir la pàgina de múltiples etiquetes `<h1>` per a separar contingut. L'Índex navega per les seccions internes, garantint que **només hi haja un H1 per pàgina**, complint de manera estricta amb l'estàndard SEO i d'arquitectura d'informació de Sóc de Poble.
-- **Centre:** Traduir, Comentar (Xat Privat), Compartir.
-- **Dreta:** Botó Connectar.
+És el centre de control i navegació de la pàgina/document. Les accions atòmiques i la disposició es divideixen estrictament en tres grups:
+- **Esquerra (Navegació):** Un trio d'icones compost per "Tornar arrere", "Tornar avant" i l'**Índex**.
+  - *Regla Sagrada de l'Índex:* Aquest botó és fonamental. Evita haver d'omplir la pàgina de múltiples etiquetes `<h1>` per a separar contingut, permetent navegar per les subseccions (`<h2>`, `<h3>`). Això garanteix que **només hi haja un únic H1 per pàgina**, mantenint la puresa SEO i l'arquitectura d'informació.
+- **Centre (Interacció):** Un trio d'icones centrat compost per "Traductor", "Comentar (Xat)" i "Compartir".
+  - *Regla del Botó Comentar:* No obri cap fil de comentaris públics davall de la targeta. Funciona com un missatge directe: enllaça sempre al xat privat de l'autor o creador d'eixe contingut.
+- **Dreta (Acció Principal):** El botó "Connectar".
 
-### B. El Frame de Capçalera (Hero Image)
+> [!IMPORTANT]
+> **Equivalència Atòmica (La Targeta i la Pàgina):**
+> L'equivalent directe de la Barra Blava (`bar-blue`) en la versió reduïda del component és **el peu de la Targeta Universal (`UniversalCard footer`)**. Són atòmicament els mateixos elements. Les accions que s'afigen, canvien o s'eliminen a la Barra Blava s'han de reflectir exactament igual al peu de la Targeta Universal, i viceversa. Formen part del mateix sistema d'interacció.
+
+### B. El Frame de Capçalera (Imatge Principal / SEO)
+Aquest element visual no només encapçala la pàgina, sinó que és **la Imatge SEO** que es mostrarà en compartir l'enllaç per WhatsApp o xarxes socials.
 - **Amplària Completa (Full Width):** La imatge Hero (o element multimèdia equivalent) **ha d'ocupar el 100% de l'ample del contenidor**. NO té marge. NO té padding.
-- Si en algun moment hi ha un padding lateral fantasma (p. ex. 40px), s'ha d'eliminar exclusivament per a la imatge Hero, permetent-li tocar les vores de la pantalla o del panell de l'editor. L'altura serà proporcional.
+- **Adaptabilitat del Format:** El contenidor s'adapta proporcionalment a les dimensions de l'arxiu. Encara que a la "Universal Card" normalment s'usen imatges quadrades, el sistema suporta qualsevol format (com un foli A4 o imatge rectangular), ajustant l'altura automàticament.
+- **Interfície de Creació / Edició:** A l'hora de crear o editar una `UniversalPage` o `UniversalCard`, la imatge SEO es gestiona *des de la mateixa pàgina* on es previsualitza, amb aquest comportament:
+  - **Estat Buit:** Si no hi ha cap imatge, només es mostra un únic botó: **"Inserir Imatge o Multimèdia"**.
+  - **Estat d'Edició:** Si ja hi ha una imatge, l'usuari fa clic al damunt per a editar-la. La imatge desapareix temporalment per mostrar el menú d'accions amb tres botons:
+    1. **"Inserir Imatge o Multimèdia"**: Per pujar o triar un arxiu nou (reemplaçant l'actual).
+    2. **"Tornar enrere"**: Per a cancel·lar l'edició i tornar a veure la imatge actual sense canvis.
+    3. **"Esborrar contingut"**: Un botó d'alerta per a eliminar la imatge actual i tornar a l'estat buit.
 
 ### C. La Barra Taronja (`bar-orange`)
 - Conté l'autoria de l'usuari, el seu poble i la data/hora de la publicació.
@@ -51,7 +68,22 @@ Una `UniversalPage` completa està formada pels següents blocs estratificats, q
 La `UniversalPage` està dissenyada per a ser incrustada (embedded) com si fóra el document de contingut d'un editor (com ara dins del `NotesEditor`). 
 
 - **Amplària adaptativa:** Quan s'incrusta com una columna més (ex: a la dreta de la llista de notes i de les carpetes), la barra blava NO ocupa de part a part de l'aplicació, sinó només de part a part del seu propi contenidor (l'editor de notes). Així s'evita xafar l'espai de navegació lateral.
-- **Zero Doble Scroll:** La barra blava s'ha d'amagar de forma natural a través de l'scroll **del propi document incrustat**. No s'ha d'exigir un scroll global a l'usuari primer i un de secundari després per al contingut. Quan l'usuari desplaça cap avall la nota, la barra blava puja i s'amaga, fixant l'atenció exclusivament en l'edició del contingut.
+- **Zero Doble Scroll i Barres no fixes:** A diferència de la pàgina completa (on les barres blava i taronja es queden fixes a dalt, sent *sticky*), en mode incrustat **la barra blava i la barra taronja s'han d'amagar de forma natural a través de l'scroll del propi document incrustat**. Quan l'usuari desplaça cap avall la nota, tant la barra blava com la taronja pugen i s'amaguen, alliberant tot l'espai vertical i fixant l'atenció exclusivament en l'edició del contingut. Aquesta és l'única excepció de comportament d'una UniversalPage incrustada respecte a la versió independent.
 
 ## 3. L'Entorn d'Edició (Foraster vs. Connectat)
 Quan un usuari ("Foraster") fa proves en un bloc de notes, està interactuant visualment amb una `UniversalPage`. Tot i que no estiga autenticat i la nota "desaparega" després, la UI ha de tindre una anatomia idèntica a la versió publicada per garantir consistència mental i anticipació del resultat.
+
+## 4. Sistema de Classificació (Carpetes, Categories i Etiquetes)
+Tota Targeta i Pàgina Universal (`UniversalPage`) exposa de manera prominent els seus metadades de classificació mitjançant píndoles (badges) sota el títol principal (H1). L'estructura semàntica i interactiva segueix sempre el següent patró estricte, renderitzant-se en aquest ordre:
+
+1. **La Carpeta (Sistema):** És el contenidor lògic on s'arxiva el document (ex: *Mur*, *Mercat*, *Pobles*, *Esdeveniments*).
+   - Estil: Fons blau fosc (`sdp-badge-system`).
+   - Comportament: Si l'usuari la clica (`onClick`), ha de filtrar/navegar cap al contingut d'eixa carpeta (ex: `handleSelectFolder`).
+2. **La Categoria Temàtica:** Classifica el document dins d'un àmbit temàtic transversal (ex: *Sistema*, *Productivitat*, *Manual*).
+   - Estil: Fons blau clar/grisenc (`sdp-badge-category`).
+   - Comportament: Al fer-hi clic, ha de filtrar i mostrar només els documents d'eixa categoria en l'àmbit actual (ex: `handleSelectCategory`).
+3. **Les Etiquetes (Tags):** Definicions lliures o semàntiques del contingut (ex: *Tutorial*, *Notícia*, *Vibe*).
+   - Estil: Fons taronja suau corporatiu (`sdp-badge-tag`).
+   - Comportament: Clicables. Filtren el llistat per paraules clau específiques (ex: `handleSelectTag`).
+
+*Regla de disseny visual:* Cap píndola decorativa s'ha de duplicar (ex: si el context ja es troba a la Carpeta "Mur", no s'afegeix un badge idèntic "Mur" com a Categoria). Cada element visual compleix el seu rol estricte dins del DOM de la UniversalPage per facilitar el filtratge de dades.

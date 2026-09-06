@@ -30,7 +30,7 @@ const TextSection = lazy(() => import('../sections/text/TextSection'));
 const DesignSection = lazy(() => import('../sections/disseny/DesignSection'));
 const SearchSection = lazy(() => import('../sections/search/SearchSection'));
 const ProfileSection = lazy(() => import('../sections/profile/ProfileSection'));
-const MyProfileSection = lazy(() => import('../sections/profile/MyProfileSection'));
+const PerfilShell = lazy(() => import('../sections/profile/PerfilShell'));
 const ItemDetailSection = lazy(() => import('../sections/detail/ItemDetailSection'));
 const PageDetailSection = lazy(() => import('../sections/detail/PageDetailSection'));
 const RealitatSection = lazy(() => import('../sections/realitat/RealitatSection'));
@@ -432,7 +432,8 @@ function AppRoutes() {
         <Route path="/accedir" element={<Navigate to="/registre" replace />} />
         <Route path="/registre" element={<OnboardingSection />} />
         <Route path="/crear-compte" element={<Navigate to="/registre" replace />} />
-        <Route path="/el-meu-perfil" element={<MyProfileSection />} />
+        <Route path="/el-meu-perfil" element={<PerfilShell />} />
+        <Route path="/jo" element={<PerfilShell />} />
         <Route path="/perfil" element={<ProfileSection agents={agents} />} />
         <Route path="/perfil/:agentId" element={<ProfileSection agents={agents} />} />
           <Route path="/gent/:agentId" element={<ProfileSection agents={agents} />} />

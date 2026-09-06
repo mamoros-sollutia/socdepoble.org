@@ -63,7 +63,6 @@ export const CORROBORADORS = [
   { cami: 'src', tipus: 'directori', critic: true, nota: 'codi font del Frontend' },
   { cami: 'tooling', tipus: 'directori', critic: true, nota: 'eines i portes' },
   { cami: '_wiki_de_poble', tipus: 'directori', critic: false, nota: 'Wiki d\'Obsidian; pot ser un repositori separat' },
-  { cami: 'wordpress-plugin', tipus: 'directori', critic: false, nota: 'entorn de proves paral·lel' },
 ];
 
 /**
@@ -92,9 +91,7 @@ export const CAMINS = Object.freeze({
   portes: 'tooling/gates',
   cervell: 'tooling/brain',
   toolingWiki: 'tooling/wiki',
-  plugin: 'wordpress-plugin',
   dist: 'dist',
-  distPlugin: 'wordpress-plugin/dist',
 });
 
 /** Directoris que cap recorregut del tooling ha de trepitjar mai. */

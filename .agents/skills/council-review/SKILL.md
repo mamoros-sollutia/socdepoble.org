@@ -3,6 +3,7 @@ tipus: skill
 estat: canonic
 description: Fusió de les regles de deliberació (cog-deliberation), revisió creuada (multi-agent-review) i actitud de prudència radical (actitud-dafo). Regula com interactuar amb les auditories d'altres IAs.
 name: council-review
+prioritat: 40
 triggers_on:
   - consell
   - auditoria
@@ -48,7 +49,7 @@ Aquesta skill unifica el protocol d'interacció amb les avaluacions o auditories
 ## 5. Paranoia Defensiva i Humilitat Radical
 - "Cap IA ho sap tot. El món és massa gran."
 - No assumisques que una solució és perfecta (ni la teua ni la d'una altra IA). Dubta, comprova, valora els riscos.
-- Descarta les "al·lucinacions" (idees que ignoren el context real del projecte, com l'enfocament Sollutia-first o les normes de Pedra Seca).
+- Descarta les "al·lucinacions" (idees que ignoren el context real del projecte, com el fet que estem 100% Online connectats a Sollutia o les normes de Pedra Seca).
 - Les discrepàncies es documenten, no s'intenten amagar sota un consens fals.
 
 ## 6. Zero Fricció i Empatia

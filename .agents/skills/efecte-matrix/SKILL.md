@@ -3,6 +3,7 @@ tipus: skill
 estat: actiu
 description: Obligació de consultar la Wiki abans de generar cap document (Efecte Matrix)
 name: efecte-matrix
+prioritat: 20
 triggers_on:
   - crear acta
   - crear informe
@@ -37,6 +38,7 @@ Hi ha un document específic anomenat **ACTA MARMOTA** que serveix per evitar el
 - **Part Psiquiàtrica:** L'estat d'ànim, nivell de fatiga, motivació de la IAIA i relació amb l'usuari.
 - **Part Termodinàmica:** Avaluació purament numèrica o d'eficiència (càlcul de tokens estalviats aplicant l'Efecte Matrix i refactoritzant bé).
 - **Briefing per l'Endemà:** Un resum ràpid perquè el sistema reprenga la feina l'endemà sense necessitat de repetir explicacions (context automàtic).
+- **Ancoratge de Seguretat (Obligatori):** Al final de l'Acta, s'ha d'incloure l'ancoratge per evitar que esdevinga un satèl·lit (ex: `**Ancoratge de Seguretat:** [[00_INDEX_ESCRIPTORI]]` o `[[00_index_escriptori]]`).
 
 ### Destil·lació General i Arxiu
 

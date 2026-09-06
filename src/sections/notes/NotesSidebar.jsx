@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useNotes } from './NotesContext';
-import { Folder, Bookmark, Hash, PanelLeftClose, Newspaper, ShoppingCart, LandPlot, GalleryVerticalEnd, NotebookPen, Calendar, MapPinned, Inbox, Settings, Clock, ChevronDown, ChevronRight } from 'lucide-react';
+import { useAppGrid } from '../../components/layout/AppGridShell';
+import AppGridColumn from '../../components/layout/AppGridColumn';
+import { Folder, Bookmark, Hash, Newspaper, ShoppingCart, LandPlot, GalleryVerticalEnd, NotebookPen, Calendar, MapPinned, Inbox, Settings, Clock } from 'lucide-react';
 
 const CATEGORIES = ['Sistema'];
 
@@ -29,6 +31,18 @@ export default function NotesSidebar() {
     isCompact, mobilePanel,
     t
   } = useNotes();
+  const { mida, setPanellObert } = useAppGrid();
+  const isCompactGrid = mida !== 'ample';
+
+  const onSelectFolder = (id) => {
+    handleSelectFolder(id);
+    if (isCompactGrid) setPanellObert('middle');
+  };
+
+  const onSelectCategory = (cat) => {
+    handleSelectCategory(cat);
+    if (isCompactGrid) setPanellObert('middle');
+  };
 
   const getCategoryLabel = (category) => t(`section.notes.category.${category}`, category);
 
@@ -82,15 +96,12 @@ export default function NotesSidebar() {
   if (colFoldersCollapsed && !isCompact) {
     return (
       <aside className="notes-column notes-column--left collapsed">
-        <div className="notes-column-header notes-column-header--collapsed">
-          <button 
-            onClick={() => setColFoldersCollapsed(false)}
-            className="btn-icon hover-bg"
-            title="Expandir Carpetes"
-          >
-            <Folder size={20} />
-          </button>
-        </div>
+        <AppGridColumn
+          variant="collapsed"
+          titol="Carpetes"
+          icona={Folder}
+          onReplega={() => setColFoldersCollapsed(false)}
+        />
         <div className="notes-column__body" style={{ padding: 0 }}>
           <div className="sidebar-actions sdp-justify-center">
             <SettingsDropdown />
@@ -101,29 +112,28 @@ export default function NotesSidebar() {
   }
 
   const totFolder = noteFolders.find(f => f.id === 'f-tot');
-  const otherFolders = noteFolders.filter(f => f.id !== 'f-tot' && !f.name.toLowerCase().includes('històries') && !f.name.toLowerCase().includes('histories'));
+  const normalize = (str) => (str || '').normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+  const otherFolders = noteFolders.filter(f => {
+    if (f.id === 'f-tot') return false;
+    const nameStr = normalize(f.name);
+    return !nameStr.includes('histories') && !nameStr.includes('histories del poble');
+  });
 
   return (
     <aside className="notes-column notes-column--left" hidden={isCompact && mobilePanel !== 'folders'}>
-      <div className="notes-column-header cursor-pointer" onClick={() => setAccFoldersOpen(!accFoldersOpen)} title="Plegar/Desplegar Carpetes">
-        <div className="sdp-flex sdp-items-center sdp-gap-8">
-          {accFoldersOpen ? <ChevronDown size={20} /> : <ChevronRight size={20} />}
-          <div className="notes-column-title">CARPETES</div>
-        </div>
-        <button 
-          onClick={(e) => { e.stopPropagation(); setColFoldersCollapsed(true); }} 
-          className="btn-icon btn-icon--transparent d-desktop-only" 
-          title="Replegar Columna"
-        >
-          <PanelLeftClose size={18} />
-        </button>
-      </div>
+      <AppGridColumn
+        titol="CARPETES"
+        plegable
+        obert={accFoldersOpen}
+        onPlega={() => setAccFoldersOpen(!accFoldersOpen)}
+        onReplega={() => setColFoldersCollapsed(true)}
+      />
 
       <div className="sidebar-actions">
         {totFolder && (
           <button
             type="button"
-            onClick={() => handleSelectFolder(totFolder.id)}
+            onClick={() => onSelectFolder(totFolder.id)}
             className={`folder-item ${totFolder.id === activeFolderId ? 'active' : ''}`}
           >
             <Inbox size={24} strokeWidth={2.1} />
@@ -146,7 +156,7 @@ export default function NotesSidebar() {
                 <button
                   key={folder.id}
                   type="button"
-                  onClick={() => handleSelectFolder(folder.id)}
+                  onClick={() => onSelectFolder(folder.id)}
                   className={`folder-item ${isGlobal ? 'folder-item--global' : ''} ${folder.id === activeFolderId ? 'active' : ''}`}
                 >
                   <Icon size={isGlobal ? 24 : 16} strokeWidth={isGlobal ? 2.1 : 2} />
@@ -158,16 +168,13 @@ export default function NotesSidebar() {
         )}
 
         {/* ACCORDION CATEGORIES */}
-        <div 
-          className="notes-column-header notes-column-header--accordion cursor-pointer" 
-          onClick={() => setAccCategoriesOpen(!accCategoriesOpen)}
-          title="Plegar/Desplegar Categories"
-        >
-          <div className="sdp-flex sdp-items-center sdp-gap-8">
-            {accCategoriesOpen ? <ChevronDown size={20} /> : <ChevronRight size={20} />}
-            <div className="notes-column-title">CATEGORIES</div>
-          </div>
-        </div>
+        <AppGridColumn
+          variant="accordion"
+          titol="CATEGORIES"
+          plegable
+          obert={accCategoriesOpen}
+          onPlega={() => setAccCategoriesOpen(!accCategoriesOpen)}
+        />
         
         {accCategoriesOpen && (
           <div className="folders-list">
@@ -175,7 +182,7 @@ export default function NotesSidebar() {
               <button
                 key={category}
                 type="button"
-                onClick={() => handleSelectCategory(category)}
+                onClick={() => onSelectCategory(category)}
                 className={`folder-item ${category === activeCategory ? 'active' : ''}`}
               >
                 <Bookmark size={16} />
@@ -186,16 +193,13 @@ export default function NotesSidebar() {
         )}
 
         {/* ACCORDION ETIQUETES */}
-        <div 
-          className="notes-column-header notes-column-header--accordion cursor-pointer" 
-          onClick={() => setAccTagsOpen(!accTagsOpen)}
-          title="Plegar/Desplegar Etiquetes"
-        >
-          <div className="sdp-flex sdp-items-center sdp-gap-8">
-            {accTagsOpen ? <ChevronDown size={20} /> : <ChevronRight size={20} />}
-            <div className="notes-column-title">ETIQUETES</div>
-          </div>
-        </div>
+        <AppGridColumn
+          variant="accordion"
+          titol="ETIQUETES"
+          plegable
+          obert={accTagsOpen}
+          onPlega={() => setAccTagsOpen(!accTagsOpen)}
+        />
 
         {accTagsOpen && (
           <div className="folders-list">

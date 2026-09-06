@@ -12,7 +12,7 @@
 
 ## CONCEPTES TÈCNICS
 
-- **Pany de Host (`host.js`)**: Superfície única on el client (Sollutia, WordPress, app nativa) injecta la seua implementació de `backendPort.js`. Evita que React conega el destí de les dades.
+- **Pany de Host (`host.js`)**: Superfície única on el client (Sollutia o app nativa) injecta la seua implementació de `backendPort.js`. Evita que React conega el destí de les dades.
 - **Rollback Pessimista**: Estratègia d'UI on qualsevol actualització optimista és revertida del DOM automàticament si l'escriptura al backend falla, notificant l'usuari de l'error real.
 - **Portes Mecàniques (Gates o Tractors)**: Scripts dissenyats per aturar qualsevol IA que intente trencar regles invariants del sistema (per exemple, `tractor-enxufe.mjs`).
 

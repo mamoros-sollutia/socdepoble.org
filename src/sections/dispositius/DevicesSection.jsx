@@ -59,7 +59,7 @@ export default function DevicesSection() {
   const { externalConfig, agents, ownerUserId } = useAppData();
   const tenantId = externalConfig?.tenantId || 'default-tenant';
   const activeAgent = agents?.find(a => String(a.id) === String(ownerUserId));
-  const activeName = activeAgent?.name || 'Javi Llinares';
+  const activeName = activeAgent?.name || 'Mestre Poble';
   
   const [profile, setProfile] = useState(() => loadDeviceProfile(tenantId, activeName));
   const [draftName, setDraftName] = useState(() => loadDeviceProfile(tenantId, activeName).name);

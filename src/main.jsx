@@ -16,8 +16,8 @@
 
 import { arrencaAuto, exposaGlobal } from './host.js';
 
-// El build standalone de WordPress no és ESM: sense aquest global, un host que
-// el carregue amb un <script> pla no té cap manera d'arribar al port.
+// Si el build standalone no és ESM, un entorn host que el carregue
+// amb un script pla necessita un global.
 exposaGlobal();
 
 const init = () => {
@@ -25,7 +25,7 @@ const init = () => {
   // del bundle encara arriba a temps de cridar configura().
   arrencaAuto();
 
-  // Desenvolupament local amb Vite: instanciem l'element com faria WordPress.
+  // Desenvolupament local amb Vite: instanciem l'element com faria el host.
   const arrel = document.getElementById('root');
   if (arrel && !arrel.innerHTML) {
     const element = document.createElement('soc-de-poble');

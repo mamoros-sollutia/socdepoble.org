@@ -52,15 +52,25 @@ export function NotesProvider({ children }) {
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [timerActive, setTimerActive] = useState(false);
   const [timerSeconds, setTimerSeconds] = useState(0);
-  const [isCompact, setIsCompact] = useState(false);
-  const [mobilePanel, setMobilePanel] = useState('folders'); // 'folders' | 'notes' | 'editor'
 
-  const [localNoteOverrides, setLocalNoteOverrides] = useState({});
+  const [localNoteOverrides, setLocalNoteOverrides] = useState(() => {
+    try {
+      const stored = sessionStorage.getItem('sdp_notes_drafts');
+      return stored ? JSON.parse(stored) : {};
+    } catch (e) {
+      console.warn('sdp_notes_drafts parse error', e);
+      return {};
+    }
+  });
   const setLocalNoteField = useCallback((id, field, value) => {
-    setLocalNoteOverrides(prev => ({
-      ...prev,
-      [id]: { ...prev[id], [field]: value }
-    }));
+    setLocalNoteOverrides(prev => {
+      const next = {
+        ...prev,
+        [id]: { ...prev[id], [field]: value }
+      };
+      try { sessionStorage.setItem('sdp_notes_drafts', JSON.stringify(next)); } catch (e) { console.warn('Error saving drafts', e); }
+      return next;
+    });
   }, []);
 
   const notes = useMemo(() => {
@@ -95,7 +105,6 @@ export function NotesProvider({ children }) {
     setActiveCategory(null);
     setActiveTag(null);
     if (colNotesCollapsed) setColNotesCollapsed(false);
-    setMobilePanel('notes');
   }, [colNotesCollapsed]);
 
   const handleSelectCategory = useCallback((category) => {
@@ -103,7 +112,6 @@ export function NotesProvider({ children }) {
     setActiveFolderId(null);
     setActiveTag(null);
     if (colNotesCollapsed) setColNotesCollapsed(false);
-    setMobilePanel('notes');
   }, [colNotesCollapsed]);
 
   const handleSelectTag = useCallback((tag) => {
@@ -111,30 +119,52 @@ export function NotesProvider({ children }) {
     setActiveFolderId(null);
     setActiveCategory(null);
     if (colNotesCollapsed) setColNotesCollapsed(false);
-    setMobilePanel('notes');
   }, [colNotesCollapsed]);
   
   const handleSelectNote = useCallback((id) => {
     setActiveNoteId(id);
-    setMobilePanel('editor');
   }, []);
 
   const saveNoteField = useCallback(async (noteId, field, value) => {
     if (!noteId) return false;
     const netejat = netejaCamp(field, value);
     
-    // Optimístic update a nivell local
+    // Establim l'override local (draft visual) per evitar salts de render.
     setLocalNoteField(noteId, field, netejat);
     
+    const baseNote = rawNotes.find(n => n.id === noteId);
+    const expectedRevision = baseNote ? baseNote.revision : undefined;
+    
     try {
-      await updateNote(noteId, { [field]: netejat }, externalConfig);
+      const savedNote = await updateNote(noteId, { [field]: netejat }, expectedRevision, externalConfig);
+      
+      // En ACK netejem el dirtyField per a confirmar sincronització i guardem la revisió.
+      setLocalNoteOverrides(prev => {
+        const next = { ...prev };
+        if (!next[noteId]) next[noteId] = {};
+        
+        if (next[noteId][field] === netejat) {
+           delete next[noteId][field];
+        }
+        
+        // Sempre apliquem la revisió fresca per evitar errors CAS.
+        next[noteId].revision = savedNote.revision;
+        
+        try { sessionStorage.setItem('sdp_notes_drafts', JSON.stringify(next)); } catch (e) { console.warn('Error saving drafts', e); }
+        return next;
+      });
+      
       return true;
     } catch (e) {
       console.warn("No s'ha pogut guardar la nota en remot:", e);
-      showToast('El canvi no ha arribat al servidor. Reintenta-ho.', 'error');
+      if (e.status === 409) {
+        showToast('Error de concurrència: un altre dispositiu ha modificat la nota.', 'error');
+      } else {
+        showToast('El canvi no ha arribat al servidor. Reintenta-ho.', 'error');
+      }
       return false;
     }
-  }, [setLocalNoteField, externalConfig]);
+  }, [rawNotes, setLocalNoteField, externalConfig]);
 
   const publishNote = useCallback(async () => {
     if (!activeNote) return;
@@ -158,6 +188,7 @@ export function NotesProvider({ children }) {
     
     try {
       await sendSectionSubmission({ sectionId: 'mur', payload });
+      await saveNoteField(activeNote.id, 'isPublished', true);
       showToast('Nota publicada correctament al mur!', 'success');
     } catch (err) {
       console.error('Error enviant publicació:', err);
@@ -179,7 +210,6 @@ export function NotesProvider({ children }) {
       settingsOpen, setSettingsOpen,
       timerActive, setTimerActive,
       timerSeconds, setTimerSeconds,
-      mobilePanel, setMobilePanel, isCompact, setIsCompact,
       saveNoteField, setLocalNoteField, publishNote,
       t, noteFolders
     }}>

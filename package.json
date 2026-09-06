@@ -10,6 +10,7 @@
   "scripts": {
     "despertar": "node tooling/brain/despertar.mjs",
     "porta:arrel": "node tooling/gates/tractor-arrel.mjs",
+    "porta:graella": "node tooling/gates/tractor-graella.mjs",
     "porta:enxufe": "node tooling/gates/tractor-enxufe.mjs",
     "porta:maquinari": "node tooling/gates/tractor-doctrina-maquinari.mjs",
     "porta:build": "node tooling/gates/tractor-build-previ.mjs",
@@ -53,11 +54,10 @@
     "rag:build": "node -e \"import('./tooling/wiki/core/build_rag_index.mjs').then(m => m.run({root: '.'}))\"",
     "slugs:build": "node tooling/wiki/core/build_slug_index.mjs",
     "bundle": "node tooling/brain/crear_bundle.mjs",
-    "build": "npm run build:tokens && npm run build:seo && npm run rag:build && npm run slugs:build && npm run build:web && npm run build:wp && npm run gate",
+    "build": "npm run build:tokens && npm run build:seo && npm run rag:build && npm run slugs:build && npm run build:web && npm run gate",
     "build:tokens": "node tooling/scripts/build-tokens.mjs",
     "build:seo": "node tooling/gates/build-seo-manifest.mjs --escriu",
     "build:web": "vite build",
-    "build:wp": "vite build -c vite.standalone.config.js && mkdir -p wordpress-plugin/assets/fonts wordpress-plugin/assets/img && cp -r src/assets/fonts/* wordpress-plugin/assets/fonts/ && cp -r assets/img/* wordpress-plugin/assets/img/",
     "prepare": "husky",
     "preview": "vite preview --host 0.0.0.0",
     "db:seed:generate": "sh scripts/generate-supabase-seed.sh",
@@ -65,7 +65,8 @@
     "brain:distill": "python3 tooling/brain/brain_distill.py",
     "pdf:render": "sh tooling/pdf/render_pdf.sh",
     "test": "vitest",
-    "lint": "eslint src tooling scripts"
+    "lint": "eslint src tooling scripts",
+    "porta:llavor": "node tooling/gates/tractor-llavor.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.112.4",
@@ -95,7 +96,6 @@
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.12.0",
     "vite": "^7.1.0",
-    "vite-plugin-pwa": "^1.3.0",
     "vitest": "^4.1.10"
   },
   "engines": {

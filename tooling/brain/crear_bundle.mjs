@@ -65,7 +65,6 @@ const DIRECTORIS = [
   CAMINS.agents,
   CAMINS.tooling,
   'scripts',
-  CAMINS.plugin,
   CAMINS.wiki,
   'assets',
   'supabase',
@@ -153,7 +152,7 @@ const EXTENSIONS = new Set([
 ]);
 
 /** Directoris que no es trepitgen mai (a més dels globals d'arrel.mjs). */
-const DIRS_EXCLOSOS = new Set([...EXCLOSOS, 'cervells', '90_historic', '.husky', '.githooks']);
+const DIRS_EXCLOSOS = new Set([...EXCLOSOS, 'cervells', '90_revisar', '90_arxiu_historic', '90_historic', '.husky', '.githooks']);
 
 /** Sostre termodinàmic orientatiu, en MB. Mai poda: només avisa. */
 const SOSTRE_MB = 2.5;
@@ -459,7 +458,7 @@ function principal() {
     title: `🛡️ PETORRETA AL CONSELL: ${sufix.replace(/_/g, ' ').toUpperCase()}`,
     description: `Auditoria tècnica del paquet ${sufix}`,
     objective: `Auditar el paquet ${sufix} amb evidències verificables`,
-    context: `Bundle aparellat: ${path.basename(nomBundle)}.\n\nLa integració actual és online i Sollutia-first; la sobirania local és una meta de llarg termini.`,
+    context: `Bundle aparellat: ${path.basename(nomBundle)}.\n\nLa integració actual és purament online i centrada en crear una connexió perfecta per al sistema de la nostra empresa sòcia, Sollutia; la sobirania local és una meta de llarg termini.`,
     instruction: 'Analitza el codi i la Wiki adjunts, identifica causes i proposa correccions mínimes verificables',
     output: 'markdown',
   }) : null;
@@ -472,15 +471,21 @@ function principal() {
   const tmp = `${nomBundle}.tmp`;
   // bypass: escriptura directa (no usa canonada.mjs) per fer el bundle atòmic.
   // const _bypassCanonada = "no es fa servir canonada.mjs";
-  fs.writeFileSync(tmp, text, 'utf8');
+  fs.writeFileSync(tmp, text.normalize('NFC'), 'utf8');
   fs.renameSync(tmp, nomBundle); // escriptura atòmica: mai un bundle a mitges
 
-  // Escriure manifest i absents solts per documentació estricta (Codex)
   const baseDir = path.dirname(nomBundle);
   const manifestFile = path.join(baseDir, `${meta.prefix}_MANIFEST_${sufix}.json`);
   const absentsFile = path.join(baseDir, `${meta.prefix}_ABSENTS_${sufix}.json`);
-  fs.writeFileSync(manifestFile, JSON.stringify(manifest, null, 2), 'utf8');
-  fs.writeFileSync(absentsFile, JSON.stringify({ absents_critics: critics, absents_no_critics: manifest.absents_no_critics }, null, 2), 'utf8');
+  
+  const manifestTmp = manifestFile + '.tmp';
+  const absentsTmp = absentsFile + '.tmp';
+  
+  fs.writeFileSync(manifestTmp, JSON.stringify(manifest, null, 2).normalize('NFC'), 'utf8');
+  fs.renameSync(manifestTmp, manifestFile);
+  
+  fs.writeFileSync(absentsTmp, JSON.stringify({ absents_critics: critics, absents_no_critics: manifest.absents_no_critics }, null, 2).normalize('NFC'), 'utf8');
+  fs.renameSync(absentsTmp, absentsFile);
 
   console.log(`\n✅ Bundle: ${rel(nomBundle)}`);
   console.log(`✅ Manifest separat: ${rel(manifestFile)}`);

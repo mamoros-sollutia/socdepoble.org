@@ -1,0 +1,238 @@
+/* ═══════════════════════════════════════════════════════════════════
+   AppGridShell — Graella universal de 3 columnes
+   (Basada en la filosofia de Pedra Seca del Bloc de Notes)
+   ═══════════════════════════════════════════════════════════════════ */
+
+.app-grid-page {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  --app-grid-col-sidebar: 270px;
+  --app-grid-col-list: 300px;
+  --app-grid-col-collapsed: 56px;
+  --app-grid-header-height: calc(var(--sdp-alt-accio) + 1px);
+  background: var(--sdp-fons-app);
+  --app-grid-bg-esquerra: var(--sdp-pedra-300); /* Calç 300 */
+  --app-grid-bg-centre: var(--sdp-pedra-200);   /* Arena 200 */
+}
+
+[data-theme="dark"] .app-grid-page {
+  --app-grid-bg-esquerra: var(--sdp-pedra-900);
+  --app-grid-bg-centre: var(--sdp-pedra-850);
+}
+
+.app-grid-page > .content-wrapper,
+.app-grid-page .app-grid-shell {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.app-grid-headers {
+  display: flex;
+  height: var(--app-grid-header-height);
+  background: var(--sdp-pedra-800);
+  flex: none;
+}
+.app-grid-header-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: var(--sdp-sobre-roca);
+  font-weight: 700;
+  font-size: var(--sdp-text-meta);
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+}
+.app-grid-header-btn.active {
+  border-bottom-color: var(--sdp-accent);
+  color: var(--sdp-accent);
+}
+
+.app-grid-column {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  background: var(--sdp-fons-app);
+}
+
+/* ESTRUCTURA PRINCIPAL (3 Columnes fixes) */
+.app-grid-shell[data-layout="ample"] .app-grid-content {
+  display: grid;
+  grid-template-columns: var(--app-grid-col-sidebar) var(--app-grid-col-list) minmax(0, 1fr);
+  width: 100%; 
+  height: 100%;
+}
+
+/* TAULETA (1 Fila de capçalera + 2 columnes per davall) */
+.app-grid-shell[data-layout="mitja"] .app-grid-content {
+  display: grid;
+  grid-template-columns: var(--app-grid-col-list) minmax(0, 1fr);
+  flex: 1; 
+  min-height: 0; 
+  position: relative;
+  overflow: hidden;
+}
+/* La columna esquerra se superposa quan s'obri */
+.app-grid-shell[data-layout="mitja"] .app-grid-column--left {
+  position: absolute; left: 0; top: 0; bottom: 0; width: var(--app-grid-col-sidebar);
+  transform: translateX(-100%); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 30;
+  box-shadow: var(--sdp-ombra-3);
+}
+.app-grid-shell[data-layout="mitja"] .app-grid-headers:has(.app-grid-header-btn.active[aria-controls="app-grid-sidebar"]) ~ .app-grid-content .app-grid-column--left {
+  transform: translateX(0);
+}
+
+/* MÒBIL (1 Fila de capçalera + 1 columna visible alhora) */
+.app-grid-shell[data-layout="estret"] .app-grid-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  flex: 1; 
+  min-height: 0; 
+  position: relative;
+  overflow: hidden;
+}
+/* TOTES les columnes estan al mateix lloc (1 grid cell), la dreta SEMPRE hi és. */
+.app-grid-shell[data-layout="estret"] .app-grid-column {
+  grid-column: 1 / 2; grid-row: 1 / 2;
+}
+/* La dreta viu baix, el centre enmig, l'esquerra dalt */
+.app-grid-shell[data-layout="estret"] .app-grid-column--right { z-index: 1; }
+.app-grid-shell[data-layout="estret"] .app-grid-column--middle { 
+  z-index: 20; 
+  transform: translateX(-100%); 
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+}
+.app-grid-shell[data-layout="estret"] .app-grid-column--left { 
+  z-index: 30; 
+  transform: translateX(-100%); 
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+}
+.app-grid-shell[data-layout="estret"] .app-grid-headers:has(.app-grid-header-btn.active[aria-controls="app-grid-sidebar"]) ~ .app-grid-content .app-grid-column--left {
+  transform: translateX(0);
+}
+.app-grid-shell[data-layout="estret"] .app-grid-headers:has(.app-grid-header-btn.active[aria-controls="app-grid-list"]) ~ .app-grid-content .app-grid-column--middle {
+  transform: translateX(0);
+}
+
+/* COLORS DE FONS BÀSICS */
+.app-grid-page .app-grid-column--left {
+  background: var(--app-grid-bg-esquerra);
+}
+.app-grid-page .app-grid-column--middle {
+  background: var(--app-grid-bg-centre);
+}
+:root[data-theme="dark"] .app-grid-page .app-grid-column--right,
+:host([data-theme="dark"]) .app-grid-page .app-grid-column--right { 
+  background: var(--sdp-pedra-800); 
+}
+
+/* ESTATS COL·LAPSATS (Si cal per escriptori) */
+.app-grid-shell[data-layout="ample"] .app-grid-column--left:has(> .collapsed) { width: var(--app-grid-col-collapsed); }
+.app-grid-shell[data-layout="ample"] .app-grid-column--middle:has(> .collapsed) { width: var(--app-grid-col-collapsed); }
+.app-grid-shell[data-layout="ample"] .app-grid-column--left:has(> .collapsed) ~ .app-grid-column--middle { grid-column: 2; }
+.app-grid-shell[data-layout="ample"]:has(.app-grid-column--left:has(> .collapsed)) .app-grid-content {
+  grid-template-columns: var(--app-grid-col-collapsed) var(--app-grid-col-list) minmax(0, 1fr);
+}
+.app-grid-shell[data-layout="ample"]:has(.app-grid-column--middle:has(> .collapsed)) .app-grid-content {
+  grid-template-columns: var(--app-grid-col-sidebar) var(--app-grid-col-collapsed) minmax(0, 1fr);
+}
+.app-grid-shell[data-layout="ample"]:has(.app-grid-column--left:has(> .collapsed)):has(.app-grid-column--middle:has(> .collapsed)) .app-grid-content {
+  grid-template-columns: var(--app-grid-col-collapsed) var(--app-grid-col-collapsed) minmax(0, 1fr);
+}
+
+/* UTILS PER AMAGAR/MOSTRAR */
+.d-mobile-only { display: none; }
+.app-grid-shell[data-layout="estret"] .d-mobile-only { display: inline-flex; }
+.app-grid-shell[data-layout="estret"] .d-desktop-only { display: none; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   AppGridColumn — capçalera única de columna
+   Un sol lloc on tocar quan canvie el disseny de les capçaleres.
+   ═══════════════════════════════════════════════════════════════════ */
+.app-grid-col-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sdp-space-2);
+  min-height: 56px;
+  padding: 0 var(--sdp-space-4);
+  background: var(--sdp-pedra-800);
+  color: var(--sdp-sobre-roca);
+  border-bottom: none;
+  flex: none;
+}
+.app-grid-col-header--collapsed { justify-content: center; padding: 0; }
+.app-grid-col-header--accordion {
+  background: var(--sdp-pedra-600);
+  border-top: 1px solid var(--sdp-vora-control);
+  border-bottom: 1px solid var(--sdp-vora-control);
+}
+
+.app-grid-col-header__plec {
+  display: flex;
+  align-items: center;
+  gap: var(--sdp-space-2);
+  flex: 1;
+  min-width: 0;
+  min-height: var(--sdp-touch-min);
+  background: none;
+  border: 0;
+  padding: 0;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+}
+.app-grid-col-header__plec--fix { cursor: default; }
+.app-grid-col-header__plec:focus-visible { outline: 2px solid var(--sdp-focus); }
+
+.app-grid-col-header__titol {
+  font-size: var(--sdp-text-meta);
+  font-weight: 600;
+  color: inherit;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.app-grid-col-header__accions { display: flex; align-items: center; gap: var(--sdp-space-1); }
+
+/* El "+" redonet. Llei de Vida: 44px de zona tàctil encara que el cercle
+   en pinte 32, via pseudo-element, sense inflar la capçalera. */
+.app-grid-col-header__accio {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--sdp-accio);
+  color: var(--sdp-sobre-accio);
+  cursor: pointer;
+  flex: none;
+}
+.app-grid-col-header__accio::after {
+  content: '';
+  position: absolute;
+  inset: 50% auto auto 50%;
+  width: var(--sdp-touch-min);
+  height: var(--sdp-touch-min);
+  transform: translate(-50%, -50%);
+}
+.app-grid-col-header__accio:hover:not(:disabled) { background: var(--sdp-accio-hover); }
+.app-grid-col-header__accio:focus-visible { outline: 2px solid var(--sdp-focus); outline-offset: 2px; }
+.app-grid-col-header__accio:disabled { opacity: 0.4; cursor: not-allowed; }

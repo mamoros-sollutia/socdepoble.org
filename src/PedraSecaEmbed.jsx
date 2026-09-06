@@ -4,20 +4,18 @@
  * Correccions respecte de la versió auditada:
  *
  *  P0-1 MORT PER MOVIMENT DE DOM. `connectedCallback` es protegia amb
- *       `if (!this.shadowRoot)`. El shadow root SOBREVIU a un moviment de node,
- *       així que en tornar a connectar la guarda impedia tornar a muntar: el
- *       component quedava mort per sempre. WordPress (Gutenberg, Elementor)
- *       mou nodes constantment. Ara la guarda és sobre l'arrel de React i el
- *       shadow root es reaprofita.
+ *       `if (!this.shadowRoot)`. shadow root SOBREVIU a un moviment de node, així que en tornar a
+ *       connectar la guarda impedia tornar a muntar: el component quedava mort
+ *       per sempre. Si el host (entorn de l'usuari) mou nodes constantment.
+ *       Ara la guarda és sobre l'arrel de React i el shadow root es reaprofita.
  *
  *  P0-2 CURSA DEL setTimeout. El desmuntatge diferit s'executava encara que el
  *       node es reconnectara dins del mateix tick, matant l'arrel nova. Ara es
  *       cancel·la a `connectedCallback`.
  *
- *  P0-3 @font-face DINS DEL SHADOW DOM. Per especificació, un `@font-face`
  *       declarat dins d'un shadow root NO es registra: només compta l'arbre del
  *       document. A més, les URL relatives de `noto-sans.css` es resoldrien
- *       contra la pàgina de WordPress i donarien 404. Les fonts es carreguen
+ *       malament. Les fonts es carreguen
  *       ara al document, una sola vegada, via `fonts-href`.
  *
  *  P0-4 CSS DUPLICAT PER INSTÀNCIA. Cada instància injectava una còpia sencera
@@ -199,7 +197,7 @@ class SocDePobleElement extends BaseElement {
     this._manualLanguage = null;
   }
 
-  /** Propietat JS: permet passar objectes rics (WordPress, React host, Vue…). */
+  /** Propietat JS: permet passar objectes rics (Sollutia, React host, Vue…). */
   set config(valor) {
     this._configProp = valor && typeof valor === 'object' ? valor : {};
     this._recalcularConfig();
@@ -225,10 +223,9 @@ class SocDePobleElement extends BaseElement {
      * `old.isConnected` CERT: és a dir, instàncies vives i sanes.
      *
      * El comentari deia «Últim que arriba guanya», que era una política
-     * d'instància única mai declarada enlloc. A WordPress no s'aguanta:
-     * Gutenberg permet posar dos blocs a la mateixa pàgina, i un editor del
-     * poble ho farà tard o d'hora. Muntar el segon deixava el primer en blanc,
-     * sense error a la consola i sense manera d'endevinar per què.
+     * d'instància única mai declarada enlloc. En un host complex no s'aguanta:
+     * es pot posar dos blocs a la mateixa pàgina. Muntar el segon deixava
+     * el primer en blanc, sense error a la consola.
      *
      * Ara només es netegen zombis. Dues instàncies vives conviuen.
      */
@@ -255,7 +252,7 @@ class SocDePobleElement extends BaseElement {
         });
         arrel.adoptedStyleSheets = currentSheets;
       } catch {
-        // Fallback robust per a certs entorns (WP editor) que trenquen adoptedStyleSheets
+        // Fallback robust per a certs entorns amfitrions que trenquen adoptedStyleSheets
       }
     } 
     
@@ -284,7 +281,7 @@ class SocDePobleElement extends BaseElement {
       /* Auditoria 260830: ací hi havia freezeImplementation(). Segellar el
          backend dins del cicle de vida deixava una finestra d'injecció de zero
          mil·lisegons, perquè customElements.define() dispara connectedCallback
-         síncronament quan l'etiqueta ja és al DOM (el cas de WordPress).
+         síncronament quan l'etiqueta ja és al DOM.
          El segellat viu ara a src/host.js:arrenca(). Vegeu tractor-enxufe.mjs. */
       this._root = createRoot(this._punt);
     }
@@ -422,8 +419,8 @@ class SocDePobleElement extends BaseElement {
    * al PHP ni al JS: la font de veritat continua sent el CSS.
    *
    * És OPT-IN (`pinta-amfitrio`). Sense la guarda, incrustar el component com
-   * un bloc més dins d'un article de WordPress repintaria el fons del lloc
-   * sencer. Només la plantilla de pàgina completa demana este comportament.
+   * un bloc més dins d'un article repintaria el fons del lloc sencer. Només
+   * la plantilla de pàgina completa demana este comportament.
    */
   _pintaAmfitrio() {
     if (typeof document === 'undefined') return;
@@ -441,7 +438,7 @@ class SocDePobleElement extends BaseElement {
 
     const arrel = document.documentElement;
     /* Es guarda el valor previ una sola vegada per a poder-lo restituir:
-       la pàgina de WordPress pot tindre el seu i no és nostre. */
+       la pàgina amfitriona pot tindre el seu i no és nostre. */
     if (PedraSecaEmbed._fonsPrevi === undefined) {
       PedraSecaEmbed._fonsPrevi = arrel.style.getPropertyValue('--sdp-bg');
     }
@@ -587,7 +584,7 @@ export function defineCustomElement() {
       if (strErr.includes('sdp') || strErr.includes('soc-de-poble') || err?.stack?.includes('soc-de-poble')) {
         if (err?.name === 'QuotaExceededError' || strErr.includes('QuotaExceeded')) {
           console.warn('[PedraSeca] QuotaExceeded global capturat. Confiem en fallbacks.');
-          event.preventDefault(); // Evitem que embrute la consola del WP
+          event.preventDefault(); // Evitem que embrute la consola del host
         } else {
           // Si no som a Vite env (process env no existeix fàcilment ací a no ser que ho fiquem), ens callem l'error 
           console.warn('[PedraSeca] Promesa rebutjada globalment:', err);

@@ -46,7 +46,7 @@ export const delVal = (key) => {
  *   El verificador és l'única cosa que impedix que un codi d'autenticació
  *   robat servisca per a res. Ha de morir amb la pestanya. A localStorage
  *   sobreviuria a tancar el navegador i quedaria a l'abast de qualsevol
- *   script de la pàgina amfitriona (Sollutia, WordPress) indefinidament.
+ *   script de la pàgina amfitriona (Sollutia, app nativa) indefinidament.
  *
  * MATEIX CONTRACTE: síncrones, xicotetes, res que puga créixer.
  *

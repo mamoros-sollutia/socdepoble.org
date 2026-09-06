@@ -1,3 +1,4 @@
+import { APP_SEED } from "../data/appSeed.js";
 import { createContext, useContext, useEffect, useMemo, useState, useRef } from 'react';
 import {
   getBackendConfigurat,
