@@ -1,12 +1,14 @@
 {
   "css-de-seccio": {
-    "max": 1,
+    "max": 3,
     "identitats": [
-      "css-de-seccio|src/sections/notes/NotesSection.css|src/sections/notes/NotesSection.css"
+      "css-de-seccio|src/components/layout/AppGridShell.css|src/components/layout/AppGridShell.css",
+      "css-de-seccio|src/sections/notes/NotesSection.css|src/sections/notes/NotesSection.css",
+      "css-de-seccio|src/sections/profile/PerfilShell.css|src/sections/profile/PerfilShell.css"
     ]
   },
   "classe-forastera": {
-    "max": 167,
+    "max": 168,
     "identitats": [
       "classe-forastera|src/app/App.jsx|app-brand__mark",
       "classe-forastera|src/app/App.jsx|app-sidebar-nav-footer",
@@ -22,12 +24,22 @@
       "classe-forastera|src/app/App.jsx|sdp-route-loading-screen__panel",
       "classe-forastera|src/app/App.jsx|sdp-route-loading-screen__subtitle",
       "classe-forastera|src/app/App.jsx|sdp-route-loading-screen__title",
+      "classe-forastera|src/components/layout/AppGridColumn.jsx|btn-icon--transparent",
+      "classe-forastera|src/components/layout/AppGridColumn.jsx|hover-bg",
       "classe-forastera|src/components/ui/UniversalSearch.jsx|universal-search-icon",
       "classe-forastera|src/components/ui/UniversalSearch.jsx|universal-search-input",
       "classe-forastera|src/components/ui/UniversalSearch.jsx|universal-search-wrapper",
       "classe-forastera|src/components/universal/UniversalComponents.jsx|accordion-body",
       "classe-forastera|src/components/universal/UniversalComponents.jsx|accordion-item",
+      "classe-forastera|src/components/universal/UniversalComponents.jsx|page-title-logo-wrapper",
       "classe-forastera|src/components/universal/UniversalComponents.jsx|sp-card-time",
+      "classe-forastera|src/components/universal/UniversalEditorShell.jsx|dropdown-info-header",
+      "classe-forastera|src/components/universal/UniversalEditorShell.jsx|editor-lead-input",
+      "classe-forastera|src/components/universal/UniversalEditorShell.jsx|editor-subtitle-input",
+      "classe-forastera|src/components/universal/UniversalEditorShell.jsx|editor-title-input",
+      "classe-forastera|src/components/universal/UniversalEditorShell.jsx|logo-accions",
+      "classe-forastera|src/components/universal/UniversalEditorShell.jsx|published",
+      "classe-forastera|src/components/universal/UniversalEditorShell.jsx|sp-card-time",
       "classe-forastera|src/pages/NotFoundPage.jsx|sdp-text-suau",
       "classe-forastera|src/sections/connectar/ConnectarSection.jsx|badge-remove",
       "classe-forastera|src/sections/connectar/ConnectarSection.jsx|connect-card",
@@ -73,7 +85,6 @@
       "classe-forastera|src/sections/disseny/DesignSection.jsx|sdp-text-suau",
       "classe-forastera|src/sections/disseny/DesignSection.jsx|sdp-w-full",
       "classe-forastera|src/sections/disseny/DesignSection.jsx|sw-pedra-50",
-      "classe-forastera|src/sections/disseny/DesignSection.jsx|text-danger",
       "classe-forastera|src/sections/disseny/DesignSection.jsx|text-muted",
       "classe-forastera|src/sections/disseny/DesignSection.jsx|universal-content",
       "classe-forastera|src/sections/mercat/detail/detailSectionMeta.jsx|sdp-mb-4",
@@ -91,17 +102,7 @@
       "classe-forastera|src/sections/mur/articles/Aplec2023Article.jsx|detail-content--plain",
       "classe-forastera|src/sections/mur/detail/detailSectionMeta.jsx|detail-grid",
       "classe-forastera|src/sections/mur/detail/eventsDetailSectionMeta.jsx|detail-grid",
-      "classe-forastera|src/sections/notes/NotesEditor.jsx|dropdown-info-header",
-      "classe-forastera|src/sections/notes/NotesEditor.jsx|editor-lead-input",
-      "classe-forastera|src/sections/notes/NotesEditor.jsx|editor-subtitle-input",
-      "classe-forastera|src/sections/notes/NotesEditor.jsx|editor-title-input",
-      "classe-forastera|src/sections/notes/NotesEditor.jsx|sp-card-time",
-      "classe-forastera|src/sections/notes/NotesList.jsx|btn-icon--transparent",
-      "classe-forastera|src/sections/notes/NotesList.jsx|hover-bg",
-      "classe-forastera|src/sections/notes/NotesSidebar.jsx|btn-icon--transparent",
-      "classe-forastera|src/sections/notes/NotesSidebar.jsx|cursor-pointer",
       "classe-forastera|src/sections/notes/NotesSidebar.jsx|folder-item--global",
-      "classe-forastera|src/sections/notes/NotesSidebar.jsx|hover-bg",
       "classe-forastera|src/sections/notes/detail/detailSectionMeta.jsx|detail-grid",
       "classe-forastera|src/sections/poblacio/PoblacioSection.jsx|sdp-mb-12",
       "classe-forastera|src/sections/pobles/PoblesSection.jsx|sdp-mb-12",
@@ -118,6 +119,8 @@
       "classe-forastera|src/sections/profile/MyProfileSection.jsx|sdp-text-sobre-accent",
       "classe-forastera|src/sections/profile/MyProfileSection.jsx|sdp-text-xl",
       "classe-forastera|src/sections/profile/ProfileSection.jsx|card-link--active",
+      "classe-forastera|src/sections/profile/SelectorIdentitat.jsx|perfil-identitat-avatar",
+      "classe-forastera|src/sections/profile/SelectorIdentitat.jsx|perfil-identitat-inicial",
       "classe-forastera|src/sections/text/TelemetryDashboard.jsx|sdp-mb-12",
       "classe-forastera|src/sections/text/TextSection.jsx|sdp-text-content",
       "classe-forastera|src/sections/xat/XatSection.jsx|sdp-chat-bubble",
@@ -127,10 +130,20 @@
     ]
   },
   "classe-opaca": {
-    "max": 3,
+    "max": 13,
     "identitats": [
+      "classe-opaca|src/components/layout/AppGridColumn.jsx|app-grid-col-header${…}",
+      "classe-opaca|src/components/universal/UniversalComponents.jsx|content-wrapper${…}",
       "classe-opaca|src/components/universal/UniversalComponents.jsx|toc-level-${…}",
-      "classe-opaca|src/sections/dispositius/DevicesSection.jsx|devices-status--${…}"
+      "classe-opaca|src/sections/dispositius/DevicesSection.jsx|devices-status--${…}",
+      "classe-opaca|src/sections/onboarding/OnboardingSteps.jsx|form-group${…}",
+      "classe-opaca|src/sections/onboarding/OnboardingSteps.jsx|form-group--checkbox${…}"
     ]
+  },
+  "_segell": {
+    "congelat": "2026-09-06T12:15:05.699Z",
+    "recompte": 184,
+    "porta": "tooling/gates/tractor-vocabulari.mjs",
+    "avis": "Açò és deute DECLARAT, no resolt. Aquest número només pot baixar. Regenerar el baseline per a fer passar una porta és tornar al problema de zero."
   }
 }

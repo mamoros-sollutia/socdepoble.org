@@ -22,11 +22,15 @@ Aquesta skill defineix com recomanar i gestionar l'ús de la potència dels dife
 ## 1. L'Era Astra i la Gestió de Quota
 Amb l'arribada dels models GPT-6 Astra a Codex, tenim una potència d'enginyeria inversa espectacular i context de 2 milions de tokens, però la contrapartida són els **límits d'ús (ratelimits) draconians** (quotes de 5 hores i setmanals). L'estratègia principal és l'escalat de potència conscient.
 
+### Com llegir el panell d'ús (Molt Important)
+Si el panell de Codex marca `"26 % restante"`, significa literalment que **només et queda un 26% de la teua energia per a les pròximes hores**. El tram fosc de la barra és el que ja has gastat.
+*Si veus un 26% restant, NO pots llançar un altre bundle massiu*, perquè aquest consumirà de colp un 74% i farà saltar la quota, deixant l'estudi a mitges.
+
 ## 2. L'Escala Astra (Ligero, Astra, Medio, Ultra)
 
 - **Astra Ligero (Rendiment diari):** Permet múltiples interaccions. S'ha d'usar per defecte per a exploració i identificació superficial.
 - **Astra (Normal):** L'estàndard equilibrat per al dia a dia quan Ligero es queda curt.
-- **Astra Medio (Força de treball bruta):** Ara sabem que és **el límit màxim segur per a Bundles gegants de 3.3MB**. Un sol xat complet d'auditoria estructural massiva s'empassa el **74% de la quota de 5 hores** i el **12% de la quota setmanal**. És a dir, en la pràctica, només permet 1 xat pesat per cicle.
+- **Astra Medio (Força de treball bruta):** És el **límit màxim segur per a Bundles gegants (3.3MB - 3.8MB)**. Un sol xat complet d'auditoria estructural massiva amb un bundle pesat s'empassa el **74% de la quota de 5 hores** (i el 12% de la setmanal) d'una sola tirada. És a dir, només permet 1 xat pesat per cicle de 5 hores. Saps que només et queda un tir si la barra diu "100% restante".
 - **Astra Ultra (La Bomba Atòmica):** Té el doble de raonament logic-matemàtic, però devora la quota en 1 sol xat. Prohibit per a Bundles grans per esgotament de tokens. S'usa per a lògica complexa en fitxers concrets.
 
 ## 3. L'Estafa del Model Ultra (Risc d'Esgotament Total)
@@ -41,7 +45,7 @@ Abans de cada sessió de treball, la IAIA MarIA ha de recomanar quina escala usa
 Claude disposa d'un model de crèdits de pagament per a la seua versió màxima. Els models disponibles són:
 - **Haiku 4.5**: Més ràpid per a respostes ràpides.
 - **Sonnet 5**: Més eficient per a tasques diàries.
-- **Opus 5**: Per a tasques complexes (Màxim del pla Pro habitual). Important: **Si assoleix el límit d'ús d'eines (tool limit), es detindrà. Prémer "Continuar" NO consumeix euros extres ni saldo**, només consumeix quota normal del pla Pro.
+- **Opus 5**: Per a tasques complexes (Màxim del pla Pro habitual). **ATENCIÓ A LA QUOTA**: 1 sol xat pesat amb el Bundle de 3.4MB consumeix un **60% del límit de sessió**. Es restableix cada poques hores, però significa que Opus 5 NO és un pou sense fons; està tan limitat com Astra Medio per a Bundles massius. Important: **Si assoleix el límit d'ús d'eines (tool limit), es detindrà. Prémer "Continuar" NO consumeix euros extres ni saldo**, només consumeix quota normal del pla Pro.
 - **Fable 5.1 (Premium)**: Requereix crèdits d'ús extra (pagament directe). Només per als desafiaments més difícils.
 
 ### Taula de Pressupost i Ús (Estat Actual)
@@ -51,7 +55,7 @@ Claude disposa d'un model de crèdits de pagament per a la seua versió màxima.
 | **Codex (Astra Medio)** | 74% de 5h / 12% setmanal per bundle | Inclòs en subscripció | **Únic salvavides** gratuït per engolir bundles de 3.3MB. Genera 1 diagnòstic per cicle. |
 | **Codex (Astra / Ligero)** | Múltiples xats | Inclòs en subscripció | Refactorització i picar codi post-diagnòstic. |
 | **Claude (Fable 5.1)** | Alt consum per xat | Saldo actual: ~13.42€ | **Darrera ràtio**. No gastar diners excepte si Astra Medio fracassa. |
-| **Claude (Opus 5)** | Límit Pro (0% usat) | Inclòs en subscripció | Alternativa gratuïta per a contrastar arquitectures un cop Codex està esgotat. |
+| **Claude (Opus 5)** | 60% usat per Bundle (Límit de sessió) | Inclòs en subscripció | **Compte**: Té ratelimit sever. Únicament permet 1-2 intents grossos per sessió abans d'haver d'esperar hores. |
 
 ## Ancoratge de la Wiki
 - Aquesta skill penja de: [[00_INDEX_SKILLS]]

@@ -1,5 +1,5 @@
 import { APP_SEED, APP_SEED_VERSION, CHAT_THREADS, getDefaultUserId } from './appSeed.js';
-import { getVal, setVal, delVal } from '../config/storage.js';
+import { getVal, setVal, delVal, getEfimer, setEfimer } from '../config/storage.js';
 import { entraAmbGoogle, gestionaTornada } from './oauthRelay.js';
 import { mergeById, mapSectionSubmissionToItem } from './mapejadorSeccions.js';
 
@@ -46,7 +46,7 @@ const CONNECTABLE_SECTION_IDS = new Set(['mur', 'mercat', 'events', 'multimedia'
 
 
 const buildHeaders = (anonKey, extra = {}) => {
-  const jwt = getVal('socdepoble-jwt');
+  const jwt = getEfimer('socdepoble-jwt');
   return {
     apikey: anonKey,
     Authorization: `Bearer ${jwt ? jwt : anonKey}`,
@@ -64,7 +64,7 @@ export function refreshSession(config = {}) {
 }
 
 async function _renova(config) {
-  const refreshToken = getVal('socdepoble-refresh-token');
+  const refreshToken = getEfimer('socdepoble-refresh-token');
   if (!refreshToken) return false;
 
   const { supabaseUrl, supabaseAnonKey } = getResolvedConfig(config);
@@ -89,8 +89,8 @@ async function _renova(config) {
   if (response.ok) {
     const result = await response.json();
     if (result?.access_token) {
-      setVal('socdepoble-jwt', result.access_token);
-      setVal('socdepoble-refresh-token', result.refresh_token);
+      setEfimer('socdepoble-jwt', result.access_token);
+      setEfimer('socdepoble-refresh-token', result.refresh_token);
       setVal('socdepoble-user', result.user);
       if (typeof window !== 'undefined') {
         window.dispatchEvent(new CustomEvent('sdp:auth-change', { detail: { user: result.user }}));

@@ -100,8 +100,8 @@ async function bescanvia(codi, verificador, { supabaseUrl, supabaseAnonKey }) {
   const sessio = await resposta.json();
   if (!sessio?.access_token) throw new Error('El servidor no ha tornat cap sessió.');
 
-  setVal('socdepoble-jwt', sessio.access_token);
-  setVal('socdepoble-refresh-token', sessio.refresh_token);
+  setEfimer('socdepoble-jwt', sessio.access_token);
+  setEfimer('socdepoble-refresh-token', sessio.refresh_token);
   setVal('socdepoble-user', sessio.user);
   delEfimer(CLAU_VERIFICADOR);
   window.dispatchEvent(new CustomEvent('sdp:auth-change', { detail: { user: sessio.user } }));
@@ -117,6 +117,21 @@ async function bescanvia(codi, verificador, { supabaseUrl, supabaseAnonKey }) {
 export async function entraAmbGoogle(config = {}, resolConfig) {
   const { supabaseUrl, supabaseAnonKey, hasSupabaseConfig } = resolConfig(config);
   if (!hasSupabaseConfig) throw new Error('L\'entrada amb Google necessita connexió amb Supabase.');
+
+  // Circuit Breaker per evitar bucles de redirecció cap a l'autenticació
+  const clauCb = 'sdp:oauth:cb';
+  const intentsCb = getEfimer(clauCb, { count: 0, time: Date.now() });
+  if (Date.now() - intentsCb.time > 60000) {
+    intentsCb.count = 1;
+    intentsCb.time = Date.now();
+  } else {
+    intentsCb.count += 1;
+  }
+  setEfimer(clauCb, intentsCb);
+  
+  if (intentsCb.count > 4) {
+    throw new Error('Massa intents d\'inici de sessió seguits. Circuit Breaker activat. Espera un minut.');
+  }
 
   // Obertura síncrona per evitar bloqueig a Safari (Safari matarà el popup si ve després d'un await)
   const emergent = window.open('', 'sdp-oauth', 'width=520,height=680');

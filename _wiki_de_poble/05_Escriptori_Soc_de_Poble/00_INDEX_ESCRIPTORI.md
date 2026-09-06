@@ -14,11 +14,14 @@ Ací només resideix la matèria viva. El que ha mort, descansa en l'arxiu.
 - [[00_INDEX_Actes]] (Registre d'Actes)
 
 - [[260905_0055_ACTA_MARMOTA_Altura_Barres_Universals]]
-- [[260906_1232_ABSENTS_auditoria.json]]
-- [[260906_1232_BUNDLE_auditoria]]
-- [[260906_1232_MANIFEST_auditoria.json]]
-- [[260906_1232_PROMPT_auditoria]]
-- [[contracte_graella]]
+- [[260906_1421_ABSENTS_auditoria.json]]
+- [[260906_1421_BUNDLE_auditoria]]
+- [[260906_1421_MANIFEST_auditoria.json]]
+- [[260906_1421_PROMPT_auditoria]]
+- [[260906_1438_ABSENTS_auditoria.json]]
+- [[260906_1438_BUNDLE_auditoria]]
+- [[260906_1438_MANIFEST_auditoria.json]]
+- [[260906_1438_PROMPT_auditoria]]
 
 ## 01_Produccio
 - [[01_Produccio/260901_1348_AUDIO_Trellat_NotebookLM.m4a]]

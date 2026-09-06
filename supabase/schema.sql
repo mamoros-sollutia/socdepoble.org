@@ -15,11 +15,14 @@ alter table public.towns add column if not exists is_open boolean not null defau
 
 create table if not exists public.town_memberships (
   town_id uuid not null references public.towns(id) on delete cascade,
-  user_id uuid not null,
+  user_id uuid not null references auth.users(id) on delete cascade,
   role text not null default 'member',
   created_at timestamptz not null default now(),
   primary key (town_id, user_id)
 );
+
+create index if not exists idx_town_memberships_user_id
+  on public.town_memberships(user_id);
 
 create table if not exists public.app_content (
   tenant_id uuid not null references public.towns(id) on delete cascade,
@@ -137,10 +140,20 @@ create index if not exists idx_organizations_tenant_kind
 create index if not exists idx_organization_memberships_user
   on public.organization_memberships(user_id, tenant_id, organization_id);
 
+create index if not exists idx_organizations_created_by
+  on public.organizations(created_by);
+
+create index if not exists idx_organizations_parent
+  on public.organizations(parent_organization_id);
+
+create index if not exists idx_section_submissions_author_org
+  on public.section_submissions(author_org_id);
+
 -- 2. FUNCTIONS
 create or replace function public.touch_updated_at()
 returns trigger
 language plpgsql
+security definer set search_path = ''
 as $$
 begin
   new.updated_at = now();
@@ -314,7 +327,7 @@ $$;
 revoke execute on function private.add_organization_owner() from public;
 revoke execute on function private.add_organization_owner() from anon, authenticated;
 
-create function public.create_organization(
+create or replace function public.create_organization(
   p_tenant_id uuid,
   p_kind text,
   p_name text,

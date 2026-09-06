@@ -138,7 +138,7 @@ function expandix(nom, vist = new Set(), profunditat = 0) {
                const argString = nodeMatch[2].split(',')[0].replace(/['"]/g, '').trim();
                const runCommand = `${nodeMatch[1]} ${argString}`;
                // Cerquem a package.json quin script de porta correspon
-               const scriptEntry = Object.entries(scripts).find(([k, v]) => v.includes(argString) && k.startsWith('porta:'));
+               const scriptEntry = Object.entries(scripts).find(([k, v]) => v.trim() === `node ${argString}` && k.startsWith('porta:'));
                if (scriptEntry) {
                    passos.push({ tipus: 'script', nom: scriptEntry[0], ordre: passos.length });
                }

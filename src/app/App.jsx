@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useLayoutEffect, useRef, memo, StrictMode } from 'react';
+import React, { lazy, Suspense, useEffect, useRef, memo, StrictMode } from 'react';
 import { Navigate, NavLink, Route, Routes, useNavigate, useParams, useLocation } from 'react-router-dom';
 import { Globe, MoonStar, Plus, Search, Settings, Sun, UserRound } from '../icons.jsx';
 import BrandMark from '../components/BrandMark';
@@ -121,7 +121,7 @@ function AppShell({ children, mobileNav }) {
     };
   }, [t]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (mainRef.current) {
       const rootNode = mainRef.current.getRootNode();
       if (rootNode instanceof ShadowRoot) {
@@ -398,7 +398,41 @@ function AppContent() {
 
   if (status === 'loading') return <RouteFallback />;
   if (status === 'error') return <LoadError />;
-  return <AppRoutes />;
+  return (
+    <RouteErrorBoundary>
+      <AppRoutes />
+    </RouteErrorBoundary>
+  );
+}
+
+class RouteErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false, error: null };
+  }
+  static getDerivedStateFromError(error) {
+    return { hasError: true, error };
+  }
+  componentDidCatch(error, errorInfo) {
+    console.error('[RouteErrorBoundary] Error capturat a la ruta:', error, errorInfo);
+  }
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="sdp-route-error" style={{ padding: '2rem', textAlign: 'center', background: 'var(--sdp-bg-alt)' }}>
+          <h2 style={{ color: 'var(--sdp-danger)' }}>Hi ha hagut un problema</h2>
+          <p>Aquesta secció no ha pogut carregar-se correctament.</p>
+          <pre style={{ textAlign: 'left', background: '#222', color: '#f88', padding: '1rem', overflowX: 'auto' }}>
+            {this.state.error?.message || String(this.state.error)}
+          </pre>
+          <button onClick={() => this.setState({ hasError: false, error: null })} style={{ padding: '0.5rem 1rem', marginTop: '1rem', cursor: 'pointer' }}>
+            Intentar de nou
+          </button>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
 }
 
 function AppRoutes() {

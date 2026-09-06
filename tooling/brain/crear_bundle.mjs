@@ -404,6 +404,23 @@ function verifica(text, manifest) {
 function principal() {
   const d = diagnostic();
   if (d.error) { console.error(d.error.informe()); return 2; }
+  
+  // PROTOCOL DORMIR: Verificació d'Higiene de l'Escriptori
+  const escriptoriPath = R(CAMINS.escriptori);
+  if (fs.existsSync(escriptoriPath)) {
+    const brossa = fs.readdirSync(escriptoriPath).filter(f => 
+      f.includes('_BUNDLE_') || f.includes('_estudi_')
+    );
+    if (brossa.length > 0) {
+      console.error("\n❌ [ALERTA COGNITIVA] L'Escriptori està brut (Hi ha bundles o estudis antics).");
+      console.error("   Has d'aplicar el protocol DORMIR (moure fitxers a 90_revisar)");
+      console.error("   abans de generar un nou abocament per evitar recursivitat i ofec termodinàmic.");
+      console.error("   Fitxers detectats:");
+      for (const f of brossa) console.error(`   · ${f}`);
+      console.error('');
+      return 1;
+    }
+  }
   if (d.absentsCritics.length) {
     console.error("\n❌ [BUNDLE] Falten peces crítiques del repositori:");
     for (const c of d.absentsCritics) console.error(`   · ${c.cami} — ${c.nota}`);

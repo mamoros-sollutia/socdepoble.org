@@ -196,6 +196,20 @@
       ],
       "path": ".agents/skills/council-review/SKILL.md"
     },
+    "estrategia-consell": {
+      "name": "estrategia-consell",
+      "description": "Estratègia d'ús de models i gestió de la capacitat \"termodinàmica\" (límits d'ús) del Consell d'IAs.",
+      "triggers_on": [
+        "estrategia",
+        "gpt-6",
+        "astra",
+        "limite de uso",
+        "quota",
+        "model ligero",
+        "potència"
+      ],
+      "path": ".agents/skills/estrategia-consell/SKILL.md"
+    },
     "guia-ampliacio": {
       "name": "guia-ampliacio",
       "description": "Com entendre i ampliar l'arquitectura de Sóc de Poble seguint la doctrina Pedra Seca.",
