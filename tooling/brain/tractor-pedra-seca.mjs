@@ -7,7 +7,7 @@
  * PRINCIPI: una norma sense `exit 1` és una preferència.
  *
  * Este tractor no demana perfecció el primer dia: usa un CRIQUET (ratchet).
- * `--baseline` escriu el deute actual a `.pedra-seca-deute.json`.
+ * `--baseline` escriu el deute actual a '.agents/deute/.pedra-seca-deute.json'.
  * Les execucions posteriors fallen si el deute PUJA. El deute només pot baixar.
  * Les lleis marcades DURA no admeten deute: fallen sempre que es violen.
  *
@@ -23,7 +23,7 @@ import { join, dirname, resolve, relative, extname } from 'node:path';
 /* ─────────────────────────── Configuració ─────────────────────────── */
 
 const ARREL = process.cwd();
-const DEUTE_PATH = join(ARREL, '.pedra-seca-deute.json');
+const DEUTE_PATH = join(ARREL, '.agents/deute/.pedra-seca-deute.json');
 const DETALL = process.argv.includes('--detall');
 const BASELINE = process.argv.includes('--baseline');
 

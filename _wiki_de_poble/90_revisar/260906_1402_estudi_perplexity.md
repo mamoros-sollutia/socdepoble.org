@@ -1,8 +1,7 @@
 ---
 tipus: estudi
 estat: actiu
-font: Perplexity
-data: "2026-09-06T14:02:00+02:00"
+description: Auditoria Perplexity
 ---
 
 # Auditoria Perplexity

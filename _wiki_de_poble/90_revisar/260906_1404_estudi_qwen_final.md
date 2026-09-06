@@ -1,8 +1,7 @@
 ---
 tipus: estudi
 estat: actiu
-font: Qwen (Auditoria Final)
-data: "2026-09-06T14:04:00+02:00"
+description: Auditoria Qwen (Final)
 ---
 
 # Auditoria Qwen (Final)

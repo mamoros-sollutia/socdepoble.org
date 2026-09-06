@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+/* eslint-disable no-unreachable */
 
 /**
  * escombra_penjats.mjs — L'Escombra del Graf

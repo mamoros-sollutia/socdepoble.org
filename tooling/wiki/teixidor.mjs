@@ -37,14 +37,14 @@ const ARREL = path.resolve(ARG('arrel') ?? process.cwd());
 const JSON_OUT = process.argv.includes('--json');
 const DOT = process.argv.includes('--dot');
 const BASELINE = process.argv.includes('--baseline');
-const DEUTE = path.join(ARREL, '.teixit-deute.json');
+const DEUTE = path.join(ARREL, '.agents/deute/.teixit-deute.json');
 
 /* Àncora: el node des del qual tot ha de ser abastable. */
 const ANCORA = ARG('ancora') ?? '00_INDEX_ESCRIPTORI';
 /* Arrels del graf. `.agents` hi entra a posta: el cervell també és wiki. */
 const ARRELS = (ARG('arrels') ?? '_wiki_de_poble,.agents').split(',');
 
-const EXCLOU = /(^|\/)(node_modules|\.git|\.obsidian|dist|build|90_historic)(\/|$)/;
+const EXCLOU = /(^|\/)(node_modules|\.git|\.obsidian|dist|build|90_historic|90_revisar)(\/|$)/;
 
 /* ───────────────────────────── Recollida ───────────────────────────── */
 

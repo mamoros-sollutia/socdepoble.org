@@ -1,3 +1,8 @@
+---
+tipus: document
+estat: esborrany
+description: "Estudi de l'Auditoria: CLAUDE (Part 2)"
+---
 # Estudi de l'Auditoria: CLAUDE (Part 2)
 **Data i Hora:** 260904_2343
 **Tema:** Documentació i Pla d'Acció Implacable

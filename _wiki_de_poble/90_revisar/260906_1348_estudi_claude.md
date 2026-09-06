@@ -1,8 +1,7 @@
 ---
 tipus: estudi
 estat: actiu
-font: Claude (Opus 5)
-data: "2026-09-06T13:48:15+02:00"
+description: 🛡️ AUDITORIA ESTRUCTURAL — BUNDLE 2609061232
 ---
 
 # 🛡️ AUDITORIA ESTRUCTURAL — BUNDLE 260906_1232

@@ -1,3 +1,8 @@
+---
+tipus: document
+estat: esborrany
+description: "Estudi de l'Auditoria: GEMINI"
+---
 # Estudi de l'Auditoria: GEMINI
 **Data i Hora:** 260904_2338
 **Tema:** Unificació de l'AppGridShell i Editor Universal (Notes i Perfils)

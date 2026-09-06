@@ -236,7 +236,7 @@ export function RegistrationStep({ isBusy, error, confirmationEmail, onRegister,
   );
 }
 
-export function OrganizationStep({ blueprint, parentOrganization, isBusy, error, onCreate, onClearError }) {
+export function OrganizationStep({ blueprint, parentOrganization, isBusy, error, onCreate, onClearError, onSkip }) {
   const [name, setName] = useState(blueprint.name);
   const [slug, setSlug] = useState(blueprint.slug);
   const [lema, setLema] = useState(blueprint.lema || '');
@@ -358,14 +358,28 @@ export function OrganizationStep({ blueprint, parentOrganization, isBusy, error,
           <p>Nom, descripció i relació entre entitats seran visibles. El teu perfil personal continua privat.</p>
         </div>
 
-        <button
-          type="submit"
-          className="btn btn-secondary onboarding-card__action"
-          disabled={isBusy || (isGroup && !parentOrganization)}
-        >
-          {isBusy ? <Loader2 className="spinner" size={18} aria-hidden="true" /> : <Icon size={18} aria-hidden="true" />}
-          {isGroup ? 'Crear el grup' : 'Crear l’empresa'}
-        </button>
+        <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem', width: '100%' }}>
+          <button
+            type="submit"
+            className="btn btn-secondary onboarding-card__action"
+            disabled={isBusy || (isGroup && !parentOrganization)}
+            style={{ flex: 1 }}
+          >
+            {isBusy ? <Loader2 className="spinner" size={18} aria-hidden="true" /> : <Icon size={18} aria-hidden="true" />}
+            {isGroup ? 'Crear el grup' : 'Crear l’empresa'}
+          </button>
+          {onSkip && (
+            <button
+              type="button"
+              className="btn onboarding-card__action"
+              onClick={onSkip}
+              disabled={isBusy}
+              style={{ flex: 1, background: 'transparent', color: 'var(--sdp-accio)', border: '1px solid var(--sdp-accio)' }}
+            >
+              Continuar com a persona
+            </button>
+          )}
+        </div>
       </form>
     </section>
   );

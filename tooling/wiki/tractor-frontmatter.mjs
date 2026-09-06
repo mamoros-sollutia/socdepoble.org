@@ -40,7 +40,7 @@ const ARG = (n) => process.argv.find((a) => a.startsWith(`--${n}=`))?.slice(n.le
 const ARREL = path.resolve(ARG('arrel') ?? process.cwd());
 const JSON_OUT = process.argv.includes('--json');
 const BASELINE = process.argv.includes('--baseline');
-const DEUTE = path.join(ARREL, '.frontmatter-deute.json');
+const DEUTE = path.join(ARREL, '.agents/deute/.frontmatter-deute.json');
 const ESQUEMA = path.join(ARREL, 'tooling/wiki/esquema_frontmatter.json');
 
 if (!fs.existsSync(ESQUEMA)) {

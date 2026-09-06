@@ -1,8 +1,7 @@
 ---
 tipus: estudi
 estat: actiu
-font: Codex (Astra Medio)
-data: "2026-09-06T13:44:44+02:00"
+description: Auditoria estructural — Sóc de Poble / Sollutia
 ---
 
 # Auditoria estructural — Sóc de Poble / Sollutia

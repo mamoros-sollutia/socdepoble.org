@@ -20,7 +20,7 @@ export const SECTIONS = [
   { id: 'legal', path: '/legal', label: 'Legal i privacitat', shortLabel: 'Legal', icon: FileText, kind: 'text', pageKey: 'legal' },
   { id: 'connectar', path: '/connectar', label: 'Connectar', shortLabel: 'Conn', icon: Wifi, kind: 'text' },
   { id: 'control', path: '/control', label: 'Control', shortLabel: 'Control', icon: Settings, kind: 'text' },
-  { id: 'login', path: '/login', label: 'Accedir', shortLabel: 'Accedir', icon: UserRound, kind: 'text' },
+
   { id: 'poblacio', path: '/poblacio', label: 'Població', shortLabel: 'Gent', icon: UserRound, kind: 'pobles' },
   { id: 'realitat', path: '/realitat', label: 'Realitat', shortLabel: 'Real', icon: BrainCircuit, kind: 'text' }
 ];

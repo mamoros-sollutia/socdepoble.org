@@ -1,3 +1,8 @@
+---
+tipus: document
+estat: esborrany
+description: "Estudi de l'Auditoria: DEEPSEEK"
+---
 # Estudi de l'Auditoria: DEEPSEEK
 **Data i Hora:** 260904_2347
 **Tema:** Resum General del Bundle

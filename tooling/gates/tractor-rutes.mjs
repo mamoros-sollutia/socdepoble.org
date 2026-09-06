@@ -31,7 +31,7 @@ import { join, extname, relative } from 'node:path';
 const ARREL = process.cwd();
 const DETALL = process.argv.includes('--detall');
 const BASELINE = process.argv.includes('--baseline');
-const DEUTE_PATH = join(ARREL, '.rutes-deute.json');
+const DEUTE_PATH = join(ARREL, '.agents/deute/.rutes-deute.json');
 
 /**
  * R1 admet deute: hi ha 52 literals escampats i no es poden llevar tots

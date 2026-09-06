@@ -1,3 +1,8 @@
+---
+tipus: document
+estat: esborrany
+description: "Estat Actual: Sóc de Poble"
+---
 # Estat Actual: Sóc de Poble
 
 ## Objectiu Assolit (260904)

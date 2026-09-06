@@ -225,7 +225,7 @@ function nomsPresents(text) {
    ══════════════════════════════════════════════════════════════════ */
 {
   const LLEI = 'C5 · Skill executiva sense cens';
-  const SKILL = '.agents/skills/council-review/SKILL.md';
+  const SKILL = '.agents/skills/skill-consell-bundle/SKILL.md';
   if (!existsSync(R(SKILL))) {
     falla(LLEI, SKILL, 0, 'Absent. És l\'única skill executiva que governa el Consell.');
   } else {

@@ -1,8 +1,7 @@
 ---
 tipus: estudi
 estat: actiu
-font: Gemini
-data: "2026-09-06T14:00:33+02:00"
+description: Auditoria Gemini
 ---
 
 # Auditoria Gemini

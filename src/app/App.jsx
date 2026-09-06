@@ -339,8 +339,24 @@ const TopBar = memo(function TopBar() {
         <button type="button" className="icon sdp-top-bar-btn" onClick={toggleTheme} aria-label={t('nav.tema', 'Tema')} title={t('nav.tema', 'Tema')}>
           {themeMode === 'dark' ? <Sun aria-hidden="true" focusable="false" /> : <MoonStar aria-hidden="true" focusable="false" />}
         </button>
-        <button type="button" className="icon sdp-top-bar-btn" onClick={() => navigateWithTransition(currentUser ? '/el-meu-perfil' : '/registre')} aria-label={t('nav.perfil', 'Perfil')} title={t('nav.perfil', 'Perfil')}>
-          <UserRound aria-hidden="true" focusable="false" />
+        <button 
+          type="button" 
+          className="icon sdp-top-bar-btn" 
+          onClick={() => navigateWithTransition(currentUser ? '/el-meu-perfil' : '/registre')} 
+          aria-label={t('nav.perfil', 'Perfil')} 
+          title={t('nav.perfil', 'Perfil')}
+        >
+          {currentUser ? (
+            currentUser.avatar_url ? (
+              <img src={currentUser.avatar_url} alt="El meu perfil" style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover' }} />
+            ) : (
+              <div style={{ width: '100%', height: '100%', borderRadius: '50%', background: 'var(--sdp-accio)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <UserRound size={18} aria-hidden="true" focusable="false" />
+              </div>
+            )
+          ) : (
+            <UserRound aria-hidden="true" focusable="false" />
+          )}
         </button>
       </div>
     </header>
@@ -467,7 +483,7 @@ function AppRoutes() {
         <Route path="/registre" element={<OnboardingSection />} />
         <Route path="/crear-compte" element={<Navigate to="/registre" replace />} />
         <Route path="/el-meu-perfil" element={<PerfilShell />} />
-        <Route path="/jo" element={<PerfilShell />} />
+        <Route path="/jo" element={<Navigate to="/el-meu-perfil" replace />} />
         <Route path="/perfil" element={<ProfileSection agents={agents} />} />
         <Route path="/perfil/:agentId" element={<ProfileSection agents={agents} />} />
           <Route path="/gent/:agentId" element={<ProfileSection agents={agents} />} />

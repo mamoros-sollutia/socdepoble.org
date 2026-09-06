@@ -30,7 +30,7 @@ import { join, extname, relative } from 'node:path';
 import { parse } from '@babel/parser';
 
 const ARREL = process.cwd();
-const DEUTE_PATH = join(ARREL, '.vocabulari-deute.json');
+const DEUTE_PATH = join(ARREL, '.agents/deute/.vocabulari-deute.json');
 
 /** El full canònic. L'ÚNICA font del vocabulari. */
 const FULL_CANONIC = 'src/css/index.css';

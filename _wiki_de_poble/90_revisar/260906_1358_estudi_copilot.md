@@ -1,8 +1,7 @@
 ---
 tipus: estudi
 estat: actiu
-font: Copilot
-data: "2026-09-06T13:58:00+02:00"
+description: Auditoria estructural extrema (Sóc de Poble × Supabase × Sollutia)
 ---
 
 # Auditoria estructural extrema (Sóc de Poble × Supabase × Sollutia)

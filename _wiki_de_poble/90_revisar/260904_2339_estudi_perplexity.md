@@ -1,3 +1,8 @@
+---
+tipus: document
+estat: esborrany
+description: "Estudi de l'Auditoria: PERPLEXITY"
+---
 # Estudi de l'Auditoria: PERPLEXITY
 **Data i Hora:** 260904_2339
 **Tema:** Unificació de l'AppGridShell i Editor Universal (Notes i Perfils)

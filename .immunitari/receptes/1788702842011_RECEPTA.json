@@ -1,0 +1,510 @@
+{
+  "id": "R-1788702842010",
+  "data": "2026-09-06T13:54:02.010Z",
+  "operacions": [
+    {
+      "id": "OP-001",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/00_INDEX.md",
+      "objectius": [
+        "AGENTS",
+        "00_INDEX_SKILLS",
+        "BIOS",
+        "ESTAT",
+        "LEDGER",
+        "05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI",
+        ".agents/index",
+        ".quarantena-260830/plantilla_prompt_iso",
+        "02_ACTUAR_Maquina_Tecnica/00_INDEX_Maquina",
+        "MOTOR_OFFLINE"
+      ],
+      "hashFont": "065174a66f54f9f418e6ea66956e6503295ffd9b121b091d5d98f7baaf84d760"
+    },
+    {
+      "id": "OP-002",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/00_SER_Identitat_Cervell/00_INDEX_IDENTITAT.md",
+      "objectius": [
+        "00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/00_INDEX_SKILLS",
+        "00_INDEX_SKILLS",
+        "00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS_universal-page"
+      ],
+      "hashFont": "405c194f0a88d121c4791c18d9548d15e2a1d9de7f095e1c03038088ed9de02d"
+    },
+    {
+      "id": "OP-003",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/00_SER_Identitat_Cervell/02_EQUIP_IA.md",
+      "objectius": [
+        "PROTOCOL_PETORRETA"
+      ],
+      "hashFont": "78093ceb82ea3704f4076f5c37dd4580c1ac4ba90ca78b7a590daa1586e31ad9"
+    },
+    {
+      "id": "OP-004",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/00_SER_Identitat_Cervell/03_Consola_Termodinamica.md",
+      "objectius": [
+        "MOTOR_OFFLINE"
+      ],
+      "hashFont": "91f49e572cdac40d77248b0b807e6f1562dfeed6a7c104364f3cf7e5ec0fe755"
+    },
+    {
+      "id": "OP-005",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/00_SER_Identitat_Cervell/CORE_Registre_Automillora.md",
+      "objectius": [
+        "MOTOR_OFFLINE"
+      ],
+      "hashFont": "08fffab624cae0336b7dd539117874d6691fd11b0ca726dce17aac7ef659ac22"
+    },
+    {
+      "id": "OP-006",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/01_SABER_Cultura/Graf.md",
+      "objectius": [
+        "MOTOR_OFFLINE"
+      ],
+      "hashFont": "e6c89ea2ff617cd2ad093cd10341354ce1829bf73c4f055d02ad4c122ed5e0f2"
+    },
+    {
+      "id": "OP-007",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/01_SABER_Cultura/Maquina.md",
+      "objectius": [
+        "MOTOR_OFFLINE"
+      ],
+      "hashFont": "faa359807f614044632271f394af0a3daeecc0b1ea211948b0d7964dbdf2ca93"
+    },
+    {
+      "id": "OP-008",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/02_ACTUAR_Tecnica/00_INDEX_Maquina.md",
+      "objectius": [
+        "02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_estudi_ia"
+      ],
+      "hashFont": "9d3a416e5f5d7297e7374f16745efc9b98000c23fb602cf40a7ff27377800f4c"
+    },
+    {
+      "id": "OP-009",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/02_ACTUAR_Tecnica/00_arquitectura_tecnica_unificada.md",
+      "objectius": [
+        "PROTOCOL_PETORRETA",
+        "MOTOR_OFFLINE"
+      ],
+      "hashFont": "6fe7fac14eed8614ad02321e4465d94e4bb0f2fe6591c2d48a12fc9223dc151f"
+    },
+    {
+      "id": "OP-010",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/02_ACTUAR_Tecnica/07_plantilles/00_plantilles.md",
+      "objectius": [
+        "PLANTILLA_ISO_SDP.md"
+      ],
+      "hashFont": "fb385f26dc332bb1a770178527f4238e2e7001b3937f7268b656219129e752c2"
+    },
+    {
+      "id": "OP-011",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/02_ACTUAR_Tecnica/07_plantilles/plantilla_skill_agent.md",
+      "objectius": [
+        "00_INDEX_SKILLS"
+      ],
+      "hashFont": "4fe658c8f3cd1a300fc446aa68dbf937e225656ce9961bcc3474fe4d8bca6487"
+    },
+    {
+      "id": "OP-012",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/02_ACTUAR_Tecnica/plantilles/PLANTILLA_ISO_SDP.md",
+      "objectius": [
+        "PLANTILLA_ISO_SDP.md"
+      ],
+      "hashFont": "82137de460e2c8359074d3141eb44dfd8b6ac1207a760b245f6fd655f2383a12"
+    },
+    {
+      "id": "OP-013",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/02_ACTUAR_Tecnica/skills/AUDITORIA_CANONICA.md",
+      "objectius": [
+        "PROTOCOL_PETORRETA"
+      ],
+      "hashFont": "507ff5032e462064c6c7da15b4087c7568d5f72885c810a03aeff97595164bc5"
+    },
+    {
+      "id": "OP-014",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/02_ACTUAR_Tecnica/skills/CONTINGENCIA_OFFLINE.md",
+      "objectius": [
+        "MOTOR_OFFLINE"
+      ],
+      "hashFont": "232a05de6773ce24ac22cc78ff6e1099643e01293d865e7a1bad61d3ae88e325"
+    },
+    {
+      "id": "OP-015",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/02_ACTUAR_Tecnica/skills/futur_adaptacio.md",
+      "objectius": [
+        "MOTOR_OFFLINE"
+      ],
+      "hashFont": "b20331b79b02cb3ef6a658ffd2ecfe6c0546a52d00304cb3df33461057597874"
+    },
+    {
+      "id": "OP-016",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/02_ACTUAR_Tecnica/skills/index_trellat.md",
+      "objectius": [
+        "MOTOR_OFFLINE"
+      ],
+      "hashFont": "08632920af9d80fc02435d148c46e6ca7e795096b407e26d1dc48b74f4afd45e"
+    },
+    {
+      "id": "OP-017",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/02_ACTUAR_Tecnica/skills/seguretat_execucio.md",
+      "objectius": [
+        "MOTOR_OFFLINE"
+      ],
+      "hashFont": "abf8160221fe94bc7eff3031f76a51541419f78862075f0d3eae0b5f9c891f4b"
+    },
+    {
+      "id": "OP-018",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/02_ACTUAR_Tecnica/skills/self_repair.md",
+      "objectius": [
+        "MOTOR_OFFLINE"
+      ],
+      "hashFont": "6581174a484d999c8306eb5ed094cbfa21136a20ca3432b1656192c311319b1f"
+    },
+    {
+      "id": "OP-019",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/03_GOVERNAR_Normativa/DOC_Governanca.md",
+      "objectius": [
+        "MOTOR_OFFLINE"
+      ],
+      "hashFont": "92301a5dc4fcaa0f69dae4cd9d00e8b106596dcdc829fd441cb0c912a6ba2280"
+    },
+    {
+      "id": "OP-020",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/04_ESCRIPTORI/00_INDEX_ESCRIPTORI.md",
+      "objectius": [
+        "260906_1421_ABSENTS_auditoria.json",
+        "260906_1421_BUNDLE_auditoria",
+        "260906_1421_MANIFEST_auditoria.json",
+        "260906_1421_PROMPT_auditoria",
+        "260906_1438_ABSENTS_auditoria.json",
+        "260906_1438_MANIFEST_auditoria.json",
+        "01_Produccio/260901_1348_AUDIO_Trellat_NotebookLM.m4a",
+        "01_Produccio/disseny_pedra_seca.html"
+      ],
+      "hashFont": "330e0b378654b6dbe44bba15ca5d24c99512b94af8138108f82fffd5a0f6d2ea"
+    },
+    {
+      "id": "OP-021",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/05_ARXIU/00_INDEX_Actes.md",
+      "objectius": [
+        "10_actes/260903_0605_ACTA_MARMOTA_Unificacio_Notes_i_UI"
+      ],
+      "hashFont": "4457df7424e82e56c817d5a63732eb8ff2ac18e14d0e158f22946651ea849a06"
+    },
+    {
+      "id": "OP-022",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/90_revisar/00_INDEX_REVISAR.md",
+      "objectius": [
+        "260904_2327_ABSENTS_auditoria.json",
+        "260904_2327_MANIFEST_auditoria.json",
+        "260906_1232_ABSENTS_auditoria.json",
+        "260906_1232_MANIFEST_auditoria.json",
+        "Claude_260904_2138/00_INDEX_SKILLS.md.diff",
+        "Claude_260904_2138/260904_2130_organitzacions_reparacio.sql",
+        "Claude_260904_2138/260904_2130_reparacio_perfil_i_matrix",
+        "Claude_260904_2138/DetallAjust.jsx",
+        "Claude_260904_2138/LlistaAjustos.jsx",
+        "Claude_260904_2138/PerfilContext.jsx",
+        "Claude_260904_2138/PerfilShell.css",
+        "Claude_260904_2138/PerfilShell.jsx",
+        "Claude_260904_2138/SelectorIdentitat.jsx",
+        "Claude_260904_2138/hooks.json.diff",
+        "Claude_260904_2138/matrix.mjs.diff",
+        "Claude_260904_2138/preflight_matrix_wrapper.mjs.diff",
+        "Claude_260904_2138/prioritats.diff",
+        "Claude_260904_2138/prova_acceptacio.sql",
+        "Claude_260904_2138/reflexio-previa.SKILL.md.diff",
+        "Claude_260904_2138/verify.mjs.diff",
+        "Claude_260904_2351/260905_SEIENT5_pedac.diff",
+        "Claude_260904_2351/AppGridColumn.jsx",
+        "Claude_260904_2351/columna.test.jsx",
+        "Claude_260904_2351/contracte_graella",
+        "Claude_260904_2351/detall.test.jsx",
+        "Claude_260904_2351/graella.test.jsx",
+        "Claude_260904_2351/toolbar.test.jsx",
+        "Claude_260904_2351/tractor-graella.mjs"
+      ],
+      "hashFont": "6717119bc92a324e4d6159798120e375d6f4925276dad0656ebebdf78895a98a"
+    },
+    {
+      "id": "OP-023",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/90_revisar/260904_2327_BUNDLE_auditoria.md",
+      "objectius": [
+        "00_INDEX_SKILLS",
+        "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_acta_unica.md",
+        "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/AUDITORIA_CANONICA.md",
+        "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_creador_skills.md",
+        ".agents/skills/guia-ampliacio/SKILL.md",
+        ".agents/skills/trellat/SKILL.md",
+        "00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/00_INDEX_SKILLS",
+        "00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS_universal-page",
+        "PROTOCOL_PETORRETA",
+        "MOTOR_OFFLINE",
+        "10_actes/260903_0605_ACTA_MARMOTA_Unificacio_Notes_i_UI",
+        "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/plantilles/PLANTILLA_ISO_SDP.md",
+        "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_estudi_ia.md",
+        ".agents/skills/abocament-total/SKILL.md",
+        "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_planificacio.md",
+        ".agents/skills/reflexio-previa/SKILL.md",
+        "^\\",
+        "wiki",
+        "${linkName}",
+        "'ID', byID], ['ruta', byPath",
+        "${d.a}",
+        "${d.b}",
+        "${obsPath}",
+        "${a.desti}",
+        "${matchResult.best}",
+        "^\\\\",
+        "...",
+        "destí",
+        "X",
+        "${desti}",
+        "${categoriaStr}",
+        "${d.desti}",
+        "InlineFantasma"
+      ],
+      "hashFont": "55abab479837d57aaba079667c825d3cb1b5cc8882b0f0c9701be76edec2a8d8"
+    },
+    {
+      "id": "OP-024",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/90_revisar/260906_1232_BUNDLE_auditoria.md",
+      "objectius": [
+        "00_INDEX_SKILLS",
+        "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_acta_unica.md",
+        "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/AUDITORIA_CANONICA.md",
+        "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_creador_skills.md",
+        ".agents/skills/guia-ampliacio/SKILL.md",
+        ".agents/skills/trellat/SKILL.md",
+        "00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/00_INDEX_SKILLS",
+        "00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS_universal-page",
+        "PROTOCOL_PETORRETA",
+        "MOTOR_OFFLINE",
+        "10_actes/260903_0605_ACTA_MARMOTA_Unificacio_Notes_i_UI",
+        "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/plantilles/PLANTILLA_ISO_SDP.md",
+        "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_estudi_ia.md",
+        ".agents/skills/abocament-total/SKILL.md",
+        "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_planificacio.md",
+        ".agents/skills/reflexio-previa/SKILL.md",
+        "^\\",
+        "wiki",
+        "${linkName}",
+        "'ID', byID], ['ruta', byPath",
+        "${d.a}",
+        "${d.b}",
+        "${obsPath}",
+        "${a.desti}",
+        "${matchResult.best}",
+        "^\\\\",
+        "...",
+        "destí",
+        "X",
+        "${desti}",
+        "${categoriaStr}",
+        "${d.desti}",
+        "InlineFantasma"
+      ],
+      "hashFont": "447de45c888cdf1d7c261fcec085114b4103ed5d14ee834b3a7829d4acaeb0bc"
+    },
+    {
+      "id": "OP-025",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/90_revisar/Claude_260904_2138/260904_2130_reparacio_perfil_i_matrix.md",
+      "objectius": [
+        "00_INDEX_SKILLS",
+        "PROTOCOL_PETORRETA"
+      ],
+      "hashFont": "90619a2b517826f18b9303b78e017a29f76f4fe32a26203350ac815cae3476a6"
+    },
+    {
+      "id": "OP-026",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/90_revisar/estudis_auditoria_260906/260906_1438_BUNDLE_auditoria.md",
+      "objectius": [
+        "00_INDEX_SKILLS",
+        "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_acta_unica.md",
+        "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/skills/AUDITORIA_CANONICA.md",
+        "_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_creador_skills.md",
+        ".agents/skills/guia-ampliacio/SKILL.md",
+        ".agents/skills/trellat/SKILL.md",
+        "00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/00_INDEX_SKILLS",
+        "00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS_universal-page",
+        "PROTOCOL_PETORRETA",
+        "MOTOR_OFFLINE",
+        "${target.link}",
+        "${link.target}",
+        "${config.memorialLapides}",
+        "${path.basename(op.fitxer, '.md')}",
+        "${fileName}",
+        "^\\",
+        "/iPad\\s*A10/gi, 'maquinari del Baseline 2022'",
+        "/iPads?\\s*A10/gi, 'el Baseline 2022'",
+        "/\\(a\\s+l[’']iPad\\s*A10\\s+aix[oò]\\s+es\\s+nota\\)/gi, '(en maquinari modest això es nota)'",
+        "/,?\\s*orientada\\s+a\\s+iPads?\\s*A10/gi, ', orientada al Baseline 2022'",
+        "/la\\s+RAM\\s+d[’']un\\s+iPad\\s*A10/gi, 'la RAM del dispositiu de referència'",
+        "Target",
+        "slug",
+        "${bl.target}",
+        "X",
+        "Y",
+        "Viu",
+        "ComentariFantasma",
+        "ComentariObsidian",
+        "EncaraDinsFenceLlarg",
+        "NoExisteix",
+        "'tipus', 'E1'], ['estat', 'E2'",
+        "V2, enumV2('tipus')], [V1, enumV1('tipus')"
+      ],
+      "hashFont": "00dfb918a8ec82bd79b3a864e936ea21527538e48af2acf44898a5c1f6d9e354"
+    },
+    {
+      "id": "OP-027",
+      "tipus": "LAPIDA",
+      "fitxer": "_wiki_de_poble/90_revisar/estudis_auditoria_260906/260906_1528_estudi_qwen2.md",
+      "objectius": [
+        "261,262",
+        "139,255,256",
+        "140,256",
+        "46",
+        "36,100",
+        "104",
+        "235,313,323",
+        "147,153,287",
+        "285,315",
+        "157,158",
+        "160",
+        "306,309",
+        "338,340",
+        "147",
+        "216",
+        "229,235,313,323",
+        "147,148",
+        "287,315",
+        "157,158,159",
+        "264,277",
+        "243",
+        "111",
+        "117",
+        "219,225",
+        "321",
+        "318",
+        "315",
+        "325",
+        "324",
+        "304",
+        "253",
+        "261",
+        "256",
+        "291"
+      ],
+      "hashFont": "0dd89f8ba3bd03dec352c8c9b18373fe7888e362fb57b8f35393d982682da9d1"
+    },
+    {
+      "id": "OP-028",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/02_ACTUAR_Tecnica/00_INDEX_Maquina.md"
+    },
+    {
+      "id": "OP-029",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/02_ACTUAR_Tecnica/07_plantilles/plantilla_estudi_ia.md"
+    },
+    {
+      "id": "OP-030",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/02_ACTUAR_Tecnica/skills/CONTINGENCIA_OFFLINE.md"
+    },
+    {
+      "id": "OP-031",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/05_ARXIU/260903_0605_ACTA_MARMOTA_Unificacio_Notes_i_UI.md"
+    },
+    {
+      "id": "OP-032",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/05_ARXIU/260903_0635_acta_marmota_tancament.md"
+    },
+    {
+      "id": "OP-033",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/90_revisar/00_INDEX_REVISAR.md"
+    },
+    {
+      "id": "OP-034",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/90_revisar/Claude_260904_2138/260904_2130_reparacio_perfil_i_matrix.md"
+    },
+    {
+      "id": "OP-035",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/90_revisar/estudis_auditoria_260906/260906_1523_estudi_copilot.md"
+    },
+    {
+      "id": "OP-036",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/90_revisar/estudis_auditoria_260906/260906_1525_estudi_gemini.md"
+    },
+    {
+      "id": "OP-037",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/90_revisar/estudis_auditoria_260906/260906_1527_estudi_grok.md"
+    },
+    {
+      "id": "OP-038",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/90_revisar/estudis_auditoria_260906/260906_1528_estudi_deepseek.md"
+    },
+    {
+      "id": "OP-039",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/90_revisar/estudis_auditoria_260906/260906_1528_estudi_dola.md"
+    },
+    {
+      "id": "OP-040",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/90_revisar/estudis_auditoria_260906/260906_1528_estudi_kimi.md"
+    },
+    {
+      "id": "OP-041",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/90_revisar/estudis_auditoria_260906/260906_1528_estudi_perplexity.md"
+    },
+    {
+      "id": "OP-042",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/90_revisar/estudis_auditoria_260906/260906_1528_estudi_qwen2.md"
+    },
+    {
+      "id": "OP-043",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/90_revisar/estudis_auditoria_260906/260906_1528_estudi_vibe.md"
+    },
+    {
+      "id": "OP-044",
+      "tipus": "ADOPTA",
+      "fitxer": "_wiki_de_poble/90_revisar/estudis_auditoria_260906/260906_1528_estudi_z.md"
+    }
+  ]
+}

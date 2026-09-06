@@ -1,3 +1,8 @@
+---
+tipus: document
+estat: esborrany
+description: "Estudi de l'Auditoria: CLAUDE (Part 1)"
+---
 # Estudi de l'Auditoria: CLAUDE (Part 1)
 **Data i Hora:** 260904_2342
 **Tema:** Verificació de codi i detecció de vulnerabilitats

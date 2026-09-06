@@ -1,3 +1,8 @@
+---
+tipus: document
+estat: esborrany
+description: "Estudi de l'Auditoria: COPILOT"
+---
 # Estudi de l'Auditoria: COPILOT
 **Data i Hora:** 260904_2327
 **Tema:** Unificació de l'AppGridShell i Editor Universal (Notes i Perfils)

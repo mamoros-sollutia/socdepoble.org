@@ -201,6 +201,7 @@ export default function OnboardingSection() {
             error={error}
             onCreate={createCompany}
             onClearError={() => setError('')}
+            onSkip={() => navigate('/xat', { replace: true })}
           />
         ) : activeStep === 2 ? (
           <OrganizationStep
@@ -211,6 +212,7 @@ export default function OnboardingSection() {
             error={error}
             onCreate={createGroup}
             onClearError={() => setError('')}
+            onSkip={() => navigate('/xat', { replace: true })}
           />
         ) : (
           <OnboardingComplete

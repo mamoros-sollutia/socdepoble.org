@@ -9,7 +9,7 @@
  * que cap porta individual pot veure perquè només són visibles des de dalt:
  *
  *   1. `npm run porta` és un `&&` en cadena. El segon baladre és
- *      `porta:promesa`, que s'atura amb codi 1 si no hi ha `.promesa-deute.json`
+ *      `porta:promesa`, que s'atura amb codi 1 si no hi ha '.agents/deute/.promesa-deute.json'
  *      («PARAT. Executa una vegada: --baseline»). Eixe fitxer no existix. Per
  *      tant les 24 portes següents NO S'HAN EXECUTAT MAI en eixa cadena, i
  *      `npm run build` —que crida `npm run gate`— mor abans de construir.

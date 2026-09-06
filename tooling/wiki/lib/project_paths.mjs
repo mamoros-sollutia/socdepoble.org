@@ -74,10 +74,10 @@ export const BASELINE_MAQUINARI_FILE = path.join(AGENTS_DIR, 'BASELINE.md');
 
 /* ═══════════════════════ Fitxers de deute ═══════════════════════ */
 
-export const DEUTE_PEDRA_SECA_FILE = path.join(PROJECT_DIR, '.pedra-seca-deute.json');
-export const DEUTE_DISSENY_FILE = path.join(PROJECT_DIR, '.design-guard-deute.json');
-export const DEUTE_VOCABULARI_FILE = path.join(PROJECT_DIR, '.vocabulari-deute.json');
-export const DEUTE_RUTES_FILE = path.join(PROJECT_DIR, '.rutes-deute.json');
+export const DEUTE_PEDRA_SECA_FILE = path.join(PROJECT_DIR, '.agents/deute/.pedra-seca-deute.json');
+export const DEUTE_DISSENY_FILE = path.join(PROJECT_DIR, '.agents/deute/.design-guard-deute.json');
+export const DEUTE_VOCABULARI_FILE = path.join(PROJECT_DIR, '.agents/deute/.vocabulari-deute.json');
+export const DEUTE_RUTES_FILE = path.join(PROJECT_DIR, '.agents/deute/.rutes-deute.json');
 
 /* ═══════════════════════ Contenció ═══════════════════════ */
 

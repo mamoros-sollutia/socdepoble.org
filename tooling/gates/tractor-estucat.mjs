@@ -24,7 +24,7 @@
  *   node tooling/gates/tractor-estucat.mjs --baseline    (congela el deute d'avui)
  *   node tooling/gates/tractor-estucat.mjs --arrel=. --llindar=25
  *
- * El baseline es guarda a `.estucat-deute.json`, igual que la resta de portes.
+ * El baseline es guarda a '.agents/deute/.estucat-deute.json', igual que la resta de portes.
  * Serveix per no bloquejar el deute històric, però mai per créixer: qualsevol
  * regla buida nova que no estiga al baseline atura la porta.
  */
@@ -66,7 +66,7 @@ if (!ARREL || !fs.existsSync(ARREL)) {
 }
 
 const rel = (p) => path.relative(ARREL, p).split(path.sep).join('/');
-const FITXER_DEUTE = path.join(ARREL, '.estucat-deute.json');
+const FITXER_DEUTE = path.join(ARREL, '.agents/deute/.estucat-deute.json');
 
 /* ──────────────────── Quin CSS s'arriba a carregar ──────────────────── */
 

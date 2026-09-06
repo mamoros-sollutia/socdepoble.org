@@ -41,11 +41,11 @@ const ARG = (n) => process.argv.find((a) => a.startsWith(`--${n}=`))?.slice(n.le
 const ARREL = path.resolve(ARG('arrel') ?? process.cwd());
 const JSON_OUT = process.argv.includes('--json');
 const BASELINE = process.argv.includes('--baseline');
-const DEUTE = path.join(ARREL, '.promesa-deute.json');
+const DEUTE = path.join(ARREL, '.agents/deute/.promesa-deute.json');
 
 const DIRS = ['tooling', 'scripts', '.agents'];
 const EXT = new Set(['.mjs', '.js', '.cjs', '.sh', '.py']);
-const EXCLOU = /(^|\/)(node_modules|\.git|dist|build|coverage|90_historic)(\/|$)/;
+const EXCLOU = /(^|\/)(node_modules|\.git|dist|build|coverage|90_historic|90_revisar)(\/|$)/;
 
 /* ─────────────────────────── Recollida de fonts ─────────────────────────── */
 

@@ -63,8 +63,8 @@ description: 00INDEX
 
 - [[.agents/index|index]] — index
 - [[.quarantena-260830/plantilla_prompt_iso|plantilla_prompt_iso]] — Plantilla base de Prompt ISO
-- 00_INDEX_Satel_lits — Índex de seguretat per a ancorar els arxius satèl·lit no-Markdown generats per IAs a la xarxa neuronal del Bra
-- [[02_ACTUAR_Maquina_Tecnica/00_INDEX_Maquina|00_INDEX_Maquina]]
+- [[02_ACTUAR_Tecnica/00_INDEX_Maquina|00_INDEX_Maquina]] — Índex principal de Màquina Tècnica
+- [[90_revisar/00_INDEX_REVISAR|00_INDEX_REVISAR]] — Índex autogenerat per a Zona de Quarantena i Revisió
 
 <!-- LLAURADOR:ADOPCIONS:FI -->
 

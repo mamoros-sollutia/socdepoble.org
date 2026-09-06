@@ -78,7 +78,7 @@ function walkAst(node, visitor) {
  * Línies on un hex CRU és legítim: la definició del propi sistema de disseny.
  *
  * AUDITORIA 260831 (Seient Núm. 5): 68 de les 121 identitats `raw-color`
- * declarades a `.design-guard-deute.json` eren les DEFINICIONS CANÒNIQUES
+ * declarades a '.agents/deute/.design-guard-deute.json' eren les DEFINICIONS CANÒNIQUES
  * dels tokens dins de `:root, :host, .sdp-root` — `#fe7406`, `#0e0d0c`,
  * `#f9f8f5`… El 56% del «deute crític» era el propi sistema de disseny
  * denunciant-se a si mateix.
@@ -285,7 +285,7 @@ async function cli() {
   const DETALL = args.includes('--detall');
   const arrelArg = args.find(a => a.startsWith('--arrel='));
   const root = resolve(process.cwd(), arrelArg ? arrelArg.split('=')[1] : 'src');
-  const DEUTE_PATH = join(process.cwd(), '.design-guard-deute.json');
+  const DEUTE_PATH = join(process.cwd(), '.agents/deute/.design-guard-deute.json');
 
   if (!existsSync(root)) {
     console.error(`PARAT. L'arrel «${root}» no existix. La porta falla tancada.`);

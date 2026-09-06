@@ -13,15 +13,12 @@ baseline: BASELINE.md
 index_skills: skills/00_INDEX_SKILLS.md
 consell: consell.json
 skills:
-  - skills/abocament-total/SKILL.md
   - skills/core-context-panic/SKILL.md
-  - skills/core-higiene-reflexa/SKILL.md
   - skills/core-restauracio-segellada/SKILL.md
-  - skills/council-review/SKILL.md
-  - skills/guia-ampliacio/SKILL.md
-  - skills/identity-iaia-core/SKILL.md
-  - skills/identity-iaia-voice/SKILL.md
   - skills/pedra-seca/SKILL.md
-  - skills/reflexio-previa/SKILL.md
-  - skills/socdepoble-workflow/SKILL.md
-  - skills/trellat/SKILL.md
+  - skills/skill-acte-reflex/SKILL.md
+  - skills/skill-cicle-de-vida/SKILL.md
+  - skills/skill-consell-bundle/SKILL.md
+  - skills/skill-estudi-mercat/SKILL.md
+  - skills/skill-iaia-identitat/SKILL.md
+  - skills/universal-page/SKILL.md

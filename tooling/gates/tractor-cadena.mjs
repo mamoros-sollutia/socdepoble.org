@@ -9,7 +9,7 @@
  * que cap porta individual pot veure perquè només són visibles des de dalt:
  *
  *   1. `npm run porta` és un `&&` en cadena. El segon baladre és
- *      `porta:promesa`, que s'atura amb codi 1 si no hi ha `.promesa-deute.json`
+ *      `porta:promesa`, que s'atura amb codi 1 si no hi ha '.agents/deute/.promesa-deute.json'
  *      («PARAT. Executa una vegada: --baseline»). Eixe fitxer no existix. Per
  *      tant les 24 portes següents NO S'HAN EXECUTAT MAI en eixa cadena, i
  *      `npm run build` —que crida `npm run gate`— mor abans de construir.
@@ -135,12 +135,16 @@ function expandix(nom, vist = new Set(), profunditat = 0) {
             const nodeMatch = line.match(/cmd:\s*['"](.*?)['"].*?args:\s*\[([\s\S]*?)\]/);
             if (nodeMatch) {
                // Aconseguim l'argument principal de node
-               const argString = nodeMatch[2].split(',')[0].replace(/['"]/g, '').trim();
+               const fileInRunPortes = nodeMatch[2].split(',')[0].replace(/['"]/g, '').trim();
+               const argString = nodeMatch[2].split(',').map(s => s.replace(/['"]/g, '').trim()).join(' ');
                const runCommand = `${nodeMatch[1]} ${argString}`;
-               // Cerquem a package.json quin script de porta correspon
-               const scriptEntry = Object.entries(scripts).find(([k, v]) => v.trim() === `node ${argString}` && k.startsWith('porta:'));
-               if (scriptEntry) {
-                   passos.push({ tipus: 'script', nom: scriptEntry[0], ordre: passos.length });
+               for (const [k, v] of Object.entries(scripts)) {
+                   if (k.startsWith('porta:')) {
+                       const match = v.match(/node\s+([^\s&]+)/);
+                       if (match && match[1] === fileInRunPortes) {
+                           passos.push({ tipus: 'script', nom: k, ordre: passos.length });
+                       }
+                   }
                }
                passos.push({ tipus: 'ordre', ordre: runCommand });
             }

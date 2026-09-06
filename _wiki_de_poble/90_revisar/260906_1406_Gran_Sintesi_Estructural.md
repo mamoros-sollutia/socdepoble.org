@@ -1,8 +1,7 @@
 ---
 tipus: sintesi
 estat: actiu
-fase: planificacio
-data: "2026-09-06T14:06:00+02:00"
+description: LA GRAN SÍNTESI ESTRUCTURAL (Consell dels 12)
 ---
 
 # LA GRAN SÍNTESI ESTRUCTURAL (Consell dels 12)

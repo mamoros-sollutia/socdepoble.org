@@ -58,7 +58,7 @@ const relayUrl = (config) => {
   }
   return config?.oauthRelayUrl || RELAY_PER_DEFECTE;
 };
-const relayOrigin = (config) => typeof window !== 'undefined' && window.location.hostname === 'localhost' ? window.location.origin : new URL(relayUrl(config)).origin;
+const relayOrigin = (config) => new URL(relayUrl(config)).origin;
 
 /* ───────────────────────── PKCE ───────────────────────── */
 

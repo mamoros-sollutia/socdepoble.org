@@ -1,3 +1,8 @@
+---
+tipus: document
+estat: esborrany
+description: "Estudi de l'Auditoria: CODEX"
+---
 # Estudi de l'Auditoria: CODEX
 **Data i Hora:** 260904_2344
 **Tema:** Publicació, Bases de Dades i Generació de Documentació

@@ -113,8 +113,9 @@ function esCongelat(ruta) {
 
 function deutesDelDisc() {
   try {
-    return fs.readdirSync(arrelSegura())
+    return fs.readdirSync(path.join(arrelSegura(), '.agents', 'deute'))
       .filter((f) => /^\.[a-z0-9-]+-deute\.json$/i.test(f))
+      .map(f => path.join('.agents', 'deute', f))
       .sort();
   } catch {
     return [];
@@ -128,13 +129,13 @@ function deutesDelDisc() {
  */
 function deutesEsperats() {
   const esperats = new Set();
-  for (const dir of ['tooling/gates', 'tooling/brain']) {
+  for (const dir of ['tooling/gates', 'tooling/brain', 'tooling/wiki', 'tooling/wiki/lib']) {
     let fitxers = [];
     try { fitxers = fs.readdirSync(R(dir)).filter((f) => f.endsWith('.mjs')); } catch { continue; }
     for (const f of fitxers) {
       let cos = '';
       try { cos = fs.readFileSync(R(dir, f), 'utf8'); } catch { continue; }
-      for (const m of cos.matchAll(/['"`](\.[a-z0-9-]+-deute\.json)['"`]/gi)) esperats.add(m[1]);
+      for (const m of cos.matchAll(/['"`](\.agents\/deute\/\.[a-z0-9-]+-deute\.json)['"`]/gi)) esperats.add(m[1]);
     }
   }
   return [...esperats].sort();

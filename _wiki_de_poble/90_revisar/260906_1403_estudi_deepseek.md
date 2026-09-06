@@ -1,8 +1,7 @@
 ---
 tipus: estudi
 estat: actiu
-font: Deepseek
-data: "2026-09-06T14:03:58+02:00"
+description: Auditoria Deepseek
 ---
 
 # Auditoria Deepseek

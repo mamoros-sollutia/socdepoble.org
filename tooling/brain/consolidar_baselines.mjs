@@ -51,7 +51,7 @@ const PORTES = [
     ordre: 'tooling/gates/design_guard.mjs',
     args: ['--arrel=src'],
     bandera: '--baseline',
-    fitxer: '.design-guard-deute.json',
+    fitxer: '.agents/deute/.design-guard-deute.json',
     què: 'infraccions del sistema de disseny Pedra Seca (tokens, radis, contrastos)',
   },
   {
@@ -59,7 +59,7 @@ const PORTES = [
     ordre: 'tooling/gates/tractor-rutes.mjs',
     args: [],
     bandera: '--baseline',
-    fitxer: '.rutes-deute.json',
+    fitxer: '.agents/deute/.rutes-deute.json',
     què: 'literals de ruta orfes (cadenes de ruta que no són a la SSOT)',
   },
   {
@@ -67,7 +67,7 @@ const PORTES = [
     ordre: 'tooling/gates/tractor-vocabulari.mjs',
     args: [],
     bandera: '--baseline',
-    fitxer: '.vocabulari-deute.json',
+    fitxer: '.agents/deute/.vocabulari-deute.json',
     què: 'termes fora del vocabulari canònic',
   },
   {
@@ -75,7 +75,7 @@ const PORTES = [
     ordre: 'tooling/brain/tractor-pedra-seca.mjs',
     args: [],
     bandera: '--baseline',
-    fitxer: '.pedra-seca-deute.json',
+    fitxer: '.agents/deute/.pedra-seca-deute.json',
     què: 'desviacions de la doctrina Pedra Seca',
   },
 ];

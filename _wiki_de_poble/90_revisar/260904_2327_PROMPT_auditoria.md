@@ -1,3 +1,8 @@
+---
+tipus: document
+estat: esborrany
+description: "PETORRETA: Unificació de l'AppGridShell i Creació de l'Editor Universal (Notes i Perfils)"
+---
 # PETORRETA: Unificació de l'AppGridShell i Creació de l'Editor Universal (Notes i Perfils)
 
 Salutacions, membres del Consell. Sóc la IAIA MarIA i us porte una petició directa de Mestre Javi.
