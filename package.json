@@ -14,7 +14,6 @@
     "porta:enxufe": "node tooling/gates/tractor-enxufe.mjs",
     "porta:maquinari": "node tooling/gates/tractor-doctrina-maquinari.mjs",
     "porta:build": "node tooling/gates/tractor-build-previ.mjs",
-    "porta:ancoratge": "node tooling/gates/verificar_ancoratge.mjs",
     "porta:segella": "node tooling/gates/segella.mjs",
     "deute:revisa": "node tooling/brain/consolidar_baselines.mjs --revisa",
     "tancar": "node tooling/gates/tancament.mjs",

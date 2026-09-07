@@ -1,6 +1,6 @@
 ---
-tipus: index
 estat: canonic
+tipus: index
 description: Índex autogenerat per a Zona de Quarantena i Revisió
 ---
 
@@ -41,7 +41,6 @@ description: Índex autogenerat per a Zona de Quarantena i Revisió
 - [[260906_1404_estudi_qwen_final]]
 - [[260906_1404_estudi_z]]
 - [[260906_1406_Gran_Sintesi_Estructural]]
-- [[contracte_graella]]
 
 ## Claude_260904_2138
 - [[Claude_260904_2138/00_INDEX_SKILLS.md.diff]]
@@ -71,25 +70,18 @@ description: Índex autogenerat per a Zona de Quarantena i Revisió
 - [[Claude_260904_2351/toolbar.test.jsx]]
 - [[Claude_260904_2351/tractor-graella.mjs]]
 
-<!-- LLAURADOR:ADOPCIONS:INICI -->
-
-## Adopcions del Llaurador
-
-> Bloc generat per `tooling/wiki/llaurador_indexs.mjs`. No l'edites a mà.
-> Mou cada enllaç a la secció temàtica que li toque i el llaurador el
-> llevarà d'ací tot sol a la següent passada. Si el bloc queda buit,
-> desapareix: vol dir que la wiki està cosida a mà.
-
-- [[90_revisar/contracte_graella|contracte_graella]] — Contracte del Framework de Graella (AppGridShell i AppGridColumn)
-- [[90_revisar/estudis_auditoria_260906/260906_1523_estudi_copilot|260906_1523_estudi_copilot]]
-- [[90_revisar/estudis_auditoria_260906/260906_1525_estudi_gemini|260906_1525_estudi_gemini]]
-- [[90_revisar/estudis_auditoria_260906/260906_1527_estudi_grok|260906_1527_estudi_grok]] — 🛡️ AUDITORIA COGNITIVA EXTREMA — SISTEMA NERVIÓS SDP
-- [[90_revisar/estudis_auditoria_260906/260906_1528_estudi_deepseek|260906_1528_estudi_deepseek]] — 🧠 ANÀLISI COMPLETA DE L'ARQUITECTURA I RESPOSTA A LA PETICIÓ
-- [[90_revisar/estudis_auditoria_260906/260906_1528_estudi_dola|260906_1528_estudi_dola]] — 🛡️ AUDITORIA EXTREMA: SISTEMA NERVIÓS MARIA
-- [[90_revisar/estudis_auditoria_260906/260906_1528_estudi_kimi|260906_1528_estudi_kimi]] — 🛡️ INFORME D'AUDITORIA FORENSE AL CONSELL DE LA PETORRETA
-- [[90_revisar/estudis_auditoria_260906/260906_1528_estudi_perplexity|260906_1528_estudi_perplexity]]
-- [[90_revisar/estudis_auditoria_260906/260906_1528_estudi_qwen2|260906_1528_estudi_qwen2]] — De la Confusió a la Determinació: Reestructuració del Coneixement i Execució per a l'Excel·lència de la IAIA M
-- [[90_revisar/estudis_auditoria_260906/260906_1528_estudi_vibe|260906_1528_estudi_vibe]] — 🛡️ AUDITORIA COGNITIVA EXTREMA: SISTEMA NERVIÓS DE SOC DE POBLE
-- [[90_revisar/estudis_auditoria_260906/260906_1528_estudi_z|260906_1528_estudi_z]] — 🛡️ CONSELL — RESPOSTA A LA PETORRETA D'AUDITORIA
-
-<!-- LLAURADOR:ADOPCIONS:FI -->
+## estudis_auditoria_260906
+- [[estudis_auditoria_260906/260906_1438_ABSENTS_auditoria.json]]
+- [[estudis_auditoria_260906/260906_1438_BUNDLE_auditoria]]
+- [[estudis_auditoria_260906/260906_1438_MANIFEST_auditoria.json]]
+- [[estudis_auditoria_260906/260906_1438_PROMPT_auditoria]]
+- [[estudis_auditoria_260906/260906_1523_estudi_copilot]]
+- [[estudis_auditoria_260906/260906_1525_estudi_gemini]]
+- [[estudis_auditoria_260906/260906_1527_estudi_grok]]
+- [[estudis_auditoria_260906/260906_1528_estudi_deepseek]]
+- [[estudis_auditoria_260906/260906_1528_estudi_dola]]
+- [[estudis_auditoria_260906/260906_1528_estudi_kimi]]
+- [[estudis_auditoria_260906/260906_1528_estudi_perplexity]]
+- [[estudis_auditoria_260906/260906_1528_estudi_qwen2]]
+- [[estudis_auditoria_260906/260906_1528_estudi_vibe]]
+- [[estudis_auditoria_260906/260906_1528_estudi_z]]

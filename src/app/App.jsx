@@ -11,6 +11,7 @@ import { recullTornadaOAuth } from '../data/backendPort.js';
 import { reclamaContingutDelConvidat } from '../data/identitat.js';
 import { showToast } from '../components/universal/AvisadorEfimer';
 import { delVal } from '../config/storage';
+import { useIdentitat } from './contexts/IdentitatContext';
 
 const XatSection = lazy(() => import('../sections/xat/XatSection'));
 const MurSection = lazy(() => import('../sections/mur/MurSection'));
@@ -69,6 +70,16 @@ function AppShell({ children, mobileNav }) {
   const location = useLocation();
   const mainRef = useRef(null);
   const contentRef = useRef(null);
+  const { actorType, actorId } = useIdentitat();
+  
+  const buildPath = (basePath) => {
+    // Les rutes de sistema o estàtiques que no canvien d'actor podrien no usar buildPath,
+    // però si formen part de NAV_SECTIONS assumirem que pertanyen a l'actor.
+    if (actorType === 'entitat') {
+      return `/e/${actorId}${basePath}`;
+    }
+    return `/jo${basePath}`;
+  };
   
   // Pull to Refresh logic optimitzat natiu
   const indicatorRef = useRef(null);
@@ -250,7 +261,7 @@ function AppShell({ children, mobileNav }) {
             const Icon = section.icon;
             const labels = getSectionLabels(section.id, language);
             return (
-              <NavLink key={section.id} to={section.path} className="nav-item" aria-label={labels.label}>
+              <NavLink key={section.id} to={buildPath(section.path)} className="nav-item" aria-label={labels.label}>
                 <Icon className="icona-linia" strokeWidth={2.1} size={24} aria-hidden="true" focusable="false" />
                 <span className="nav-item__text">
                   {labels.label}
@@ -456,76 +467,117 @@ function AppRoutes() {
   return (
     <Suspense fallback={<RouteFallback />}>
       <Routes>
-        <Route path="/" element={<Navigate to={DEFAULT_SECTION_PATH} replace />} />
-        <Route path="/xat" element={<XatSection />} />
-        <Route path="/xat/:threadId" element={<XatSection />} />
-        <Route path="/chat" element={<Navigate to="/xat" replace />} />
-        <Route path="/chat/:threadId" element={<ThreadRedirect />} />
-        <Route path="/chats" element={<Navigate to="/xat" replace />} />
-        <Route path="/chats/:threadId" element={<ThreadRedirect />} />
-        <Route path="/mur" element={<MurSection />} />
-        <Route path="/post/:itemId" element={<LegacySectionDetailRedirect sectionId="mur" />} />
-        <Route path="/mercat" element={<MercatSection />} />
-        <Route path="/multimedia" element={<MultimediaSection />} />
-        <Route path="/pobles" element={<PoblesSection />} />
-        <Route path="/poblacio" element={<PoblacioSection />} />
-        <Route path="/events" element={<Navigate to="/mur" replace />} />
-        <Route path="/calendar" element={<Navigate to="/mur" replace />} />
-        <Route path="/calendari" element={<Navigate to="/mur" replace />} />
-        <Route path="/mapa" element={<Navigate to="/mur" replace />} />
-        <Route path="/notes" element={<NotesSection />} />
+        <Route path="/" element={<Navigate to={`/jo${DEFAULT_SECTION_PATH}`} replace />} />
+        
+        {/* Rutes per a Identitat Activa */}
+        <Route path="/jo/*" element={<ActorRoutes agents={agents} />} />
+        <Route path="/e/:slug/*" element={<ActorRoutes agents={agents} />} />
 
-        <Route path="/dispositius" element={<DevicesSection />} />
-        <Route path="/connectivitat" element={<Navigate to="/dispositius" replace />} />
+        {/* Redirects globals per a suportar links vells */}
+        <Route path="/xat/*" element={<Navigate to="/jo/xat" replace />} />
+        <Route path="/chat/*" element={<Navigate to="/jo/xat" replace />} />
+        <Route path="/chats/*" element={<Navigate to="/jo/xat" replace />} />
+        <Route path="/mur/*" element={<Navigate to="/jo/mur" replace />} />
+        <Route path="/post/:itemId" element={<Navigate to={`/jo/mur/${window.location.pathname.split('/').pop()}`} replace />} />
+        <Route path="/mercat/*" element={<Navigate to="/jo/mercat" replace />} />
+        <Route path="/multimedia/*" element={<Navigate to="/jo/multimedia" replace />} />
+        <Route path="/pobles/*" element={<Navigate to="/jo/pobles" replace />} />
+        <Route path="/poblacio/*" element={<Navigate to="/jo/poblacio" replace />} />
+        <Route path="/events/*" element={<Navigate to="/jo/mur" replace />} />
+        <Route path="/calendar/*" element={<Navigate to="/jo/mur" replace />} />
+        <Route path="/calendari/*" element={<Navigate to="/jo/mur" replace />} />
+        <Route path="/mapa/*" element={<Navigate to="/jo/mur" replace />} />
+        <Route path="/notes/*" element={<Navigate to="/jo/notes" replace />} />
+        <Route path="/dispositius/*" element={<Navigate to="/jo/dispositius" replace />} />
+        <Route path="/connectivitat/*" element={<Navigate to="/jo/dispositius" replace />} />
+        <Route path="/el-meu-perfil/*" element={<Navigate to="/jo/el-meu-perfil" replace />} />
+        <Route path="/jo" element={<Navigate to="/jo/el-meu-perfil" replace />} />
+        <Route path="/perfil/*" element={<Navigate to="/jo/perfil" replace />} />
+        <Route path="/gent/*" element={<Navigate to="/jo/gent" replace />} />
+        <Route path="/empresa/*" element={<Navigate to="/jo/empresa" replace />} />
+        <Route path="/ajuntament/*" element={<Navigate to="/jo/ajuntament" replace />} />
+        <Route path="/grup/*" element={<Navigate to="/jo/grup" replace />} />
+
+        {/* Rutes globals i administratives */}
         <Route path="/cerca" element={<SearchSection />} />
         <Route path="/login" element={<Navigate to="/registre" replace />} />
         <Route path="/accedir" element={<Navigate to="/registre" replace />} />
         <Route path="/registre" element={<OnboardingSection />} />
         <Route path="/crear-compte" element={<Navigate to="/registre" replace />} />
-        <Route path="/el-meu-perfil" element={<PerfilShell />} />
-        <Route path="/jo" element={<Navigate to="/el-meu-perfil" replace />} />
-        <Route path="/perfil" element={<ProfileSection agents={agents} />} />
-        <Route path="/perfil/:agentId" element={<ProfileSection agents={agents} />} />
-          <Route path="/gent/:agentId" element={<ProfileSection agents={agents} />} />
-          <Route path="/empresa/:agentId" element={<ProfileSection agents={agents} />} />
-          <Route path="/ajuntament/:agentId" element={<ProfileSection agents={agents} />} />
-          <Route path="/grup/:agentId" element={<ProfileSection agents={agents} />} />
-          
-          <Route path="/control" element={<ControlSection />} />
-          <Route path="/connectar" element={<ConnectarSection agents={agents} />} />
-          <Route path="/projecte" element={<TextRoute pageKey="projecte" />} />
-          <Route path="/page/:slug" element={<PageDetailSection />} />
-          <Route path="/el-projecte" element={<Navigate to="/projecte" replace />} />
-          <Route path="/skills" element={<TextRoute pageKey="skills" />} />
-          <Route path="/constitucio" element={<TextRoute pageKey="constitucio" />} />
-          <Route path="/disseny" element={<DesignSection />} />
+        
+        <Route path="/control" element={<ControlSection />} />
+        <Route path="/connectar" element={<ConnectarSection agents={agents} />} />
+        <Route path="/projecte" element={<TextRoute pageKey="projecte" />} />
+        <Route path="/page/:slug" element={<PageDetailSection />} />
+        <Route path="/el-projecte" element={<Navigate to="/projecte" replace />} />
+        <Route path="/skills" element={<TextRoute pageKey="skills" />} />
+        <Route path="/constitucio" element={<TextRoute pageKey="constitucio" />} />
+        <Route path="/disseny" element={<DesignSection />} />
+        <Route path="/legal" element={<TextRoute pageKey="legal" />} />
+        <Route path="/roadmap" element={<TextRoute pageKey="roadmap" />} />
+        <Route path="/ruta" element={<Navigate to="/roadmap" replace />} />
+        <Route path="/versions" element={<TextRoute pageKey="versions" />} />
+        <Route path="/traduccions" element={<TranslationsSection />} />
+        <Route path="/realitat" element={<RealitatSection />} />
+        <Route path="/ia" element={<TextRoute pageKey="anima" />} />
+        <Route path="/anima" element={<Navigate to="/ia" replace />} />
+        <Route path="/iaia" element={<Navigate to="/jo/xat/iaia-maria" replace />} />
+        
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </Suspense>
+  );
+}
 
-          <Route path="/legal" element={<TextRoute pageKey="legal" />} />
-          <Route path="/roadmap" element={<TextRoute pageKey="roadmap" />} />
-          <Route path="/ruta" element={<Navigate to="/roadmap" replace />} />
-          <Route path="/versions" element={<TextRoute pageKey="versions" />} />
-          <Route path="/traduccions" element={<TranslationsSection />} />
-          <Route path="/realitat" element={<RealitatSection />} />
-          <Route path="/ia" element={<TextRoute pageKey="anima" />} />
-          <Route path="/anima" element={<Navigate to="/ia" replace />} />
-          <Route path="/iaia" element={<Navigate to="/xat/iaia-maria" replace />} />
-          <Route path="/:sectionId/:itemId" element={<ItemDetailSection />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </Suspense>
+function ActorRoutes({ agents }) {
+  // Aquestes rutes són relatives a `/jo` o `/e/:slug`. 
+  // No necessiten la / inicial.
+  return (
+    <Routes>
+      <Route path="/" element={<Navigate to={DEFAULT_SECTION_PATH.replace('/', '')} replace />} />
+      <Route path="xat" element={<XatSection />} />
+      <Route path="xat/:threadId" element={<XatSection />} />
+      <Route path="mur" element={<MurSection />} />
+      <Route path="mercat" element={<MercatSection />} />
+      <Route path="multimedia" element={<MultimediaSection />} />
+      <Route path="pobles" element={<PoblesSection />} />
+      <Route path="poblacio" element={<PoblacioSection />} />
+      <Route path="notes" element={<NotesSection />} />
+      <Route path="dispositius" element={<DevicesSection />} />
+      
+      <Route path="el-meu-perfil" element={<PerfilShell />} />
+      <Route path="perfil" element={<ProfileSection agents={agents} />} />
+      <Route path="perfil/:agentId" element={<ProfileSection agents={agents} />} />
+      <Route path="gent/:agentId" element={<ProfileSection agents={agents} />} />
+      <Route path="empresa/:agentId" element={<ProfileSection agents={agents} />} />
+      <Route path="ajuntament/:agentId" element={<ProfileSection agents={agents} />} />
+      <Route path="grup/:agentId" element={<ProfileSection agents={agents} />} />
+      
+      <Route path=":sectionId/:itemId" element={<ItemDetailSection />} />
+      <Route path="*" element={<NotFoundPage />} />
+    </Routes>
   );
 }
 
 const MobileNav = memo(function MobileNav() {
   const { language, t } = useAppData();
   const navigate = useNavigate();
+  const { actorType, actorId } = useIdentitat();
+  
+  const buildPath = (basePath) => {
+    if (actorType === 'entitat') {
+      return `/e/${actorId}${basePath}`;
+    }
+    return `/jo${basePath}`;
+  };
+
   return (
       <nav className="mobile-nav" aria-label="Navegació mòbil">
         {MOBILE_NAV_LEADING.map((section) => {
           const Icon = section.icon;
           const labels = getSectionLabels(section.id, language);
           return (
-            <NavLink key={section.id} to={section.path} className="nav-item" aria-label={labels.label}>
+            <NavLink key={section.id} to={buildPath(section.path)} className="nav-item" aria-label={labels.label}>
               <Icon className="nav-item__icon" strokeWidth={2.1} aria-hidden="true" focusable="false" />
               <span className="nav-item__text">
                 <strong>{labels.shortLabel}</strong>
@@ -547,7 +599,7 @@ const MobileNav = memo(function MobileNav() {
           const Icon = section.icon;
           const labels = getSectionLabels(section.id, language);
           return (
-            <NavLink key={section.id} to={section.path} className="nav-item" aria-label={labels.label}>
+            <NavLink key={section.id} to={buildPath(section.path)} className="nav-item" aria-label={labels.label}>
               <Icon className="nav-item__icon" strokeWidth={2.1} aria-hidden="true" focusable="false" />
               <span className="nav-item__text">
                 <strong>{labels.shortLabel}</strong>

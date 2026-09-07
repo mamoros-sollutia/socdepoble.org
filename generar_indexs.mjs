@@ -63,7 +63,7 @@ ${customHeader}
       }
     }
 
-    if (hasContent || dirPath.includes('05_Escriptori_Soc_de_Poble')) {
+    if (hasContent || dirPath.includes('04_ESCRIPTORI')) {
       await fs.writeFile(indexFilePath, content, 'utf8');
       console.log(`Índex creat a ${indexFilePath}`);
     } else {
@@ -80,11 +80,11 @@ ${customHeader}
 }
 
 async function main() {
-  await generateIndex('_wiki_de_poble/90_historic', 'Arxiu Històric', '00_INDEX_ARXIU.md');
+  await generateIndex('_wiki_de_poble/05_ARXIU', 'Arxiu Històric', '00_INDEX_ARXIU.md');
   await generateIndex('_wiki_de_poble/90_revisar', 'Zona de Quarantena i Revisió', '00_INDEX_REVISAR.md');
   
   await generateIndex(
-    '_wiki_de_poble/05_Escriptori_Soc_de_Poble', 
+    '_wiki_de_poble/04_ESCRIPTORI', 
     '📥 L\'ESCRIPTORI (SAFATA D\'ENTRADA I TREBALL ACTIU)', 
     '00_INDEX_ESCRIPTORI.md',
     '📥 L\'ESCRIPTORI (SAFATA D\'ENTRADA I TREBALL ACTIU)',

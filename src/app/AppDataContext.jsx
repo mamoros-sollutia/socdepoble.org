@@ -5,28 +5,20 @@ import {
   getDefaultUserId,
   loadAppData,
   getRuntimeDataMode,
-  getCurrentUser,
   appendChatMessages,
   appendSectionSubmissionNetworkOnly
 } from '../data/backendPort.js';
 import { normalizeSearchText, sortPinnedContent } from '../config/contentHelpers';
 import { resolveAsset as baseResolveAsset } from '../config/assetResolver';
-import { createTranslator, readStoredLanguage, writeStoredLanguage, normalizeLanguage } from '../config/i18n';
-import { getVal } from '../config/storage.js';
-import { readThemePreference, resolveTheme, writeThemePreference } from '../config/theme';
+import { useSession } from './contexts/SessionContext.jsx';
+import { useUIState, useUIActions } from './contexts/UIContext.jsx';
+import { useIdentitat } from './contexts/IdentitatContext.jsx';
 import { uuid } from '../utils/uuid.js';
 import { showToast } from '../components/universal/AvisadorEfimer.jsx';
 
 const AppStateContext = createContext(null);
 const AppActionsContext = createContext(null);
 const DATA_SYNC_STORAGE_KEYS = new Set();
-const LANGUAGE_LOCALES = {
-  ca: 'ca-ES',
-  es: 'es-ES',
-  en: 'en-GB',
-  eu: 'eu-ES',
-  gl: 'gl-ES'
-};
 
 const groupMediaTimeline = (items, t, locale) => {
   const groups = new Map();
@@ -120,60 +112,24 @@ export function AppDataProvider({ children, externalConfig = {} }) {
   const [status, setStatus] = useState('loading');
   const [error, setError] = useState(null);
   const [rawData, setRawData] = useState(null);
-  const [authTick, setAuthTick] = useState(0);
-  const [language, setLanguage] = useState(() => {
-    if (externalConfig?.language) return normalizeLanguage(externalConfig.language);
-    if (typeof document !== 'undefined' && document.documentElement.lang) {
-      const htmlLang = document.documentElement.lang.split('-')[0];
-      if (['ca', 'es', 'en', 'eu', 'gl'].includes(htmlLang)) {
-        return normalizeLanguage(htmlLang);
-      }
-    }
-    return readStoredLanguage();
-  });
+  const { language, t: translator, locale, themeMode } = useUIState();
+  const { setLanguage, toggleTheme } = useUIActions();
 
-  const [themePreference, setThemePreference] = useState(() => readThemePreference(externalConfig?.themeMode));
-  const [systemDark, setSystemDark] = useState(false);
 
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    const mq = window.matchMedia('(prefers-color-scheme: dark)');
-    setSystemDark(mq.matches);
-    const handler = (e) => setSystemDark(e.matches);
-    mq.addEventListener('change', handler);
-
-    const onAuthChange = () => setAuthTick(t => t + 1);
-    window.addEventListener('sdp:auth-change', onAuthChange);
-
-    return () => {
-      mq.removeEventListener('change', handler);
-      window.removeEventListener('sdp:auth-change', onAuthChange);
-    };
-  }, []);
-
-  const themeMode = resolveTheme(themePreference === 'system' ? (systemDark ? 'dark' : 'light') : themePreference);
-
-  const toggleTheme = () => {
-    setThemePreference((prev) => {
-      const currentResolved = resolveTheme(prev === 'system' ? (systemDark ? 'dark' : 'light') : prev);
-      const next = currentResolved === 'dark' ? 'light' : 'dark';
-      writeThemePreference(next);
-      return next;
-    });
-  };
 
   const tenantId = externalConfig?.tenantId || '11111111-2222-3333-4444-555555555555';
-  const currentUser = getCurrentUser();
-  const userId = currentUser?.id || getDefaultUserId();
+  const { currentUser } = useSession();
+  const { actorId, actorKey } = useIdentitat();
+  const userId = actorId; // Fetches data as the active actor
   const channelNamespace = `sdp:${tenantId}:${userId}:v2`;
   
   const configHash = useMemo(() => {
     try {
-      return JSON.stringify(externalConfig, (key, val) => typeof val === 'function' ? undefined : val) + '|' + authTick;
+      return JSON.stringify(externalConfig, (key, val) => typeof val === 'function' ? undefined : val) + '|' + actorKey;
     } catch {
-      return String(authTick); // Fallback si hi ha referències circulars
+      return actorKey; // Fallback si hi ha referències circulars
     }
-  }, [externalConfig, authTick]);
+  }, [externalConfig, actorKey]);
 
   const stableExternalConfig = useMemo(() => ({ ...externalConfig }), [configHash]);
 
@@ -289,12 +245,7 @@ export function AppDataProvider({ children, externalConfig = {} }) {
     };
   }, [stableExternalConfig, channelNamespace, tenantId, userId]);
 
-  useEffect(() => {
-    writeStoredLanguage(language);
-  }, [language]);
 
-  const translator = useMemo(() => createTranslator(language), [language]);
-  const locale = LANGUAGE_LOCALES[language] || 'ca-ES';
 
   const sortedFeedPosts = useMemo(() => rawData ? sortPinnedContent(rawData.feedPosts) : [], [rawData?.feedPosts]);
   const sortedMarketItems = useMemo(() => rawData ? sortPinnedContent(rawData.marketItems) : [], [rawData?.marketItems]);
@@ -419,24 +370,15 @@ export function AppDataProvider({ children, externalConfig = {} }) {
     error, language, rawData, status, stableExternalConfig,
     translator, sortedFeedPosts, sortedMarketItems, sortedEvents,
     sortedTowns, featuredTowns, mediaTimelineGroups, pageCopy, pageDetailLookup,
-    globalSearchItems, themeMode, authTick
+    globalSearchItems, themeMode, actorKey
   ]);
 
   const actionsValue = useMemo(() => {
-    const setLanguageFn = (code) => {
-      setLanguage(code);
-      if (typeof window !== 'undefined') {
-        window.dispatchEvent(new CustomEvent('sdp:language-changed', { detail: { language: code } }));
-        if (typeof window.sdp_change_language === 'function') {
-          window.sdp_change_language(code);
-        }
-      }
-    };
     const normalizeSearchTextFn = normalizeSearchText;
     
     if (!rawData) {
       return {
-        setLanguage: setLanguageFn,
+        setLanguage,
         normalizeSearchText: normalizeSearchTextFn,
         getSectionItems: () => [],
         findSectionItem: () => null,
@@ -632,7 +574,7 @@ export function AppDataProvider({ children, externalConfig = {} }) {
     };
 
     return {
-      setLanguage: setLanguageFn,
+      setLanguage,
       normalizeSearchText: normalizeSearchTextFn,
       getSectionItems,
       findSectionItem,

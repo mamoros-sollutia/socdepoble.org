@@ -1,6 +1,6 @@
 ---
-tipus: index
 estat: canonic
+tipus: index
 description: 📥 L'ESCRIPTORI (SAFATA D'ENTRADA I TREBALL ACTIU)
 ---
 
@@ -14,31 +14,18 @@ Ací només resideix la matèria viva. El que ha mort, descansa en l'arxiu.
 - [[00_INDEX_Actes]] (Registre d'Actes)
 
 - [[260905_0055_ACTA_MARMOTA_Altura_Barres_Universals]]
-- [[260906_1421_ABSENTS_auditoria.json]]
-- [[260906_1421_BUNDLE_auditoria]]
-- [[260906_1421_MANIFEST_auditoria.json]]
-- [[260906_1421_PROMPT_auditoria]]
-- [[260906_1438_ABSENTS_auditoria.json]]
-- [[260906_1438_BUNDLE_auditoria]]
-- [[260906_1438_MANIFEST_auditoria.json]]
-- [[260906_1438_PROMPT_auditoria]]
+- [[260906_1942_ABSENTS_base_dades_empresa_usuari.json]]
+- [[260906_1942_BUNDLE_base_dades_empresa_usuari]]
+- [[260906_1942_MANIFEST_base_dades_empresa_usuari.json]]
+- [[260906_1942_PROMPT_base_dades_empresa_usuari]]
 
 ## 01_Produccio
-- [[01_Produccio/260901_1348_AUDIO_Trellat_NotebookLM.m4a]]
-- [[01_Produccio/disseny_pedra_seca.html]]
-- [[01_Produccio/260906_1746_auditoria_puebli.md]]
-- [[01_Produccio/260906_1758_mercat_redes_rurales.md]]
-- [[contracte_graella]]
-
-<!-- LLAURADOR:ADOPCIONS:INICI -->
-
-## Adopcions del Llaurador
-
-> Bloc generat per `tooling/wiki/llaurador_indexs.mjs`. No l'edites a mà.
-> Mou cada enllaç a la secció temàtica que li toque i el llaurador el
-> llevarà d'ací tot sol a la següent passada. Si el bloc queda buit,
-> desapareix: vol dir que la wiki està cosida a mà.
-
-- [[04_ESCRIPTORI/.ancora_sessio.json|.ancora_sessio.json]]
-
-<!-- LLAURADOR:ADOPCIONS:FI -->
+- [[01_Produccio/260906_1746_auditoria_puebli]]
+- [[01_Produccio/260906_1758_mercat_redes_rurales]]
+- [[01_Produccio/260906_1931_mercat_puebli]]
+- [[260907_1320_estudi_codex]]
+- [[260907_1330_estudi_claude]]
+- [[260907_1340_estudi_copilot]]
+- [[260907_1350_estudi_gemini]]
+- [[01_Produccio/Puebli - Tu pueblo, tu gente, tu app..webloc]]
+- [[01_Produccio/contracte_graella]]

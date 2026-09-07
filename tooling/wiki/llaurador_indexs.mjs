@@ -122,7 +122,8 @@ function arestes(n, txt, desti, registra) {
 }
 
 for (const n of NODES) {
-  if (!n.endsWith('.md') || n.includes('/90_historic/')) continue;
+  // S'exclouen els fitxers de l'arxiu (05_ARXIU) dels índexs actius
+  if (!n.endsWith('.md') || n.includes('/05_ARXIU/')) continue;
   const brut = fs.readFileSync(path.join(ARREL, n), 'utf8');
   const { fora, dins } = talla(brut);
   arestes(n, fora, out, true);

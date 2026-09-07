@@ -3,12 +3,12 @@ import path from 'node:path';
 import { createHash } from 'node:crypto';
 
 export const ISO_SOURCES = [
-  '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/plantilles/PLANTILLA_ISO_SDP.md',
-  '_wiki_de_poble/00_SER_Brain_Identitat/00_BIOS.md',
-  '_wiki_de_poble/00_SER_Brain_Identitat/02_GENOTIP.md',
-  '_wiki_de_poble/03_GOVERNAR_Normativa_Regles/DOC_Governanca.md',
-  '_wiki_de_poble/00_SER_Brain_Identitat/DOC_Logos_Oficials.md',
-  '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica/architecture/ADR-2026-08-ONLINE-FIRST.md',
+  '_wiki_de_poble/02_ACTUAR_Tecnica/plantilles/PLANTILLA_ISO_SDP.md',
+  '_wiki_de_poble/00_SER_Identitat_Cervell/00_BIOS.md',
+  '_wiki_de_poble/00_SER_Identitat_Cervell/02_GENOTIP.md',
+  '_wiki_de_poble/03_GOVERNAR_Normativa/DOC_Governanca.md',
+  '_wiki_de_poble/00_SER_Identitat_Cervell/DOC_Logos_Oficials.md',
+  '_wiki_de_poble/02_ACTUAR_Tecnica/architecture/ADR-2026-08-ONLINE-FIRST.md',
 ];
 const hash = text => createHash('sha256').update(text).digest('hex');
 const stripAuto = text => text.replace(/\n## Sinapsis Entrants \(Autogenerat\)[\s\S]*?<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->/g, '').trim();

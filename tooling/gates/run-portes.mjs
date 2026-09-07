@@ -12,7 +12,6 @@ const passos = [
   { nom: 'Porta Enxufe', cmd: 'node', args: ['tooling/gates/tractor-enxufe.mjs'] },
   { nom: 'Porta Maquinari', cmd: 'node', args: ['tooling/gates/tractor-doctrina-maquinari.mjs'] },
   { nom: 'Porta Graella', cmd: 'node', args: ['tooling/gates/tractor-graella.mjs'] },
-  { nom: 'Porta Ancoratge', cmd: 'node', args: ['tooling/gates/verificar_ancoratge.mjs'] },
   { nom: 'Porta InnerHTML', cmd: 'node', args: ['tooling/gates/tractor-innerhtml.mjs'] },
   { nom: 'Porta Rutes', cmd: 'node', args: ['tooling/gates/tractor-rutes.mjs'] },
   { nom: 'Porta Rutes Web', cmd: 'node', args: ['tooling/gates/tractor-rutes-web.mjs'] },
