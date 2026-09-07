@@ -1,11 +1,11 @@
 import { UniversalPage } from '../../components/universal/UniversalComponents';
-import { useAppData } from '../../app/AppDataContext';
 import { resolveAsset } from '../../config/assetResolver';
 import { sanitizeHtml } from '../../utils/sanitize';
 import TelemetryDashboard from './TelemetryDashboard';
+import { useUIActions } from '../../app/contexts/UIContext';
 
 export default function TextSection({ page, pageKey }) {
-  const { t } = useAppData();
+  const { t } = useUIActions();
   return (
     <UniversalPage
       title={page.title}

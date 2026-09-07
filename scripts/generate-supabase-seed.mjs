@@ -156,3 +156,18 @@ commit;
 const target = resolve(process.cwd(), 'supabase/seed.sql');
 atomicWriteFile(target, sql);
 console.log('Seed generated at', target);
+
+const finalSql = sql.replace('commit;', `
+insert into private.ajustos (clau, valor)
+values ('poble_per_defecte', '${SEED_TENANT_ID}')
+on conflict (clau) do update set valor = excluded.valor;
+
+-- Create Superadmin User (Javi) if needed (for local testing)
+-- In a real environment, auth.users is managed by Supabase, but for seed we can insert a dummy.
+-- insert into auth.users (id, email) values ('uuid-del-mestre', 'javi@socdepoble.org');
+-- insert into public.user_platform_roles (user_id, role) values ('uuid-del-mestre', 'superadmin');
+
+commit;
+`);
+atomicWriteFile(target, finalSql);
+console.log('Seed updated with Fase 3 superadmin config at', target);

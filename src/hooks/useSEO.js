@@ -1,8 +1,10 @@
 import { useEffect, useMemo } from 'react';
-import { useAppData } from '../app/AppDataContext';
+import { useUIActions } from '../app/contexts/UIContext';
+import { useUIState } from '../app/contexts/UIContext';
 
 export function useSEO({ title, description, canonical, image, type = 'WebPage', jsonLd = null }) {
-  const { resolveAsset, externalConfig } = useAppData();
+  const { resolveAsset } = useUIActions();
+  const { externalConfig } = useUIState();
 
   const jsonLdString = useMemo(() => jsonLd ? JSON.stringify(jsonLd) : null, [jsonLd]);
 

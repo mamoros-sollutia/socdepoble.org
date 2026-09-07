@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useAppData } from '../../app/AppDataContext';
 import { UniversalPage } from '../../components/universal/UniversalComponents';
 import { AGENTS } from '../profile/agentsSeed';
 import { resolveAsset } from '../../config/assetResolver';
 import { getVal, setVal } from '../../config/storage.js';
+import { useUIActions } from '../../app/contexts/UIContext';
 
 export default function RealitatSection() {
-  const { t } = useAppData();
+  const { t } = useUIActions();
   const [level, setLevel] = useState(() => {
     return parseInt(getVal('socdepoble-iaia-level', '1'), 10);
   });

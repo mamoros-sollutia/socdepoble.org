@@ -2,14 +2,18 @@ import React, { useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { UniversalPage, UniversalCard, ActionControl, IconButton, ContentProvider } from '../../components/universal/UniversalComponents';
 import { EventCard } from '../../components/universal/EventCard';
-import { useAppData } from '../../app/AppDataContext';
 import { useSEO } from '../../hooks/useSEO';
 import { resolveAsset } from '../../config/assetResolver';
 import { getSectionItemPath } from '../../config/navigation';
 import { buildMapEmbedUrl } from './mapConfig';
+import { useMur } from './MurContext';
+import { useCoreContent } from '../../app/contexts/CoreContentContext';
+import { useUIActions } from '../../app/contexts/UIContext';
 
 export default function MurSection() {
-  const { sortedEvents, sortedFeedPosts, sortedMarketItems, sortedTowns, pageCopy, t } = useAppData();
+  const { sortedEvents, sortedFeedPosts, sortedMarketItems } = useMur();
+  const { sortedTowns, pageCopy } = useCoreContent();
+  const { t } = useUIActions();
   const [searchParams, setSearchParams] = useSearchParams();
   const dateFilter = searchParams.get('date');
   const categoryFilter = searchParams.get('category');

@@ -645,7 +645,7 @@ export async function registerWithEmail(email, password, name, config = {}) {
     body: {
       email: String(email || '').trim().toLowerCase(),
       password,
-      data: { name: String(name || '').trim(), tenant_id: tenantId }
+      data: { name: String(name || '').trim(), tenant_id: tenantId, rgpd: true }
     }
   });
 
@@ -705,4 +705,102 @@ export async function logout() {
 
 export function getCurrentUser() {
   return getVal('socdepoble-user', null);
+}
+
+export async function loadCoreContent(ownerUserId = getDefaultUserId(), config = {}) {
+  const { runtimeDataMode, hasSupabaseConfig, tenantId } = getResolvedConfig(config);
+  const seed = await buildSeedAppData(ownerUserId);
+  if (runtimeDataMode === 'seed' || !hasSupabaseConfig) {
+    return { towns: seed.towns, pages: seed.pages, pageCopy: {}, agents: seed.agents, ownerUserId };
+  }
+  const contentRows = await request(`/rest/v1/app_content?select=key,payload,version&tenant_id=eq.${encodeURIComponent(tenantId)}`, config, { signal: config.signal });
+  const baseData = mapContentRowsToData(contentRows || []);
+  // En mode remot, forcem l'ús de les pàgines locals (textos legals, etc.) perquè sempre estiguen actualitzades amb el codi
+  return { towns: baseData.towns, pages: seed.pages, pageCopy: {}, agents: baseData.agents, ownerUserId };
+}
+
+export async function loadMur(ownerUserId = getDefaultUserId(), config = {}) {
+  const { runtimeDataMode, hasSupabaseConfig, tenantId } = getResolvedConfig(config);
+  if (runtimeDataMode === 'seed' || !hasSupabaseConfig) {
+    const seed = await buildSeedAppData(ownerUserId);
+    return { feedPosts: seed.feedPosts, events: seed.events, marketItems: seed.marketItems };
+  }
+  const safeOwnerId = ownerUserId || getDefaultUserId();
+  const [contentRows, submissionsResp] = await Promise.all([
+    request(`/rest/v1/app_content?select=key,payload,version&tenant_id=eq.${encodeURIComponent(tenantId)}`, config, { signal: config.signal }),
+    requestMaybe(`/rest/v1/section_submissions?select=*&tenant_id=eq.${encodeURIComponent(tenantId)}&owner_user_id=eq.${encodeURIComponent(safeOwnerId)}&order=created_at.desc&limit=50`, config, { signal: config.signal })
+  ]);
+  const baseData = mapContentRowsToData(contentRows || []);
+  const subs = Array.isArray(submissionsResp?.data) ? submissionsResp.data : [];
+  const feedPosts = mergeById(baseData.feedPosts || [], subs.filter(s => s.section_id === 'mur').map(s => s.payload));
+  const marketItems = mergeById(baseData.marketItems || [], subs.filter(s => s.section_id === 'mercat').map(s => s.payload));
+  const events = mergeById(baseData.events || [], subs.filter(s => s.section_id === 'events').map(s => s.payload));
+  return { feedPosts, marketItems, events };
+}
+
+export async function loadMultimedia(ownerUserId = getDefaultUserId(), config = {}) {
+  const { runtimeDataMode, hasSupabaseConfig, tenantId } = getResolvedConfig(config);
+  if (runtimeDataMode === 'seed' || !hasSupabaseConfig) {
+    const seed = await buildSeedAppData(ownerUserId);
+    return { mediaItems: seed.mediaItems };
+  }
+  const safeOwnerId = ownerUserId || getDefaultUserId();
+  const [contentRows, submissionsResp] = await Promise.all([
+    request(`/rest/v1/app_content?select=key,payload,version&tenant_id=eq.${encodeURIComponent(tenantId)}`, config, { signal: config.signal }),
+    requestMaybe(`/rest/v1/section_submissions?select=*&tenant_id=eq.${encodeURIComponent(tenantId)}&owner_user_id=eq.${encodeURIComponent(safeOwnerId)}&order=created_at.desc&limit=50`, config, { signal: config.signal })
+  ]);
+  const baseData = mapContentRowsToData(contentRows || []);
+  const subs = Array.isArray(submissionsResp?.data) ? submissionsResp.data : [];
+  const mediaItems = mergeById(baseData.mediaItems || [], subs.filter(s => s.section_id === 'multimedia').map(s => s.payload));
+  return { mediaItems };
+}
+
+export async function loadXat(ownerUserId = getDefaultUserId(), config = {}) {
+  const { runtimeDataMode, hasSupabaseConfig, tenantId } = getResolvedConfig(config);
+  if (runtimeDataMode === 'seed' || !hasSupabaseConfig) {
+    const seed = await buildSeedAppData(ownerUserId);
+    return { chatThreads: seed.chatThreads, chatMessages: seed.chatMessages };
+  }
+  const safeOwnerId = ownerUserId || getDefaultUserId();
+  const [threadsResp, msgsResp] = await Promise.all([
+    request(`/rest/v1/chat_threads?select=id,payload&tenant_id=eq.${encodeURIComponent(tenantId)}&limit=50`, config, { signal: config.signal }),
+    request(`/rest/v1/chat_messages?select=id,owner_user_id,thread_id,message_id,text,sender,time_label,created_at&tenant_id=eq.${encodeURIComponent(tenantId)}&owner_user_id=eq.${encodeURIComponent(safeOwnerId)}&order=created_at.desc&limit=50`, config, { signal: config.signal })
+  ]);
+  const chatThreads = (threadsResp || []).map((t) => ({ id: t.id, ...t.payload }));
+  const chatMessages = (msgsResp || []).map(m => ({
+    id: m.id,
+    ownerUserId: m.owner_user_id,
+    threadId: m.thread_id,
+    messageId: m.message_id,
+    text: m.text,
+    sender: m.sender,
+    time: m.time_label,
+    createdAtTs: m.created_at ? new Date(m.created_at).getTime() : 0
+  }));
+  return { chatThreads, chatMessages };
+}
+
+export async function loadNotes(ownerUserId = getDefaultUserId(), config = {}) {
+  const { runtimeDataMode, hasSupabaseConfig, tenantId } = getResolvedConfig(config);
+  if (runtimeDataMode === 'seed' || !hasSupabaseConfig) {
+    const seed = await buildSeedAppData(ownerUserId);
+    return { notes: seed.notes, noteFolders: seed.noteFolders };
+  }
+  const safeOwnerId = ownerUserId || getDefaultUserId();
+  const [contentRows, submissionsResp, notesResp] = await Promise.all([
+    request(`/rest/v1/app_content?select=key,payload,version&tenant_id=eq.${encodeURIComponent(tenantId)}`, config, { signal: config.signal }),
+    requestMaybe(`/rest/v1/section_submissions?select=*&tenant_id=eq.${encodeURIComponent(tenantId)}&owner_user_id=eq.${encodeURIComponent(safeOwnerId)}&order=created_at.desc&limit=50`, config, { signal: config.signal }),
+    requestMaybe(`/rest/v1/notes?select=*&tenant_id=eq.${encodeURIComponent(tenantId)}&owner_user_id=eq.${encodeURIComponent(safeOwnerId)}&order=updated_at.desc&limit=50`, config, { signal: config.signal })
+  ]);
+  const baseData = mapContentRowsToData(contentRows || []);
+  const subs = Array.isArray(submissionsResp?.data) ? submissionsResp.data : [];
+  const dbNotes = Array.isArray(notesResp?.data) ? notesResp.data.map(n => ({
+    id: n.id, folderId: n.folder_id, title: n.title, subtitle: n.subtitle, lead: n.lead,
+    content: n.content, categories: n.categories, tags: n.tags, heroImage: n.hero_image, logoImage: n.logo_image,
+    isPublished: n.is_published, publishedSubmissionId: n.published_submission_id, revision: n.revision,
+    createdAt: n.created_at, updatedAt: n.updated_at
+  })) : [];
+  const notesSource = mergeById(baseData.notes || [], dbNotes);
+  const notes = mergeById(notesSource, subs.filter(s => s.section_id === 'notes').map(s => s.payload));
+  return { notes, noteFolders: baseData.noteFolders || [] };
 }

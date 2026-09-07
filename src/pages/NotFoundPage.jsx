@@ -1,10 +1,11 @@
-import { useAppData } from '../app/AppDataContext';
+import { useUIActions } from '../app/contexts/UIContext';
 import { UniversalPage } from '../components/universal/UniversalComponents';
 import { useSEO } from '../hooks/useSEO';
 import { Compass } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function NotFoundPage() {
+  const { t } = useUIActions();
   
   useSEO({
     title: '404 - No Trobat',

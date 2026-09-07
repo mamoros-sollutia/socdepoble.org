@@ -1,10 +1,12 @@
 import React from 'react';
-import { useAppData } from '../../app/AppDataContext';
 import { UniversalPage, UniversalButton } from '../../components/universal/UniversalComponents';
 import { SUPPORTED_LANGUAGES } from '../../config/i18n';
+import { useUIState } from '../../app/contexts/UIContext';
+import { useUIActions } from '../../app/contexts/UIContext';
 
 export default function TranslationsSection() {
-  const { language, setLanguage, t } = useAppData();
+  const { language } = useUIState();
+  const { setLanguage, t } = useUIActions();
 
   return (
     <UniversalPage

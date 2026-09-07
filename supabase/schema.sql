@@ -13,6 +13,12 @@ create table if not exists public.towns (
 );
 alter table public.towns add column if not exists is_open boolean not null default true;
 
+
+create table if not exists private.ajustos (
+  clau text primary key,
+  valor text not null
+);
+
 create table if not exists public.town_memberships (
   town_id uuid not null references public.towns(id) on delete cascade,
   user_id uuid not null references auth.users(id) on delete cascade,
@@ -84,12 +90,12 @@ create table if not exists public.profiles (
   id uuid primary key references auth.users(id) on delete cascade,
   full_name text not null check (char_length(btrim(full_name)) between 1 and 120),
   visibility text not null default 'private' check (visibility = 'private'),
-  consentiment_rgpd_at timestamptz not null default now(),
+  consentiment_rgpd_at timestamptz,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
 alter table public.profiles add column if not exists visibility text not null default 'private' check (visibility = 'private');
-alter table public.profiles add column if not exists consentiment_rgpd_at timestamptz not null default now();
+alter table public.profiles add column if not exists consentiment_rgpd_at timestamptz;
 
 create table if not exists public.organizations (
   id uuid primary key default gen_random_uuid(),
@@ -130,9 +136,34 @@ create table if not exists public.organization_memberships (
     references public.organizations(tenant_id, id) on delete cascade
 );
 
-create unique index if not exists idx_organization_memberships_one_owner
-  on public.organization_memberships(organization_id)
-  where role = 'owner';
+
+
+
+create table if not exists public.user_platform_roles (
+  user_id    uuid primary key references auth.users(id) on delete cascade,
+  role       text not null default 'usuari'
+             check (role in ('usuari','moderador','superadmin')),
+  granted_by uuid references auth.users(id),
+  granted_at timestamptz not null default now()
+);
+
+create table if not exists public.organization_claims (
+  id              uuid primary key default gen_random_uuid(),
+  organization_id uuid not null,
+  tenant_id       uuid not null,
+  user_id         uuid not null references auth.users(id) on delete cascade,
+  estat           text not null default 'pendent'
+                  check (estat in ('pendent','aprovada','rebutjada')),
+  justificacio    text not null default '' check (char_length(justificacio) <= 1000),
+  resolta_per     uuid references auth.users(id),
+  resolta_at      timestamptz,
+  created_at      timestamptz not null default now(),
+  foreign key (tenant_id, organization_id)
+    references public.organizations(tenant_id, id) on delete cascade
+);
+create unique index if not exists idx_claims_una_pendent
+  on public.organization_claims(organization_id, user_id) where estat = 'pendent';
+
 
 create index if not exists idx_organizations_tenant_kind
   on public.organizations(tenant_id, kind, created_at desc);
@@ -180,42 +211,159 @@ begin
 end;
 $$;
 
-create or replace function public.sdp_protegeix_propietari() returns trigger
-language plpgsql security definer set search_path = '' as $$
+create or replace function private.comprova_una_propietaria() returns trigger
+language plpgsql security definer set search_path = ''
+as $$
+declare v_org uuid; v_n int;
 begin
-  if old.role = 'owner' and not exists (
-    select 1 from public.organization_memberships m
-    where m.organization_id = old.organization_id and m.role = 'owner' and m.user_id <> old.user_id
-  ) then
-    raise exception 'SDP-LOCK: última propietària. Transfereix la propietat abans d''eixir o eliminar.' using errcode = '23503';
+  v_org := coalesce(new.organization_id, old.organization_id);
+  if not exists (select 1 from public.organizations o where o.id = v_org) then
+    return null;
   end if;
-  if tg_op = 'UPDATE' then return new; end if;
-  return old;
+  select count(*) into v_n from public.organization_memberships m
+   where m.organization_id = v_org and m.role = 'owner';
+  if v_n <> 1 then
+    raise exception 'SDP-LOCK: l''organització % ha de tindre exactament 1 propietària (en té %).',
+      v_org, v_n using errcode = '23514';
+  end if;
+  return null;
 end;
 $$;
 
 create or replace function public.handle_new_user()
 returns trigger
-language plpgsql
-security definer
-set search_path = ''
+language plpgsql security definer set search_path = ''
 as $$
+declare
+  v_tenant uuid;
+  v_rgpd   boolean;
 begin
-  insert into public.profiles (id, full_name)
+  begin
+    v_tenant := nullif(new.raw_user_meta_data ->> 'tenant_id', '')::uuid;
+  exception when invalid_text_representation then
+    raise exception 'SDP-REG-002: tenant_id no és un UUID.' using errcode = '22023';
+  end;
+
+  if v_tenant is null then
+    select valor::uuid into v_tenant
+      from private.ajustos where clau = 'poble_per_defecte';
+  end if;
+
+  if v_tenant is null then
+    raise exception 'SDP-REG-001: alta sense poble i sense poble per defecte.'
+      using errcode = '23502';
+  end if;
+
+  if not exists (select 1 from public.towns t where t.id = v_tenant) then
+    raise exception 'SDP-REG-003: el poble % no existix.', v_tenant
+      using errcode = '23503';
+  end if;
+
+  v_rgpd := coalesce((new.raw_user_meta_data ->> 'rgpd')::boolean, false);
+
+  insert into public.profiles (id, full_name, consentiment_rgpd_at)
   values (
     new.id,
-    coalesce(
-      nullif(left(btrim(new.raw_user_meta_data ->> 'name'), 120), ''),
-      'Persona'
-    )
+    coalesce(nullif(left(btrim(new.raw_user_meta_data ->> 'name'), 120), ''), 'Persona'),
+    case when v_rgpd then now() else null end
   )
   on conflict (id) do nothing;
+
+  
   return new;
 end;
 $$;
 
 revoke execute on function public.handle_new_user() from public;
 revoke execute on function public.handle_new_user() from anon, authenticated;
+
+
+create or replace function private.es_superadmin() returns boolean
+language sql stable security definer set search_path = ''
+as $$
+  select exists (
+    select 1 from public.user_platform_roles r
+    where r.user_id = (select auth.uid()) and r.role = 'superadmin'
+  );
+$$;
+revoke execute on function private.es_superadmin() from public, anon;
+grant execute on function private.es_superadmin() to authenticated;
+
+create or replace function public.sollicita_reclamacio(
+  p_organization_id uuid,
+  p_justificacio    text default ''
+)
+returns public.organization_claims
+language plpgsql security definer set search_path = ''
+as $$
+declare v_tenant uuid; v_fila public.organization_claims;
+begin
+  if (select auth.uid()) is null then
+    raise exception 'SDP-CLAIM-000: cal sessió.' using errcode = '42501';
+  end if;
+
+  select o.tenant_id into v_tenant
+    from public.organizations o where o.id = p_organization_id;
+  if v_tenant is null then
+    raise exception 'SDP-CLAIM-001: l''entitat no existix.' using errcode = '22023';
+  end if;
+
+  if not exists (
+    select 1 from public.town_memberships tm
+    where tm.user_id = (select auth.uid()) and tm.town_id = v_tenant
+  ) then
+    raise exception 'SDP-CLAIM-002: no eres del poble d''esta entitat.' using errcode = '42501';
+  end if;
+
+  if exists (
+    select 1 from public.organization_memberships m
+    where m.organization_id = p_organization_id and m.role = 'owner'
+  ) then
+    raise exception 'SDP-CLAIM-003: l''entitat ja té propietària.' using errcode = '23505';
+  end if;
+
+  insert into public.organization_claims (organization_id, tenant_id, user_id, justificacio)
+  values (p_organization_id, v_tenant, (select auth.uid()),
+          left(btrim(coalesce(p_justificacio, '')), 1000))
+  returning * into v_fila;
+
+  return v_fila;
+end;
+$$;
+revoke execute on function public.sollicita_reclamacio(uuid, text) from public, anon;
+grant execute on function public.sollicita_reclamacio(uuid, text) to authenticated;
+
+create or replace function public.resol_reclamacio(p_claim uuid, p_aprova boolean)
+returns void
+language plpgsql security definer set search_path = ''
+as $$
+declare v_claim public.organization_claims;
+begin
+  if not (select private.es_superadmin()) then
+    raise exception 'SDP-CLAIM-010: cal rol de superadmin.' using errcode = '42501';
+  end if;
+
+  select * into v_claim from public.organization_claims
+   where id = p_claim and estat = 'pendent' for update;
+  if v_claim.id is null then
+    raise exception 'SDP-CLAIM-011: reclamació inexistent o ja resolta.' using errcode = '22023';
+  end if;
+
+  if p_aprova then
+    insert into public.organization_memberships (organization_id, tenant_id, user_id, role)
+    values (v_claim.organization_id, v_claim.tenant_id, v_claim.user_id, 'owner')
+    on conflict (organization_id, user_id) do update set role = 'owner';
+  end if;
+
+  update public.organization_claims
+     set estat = case when p_aprova then 'aprovada' else 'rebutjada' end,
+         resolta_per = (select auth.uid()),
+         resolta_at  = now()
+   where id = p_claim;
+end;
+$$;
+revoke execute on function public.resol_reclamacio(uuid, boolean) from public, anon;
+grant execute on function public.resol_reclamacio(uuid, boolean) to authenticated;
 
 create or replace function private.is_organization_member(p_organization_id uuid)
 returns boolean
@@ -293,8 +441,8 @@ revoke execute on function private.is_organization_member(uuid) from public;
 revoke execute on function private.is_organization_member(uuid) from anon;
 revoke execute on function private.can_manage_organization(uuid) from public;
 revoke execute on function private.can_manage_organization(uuid) from anon;
-revoke execute on function private.is_town_member(uuid) from public;
-revoke execute on function private.is_town_member(uuid) from anon;
+grant execute on function private.is_town_member(uuid) to public;
+grant execute on function private.is_town_member(uuid) to anon;
 revoke execute on function private.can_create_group(uuid, uuid) from public;
 revoke execute on function private.can_create_group(uuid, uuid) from anon;
 grant execute on function private.is_organization_member(uuid) to authenticated;
@@ -349,6 +497,10 @@ declare
   v_description text := left(btrim(coalesce(p_description, '')), 500);
   v_organization record;
 begin
+  if p_kind in ('entity', 'city_hall') then
+    raise exception 'Les entitats i els ajuntaments no es creen: es reclamen.' using errcode = '42501';
+  end if;
+
   if v_user_id is null then
     raise exception 'Cal iniciar sessió per crear una organització.' using errcode = '42501';
   end if;
@@ -386,10 +538,7 @@ begin
   )
   on conflict (id) do nothing;
 
-  insert into public.town_memberships (town_id, user_id, role)
-  values (p_tenant_id, v_user_id, 'member')
-  on conflict (town_id, user_id) do nothing;
-
+  
   select
     organization.id,
     organization.tenant_id,
@@ -445,6 +594,7 @@ begin
     name,
     kind,
     parent_organization_id,
+    lema,
     description,
     visibility,
     created_at,
@@ -520,10 +670,11 @@ create trigger sdp_force_author
   before insert or update on public.section_submissions
   for each row execute function public.trg_force_submission_author();
 
-drop trigger if exists sdp_protegeix_propietari on public.organization_memberships;
-create trigger sdp_protegeix_propietari
-  before delete or update on public.organization_memberships
-  for each row execute function public.sdp_protegeix_propietari();
+drop trigger if exists sdp_una_propietaria on public.organization_memberships;
+create constraint trigger sdp_una_propietaria
+  after insert or update or delete on public.organization_memberships
+  deferrable initially deferred
+  for each row execute function private.comprova_una_propietaria();
 
 drop trigger if exists trg_profiles_touch on public.profiles;
 create trigger trg_profiles_touch
@@ -596,7 +747,6 @@ grant insert (
 ) on table public.organizations to authenticated;
 grant select on table public.organization_memberships to authenticated;
 grant select on table public.town_memberships to authenticated;
-grant insert (town_id, user_id, role) on table public.town_memberships to authenticated;
 
 drop policy if exists "public read towns" on public.towns;
 create policy "public read towns" on public.towns for select using (true);
@@ -605,20 +755,10 @@ drop policy if exists "user read own memberships" on public.town_memberships;
 create policy "user read own memberships" on public.town_memberships for select
 to authenticated using (user_id = (select auth.uid()));
 
-drop policy if exists "user insert own membership" on public.town_memberships;
-create policy "user insert own membership" on public.town_memberships for insert
-to authenticated with check (
-  user_id = (select auth.uid()) 
-  and role = 'member'
-  and exists (select 1 from public.towns where id = town_id and is_open = true)
-);
 
 drop policy if exists "public read app_content" on public.app_content;
 create policy "public read app_content" on public.app_content for select using (true);
 
-drop policy if exists "public read guest chat_threads" on public.chat_threads;
-create policy "public read guest chat_threads" on public.chat_threads for select
-using (owner_user_id = '00000000-0000-0000-0000-000000000000');
 
 drop policy if exists "private read chat_threads" on public.chat_threads;
 create policy "private read chat_threads" on public.chat_threads for select to authenticated
@@ -637,9 +777,6 @@ drop policy if exists "private delete chat_threads" on public.chat_threads;
 create policy "private delete chat_threads" on public.chat_threads for delete to authenticated
 using (owner_user_id = (select auth.uid()) and exists (select 1 from public.town_memberships where town_id = tenant_id and user_id = (select auth.uid())));
 
-drop policy if exists "public read guest chat_messages" on public.chat_messages;
-create policy "public read guest chat_messages" on public.chat_messages for select 
-using (owner_user_id = '00000000-0000-0000-0000-000000000000');
 
 drop policy if exists "private read chat_messages" on public.chat_messages;
 create policy "private read chat_messages" on public.chat_messages for select to authenticated
@@ -735,4 +872,28 @@ using (
   user_id = (select auth.uid())
   or (select private.can_manage_organization(organization_id))
 );
+
+
+
+alter table public.user_platform_roles enable row level security;
+revoke all on table public.user_platform_roles from anon, authenticated;
+grant select on table public.user_platform_roles to authenticated;
+
+create policy "llig el propi rol" on public.user_platform_roles for select to authenticated
+using (user_id = (select auth.uid()));
+
+alter table public.organization_claims enable row level security;
+revoke all on table public.organization_claims from anon, authenticated;
+grant select on table public.organization_claims to authenticated;
+
+create policy "llig les propies reclamacions" on public.organization_claims
+for select to authenticated
+using (user_id = (select auth.uid()) or (select private.es_superadmin()));
+
+grant update (name, lema, description, visibility) on table public.organizations to authenticated;
+
+create policy "gestores actualitzen l'organització" on public.organizations
+for update to authenticated
+using       ((select private.can_manage_organization(id)))
+with check  ((select private.can_manage_organization(id)));
 

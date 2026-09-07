@@ -2,7 +2,6 @@ import React, { lazy, Suspense, useEffect, useRef, memo, StrictMode } from 'reac
 import { Navigate, NavLink, Route, Routes, useNavigate, useParams, useLocation } from 'react-router-dom';
 import { Globe, MoonStar, Plus, Search, Settings, Sun, UserRound } from '../icons.jsx';
 import BrandMark from '../components/BrandMark';
-import { useAppData } from './AppDataContext';
 import { APP_NAME } from '../config/app';
 import { DEFAULT_SECTION_PATH, SECTIONS, SECTION_ORDER } from '../config/sections';
 import { getSectionLabels } from '../config/i18n';
@@ -36,6 +35,13 @@ const ItemDetailSection = lazy(() => import('../sections/detail/ItemDetailSectio
 const PageDetailSection = lazy(() => import('../sections/detail/PageDetailSection'));
 const RealitatSection = lazy(() => import('../sections/realitat/RealitatSection'));
 import NotFoundPage from '../pages/NotFoundPage';
+import { CoreContentProvider, useCoreContent } from './contexts/CoreContentContext';
+import { MurProvider, useMur } from '../sections/mur/MurContext';
+import { NotesDataProvider } from '../sections/notes/NotesDataContext';
+import { XatProvider, useXat } from '../sections/xat/XatContext';
+import { MultimediaProvider } from '../sections/multimedia/MultimediaContext';
+import { useUIActions, useUIState } from './contexts/UIContext';
+import { useSession } from './contexts/SessionContext';
 
 const ALL_NAV_SECTIONS = SECTIONS.filter((section) => SECTION_ORDER.includes(section.id));
 const NAV_SECTIONS = ALL_NAV_SECTIONS.filter(s => s.id !== 'versions' && s.id !== 'legal');
@@ -45,7 +51,7 @@ const MOBILE_NAV_LEADING = NAV_SECTIONS.slice(0, 2);
 const MOBILE_NAV_TRAILING = NAV_SECTIONS.slice(2, 4);
 
 function RouteFallback() {
-  const { t } = useAppData();
+  const { t } = useUIActions();
   return (
     <div className="sdp-route-loading-screen" role="status" aria-live="polite" aria-label="Carregant secció">
       <div className="sdp-route-loading-screen__glow sdp-route-loading-screen__glow--left" />
@@ -65,7 +71,8 @@ function RouteFallback() {
 }
 
 function AppShell({ children, mobileNav }) {
-  const { language, t, status, themeMode, externalConfig } = useAppData();
+  const { language, status, themeMode, externalConfig } = useUIState();
+  const { t } = useUIActions();
   const navigate = useNavigate();
   const location = useLocation();
   const mainRef = useRef(null);
@@ -315,7 +322,9 @@ function AppShell({ children, mobileNav }) {
 
 const TopBar = memo(function TopBar() {
   const navigate = useNavigate();
-  const { t, themeMode, toggleTheme, currentUser } = useAppData();
+  const { t, toggleTheme } = useUIActions();
+  const { themeMode } = useUIState();
+  const { currentUser } = useSession();
   const navigateWithTransition = (path) => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (document.startViewTransition && !prefersReducedMotion) {
@@ -375,7 +384,7 @@ const TopBar = memo(function TopBar() {
 });
 
 function TextRoute({ pageKey }) {
-  const { pageCopy } = useAppData();
+  const { pageCopy } = useCoreContent();
   const page = pageCopy?.[pageKey];
   if (!page) {
     return <Navigate to={DEFAULT_SECTION_PATH} replace />;
@@ -388,18 +397,10 @@ function TextRoute({ pageKey }) {
 }
 
 
-function LegacySectionDetailRedirect({ sectionId }) {
-  const { itemId } = useParams();
-  return <Navigate to={`/${sectionId}/${itemId}`} replace />;
-}
-
-function ThreadRedirect() {
-  const { threadId } = useParams();
-  return <Navigate to={`/xat/${threadId}`} replace />;
-}
 
 function LoadError() {
-  const { error, isBackendConfigurat, dataMode, t } = useAppData();
+  const { error, isBackendConfigurat, dataMode } = useUIState();
+  const { t } = useUIActions();
   return (
     <UniversalPage
       title={t('error.loadPortal', "No s'ha pogut carregar el portal")}
@@ -409,22 +410,46 @@ function LoadError() {
   );
 }
 
-export default function App() {
+export default function App({ config }) {
 
   return (
     <StrictMode>
       <AppShell mobileNav={<MobileNav />}>
-        <AppContent />
+        <AppContent config={config} />
       </AppShell>
     </StrictMode>
   );
 }
 
-function AppContent() {
-  const { status } = useAppData();
+function AppContent({ config }) {
+  const { actorKey } = useIdentitat();
 
-  if (status === 'loading') return <RouteFallback />;
-  if (status === 'error') return <LoadError />;
+  return (
+    <CoreContentProvider key={`core-${actorKey}`} config={config}>
+      <MurProvider key={`mur-${actorKey}`} config={config}>
+        <NotesDataProvider key={`notes-${actorKey}`} config={config}>
+          <XatProvider key={`xat-${actorKey}`} config={config}>
+            <MultimediaProvider key={`media-${actorKey}`} config={config}>
+              <AppDataLoader />
+            </MultimediaProvider>
+          </XatProvider>
+        </NotesDataProvider>
+      </MurProvider>
+    </CoreContentProvider>
+  );
+}
+
+function AppDataLoader() {
+  const core = useCoreContent();
+  const mur = useMur();
+  const xat = useXat();
+  
+  const hasError = core.status === 'error' || mur.status === 'error' || xat.status === 'error';
+  const isLoading = core.status === 'loading' || mur.status === 'loading' || xat.status === 'loading';
+
+  if (hasError) return <LoadError />;
+  if (isLoading) return <RouteFallback />;
+
   return (
     <RouteErrorBoundary>
       <AppRoutes />
@@ -463,7 +488,7 @@ class RouteErrorBoundary extends React.Component {
 }
 
 function AppRoutes() {
-  const { agents = [] } = useAppData();
+  const { agents = [] } = useCoreContent();
   return (
     <Suspense fallback={<RouteFallback />}>
       <Routes>
@@ -507,20 +532,20 @@ function AppRoutes() {
         
         <Route path="/control" element={<ControlSection />} />
         <Route path="/connectar" element={<ConnectarSection agents={agents} />} />
-        <Route path="/projecte" element={<TextRoute pageKey="projecte" />} />
+        <Route path="/projecte" element={<Navigate to="/jo/projecte" replace />} />
         <Route path="/page/:slug" element={<PageDetailSection />} />
-        <Route path="/el-projecte" element={<Navigate to="/projecte" replace />} />
-        <Route path="/skills" element={<TextRoute pageKey="skills" />} />
-        <Route path="/constitucio" element={<TextRoute pageKey="constitucio" />} />
-        <Route path="/disseny" element={<DesignSection />} />
+        <Route path="/el-projecte" element={<Navigate to="/jo/projecte" replace />} />
+        <Route path="/skills" element={<Navigate to="/jo/skills" replace />} />
+        <Route path="/constitucio" element={<Navigate to="/jo/constitucio" replace />} />
+        <Route path="/disseny" element={<Navigate to="/jo/disseny" replace />} />
         <Route path="/legal" element={<TextRoute pageKey="legal" />} />
-        <Route path="/roadmap" element={<TextRoute pageKey="roadmap" />} />
-        <Route path="/ruta" element={<Navigate to="/roadmap" replace />} />
+        <Route path="/roadmap" element={<Navigate to="/jo/roadmap" replace />} />
+        <Route path="/ruta" element={<Navigate to="/jo/roadmap" replace />} />
         <Route path="/versions" element={<TextRoute pageKey="versions" />} />
         <Route path="/traduccions" element={<TranslationsSection />} />
         <Route path="/realitat" element={<RealitatSection />} />
-        <Route path="/ia" element={<TextRoute pageKey="anima" />} />
-        <Route path="/anima" element={<Navigate to="/ia" replace />} />
+        <Route path="/ia" element={<Navigate to="/jo/ia" replace />} />
+        <Route path="/anima" element={<Navigate to="/jo/ia" replace />} />
         <Route path="/iaia" element={<Navigate to="/jo/xat/iaia-maria" replace />} />
         
         <Route path="*" element={<NotFoundPage />} />
@@ -553,6 +578,13 @@ function ActorRoutes({ agents }) {
       <Route path="ajuntament/:agentId" element={<ProfileSection agents={agents} />} />
       <Route path="grup/:agentId" element={<ProfileSection agents={agents} />} />
       
+      <Route path="projecte" element={<TextRoute pageKey="projecte" />} />
+      <Route path="skills" element={<TextRoute pageKey="skills" />} />
+      <Route path="constitucio" element={<TextRoute pageKey="constitucio" />} />
+      <Route path="disseny" element={<DesignSection />} />
+      <Route path="roadmap" element={<TextRoute pageKey="roadmap" />} />
+      <Route path="ia" element={<TextRoute pageKey="anima" />} />
+      
       <Route path=":sectionId/:itemId" element={<ItemDetailSection />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
@@ -560,7 +592,8 @@ function ActorRoutes({ agents }) {
 }
 
 const MobileNav = memo(function MobileNav() {
-  const { language, t } = useAppData();
+  const { language } = useUIState();
+  const { t } = useUIActions();
   const navigate = useNavigate();
   const { actorType, actorId } = useIdentitat();
   

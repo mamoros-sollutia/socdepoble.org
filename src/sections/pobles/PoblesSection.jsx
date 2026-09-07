@@ -1,11 +1,13 @@
 import React from 'react';
 import { UniversalPage, UniversalCard } from '../../components/universal/UniversalComponents';
-import { useAppData } from '../../app/AppDataContext';
 import { getSectionItemPath } from '../../config/navigation';
 import { useSEO } from '../../hooks/useSEO';
+import { useCoreContent } from '../../app/contexts/CoreContentContext';
+import { useUIActions } from '../../app/contexts/UIContext';
 
 export default function PoblesSection() {
-  const { sortedTowns, t } = useAppData();
+  const { sortedTowns } = useCoreContent();
+  const { t } = useUIActions();
   
   useSEO({
     title: t('section.pobles.kicker', 'Pobles'),

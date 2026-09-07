@@ -37,6 +37,11 @@ const asseguraMetode = (nom) => (...args) => {
 export const getDefaultUserId = asseguraMetode('getDefaultUserId');
 
 export const loadAppData = asseguraMetode('loadAppData');
+export const loadCoreContent = asseguraMetode('loadCoreContent');
+export const loadMur = asseguraMetode('loadMur');
+export const loadXat = asseguraMetode('loadXat');
+export const loadMultimedia = asseguraMetode('loadMultimedia');
+export const loadNotes = asseguraMetode('loadNotes');
 export const appendChatMessages = asseguraMetode('appendChatMessages');
 
 export const appendSectionSubmissionNetworkOnly = asseguraMetode('appendSectionSubmissionNetworkOnly');

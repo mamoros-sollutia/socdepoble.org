@@ -2,12 +2,12 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { User, Cpu, Network, Receipt, FileText, Store, Calendar, MapPin, MessageSquare, Shield, LogOut } from 'lucide-react';
 import { UniversalPage, UniversalCard, UniversalIndicatorCard, UniversalButton } from '../../components/universal/UniversalComponents';
-import { useAppData } from '../../app/AppDataContext';
 import { resolveAsset } from '../../config/assetResolver';
+import { useUIActions } from '../../app/contexts/UIContext';
 
 export default function ControlSection() {
   const navigate = useNavigate();
-  const { t } = useAppData();
+  const { t } = useUIActions();
 
 
   const handleNavIA = (e) => {

@@ -2,7 +2,6 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UniversalPage } from '../../components/universal/UniversalComponents.jsx';
 import { showToast } from '../../components/universal/AvisadorEfimer.jsx';
-import { useAppData } from '../../app/AppDataContext.jsx';
 import { createOnboardingSeed } from '../../data/appSeed.js';
 import {
   createOrganization,
@@ -15,26 +14,38 @@ import {
   findSeedOrganization,
   readableBackendError
 } from './onboardingModel.js';
+import { useSession } from '../../app/contexts/SessionContext';
+import { useUIState } from '../../app/contexts/UIContext';
 import {
   OnboardingComplete,
-  OnboardingProgress,
   OrganizationStep,
-  RegistrationStep
+  RegistrationStep,
+  IdentityForkStep,
+  ClaimStep
 } from './OnboardingSteps.jsx';
 
 export default function OnboardingSection() {
   const navigate = useNavigate();
-  const { currentUser, externalConfig } = useAppData();
+  const { currentUser } = useSession();
+  const { externalConfig } = useUIState();
   const seed = useMemo(() => createOnboardingSeed(), []);
   const [organizations, setOrganizations] = useState([]);
   const [isLoadingOrganizations, setIsLoadingOrganizations] = useState(false);
   const [busyStep, setBusyStep] = useState(null);
   const [error, setError] = useState('');
   const [confirmationEmail, setConfirmationEmail] = useState('');
+  const [onboardingPath, setOnboardingPath] = useState(null); // 'create' | 'claim' | null
 
   const company = findSeedOrganization(organizations, seed.company);
   const group = findSeedOrganization(organizations, seed.group, company?.id);
-  const activeStep = !currentUser ? 0 : !company ? 1 : !group ? 2 : 3;
+  
+  const activeStep = useMemo(() => {
+    if (!currentUser) return 0;
+    if (onboardingPath === null) return 1; // IdentityFork
+    if (onboardingPath === 'create' && !company) return 2;
+    if (onboardingPath === 'claim') return 2; // ClaimStep
+    return 3; // Complete
+  }, [currentUser, onboardingPath, company]);
 
   const loadOrganizations = useCallback(async (signal) => {
     if (!currentUser?.id) {
@@ -194,6 +205,12 @@ export default function OnboardingSection() {
             onClearError={() => setError('')}
           />
         ) : activeStep === 1 ? (
+          <IdentityForkStep
+            onCreateNew={(kind) => setOnboardingPath('create')}
+            onClaimExisting={() => setOnboardingPath('claim')}
+            onSkip={() => navigate('/xat', { replace: true })}
+          />
+        ) : activeStep === 2 && onboardingPath === 'create' ? (
           <OrganizationStep
             key="company"
             blueprint={seed.company}
@@ -203,21 +220,22 @@ export default function OnboardingSection() {
             onClearError={() => setError('')}
             onSkip={() => navigate('/xat', { replace: true })}
           />
-        ) : activeStep === 2 ? (
-          <OrganizationStep
-            key="group"
-            blueprint={seed.group}
-            parentOrganization={company}
-            isBusy={busyStep === 'group'}
+        ) : activeStep === 2 && onboardingPath === 'claim' ? (
+          <ClaimStep
+            organizations={organizations}
+            onClaim={(id) => {
+              // Stub for claim, will need backend logic, currently just skip
+              showToast('Sol·licitud de reclamació enviada', 'success');
+              navigate('/xat', { replace: true });
+            }}
+            onBack={() => setOnboardingPath(null)}
+            isBusy={busyStep === 'claim'}
             error={error}
-            onCreate={createGroup}
-            onClearError={() => setError('')}
-            onSkip={() => navigate('/xat', { replace: true })}
           />
         ) : (
           <OnboardingComplete
-            company={company}
-            group={group}
+            company={company || seed.company}
+            group={group || seed.group}
             onFinish={() => navigate('/xat', { replace: true })}
           />
         )}

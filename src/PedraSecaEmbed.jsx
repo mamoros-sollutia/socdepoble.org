@@ -32,10 +32,9 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, MemoryRouter } from 'react-router-dom';
 import App from './app/App';
-import { AppDataProvider } from './app/AppDataContext';
 import { SessionProvider } from './app/contexts/SessionContext';
 import { UIProvider } from './app/contexts/UIContext';
-import { IdentitatProvider, useIdentitat } from './app/contexts/IdentitatContext';
+import { IdentitatProvider } from './app/contexts/IdentitatContext';
 import { destroyToastSystem } from './components/universal/AvisadorEfimer.jsx';
 import styles from './css/index.css?inline';
 import { readThemePreference, resolveTheme } from './config/theme';
@@ -78,9 +77,7 @@ export default function PedraSecaEmbed({ config }) {
         <UIProvider externalConfig={config}>
           <SessionProvider>
             <IdentitatProvider>
-              <AppDataProvider config={config}>
-                <App />
-              </AppDataProvider>
+              <App config={config} />
             </IdentitatProvider>
           </SessionProvider>
         </UIProvider>

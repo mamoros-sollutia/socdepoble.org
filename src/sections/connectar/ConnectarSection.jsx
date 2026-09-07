@@ -2,8 +2,10 @@ import { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CheckCircle2, Globe, Lock, Plus, Tag } from 'lucide-react';
 import { UniversalPage } from '../../components/universal/UniversalComponents';
-import { useAppData } from '../../app/AppDataContext';
 import { showToast } from '../../components/universal/AvisadorEfimer';
+import { useUIActions } from '../../app/contexts/UIContext';
+import { useMur } from '../mur/MurContext';
+import { useSession } from '../../app/contexts/SessionContext';
 
 const TAGS = ['Història local', 'Patrimoni', 'Gent del poble', 'Debat', 'Mercat', 'Tecnologia'];
 
@@ -14,7 +16,8 @@ const generateId = () => {
 };
 
 export default function ConnectarSection({ agents = [] }) {
-  const { t, sendSectionSubmission } = useAppData();
+  const { t } = useUIActions();
+  const { sendSectionSubmission } = useMur();
   const navigate = useNavigate();
   const [selectedArea, setSelectedArea] = useState('xat');
   const [isPrivate, setIsPrivate] = useState(true);
@@ -35,7 +38,7 @@ export default function ConnectarSection({ agents = [] }) {
   const selectedLabel = QUICK_AREAS.find((item) => item.id === selectedArea)?.label || t('nav.xat', 'Xat');
   const supportsPublishing = ['mur', 'mercat', 'events', 'multimedia', 'notes'].includes(selectedArea);
   const canConnect = selectedArea === 'xat' || (entryTitle.trim() && entryDescription.trim());
-  const { currentUser } = useAppData();
+  const { currentUser } = useSession();
 
   const addTag = (tag) => {
     const value = String(tag || '').trim();

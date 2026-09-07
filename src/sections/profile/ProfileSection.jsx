@@ -1,10 +1,10 @@
 import { useParams } from 'react-router-dom';
 import { UniversalPage } from '../../components/universal/UniversalComponents';
 import SectionItemCard from '../../components/SectionItemCard';
-import { useAppData } from '../../app/AppDataContext';
+import { useUIActions } from '../../app/contexts/UIContext';
 
 export default function ProfileSection({ agents = [] }) {
-  const { t } = useAppData();
+  const { t } = useUIActions();
   const { agentId } = useParams();
   const selectedAgent = agents.find((agent) => String(agent.id) === String(agentId)) || null;
 

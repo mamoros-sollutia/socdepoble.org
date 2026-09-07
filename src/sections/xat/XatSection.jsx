@@ -1,10 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Users, Search, ArrowLeft, Send, MoreVertical, Image as ImageIcon, Settings, X, Plus, Video, Phone, MoreHorizontal } from 'lucide-react';
-import { useAppData } from '../../app/AppDataContext';
 import { useNavigate, useParams } from 'react-router-dom';
 import NotFoundPage from '../../pages/NotFoundPage';
 import { ContentProvider } from '../../components/universal/ContentProvider';
 import TextSection from '../text/TextSection';
+import { useXat } from './XatContext';
+import { useUIActions } from '../../app/contexts/UIContext';
+import { useCoreContent } from '../../app/contexts/CoreContentContext';
 
 // Component per als avatars
 function Avatar({ src, size = 48 }) {
@@ -19,7 +21,9 @@ function Avatar({ src, size = 48 }) {
 }
 
 export default function XatSection() {
-  const { chatThreads, getThreadMessages, sendChatMessage, t, pageCopy } = useAppData();
+  const { chatThreads, getThreadMessages, sendChatMessage } = useXat();
+  const { t } = useUIActions();
+  const { pageCopy } = useCoreContent();
   const { threadId } = useParams();
   const navigate = useNavigate();
   
@@ -61,11 +65,11 @@ export default function XatSection() {
 
   // Funcions
   const handleSelectThread = (id) => {
-    navigate(`/xat/${id}`);
+    navigate(String(id));
   };
 
   const handleBackToList = () => {
-    navigate('/xat');
+    navigate('.');
   };
 
   const config = {

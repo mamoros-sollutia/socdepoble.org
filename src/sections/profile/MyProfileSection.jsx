@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import { UniversalPage } from '../../components/universal/UniversalComponents';
-import { useAppData } from '../../app/AppDataContext';
 import { getCurrentUser, logout } from '../../data/backendPort.js';
 import { showToast } from '../../components/universal/AvisadorEfimer';
 import { LogOut, User, Save, Loader2 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { useUIActions } from '../../app/contexts/UIContext';
 
 export default function MyProfileSection() {
-  const { t } = useAppData();
+  const { t } = useUIActions();
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [formData, setFormData] = useState({ name: '' });

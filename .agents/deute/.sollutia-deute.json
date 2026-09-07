@@ -1,11 +1,9 @@
 {
   "versio": "1.0",
-  "ultim_sincronitzat": "2026-09-02T00:00:00Z",
+  "ultim_sincronitzat": "2026-09-07T20:00:00Z",
   "endpoints_actius": [],
   "taules_sincronitzades": [],
   "errors_pendents": [
-    "Manca cua offline tipus RuralSyncQueue",
-    "Integració de PowerSync/ElectricSQL pendent",
     "RLS per tenant incompleta",
     "JWT emmagatzemat en localStorage vulnerable a XSS"
   ],

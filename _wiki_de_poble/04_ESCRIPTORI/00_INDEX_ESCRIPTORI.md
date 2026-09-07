@@ -13,19 +13,24 @@ Ací només resideix la matèria viva. El que ha mort, descansa en l'arxiu.
 - [[00_INDEX_IDENTITAT]] (Nucli d'Identitat)
 - [[00_INDEX_Actes]] (Registre d'Actes)
 
-- [[260905_0055_ACTA_MARMOTA_Altura_Barres_Universals]]
-- [[260906_1942_ABSENTS_base_dades_empresa_usuari.json]]
-- [[260906_1942_BUNDLE_base_dades_empresa_usuari]]
-- [[260906_1942_MANIFEST_base_dades_empresa_usuari.json]]
-- [[260906_1942_PROMPT_base_dades_empresa_usuari]]
+- [[260907_1528_ABSENTS_connexio_sollutia.json]]
+- [[260907_1528_BUNDLE_connexio_sollutia]]
+- [[260907_1528_MANIFEST_connexio_sollutia.json]]
+- [[260907_1528_PROMPT_connexio_sollutia]]
+- [[260907_1941_estudi_codex]]
+- [[260907_1943_estudi_gemini]]
+- [[260907_1944_estudi_grok]]
+- [[260907_1945_estudi_vibe]]
+- [[260907_1946_estudi_perplexity]]
+- [[260907_1947_estudi_dola]]
+- [[260907_1948_estudi_deepseek]]
+- [[260907_1949_estudi_z]]
+- [[260907_1950_estudi_kimi]]
+- [[260907_1955_estudi_qwen]]
 
 ## 01_Produccio
 - [[01_Produccio/260906_1746_auditoria_puebli]]
 - [[01_Produccio/260906_1758_mercat_redes_rurales]]
 - [[01_Produccio/260906_1931_mercat_puebli]]
-- [[260907_1320_estudi_codex]]
-- [[260907_1330_estudi_claude]]
-- [[260907_1340_estudi_copilot]]
-- [[260907_1350_estudi_gemini]]
 - [[01_Produccio/Puebli - Tu pueblo, tu gente, tu app..webloc]]
 - [[01_Produccio/contracte_graella]]

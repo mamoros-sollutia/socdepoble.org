@@ -1,13 +1,15 @@
 import { useEffect } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 import { UniversalPage } from '../../components/universal/UniversalComponents';
-import { useAppData } from '../../app/AppDataContext';
 import { resolveItemPath } from '../../config/navigation';
 import { renderPageHtml } from './detailRichText.jsx';
 import { sanitizeHtml } from '../../utils/sanitize';
+import { useCoreContent } from '../../app/contexts/CoreContentContext';
+import { useUIActions } from '../../app/contexts/UIContext';
 
 export default function PageDetailSection() {
-  const { pageDetailLookup, t } = useAppData();
+  const { pageDetailLookup } = useCoreContent();
+  const { t } = useUIActions();
   const { slug } = useParams();
   const item = pageDetailLookup.get(String(slug));
 

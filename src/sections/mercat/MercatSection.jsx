@@ -1,13 +1,15 @@
 import React from 'react';
 import { UniversalPage, UniversalCard, ContentProvider } from '../../components/universal/UniversalComponents';
 import { getSectionItemPath } from '../../config/navigation';
-import { useAppData } from '../../app/AppDataContext';
 
 import { useSEO } from '../../hooks/useSEO';
+import { useMur } from '../mur/MurContext';
+import { useUIActions } from '../../app/contexts/UIContext';
 
 
 export default function MercatSection() {
-  const { sortedMarketItems, t } = useAppData();
+  const { sortedMarketItems } = useMur();
+  const { t } = useUIActions();
   
   useSEO({
     title: t('section.mercat.kicker', 'Mercat'),

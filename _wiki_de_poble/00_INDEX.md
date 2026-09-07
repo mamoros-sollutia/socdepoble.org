@@ -8,6 +8,7 @@ description: 00INDEX
 ## 🔗 Índexs Connectats (Xarxa Neuronal)
 - [[00_INDEX_IDENTITAT]] (Nucli d'Identitat)
 - [[00_INDEX_ESCRIPTORI]] (Safata i Treball Actiu)
+- [[00_INDEX_ARXIU]] (Arxiu Històric)
 - [[00_INDEX_Actes]] (Registre d'Actes)
 
 

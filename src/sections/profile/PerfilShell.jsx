@@ -1,14 +1,14 @@
 import { UniversalPage, useContent } from '../../components/universal/UniversalComponents';
-import { useAppData } from '../../app/AppDataContext';
 import { PerfilProvider } from './PerfilContext.jsx';
 import SelectorIdentitat from './SelectorIdentitat.jsx';
 import LlistaAjustos from './LlistaAjustos.jsx';
 import DetallAjust from './DetallAjust.jsx';
 import perfilStyles from './PerfilShell.css?inline';
 import AppGridShell from '../../components/layout/AppGridShell';
+import { useUIActions } from '../../app/contexts/UIContext';
 
 export default function PerfilShell() {
-  const { t } = useAppData();
+  const { t } = useUIActions();
   const contentContext = useContent();
   const config = contentContext?.config || {};
 

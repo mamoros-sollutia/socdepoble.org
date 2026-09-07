@@ -1,12 +1,14 @@
 import { useMemo, useState } from 'react';
 import SectionItemCard from '../../components/SectionItemCard';
-import { useAppData } from '../../app/AppDataContext';
 import { UniversalPage } from '../../components/universal/UniversalComponents';
 import { Link } from 'react-router-dom';
 import { getSectionItemPath } from '../../config/navigation';
+import { useMultimedia } from './MultimediaContext';
+import { useUIActions } from '../../app/contexts/UIContext';
 
 export default function MultimediaSection() {
-  const { mediaItems, mediaTimelineGroups, t } = useAppData();
+  const { mediaItems, mediaTimelineGroups } = useMultimedia();
+  const { t } = useUIActions();
   const [viewMode, setViewMode] = useState('grid');
   const featured = useMemo(() => mediaItems[0] || null, [mediaItems]);
   const timelineGroups = useMemo(() => mediaTimelineGroups, [mediaTimelineGroups]);

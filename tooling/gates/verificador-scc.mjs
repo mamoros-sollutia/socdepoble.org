@@ -11,8 +11,8 @@ export class VerificadorSCC {
     
     // Configuració de límits
     this.INBOX_MAX_FILES = 20;
-    this.INBOX_DIR = '_wiki_de_poble/05_Escriptori_Soc_de_Poble/00_Bandeja_d_Entrada';
-    this.ESCRIPTORI_DIR = '_wiki_de_poble/05_Escriptori_Soc_de_Poble';
+    this.INBOX_DIR = '_wiki_de_poble/04_ESCRIPTORI/00_Bandeja_d_Entrada';
+    this.ESCRIPTORI_DIR = '_wiki_de_poble/04_ESCRIPTORI';
     
     // Resultats
     this.graph = new Map(); // AbsolutePath -> Set<AbsolutePath>
@@ -181,7 +181,7 @@ export class VerificadorSCC {
     }
 
     // 3.2 DFS des dels índexs canònics per trobar Orfes
-    const canonicalIndices = ['_wiki_de_poble/00_INDEX.md', join('_wiki_de_poble/05_Escriptori_Soc_de_Poble', '00_INDEX_ESCRIPTORI.md')];
+    const canonicalIndices = ['_wiki_de_poble/00_INDEX.md', join('_wiki_de_poble/04_ESCRIPTORI', '00_INDEX_ESCRIPTORI.md')];
     const visited = new Set();
     const allNodes = new Set(this.graph.keys());
 

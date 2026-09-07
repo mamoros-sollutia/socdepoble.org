@@ -1,7 +1,8 @@
 import { createContext, useContext, useEffect, useState, useMemo } from 'react';
 import { createTranslator, readStoredLanguage, writeStoredLanguage, normalizeLanguage } from '../../config/i18n';
 import { readThemePreference, resolveTheme, writeThemePreference } from '../../config/theme';
-
+import { resolveAsset } from '../../config/assetResolver';
+import { normalizeSearchText } from '../../config/contentHelpers';
 const UIContext = createContext(null);
 const UIActionsContext = createContext(null);
 
@@ -82,8 +83,11 @@ export function UIProvider({ children, externalConfig = {} }) {
 
   const actionsValue = useMemo(() => ({
     setLanguage: setLanguageFn,
-    toggleTheme
-  }), []);
+    toggleTheme,
+    t: translator,
+    resolveAsset,
+    normalizeSearchText
+  }), [translator]);
 
   return (
     <UIContext.Provider value={stateValue}>

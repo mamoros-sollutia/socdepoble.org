@@ -1,0 +1,53 @@
+import React, { createContext, useContext, useEffect, useState, useMemo, useRef } from 'react';
+import { loadCoreContent } from '../../data/backendPort.js';
+import { byId } from '../../config/contentHelpers';
+import { useIdentitat } from './IdentitatContext.jsx';
+
+const CoreContentContext = createContext(null);
+
+export function CoreContentProvider({ children, config }) {
+  const { actorId, actorKey } = useIdentitat();
+  const [data, setData] = useState({ status: 'loading', error: null, payload: null });
+  const loadGen = useRef(0);
+
+  useEffect(() => {
+    let active = true;
+    const myGen = ++loadGen.current;
+    
+    async function load() {
+      try {
+        const payload = await loadCoreContent(actorId, config);
+        if (!active || myGen !== loadGen.current) return;
+        setData({ status: 'ready', error: null, payload });
+      } catch (error) {
+        if (!active) return;
+        setData({ status: 'error', error, payload: null });
+      }
+    }
+    
+    load();
+    return () => { active = false; };
+  }, [actorKey, config]);
+
+  const value = useMemo(() => {
+    if (data.status !== 'ready' || !data.payload) return { status: data.status, error: data.error, towns: [], pages: [], pageCopy: {}, agents: [], sortedTowns: [], featuredTowns: [] };
+    return {
+      status: data.status,
+      error: data.error,
+      towns: data.payload.towns || [],
+      sortedTowns: data.payload.towns ? byId(data.payload.towns) : [],
+      featuredTowns: data.payload.towns ? byId(data.payload.towns).filter(t => t.is_featured) : [],
+      pages: data.payload.pages || [],
+      pageCopy: (data.payload.pages || []).reduce((acc, p) => ({ ...acc, [p.id]: { ...p } }), {}),
+      agents: data.payload.agents || [],
+      ownerUserId: data.payload.ownerUserId,
+      refresh: () => setData(prev => ({ ...prev, status: 'loading' }))
+    };
+  }, [data]);
+
+  return <CoreContentContext.Provider value={value}>{children}</CoreContentContext.Provider>;
+}
+
+export function useCoreContent() {
+  return useContext(CoreContentContext) || { status: 'loading', towns: [], pages: [], pageCopy: {}, agents: [], sortedTowns: [], featuredTowns: [] };
+}

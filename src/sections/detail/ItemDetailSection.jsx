@@ -2,18 +2,26 @@ import { useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { UniversalPage } from '../../components/universal/UniversalComponents';
-import { useAppData } from '../../app/AppDataContext';
+import { useMur } from '../../sections/mur/MurContext';
+import { useCoreContent } from '../../app/contexts/CoreContentContext';
+import { useNotesData } from '../../sections/notes/NotesDataContext';
+import { useMultimedia } from '../../sections/multimedia/MultimediaContext';
+import { useUIActions } from '../../app/contexts/UIContext';
 import { getSectionItemPath } from '../../config/navigation';
 import { buildDetailSectionMeta } from './detailSectionMeta.jsx';
 
 export default function ItemDetailSection() {
-  const { events, feedPosts, marketItems, mediaItems, notes, towns, findSectionItem: findSectionItemFromDb, t } = useAppData();
+  const { events, feedPosts, marketItems } = useMur();
+  const { towns } = useCoreContent();
+  const { notes } = useNotesData();
+  const { mediaItems } = useMultimedia();
+  const { t } = useUIActions();
   const { sectionId, itemId } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
   const SECTION_META = buildDetailSectionMeta({ events, feedPosts, marketItems, mediaItems, notes, towns, t });
   const section = SECTION_META[sectionId];
-  const fallbackItem = section ? findSectionItemFromDb(sectionId, itemId) : null;
+  const fallbackItem = section && section.items ? section.items.find(i => String(i.id) === String(itemId) || String(i.slug) === String(itemId)) : null;
   const item = location.state?.preloadedItem || fallbackItem;
 
   useEffect(() => {

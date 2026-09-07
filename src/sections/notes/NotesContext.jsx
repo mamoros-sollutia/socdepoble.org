@@ -1,8 +1,11 @@
 import { createContext, useContext, useState, useMemo, useDeferredValue, useCallback } from 'react';
-import { useAppData } from '../../app/AppDataContext';
 import { updateNote } from '../../data/backendPort';
 import { showToast } from '../../components/universal/AvisadorEfimer.jsx';
 import { sanitizeHtml, netejaText, esFontImatgeSegura } from '../../utils/sanitize.js';
+import { useUIState } from '../../app/contexts/UIContext';
+import { useUIActions } from '../../app/contexts/UIContext';
+import { useNotesData } from './NotesDataContext';
+import { useMur } from '../mur/MurContext';
 
 const CAMPS_HTML = new Set(['title', 'subtitle', 'lead', 'content']);
 
@@ -35,7 +38,10 @@ export function etiquetesDeNota(note, noteFolders, accions = {}) {
 const NotesContext = createContext(null);
 
 export function NotesProvider({ children }) {
-  const { language, normalizeSearchText, noteFolders, notes: rawNotes, t, sendSectionSubmission, externalConfig } = useAppData();
+  const { language, externalConfig } = useUIState();
+  const { normalizeSearchText, t } = useUIActions();
+  const { noteFolders, notes: rawNotes } = useNotesData();
+  const { sendSectionSubmission } = useMur();
   
   const [activeFolderId, setActiveFolderId] = useState('f-tot');
   const [activeCategory, setActiveCategory] = useState(null);

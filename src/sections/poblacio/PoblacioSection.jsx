@@ -1,11 +1,13 @@
 import React, { useMemo } from 'react';
 import { UniversalPage } from '../../components/universal/UniversalComponents';
-import { useAppData } from '../../app/AppDataContext';
 import { useSEO } from '../../hooks/useSEO';
 import { Link } from 'react-router-dom';
+import { useCoreContent } from '../../app/contexts/CoreContentContext';
+import { useUIActions } from '../../app/contexts/UIContext';
 
 export default function PoblacioSection() {
-  const { sortedTowns, t } = useAppData();
+  const { sortedTowns } = useCoreContent();
+  const { t } = useUIActions();
 
   useSEO({
     title: t('section.poblacio.title', 'Cens de Població'),

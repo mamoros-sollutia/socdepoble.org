@@ -1,7 +1,7 @@
 import { resolveAsset } from '../../config/assetResolver';
 import { useNavigate, Link } from 'react-router-dom';
 import { useEffect, useState, useRef } from 'react';
-import { useAppData } from '../../app/AppDataContext';
+import { useUIState, useUIActions } from '../../app/contexts/UIContext';
 import { showToast } from './AvisadorEfimer';
 import { useContent, ContentProvider } from './ContentProvider';
 
@@ -438,9 +438,10 @@ export function UniversalPage(props) {
 
   const [isTocOpen, setIsTocOpen] = useState(false);
   const navigate = useNavigate();
-  const appData = useAppData();
+  const uiState = useUIState();
+  const { toggleTheme: appToggleTheme } = useUIActions();
   
-  const currentThemeMode = (themeMode === 'system' || themeMode === 'light') ? (appData?.themeMode || 'light') : themeMode;
+  const currentThemeMode = (themeMode === 'system' || themeMode === 'light') ? (uiState?.themeMode || 'light') : themeMode;
   
   const actualTitleText = props.titleText || config.titleText || (typeof title === 'string' ? title : '');
   const handleConnect = onConnect || (() => navigate('/connectar?item_id=' + encodeURIComponent(actualTitleText || 'page')));
@@ -449,7 +450,7 @@ export function UniversalPage(props) {
   const handleForward = onForward || (() => navigate(1));
   const handleIndex = onIndex || (() => setIsTocOpen(true));
   const handleTranslate = onTranslate || (() => navigate('/traduccions'));
-  const handleTheme = onTheme || appData?.toggleTheme || (() => {});
+  const handleTheme = onTheme || appToggleTheme || (() => {});
   const handleComment = onComment || (() => navigate('/xat'));
   const handleShare = onShare || (() => {
     const safeHref = isSafeUrl(window.location.href) ? window.location.href : window.location.origin;

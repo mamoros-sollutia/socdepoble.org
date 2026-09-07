@@ -1,11 +1,26 @@
 import { useDeferredValue, useMemo, useState } from 'react';
 import { UniversalPage, UniversalCard } from '../../components/universal/UniversalComponents';
 import { UniversalSearch } from '../../components/ui/UniversalSearch.jsx';
-import { useAppData } from '../../app/AppDataContext';
 import { resolveItemPath } from '../../config/navigation';
+import { useUIActions } from '../../app/contexts/UIContext';
+import { useCoreContent } from '../../app/contexts/CoreContentContext';
+import { useMur } from '../mur/MurContext';
+import { useXat } from '../xat/XatContext';
 
 export default function SearchSection() {
-  const { globalSearchItems, normalizeSearchText, t } = useAppData();
+  const { normalizeSearchText, t } = useUIActions();
+  const core = useCoreContent();
+  const mur = useMur();
+  const xat = useXat();
+  
+  const globalSearchItems = useMemo(() => [
+    ...(core.agents || []),
+    ...(xat.chatThreads || []),
+    ...(mur.feedPosts || []),
+    ...(mur.marketItems || []),
+    ...(mur.events || []),
+    ...(core.towns || [])
+  ], [core.agents, xat.chatThreads, mur.feedPosts, mur.marketItems, mur.events, core.towns]);
   const [query, setQuery] = useState('');
   const deferredQuery = useDeferredValue(query);
 

@@ -1,14 +1,14 @@
 import { UniversalPage } from '../../components/universal/UniversalComponents';
-import { useAppData } from '../../app/AppDataContext';
 import { NotesProvider } from './NotesContext';
 import NotesSidebar from './NotesSidebar';
 import NotesList from './NotesList';
 import NotesEditor from './NotesEditor';
 import notesStyles from './NotesSection.css?inline';
 import AppGridShell from '../../components/layout/AppGridShell';
+import { useUIActions } from '../../app/contexts/UIContext';
 
 function NotesSectionContent() {
-  const { t } = useAppData();
+  const { t } = useUIActions();
 
   return (
     <div className="notes-page">

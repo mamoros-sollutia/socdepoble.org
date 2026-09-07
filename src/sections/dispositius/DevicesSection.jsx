@@ -1,7 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { ArrowRight, Check, Link2, MessageSquare, Plus, RefreshCcw, ShieldCheck, Wifi, X, Eye, EyeOff } from 'lucide-react';
 import { UniversalPage } from '../../components/universal/UniversalComponents';
-import { useAppData } from '../../app/AppDataContext';
+import { useUIState } from '../../app/contexts/UIContext';
+import { useCoreContent } from '../../app/contexts/CoreContentContext';
+import { useIdentitat } from '../../app/contexts/IdentitatContext';
 import {
   PRESENCE_STALE_MS,
   createChatMessage,
@@ -56,7 +58,9 @@ const MOCK_REPLIES = {
 };
 
 export default function DevicesSection() {
-  const { externalConfig, agents, ownerUserId } = useAppData();
+  const { externalConfig } = useUIState();
+  const { agents } = useCoreContent();
+  const { ownerUserId } = useIdentitat();
   const tenantId = externalConfig?.tenantId || 'default-tenant';
   const activeAgent = agents?.find(a => String(a.id) === String(ownerUserId));
   const activeName = activeAgent?.name || 'Mestre Poble';
