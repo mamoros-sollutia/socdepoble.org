@@ -41,6 +41,7 @@ Aquest directori conté els contractes d'operació i els arxius de governança p
 - [[.agents/hooks/tancar.mjs|tancar.mjs]]
 - [[.agents/hooks/verify.mjs|verify.mjs]]
 - [[.agents/rules/00_BIOS_COGNITIU|00_BIOS_COGNITIU]] — 00 BIOS COGNITIU
+- [[.agents/skills/00_INDEX_SKILLS|00_INDEX_SKILLS]] — ÍNDEX CANÒNIC DE SKILLS
 - [[.agents/skills_index.json|skills_index.json]]
 
 <!-- LLAURADOR:ADOPCIONS:FI -->

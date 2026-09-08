@@ -46,8 +46,7 @@ export const appendChatMessages = asseguraMetode('appendChatMessages');
 
 export const appendSectionSubmissionNetworkOnly = asseguraMetode('appendSectionSubmissionNetworkOnly');
 export const updateNote = asseguraMetode('updateNote');
-export const registerWithEmail = asseguraMetode('registerWithEmail');
-export const loginWithEmail = asseguraMetode('loginWithEmail');
+export const loginWithMagicLink = asseguraMetode('loginWithMagicLink');
 export const loginWithGoogle = asseguraMetode('loginWithGoogle');
 export const listMyOrganizations = asseguraMetode('listMyOrganizations');
 export const createOrganization = asseguraMetode('createOrganization');

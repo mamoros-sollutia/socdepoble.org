@@ -39,6 +39,7 @@ import { CoreContentProvider, useCoreContent } from './contexts/CoreContentConte
 import { MurProvider, useMur } from '../sections/mur/MurContext';
 import { NotesDataProvider } from '../sections/notes/NotesDataContext';
 import { XatProvider, useXat } from '../sections/xat/XatContext';
+const XatControlSection = lazy(() => import('../sections/xat/XatControlSection'));
 import { MultimediaProvider } from '../sections/multimedia/MultimediaContext';
 import { useUIActions, useUIState } from './contexts/UIContext';
 import { useSession } from './contexts/SessionContext';
@@ -561,6 +562,7 @@ function ActorRoutes({ agents }) {
     <Routes>
       <Route path="/" element={<Navigate to={DEFAULT_SECTION_PATH.replace('/', '')} replace />} />
       <Route path="xat" element={<XatSection />} />
+      <Route path="control-xat" element={<XatControlSection />} />
       <Route path="xat/:threadId" element={<XatSection />} />
       <Route path="mur" element={<MurSection />} />
       <Route path="mercat" element={<MercatSection />} />
@@ -621,12 +623,12 @@ const MobileNav = memo(function MobileNav() {
         <button type="button" className="mobile-nav__cta" onClick={() => {
           const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
           if (document.startViewTransition && !prefersReducedMotion) {
-            document.startViewTransition(() => navigate('/connectar'));
+            document.startViewTransition(() => navigate('/control-xat'));
           } else {
-            navigate('/connectar');
+            navigate('/control-xat');
           }
-        }} aria-label={t('nav.connectar', 'Connectar')}>
-          <Plus size={20} strokeWidth={2.8} />
+        }} aria-label={t('nav.panel', 'Panell de control')}>
+          <Settings size={20} strokeWidth={2.8} />
         </button>
         {MOBILE_NAV_TRAILING.map((section) => {
           const Icon = section.icon;

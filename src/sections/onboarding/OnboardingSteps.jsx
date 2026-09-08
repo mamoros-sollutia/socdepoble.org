@@ -71,7 +71,7 @@ export function RegistrationStep({ isBusy, error, confirmationEmail, onRegister,
       <div className="onboarding-card__heading">
         <span className="onboarding-card__icon" aria-hidden="true"><UserRound size={28} /></span>
         <div>
-          <h3 id="onboarding-register-title" style={{ color: 'var(--sdp-accio-text)' }}>Accés o nou registre</h3>
+          <h3 id="onboarding-register-title" className="sdp-text-accio-text">Accés o nou registre</h3>
         </div>
       </div>
 
@@ -169,18 +169,7 @@ export function RegistrationStep({ isBusy, error, confirmationEmail, onRegister,
           <>
 
 
-            <label className={`form-group form-group--checkbox${errors.rgpd ? ' has-error' : ''}`}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '1rem',
-                padding: '1.5rem 1rem',
-                backgroundColor: 'var(--sdp-bg-mut)',
-                borderRadius: '8px',
-                border: errors.rgpd ? '2px solid var(--sdp-error)' : '2px solid var(--sdp-vora)',
-                cursor: 'pointer',
-                marginTop: '1rem'
-              }}
+            <label className={`form-group form-group--checkbox${errors.rgpd ? ' has-error sdp-border-error' : ' sdp-border-vora'} sdp-flex sdp-items-center sdp-gap-4 sdp-p-6 sdp-bg-mut sdp-rounded-lg sdp-border-2 sdp-cursor-pointer sdp-mt-4`}
             >
               <input
                 type="checkbox"
@@ -192,7 +181,7 @@ export function RegistrationStep({ isBusy, error, confirmationEmail, onRegister,
                 disabled={isBusy}
                 style={{ width: '2rem', height: '2rem', flexShrink: 0, cursor: 'pointer' }}
               />
-              <span style={{ fontSize: '1.1rem', fontWeight: 600 }}>Consent el tractament de dades personals (RGPD Llei 05) exclusivament per a Sóc de Poble.</span>
+              <span className="sdp-text-lg sdp-font-semibold">Consent el tractament de dades personals (RGPD Llei 05) exclusivament per a Sóc de Poble.</span>
             </label>
             {errors.rgpd ? <span id="onboarding-rgpd-error" className="error-text" style={{ marginTop: '0.5rem', display: 'block' }}>{errors.rgpd}</span> : null}
           </>
@@ -342,7 +331,7 @@ export function OrganizationStep({ blueprint, parentOrganization, isBusy, error,
               className="btn onboarding-card__action"
               onClick={onSkip}
               disabled={isBusy}
-              style={{ flex: 1, background: 'transparent', color: 'var(--sdp-accio)', border: '1px solid var(--sdp-accio)' }}
+              className="btn sdp-flex-1 sdp-bg-transparent sdp-text-accio sdp-border sdp-border-accio"
             >
               Continuar com a persona
             </button>
@@ -381,7 +370,7 @@ export function IdentityForkStep({ onCreateNew, onClaimExisting, onSkip }) {
       <div className="onboarding-card__heading">
         <span className="onboarding-card__icon" aria-hidden="true"><UserRound size={28} /></span>
         <div>
-          <h2 style={{ color: 'var(--sdp-accio-text)' }}>Quina és la teua relació amb el poble?</h2>
+          <h2 className="sdp-text-accio-text">Quina és la teua relació amb el poble?</h2>
         </div>
       </div>
       <p className="onboarding-card__intro" style={{ textAlign: 'center' }}>
@@ -397,7 +386,7 @@ export function IdentityForkStep({ onCreateNew, onClaimExisting, onSkip }) {
         <button type="button" className="btn btn-secondary" onClick={() => onClaimExisting()} style={{ display: 'flex', gap: '0.5rem', justifyContent: 'center' }}>
           <MapPin size={20} /> Vull gestionar una entitat ja existent
         </button>
-        <button type="button" className="btn" onClick={onSkip} style={{ background: 'transparent', color: 'var(--sdp-accio)', border: '1px solid var(--sdp-accio)' }}>
+        <button type="button" className="btn sdp-bg-transparent sdp-text-accio sdp-border sdp-border-accio" onClick={onSkip}>
           Només vull explorar (mode persona)
         </button>
       </div>
@@ -413,7 +402,7 @@ export function ClaimStep({ organizations, onClaim, onBack, isBusy, error }) {
       <div className="onboarding-card__heading">
         <span className="onboarding-card__icon" aria-hidden="true"><MapPin size={28} /></span>
         <div>
-          <h2 style={{ color: 'var(--sdp-accio-text)' }}>Reclama la gestió d'una entitat</h2>
+          <h2 className="sdp-text-accio-text">Reclama la gestió d'una entitat</h2>
         </div>
       </div>
       

@@ -53,6 +53,7 @@ Aquest índex serveix de referència per al compilador en temps d'execució. Si 
 - [[.agents/skills/skill-acte-reflex/SKILL|SKILL]] — Protocol obligatori de reflexió prèvia a qualsevol modificació de codi i frontera operativa. Fusiona Les Tres 
 - [[.agents/skills/skill-cicle-de-vida/SKILL|SKILL]] — Flux de treball per a Soc de Poble i Protocol d'higiene cognitiva per evitar l'esgotament del context.
 - [[.agents/skills/skill-consell-bundle/SKILL|SKILL]] — Regula com interactuar amb les auditories d'altres IAs i evita la mutilació de context mitjançant l'abocament 
+- [[.agents/skills/skill-estudi-mercat/SKILL|SKILL]] — Protocol per a la realització d'estudis de mercat i anàlisi de la competència, enfocat a extreure conclusions 
 - [[.agents/skills/skill-iaia-identitat/SKILL|SKILL]] — Bootstrap d'identitat executiu de la IAIA MarIA. Carrega personalitat, veu, to i missió.
 
 <!-- LLAURADOR:ADOPCIONS:FI -->

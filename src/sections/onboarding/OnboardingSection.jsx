@@ -6,8 +6,7 @@ import { createOnboardingSeed } from '../../data/appSeed.js';
 import {
   createOrganization,
   listMyOrganizations,
-  registerWithEmail,
-  loginWithEmail,
+  loginWithMagicLink,
   loginWithGoogle
 } from '../../data/backendPort.js';
 import {
@@ -32,8 +31,8 @@ export default function OnboardingSection() {
   const [organizations, setOrganizations] = useState([]);
   const [isLoadingOrganizations, setIsLoadingOrganizations] = useState(false);
   const [busyStep, setBusyStep] = useState(null);
+  const [googleError, setGoogleError] = useState('');
   const [error, setError] = useState('');
-  const [confirmationEmail, setConfirmationEmail] = useState('');
   const [onboardingPath, setOnboardingPath] = useState(null); // 'create' | 'claim' | null
 
   const company = findSeedOrganization(organizations, seed.company);
@@ -71,19 +70,14 @@ export default function OnboardingSection() {
     return () => controller.abort();
   }, [loadOrganizations]);
 
-  const register = async ({ name, email, password }) => {
+  const sendMagicLink = async ({ email }) => {
     setBusyStep('register');
     setError('');
     try {
-      const result = await registerWithEmail(email, password, name, externalConfig);
-      if (result?.access_token && result?.user) {
-        showToast('Compte creat. Ara plantarem l’empresa.', 'success');
-        window.dispatchEvent(new CustomEvent('sdp:auth-change', { detail: { user: result.user } }));
-      } else {
-        setConfirmationEmail(email.trim());
-      }
-    } catch (registerError) {
-      setError(readableBackendError(registerError));
+      await loginWithMagicLink(email, externalConfig);
+      showToast('Hem enviat l\'enllaç al teu correu.', 'success');
+    } catch (err) {
+      setError(readableBackendError(err));
     } finally {
       setBusyStep(null);
     }
@@ -103,6 +97,7 @@ export default function OnboardingSection() {
     }
   };
 
+/*
   const createGroup = async (blueprint) => {
     if (!company) return;
     setBusyStep('group');
@@ -120,31 +115,17 @@ export default function OnboardingSection() {
       setBusyStep(null);
     }
   };
-
-  const login = async ({ email, password }) => {
-    setBusyStep('register');
-    setError('');
-    try {
-      const result = await loginWithEmail(email, password, externalConfig);
-      if (result.error) throw new Error(result.error.message);
-      showToast('Benvingut de nou al Mas!', 'success');
-      window.dispatchEvent(new CustomEvent('sdp:auth-change', { detail: { user: result.user } }));
-    } catch (loginError) {
-      setError(readableBackendError(loginError));
-    } finally {
-      setBusyStep(null);
-    }
-  };
+*/
 
   const googleLogin = async () => {
     setBusyStep('register');
-    setError('');
+    setGoogleError('');
     try {
       await loginWithGoogle(externalConfig);
       showToast('Benvingut de nou al Mas!', 'success');
       window.dispatchEvent(new CustomEvent('sdp:auth-change'));
     } catch (loginError) {
-      setError(readableBackendError(loginError));
+      setGoogleError(readableBackendError(loginError));
     } finally {
       setBusyStep(null);
     }
@@ -181,6 +162,11 @@ export default function OnboardingSection() {
               >
                 Entrar amb Google
               </button>
+              {googleError && (
+                <div style={{ marginTop: '1rem', padding: '0.75rem', background: '#ffebee', color: '#c62828', borderRadius: 'var(--sdp-radi-sm)', fontSize: '0.85rem' }}>
+                  {googleError}
+                </div>
+              )}
             </section>
             
             <div style={{ textAlign: 'center', marginBottom: '1.5rem', opacity: 0.6, fontWeight: 600, fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
@@ -199,14 +185,12 @@ export default function OnboardingSection() {
           <RegistrationStep
             isBusy={busyStep === 'register'}
             error={error}
-            confirmationEmail={confirmationEmail}
-            onRegister={register}
-            onLogin={login}
+            onMagicLink={sendMagicLink}
             onClearError={() => setError('')}
           />
         ) : activeStep === 1 ? (
           <IdentityForkStep
-            onCreateNew={(kind) => setOnboardingPath('create')}
+            onCreateNew={() => setOnboardingPath('create')}
             onClaimExisting={() => setOnboardingPath('claim')}
             onSkip={() => navigate('/xat', { replace: true })}
           />
@@ -223,7 +207,7 @@ export default function OnboardingSection() {
         ) : activeStep === 2 && onboardingPath === 'claim' ? (
           <ClaimStep
             organizations={organizations}
-            onClaim={(id) => {
+            onClaim={() => {
               // Stub for claim, will need backend logic, currently just skip
               showToast('Sol·licitud de reclamació enviada', 'success');
               navigate('/xat', { replace: true });

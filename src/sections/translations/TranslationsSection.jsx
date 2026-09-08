@@ -1,5 +1,5 @@
 import React from 'react';
-import { UniversalPage, UniversalButton } from '../../components/universal/UniversalComponents';
+import { UniversalPage } from '../../components/universal/UniversalComponents';
 import { SUPPORTED_LANGUAGES } from '../../config/i18n';
 import { useUIState } from '../../app/contexts/UIContext';
 import { useUIActions } from '../../app/contexts/UIContext';
@@ -23,38 +23,16 @@ export default function TranslationsSection() {
             <button
               key={item.code}
               onClick={() => setLanguage(item.code)}
-              style={{ 
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                padding: 'var(--sdp-space-5)',
-                borderRadius: 'var(--sdp-radi-g)',
-                border: isActive ? '2px solid var(--sdp-accent)' : '1px solid var(--sdp-vora-control)',
-                
-                cursor: 'pointer',
-                transition: 'all var(--sdp-t)',
-                width: '100%',
-                textAlign: 'left'
-               }}
+              className={`card ${isActive ? 'card--accent' : 'card--hover'}`}
+              style={{ textAlign: 'left', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
             >
-              <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <span >
-                  {item.name}
-                </span>
-                <span style={{    marginTop: 'var(--sdp-space-1)'  }}>
-                  {item.code.toUpperCase()}
-                </span>
+              <div className="card__body" style={{ padding: 0 }}>
+                <h3 className="card__title">{item.name}</h3>
+                <p className="card__text">{item.code.toUpperCase()}</p>
               </div>
-              
-              <div style={{ display: 'flex', alignItems: 'center' }}>
-                <span style={{  
-                   
-                  
-                  padding: '4px 12px',
-                  borderRadius: '16px'}}>
-                  {isActive ? t('section.translations.status.active', 'Actiu') : t('section.translations.status.available', 'Disponible')}
-                </span>
-              </div>
+              <span className={`pill ${isActive ? 'pill--accent' : ''}`}>
+                {isActive ? t('section.translations.status.active', 'Actiu') : t('section.translations.status.available', 'Disponible')}
+              </span>
             </button>
           );
         })}

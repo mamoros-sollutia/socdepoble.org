@@ -453,8 +453,7 @@ export async function updateNote(id, updates, expectedRevision, config = {}) {
   const { hasSupabaseConfig, tenantId } = getResolvedConfig(config);
   
   if (!hasSupabaseConfig) {
-    console.warn('Simulant updateNote sense servidor.', { id, updates });
-    return { id, ...updates, updated_at: new Date().toISOString() };
+    throw new Error('ATURADOR CRÍTIC: No es pot actualitzar una nota sense connexió al servidor. El projecte és Online-First estricte i no permet fallbacks locals rotatoris.');
   }
 
   const payload = {
@@ -633,47 +632,25 @@ export async function updateUserPassword(newPassword, config = {}) {
   return true;
 }
 
-export async function registerWithEmail(email, password, name, config = {}) {
-  const { tenantId, hasSupabaseConfig } = getResolvedConfig(config);
-  
-  if (!hasSupabaseConfig) {
-    throw new Error('No hi ha connexió configurada amb el servidor Supabase. Registre impossible.');
-  }
-
-  const result = await request('/auth/v1/signup', config, {
-    method: 'POST',
-    body: {
-      email: String(email || '').trim().toLowerCase(),
-      password,
-      data: { name: String(name || '').trim(), tenant_id: tenantId, rgpd: true }
-    }
-  });
-
-  if (result?.access_token) {
-    setVal('socdepoble-jwt', result.access_token);
-    setVal('socdepoble-refresh-token', result.refresh_token);
-    setVal('socdepoble-user', result.user);
-  }
-  return result;
-}
-
-export async function loginWithEmail(email, password, config = {}) {
+export async function loginWithMagicLink(email, config = {}) {
   const { hasSupabaseConfig } = getResolvedConfig(config);
 
   if (!hasSupabaseConfig) {
-    throw new Error('No hi ha connexió configurada amb el servidor Supabase. Identificació impossible.');
+    throw new Error('No hi ha connexió configurada amb el servidor Supabase. No es pot enviar l\'enllaç.');
   }
 
-  const result = await request('/auth/v1/token?grant_type=password', config, {
+  // Obtenim la URL on hauria de tornar. Per defecte l'arrel de l'aplicació.
+  const redirectUrl = window.location.origin + '/registre';
+
+  const result = await request('/auth/v1/magiclink', config, {
     method: 'POST',
-    body: { email, password }
+    body: {
+      email: String(email || '').trim().toLowerCase(),
+      gotrue_meta_security: { captcha_token: null }
+    },
+    // GoTrue admet redirect_to a les capçaleres o a la querystring/body depenent de la versió. Ho posem per precaució si ho suporta el proxy de request.
   });
 
-  if (result?.access_token) {
-    setVal('socdepoble-jwt', result.access_token);
-    setVal('socdepoble-refresh-token', result.refresh_token);
-    setVal('socdepoble-user', result.user);
-  }
   return result;
 }
 

@@ -449,7 +449,7 @@ export function UniversalPage(props) {
   const handleBack = onBack || (() => navigate(-1));
   const handleForward = onForward || (() => navigate(1));
   const handleIndex = onIndex || (() => setIsTocOpen(true));
-  const handleTranslate = onTranslate || (() => navigate('/traduccions'));
+
   const handleTheme = onTheme || appToggleTheme || (() => {});
   const handleComment = onComment || (() => navigate('/xat'));
   const handleShare = onShare || (() => {
@@ -574,9 +574,7 @@ export function UniversalPage(props) {
               </IconButton>
             </div>
             <div className="sp-card-actions">
-              <IconButton label="Traduir" onClick={handleTranslate} presentation>
-                <TranslateIcon className="icon" />
-              </IconButton>
+
               <IconButton
                 label="Comentar (Xat Privat)"
                 onClick={handleComment}
@@ -694,9 +692,9 @@ export function UniversalPage(props) {
                       </button>
                     ) : safeHref ? (
                       safeHref.startsWith('http') ? (
-                        <a href={safeHref} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>{text}</a>
+                        <a href={safeHref} target="_blank" rel="noopener noreferrer" className="sdp-link-inherit">{text}</a>
                       ) : (
-                        <Link to={safeHref} style={{ color: 'inherit', textDecoration: 'none' }}>{text}</Link>
+                        <Link to={safeHref} className="sdp-link-inherit">{text}</Link>
                       )
                     ) : (
                       text
@@ -896,9 +894,9 @@ function CardBody({ imageUrl, imageAlt, calendarBadge, price, title, titleConten
                 >
                   {safeHref ? (
                     safeHref.startsWith('http') ? (
-                      <a href={safeHref} target="_blank" rel="noopener noreferrer" style={ { color: 'inherit', textDecoration: 'none' }}>{text}</a>
+                      <a href={safeHref} target="_blank" rel="noopener noreferrer" className="sdp-link-inherit">{text}</a>
                     ) : (
-                      <Link to={safeHref} style={ { color: 'inherit', textDecoration: 'none' }}>{text}</Link>
+                      <Link to={safeHref} className="sdp-link-inherit">{text}</Link>
                     )
                   ) : text}
                 </li>
@@ -912,16 +910,11 @@ function CardBody({ imageUrl, imageAlt, calendarBadge, price, title, titleConten
   );
 }
 
-function CardFooter({ hasIconActions, translateVisible, handleTranslate, commentVisible, handleComment, shareVisible, handleShare, connectVisible, connectLabel, handleConnect, connectAriaLabel }) {
+function CardFooter({ hasIconActions, commentVisible, handleComment, shareVisible, handleShare, connectVisible, connectLabel, handleConnect, connectAriaLabel }) {
   return (
     <footer className="sp-card-footer">
       {hasIconActions && (
         <div className="sp-card-actions">
-          {translateVisible && (
-            <IconButton label="Traduir" onClick={handleTranslate} presentation>
-              <TranslateIcon className="icon" />
-            </IconButton>
-          )}
           {commentVisible && (
             <IconButton label="Comentar" onClick={handleComment} presentation>
               <CommentIcon className="icon" />
@@ -1150,7 +1143,7 @@ export function UniversalIndicatorCard({
       onClick={onClick}
       aria-pressed={active}
     >
-      <span className="sdp-indicator-card-icon" style={iconColor ? { /* */ color: iconColor } : {}}>
+      <span className="sdp-indicator-card-icon" style={iconColor ? { '--custom-icon-color': iconColor } : {}}>
         {icon}
       </span>
       <span className="sdp-indicator-card-title">{title}</span>

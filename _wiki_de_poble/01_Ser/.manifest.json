@@ -1,0 +1,15 @@
+{
+  "name": "NUCLI_SER",
+  "description": "L'essència inalterable i constitutiva del sistema. Limitat a 8.000 tokens (aprox. 30 KB) per a garantir un boot ràpid, segur i immutable.",
+  "rules": [
+    "No afegir res que no siga vital per entendre QUI som.",
+    "No afegir procediments tècnics (això va a 01_GUARNICIO_SABER).",
+    "Cap arxiu pot superar els 5KB llevat de perfil_psiquiatric si n'hi ha."
+  ],
+  "content": [
+    "00_BIOS.md",
+    "01_IDENTITAT.md",
+    "02_GENOTIP.md",
+    "03_EQUIP_IA.md"
+  ]
+}

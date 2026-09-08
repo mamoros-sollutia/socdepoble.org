@@ -661,7 +661,7 @@ Gran</div>
       title="Disseny Pedra Seca"
       subtitle="Sistema oficial de disseny per a Sóc de Poble"
       body="Inclou la Targeta Mestra, els colors oficials, i tots els elements preparats, inclús els skills i scripts, perquè qualsevol IA puga entendre este sistema i reproduir-lo."
-      imageUrl="assets/img/ibanez_pedra_seca_design_1780873465211.png"
+      imageUrl="/assets/uploads/brain/ibanez_pedra_seca_design_1780873465211.png"
       imageAlt="Disseny Pedra Seca"
       labels={[
         { text: 'MUR', className: 'sdp-badge-system' },

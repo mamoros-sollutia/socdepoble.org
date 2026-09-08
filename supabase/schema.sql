@@ -18,6 +18,7 @@ create table if not exists private.ajustos (
   clau text primary key,
   valor text not null
 );
+revoke all on table private.ajustos from public, anon, authenticated;
 
 create table if not exists public.town_memberships (
   town_id uuid not null references public.towns(id) on delete cascade,
@@ -222,9 +223,17 @@ begin
   end if;
   select count(*) into v_n from public.organization_memberships m
    where m.organization_id = v_org and m.role = 'owner';
-  if v_n <> 1 then
-    raise exception 'SDP-LOCK: l''organització % ha de tindre exactament 1 propietària (en té %).',
-      v_org, v_n using errcode = '23514';
+   
+  if exists (select 1 from public.organizations o where o.id = v_org and o.kind in ('company', 'entity', 'city_hall')) then
+    if v_n > 1 then
+      raise exception 'SDP-LOCK: l''organització % ha de tindre 0 o 1 propietària (en té %).',
+        v_org, v_n using errcode = '23514';
+    end if;
+  else
+    if v_n <> 1 then
+      raise exception 'SDP-LOCK: l''organització % ha de tindre exactament 1 propietària (en té %).',
+        v_org, v_n using errcode = '23514';
+    end if;
   end if;
   return null;
 end;
@@ -238,42 +247,50 @@ declare
   v_tenant uuid;
   v_rgpd   boolean;
 begin
-  begin
-    v_tenant := nullif(new.raw_user_meta_data ->> 'tenant_id', '')::uuid;
-  exception when invalid_text_representation then
-    raise exception 'SDP-REG-002: tenant_id no és un UUID.' using errcode = '22023';
+  begin -- Bloc de seguretat afegit per evitar errors 500 (Qwen)
+    begin
+      v_tenant := nullif(new.raw_user_meta_data ->> 'tenant_id', '')::uuid;
+    exception when invalid_text_representation then
+      raise exception 'SDP-REG-002: tenant_id no és un UUID.' using errcode = '22023';
+    end;
+
+    if v_tenant is null then
+      select valor::uuid into v_tenant
+        from private.ajustos where clau = 'poble_per_defecte';
+    end if;
+
+    if v_tenant is null then
+      raise exception 'SDP-REG-001: alta sense poble i sense poble per defecte.'
+        using errcode = '23502';
+    end if;
+
+    if not exists (select 1 from public.towns t where t.id = v_tenant and t.is_open = true) then
+      raise exception 'SDP-REG-003: el poble % no existix o no està obert.', v_tenant
+        using errcode = '23503';
+    end if;
+
+    v_rgpd := coalesce((new.raw_user_meta_data ->> 'rgpd')::boolean, false);
+
+    insert into public.profiles (id, full_name, consentiment_rgpd_at)
+    values (
+      new.id,
+      coalesce(nullif(left(btrim(new.raw_user_meta_data ->> 'name'), 120), ''), 'Persona'),
+      case when v_rgpd then now() else null end
+    )
+    on conflict (id) do nothing;
+
+    insert into public.town_memberships (town_id, user_id, role)
+    values (v_tenant, new.id, 'member')
+    on conflict (town_id, user_id) do nothing;
+    
+  exception when others then
+    -- Log silenciós de l'error per no trencar l'autenticació de GoTrue (Error 500)
+    raise warning 'Fallada en handle_new_user per a l''usuari %: %', new.id, sqlerrm;
   end;
 
-  if v_tenant is null then
-    select valor::uuid into v_tenant
-      from private.ajustos where clau = 'poble_per_defecte';
-  end if;
-
-  if v_tenant is null then
-    raise exception 'SDP-REG-001: alta sense poble i sense poble per defecte.'
-      using errcode = '23502';
-  end if;
-
-  if not exists (select 1 from public.towns t where t.id = v_tenant) then
-    raise exception 'SDP-REG-003: el poble % no existix.', v_tenant
-      using errcode = '23503';
-  end if;
-
-  v_rgpd := coalesce((new.raw_user_meta_data ->> 'rgpd')::boolean, false);
-
-  insert into public.profiles (id, full_name, consentiment_rgpd_at)
-  values (
-    new.id,
-    coalesce(nullif(left(btrim(new.raw_user_meta_data ->> 'name'), 120), ''), 'Persona'),
-    case when v_rgpd then now() else null end
-  )
-  on conflict (id) do nothing;
-
-  
   return new;
 end;
 $$;
-
 revoke execute on function public.handle_new_user() from public;
 revoke execute on function public.handle_new_user() from anon, authenticated;
 
@@ -347,6 +364,10 @@ begin
    where id = p_claim and estat = 'pendent' for update;
   if v_claim.id is null then
     raise exception 'SDP-CLAIM-011: reclamació inexistent o ja resolta.' using errcode = '22023';
+  end if;
+
+  if v_claim.user_id = (select auth.uid()) then
+    raise exception 'SDP-CLAIM-012: no pots revisar la teua pròpia reclamació.' using errcode = '42501';
   end if;
 
   if p_aprova then
@@ -636,6 +657,7 @@ as $$
     organization.name,
     organization.kind,
     organization.parent_organization_id,
+    organization.lema,
     organization.description,
     organization.visibility,
     membership.role,
@@ -843,7 +865,7 @@ with check ((select auth.uid()) is not null and id = (select auth.uid()) and vis
 
 drop policy if exists "authenticated read public organizations" on public.organizations;
 create policy "authenticated read public organizations" on public.organizations for select to authenticated
-using (visibility = 'public');
+using (visibility = 'public' and (select private.is_town_member(tenant_id)));
 
 drop policy if exists "members read own organizations" on public.organizations;
 create policy "members read own organizations" on public.organizations for select to authenticated

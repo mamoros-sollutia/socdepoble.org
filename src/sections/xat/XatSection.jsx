@@ -29,20 +29,6 @@ export default function XatSection() {
   
   const [searchTerm, setSearchTerm] = useState('');
   const [activeFilter, setActiveFilter] = useState('totes'); // totes, no-llegits, grups...
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const menuRef = useRef(null);
-
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
-        setIsMenuOpen(false);
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [menuRef]);
 
   const threads = chatThreads || [];
   
@@ -106,27 +92,14 @@ export default function XatSection() {
                 </button>
               )}
             </div>
-            <div style={{ position: 'relative' }} ref={menuRef}>
+            <div style={{ position: 'relative' }}>
               <button 
                 className="pill pill--icon xat-settings-btn" 
-                aria-label="Control General" 
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                aria-label="Control General del Xat" 
+                onClick={() => navigate('../control-xat')}
               >
                 <Settings size={24} color="#ffffff" />
               </button>
-              
-              {isMenuOpen && (
-                <div className="xat-control-dropdown sdp-card">
-                  <button className="xat-dropdown-item">⚙️ ENTRAR AL CONTROL GENERAL</button>
-                  <button className="xat-dropdown-item">Afegeix membres / Nou Xat</button>
-                  <button className="xat-dropdown-item">Informació del grup / Perfil</button>
-                  <button className="xat-dropdown-item">Fitxers multimèdia del xat</button>
-                  <button className="xat-dropdown-item">Cerca</button>
-                  <button className="xat-dropdown-item">Silenciar notificacions</button>
-                  <button className="xat-dropdown-item">Missatges temporals</button>
-                  <button className="xat-dropdown-item">Fons de pantalla</button>
-                </div>
-              )}
             </div>
           </header>
 

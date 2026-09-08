@@ -37,7 +37,7 @@ export default function RealitatSection() {
       chrome="system"
       showLogos={false}
     >
-      <div className="content-wrapper">
+      <div className="stack-grid sdp-text-content" style={{ padding: '0 var(--sdp-space-4)' }}>
         {[
           { id: 0, label: 'Apagada', desc: 'Sense intervenció de la intel·ligència artificial.' },
           { id: 1, label: 'Passiva', desc: 'Només recomanacions i accions a petició teua.' },
@@ -47,43 +47,50 @@ export default function RealitatSection() {
           <div key={lvl.id} className="sdp-flex-col">
             <button
               onClick={() => setLevel(lvl.id)}
-              className={`btn-realitat ${level === lvl.id ? 'active' : ''}`}
+              className={`card ${level === lvl.id ? 'card--accent' : 'card--hover'}`}
+              style={{ textAlign: 'left', width: '100%', cursor: 'pointer' }}
             >
-              <div className="realitat-titol">
-                Nivell {lvl.id}: {lvl.label}
-              </div>
-              <div className="realitat-desc">
-                {lvl.desc}
+              <div className="card__body">
+                <h3 className="card__title">
+                  Nivell {lvl.id}: {lvl.label}
+                </h3>
+                <p className="card__text">
+                  {lvl.desc}
+                </p>
               </div>
             </button>
             
             {level === 2 && lvl.id === 2 && (
-              <div className="realitat-companions">
-                <p className="realitat-companions-titol">
-                  Tria els teus acompanyants:
-                </p>
-                {aiAgents.map(agent => {
-                  const isSelected = selectedCompanions.includes(agent.id);
-                  return (
-                    <label key={agent.id} className="companion-label">
-                      <input 
-                        type="checkbox" 
-                        checked={isSelected}
-                        onChange={() => toggleCompanion(agent.id)}
-                        className="companion-checkbox"
-                      />
-                      <img 
-                        src={resolveAsset(agent.avatar_url)} 
-                        alt={agent.name}
-                        className="companion-avatar"
-                      />
-                      <div className="sdp-flex-col">
-                        <span className="companion-name">{agent.name}</span>
-                        <span className="companion-role">{agent.role}</span>
-                      </div>
-                    </label>
-                  );
-                })}
+              <div className="card card--soft sdp-mt-4">
+                <div className="card__body">
+                  <h4 className="section-title sdp-mb-4">
+                    Tria els teus acompanyants:
+                  </h4>
+                  <div className="stack-grid">
+                  {aiAgents.map(agent => {
+                    const isSelected = selectedCompanions.includes(agent.id);
+                    return (
+                      <label key={agent.id} style={{ display: 'flex', alignItems: 'center', gap: 'var(--sdp-space-4)', cursor: 'pointer' }}>
+                        <input 
+                          type="checkbox" 
+                          checked={isSelected}
+                          onChange={() => toggleCompanion(agent.id)}
+                          style={{ width: '20px', height: '20px', accentColor: 'var(--sdp-accent)' }}
+                        />
+                        <img 
+                          src={resolveAsset(agent.avatar_url)} 
+                          alt={agent.name}
+                          style={{ width: '48px', height: '48px', borderRadius: '50%', objectFit: 'cover' }}
+                        />
+                        <div className="sdp-flex-col">
+                          <strong style={{ color: 'var(--sdp-text-fort)' }}>{agent.name}</strong>
+                          <span style={{ color: 'var(--sdp-text-suau)', fontSize: 'var(--sdp-text-sm)' }}>{agent.role}</span>
+                        </div>
+                      </label>
+                    );
+                  })}
+                  </div>
+                </div>
               </div>
             )}
           </div>

@@ -31,7 +31,17 @@ description: 00INDEX
 - *(Pendent d'indexar)*
 
 ## Eines i Maquinària
+- [[00_INDEX_Maquina]]
 - *(Pendent d'indexar)*
+- [[04_ESCRIPTORI/01_Produccio/contracte_graella]]
+- [[00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS_core-context-panic.md]]
+- [[00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS_core-restauracio-segellada.md]]
+- [[00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS_pedra-seca.md]]
+- [[00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS_skill-acte-reflex.md]]
+- [[00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS_skill-cicle-de-vida.md]]
+- [[00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS_skill-consell-bundle.md]]
+- [[00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS_skill-estudi-mercat.md]]
+- [[00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS_skill-iaia-identitat.md]]
 
 ## Cervell i Agents
 - [[AGENTS]]
@@ -47,7 +57,7 @@ description: 00INDEX
 - [[00_INDEX_Actes]]
 
 ## Escriptori i Safata d'Entrada
-- [[05_Escriptori_Soc_de_Poble/00_INDEX_ESCRIPTORI]]
+- [[04_ESCRIPTORI/00_INDEX_ESCRIPTORI]]
 
 
 ## Taxonomia
@@ -64,6 +74,7 @@ description: 00INDEX
 
 - [[.agents/index|index]] — index
 - [[.quarantena-260830/plantilla_prompt_iso|plantilla_prompt_iso]] — Plantilla base de Prompt ISO
+- [[00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/00_INDEX_SKILLS|00_INDEX_SKILLS]] — ÍNDEX CANÒNIC DE SKILLS
 - [[02_ACTUAR_Tecnica/00_INDEX_Maquina|00_INDEX_Maquina]] — Índex principal de Màquina Tècnica
 - [[90_revisar/00_INDEX_REVISAR|00_INDEX_REVISAR]] — Índex autogenerat per a Zona de Quarantena i Revisió
 

@@ -153,7 +153,7 @@ const EXTENSIONS = new Set([
 ]);
 
 /** Directoris que no es trepitgen mai (a més dels globals d'arrel.mjs). */
-const DIRS_EXCLOSOS = new Set([...EXCLOSOS, 'cervells', '90_revisar', '90_arxiu_historic', '90_historic', '.husky', '.githooks']);
+const DIRS_EXCLOSOS = new Set([...EXCLOSOS, 'cervells', '90_Revisar', '90_revisar', '90_arxiu_historic', '90_historic', '.husky', '.githooks']);
 
 /** Sostre termodinàmic orientatiu, en MB. Mai poda: només avisa. */
 const SOSTRE_MB = 2.5;

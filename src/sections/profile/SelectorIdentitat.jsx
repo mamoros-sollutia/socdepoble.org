@@ -55,7 +55,7 @@ export default function SelectorIdentitat() {
             {i.avatar ? (
               <img src={i.avatar} alt="" className="perfil-identitat-avatar" style={{ width: '32px', height: '32px', borderRadius: '50%', objectFit: 'cover' }} />
             ) : (
-              <span className="perfil-identitat-inicial" style={{ width: '32px', height: '32px', borderRadius: '50%', background: 'var(--sdp-fons-control)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold' }}>
+              <span className="perfil-identitat-inicial sdp-w-8 sdp-h-8 sdp-rounded-full sdp-bg-fons-control sdp-flex sdp-items-center sdp-justify-center sdp-font-bold">
                 {i.nom?.charAt(0) || '?'}
               </span>
             )}

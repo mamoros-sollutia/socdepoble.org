@@ -69,7 +69,9 @@ export function XatProvider({ children, config }) {
             };
          });
          try {
-           await appendChatMessages([userMessage], config);
+           if (actorId !== 'foraster') {
+             await appendChatMessages([userMessage], config);
+           }
          } catch(e) {
            setData(prev => {
              if(!prev.payload) return prev;

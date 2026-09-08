@@ -604,8 +604,8 @@ nav.app-sidebar > div:last-child {
   flex: none;
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 0 var(--sdp-space-6);
+  justify-content: flex-start;
+  padding-left: 28px !important;
   border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 .brand img { width: 100%; max-width: 180px; height: auto; object-fit: contain; }
@@ -697,6 +697,7 @@ header.bar-black {
   display: flex;
   align-items: center;
   padding: 0 var(--sdp-space-6);
+  padding-left: 0 !important;
   border-bottom: 1px solid rgba(255,255,255,0.06);
   position: -webkit-sticky;
   position: sticky;
@@ -1701,7 +1702,7 @@ nav.mobile-nav { display: none; }
   }
 
   /* El logo actua com a botó (sense hamburguesa addicional) */
-  .mobile-logo-wrapper { display: flex; align-items: center; justify-content: center; }
+  .mobile-logo-wrapper { display: flex; align-items: center; justify-content: flex-start; padding-left: 28px !important; }
 
   /* El visor deixa espai per a la barra inferior fixa */
   main.app-main { padding-bottom: calc(var(--sdp-alt-nav-mobil) + env(safe-area-inset-bottom, 0px)); }
@@ -1764,12 +1765,11 @@ nav.mobile-nav { display: none; }
     display: grid;
     place-items: center;
     cursor: pointer;
-    transform: translateY(-8px);
     box-shadow: 0 8px 20px rgba(0,73,131,0.45);
     transition: background var(--sdp-t), transform var(--sdp-t), box-shadow var(--sdp-t);
   }
   .mobile-nav__cta:hover { background: var(--sdp-accio-hover); }
-  .mobile-nav__cta:active { background: var(--sdp-accio-forta); transform: translateY(-8px) scale(0.94); }
+  .mobile-nav__cta:active { background: var(--sdp-accio-forta); transform: scale(0.94); }
   .mobile-nav__cta svg { width: 24px; height: 24px; }
 
   /* El FAB d'escriptori desapareix (el substitueix el CTA central) */
@@ -3647,3 +3647,91 @@ button.sp-card-calendar-badge:hover {
 .editor-toolbar .active-text { background: var(--sdp-accent); color: var(--sdp-sobre-accent); border-color: currentColor; }
 .btn-icon:hover { outline: 1px solid currentColor; outline-offset: -2px; }
 .editor-toolbar button:disabled { opacity: .5; cursor: default; }
+
+/* --- REFINAMENTS DE UI --- */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: var(--sdp-space-2);
+  margin-top: var(--sdp-space-4);
+}
+.photo-grid__item {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: var(--sdp-radi-md);
+  border: 1px solid var(--sdp-border);
+}
+
+.stack-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sdp-space-4);
+}
+
+.sdp-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: var(--sdp-space-3);
+  margin: var(--sdp-space-4) 0;
+}
+.sdp-stat-card {
+  background: var(--sdp-bg-secundari);
+  border: 1px solid var(--sdp-border);
+  border-radius: var(--sdp-radi-md);
+  padding: var(--sdp-space-4);
+  text-align: center;
+}
+.sdp-stat-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--sdp-accent);
+}
+.sdp-stat-label {
+  font-size: var(--sdp-text-xs);
+  color: var(--sdp-text-suau);
+  text-transform: uppercase;
+  margin-top: var(--sdp-space-1);
+  font-weight: 600;
+}
+
+/* --- LOGO CREATIVE COMMONS --- */
+.cc-logo-container {
+  display: flex;
+  justify-content: center;
+  margin: var(--sdp-space-8) 0;
+}
+.cc-logo-container img {
+  width: 400px;
+  max-width: 100%;
+  height: auto;
+}
+
+/* --- CERCA UNIVERSAL --- */
+.universal-search-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.universal-search-icon {
+  position: absolute;
+  left: var(--sdp-space-3);
+  color: var(--sdp-text-suau);
+}
+.universal-search-input {
+  width: 100%;
+  padding: var(--sdp-space-3) var(--sdp-space-3) var(--sdp-space-3) var(--sdp-space-8);
+  border: 2px solid var(--sdp-border);
+  border-radius: var(--sdp-radi-full);
+  font-size: var(--sdp-text-base);
+  font-family: inherit;
+  background: var(--sdp-bg-secundari);
+  color: var(--sdp-text-fort);
+  transition: all var(--sdp-t);
+}
+.universal-search-input:focus {
+  outline: none;
+  border-color: var(--sdp-accio-forta);
+  background: var(--sdp-bg-principal);
+  box-shadow: 0 0 0 4px var(--sdp-accio-suau);
+}
