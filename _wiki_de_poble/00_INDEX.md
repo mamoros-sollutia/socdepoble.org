@@ -10,6 +10,7 @@ description: 00INDEX
 - [[00_INDEX_ESCRIPTORI]] (Safata i Treball Actiu)
 - [[00_INDEX_ARXIU]] (Arxiu Històric)
 - [[00_INDEX_Actes]] (Registre d'Actes)
+- [[00_INDEX_ACTUAR]] (Scripts i Eines)
 
 
 ## Adopcions de Les Plaquetes

@@ -833,29 +833,7 @@ Gran</div>
 </div>
 </div>
 </div>
-<h4>21.3 Panell d'Umami (Integració directa)</h4>
-<div className="dashboard-panel">
-<div className="dashboard-header"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="icona-linia" viewBox="0 0 20 20" width="16"><line x1="18" x2="18" y1="20" y2="10"></line><line x1="12" x2="12" y1="20" y2="4"></line><line x1="6" x2="6" y1="20" y2="14"></line></svg> Activitat del Portal</div>
-<div className="dashboard-grid">
-<div className="dashboard-item">
-<div className="dashboard-item-value">5.847</div>
-<div className="dashboard-item-label">Visitants únics</div>
-</div>
-<div className="dashboard-item">
-<div className="dashboard-item-value">23.412</div>
-<div className="dashboard-item-label">Pàgines vistes</div>
-</div>
-<div className="dashboard-item">
-<div className="dashboard-item-value">29,4%</div>
-<div className="dashboard-item-label">Taxa de rebuig</div>
-</div>
-<div className="dashboard-item">
-<div className="dashboard-item-value">2m 45s</div>
-<div className="dashboard-item-label">Duració mitjana</div>
-</div>
-</div>
-<div className="dashboard-footer">Dades d'<span>Umami Analytics</span> • Actualització en temps real</div>
-</div>
+
 </section>
 {/*  SECCIÓ 22: CERCA I FILTRATGE  */}
 <section className="design-block">

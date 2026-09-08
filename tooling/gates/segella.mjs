@@ -31,6 +31,12 @@ for (const file of files) {
 
 const finalHash = combinedHash.digest('hex');
 
+const oldSeal = fs.existsSync(sealFile) ? JSON.parse(fs.readFileSync(sealFile)) : { hash: null };
+if (oldSeal.hash !== null && oldSeal.hash !== finalHash && !process.argv.includes('--update')) {
+  console.error(`❌ [Llei Z] Ruptura de segell detectada! El hash actual ${finalHash.substring(0,8)} no coincideix amb el segellat ${oldSeal.hash.substring(0,8)}. T'han modificat les regles d'amagat? Usa --update si és intencionat.`);
+  process.exit(1);
+}
+
 const seal = {
   timestamp: new Date().toISOString(),
   hash: finalHash,

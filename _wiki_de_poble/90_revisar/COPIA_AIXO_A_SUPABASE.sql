@@ -910,6 +910,7 @@ alter table public.user_platform_roles enable row level security;
 revoke all on table public.user_platform_roles from anon, authenticated;
 grant select on table public.user_platform_roles to authenticated;
 
+drop policy if exists "llig el propi rol" on public.user_platform_roles;
 create policy "llig el propi rol" on public.user_platform_roles for select to authenticated
 using (user_id = (select auth.uid()));
 
@@ -917,12 +918,14 @@ alter table public.organization_claims enable row level security;
 revoke all on table public.organization_claims from anon, authenticated;
 grant select on table public.organization_claims to authenticated;
 
+drop policy if exists "llig les propies reclamacions" on public.organization_claims;
 create policy "llig les propies reclamacions" on public.organization_claims
 for select to authenticated
 using (user_id = (select auth.uid()) or (select private.es_superadmin()));
 
 grant update (name, lema, description, visibility) on table public.organizations to authenticated;
 
+drop policy if exists "gestores actualitzen l'organització" on public.organizations;
 create policy "gestores actualitzen l'organització" on public.organizations
 for update to authenticated
 using       ((select private.can_manage_organization(id)))

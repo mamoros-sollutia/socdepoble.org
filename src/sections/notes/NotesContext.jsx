@@ -1,4 +1,5 @@
-import { createContext, useContext, useState, useMemo, useDeferredValue, useCallback } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { createContext, useContext, useState, useMemo, useDeferredValue, useCallback, useEffect } from 'react';
 import { updateNote } from '../../data/backendPort';
 import { showToast } from '../../components/universal/AvisadorEfimer.jsx';
 import { sanitizeHtml, netejaText, esFontImatgeSegura } from '../../utils/sanitize.js';
@@ -37,7 +38,7 @@ export function etiquetesDeNota(note, noteFolders, accions = {}) {
 
 const NotesContext = createContext(null);
 
-export function NotesProvider({ children }) {
+export function NotesProvider({ children, notaInicialId = null }) {
   const { language, externalConfig } = useUIState();
   const { normalizeSearchText, t } = useUIActions();
   const { noteFolders, notes: rawNotes } = useNotesData();
@@ -46,7 +47,8 @@ export function NotesProvider({ children }) {
   const [activeFolderId, setActiveFolderId] = useState('f-tot');
   const [activeCategory, setActiveCategory] = useState(null);
   const [activeTag, setActiveTag] = useState(null);
-  const [activeNoteId, setActiveNoteId] = useState('n1');
+  const [searchParams] = useSearchParams();
+  const [activeNoteId, setActiveNoteId] = useState(notaInicialId || 'n1');
   const [searchQuery, setSearchQuery] = useState('');
   const deferredSearchQuery = useDeferredValue(searchQuery);
   const locale = language === 'ca' ? 'ca-ES' : 'es-ES';
@@ -130,6 +132,12 @@ export function NotesProvider({ children }) {
   const handleSelectNote = useCallback((id) => {
     setActiveNoteId(id);
   }, []);
+
+  /* Si l'usuari navega d'un ?nota=A a un ?nota=B sense desmuntar la secció,
+     el proveïdor no es torna a crear i l'estat inicial ja no val. */
+  useEffect(() => {
+    if (notaInicialId) setActiveNoteId(notaInicialId);
+  }, [notaInicialId]);
 
   const saveNoteField = useCallback(async (noteId, field, value) => {
     if (!noteId) return false;

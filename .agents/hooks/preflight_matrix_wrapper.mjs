@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { execSync } from 'child_process';
+import { execSync, execFileSync } from 'child_process';
 import path from 'path';
 
 try {
@@ -37,14 +37,8 @@ try {
 
   let resultJSON = '';
   try {
-    // Escrivim un fitxer temporal per llegir el prompt i passar-lo segurament
-    const tmpPromptPath = path.join(process.cwd(), '.matrix_tmp_prompt.txt');
-    fs.writeFileSync(tmpPromptPath, lastUserInput);
-    
-    // Fem servir sh per executar passant el contingut llegit
-    const stdout = execSync(`node tooling/brain/matrix.mjs --json "$(cat .matrix_tmp_prompt.txt)"`, { encoding: 'utf-8', cwd: process.cwd() });
+    const stdout = execFileSync('node', ['tooling/brain/matrix.mjs', '--json', lastUserInput], { encoding: 'utf-8', cwd: process.cwd() });
     resultJSON = stdout;
-    try { fs.unlinkSync(tmpPromptPath); } catch(e) {}
     
     const report = JSON.parse(resultJSON);
     
@@ -68,7 +62,7 @@ try {
     console.log(JSON.stringify({ injectSteps }));
     
   } catch (err) {
-    try { fs.unlinkSync(path.join(process.cwd(), '.matrix_tmp_prompt.txt')); } catch(e) {}
+    // Netetjat error catch
     
     const stderr = err.stderr || '';
     const stdout = err.stdout || '';

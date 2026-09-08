@@ -54,13 +54,13 @@ requereix_auditoria: false
 - **Etiquetes:** [[Graf]]
 
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX_Actes]] | [[00_INDEX_ESCRIPTORI]]
 
 
 ---
 **Categoria:** [[00_plantilles|07_plantilles]]
 **Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_INDEX_Actes]]
 
 ## Sinapsis Entrants (Autogenerat)
 

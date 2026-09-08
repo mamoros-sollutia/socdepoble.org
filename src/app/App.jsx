@@ -488,6 +488,18 @@ class RouteErrorBoundary extends React.Component {
   }
 }
 
+function PostRedirect() {
+  const { itemId } = useParams();
+  const safeItemId = encodeURIComponent(itemId || '');
+  return <Navigate to={`/jo/mur/${safeItemId}`} replace />;
+}
+
+function SectionRedirect({ sectionId }) {
+  const params = useParams();
+  const splat = params['*'];
+  return <Navigate to={`/jo/${sectionId}${splat ? `/${splat}` : ''}`} replace />;
+}
+
 function AppRoutes() {
   const { agents = [] } = useCoreContent();
   return (
@@ -500,29 +512,29 @@ function AppRoutes() {
         <Route path="/e/:slug/*" element={<ActorRoutes agents={agents} />} />
 
         {/* Redirects globals per a suportar links vells */}
-        <Route path="/xat/*" element={<Navigate to="/jo/xat" replace />} />
-        <Route path="/chat/*" element={<Navigate to="/jo/xat" replace />} />
-        <Route path="/chats/*" element={<Navigate to="/jo/xat" replace />} />
-        <Route path="/mur/*" element={<Navigate to="/jo/mur" replace />} />
-        <Route path="/post/:itemId" element={<Navigate to={`/jo/mur/${window.location.pathname.split('/').pop()}`} replace />} />
-        <Route path="/mercat/*" element={<Navigate to="/jo/mercat" replace />} />
-        <Route path="/multimedia/*" element={<Navigate to="/jo/multimedia" replace />} />
-        <Route path="/pobles/*" element={<Navigate to="/jo/pobles" replace />} />
-        <Route path="/poblacio/*" element={<Navigate to="/jo/poblacio" replace />} />
-        <Route path="/events/*" element={<Navigate to="/jo/mur" replace />} />
-        <Route path="/calendar/*" element={<Navigate to="/jo/mur" replace />} />
-        <Route path="/calendari/*" element={<Navigate to="/jo/mur" replace />} />
-        <Route path="/mapa/*" element={<Navigate to="/jo/mur" replace />} />
-        <Route path="/notes/*" element={<Navigate to="/jo/notes" replace />} />
-        <Route path="/dispositius/*" element={<Navigate to="/jo/dispositius" replace />} />
-        <Route path="/connectivitat/*" element={<Navigate to="/jo/dispositius" replace />} />
-        <Route path="/el-meu-perfil/*" element={<Navigate to="/jo/el-meu-perfil" replace />} />
+        <Route path="/xat/*" element={<SectionRedirect sectionId="xat" />} />
+        <Route path="/chat/*" element={<SectionRedirect sectionId="xat" />} />
+        <Route path="/chats/*" element={<SectionRedirect sectionId="xat" />} />
+        <Route path="/mur/*" element={<SectionRedirect sectionId="mur" />} />
+        <Route path="/post/:itemId" element={<PostRedirect />} />
+        <Route path="/mercat/*" element={<SectionRedirect sectionId="mercat" />} />
+        <Route path="/multimedia/*" element={<SectionRedirect sectionId="multimedia" />} />
+        <Route path="/pobles/*" element={<SectionRedirect sectionId="pobles" />} />
+        <Route path="/poblacio/*" element={<SectionRedirect sectionId="poblacio" />} />
+        <Route path="/events/*" element={<SectionRedirect sectionId="mur" />} />
+        <Route path="/calendar/*" element={<SectionRedirect sectionId="mur" />} />
+        <Route path="/calendari/*" element={<SectionRedirect sectionId="mur" />} />
+        <Route path="/mapa/*" element={<SectionRedirect sectionId="mur" />} />
+        <Route path="/notes/*" element={<SectionRedirect sectionId="notes" />} />
+        <Route path="/dispositius/*" element={<SectionRedirect sectionId="dispositius" />} />
+        <Route path="/connectivitat/*" element={<SectionRedirect sectionId="dispositius" />} />
+        <Route path="/el-meu-perfil/*" element={<SectionRedirect sectionId="el-meu-perfil" />} />
         <Route path="/jo" element={<Navigate to="/jo/el-meu-perfil" replace />} />
-        <Route path="/perfil/*" element={<Navigate to="/jo/perfil" replace />} />
-        <Route path="/gent/*" element={<Navigate to="/jo/gent" replace />} />
-        <Route path="/empresa/*" element={<Navigate to="/jo/empresa" replace />} />
-        <Route path="/ajuntament/*" element={<Navigate to="/jo/ajuntament" replace />} />
-        <Route path="/grup/*" element={<Navigate to="/jo/grup" replace />} />
+        <Route path="/perfil/*" element={<SectionRedirect sectionId="perfil" />} />
+        <Route path="/gent/*" element={<SectionRedirect sectionId="gent" />} />
+        <Route path="/empresa/*" element={<SectionRedirect sectionId="empresa" />} />
+        <Route path="/ajuntament/*" element={<SectionRedirect sectionId="ajuntament" />} />
+        <Route path="/grup/*" element={<SectionRedirect sectionId="grup" />} />
 
         {/* Rutes globals i administratives */}
         <Route path="/cerca" element={<SearchSection />} />

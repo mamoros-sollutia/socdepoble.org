@@ -1,3 +1,4 @@
+import { useSearchParams } from 'react-router-dom';
 import { UniversalPage } from '../../components/universal/UniversalComponents';
 import { NotesProvider } from './NotesContext';
 import NotesSidebar from './NotesSidebar';
@@ -7,7 +8,7 @@ import notesStyles from './NotesSection.css?inline';
 import AppGridShell from '../../components/layout/AppGridShell';
 import { useUIActions } from '../../app/contexts/UIContext';
 
-function NotesSectionContent() {
+function NotesSectionContent({ notaInicialId }) {
   const { t } = useUIActions();
 
   return (
@@ -20,7 +21,10 @@ function NotesSectionContent() {
           rightColumn={<NotesEditor />}
           leftTitle="CARPETES"
           middleTitle="NOTES"
-          initialPane="left"
+          /* En pantalla estreta, arribar amb una nota demanada vol dir que
+             l'usuari ve a llegir-la. Obrir-li damunt el calaix de carpetes és
+             posar-li una porta al davant. */
+          initialPane={notaInicialId ? null : 'left'}
           aria-label={t('section.notes.title', 'Bloc de notes')}
         />
       </UniversalPage>
@@ -29,9 +33,17 @@ function NotesSectionContent() {
 }
 
 export default function NotesSection() {
+  /* PER QUÈ UN PARÀMETRE DE CONSULTA I NO UNA RUTA (P0-3 · 260908):
+     `/jo/notes/<id>` JA està servit per `:sectionId/:itemId` › ItemDetailSection.
+     Declarar `notes/:noteId` guanyaria per especificitat i mataria eixos
+     enllaços de detall. `?nota=` no col·lisiona amb cap ruta i no obliga a
+     tocar App.jsx. */
+  const [searchParams] = useSearchParams();
+  const notaInicialId = searchParams.get('nota');
+
   return (
-    <NotesProvider>
-      <NotesSectionContent />
+    <NotesProvider notaInicialId={notaInicialId}>
+      <NotesSectionContent notaInicialId={notaInicialId} />
     </NotesProvider>
   );
 }

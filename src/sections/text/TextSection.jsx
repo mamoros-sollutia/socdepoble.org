@@ -1,7 +1,7 @@
 import { UniversalPage } from '../../components/universal/UniversalComponents';
 import { resolveAsset } from '../../config/assetResolver';
 import { sanitizeHtml } from '../../utils/sanitize';
-import TelemetryDashboard from './TelemetryDashboard';
+
 import { useUIActions } from '../../app/contexts/UIContext';
 
 export default function TextSection({ page, pageKey }) {
@@ -27,7 +27,7 @@ export default function TextSection({ page, pageKey }) {
     >
       {/* eslint-disable-next-line */}
       <div className="sdp-grid sdp-text-content" style={{ padding: 'var(--sdp-space-6) var(--sdp-space-4)' }}>
-        {pageKey === 'legal' && <TelemetryDashboard />}
+
         <article dangerouslySetInnerHTML={{ __html: sanitizeHtml(page.html) }} />
       </div>
     </UniversalPage>

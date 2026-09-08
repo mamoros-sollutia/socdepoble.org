@@ -1,5 +1,21 @@
 export const MOCK_TOWNS = [
   {
+    "id": "la-torre-de-les-macanes",
+    "type": "town",
+    "author": "Gent de La Torre",
+    "title": "La Torre de les Maçanes",
+    "comarca": "L'Alacantí",
+    "content": "La Torre de les Maçanes és una vila i municipi del País Valencià situat a la comarca de l'Alacantí, a la comarca històrica de la Foia de Xixona.",
+    "population": "700 hab",
+    "linkTo": "Gent de La Torre",
+    "image": true,
+    "image_url": "/assets/towns/la-torre-de-les-macanes/1.jpg",
+    "avatar_url": "/assets/towns/la-torre-de-les-macanes/2.jpg",
+    "lat": 38.5919,
+    "lng": -0.4184,
+    "created_at": "2026-08-20T08:00:00.000Z"
+  },
+  {
     "id": "penaguila",
     "type": "town",
     "author": "Gent de Penàguila",
@@ -30,22 +46,6 @@ export const MOCK_TOWNS = [
     "lat": 38.6439,
     "lng": -0.4632,
     "created_at": "2026-08-04T14:15:00.000Z"
-  },
-  {
-    "id": "la-torre-de-les-macanes",
-    "type": "town",
-    "author": "Gent de La Torre",
-    "title": "La Torre de les Maçanes",
-    "comarca": "L'Alacantí",
-    "content": "La Torre de les Maçanes és una vila i municipi del País Valencià situat a la comarca de l'Alacantí, a la comarca històrica de la Foia de Xixona.",
-    "population": "700 hab",
-    "linkTo": "Gent de La Torre",
-    "image": true,
-    "image_url": "/assets/towns/la-torre-de-les-macanes/1.jpg",
-    "avatar_url": "/assets/towns/la-torre-de-les-macanes/2.jpg",
-    "lat": 38.5919,
-    "lng": -0.4184,
-    "created_at": "2026-08-20T08:00:00.000Z"
   },
   {
     "id": "sella",

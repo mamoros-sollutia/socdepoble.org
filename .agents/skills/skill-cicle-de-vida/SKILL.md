@@ -56,6 +56,12 @@ Cada dia o al final d'una sessió complexa:
 4. **Poda d'Actes**: Les actes de sessions (`10_actes`) actuen com una Time Machine temporal, però tampoc s'han d'acumular ad infinitum. Fes higiene de tant en tant i esborra les actes de fa més de 2 o 3 setmanes si el seu contingut ja s'ha absorbit.
 
 
+
+## 7. Creació d'Actes de Sessió (L'Ancoratge de Seguretat)
+Quan faces un "Tancament" i decidisques o se't demane crear una "Acta de Sessió" per resumir el treball:
+1. **Has de basar-te** en el format de `plantilla_acta_unica.md` (o, com a mínim, mantindre la mateixa taxonomia i seccions si la generes al vol).
+2. **Ancoratge Obligatori:** ÉS VITAL I ESTRICTAMENT PROHIBIT crear una Acta sense incloure al final del document l'**Ancoratge de Seguretat**. Sempre has d'afegir: `Ancoratge de Seguretat: [[00_INDEX_Actes]] | [[00_INDEX_ESCRIPTORI]]` per a no generar satèl·lits a la Wiki.
+
 ## Ancoratge de la Wiki
 - Aquesta skill penja de: [[00_INDEX_SKILLS]]
 

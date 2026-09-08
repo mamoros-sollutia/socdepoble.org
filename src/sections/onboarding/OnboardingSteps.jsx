@@ -70,9 +70,7 @@ export function RegistrationStep({ isBusy, error, confirmationEmail, onRegister,
     <section className="onboarding-card" aria-labelledby="onboarding-register-title">
       <div className="onboarding-card__heading">
         <span className="onboarding-card__icon" aria-hidden="true"><UserRound size={28} /></span>
-        <div>
-          <h3 id="onboarding-register-title" className="sdp-text-accio-text">Accés o nou registre</h3>
-        </div>
+        <h3 id="onboarding-register-title" className="sdp-text-accio-text">Accés o nou registre</h3>
       </div>
 
       <p className="onboarding-card__intro" style={{ textAlign: 'center' }}>
@@ -222,11 +220,9 @@ export function OrganizationStep({ blueprint, parentOrganization, isBusy, error,
     <section className="onboarding-card" aria-labelledby={`onboarding-${blueprint.kind}-title`}>
       <div className="onboarding-card__heading">
         <span className="onboarding-card__icon" aria-hidden="true"><Icon size={28} /></span>
-        <div>
-          <h2 id={`onboarding-${blueprint.kind}-title`}>
-            {isGroup ? 'Crea el grup Rentonar' : 'Crea l’empresa Sóc de Poble'}
-          </h2>
-        </div>
+        <h2 id={`onboarding-${blueprint.kind}-title`}>
+          {isGroup ? 'Crea el grup Rentonar' : 'Crea l’empresa Sóc de Poble'}
+        </h2>
       </div>
 
       <p className="onboarding-card__intro" style={{ textAlign: 'center' }}>
@@ -369,9 +365,7 @@ export function IdentityForkStep({ onCreateNew, onClaimExisting, onSkip }) {
     <section className="onboarding-card">
       <div className="onboarding-card__heading">
         <span className="onboarding-card__icon" aria-hidden="true"><UserRound size={28} /></span>
-        <div>
-          <h2 className="sdp-text-accio-text">Quina és la teua relació amb el poble?</h2>
-        </div>
+        <h2 className="sdp-text-accio-text">Quina és la teua relació amb el poble?</h2>
       </div>
       <p className="onboarding-card__intro" style={{ textAlign: 'center' }}>
         Tria com vols interactuar dins la xarxa. Pots crear una empresa, reclamar-ne una d'existent, o simplement explorar com a persona.
@@ -401,9 +395,7 @@ export function ClaimStep({ organizations, onClaim, onBack, isBusy, error }) {
     <section className="onboarding-card">
       <div className="onboarding-card__heading">
         <span className="onboarding-card__icon" aria-hidden="true"><MapPin size={28} /></span>
-        <div>
-          <h2 className="sdp-text-accio-text">Reclama la gestió d'una entitat</h2>
-        </div>
+        <h2 className="sdp-text-accio-text">Reclama la gestió d'una entitat</h2>
       </div>
       
       {error ? <div className="alert alert-error" role="alert">{error}</div> : null}

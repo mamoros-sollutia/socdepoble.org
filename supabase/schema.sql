@@ -40,6 +40,12 @@ create table if not exists public.app_content (
   primary key (tenant_id, key)
 );
 
+-- ==============================================================================
+-- 🪦 LÀPIDA: ANTIC XAT (Fase d'Extinció)
+-- Aquestes taules (chat_threads i chat_messages) ja no s'utilitzen al frontend.
+-- Han estat substituïdes per xat_fils, xat_participants, xat_missatges i xat_lectures.
+-- Es mantenen temporalment per retrocompatibilitat amb els seed existents.
+-- ==============================================================================
 create table if not exists public.chat_threads (
   id text not null,
   tenant_id uuid not null references public.towns(id) on delete cascade,
@@ -284,8 +290,8 @@ begin
     on conflict (town_id, user_id) do nothing;
     
   exception when others then
-    -- Log silenciós de l'error per no trencar l'autenticació de GoTrue (Error 500)
-    raise warning 'Fallada en handle_new_user per a l''usuari %: %', new.id, sqlerrm;
+    -- Re-llancem l'error perquè Supabase avorte l'alta i ho comunique al client
+    raise;
   end;
 
   return new;
@@ -901,6 +907,7 @@ alter table public.user_platform_roles enable row level security;
 revoke all on table public.user_platform_roles from anon, authenticated;
 grant select on table public.user_platform_roles to authenticated;
 
+drop policy if exists "llig el propi rol" on public.user_platform_roles;
 create policy "llig el propi rol" on public.user_platform_roles for select to authenticated
 using (user_id = (select auth.uid()));
 
@@ -908,12 +915,14 @@ alter table public.organization_claims enable row level security;
 revoke all on table public.organization_claims from anon, authenticated;
 grant select on table public.organization_claims to authenticated;
 
+drop policy if exists "llig les propies reclamacions" on public.organization_claims;
 create policy "llig les propies reclamacions" on public.organization_claims
 for select to authenticated
 using (user_id = (select auth.uid()) or (select private.es_superadmin()));
 
 grant update (name, lema, description, visibility) on table public.organizations to authenticated;
 
+drop policy if exists "gestores actualitzen l'organització" on public.organizations;
 create policy "gestores actualitzen l'organització" on public.organizations
 for update to authenticated
 using       ((select private.can_manage_organization(id)))

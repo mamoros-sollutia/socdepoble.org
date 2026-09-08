@@ -3,8 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="theme-color" content="#050505" />
+    <meta name="theme-color" content="#f4eee6" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self' https://*.supabase.co wss://*.supabase.co;" />
     <meta name="description" content="Sóc de Poble: una estructura neta, simple i mantenible per a la xarxa pública del poble." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- SEO tags -->
+    <meta property="og:title" content="Sóc de Poble" />
+    <meta property="og:description" content="Sóc de Poble: la xarxa pública del poble." />
+    <meta property="og:image" content="/assets/uploads/brain/hero_panoramic_rural_view_1774720664221.png" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Sóc de Poble" />
+    <meta name="twitter:description" content="Sóc de Poble: la xarxa pública del poble." />
+    <meta name="twitter:image" content="/assets/uploads/brain/hero_panoramic_rural_view_1774720664221.png" />
     <link rel="icon" type="image/svg+xml" href="/assets/system/ui/logo-socdepoble-cuadrat-verd.svg" />
     <title>Sóc de Poble</title>
     <style>
@@ -12,8 +24,7 @@
       body { background-color: var(--sdp-fons-app, #f4eee6); }
       #root { height: 100%; width: 100%; display: block; }
     </style>
-    <!-- Umami Analytics (Privacitat 100% - Sense Cookies) -->
-    <script defer src="https://eu.umami.is/script.js" data-website-id="6ffce900-c41a-470e-9b12-38fb6028db18"></script>
+
   </head>
   <body class="sdp-root">
     <div id="root"></div>

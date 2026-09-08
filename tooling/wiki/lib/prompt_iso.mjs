@@ -34,9 +34,10 @@ function sections(text) {
 // Els backlinks autogenerats no són doctrina: reindexar no invalida el rebut.
 export function loadIsoContext(root) {
   const sources = ISO_SOURCES.map(file => {
-    const text = fs.readFileSync(path.join(root, file), 'utf8');
+    const rawBytes = fs.readFileSync(path.join(root, file));
+    const text = rawBytes.toString('utf8');
     if (!text.trim()) throw new Error(`Context ISO buit: ${file}`);
-    return { path: file, text, sha256: hash(stripAuto(text)) };
+    return { path: file, text, sha256: createHash('sha256').update(rawBytes).digest('hex') };
   });
   const template = stripAuto(sources[0].text);
   const templateSections = sections(template).filter(s => s.heading !== 'Frontmatter Obligatori' && !s.heading.startsWith('[IF:'));
@@ -108,7 +109,8 @@ export function buildIsoPrompt(context, fields) {
   if (errors.length) throw new Error(errors.join('; '));
   // Comprovació immediata abans de retornar el candidat al mutador.
   for (const source of context.sources) {
-    if (hash(stripAuto(fs.readFileSync(path.join(context.root, source.path), 'utf8'))) !== source.sha256) throw new Error(`Context modificat durant la generació: ${source.path}`);
+    const rawBytes = fs.readFileSync(path.join(context.root, source.path));
+    if (createHash('sha256').update(rawBytes).digest('hex') !== source.sha256) throw new Error(`Context modificat durant la generació: ${source.path}`);
   }
   return text;
 }

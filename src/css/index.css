@@ -2631,6 +2631,33 @@ button.sp-card-calendar-badge:hover {
   background: rgba(0,0,0,0.35);
 }
 
+.btn-taronja-fort.btn-taronja-fort--icon {
+  padding: 0;
+  width: var(--sdp-space-12);
+  border-radius: 50%;
+}
+
+.xat-list {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.xat-item {
+  display: flex;
+  padding: 12px 16px;
+  gap: 12px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--sdp-vora);
+}
+.xat-item:hover, .xat-item.active {
+  background: var(--sdp-fons-subtil);
+}
+
+.xat-item-avatar {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 .xat-item-content {
   flex: 1;
   min-width: 0;
@@ -2882,6 +2909,71 @@ button.sp-card-calendar-badge:hover {
   opacity: 0.5;
   cursor: not-allowed;
 }
+
+/* ── Xat · mode de selecció de missatges (Pont amb Notes, 260908) ─────
+   La bombolla passa a ser una casella. Es marca amb vora i marca visible,
+   MAI només amb color de fons: el fons ja distingix «meu» de «seu» i
+   reutilitzar-lo per a «triat» faria indistingibles els dos estats sota el
+   sol del bancal. */
+
+.xat-main-header--seleccio {
+  background: var(--sdp-accent);
+}
+
+.sdp-chat-bubble--triable {
+  cursor: pointer;
+  /* Llei de Vida: una bombolla d'una sola línia es queda en ~40px i cap dit
+     amb terra l'encerta. */
+  min-height: var(--sdp-touch-min);
+  transition: outline-color var(--sdp-t), background-color var(--sdp-t);
+}
+
+.sdp-chat-bubble--triable:focus-visible {
+  outline: 3px solid var(--sdp-accio);
+  outline-offset: 2px;
+}
+
+.sdp-chat-bubble--triat {
+  outline: 2px solid var(--sdp-accio);
+  outline-offset: -2px;
+  background-color: color-mix(in srgb, var(--sdp-accio) 12%, transparent) !important;
+  border-color: var(--sdp-accio);
+}
+
+.xat-marca-tria {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+  flex-shrink: 0;
+  transition: color var(--sdp-t);
+}
+
+.xat-accio-bloc {
+  flex: 1;
+  min-height: var(--sdp-touch-min);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--sdp-fons-targeta);
+  color: var(--sdp-text-cos);
+  border: 1px solid var(--sdp-vora-control);
+  border-radius: var(--sdp-radi-g);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background var(--sdp-t);
+}
+
+.xat-accio-bloc:hover:not(:disabled) {
+  background: var(--sdp-fons-superficie);
+}
+
+.xat-accio-bloc:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 
 
 .xat-dropdown-item {

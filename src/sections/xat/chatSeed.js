@@ -1,5 +1,23 @@
 /* eslint-disable no-useless-escape */
 export const MOCK_CHATS = [{
+  id: "socdepoble",
+  name: "Sóc de Poble",
+  message: "Benvinguts al portal oficial de Sóc de Poble.",
+  time: "Ara",
+  type: "COMPANY",
+  unread: 0,
+  avatar_url: "/assets/system/ui/logo-socdepoble-cuadrat-verd.svg",
+  is_iaia: false
+}, {
+  id: "0001",
+  name: "Mestre Poble",
+  message: "Ei! Com va això?",
+  time: "Ara",
+  type: "PERSON",
+  unread: 0,
+  avatar_url: "/assets/system/ui/logo-socdepoble-cuadrat-verd.svg",
+  is_iaia: false
+}, {
   id: "iaia-maria",
   name: "IAIA MarIA",
   message: "Bon dia a tots els socarrats i socarrades!",

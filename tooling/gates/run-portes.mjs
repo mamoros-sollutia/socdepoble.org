@@ -43,6 +43,7 @@ const passos = [
 ,
   { nom: 'Tractor Llavor', cmd: 'node', args: ['tooling/gates/tractor-llavor.mjs'] }
 ,
+  { nom: 'Porta Matrix', cmd: 'node', args: ['tooling/brain/matrix.mjs', '--check'] },
   { nom: 'Porta Segella', cmd: 'node', args: ['tooling/gates/segella.mjs'] }
 ];
 

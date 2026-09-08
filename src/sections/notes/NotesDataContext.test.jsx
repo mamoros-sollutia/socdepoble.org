@@ -1,0 +1,20 @@
+import React from 'react';
+import { renderHook, act, waitFor } from '@testing-library/react';
+import { expect, test, vi } from 'vitest';
+import { NotesDataProvider, useNotesData } from './NotesDataContext';
+const api = vi.hoisted(() => ({loadNotes: vi.fn(), createNote: vi.fn(), updateNote: vi.fn()}));
+vi.mock('../../data/backendPort.js', () => api);
+vi.mock('../../app/contexts/IdentitatContext.jsx', () => ({useIdentitat: () => ({actorId: 'user', actorKey: 'user'})}));
+test('crea amb la configuració del provider i incorpora la resposta confirmada', async () => {
+  const config = {tenantId: 'tenant'};
+  api.loadNotes.mockResolvedValue({notes: [{id: 'old'}], noteFolders: []});
+  api.createNote.mockResolvedValue({id: 'new', title: 'Guardada', revision: 1});
+  const {result} = renderHook(useNotesData, {wrapper: ({children}) => <NotesDataProvider config={config}>{children}</NotesDataProvider>});
+  await waitFor(() => expect(result.current.status).toBe('ready'));
+  await act(async () => { await result.current.creaNota({title: 'Nova'}); });
+  expect(api.createNote).toHaveBeenCalledWith({title: 'Nova'}, config);
+  expect(result.current.notes.map(n => n.id)).toEqual(['new', 'old']);
+  api.createNote.mockRejectedValueOnce(new Error('sense connexió'));
+  await act(async () => { await expect(result.current.creaNota({title: 'Error'})).rejects.toThrow(); });
+  expect(result.current.notes.map(n => n.id)).toEqual(['new', 'old']);
+});

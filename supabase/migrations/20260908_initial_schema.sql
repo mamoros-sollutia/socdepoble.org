@@ -108,7 +108,7 @@ create table if not exists public.organizations (
   lema text not null default '' check (char_length(lema) <= 120),
   description text not null default '' check (char_length(description) <= 500),
   visibility text not null default 'public' check (visibility in ('public', 'members')),
-  created_by uuid not null references public.profiles(id) on delete restrict,
+  created_by uuid references public.profiles(id) on delete set null,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now(),
   unique (tenant_id, slug),
@@ -122,7 +122,7 @@ create table if not exists public.organizations (
 alter table public.organizations add column if not exists parent_organization_id uuid references public.organizations(id) on delete restrict;
 alter table public.organizations add column if not exists lema text not null default '' check (char_length(lema) <= 120);
 alter table public.organizations add column if not exists visibility text not null default 'public' check (visibility in ('public', 'members'));
-alter table public.organizations add column if not exists created_by uuid references public.profiles(id) on delete restrict;
+alter table public.organizations add column if not exists created_by uuid references public.profiles(id) on delete set null;
 
 alter table public.section_submissions add column if not exists author_org_id uuid references public.organizations(id) on delete cascade;
 
@@ -293,8 +293,8 @@ begin
     on conflict (town_id, user_id) do nothing;
     
   exception when others then
-    -- Log silenciós de l'error per no trencar l'autenticació de GoTrue (Error 500)
-    raise warning 'Fallada en handle_new_user per a l''usuari %: %', new.id, sqlerrm;
+    -- Re-llancem l'error perquè Supabase avorte l'alta i ho comunique al client
+    raise;
   end;
 
   return new;
@@ -728,7 +728,7 @@ after insert on public.organizations
 for each row execute function private.add_organization_owner();
 
 -- 4. VIEWS
-create or replace view public.organization_directory
+create or replace view public.organization_directory with (security_invoker = true)
 with (security_barrier = true)
 as
 select
@@ -792,8 +792,8 @@ create policy "public read app_content" on public.app_content for select using (
 
 
 drop policy if exists "private read chat_threads" on public.chat_threads;
-create policy "private read chat_threads" on public.chat_threads for select to authenticated
-using (owner_user_id = (select auth.uid()) and exists (select 1 from public.town_memberships where town_id = tenant_id and user_id = (select auth.uid())));
+create policy "public read chat_threads" on public.chat_threads for select
+using (true);
 
 drop policy if exists "private write chat_threads" on public.chat_threads;
 create policy "private write chat_threads" on public.chat_threads for insert to authenticated
@@ -810,8 +810,8 @@ using (owner_user_id = (select auth.uid()) and exists (select 1 from public.town
 
 
 drop policy if exists "private read chat_messages" on public.chat_messages;
-create policy "private read chat_messages" on public.chat_messages for select to authenticated
-using (owner_user_id = (select auth.uid()) and exists (select 1 from public.town_memberships where town_id = tenant_id and user_id = (select auth.uid())));
+create policy "public read chat_messages" on public.chat_messages for select
+using (true);
 
 drop policy if exists "private write chat_messages" on public.chat_messages;
 create policy "private write chat_messages" on public.chat_messages for insert to authenticated
@@ -873,8 +873,8 @@ using ((select auth.uid()) is not null and id = (select auth.uid()))
 with check ((select auth.uid()) is not null and id = (select auth.uid()) and visibility = 'private');
 
 drop policy if exists "authenticated read public organizations" on public.organizations;
-create policy "authenticated read public organizations" on public.organizations for select to authenticated
-using (visibility = 'public' and (select private.is_town_member(tenant_id)));
+create policy "public read public organizations" on public.organizations for select
+using (visibility = 'public');
 
 drop policy if exists "members read own organizations" on public.organizations;
 create policy "members read own organizations" on public.organizations for select to authenticated
@@ -910,6 +910,7 @@ alter table public.user_platform_roles enable row level security;
 revoke all on table public.user_platform_roles from anon, authenticated;
 grant select on table public.user_platform_roles to authenticated;
 
+drop policy if exists "llig el propi rol" on public.user_platform_roles;
 create policy "llig el propi rol" on public.user_platform_roles for select to authenticated
 using (user_id = (select auth.uid()));
 
@@ -917,12 +918,14 @@ alter table public.organization_claims enable row level security;
 revoke all on table public.organization_claims from anon, authenticated;
 grant select on table public.organization_claims to authenticated;
 
+drop policy if exists "llig les propies reclamacions" on public.organization_claims;
 create policy "llig les propies reclamacions" on public.organization_claims
 for select to authenticated
 using (user_id = (select auth.uid()) or (select private.es_superadmin()));
 
 grant update (name, lema, description, visibility) on table public.organizations to authenticated;
 
+drop policy if exists "gestores actualitzen l'organització" on public.organizations;
 create policy "gestores actualitzen l'organització" on public.organizations
 for update to authenticated
 using       ((select private.can_manage_organization(id)))

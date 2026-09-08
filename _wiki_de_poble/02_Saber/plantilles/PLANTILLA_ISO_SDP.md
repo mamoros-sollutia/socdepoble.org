@@ -166,6 +166,7 @@ La skill ha de retornar:
 - No Tailwind al Core.
 - No tocar dades personals sense base legal.
 - Si hi ha risc de destrucció, activa SDP-LOCK.
+- PROHIBICIÓ ESTRICTA DE CERCA WEB: Ets en un entorn aïllat (air-gapped). Tens prohibit malbaratar tokens cercant termes a internet (ex: noms de fitxers, 'oauthRelay.js', conceptes propis o 'Pedra Seca'). Tota la informació està en el bundle adjunt. Llig-lo i no el busques fora.
 
 ## Sinapsis
 
