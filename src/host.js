@@ -111,7 +111,7 @@ export const CONTRACTE_BACKEND = Object.freeze([
   'getCurrentUser',
   'getBackendConfigurat',
   'getRuntimeDataMode',
-  'normalizeDataMode',
+
   'getDefaultUserId',
 
   /* Xat v2 i Pont amb Notes (260908).

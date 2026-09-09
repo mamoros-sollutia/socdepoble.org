@@ -4,6 +4,18 @@ import { sanitizeHtml } from '../../utils/sanitize';
 
 import { useUIActions } from '../../app/contexts/UIContext';
 
+function formatDate(dStr) {
+  if (!dStr) return '';
+  const d = new Date(dStr);
+  return d.toLocaleDateString('ca-ES', { day: '2-digit', month: '2-digit', year: '2-digit' });
+}
+
+function formatTime(dStr) {
+  if (!dStr) return '';
+  const d = new Date(dStr);
+  return d.toLocaleTimeString('ca-ES', { hour: '2-digit', minute: '2-digit' });
+}
+
 export default function TextSection({ page, pageKey }) {
   const { t } = useUIActions();
   return (
@@ -19,17 +31,13 @@ export default function TextSection({ page, pageKey }) {
         { text: t?.('section.text.page', 'Pàgina') || 'Pàgina', className: 'sdp-badge-category' }
       ]}
       copyright="© Sóc de Poble / Fet per la IAIA i Nano Banana"
-      time="22:28"
-      date="20/08/26"
-      dateTime="2026-08-20T22:28:00+02:00"
+      time={formatTime(page.date)}
+      date={formatDate(page.date)}
+      dateTime={page.date || ''}
       chrome="context"
       topBarData={{ showPin: false }}
     >
-      {/* eslint-disable-next-line */}
-      <div className="sdp-grid sdp-text-content" style={{ padding: 'var(--sdp-space-6) var(--sdp-space-4)' }}>
-
-        <article dangerouslySetInnerHTML={{ __html: sanitizeHtml(page.html) }} />
-      </div>
+      <article className="cms-preview" dangerouslySetInnerHTML={{ __html: sanitizeHtml(page.html) }} />
     </UniversalPage>
   );
 }

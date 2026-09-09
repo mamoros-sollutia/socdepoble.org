@@ -2,11 +2,12 @@ import { useNotes } from './NotesContext';
 import { useAppGrid } from '../../components/layout/AppGridShell';
 import { Search, NotebookPen } from 'lucide-react';
 import AppGridColumn from '../../components/layout/AppGridColumn';
+import { showToast } from '../../components/universal/AvisadorEfimer.jsx';
 
 export default function NotesList() {
   const { 
     filteredNotes, activeNote, setActiveNoteId,
-    colNotesCollapsed, setColNotesCollapsed
+    colNotesCollapsed, setColNotesCollapsed, creaNota
   } = useNotes();
   const { mida, tancaPanells } = useAppGrid();
 
@@ -21,7 +22,7 @@ export default function NotesList() {
         />
         <div className="notes-column__body notes-list-container sdp-p-0">
           <div className="notes-list-actions sdp-justify-center">
-            <button type="button" className="btn-icon" title="Cercar">
+            <button type="button" className="btn-icon" title="Cercar" onClick={() => showToast('La cerca avançada arribarà prompte', 'info')}>
               <Search size={20} />
             </button>
           </div>
@@ -41,11 +42,23 @@ export default function NotesList() {
       <div className="notes-column__body notes-list-container">
         <div className="notes-list-actions">
           <div className="notes-actions-left">
-            <button type="button" className="btn-icon" title="Cercar">
+            <button type="button" className="btn-icon" title="Cercar" onClick={() => showToast('La cerca avançada arribarà prompte', 'info')}>
               <Search size={20} />
             </button>
           </div>
-          <button type="button" className="btn-create">
+          <button 
+            type="button" 
+            className="btn-create" 
+            onClick={async () => {
+              try {
+                const nova = await creaNota({ title: 'Nova Nota', content: '' });
+                setActiveNoteId(nova.id);
+                tancaPanells();
+              } catch (e) {
+                showToast('Error al crear la nota', 'error');
+              }
+            }}
+          >
             CREAR NOTA
           </button>
         </div>

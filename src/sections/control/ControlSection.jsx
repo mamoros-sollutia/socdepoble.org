@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { User, Cpu, Network, Receipt, FileText, Store, Calendar, MapPin, MessageSquare, Shield, LogOut } from 'lucide-react';
+import { User, Cpu, Network, Receipt, FileText, Store, Calendar, MapPin, MessageSquare, Shield, LogOut, Car } from 'lucide-react';
 import { UniversalPage, UniversalCard, UniversalIndicatorCard, UniversalButton } from '../../components/universal/UniversalComponents';
 import { resolveAsset } from '../../config/assetResolver';
 import { useUIActions } from '../../app/contexts/UIContext';
@@ -39,7 +39,7 @@ export default function ControlSection() {
         {/* Accions Principals - Quadres de Comandament */}
         <section>
           
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: 'var(--sdp-space-4)' }}>
+          <div className="sdp-card-grid">
             <UniversalIndicatorCard 
               icon={<FileText size={40} strokeWidth={1.5} />}
               title="Publicar al Mur"
@@ -65,6 +65,13 @@ export default function ControlSection() {
               icon={<MapPin size={40} strokeWidth={1.5} />}
               title="Publicar al Mapa"
               subtitle="Veure rutes"
+              onClick={() => navigate('/notes')}
+              iconColor="var(--sdp-accent)"
+            />
+            <UniversalIndicatorCard 
+              icon={<Car size={40} strokeWidth={1.5} />}
+              title="Compartir vehicle"
+              subtitle="Oferir o demanar viatge"
               onClick={() => navigate('/notes')}
               iconColor="var(--sdp-accent)"
             />

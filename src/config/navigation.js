@@ -1,4 +1,4 @@
-import { CHAT_THREADS, EVENTS, FEED_POSTS, MARKET_ITEMS, MEDIA_ITEMS, NOTES, TOWNS } from '../data/sectionContent.js';
+import { EVENTS, FEED_POSTS, MARKET_ITEMS, MEDIA_ITEMS, NOTES, TOWNS } from '../data/sectionContent.js';
 
 const SECTION_ITEMS = {
   mur: FEED_POSTS,
@@ -7,7 +7,6 @@ const SECTION_ITEMS = {
   pobles: TOWNS,
   multimedia: MEDIA_ITEMS,
   notes: NOTES,
-  xat: CHAT_THREADS
 };
 
 const SECTION_ITEM_LOOKUPS = Object.fromEntries(

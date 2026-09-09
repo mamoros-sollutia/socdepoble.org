@@ -1,5 +1,4 @@
 import { AGENT_LIST } from '../sections/profile/profileContent.js';
-import { CHAT_MESSAGES, CHAT_THREADS } from '../sections/xat/chatContent.js';
 import { EVENTS } from '../sections/mur/eventsContent.js';
 import { MARKET_ITEMS } from '../sections/mercat/marketContent.js';
 import { MEDIA_ITEMS } from '../sections/multimedia/mediaContent.js';
@@ -10,8 +9,6 @@ import { PAGE_COPY } from '../sections/text/pageContent.js';
 
 export {
   AGENT_LIST,
-  CHAT_MESSAGES,
-  CHAT_THREADS,
   EVENTS,
   FEED_POSTS,
   MARKET_ITEMS,
@@ -24,7 +21,6 @@ export {
 
 export const GLOBAL_SEARCH_ITEMS = [
   ...AGENT_LIST,
-  ...CHAT_THREADS,
   ...FEED_POSTS,
   ...MARKET_ITEMS,
   ...EVENTS,

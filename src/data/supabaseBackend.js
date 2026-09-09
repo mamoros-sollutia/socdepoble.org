@@ -1,4 +1,4 @@
-import { APP_SEED, APP_SEED_VERSION, CHAT_THREADS, getDefaultUserId } from './appSeed.js';
+import { APP_SEED, APP_SEED_VERSION, getDefaultUserId } from './appSeed.js';
 /* Només queda `getEfimer`: tota l'escriptura i l'esborrat de la sessió han
    passat a identitat.js. Deixar els altres quatre importats faria botar
    `no-unused-vars` a `npm run lint`. */
@@ -9,7 +9,7 @@ import { mergeById, mapSectionSubmissionToItem } from './mapejadorSeccions.js';
 
 
 
-const DATA_SYNC_CHANNEL_NAME = 'socdepoble-data-sync-v1';
+
 
 function generateUUID() {
   if (typeof crypto !== 'undefined' && crypto.randomUUID) {
@@ -175,7 +175,6 @@ function mapContentRowsToData(rows) {
   return {
     ownerUserId: getDefaultUserId(),
     agents: lookup.get('agents') || [],
-    chatThreads: CHAT_THREADS,
     feedPosts: lookup.get('feedPosts') || [],
     marketItems: lookup.get('marketItems') || [],
     events: lookup.get('events') || [],
@@ -211,8 +210,8 @@ async function buildSeedAppData(ownerUserId = getDefaultUserId()) {
   return {
     ownerUserId,
     agents: APP_SEED.agents,
-    chatThreads: APP_SEED.chatThreads,
-    chatMessages: APP_SEED.chatMessages.filter((message) => message.ownerUserId === ownerUserId),
+    chatThreads: APP_SEED.chatThreads || [],
+    chatMessages: (APP_SEED.chatMessages || []).filter((message) => message.ownerUserId === ownerUserId),
     feedPosts: APP_SEED.feedPosts,
     marketItems: APP_SEED.marketItems,
     events: APP_SEED.events,
@@ -272,10 +271,8 @@ function mergeChatMessages(primary = [], secondary = []) {
 async function loadStructuredSupabaseData(config, ownerUserId) {
   const safeOwnerId = ownerUserId || getDefaultUserId();
   const { tenantId } = getResolvedConfig(config);
-  const [contentRows, chatThreads, chatMessages, sectionSubmissionsResponse, notesResponse] = await Promise.all([
+  const [contentRows, sectionSubmissionsResponse, notesResponse] = await Promise.all([
     request(`/rest/v1/app_content?select=key,payload,version&tenant_id=eq.${encodeURIComponent(tenantId)}`, config, { signal: config.signal }),
-    request(`/rest/v1/chat_threads?select=id,payload&tenant_id=eq.${encodeURIComponent(tenantId)}&limit=50`, config, { signal: config.signal }),
-    request(`/rest/v1/chat_messages?select=id,owner_user_id,thread_id,message_id,text,sender,time_label,created_at&tenant_id=eq.${encodeURIComponent(tenantId)}&owner_user_id=eq.${encodeURIComponent(safeOwnerId)}&order=created_at.desc&limit=50`, config, { signal: config.signal }),
     requestMaybe(`/rest/v1/section_submissions?select=*&tenant_id=eq.${encodeURIComponent(tenantId)}&order=created_at.desc&limit=50`, config, { signal: config.signal }),
     requestMaybe(`/rest/v1/notes?select=*&tenant_id=eq.${encodeURIComponent(tenantId)}&owner_user_id=eq.${encodeURIComponent(safeOwnerId)}&order=updated_at.desc&limit=50`, config, { signal: config.signal })
   ]);
@@ -283,11 +280,6 @@ async function loadStructuredSupabaseData(config, ownerUserId) {
   if (!Array.isArray(contentRows) || contentRows.length === 0) {
     throw new Error('La BD remota està buida. Executa supabase/schema.sql i supabase/seed.sql.');
   }
-
-  if (!Array.isArray(chatThreads) || chatThreads.length === 0) {
-    throw new Error('Falten fils de xat en la BD remota. Executa supabase/seed.sql.');
-  }
-
   const sectionSubmissions = Array.isArray(sectionSubmissionsResponse?.data) ? sectionSubmissionsResponse.data : [];
   const baseData = mapContentRowsToData(contentRows || []);
 
@@ -325,7 +317,6 @@ async function loadStructuredSupabaseData(config, ownerUserId) {
     events: mergedEvents,
     mediaItems: mergedMediaItems,
     notes: mergedNotes,
-    chatThreads: (chatThreads || []).map((thread) => ({ id: thread.id, ...thread.payload })),
     chatMessages: mergeChatMessages(
       (chatMessages || []).map((message) => ({
       id: message.id,
@@ -497,7 +488,7 @@ export async function updateNote(id, updates, expectedRevision, config = {}) {
 }
 
 export {
-  DATA_SYNC_CHANNEL_NAME,
+
   getDefaultUserId,
 };
 
@@ -511,9 +502,7 @@ export function getRuntimeDataMode(config = {}) {
   return getResolvedConfig(config).runtimeDataMode;
 }
 
-export function normalizeDataMode(config = {}) {
-  return getResolvedConfig(config).runtimeDataMode;
-}
+
 
 export function getResolvedConfig(config = {}) {
   const supabaseUrl = config.supabaseUrl || '';
@@ -791,7 +780,7 @@ export async function createNote(note, config = {}) {
     id,
     tenant_id: tenantId,
     owner_user_id: user.id,
-    folder_id: note.folderId || 'general',
+    folder_id: note.folderId || 'f-notes',
     title: note.title || '',
     content: note.content || ''
   };

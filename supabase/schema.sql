@@ -42,38 +42,6 @@ create table if not exists public.app_content (
 
 -- ==============================================================================
 -- 🪦 LÀPIDA: ANTIC XAT (Fase d'Extinció)
--- Aquestes taules (chat_threads i chat_messages) ja no s'utilitzen al frontend.
--- Han estat substituïdes per xat_fils, xat_participants, xat_missatges i xat_lectures.
--- Es mantenen temporalment per retrocompatibilitat amb els seed existents.
--- ==============================================================================
-create table if not exists public.chat_threads (
-  id text not null,
-  tenant_id uuid not null references public.towns(id) on delete cascade,
-  owner_user_id uuid not null,
-  payload jsonb not null,
-  updated_at timestamptz not null default now(),
-  primary key (tenant_id, id)
-);
-
-create table if not exists public.chat_messages (
-  id text not null,
-  tenant_id uuid not null references public.towns(id) on delete cascade,
-  owner_user_id uuid not null,
-  thread_id text not null,
-  message_id text not null,
-  text text not null,
-  sender text not null,
-  time_label text,
-  created_at timestamptz not null default now(),
-  primary key (tenant_id, id),
-  foreign key (tenant_id, thread_id) references public.chat_threads(tenant_id, id) on delete cascade
-);
-
-create unique index if not exists idx_chat_messages_owner_thread_message
-  on public.chat_messages(tenant_id, owner_user_id, thread_id, message_id);
-
-create index if not exists idx_chat_messages_owner_thread
-  on public.chat_messages(tenant_id, owner_user_id, thread_id, created_at);
 
 create table if not exists public.section_submissions (
   id uuid primary key default gen_random_uuid(),
@@ -90,8 +58,6 @@ create index if not exists idx_section_submissions_tenant_section_created
   on public.section_submissions(tenant_id, section_id, created_at desc);
 
 create index if not exists idx_app_content_tenant on public.app_content(tenant_id, key);
-create index if not exists idx_chat_threads_tenant on public.chat_threads(tenant_id, owner_user_id);
-create index if not exists idx_chat_messages_tenant on public.chat_messages(tenant_id, thread_id);
 
 create table if not exists public.profiles (
   id uuid primary key references auth.users(id) on delete cascade,
@@ -750,8 +716,6 @@ grant select on table public.organization_directory to anon, authenticated;
 alter table public.towns enable row level security;
 alter table public.town_memberships enable row level security;
 alter table public.app_content enable row level security;
-alter table public.chat_threads enable row level security;
-alter table public.chat_messages enable row level security;
 alter table public.section_submissions enable row level security;
 alter table public.profiles enable row level security;
 alter table public.organizations enable row level security;

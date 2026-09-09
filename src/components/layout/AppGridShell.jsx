@@ -68,7 +68,7 @@ export default function AppGridShell({
         <style data-appgrid-styles>{appGridStyles}</style>
         {children}
         
-        <article className="app-grid-shell" data-layout={mida} aria-label={ariaLabel}>
+        <article className="app-grid-shell" data-layout={mida} data-panell={panellObert || ''} aria-label={ariaLabel}>
           {mida !== 'ample' && (
             <div className="app-grid-headers">
               <button 

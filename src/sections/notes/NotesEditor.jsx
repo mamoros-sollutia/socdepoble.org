@@ -9,57 +9,9 @@ import { sanitizeHtml } from '../../utils/sanitize.js';
 
 export default function NotesEditor() {
   const { activeNote, saveNoteField, setLocalNoteField, noteFolders, t } = useNotes();
-  const [isEditingImage, setIsEditingImage] = useState(false);
-  const [isEditingLogo, setIsEditingLogo] = useState(false);
   const timeoutRef = useRef(null);
   const pendingSaveRef = useRef({ id: null, content: null });
   const currentNoteRef = useRef({ id: null, title: '', subtitle: '', lead: '' });
-  const fileInputRef = useRef(null);
-  const logoInputRef = useRef(null);
-
-  const LIMIT_HERO = 512 * 1024;
-
-  const triaImatge = (e) => {
-    const fitxer = e.target.files?.[0];
-    e.target.value = '';
-    if (!fitxer) return;
-    if (!fitxer.type.startsWith('image/')) return alert('Només imatges, de moment.');
-    if (fitxer.size > LIMIT_HERO) return alert('La imatge passa de 512 KB. Redueix-la abans.');
-    const lector = new FileReader();
-    lector.onload = () => { 
-      saveNoteField(activeNote.id, 'heroImage', String(lector.result)); 
-      setIsEditingImage(false); 
-    };
-    lector.onerror = () => alert("No s'ha pogut llegir el fitxer.");
-    lector.readAsDataURL(fitxer);
-  };
-
-  const triaLogo = (e) => {
-    const fitxer = e.target.files?.[0];
-    e.target.value = '';
-    if (!fitxer) return;
-    if (!fitxer.type.startsWith('image/')) return alert('Només imatges, de moment.');
-    if (fitxer.size > LIMIT_HERO) return alert('La imatge passa de 512 KB. Redueix-la abans.');
-    const lector = new FileReader();
-    lector.onload = () => { 
-      saveNoteField(activeNote.id, 'logoImage', String(lector.result)); 
-      setIsEditingLogo(false); 
-    };
-    lector.onerror = () => alert("No s'ha pogut llegir el fitxer.");
-    lector.readAsDataURL(fitxer);
-  };
-
-  const handleDeleteHero = () => {
-    if (!window.confirm('Esborrar definitivament la imatge de capçalera?')) return;
-    saveNoteField(activeNote.id, 'heroImage', ''); 
-    setIsEditingImage(false);
-  };
-
-  const handleDeleteLogo = () => {
-    if (!window.confirm('Esborrar definitivament el logotip?')) return;
-    saveNoteField(activeNote.id, 'logoImage', ''); 
-    setIsEditingLogo(false);
-  };
 
   if (currentNoteRef.current.id !== activeNote?.id) {
     currentNoteRef.current = {
@@ -113,15 +65,9 @@ export default function NotesEditor() {
     };
   }, [activeNote?.id]);
 
-  // Reset image editing state when switching notes
-  useEffect(() => {
-    setIsEditingImage(false);
-    setIsEditingLogo(false);
-  }, [activeNote?.id]);
-
   if (!activeNote) {
     return (
-      <section className="notes-column notes-column--editor">
+      <section className="editor-shell--main">
         <div className="chat-empty">
           <FileText size={64} />
           <h2 className="section-title">{t('section.notes.open', 'Obre un solc')}</h2>

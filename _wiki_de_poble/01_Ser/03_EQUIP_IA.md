@@ -47,7 +47,7 @@ L'equip d'IAs està rigorosament definit i governat tècnicament pel fitxer cent
 
 - **[Kimi](https://kimi.ai)** (Xina): Context de milions de tòkens; devora PDFs de subvencions senceres. **Rol:** Documents llargs i subvencions. *(Debilitat: Generació de codi menys precisa que els models especialitzats).*
 
-- **[Claude](https://claude.ai/)** (EUA): Narrativa, empatia, valencià natural i comprensió del to exacte de Sóc de Poble. **Rol:** Seient Núm. 5 · Auditor sènior i estil. *(Debilitat: Més estricta amb els filtres de seguretat).*
+- **[Claude](https://claude.ai/)** (EUA): Narrativa, empatia, valencià natural i comprensió del to exacte de Sóc de Poble. **Rol:** Seient Núm. 5 · Auditor sènior i estil. *(Debilitat: Més estricta amb els filtres de seguretat. **Atenció al consum:** Consumeix saldo ràpidament de la recàrrega de crèdits en auditories llargues; cal vigilar el pressupost).*
 
 - **[Perplexity](https://www.perplexity.ai/)** (EUA): Cerca web en temps real amb citacions de fonts reals; contrasta fets. **Rol:** Verificació de fets. *(Debilitat: No serveix per a tasques creatives ni programació complexa).*
 
@@ -59,7 +59,7 @@ L'equip d'IAs està rigorosament definit i governat tècnicament pel fitxer cent
 
 - **[Copilot](https://copilot.microsoft.com/)** (EUA): Suggeriment ràpid de codi i integració profunda amb GitHub. **Rol:** Autocompletat a la trinxera. *(Debilitat: Actua a curt termini; no serveix per a decisions d'arquitectura global).*
 
-- **[ChatGPT Codex](https://chatgpt.com/)** (EUA): Versatilitat absoluta; segona opinió fiable per a tasques generals. **Rol:** Segona opinió generalista. *(Debilitat: Peca de respostes genèriques si no se li aplica un prompt dur).*
+- **[ChatGPT Codex](https://chatgpt.com/)** (EUA): Versatilitat absoluta; segona opinió fiable per a tasques generals. **Rol:** Segona opinió generalista. *(Debilitat: Límit d'ús molt estricte. Si s'esgota la quota de Codex/Astra Medio, avisa'm per canviar al model "Astra Ligero").*
 
 ## Quan convocar les Petorretes
 Una Petorreta és una revisió externa o paral·lela amb una pregunta concreta, un rol delimitat i criteris d’acceptació. El Consell és una tècnica per reduir punts cecs.

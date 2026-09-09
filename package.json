@@ -69,7 +69,8 @@
     "pdf:render": "sh tooling/pdf/render_pdf.sh",
     "test": "vitest",
     "lint": "eslint src tooling scripts",
-    "porta:llavor": "node tooling/gates/tractor-llavor.mjs"
+    "porta:llavor": "node tooling/gates/tractor-llavor.mjs",
+    "porta:58px": "node tooling/gates/01_porta_pedra_seca_58px.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.112.4",
@@ -77,7 +78,6 @@
     "@tiptap/starter-kit": "^3.31.0",
     "dompurify": "^3.4.14",
     "lucide-react": "^1.35.0",
-    "postcss-prefix-selector": "^2.1.1",
     "preact": "^10.29.8",
     "react": ">=18.0.0",
     "react-dom": ">=18.0.0",

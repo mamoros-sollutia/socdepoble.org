@@ -70,10 +70,8 @@ const DIRECTORIS = [
   'supabase',
 ];
 
-/** Fitxers solts obligatoris. Si un falta, s'avorta (skill abocament-total, regla 4). */
 const FITXERS_OBLIGATORIS = [
   'package.json',
-  'package-lock.json',
   'vite.config.js',
   'eslint.config.js',
   'index.html',
@@ -168,7 +166,17 @@ const valor = (n) => {
 };
 const SEC = flag('sec');
 const SENSE_VERIFICAR = flag('sense-verificar');
+const PERFIL_COMPLET = valor('perfil') === 'complet';
 const positius = ARGS.filter((a) => !a.startsWith('--'));
+
+/** Fitxers exclosos explícitament (històrics o sensibles) llevat que es demane --perfil=complet */
+const FITXERS_PROHIBITS = PERFIL_COMPLET ? new Set() : new Set([
+  'package-lock.json',
+  'all_ai_responses.md',
+  'perfil_psiquiatric.md',
+  'Soci_Sollutia.md',
+  'DOC_Logos_Oficials.md'
+]);
 
 /* ═══════════════════════ Recol·lecció ═══════════════════════ */
 
@@ -188,7 +196,8 @@ function camina(absDir, acc) {
     if (e.isSymbolicLink()) continue; // un bundle no seguix enllaços: podria eixir del repo
     if (e.isDirectory()) { camina(complet, acc); continue; }
     if (!EXTENSIONS.has(path.extname(e.name))) continue;
-    if (e.name.includes('BUNDLE')) continue; // Mai s'aboca un abocament
+    if (e.name.includes('BUNDLE') || e.name.includes('MANIFEST_')) continue; // Mai s'aboca un abocament
+    if (FITXERS_PROHIBITS.has(e.name)) continue;
     acc.push(complet);
   }
   return acc;
@@ -204,6 +213,7 @@ function recull() {
     camina(abs, camins);
   }
   for (const f of FITXERS_OBLIGATORIS) {
+    if (FITXERS_PROHIBITS.has(f) || FITXERS_PROHIBITS.has(path.basename(f))) continue;
     const abs = R(f);
     if (!fs.existsSync(abs)) { absents.push({ cami: f, tipus: 'fitxer', critic: true }); continue; }
     camins.push(abs);
@@ -289,7 +299,12 @@ function construeix({ entrades, absents }, meta) {
     },
     totals: { fitxers: entrades.length, bytes: totalBytes },
     absents_no_critics: absents.filter((a) => !a.critic).map((a) => a.cami),
-    fitxers: entrades.map(({ ruta, bytes, linies, sha256, nl_final, is_base64 }) => ({ ruta, bytes, linies, sha256, nl_final, is_base64 })),
+    fitxers: entrades.map(({ ruta, bytes, linies, sha256, nl_final, is_base64 }) => {
+      const f = { ruta, bytes, linies, sha256 };
+      if (!nl_final) f.nl_final = false;
+      if (is_base64) f.is_base64 = true;
+      return f;
+    }),
   };
 
   const l = [];
@@ -315,7 +330,7 @@ function construeix({ entrades, absents }, meta) {
   l.push('que sabeu exactament què **no** esteu veient.');
   l.push('');
   l.push('```json');
-  l.push(JSON.stringify(manifest, null, 1));
+  l.push(JSON.stringify(manifest)); // Minificat com demanava Vibe i Dola
   l.push('```');
   l.push('');
 
@@ -331,8 +346,6 @@ function construeix({ entrades, absents }, meta) {
   for (const e of entrades) {
     const t = tanca(e.text);
     l.push(`## Fitxer: ${e.ruta}`);
-    l.push('');
-    l.push(`<!-- sha256:${e.sha256} bytes:${e.bytes}${e.is_base64 ? ' encoding:base64' : ''} -->`);
     l.push('');
     // Emissió verbatim. La tanca de tancament necessita un salt davant, per
     // això s'afig quan el fitxer no n'acaba amb cap; `nl_final` ho recorda.
@@ -378,8 +391,9 @@ function verifica(text, manifest) {
     if (!cos.has(f.ruta)) { inf.push(`V1 · al manifest però absent del cos: ${f.ruta}`); continue; }
     // Reconstrucció exacta: el bloc capturat sempre ha perdut el salt que
     // precedix la tanca de tancament, i `nl_final` diu si tornar-l'hi a posar.
-    const isBase64 = f.is_base64;
-    const reconstruit = cos.get(f.ruta) + (f.nl_final ? '\n' : '');
+    const nl_final = f.nl_final !== false;
+    const isBase64 = f.is_base64 === true;
+    const reconstruit = cos.get(f.ruta) + (nl_final ? '\n' : '');
     const buf = isBase64 ? Buffer.from(reconstruit.trim(), 'base64') : Buffer.from(reconstruit, 'utf8');
     if (sha(buf) !== f.sha256) {
       inf.push(`V3 · suma no quadra: ${f.ruta}`);
@@ -487,26 +501,17 @@ function principal() {
 
   fs.mkdirSync(path.dirname(nomBundle), { recursive: true });
   const tmp = `${nomBundle}.tmp`;
-  // bypass: escriptura directa (no usa canonada.mjs) per fer el bundle atòmic.
-  // const _bypassCanonada = "no es fa servir canonada.mjs";
   fs.writeFileSync(tmp, text.normalize('NFC'), 'utf8');
   fs.renameSync(tmp, nomBundle); // escriptura atòmica: mai un bundle a mitges
 
   const baseDir = path.dirname(nomBundle);
-  const manifestFile = path.join(baseDir, `${meta.prefix}_MANIFEST_${sufix}.json`);
   const absentsFile = path.join(baseDir, `${meta.prefix}_ABSENTS_${sufix}.json`);
-  
-  const manifestTmp = manifestFile + '.tmp';
   const absentsTmp = absentsFile + '.tmp';
-  
-  fs.writeFileSync(manifestTmp, JSON.stringify(manifest, null, 2).normalize('NFC'), 'utf8');
-  fs.renameSync(manifestTmp, manifestFile);
   
   fs.writeFileSync(absentsTmp, JSON.stringify({ absents_critics: critics, absents_no_critics: manifest.absents_no_critics }, null, 2).normalize('NFC'), 'utf8');
   fs.renameSync(absentsTmp, absentsFile);
 
   console.log(`\n✅ Bundle: ${rel(nomBundle)}`);
-  console.log(`✅ Manifest separat: ${rel(manifestFile)}`);
   console.log(`✅ Absents separat: ${rel(absentsFile)}`);
   
   if (promptContent) {

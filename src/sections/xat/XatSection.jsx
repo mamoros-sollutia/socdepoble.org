@@ -351,7 +351,7 @@ export default function XatSection() {
           ) : (
             <div className="xat-empty hidden-on-mobile" style={{ display: 'flex', flexDirection: 'column', height: '100%', width: '100%', overflowY: 'auto', overflowX: 'hidden' }}>
               {pageCopy?.['anima'] ? (
-                <TextSection page={pageCopy['anima']} pageKey="anima" />
+                <TextSection page={{...pageCopy['anima'], chrome: 'system'}} pageKey="anima" />
               ) : (
                 <div className="xat-empty-message">
                   <img src="/assets/system/ui/logo-socdepoble-rect-negre.svg" alt="Sóc de Poble" />

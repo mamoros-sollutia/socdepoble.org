@@ -59,7 +59,7 @@ export const logout = asseguraMetode('logout');
 export const getCurrentUser = asseguraMetode('getCurrentUser');
 export const getBackendConfigurat = asseguraMetode('getBackendConfigurat');
 export const getRuntimeDataMode = asseguraMetode('getRuntimeDataMode');
-export const normalizeDataMode = asseguraMetode('normalizeDataMode');
+
 
 // Nous mètodes per al Xat v2 i el pont amb Notes
 export const createNote = asseguraMetode('createNote');
@@ -69,3 +69,11 @@ export const enviaMissatge = asseguraMetode('enviaMissatge');
 export const marcaLlegit = asseguraMetode('marcaLlegit');
 export const creaFilDirecte = asseguraMetode('creaFilDirecte');
 export const carregaMembres = asseguraMetode('carregaMembres');
+
+// Freeze automàtic de seguretat després de 5 segons per evitar injeccions tardanes
+setTimeout(() => {
+  if (!isLocked) {
+    console.warn('[backendPort] ⚠️ Bloqueig automàtic de seguretat (5s timeout).');
+    freezeImplementation();
+  }
+}, 5000);

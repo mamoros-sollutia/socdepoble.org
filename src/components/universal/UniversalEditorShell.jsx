@@ -1,7 +1,7 @@
-import { useRef, useState } from 'react';
 import { Image as ImageIcon, Lock, Globe } from 'lucide-react';
 import { DateTimeControl, Dropdown, UniversalPage } from './UniversalComponents';
 import { sanitizeHtml } from '../../utils/sanitize.js';
+import useHeroImageHandler from '../../hooks/useHeroImageHandler.js';
 
 export default function UniversalEditorShell({
   children,
@@ -21,56 +21,11 @@ export default function UniversalEditorShell({
   labels = [],
   copyright = '© Sóc de Poble / Fet per la IAIA i Nano Banana',
 }) {
-  const [isEditingImage, setIsEditingImage] = useState(false);
-  const [isEditingLogo, setIsEditingLogo] = useState(false);
-  const fileInputRef = useRef(null);
-  const logoInputRef = useRef(null);
-  const LIMIT_HERO = 512 * 1024;
-
-  const triaImatge = (e) => {
-    const fitxer = e.target.files?.[0];
-    e.target.value = '';
-    if (!fitxer) return;
-    if (!fitxer.type.startsWith('image/')) return alert('Només imatges, de moment.');
-    if (fitxer.size > LIMIT_HERO) return alert('La imatge passa de 512 KB. Redueix-la abans.');
-    const lector = new FileReader();
-    lector.onload = () => { 
-      onSaveField?.('heroImage', String(lector.result)); 
-      setIsEditingImage(false); 
-    };
-    lector.onerror = () => alert("No s'ha pogut llegir el fitxer.");
-    lector.readAsDataURL(fitxer);
-  };
-
-  const triaLogo = (e) => {
-    const fitxer = e.target.files?.[0];
-    e.target.value = '';
-    if (!fitxer) return;
-    if (!fitxer.type.startsWith('image/')) return alert('Només imatges, de moment.');
-    if (fitxer.size > LIMIT_HERO) return alert('La imatge passa de 512 KB. Redueix-la abans.');
-    const lector = new FileReader();
-    lector.onload = () => { 
-      onSaveField?.('logoImage', String(lector.result)); 
-      setIsEditingLogo(false); 
-    };
-    lector.onerror = () => alert("No s'ha pogut llegir el fitxer.");
-    lector.readAsDataURL(fitxer);
-  };
-
-  const handleDeleteHero = () => {
-    if (!window.confirm('Esborrar definitivament la imatge de capçalera?')) return;
-    onSaveField?.('heroImage', ''); 
-    setIsEditingImage(false);
-  };
-
-  const handleDeleteLogo = () => {
-    if (!window.confirm('Esborrar definitivament el logotip?')) return;
-    onSaveField?.('logoImage', ''); 
-    setIsEditingLogo(false);
-  };
+  const heroHandler = useHeroImageHandler({ onSaveField, fieldName: 'heroImage' });
+  const logoHandler = useHeroImageHandler({ onSaveField, fieldName: 'logoImage' });
 
   return (
-    <section className={`notes-column notes-column--editor ${className}`}>
+    <section className={`editor-shell--main ${className}`}>
       {topBar}
       <div className="editor-scroll-area">
         <UniversalPage 
@@ -79,52 +34,52 @@ export default function UniversalEditorShell({
           variant="embed"
           showLogos={!heroImage}
           topBarData={{
-            logoComponent: (logoImage && !isEditingLogo) ? (
+            logoComponent: (logoImage && !logoHandler.isEditing) ? (
               <img 
                 src={logoImage} 
                 alt="Logotip" 
                 className="page-title-logo hero-editable" 
-                onClick={() => setIsEditingLogo(true)}
+                onClick={logoHandler.startEdit}
                 title="Clica per canviar el logotip"
               />
             ) : (
               <div className="hero-accions logo-accions" style={{marginBottom: 20}}>
-                <input type="file" accept="image/*" ref={logoInputRef} onChange={triaLogo} className="sdp-ocult" style={{display: 'none'}} />
-                <button type="button" className="pill hero-accions__inserir" onClick={() => logoInputRef.current?.click()}>
+                <input type="file" accept="image/*" ref={logoHandler.fileInputRef} onChange={logoHandler.handleFileChange} className="sdp-ocult" style={{display: 'none'}} />
+                <button type="button" className="pill hero-accions__inserir" onClick={() => logoHandler.fileInputRef.current?.click()}>
                   <ImageIcon size={16} /> Inserir Imatge (Logotip) o Multimèdia (600x600)
                 </button>
                 {logoImage && (
                   <div className="hero-accions__grup">
-                    <button type="button" className="pill hero-accions__cancelar" onClick={() => setIsEditingLogo(false)}>
+                    <button type="button" className="pill hero-accions__cancelar" onClick={logoHandler.cancelEdit}>
                       Tornar enrere
                     </button>
-                    <button type="button" className="pill hero-accions__esborrar" onClick={handleDeleteLogo}>
+                    <button type="button" className="pill hero-accions__esborrar" onClick={logoHandler.handleDelete}>
                       Esborrar contingut
                     </button>
                   </div>
                 )}
               </div>
             ),
-            heroComponent: (heroImage && !isEditingImage) ? (
+            heroComponent: (heroImage && !heroHandler.isEditing) ? (
               <img 
                 src={heroImage} 
                 alt="Capçalera" 
                 className="hero-editable" 
-                onClick={() => setIsEditingImage(true)}
+                onClick={heroHandler.startEdit}
                 title="Clica per canviar la imatge"
               />
             ) : (
               <div className="hero-accions">
-                <input type="file" accept="image/*" ref={fileInputRef} onChange={triaImatge} className="sdp-ocult" style={{display: 'none'}} />
-                <button type="button" className="pill hero-accions__inserir" onClick={() => fileInputRef.current?.click()}>
+                <input type="file" accept="image/*" ref={heroHandler.fileInputRef} onChange={heroHandler.handleFileChange} className="sdp-ocult" style={{display: 'none'}} />
+                <button type="button" className="pill hero-accions__inserir" onClick={() => heroHandler.fileInputRef.current?.click()}>
                   <ImageIcon size={16} /> Inserir Imatge o Multimèdia
                 </button>
                 {heroImage && (
                   <div className="hero-accions__grup">
-                    <button type="button" className="pill hero-accions__cancelar" onClick={() => setIsEditingImage(false)}>
+                    <button type="button" className="pill hero-accions__cancelar" onClick={heroHandler.cancelEdit}>
                       Tornar enrere
                     </button>
-                    <button type="button" className="pill hero-accions__esborrar" onClick={handleDeleteHero}>
+                    <button type="button" className="pill hero-accions__esborrar" onClick={heroHandler.handleDelete}>
                       Esborrar contingut
                     </button>
                   </div>

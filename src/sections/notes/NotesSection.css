@@ -11,7 +11,6 @@
   --notes-col-sidebar: 270px;
   --notes-col-list: 300px;
   --notes-col-collapsed: 56px;
-  --notes-header-height: 58px;
   background: var(--sdp-fons-app);
   --notes-bg-carpetes: var(--sdp-pedra-300); /* Calç 300 */
   --notes-bg-llista: var(--sdp-pedra-200);   /* Arena 200 */
@@ -60,14 +59,21 @@
   position: relative;
   z-index: 10;
 }
-.notes-page .notes-column--editor { flex: 1 1 0; background: var(--sdp-fons-app); }
-:root[data-theme="dark"] .notes-page .notes-column--editor,
-:host([data-theme="dark"]) .notes-page .notes-column--editor { background: var(--sdp-pedra-800); }
+.notes-page .editor-shell--main { 
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  flex: 1 1 0; 
+  background: var(--sdp-fons-app); 
+}
+:root[data-theme="dark"] .notes-page .editor-shell--main,
+:host([data-theme="dark"]) .notes-page .editor-shell--main { background: var(--sdp-pedra-800); }
 .notes-page .notes-column-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: var(--notes-header-height);
+  height: var(--sdp-alt-accio);
   padding: 0 var(--sdp-space-4);
   background: var(--sdp-pedra-800);
   color: var(--sdp-sobre-roca);
@@ -83,7 +89,7 @@
   align-items: center;
   justify-content: space-between;
   flex: none;
-  height: var(--notes-header-height);
+  height: var(--sdp-alt-accio);
   gap: var(--sdp-space-2);
   padding: 0 var(--sdp-space-4);
   background: var(--sdp-pedra-800);

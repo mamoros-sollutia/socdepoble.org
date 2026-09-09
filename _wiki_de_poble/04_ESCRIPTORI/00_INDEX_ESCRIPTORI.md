@@ -13,7 +13,8 @@ Ací només resideix la matèria viva. El que ha mort, descansa en l'arxiu.
 - [[00_INDEX_IDENTITAT]] (Nucli d'Identitat)
 - [[00_INDEX_Actes]] (Registre d'Actes)
 
-- [[260908_0939_ABSENTS_auditoria.json]]
-- [[260908_0939_BUNDLE_auditoria]]
-- [[260908_0939_MANIFEST_auditoria.json]]
-- [[260908_0939_PROMPT_auditoria]]
+- [[260909_2331_ACTA_MARMOTA_Tancament]]
+- [[260909_2338_ABSENTS_auditoria.json]]
+- [[260909_2338_BUNDLE_auditoria]]
+- [[260909_2338_PROMPT_auditoria]]
+- [[260909_2357_estrategia_limits]]

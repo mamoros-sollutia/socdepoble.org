@@ -1,5 +1,5 @@
 import { useSearchParams } from 'react-router-dom';
-import { createContext, useContext, useState, useMemo, useDeferredValue, useCallback, useEffect } from 'react';
+import { createContext, useContext, useState, useMemo, useDeferredValue, useCallback, useEffect, useRef } from 'react';
 import { updateNote } from '../../data/backendPort';
 import { showToast } from '../../components/universal/AvisadorEfimer.jsx';
 import { sanitizeHtml, netejaText, esFontImatgeSegura } from '../../utils/sanitize.js';
@@ -41,13 +41,15 @@ const NotesContext = createContext(null);
 export function NotesProvider({ children, notaInicialId = null }) {
   const { language, externalConfig } = useUIState();
   const { normalizeSearchText, t } = useUIActions();
-  const { noteFolders, notes: rawNotes } = useNotesData();
+  const { noteFolders, notes: rawNotes, creaNota } = useNotesData();
   const { sendSectionSubmission } = useMur();
   
+  const knownRevisions = useRef(new Map());
+
   const [activeFolderId, setActiveFolderId] = useState('f-tot');
   const [activeCategory, setActiveCategory] = useState(null);
   const [activeTag, setActiveTag] = useState(null);
-  const [searchParams] = useSearchParams();
+  // useSearchParams eliminat ja que no s'usa
   const [activeNoteId, setActiveNoteId] = useState(notaInicialId || 'n1');
   const [searchQuery, setSearchQuery] = useState('');
   const deferredSearchQuery = useDeferredValue(searchQuery);
@@ -147,11 +149,14 @@ export function NotesProvider({ children, notaInicialId = null }) {
     setLocalNoteField(noteId, field, netejat);
     
     const baseNote = rawNotes.find(n => n.id === noteId);
-    const expectedRevision = baseNote ? baseNote.revision : undefined;
+    const expectedRevision = knownRevisions.current.has(noteId) 
+      ? knownRevisions.current.get(noteId) 
+      : (baseNote ? baseNote.revision : undefined);
     
     try {
       const savedNote = await updateNote(noteId, { [field]: netejat }, expectedRevision, externalConfig);
       
+      knownRevisions.current.set(noteId, savedNote.revision);
       // En ACK netejem el dirtyField per a confirmar sincronització i guardem la revisió.
       setLocalNoteOverrides(prev => {
         const next = { ...prev };
@@ -172,7 +177,7 @@ export function NotesProvider({ children, notaInicialId = null }) {
     } catch (e) {
       console.warn("No s'ha pogut guardar la nota en remot:", e);
       if (e.status === 409) {
-        showToast('Error de concurrència: un altre dispositiu ha modificat la nota.', 'error');
+        showToast('Conflicte: la nota s\'ha actualitzat en un altre dispositiu.', 'error');
       } else {
         showToast('El canvi no ha arribat al servidor. Reintenta-ho.', 'error');
       }
@@ -224,7 +229,7 @@ export function NotesProvider({ children, notaInicialId = null }) {
       settingsOpen, setSettingsOpen,
       timerActive, setTimerActive,
       timerSeconds, setTimerSeconds,
-      saveNoteField, setLocalNoteField, publishNote,
+      saveNoteField, setLocalNoteField, publishNote, creaNota,
       t, noteFolders
     }}>
       {children}

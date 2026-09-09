@@ -13,7 +13,7 @@
   --app-grid-col-sidebar: 270px;
   --app-grid-col-list: 300px;
   --app-grid-col-collapsed: 56px;
-  --app-grid-header-height: calc(var(--sdp-alt-accio) + 1px);
+  --app-grid-header-height: var(--sdp-alt-accio);
   background: var(--sdp-fons-app);
   --app-grid-bg-esquerra: var(--sdp-pedra-300); /* Calç 300 */
   --app-grid-bg-centre: var(--sdp-pedra-200);   /* Arena 200 */
@@ -90,7 +90,7 @@
   z-index: 30;
   box-shadow: var(--sdp-ombra-3);
 }
-.app-grid-shell[data-layout="mitja"] .app-grid-headers:has(.app-grid-header-btn.active[aria-controls="app-grid-sidebar"]) ~ .app-grid-content .app-grid-column--left {
+.app-grid-shell[data-layout="mitja"][data-panell="left"] .app-grid-content .app-grid-column--left {
   transform: translateX(0);
 }
 
@@ -119,10 +119,10 @@
   transform: translateX(-100%); 
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
 }
-.app-grid-shell[data-layout="estret"] .app-grid-headers:has(.app-grid-header-btn.active[aria-controls="app-grid-sidebar"]) ~ .app-grid-content .app-grid-column--left {
+.app-grid-shell[data-layout="estret"][data-panell="left"] .app-grid-content .app-grid-column--left {
   transform: translateX(0);
 }
-.app-grid-shell[data-layout="estret"] .app-grid-headers:has(.app-grid-header-btn.active[aria-controls="app-grid-list"]) ~ .app-grid-content .app-grid-column--middle {
+.app-grid-shell[data-layout="estret"][data-panell="middle"] .app-grid-content .app-grid-column--middle {
   transform: translateX(0);
 }
 
@@ -166,7 +166,7 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--sdp-space-2);
-  min-height: 56px;
+  min-height: var(--sdp-alt-accio);
   padding: 0 var(--sdp-space-4);
   background: var(--sdp-pedra-800);
   color: var(--sdp-sobre-roca);

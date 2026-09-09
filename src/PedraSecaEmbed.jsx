@@ -66,15 +66,23 @@ class ErrorBoundary extends React.Component {
   }
 }
 
-export default function PedraSecaEmbed({ config }) {
+export default function PedraSecaEmbed({ config, themeMode, language }) {
   const RouterComponent = config.routerType === 'browser' ? BrowserRouter : 
                           config.routerType === 'memory' ? MemoryRouter : BrowserRouter;
   const routerProps = config.basename ? { basename: config.basename } : {};
 
+  const uiConfig = React.useMemo(() => {
+    return {
+      ...config,
+      ...(themeMode ? { themeMode } : {}),
+      ...(language ? { language } : {})
+    };
+  }, [config, themeMode, language]);
+
   return (
     <ErrorBoundary>
       <RouterComponent {...routerProps}>
-        <UIProvider externalConfig={config}>
+        <UIProvider externalConfig={uiConfig}>
           <SessionProvider>
             <IdentitatProvider>
               <App config={config} />
@@ -353,9 +361,6 @@ class SocDePobleElement extends BaseElement {
     }
     
     const rawConfig = sanejaConfig(configObject);
-    if (this._manualLanguage) {
-      rawConfig.language = this._manualLanguage;
-    }
     
     let canviat = false;
     if (!this._config || Object.keys(rawConfig).length !== Object.keys(this._config).length) {
@@ -385,7 +390,11 @@ class SocDePobleElement extends BaseElement {
   _render() {
     if (!this._root) return;
     this._root.render(
-      <PedraSecaEmbed config={this._config} />
+      <PedraSecaEmbed 
+        config={this._config} 
+        themeMode={this._manualTheme} 
+        language={this._manualLanguage}
+      />
     );
   }
 
@@ -405,7 +414,7 @@ class SocDePobleElement extends BaseElement {
   }
 
   setTheme(theme) {
-    this._config = { ...this._config, themeMode: theme };
+    this._manualTheme = theme;
     this.dataset.theme = resolveTheme(theme);
     this._pintaAmfitrio();
     this._render();
@@ -501,7 +510,6 @@ class SocDePobleElement extends BaseElement {
   
   setLanguage(lang) {
     this._manualLanguage = lang;
-    this._config = { ...this._config, language: lang };
     this._render();
   }
 

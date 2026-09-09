@@ -44,6 +44,7 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
+import { pathToFileURL } from 'node:url';
 import { arrelSegura, R, rel } from '../lib/arrel.mjs';
 
 const JSON_OUT = process.argv.includes('--json');
@@ -79,6 +80,16 @@ const EXCUSES = new Map([
 const PATRO_DEUTE = /['"`](\.[a-z0-9-]+-deute\.json)['"`]/gi;
 
 /* ═══════════════════════════ Lectura ═══════════════════════════ */
+
+/**
+ * Passos declarats pel runner. S'importen; no es parsegen. Si el fitxer no
+ * exporta res encara, la llista queda buida i les lleis C1/C4 ho diran.
+ */
+let PASSOS_RUNNER = [];
+try {
+  const mod = await import(pathToFileURL(R('tooling/gates/run-portes.mjs')).href);
+  if (Array.isArray(mod.passos)) PASSOS_RUNNER = mod.passos;
+} catch { /* runner absent o no importable: C1/C4 ho reportaran */ }
 
 const problemes = [];
 const avisos = [];
@@ -119,40 +130,28 @@ function expandix(nom, vist = new Set(), profunditat = 0) {
 
   const passos = [];
   
+  /**
+   * La cadena la declara `run-portes.mjs` i ací es LLIG IMPORTANT-LA, no
+   * llegint-ne el text amb una expressió regular.
+   *
+   * V7.1: fins ara açò buscava el literal `args: ['run', 'X']` dins d'un
+   * `const passos = [...]`. Qualsevol refactor del runner —canviar el nom de
+   * la variable, passar a `{ script: 'porta:X' }`, partir la línia en dues—
+   * deixava el parser sense trobar res i la cadena semblava buida. Un auditor
+   * que depén de com estan escrites les cometes del fitxer auditat no és un
+   * auditor. Ara `run-portes.mjs` exporta `passos` i és font única.
+   */
   if (cos.includes('run-portes.mjs')) {
-    const runPortesPath = path.join(ARREL, 'tooling/gates/run-portes.mjs');
-    if (fs.existsSync(runPortesPath)) {
-      const runPortesCos = fs.readFileSync(runPortesPath, 'utf8');
-      const arrayMatch = runPortesCos.match(/const passos = \[([\s\S]*?)\];/);
-      if (arrayMatch) {
-        const lines = arrayMatch[1].split('\n');
-        for (const line of lines) {
-          const npmRunMatch = line.match(/args:\s*\[['"]run['"],\s*['"](.*?)['"]/);
-          if (npmRunMatch) {
-            passos.push({ tipus: 'script', nom: npmRunMatch[1], ordre: passos.length });
-            passos.push(...expandix(npmRunMatch[1], vist, profunditat + 1));
-          } else {
-            const nodeMatch = line.match(/cmd:\s*['"](.*?)['"].*?args:\s*\[([\s\S]*?)\]/);
-            if (nodeMatch) {
-               // Aconseguim l'argument principal de node
-               const fileInRunPortes = nodeMatch[2].split(',')[0].replace(/['"]/g, '').trim();
-               const argString = nodeMatch[2].split(',').map(s => s.replace(/['"]/g, '').trim()).join(' ');
-               const runCommand = `${nodeMatch[1]} ${argString}`;
-               for (const [k, v] of Object.entries(scripts)) {
-                   if (k.startsWith('porta:')) {
-                       const match = v.match(/node\s+([^\s&]+)/);
-                       if (match && match[1] === fileInRunPortes) {
-                           passos.push({ tipus: 'script', nom: k, ordre: passos.length });
-                       }
-                   }
-               }
-               passos.push({ tipus: 'ordre', ordre: runCommand });
-            }
-          }
-        }
-        return passos;
+    for (const p of PASSOS_RUNNER) {
+      const nom = p?.script ?? (Array.isArray(p?.args) && p.args[0] === 'run' ? p.args[1] : null);
+      if (nom) {
+        passos.push({ tipus: 'script', nom, ordre: passos.length });
+        passos.push(...expandix(nom, vist, profunditat + 1));
+      } else if (p?.cmd) {
+        passos.push({ tipus: 'ordre', ordre: `${p.cmd} ${(p.args ?? []).join(' ')}` });
       }
     }
+    if (PASSOS_RUNNER.length) return passos;
   }
 
   for (const tros of cos.split(/&&|\|\||;/).map((s) => s.trim()).filter(Boolean)) {

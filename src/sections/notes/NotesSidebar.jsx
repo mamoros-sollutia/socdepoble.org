@@ -22,6 +22,7 @@ export default function NotesSidebar() {
   const { 
     noteFolders, activeFolderId, handleSelectFolder, 
     activeCategory, handleSelectCategory,
+    activeTag, handleSelectTag,
     colFoldersCollapsed, setColFoldersCollapsed,
     accCategoriesOpen, setAccCategoriesOpen,
     accTagsOpen, setAccTagsOpen,
@@ -41,6 +42,11 @@ export default function NotesSidebar() {
 
   const onSelectCategory = (cat) => {
     handleSelectCategory(cat);
+    if (isCompactGrid) setPanellObert('middle');
+  };
+
+  const onSelectTag = (tag) => {
+    handleSelectTag(tag);
     if (isCompactGrid) setPanellObert('middle');
   };
 
@@ -207,7 +213,8 @@ export default function NotesSidebar() {
               <button
                 key={tag}
                 type="button"
-                className="folder-item"
+                className={`folder-item ${tag === activeTag ? 'active' : ''}`}
+                onClick={() => onSelectTag(tag)}
               >
                 <Hash size={16} />
                 <span>{tag}</span>

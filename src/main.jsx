@@ -26,23 +26,19 @@ const init = () => {
   arrencaAuto();
 
   // Desenvolupament local amb Vite: instanciem l'element com faria el host.
-  const arrel = document.getElementById('root');
-  if (arrel && !arrel.innerHTML) {
-    const element = document.createElement('soc-de-poble');
-    element.setAttribute('fonts-href', '/fonts/noto-sans.css');
-    element.setAttribute('config', JSON.stringify({
-      pluginUrl: '/',
-      supabaseUrl: (typeof import.meta !== 'undefined' && import.meta.env)
-        ? import.meta.env.VITE_SUPABASE_URL
-        : '',
-      supabaseAnonKey: (typeof import.meta !== 'undefined' && import.meta.env)
-        ? import.meta.env.VITE_SUPABASE_ANON_KEY
-        : '',
-      dataMode: (typeof import.meta !== 'undefined' && import.meta.env)
-        ? import.meta.env.VITE_DATA_MODE
-        : undefined,
-    }));
-    arrel.appendChild(element);
+  if (import.meta.env.DEV) {
+    const arrel = document.getElementById('root');
+    if (arrel && !arrel.innerHTML) {
+      const element = document.createElement('soc-de-poble');
+      element.setAttribute('fonts-href', '/fonts/noto-sans.css');
+      element.setAttribute('config', JSON.stringify({
+        pluginUrl: '/',
+        supabaseUrl: import.meta.env.VITE_SUPABASE_URL || '',
+        supabaseAnonKey: import.meta.env.VITE_SUPABASE_ANON_KEY || '',
+        dataMode: import.meta.env.VITE_DATA_MODE || undefined,
+      }));
+      arrel.appendChild(element);
+    }
   }
 };
 

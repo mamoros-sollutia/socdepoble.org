@@ -11,7 +11,7 @@ import { reclamaContingutDelConvidat } from '../data/identitat.js';
 import { showToast } from '../components/universal/AvisadorEfimer';
 import { delVal } from '../config/storage';
 import { useIdentitat } from './contexts/IdentitatContext';
-
+import { PAGE_COPY } from '../sections/text/pageContent.js';
 const XatSection = lazy(() => import('../sections/xat/XatSection'));
 const MurSection = lazy(() => import('../sections/mur/MurSection'));
 const MercatSection = lazy(() => import('../sections/mercat/MercatSection'));
@@ -385,9 +385,15 @@ const TopBar = memo(function TopBar() {
 });
 
 function TextRoute({ pageKey }) {
-  const { pageCopy } = useCoreContent();
-  const page = pageCopy?.[pageKey];
+  const { pageCopy, status } = useCoreContent();
+  // Fallback a les dades locals (PAGE_COPY) perquè la legalitat carregui de forma segura i ràpida
+  // encara que Supabase estiga en fase de càrrega o sense xarxa.
+  const page = pageCopy?.[pageKey] || PAGE_COPY?.[pageKey];
+  
   if (!page) {
+    if (status === 'loading') {
+      return <RouteFallback />;
+    }
     return <Navigate to={DEFAULT_SECTION_PATH} replace />;
   }
   return (
@@ -448,7 +454,15 @@ function AppDataLoader() {
   const hasError = core.status === 'error' || mur.status === 'error' || xat.status === 'error';
   const isLoading = core.status === 'loading' || mur.status === 'loading' || xat.status === 'loading';
 
-  if (hasError) return <LoadError />;
+  if (hasError) {
+    return (
+      <div style={{ padding: '2rem', color: 'red' }}>
+        <h1>Error Intern</h1>
+        <pre>{core.error?.message || mur.error?.message || xat.error?.message || 'Error desconegut'}</pre>
+        <pre>{core.error?.stack}</pre>
+      </div>
+    );
+  }
   if (isLoading) return <RouteFallback />;
 
   return (
@@ -635,9 +649,9 @@ const MobileNav = memo(function MobileNav() {
         <button type="button" className="mobile-nav__cta" onClick={() => {
           const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
           if (document.startViewTransition && !prefersReducedMotion) {
-            document.startViewTransition(() => navigate('/control-xat'));
+            document.startViewTransition(() => navigate(buildPath('/control')));
           } else {
-            navigate('/control-xat');
+            navigate(buildPath('/control'));
           }
         }} aria-label={t('nav.panel', 'Panell de control')}>
           <Settings size={20} strokeWidth={2.8} />

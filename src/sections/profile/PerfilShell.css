@@ -7,8 +7,8 @@
   display: flex;
   align-items: center;
   gap: var(--sdp-space-2);
-  height: 58px;
-  min-height: 58px;
+  height: var(--sdp-alt-accio);
+  min-height: var(--sdp-alt-accio);
   padding: 0 var(--sdp-space-4);
   background: var(--sdp-fons-superficie);
   border-bottom: 1px solid var(--sdp-vora);

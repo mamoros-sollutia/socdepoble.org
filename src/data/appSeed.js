@@ -1,7 +1,5 @@
 import {
   AGENT_LIST,
-  CHAT_MESSAGES,
-  CHAT_THREADS,
   EVENTS,
   FEED_POSTS,
   MARKET_ITEMS,
@@ -127,29 +125,12 @@ export const PAGES_SEED = Object.entries(PAGE_COPY).map(([key, page]) => ({
   ...page
 }));
 
-const CHAT_THREAD_ID_SET = new Set(CHAT_THREADS.map((thread) => thread.id));
 
 
 
-export { CHAT_THREADS };
 
 export const APP_SEED = {
   agents: AGENT_LIST,
-  chatThreads: CHAT_THREADS,
-  get chatMessages() {
-    return Object.entries(CHAT_MESSAGES)
-      .filter(([threadId]) => CHAT_THREAD_ID_SET.has(threadId))
-      .flatMap(([threadId, messages]) =>
-        messages.map((message, index) => ({
-          ...message,
-          id: `${getDefaultUserId()}::${threadId}::${message.id ?? index + 1}`,
-          ownerUserId: getDefaultUserId(),
-          threadId,
-          messageId: String(message.id ?? index + 1),
-          createdAtTs: index
-        }))
-      );
-  },
   feedPosts: FEED_POSTS,
   marketItems: MARKET_ITEMS,
   events: EVENTS,
