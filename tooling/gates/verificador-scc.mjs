@@ -25,7 +25,7 @@ export class VerificadorSCC {
         // Excepte carpetes ocultes, de sistema i ignorades per SCC
         if (
           item.startsWith('.') || 
-          ['node_modules', 'dist', 'src', 'scratch', 'supabase', '_templates', 'scripts', 'public'].includes(item)
+          ['node_modules', 'dist', 'src', 'scratch', 'supabase', '_templates', 'scripts', 'public', '90_arxiu_historic', '90_revisar'].includes(item)
         ) continue;
         
         const itemPath = join(dirPath, item);
@@ -135,9 +135,14 @@ export class VerificadorSCC {
       const relPath = relative(escriptoriRoot, file);
       // Ens fixem només en els fitxers que pengen directament de 04_escriptori o de 01_Produccio
       // Ignorem 00_Bandeja_d_Entrada per a l'ancoratge estricte.
-      if (!relPath.startsWith('..') && !relPath.startsWith('00_Bandeja_d_Entrada')) {
+      if (!relPath.startsWith('..') && !relPath.startsWith('00_bandeja_d_entrada') && !relPath.startsWith('00_Bandeja_d_Entrada')) {
         const fName = basename(file);
-        if (fName !== '00_INDEX_ESCRIPTORI.md' && !linkedInIndex.has(fName)) {
+        const fNameLower = fName.toLowerCase();
+        
+        // Comprovació case-insensitive
+        const hasLink = Array.from(linkedInIndex).some(l => l.toLowerCase() === fNameLower);
+        
+        if (fNameLower !== '00_index_escriptori.md' && !hasLink) {
           this.errors.push({
             code: "ESCRIPTORI_UNANCHORED",
             message: `El document ${fName} és a l'Escriptori però no està ancorat a 00_INDEX_ESCRIPTORI.md.`,
@@ -171,7 +176,7 @@ export class VerificadorSCC {
     }
 
     // 3.2 DFS des dels índexs canònics per trobar Orfes
-    const canonicalIndices = ['_wiki_de_poble/00_index.md', join('_wiki_de_poble/04_escriptori', '00_INDEX_ESCRIPTORI.md')];
+    const canonicalIndices = ['_wiki_de_poble/00_index.md', '_wiki_de_poble/04_escriptori/00_index_escriptori.md'];
     const visited = new Set();
     const allNodes = new Set(this.graph.keys());
 
@@ -200,7 +205,8 @@ export class VerificadorSCC {
         if (basename(node) === '00_INDEX.md' || basename(node) === 'README.md') continue;
         
         // Excepcions lògiques: les plantilles no cal que estiguen enllaçades al graf principal per a no embrutar.
-        if (relative(this.wikiRoot, node).startsWith('07_plantilles')) continue;
+        const relNode = relative(this.wikiRoot, node);
+        if (relNode.includes('/07_plantilles/') || relNode.includes('/90_arxiu_historic/') || relNode.includes('/90_revisar/')) continue;
 
         this.errors.push({
           code: "ORPHAN_OPERATIVE",

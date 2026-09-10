@@ -123,3 +123,4 @@ description: 00INDEX
 - [[00_INDEX_Actes|10_actes/00_INDEX_Actes.md]] — [[00_index]] (Índex Principal)
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->
+- [[AGENTS_socdepoble-workflow]]

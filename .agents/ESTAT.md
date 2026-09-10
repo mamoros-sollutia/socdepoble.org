@@ -1,24 +1,15 @@
 ---
 tipus: document
 estat: tancat
-description: "Estat Actual: Sóc de Poble (Després de l'Auditoria de Notes)"
+description: "Estat Actual: Sanejament P0 Completat i Validat"
 ---
-# Estat Actual: Sóc de Poble
+# ESTAT.md (Registre d'Estat Cognitiu)
 
-## Objectius Assolits de l'Última Sessió (260909)
-- **Implementació de l'Auditoria de Notes Finalitzada:** S'han resolt tots els errors (incloent el 409 CAS al guardar notes) i el deute tècnic del CSS.
-- **Llei de Mida (Pedra Seca):** S'ha unificat a `--sdp-alt-accio` (58px) totes les capçaleres de l'AppGridShell, PerfilShell i NotesSection. S'ha creat i activat una porta mecànica (`01_porta_pedra_seca_58px.mjs`) per vigilar-ho i evitar recaigudes.
-- **Desacoblament i Neteja:** S'ha extret la funcionalitat de la capçalera (heroImage i logoImage) de les Notes cap a un hook universal (`useHeroImageHandler.js`). 
-- S'han arreglat els botons cecs i la incompatibilitat del selector `:has()` a l'AppGridShell.
-- S'ha protegit `backendPort.js` amb un freeze automàtic.
+## Objectius Assolits de l'Última Sessió (260910)
+- **Barra Negra i UniversalPage**: S'ha deslligat la barra negra de `UniversalPage` cap a `TopBar` per centralitzar-ho a nivell d'AppShell. S'han ajustat els `chrome` props als diferents `Sections` (`DesignSection`, `TextSection`, `ItemDetailSection`, `XatSection`) perquè el comportament sticky de les barres (blava i taronja) responga correctament depenent de si són pàgines *root* (respectant la barra negra de 48px) o *context* (nested pane on s'ancoren al top 0 i 48px respectivament).
+- **Embedded Lifecycle:** Use `window.self !== window.top` and `__SDP_EMBEDDED__` to inhibit SEO title mutations in iframes.
+- **Tokens i Doctrina:** S'han solucionat els cracs al build del script `build-tokens.mjs` afegint guards. S'ha arreglat el `.agents/ESTAT.md` per passar la porta Doctrina i Reflex.
 
-## Pròxim Objectiu (Nova Sessió - En espera d'inici)
-1. **Auditoria Destructiva Global (Petorreta a l'Escriptori):** Hem deixat preparat un bundle i un prompt (260909_1330) perquè el Consell destrosse i analitze el codi, netejant deute tècnic antic, divs duplicats i comprovant que la lògica de Sollutia i les skills de la IA encaixen perfectament amb els tractors mecànics actuals. I volem que avaluen l'arquitectura i ens donen una **nota del 0 al 10** en excel·lència de l'arquitectura per saber en quin nivell ens movem.
-
-## Tasques Agendades per a Post-Beta (Backlog)
-- **Usabilitat del Registre:** Considerar afegir els 5 botons d'idioma directament a la pàgina de registre perquè els usuaris puguen triar-lo només arribar.
-- **Sistematització del Disseny:** Abstreure les "onboarding-cards" a un component Pedra Seca global.
-
-## Notes Tècniques i Restriccions
-- **L'Escriptori està buit (Tancament realitzat).** Els documents antics estan arxivats.
-- Tot està a punt per enviar l'auditoria a les IAs del consell (ex: Codex, Qwen, etc.).
+## Estat Actual
+- **Estat**: Sessió Tancada. A l'espera de la pròxima sessió amb el Mestre per obrir nou xat i continuar amb el Full de Ruta (o qualsevol altre repte).
+- **Properes passes:** Obrir nou xat, carregar `ESTAT.md` i `BOOTSTRAP.md`, i continuar segons directrius del Mestre.

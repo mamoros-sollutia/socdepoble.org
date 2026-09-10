@@ -34,7 +34,7 @@ export default function TextSection({ page, pageKey }) {
       time={formatTime(page.date)}
       date={formatDate(page.date)}
       dateTime={page.date || ''}
-      chrome="context"
+      chrome={page.chrome || 'full'}
       topBarData={{ showPin: false }}
     >
       <article className="cms-preview" dangerouslySetInnerHTML={{ __html: sanitizeHtml(page.html) }} />

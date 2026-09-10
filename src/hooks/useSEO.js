@@ -9,7 +9,12 @@ export function useSEO({ title, description, canonical, image, type = 'WebPage',
   const jsonLdString = useMemo(() => jsonLd ? JSON.stringify(jsonLd) : null, [jsonLd]);
 
   useEffect(() => {
-    const shouldManageHead = externalConfig?.manageDocumentHead === true;
+    // Evita modificar el títol si l'aplicació s'ha incrustat explícitament (Sollutia)
+    // o si està funcionant dins d'un iframe de tercers.
+    const isIframe = typeof window !== 'undefined' && window.self !== window.top;
+    const isGloballyEmbedded = typeof window !== 'undefined' && window.__SDP_EMBEDDED__;
+    const shouldManageHead = externalConfig?.manageDocumentHead === true && !isIframe && !isGloballyEmbedded;
+    
     if (!shouldManageHead) return;
 
     const defaultImage = resolveAsset('/assets/system/ui/logo-socdepoble-cuadrat-verd.svg');

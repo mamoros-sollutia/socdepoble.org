@@ -3,8 +3,17 @@ import React, { createContext, useContext, useState, useEffect, useLayoutEffect,
 const RouterContext = createContext();
 const RouterPrefixContext = createContext('');
 
+/**
+ * Escapa expressions regulars per evitar col·lisions.
+ */
+function escapeRegExp(string) {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
 export function RouterProvider({ children, basename = '' }) {
-  const base = basename.endsWith('/') ? basename.slice(0, -1) : basename;
+  const base = useMemo(() => {
+    return basename.endsWith('/') ? basename.slice(0, -1) : basename;
+  }, [basename]);
 
   const getNormalizedPath = useCallback(() => {
     let p = window.location.pathname;
@@ -18,9 +27,12 @@ export function RouterProvider({ children, basename = '' }) {
   const [searchParams, setSearchParams] = useState(new URLSearchParams(window.location.search));
 
   useEffect(() => {
-    const handlePopState = () => {
-      setCurrentPath(getNormalizedPath());
-      setSearchParams(new URLSearchParams(window.location.search));
+    const handlePopState = (event) => {
+      // Prevenció: ignora popstates espuris si no ha canviat la ruta
+      const newPath = getNormalizedPath();
+      const newSearch = window.location.search;
+      setCurrentPath(newPath);
+      setSearchParams(new URLSearchParams(newSearch));
     };
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
@@ -46,7 +58,6 @@ export function RouterProvider({ children, basename = '' }) {
       window.history.pushState(state, '', targetPath);
     }
     
-    // We assume 'to' is a relative or absolute path within the same origin
     const url = new URL(targetPath, window.location.origin);
     setCurrentPath(getNormalizedPath());
     setSearchParams(new URLSearchParams(url.search));
@@ -69,7 +80,9 @@ export function RouterProvider({ children, basename = '' }) {
 }
 
 export function useRouter() {
-  return useContext(RouterContext);
+  const ctx = useContext(RouterContext);
+  if (!ctx) throw new Error("useRouter s'ha de cridar dins de RouterProvider");
+  return ctx;
 }
 
 export function useNavigate() {
@@ -85,7 +98,7 @@ export function useLocation() {
 export function useSearchParams() {
   const { searchParams, navigate } = useRouter();
   
-  const setSearchParams = useCallback((newParams) => {
+  const setParams = useCallback((newParams) => {
     const currentUrl = new URL(window.location.href);
     if (newParams instanceof URLSearchParams) {
       currentUrl.search = newParams.toString();
@@ -101,7 +114,7 @@ export function useSearchParams() {
     navigate(currentUrl.pathname + currentUrl.search, { replace: true });
   }, [navigate]);
   
-  return [searchParams, setSearchParams];
+  return [searchParams, setParams];
 }
 
 const RouteParamsContext = createContext({});
@@ -114,7 +127,12 @@ export function Link({ to, children, className, onClick, ...props }) {
   const { navigate } = useRouter();
   
   const handleClick = (e) => {
-    if (e.button === 0 && !e.ctrlKey && !e.metaKey) { // Normal left click
+    if (e.button === 0 && !e.ctrlKey && !e.metaKey && !e.shiftKey && !e.altKey) {
+      // Verificació creuada per no trencar links externs o ancoratges purs
+      if (typeof to === 'string' && (to.startsWith('http://') || to.startsWith('https://') || to.startsWith('mailto:'))) {
+        return; // Deixem que el navegador gestione links externs
+      }
+      
       e.preventDefault();
       if (onClick) onClick(e);
       navigate(to);
@@ -147,26 +165,34 @@ export function NavLink({ to, children, className, activeClassName = 'active', .
 export function Navigate({ to, replace }) {
   const { navigate } = useRouter();
   useLayoutEffect(() => {
-    navigate(to, { replace });
+    navigate(to, { replace: replace !== false });
   }, [navigate, to, replace]);
   return null;
 }
 
 // Convert express style route path to regex
-function pathToRegex(path) {
-  if (path === '*') return /(.*)/;
+function pathToRegex(path, exact = false) {
+  if (path === '*') return { regex: /(.*)/, keys: [] };
   
-  let regexStr = path.replace(/\//g, '\\/');
-  regexStr = regexStr.replace(/:([a-zA-Z0-9_]+)/g, '(?<$1>[^\\/]+)');
+  const keys = [];
+  let regexStr = escapeRegExp(path);
   
-  if (regexStr.endsWith('\\/*')) {
-      // Optional trailing slash and wildcard
+  // Restaurem sintaxi d'expressió
+  regexStr = regexStr.replace(/\\:([a-zA-Z0-9_]+)/g, (_, key) => {
+    keys.push(key);
+    return '([^\\/]+)';
+  });
+  
+  if (regexStr.endsWith('\\/\\*')) {
       regexStr = regexStr.replace(/\\\/\*$/, '(?:\\/(.*))?');
+      keys.push('*');
   } else {
-      regexStr = regexStr.replace(/\*/g, '(.*)');
+      regexStr = regexStr.replace(/\\\*/g, '(.*)');
   }
 
-  return new RegExp('^' + regexStr + '$');
+  // Exact matching vs Prefix matching
+  const finalRegexStr = exact ? '^' + regexStr + '$' : '^' + regexStr + '(?=\\/|$)';
+  return { regex: new RegExp(finalRegexStr), keys };
 }
 
 function resolvePath(base, path) {
@@ -187,19 +213,17 @@ export function Routes({ children }) {
     if (matchFound || !React.isValidElement(child)) return;
     
     if (child.props.path !== undefined) {
+      const isExact = child.props.exact || !child.props.path.includes('*');
       const absolutePath = resolvePath(parentPrefix, child.props.path);
-      const regex = pathToRegex(absolutePath);
+      const { regex, keys } = pathToRegex(absolutePath, isExact);
       const match = currentPath.match(regex);
       
       if (match) {
         matchFound = true;
-        const params = match.groups ? { ...match.groups } : {};
-        
-        if (absolutePath.includes('*')) {
-           const vals = Array.from(match);
-           const splat = vals.pop();
-           params['*'] = splat || '';
-        }
+        const params = {};
+        keys.forEach((k, i) => {
+          params[k] = match[i + 1] || '';
+        });
         
         let newPrefix = absolutePath.replace(/\*$/, '');
         if (newPrefix.endsWith('/') && newPrefix.length > 1) {
@@ -222,6 +246,10 @@ export function Routes({ children }) {
     }
   });
 
+  if (!matchFound && elementToRender === null) {
+    elementToRender = null; 
+  }
+
   return elementToRender;
 }
 
@@ -234,19 +262,25 @@ export function BrowserRouter({ children, basename }) {
 }
 
 export function MemoryRouter({ children }) {
-  // Enrutador simple que només envuelve l'app per retrocompatibilitat
   return <RouterProvider>{children}</RouterProvider>;
 }
 
 export function matchPath(pattern, pathname) {
   if (typeof pattern === 'string') {
-    pattern = { path: pattern };
+    pattern = { path: pattern, exact: false };
   }
-  const regex = pathToRegex(pattern.path);
+  const isExact = pattern.exact !== false;
+  const { regex, keys } = pathToRegex(pattern.path, isExact);
   const match = pathname.match(regex);
   if (!match) return null;
+  
+  const params = {};
+  keys.forEach((k, i) => {
+    params[k] = match[i + 1] || '';
+  });
+  
   return {
-    params: match.groups || {},
+    params,
     pathname: match[0],
     pattern
   };

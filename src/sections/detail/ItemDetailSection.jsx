@@ -70,7 +70,7 @@ export default function ItemDetailSection() {
       authorAvatar={item.author_avatar || item.avatar_url || item.avatarUrl}
       time={item.time || (item.created_at ? new Date(item.created_at).toLocaleTimeString('ca-ES', {hour: '2-digit', minute: '2-digit'}) : undefined)}
       date={item.date || (item.created_at ? new Date(item.created_at).toLocaleDateString('ca-ES') : undefined)}
-      chrome="context"
+      chrome="full"
     >
       <div className="id-container-px4-pb8">
         {section.renderBody(item)}

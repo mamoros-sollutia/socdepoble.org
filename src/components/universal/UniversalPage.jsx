@@ -202,7 +202,6 @@ export function UniversalPage(props) {
 
   const requestedChrome = showTopBars ? 'full' : chrome;
   const resolvedChrome = PAGE_CHROME_MODES.has(requestedChrome) ? requestedChrome : 'page';
-  const showBlackBar = resolvedChrome === 'full';
   const showBlueBar = resolvedChrome === 'full' || resolvedChrome === 'context' || resolvedChrome === 'system';
   const showOrangeBar = resolvedChrome === 'full' || resolvedChrome === 'context';
   const showPageHeader = resolvedChrome !== 'none' && !hideHeader;
@@ -212,59 +211,8 @@ export function UniversalPage(props) {
 
   return (
     <>
-      {showBlackBar && (
-        <header className="bar-black">
-          <div
-            className="mobile-logo-wrapper"
-            id="mobile-sidebar-toggle"
-          >
-            <img
-              alt="Sóc de Poble"
-              src={resolveAsset("/assets/system/ui/logo-socdepoble-rect-blanc.svg")}
-            />
-          </div>
-          <div className="right-icons">
-            <ActionControl
-              className="icon sp-card-action"
-              label="Idioma"
-              onClick={onLanguage}
-            >
-              <GlobeIcon />
-            </ActionControl>
-            <ActionControl
-              className="icon sp-card-action"
-              label="IAIA MarIA"
-              onClick={onIaia}
-            >
-              <IaiaIcon className="iaia-icon" />
-            </ActionControl>
-            <ActionControl
-              className="icon sp-card-action"
-              label="Cercar"
-              onClick={onSearch}
-            >
-              <SearchIcon />
-            </ActionControl>
-            <ActionControl
-              className="icon sp-card-action"
-              label="Canviar el tema"
-              onClick={handleTheme}
-            >
-              <ThemeIcon mode={currentThemeMode} />
-            </ActionControl>
-            <ActionControl
-              className="icon sp-card-action"
-              label="Perfil"
-              onClick={onProfile}
-            >
-              <img alt={viewerAvatarAlt} src={viewerAvatarUrl} />
-            </ActionControl>
-          </div>
-        </header>
-      )}
-
       {showBlueBar && (
-          <header className={`bar-blue ${variant === 'embed' ? 'bar-blue--embed' : ''} ${resolvedChrome === 'context' || resolvedChrome === 'system' ? 'bar-blue--top' : ''}`.trim()}>
+          <header className={`bar-blue ${variant === 'embed' ? 'bar-blue--embed' : ''} ${resolvedChrome === 'context' ? 'bar-blue--top' : ''}`.trim()}>
             <div className="bar-blue-left">
               <IconButton label="Tornar arrere" onClick={handleBack} presentation>
                 <BackIcon className="icon" />
@@ -310,7 +258,7 @@ export function UniversalPage(props) {
       ) : null}
 
       {showOrangeBar && (
-        <section className={`bar-orange ${variant === 'embed' ? 'bar-orange--embed' : ''}`.trim()} aria-label="Autoria i data">
+        <section className={`bar-orange ${variant === 'embed' ? 'bar-orange--embed' : ''} ${resolvedChrome === 'context' ? 'bar-orange--top' : ''}`.trim()} aria-label="Autoria i data">
               <div className="sp-card-author">
                 <img
                   className="sp-card-avatar"

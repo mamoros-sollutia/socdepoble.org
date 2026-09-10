@@ -73,9 +73,9 @@
   --sdp-blanc: #ffffff;
   --sdp-negre: #000000;
   --sdp-pedra-50:  #ffffff;
-  --sdp-pedra-100: #ffffff;
+  --sdp-pedra-100: #f8f6f4;
   --sdp-fons-lectura: #f7f6f3;
-  --sdp-pedra-150: #f8f6f4; /* Inventat (intermig entre Nuvol i Arena) */
+  --sdp-pedra-150: #f3f0ec; /* Intermig per si fa falta */
   --sdp-pedra-200: #efece7;
   --sdp-pedra-300: #dcd7cd;
   --sdp-pedra-400: #b7b1a5;
@@ -710,15 +710,16 @@ header.bar-blue {
   background: var(--sdp-accio);
   color: var(--sdp-sobre-accio);
   display: grid;
-  background-color: var(--sdp-blanc);
-  border-radius: 32px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.03), 0 2px 8px rgba(0,0,0,0.02);
-  margin: 0;
-  margin-bottom: var(--sdp-space-6);
-  padding: var(--sdp-space-6);
-  text-align: center;
-  position: relative;
-  z-index: 10;
+  padding: 0 var(--sdp-space-4);
+  align-items: center;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: none;
+  border-bottom: none;
+  align-self: flex-start;
+  width: 100%;
 }
 header.bar-blue.bar-blue--embed {
   position: static;
@@ -771,9 +772,14 @@ section.bar-orange {
   position: sticky;
   top: calc(var(--sdp-alt-negra) + var(--sdp-alt-accio));
   z-index: var(--z-barra-taronja);
+  align-self: flex-start;
+  width: 100%;
 }
 section.bar-orange.bar-orange--embed {
   position: static;
+}
+section.bar-orange.bar-orange--top {
+  top: var(--sdp-alt-accio);
 }
 
 /* Col·locació explícita a la reixeta dels components atòmics */
@@ -791,8 +797,8 @@ header.bar-blue > *:last-child { grid-column: 3; justify-self: end; }
 header.page-title {
   margin: 0 var(--sdp-pad-contenidor) var(--sdp-space-6);
   padding: var(--sdp-space-6) var(--sdp-space-8);
-  background: var(--sdp-fons-invers);
-  border-radius: 0 0 var(--sdp-radi-xl) var(--sdp-radi-xl);
+  background: var(--sdp-blanc);
+  border-radius: 0 0 36px 36px;
   box-shadow: var(--sdp-ombra-1);
   text-align: center;
 }

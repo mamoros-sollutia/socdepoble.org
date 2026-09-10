@@ -351,7 +351,7 @@ export default function XatSection() {
           ) : (
             <div className="xat-scroll-area">
               {pageCopy?.['anima'] ? (
-                <TextSection page={{...pageCopy['anima'], chrome: 'system'}} pageKey="anima" />
+                <TextSection page={{...pageCopy['anima'], chrome: 'context'}} pageKey="anima" />
               ) : (
                 <div className="xat-empty-message">
                   <img src="/assets/system/ui/logo-socdepoble-rect-negre.svg" alt="Sóc de Poble" />

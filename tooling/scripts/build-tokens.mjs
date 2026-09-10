@@ -12,27 +12,27 @@ async function buildTokens() {
 
   // Color
   cssOutput += `  /* Color */\n`;
-  for (const obj of Object.values(tokens.color)) {
+  for (const obj of Object.values(tokens.color || {})) {
     cssOutput += `  ${obj.css_var}: ${obj.value};\n`;
   }
   
   // Radi
   cssOutput += `\n  /* Radi */\n`;
-  for (const obj of Object.values(tokens.radi)) {
+  for (const obj of Object.values(tokens.radi || {})) {
     const val = obj.value_rem ? obj.value_rem : `${obj.value_px}px`;
     cssOutput += `  ${obj.css_var}: ${val};\n`;
   }
 
   // Tacte
   cssOutput += `\n  /* Tacte */\n`;
-  for (const obj of Object.values(tokens.tacte)) {
+  for (const obj of Object.values(tokens.tacte || {})) {
     const val = obj.value_rem ? obj.value_rem : `${obj.value_px}px`;
     cssOutput += `  ${obj.css_var}: ${val};\n`;
   }
 
   // Tipografia
   cssOutput += `\n  /* Tipografia */\n`;
-  for (const obj of Object.values(tokens.tipografia)) {
+  for (const obj of Object.values(tokens.tipografia || {})) {
     const val = obj.value_rem ? obj.value_rem : `${obj.value_px}px`;
     cssOutput += `  ${obj.css_var}: ${val};\n`;
   }

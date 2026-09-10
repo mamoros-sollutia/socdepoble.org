@@ -1,0 +1,20 @@
+---
+tipus: document
+estat: canonic
+description: Índex de skills i capacitats
+---
+
+<!-- Aquest fitxer és un ESPILL (mirror) automàtic de .agents/skills/00_INDEX_SKILLS.md -->
+
+# Índex de Skills
+
+- [[core-context-panic/SKILL|core-context-panic]]: Panic button
+- [[core-restauracio-segellada/SKILL|core-restauracio-segellada]]: Restauració segura
+- [[pedra-seca/SKILL|pedra-seca]]: Llei de disseny
+- [[skill-acte-reflex/SKILL|skill-acte-reflex]]: Protocol reflex
+- [[skill-cicle-de-vida/SKILL|skill-cicle-de-vida]]: Cicle de vida de les dades
+- [[skill-consell-bundle/SKILL|skill-consell-bundle]]: Generació de bundle per al consell
+- [[skill-estudi-mercat/SKILL|skill-estudi-mercat]]: Estudi de mercat
+- [[skill-iaia-identitat/SKILL|skill-iaia-identitat]]: Identitat de la IAIA
+- [[socdepoble-workflow/SKILL|socdepoble-workflow]]: Workflow workflow
+- [[universal-page/SKILL|universal-page]]: Estàndard de pàgina universal

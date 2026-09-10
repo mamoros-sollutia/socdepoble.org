@@ -4,7 +4,7 @@ import { DesignSectionContent } from './DesignSectionContent.jsx';
 export default function DesignSection() {
   return (
     <UniversalPage
-      chrome="context"
+      chrome="full"
       showLogos={true}
       title="Disseny"
       labels={[
