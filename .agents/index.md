@@ -31,3 +31,4 @@ Aquest directori conté els contractes d'operació i els arxius de governança p
 - [[hooks/preflight_matrix_wrapper.mjs]]
 - [[rules/00_BIOS_COGNITIU.md]]
 - [[skills/socdepoble-workflow/SKILL.md]]
+- [[hooks/verify.mjs]]
