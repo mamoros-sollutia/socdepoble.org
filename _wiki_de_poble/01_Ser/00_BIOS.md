@@ -42,3 +42,7 @@ Per a l'arrencada completa, llegiu:
 - 05_Escriptori_Soc_de_Poble/260903_0223_PROMPT_auditoria_notes.md — [[00_bios]]
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->
+
+
+## Orphans
+- [[03_equip_ia.md]]

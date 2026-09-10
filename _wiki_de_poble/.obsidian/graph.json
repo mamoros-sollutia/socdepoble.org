@@ -1,12 +1,41 @@
 {
   "collapse-filter": true,
-  "search": "",
+  "search": "-path:90_historic -path:04_escriptori -path:00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR -path:00_SER_Brain_Identitat/Sollutia -path:03_GOVERNAR_Normativa_Regles/agents_actius",
   "showTags": true,
-  "showAttachments": true,
+  "showAttachments": false,
   "hideUnresolved": true,
-  "showOrphans": true,
+  "showOrphans": false,
   "collapse-color-groups": true,
-  "colorGroups": [],
+  "colorGroups": [
+    {
+      "query": "path:00_SER_Brain_Identitat",
+      "color": {
+        "a": 1,
+        "rgb": 14701138
+      }
+    },
+    {
+      "query": "path:01_SABER_Cultura_Coneixement",
+      "color": {
+        "a": 1,
+        "rgb": 5423851
+      }
+    },
+    {
+      "query": "path:02_ACTUAR_Maquina_Tecnica",
+      "color": {
+        "a": 1,
+        "rgb": 5413083
+      }
+    },
+    {
+      "query": "path:03_GOVERNAR_Normativa_Regles",
+      "color": {
+        "a": 1,
+        "rgb": 14725458
+      }
+    }
+  ],
   "collapse-display": false,
   "showArrow": false,
   "textFadeMultiplier": -0.3,

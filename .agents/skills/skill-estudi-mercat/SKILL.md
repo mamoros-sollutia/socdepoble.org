@@ -3,6 +3,7 @@ tipus: skill
 estat: canonic
 description: Protocol per a la realització d'estudis de mercat i anàlisi de la competència, enfocat a extreure conclusions arquitectòniques i estratègiques.
 name: skill-estudi-mercat
+triggers_on: skill-estudi-mercat
 ---
 
 # SKILL: Estudi de Mercat (Anàlisi de la Competència)

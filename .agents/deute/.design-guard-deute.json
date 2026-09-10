@@ -1,79 +1,34 @@
 {
-  "inline-style": {
-    "max": 125,
+  "h1-outside-header": {
+    "max": 1,
     "identitats": [
-      "inline-style|components/SectionItemCard.jsx|style=",
-      "inline-style|components/universal/AvisadorEfimer.jsx|style=",
-      "inline-style|components/universal/UniversalComponents.jsx|style=",
-      "inline-style|components/universal/UniversalEditorShell.jsx|style=",
-      "inline-style|sections/control/ControlSection.jsx|style=",
-      "inline-style|sections/detail/ItemDetailSection.jsx|style=",
-      "inline-style|sections/dispositius/DevicesSection.jsx|style=",
-      "inline-style|sections/disseny/DesignSection.jsx|style=",
-      "inline-style|sections/mercat/detail/detailSectionMeta.jsx|style=",
-      "inline-style|sections/multimedia/MultimediaSection.jsx|style=",
-      "inline-style|sections/multimedia/detail/detailSectionMeta.jsx|style=",
-      "inline-style|sections/mur/MurSection.jsx|style=",
-      "inline-style|sections/mur/articles/Aplec2023Article.jsx|style=",
-      "inline-style|sections/mur/detail/detailSectionMeta.jsx|style=",
-      "inline-style|sections/notes/NotesSidebar.jsx|style=",
-      "inline-style|sections/onboarding/OnboardingSection.jsx|style=",
-      "inline-style|sections/onboarding/OnboardingSteps.jsx|style=",
-      "inline-style|sections/profile/DetallAjust.jsx|style=",
-      "inline-style|sections/profile/LlistaAjustos.jsx|style=",
-      "inline-style|sections/profile/SelectorIdentitat.jsx|style=",
-      "inline-style|sections/search/SearchSection.jsx|style=",
-      "inline-style|sections/text/TelemetryDashboard.jsx|style=",
-      "inline-style|sections/text/TextSection.jsx|style=",
-      "inline-style|sections/translations/TranslationsSection.jsx|style=",
-      "inline-style|sections/xat/XatSection.jsx|style="
+      "h1-outside-header|app/App.jsx|h1"
     ]
   },
   "touch-too-small": {
-    "max": 12,
+    "max": 11,
     "identitats": [
       "touch-too-small|components/layout/AppGridShell.css|height:32px",
       "touch-too-small|components/layout/AppGridShell.css|width:32px",
+      "touch-too-small|css/index.css|height:20px",
       "touch-too-small|css/index.css|height:24px",
+      "touch-too-small|css/index.css|width:10px",
       "touch-too-small|css/index.css|width:1px",
       "touch-too-small|css/index.css|width:20px",
       "touch-too-small|css/index.css|width:24px",
       "touch-too-small|sections/notes/NotesSection.css|width:10px"
     ]
   },
-  "raw-color": {
-    "max": 33,
+  "inline-style": {
+    "max": 23,
     "identitats": [
-      "raw-color|config/app.js|#00662e",
-      "raw-color|config/app.js|#050505",
-      "raw-color|config/app.js|#111111",
-      "raw-color|config/app.js|#d8d2c8",
-      "raw-color|config/app.js|#f4efe7",
-      "raw-color|host.js|#b91c1c",
-      "raw-color|host.js|#ef4444",
-      "raw-color|host.js|#fee2e2",
-      "raw-color|sections/disseny/DesignSection.jsx|#00599d",
-      "raw-color|sections/disseny/DesignSection.jsx|#016ebf",
-      "raw-color|sections/disseny/DesignSection.jsx|#027e38",
-      "raw-color|sections/disseny/DesignSection.jsx|#0e0d0c",
-      "raw-color|sections/disseny/DesignSection.jsx|#123",
-      "raw-color|sections/disseny/DesignSection.jsx|#125",
-      "raw-color|sections/disseny/DesignSection.jsx|#181715",
-      "raw-color|sections/disseny/DesignSection.jsx|#22211e",
-      "raw-color|sections/disseny/DesignSection.jsx|#302e29",
-      "raw-color|sections/disseny/DesignSection.jsx|#3d3b35",
-      "raw-color|sections/disseny/DesignSection.jsx|#5b564e",
-      "raw-color|sections/disseny/DesignSection.jsx|#8b857b",
-      "raw-color|sections/disseny/DesignSection.jsx|#9c6902",
-      "raw-color|sections/disseny/DesignSection.jsx|#ad4c03",
-      "raw-color|sections/disseny/DesignSection.jsx|#b7b1a5",
-      "raw-color|sections/disseny/DesignSection.jsx|#c2181d",
-      "raw-color|sections/disseny/DesignSection.jsx|#dcd7cd",
-      "raw-color|sections/disseny/DesignSection.jsx|#efece7",
-      "raw-color|sections/text/TelemetryDashboard.jsx|#3b82f6",
-      "raw-color|sections/text/TelemetryDashboard.jsx|#8b5cf6",
-      "raw-color|sections/text/TelemetryDashboard.jsx|#ef4444",
-      "raw-color|sections/text/TelemetryDashboard.jsx|#f97316"
+      "inline-style|components/universal/UniversalEditorShell.jsx|style=",
+      "inline-style|components/universal/UniversalElements.jsx|style=",
+      "inline-style|sections/detail/detailSectionMeta.jsx|style=",
+      "inline-style|sections/dispositius/DevicesSection.jsx|style=",
+      "inline-style|sections/profile/DetallAjust.jsx|style=",
+      "inline-style|sections/translations/TranslationsSection.jsx|style=",
+      "inline-style|sections/xat/XatSection.jsx|style="
     ]
   },
   "focus-invisible": {
@@ -82,15 +37,46 @@
       "focus-invisible|css/index.css|outline-none"
     ]
   },
-  "tailwind-visual": {
-    "max": 2,
+  "raw-color": {
+    "max": 24,
     "identitats": [
-      "tailwind-visual|sections/disseny/DesignSection.jsx|text-muted"
+      "raw-color|host.js|#b91c1c",
+      "raw-color|host.js|#ef4444",
+      "raw-color|host.js|#fee2e2",
+      "raw-color|sections/disseny/DesignSectionContent.jsx|#00599d",
+      "raw-color|sections/disseny/DesignSectionContent.jsx|#016ebf",
+      "raw-color|sections/disseny/DesignSectionContent.jsx|#027e38",
+      "raw-color|sections/disseny/DesignSectionContent.jsx|#0e0d0c",
+      "raw-color|sections/disseny/DesignSectionContent.jsx|#123",
+      "raw-color|sections/disseny/DesignSectionContent.jsx|#125",
+      "raw-color|sections/disseny/DesignSectionContent.jsx|#181715",
+      "raw-color|sections/disseny/DesignSectionContent.jsx|#22211e",
+      "raw-color|sections/disseny/DesignSectionContent.jsx|#302e29",
+      "raw-color|sections/disseny/DesignSectionContent.jsx|#3d3b35",
+      "raw-color|sections/disseny/DesignSectionContent.jsx|#5b564e",
+      "raw-color|sections/disseny/DesignSectionContent.jsx|#8b857b",
+      "raw-color|sections/disseny/DesignSectionContent.jsx|#9c6902",
+      "raw-color|sections/disseny/DesignSectionContent.jsx|#ad4c03",
+      "raw-color|sections/disseny/DesignSectionContent.jsx|#b7b1a5",
+      "raw-color|sections/disseny/DesignSectionContent.jsx|#c2181d",
+      "raw-color|sections/disseny/DesignSectionContent.jsx|#dcd7cd",
+      "raw-color|sections/disseny/DesignSectionContent.jsx|#efece7"
+    ]
+  },
+  "tailwind-visual": {
+    "max": 9,
+    "identitats": [
+      "tailwind-visual|sections/detail/detailSectionMeta.jsx|sdp-text-accent",
+      "tailwind-visual|sections/disseny/DesignSectionContent.jsx|sdp-text-content",
+      "tailwind-visual|sections/disseny/DesignSectionContent.jsx|text-muted",
+      "tailwind-visual|sections/onboarding/OnboardingSteps.jsx|flex-1",
+      "tailwind-visual|sections/onboarding/OnboardingSteps.jsx|sdp-text-accio-text",
+      "tailwind-visual|sections/realitat/RealitatSection.jsx|sdp-text-content"
     ]
   },
   "_segell": {
-    "congelat": "2026-09-06T12:15:05.310Z",
-    "recompte": 2,
+    "congelat": "2026-09-10T03:49:56.871Z",
+    "recompte": 1,
     "porta": "tooling/gates/design_guard.mjs",
     "avis": "Açò és deute DECLARAT, no resolt. Aquest número només pot baixar. Regenerar el baseline per a fer passar una porta és tornar al problema de zero."
   }

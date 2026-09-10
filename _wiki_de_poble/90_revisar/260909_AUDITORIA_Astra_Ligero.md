@@ -1,3 +1,8 @@
+---
+tipus: document
+estat: esborrany
+description: Auditoria del sistema i de la pàgina legal
+---
 # Auditoria del sistema i de la pàgina legal
 
 **Dictamen:** la pàgina legal està desalineada amb la realitat Online-First i la seua disponibilitat depén innecessàriament del backend, del Mur i del Xat. Hi ha, a més, defectes verificables d’arrencada, contractes de context i coherència SQL. Recomane correccions acotades abans d’ampliar funcionalitats.

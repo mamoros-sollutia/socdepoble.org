@@ -91,16 +91,3 @@ L’IT no crea etiquetes de frontmatter. L’esquema v2 només admet `estat`, `t
 - [[MOTOR_OFFLINE|02_ACTUAR_Maquina_Tecnica/skills/MOTOR_OFFLINE.md]] — [[index_trellat|02_ACTUAR_Maquina_Tecnica/skills/index_trellat.md]] — Si una ...
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->
-
-<!-- LLAURADOR:ADOPCIONS:INICI -->
-
-## Adopcions del Llaurador
-
-> Bloc generat per `tooling/wiki/llaurador_indexs.mjs`. No l'edites a mà.
-> Mou cada enllaç a la secció temàtica que li toque i el llaurador el
-> llevarà d'ací tot sol a la següent passada. Si el bloc queda buit,
-> desapareix: vol dir que la wiki està cosida a mà.
-
-- [[02_ACTUAR_Tecnica/skills/CONTINGENCIA_OFFLINE|CONTINGENCIA_OFFLINE]] — Contingència futura per evolucionar PWA, dades locals. Vetada actualment.
-
-<!-- LLAURADOR:ADOPCIONS:FI -->

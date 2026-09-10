@@ -12,13 +12,8 @@
   --notes-col-list: 300px;
   --notes-col-collapsed: 56px;
   background: var(--sdp-fons-app);
-  --notes-bg-carpetes: var(--sdp-pedra-300); /* Calç 300 */
-  --notes-bg-llista: var(--sdp-pedra-200);   /* Arena 200 */
-}
-
-[data-theme="dark"] .notes-page {
-  --notes-bg-carpetes: var(--sdp-pedra-900);
-  --notes-bg-llista: var(--sdp-pedra-850);
+  --notes-bg-carpetes: var(--sdp-fons-subtil);
+  --notes-bg-llista: var(--sdp-fons-targeta);
 }
 
 /* Tiptap / ProseMirror fixes */
@@ -68,19 +63,19 @@
   background: var(--sdp-fons-app); 
 }
 :root[data-theme="dark"] .notes-page .editor-shell--main,
-:host([data-theme="dark"]) .notes-page .editor-shell--main { background: var(--sdp-pedra-800); }
+:host([data-theme="dark"]) .notes-page .editor-shell--main { background: var(--sdp-fons-invers); }
 .notes-page .notes-column-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: var(--sdp-alt-accio);
   padding: 0 var(--sdp-space-4);
-  background: var(--sdp-pedra-800);
+  background: var(--sdp-fons-invers);
   color: var(--sdp-sobre-roca);
   border-bottom: none; /* Removed white line between CARPETES and Tot */
 }
 .notes-page .notes-column-header--accordion {
-  background: var(--sdp-pedra-600);
+  background: var(--sdp-fons-subtil);
   border-top: 1px solid var(--sdp-vora-control);
   border-bottom: 1px solid var(--sdp-vora-control);
 }
@@ -92,12 +87,12 @@
   height: var(--sdp-alt-accio);
   gap: var(--sdp-space-2);
   padding: 0 var(--sdp-space-4);
-  background: var(--sdp-pedra-800);
+  background: var(--sdp-fons-invers);
   color: var(--sdp-sobre-roca);
   border-bottom: none;
 }
 .notes-page .editor-toolbar .btn-icon { color: var(--sdp-sobre-roca); }
-.notes-page .editor-toolbar .btn-icon:hover { background: var(--sdp-pedra-700); }
+.notes-page .editor-toolbar .btn-icon:hover { background: var(--sdp-fons-subtil); }
 .notes-page .editor-toolbar .separator { width: 1px; height: 24px; background: var(--sdp-vora-control); margin: 0 var(--sdp-space-1); }
 
 /* COLLAPSED STATES */

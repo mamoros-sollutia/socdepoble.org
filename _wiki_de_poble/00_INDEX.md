@@ -64,23 +64,6 @@ description: 00INDEX
 ## Taxonomia
 - **Etiquetes:** [[graf]]
 
-<!-- LLAURADOR:ADOPCIONS:INICI -->
-
-## Adopcions del Llaurador
-
-> Bloc generat per `tooling/wiki/llaurador_indexs.mjs`. No l'edites a mà.
-> Mou cada enllaç a la secció temàtica que li toque i el llaurador el
-> llevarà d'ací tot sol a la següent passada. Si el bloc queda buit,
-> desapareix: vol dir que la wiki està cosida a mà.
-
-- [[.agents/index|index]] — index
-- [[.quarantena-260830/plantilla_prompt_iso|plantilla_prompt_iso]] — Plantilla base de Prompt ISO
-- [[00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/00_INDEX_SKILLS|00_INDEX_SKILLS]] — ÍNDEX CANÒNIC DE SKILLS
-- [[02_ACTUAR_Tecnica/00_INDEX_Maquina|00_INDEX_Maquina]] — Índex principal de Màquina Tècnica
-- [[90_revisar/00_INDEX_REVISAR|00_INDEX_REVISAR]] — Índex autogenerat per a Zona de Quarantena i Revisió
-
-<!-- LLAURADOR:ADOPCIONS:FI -->
-
 ## Sinapsis Entrants (Autogenerat)
 
 - [[00_index|00_INDEX.md]] — [[00_index_identitat]] (Nucli d'Identitat)

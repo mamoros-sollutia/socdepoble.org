@@ -513,13 +513,18 @@ export function getRuntimeDataMode(config = {}) {
 
 
 
+export function normalizeDataMode(mode) {
+  const allowed = ['remote', 'seed', 'local'];
+  return allowed.includes(mode) ? mode : 'remote';
+}
+
 export function getResolvedConfig(config = {}) {
   const supabaseUrl = config.supabaseUrl || '';
   const supabaseAnonKey = config.supabaseAnonKey || '';
   const tenantId = config.tenantId || '11111111-2222-3333-4444-555555555555';
   
   const hasSupabaseConfig = Boolean(supabaseUrl && supabaseAnonKey);
-  const dataMode = config.dataMode || 'remote';
+  const dataMode = normalizeDataMode(config.dataMode);
   
   return {
     supabaseUrl,

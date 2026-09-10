@@ -1,8 +1,7 @@
 ---
 tipus: estudi_ia
 estat: reflexio_interna
-anclatge_seguretat: 260908_0640_BUNDLE_auditoria.md
-description: "Estudi i destil·lació del Consell (Codex, Claude, Gemini, Grok, Vibe) sobre el Xat i Desplegament"
+description: Estudi i destil·lació del Consell (Codex, Claude, Gemini, Grok, Vibe) sobre el Xat i Desplegament
 ---
 
 # 📚 ESTUDI DEL CONSELL — "El WhatsApp de Poble"

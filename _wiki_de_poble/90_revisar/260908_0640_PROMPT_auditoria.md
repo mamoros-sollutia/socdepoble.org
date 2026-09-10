@@ -1,6 +1,7 @@
 ---
 tipus: prompt
-relacionat: "260908_0640_BUNDLE_auditoria.md"
+estat: esborrany
+description: "🚀 PETORRETA: COM DESPLEGUEM A PRODUCCIÓ? (Sollutia)"
 ---
 
 # 🚀 PETORRETA: COM DESPLEGUEM A PRODUCCIÓ? (Sollutia)

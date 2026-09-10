@@ -1,3 +1,8 @@
+---
+tipus: document
+estat: esborrany
+description: "Estudi del Consell: Fase 5 (El Pont amb Notes)"
+---
 # Estudi del Consell: Fase 5 (El Pont amb Notes)
 
 Aquest document recopila l'anàlisi de les diferents propostes rebudes pel Consell (IAs de Frontera) per a implementar el pas de missatges de Xat a Notes, mantenint-nos en **Mode Estudi**. No s'implementarà codi fins que finalitze l'anàlisi comparatiu.

@@ -1,3 +1,8 @@
+---
+tipus: document
+estat: esborrany
+description: 🛡️ INFORME D'AUDITORIA TÈCNICA - CONSELL DE LA PETORRETA
+---
 # 🛡️ **INFORME D'AUDITORIA TÈCNICA - CONSELL DE LA PETORRETA**
 *Generat: 2026-09-09 | Bundle: 260909_2111_BUNDLE_auditoria.md | Estat: **CRÍTIC - ACCIÓ IMMEDIATA REQUERIDA***
 

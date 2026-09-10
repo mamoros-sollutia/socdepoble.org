@@ -135,7 +135,7 @@ encesos.sort((a, b) => a.prioritat - b.prioritat || a.nom.localeCompare(b.nom));
 
 /* La taula viu dins de reflexio-previa/SKILL.md. Ací s'extrau del fitxer,
    no es reescriu: una segona còpia seria una segona llei. */
-const REFLEXIO = R('.agents/skills/reflexio-previa/SKILL.md');
+const REFLEXIO = R('.agents/skills/skill-acte-reflex/SKILL.md');
 const protocols = [];
 if (fs.existsSync(REFLEXIO)) {
   const txt = fs.readFileSync(REFLEXIO, 'utf8');
@@ -146,7 +146,7 @@ if (fs.existsSync(REFLEXIO)) {
     protocols.push({ claus, protocol: m[2].trim(), ruta: (m[3] || m[4]).trim() });
   }
 } else {
-  errors.push('Falta .agents/skills/reflexio-previa/SKILL.md: sense PROTOCOLLEDGE no hi ha encaminament de plantilles.');
+  errors.push('Falta .agents/skills/skill-acte-reflex/SKILL.md: sense PROTOCOLLEDGE no hi ha encaminament de plantilles.');
 }
 
 const aplicables = protocols.filter((p) => p.claus.some(encés));
@@ -174,7 +174,7 @@ if (!aplicables.length) {
 
 /* ── 4c · Cobertura: cap gallet de creació pot quedar sense encaminar ──
    Les dues skills que existixen per encaminar la creació de documents són
-   efecte-matrix i reflexio-previa. Si un dels seus gallets no casa amb cap
+   skill-acte-reflex. Si un dels seus gallets no casa amb cap
    fila de la taula, eixa acció es generaria a mà lliure. És exactament el
    forat pel qual «crear un prompt» no arribava a cap plantilla. */
 const CLAUS_TAULA = protocols.flatMap((p) => p.claus).filter((c) => !/qualsevol altra acció/i.test(c));
@@ -194,7 +194,7 @@ function casaAmbTaula(gallet) {
     return false;
   });
 }
-for (const nom of ['efecte-matrix', 'reflexio-previa']) {
+for (const nom of ['skill-acte-reflex']) {
   const s = skills.find((x) => x.nom === nom);
   if (!s) { errors.push(`Falta la skill d'encaminament «${nom}».`); continue; }
   const orfes = s.triggers.filter((g) => !casaAmbTaula(g));

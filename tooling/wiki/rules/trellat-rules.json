@@ -7,7 +7,7 @@
     "02_ACTUAR_Maquina_Tecnica",
     "03_GOVERNAR_Normativa_Regles",
     "90_historic",
-    "04_ESCRIPTORI"
+    "04_escriptori"
   ],
   "requiredFrontmatter": ["estat", "tipus", "description"],
   "excludes": [

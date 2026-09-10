@@ -1,3 +1,8 @@
+---
+tipus: document
+estat: esborrany
+description: "🛡️ ACTA DEL CONSELL: VEREDICTE DEEPSEEK"
+---
 # 🛡️ ACTA DEL CONSELL: VEREDICTE DEEPSEEK
 
 **Data:** 8 de setembre de 2026

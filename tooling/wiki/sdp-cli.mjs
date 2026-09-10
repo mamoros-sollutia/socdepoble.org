@@ -65,7 +65,7 @@ const MIRROR_PREFIXES = [
 ];
 const VENDOR_PREFIXES = ['00_SER_Brain_Identitat/Sollutia'];
 const VISIBLE_QUARANTINE_RE = /^QUARANTENA(?:_|-)/i;
-// eslint-disable-next-line no-control-regex
+ 
 const CONTROL_RE = /[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/;
 const PLACEHOLDER_RE = /^(?:todo|tbd|wip|fixme|placeholder|pendent|per completar|pr[oò]ximament|sense contingut)[\s.!…:;-]*$/i;
 

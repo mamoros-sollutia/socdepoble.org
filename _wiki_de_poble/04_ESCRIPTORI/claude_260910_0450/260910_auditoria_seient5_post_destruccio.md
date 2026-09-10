@@ -1,9 +1,7 @@
 ---
 tipus: acta
 estat: lliurat
-description: "Auditoria post-destrucció i robustesa d'integració amb Sollutia. Seient Núm. 5 (Claude, Auditor Sènior)."
-data: 2026-09-10
-bundle: 260910_0431_BUNDLE_auditoria.md
+description: Auditoria post-destrucció i robustesa d'integració amb Sollutia. Seient Núm. 5 (Claude, Auditor Sènior).
 ---
 
 # AUDITORIA POST-DESTRUCCIÓ — SEIENT NÚM. 5

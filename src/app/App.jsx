@@ -406,17 +406,7 @@ function TextRoute({ pageKey }) {
 
 
 
-function LoadError() {
-  const { error, isBackendConfigurat, dataMode } = useUIState();
-  const { t } = useUIActions();
-  return (
-    <UniversalPage
-      title={t('error.loadPortal', "No s'ha pogut carregar el portal")}
-      subtitle={error?.message || (isBackendConfigurat ? 'Error desconegut.' : "No s'ha configurat el backend.")}
-      labels={['Error', isBackendConfigurat ? 'Xarxa Remota' : dataMode || 'desconnectat']}
-    />
-  );
-}
+
 
 export default function App({ config }) {
 

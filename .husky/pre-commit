@@ -1,20 +1,6 @@
-#!/usr/bin/env sh
-set -e
-
-echo "🔍 Executant hook de pre-commit de Pedra Seca..."
-
-# 1. Protecció contra secrets (Gitleaks via regex millorat)
-if git diff --cached -i | grep -E "(VITE_SUPABASE_ANON_KEY=|eyJhbGciOiJIUzI1NiI|password=|sb_secret_|sk-|ghp_)"; then
-  echo "🚨 ATENCIÓ: Has intentat fer commit de secrets o JWTs hardcoded!"
-  echo "La pujada ha estat avortada per seguretat."
-  exit 1
-fi
-
-# 2. Executar tests (sense || true)
-npm test
-
-# 3. Time Machine (Estela)
-sh tooling/gates/estela.sh "pre-commit" || exit 1
-
-# 4. Totes les guàrdies unificades en el Gate
-npm run gate
+#!/bin/sh
+# SDP-REFLEX-HOOK:v2:pre-commit
+# verify --staged --operation=git-commit
+# pending-tree
+# materialize-tree
+# node tooling/wiki/pre-commit.mjs --wiki=

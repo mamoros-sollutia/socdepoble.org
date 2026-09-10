@@ -1,3 +1,8 @@
+---
+tipus: document
+estat: esborrany
+description: MINIBUNDLE PER A L'AUDITOR Z
+---
 # MINIBUNDLE PER A L'AUDITOR Z
 Aquest és el cos dels 8 fitxers demanats per verificar les clausures crítiques.
 

@@ -122,3 +122,7 @@ Aquest directori està generat automàticament des de l'arrel oculta `.agents`. 
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->
 - [[00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS_universal-page]]
+
+
+## Orphans
+- [[skills/contingencia_offline.md]]

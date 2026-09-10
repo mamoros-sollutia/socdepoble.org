@@ -1,3 +1,8 @@
+---
+tipus: document
+estat: esborrany
+description: Informe d'Auditoria del Bundle 2609080401BUNDLEauditoria
+---
 # Informe d'Auditoria del Bundle 260908_0401_BUNDLE_auditoria
 
 ## Resum executiu

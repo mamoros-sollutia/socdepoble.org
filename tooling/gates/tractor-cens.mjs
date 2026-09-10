@@ -17,7 +17,7 @@
  *                                  a .agents/»
  *
  *   La «Regla Sagrada» d'enumerar totes les Petorretes vivia només a
- *   _wiki_de_poble/01_Ser/02_EQUIP_IA.md:54.
+ *   _wiki_de_poble/01_ser/03_equip_ia.md:54.
  *
  *   Una regla que ha de ser inevitable no pot ser prosa dins d'una zona
  *   declarada no-executiva. Ha de ser DADES amb PORTA. Això és la porta.
@@ -101,7 +101,7 @@ const N = membres.length;
    ══════════════════════════════════════════════════════════════════ */
 const SALTA = new Set([
   'node_modules', 'dist', 'build', 'coverage', '.git',
-  '90_historic', '_arxiu_wiki_de_poble', '.sdp-paperera'
+  '90_revisar', '_arxiu_wiki_de_poble', '.sdp-paperera'
 ]);
 
 function arbre(rel, eixida = []) {

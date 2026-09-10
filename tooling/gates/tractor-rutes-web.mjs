@@ -61,7 +61,11 @@ camina(ast('src/app/App.jsx'), (n) => {
   else {
     /* Identitat = component + props literals (TextRoute pageKey="legal" ≠ pageKey="ia"). */
     const props = el.openingElement.attributes.filter((a) => a.type === 'JSXAttribute' && valorStr(a) !== null).map((a) => `${a.name.name}=${valorStr(a)}`);
-    rutes.push({ path: ruta, tipus: 'component', component: props.length ? `${nom}(${props.join(',')})` : nom });
+    let normalizedPath = ruta;
+    if (normalizedPath && !normalizedPath.startsWith('/') && normalizedPath !== '*') {
+      normalizedPath = '/' + normalizedPath;
+    }
+    rutes.push({ path: normalizedPath, tipus: 'component', component: props.length ? `${nom}(${props.join(',')})` : nom });
   }
 });
 

@@ -959,7 +959,7 @@ Gran</div>
 <svg aria-hidden="true" fill="none" height="16" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="icona-linia" viewBox="0 0 20 20" width="16"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg> Descripció del vídeo original
             <svg fill="none" height="20" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 20 20" width="20"><polyline points="6 9 12 15 18 9"></polyline></svg>
 </summary>
-<div className="sdp-text-content" className="dsg-pre-wrap">
+<div className="dsg-pre-wrap">
   <p>Un Projecte per col·laborar en el desenvolupament sostenible i tecnològic en entorns rurals.</p>
   <p>Sóc del Poble serà un PORTAL DE POBLES CONNECTATS on compartir informació, experiències i idees que faciliten el desenvolupament sostenible i tecnològic en entorns rurals, per posar en valor els recursos locals, que són l'essència de la nostra identitat, i mostrar l'atractiu dels pobles com a llocs on viure i treballar.</p>
   <p>Serà un canal orientat a la difusió dels beneficis que les Noves Tecnologies poden aportar al món rural, utilitzant ferramentes col·laboratives:</p>
@@ -1183,7 +1183,7 @@ Gran</div>
         >
           <div className="card">
             <h4 >Panell de Control</h4>
-            <p className="text-muted"><strong>Tipus:</strong> Sistema (Sense Labels)</p>
+            <p><strong>Tipus:</strong> Sistema (Sense Labels)</p>
             <p ><strong>Tipus:</strong> Sistema (Sense Labels)</p>
             <p >És el <em>Hub</em> o quadre de comandament central. No té cap feed ni <em>cards</em>. Servix exclusivament com a enrutador per a oferir accessos ràpids a la publicació i altres eines d'administració de l'ecosistema. A més, fa servir una <em>entradilla</em> (propietat `lead`) com a subtítol per mantenir la neteja visual i prescindir de títols amb estils <em>inline</em>.</p>
           </div>

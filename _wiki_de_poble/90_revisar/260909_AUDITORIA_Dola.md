@@ -1,3 +1,8 @@
+---
+tipus: document
+estat: esborrany
+description: "🛡️ PETORRETA AL CONSELL: AUDITORIA TÈCNICA (Dola)"
+---
 # 🛡️ PETORRETA AL CONSELL: AUDITORIA TÈCNICA (Dola)
 
 **Dictamen executiu**

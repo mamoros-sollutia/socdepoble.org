@@ -1,3 +1,8 @@
+---
+tipus: document
+estat: esborrany
+description: "🛡️ PETORRETA AL CONSELL: AUDITORIA TÈCNICA (Claude)"
+---
 # 🛡️ PETORRETA AL CONSELL: AUDITORIA TÈCNICA (Claude)
 
 **Dictamen executiu**

@@ -1,11 +1,11 @@
 import { describe, it, expect, vi } from 'vitest';
-import { render } from '@testing-library/react';
+import { render, act } from '@testing-library/react';
 import PedraSecaEmbed from '../PedraSecaEmbed';
 
 import { setBackendImplementation } from '../data/backendPort';
 
 describe('App Component', () => {
-  it('renders without crashing', () => {
+  it('renders without crashing', async () => {
     Object.defineProperty(window, 'matchMedia', {
       writable: true,
       value: vi.fn().mockImplementation(query => ({
@@ -29,7 +29,11 @@ describe('App Component', () => {
       recullTornadaOAuth: async () => {}
     });
     const config = { routerType: 'memory' };
-    const { container } = render(<PedraSecaEmbed config={config} />);
+    let container;
+    await act(async () => {
+      const result = render(<PedraSecaEmbed config={config} />);
+      container = result.container;
+    });
     expect(container).toBeTruthy();
   });
 });

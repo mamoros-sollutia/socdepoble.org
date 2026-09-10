@@ -349,7 +349,16 @@ const TRANSLATIONS = {
     'section.connectar.area.multimedia': "Accedeix a l'arxiu visual.",
     'section.connectar.area.notes': "Consulta el quadern del projecte.",
     'section.multimedia.all': "TOTS",
-    'section.notes.searchAria': "Cerca a les notes"
+    'section.notes.searchAria': "Cerca a les notes",
+    'nav.panel': 'Panell',
+    'section.notes.format.list': 'Llista',
+    'section.notes.format.bold': 'Negreta',
+    'section.notes.format.italic': 'Cursiva',
+    'section.notes.format.strike': 'Ratllat',
+    'section.control.lead': 'Configuració',
+    'section.perfil.title': 'Perfil',
+    'section.xatcontrol.title': 'Control Xat',
+    'section.xatcontrol.subtitle': 'Control del xat'
   },
   es: {
 
@@ -664,7 +673,16 @@ const TRANSLATIONS = {
     'section.connectar.area.multimedia': "Accede al archivo visual.",
     'section.connectar.area.notes': "Consulta el cuaderno del proyecto.",
     'section.multimedia.all': "TODOS",
-    'section.notes.searchAria': "Buscar en las notas"
+    'section.notes.searchAria': "Buscar en las notas",
+    'nav.panel': 'Panel',
+    'section.notes.format.list': 'Lista',
+    'section.notes.format.bold': 'Negrita',
+    'section.notes.format.italic': 'Cursiva',
+    'section.notes.format.strike': 'Tachado',
+    'section.control.lead': 'Configuración',
+    'section.perfil.title': 'Perfil',
+    'section.xatcontrol.title': 'Control Chat',
+    'section.xatcontrol.subtitle': 'Control de chat'
   },
   en: {
 
@@ -979,7 +997,16 @@ const TRANSLATIONS = {
     'section.connectar.area.multimedia': "Access the visual archive.",
     'section.connectar.area.notes': "Check the project notebook.",
     'section.multimedia.all': "ALL",
-    'section.notes.searchAria': "Search in notes"
+    'section.notes.searchAria': "Search in notes",
+    'nav.panel': 'Panel',
+    'section.notes.format.list': 'List',
+    'section.notes.format.bold': 'Bold',
+    'section.notes.format.italic': 'Italic',
+    'section.notes.format.strike': 'Strike',
+    'section.control.lead': 'Settings',
+    'section.perfil.title': 'Profile',
+    'section.xatcontrol.title': 'Chat Control',
+    'section.xatcontrol.subtitle': 'Chat control'
   },
   eu: {
 
@@ -1298,7 +1325,16 @@ const TRANSLATIONS = {
     'section.connectar.area.multimedia': "Sartu artxibo bisualean.",
     'section.connectar.area.notes': "Kontsultatu proiektuaren koadernoa.",
     'section.multimedia.all': "DENAK",
-    'section.notes.searchAria': "Bilatu oharretan"
+    'section.notes.searchAria': "Bilatu oharretan",
+    'nav.panel': 'Panela',
+    'section.notes.format.list': 'Zerrenda',
+    'section.notes.format.bold': 'Lodia',
+    'section.notes.format.italic': 'Etzana',
+    'section.notes.format.strike': 'Marratua',
+    'section.control.lead': 'Ezarpenak',
+    'section.perfil.title': 'Profila',
+    'section.xatcontrol.title': 'Txat Kontrola',
+    'section.xatcontrol.subtitle': 'Txat kontrola'
   },
   gl: {
 
@@ -1614,7 +1650,16 @@ const TRANSLATIONS = {
     'section.connectar.area.multimedia': "Accede ao arquivo visual.",
     'section.connectar.area.notes': "Consulta o caderno do proxecto.",
     'section.multimedia.all': "TODOS",
-    'section.notes.searchAria': "Buscar nas notas"
+    'section.notes.searchAria': "Buscar nas notas",
+    'nav.panel': 'Panel',
+    'section.notes.format.list': 'Lista',
+    'section.notes.format.bold': 'Grosa',
+    'section.notes.format.italic': 'Cursiva',
+    'section.notes.format.strike': 'Riscado',
+    'section.control.lead': 'Configuración',
+    'section.perfil.title': 'Perfil',
+    'section.xatcontrol.title': 'Control Chat',
+    'section.xatcontrol.subtitle': 'Control de chat'
   }
 };
 

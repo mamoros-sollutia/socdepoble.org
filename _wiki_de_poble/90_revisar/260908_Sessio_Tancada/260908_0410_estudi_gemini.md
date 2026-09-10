@@ -1,3 +1,8 @@
+---
+tipus: document
+estat: esborrany
+description: "📜 ACTA DEL CONSELL: DICTAMEN D'AUDITORIA FINAL"
+---
 # 📜 ACTA DEL CONSELL: DICTAMEN D'AUDITORIA FINAL
 
 **Data i Hora:** Dimarts, 8 de setembre de 2026, 04:07 CEST

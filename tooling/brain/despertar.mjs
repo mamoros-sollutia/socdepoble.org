@@ -9,7 +9,7 @@
  *      Fail-OPEN: l'agent es despertava creient que l'escriptori estava
  *      buit. Ara usa `discoverProjectRoot()` i falla tancat.
  *
- *   2. Hardcodejava '_wiki_de_poble/04_ESCRIPTORI' — era la
+ *   2. Hardcodejava '_wiki_de_poble/04_escriptori' — era la
  *      còpia número 20 del literal. Ara importa ESCRIPTORI_DIR.
  *
  *   3. NO estava a `package.json`. Zero cridadors. La mateixa malaltia que

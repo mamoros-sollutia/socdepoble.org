@@ -1,3 +1,8 @@
+---
+tipus: document
+estat: esborrany
+description: "🛡️ PETORRETA AL CONSELL: AUDITORIA TÈCNICA (Deepseek)"
+---
 # 🛡️ PETORRETA AL CONSELL: AUDITORIA TÈCNICA (Deepseek)
 
 ## 1. Resum executiu

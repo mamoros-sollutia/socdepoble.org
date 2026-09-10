@@ -1,6 +1,7 @@
 ---
-títol: Acta Marmota - Migració de Nomenclatura i Disseny
-data: 2026-09-10T05:30:00
+tipus: acta
+estat: esborrany
+description: "ACTA MARMOTA: L'Eixam Renovat i el Nou Disseny"
 ---
 # ACTA MARMOTA: L'Eixam Renovat i el Nou Disseny
 

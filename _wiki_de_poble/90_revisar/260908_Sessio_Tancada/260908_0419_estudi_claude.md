@@ -1,7 +1,7 @@
 ---
 tipus: acta
 estat: esborrany
-description: "Acta del Consell — auditoria destructiva final i maduració de skills (Seient Auditor Sènior)"
+description: Acta del Consell — auditoria destructiva final i maduració de skills (Seient Auditor Sènior)
 ---
 
 # 📜 260908 — ACTA DEL CONSELL: AUDITORIA DESTRUCTIVA FINAL I MADURACIÓ COGNITIVA

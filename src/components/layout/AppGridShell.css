@@ -15,13 +15,8 @@
   --app-grid-col-collapsed: 56px;
   --app-grid-header-height: var(--sdp-alt-accio);
   background: var(--sdp-fons-app);
-  --app-grid-bg-esquerra: var(--sdp-pedra-300); /* Calç 300 */
-  --app-grid-bg-centre: var(--sdp-pedra-200);   /* Arena 200 */
-}
-
-[data-theme="dark"] .app-grid-page {
-  --app-grid-bg-esquerra: var(--sdp-pedra-900);
-  --app-grid-bg-centre: var(--sdp-pedra-850);
+  --app-grid-bg-esquerra: var(--sdp-fons-subtil);
+  --app-grid-bg-centre: var(--sdp-fons-targeta);
 }
 
 .app-grid-page > .content-wrapper,
@@ -37,7 +32,7 @@
 .app-grid-headers {
   display: flex;
   height: var(--app-grid-header-height);
-  background: var(--sdp-pedra-800);
+  background: var(--sdp-fons-invers);
   flex: none;
 }
 .app-grid-header-btn {
@@ -135,7 +130,7 @@
 }
 :root[data-theme="dark"] .app-grid-page .app-grid-column--right,
 :host([data-theme="dark"]) .app-grid-page .app-grid-column--right { 
-  background: var(--sdp-pedra-800); 
+  background: var(--sdp-fons-invers); 
 }
 
 /* ESTATS COL·LAPSATS (Si cal per escriptori) */
@@ -168,14 +163,14 @@
   gap: var(--sdp-space-2);
   min-height: var(--sdp-alt-accio);
   padding: 0 var(--sdp-space-4);
-  background: var(--sdp-pedra-800);
+  background: var(--sdp-fons-invers);
   color: var(--sdp-sobre-roca);
   border-bottom: none;
   flex: none;
 }
 .app-grid-col-header--collapsed { justify-content: center; padding: 0; }
 .app-grid-col-header--accordion {
-  background: var(--sdp-pedra-600);
+  background: var(--sdp-fons-subtil);
   border-top: 1px solid var(--sdp-vora-control);
   border-bottom: 1px solid var(--sdp-vora-control);
 }

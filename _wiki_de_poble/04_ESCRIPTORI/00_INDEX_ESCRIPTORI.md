@@ -1,6 +1,6 @@
 ---
-estat: canonic
 tipus: index
+estat: canonic
 description: 📥 L'ESCRIPTORI (SAFATA D'ENTRADA I TREBALL ACTIU)
 ---
 
@@ -22,3 +22,9 @@ Ací només resideix la matèria viva. El que ha mort, descansa en l'arxiu.
 
 ## 01_Produccio
 - [[01_Produccio/contracte_graella]]
+
+
+## Orphans
+- [[00_bandeja_d_entrada/claude_260910_0514/260910_auditoria_nomenclatura_wiki.md]]
+- [[260910_0535_acta_marmota_migracio_nomenclatura.md]]
+- [[claude_260910_0450/260910_auditoria_seient5_post_destruccio.md]]

@@ -4,7 +4,6 @@ estat: actiu
 description: Auditoria de mercat sobre Puebli, competidor directe en xarxes socials rurals i govtech.
 tags:
   - disseny
-  - arquitectura
   - govern
 ---
 

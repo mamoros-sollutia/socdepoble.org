@@ -12,7 +12,7 @@ import { pathToFileURL } from 'node:url';
 import { PROJECT_DIR } from './lib/project_paths.mjs';
 
 const SOURCE_DIR = process.env.SDP_SOLLUTIA_PLUGINS || path.join(process.env.HOME || '', '.gemini/config/plugins');
-const DEST_DIR = path.join(PROJECT_DIR, '_wiki_de_poble/01_Ser/Sollutia');
+const DEST_DIR = path.join(PROJECT_DIR, '_wiki_de_poble/02_saber/sollutia');
 
 async function findSkills(dir) {
   const results = [];

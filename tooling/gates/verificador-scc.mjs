@@ -8,8 +8,8 @@ export class VerificadorSCC {
     
     // Configuració de límits
     this.INBOX_MAX_FILES = 20;
-    this.INBOX_DIR = '_wiki_de_poble/04_ESCRIPTORI/00_Bandeja_d_Entrada';
-    this.ESCRIPTORI_DIR = '_wiki_de_poble/04_ESCRIPTORI';
+    this.INBOX_DIR = '_wiki_de_poble/04_escriptori/00_bandeja_d_entrada';
+    this.ESCRIPTORI_DIR = '_wiki_de_poble/04_escriptori';
     
     // Resultats
     this.graph = new Map(); // AbsolutePath -> Set<AbsolutePath>
@@ -133,7 +133,7 @@ export class VerificadorSCC {
 
     for (const file of allFiles) {
       const relPath = relative(escriptoriRoot, file);
-      // Ens fixem només en els fitxers que pengen directament de 04_ESCRIPTORI o de 01_Produccio
+      // Ens fixem només en els fitxers que pengen directament de 04_escriptori o de 01_Produccio
       // Ignorem 00_Bandeja_d_Entrada per a l'ancoratge estricte.
       if (!relPath.startsWith('..') && !relPath.startsWith('00_Bandeja_d_Entrada')) {
         const fName = basename(file);
@@ -171,7 +171,7 @@ export class VerificadorSCC {
     }
 
     // 3.2 DFS des dels índexs canònics per trobar Orfes
-    const canonicalIndices = ['_wiki_de_poble/00_INDEX.md', join('_wiki_de_poble/04_ESCRIPTORI', '00_INDEX_ESCRIPTORI.md')];
+    const canonicalIndices = ['_wiki_de_poble/00_index.md', join('_wiki_de_poble/04_escriptori', '00_INDEX_ESCRIPTORI.md')];
     const visited = new Set();
     const allNodes = new Set(this.graph.keys());
 

@@ -1,8 +1,7 @@
 ---
 tipus: acta_marmota
-data: 2026-09-08
-autor: IAIA MarIA
 estat: finalitzat
+description: "Acta Marmota: Refinament UI, Errors de CSS i Nova Organització d'Actes"
 ---
 # Acta Marmota: Refinament UI, Errors de CSS i Nova Organització d'Actes
 

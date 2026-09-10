@@ -1,7 +1,7 @@
 ---
 tipus: petorreta
 estat: pendent_enviament
-description: "Auditoria Tècnica Post-Destrucció i Robustesa de Connexió amb Sollutia"
+description: Auditoria Tècnica Post-Destrucció i Robustesa de Connexió amb Sollutia
 ---
 # 🛡️ PETORRETA AL CONSELL: AUDITORIA POST-DESTRUCCIÓ I ROBUSTESA (SOLLUTIA)
 

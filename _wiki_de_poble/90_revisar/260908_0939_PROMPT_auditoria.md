@@ -1,7 +1,7 @@
 ---
 tipus: petorreta
 estat: final
-description: "Petorreta EXCLUSIVA per a Claude (Seient 5) per esgotar el 100% de tokens"
+description: Petorreta EXCLUSIVA per a Claude (Seient 5) per esgotar el 100% de tokens
 ---
 # 🛡️ PETORRETA EXCLUSIVA A CLAUDE (SEIENT NÚM. 5): MISSATGERIA I SUPABASE
 

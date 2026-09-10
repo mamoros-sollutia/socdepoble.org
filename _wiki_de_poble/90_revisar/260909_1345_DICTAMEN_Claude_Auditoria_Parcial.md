@@ -1,3 +1,8 @@
+---
+tipus: document
+estat: esborrany
+description: 🛡️ DICTAMEN D'AUDITORIA — SÓC DE POBLE (PARCIAL)
+---
 # 🛡️ DICTAMEN D'AUDITORIA — SÓC DE POBLE (PARCIAL)
 **Auditor:** Claude
 **Data:** 260909

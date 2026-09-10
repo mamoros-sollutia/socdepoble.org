@@ -1,7 +1,7 @@
 ---
 tipus: petorreta
 estat: esborrany
-description: "Auditoria tècnica per millorar tot el sistema i la pàgina legal"
+description: Auditoria tècnica per millorar tot el sistema i la pàgina legal
 ---
 # 🛡️ PETORRETA AL CONSELL: AUDITORIA
 

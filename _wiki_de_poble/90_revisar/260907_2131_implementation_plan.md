@@ -1,3 +1,8 @@
+---
+tipus: document
+estat: esborrany
+description: "Pla d'Implementació: Transició a Online-First (Fase 3) i Reparació d'Esquema (B1, B2)"
+---
 # Pla d'Implementació: Transició a Online-First (Fase 3) i Reparació d'Esquema (B1, B2)
 
 Aquest pla detalla les operacions SQL necessàries per a culminar l'adopció de l'arquitectura Online-First i l'aïllament multi-tenant.

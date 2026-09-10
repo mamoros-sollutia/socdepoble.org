@@ -1,7 +1,7 @@
 ---
 tipus: acta
 estat: finalitzat
-description: "Acta de Tancament de Sessió - Refinament del Xat i Preparació de Deploy"
+description: Acta de Tancament de Sessió - Refinament del Xat i Preparació de Deploy
 ---
 
 # ACTA DE SESSIÓ: 260908 - 06:50 (Tancament)

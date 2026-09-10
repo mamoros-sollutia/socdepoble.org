@@ -19,7 +19,7 @@ export const WRITE_ZONES = {
     '03_GOVERNAR_Normativa_Regles'
   ],
   archive: ['90_historic'],
-  ephemeral: ['04_ESCRIPTORI'],
+  ephemeral: ['04_escriptori'],
   generated: [
     '_build',
     '.snapshots'

@@ -1,3 +1,8 @@
+---
+tipus: document
+estat: esborrany
+description: Contracte Graella
+---
 # Contracte Graella
 
 El framework de graella es basa en `AppGridShell` i `AppGridColumn`.

@@ -148,7 +148,7 @@ export function determinarCarpeta(fm, { currentPath } = {}) {
 
   if (fm.estat === 'arxivat') return '90_historic/';
   if (fm.estat === 'esborrany' || fm.estat === 'futur') {
-    return '04_ESCRIPTORI/';
+    return '04_escriptori/';
   }
 
   if (fm.tipus === 'norma' || fm.tipus === 'protocol') {

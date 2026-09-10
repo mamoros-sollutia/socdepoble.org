@@ -44,8 +44,8 @@ const nota = (id, estat, detall, llista) => registre.push({ id, estat, detall, l
  * esborrar el fantasma i, si algú el citava, apuntar-lo a la de veres.
  */
 {
-  const fantasma = '_wiki_de_poble/03_Actuar/07_plantilles/plantilla_prompt_iso.md';
-  const bona = '_wiki_de_poble/03_Actuar/plantilles/PLANTILLA_ISO_SDP.md';
+  const fantasma = '_wiki_de_poble/02_saber/plantilles/00_plantilla_iso.md';
+  const bona = '_wiki_de_poble/02_saber/plantilles/00_plantilla_iso.md';
 
   if (!existix(fantasma)) {
     nota('N1', 'JA-FET', 'el fantasma ja no hi és');

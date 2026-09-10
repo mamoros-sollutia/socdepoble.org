@@ -2,6 +2,8 @@
 tipus: skill
 estat: canonic
 description: Flux de treball per a Soc de Poble i Protocol d'higiene cognitiva per evitar l'esgotament del context.
+name: skill-cicle-de-vida
+triggers_on: skill-cicle-de-vida
 ---
 # Cicle de Vida (Workflow i Higiene)
 

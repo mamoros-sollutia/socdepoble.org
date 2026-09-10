@@ -1,3 +1,8 @@
+---
+tipus: document
+estat: esborrany
+description: "Estudi: El Xat com a Safata d'Entrada de la Vida"
+---
 # Estudi: El Xat com a Safata d'Entrada de la Vida
 
 ## 1. La Visió: De Missatgeria a "Segon Cervell"

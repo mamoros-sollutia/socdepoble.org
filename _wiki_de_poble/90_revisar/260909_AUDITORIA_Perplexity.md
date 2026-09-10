@@ -1,3 +1,8 @@
+---
+tipus: document
+estat: esborrany
+description: "🛡️ PETORRETA AL CONSELL: AUDITORIA TÈCNICA (Perplexity)"
+---
 # 🛡️ PETORRETA AL CONSELL: AUDITORIA TÈCNICA (Perplexity)
 
 **Dictamen executiu**

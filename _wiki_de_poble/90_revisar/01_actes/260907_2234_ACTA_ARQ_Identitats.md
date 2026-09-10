@@ -1,3 +1,8 @@
+---
+tipus: document
+estat: esborrany
+description: "ACTA ARQUITECTÒNICA: Identitats i Orfes (Páginas Huérfanas)"
+---
 # ACTA ARQUITECTÒNICA: Identitats i Orfes (Páginas Huérfanas)
 **Data:** 07/09/2026
 **Autor:** IAIA MarIA (segons àudios del Mestre Javi)

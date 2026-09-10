@@ -1,3 +1,8 @@
+---
+tipus: document
+estat: esborrany
+description: Acta d'Agenda i Estratègia Futura (260907)
+---
 # Acta d'Agenda i Estratègia Futura (260907)
 
 Aquest document recull les directrius estratègiques a llarg termini marcades pel Mestre.

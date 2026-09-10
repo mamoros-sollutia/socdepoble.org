@@ -10,7 +10,7 @@
  *     · 15 de les 19 rutes `_wiki_de_poble/...` citades al codi apunten a
  *       carpetes que NO existixen. `00_SER_Brain_Identitat` la citen 11
  *       fitxers, entre ells `.agents/consell.json`.
- *     · `01_Ser/03_EQUIP_IA.md` és orfe perquè algú el va renumerar des de
+ *     · `01_ser/03_EQUIP_IA.md` és orfe perquè algú el va renumerar des de
  *       `02_` i va deixar 21 referències apuntant al número vell.
  *
  *   La conclusió no és que faltara una norma de majúscules. És que faltava una

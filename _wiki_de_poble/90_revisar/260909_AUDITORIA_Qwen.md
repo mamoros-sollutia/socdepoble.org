@@ -1,3 +1,8 @@
+---
+tipus: document
+estat: esborrany
+description: "🛡️ PETORRETA AL CONSELL: AUDITORIA TÈCNICA (Qwen)"
+---
 # 🛡️ PETORRETA AL CONSELL: AUDITORIA TÈCNICA (Qwen)
 
 **Dictamen executiu**

@@ -1,3 +1,8 @@
+---
+tipus: document
+estat: esborrany
+description: 🛡️ ACTA D'AUDITORIA — SÓC DE POBLE (Z)
+---
 # 🛡️ ACTA D'AUDITORIA — SÓC DE POBLE (Z)
 
 **Dictamen executiu**

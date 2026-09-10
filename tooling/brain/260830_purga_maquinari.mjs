@@ -67,28 +67,28 @@ const marca = (r, t) => pendents.set(r, t);
  */
 const DOCTRINA = [
   {
-    fitxer: '_wiki_de_poble/01_Ser/01_IDENTITAT.md',
+    fitxer: '_wiki_de_poble/01_ser/01_identitat.md',
     canvis: [[
       /pren\s+iPad\s*A10\/Safari\s+com\s+a\s+s[oò]l\s+de\s+compatibilitat/gi,
       'pren el Baseline 2022 (Safari/iOS 16, Chrome 100) com a sòl de compatibilitat',
     ]],
   },
   {
-    fitxer: '_wiki_de_poble/01_Ser/02_GENOTIP.md',
+    fitxer: '_wiki_de_poble/01_ser/02_genotip.md',
     canvis: [[
       /compatibles\s+amb\s+l[’']iPad\s*A10/gi,
       'compatibles amb el Baseline 2022',
     ]],
   },
   {
-    fitxer: '_wiki_de_poble/01_Ser/el_projecte.md',
+    fitxer: '_wiki_de_poble/02_saber/el_projecte.md',
     canvis: [[
       /iPad\s*A10\s+i\s+Safari\s+s[oó]n\s+el\s+s[oò]l\s+de\s+disseny\./gi,
       'El Baseline 2022 (Safari/iOS 16, Chrome 100) és el sòl de disseny.',
     ]],
   },
   {
-    fitxer: '_wiki_de_poble/03_Actuar/00_arquitectura_tecnica_unificada.md',
+    fitxer: '_wiki_de_poble/02_saber/00_arquitectura_tecnica_unificada.md',
     canvis: [[
       /iPad\s*A10\s+i\s+Safari\s+s[oó]n\s+el\s+s[oò]l\s+de\s+compatibilitat;\s*una\s+API\s+nova\s+necessita\s+detecci[oó]\s+i\s+fallback\s+lleuger\./gi,
       'El Baseline 2022 és el sòl de compatibilitat; una API disponible al baseline '
@@ -96,7 +96,7 @@ const DOCTRINA = [
     ]],
   },
   {
-    fitxer: '_wiki_de_poble/03_Actuar/skills/futur_adaptacio.md',
+    fitxer: '_wiki_de_poble/03_actuar/skills/futur_adaptacio.md',
     canvis: [
       [/#\s*Adaptaci[oó]\s+futura\s+amb\s+veto\s+A10/gi, '# Adaptació futura amb veto de Baseline'],
       [/\*\*Veto\s+A10\.\*\*/gi, '**Veto de Baseline.**'],
@@ -106,7 +106,7 @@ const DOCTRINA = [
     ],
   },
   {
-    fitxer: '_wiki_de_poble/03_Actuar/skills/a11y_seo_trellat.md',
+    fitxer: '_wiki_de_poble/03_actuar/skills/a11y_seo_trellat.md',
     canvis: [
       [/En\s+homologar\s+una\s+vista\s+per\s+a\s+dispositius\s+antics,\s*especialment\s+l[’']iPad\s*A10\./gi,
         'En homologar una vista al dispositiu de referència del Baseline 2022.'],
@@ -115,7 +115,7 @@ const DOCTRINA = [
     ],
   },
   {
-    fitxer: '_wiki_de_poble/02_Saber/FORJA_TO_CORE.md',
+    fitxer: '_wiki_de_poble/02_saber/FORJA_TO_CORE.md',
     canvis: [
       [/`sdp\s+test\s+--profile\s+ipad-a10`/gi, '`npm run porta`'],
       [/implementar\s+una\s+prova\s+reprodu[iï]ble\s+en\s+iPad\s*A10\/Safari;/gi,
@@ -123,14 +123,14 @@ const DOCTRINA = [
     ],
   },
   {
-    fitxer: '_wiki_de_poble/02_Saber/ESTANDARD_UI_Universal.md',
+    fitxer: '_wiki_de_poble/02_saber/ESTANDARD_UI_Universal.md',
     canvis: [[
       /compatibilitat\s+amb\s+iPad\s*A10/gi,
       'compatibilitat amb el Baseline 2022',
     ]],
   },
   {
-    fitxer: '_wiki_de_poble/01_Ser/perfil_psiquiatric.md',
+    fitxer: '_wiki_de_poble/02_saber/perfil_psiquiatric.md',
     canvis: [[
       /\*\*Ecotoxicologia\s+\(Pragmatisme\s+A10\)[:.]?\*\*[^\n]*/gi,
       '**Ecotoxicologia (Pragmatisme de Baseline):** Suportem el Baseline 2022. '
@@ -139,14 +139,14 @@ const DOCTRINA = [
     ]],
   },
   {
-    fitxer: '_wiki_de_poble/01_Ser/03_Consola_Termodinamica.md',
+    fitxer: '_wiki_de_poble/02_saber/03_consola_termodinamica.md',
     canvis: [
       [/`ramMbMaxA10:\s*1200`/g, '`ramMbMaxBaseline: 1200`'],
       [/RAM\s+d[’']iPad/gi, 'RAM del dispositiu de referència'],
     ],
   },
   {
-    fitxer: '_wiki_de_poble/01_Ser/Soci_Sollutia.md',
+    fitxer: '_wiki_de_poble/01_ser/Soci_Sollutia.md',
     canvis: [
       [/validaci[oó]\s+iPad\s*A10/gi, 'validació al Baseline 2022'],
       [/Es\s+comprova\s+el\s+pes\s+real\s+en\s+iPad\s*A10\./gi,
@@ -154,7 +154,7 @@ const DOCTRINA = [
     ],
   },
   {
-    fitxer: '_wiki_de_poble/02_Saber/architecture/model_arquitectonic_pedra_seca_dola.md',
+    fitxer: '_wiki_de_poble/02_saber/architecture/model_arquitectonic_pedra_seca_dola.md',
     canvis: [
       [/\*\*Optimitzaci[oó]\s+A10\*\*/gi, '**Optimització d\'Accessibilitat**'],
       [/l[’']optimitzaci[oó]\s+per\s+a\s+l[’']A10\s*\(Accessibilitat\s*10\)/gi,
@@ -162,11 +162,11 @@ const DOCTRINA = [
     ],
   },
   {
-    fitxer: '_wiki_de_poble/01_Ser/antigravity.md',
+    fitxer: '_wiki_de_poble/01_ser/antigravity.md',
     canvis: [[/iPad\s*A10/gi, 'maquinari del Baseline 2022']],
   },
   {
-    fitxer: '_wiki_de_poble/03_Actuar/plantilles/PLANTILLA_ISO_SDP.md',
+    fitxer: '_wiki_de_poble/02_saber/plantilles/00_plantilla_iso.md',
     canvis: [[/iPads?\s*A10/gi, 'el Baseline 2022']],
   },
   {

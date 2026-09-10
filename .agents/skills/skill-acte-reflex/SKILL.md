@@ -2,6 +2,8 @@
 tipus: skill
 estat: canonic
 description: Protocol obligatori de reflexió prèvia a qualsevol modificació de codi i frontera operativa. Fusiona Les Tres Pedres, verificació de canvis i consulta obligatòria (Efecte Matrix).
+name: skill-acte-reflex
+triggers_on: skill-acte-reflex
 ---
 # Acte Reflex (Trellat, Reflexió, Plantilles)
 
@@ -33,21 +35,21 @@ NO PRODUÏRES CAP OUTPUT fins que hages completat el PAS 3 o el PAS 4.
 | Acció (paraules clau) | Protocol obligatori | Ruta del fitxer |
 |-----------------------|---------------------|-----------------|
 | petorreta, petorreta V, petició al consell | PROTOCOL_PETORRETA | [[.agents/PROTOCOL_PETORRETA.md]] |
-| acta, sessió, tancament | PLANTILLA_ACTA_UNICA | [[_wiki_de_poble/03_Actuar/07_plantilles/plantilla_acta_unica.md]] |
-| auditoria, revisar, auditar | AUDITORIA_CANONICA | [[_wiki_de_poble/03_Actuar/skills/AUDITORIA_CANONICA.md]] |
-| crear skill, nova habilitat | PLANTILLA_CREADOR_SKILLS | [[_wiki_de_poble/03_Actuar/07_plantilles/plantilla_creador_skills.md]] |
-| ampliar, afegir regla | GUIA_AMPLIACIO | [[.agents/skills/guia-ampliacio/SKILL.md]] |
+| acta, sessió, tancament | PLANTILLA_ACTA_UNICA | [[_wiki_de_poble/02_saber/07_plantilles/plantilla_acta_unica.md]] |
+| auditoria, revisar, auditar | AUDITORIA_CANONICA | [[_wiki_de_poble/02_saber/skills/auditoria_canonica.md]] |
+| crear skill, nova habilitat | PLANTILLA_CREADOR_SKILLS | [[_wiki_de_poble/02_saber/07_plantilles/plantilla_creador_skills.md]] |
+| ampliar, afegir regla | GUIA_AMPLIACIO | [[_wiki_de_poble/02_saber/07_plantilles/plantilla_skill_agent.md]] |
 | restaurar, recuperar, segell | RESTAURACIO_SEGELLADA | [[.agents/skills/core-restauracio-segellada/SKILL.md]] |
 | pànic, context perdut, desorientació | CONTEXT_PANIC | [[.agents/skills/core-context-panic/SKILL.md]] |
-| codi, arquitectura, refactor | TRELLAT | [[.agents/skills/trellat/SKILL.md]] |
-| prompt, crear prompt, crea un prompt, petició a una IA | PLANTILLA_ISO_SDP | [[_wiki_de_poble/03_Actuar/plantilles/PLANTILLA_ISO_SDP.md]] |
-| informe, estudi, resposta del consell | PLANTILLA_ESTUDI_IA | [[_wiki_de_poble/03_Actuar/07_plantilles/plantilla_estudi_ia.md]] |
-| document, nou document, generar arxiu, crea fitxer | PLANTILLA_ISO_SDP | [[_wiki_de_poble/03_Actuar/plantilles/PLANTILLA_ISO_SDP.md]] |
-| bundle, abocament | ABOCAMENT_TOTAL | [[.agents/skills/abocament-total/SKILL.md]] |
-| prepara, planificació, planificar | PLANTILLA_PLANIFICACIO | [[_wiki_de_poble/03_Actuar/07_plantilles/plantilla_planificacio.md]] |
-| nova funcionalitat, afegir funcionalitat | GUIA_AMPLIACIO | [[.agents/skills/guia-ampliacio/SKILL.md]] |
-| què sé jo, abans de començar | REFLEXIO_PREVIA | [[.agents/skills/reflexio-previa/SKILL.md]] |
-| qualsevol altra acció | PLANTILLA_ISO_SDP (per defecte) | [[_wiki_de_poble/03_Actuar/plantilles/PLANTILLA_ISO_SDP.md]] |
+| codi, arquitectura, refactor | TRELLAT | [[_wiki_de_poble/02_saber/skills/index_trellat.md]] |
+| prompt, crear prompt, crea un prompt, petició a una IA | PLANTILLA_ISO_SDP | [[_wiki_de_poble/02_saber/plantilles/plantilla_iso_sdp.md]] |
+| informe, estudi, resposta del consell | PLANTILLA_ESTUDI_IA | [[_wiki_de_poble/02_saber/07_plantilles/plantilla_estudi_ia.md]] |
+| document, nou document, generar arxiu, crea fitxer | PLANTILLA_ISO_SDP | [[_wiki_de_poble/02_saber/plantilles/plantilla_iso_sdp.md]] |
+| bundle, abocament | ABOCAMENT_TOTAL | [[.agents/skills/skill-consell-bundle/SKILL.md]] |
+| prepara, planificació, planificar | PLANTILLA_PLANIFICACIO | [[_wiki_de_poble/02_saber/07_plantilles/plantilla_planificacio.md]] |
+| nova funcionalitat, afegir funcionalitat | GUIA_AMPLIACIO | [[_wiki_de_poble/02_saber/07_plantilles/plantilla_skill_agent.md]] |
+| què sé jo, abans de començar, skill-acte-reflex | REFLEXIO_PREVIA | [[.agents/skills/skill-acte-reflex/SKILL.md]] |
+| qualsevol altra acció | PLANTILLA_ISO_SDP (per defecte) | [[_wiki_de_poble/02_saber/plantilles/plantilla_iso_sdp.md]] |
 
 ## 3. Regla d'Or contra la Psicopatia
 Si el Mestre et demana "pilotar un helicòpter" i tu t'adones que no has llegit el manual d'helicòpters de l'arxiu, NO L'ENENGUES. Primer llig, després executa. **Mai** inventes un format d'acta, informe, prompt o bundle si existeix un històric o una plantilla que marca com es fa a Sóc de Poble. Incomplir açò és faltar al respecte al llegat arquitectònic.

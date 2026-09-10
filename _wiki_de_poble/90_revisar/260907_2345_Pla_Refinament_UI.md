@@ -1,3 +1,8 @@
+---
+tipus: document
+estat: esborrany
+description: "Pla d'Acció: Refinament de UI (Sopar del Mestre)"
+---
 # Pla d'Acció: Refinament de UI (Sopar del Mestre)
 
 Mentre el Mestre sopa, aplicarem una sèrie de correccions estètiques i d'usabilitat a diverses pàgines de l'aplicació per garantir la coherència del sistema "Pedra Seca".

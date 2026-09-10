@@ -1,0 +1,3 @@
+#!/bin/sh
+# SDP-REFLEX-HOOK:v2:post-commit
+# consume-commit

@@ -22,7 +22,7 @@ export const PILARS_OPERATIUS = [
 
 export const ZONES_CICLE = [
   '90_historic',
-  '04_ESCRIPTORI',
+  '04_escriptori',
 ];
 
 // Alias temporal per a importadors antics. El nom nou evita dir-ne «6 pilars».
@@ -50,7 +50,7 @@ function semanticZone(relPath) {
   if (MIRROR_PREFIXES.some((prefix) => isPrefix(rel, prefix))) return 'mirall';
   if (VENDOR_PREFIXES.some((prefix) => isPrefix(rel, prefix))) return 'vendor';
   if (rel.startsWith('90_historic/')) return 'arxiu';
-  if (rel.startsWith('04_ESCRIPTORI/')) return 'escriptori';
+  if (rel.startsWith('04_escriptori/')) return 'escriptori';
   if (/^0[0-3]_/.test(rel)) return 'operatiu';
   return 'suport';
 }

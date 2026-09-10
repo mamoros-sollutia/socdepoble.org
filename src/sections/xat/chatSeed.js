@@ -1,4 +1,4 @@
-/* eslint-disable no-useless-escape */
+ 
 export const MOCK_CHATS = [{
   id: "socdepoble",
   name: "Sóc de Poble",

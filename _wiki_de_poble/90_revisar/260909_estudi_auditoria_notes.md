@@ -1,3 +1,8 @@
+---
+tipus: document
+estat: esborrany
+description: "Estudi d'Auditoria: Bloc de Notes i Arquitectura (260909)"
+---
 # Estudi d'Auditoria: Bloc de Notes i Arquitectura (260909)
 
 Aquest document recopila els dictàmens de la "Família Electrònica" (Consell d'IAs) per a poder tenir-los en context fresc, analitzar les divergències i consensuar un Pla d'Implementació robust quan finalitzen totes les consultes.

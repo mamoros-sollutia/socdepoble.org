@@ -25,12 +25,5 @@
       "us": "Mínim absolut tàctil.",
       "nota_normativa": "Reduït a 44px."
     }
-  },
-  "tipografia": {
-    "minim_cos": {
-      "value_px": 16,
-      "css_var": "--sdp-font-min",
-      "us": "Evita l'auto-zoom natiu d'iOS Safari en focus d'inputs."
-    }
   }
 }

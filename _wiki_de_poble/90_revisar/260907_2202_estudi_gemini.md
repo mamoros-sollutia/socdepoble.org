@@ -1,3 +1,8 @@
+---
+tipus: document
+estat: esborrany
+description: "Auditoria Gemini: Transició Fase 3 (B1, B2 i rols globals)"
+---
 # Auditoria Gemini: Transició Fase 3 (B1, B2 i rols globals)
 
 **Data:** 07/09/2026

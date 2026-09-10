@@ -1,8 +1,7 @@
 ---
 tipus: recurs_disseny
 estat: guardat_per_a_futur
-font: Dola AI
-description: "Patrons de disseny de la consola de Dola (Cards, Fluxes, Arbres) per a integrar al sistema Pedra Seca en el futur."
+description: Patrons de disseny de la consola de Dola (Cards, Fluxes, Arbres) per a integrar al sistema Pedra Seca en el futur.
 ---
 
 # 🎨 Recursos de Disseny: Consola d'Informes (Dola)

@@ -7,9 +7,9 @@ import { construeixRetall } from './retall';
 const mocks = vi.hoisted(() => ({ creaNota: vi.fn(), navigate: vi.fn(), threadId: 'a' }));
 
 vi.mock('../../app/contexts/RouterContext', () => ({ 
-  useNavigate: () => vi.fn(),
-  useParams: () => ({ threadId: undefined }),
-  useRouter: () => ({ navigate: vi.fn(), currentPath: '/jo/xat' })
+  useNavigate: () => mocks.navigate,
+  useParams: () => ({ threadId: mocks.threadId }),
+  useRouter: () => ({ navigate: mocks.navigate, currentPath: '/jo/xat' })
 }));
 vi.mock('react-router-dom', () => ({ 
   useNavigate: () => mocks.navigate, 

@@ -1,3 +1,8 @@
+---
+tipus: document
+estat: esborrany
+description: "🛡️ ACTA DEL CONSELL: VEREDICTE QWEN"
+---
 # 🛡️ ACTA DEL CONSELL: VEREDICTE QWEN
 
 **Data:** 8 de setembre de 2026

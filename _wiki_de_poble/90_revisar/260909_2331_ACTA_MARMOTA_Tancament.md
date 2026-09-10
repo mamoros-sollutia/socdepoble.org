@@ -1,8 +1,7 @@
 ---
 tipus: acta_marmota
-data: 2026-09-09
-autor: IAIA MarIA (Antigravity)
 estat: finalitzat
+description: "Acta Marmota: Tancament de Sessió i Preparació de la Fase 6"
 ---
 # Acta Marmota: Tancament de Sessió i Preparació de la Fase 6
 

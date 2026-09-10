@@ -3,8 +3,8 @@ tipus: informe
 estat: esborrany
 description: Estàndard de nomenclatura de la Wiki i tractor validador, amb auditoria prèvia del corpus
 tags:
-  - graf
   - core
+  - graf
   - saber
 ---
 

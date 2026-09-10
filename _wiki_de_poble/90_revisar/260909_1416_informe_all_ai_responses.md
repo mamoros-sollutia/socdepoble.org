@@ -1,3 +1,8 @@
+---
+tipus: document
+estat: esborrany
+description: 🏗️ Resolució de la Infraestructura i Desplegament
+---
 ==== STEP 0 ====
 <USER_REQUEST>
 Sóc de Poble!

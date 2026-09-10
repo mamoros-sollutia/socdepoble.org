@@ -37,7 +37,7 @@ export default function RealitatSection() {
       chrome="system"
       showLogos={false}
     >
-      <div className="stack-grid sdp-text-content realitat-container">
+      <div className="stack-grid realitat-container">
         {[
           { id: 0, label: 'Apagada', desc: 'Sense intervenció de la intel·ligència artificial.' },
           { id: 1, label: 'Passiva', desc: 'Només recomanacions i accions a petició teua.' },

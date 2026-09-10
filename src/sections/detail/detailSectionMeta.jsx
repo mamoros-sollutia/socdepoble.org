@@ -32,7 +32,7 @@ export function buildMercatDetailSectionMeta({ marketItems = [], t }) {
                     width={120}
                   />
                 )}
-                <h3 className="sdp-text-accent ">
+                <h3>
                   {variation.name}
                 </h3>
                 <p className="card__text ">
@@ -41,7 +41,7 @@ export function buildMercatDetailSectionMeta({ marketItems = [], t }) {
                 <p style={{ opacity: 0.7, textTransform: 'uppercase' }}>
                   VENEDOR: {item.seller || 'SÓC DE POBLE'}
                 </p>
-                <div className="sp-card-price sdp-text-accent ">
+                <div className="sp-card-price">
                   {variation.price}
                 </div>
                 <button className="btn btn-secondary btn-full detail-section-btn">

@@ -1,3 +1,8 @@
+---
+tipus: document
+estat: esborrany
+description: "🛡️ ACTA DEL CONSELL: VEREDICTE VIBE"
+---
 # 🛡️ ACTA DEL CONSELL: VEREDICTE VIBE
 
 **Data:** 8 de setembre de 2026

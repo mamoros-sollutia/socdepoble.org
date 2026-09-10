@@ -1,3 +1,8 @@
+---
+tipus: document
+estat: esborrany
+description: 1. Arquitectura global (estat actual)
+---
 **Auditoria tècnica del sistema (bundle 260909_2111) + pàgina legal**
 
 Anàlisi basada exclusivament en el contingut del bundle (manifest, codi font, wiki, gates, tractors, esquemes i tests). Cap cerca externa.

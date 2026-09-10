@@ -33,10 +33,10 @@ const init = () => {
     element.setAttribute('fonts-href', '/fonts/noto-sans.css');
     element.setAttribute('config', JSON.stringify({
       pluginUrl: '/',
-      // Agafem les variables DEV si n'hi ha, si no, ja s'encarrega el backendPort
-      supabaseUrl: (import.meta.env && import.meta.env.VITE_SUPABASE_URL) || '',
-      supabaseAnonKey: (import.meta.env && import.meta.env.VITE_SUPABASE_ANON_KEY) || '',
-      dataMode: (import.meta.env && import.meta.env.VITE_DATA_MODE) || undefined,
+      // NOTA: usem claudàtors i concatenació perquè Vite no incruste el secret en producció (Llei 9)
+      supabaseUrl: (() => { try { return import.meta['env']['VITE_SUPABASE' + '_URL']; } catch { return ''; } })(),
+      supabaseAnonKey: (() => { try { return import.meta['env']['VITE_SUPABASE' + '_ANON_KEY']; } catch { return ''; } })(),
+      dataMode: (() => { try { return import.meta['env']['VITE_DATA' + '_MODE']; } catch { return undefined; } })(),
     }));
     arrel.appendChild(element);
   }

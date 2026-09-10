@@ -44,7 +44,7 @@ const ANCORA = ARG('ancora') ?? '00_index_escriptori';
 /* Arrels del graf. `.agents` hi entra a posta: el cervell també és wiki. */
 const ARRELS = (ARG('arrels') ?? '_wiki_de_poble,.agents').split(',');
 
-const EXCLOU = /(^|\/)(node_modules|\.git|\.obsidian|dist|build|90_historic|90_revisar)(\/|$)/;
+const EXCLOU = /(^|\/)(node_modules|\.git|\.obsidian|dist|build|90_historic|90_revisar|\.quarantena-260830|\.agents\/deute|\.sdp-paperera)(\/|$)/;
 
 /* ───────────────────────────── Recollida ───────────────────────────── */
 

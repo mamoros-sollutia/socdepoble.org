@@ -1,7 +1,7 @@
 ---
-estat: "canonic"
-tipus: "index"
-description: "Documentació canònica de Sóc de Poble."
+tipus: index
+estat: canonic
+description: Documentació canònica de Sóc de Poble.
 ---
 # Supabase
 

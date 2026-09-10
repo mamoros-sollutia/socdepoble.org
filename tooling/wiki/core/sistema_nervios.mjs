@@ -13,7 +13,7 @@ import {
 } from '../lib/project_paths.mjs';
 
 const execFileAsync = promisify(execFile);
-const LEGACY_TOOLING_PREFIX = '_wiki_de_poble/03_Actuar/scripts/';
+const LEGACY_TOOLING_PREFIX = '_wiki_de_poble/03_actuar/scripts/';
 const SKIP_ATTACHMENT_DIRS = new Set([
   '.git', '.obsidian', '.wiki-safety', 'node_modules',
 ]);

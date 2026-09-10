@@ -1,7 +1,7 @@
 ---
 tipus: informe
 estat: canonic
-description: "Auditoria tècnica, correcció de la pàgina legal i anàlisi de l'arquitectura global."
+description: Auditoria tècnica, correcció de la pàgina legal i anàlisi de l'arquitectura global.
 ---
 # 🛡️ INFORME D'AUDITORIA: Pàgina Legal i Arquitectura
 

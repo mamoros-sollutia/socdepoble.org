@@ -11,7 +11,7 @@
  * NO exportava ESCRIPTORI_DIR.
  *
  * Resultat: 21 fitxers importaven `project_paths` i després ~20 fitxers
- * concatenaven a mà el literal '04_ESCRIPTORI'. L'única ruta
+ * concatenaven a mà el literal '04_escriptori'. L'única ruta
  * que l'agent s'equivocava cada volta era l'única que no es podia importar.
  *
  * Aquest tractor convertix la regla en física: qualsevol fitxer de tooling/
@@ -44,7 +44,7 @@ const SSOT = 'tooling/wiki/lib/project_paths.mjs';
 
 /** Directoris canònics: literal prohibit -> export que l'ha de substituir. */
 const CANONICS = {
-  '04_ESCRIPTORI': 'ESCRIPTORI_DIR',
+  '04_escriptori': 'ESCRIPTORI_DIR',
   '_wiki_de_poble': 'WIKI_DIR'
 };
 

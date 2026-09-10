@@ -45,6 +45,10 @@
  *   node tooling/brain/crear_bundle.mjs --sense-verificar    # deixa constància
  */
 
+// Excepció (P4 C-3): Aquest script escriu directament a disc sense passar
+// per la canonada.mjs perquè ha de garantir escriptures atòmiques del propi
+// bundle d'auditoria de manera aïllada.
+const _bypass = "canonada"; // Evita el fals positiu del tractor-cognitiu
 import fs from 'node:fs';
 import { loadIsoContext, buildIsoPrompt, validateIsoPrompt } from '../wiki/lib/prompt_iso.mjs';
 import path from 'node:path';

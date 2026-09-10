@@ -2,6 +2,8 @@
 tipus: skill
 estat: canonic
 description: Regula com interactuar amb les auditories d'altres IAs i evita la mutilació de context mitjançant l'abocament total.
+name: skill-consell-bundle
+triggers_on: skill-consell-bundle
 ---
 # Consell i Abocament Total
 
@@ -63,7 +65,7 @@ Aquesta skill unifica el protocol d'interacció amb les avaluacions o auditories
 
 # Llei de la Completitud (Anti-Ocultació)
 
-L'arquitectura de Sóc de Poble depèn d'un Consell auditories (Kimi, Claude, Dola, etc.). Qualsevol ocultació, intent d'escurçar arxius o "estalvi de tokens" trenca la capacitat de visió global de les IAs i causa auditories cegues.
+L'arquitectura de Sóc de Poble depèn d'un Consell d'auditories (les membres oficials indicades a consell.json). Qualsevol ocultació, intent d'escurçar arxius o "estalvi de tokens" trenca la capacitat de visió global de les IAs i causa auditories cegues.
 
 Quan un usuari o una IA demana preparar un "Bundle" o una "Petorreta" per al Consell:
 0. **EL PROTOCOL "DORMIR" (Neteja Prèvia):** Abans de generar *qualsevol* bundle, **HAY QUE DORMIR**. Dormir significa:

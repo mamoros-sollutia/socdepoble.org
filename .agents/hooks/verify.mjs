@@ -31,7 +31,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const ARREL = process.env.SDP_ARREL || process.cwd();
-const ESCRIPTORI = '_wiki_de_poble/04_ESCRIPTORI';
+const ESCRIPTORI = '_wiki_de_poble/04_escriptori';
 const DIARI = path.join(ARREL, '.agents', '.diari_sessio.jsonl');
 
 /* AGENTS.md §2 — AAMMDD_HHMM_categoria_titol.ext, 1–6 paraules */

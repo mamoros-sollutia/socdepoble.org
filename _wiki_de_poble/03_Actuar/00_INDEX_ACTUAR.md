@@ -1,3 +1,8 @@
+---
+tipus: index
+estat: esborrany
+description: 03 Actuar (Scripts i Eines)
+---
 # 03 Actuar (Scripts i Eines)
 
 Aquest anell de la Wiki conté exclusivament prosa curta i fitxes tècniques.
