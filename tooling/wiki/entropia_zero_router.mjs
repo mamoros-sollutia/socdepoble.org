@@ -7,10 +7,13 @@
  * a un pilar inventat.
  */
 import path from 'node:path';
+
+const _metaUrl = import.meta.url.startsWith('file:') ? import.meta.url : 'file://' + import.meta.url;
 import { normalitza } from './lib/text.mjs';
 import { readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 
-const SCHEMA = JSON.parse(readFileSync(new URL('./schema.json', import.meta.url), 'utf8'));
+const SCHEMA = JSON.parse(readFileSync(fileURLToPath(new URL('./schema.json', _metaUrl))));
 const DESCRIPTION_MIN = SCHEMA.properties.description.minLength;
 const DESCRIPTION_MAX = SCHEMA.properties.description.maxLength;
 const ALIASES_MAX = SCHEMA.properties.aliases.maxItems;
@@ -145,7 +148,7 @@ export function determinarCarpeta(fm, { currentPath } = {}) {
 
   if (fm.estat === 'arxivat') return '90_historic/';
   if (fm.estat === 'esborrany' || fm.estat === 'futur') {
-    return '05_Escriptori_Soc_de_Poble/';
+    return '04_ESCRIPTORI/';
   }
 
   if (fm.tipus === 'norma' || fm.tipus === 'protocol') {

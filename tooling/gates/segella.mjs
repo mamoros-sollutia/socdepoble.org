@@ -25,7 +25,8 @@ let combinedHash = crypto.createHash('sha256');
 
 for (const file of files) {
   const content = fs.readFileSync(file);
-  combinedHash.update(file);
+  const relativePath = path.relative(process.cwd(), file);
+  combinedHash.update(relativePath);
   combinedHash.update(content);
 }
 

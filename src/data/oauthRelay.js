@@ -53,9 +53,8 @@ const EXCHANGE_FIELD = 'auth_code';
 const TEMPS_MAXIM_MS = 180000;
 
 const relayUrl = (config) => {
-  // Bypassem el relé per defecte si estem en local perquè auth.socdepoble.org no existix al DNS
-  if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
-    return window.location.origin + '/callback';
+  if (typeof window !== 'undefined' && import.meta.env.DEV) {
+    return window.location.origin + '/auth/callback.html';
   }
   return config?.oauthRelayUrl || RELAY_PER_DEFECTE;
 };
@@ -143,16 +142,16 @@ export async function entraAmbGoogle(config = {}, resolConfig) {
   const repte = await generaRepte(verificador);
   setEfimer(CLAU_VERIFICADOR, verificador);
 
-  // Si estem en localhost, bypass del relay (usem la URL actual per tornar directament ací)
-  const isLocal = window.location.hostname === 'localhost';
-  const destiRelay = isLocal 
-    ? `${window.location.origin}${window.location.pathname}`
-    : `${relayUrl(config)}?sdp_origin=${encodeURIComponent(window.location.origin)}&sdp_path=${encodeURIComponent(window.location.pathname)}`;
+  const destiRelay = `${relayUrl(config)}?sdp_origin=${encodeURIComponent(window.location.origin)}&sdp_path=${encodeURIComponent(window.location.pathname)}`;
   
+  const state = generaVerificador(16);
+  setEfimer('sdp:oauth:state', state);
+
   const url = `${supabaseUrl}/auth/v1/authorize`
     + `?provider=google`
     + `&code_challenge=${encodeURIComponent(repte)}`
     + `&code_challenge_method=S256`
+    + `&state=${encodeURIComponent(state)}`
     + `&redirect_to=${encodeURIComponent(destiRelay)}`;
 
   // Camí 3: emergent bloquejat. Redirecció completa.
@@ -207,6 +206,7 @@ function esperaCodi(emergent, config) {
       if (e.key !== CLAU_TRASPAS || !e.newValue) return;
       try {
         const d = JSON.parse(e.newValue);
+        if (d.t && Date.now() - d.t > 120000) return;
         if (d?.error) return acaba(rebutja, new Error(d.error));
         if (d?.code) acaba(resol, d.code);
       } catch { /* valor malmés: s'ignora */ }
@@ -243,6 +243,7 @@ function esperaCodi(emergent, config) {
  */
 export async function gestionaTornada(config = {}, resolConfig) {
   if (typeof window === 'undefined') return null;
+  delVal(CLAU_TRASPAS);
 
   const qSearch = new URLSearchParams(window.location.search);
   const qHash = new URLSearchParams(window.location.hash.substring(1));
@@ -274,6 +275,13 @@ export async function gestionaTornada(config = {}, resolConfig) {
   if (error) {
     netejaRetorn();
     throw new Error(error);
+  }
+
+  const urlState = qSearch.get('state') || qHash.get('state');
+  const storedState = getEfimer('sdp:oauth:state', null);
+  if (urlState && storedState && urlState !== storedState) {
+    netejaRetorn();
+    throw new Error('Estat OAuth no vàlid. Possilbe atac CSRF.');
   }
 
   const verificador = getEfimer(CLAU_VERIFICADOR, null);

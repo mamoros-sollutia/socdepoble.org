@@ -66,7 +66,7 @@ export default function DetallAjust() {
 
     if (ajust.accio === 'logout') {
       return (
-        <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+        <div className="ajust-center-text">
           <button type="button" className="sdp-boto" onClick={handleLogout}>
             Confirmar eixida
           </button>
@@ -85,12 +85,12 @@ export default function DetallAjust() {
         </label>
         
         {esAvatar ? (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          <div className="ajust-flex-col">
             {valorTemp && (
               <img 
                 src={valorTemp} 
                 alt="Previsualització" 
-                style={{ width: '128px', height: '128px', objectFit: 'cover', borderRadius: '50%', border: '2px solid var(--sdp-vora-control)' }} 
+                className="ajust-avatar" 
               />
             )}
             <input
@@ -126,7 +126,7 @@ export default function DetallAjust() {
           </div>
         )}
 
-        <div style={{ marginTop: '1.5rem', display: 'flex', gap: '1rem' }}>
+        <div className="ajust-btn-group">
           <button type="submit" className="sdp-boto" disabled={desant}>
             {desant ? 'Desant...' : 'Guardar'}
           </button>

@@ -19,6 +19,8 @@
  */
 
 import fs from 'node:fs/promises';
+
+const _metaUrl = import.meta.url.startsWith('file:') ? import.meta.url : 'file://' + import.meta.url;
 import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { isUtf8 } from 'node:buffer';
@@ -30,7 +32,7 @@ import {
 import { WIKI_DIR } from '../lib/project_paths.mjs';
 
 export const DEFAULT_WIKI_DIR = WIKI_DIR;
-const SCHEMA_TEXT = await fs.readFile(new URL('../schema.json', import.meta.url), 'utf8');
+const SCHEMA_TEXT = await fs.readFile(fileURLToPath(new URL('../schema.json', _metaUrl)), 'utf8');
 const SCHEMA = JSON.parse(SCHEMA_TEXT);
 const FIELD_ORDER = ['estat', 'tipus', 'description', 'aliases', 'revisat'];
 const ALLOWED_FIELDS = new Set(FIELD_ORDER);
@@ -87,7 +89,7 @@ export function zoneOf(relPath) {
   if (VENDOR_PREFIXES.some((prefix) => isPrefix(relPath, prefix))) return 'vendor';
   if (VISIBLE_QUARANTINE_RE.test(relPath.split('/')[0])) return 'quarantena_visible';
   if (relPath.startsWith('90_historic/')) return 'arxiu';
-  if (relPath.startsWith('05_Escriptori_Soc_de_Poble/')) return 'escriptori';
+  if (relPath.startsWith('04_ESCRIPTORI/')) return 'escriptori';
   if (/^0[0-3]_/.test(relPath)) return 'operatiu';
   return 'fora_taxonomia';
 }

@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { UniversalPage, UniversalCard, ActionControl, IconButton, ContentProvider } from '../../components/universal/UniversalComponents';
+import { UniversalPage } from '../../components/universal/UniversalPage';
+import { UniversalCard, ActionControl, IconButton, ContentProvider } from '../../components/universal/UniversalElements';
 import { EventCard } from '../../components/universal/EventCard';
 import { useSEO } from '../../hooks/useSEO';
 import { resolveAsset } from '../../config/assetResolver';
@@ -128,7 +129,7 @@ export default function MurSection() {
       <div className="content-wrapper">
         
         {/* Switcher / Botonera */}
-        <section className="sdp-filtres" aria-label="Filtres del mur" style={{ padding: '0 16px' }}>
+        <section className="sdp-filtres" aria-label="Filtres del mur" className="mur-px-16">
           <div className="login-switcher">
             <button
               type="button"
@@ -163,7 +164,7 @@ export default function MurSection() {
 
         {/* Mapa Desplegable */}
         {isMapOpen && (
-          <div className="sdp-filtre--mapa sdp-w-full sdp-mb-8">
+          <div className="sdp-filtre--mapa">
             {React.createElement('iframe', {
               title: "Mapa del territori",
               src: buildMapEmbedUrl(),

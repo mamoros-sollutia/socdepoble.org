@@ -1,5 +1,5 @@
 import { useUIActions } from '../app/contexts/UIContext';
-import { UniversalPage } from '../components/universal/UniversalComponents';
+import { UniversalPage } from '../components/universal/UniversalPage';
 import { useSEO } from '../hooks/useSEO';
 import { Compass } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -21,8 +21,8 @@ export default function NotFoundPage() {
       lead="La pàgina que busques no existeix o ha canviat de lloc."
       labels={['404', 'No trobat']}
     >
-      <div className="page-intro sdp-text-center">
-        <Compass size={48} className="sdp-text-suau" />
+      <div className="page-intro ">
+        <Compass size={48}  />
         <p>
           Pots tornar a l'inici per seguir explorant Sóc de Poble.
         </p>

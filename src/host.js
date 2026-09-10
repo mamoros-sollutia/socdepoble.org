@@ -89,7 +89,6 @@ let arrencada = null;
 
 /** Mètodes que un backend complet ha d'oferir. Documenta el contracte. */
 export const CONTRACTE_BACKEND = Object.freeze([
-  'loadAppData',
   'loadCoreContent',
   'loadMur',
   'loadXat',

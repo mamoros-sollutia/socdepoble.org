@@ -78,7 +78,7 @@ if (!portText) {
     'sense host.js, `setBackendImplementation` no és abastable des de fora del bundle');
 } else {
   const alPort = [...portText.matchAll(/^export const (\w+) = /gm)].map((m) => m[1]).filter(k => k !== 'APP_SNAPSHOT_STORAGE_KEY' && k !== 'DATA_SYNC_CHANNEL_NAME' && k !== 'SECTION_SUBMISSIONS_STORAGE_KEY');
-  const m = /CONTRACTE_BACKEND = Object\.freeze\(\[([\s\S]*?)\]\)/.exec(hostText);
+  const m = /CONTRACTE_BACKEND = Object\.freeze\(\[([\s\S]*?)\]\)/.exec(senseComentaris(hostText));
   const alContracte = m ? [...m[1].matchAll(/'(\w+)'/g)].map((x) => x[1]) : [];
 
   for (const k of alPort.filter((x) => !alContracte.includes(x))) {

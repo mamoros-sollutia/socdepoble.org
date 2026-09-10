@@ -142,6 +142,11 @@ description: Índex autogenerat per a Zona de Quarantena i Revisió
 - [[260909_2111_ABSENTS_auditoria.json]]
 - [[260909_2111_BUNDLE_auditoria]]
 - [[260909_2111_PROMPT_auditoria]]
+- [[260909_2331_ACTA_MARMOTA_Tancament]]
+- [[260909_2338_ABSENTS_auditoria.json]]
+- [[260909_2338_BUNDLE_auditoria]]
+- [[260909_2338_PROMPT_auditoria]]
+- [[260909_2357_estrategia_limits]]
 - [[260909_AUDITORIA_Astra_Ligero]]
 - [[260909_AUDITORIA_Claude]]
 - [[260909_AUDITORIA_Deepseek]]
@@ -153,6 +158,7 @@ description: Índex autogenerat per a Zona de Quarantena i Revisió
 - [[260909_AUDITORIA_Vibe]]
 - [[260909_AUDITORIA_Z]]
 - [[260909_estudi_auditoria_notes]]
+- [[260910_0107_BUNDLE_auditoria]]
 - [[COPIA_AIXO_A_SUPABASE.sql]]
 - [[Puebli - Tu pueblo, tu gente, tu app..webloc]]
 - [[contracte_graella.txt]]
@@ -190,6 +196,11 @@ description: Índex autogenerat per a Zona de Quarantena i Revisió
 - [[260908_sessio_anterior/260908_0800_MANIFEST_auditoria.json]]
 - [[260908_sessio_anterior/260908_0800_PROMPT_auditoria]]
 
+## 260910_Sessio_Tancada
+- [[260910_Sessio_Tancada/260910_0250_ABSENTS_auditoria.json]]
+- [[260910_Sessio_Tancada/260910_0250_BUNDLE_auditoria]]
+- [[260910_Sessio_Tancada/260910_0250_PROMPT_auditoria]]
+
 ## Claude_260904_2138
 - [[Claude_260904_2138/00_INDEX_SKILLS.md.diff]]
 - [[Claude_260904_2138/260904_2130_organitzacions_reparacio.sql]]
@@ -211,11 +222,7 @@ description: Índex autogenerat per a Zona de Quarantena i Revisió
 ## Claude_260904_2351
 - [[Claude_260904_2351/260905_SEIENT5_pedac.diff]]
 - [[Claude_260904_2351/AppGridColumn.jsx]]
-- [[Claude_260904_2351/columna.test.jsx]]
 - [[Claude_260904_2351/contracte_graella]]
-- [[Claude_260904_2351/detall.test.jsx]]
-- [[Claude_260904_2351/graella.test.jsx]]
-- [[Claude_260904_2351/toolbar.test.jsx]]
 - [[Claude_260904_2351/tractor-graella.mjs]]
 
 ## Claude_260908_1809

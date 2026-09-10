@@ -1,5 +1,5 @@
 import { useSearchParams } from 'react-router-dom';
-import { UniversalPage } from '../../components/universal/UniversalComponents';
+import { UniversalPage } from '../../components/universal/UniversalPage';
 import { NotesProvider } from './NotesContext';
 import NotesSidebar from './NotesSidebar';
 import NotesList from './NotesList';

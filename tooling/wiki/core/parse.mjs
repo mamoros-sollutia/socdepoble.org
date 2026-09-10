@@ -19,6 +19,8 @@
  */
 
 import fs from 'node:fs/promises';
+
+const _metaUrl = import.meta.url.startsWith('file:') ? import.meta.url : 'file://' + import.meta.url;
 import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { isUtf8 } from 'node:buffer';
@@ -30,7 +32,7 @@ import {
 import { WIKI_DIR } from '../lib/project_paths.mjs';
 
 export const DEFAULT_WIKI_DIR = WIKI_DIR;
-const SCHEMA_TEXT = await fs.readFile(new URL('../schema.json', import.meta.url), 'utf8');
+const SCHEMA_TEXT = await fs.readFile(new URL('../schema.json', _metaUrl), 'utf8');
 const SCHEMA = JSON.parse(SCHEMA_TEXT);
 const FIELD_ORDER = ['estat', 'tipus', 'description', 'aliases', 'revisat'];
 const ALLOWED_FIELDS = new Set(FIELD_ORDER);

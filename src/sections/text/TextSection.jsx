@@ -1,4 +1,4 @@
-import { UniversalPage } from '../../components/universal/UniversalComponents';
+import { UniversalPage } from '../../components/universal/UniversalPage';
 import { resolveAsset } from '../../config/assetResolver';
 import { sanitizeHtml } from '../../utils/sanitize';
 

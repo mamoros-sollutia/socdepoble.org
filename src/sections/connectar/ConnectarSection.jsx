@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CheckCircle2, Globe, Lock, Plus, Tag } from 'lucide-react';
-import { UniversalPage } from '../../components/universal/UniversalComponents';
+import { UniversalPage } from '../../components/universal/UniversalPage';
 import { showToast } from '../../components/universal/AvisadorEfimer';
 import { useUIActions } from '../../app/contexts/UIContext';
 import { useMur } from '../mur/MurContext';

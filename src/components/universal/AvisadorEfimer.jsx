@@ -16,24 +16,9 @@ export function AvisadorEfimer({ missatge, tipus, durada = 3000, onClose }) {
 
   return (
     <div 
-      className="sdp-avisador-efimer"
+      className={`sdp-avisador-efimer ${tipus ? `sdp-avisador--${tipus}` : ''}`}
       role="alert" 
       aria-live="assertive"
-      style={{ 
-        position: 'fixed',
-        bottom: 'var(--sdp-space-6)',
-        left: '50%',
-        transform: 'translateX(-50%)',
-        
-        
-        padding: 'var(--sdp-space-3) var(--sdp-space-5)',
-        borderRadius: 'var(--sdp-radi-pastilla)',
-        boxShadow: 'var(--sdp-ombra-2)',
-        zIndex: 9999,
-        
-        transition: 'opacity 0.3s ease',
-        pointerEvents: 'none'
-       }}
     >
       {missatge}
     </div>

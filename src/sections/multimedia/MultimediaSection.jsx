@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import SectionItemCard from '../../components/SectionItemCard';
-import { UniversalPage } from '../../components/universal/UniversalComponents';
+import { UniversalPage } from '../../components/universal/UniversalPage';
 import { Link } from 'react-router-dom';
 import { getSectionItemPath } from '../../config/navigation';
 import { useMultimedia } from './MultimediaContext';
@@ -20,9 +20,9 @@ export default function MultimediaSection() {
       chrome="system"
       showLogos={true}
     >
-      <div className="bar-orange sdp-items-center" style={{ display: 'flex', position: 'relative', top: 0, zIndex: 10, margin: '-24px -24px 24px -24px', padding: '12px 24px', borderRadius: 'var(--sdp-radi-xl) var(--sdp-radi-xl) 0 0' }}>
-        <strong style={{ flex: 1 }}>{t('section.multimedia.all', 'TOTS')} ({mediaItems.length}) - {featured?.created_at ? new Date(featured.created_at).toLocaleDateString('ca-ES', { month: 'long', year: 'numeric' }) : ''}</strong>
-        <div className="section-actions" style={{ display: 'flex', gap: '8px' }}>
+      <header className="multimedia-header">
+        <strong className="multimedia-header__title">{t('section.multimedia.all', 'TOTS')} ({mediaItems.length}) - {featured?.created_at ? new Date(featured.created_at).toLocaleDateString('ca-ES', { month: 'long', year: 'numeric' }) : ''}</strong>
+        <div className="section-actions multimedia-header__actions">
           <button type="button" className={`pill ${viewMode === 'grid' ? 'pill--active' : ''}`} onClick={() => setViewMode('grid')}>
             {t('section.multimedia.gallery', 'Galeria')}
           </button>
@@ -30,7 +30,7 @@ export default function MultimediaSection() {
             {t('section.multimedia.timeline', 'Cronologia')}
           </button>
         </div>
-      </div>
+      </header>
 
 
 
@@ -46,7 +46,7 @@ export default function MultimediaSection() {
               {item.src ? (
                 <img src={item.src} alt={item.title || item.tag} loading="lazy" onError={(e) => { e.target.style.display = 'none'; }} />
               ) : (
-                <div style={{  width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                <div className="mm-flex-center-full">
                   <span className="sdp-sr-only">{item.title || 'Sense imatge'}</span>
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
                 </div>
@@ -74,7 +74,7 @@ export default function MultimediaSection() {
                       {item.src ? (
                         <img src={item.src} alt={item.title || item.tag} loading="lazy" onError={(e) => { e.target.style.display = 'none'; }} />
                       ) : (
-                        <div style={{  width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                        <div className="mm-flex-center-full">
                           <span className="sdp-sr-only">{item.title || 'Sense imatge'}</span>
                           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
                         </div>

@@ -29,8 +29,8 @@ const pad = value => String(value).padStart(2, '0');
 const TIMESTAMP = `${String(instant.getFullYear()).slice(-2)}${pad(instant.getMonth() + 1)}${pad(instant.getDate())}_${pad(instant.getHours())}${pad(instant.getMinutes())}`;
 const outBundleName = `${TIMESTAMP}_BUNDLE_auditoria_inversa.md`;
 const outPromptName = `${TIMESTAMP}_PROMPT_auditoria_inversa.md`;
-const outBundle = path.join(ROOT, '_wiki_de_poble/05_Escriptori_Soc_de_Poble', outBundleName);
-const outPetorreta = path.join(ROOT, '_wiki_de_poble/05_Escriptori_Soc_de_Poble', outPromptName);
+const outBundle = path.join(ROOT, '_wiki_de_poble/04_ESCRIPTORI', outBundleName);
+const outPetorreta = path.join(ROOT, '_wiki_de_poble/04_ESCRIPTORI', outPromptName);
 
 // 1. Generate BUNDLE
 let bundleContent = `# BUNDLE D'AUDITORIA INVERSA (ACTE REFLEX)

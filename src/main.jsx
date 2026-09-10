@@ -25,20 +25,20 @@ const init = () => {
   // del bundle encara arriba a temps de cridar configura().
   arrencaAuto();
 
-  // Desenvolupament local amb Vite: instanciem l'element com faria el host.
-  if (import.meta.env.DEV) {
-    const arrel = document.getElementById('root');
-    if (arrel && !arrel.innerHTML) {
-      const element = document.createElement('soc-de-poble');
-      element.setAttribute('fonts-href', '/fonts/noto-sans.css');
-      element.setAttribute('config', JSON.stringify({
-        pluginUrl: '/',
-        supabaseUrl: import.meta.env.VITE_SUPABASE_URL || '',
-        supabaseAnonKey: import.meta.env.VITE_SUPABASE_ANON_KEY || '',
-        dataMode: import.meta.env.VITE_DATA_MODE || undefined,
-      }));
-      arrel.appendChild(element);
-    }
+  // Instanciem l'element si trobem l'arrel de muntatge.
+  // Açò permet l'ús standalone tant en DEV com en el build final.
+  const arrel = document.getElementById('root');
+  if (arrel && !arrel.innerHTML) {
+    const element = document.createElement('soc-de-poble');
+    element.setAttribute('fonts-href', '/fonts/noto-sans.css');
+    element.setAttribute('config', JSON.stringify({
+      pluginUrl: '/',
+      // Agafem les variables DEV si n'hi ha, si no, ja s'encarrega el backendPort
+      supabaseUrl: (import.meta.env && import.meta.env.VITE_SUPABASE_URL) || '',
+      supabaseAnonKey: (import.meta.env && import.meta.env.VITE_SUPABASE_ANON_KEY) || '',
+      dataMode: (import.meta.env && import.meta.env.VITE_DATA_MODE) || undefined,
+    }));
+    arrel.appendChild(element);
   }
 };
 

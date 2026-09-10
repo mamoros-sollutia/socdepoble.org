@@ -44,7 +44,7 @@ const EXCLUDED_PREFIXES = [
   '00_SER_Brain_Identitat/Sollutia',
   '03_GOVERNAR_Normativa_Regles/agents_actius',
   '90_historic',
-  '05_Escriptori_Soc_de_Poble',
+  '04_ESCRIPTORI',
 ];
 
 /** Diccionari tancat de ferides conegudes. Res més es toca. */

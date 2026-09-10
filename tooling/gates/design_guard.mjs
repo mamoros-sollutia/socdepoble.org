@@ -162,7 +162,7 @@ function scanDesign(text, file, vocab = null) {
       // (`text-panel__head`, `text-center` son classes NOSTRES). Nomes es
       // denuncia el token si NO esta declarat al CSS del sistema.
       if (vocab && vocab.has(token)) continue;
-      if (/^(bg|text|border|rounded|shadow|ring|from|via|to)-/.test(token)) {
+      if (/^(sdp-)?(bg|text|border|rounded|shadow|ring|from|via|to|p|m|px|py|pt|pb|mx|my|flex|grid|w|h|gap)-/.test(token) || /^(sdp-)?(flex|grid|block)$/.test(token)) {
         findings.push({
           severity: 'critical', rule: 'tailwind-visual', file,
           line: lineOf(text, m.index), token,

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
-import { UniversalPage } from '../../components/universal/UniversalComponents';
+import { UniversalPage } from '../../components/universal/UniversalPage';
 import { useMur } from '../../sections/mur/MurContext';
 import { useCoreContent } from '../../app/contexts/CoreContentContext';
 import { useNotesData } from '../../sections/notes/NotesDataContext';
@@ -36,7 +36,7 @@ export default function ItemDetailSection() {
         labels={[{ text: 'Error', className: 'sdp-badge-system' }]}
         chrome="system"
       >
-        <div style={{ maxWidth: '800px', margin: '0 auto', padding: 'var(--sdp-space-8)' }}>
+        <div className="id-container-p8">
           <button type="button" className="btn btn-primary" onClick={() => navigate(section?.listPath || '/xat')}>
             {t('common.back', 'Torna')}
           </button>
@@ -72,7 +72,7 @@ export default function ItemDetailSection() {
       date={item.date || (item.created_at ? new Date(item.created_at).toLocaleDateString('ca-ES') : undefined)}
       chrome="context"
     >
-      <div style={{ maxWidth: '800px', margin: '0 auto', padding: '0 var(--sdp-space-4) var(--sdp-space-8)' }}>
+      <div className="id-container-px4-pb8">
         {section.renderBody(item)}
         
       </div>

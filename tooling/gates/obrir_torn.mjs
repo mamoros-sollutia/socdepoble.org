@@ -12,7 +12,7 @@ import { fileURLToPath } from 'node:url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const repoRoot = resolve(__dirname, '..', '..');
 const lockFile = join(repoRoot, '.agents', 'SDP-LOCK');
-const inboxDir = join(repoRoot, '_wiki_de_poble', '05_Escriptori_Soc_de_Poble', '00_Bandeja_d_Entrada');
+const inboxDir = join(repoRoot, '_wiki_de_poble', '04_ESCRIPTORI', '00_Bandeja_d_Entrada');
 
 console.log("🌅 Obrint el Mas de Sóc de Poble...");
 

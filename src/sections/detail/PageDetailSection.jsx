@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
-import { UniversalPage } from '../../components/universal/UniversalComponents';
+import { UniversalPage } from '../../components/universal/UniversalPage';
 import { resolveItemPath } from '../../config/navigation';
 import { renderPageHtml } from './detailRichText.jsx';
 import { sanitizeHtml } from '../../utils/sanitize';

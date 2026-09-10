@@ -1,5 +1,6 @@
 import React from 'react';
-import { UniversalPage, UniversalCard, ContentProvider } from '../../components/universal/UniversalComponents';
+import { UniversalPage } from '../../components/universal/UniversalPage';
+import { UniversalCard, ContentProvider } from '../../components/universal/UniversalElements';
 import { getSectionItemPath } from '../../config/navigation';
 
 import { useSEO } from '../../hooks/useSEO';

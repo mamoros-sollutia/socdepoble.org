@@ -1,5 +1,5 @@
 import React from 'react';
-import { UniversalCard, Accordion, AccordionItem, Dropdown, DropdownItem } from '../../components/universal/UniversalComponents.jsx';
+import { UniversalCard, Accordion, AccordionItem, Dropdown, DropdownItem } from '../../components/universal/UniversalElements';
 import { EventCard } from '../../components/universal/EventCard.jsx';
 import { showToast, AvisadorEfimer } from '../../components/universal/AvisadorEfimer.jsx';
 import { EVENTS } from '../mur/eventsContent.js';
@@ -9,17 +9,17 @@ import { EVENTS } from '../mur/eventsContent.js';
  */
 function ComponentDoc({ title, description, technical, children }) {
   return (
-    <div className="component-doc sdp-mb-8">
-      <div className="component-doc-header sdp-mb-4">
-        <h3 className="sdp-m-0">{title}</h3>
-        {description && <p className="sdp-text-suau sdp-mt-2">{description}</p>}
+    <div className="component-doc ">
+      <div className="component-doc-header">
+        <h3 >{title}</h3>
+        {description && <p >{description}</p>}
         {technical && (
-          <div className="alert alert-info sdp-mt-4 sdp-p-4 sdp-mb-4">
+          <div className="alert alert-info">
             <strong>Context Tècnic: </strong> {technical}
           </div>
         )}
       </div>
-      <div className="component-doc-preview sdp-p-6">
+      <div className="component-doc-preview ">
         {children}
       </div>
     </div>
@@ -31,20 +31,20 @@ export function DesignSectionContent() {
     <>
         {/* Generated JSX from HTML */}
         
-<section className="design-block sdp-mb-12">
+<section className="design-block ">
 <h3>1. Lleis de Pedra Seca per a IAs Arquitectes</h3>
-<p className="sdp-text-lg sdp-mb-6">Normes absolutes que regeixen tot el que una IA pot o no pot fer en este repositori. Açò és el més important abans de tocar cap codi o disseny.</p>
+<p >Normes absolutes que regeixen tot el que una IA pot o no pot fer en este repositori. Açò és el més important abans de tocar cap codi o disseny.</p>
 
 <h4>1.1 Arquitectura de la Pàgina Universal (UniversalPage)</h4>
-<div className="alert alert-info sdp-mb-6">
+<div className="alert alert-info ">
   <div className="alert-content">
     <p><strong>Estructura Anatòmica Inviolable (FONT ÚNICA DE VERITAT)</strong><br/>Aquesta secció i el component <code>UniversalComponents.jsx</code> (on es defineix la UniversalPage) són la font única de veritat per a qualsevol agent o IA. Tota nova pàgina ha d'estendre exclusivament aquesta arquitectura, sense excepcions.</p>
-    <ol className="sdp-mt-4 sdp-flex sdp-flex-col sdp-gap-4">
+    <ol className=" -col ">
       <li><strong>Barres Superiors (Controls):</strong> La barra blava de navegació (context) i la barra taronja d'autoria (dades meta, data, connectar). En mode normal (pàgina completa), aquestes barres fan <em>sticky</em> a la part superior (es queden fixades).</li>
       <li><strong>Excepció (Mode Incrustat):</strong> Quan la UniversalPage s'incrusta en un editor (com el Bloc de Notes), la barra blava i la taronja adopten classe <code>--embed</code> (<em>position: static</em>) i s'amaguen naturalment amb l'scroll del document per afavorir l'edició lliure i evitar un "doble scroll". Aquesta és l'única excepció permesa.</li>
       <li><strong>Imatge Hero (Opcional):</strong> Es renderitza immediatament davall de les barres. Ocupa l'ample disponible (100%) sense marges.</li>
       <li><strong>La Targeta de Decoració Blanca (Header):</strong> Un bloc blanc amb <em>box-shadow</em> que embolica el logotip de Sóc de Poble (max 600px), l'element <strong>H1</strong> (H3 a la card), les etiquetes de categorització, i el <strong>Copyright</strong> de tancament.
-      <br/><small className="sdp-text-gray-500">Nota: El tancament d'aquesta targeta delimita el final de la decoració del títol.</small></li>
+      <br/><small >Nota: El tancament d'aquesta targeta delimita el final de la decoració del títol.</small></li>
       <li><strong>H2 i Entradilla (Fora de la targeta blanca):</strong> Actuen de pont i preàmbul visual abans d'endinsar-se en l'article profund.</li>
       <li><strong>H3 i Contingut Base (article):</strong> El text enriquit, estructurat harmònicament cap avall amb una amplària màxima centrada (~68 caràcters) per afavorir la llegibilitat (<em>var(--sdp-measure)</em>). La resta d'elements (targetes, graelles) flueixen a tota l'amplària disponible del contenidor respectant els marges de 40px (<em>var(--sdp-pad-contenidor)</em>).</li>
     </ol>
@@ -52,7 +52,7 @@ export function DesignSectionContent() {
 </div>
 
 <h4>1.2 Normes de Codi i CSS Absolutes</h4>
-<div className="alert alert-warning sdp-mb-6"><div className="alert-content">
+<div className="alert alert-warning "><div className="alert-content">
 <p><strong>Aquestes regles són absolutes i no es poden trencar sota cap concepte:</strong></p>
 <ol>
 <li><strong>Prohibició d'estils en línia:</strong> Està terminantment prohibit l'ús de <code>style=&#123;&#123;&#125;&#125;</code> en tot el codi JSX. Tots els estils han de viure en CSS mitjançant classes de la Constitució Pedra Seca.</li>
@@ -65,7 +65,7 @@ export function DesignSectionContent() {
 <section className="design-block">
 <h3>2. Identitat Cromàtica</h3>
 <p>La paleta es genera en <strong>OKLCH</strong>: el to i el croma de marca es mantenen constants i només varia la lluminositat. Per això l'escala és perceptivament regular i cada graó té un contrast previsible.</p>
-<div className="alert alert-info sdp-mb-6"><div className="alert-content"><h4>Contracte d'accessibilitat</h4>
+<div className="alert alert-info "><div className="alert-content"><h4>Contracte d'accessibilitat</h4>
 <p>Este sistema complix <strong>WCAG 2.2 nivell AAA (≥7:1) en tot el text, els fons i els grisos estructurals</strong>, i <strong>nivell AA (≥4,5:1) en els colors d'interacció</strong> — enllaços, pestanyes actives i botons primaris. Els límits dels controls complixen la norma 1.4.11 (≥3:1).</p>
 <p>Esta distinció és deliberada i honesta: AAA estricte en tot obligaria a abandonar el taronja de marca, perquè cap taronja reconeixible arriba a 7:1 sobre blanc. Preferim dir-ho que amagar-ho.</p>
 </div></div>
@@ -188,7 +188,7 @@ export function DesignSectionContent() {
 <p>Dalt del títol pot anar una imatge o multimèdia d'un ample màxim de 600x600. Baix d'aquest H1 aniran exclusivament els components de presentació de la Targeta Mestra: categoria, etiqueta i copyright.</p>
 <p>L'H2 divideix els grans blocs temàtics de la pàgina.</p>
 <div className="h1">H1: Títol Principal (40px)</div>
-<div className="sdp-text-center">
+<div >
 <h2>H2: Secció Major (32px)</h2>
 <p className="lead">
 Aquesta és l'<em>entradilla</em> (<code>&lt;p className="lead"&gt;</code>). S'usa exclusivament sota l'H2 per establir la premissa de la secció amb un cos superior al text normal.
@@ -269,15 +269,15 @@ Aquesta és l'<em>entradilla</em> (<code>&lt;p className="lead"&gt;</code>). S'u
 </div>
 </section>
 {/*  SECCIÓ: BOTONS  */}
-<section className="design-block sdp-mb-12">
+<section className="design-block ">
 <ComponentDoc
   title="4. Botons (Accions)"
   description="L'element interactiu fonamental. Els botons han de comunicar clarament l'acció que realitzaran i el seu nivell d'importància."
   technical="Tots els botons complixen un touch-target mínim de 44x44px en mòbil. L'estat :focus-visible aplica un anell de color per a navegació per teclat (WCAG 2.1.1). Mai s'han d'usar per a enllaços simples sense acció."
 >
   <h4>Variants i Jerarquia</h4>
-  <p className="sdp-mb-4 sdp-text-suau">Els botons es divideixen en nivells d'atenció. Usa <code>btn-primary</code> només per a l'acció principal d'una vista.</p>
-  <div className="btn-group sdp-mb-6">
+  <p >Els botons es divideixen en nivells d'atenció. Usa <code>btn-primary</code> només per a l'acció principal d'una vista.</p>
+  <div className="btn-group ">
     <button className="btn btn-primary">Primari</button>
     <button className="btn btn-secondary">Secundari</button>
     <button className="btn btn-outline-dark">Terciari</button>
@@ -287,12 +287,12 @@ Aquesta és l'<em>entradilla</em> (<code>&lt;p className="lead"&gt;</code>). S'u
   </div>
 
   <h4>Estats d'Interacció</h4>
-  <p className="sdp-mb-4 sdp-text-suau">Els estats visuals informen l'usuari sobre la disponibilitat de l'acció.</p>
-  <div className="btn-group sdp-mb-6">
+  <p >Els estats visuals informen l'usuari sobre la disponibilitat de l'acció.</p>
+  <div className="btn-group ">
     <button className="btn btn-primary">Normal</button>
     <button className="btn btn-primary" disabled>Desactivat</button>
     <button className="btn btn-primary" disabled>
-      <svg className="spinner spinner-sm sdp-mr-2" viewBox="0 0 20 20">
+      <svg className="spinner spinner-sm " viewBox="0 0 20 20">
         <circle cx="12" cy="12" fill="none" r="10" stroke="currentColor" strokeWidth="3"></circle>
       </svg>
       <span>Carregant...</span>
@@ -324,16 +324,16 @@ Aquesta és l'<em>entradilla</em> (<code>&lt;p className="lead"&gt;</code>). S'u
 <input defaultChecked id="chk1" type="checkbox"/>
 <label htmlFor="chk1">Accepte els termes del Consell de la Petorreta</label>
 </div>
-<div className="checkbox-group sdp-mt-2">
+<div className="checkbox-group ">
 <input defaultChecked id="optA" name="opt" type="radio"/> <label htmlFor="optA">Opció A</label>
 <input id="optB" name="opt" type="radio"/> <label htmlFor="optB">Opció B</label>
 </div>
-<div className="form-group has-error sdp-mt-4">
+<div className="form-group has-error ">
 <label>Input amb error</label>
 <input type="text" defaultValue="valor incorrecte"/>
 <div className="error-text">Aquest camp és obligatori.</div>
 </div>
-<div className="form-group is-disabled sdp-mt-4">
+<div className="form-group is-disabled ">
 <label>Input desactivat</label>
 <input disabled="" type="text" defaultValue="No editable"/>
 </div>
@@ -372,9 +372,9 @@ Aquesta és l'<em>entradilla</em> (<code>&lt;p className="lead"&gt;</code>). S'u
 </div>
 </section>
 {/*  SECCIÓ 8: BADGES  */}
-<section className="design-block sdp-text-center">
+<section className="design-block ">
 <h3>8. Badges i Etiquetes</h3>
-<div className="sdp-flex sdp-gap-12 sdp-justify-center sdp-mb-6">
+<div className="design-badges-container">
 <span className="badge badge-default">Per defecte</span>
 <span className="badge badge-primary">Primari</span>
 <span className="badge badge-success">Èxit</span>
@@ -383,7 +383,7 @@ Aquesta és l'<em>entradilla</em> (<code>&lt;p className="lead"&gt;</code>). S'u
 <span className="badge badge-info">Informació</span>
 </div>
 <h4>Etiquetes de Poble</h4>
-<div className="sdp-flex sdp-gap-12">
+<div >
 <span className="badge badge-outline"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="icona-linia" viewBox="0 0 20 20" width="16"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> Poble actiu</span>
 <span className="badge badge-outline"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="icona-linia" viewBox="0 0 20 20" width="16"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg> Fototeca</span>
 <span className="badge badge-outline"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="icona-linia" viewBox="0 0 20 20" width="16"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg> Arxiu</span>
@@ -499,11 +499,11 @@ Aquesta és l'<em>entradilla</em> (<code>&lt;p className="lead"&gt;</code>). S'u
 <section className="design-block">
 <h3>12. Indicadors de Càrrega</h3>
 <div className="spinner-group">
-<div className="sdp-text-center"><svg className="spinner spinner-sm" viewBox="0 0 20 20"><circle cx="12" cy="12" fill="none" r="10" stroke="currentColor" strokeWidth="3"></circle></svg>
+<div ><svg className="spinner spinner-sm" viewBox="0 0 20 20"><circle cx="12" cy="12" fill="none" r="10" stroke="currentColor" strokeWidth="3"></circle></svg>
 Petit</div>
-<div className="sdp-text-center"><svg className="spinner spinner-md" viewBox="0 0 20 20"><circle cx="12" cy="12" fill="none" r="10" stroke="currentColor" strokeWidth="3"></circle></svg>
+<div ><svg className="spinner spinner-md" viewBox="0 0 20 20"><circle cx="12" cy="12" fill="none" r="10" stroke="currentColor" strokeWidth="3"></circle></svg>
 Normal</div>
-<div className="sdp-text-center"><svg className="spinner spinner-lg" viewBox="0 0 20 20"><circle cx="12" cy="12" fill="none" r="10" stroke="currentColor" strokeWidth="3"></circle></svg>
+<div ><svg className="spinner spinner-lg" viewBox="0 0 20 20"><circle cx="12" cy="12" fill="none" r="10" stroke="currentColor" strokeWidth="3"></circle></svg>
 Gran</div>
 </div>
 <h4>Esquelet (Skeleton)</h4>
@@ -526,7 +526,7 @@ Gran</div>
 {/*  SECCIÓ 14: DESPLEGABLES I MENÚS FLOTANTS  */}
 <section className="design-block">
 <h3>14. Desplegables i Menús Flotants</h3>
-<div className="sdp-mb-6">
+<div >
   <h4>Acordions</h4>
   <Accordion>
     <AccordionItem title="Què és Sóc de Poble?" defaultOpen={false}>
@@ -539,8 +539,8 @@ Gran</div>
 </div>
 <div>
   <h4>Menús Flotants (Dropdowns)</h4>
-  <p className="sdp-text-suau sdp-mb-4">Components usats per a menús contextuals, com les opcions d'una publicació o els ajustaments.</p>
-  <div className="sdp-flex sdp-gap-4">
+  <p >Components usats per a menús contextuals, com les opcions d'una publicació o els ajustaments.</p>
+  <div >
     <Dropdown 
       trigger={<button className="btn btn-outline-dark">Opcions de la Nota</button>}
     >
@@ -561,7 +561,7 @@ Gran</div>
 <div className="tab">Mapa</div>
 </div>
 <div className="tab-content">
-<p className="sdp-m-0">Contingut de la pestanya activa. Aquesta àrea canvia segons la selecció. Les pestanyes són accessibles via teclat (Tab + Enter/Espai).</p>
+<p >Contingut de la pestanya activa. Aquesta àrea canvia segons la selecció. Les pestanyes són accessibles via teclat (Tab + Enter/Espai).</p>
 </div>
 </section>
 {/*  SECCIÓ 16: PROGRÉS  */}
@@ -604,7 +604,7 @@ Gran</div>
 </div>
 </section>
 {/*  SECCIÓ 19: DIVISORS  */}
-<section className="design-block sdp-mb-20">
+<section className="design-block ">
 <h3>19. Divisors i Separadors</h3>
 <div className="divider-preview">
 <div className="divider-label">19.1 Divisor horitzontal bàsic</div>
@@ -628,8 +628,8 @@ Gran</div>
 </div>
 </section>
 {/*  SECCIÓ 20: TARGETES MESTRES  */}
-<section className="design-block sdp-mb-20">
-<h3 className="sdp-mb-6">20. Targeta Mestra (Sóc de Poble Universal Card)</h3>
+<section className="design-block ">
+<h3 >20. Targeta Mestra (Sóc de Poble Universal Card)</h3>
 
 <ComponentDoc
   title="20.1 Targeta Mestra Principal (Base Canònica)"
@@ -719,7 +719,7 @@ Gran</div>
   title="20.4 Targeta Mestra sense imatge (Exemple: Hisenda / Gestoria)"
   description="Quan la publicació no disposa d'imatge principal, el focus recau completament sobre la tipografia i les dades meta. S'acostuma a emprar per a avisos del sistema o procediments burocràtics."
 >
-  <div className="sdp-flex sdp-flex-col sdp-gap-8">
+  <div className=" -col ">
     <UniversalCard
       title="Hisenda"
       subtitle="Model 303 / 130"
@@ -775,7 +775,7 @@ Gran</div>
 
 <h3>21. Estadístiques i Dashboards</h3>
 <h4>21.1 Targeta d'estadística</h4>
-<div className="stat-card sdp-mb-6">
+<div className="stat-card ">
 <div className="stat-icon"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="icona-linia" viewBox="0 0 20 20" width="16"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
 <div className="stat-info">
 <div className="stat-value">5.847</div>
@@ -834,7 +834,7 @@ Gran</div>
 <button>Cerca</button>
 </div>
 <h4>22.3 Resultats de cerca</h4>
-<div className="sdp-mb-1">S'han trobat <strong>12 resultats</strong> per a "festa major"</div>
+<div >S'han trobat <strong>12 resultats</strong> per a "festa major"</div>
 <div className="search-result">
 <div className="search-result-title">Festa Major de Benigànim</div>
 <div className="search-result-meta">Festes • Benigànim • Agost 2024</div>
@@ -919,7 +919,7 @@ Gran</div>
 <div className="upload-zone">
 <div className="upload-zone-text">📎 Arrossega els arxius ací</div>
 <div className="upload-zone-sub">o <span>selecciona'ls del teu dispositiu</span></div>
-<div className="sdp-mt-2">Màxim 10MB per arxiu. Formats: JPG, PNG, PDF</div>
+<div >Màxim 10MB per arxiu. Formats: JPG, PNG, PDF</div>
 </div>
 <div className="file-item">
 <div className="file-item-info">
@@ -954,12 +954,12 @@ Gran</div>
 })}
 </div>
 <div className="embed-caption">Sóc de Poble: Portal de pobles connectats (2013)</div>
-<details className="accordion sdp-mb-6">
+<details className="accordion ">
 <summary className="accordion-header">
 <svg aria-hidden="true" fill="none" height="16" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="icona-linia" viewBox="0 0 20 20" width="16"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg> Descripció del vídeo original
             <svg fill="none" height="20" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 20 20" width="20"><polyline points="6 9 12 15 18 9"></polyline></svg>
 </summary>
-<div className="sdp-p-4 sdp-text-content" style={{ whiteSpace: 'pre-wrap' }}>
+<div className="sdp-text-content" className="dsg-pre-wrap">
   <p>Un Projecte per col·laborar en el desenvolupament sostenible i tecnològic en entorns rurals.</p>
   <p>Sóc del Poble serà un PORTAL DE POBLES CONNECTATS on compartir informació, experiències i idees que faciliten el desenvolupament sostenible i tecnològic en entorns rurals, per posar en valor els recursos locals, que són l'essència de la nostra identitat, i mostrar l'atractiu dels pobles com a llocs on viure i treballar.</p>
   <p>Serà un canal orientat a la difusió dels beneficis que les Noves Tecnologies poden aportar al món rural, utilitzant ferramentes col·laboratives:</p>
@@ -971,7 +971,7 @@ Gran</div>
     5. VIVERS TIC DE POBLE. Vivers Virtuals d'Emprenedors Rurals.
   </p>
   <p>★ Actualment comptem al Facebook amb més de 200.000 seguidors que se senten identificats amb el concepte de "Ser de Poble". Aquesta xarxa ens permet interactuar amb milers de persones amb les que compartim la nostra percepció del món rural.</p>
-  <hr className="sdp-my-4" />
+  <hr className="" />
   <h4>GUIÓ DEL VÍDEO</h4>
   <p>
     Pepet toca el clarinet...<br/>
@@ -1001,8 +1001,8 @@ Gran</div>
 </div>
 </details>
 <h4>26.2 Mapa embebint (iframe amb fallback)</h4>
-<div className="sdp-w-full sdp-mb-4">
-  <div className="sdp-w-full sdp-mb-4">
+<div>
+  <div>
   {React.createElement('iframe', {
     width: "100%",
     height: "450",
@@ -1022,12 +1022,12 @@ Gran</div>
 </div>
 <div className="audio-time">12:45</div>
 </div>
-<div className="embed-caption sdp-text-left">Podcast «Històries de poble» · Episodi 1</div>
+<div className="embed-caption ">Podcast «Històries de poble» · Episodi 1</div>
 </section>
 {/*  SECCIÓ 27: CLASSES UTILITÀRIES  */}
 <section className="design-block">
 <h3>27. Classes Utilitàries</h3>
-<p className="sdp-text-center sdp-mb-6">Aquestes classes són recomanacions d'arquitectura css (no aplicades ací via Tailwind pur sinó com a concepte)</p>
+<p >Aquestes classes són recomanacions d'arquitectura css (no aplicades ací via Tailwind pur sinó com a concepte)</p>
 <div className="utils-grid">
 <div className="utils-box">
 <h4>Classes de Visibilitat</h4>
@@ -1053,22 +1053,22 @@ Gran</div>
 <section className="design-block">
 <h3>28. Peus de pàgina (Footers)</h3>
 <h4>28.1 Peu de pàgina complet</h4>
-<div className="sdp-p-10">[Footer complet (Enllaços, Legal, Xarxes)]</div>
+<div >[Footer complet (Enllaços, Legal, Xarxes)]</div>
 <h4>28.2 Peu de pàgina minimalista</h4>
-<div className="sdp-p-4 sdp-text-center">© 2026 Sóc de Poble. Tots els drets reservats.</div>
+<div >© 2026 Sóc de Poble. Tots els drets reservats.</div>
 </section>
 {/* SECCIÓ 29: EXEMPLES DE COMPOSICIÓ */}
-<section className="design-block sdp-mb-10">
+<section className="design-block ">
 <h3>29. Exemples de Composició</h3>
 <h4>29.1 Formulari de contacte complet</h4>
-<div className="card sdp-p-6" style={{ maxWidth: '600px', margin: '0 auto' }}>
-<h4 className="sdp-m-0 sdp-mb-2">Contacta amb nosaltres</h4>
-<p className="sdp-text-suau sdp-mb-6">Envieu-nos les vostres dubtes o suggeriments per a millorar el portal.</p>
+<div className="card " className="dsg-center-600">
+<h4 >Contacta amb nosaltres</h4>
+<p >Envieu-nos les vostres dubtes o suggeriments per a millorar el portal.</p>
 <div className="form-group">
 <label>Correu electrònic</label>
 <input placeholder="elteu@email.com" type="email" />
 </div>
-<div className="form-group sdp-mb-6">
+<div className="form-group ">
 <label>El teu missatge</label>
 <textarea placeholder="Com ens pots ajudar?" rows="4"></textarea>
 </div>
@@ -1079,7 +1079,7 @@ Gran</div>
 </section>
 
 {/* SECCIÓ 30: XAT I MISSATGERIA */}
-<section className="design-block sdp-mb-20">
+<section className="design-block ">
 <ComponentDoc
   title="30. Elements de Xat i Missatgeria"
   description="Components estructurals dissenyats específicament per a la Fase Final (Consell i Interacció Humà-Màquina)."
@@ -1089,19 +1089,19 @@ Gran</div>
   <div className="chat-container">
     
     {/* Missatge del Sistema / IA */}
-    <div style={{ display: 'flex', gap: 'var(--sdp-space-3)', maxWidth: '85%' }}>
+    <div className="dsg-msg-container">
       <div className="avatar avatar-sm chat-avatar-ia">IA</div>
       <div className="sdp-chat-bubble sdp-chat-bubble--ai">
-        <p className="sdp-m-0">Bona vesprada, Mestre. El sistema Pedra Seca està 100% operatiu i les constants vitals són estables.</p>
+        <p >Bona vesprada, Mestre. El sistema Pedra Seca està 100% operatiu i les constants vitals són estables.</p>
         <span className="sdp-chat-bubble-meta">17:34</span>
       </div>
     </div>
 
     {/* Missatge de l'Usuari */}
-    <div style={{ display: 'flex', gap: 'var(--sdp-space-3)', maxWidth: '85%', alignSelf: 'flex-end', flexDirection: 'row-reverse' }}>
+    <div className="dsg-msg-container dsg-msg-self">
       <div className="avatar avatar-sm chat-avatar-jl">JL</div>
       <div className="sdp-chat-bubble sdp-chat-bubble--user">
-        <p className="sdp-m-0">Perfecte, comencem amb la sessió de hui.</p>
+        <p >Perfecte, comencem amb la sessió de hui.</p>
         <span className="sdp-chat-bubble-meta">17:36</span>
       </div>
     </div>
@@ -1110,15 +1110,15 @@ Gran</div>
 
   <h4>Input de Missatgeria (Message Composer)</h4>
   <div className="chat-input-wrapper">
-    <div style={{ flex: 1 }}>
+    <div className="dsg-flex-1">
       <textarea 
         className="chat-input-textarea form-control" 
         placeholder="Escriu un missatge..." 
         rows="1" 
       ></textarea>
     </div>
-    <button className="btn btn-primary btn-sm" style={{ borderRadius: '50%', width: '40px', height: '40px', padding: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }} title="Enviar">
-      <svg viewBox="0 0 20 20" style={{ width: '1.2em', height: '1.2em' }}><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"></path></svg>
+    <button className="btn btn-primary btn-sm" className="dsg-btn-round" title="Enviar">
+      <svg viewBox="0 0 20 20" className="dsg-icon-1em"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"></path></svg>
     </button>
   </div>
 </ComponentDoc>
@@ -1126,17 +1126,17 @@ Gran</div>
 
 {/*  SECCIÓ 23: LÒGICA DEL MOTOR DE POBLES  */}
 <section className="design-block">
-<h3 className="sdp-mb-6">23. Lògica del Motor de Pobles</h3>
+<h3 >23. Lògica del Motor de Pobles</h3>
 <ComponentDoc
   title="Ordenació Dinàmica (Rank per Activitat)"
   description="La pàgina de Pobles no té publicadors oficials. El seu funcionament es basa en l'activitat orgànica dels usuaris de cada poble en la resta de l'aplicació (Mur, Mercat, Esdeveniments)."
   technical="El context de dades (AppDataContext) escaneja totes les publicacions i detecta quina és la més recent de cada poble. La targeta del poble ('Gent de...') s'ordena de més recent a més antiga. Per això, si l'última publicació del sistema l'ha feta algú de La Torre de les Maçanes, la targeta de 'Gent de La Torre' pujarà a la primera posició automàticament."
 >
-  <div className="card sdp-p-4">
-    <h4 className="sdp-m-0 sdp-mb-2">Com funciona el rànquing?</h4>
-    <ol className="sdp-m-0" style={{ paddingLeft: '1rem' }}>
-      <li className="sdp-mb-2"><strong>Dades en temps real:</strong> L'aplicació agrupa l'activitat per poble.</li>
-      <li className="sdp-mb-2"><strong>La Targeta de Poble:</strong> Adopta dinàmicament el nom de l'autor (`Gent de La Torre`, `Gent d'Alcoleja`...) gestionant apòstrofs automàticament si comença per vocal.</li>
+  <div className="card ">
+    <h4 >Com funciona el rànquing?</h4>
+    <ol  className="dsg-pl-1">
+      <li ><strong>Dades en temps real:</strong> L'aplicació agrupa l'activitat per poble.</li>
+      <li ><strong>La Targeta de Poble:</strong> Adopta dinàmicament el nom de l'autor (`Gent de La Torre`, `Gent d'Alcoleja`...) gestionant apòstrofs automàticament si comença per vocal.</li>
       <li><strong>Posicionament:</strong> El poble que té l'última interacció de la comunitat es corona com el primer de la llista.</li>
     </ol>
   </div>
@@ -1158,20 +1158,20 @@ Gran</div>
 
       {/*  SECCIÓ 26: PÀGINES DE SISTEMA  */}
       <section className="design-block">
-        <h3 className="sdp-mb-6">26. Pàgines de Sistema vs. Pàgines de Contingut</h3>
+        <h3 >26. Pàgines de Sistema vs. Pàgines de Contingut</h3>
         
         <ComponentDoc
           title="Lògica d'Etiquetatge (Labels)"
           description="Normativa sobre quan i per què utilitzar etiquetes de categoria en una UniversalPage."
           technical="Les Pàgines de Sistema (com el Panell de Control, Dispositius, Disseny, etc.) NO porten cap categoria ni etiqueta a la capçalera de la pàgina."
         >
-          <div className="card sdp-p-4 sdp-mb-6">
-            <h4 className="sdp-m-0 sdp-mb-2">Regla de les Categories</h4>
-            <p className="sdp-m-0 sdp-mb-4">
+          <div className="card ">
+            <h4 >Regla de les Categories</h4>
+            <p>
               Una pàgina només pot tenir etiquetes/categories si la seua naturalesa és ser una <strong>Targeta Publicable</strong> (una <em>card</em>) dins d'un <em>feed</em> (Mur, Mercat, Esdeveniments, Notes, etc.).
             </p>
-            <ol className="sdp-m-0" style={{ paddingLeft: '1rem' }}>
-              <li className="sdp-mb-2"><strong>Pàgines de Contingut:</strong> Corresponen a una <em>card</em>. Aquestes <strong>SÍ</strong> que necessiten la seua categoria o etiqueta identificativa a dalt per mantenir la correspondència amb la targeta d'origen.</li>
+            <ol  className="dsg-pl-1">
+              <li ><strong>Pàgines de Contingut:</strong> Corresponen a una <em>card</em>. Aquestes <strong>SÍ</strong> que necessiten la seua categoria o etiqueta identificativa a dalt per mantenir la correspondència amb la targeta d'origen.</li>
               <li><strong>Pàgines de Sistema:</strong> No són publicacions ni es presenten com a <em>cards</em> en cap secció. Per tant, <strong>NO</strong> necessiten ni han de dur categories inventades com "Sistema", "Admin", o "Local". Són rutes estructurals pures i la seua capçalera ha de ser neta.</li>
             </ol>
           </div>
@@ -1181,34 +1181,34 @@ Gran</div>
           title="Catàleg de Pàgines i Motors Lògics"
           description="Descripció del funcionament intern de cadascuna de les pàgines de sistema, perquè les IAs no es confonguen."
         >
-          <div className="card sdp-p-4 sdp-mb-4">
-            <h4 className="sdp-m-0 sdp-mb-2">Panell de Control</h4>
-            <p className="sdp-m-0 sdp-text-sm text-muted"><strong>Tipus:</strong> Sistema (Sense Labels)</p>
-            <p className="sdp-m-0 sdp-text-sm sdp-text-suau"><strong>Tipus:</strong> Sistema (Sense Labels)</p>
-            <p className="sdp-mt-2">És el <em>Hub</em> o quadre de comandament central. No té cap feed ni <em>cards</em>. Servix exclusivament com a enrutador per a oferir accessos ràpids a la publicació i altres eines d'administració de l'ecosistema. A més, fa servir una <em>entradilla</em> (propietat `lead`) com a subtítol per mantenir la neteja visual i prescindir de títols amb estils <em>inline</em>.</p>
+          <div className="card">
+            <h4 >Panell de Control</h4>
+            <p className="text-muted"><strong>Tipus:</strong> Sistema (Sense Labels)</p>
+            <p ><strong>Tipus:</strong> Sistema (Sense Labels)</p>
+            <p >És el <em>Hub</em> o quadre de comandament central. No té cap feed ni <em>cards</em>. Servix exclusivament com a enrutador per a oferir accessos ràpids a la publicació i altres eines d'administració de l'ecosistema. A més, fa servir una <em>entradilla</em> (propietat `lead`) com a subtítol per mantenir la neteja visual i prescindir de títols amb estils <em>inline</em>.</p>
           </div>
           
-          <div className="card sdp-p-4 sdp-mb-4">
-            <h4 className="sdp-m-0 sdp-mb-2">Dispositius (Descoberta en viu)</h4>
-            <p className="sdp-m-0 sdp-text-sm sdp-text-suau"><strong>Tipus:</strong> Sistema (Sense Labels)</p>
-            <p className="sdp-mt-2">És el motor d'aparellament de la plataforma. La seua lògica s'encarrega d'escanejar la xarxa local, negociar les connexions WebRTC o per relé (Relay) i anunciar la presència del node local. No és una publicació, sinó la font de connectivitat estructural per al P2P offline-first.</p>
+          <div className="card">
+            <h4 >Dispositius (Descoberta en viu)</h4>
+            <p ><strong>Tipus:</strong> Sistema (Sense Labels)</p>
+            <p >És el motor d'aparellament de la plataforma. La seua lògica s'encarrega d'escanejar la xarxa local, negociar les connexions WebRTC o per relé (Relay) i anunciar la presència del node local. No és una publicació, sinó la font de connectivitat estructural per al P2P offline-first.</p>
           </div>
 
-          <div className="card sdp-p-4 sdp-mb-4">
-            <h4 className="sdp-m-0 sdp-mb-2">Cens de Població</h4>
-            <p className="sdp-m-0 sdp-text-sm sdp-text-suau"><strong>Tipus:</strong> Sistema (Sense Labels)</p>
-            <p className="sdp-mt-2">Un simple llistat estàtic de caràcter informatiu. Ordena la llista de pobles de forma purament descendent pel seu volum demogràfic (nombre d'habitants) i permet l'accés directe al perfil de cada localitat. Tampoc requereix etiquetes.</p>
+          <div className="card">
+            <h4 >Cens de Població</h4>
+            <p ><strong>Tipus:</strong> Sistema (Sense Labels)</p>
+            <p >Un simple llistat estàtic de caràcter informatiu. Ordena la llista de pobles de forma purament descendent pel seu volum demogràfic (nombre d'habitants) i permet l'accés directe al perfil de cada localitat. Tampoc requereix etiquetes.</p>
           </div>
 
-          <div className="card sdp-p-4">
-            <h4 className="sdp-m-0 sdp-mb-2">Bloc de Notes (Editor Universal)</h4>
-            <p className="sdp-m-0 sdp-text-sm sdp-text-suau"><strong>Tipus:</strong> Sistema (Sense Labels, Disseny Imbricat)</p>
-            <p className="sdp-mt-2">És la sala de redacció (<em>Composer</em>). Fa servir el motor TipTap per a l'edició de text ric. Tota la seua complexitat visual rau en simular amb exactitud com quedarà la publicació. Per aconseguir-ho, incrusta una targeta <strong>UniversalPage</strong> dins del propi editor, amb les següents excepcions estrictes:</p>
-            <ul className="sdp-mt-2" style={{ paddingLeft: '1rem' }}>
-              <li className="sdp-mb-1"><strong>Sense Barra Blava:</strong> La navegació superior de la `UniversalPage` interior s'obvia.</li>
-              <li className="sdp-mb-1"><strong>Ordre dels elements:</strong> La primera cosa visual sempre és la imatge de capçalera (<em>Hero Image</em>).</li>
-              <li className="sdp-mb-1"><strong>Barra de Publicador (Taronja):</strong> Se situa sota la imatge. Mostra el botó d'hora estàndard. Hi haurà un botó de 'pinejar' que obrirà un desplegable per a triar icones (pinejar, candau, i altres), funcionalitat que s'ampliarà en el futur.</li>
-              <li className="sdp-mb-1"><strong>Capçalera i Logotips:</strong> En aquest exemple de «Bloc de Notes» <strong>sí que apareix el logotip de 'Sóc de Poble'</strong>, ja que representa una nota propietat de Sóc de Poble. L'ocultació del logotip en favor de l'acció d'inserir multimèdia només s'aplica en la vista de redacció d'una <em>nova nota</em> buida.</li>
+          <div className="card ">
+            <h4 >Bloc de Notes (Editor Universal)</h4>
+            <p ><strong>Tipus:</strong> Sistema (Sense Labels, Disseny Imbricat)</p>
+            <p >És la sala de redacció (<em>Composer</em>). Fa servir el motor TipTap per a l'edició de text ric. Tota la seua complexitat visual rau en simular amb exactitud com quedarà la publicació. Per aconseguir-ho, incrusta una targeta <strong>UniversalPage</strong> dins del propi editor, amb les següents excepcions estrictes:</p>
+            <ul  className="dsg-pl-1">
+              <li ><strong>Sense Barra Blava:</strong> La navegació superior de la `UniversalPage` interior s'obvia.</li>
+              <li ><strong>Ordre dels elements:</strong> La primera cosa visual sempre és la imatge de capçalera (<em>Hero Image</em>).</li>
+              <li ><strong>Barra de Publicador (Taronja):</strong> Se situa sota la imatge. Mostra el botó d'hora estàndard. Hi haurà un botó de 'pinejar' que obrirà un desplegable per a triar icones (pinejar, candau, i altres), funcionalitat que s'ampliarà en el futur.</li>
+              <li ><strong>Capçalera i Logotips:</strong> En aquest exemple de «Bloc de Notes» <strong>sí que apareix el logotip de 'Sóc de Poble'</strong>, ja que representa una nota propietat de Sóc de Poble. L'ocultació del logotip en favor de l'acció d'inserir multimèdia només s'aplica en la vista de redacció d'una <em>nova nota</em> buida.</li>
             </ul>
           </div>
         </ComponentDoc>

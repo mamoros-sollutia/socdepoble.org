@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { UniversalPage } from '../../components/universal/UniversalComponents';
+import { UniversalPage } from '../../components/universal/UniversalPage';
 import SectionItemCard from '../../components/SectionItemCard';
 import { useUIActions } from '../../app/contexts/UIContext';
 

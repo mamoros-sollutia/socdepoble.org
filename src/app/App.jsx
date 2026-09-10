@@ -5,7 +5,8 @@ import BrandMark from '../components/BrandMark';
 import { APP_NAME } from '../config/app';
 import { DEFAULT_SECTION_PATH, SECTIONS, SECTION_ORDER } from '../config/sections';
 import { getSectionLabels } from '../config/i18n';
-import { IaiaIcon, UniversalPage } from '../components/universal/UniversalComponents';
+import { UniversalPage } from '../components/universal/UniversalPage';
+import { IaiaIcon } from '../components/universal/UniversalElements';
 import { recullTornadaOAuth } from '../data/backendPort.js';
 import { reclamaContingutDelConvidat } from '../data/identitat.js';
 import { showToast } from '../components/universal/AvisadorEfimer';
@@ -245,7 +246,7 @@ function AppShell({ children, mobileNav }) {
   return (
     <>
       <nav id="app-sidebar" className="app-sidebar" aria-label="Navegació principal">
-        <button type="button" className="brand sdp-cursor-pointer sdp-unstyled-btn" aria-label="Obrir o tancar menú Sóc de Poble" onClick={(e) => {
+        <button type="button" className="brand sdp-unstyled-btn" aria-label="Obrir o tancar menú Sóc de Poble" onClick={(e) => {
           const root = e.target.getRootNode();
           const sidebar = root.querySelector('.app-sidebar') || document.querySelector('.app-sidebar');
           const host = root instanceof ShadowRoot ? root.host : document.body;
@@ -369,9 +370,9 @@ const TopBar = memo(function TopBar() {
         >
           {currentUser ? (
             currentUser.avatar_url ? (
-              <img src={currentUser.avatar_url} alt="El meu perfil" style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover' }} />
+              <img src={currentUser.avatar_url} alt="El meu perfil" className="app-avatar-img" />
             ) : (
-              <div style={{ width: '100%', height: '100%', borderRadius: '50%', background: 'var(--sdp-accio)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div className="sdp-avatar-placeholder">
                 <UserRound size={18} aria-hidden="true" focusable="false" />
               </div>
             )
@@ -456,7 +457,7 @@ function AppDataLoader() {
 
   if (hasError) {
     return (
-      <div style={{ padding: '2rem', color: 'red' }}>
+      <div className="app-error-p2">
         <h1>Error Intern</h1>
         <pre>{core.error?.message || mur.error?.message || xat.error?.message || 'Error desconegut'}</pre>
         <pre>{core.error?.stack}</pre>
@@ -486,13 +487,13 @@ class RouteErrorBoundary extends React.Component {
   render() {
     if (this.state.hasError) {
       return (
-        <div className="sdp-route-error" style={{ padding: '2rem', textAlign: 'center', background: 'var(--sdp-bg-alt)' }}>
-          <h2 style={{ color: 'var(--sdp-danger)' }}>Hi ha hagut un problema</h2>
+        <div className="sdp-route-error app-route-error-wrap">
+          <h2 className="app-text-danger">Hi ha hagut un problema</h2>
           <p>Aquesta secció no ha pogut carregar-se correctament.</p>
-          <pre style={{ textAlign: 'left', background: '#222', color: '#f88', padding: '1rem', overflowX: 'auto' }}>
+          <pre className="sdp-error-pre">
             {this.state.error?.message || String(this.state.error)}
           </pre>
-          <button onClick={() => this.setState({ hasError: false, error: null })} style={{ padding: '0.5rem 1rem', marginTop: '1rem', cursor: 'pointer' }}>
+          <button onClick={() => this.setState({ hasError: false, error: null })} className="app-btn-retry">
             Intentar de nou
           </button>
         </div>

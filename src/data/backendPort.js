@@ -36,7 +36,6 @@ const asseguraMetode = (nom) => (...args) => {
 
 export const getDefaultUserId = asseguraMetode('getDefaultUserId');
 
-export const loadAppData = asseguraMetode('loadAppData');
 export const loadCoreContent = asseguraMetode('loadCoreContent');
 export const loadMur = asseguraMetode('loadMur');
 export const loadXat = asseguraMetode('loadXat');
@@ -70,10 +69,3 @@ export const marcaLlegit = asseguraMetode('marcaLlegit');
 export const creaFilDirecte = asseguraMetode('creaFilDirecte');
 export const carregaMembres = asseguraMetode('carregaMembres');
 
-// Freeze automàtic de seguretat després de 5 segons per evitar injeccions tardanes
-setTimeout(() => {
-  if (!isLocked) {
-    console.warn('[backendPort] ⚠️ Bloqueig automàtic de seguretat (5s timeout).');
-    freezeImplementation();
-  }
-}, 5000);

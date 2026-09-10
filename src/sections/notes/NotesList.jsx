@@ -20,8 +20,8 @@ export default function NotesList() {
           icona={NotebookPen}
           onReplega={() => setColNotesCollapsed(false)}
         />
-        <div className="notes-column__body notes-list-container sdp-p-0">
-          <div className="notes-list-actions sdp-justify-center">
+        <div className="notes-column__body notes-list-container ">
+          <div className="notes-list-actions">
             <button type="button" className="btn-icon" title="Cercar" onClick={() => showToast('La cerca avançada arribarà prompte', 'info')}>
               <Search size={20} />
             </button>

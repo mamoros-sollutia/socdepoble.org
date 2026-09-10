@@ -83,10 +83,10 @@ alter table public.xat_lectures enable row level security;
 
 -- Només els usuaris autenticats poden interactuar amb el xat
 revoke all on table public.xat_fils from anon, public;
-grant select, insert, update, delete on table public.xat_fils to authenticated;
+grant select on table public.xat_fils to authenticated;
 
 revoke all on table public.xat_participants from anon, public;
-grant select, insert, delete on table public.xat_participants to authenticated;
+grant select on table public.xat_participants to authenticated;
 
 revoke all on table public.xat_missatges from anon, public;
 grant select, insert on table public.xat_missatges to authenticated;
@@ -100,9 +100,6 @@ drop policy if exists "xat_fils_lectura" on public.xat_fils;
 create policy "xat_fils_lectura" on public.xat_fils for select to authenticated
 using (private.es_participant(id));
 
-drop policy if exists "xat_fils_creacio" on public.xat_fils;
-create policy "xat_fils_creacio" on public.xat_fils for insert to authenticated
-with check (creat_per = (select auth.uid()));
 
 
 -- Polítiques per a xat_participants
@@ -110,9 +107,7 @@ drop policy if exists "xat_participants_lectura" on public.xat_participants;
 create policy "xat_participants_lectura" on public.xat_participants for select to authenticated
 using (private.es_participant(fil_id));
 
-drop policy if exists "xat_participants_insercio" on public.xat_participants;
-create policy "xat_participants_insercio" on public.xat_participants for insert to authenticated
-with check (private.es_participant(fil_id) or (select creat_per from public.xat_fils where id = fil_id) = (select auth.uid()));
+
 
 
 -- Polítiques per a xat_missatges

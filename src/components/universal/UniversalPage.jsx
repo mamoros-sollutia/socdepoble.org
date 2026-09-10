@@ -374,7 +374,7 @@ export function UniversalPage(props) {
           {title && (
             <h1>
               {title}
-              {price && <span className="sp-card-price" style={{ float: 'none', marginLeft: 16, display: 'inline-block', verticalAlign: 'middle', marginBottom: 4 }}>{price}</span>}
+              {price && <span className="sp-card-price up-badge-inline">{price}</span>}
             </h1>
           )}
           {labels.length > 0 && (

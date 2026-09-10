@@ -117,10 +117,7 @@ process.stdin.on('end', () => {
   const base = path.basename(abs);
   const ext = path.extname(base).toLowerCase();
 
-  /* ── Planificació efímera de l'arnés: fora de jurisdicció ── */
-  if (['task.md', 'walkthrough.md', 'implementation_plan.md'].includes(base)) {
-    resp('allow', 'fitxer de planificació de l\'arnés');
-  }
+
 
   /* ── LLEI 0 · Zona prohibida (AGENTS.md §5) ── */
   if (rel === '.env' || (rel.startsWith('.env.') && rel !== '.env.example')) {

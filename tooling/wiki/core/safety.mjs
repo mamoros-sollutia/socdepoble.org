@@ -19,7 +19,7 @@ export const WRITE_ZONES = {
     '03_GOVERNAR_Normativa_Regles'
   ],
   archive: ['90_historic'],
-  ephemeral: ['05_Escriptori_Soc_de_Poble'],
+  ephemeral: ['04_ESCRIPTORI'],
   generated: [
     '_build',
     '.snapshots'

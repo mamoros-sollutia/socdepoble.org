@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { ArrowRight, Check, Link2, MessageSquare, Plus, RefreshCcw, ShieldCheck, Wifi, X, Eye, EyeOff } from 'lucide-react';
-import { UniversalPage } from '../../components/universal/UniversalComponents';
+import { UniversalPage } from '../../components/universal/UniversalPage';
 import { useUIState } from '../../app/contexts/UIContext';
 import { useCoreContent } from '../../app/contexts/CoreContentContext';
 import { useIdentitat } from '../../app/contexts/IdentitatContext';
@@ -405,7 +405,7 @@ export default function DevicesSection() {
                 <h2>Este dispositiu</h2>
                 <p className="lead">Canvia el nom visible i publica la teua presència per a la resta d’instàncies obertes.</p>
               </div>
-              <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+              <div className="dv-flex-wrap-8">
                 <button 
                   type="button"
                   title={profile.isVisible ? "Mode públic (A un clic de passar a privat)" : "Mode privat (A un clic de passar a públic)"}
@@ -475,12 +475,12 @@ export default function DevicesSection() {
                 </div>
             </div>
             <div className="devices-panel__body">
-              <div className="devices-list" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '16px' }}>
+              <div className="devices-list" className="dv-grid-cards">
                 {mergedDevices.length === 0 ? <div className="note-card">Encara no hi ha altres instàncies visibles.</div> : null}
                 {mergedDevices.map((device) => {
                   const state = connections[device.id]?.state || 'idle';
                   return (
-                    <article key={device.id} className={`card card--soft`} style={{ margin: 0 }}>
+                    <article key={device.id} className={`card card--soft`} className="dv-m-0">
                       <div className="card__body">
                         <div className="devices-row">
                           <div>
@@ -542,7 +542,7 @@ export default function DevicesSection() {
               {!activeChatPeer ? <div className="note-card">No hi ha cap dispositiu connectat en el canal inferior.</div> : null}
               {activeChatPeer ? (
                 <div className="devices-chat-shell">
-                  <article className="card card--soft" style={{ margin: 0, marginBottom: 16 }}>
+                  <article className="card card--soft" className="dv-m-0-mb-16">
                     <div className="card__body">
                       <div className="devices-row">
                         <div>
@@ -588,7 +588,7 @@ export default function DevicesSection() {
                     </div>
                   ) : null}
 
-                  <div ref={chatLogRef} className="devices-chat-log" style={{ margin: '16px 0' }}>
+                  <div ref={chatLogRef} className="devices-chat-log" className="dv-my-16">
                     {activeChatMessages.length === 0 ? <div className="note-card">Encara no hi ha missatges en este canal.</div> : null}
                     {activeChatMessages.map((message) => (
                       <article

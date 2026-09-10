@@ -29,7 +29,7 @@ export default function LlistaAjustos() {
         </button>
       </div>
 
-      <div className="notes-column__body" style={{ padding: 0 }}>
+      <div className="notes-column__body" className="no-padding">
       {ajustos.map((a) => (
         <button
           key={a.id}

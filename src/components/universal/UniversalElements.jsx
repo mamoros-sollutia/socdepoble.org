@@ -408,9 +408,8 @@ function CardBody({ imageUrl, imageAlt, calendarBadge, price, title, titleConten
                 calendarBadge.onClick();
               }}
               aria-label={calendarBadge.label || [calendarBadge.dia, calendarBadge.mes, calendarBadge.any].filter(Boolean).join(' ')}
-              style={{ position: 'relative', zIndex: 20, cursor: 'pointer', border: '1px solid var(--sdp-accent-subtil)', padding: 0 }}
             >
-              <time dateTime={calendarBadge.dateTime} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <time dateTime={calendarBadge.dateTime} className="ue-flex-col-center">
                 <span className="sp-card-calendar-badge__dia">{calendarBadge.dia}</span>
                 <span className="sp-card-calendar-badge__mes">{calendarBadge.mes}</span>
                 {calendarBadge.any && <span className="sp-card-calendar-badge__any">{calendarBadge.any}</span>}
@@ -560,7 +559,7 @@ export function UniversalCard({
       navigator.share({ title: title || document.title, url: fullUrl }).catch(console.error);
     } else {
       navigator.clipboard.writeText(fullUrl);
-      showToast('Enllaç copiat al porta-retalls');
+      alert('Enllaç copiat al porta-retalls');
     }
   });
   
@@ -721,10 +720,9 @@ export function AccordionItem({ title, children, defaultOpen = false, className 
     <div className={`accordion-item ${className}`} style={{ borderBottom: '1px solid var(--sdp-vora)' }}>
       <button 
         type="button"
-        className={`accordion-header ${isOpen ? 'active' : ''}`} 
+        className={`accordion-header ue-accordion-header-btn ${isOpen ? 'active' : ''}`} 
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
-        style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px', cursor: 'pointer' }}
       >
         <span>{title}</span>
         <svg fill="none" height="20" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 20 20" width="20" style={{ transform: isOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}>
@@ -732,7 +730,7 @@ export function AccordionItem({ title, children, defaultOpen = false, className 
         </svg>
       </button>
       {isOpen && (
-        <div className="accordion-body" style={{ padding: '0 16px 16px 16px' }}>
+        <div className="ue-accordion-body-pd">
           {children}
         </div>
       )}
@@ -743,12 +741,26 @@ export function AccordionItem({ title, children, defaultOpen = false, className 
 export function Dropdown({ trigger, children, className = '', right = false, minWidth = '200px' }) {
   const [isOpen, setIsOpen] = useState(false);
   
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      setIsOpen(!isOpen);
+    } else if (e.key === 'Escape' && isOpen) {
+      setIsOpen(false);
+    }
+  };
+  
   return (
-    <div style={{ position: 'relative', display: 'inline-flex' }} className={className}>
+    <div className={`sp-dropdown-wrapper ${className}`}>
       <div 
+        className="sp-dropdown-trigger"
+        role="button"
+        tabIndex={0}
+        aria-haspopup="true"
+        aria-expanded={isOpen}
         onClick={() => setIsOpen(!isOpen)} 
+        onKeyDown={handleKeyDown}
         onBlur={(e) => {
-          // Only close if focus moves outside the dropdown
           if (!e.currentTarget.contains(e.relatedTarget)) {
             setTimeout(() => setIsOpen(false), 200);
           }
@@ -757,14 +769,10 @@ export function Dropdown({ trigger, children, className = '', right = false, min
         {trigger}
       </div>
       {isOpen && (
-        <div className="xat-header-dropdown" style={{ 
-          minWidth, 
-          right: right ? 0 : 'auto', 
-          left: right ? 'auto' : 0, 
-          top: '100%', 
-          marginTop: '8px',
-          zIndex: 100 
-        }}>
+        <div 
+          className={`xat-header-dropdown ${right ? 'xat-header-dropdown--right' : 'xat-header-dropdown--left'}`} 
+          style={{ minWidth }} 
+        >
           {children}
         </div>
       )}
@@ -776,11 +784,10 @@ export function DropdownItem({ children, onClick, className = '', icon }) {
   return (
     <button 
       type="button" 
-      className={`xat-dropdown-item ${className}`} 
+      className={`xat-dropdown-item ue-flex-center-8 ue-w-full ${className}`} 
       onClick={onClick} 
-      style={{ display: 'flex', alignItems: 'center', gap: '8px', width: '100%' }}
     >
-      {icon && <span style={{ display: 'flex', alignItems: 'center' }}>{icon}</span>}
+      {icon && <span className="ue-flex-center">{icon}</span>}
       {children}
     </button>
   );

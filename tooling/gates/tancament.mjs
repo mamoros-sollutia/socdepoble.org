@@ -23,13 +23,7 @@ async function main() {
     throw new Error(`Error sincronitzant skills: ${e.message}`);
   }
 
-  // 0. Auto-generar els índexs de carpetes dinàmiques abans d'auditar
-  try {
-    if (!isJsonMode) console.log("🔄 Actualitzant índexs automàtics...");
-    execSync('node generar_indexs.mjs', { cwd: rootDir, stdio: isJsonMode ? 'ignore' : 'pipe' });
-  } catch (e) {
-    throw new Error(`Error actualitzant índexs: ${e.message}`);
-  }
+
   
   const verificador = new VerificadorSCC(rootDir);
   const result = await verificador.runAudits();

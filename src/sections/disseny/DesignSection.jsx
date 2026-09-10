@@ -1,5 +1,5 @@
 import React from 'react';
-import { UniversalPage } from '../../components/universal/UniversalComponents.jsx';
+import { UniversalPage } from '../../components/universal/UniversalPage';
 import { DesignSectionContent } from './DesignSectionContent.jsx';
 export default function DesignSection() {
   return (

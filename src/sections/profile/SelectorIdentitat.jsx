@@ -40,7 +40,7 @@ export default function SelectorIdentitat() {
         </div>
       </div>
 
-      <div className="notes-column__body" style={{ padding: 0 }}>
+      <div className="notes-column__body" className="no-padding">
         {carregant ? <p className="perfil-detall-buit">Carregant…</p> : null}
       {error ? <p className="perfil-detall-buit">{error}</p> : null}
       {identitats.map((i) => (
@@ -51,15 +51,15 @@ export default function SelectorIdentitat() {
           aria-current={String(i.id === identitat?.id)}
           onClick={() => handleSelect(i.id)}
         >
-          <span className="perfil-ajust-cos" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+          <span className="perfil-ajust-cos ident-flex-row">
             {i.avatar ? (
-              <img src={i.avatar} alt="" className="perfil-identitat-avatar" style={{ width: '32px', height: '32px', borderRadius: '50%', objectFit: 'cover' }} />
+              <img src={i.avatar} alt="" className="perfil-identitat-avatar ident-avatar" />
             ) : (
-              <span className="perfil-identitat-inicial sdp-w-8 sdp-h-8 sdp-rounded-full sdp-bg-fons-control sdp-flex sdp-items-center sdp-justify-center sdp-font-bold">
+              <span className="perfil-identitat-inicial">
                 {i.nom?.charAt(0) || '?'}
               </span>
             )}
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+            <div className="ident-flex-col">
               <span className="perfil-identitat-nom">{i.nom}</span>
               <span className="perfil-identitat-rol">{i.rol}</span>
             </div>

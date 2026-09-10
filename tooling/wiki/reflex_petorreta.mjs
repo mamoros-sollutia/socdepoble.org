@@ -238,7 +238,7 @@ function validateGraphContract(graph) {
   if (graph.showAttachments !== false) findings.push('showAttachments ha de ser false');
   const requiredFilters = [
     '90_historic',
-    '05_Escriptori_Soc_de_Poble',
+    '04_ESCRIPTORI',
     '00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR',
     '00_SER_Brain_Identitat/Sollutia',
     '03_GOVERNAR_Normativa_Regles/agents_actius',
@@ -285,7 +285,7 @@ export async function captureWikiBaseline(wikiDir = WIKI_DIR) {
         continue;
       }
       if (entry.isDirectory()) {
-        if (directory === rootReal && entry.name === '05_Escriptori_Soc_de_Poble') continue;
+        if (directory === rootReal && entry.name === '04_ESCRIPTORI') continue;
         await walk(absolute);
       }
       else if (entry.isFile() && entry.name.toLowerCase().endsWith('.md')) {

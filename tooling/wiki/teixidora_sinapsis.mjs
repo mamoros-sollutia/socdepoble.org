@@ -43,7 +43,7 @@ import { getTimestamp } from './lib/termodinamic.mjs';
 // Reflex_petorreta imports are currently disabled / mocked bypassed
 import { WIKI_DIR } from './lib/project_paths.mjs';
 
-const ESCRIPTORI = '05_Escriptori_Soc_de_Poble';
+const ESCRIPTORI = '04_ESCRIPTORI';
 
 /* ------------------------------------------------------------------ *
  * 0. CONFIGURACIÓ DE JERARQUIA (el mapa topogràfic del Mas)           *

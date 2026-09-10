@@ -1,7 +1,11 @@
 import { readFileSync } from 'node:fs';
-import { describe, expect, it } from 'vitest';
 
-const schema = readFileSync(new URL('../../supabase/schema.sql', import.meta.url), 'utf8');
+import { describe, expect, it } from 'vitest';
+import { fileURLToPath } from 'node:url';
+const _metaUrl = typeof import.meta.url === 'string' && import.meta.url.startsWith('file:') 
+  ? import.meta.url 
+  : `file://${import.meta.url}`;
+const schema = readFileSync(fileURLToPath(new URL('../../supabase/migrations/20260908_initial_schema.sql', _metaUrl)), 'utf-8');
 
 describe('contracte SQL de l’onboarding', () => {
   it.each(['profiles', 'organizations', 'organization_memberships'])('activa RLS a %s', (table) => {
@@ -22,7 +26,7 @@ describe('contracte SQL de l’onboarding', () => {
   });
 
   it('crea organitzacions com a invocador sota RLS i amb identitat de sessió', () => {
-    const functionBlock = schema.match(/create function public\.create_organization[\s\S]*?\n\$\$;/)?.[0] || '';
+    const functionBlock = schema.match(/create (?:or replace )?function public\.create_organization[\s\S]*?\n\$\$;/)?.[0] || '';
     expect(functionBlock).toContain('security invoker');
     expect(functionBlock).toContain("set search_path = ''");
     expect(functionBlock).toContain('v_user_id uuid := (select auth.uid())');
@@ -30,7 +34,7 @@ describe('contracte SQL de l’onboarding', () => {
     expect(schema).toContain('and created_by = (select auth.uid())');
     expect(schema).toContain('after insert on public.organizations');
     expect(schema).toContain("'owner'");
-    expect(schema).toContain('grant execute on function public.create_organization(uuid, text, text, text, text, uuid) to authenticated;');
+    expect(schema).toContain('grant execute on function public.create_organization(uuid, text, text, text, text, text, uuid) to authenticated;');
   });
 
   it('el directori públic no exposa la persona creadora', () => {

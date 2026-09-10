@@ -93,7 +93,35 @@ Aquesta skill estableix el flux de treball (workflow) global per abordar qualsev
 El nostre flux de treball garanteix un projecte sostenible a llarg termini sense amnèsia arquitectònica.
 
 
+## 9. L'Exèrcit de Tractors (Les Portes de Tancament)
+
+Els tractors (o portes) són scripts autònoms que vigilen i auditen l'arquitectura del projecte. S'executen de forma encadenada a través de `tooling/gates/run-portes.mjs`. El sistema no permetrà cap commit, ni donarà per finalitzada cap tasca, si algun d'aquests tractors falla. A continuació, els més rellevants:
+
+### 🏰 Arquitectura i Seguretat
+- **`tractor-innerhtml.mjs` (Porta InnerHTML):** Impedeix l'ús de `dangerouslySetInnerHTML` o similars per seguretat.
+- **`tractor-tdz.mjs` (Porta TDZ):** Evita la Temporal Dead Zone i dependències circulars.
+- **`tractor-rls.mjs` (Porta RLS):** Valida que les polítiques Row Level Security de Supabase estiguen aplicades i sense forats.
+- **`tractor-sollutia.mjs` (Porta Frontera):** Assegura que la integració amb la plataforma de Sollutia respecta el patró "enxufe" aïllat.
+
+### 🎨 Disseny i "Pedra Seca"
+- **`tractor-pedra-seca.mjs` / `design_guard.mjs`:** Protegeixen la Llei de Pedra Seca. Eviten dissenys no estandarditzats.
+- **`tractor-tokens.mjs` / `tractor-cromatic.mjs`:** Asseguren l'ús estricte dels design tokens i colors del sistema.
+- **`tractor-antitailwind.mjs` (Salfumà):** Esborra qualsevol intent d'utilitzar classes utilitàries d'estil Tailwind.
+- **`tractor-inline-styles.mjs` (Salfumà):** Prohibeix terminantment l'ús de l'atribut `style={{...}}`.
+- **`01_porta_pedra_seca_58px.mjs` (Porta 58px):** Obliga que els botons d'acció principals tinguen l'alçada tàctil exacta de 58px.
+
+### 🧠 Cognitiu i Wiki (El Cervell)
+- **`reflex_petorreta.mjs` (Porta Reflex):** La porta de la IA que avalua la petició abans de començar a operar.
+- **`tractor-manifest.mjs` / `tractor-consell.mjs`:** Asseguren la integritat i pes dels Bundles (Petorretas) enviades als auditors.
+- **`tractor-vocabulari.mjs`:** Audita que el diccionari valencià autòcton i el to de "Sóc de Poble" es mantinguen coherents al text.
+- **`llaurador_indexs.mjs` / `teixidor.mjs`:** Scripts responsables de recórrer el directori d'Obsidian (`_wiki_de_poble`) i mantenir el graf d'enllaços (MOCs) en perfecte estat i lliure de satèl·lits.
+- **`segella.mjs` (Porta Segella):** Segellat criptogràfic de les regles i skills (Z-Hash) per a evitar manipulacions de context.
+
+### 🌐 Rutes i Codi General
+- **`tractor-build-previ.mjs` / `tractor-rutes.mjs`:** Proves de compilació inicial i validació del sistema d'enrutat web estricte.
+
+El coneixement profund d'aquests tractors ajuda a entendre per què de vegades un canvi aparentment innocent és rebutjat immediatament pel Mur.
+
+
 ## Ancoratge de la Wiki
 - Aquesta skill penja de: [[00_INDEX_SKILLS]]
-
-

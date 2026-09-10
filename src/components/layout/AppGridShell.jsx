@@ -98,24 +98,24 @@ export default function AppGridShell({
             <section
               className="app-grid-column app-grid-column--left"
               id="app-grid-sidebar"
-              inert={tancada.left ? '' : undefined}
-              aria-hidden={tancada.left || undefined}
+              inert={tancada.left ? true : undefined}
+              aria-hidden={tancada.left ? true : undefined}
             >
               {leftColumn}
             </section>
             <section
               className="app-grid-column app-grid-column--middle"
               id="app-grid-list"
-              inert={tancada.middle ? '' : undefined}
-              aria-hidden={tancada.middle || undefined}
+              inert={tancada.middle ? true : undefined}
+              aria-hidden={tancada.middle ? true : undefined}
             >
               {middleColumn}
             </section>
             <section
               className="app-grid-column app-grid-column--right"
               id="app-grid-main"
-              inert={tancada.right ? '' : undefined}
-              aria-hidden={tancada.right || undefined}
+              inert={tancada.right ? true : undefined}
+              aria-hidden={tancada.right ? true : undefined}
             >
               {rightColumn}
             </section>

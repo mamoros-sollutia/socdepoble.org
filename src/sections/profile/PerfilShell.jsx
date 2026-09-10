@@ -1,4 +1,5 @@
-import { UniversalPage, useContent } from '../../components/universal/UniversalComponents';
+import { UniversalPage } from '../../components/universal/UniversalPage';
+import { useContent } from '../../components/universal/UniversalElements';
 import { PerfilProvider } from './PerfilContext.jsx';
 import SelectorIdentitat from './SelectorIdentitat.jsx';
 import LlistaAjustos from './LlistaAjustos.jsx';

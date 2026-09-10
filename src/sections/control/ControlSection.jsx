@@ -1,7 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { User, Cpu, Network, Receipt, FileText, Store, Calendar, MapPin, MessageSquare, Shield, LogOut, Car } from 'lucide-react';
-import { UniversalPage, UniversalCard, UniversalIndicatorCard, UniversalButton } from '../../components/universal/UniversalComponents';
+import { User, Cpu, Network, Receipt, FileText, Store, Calendar, MapPin, MessageSquare, Shield, LogOut, Car, PawPrint, MessageCircle } from 'lucide-react';
+import { UniversalPage } from '../../components/universal/UniversalPage';
+import { UniversalCard, UniversalIndicatorCard, UniversalButton } from '../../components/universal/UniversalElements';
 import { resolveAsset } from '../../config/assetResolver';
 import { useUIActions } from '../../app/contexts/UIContext';
 
@@ -34,7 +35,7 @@ export default function ControlSection() {
       lead={t('section.control.lead', 'Tria on vols publicar i crea nous continguts des de l\'editor universal.')}
       chrome="system"
     >
-      <div style={{ padding: 'var(--sdp-space-8) var(--sdp-space-4)', maxWidth: '1000px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 'var(--sdp-space-12)' }}>
+      <div className="ctl-main-container">
         
         {/* Accions Principals - Quadres de Comandament */}
         <section>
@@ -75,11 +76,25 @@ export default function ControlSection() {
               onClick={() => navigate('/notes')}
               iconColor="var(--sdp-accent)"
             />
+            <UniversalIndicatorCard 
+              icon={<PawPrint size={40} strokeWidth={1.5} />}
+              title="Animalets perduts"
+              subtitle="Cercar els propietaris"
+              onClick={() => navigate('/notes')}
+              iconColor="var(--sdp-accent)"
+            />
+            <UniversalIndicatorCard 
+              icon={<MessageCircle size={40} strokeWidth={1.5} />}
+              title="Publicar al Xat"
+              subtitle="Crear anunci per a grups"
+              onClick={() => navigate('/notes')}
+              iconColor="var(--sdp-accent)"
+            />
           </div>
         </section>
 
         {/* Eines i Recursos (Opcions secundàries) */}
-        <section style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sdp-space-4)', maxWidth: '400px', margin: '0 auto' }}>
+        <section className="ctl-secondary-tools">
           <UniversalButton onClick={() => navigate('/xat/0001')} variant="primary" icon={<MessageSquare size={18} />}>
             Missatges per a dubtes
           </UniversalButton>

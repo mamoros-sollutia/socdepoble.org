@@ -38,7 +38,8 @@ import {
 
 const SCRIPT_DIR = TOOLING_WIKI_DIR;
 export const DEFAULT_WIKI_DIR = WIKI_DIR;
-const SCHEMA_TEXT = await fs.readFile(new URL('../schema.json', import.meta.url), 'utf8');
+const _metaUrl = import.meta.url.startsWith('file:') ? import.meta.url : 'file://' + import.meta.url;
+const SCHEMA_TEXT = await fs.readFile(new URL('../schema.json', _metaUrl), 'utf8');
 const SCHEMA = JSON.parse(SCHEMA_TEXT);
 const FIELD_ORDER = ['estat', 'tipus', 'description', 'aliases', 'revisat'];
 const ALLOWED_FIELDS = new Set(Object.keys(SCHEMA.properties));

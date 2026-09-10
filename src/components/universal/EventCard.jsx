@@ -1,5 +1,5 @@
 import React from 'react';
-import { UniversalCard } from './UniversalComponents';
+import { UniversalCard } from './UniversalElements';
 import { resolveAsset } from '../../config/assetResolver';
 
 function getCalendarBadge(dateString) {

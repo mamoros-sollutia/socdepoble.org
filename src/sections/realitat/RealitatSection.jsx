@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { UniversalPage } from '../../components/universal/UniversalComponents';
+import { UniversalPage } from '../../components/universal/UniversalPage';
 import { AGENTS } from '../profile/agentsSeed';
 import { resolveAsset } from '../../config/assetResolver';
 import { getVal, setVal } from '../../config/storage.js';
@@ -37,18 +37,17 @@ export default function RealitatSection() {
       chrome="system"
       showLogos={false}
     >
-      <div className="stack-grid sdp-text-content" style={{ padding: '0 var(--sdp-space-4)' }}>
+      <div className="stack-grid sdp-text-content realitat-container">
         {[
           { id: 0, label: 'Apagada', desc: 'Sense intervenció de la intel·ligència artificial.' },
           { id: 1, label: 'Passiva', desc: 'Només recomanacions i accions a petició teua.' },
           { id: 2, label: 'Interactiva (Selecció)', desc: 'Conversa activa amb acompanyants específics.' },
           { id: 3, label: 'Connexió Total', desc: 'Connexió total amb tots els agents de la Masia.' }
         ].map((lvl) => (
-          <div key={lvl.id} className="sdp-flex-col">
+          <div key={lvl.id} className="-col">
             <button
               onClick={() => setLevel(lvl.id)}
-              className={`card ${level === lvl.id ? 'card--accent' : 'card--hover'}`}
-              style={{ textAlign: 'left', width: '100%', cursor: 'pointer' }}
+              className={`card realitat-btn ${level === lvl.id ? 'card--accent' : 'card--hover'}`}
             >
               <div className="card__body">
                 <h3 className="card__title">
@@ -61,30 +60,30 @@ export default function RealitatSection() {
             </button>
             
             {level === 2 && lvl.id === 2 && (
-              <div className="card card--soft sdp-mt-4">
+              <div className="card card--soft ">
                 <div className="card__body">
-                  <h4 className="section-title sdp-mb-4">
+                  <h4 className="section-title">
                     Tria els teus acompanyants:
                   </h4>
                   <div className="stack-grid">
                   {aiAgents.map(agent => {
                     const isSelected = selectedCompanions.includes(agent.id);
                     return (
-                      <label key={agent.id} style={{ display: 'flex', alignItems: 'center', gap: 'var(--sdp-space-4)', cursor: 'pointer' }}>
+                      <label key={agent.id} className="realitat-agent-label">
                         <input 
                           type="checkbox" 
                           checked={isSelected}
                           onChange={() => toggleCompanion(agent.id)}
-                          style={{ width: '20px', height: '20px', accentColor: 'var(--sdp-accent)' }}
+                          className="realitat-agent-checkbox"
                         />
                         <img 
                           src={resolveAsset(agent.avatar_url)} 
                           alt={agent.name}
-                          style={{ width: '48px', height: '48px', borderRadius: '50%', objectFit: 'cover' }}
+                          className="realitat-agent-avatar"
                         />
-                        <div className="sdp-flex-col">
-                          <strong style={{ color: 'var(--sdp-text-fort)' }}>{agent.name}</strong>
-                          <span style={{ color: 'var(--sdp-text-suau)', fontSize: 'var(--sdp-text-sm)' }}>{agent.role}</span>
+                        <div className="-col">
+                          <strong className="realitat-agent-name">{agent.name}</strong>
+                          <span className="realitat-agent-role">{agent.role}</span>
                         </div>
                       </label>
                     );

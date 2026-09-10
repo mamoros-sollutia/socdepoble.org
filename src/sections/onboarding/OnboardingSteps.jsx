@@ -4,15 +4,12 @@ import {
   Building2,
   Check,
   Loader2,
-  LockKeyhole,
   MailCheck,
   UserRound,
   UsersRound,
   MapPin
 } from 'lucide-react';
-import { validateOrganization, validateRegistration } from './onboardingModel.js';
-
-const STEP_ICONS = [UserRound, Building2, UsersRound];
+import { validateRegistration } from './onboardingModel.js';
 
 
 
@@ -73,16 +70,16 @@ export function RegistrationStep({ isBusy, error, confirmationEmail, onRegister,
         <h3 id="onboarding-register-title" className="sdp-text-accio-text">Accés o nou registre</h3>
       </div>
 
-      <p className="onboarding-card__intro" style={{ textAlign: 'center' }}>
+      <p className="onboarding-card__intro onb-center-text">
         Primer entra una persona real. El teu perfil queda privat i separat de les
         organitzacions que crearàs després.
       </p>
-      <p className="onboarding-card__intro" style={{ textAlign: 'center', marginTop: '1rem' }}>
+      <p className="onboarding-card__intro onb-center-text-mt">
         En entrar o crear compte, acceptes el tractament de dades (RGPD Llei 05) per a Sóc de Poble. 
         També comprens que estem en <strong>fase Beta</strong> (proves) i que les teues dades podrien patir reinicis o pèrdues.
       </p>
 
-      <div className="login-switcher" role="tablist" aria-label="Opcions d’accés" style={{ marginBottom: '1.5rem' }}>
+      <div className="login-switcher ob-mb-15" role="tablist" aria-label="Opcions d’accés">
         <button
           type="button"
           className={`pill ${mode === 'login' ? 'pill--active' : ''}`}
@@ -167,7 +164,7 @@ export function RegistrationStep({ isBusy, error, confirmationEmail, onRegister,
           <>
 
 
-            <label className={`form-group form-group--checkbox${errors.rgpd ? ' has-error sdp-border-error' : ' sdp-border-vora'} sdp-flex sdp-items-center sdp-gap-4 sdp-p-6 sdp-bg-mut sdp-rounded-lg sdp-border-2 sdp-cursor-pointer sdp-mt-4`}
+            <label className={`form-group form-group--checkbox${errors.rgpd ? ' has-error sdp-border-error' : ' sdp-border-vora'} sdp-items-center`}
             >
               <input
                 type="checkbox"
@@ -177,11 +174,11 @@ export function RegistrationStep({ isBusy, error, confirmationEmail, onRegister,
                 aria-invalid={Boolean(errors.rgpd)}
                 aria-describedby={errors.rgpd ? 'onboarding-rgpd-error' : undefined}
                 disabled={isBusy}
-                style={{ width: '2rem', height: '2rem', flexShrink: 0, cursor: 'pointer' }}
+                className="onb-icon-action"
               />
-              <span className="sdp-text-lg sdp-font-semibold">Consent el tractament de dades personals (RGPD Llei 05) exclusivament per a Sóc de Poble.</span>
+              <span className="">Consent el tractament de dades personals (RGPD Llei 05) exclusivament per a Sóc de Poble.</span>
             </label>
-            {errors.rgpd ? <span id="onboarding-rgpd-error" className="error-text" style={{ marginTop: '0.5rem', display: 'block' }}>{errors.rgpd}</span> : null}
+            {errors.rgpd ? <span id="onboarding-rgpd-error" className="error-text onb-block-mt">{errors.rgpd}</span> : null}
           </>
         )}
 
@@ -202,7 +199,6 @@ export function OrganizationStep({ blueprint, parentOrganization, isBusy, error,
   const [errors, setErrors] = useState({});
   const isGroup = blueprint.kind === 'group';
   const Icon = isGroup ? UsersRound : Building2;
-  const stepNumber = isGroup ? 3 : 2;
 
   const submit = async (event) => {
     event.preventDefault();
@@ -225,12 +221,12 @@ export function OrganizationStep({ blueprint, parentOrganization, isBusy, error,
         </h2>
       </div>
 
-      <p className="onboarding-card__intro" style={{ textAlign: 'center' }}>
+      <p className="onboarding-card__intro onb-center-text">
         {isGroup
           ? 'El grup quedarà vinculat a l’empresa. Tu en seràs la persona propietària inicial.'
           : 'L’empresa és una identitat pública distinta del teu perfil personal.'}
       </p>
-      <p className="onboarding-card__intro" style={{ textAlign: 'center', marginTop: '1rem' }}>
+      <p className="onboarding-card__intro onb-center-text-mt">
         En continuar, acceptes el tractament de dades (RGPD Llei 05) per a Sóc de Poble. 
         També comprens que estem en <strong>fase Beta</strong> (proves) i que les teues dades podrien patir reinicis o pèrdues.
       </p>
@@ -311,12 +307,11 @@ export function OrganizationStep({ blueprint, parentOrganization, isBusy, error,
           <p>Nom, descripció i relació entre entitats seran visibles. El teu perfil personal continua privat.</p>
         </div>
 
-        <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem', width: '100%' }}>
+        <div className="onb-btn-group-full">
           <button
             type="submit"
-            className="btn btn-secondary onboarding-card__action"
+            className="btn btn-secondary onboarding-card__action flex-1"
             disabled={isBusy || (isGroup && !parentOrganization)}
-            style={{ flex: 1 }}
           >
             {isBusy ? <Loader2 className="spinner" size={18} aria-hidden="true" /> : <Icon size={18} aria-hidden="true" />}
             {isGroup ? 'Crear el grup' : 'Crear l’empresa'}
@@ -327,7 +322,6 @@ export function OrganizationStep({ blueprint, parentOrganization, isBusy, error,
               className="btn onboarding-card__action"
               onClick={onSkip}
               disabled={isBusy}
-              className="btn sdp-flex-1 sdp-bg-transparent sdp-text-accio sdp-border sdp-border-accio"
             >
               Continuar com a persona
             </button>
@@ -367,20 +361,20 @@ export function IdentityForkStep({ onCreateNew, onClaimExisting, onSkip }) {
         <span className="onboarding-card__icon" aria-hidden="true"><UserRound size={28} /></span>
         <h2 className="sdp-text-accio-text">Quina és la teua relació amb el poble?</h2>
       </div>
-      <p className="onboarding-card__intro" style={{ textAlign: 'center' }}>
+      <p className="onboarding-card__intro onb-center-text">
         Tria com vols interactuar dins la xarxa. Pots crear una empresa, reclamar-ne una d'existent, o simplement explorar com a persona.
       </p>
-      <div className="fork-grid" style={{ display: 'grid', gap: '1rem', marginTop: '1.5rem' }}>
-        <button type="button" className="btn btn-secondary" onClick={() => onCreateNew('company')} style={{ display: 'flex', gap: '0.5rem', justifyContent: 'center' }}>
+      <div className="fork-grid onb-fork-grid-margin">
+        <button type="button" className="btn btn-secondary onb-btn-icon-center" onClick={() => onCreateNew('company')}>
           <Building2 size={20} /> Sóc una empresa o comerç
         </button>
-        <button type="button" className="btn btn-secondary" onClick={() => onCreateNew('group')} style={{ display: 'flex', gap: '0.5rem', justifyContent: 'center' }}>
+        <button type="button" className="btn btn-secondary onb-btn-icon-center" onClick={() => onCreateNew('group')}>
           <UsersRound size={20} /> Sóc una associació o col·lectiu
         </button>
-        <button type="button" className="btn btn-secondary" onClick={() => onClaimExisting()} style={{ display: 'flex', gap: '0.5rem', justifyContent: 'center' }}>
+        <button type="button" className="btn btn-secondary onb-btn-icon-center" onClick={() => onClaimExisting()}>
           <MapPin size={20} /> Vull gestionar una entitat ja existent
         </button>
-        <button type="button" className="btn sdp-bg-transparent sdp-text-accio sdp-border sdp-border-accio" onClick={onSkip}>
+        <button type="button" className="btn btn-outline-accio" onClick={onSkip}>
           Només vull explorar (mode persona)
         </button>
       </div>
@@ -401,13 +395,13 @@ export function ClaimStep({ organizations, onClaim, onBack, isBusy, error }) {
       {error ? <div className="alert alert-error" role="alert">{error}</div> : null}
 
       {orphanEntities.length === 0 ? (
-        <p style={{ textAlign: 'center', marginTop: '1rem' }}>No hi ha entitats disponibles per reclamar en este moment.</p>
+        <p className="onb-center-text">No hi ha entitats disponibles per reclamar en este moment.</p>
       ) : (
-        <ul className="claim-list" style={{ listStyle: 'none', padding: 0, margin: '1.5rem 0' }}>
+        <ul className="onb-org-list">
           {orphanEntities.map(org => (
-            <li key={org.id} className="claim-item" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1rem', borderBottom: '1px solid var(--sdp-vora)' }}>
+            <li key={org.id} className="onb-org-item">
               <div>
-                <strong style={{ display: 'block' }}>{org.name}</strong>
+                <strong className="onb-block">{org.name}</strong>
                 <span className="badge badge-secondary">{org.kind}</span>
               </div>
               <button 
@@ -421,7 +415,7 @@ export function ClaimStep({ organizations, onClaim, onBack, isBusy, error }) {
           ))}
         </ul>
       )}
-      <button className="btn btn-ghost" onClick={onBack} disabled={isBusy} style={{ width: '100%', marginTop: '1rem' }}>
+      <button className="btn btn-primary onb-full-width-btn" onClick={onBack} disabled={isBusy}>
         Tornar arrere
       </button>
     </section>

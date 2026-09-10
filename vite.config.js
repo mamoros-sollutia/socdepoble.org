@@ -41,6 +41,10 @@ export default defineConfig(() => ({
       'react/jsx-runtime': 'preact/jsx-runtime'
     }
   },
+  test: {
+    environment: 'jsdom',
+    exclude: ['node_modules', 'dist', '.idea', '.git', '.cache', '_wiki_de_poble/**'],
+  },
   build: {
     target: 'es2020',
     outDir: 'dist',

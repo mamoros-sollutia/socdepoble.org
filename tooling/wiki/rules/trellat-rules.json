@@ -7,7 +7,7 @@
     "02_ACTUAR_Maquina_Tecnica",
     "03_GOVERNAR_Normativa_Regles",
     "90_historic",
-    "05_Escriptori_Soc_de_Poble"
+    "04_ESCRIPTORI"
   ],
   "requiredFrontmatter": ["estat", "tipus", "description"],
   "excludes": [

@@ -1,5 +1,6 @@
 import { useDeferredValue, useMemo, useState } from 'react';
-import { UniversalPage, UniversalCard } from '../../components/universal/UniversalComponents';
+import { UniversalPage } from '../../components/universal/UniversalPage';
+import { UniversalCard } from '../../components/universal/UniversalElements';
 import { UniversalSearch } from '../../components/ui/UniversalSearch.jsx';
 import { resolveItemPath } from '../../config/navigation';
 import { useUIActions } from '../../app/contexts/UIContext';
@@ -39,7 +40,7 @@ export default function SearchSection() {
       chrome="system"
       showLogos={true}
     >
-      <div style={{ margin: 'var(--sdp-space-8) 0', padding: '0 var(--sdp-space-5)' }}>
+      <div className="search-wrapper">
         <UniversalSearch
           value={query}
           onChange={(event) => setQuery(event.target.value)}
@@ -48,7 +49,7 @@ export default function SearchSection() {
         />
       </div>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sdp-space-6)', padding: '0 var(--sdp-space-4)', paddingBottom: 'var(--sdp-space-12)' }}>
+      <div className="search-results">
         {results.map((item) => {
           const path = resolveItemPath(item);
           const content = item.role || item.post_subtitle || item.content || item.message;
@@ -66,7 +67,7 @@ export default function SearchSection() {
           );
         })}
         {query && results.length === 0 && (
-          <div style={{  textAlign: 'center', padding: 'var(--sdp-space-8)'}}>
+          <div className="search-empty">
             {t('section.search.noResults', 'Cap resultat.')}
           </div>
         )}

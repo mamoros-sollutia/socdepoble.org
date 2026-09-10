@@ -14,9 +14,7 @@ import {
 import { basename, dirname, resolve } from 'node:path';
 import {
   APP_CONTENT_ROWS,
-  APP_SEED_VERSION,
-  CHAT_MESSAGE_SEED,
-  CHAT_THREADS
+  APP_SEED_VERSION
 } from '../src/data/appSeed.js';
 
 function toSqlText(value) {
@@ -28,9 +26,6 @@ function toSqlJson(value) {
   return `${toSqlText(JSON.stringify(value))}::jsonb`;
 }
 
-function toIsoFromSeed(message) {
-  return new Date(1700000000000 + (message.createdAtTs || 0) * 1000).toISOString();
-}
 
 function targetMode(target) {
   try {
@@ -96,14 +91,6 @@ const appContentValues = APP_CONTENT_ROWS.map(
   (row) => `  ('${SEED_TENANT_ID}', ${toSqlText(row.key)}, ${toSqlJson(row.payload)}, ${row.version ?? APP_SEED_VERSION})`
 ).join(',\n');
 
-const chatThreadValues = CHAT_THREADS.map(
-  (thread) => `  (${toSqlText(thread.id)}, '${SEED_TENANT_ID}', ${toSqlText(thread.ownerUserId || '00000000-0000-0000-0000-000000000000')}, ${toSqlJson(thread)})`
-).join(',\n');
-
-const chatMessageValues = CHAT_MESSAGE_SEED.map(
-  (message) =>
-    `  (${toSqlText(message.id)}, '${SEED_TENANT_ID}', ${toSqlText(message.ownerUserId === 'foraster' ? '00000000-0000-0000-0000-000000000000' : message.ownerUserId)}, ${toSqlText(message.threadId)}, ${toSqlText(message.messageId)}, ${toSqlText(message.text)}, ${toSqlText(message.sender)}, ${toSqlText(message.time)}, ${toSqlText(toIsoFromSeed(message))})`
-).join(',\n');
 
 const sql = `-- Generated automatically by scripts/generate-supabase-seed.mjs
 begin;
@@ -118,37 +105,6 @@ set payload = excluded.payload,
     version = excluded.version,
     updated_at = now();
 
-insert into public.chat_threads (id, tenant_id, owner_user_id, payload)
-values
-${chatThreadValues}
-on conflict (tenant_id, id) do update
-set tenant_id = excluded.tenant_id,
-    owner_user_id = excluded.owner_user_id,
-    payload = excluded.payload,
-    updated_at = now();
-
-insert into public.chat_messages (
-  id,
-  tenant_id,
-  owner_user_id,
-  thread_id,
-  message_id,
-  text,
-  sender,
-  time_label,
-  created_at
-)
-values
-${chatMessageValues}
-on conflict (tenant_id, id) do update
-set tenant_id = excluded.tenant_id,
-    owner_user_id = excluded.owner_user_id,
-    thread_id = excluded.thread_id,
-    message_id = excluded.message_id,
-    text = excluded.text,
-    sender = excluded.sender,
-    time_label = excluded.time_label,
-    created_at = excluded.created_at;
 
 commit;
 `;

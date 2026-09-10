@@ -1,5 +1,6 @@
 import React from 'react';
-import { UniversalPage, UniversalCard } from '../../components/universal/UniversalComponents';
+import { UniversalPage } from '../../components/universal/UniversalPage';
+import { UniversalCard } from '../../components/universal/UniversalElements';
 import { getSectionItemPath } from '../../config/navigation';
 import { useSEO } from '../../hooks/useSEO';
 import { useCoreContent } from '../../app/contexts/CoreContentContext';
@@ -22,7 +23,7 @@ export default function PoblesSection() {
       chrome="system"
       showLogos={true}
     >
-      <div className="sdp-card-grid sdp-mb-12">
+      <div className="sdp-card-grid ">
         {sortedTowns.map((town) => {
 
           return (
@@ -67,7 +68,7 @@ export default function PoblesSection() {
           );
         })}
         {sortedTowns.length === 0 && (
-          <div className="sdp-text-center sdp-p-8 sdp-text-suau">
+          <div >
             {t('section.pobles.noResults', 'Cap poble trobat.')}
           </div>
         )}

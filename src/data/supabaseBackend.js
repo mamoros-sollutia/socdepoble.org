@@ -278,7 +278,7 @@ async function loadStructuredSupabaseData(config, ownerUserId) {
   ]);
 
   if (!Array.isArray(contentRows) || contentRows.length === 0) {
-    throw new Error('La BD remota està buida. Executa supabase/schema.sql i supabase/seed.sql.');
+    throw new Error('La BD remota està buida. Executa les migracions de supabase/ i supabase/seed.sql.');
   }
   const sectionSubmissions = Array.isArray(sectionSubmissionsResponse?.data) ? sectionSubmissionsResponse.data : [];
   const baseData = mapContentRowsToData(contentRows || []);
@@ -318,7 +318,7 @@ async function loadStructuredSupabaseData(config, ownerUserId) {
     mediaItems: mergedMediaItems,
     notes: mergedNotes,
     chatMessages: mergeChatMessages(
-      (chatMessages || []).map((message) => ({
+      (baseData.chatMessages || []).map((message) => ({
       id: message.id,
       ownerUserId: message.owner_user_id,
       threadId: message.thread_id,
@@ -685,7 +685,7 @@ export async function loadCoreContent(ownerUserId = getDefaultUserId(), config =
   if (runtimeDataMode === 'seed' || !hasSupabaseConfig) {
     return { towns: seed.towns, pages: seed.pages, pageCopy: {}, agents: seed.agents, ownerUserId };
   }
-  const contentRows = await request(`/rest/v1/app_content?select=key,payload,version&tenant_id=eq.${encodeURIComponent(tenantId)}`, config, { signal: config.signal });
+  const contentRows = await request(`/rest/v1/app_content?select=key,payload,version&key=in.(towns,agents)&tenant_id=eq.${encodeURIComponent(tenantId)}`, config, { signal: config.signal });
   const baseData = mapContentRowsToData(contentRows || []);
   // En mode remot, forcem l'ús de les pàgines locals (textos legals, etc.) perquè sempre estiguen actualitzades amb el codi
   return { towns: baseData.towns, pages: seed.pages, pageCopy: {}, agents: baseData.agents, ownerUserId };
@@ -699,7 +699,7 @@ export async function loadMur(ownerUserId = getDefaultUserId(), config = {}) {
   }
 
   const [contentRows, submissionsResp] = await Promise.all([
-    request(`/rest/v1/app_content?select=key,payload,version&tenant_id=eq.${encodeURIComponent(tenantId)}`, config, { signal: config.signal }),
+    request(`/rest/v1/app_content?select=key,payload,version&key=in.(feedPosts,marketItems,events)&tenant_id=eq.${encodeURIComponent(tenantId)}`, config, { signal: config.signal }),
     requestMaybe(`/rest/v1/section_submissions?select=*&tenant_id=eq.${encodeURIComponent(tenantId)}&order=created_at.desc&limit=50`, config, { signal: config.signal })
   ]);
   const baseData = mapContentRowsToData(contentRows || []);
@@ -718,7 +718,7 @@ export async function loadMultimedia(ownerUserId = getDefaultUserId(), config = 
   }
 
   const [contentRows, submissionsResp] = await Promise.all([
-    request(`/rest/v1/app_content?select=key,payload,version&tenant_id=eq.${encodeURIComponent(tenantId)}`, config, { signal: config.signal }),
+    request(`/rest/v1/app_content?select=key,payload,version&key=in.(mediaItems)&tenant_id=eq.${encodeURIComponent(tenantId)}`, config, { signal: config.signal }),
     requestMaybe(`/rest/v1/section_submissions?select=*&tenant_id=eq.${encodeURIComponent(tenantId)}&order=created_at.desc&limit=50`, config, { signal: config.signal })
   ]);
   const baseData = mapContentRowsToData(contentRows || []);
@@ -752,7 +752,7 @@ export async function loadNotes(ownerUserId = getDefaultUserId(), config = {}) {
   }
   const safeOwnerId = ownerUserId || getDefaultUserId();
   const [contentRows, submissionsResp, notesResp] = await Promise.all([
-    request(`/rest/v1/app_content?select=key,payload,version&tenant_id=eq.${encodeURIComponent(tenantId)}`, config, { signal: config.signal }),
+    request(`/rest/v1/app_content?select=key,payload,version&key=in.(notes,noteFolders)&tenant_id=eq.${encodeURIComponent(tenantId)}`, config, { signal: config.signal }),
     requestMaybe(`/rest/v1/section_submissions?select=*&tenant_id=eq.${encodeURIComponent(tenantId)}&order=created_at.desc&limit=50`, config, { signal: config.signal }),
     requestMaybe(`/rest/v1/notes?select=*&tenant_id=eq.${encodeURIComponent(tenantId)}&owner_user_id=eq.${encodeURIComponent(safeOwnerId)}&order=updated_at.desc&limit=50`, config, { signal: config.signal })
   ]);

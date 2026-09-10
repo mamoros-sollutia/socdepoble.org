@@ -1,7 +1,7 @@
 export function Aplec2023Article() {
   return (
     <article className="detail-content detail-content--plain" >
-      <div className="media-frame" style={{ marginBottom: 'var(--sdp-space-6)', borderRadius: 'var(--sdp-radi-xl)', overflow: 'hidden' }}>
+      <div className="media-frame apl-img-mb">
         <img src="/assets/events/aplec_2023_ponents.png" alt="Cartell Ponents Aplec" />
       </div>
 
@@ -9,7 +9,7 @@ export function Aplec2023Article() {
         El proper diumenge 29 de gener, a Benillup, a les 11 del matí les associacions Coordinadora d’Estudis Eòlics del Comtat i Rentonar han organitzat un Aplec pel territori motivat per l’incendi d’aquest estiu, però per a intentar tractar temes de més calat com són el despoblament rural i l’abandonament agrícola.
       </p>
       
-      <h3 style={{    marginBottom: 'var(--sdp-space-4)', marginTop: 'var(--sdp-space-8)'  }}>El format de l’Aplec és innovador</h3>
+      <h3 className="apl-title-spacing">El format de l’Aplec és innovador</h3>
       <p className="detail-content__paragraph">
         No volem que facen discursos els ponents convidats sinó que escolten preguntes, inquietuds i suggeriments que la gent dels pobles els vulga formular. Només Enric Moltó, geògraf i climatòleg, farà una intervenció de 30 min.
       </p>
@@ -17,7 +17,7 @@ export function Aplec2023Article() {
       <p className="detail-content__paragraph">
         Els ponents convidats representen un planter d’experts de tots els sectors vinculats al món rural:
       </p>
-      <ul style={{ listStyleType: 'disc', paddingLeft: 'var(--sdp-space-6)', marginBottom: 'var(--sdp-space-6)', gap: 'var(--sdp-space-2)', display: 'flex', flexDirection: 'column' }}>
+      <ul className="apl-list">
         <li><strong>Javier Cendra:</strong> Alcalde de Planes i Diputat per Alacant.</li>
         <li><strong>Javier Navarro:</strong> Alcalde de Benillup.</li>
         <li><strong>Rafa Climent:</strong> Conseller d’Economia Sostenible, Sectors Productius, Comerç i Treballl.</li>
@@ -49,7 +49,7 @@ export function Aplec2023Article() {
       </p>
       
       <p className="detail-content__paragraph">
-        Una de les mancances que es va detectar en l’incendi va ser el desempar que moltes persones van sentir quan se’ls va desallotjar de sa casa i, per aquest motiu, s’han iniciat un munt de reunions xicotetes en cadascun dels pobles per a preparar l’Aplec on se’ls informa de l’esdeveniment i també s’intenta fer un recull de peticions de cada poble per tal de lliurar-les als polítics que seran convidats a l’Aplec. El resultat d’aquestes reunions és el <a href="/events/manifest-de-poble" style={{ textDecoration: 'underline' }}>Manifest de Poble</a>, un document viu i en constant actualització que pretén destacar les necessitats particulars que caldria atendre per tal de revitalitzar els nostres petits pobles rurals.
+        Una de les mancances que es va detectar en l’incendi va ser el desempar que moltes persones van sentir quan se’ls va desallotjar de sa casa i, per aquest motiu, s’han iniciat un munt de reunions xicotetes en cadascun dels pobles per a preparar l’Aplec on se’ls informa de l’esdeveniment i també s’intenta fer un recull de peticions de cada poble per tal de lliurar-les als polítics que seran convidats a l’Aplec. El resultat d’aquestes reunions és el <a href="/events/manifest-de-poble" className="apl-underline">Manifest de Poble</a>, un document viu i en constant actualització que pretén destacar les necessitats particulars que caldria atendre per tal de revitalitzar els nostres petits pobles rurals.
       </p>
       
       <p className="detail-content__paragraph">
@@ -60,7 +60,7 @@ export function Aplec2023Article() {
         S’adjunta una foto d’una de les darreres reunions que englobava els pobles de Millena, Gorga, Balones i Quatretondeta. Altres reunions han sigut als pobles de Fageca, Tollos, Beniaia, Vall d’Alcalà, Vall de Gallinera, Planes, Benillup, Benialfaquí, Benimassot, La Torre de les Maçanes, Vall d’Ebo i n’hi ha d’altres previstes.
       </p>
 
-      <div className="media-frame" style={{ marginTop: 'var(--sdp-space-6)', borderRadius: 'var(--sdp-radi-xl)', overflow: 'hidden' }}>
+      <div className="media-frame apl-img-mt">
         <img src="/assets/events/aplec_2023_reunio.png" alt="Reunió preparatòria Aplec" />
       </div>
     </article>

@@ -143,7 +143,7 @@ export class VerificadorSCC {
 
     for (const file of allFiles) {
       const relPath = relative(escriptoriRoot, file);
-      // Ens fixem només en els fitxers que pengen directament de 05_Escriptori_Soc_de_Poble o de 01_Produccio
+      // Ens fixem només en els fitxers que pengen directament de 04_ESCRIPTORI o de 01_Produccio
       // Ignorem 00_Bandeja_d_Entrada per a l'ancoratge estricte.
       if (!relPath.startsWith('..') && !relPath.startsWith('00_Bandeja_d_Entrada')) {
         const fName = basename(file);

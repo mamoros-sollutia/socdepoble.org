@@ -30,7 +30,7 @@ const PILARS = new Set([
   '02_ACTUAR_Maquina_Tecnica',
   '03_GOVERNAR_Normativa_Regles',
   '90_arxiu_historic',
-  '05_Escriptori_Soc_de_Poble'
+  '04_ESCRIPTORI'
 ]);
 
 function isPlainObject(value) {

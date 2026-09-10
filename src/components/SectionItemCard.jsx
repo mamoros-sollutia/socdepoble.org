@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { UniversalCard } from './universal/UniversalComponents';
+import { UniversalCard } from './universal/UniversalElements';
 
 export default function SectionItemCard({
   to,
@@ -35,7 +35,7 @@ export default function SectionItemCard({
   const metaString = meta.filter(Boolean).join(' · ');
 
   return (
-    <div className={className} style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+    <div className={className} className="sdp-flex-col-h100">
       <UniversalCard
         title={title}
         subtitle={subtitle}

@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { UniversalPage } from '../../components/universal/UniversalComponents';
+import { UniversalPage } from '../../components/universal/UniversalPage';
 import { useSEO } from '../../hooks/useSEO';
 import { Link } from 'react-router-dom';
 import { useCoreContent } from '../../app/contexts/CoreContentContext';
@@ -31,7 +31,7 @@ export default function PoblacioSection() {
       chrome="system"
       showLogos={true}
     >
-      <div className="sdp-mb-12">
+      <div >
         <div className="sdp-table-container">
           <table className="sdp-table sdp-table--poblacio">
             <thead>

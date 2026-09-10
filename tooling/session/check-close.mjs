@@ -71,7 +71,7 @@ async function run() {
     if (r.includes('90_historic')) return false;
     if (r.includes('.quarantena')) return false;
     if (r.includes('00_Bandeja_d_Entrada')) return false;
-    if (r.includes('05_Escriptori_Soc_de_Poble') && !r.includes('01_Produccio')) return false;
+    if (r.includes('04_ESCRIPTORI') && !r.includes('01_Produccio')) return false;
     if (path.basename(r) === '00_INDEX.md') return false;
     return true;
   });
@@ -84,7 +84,7 @@ async function run() {
   }
 
   // Transacció de l'Àncora
-  const ancoraPath = path.join(WIKI_DIR, '05_Escriptori_Soc_de_Poble', '.ancora_sessio.json');
+  const ancoraPath = path.join(WIKI_DIR, '04_ESCRIPTORI', '.ancora_sessio.json');
   if (fs.existsSync(ancoraPath)) {
     const ancora = JSON.parse(fs.readFileSync(ancoraPath, 'utf8'));
     console.log(`✅ L'àncora de sessió (${ancora.timestamp}) ha sigut consumida.`);

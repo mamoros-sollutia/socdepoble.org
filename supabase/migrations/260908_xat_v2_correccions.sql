@@ -372,3 +372,14 @@ grant  execute on function public.xat_marca_llegit(uuid) to authenticated;
 -- end
 -- $$;
 -- ══════════════════════════════════════════════════════════════════════════
+
+-- ══════════════════════════════════════════════════════════════════════════
+-- 10 · Restauració de Política d'Inserció
+--
+-- Restaurem la política d'inserció de missatges que ara ja pot comprovar
+-- la columna `es_ia` (creada en la secció 2 d'aquest fitxer).
+-- ══════════════════════════════════════════════════════════════════════════
+
+drop policy if exists "xat_missatges_insercio" on public.xat_missatges;
+create policy "xat_missatges_insercio" on public.xat_missatges for insert to authenticated
+with check (private.es_participant(fil_id) and usuari_id = (select auth.uid()) and es_ia = false);

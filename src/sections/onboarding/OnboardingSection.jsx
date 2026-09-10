@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { UniversalPage } from '../../components/universal/UniversalComponents.jsx';
+import { UniversalPage } from '../../components/universal/UniversalPage';
 import { showToast } from '../../components/universal/AvisadorEfimer.jsx';
 import { createOnboardingSeed } from '../../data/appSeed.js';
 import {
@@ -143,13 +143,13 @@ export default function OnboardingSection() {
       <div className="onboarding-layout">
         {activeStep === 0 && !isLoadingOrganizations && (
           <>
-            <section className="onboarding-card" style={{ marginBottom: '1.5rem', textAlign: 'center', padding: '1.5rem' }}>
+            <section className="onboarding-card" className="onb-section-intro">
               <h3>Accés ràpid amb Google</h3>
               <p>
                 Crea o entra al teu compte amb un sol clic sense contrasenyes.
               </p>
 
-              <p style={{ marginTop: '1.5rem', opacity: 0.8 }}>
+              <p className="ob-mt-15-op8">
                 En entrar o crear compte, acceptes el tractament de dades (RGPD Llei 05) per a Sóc de Poble. 
                 També comprens que estem en <strong>fase Beta</strong> (proves) i que les teues dades podrien patir reinicis o pèrdues.
               </p>
@@ -157,19 +157,19 @@ export default function OnboardingSection() {
                 type="button" 
                 className="btn btn-secondary onboarding-card__action" 
                 onClick={googleLogin}
-                style={{ width: '100%', display: 'flex', justifyContent: 'center', marginTop: '1.5rem' }}
+                className="onb-flex-center-mt"
                 disabled={busyStep === 'register'}
               >
                 Entrar amb Google
               </button>
               {googleError && (
-                <div style={{ marginTop: '1rem', padding: '0.75rem', background: '#ffebee', color: '#c62828', borderRadius: 'var(--sdp-radi-sm)', fontSize: '0.85rem' }}>
+                <div className="sdp-onboarding-error">
                   {googleError}
                 </div>
               )}
             </section>
             
-            <div style={{ textAlign: 'center', marginBottom: '1.5rem', opacity: 0.6, fontWeight: 600, fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+            <div className="onb-section-header">
               — O completar els 3 passos manuals —
             </div>
           </>

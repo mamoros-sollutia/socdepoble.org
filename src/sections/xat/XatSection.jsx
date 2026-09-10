@@ -15,10 +15,10 @@ import { construeixRetall } from './retall.js';
 // Component per als avatars
 function Avatar({ src, size = 48 }) {
   if (src) {
-    return <img src={src} alt="Avatar" className="xat-item-avatar" style={{ width: size, height: size }} />;
+    return <div className="xat-avatar-wrap" style={{ '--avatar-size': typeof size === 'number' ? `${size}px` : size }}><img src={src} alt="Avatar" className="xat-item-avatar" /></div>;
   }
   return (
-    <div className="xat-item-avatar" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: size, height: size }}>
+    <div className="xat-avatar-wrap" style={{ '--avatar-size': typeof size === 'number' ? `${size}px` : size }}>
       <Users size={size * 0.5} color="var(--sdp-text-suau)" />
     </div>
   );
@@ -190,7 +190,7 @@ export default function XatSection() {
         <aside className={`xat-sidebar ${threadId ? 'has-thread' : ''}`}>
           <header className="xat-sidebar-header">
             <div className="search-bar-basic">
-              <Search size={18} color="#ffffff" className="search-icon" />
+              <Search size={18} color="currentColor" className="search-icon" />
               <input
                 type="text"
                 placeholder={modeNouXat ? 'CERCA UNA PERSONA...' : 'CERCA UN XAT...'}
@@ -216,16 +216,16 @@ export default function XatSection() {
               onClick={() => { setModeNouXat((obert) => !obert); setSearchTerm(''); }}
             >
               {modeNouXat
-                ? <X size={24} color="#ffffff" />
-                : <Plus size={24} color="#ffffff" />}
+                ? <X size={24} color="currentColor" />
+                : <Plus size={24} color="currentColor" />}
             </button>
-            <div style={{ position: 'relative' }}>
+            <div className="xat-settings-wrapper">
               <button
                 className="pill pill--icon xat-settings-btn"
                 aria-label="Control General del Xat"
                 onClick={() => navigate(`${base}/control-xat`)}
               >
-                <Settings size={24} color="#ffffff" />
+                <Settings size={24} color="currentColor" />
               </button>
             </div>
           </header>
@@ -349,7 +349,7 @@ export default function XatSection() {
               onEnviaAlBloc={enviaAlBloc}
             />
           ) : (
-            <div className="xat-empty hidden-on-mobile" style={{ display: 'flex', flexDirection: 'column', height: '100%', width: '100%', overflowY: 'auto', overflowX: 'hidden' }}>
+            <div className="xat-scroll-area">
               {pageCopy?.['anima'] ? (
                 <TextSection page={{...pageCopy['anima'], chrome: 'system'}} pageKey="anima" />
               ) : (
@@ -447,7 +447,7 @@ function ChatConversation({ thread, messages, onSendMessage, onBack, onEnviaAlBl
           <button type="button" className="xat-header-btn" onClick={surtDeSeleccio} aria-label="Eixir de la selecció">
             <X size={24} color="currentColor" />
           </button>
-          <strong style={{ flex: 1 }} aria-live="polite">
+          <strong className="xat-header-info" aria-live="polite">
             {triats.size === 0 ? 'Tria els missatges' : `${triats.size} triat${triats.size === 1 ? '' : 's'}`}
           </strong>
         </header>
@@ -457,9 +457,9 @@ function ChatConversation({ thread, messages, onSendMessage, onBack, onEnviaAlBl
             <ArrowLeft size={24} color="var(--sdp-text-invers)" />
           </button>
           <Avatar kind={thread?.type} src={thread?.avatar_url} size={40} />
-          <div style={{ flex: 1 }}>
+          <div className="xat-header-info">
             <strong>{thread?.name || thread?.title}</strong>
-            <span style={{ opacity: 0.8, display: 'block' }}>Prem ací per a més informació</span>
+            <span className="xat-header-subtitle">Prem ací per a més informació</span>
           </div>
           <div className="xat-header-actions">
             <button className="xat-header-btn"><Video size={20} color="currentColor" /></button>
@@ -470,7 +470,7 @@ function ChatConversation({ thread, messages, onSendMessage, onBack, onEnviaAlBl
                 <div className="xat-header-dropdown">
                   <button className="xat-dropdown-item">Info. del contacte</button>
                   <button className="xat-dropdown-item">Cercar</button>
-                  <hr style={{ margin: '4px 0', border: 'none', borderTop: '1px solid var(--sdp-vora-control)' }} />
+                  <hr className="xat-divider" />
                   <button
                     type="button"
                     className="xat-dropdown-item"
@@ -479,11 +479,11 @@ function ChatConversation({ thread, messages, onSendMessage, onBack, onEnviaAlBl
                     Seleccionar missatges
                   </button>
                   <button className="xat-dropdown-item">Silenciar</button>
-                  <hr style={{ margin: '4px 0', border: 'none', borderTop: '1px solid var(--sdp-vora-control)' }} />
+                  <hr className="xat-divider" />
                   <button className="xat-dropdown-item">Nova telefonada en grup</button>
                   <button className="xat-dropdown-item">Enviar enllaç de telefonada</button>
                   <button className="xat-dropdown-item">Programar telefonada</button>
-                  <hr style={{ margin: '4px 0', border: 'none', borderTop: '1px solid var(--sdp-vora-control)' }} />
+                  <hr className="xat-divider" />
                   <button className="xat-dropdown-item">Obrir en una finestra nova</button>
                   <button className="xat-dropdown-item xat-dropdown-item--danger">Tancar xat</button>
                 </div>
@@ -495,7 +495,7 @@ function ChatConversation({ thread, messages, onSendMessage, onBack, onEnviaAlBl
 
       <div className="xat-messages" ref={chatLogRef}>
         {messages.length === 0 && (
-          <div style={{ textAlign: 'center', margin: 'auto', padding: 16, borderRadius: 8 }}>
+          <div className="xat-empty">
             Cap missatge encara. Inicia la conversa!
           </div>
         )}
@@ -512,7 +512,7 @@ function ChatConversation({ thread, messages, onSendMessage, onBack, onEnviaAlBl
           return (
             <div
               key={clau}
-              className={classes}
+              className={`${classes} ${modeSeleccio ? 'xat-bubble-wrapper' : 'xat-bubble-wrapper--block'}`}
               role={modeSeleccio ? 'checkbox' : undefined}
               aria-checked={modeSeleccio ? triat : undefined}
               tabIndex={modeSeleccio ? 0 : undefined}
@@ -520,19 +520,15 @@ function ChatConversation({ thread, messages, onSendMessage, onBack, onEnviaAlBl
               onKeyDown={modeSeleccio ? (e) => {
                 if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); alterna(clau); }
               } : undefined}
-              style={{
-                display: modeSeleccio ? 'flex' : 'block',
-                alignItems: modeSeleccio ? 'center' : 'initial'
-              }}
             >
               {modeSeleccio && (
                 <span className="xat-marca-tria" aria-hidden="true">
                   {triat ? <CheckCircle2 size={18} color="var(--sdp-accio)" /> : <Circle size={18} color="var(--sdp-text-suau)" />}
                 </span>
               )}
-              <div style={{ flex: 1, minWidth: 0 }}>
+              <div className="xat-bubble-content">
                 {msg.sender !== 'me' && !msg.is_ai && (
-                  <div style={{ marginBottom: 2 }}>
+                  <div className="xat-sender-name">
                     {msg.author || msg.author_name || 'Usuari'}
                   </div>
                 )}

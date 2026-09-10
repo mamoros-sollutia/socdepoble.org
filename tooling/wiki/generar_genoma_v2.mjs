@@ -60,7 +60,7 @@ const ROOTS = [
 const SKIP_DIR_NAMES = new Set([
   '.git', 'node_modules', 'dist', 'build', '_build', 'coverage',
   '.sdp-reflex', '.wiki-safety', '.snapshots',
-  '90_historic', '05_Escriptori_Soc_de_Poble',
+  '90_historic', '04_ESCRIPTORI',
 ]);
 // Extensions que es transmeten com a binari (base64) si cal; la resta de
 // no-UTF8 es declaren al manifest amb sha256 però no s'incrusten.
@@ -171,7 +171,7 @@ async function main() {
   const ara = new Date();
   const ts = `${String(ara.getFullYear()).slice(2)}${pad(ara.getMonth() + 1)}${pad(ara.getDate())}_${pad(ara.getHours())}${pad(ara.getMinutes())}`;
   const nom = `${ts}_GENOMA_Sistema_Operatiu_IAIA_MarIA_v2.md`;
-  const dirEixida = path.resolve(eixida ?? path.join(repoRoot, '_wiki_de_poble/05_Escriptori_Soc_de_Poble'));
+  const dirEixida = path.resolve(eixida ?? path.join(repoRoot, '_wiki_de_poble/04_ESCRIPTORI'));
   fs.mkdirSync(dirEixida, { recursive: true });
   const desti = path.join(dirEixida, nom);
 

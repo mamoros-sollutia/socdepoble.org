@@ -1,5 +1,6 @@
 import { Image as ImageIcon, Lock, Globe } from 'lucide-react';
-import { DateTimeControl, Dropdown, UniversalPage } from './UniversalComponents';
+import { UniversalPage } from './UniversalPage';
+import { DateTimeControl, Dropdown } from './UniversalElements';
 import { sanitizeHtml } from '../../utils/sanitize.js';
 import useHeroImageHandler from '../../hooks/useHeroImageHandler.js';
 
@@ -44,7 +45,7 @@ export default function UniversalEditorShell({
               />
             ) : (
               <div className="hero-accions logo-accions" style={{marginBottom: 20}}>
-                <input type="file" accept="image/*" ref={logoHandler.fileInputRef} onChange={logoHandler.handleFileChange} className="sdp-ocult" style={{display: 'none'}} />
+                <input type="file" accept="image/*" ref={logoHandler.fileInputRef} onChange={logoHandler.handleFileChange} className="sdp-ocult" />
                 <button type="button" className="pill hero-accions__inserir" onClick={() => logoHandler.fileInputRef.current?.click()}>
                   <ImageIcon size={16} /> Inserir Imatge (Logotip) o Multimèdia (600x600)
                 </button>
@@ -70,7 +71,7 @@ export default function UniversalEditorShell({
               />
             ) : (
               <div className="hero-accions">
-                <input type="file" accept="image/*" ref={heroHandler.fileInputRef} onChange={heroHandler.handleFileChange} className="sdp-ocult" style={{display: 'none'}} />
+                <input type="file" accept="image/*" ref={heroHandler.fileInputRef} onChange={heroHandler.handleFileChange} className="sdp-ocult" />
                 <button type="button" className="pill hero-accions__inserir" onClick={() => heroHandler.fileInputRef.current?.click()}>
                   <ImageIcon size={16} /> Inserir Imatge o Multimèdia
                 </button>
@@ -115,7 +116,7 @@ export default function UniversalEditorShell({
               onBlur={(e) => onSaveField?.('title', e.currentTarget.innerHTML)}
               data-placeholder="Escriu el títol de l'article (H1)..."
               dangerouslySetInnerHTML={{ __html: sanitizeHtml(titleHtml) }}
-              style={{ display: 'inline-block', minWidth: '10px' }}
+              className="ue-inline-block-mw10"
             />
           }
           labels={labels}
@@ -129,7 +130,7 @@ export default function UniversalEditorShell({
               onBlur={(e) => onSaveField?.('subtitle', e.currentTarget.innerHTML)}
               data-placeholder="Escriu el subtítol (H2)..."
               dangerouslySetInnerHTML={{ __html: sanitizeHtml(subtitleHtml) }}
-              style={{ display: 'block', minWidth: '10px' }}
+              className="ue-block-mw10"
             />
           }
           lead={
@@ -141,7 +142,7 @@ export default function UniversalEditorShell({
               onBlur={(e) => onSaveField?.('lead', e.currentTarget.innerHTML)}
               data-placeholder="Escriu l'entradilla..."
               dangerouslySetInnerHTML={{ __html: sanitizeHtml(leadHtml) }}
-              style={{ display: 'block', minWidth: '10px' }}
+              className="ue-block-mw10"
             />
           }
         >

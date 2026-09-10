@@ -75,7 +75,7 @@ export default function NotesSidebar() {
       {settingsOpen && (
         <div className="dropdown-menu">
           <div className="dropdown-header">
-            <span className="sdp-flex sdp-items-center sdp-gap-8"><Clock size={14}/> Temps:</span>
+            <span className="sidebar-meta-item"><Clock size={14}/> Temps:</span>
             <span>{formatTime(timerSeconds)}</span>
           </div>
           <button 
@@ -108,8 +108,8 @@ export default function NotesSidebar() {
           icona={Folder}
           onReplega={() => setColFoldersCollapsed(false)}
         />
-        <div className="notes-column__body" style={{ padding: 0 }}>
-          <div className="sidebar-actions sdp-justify-center">
+        <div className="notes-column__body" className="no-padding">
+          <div className="sidebar-actions">
             <SettingsDropdown />
           </div>
         </div>
@@ -150,7 +150,7 @@ export default function NotesSidebar() {
         <SettingsDropdown />
       </div>
 
-      <div className="notes-column__body" style={{ padding: 0 }}>
+      <div className="notes-column__body" className="no-padding">
         
         {accFoldersOpen && (
           <div className="folders-list">

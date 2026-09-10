@@ -2,8 +2,8 @@
 # Neteja de la Bandeja d'Entrada movent arxius actius a Producció
 # Executat automàticament per la skill socdepoble-workflow
 
-SAFATA="_wiki_de_poble/05_Escriptori_Soc_de_Poble/00_Bandeja_d_Entrada"
-PRODUCCIO="_wiki_de_poble/05_Escriptori_Soc_de_Poble/produccio"
+SAFATA="_wiki_de_poble/04_ESCRIPTORI/00_Bandeja_d_Entrada"
+PRODUCCIO="_wiki_de_poble/04_ESCRIPTORI/produccio"
 
 mkdir -p "$PRODUCCIO"
 

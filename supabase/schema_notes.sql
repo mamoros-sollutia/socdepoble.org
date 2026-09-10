@@ -29,7 +29,7 @@ create index if not exists idx_notes_tenant_owner
 -- Trigger per auto-incrementar la revisió i actualitzar la data
 create or replace function public.touch_notes_updated_at()
 returns trigger
-language plpgsql
+language plpgsql set search_path = ''
 as $$
 begin
   new.updated_at = now();
@@ -45,6 +45,9 @@ for each row execute function public.touch_notes_updated_at();
 
 -- Seguretat a nivell de fila (RLS)
 alter table public.notes enable row level security;
+
+revoke all on table public.notes from anon, public;
+grant select, insert, update, delete on table public.notes to authenticated;
 
 -- Només el propietari pot llegir les seues notes
 drop policy if exists "private read notes" on public.notes;

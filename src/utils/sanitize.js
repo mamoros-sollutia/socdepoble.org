@@ -63,7 +63,7 @@ export function sanitizeHtml(html) {
       'blockquote', 'span', 'div', 'img', 'hr', 'code', 'pre'
     ],
     ALLOWED_ATTR: [
-      'href', 'target', 'rel', 'class', 'src', 'alt',
+      'href', 'target', 'rel', 'src', 'alt',
       'width', 'height', 'loading', 'decoding', 'referrerpolicy',
       'data-sdp-bloquejada'
     ],

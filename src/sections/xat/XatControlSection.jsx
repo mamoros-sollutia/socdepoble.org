@@ -1,4 +1,4 @@
-import { UniversalPage } from '../../components/universal/UniversalComponents';
+import { UniversalPage } from '../../components/universal/UniversalPage';
 import { useUIActions } from '../../app/contexts/UIContext';
 
 export default function XatControlSection() {
@@ -11,10 +11,10 @@ export default function XatControlSection() {
       chrome="system"
       showLogos={true}
     >
-      <div className="sdp-grid sdp-text-content" style={{ padding: 'var(--sdp-space-6) var(--sdp-space-4)' }}>
+      <div className="xatctrl-container">
         <p>Aquesta pàgina s'anirà emplenant amb les idees i opcions d'organització (Cerca al xat, Missatges temporals, Fons de pantalla, etc.) sense necessitat d'embrutar la interfície amb menús desplegables sobreposats.</p>
         
-        <div className="stack-grid sdp-mt-6">
+        <div className="stack-grid ">
           <section className="card card--soft">
             <div className="card__body">
               <h3 className="section-title">Multimèdia, enllaços i documents</h3>
