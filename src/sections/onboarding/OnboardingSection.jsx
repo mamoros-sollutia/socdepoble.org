@@ -144,7 +144,7 @@ export default function OnboardingSection() {
         {activeStep === 0 && !isLoadingOrganizations && (
           <>
             <section className="onboarding-card onb-section-intro">
-              <h3>Accés ràpid amb Google</h3>
+              <h3 className="onb-center-text">Accés ràpid amb Google</h3>
               <p>
                 Crea o entra al teu compte amb un sol clic sense contrasenyes.
               </p>
