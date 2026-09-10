@@ -1,49 +1,58 @@
 import { useSearchParams } from '../../app/contexts/RouterContext';
-import { UniversalPage } from '../../components/universal/UniversalPage';
-import { NotesProvider } from './NotesContext';
-import NotesSidebar from './NotesSidebar';
-import NotesList from './NotesList';
+import { NotesProvider, useNotes } from './NotesContext';
 import NotesEditor from './NotesEditor';
-import notesStyles from './NotesSection.css?inline';
-import AppGridShell from '../../components/layout/AppGridShell';
-import { useUIActions } from '../../app/contexts/UIContext';
+import { UniversalManager } from '../../components/universal/manager/UniversalManager';
+import { notesManagerConfig, buildNotesFacets } from '../../components/universal/manager/configs/notesManager';
+import { FileText, Pencil } from 'lucide-react';
+import UniversalCard from '../../components/ui/UniversalCard';
 
-function NotesSectionContent({ notaInicialId }) {
-  const { t } = useUIActions();
-
+function NotesItemCard({ item, active, onClick }) {
+  const { title, plainText, formattedDate, isPublished } = item;
+  
   return (
-    <div className="notes-page">
-      <style data-notes-styles>{notesStyles}</style>
-      <UniversalPage title={t('section.notes.title', 'Bloc de notes')} chrome="none" variant="embed" noPadding>
-        <AppGridShell
-          leftColumn={<NotesSidebar />}
-          middleColumn={<NotesList />}
-          rightColumn={<NotesEditor />}
-          leftTitle="CARPETES"
-          middleTitle="NOTES"
-          /* En pantalla estreta, arribar amb una nota demanada vol dir que
-             l'usuari ve a llegir-la. Obrir-li damunt el calaix de carpetes és
-             posar-li una porta al davant. */
-          initialPane={notaInicialId ? null : 'left'}
-          aria-label={t('section.notes.title', 'Bloc de notes')}
-        />
-      </UniversalPage>
+    <UniversalCard
+      title={title || 'Sense títol'}
+      description={plainText || 'Nota buida...'}
+      metadata={formattedDate}
+      icon={isPublished ? FileText : Pencil}
+      active={active}
+      onClick={onClick}
+    />
+  );
+}
+
+function NotesSectionInner({ notaInicialId }) {
+  const { notes, noteFolders, creaNota } = useNotes();
+  
+  // A l'UniversalManager li passem directament els paràmetres de cerca/facets de dades
+  // També li indiquem el "createLabel" si volem canviar el text del botó
+  
+  return (
+    <div className="notes-page" style={{ height: '100%' }}>
+      <UniversalManager
+        items={notes}
+        facets={buildNotesFacets(noteFolders)}
+        getItemId={notesManagerConfig.getItemId}
+        getItemSearchText={notesManagerConfig.getItemSearchText}
+        renderItem={(item, active, onClick) => (
+          <NotesItemCard key={item.id} item={item} active={active} onClick={onClick} />
+        )}
+        renderDetail={() => <NotesEditor />}
+        onActionCreate={() => creaNota()}
+        createLabel="CREAR NOTA"
+        initialItemId={notaInicialId}
+      />
     </div>
   );
 }
 
 export default function NotesSection() {
-  /* PER QUÈ UN PARÀMETRE DE CONSULTA I NO UNA RUTA (P0-3 · 260908):
-     `/jo/notes/<id>` JA està servit per `:sectionId/:itemId` › ItemDetailSection.
-     Declarar `notes/:noteId` guanyaria per especificitat i mataria eixos
-     enllaços de detall. `?nota=` no col·lisiona amb cap ruta i no obliga a
-     tocar App.jsx. */
   const [searchParams] = useSearchParams();
   const notaInicialId = searchParams.get('nota');
 
   return (
-    <NotesProvider notaInicialId={notaInicialId}>
-      <NotesSectionContent notaInicialId={notaInicialId} />
+    <NotesProvider>
+      <NotesSectionInner notaInicialId={notaInicialId} />
     </NotesProvider>
   );
 }

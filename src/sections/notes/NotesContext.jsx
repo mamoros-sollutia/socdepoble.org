@@ -1,5 +1,4 @@
-import { useSearchParams } from '../../app/contexts/RouterContext';
-import { createContext, useContext, useState, useMemo, useDeferredValue, useCallback, useEffect, useRef } from 'react';
+import { createContext, useContext, useState, useMemo, useCallback, useRef } from 'react';
 import { updateNote } from '../../data/backendPort';
 import { showToast } from '../../components/universal/AvisadorEfimer.jsx';
 import { sanitizeHtml, netejaText, esFontImatgeSegura } from '../../utils/sanitize.js';
@@ -16,7 +15,6 @@ function netejaCamp(field, value) {
   return netejaText(value);
 }
 
-/** Font única de les píndoles d'una nota. Sense accions → serialitzable (payload). */
 export function etiquetesDeNota(note, noteFolders, accions = {}) {
   const carpeta = noteFolders.find((f) => f.id === note.folderId)?.name || null;
   const eixida = [];
@@ -24,7 +22,6 @@ export function etiquetesDeNota(note, noteFolders, accions = {}) {
     eixida.push({ text: carpeta, className: 'sdp-badge-system',
       onClick: accions.carpeta ? () => accions.carpeta(note.folderId) : undefined });
   }
-  // Regla de no-duplicació de la SKILL §4, mecànica i no comentada.
   if (note.category && note.category !== carpeta) {
     eixida.push({ text: note.category, className: 'sdp-badge-category',
       onClick: accions.categoria ? () => accions.categoria(note.category) : undefined });
@@ -38,30 +35,14 @@ export function etiquetesDeNota(note, noteFolders, accions = {}) {
 
 const NotesContext = createContext(null);
 
-export function NotesProvider({ children, notaInicialId = null }) {
+export function NotesProvider({ children }) {
   const { language, externalConfig } = useUIState();
   const { normalizeSearchText, t } = useUIActions();
   const { noteFolders, notes: rawNotes, creaNota } = useNotesData();
   const { sendSectionSubmission } = useMur();
   
   const knownRevisions = useRef(new Map());
-
-  const [activeFolderId, setActiveFolderId] = useState('f-tot');
-  const [activeCategory, setActiveCategory] = useState(null);
-  const [activeTag, setActiveTag] = useState(null);
-  // useSearchParams eliminat ja que no s'usa
-  const [activeNoteId, setActiveNoteId] = useState(notaInicialId || 'n1');
-  const [searchQuery, setSearchQuery] = useState('');
-  const deferredSearchQuery = useDeferredValue(searchQuery);
   const locale = language === 'ca' ? 'ca-ES' : 'es-ES';
-
-  const [colFoldersCollapsed, setColFoldersCollapsed] = useState(false);
-  const [colNotesCollapsed, setColNotesCollapsed] = useState(false);
-  const [accCategoriesOpen, setAccCategoriesOpen] = useState(true);
-  const [accTagsOpen, setAccTagsOpen] = useState(true);
-  const [settingsOpen, setSettingsOpen] = useState(false);
-  const [timerActive, setTimerActive] = useState(false);
-  const [timerSeconds, setTimerSeconds] = useState(0);
 
   const [localNoteOverrides, setLocalNoteOverrides] = useState(() => {
     try {
@@ -72,13 +53,12 @@ export function NotesProvider({ children, notaInicialId = null }) {
       return {};
     }
   });
+
   const setLocalNoteField = useCallback((id, field, value) => {
+    if (!id) return;
     setLocalNoteOverrides(prev => {
-      const next = {
-        ...prev,
-        [id]: { ...prev[id], [field]: value }
-      };
-      try { sessionStorage.setItem('sdp_notes_drafts', JSON.stringify(next)); } catch (e) { console.warn('Error saving drafts', e); }
+      const next = { ...prev, [id]: { ...prev[id], [field]: value } };
+      try { sessionStorage.setItem('sdp_notes_drafts', JSON.stringify(next)); } catch (e) { /* ignore */ }
       return next;
     });
   }, []);
@@ -99,53 +79,10 @@ export function NotesProvider({ children, notaInicialId = null }) {
     });
   }, [locale, normalizeSearchText, rawNotes, localNoteOverrides]);
 
-  const filteredNotes = useMemo(() => {
-    const query = normalizeSearchText(deferredSearchQuery);
-    return notes
-      .filter((note) => (activeFolderId && activeFolderId !== 'f-tot' ? note.folderId === activeFolderId : true))
-      .filter((note) => (activeCategory ? note.category === activeCategory : true))
-      .filter((note) => (activeTag ? (note.tags || []).includes(activeTag) : true))
-      .filter((note) => (!query ? true : note.searchText.includes(query)));
-  }, [activeCategory, activeFolderId, activeTag, deferredSearchQuery, notes, normalizeSearchText]);
-
-  const activeNote = filteredNotes.find((note) => note.id === activeNoteId) || filteredNotes[0] || notes[0];
-
-  const handleSelectFolder = useCallback((id) => {
-    setActiveFolderId(id);
-    setActiveCategory(null);
-    setActiveTag(null);
-    if (colNotesCollapsed) setColNotesCollapsed(false);
-  }, [colNotesCollapsed]);
-
-  const handleSelectCategory = useCallback((category) => {
-    setActiveCategory(category);
-    setActiveFolderId(null);
-    setActiveTag(null);
-    if (colNotesCollapsed) setColNotesCollapsed(false);
-  }, [colNotesCollapsed]);
-
-  const handleSelectTag = useCallback((tag) => {
-    setActiveTag(tag);
-    setActiveFolderId(null);
-    setActiveCategory(null);
-    if (colNotesCollapsed) setColNotesCollapsed(false);
-  }, [colNotesCollapsed]);
-  
-  const handleSelectNote = useCallback((id) => {
-    setActiveNoteId(id);
-  }, []);
-
-  /* Si l'usuari navega d'un ?nota=A a un ?nota=B sense desmuntar la secció,
-     el proveïdor no es torna a crear i l'estat inicial ja no val. */
-  useEffect(() => {
-    if (notaInicialId) setActiveNoteId(notaInicialId);
-  }, [notaInicialId]);
-
   const saveNoteField = useCallback(async (noteId, field, value) => {
     if (!noteId) return false;
     const netejat = netejaCamp(field, value);
     
-    // Establim l'override local (draft visual) per evitar salts de render.
     setLocalNoteField(noteId, field, netejat);
     
     const baseNote = rawNotes.find(n => n.id === noteId);
@@ -157,19 +94,12 @@ export function NotesProvider({ children, notaInicialId = null }) {
       const savedNote = await updateNote(noteId, { [field]: netejat }, expectedRevision, externalConfig);
       
       knownRevisions.current.set(noteId, savedNote.revision);
-      // En ACK netejem el dirtyField per a confirmar sincronització i guardem la revisió.
       setLocalNoteOverrides(prev => {
         const next = { ...prev };
         if (!next[noteId]) next[noteId] = {};
-        
-        if (next[noteId][field] === netejat) {
-           delete next[noteId][field];
-        }
-        
-        // Sempre apliquem la revisió fresca per evitar errors CAS.
+        if (next[noteId][field] === netejat) { delete next[noteId][field]; }
         next[noteId].revision = savedNote.revision;
-        
-        try { sessionStorage.setItem('sdp_notes_drafts', JSON.stringify(next)); } catch (e) { console.warn('Error saving drafts', e); }
+        try { sessionStorage.setItem('sdp_notes_drafts', JSON.stringify(next)); } catch (e) { /* ignore */ }
         return next;
       });
       
@@ -185,11 +115,11 @@ export function NotesProvider({ children, notaInicialId = null }) {
     }
   }, [rawNotes, setLocalNoteField, externalConfig]);
 
-  const publishNote = useCallback(async () => {
+  const publishNote = useCallback(async (activeNote) => {
     if (!activeNote) return;
     
     const labels = etiquetesDeNota(activeNote, noteFolders)
-      .map(({ text, className }) => ({ text, className })); // només text i class
+      .map(({ text, className }) => ({ text, className })); 
 
     const payload = {
       sectionId: 'mur',
@@ -213,24 +143,17 @@ export function NotesProvider({ children, notaInicialId = null }) {
       console.error('Error enviant publicació:', err);
       showToast('Error publicant al mur. Verifica la connexió o l\'entorn.', 'error');
     }
-  }, [activeNote, noteFolders, sendSectionSubmission]);
+  }, [noteFolders, sendSectionSubmission, saveNoteField]);
 
   return (
     <NotesContext.Provider value={{
-      notes, filteredNotes, activeNote, activeNoteId, setActiveNoteId: handleSelectNote,
-      activeFolderId, handleSelectFolder,
-      activeCategory, handleSelectCategory,
-      activeTag, handleSelectTag,
-      searchQuery, setSearchQuery,
-      colFoldersCollapsed, setColFoldersCollapsed,
-      colNotesCollapsed, setColNotesCollapsed,
-      accCategoriesOpen, setAccCategoriesOpen,
-      accTagsOpen, setAccTagsOpen,
-      settingsOpen, setSettingsOpen,
-      timerActive, setTimerActive,
-      timerSeconds, setTimerSeconds,
-      saveNoteField, setLocalNoteField, publishNote, creaNota,
-      t, noteFolders
+      notes,
+      noteFolders,
+      saveNoteField,
+      setLocalNoteField,
+      publishNote,
+      creaNota,
+      t
     }}>
       {children}
     </NotesContext.Provider>

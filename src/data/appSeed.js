@@ -157,5 +157,3 @@ export const APP_CONTENT_ROWS = [
   ...row,
   version: APP_SEED_VERSION
 }));
-
-export const CHAT_MESSAGE_SEED = APP_SEED.chatMessages;

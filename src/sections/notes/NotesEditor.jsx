@@ -3,12 +3,14 @@ import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import { Image as ImageIcon, Lock, FileText } from 'lucide-react';
 import { useNotes, etiquetesDeNota } from './NotesContext';
+import { useManager } from '../../components/universal/manager/ManagerContext';
 import NotesToolbar from './NotesToolbar';
 import UniversalEditorShell from '../../components/universal/UniversalEditorShell';
 import { sanitizeHtml } from '../../utils/sanitize.js';
 
 export default function NotesEditor() {
-  const { activeNote, saveNoteField, setLocalNoteField, noteFolders, t } = useNotes();
+  const { saveNoteField, setLocalNoteField, noteFolders, t } = useNotes();
+  const { activeItem: activeNote } = useManager();
   const timeoutRef = useRef(null);
   const pendingSaveRef = useRef({ id: null, content: null });
   const currentNoteRef = useRef({ id: null, title: '', subtitle: '', lead: '' });

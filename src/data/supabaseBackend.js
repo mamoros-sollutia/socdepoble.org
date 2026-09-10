@@ -308,14 +308,6 @@ export function unsubscribeFromXat(filId, config = {}) {
 
 // Removed chat conversation map per lint
 
-function mergeChatMessages(primary = [], secondary = []) {
-  const map = new Map();
-  [...primary, ...secondary].forEach((message) => {
-    if (!message) return;
-    map.set(String(message.id), message);
-  });
-  return Array.from(map.values()).sort((a, b) => (a.createdAtTs || 0) - (b.createdAtTs || 0));
-}
 
 
 
@@ -378,19 +370,7 @@ async function loadStructuredSupabaseData(config, ownerUserId) {
     events: mergedEvents,
     mediaItems: mergedMediaItems,
     notes: mergedNotes,
-    chatMessages: mergeChatMessages(
-      (baseData.chatMessages || []).map((message) => ({
-      id: message.id,
-      ownerUserId: message.owner_user_id,
-      threadId: message.thread_id,
-      messageId: message.message_id,
-      text: message.text,
-      sender: message.sender,
-      time: message.time_label,
-      createdAtTs: message.created_at ? new Date(message.created_at).getTime() : 0
-      })),
-      []
-    ),
+    chatMessages: [],
     sectionSubmissions,
     seedVersion: APP_SEED_VERSION
   };

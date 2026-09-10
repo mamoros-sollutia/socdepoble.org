@@ -34,6 +34,7 @@ export function UniversalManager({
   renderDetail,
   onActionCreate,
   createLabel = 'CREAR',
+  initialItemId = null,
 }) {
   return (
     <ManagerProvider
@@ -41,6 +42,7 @@ export function UniversalManager({
       facets={facets}
       getItemId={getItemId}
       getItemSearchText={getItemSearchText}
+      initialItemId={initialItemId}
     >
       <UniversalManagerInner 
         renderItem={renderItem}
