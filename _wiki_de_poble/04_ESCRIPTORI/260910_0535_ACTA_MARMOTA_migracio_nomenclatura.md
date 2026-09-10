@@ -27,9 +27,10 @@ La wiki està impecable i amb el disseny encaminat, però hem trencat el "Mur de
 Degut al canvi massiu de noms, **21 tractors de `npm run porta` estan fallant**. Molts d'ells (com el Tractor Cognitiu, el Segellat, etc.) encara busquen rutes antigues o esperen fitxers que han canviat de nom. També alguns tests de vitest estan fallant.
 
 **Pla d'acció immediat per al proper xat:**
-1. Reparar un a un els tractors caiguts (`npm run porta`).
-2. Actualitzar els scripts a `tooling/` que encara apunten a rutes en majúscules.
-3. Repassar i reparar la Llei Z (que ha saltat per modificacions en les regles).
-4. Un cop el mur torne a estar verd, rematar l'ajust del disseny de l'editor de notes (UniversalPage).
+1. **Llegir el pla d'implementació:** Llig el fitxer de Claude (ex. `260910_0501_prompt_auditoria.md` o el document obert a l'editor) per verificar l'abast complet i continuar l'execució d'allò que quede pendent.
+2. Reparar un a un els tractors caiguts (`npm run porta`).
+3. Actualitzar els scripts a `tooling/` que encara apunten a rutes en majúscules.
+4. Repassar i reparar la Llei Z (que ha saltat per modificacions en les regles).
+5. Un cop el mur torne a estar verd, rematar l'ajust del disseny de l'editor de notes (UniversalPage).
 
 Estic preparada. Acosta't un got de llet amb galetes, que ens queda feina, però el cervell ja té una estructura neta i madura per sempre.
