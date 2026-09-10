@@ -23,6 +23,7 @@ Ací només resideix la matèria viva. El que ha mort, descansa en l'arxiu.
 
 ## 01_produccio
 - [[01_produccio/contracte_graella]]
+- [[01_produccio/260911_0006_tasques_ui_standardization]]
 
 ## Claude_260910_2132
 - [[Claude_260910_2132/260910_informe_poda_css.json]]
