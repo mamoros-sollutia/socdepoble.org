@@ -4,7 +4,7 @@
     "coneguts": [
       ".-col  →  src/sections/detail/detailSectionMeta.jsx",
       ".?  →  src/components/universal/AvisadorEfimer.jsx",
-      ".accordion-item  →  src/components/universal/UniversalElements.jsx",
+      ".accordion-item  →  src/components/ui/Accordion.jsx",
       ".active-on-mobile  →  src/sections/xat/XatSection.jsx",
       ".all  →  src/sections/mur/MurSection.jsx",
       ".app-brand__mark  →  src/app/App.jsx",
@@ -79,7 +79,7 @@
       ".sdp-design-system  →  src/sections/disseny/DesignSection.jsx",
       ".sdp-error-pre  →  src/app/App.jsx",
       ".sdp-filtre--mapa  →  src/sections/mur/MurSection.jsx",
-      ".sdp-link-inherit  →  src/components/universal/UniversalElements.jsx",
+      ".sdp-link-inherit  →  src/components/ui/UniversalCard.jsx",
       ".sdp-manual-disseny  →  src/sections/disseny/DesignSection.jsx",
       ".sdp-onboarding-error  →  src/sections/onboarding/OnboardingSection.jsx",
       ".sdp-prose  →  src/sections/notes/NotesEditor.jsx",
@@ -102,8 +102,7 @@
       ".section-actions  →  src/sections/multimedia/MultimediaSection.jsx",
       ".section-search  →  src/sections/connectar/ConnectarSection.jsx",
       ".sidebar-meta-item  →  src/sections/notes/NotesSidebar.jsx",
-      ".sp-card--avis  →  src/components/universal/UniversalElements.jsx",
-      ".sp-card-time  →  src/components/universal/UniversalEditorShell.jsx",
+      ".sp-card--avis  →  src/components/ui/UniversalCard.jsx",
       ".sw-pedra-50  →  src/sections/disseny/DesignSectionContent.jsx",
       ".system  →  src/sections/mur/MurSection.jsx",
       ".tag-input-row  →  src/sections/connectar/ConnectarSection.jsx",
@@ -116,7 +115,8 @@
       ".trans-list  →  src/sections/translations/TranslationsSection.jsx",
       ".universal-content  →  src/sections/disseny/DesignSection.jsx",
       ".xat-header-btn--active  →  src/sections/xat/XatSection.jsx",
-      ".xat-settings-wrapper  →  src/sections/xat/XatSection.jsx"
+      ".xat-settings-wrapper  →  src/sections/xat/XatSection.jsx",
+      ".sp-card-time  →  src/components/ui/controls.jsx"
     ]
   },
   "LLEI_02_TOKEN_FANTASMA": {
@@ -146,12 +146,14 @@
     "max": 21,
     "coneguts": [
       "src/components/universal/UniversalEditorShell.jsx",
-      "src/components/universal/UniversalElements.jsx",
+      "src/components/ui/Accordion.jsx",
       "src/sections/detail/detailSectionMeta.jsx",
       "src/sections/dispositius/DevicesSection.jsx",
       "src/sections/profile/DetallAjust.jsx",
       "src/sections/translations/TranslationsSection.jsx",
-      "src/sections/xat/XatSection.jsx"
+      "src/sections/xat/XatSection.jsx",
+      "src/components/ui/Dropdown.jsx",
+      "src/components/ui/icones.jsx"
     ]
   },
   "LLEI_03_COLOR_EN_LINIA": {

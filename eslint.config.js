@@ -38,4 +38,10 @@ export default [
       ]
     },
   },
+  {
+    files: ['tooling/wiki/**/*.{js,mjs,cjs}'],
+    rules: {
+      'no-unused-vars': ['warn', { 'argsIgnorePattern': '^_', 'varsIgnorePattern': '^_' }]
+    }
+  }
 ];

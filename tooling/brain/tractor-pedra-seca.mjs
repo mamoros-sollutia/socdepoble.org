@@ -149,6 +149,8 @@ function grafAccessible() {
     if (t === null) continue;
     const specs = [
       ...t.matchAll(/import\s+[^'"]*from\s*['"]([^'"]+)['"]/g),
+      // Reexportacions (barrils: components/ui/index.js). Sense açò, un barril deixa orfe tot el que reexporta.
+      ...t.matchAll(/export\s+(?:\*(?:\s+as\s+\w+)?|\{[^}]*\})\s*from\s*['"]([^'"]+)['"]/g),
       ...t.matchAll(/import\s*\(\s*['"]([^'"]+)['"]\s*\)/g),
       ...t.matchAll(/import\s*['"]([^'"]+)['"]/g)
     ].map((m) => m[1]);
@@ -267,7 +269,7 @@ const EXCEPCIONS_ORFE = {
   'src/assets/fonts/noto-sans.css': 'es carrega en execució via atribut fonts-href'
 };
 for (const f of [...JSX, ...CSS_TOTS])
-  if (!accessible.has(f) && f !== FULL_OMBRA && !EXCEPCIONS_ORFE[f])
+  if (!accessible.has(f) && f !== FULL_OMBRA && !EXCEPCIONS_ORFE[f] && !/\.test\.[jt]sx?$/.test(f)) // les proves són entrades de vitest
     registra('LLEI_08_SUBARBRE_ORFE', f);
 
 /* ─────────────────────── Criquet i veredicte ──────────────────────── */

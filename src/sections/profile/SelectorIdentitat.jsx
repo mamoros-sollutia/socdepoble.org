@@ -40,7 +40,7 @@ export default function SelectorIdentitat() {
         </div>
       </div>
 
-      <div className="notes-column__body" className="no-padding">
+      <div className="notes-column__body no-padding">
         {carregant ? <p className="perfil-detall-buit">Carregant…</p> : null}
       {error ? <p className="perfil-detall-buit">{error}</p> : null}
       {identitats.map((i) => (

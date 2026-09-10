@@ -109,40 +109,37 @@ export default function UniversalEditorShell({
           }}
           title={
             <span
-              className="editor-title-input"
+              className="editor-title-input ue-inline-block-mw10"
               contentEditable
               suppressContentEditableWarning
               onInput={(e) => onLocalChange?.('title', e.currentTarget.innerHTML)}
               onBlur={(e) => onSaveField?.('title', e.currentTarget.innerHTML)}
               data-placeholder="Escriu el títol de l'article (H1)..."
               dangerouslySetInnerHTML={{ __html: sanitizeHtml(titleHtml) }}
-              className="ue-inline-block-mw10"
             />
           }
           labels={labels}
           copyright={copyright}
           subtitle={
             <span
-              className="editor-subtitle-input"
+              className="editor-subtitle-input ue-block-mw10"
               contentEditable
               suppressContentEditableWarning
               onInput={(e) => onLocalChange?.('subtitle', e.currentTarget.innerHTML)}
               onBlur={(e) => onSaveField?.('subtitle', e.currentTarget.innerHTML)}
               data-placeholder="Escriu el subtítol (H2)..."
               dangerouslySetInnerHTML={{ __html: sanitizeHtml(subtitleHtml) }}
-              className="ue-block-mw10"
             />
           }
           lead={
             <span
-              className="editor-lead-input"
+              className="editor-lead-input ue-block-mw10"
               contentEditable
               suppressContentEditableWarning
               onInput={(e) => onLocalChange?.('lead', e.currentTarget.innerHTML)}
               onBlur={(e) => onSaveField?.('lead', e.currentTarget.innerHTML)}
               data-placeholder="Escriu l'entradilla..."
               dangerouslySetInnerHTML={{ __html: sanitizeHtml(leadHtml) }}
-              className="ue-block-mw10"
             />
           }
         >

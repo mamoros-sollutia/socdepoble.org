@@ -6,12 +6,12 @@ import LlistaAjustos from './LlistaAjustos.jsx';
 import DetallAjust from './DetallAjust.jsx';
 import perfilStyles from './PerfilShell.css?inline';
 import AppGridShell from '../../components/layout/AppGridShell';
-import { useUIActions } from '../../app/contexts/UIContext';
+import { useUI } from '../../app/contexts/UIContext';
 
 export default function PerfilShell() {
-  const { t } = useUIActions();
+  const { t, externalConfig } = useUI();
   const contentContext = useContent();
-  const config = contentContext?.config || {};
+  const config = contentContext?.config || externalConfig || {};
 
   return (
     <>

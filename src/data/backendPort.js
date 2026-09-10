@@ -68,4 +68,10 @@ export const enviaMissatge = asseguraMetode('enviaMissatge');
 export const marcaLlegit = asseguraMetode('marcaLlegit');
 export const creaFilDirecte = asseguraMetode('creaFilDirecte');
 export const carregaMembres = asseguraMetode('carregaMembres');
+export const subscribeToXat = asseguraMetode('subscribeToXat');
+export const unsubscribeFromXat = asseguraMetode('unsubscribeFromXat');
+
+// Mode Administrador
+export const adminListUsers = asseguraMetode('adminListUsers');
+export const adminListOrganizations = asseguraMetode('adminListOrganizations');
 

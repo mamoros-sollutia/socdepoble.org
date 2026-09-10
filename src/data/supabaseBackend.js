@@ -249,10 +249,62 @@ async function buildSeedAppData(ownerUserId = getDefaultUserId()) {
 
 
 
+// Fase 2B: WebSockets (Realtime)
+import { createClient } from '@supabase/supabase-js';
 
+let supabaseClient = null;
+const activeSubscriptions = new Map();
 
+function getSupabaseClient(config) {
+  if (supabaseClient) return supabaseClient;
+  const { supabaseUrl, supabaseAnonKey, hasSupabaseConfig } = getResolvedConfig(config);
+  if (!hasSupabaseConfig) return null;
+  
+  supabaseClient = createClient(supabaseUrl, supabaseAnonKey, {
+    auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false }
+  });
+  return supabaseClient;
+}
 
+export function subscribeToXat(filId, callback, config = {}) {
+  const client = getSupabaseClient(config);
+  if (!client) return;
 
+  const jwt = getEfimer(CLAU_JWT);
+  if (jwt) {
+    client.realtime.setAuth(jwt);
+  }
+
+  const { tenantId } = getResolvedConfig(config);
+
+  // Ens subscribim a inserts de xat_missatges del tenant i fil actual
+  const sub = client.channel(`xat:${filId}`)
+    .on(
+      'postgres_changes',
+      {
+        event: 'INSERT',
+        schema: 'public',
+        table: 'xat_missatges',
+        filter: `tenant_id=eq.${tenantId}` // Supabase realtime només permet 1 filtre, o usem el filId si tenim RLS bé
+      },
+      (payload) => {
+        if (payload.new && payload.new.fil_id === filId) {
+          callback(payload.new);
+        }
+      }
+    )
+    .subscribe();
+
+  activeSubscriptions.set(filId, sub);
+}
+
+export function unsubscribeFromXat(filId, config = {}) {
+  const sub = activeSubscriptions.get(filId);
+  if (sub) {
+    sub.unsubscribe();
+    activeSubscriptions.delete(filId);
+  }
+}
 
 // Removed chat conversation map per lint
 
@@ -354,8 +406,7 @@ export async function loadAppData(ownerUserId = getDefaultUserId(), config = {})
   }
 
   if (!hasSupabaseConfig) {
-    if (runtimeDataMode === 'remote') throw new Error('Falten VITE_SUPABASE_URL i/o VITE_SUPABASE_ANON_KEY.');
-    return buildSeedAppData(ownerUserId);
+    throw new Error('Falten VITE_SUPABASE_URL i/o VITE_SUPABASE_ANON_KEY per carregar la AppData.');
   }
 
   return loadStructuredSupabaseData(config, ownerUserId);
@@ -696,8 +747,11 @@ export function getCurrentUser() {
 export async function loadCoreContent(ownerUserId = getDefaultUserId(), config = {}) {
   const { runtimeDataMode, hasSupabaseConfig, tenantId } = getResolvedConfig(config);
   const seed = await buildSeedAppData(ownerUserId);
-  if (runtimeDataMode === 'seed' || !hasSupabaseConfig) {
+  if (runtimeDataMode === 'seed') {
     return { towns: seed.towns, pages: seed.pages, pageCopy: {}, agents: seed.agents, ownerUserId };
+  }
+  if (!hasSupabaseConfig) {
+    throw new Error('Falten credencials de Supabase per carregar el contingut Core.');
   }
   const contentRows = await request(`/rest/v1/app_content?select=key,payload,version&key=in.(towns,agents)&tenant_id=eq.${encodeURIComponent(tenantId)}`, config, { signal: config.signal });
   const baseData = mapContentRowsToData(contentRows || []);
@@ -707,9 +761,12 @@ export async function loadCoreContent(ownerUserId = getDefaultUserId(), config =
 
 export async function loadMur(ownerUserId = getDefaultUserId(), config = {}) {
   const { runtimeDataMode, hasSupabaseConfig, tenantId } = getResolvedConfig(config);
-  if (runtimeDataMode === 'seed' || !hasSupabaseConfig) {
+  if (runtimeDataMode === 'seed') {
     const seed = await buildSeedAppData(ownerUserId);
     return { feedPosts: seed.feedPosts, events: seed.events, marketItems: seed.marketItems };
+  }
+  if (!hasSupabaseConfig) {
+    throw new Error('Falten credencials de Supabase per carregar el Mur.');
   }
 
   const [contentRows, submissionsResp] = await Promise.all([
@@ -726,9 +783,12 @@ export async function loadMur(ownerUserId = getDefaultUserId(), config = {}) {
 
 export async function loadMultimedia(ownerUserId = getDefaultUserId(), config = {}) {
   const { runtimeDataMode, hasSupabaseConfig, tenantId } = getResolvedConfig(config);
-  if (runtimeDataMode === 'seed' || !hasSupabaseConfig) {
+  if (runtimeDataMode === 'seed') {
     const seed = await buildSeedAppData(ownerUserId);
     return { mediaItems: seed.mediaItems };
+  }
+  if (!hasSupabaseConfig) {
+    throw new Error('Falten credencials de Supabase per carregar el Multimèdia.');
   }
 
   const [contentRows, submissionsResp] = await Promise.all([
@@ -751,18 +811,24 @@ export async function loadMultimedia(ownerUserId = getDefaultUserId(), config = 
  */
 export async function loadXat(ownerUserId = null, config = {}) {
   const { runtimeDataMode, hasSupabaseConfig } = getResolvedConfig(config);
-  if (runtimeDataMode === 'seed' || !hasSupabaseConfig) {
+  if (runtimeDataMode === 'seed') {
     const seed = await buildSeedAppData(ownerUserId || getDefaultUserId());
     return { chatThreads: seed.chatThreads, chatMessages: seed.chatMessages };
+  }
+  if (!hasSupabaseConfig) {
+    throw new Error('Falten credencials de Supabase per carregar el Xat.');
   }
   return { chatThreads: await loadFils(config), chatMessages: [] };
 }
 
 export async function loadNotes(ownerUserId = getDefaultUserId(), config = {}) {
   const { runtimeDataMode, hasSupabaseConfig, tenantId } = getResolvedConfig(config);
-  if (runtimeDataMode === 'seed' || !hasSupabaseConfig) {
+  if (runtimeDataMode === 'seed') {
     const seed = await buildSeedAppData(ownerUserId);
     return { notes: seed.notes, noteFolders: seed.noteFolders };
+  }
+  if (!hasSupabaseConfig) {
+    throw new Error('Falten credencials de Supabase per carregar les Notes.');
   }
   const safeOwnerId = ownerUserId || getDefaultUserId();
   const [contentRows, submissionsResp, notesResp] = await Promise.all([
@@ -1013,3 +1079,29 @@ export async function creaFilDirecte(altreUsuariId, titol = null, config = {}) {
   return typeof filId === 'string' ? filId : (filId?.crea_fil_directe ?? null);
 }
 
+
+/**
+ * ============================================================================
+ * MODE ADMINISTRADOR
+ * ============================================================================
+ * Crides que solament funcionaran si la RPC `private.es_superadmin()` 
+ * retorna cert. S'encarreguen de proveir el llistat complet de la plataforma.
+ */
+
+export async function adminListUsers(config = {}) {
+  const { hasSupabaseConfig } = getResolvedConfig(config);
+  if (!hasSupabaseConfig) return [];
+  
+  const usuaris = await rpc('admin_list_users', {}, config);
+
+  return Array.isArray(usuaris) ? usuaris : [];
+}
+
+export async function adminListOrganizations(config = {}) {
+  const { hasSupabaseConfig } = getResolvedConfig(config);
+  if (!hasSupabaseConfig) return [];
+  
+  const orgs = await rpc('admin_list_organizations', {}, config);
+
+  return Array.isArray(orgs) ? orgs : [];
+}

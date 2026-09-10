@@ -123,8 +123,13 @@ process.stdin.on('end', () => {
   if (rel === '.env' || (rel.startsWith('.env.') && rel !== '.env.example')) {
     resp('deny', "[PORTA · §5] Els secrets no s'escriuen des d'ací.");
   }
+  
+  if (['.zip', '.tar', '.gz', '.tgz'].includes(ext)) {
+    resp('deny', "[PORTA] Creació de paquets comprimits prohibida per regla.");
+  }
+
   if (rel.startsWith('90_arxiu_historic/')) {
-    resp('deny', "[PORTA · §5] L'arxiu històric és de només lectura per a l'agent.");
+    resp('deny', "[PORTA] L'arxiu històric és de NOMÉS LECTURA. Posa el fitxer a 90_revisar/.");
   }
 
   /* ── LLEI 1 · Immutabilitat del LEDGER ── */
@@ -205,6 +210,23 @@ process.stdin.on('end', () => {
     && (rel.startsWith(`${ESCRIPTORI}/`) || rel.startsWith('_wiki_de_poble/'));
 
   if (ES_DOCUMENT && eina === 'write_to_file') {
+    let destins;
+    try {
+      destins = JSON.parse(fs.readFileSync(path.join(ARREL, '.agents', 'DESTINS_CANONICS.json'), 'utf8'));
+    } catch {
+      resp('deny', "[PORTA] No s'ha pogut llegir DESTINS_CANONICS.json. Arquitectura compromesa.");
+    }
+    
+    // Verifiquem si el destí del document està dins de les carpetes permeses
+    const permeses = Object.values(destins.destins_permesos || {});
+    const esPermes = permeses.some(p => rel.startsWith(p + '/'));
+    if (!esPermes && !rel.includes('/') && !RESERVATS.has(base)) {
+      // Rebuig explícit
+      resp('deny', `[PORTA] Destí il·legal. La creació de documents només està permesa als destins del JSON canònic: ${permeses.join(', ')}.`);
+    } else if (!esPermes) {
+      resp('deny', `[PORTA] Destí il·legal. Has intentat escriure a ${rel}, però no està al JSON canònic.`);
+    }
+
     const rebut = darrerRebutMatrix();
     if (!rebut) {
       resp('deny', `[PORTA · LLEI 6] Vols crear "${base}" sense haver fet l'Efecte Matrix. `
@@ -216,7 +238,7 @@ process.stdin.on('end', () => {
         + `(${rebut.t}). Un context caducat no és context. Torna a passar el Matrix amb la petició d'ara.`);
     }
     anotaDiari({ t: new Date().toISOString(), eina, ruta: rel, rebut: rebut.peticio_sha256.slice(0, 12), protocols: rebut.protocols });
-    resp('allow', `ruta ${rel} conforme a §2/§3/§5 i amb rebut Matrix ${rebut.peticio_sha256.slice(0, 12)} `
+    resp('allow', `ruta ${rel} conforme a §2/§3/§5 i destins canònics. Rebut Matrix ${rebut.peticio_sha256.slice(0, 12)} `
       + `(${rebut.fonts.length} fonts, protocol: ${rebut.protocols.join(', ') || 'per defecte'})`);
   }
 

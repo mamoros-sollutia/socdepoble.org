@@ -35,7 +35,6 @@ import {
   carregaMembres,
   getCurrentUser
 } from '../../data/backendPort.js';
-import { MOCK_CHATS, MOCK_MESSAGES } from './chatSeed.js';
 
 const XatContext = createContext(null);
 
@@ -157,20 +156,8 @@ export function XatProvider({ children, config }) {
   const carregaFils = useCallback(async () => {
     const meua = ++genFils.current;
     if (!joId) {
-      const filsMock = MOCK_CHATS.map((m) => ({
-        id: m.id,
-        title: m.name,
-        name: m.name,
-        type: 'directe',
-        avatar_url: m.avatar_url || null,
-        lastMessagePreview: m.message || '',
-        lastMessageTime: m.time || '',
-        noLlegits: m.unread || 0,
-        createdAtTs: Date.now()
-      }));
-      setFils(filsMock);
+      setFils([]);
       setEstat('ready');
-      setAvis(null);
       return;
     }
 
@@ -194,23 +181,7 @@ export function XatProvider({ children, config }) {
     if (!filId) return;
     const meua = ++genMissatges.current;
     
-    if (!joId) {
-      const msgsMock = (MOCK_MESSAGES[filId] || []).map((m) => ({
-        id: `mock-${m.id}`,
-        threadId: filId,
-        usuariId: m.sender === 'me' ? joId : m.id,
-        text: m.text,
-        sender: m.sender,
-        author: m.sender === 'me' ? 'Jo' : (m.sender_name || 'Altre'),
-        is_ai: Boolean(m.is_ai),
-        creatAl: new Date().toISOString(),
-        createdAtTs: Date.now(),
-        time_label: m.time,
-        estatEnviament: 'enviat'
-      }));
-      setMissatgesPerFil((previs) => ({ ...previs, [filId]: msgsMock }));
-      return;
-    }
+    if (!joId) return;
 
     if (String(filId).startsWith('mock-fil-')) {
       // És un fil de mentira (beta testers) creat en local per a un usuari registrat
@@ -262,9 +233,9 @@ export function XatProvider({ children, config }) {
     return () => { viu = false; };
   }, [filActiu, carregaMissatges]);
 
-  /* ── Sondeig ──
-     setTimeout encadenat i no setInterval: així mai s'apilen dues peticions si
-     la xarxa va lenta, que és el cas normal al bancal. */
+  /* ── Sondeig de Fils + Realtime per Missatges ──
+     Sondejem només la llista de fils per veure 'no llegits'.
+     Per als missatges del fil actiu, usem WebSockets (Realtime). */
   useEffect(() => {
     if (!joId) return undefined;
     let viu = true;
@@ -272,21 +243,29 @@ export function XatProvider({ children, config }) {
 
     const amagat = () => typeof document !== 'undefined' && document.hidden;
 
+    let tempFil = null;
+    const ticFil = async () => {
+      if (!viu || !filActiu) return;
+      if (!amagat()) await carregaMissatges(filActiu);
+      if (viu) tempFil = setTimeout(ticFil, MS_FIL_ACTIU);
+    };
+    if (filActiu) tempFil = setTimeout(ticFil, MS_FIL_ACTIU);
+
     const tic = async () => {
       if (!viu) return;
       if (!amagat()) {
-        if (filActiu) await carregaMissatges(filActiu);
         await carregaFils();
       }
-      if (viu) temporitzador = setTimeout(tic, filActiu ? MS_FIL_ACTIU : MS_LLISTA);
+      if (viu) temporitzador = setTimeout(tic, MS_LLISTA);
     };
 
-    temporitzador = setTimeout(tic, filActiu ? MS_FIL_ACTIU : MS_LLISTA);
+    temporitzador = setTimeout(tic, MS_LLISTA);
 
     const alTornar = () => {
       if (amagat() || !viu) return;
       if (temporitzador) clearTimeout(temporitzador);
       tic();
+      if (filActiu) carregaMissatges(filActiu); // Catch up
     };
     if (typeof document !== 'undefined') {
       document.addEventListener('visibilitychange', alTornar);
@@ -295,6 +274,7 @@ export function XatProvider({ children, config }) {
     return () => {
       viu = false;
       if (temporitzador) clearTimeout(temporitzador);
+      if (tempFil) clearTimeout(tempFil);
       if (typeof document !== 'undefined') {
         document.removeEventListener('visibilitychange', alTornar);
       }
@@ -376,49 +356,13 @@ export function XatProvider({ children, config }) {
           reals = [];
         }
       }
-
-      // Hack de proves: afegim usuaris beta per defecte
-      const betaUsers = [
-        { id: "beta-1", nom: "Damián", filId: null },
-        { id: "beta-2", nom: "Guillermo", filId: null },
-        { id: "beta-3", nom: "Javi", filId: null },
-        { id: "beta-4", nom: "Sóc de Poble", filId: null },
-        { id: "iaia-maria", nom: "IAIA MarIA", filId: null }
-      ];
-
-      const minT = (text || '').toLowerCase();
-      const mockFiltrats = minT ? betaUsers.filter(u => u.nom.toLowerCase().includes(minT)) : betaUsers;
-
-      const nomsReals = new Set(reals.map(r => r.nom.toLowerCase()));
-      const mockUnics = mockFiltrats.filter(u => !nomsReals.has(u.nom.toLowerCase()));
-
-      return [...reals, ...mockUnics];
+      return reals;
     },
     [joId]
   );
 
   /* ── Obrir conversa amb algú. Idempotent al servidor. ── */
   const creaFil = useCallback(async (altreUsuariId, titol = null) => {
-    // Interceptem els usuaris mockejats (beta testers)
-    if (String(altreUsuariId).startsWith('beta-') || String(altreUsuariId).startsWith('iaia-')) {
-      const filIdFals = `mock-fil-${altreUsuariId}-${Date.now()}`;
-      setFils((previs) => [
-        {
-          id: filIdFals,
-          title: titol || 'Conversa Beta',
-          name: titol || 'Conversa Beta',
-          type: 'directe',
-          avatar_url: null,
-          lastMessagePreview: 'Inici de la conversa de prova.',
-          lastMessageTime: 'Ara',
-          noLlegits: 0,
-          createdAtTs: Date.now()
-        },
-        ...previs
-      ]);
-      return filIdFals;
-    }
-
     const filId = await creaFilDirecte(altreUsuariId, titol, configRef.current);
     await carregaFils();
     return filId;

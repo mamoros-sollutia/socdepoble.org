@@ -78,8 +78,9 @@ export function UIProvider({ children, externalConfig = {} }) {
     locale,
     themeMode,
     themePreference,
-    systemDark
-  }), [language, translator, locale, themeMode, themePreference, systemDark]);
+    systemDark,
+    externalConfig
+  }), [language, translator, locale, themeMode, themePreference, systemDark, externalConfig]);
 
   const actionsValue = useMemo(() => ({
     setLanguage: setLanguageFn,

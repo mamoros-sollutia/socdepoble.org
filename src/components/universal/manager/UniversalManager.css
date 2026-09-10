@@ -1,0 +1,146 @@
+.univ-manager-facet-item {
+  display: flex;
+  align-items: center;
+  gap: var(--sdp-sp-4);
+  padding: var(--sdp-sp-4) var(--sdp-sp-6);
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: transparent;
+  color: var(--sdp-color-text-secundari);
+  font-family: inherit;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: var(--sdp-radi-boto);
+}
+
+.univ-manager-facet-item:hover {
+  background: var(--sdp-color-fons-hover);
+  color: var(--sdp-color-text);
+}
+
+.univ-manager-facet-item--active {
+  background: var(--sdp-color-fons-hover);
+  color: var(--sdp-color-text);
+  font-weight: 500;
+}
+
+.univ-manager-facet-tree-branch {
+  display: flex;
+  flex-direction: column;
+}
+
+.univ-manager-list-item {
+  display: block;
+  padding: var(--sdp-sp-5) var(--sdp-sp-6);
+  border-bottom: 1px solid var(--sdp-color-borde);
+  cursor: pointer;
+  transition: background-color 0.2s;
+  color: inherit;
+  text-decoration: none;
+}
+
+.univ-manager-list-item:hover,
+.univ-manager-list-item:focus {
+  background: var(--sdp-color-fons-hover);
+  outline: none;
+}
+
+.univ-manager-list-item--active {
+  background: var(--sdp-color-fons-hover);
+  border-left: 3px solid var(--sdp-color-primari);
+  padding-left: calc(var(--sdp-sp-6) - 3px);
+}
+
+.univ-manager-empty {
+  text-align: center;
+  padding: var(--sdp-sp-8);
+  opacity: 0.6;
+  cursor: default;
+}
+
+.univ-manager-create-action {
+  padding: var(--sdp-sp-6);
+  border-top: 1px solid var(--sdp-color-borde);
+}
+
+.univ-manager-create-btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: var(--sdp-sp-3);
+}
+
+.univ-manager-facet-header {
+  padding: 0 var(--sdp-sp-6);
+}
+
+.univ-manager-facet-spacing {
+  height: var(--sdp-sp-6);
+}
+
+.univ-manager-admin-login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+}
+
+.univ-manager-admin-sidebar-inner {
+  padding: var(--sdp-sp-6);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.univ-manager-admin-actions {
+  margin-top: auto;
+  border-top: 1px solid var(--sdp-color-borde);
+  padding-top: var(--sdp-sp-4);
+}
+
+.univ-manager-admin-action-btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: var(--sdp-sp-3);
+}
+
+.univ-manager-admin-dashboard {
+  padding: var(--sdp-sp-6);
+}
+
+.univ-manager-admin-detail {
+  padding: var(--sdp-sp-6);
+}
+
+.univ-manager-admin-pre {
+  background: var(--sdp-fons-codi);
+  padding: var(--sdp-sp-5);
+  border-radius: var(--sdp-radi-boto);
+}
+
+.univ-manager-admin-header {
+  padding: var(--sdp-sp-2) var(--sdp-sp-4);
+  background: var(--sdp-fons-subtil);
+  border-bottom: 1px solid var(--sdp-color-borde);
+  display: flex;
+  gap: var(--sdp-sp-4);
+}
+
+.univ-manager-admin-header-title {
+  margin: 0;
+  align-self: center;
+}
+
+.univ-manager-admin-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.univ-manager-admin-content {
+  flex: 1;
+  position: relative;
+}

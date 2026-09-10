@@ -1,0 +1,2226 @@
+diff --git a/.agents/deute/.design-guard-deute.json b/.agents/deute/.design-guard-deute.json
+index 77819b6..8c1fc6d 100644
+--- a/.agents/deute/.design-guard-deute.json
++++ b/.agents/deute/.design-guard-deute.json
+@@ -23,7 +23,10 @@
+     "max": 23,
+     "identitats": [
+       "inline-style|components/universal/UniversalEditorShell.jsx|style=",
+-      "inline-style|components/universal/UniversalElements.jsx|style=",
++      "inline-style|components/ui/Accordion.jsx|style=",
++      "inline-style|components/ui/Dropdown.jsx|style=",
++      "inline-style|components/ui/UniversalIndicatorCard.jsx|style=",
++      "inline-style|components/ui/icones.jsx|style=",
+       "inline-style|sections/detail/detailSectionMeta.jsx|style=",
+       "inline-style|sections/dispositius/DevicesSection.jsx|style=",
+       "inline-style|sections/profile/DetallAjust.jsx|style=",
+diff --git a/.agents/deute/.pedra-seca-deute.json b/.agents/deute/.pedra-seca-deute.json
+index 78ff8ee..9a8683f 100644
+--- a/.agents/deute/.pedra-seca-deute.json
++++ b/.agents/deute/.pedra-seca-deute.json
+@@ -4,7 +4,7 @@
+     "coneguts": [
+       ".-col  →  src/sections/detail/detailSectionMeta.jsx",
+       ".?  →  src/components/universal/AvisadorEfimer.jsx",
+-      ".accordion-item  →  src/components/universal/UniversalElements.jsx",
++      ".accordion-item  →  src/components/ui/Accordion.jsx",
+       ".active-on-mobile  →  src/sections/xat/XatSection.jsx",
+       ".all  →  src/sections/mur/MurSection.jsx",
+       ".app-brand__mark  →  src/app/App.jsx",
+@@ -79,7 +79,7 @@
+       ".sdp-design-system  →  src/sections/disseny/DesignSection.jsx",
+       ".sdp-error-pre  →  src/app/App.jsx",
+       ".sdp-filtre--mapa  →  src/sections/mur/MurSection.jsx",
+-      ".sdp-link-inherit  →  src/components/universal/UniversalElements.jsx",
++      ".sdp-link-inherit  →  src/components/ui/UniversalCard.jsx",
+       ".sdp-manual-disseny  →  src/sections/disseny/DesignSection.jsx",
+       ".sdp-onboarding-error  →  src/sections/onboarding/OnboardingSection.jsx",
+       ".sdp-prose  →  src/sections/notes/NotesEditor.jsx",
+@@ -102,8 +102,7 @@
+       ".section-actions  →  src/sections/multimedia/MultimediaSection.jsx",
+       ".section-search  →  src/sections/connectar/ConnectarSection.jsx",
+       ".sidebar-meta-item  →  src/sections/notes/NotesSidebar.jsx",
+-      ".sp-card--avis  →  src/components/universal/UniversalElements.jsx",
+-      ".sp-card-time  →  src/components/universal/UniversalEditorShell.jsx",
++      ".sp-card--avis  →  src/components/ui/UniversalCard.jsx",
+       ".sw-pedra-50  →  src/sections/disseny/DesignSectionContent.jsx",
+       ".system  →  src/sections/mur/MurSection.jsx",
+       ".tag-input-row  →  src/sections/connectar/ConnectarSection.jsx",
+@@ -116,7 +115,8 @@
+       ".trans-list  →  src/sections/translations/TranslationsSection.jsx",
+       ".universal-content  →  src/sections/disseny/DesignSection.jsx",
+       ".xat-header-btn--active  →  src/sections/xat/XatSection.jsx",
+-      ".xat-settings-wrapper  →  src/sections/xat/XatSection.jsx"
++      ".xat-settings-wrapper  →  src/sections/xat/XatSection.jsx",
++      ".sp-card-time  →  src/components/ui/controls.jsx"
+     ]
+   },
+   "LLEI_02_TOKEN_FANTASMA": {
+@@ -146,12 +146,14 @@
+     "max": 21,
+     "coneguts": [
+       "src/components/universal/UniversalEditorShell.jsx",
+-      "src/components/universal/UniversalElements.jsx",
++      "src/components/ui/Accordion.jsx",
+       "src/sections/detail/detailSectionMeta.jsx",
+       "src/sections/dispositius/DevicesSection.jsx",
+       "src/sections/profile/DetallAjust.jsx",
+       "src/sections/translations/TranslationsSection.jsx",
+-      "src/sections/xat/XatSection.jsx"
++      "src/sections/xat/XatSection.jsx",
++      "src/components/ui/Dropdown.jsx",
++      "src/components/ui/icones.jsx"
+     ]
+   },
+   "LLEI_03_COLOR_EN_LINIA": {
+diff --git a/.agents/deute/.vocabulari-deute.json b/.agents/deute/.vocabulari-deute.json
+index 3b4f312..26e1563 100644
+--- a/.agents/deute/.vocabulari-deute.json
++++ b/.agents/deute/.vocabulari-deute.json
+@@ -35,9 +35,9 @@
+       "classe-forastera|src/components/universal/UniversalEditorShell.jsx|logo-accions",
+       "classe-forastera|src/components/universal/UniversalEditorShell.jsx|published",
+       "classe-forastera|src/components/universal/UniversalEditorShell.jsx|sp-card-time",
+-      "classe-forastera|src/components/universal/UniversalElements.jsx|accordion-item",
+-      "classe-forastera|src/components/universal/UniversalElements.jsx|sdp-link-inherit",
+-      "classe-forastera|src/components/universal/UniversalElements.jsx|sp-card-time",
++      "classe-forastera|src/components/ui/Accordion.jsx|accordion-item",
++      "classe-forastera|src/components/ui/UniversalCard.jsx|sdp-link-inherit",
++      "classe-forastera|src/components/ui/controls.jsx|sp-card-time",
+       "classe-forastera|src/components/universal/UniversalPage.jsx|page-title-logo-wrapper",
+       "classe-forastera|src/components/universal/UniversalPage.jsx|sdp-link-inherit",
+       "classe-forastera|src/sections/connectar/ConnectarSection.jsx|badge-remove",
+diff --git a/src/components/ui/Accordion.jsx b/src/components/ui/Accordion.jsx
+new file mode 100644
+index 0000000..e7bde8b
+--- /dev/null
++++ b/src/components/ui/Accordion.jsx
+@@ -0,0 +1,33 @@
++/**
++ * Accordion.jsx
++ * Trasllat literal des d'UniversalElements.jsx (260910). Cap canvi de comportament.
++ */
++import { useState } from 'react';
++
++export function Accordion({ children, className = '' }) {
++  return <div className={`accordion ${className}`}>{children}</div>;
++}
++
++export function AccordionItem({ title, children, defaultOpen = false, className = '' }) {
++  const [isOpen, setIsOpen] = useState(defaultOpen);
++  return (
++    <div className={`accordion-item ${className}`} style={{ borderBottom: '1px solid var(--sdp-vora)' }}>
++      <button 
++        type="button"
++        className={`accordion-header ue-accordion-header-btn ${isOpen ? 'active' : ''}`} 
++        onClick={() => setIsOpen(!isOpen)}
++        aria-expanded={isOpen}
++      >
++        <span>{title}</span>
++        <svg fill="none" height="20" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 20 20" width="20" style={{ transform: isOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}>
++          <polyline points="6 9 12 15 18 9"></polyline>
++        </svg>
++      </button>
++      {isOpen && (
++        <div className="ue-accordion-body-pd">
++          {children}
++        </div>
++      )}
++    </div>
++  );
++}
+diff --git a/src/components/ui/Dropdown.jsx b/src/components/ui/Dropdown.jsx
+new file mode 100644
+index 0000000..f356920
+--- /dev/null
++++ b/src/components/ui/Dropdown.jsx
+@@ -0,0 +1,60 @@
++/**
++ * Dropdown.jsx
++ * Trasllat literal des d'UniversalElements.jsx (260910). Cap canvi de comportament.
++ */
++import { useState } from 'react';
++
++export function Dropdown({ trigger, children, className = '', right = false, minWidth = '200px' }) {
++  const [isOpen, setIsOpen] = useState(false);
++  
++  const handleKeyDown = (e) => {
++    if (e.key === 'Enter' || e.key === ' ') {
++      e.preventDefault();
++      setIsOpen(!isOpen);
++    } else if (e.key === 'Escape' && isOpen) {
++      setIsOpen(false);
++    }
++  };
++  
++  return (
++    <div className={`sp-dropdown-wrapper ${className}`}>
++      <div 
++        className="sp-dropdown-trigger"
++        role="button"
++        tabIndex={0}
++        aria-haspopup="true"
++        aria-expanded={isOpen}
++        onClick={() => setIsOpen(!isOpen)} 
++        onKeyDown={handleKeyDown}
++        onBlur={(e) => {
++          if (!e.currentTarget.contains(e.relatedTarget)) {
++            setTimeout(() => setIsOpen(false), 200);
++          }
++        }}
++      >
++        {trigger}
++      </div>
++      {isOpen && (
++        <div 
++          className={`xat-header-dropdown ${right ? 'xat-header-dropdown--right' : 'xat-header-dropdown--left'}`} 
++          style={{ minWidth }} 
++        >
++          {children}
++        </div>
++      )}
++    </div>
++  );
++}
++
++export function DropdownItem({ children, onClick, className = '', icon }) {
++  return (
++    <button 
++      type="button" 
++      className={`xat-dropdown-item ue-flex-center-8 ue-w-full ${className}`} 
++      onClick={onClick} 
++    >
++      {icon && <span className="ue-flex-center">{icon}</span>}
++      {children}
++    </button>
++  );
++}
+diff --git a/src/components/ui/UniversalCard.jsx b/src/components/ui/UniversalCard.jsx
+new file mode 100644
+index 0000000..01eb159
+--- /dev/null
++++ b/src/components/ui/UniversalCard.jsx
+@@ -0,0 +1,334 @@
++/**
++ * UniversalCard.jsx — la targeta mestra. L'única peça de ui/ que toca el router.
++ *
++ * Mateix DOM i mateixes classes que a UniversalElements.jsx. Correccions 260910:
++ *
++ *  1 · TRADUIR. `showTranslate`/`onTranslate` es calculaven i el peu no els
++ *      rebia: nou crides demanaven el botó i no eixia mai, i si era l'única
++ *      acció quedava un `.sp-card-actions` buit. Ara es pinta, el primer.
++ *  2 · NOMS ACCESSIBLES. «Connectar amb …» anava en `aria-label`, que
++ *      ActionControl no llig: es perdia. Ara va per `label`. Comentar,
++ *      Compartir i Traduir porten el títol: deu botons iguals en una llista
++ *      no es distingixen amb un lector de pantalla.
++ *  3 · CONTENIDORS BUITS. Un avatar insegur sense autor ni lloc deixava un
++ *      capçal amb un <span> buit; `onDateTime` sense data deixava un
++ *      `.sp-card-meta` buit. Ara la visibilitat es calcula sobre el que es pinta.
++ *  4 · COMPARTIR. clipboard sense await avisava «copiat» encara que fallara;
++ *      sense clipboard (http) petava; alert() bloquejava; tancar el menú
++ *      natiu es registrava com a error.
++ *  5 · DATA. toISOString() passava a UTC i restava un dia a les dates locals.
++ *  6 · `headingLevel` es pintava com a etiqueta sense filtre: ara h2–h6.
++ *  7 · `labels: null` (columna buida de Supabase) tombava la targeta.
++ */
++import { useNavigate, Link } from '../../app/contexts/RouterContext';
++import { isSafeAsset, isSafeUrl, isValidDate } from '../universal/UniversalUtils';
++import { showToast } from '../universal/AvisadorEfimer';
++import { ActionControl, IconButton, DateTimeControl } from './controls.jsx';
++import { PinIcon, TranslateIcon, CommentIcon, ShareIcon } from './icones.jsx';
++
++const TITOLS = new Set(['h2', 'h3', 'h4', 'h5', 'h6']);
++const dosXifres = (n) => String(n).padStart(2, '0');
++
++/** Dia que filtra el Mur («AAAA-MM-DD»), sempre amb el calendari local. */
++function diaDeLaTargeta(dateTime, date) {
++  if (dateTime) return String(dateTime).split('T')[0];
++  if (!date) return null;
++  const text = String(date);
++  if (/^\d{4}-\d{2}-\d{2}/.test(text)) return text.slice(0, 10);
++  const parts = text.split('/');
++  if (parts.length === 3) {
++    let [dd, mm, aa] = parts;
++    if (aa.length === 2) aa = `20${aa}`;
++    return isValidDate(dd, mm, aa) ? `${aa}-${dosXifres(mm)}-${dosXifres(dd)}` : null;
++  }
++  const d = new Date(text);
++  if (Number.isNaN(d.getTime())) return null;
++  return `${d.getFullYear()}-${dosXifres(d.getMonth() + 1)}-${dosXifres(d.getDate())}`;
++}
++
++/** URL absoluta del detall; si no n'hi ha, la de la pàgina. */
++function urlPerCompartir(href) {
++  if (!href) return window.location.href;
++  try { return new URL(href, window.location.origin).href; } catch { return window.location.href; }
++}
++
++async function compartix(titol, url) {
++  if (navigator.share) {
++    try {
++      await navigator.share({ title: titol || document.title, url });
++      return;
++    } catch (error) {
++      if (error?.name === 'AbortError') return; // ha tancat el menú: no és cap error
++      // Qualsevol altra fallada: provem el porta-retalls.
++    }
++  }
++  try {
++    await navigator.clipboard.writeText(url);
++    showToast('Enllaç copiat al porta-retalls.');
++  } catch {
++    showToast(`No s'ha pogut copiar. Enllaç: ${url}`, 6000);
++  }
++}
++
++function CardHeader({ autor, autorHref, pin, dataHora }) {
++  return (
++    <header className="sp-card-header">
++      {autor && (autorHref ? (
++        <Link className="sp-card-author-link" to={autorHref}>{autor}</Link>
++      ) : (
++        <span className="sp-card-author-block">{autor}</span>
++      ))}
++      {(pin || dataHora) && (
++        <div className="sp-card-meta">
++          {pin}
++          {dataHora}
++        </div>
++      )}
++    </header>
++  );
++}
++
++function CalendarBadge({ badge }) {
++  const etiqueta = badge.label || [badge.dia, badge.mes, badge.any].filter(Boolean).join(' ');
++  const contingut = (
++    <>
++      <span className="sp-card-calendar-badge__dia">{badge.dia}</span>
++      <span className="sp-card-calendar-badge__mes">{badge.mes}</span>
++      {badge.any && <span className="sp-card-calendar-badge__any">{badge.any}</span>}
++    </>
++  );
++  if (!badge.onClick) {
++    return (
++      <time className="sp-card-calendar-badge" dateTime={badge.dateTime} aria-label={etiqueta}>
++        {contingut}
++      </time>
++    );
++  }
++  return (
++    <button
++      type="button"
++      className="sp-card-calendar-badge"
++      aria-label={etiqueta}
++      onClick={(e) => {
++        e.preventDefault();
++        e.stopPropagation();
++        badge.onClick();
++      }}
++    >
++      <time dateTime={badge.dateTime} className="ue-flex-col-center">{contingut}</time>
++    </button>
++  );
++}
++
++function Etiqueta({ label }) {
++  const text = typeof label === 'string' ? label : label.text;
++  const classe = typeof label === 'string' ? 'sdp-badge-tag' : label.className || 'sdp-badge-tag';
++  const href = typeof label === 'string' ? null : label.href;
++  const segur = href && isSafeUrl(href) ? href : null;
++  return (
++    <li className={`sp-card-label ${classe}`}>
++      {!segur ? text : segur.startsWith('http') ? (
++        <a href={segur} target="_blank" rel="noopener noreferrer" className="sdp-link-inherit">{text}</a>
++      ) : (
++        <Link to={segur} className="sdp-link-inherit">{text}</Link>
++      )}
++    </li>
++  );
++}
++
++function CardBody({ imatge, imageAlt, calendarBadge, price, title, TitleTag, subtitle, body, etiquetes, copyright }) {
++  return (
++    <>
++      {imatge && (
++        <div className="sp-card-media-container">
++          <img className="sp-card-media" src={imatge} alt={imageAlt} loading="lazy" decoding="async" />
++        </div>
++      )}
++      <div
++        className={[
++          'sp-card-body',
++          price && 'has-price',
++          calendarBadge && 'has-calendar-badge',
++          (price || calendarBadge) && 'has-aside'
++        ].filter(Boolean).join(' ')}
++      >
++        {calendarBadge && <CalendarBadge badge={calendarBadge} />}
++        {price && <p className="sp-card-price">{price}</p>}
++        {title && <TitleTag className="sp-card-title">{title}</TitleTag>}
++        {subtitle && <h4 className="sp-card-subtitle">{subtitle}</h4>}
++        {body && (typeof body === 'string'
++          ? <p className="sp-card-text">{body}</p>
++          : <div className="sp-card-text">{body}</div>)}
++        {etiquetes.length > 0 && (
++          <ul className="sp-card-labels" aria-label="Categories">
++            {etiquetes.map((label, index) => (
++              <Etiqueta key={`${typeof label === 'string' ? label : label.text}-${index}`} label={label} />
++            ))}
++          </ul>
++        )}
++        {copyright && <p className="sp-card-copyright">{copyright}</p>}
++      </div>
++    </>
++  );
++}
++
++function CardFooter({ accions, connectar }) {
++  return (
++    <footer className="sp-card-footer">
++      {accions.length > 0 && <div className="sp-card-actions">{accions}</div>}
++      {connectar}
++    </footer>
++  );
++}
++
++export function UniversalCard({
++  title,
++  headingLevel = 'h3',
++  subtitle,
++  body,
++  location,
++  time,
++  date,
++  dateTime,
++  author,
++  authorHref,
++  avatarUrl,
++  avatarAlt = '',
++  imageUrl,
++  imageAlt = '',
++  price,
++  labels = [],
++  mainHref,
++  onMainClick,
++  copyright,
++  calendarBadge = null,
++  isAvis = false,
++  hasFooter,
++  showPin,
++  showDateTime,
++  showTranslate,
++  showComment,
++  showShare,
++  showConnect,
++  onPin,
++  onDateTime,
++  onTranslate,
++  onComment,
++  onShare,
++  onConnect,
++  connectLabel = 'Connectar'
++}) {
++  const navigate = useNavigate();
++
++  const safeMainHref = mainHref && isSafeUrl(mainHref) ? mainHref : null;
++  const safeAuthorHref = authorHref && isSafeUrl(authorHref) ? authorHref : null;
++  const safeImageUrl = imageUrl && isSafeAsset(imageUrl) ? imageUrl : null;
++  const safeAvatarUrl = avatarUrl && isSafeAsset(avatarUrl) ? avatarUrl : null;
++  const TitleTag = TITOLS.has(headingLevel) ? headingLevel : 'h3';
++  const etiquetes = Array.isArray(labels) ? labels.filter(Boolean) : [];
++  const ambTitol = (verb) => (title ? `${verb} ${title}` : verb);
++
++  const handleConnect = onConnect || (() => navigate('/connectar?item_id=' + encodeURIComponent(title || 'card')));
++  const handleTranslate = onTranslate || (() => navigate('/traduccions'));
++  const handleComment = onComment || (() => navigate('/xat'));
++  const handleShare = onShare || (() => compartix(title, urlPerCompartir(safeMainHref)));
++  const handleDateTime = onDateTime || ((e) => {
++    e.preventDefault();
++    e.stopPropagation();
++    const dia = diaDeLaTargeta(dateTime, date);
++    navigate(dia ? `/mur?date=${encodeURIComponent(dia)}` : '/mur');
++  });
++
++  /* Visibilitat calculada sobre el que de veritat es pinta (correcció 3). */
++  const perDefecte = hasFooter === true;
++  const teAutor = Boolean(author || safeAvatarUrl || location);
++  const pinVisible = showPin ?? Boolean(onPin);
++  const dataVisible = Boolean(time || date) && (showDateTime ?? true);
++  const traduirVisible = showTranslate ?? (perDefecte || Boolean(onTranslate));
++  const comentarVisible = showComment ?? (perDefecte || Boolean(onComment));
++  const compartirVisible = showShare ?? (perDefecte || Boolean(onShare));
++  const connectarVisible = showConnect ?? (perDefecte || Boolean(onConnect));
++
++  const autor = teAutor && (
++    <span className="sp-card-author">
++      {safeAvatarUrl && (
++        <img alt={avatarAlt} className="sp-card-avatar" src={safeAvatarUrl} width="48" height="48" />
++      )}
++      {(author || location) && (
++        <span className="sp-card-author-info">
++          {author && <span className="sp-card-author-name">{author}</span>}
++          {location && <span className="sp-card-author-location">{location}</span>}
++        </span>
++      )}
++    </span>
++  );
++
++  const pin = pinVisible && (
++    <ActionControl className="btn-icon-orange" label={ambTitol('Ancorar')} onClick={onPin}>
++      <PinIcon className="icon" />
++    </ActionControl>
++  );
++
++  const dataHora = dataVisible && (
++    <DateTimeControl time={time} date={date} dateTime={dateTime} onClick={handleDateTime} />
++  );
++
++  const accions = [
++    traduirVisible && (
++      <IconButton key="traduir" label={ambTitol('Traduir')} onClick={handleTranslate}>
++        <TranslateIcon className="icon" />
++      </IconButton>
++    ),
++    comentarVisible && (
++      <IconButton key="comentar" label={ambTitol('Comentar')} onClick={handleComment}>
++        <CommentIcon className="icon" />
++      </IconButton>
++    ),
++    compartirVisible && (
++      <IconButton key="compartir" label={ambTitol('Compartir')} onClick={handleShare}>
++        <ShareIcon className="icon" />
++      </IconButton>
++    )
++  ].filter(Boolean);
++
++  const connectar = connectarVisible && (
++    <ActionControl
++      className="btn-connectar sp-card-connect"
++      label={title ? `${connectLabel} amb ${title}` : connectLabel}
++      onClick={handleConnect}
++    >
++      {connectLabel}
++    </ActionControl>
++  );
++
++  const peuVisible = hasFooter !== false && (accions.length > 0 || Boolean(connectar));
++
++  return (
++    <article className={['sp-card', isAvis && 'sp-card--avis'].filter(Boolean).join(' ')}>
++      {(autor || pin || dataHora) && (
++        <CardHeader autor={autor} autorHref={safeAuthorHref} pin={pin} dataHora={dataHora} />
++      )}
++
++      {safeMainHref ? (
++        <Link className="sp-card-link-overlay" to={safeMainHref} onClick={onMainClick} aria-label={title || 'Obrir detall'} />
++      ) : onMainClick ? (
++        <button type="button" className="sp-card-link-overlay" onClick={onMainClick} aria-label={title || 'Obrir detall'} />
++      ) : null}
++
++      <CardBody
++        imatge={safeImageUrl}
++        imageAlt={imageAlt}
++        calendarBadge={calendarBadge}
++        price={price}
++        title={title}
++        TitleTag={TitleTag}
++        subtitle={subtitle}
++        body={body}
++        etiquetes={etiquetes}
++        copyright={copyright}
++      />
++
++      {peuVisible && <CardFooter accions={accions} connectar={connectar} />}
++    </article>
++  );
++}
+diff --git a/src/components/ui/UniversalCard.test.jsx b/src/components/ui/UniversalCard.test.jsx
+new file mode 100644
+index 0000000..8a5f2c7
+--- /dev/null
++++ b/src/components/ui/UniversalCard.test.jsx
+@@ -0,0 +1,70 @@
++/**
++ * Proves de UniversalCard amb `render` de Preact directe: no passen per
++ * @testing-library/react, que pinta amb el react-dom real i fa petar les
++ * suites de src/ (vegeu el dictamen 260910).
++ */
++import { render } from 'preact';
++import { act } from 'preact/test-utils';
++import { afterEach, beforeEach, expect, test, vi } from 'vitest';
++
++const mocks = vi.hoisted(() => ({ navigate: vi.fn(), toast: vi.fn() }));
++
++vi.mock('../../app/contexts/RouterContext', async () => {
++  const { h } = await import('preact');
++  return {
++    useNavigate: () => mocks.navigate,
++    Link: ({ to, children, ...resta }) => h('a', { href: to, ...resta }, children)
++  };
++});
++vi.mock('../universal/AvisadorEfimer', () => ({ showToast: mocks.toast }));
++
++import { UniversalCard } from './UniversalCard.jsx';
++
++let arrel;
++beforeEach(() => {
++  arrel = document.createElement('div'); // arrel separada: no penja del document
++  vi.clearAllMocks();
++});
++afterEach(() => {
++  render(null, arrel);
++});
++const pinta = (props) => act(() => { render(<UniversalCard {...props} />, arrel); });
++const troba = (selector) => arrel.querySelector(selector);
++
++test('Connectar porta el títol en el nom accessible', () => {
++  pinta({ title: 'Fira del Porrat', hasFooter: true });
++  expect(troba('.sp-card-connect').getAttribute('aria-label')).toBe('Connectar amb Fira del Porrat');
++  expect(troba('.sp-card-connect').textContent).toBe('Connectar');
++});
++
++test('showTranslate pinta el botó que abans es perdia, i cada acció porta el títol', () => {
++  pinta({ title: 'Fira', hasFooter: true, showTranslate: true });
++  const noms = [...arrel.querySelectorAll('.sp-card-action')].map((b) => b.getAttribute('aria-label'));
++  expect(noms).toEqual(['Traduir Fira', 'Comentar Fira', 'Compartir Fira']);
++});
++
++test('cap contenidor buit: avatar insegur i onDateTime sense data', () => {
++  pinta({ title: 'X', avatarUrl: 'javascript:alert(1)', onDateTime: () => {} });
++  expect(troba('.sp-card-header')).toBeNull();
++  expect(troba('.sp-card-meta')).toBeNull();
++  expect(troba('.sp-card-footer')).toBeNull();
++});
++
++test('headingLevel fora de llista cau a h3, i labels nul no tomba la targeta', () => {
++  pinta({ title: 'X', headingLevel: 'script', labels: null });
++  expect(troba('h3.sp-card-title').textContent).toBe('X');
++  expect(troba('script')).toBeNull();
++  expect(troba('.sp-card-labels')).toBeNull();
++});
++
++test('una data «dd/mm/aa» filtra el Mur pel mateix dia', () => {
++  pinta({ title: 'X', date: '10/09/26' });
++  act(() => { troba('.sp-card-time').click(); });
++  expect(mocks.navigate).toHaveBeenCalledWith('/mur?date=2026-09-10');
++});
++
++test('compartir sense porta-retalls avisa amb l\'enllaç en lloc de petar', async () => {
++  pinta({ title: 'X', hasFooter: true });
++  await act(async () => { troba('[aria-label="Compartir X"]').click(); });
++  expect(mocks.toast).toHaveBeenCalledWith(expect.stringContaining("No s'ha pogut copiar"), 6000);
++});
+diff --git a/src/components/ui/UniversalIndicatorCard.jsx b/src/components/ui/UniversalIndicatorCard.jsx
+new file mode 100644
+index 0000000..69d058b
+--- /dev/null
++++ b/src/components/ui/UniversalIndicatorCard.jsx
+@@ -0,0 +1,31 @@
++/**
++ * UniversalIndicatorCard.jsx
++ * CORRECCIÓ 260910: <h3> i <p> dins de <button> no són contingut permés
++ * (un botó només admet contingut de frase). Ara són <span> amb les mateixes
++ * classes. Sense canvi visual: .sdp-indicator-card és flex en columna (els
++ * fills es fan bloc) i títol i subtítol ja fixen font, color i margin: 0.
++ */
++export function UniversalIndicatorCard({
++  icon,
++  title,
++  subtitle,
++  active,
++  onClick,
++  iconColor,
++  className = ''
++}) {
++  return (
++    <button 
++      type="button"
++      className={`sdp-indicator-card ${active ? 'active' : ''} ${className}`}
++      onClick={onClick}
++      aria-pressed={active}
++    >
++      <span className="sdp-indicator-card-icon" style={iconColor ? { '--custom-icon-color': iconColor } : {}}>
++        {icon}
++      </span>
++      <span className="sdp-indicator-card-title">{title}</span>
++      {subtitle && <span className="sdp-indicator-card-subtitle">{subtitle}</span>}
++    </button>
++  );
++}
+diff --git a/src/components/ui/controls.jsx b/src/components/ui/controls.jsx
+new file mode 100644
+index 0000000..f0ff73b
+--- /dev/null
++++ b/src/components/ui/controls.jsx
+@@ -0,0 +1,117 @@
++/**
++ * controls.jsx — botons i controls sense router.
++ * Trasllat literal des d'UniversalElements.jsx (260910). Cap canvi de comportament.
++ */
++export function ActionControl({
++  label,
++  title = label,
++  className,
++  onClick,
++  disabled = false,
++  children
++}) {
++  const presentationOnly = !onClick;
++
++  return (
++    <button
++      type="button"
++      className={className}
++      aria-label={label}
++      title={title}
++      onClick={onClick}
++      disabled={disabled || presentationOnly}
++    >
++      {children}
++    </button>
++  );
++}
++
++export function DateTimeControl({ time, date, dateTime, label, onClick }) {
++  if (!time && !date) return null;
++
++  const accessibleLabel = label || ['Data i hora', time, date].filter(Boolean).join(': ');
++  const content = (
++    <>
++      {time && <span>{time}</span>}
++      {date && <span>{date}</span>}
++    </>
++  );
++
++  if (onClick) {
++    return (
++      <button
++        type="button"
++        className="btn-date-time sp-card-time"
++        aria-label={accessibleLabel}
++        title={accessibleLabel}
++        onClick={onClick}
++      >
++        {content}
++      </button>
++    );
++  }
++
++  return (
++    <time
++      className="btn-date-time sp-card-time"
++      dateTime={dateTime}
++      aria-label={accessibleLabel}
++    >
++      {content}
++    </time>
++  );
++}
++
++export function IconButton({
++  label,
++  children,
++  onClick,
++  className = '',
++  disabled = false,
++  presentation = false
++}) {
++  if (!onClick && !presentation && !disabled) return null;
++
++  return (
++    <ActionControl
++      className={['sp-card-action', className].filter(Boolean).join(' ')}
++      label={label}
++      onClick={onClick}
++      disabled={disabled}
++    >
++      {children}
++    </ActionControl>
++  );
++}
++
++export function UniversalButton({
++  children,
++  onClick,
++  variant = 'primary',
++  size = '',
++  type = 'button',
++  className = '',
++  disabled = false,
++  icon = null,
++  ariaLabel
++}) {
++  const sizeClass = size ? `btn-${size}` : '';
++  const variantClass = variant ? `btn-${variant}` : '';
++
++  return (
++    <button
++      className={['btn', variantClass, sizeClass, className].filter(Boolean).join(' ')}
++      type={type}
++      onClick={onClick}
++      disabled={disabled}
++      aria-label={ariaLabel || (typeof children === 'string' ? children : undefined)}
++    >
++      {icon && (
++        <span className="icon-btn" aria-hidden="true">
++          {icon}
++        </span>
++      )}
++      {children}
++    </button>
++  );
++}
+diff --git a/src/components/ui/icones.jsx b/src/components/ui/icones.jsx
+new file mode 100644
+index 0000000..e6810ce
+--- /dev/null
++++ b/src/components/ui/icones.jsx
+@@ -0,0 +1,159 @@
++/**
++ * icones.jsx — SVG pròpies. GlobeIcon, SearchIcon i ThemeIcon no hi són: zero consumidors.
++ * Trasllat literal des d'UniversalElements.jsx (260910). Cap canvi de comportament.
++ */
++export function IaiaIcon({ className }) {
++  return (
++    <svg
++      className={className}
++      viewBox="414 456 241 378"
++      width="24"
++      height="24"
++      aria-hidden="true"
++      focusable="false"
++      fill="currentColor"
++      style={{ willChange: 'transform' }}
++    >
++      <path
++        style={{ fillRule: "nonzero", clipRule: "evenodd", strokeLinejoin: "round", strokeMiterlimit: 2 }}
++        d="M654.322021484375,634.7418212890625L639.4090576171875,575.3836669921875C639.4090576171875,575.3836669921875,638.4949951171875,570.5927124023438,633.9271240234375,567.901123046875C629.3841552734375,565.2110595703125,583.4334716796875,537.8279418945312,583.4334716796875,537.8279418945312C581.4577026367188,536.6675415039062,579.3094482421875,535.9998779296875,577.1859741210938,535.7286376953125C576.7413940429688,535.6306762695312,576.297607421875,535.5552978515625,575.85302734375,535.5552978515625L568.7909545898438,535.5552978515625C568.8406982421875,535.4573974609375,568.8896484375,535.3338012695312,568.9884033203125,535.210205078125C574.642822265625,528.740478515625,578.0751342773438,520.2723388671875,578.0751342773438,510.9874267578125C578.0751342773438,498.5180969238281,571.8773803710938,487.4819641113281,562.3958129882812,480.8147888183594C561.679931640625,480.3204650878906,561.26025390625,479.2835998535156,561.3341064453125,478.4200744628906C561.407958984375,477.72833251953125,561.4576416015625,476.9883728027344,561.4576416015625,476.2710266113281C561.4576416015625,465.06158447265625,552.3709106445312,455.99969482421875,541.1614990234375,455.99969482421875C529.9761352539062,455.99969482421875,520.889404296875,465.08721923828125,520.889404296875,476.2710266113281C520.889404296875,476.9883728027344,520.9391479492188,477.72833251953125,521.0130004882812,478.4200744628906C521.1116943359375,479.2835998535156,520.6671142578125,480.3204650878906,519.9512329101562,480.8147888183594C510.46966552734375,487.4819641113281,504.27191162109375,498.5180969238281,504.27191162109375,510.9874267578125C504.27191162109375,520.2723388671875,507.7042236328125,528.740478515625,513.358642578125,535.210205078125C513.4573974609375,535.3338012695312,513.5071411132812,535.4573974609375,513.5809326171875,535.5552978515625L503.82733154296875,535.5552978515625C502.6427917480469,535.5552978515625,501.55621337890625,535.9260864257812,500.59320068359375,536.4444580078125C499.5804748535156,536.8152465820312,498.5684814453125,537.2598266601562,497.6303405761719,537.8279418945312L495.4820556640625,539.1361083984375L462.4942626953125,558.7412719726562C462.4942626953125,558.7412719726562,448.81475830078125,566.74072265625,446.02520751953125,568.5431518554688C442.79034423828125,570.6424560546875,441.926025390625,574.2970581054688,441.926025390625,574.2970581054688L429.8025817871094,622.4698486328125C421.99981689453125,626.0250244140625,418.4198303222656,631.9266357421875,418.4198303222656,631.9266357421875C413.95068359375,638.8651123046875,413.9996643066406,647.1372680664062,413.9996643066406,647.1372680664062L413.9996643066406,824.7174072265625C413.9996643066406,824.7174072265625,414.1978454589844,831.8050537109375,421.75341796875,831.8050537109375C429.2841491699219,831.8050537109375,429.852294921875,825.2855834960938,429.852294921875,825.2855834960938C429.852294921875,825.2855834960938,429.9751281738281,651.4821166992188,430.1484375,649.4083862304688L430.1484375,649.2109375C432.24700927734375,651.6795043945312,435.0863037109375,653.5316772460938,438.44476318359375,654.37109375C439.7777404785156,654.692138671875,441.1114807128906,654.8654174804688,442.4195861816406,654.8654174804688C449.40777587890625,654.8654174804688,455.778076171875,650.2734375,457.8517761230469,643.3349609375C458.46966552734375,645.0379638671875,458.8893737792969,647.8034057617188,459.65496826171875,652.00048828125C460.8153991699219,658.2969970703125,474.8648681640625,660.3721923828125,474.51898193359375,649.358642578125C474.14825439453125,638.322509765625,470.222412109375,633.8284912109375,465.23480224609375,627.1854248046875C464.5928039550781,626.2977905273438,463.7533874511719,625.506591796875,462.81524658203125,624.7666015625C462.74139404296875,624.7169189453125,462.6916809082031,624.6671752929688,462.6419372558594,624.6189575195312L470.4944152832031,593.3838500976562L471.0128479003906,591.334228515625L472.0745544433594,590.6922607421875L491.30902099609375,579.259765625L486.8398742675781,606.7423095703125L480.370849609375,646.4952392578125L465.062255859375,740.4703369140625C465.062255859375,744.0510864257812,467.9512634277344,746.9401245117188,471.5312805175781,746.9401245117188L494.7164611816406,746.9401245117188L494.7164611816406,817.7548828125C494.7164611816406,820.2490234375,495.3336181640625,822.61962890625,496.32147216796875,824.7174072265625C498.9384765625,830.1503295898438,504.4452209472656,833.95263671875,510.8893737792969,833.95263671875C518.1978149414062,833.95263671875,524.2968139648438,829.063720703125,526.2966918945312,822.4221801757812C526.7412719726562,820.9407958984375,527.062255859375,819.385498046875,527.062255859375,817.7548828125L527.062255859375,746.9401245117188L553.3587646484375,746.9401245117188L553.3587646484375,817.7548828125C553.3587646484375,817.9522705078125,553.4085083007812,818.1256103515625,553.4085083007812,818.2989501953125C553.7046508789062,826.9900512695312,560.790771484375,833.95263671875,569.5316772460938,833.95263671875C574.9638671875,833.95263671875,579.7788696289062,831.2369384765625,582.6920166015625,827.1136474609375C584.5690307617188,824.4461669921875,585.70458984375,821.26171875,585.70458984375,817.7548828125L585.70458984375,746.9401245117188L609.0133666992188,746.9401245117188C612.5941162109375,746.9401245117188,615.4823608398438,744.0510864257812,615.4823608398438,740.4703369140625L606.1002197265625,684.298095703125L588.4210205078125,578.4444580078125L610.0502319335938,591.334228515625L622.989013671875,642.6432495117188C624.0996704101562,647.1116333007812,627.0135498046875,650.6682739257812,630.766845703125,652.791748046875C633.13671875,654.1239624023438,635.8283081054688,654.8654174804688,638.6683349609375,654.8654174804688C639.9515991210938,654.8654174804688,641.2853393554688,654.692138671875,642.5941772460938,654.37109375C651.260498046875,652.1979370117188,656.5200805664062,643.4088134765625,654.322021484375,634.7418212890625"
++      />
++    </svg>
++  );
++}
++
++export function BackIcon({ className }) {
++  return (
++    <svg
++      className={className}
++      fill="none"
++      stroke="currentColor"
++      strokeWidth="2"
++      strokeLinecap="round"
++      strokeLinejoin="round"
++      viewBox="0 0 24 24"
++      aria-hidden="true"
++      focusable="false"
++    >
++      <path d="m12 19-7-7 7-7" />
++      <path d="M19 12H5" />
++    </svg>
++  );
++}
++
++export function ForwardIcon({ className }) {
++  return (
++    <svg
++      className={className}
++      fill="none"
++      stroke="currentColor"
++      strokeWidth="2"
++      strokeLinecap="round"
++      strokeLinejoin="round"
++      viewBox="0 0 24 24"
++      aria-hidden="true"
++      focusable="false"
++    >
++      <path d="m12 19 7-7-7-7" />
++      <path d="M5 12h14" />
++    </svg>
++  );
++}
++
++export function IndexIcon({ className }) {
++  return (
++    <svg
++      className={className}
++      fill="none"
++      stroke="currentColor"
++      strokeWidth="2"
++      viewBox="0 0 24 24"
++      aria-hidden="true"
++      focusable="false"
++    >
++      <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20" />
++    </svg>
++  );
++}
++
++export function TranslateIcon({ className }) {
++  return (
++    <svg
++      className={className}
++      fill="none"
++      stroke="currentColor"
++      strokeLinecap="round"
++      strokeLinejoin="round"
++      strokeWidth="2"
++      viewBox="0 0 24 24"
++      aria-hidden="true"
++      focusable="false"
++    >
++      <path d="m5 8 6 6" />
++      <path d="m4 14 6-6 2-3" />
++      <path d="M2 5h12" />
++      <path d="M7 2h1" />
++      <path d="m22 22-5-10-5 10" />
++      <path d="M14 18h6" />
++    </svg>
++  );
++}
++
++export function CommentIcon({ className }) {
++  return (
++    <svg
++      className={className}
++      fill="none"
++      stroke="currentColor"
++      strokeLinecap="round"
++      strokeLinejoin="round"
++      strokeWidth="2"
++      viewBox="0 0 24 24"
++      aria-hidden="true"
++      focusable="false"
++    >
++      <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
++    </svg>
++  );
++}
++
++export function ShareIcon({ className }) {
++  return (
++    <svg
++      className={className}
++      fill="none"
++      stroke="currentColor"
++      strokeLinecap="round"
++      strokeLinejoin="round"
++      strokeWidth="2"
++      viewBox="0 0 24 24"
++      aria-hidden="true"
++      focusable="false"
++    >
++      <circle cx="18" cy="5" r="3" />
++      <circle cx="6" cy="12" r="3" />
++      <circle cx="18" cy="19" r="3" />
++      <line x1="8.59" x2="15.42" y1="13.51" y2="17.49" />
++      <line x1="15.41" x2="8.59" y1="6.51" y2="10.49" />
++    </svg>
++  );
++}
++
++export function PinIcon({ className }) {
++  return (
++    <svg
++      className={className}
++      fill="none"
++      stroke="currentColor"
++      strokeLinecap="round"
++      strokeLinejoin="round"
++      strokeWidth="2"
++      viewBox="0 0 24 24"
++      aria-hidden="true"
++      focusable="false"
++    >
++      <path d="M16 11V7a4 4 0 0 0-8 0v4l-2 4h12l-2-4z" />
++      <path d="M12 15v7" />
++    </svg>
++  );
++}
+diff --git a/src/components/ui/index.js b/src/components/ui/index.js
+new file mode 100644
+index 0000000..4d4f149
+--- /dev/null
++++ b/src/components/ui/index.js
+@@ -0,0 +1,16 @@
++/**
++ * components/ui — façana pública de la UI universal.
++ *
++ *  · Exportacions amb nom i explícites: si un nom desapareix, el build peta
++ *    en lloc de callar.
++ *  · Cap fitxer de ui/ importa d'ací: els germans s'importen directament
++ *    ('./controls.jsx'). Així no hi ha cicles.
++ *  · Només UniversalCard.jsx toca el router.
++ */
++export { BackIcon, ForwardIcon, IndexIcon, TranslateIcon, CommentIcon, ShareIcon, PinIcon, IaiaIcon } from './icones.jsx';
++export { ActionControl, IconButton, UniversalButton, DateTimeControl } from './controls.jsx';
++export { UniversalCard } from './UniversalCard.jsx';
++export { UniversalIndicatorCard } from './UniversalIndicatorCard.jsx';
++export { Accordion, AccordionItem } from './Accordion.jsx';
++export { Dropdown, DropdownItem } from './Dropdown.jsx';
++export { UniversalSearch } from './UniversalSearch.jsx';
+diff --git a/src/components/universal/UniversalElements.jsx b/src/components/universal/UniversalElements.jsx
+index b516079..362f098 100644
+--- a/src/components/universal/UniversalElements.jsx
++++ b/src/components/universal/UniversalElements.jsx
+@@ -1,794 +1,12 @@
+-import { useNavigate, Link } from '../../app/contexts/RouterContext';
+-import { useState } from 'react';
+-import { useContent, ContentProvider } from './ContentProvider';
+-import { isSafeAsset, isSafeUrl, isValidDate } from './UniversalUtils';
+-
+-export { useContent, ContentProvider };
+-export function ActionControl({
+-  label,
+-  title = label,
+-  className,
+-  onClick,
+-  disabled = false,
+-  children
+-}) {
+-  const presentationOnly = !onClick;
+-
+-  return (
+-    <button
+-      type="button"
+-      className={className}
+-      aria-label={label}
+-      title={title}
+-      onClick={onClick}
+-      disabled={disabled || presentationOnly}
+-    >
+-      {children}
+-    </button>
+-  );
+-}
+-
+-export function DateTimeControl({ time, date, dateTime, label, onClick }) {
+-  if (!time && !date) return null;
+-
+-  const accessibleLabel = label || ['Data i hora', time, date].filter(Boolean).join(': ');
+-  const content = (
+-    <>
+-      {time && <span>{time}</span>}
+-      {date && <span>{date}</span>}
+-    </>
+-  );
+-
+-  if (onClick) {
+-    return (
+-      <button
+-        type="button"
+-        className="btn-date-time sp-card-time"
+-        aria-label={accessibleLabel}
+-        title={accessibleLabel}
+-        onClick={onClick}
+-      >
+-        {content}
+-      </button>
+-    );
+-  }
+-
+-  return (
+-    <time
+-      className="btn-date-time sp-card-time"
+-      dateTime={dateTime}
+-      aria-label={accessibleLabel}
+-    >
+-      {content}
+-    </time>
+-  );
+-}
+-
+-export function GlobeIcon({ className }) {
+-  return (
+-    <svg
+-      className={className}
+-      fill="none"
+-      stroke="currentColor"
+-      strokeLinecap="round"
+-      strokeLinejoin="round"
+-      strokeWidth="2"
+-      viewBox="0 0 24 24"
+-      aria-hidden="true"
+-      focusable="false"
+-    >
+-      <circle cx="12" cy="12" r="10" />
+-      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+-      <path d="M2 12h20" />
+-    </svg>
+-  );
+-}
+-
+-export function IaiaIcon({ className }) {
+-  return (
+-    <svg
+-      className={className}
+-      viewBox="414 456 241 378"
+-      width="24"
+-      height="24"
+-      aria-hidden="true"
+-      focusable="false"
+-      fill="currentColor"
+-      style={{ willChange: 'transform' }}
+-    >
+-      <path
+-        style={{ fillRule: "nonzero", clipRule: "evenodd", strokeLinejoin: "round", strokeMiterlimit: 2 }}
+-        d="M654.322021484375,634.7418212890625L639.4090576171875,575.3836669921875C639.4090576171875,575.3836669921875,638.4949951171875,570.5927124023438,633.9271240234375,567.901123046875C629.3841552734375,565.2110595703125,583.4334716796875,537.8279418945312,583.4334716796875,537.8279418945312C581.4577026367188,536.6675415039062,579.3094482421875,535.9998779296875,577.1859741210938,535.7286376953125C576.7413940429688,535.6306762695312,576.297607421875,535.5552978515625,575.85302734375,535.5552978515625L568.7909545898438,535.5552978515625C568.8406982421875,535.4573974609375,568.8896484375,535.3338012695312,568.9884033203125,535.210205078125C574.642822265625,528.740478515625,578.0751342773438,520.2723388671875,578.0751342773438,510.9874267578125C578.0751342773438,498.5180969238281,571.8773803710938,487.4819641113281,562.3958129882812,480.8147888183594C561.679931640625,480.3204650878906,561.26025390625,479.2835998535156,561.3341064453125,478.4200744628906C561.407958984375,477.72833251953125,561.4576416015625,476.9883728027344,561.4576416015625,476.2710266113281C561.4576416015625,465.06158447265625,552.3709106445312,455.99969482421875,541.1614990234375,455.99969482421875C529.9761352539062,455.99969482421875,520.889404296875,465.08721923828125,520.889404296875,476.2710266113281C520.889404296875,476.9883728027344,520.9391479492188,477.72833251953125,521.0130004882812,478.4200744628906C521.1116943359375,479.2835998535156,520.6671142578125,480.3204650878906,519.9512329101562,480.8147888183594C510.46966552734375,487.4819641113281,504.27191162109375,498.5180969238281,504.27191162109375,510.9874267578125C504.27191162109375,520.2723388671875,507.7042236328125,528.740478515625,513.358642578125,535.210205078125C513.4573974609375,535.3338012695312,513.5071411132812,535.4573974609375,513.5809326171875,535.5552978515625L503.82733154296875,535.5552978515625C502.6427917480469,535.5552978515625,501.55621337890625,535.9260864257812,500.59320068359375,536.4444580078125C499.5804748535156,536.8152465820312,498.5684814453125,537.2598266601562,497.6303405761719,537.8279418945312L495.4820556640625,539.1361083984375L462.4942626953125,558.7412719726562C462.4942626953125,558.7412719726562,448.81475830078125,566.74072265625,446.02520751953125,568.5431518554688C442.79034423828125,570.6424560546875,441.926025390625,574.2970581054688,441.926025390625,574.2970581054688L429.8025817871094,622.4698486328125C421.99981689453125,626.0250244140625,418.4198303222656,631.9266357421875,418.4198303222656,631.9266357421875C413.95068359375,638.8651123046875,413.9996643066406,647.1372680664062,413.9996643066406,647.1372680664062L413.9996643066406,824.7174072265625C413.9996643066406,824.7174072265625,414.1978454589844,831.8050537109375,421.75341796875,831.8050537109375C429.2841491699219,831.8050537109375,429.852294921875,825.2855834960938,429.852294921875,825.2855834960938C429.852294921875,825.2855834960938,429.9751281738281,651.4821166992188,430.1484375,649.4083862304688L430.1484375,649.2109375C432.24700927734375,651.6795043945312,435.0863037109375,653.5316772460938,438.44476318359375,654.37109375C439.7777404785156,654.692138671875,441.1114807128906,654.8654174804688,442.4195861816406,654.8654174804688C449.40777587890625,654.8654174804688,455.778076171875,650.2734375,457.8517761230469,643.3349609375C458.46966552734375,645.0379638671875,458.8893737792969,647.8034057617188,459.65496826171875,652.00048828125C460.8153991699219,658.2969970703125,474.8648681640625,660.3721923828125,474.51898193359375,649.358642578125C474.14825439453125,638.322509765625,470.222412109375,633.8284912109375,465.23480224609375,627.1854248046875C464.5928039550781,626.2977905273438,463.7533874511719,625.506591796875,462.81524658203125,624.7666015625C462.74139404296875,624.7169189453125,462.6916809082031,624.6671752929688,462.6419372558594,624.6189575195312L470.4944152832031,593.3838500976562L471.0128479003906,591.334228515625L472.0745544433594,590.6922607421875L491.30902099609375,579.259765625L486.8398742675781,606.7423095703125L480.370849609375,646.4952392578125L465.062255859375,740.4703369140625C465.062255859375,744.0510864257812,467.9512634277344,746.9401245117188,471.5312805175781,746.9401245117188L494.7164611816406,746.9401245117188L494.7164611816406,817.7548828125C494.7164611816406,820.2490234375,495.3336181640625,822.61962890625,496.32147216796875,824.7174072265625C498.9384765625,830.1503295898438,504.4452209472656,833.95263671875,510.8893737792969,833.95263671875C518.1978149414062,833.95263671875,524.2968139648438,829.063720703125,526.2966918945312,822.4221801757812C526.7412719726562,820.9407958984375,527.062255859375,819.385498046875,527.062255859375,817.7548828125L527.062255859375,746.9401245117188L553.3587646484375,746.9401245117188L553.3587646484375,817.7548828125C553.3587646484375,817.9522705078125,553.4085083007812,818.1256103515625,553.4085083007812,818.2989501953125C553.7046508789062,826.9900512695312,560.790771484375,833.95263671875,569.5316772460938,833.95263671875C574.9638671875,833.95263671875,579.7788696289062,831.2369384765625,582.6920166015625,827.1136474609375C584.5690307617188,824.4461669921875,585.70458984375,821.26171875,585.70458984375,817.7548828125L585.70458984375,746.9401245117188L609.0133666992188,746.9401245117188C612.5941162109375,746.9401245117188,615.4823608398438,744.0510864257812,615.4823608398438,740.4703369140625L606.1002197265625,684.298095703125L588.4210205078125,578.4444580078125L610.0502319335938,591.334228515625L622.989013671875,642.6432495117188C624.0996704101562,647.1116333007812,627.0135498046875,650.6682739257812,630.766845703125,652.791748046875C633.13671875,654.1239624023438,635.8283081054688,654.8654174804688,638.6683349609375,654.8654174804688C639.9515991210938,654.8654174804688,641.2853393554688,654.692138671875,642.5941772460938,654.37109375C651.260498046875,652.1979370117188,656.5200805664062,643.4088134765625,654.322021484375,634.7418212890625"
+-      />
+-    </svg>
+-  );
+-}
+-
+-export function SearchIcon({ className }) {
+-  return (
+-    <svg
+-      className={className}
+-      viewBox="0 0 24 24"
+-      aria-hidden="true"
+-      focusable="false"
+-    >
+-      <circle cx="11" cy="11" r="8" />
+-      <path d="m21 21-4.3-4.3" />
+-    </svg>
+-  );
+-}
+-
+-export function ThemeIcon({ className, mode = 'light' }) {
+-  return (
+-    <svg
+-      className={className}
+-      viewBox="0 0 24 24"
+-      aria-hidden="true"
+-      focusable="false"
+-    >
+-      {mode === 'dark' ? (
+-        <>
+-          <path d="M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z" />
+-          <line x1="12" x2="12" y1="1" y2="3" />
+-          <line x1="12" x2="12" y1="21" y2="23" />
+-          <line x1="4.22" x2="5.64" y1="4.22" y2="5.64" />
+-          <line x1="18.36" x2="19.78" y1="18.36" y2="19.78" />
+-          <line x1="1" x2="3" y1="12" y2="12" />
+-          <line x1="21" x2="23" y1="12" y2="12" />
+-          <line x1="4.22" x2="5.64" y1="19.78" y2="18.36" />
+-          <line x1="18.36" x2="19.78" y1="5.64" y2="4.22" />
+-        </>
+-      ) : (
+-        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+-      )}
+-    </svg>
+-  );
+-}
+-
+-export function BackIcon({ className }) {
+-  return (
+-    <svg
+-      className={className}
+-      fill="none"
+-      stroke="currentColor"
+-      strokeWidth="2"
+-      strokeLinecap="round"
+-      strokeLinejoin="round"
+-      viewBox="0 0 24 24"
+-      aria-hidden="true"
+-      focusable="false"
+-    >
+-      <path d="m12 19-7-7 7-7" />
+-      <path d="M19 12H5" />
+-    </svg>
+-  );
+-}
+-
+-export function ForwardIcon({ className }) {
+-  return (
+-    <svg
+-      className={className}
+-      fill="none"
+-      stroke="currentColor"
+-      strokeWidth="2"
+-      strokeLinecap="round"
+-      strokeLinejoin="round"
+-      viewBox="0 0 24 24"
+-      aria-hidden="true"
+-      focusable="false"
+-    >
+-      <path d="m12 19 7-7-7-7" />
+-      <path d="M5 12h14" />
+-    </svg>
+-  );
+-}
+-
+-export function IndexIcon({ className }) {
+-  return (
+-    <svg
+-      className={className}
+-      fill="none"
+-      stroke="currentColor"
+-      strokeWidth="2"
+-      viewBox="0 0 24 24"
+-      aria-hidden="true"
+-      focusable="false"
+-    >
+-      <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20" />
+-    </svg>
+-  );
+-}
+-
+-export function TranslateIcon({ className }) {
+-  return (
+-    <svg
+-      className={className}
+-      fill="none"
+-      stroke="currentColor"
+-      strokeLinecap="round"
+-      strokeLinejoin="round"
+-      strokeWidth="2"
+-      viewBox="0 0 24 24"
+-      aria-hidden="true"
+-      focusable="false"
+-    >
+-      <path d="m5 8 6 6" />
+-      <path d="m4 14 6-6 2-3" />
+-      <path d="M2 5h12" />
+-      <path d="M7 2h1" />
+-      <path d="m22 22-5-10-5 10" />
+-      <path d="M14 18h6" />
+-    </svg>
+-  );
+-}
+-
+-export function CommentIcon({ className }) {
+-  return (
+-    <svg
+-      className={className}
+-      fill="none"
+-      stroke="currentColor"
+-      strokeLinecap="round"
+-      strokeLinejoin="round"
+-      strokeWidth="2"
+-      viewBox="0 0 24 24"
+-      aria-hidden="true"
+-      focusable="false"
+-    >
+-      <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
+-    </svg>
+-  );
+-}
+-
+-export function ShareIcon({ className }) {
+-  return (
+-    <svg
+-      className={className}
+-      fill="none"
+-      stroke="currentColor"
+-      strokeLinecap="round"
+-      strokeLinejoin="round"
+-      strokeWidth="2"
+-      viewBox="0 0 24 24"
+-      aria-hidden="true"
+-      focusable="false"
+-    >
+-      <circle cx="18" cy="5" r="3" />
+-      <circle cx="6" cy="12" r="3" />
+-      <circle cx="18" cy="19" r="3" />
+-      <line x1="8.59" x2="15.42" y1="13.51" y2="17.49" />
+-      <line x1="15.41" x2="8.59" y1="6.51" y2="10.49" />
+-    </svg>
+-  );
+-}
+-
+-export function PinIcon({ className }) {
+-  return (
+-    <svg
+-      className={className}
+-      fill="none"
+-      stroke="currentColor"
+-      strokeLinecap="round"
+-      strokeLinejoin="round"
+-      strokeWidth="2"
+-      viewBox="0 0 24 24"
+-      aria-hidden="true"
+-      focusable="false"
+-    >
+-      <path d="M16 11V7a4 4 0 0 0-8 0v4l-2 4h12l-2-4z" />
+-      <path d="M12 15v7" />
+-    </svg>
+-  );
+-}
+-
+-
+-
+-export function IconButton({
+-  label,
+-  children,
+-  onClick,
+-  className = '',
+-  disabled = false,
+-  presentation = false
+-}) {
+-  if (!onClick && !presentation && !disabled) return null;
+-
+-  return (
+-    <ActionControl
+-      className={['sp-card-action', className].filter(Boolean).join(' ')}
+-      label={label}
+-      onClick={onClick}
+-      disabled={disabled}
+-    >
+-      {children}
+-    </ActionControl>
+-  );
+-}
+-
+-export function UniversalButton({
+-  children,
+-  onClick,
+-  variant = 'primary',
+-  size = '',
+-  type = 'button',
+-  className = '',
+-  disabled = false,
+-  icon = null,
+-  ariaLabel
+-}) {
+-  const sizeClass = size ? `btn-${size}` : '';
+-  const variantClass = variant ? `btn-${variant}` : '';
+-
+-  return (
+-    <button
+-      className={['btn', variantClass, sizeClass, className].filter(Boolean).join(' ')}
+-      type={type}
+-      onClick={onClick}
+-      disabled={disabled}
+-      aria-label={ariaLabel || (typeof children === 'string' ? children : undefined)}
+-    >
+-      {icon && (
+-        <span className="icon-btn" aria-hidden="true">
+-          {icon}
+-        </span>
+-      )}
+-      {children}
+-    </button>
+-  );
+-}
+-
+-function CardHeader({ hasAuthor, authorHref, authorContent, hasMeta, pinVisible, pinLabel, onPin, dateTimeVisible, time, date, dateTime, handleDateTime }) {
+-  return (
+-    <header className="sp-card-header">
+-      {hasAuthor && (
+-        authorHref ? (
+-          <Link className="sp-card-author-link" to={authorHref}>
+-            {authorContent}
+-          </Link>
+-        ) : (
+-          <span className="sp-card-author-block">{authorContent}</span>
+-        )
+-      )}
+-      {hasMeta && (
+-        <div className="sp-card-meta">
+-          {pinVisible && (
+-            <ActionControl
+-              className="btn-icon-orange"
+-              label={pinLabel}
+-              onClick={onPin}
+-            >
+-              <PinIcon className="icon" />
+-            </ActionControl>
+-          )}
+-          {dateTimeVisible && (
+-            <DateTimeControl
+-              time={time}
+-              date={date}
+-              dateTime={dateTime}
+-              onClick={handleDateTime}
+-            />
+-          )}
+-        </div>
+-      )}
+-    </header>
+-  );
+-}
+-
+-function CardBody({ imageUrl, imageAlt, calendarBadge, price, title, titleContent, TitleTag, subtitle, body, labels, copyright }) {
+-  return (
+-    <>
+-      {imageUrl && (
+-        <div className="sp-card-media-container">
+-          <img
+-            className="sp-card-media"
+-            src={imageUrl}
+-            alt={imageAlt}
+-            loading="lazy"
+-            decoding="async"
+-          />
+-        </div>
+-      )}
+-
+-      <div
+-        className={[
+-          'sp-card-body',
+-          price && 'has-price',
+-          calendarBadge && 'has-calendar-badge',
+-          (price || calendarBadge) && 'has-aside'
+-        ].filter(Boolean).join(' ')}
+-      >
+-        {calendarBadge && (
+-          calendarBadge.onClick ? (
+-            <button
+-              type="button"
+-              className="sp-card-calendar-badge"
+-              onClick={(e) => {
+-                e.preventDefault();
+-                e.stopPropagation();
+-                calendarBadge.onClick();
+-              }}
+-              aria-label={calendarBadge.label || [calendarBadge.dia, calendarBadge.mes, calendarBadge.any].filter(Boolean).join(' ')}
+-            >
+-              <time dateTime={calendarBadge.dateTime} className="ue-flex-col-center">
+-                <span className="sp-card-calendar-badge__dia">{calendarBadge.dia}</span>
+-                <span className="sp-card-calendar-badge__mes">{calendarBadge.mes}</span>
+-                {calendarBadge.any && <span className="sp-card-calendar-badge__any">{calendarBadge.any}</span>}
+-              </time>
+-            </button>
+-          ) : (
+-            <time
+-              className="sp-card-calendar-badge"
+-              dateTime={calendarBadge.dateTime}
+-              aria-label={calendarBadge.label || [calendarBadge.dia, calendarBadge.mes, calendarBadge.any].filter(Boolean).join(' ')}
+-            >
+-              <span className="sp-card-calendar-badge__dia">{calendarBadge.dia}</span>
+-              <span className="sp-card-calendar-badge__mes">{calendarBadge.mes}</span>
+-              {calendarBadge.any && <span className="sp-card-calendar-badge__any">{calendarBadge.any}</span>}
+-            </time>
+-          )
+-        )}
+-        {price && <p className="sp-card-price">{price}</p>}
+-
+-        {title && <TitleTag className="sp-card-title">{titleContent}</TitleTag>}
+-        {subtitle && <h4 className="sp-card-subtitle">{subtitle}</h4>}
+-        {body && (
+-          typeof body === 'string' ? (
+-            <p className="sp-card-text">{body}</p>
+-          ) : (
+-            <div className="sp-card-text">{body}</div>
+-          )
+-        )}
+-        {labels.length > 0 && (
+-          <ul className="sp-card-labels" aria-label="Categories">
+-            {labels.map((label, index) => {
+-              const text = typeof label === 'string' ? label : label.text;
+-              const className = typeof label === 'string' ? 'sdp-badge-tag' : label.className || 'sdp-badge-tag';
+-              const href = typeof label === 'string' ? null : label.href;
+-              const safeHref = href && isSafeUrl(href) ? href : null;
+-              return (
+-                <li
+-                  key={`${text}-${index}`}
+-                  className={['sp-card-label', className].join(' ')}
+-                >
+-                  {safeHref ? (
+-                    safeHref.startsWith('http') ? (
+-                      <a href={safeHref} target="_blank" rel="noopener noreferrer" className="sdp-link-inherit">{text}</a>
+-                    ) : (
+-                      <Link to={safeHref} className="sdp-link-inherit">{text}</Link>
+-                    )
+-                  ) : text}
+-                </li>
+-              );
+-            })}
+-          </ul>
+-        )}
+-        {copyright && <p className="sp-card-copyright">{copyright}</p>}
+-      </div>
+-    </>
+-  );
+-}
+-
+-function CardFooter({ hasIconActions, commentVisible, handleComment, shareVisible, handleShare, connectVisible, connectLabel, handleConnect, connectAriaLabel }) {
+-  return (
+-    <footer className="sp-card-footer">
+-      {hasIconActions && (
+-        <div className="sp-card-actions">
+-          {commentVisible && (
+-            <IconButton label="Comentar" onClick={handleComment} presentation>
+-              <CommentIcon className="icon" />
+-            </IconButton>
+-          )}
+-          {shareVisible && (
+-            <IconButton label="Compartir" onClick={handleShare} presentation>
+-              <ShareIcon className="icon" />
+-            </IconButton>
+-          )}
+-        </div>
+-      )}
+-      {connectVisible && (
+-        <ActionControl
+-          className="btn-connectar sp-card-connect"
+-          label={connectLabel}
+-          onClick={handleConnect}
+-          aria-label={connectAriaLabel}
+-        >
+-          {connectLabel}
+-        </ActionControl>
+-      )}
+-    </footer>
+-  );
+-}
+-
+-export function UniversalCard({
+-  title,
+-  headingLevel = 'h3',
+-  subtitle,
+-  body,
+-  location,
+-  time,
+-  date,
+-  dateTime,
+-  author,
+-  authorHref,
+-  avatarUrl,
+-  avatarAlt = '',
+-  imageUrl,
+-  imageAlt = '',
+-  price,
+-  labels = [],
+-  mainHref,
+-  onMainClick,
+-  copyright,
+-  calendarBadge = null,
+-  isAvis = false,
+-  hasFooter,
+-  showPin,
+-  showDateTime,
+-  showTranslate,
+-  showComment,
+-  showShare,
+-  showConnect,
+-  onPin,
+-  onDateTime,
+-  onTranslate,
+-  onComment,
+-  onShare,
+-  onConnect,
+-  connectLabel = 'Connectar'
+-}) {
+-  const safeMainHref = mainHref && isSafeUrl(mainHref) ? mainHref : null;
+-  const safeAuthorHref = authorHref && isSafeUrl(authorHref) ? authorHref : null;
+-  const safeImageUrl = imageUrl && isSafeAsset(imageUrl) ? imageUrl : null;
+-  const safeAvatarUrl = avatarUrl && isSafeAsset(avatarUrl) ? avatarUrl : null;
+-
+-  const navigate = useNavigate();
+-  const handleConnect = onConnect || (() => navigate('/connectar?item_id=' + encodeURIComponent(title || 'card')));
+-  const handleTranslate = onTranslate || (() => navigate('/traduccions'));
+-  const handleComment = onComment || (() => navigate('/xat'));
+-  const handleShare = onShare || (() => {
+-    let fullUrl = window.location.href;
+-    if (safeMainHref) {
+-      try {
+-        fullUrl = new URL(safeMainHref, window.location.origin).href;
+-      } catch {
+-        fullUrl = window.location.href;
+-      }
+-    }
+-    
+-    if (navigator.share) {
+-      navigator.share({ title: title || document.title, url: fullUrl }).catch(console.error);
+-    } else {
+-      navigator.clipboard.writeText(fullUrl);
+-      alert('Enllaç copiat al porta-retalls');
+-    }
+-  });
+-  
+-  const handleDateTime = onDateTime || ((e) => {
+-    e.preventDefault();
+-    e.stopPropagation();
+-    let yyyymmdd;
+-    if (dateTime) {
+-      yyyymmdd = dateTime.split('T')[0];
+-    } else if (date) {
+-      const parts = date.split('/');
+-      if (parts.length === 3) {
+-        let [dd, mm, yy] = parts;
+-        if (yy.length === 2) yy = '20' + yy;
+-        if (isValidDate(dd, mm, yy)) {
+-          yyyymmdd = `${yy}-${mm.padStart(2, '0')}-${dd.padStart(2, '0')}`;
+-        }
+-      } else {
+-        const d = new Date(date);
+-        if (!isNaN(d.getTime())) yyyymmdd = d.toISOString().split('T')[0];
+-      }
+-    }
+-    if (yyyymmdd) {
+-      navigate(`/mur?date=${encodeURIComponent(yyyymmdd)}`);
+-    } else {
+-      navigate('/mur');
+-    }
+-  });
+-
+-  const hasAuthor = Boolean(author || avatarUrl || location);
+-  const footerDefaultsVisible = hasFooter === true;
+-  const pinVisible = showPin ?? Boolean(onPin);
+-  const dateTimeVisible = showDateTime ?? Boolean(time || date || onDateTime);
+-  const translateVisible = showTranslate ?? (footerDefaultsVisible || Boolean(onTranslate));
+-  const commentVisible = showComment ?? (footerDefaultsVisible || Boolean(onComment));
+-  const shareVisible = showShare ?? (footerDefaultsVisible || Boolean(onShare));
+-  const connectVisible = showConnect ?? (footerDefaultsVisible || Boolean(onConnect));
+-  const hasMeta = pinVisible || dateTimeVisible;
+-  const hasHeader = hasAuthor || hasMeta;
+-  const hasIconActions = translateVisible || commentVisible || shareVisible;
+-  const footerVisible = hasFooter === false ? false : hasIconActions || connectVisible;
+-  const TitleTag = headingLevel || 'h3';
+-
+-  const authorContent = hasAuthor && (
+-    <span className="sp-card-author">
+-      {safeAvatarUrl && (
+-        <img
+-          alt={avatarAlt}
+-          className="sp-card-avatar"
+-          src={safeAvatarUrl}
+-          width="48"
+-          height="48"
+-        />
+-      )}
+-      {(author || location) && (
+-        <span className="sp-card-author-info">
+-          {author && <span className="sp-card-author-name">{author}</span>}
+-          {location && <span className="sp-card-author-location">{location}</span>}
+-        </span>
+-      )}
+-    </span>
+-  );
+-
+-  const titleContent = title;
+-  const pinLabel = title ? `Ancorar ${title}` : 'Ancorar';
+-  const connectAriaLabel = title ? `${connectLabel} amb ${title}` : connectLabel;
+-
+-  return (
+-    <article className={['sp-card', isAvis && 'sp-card--avis'].filter(Boolean).join(' ')}>
+-      {hasHeader && (
+-        <CardHeader 
+-          hasAuthor={hasAuthor}
+-          authorHref={safeAuthorHref}
+-          authorContent={authorContent}
+-          hasMeta={hasMeta}
+-          pinVisible={pinVisible}
+-          pinLabel={pinLabel}
+-          onPin={onPin}
+-          dateTimeVisible={dateTimeVisible}
+-          time={time}
+-          date={date}
+-          dateTime={dateTime}
+-          handleDateTime={handleDateTime}
+-        />
+-      )}
+-
+-      {safeMainHref ? (
+-        <Link className="sp-card-link-overlay" to={safeMainHref} onClick={onMainClick} aria-label={title || 'Obrir detall'} />
+-      ) : onMainClick ? (
+-        <button type="button" className="sp-card-link-overlay" onClick={onMainClick} aria-label={title || 'Obrir detall'} />
+-      ) : null}
+-
+-      <CardBody
+-        imageUrl={safeImageUrl}
+-        imageAlt={imageAlt}
+-        calendarBadge={calendarBadge}
+-        price={price}
+-        title={title}
+-        titleContent={titleContent}
+-        TitleTag={TitleTag}
+-        subtitle={subtitle}
+-        body={body}
+-        labels={labels}
+-        copyright={copyright}
+-      />
+-
+-      {footerVisible && (
+-        <CardFooter
+-          hasIconActions={hasIconActions}
+-          translateVisible={translateVisible}
+-          handleTranslate={handleTranslate}
+-          commentVisible={commentVisible}
+-          handleComment={handleComment}
+-          shareVisible={shareVisible}
+-          handleShare={handleShare}
+-          connectVisible={connectVisible}
+-          connectLabel={connectLabel}
+-          handleConnect={handleConnect}
+-          connectAriaLabel={connectAriaLabel}
+-        />
+-      )}
+-    </article>
+-  );
+-}
+-
+-export function UniversalIndicatorCard({
+-  icon,
+-  title,
+-  subtitle,
+-  active,
+-  onClick,
+-  iconColor,
+-  className = ''
+-}) {
+-  return (
+-    <button 
+-      type="button"
+-      className={`sdp-indicator-card ${active ? 'active' : ''} ${className}`}
+-      onClick={onClick}
+-      aria-pressed={active}
+-    >
+-      <span className="sdp-indicator-card-icon" style={iconColor ? { '--custom-icon-color': iconColor } : {}}>
+-        {icon}
+-      </span>
+-      <h3 className="sdp-indicator-card-title">{title}</h3>
+-      {subtitle && <p className="sdp-indicator-card-subtitle">{subtitle}</p>}
+-    </button>
+-  );
+-}
+-
+-export function Accordion({ children, className = '' }) {
+-  return <div className={`accordion ${className}`}>{children}</div>;
+-}
+-
+-export function AccordionItem({ title, children, defaultOpen = false, className = '' }) {
+-  const [isOpen, setIsOpen] = useState(defaultOpen);
+-  return (
+-    <div className={`accordion-item ${className}`} style={{ borderBottom: '1px solid var(--sdp-vora)' }}>
+-      <button 
+-        type="button"
+-        className={`accordion-header ue-accordion-header-btn ${isOpen ? 'active' : ''}`} 
+-        onClick={() => setIsOpen(!isOpen)}
+-        aria-expanded={isOpen}
+-      >
+-        <span>{title}</span>
+-        <svg fill="none" height="20" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 20 20" width="20" style={{ transform: isOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}>
+-          <polyline points="6 9 12 15 18 9"></polyline>
+-        </svg>
+-      </button>
+-      {isOpen && (
+-        <div className="ue-accordion-body-pd">
+-          {children}
+-        </div>
+-      )}
+-    </div>
+-  );
+-}
+-
+-export function Dropdown({ trigger, children, className = '', right = false, minWidth = '200px' }) {
+-  const [isOpen, setIsOpen] = useState(false);
+-  
+-  const handleKeyDown = (e) => {
+-    if (e.key === 'Enter' || e.key === ' ') {
+-      e.preventDefault();
+-      setIsOpen(!isOpen);
+-    } else if (e.key === 'Escape' && isOpen) {
+-      setIsOpen(false);
+-    }
+-  };
+-  
+-  return (
+-    <div className={`sp-dropdown-wrapper ${className}`}>
+-      <div 
+-        className="sp-dropdown-trigger"
+-        role="button"
+-        tabIndex={0}
+-        aria-haspopup="true"
+-        aria-expanded={isOpen}
+-        onClick={() => setIsOpen(!isOpen)} 
+-        onKeyDown={handleKeyDown}
+-        onBlur={(e) => {
+-          if (!e.currentTarget.contains(e.relatedTarget)) {
+-            setTimeout(() => setIsOpen(false), 200);
+-          }
+-        }}
+-      >
+-        {trigger}
+-      </div>
+-      {isOpen && (
+-        <div 
+-          className={`xat-header-dropdown ${right ? 'xat-header-dropdown--right' : 'xat-header-dropdown--left'}`} 
+-          style={{ minWidth }} 
+-        >
+-          {children}
+-        </div>
+-      )}
+-    </div>
+-  );
+-}
+-
+-export function DropdownItem({ children, onClick, className = '', icon }) {
+-  return (
+-    <button 
+-      type="button" 
+-      className={`xat-dropdown-item ue-flex-center-8 ue-w-full ${className}`} 
+-      onClick={onClick} 
+-    >
+-      {icon && <span className="ue-flex-center">{icon}</span>}
+-      {children}
+-    </button>
+-  );
+-}
++/**
++ * UniversalElements.jsx — FAÇANA TEMPORAL (260910).
++ *
++ * Tot viu a components/ui/. Aquest fitxer només reexporta perquè cap dels
++ * 13 imports existents es trenque el dia del trasllat. Es migren un a un a
++ * '../ui' (o '../../components/ui') i, quan
++ *   grep -rn "UniversalElements" src
++ * torne 0, s'esborra. GlobeIcon, SearchIcon i ThemeIcon ja no hi són:
++ * no tenien cap consumidor.
++ */
++export * from '../ui/index.js';
++export { useContent, ContentProvider } from './ContentProvider';
+diff --git a/src/components/universal/UniversalPage.jsx b/src/components/universal/UniversalPage.jsx
+index 1893c17..4f5ea02 100644
+--- a/src/components/universal/UniversalPage.jsx
++++ b/src/components/universal/UniversalPage.jsx
+@@ -13,8 +13,8 @@ import { useContent } from './ContentProvider';
+ import {
+ 
+   BackIcon, ForwardIcon, IndexIcon,
+-  CommentIcon, ShareIcon, PinIcon, ThemeIcon,
+-  SearchIcon, IaiaIcon, GlobeIcon, IconButton, ActionControl, DateTimeControl
++  CommentIcon, ShareIcon, PinIcon,
++  IconButton, ActionControl, DateTimeControl
+ } from './UniversalElements';
+ 
+ import { isSafeUrl, isValidDate, DEFAULT_AUTHOR, PAGE_CHROME_MODES } from './UniversalUtils';
+diff --git a/src/css/index.css b/src/css/index.css
+index 5861a12..ba15441 100644
+--- a/src/css/index.css
++++ b/src/css/index.css
+@@ -3765,3 +3765,5 @@ button.sp-card-calendar-badge:hover {
+ .app-btn-retry { padding: 0.5rem 1rem; margin-top: 1rem; cursor: pointer; }
+ .ob-mb-15 { margin-bottom: 1.5rem; }
+ .ob-mt-15-op8 { margin-top: 1.5rem; opacity: 0.8; }
++
++} /* fi de @layer legacy (obert a la línia 39) */
+diff --git a/tooling/brain/tractor-pedra-seca.mjs b/tooling/brain/tractor-pedra-seca.mjs
+index 523e65d..c66f43b 100644
+--- a/tooling/brain/tractor-pedra-seca.mjs
++++ b/tooling/brain/tractor-pedra-seca.mjs
+@@ -149,6 +149,8 @@ function grafAccessible() {
+     if (t === null) continue;
+     const specs = [
+       ...t.matchAll(/import\s+[^'"]*from\s*['"]([^'"]+)['"]/g),
++      // Reexportacions (barrils: components/ui/index.js). Sense açò, un barril deixa orfe tot el que reexporta.
++      ...t.matchAll(/export\s+(?:\*(?:\s+as\s+\w+)?|\{[^}]*\})\s*from\s*['"]([^'"]+)['"]/g),
+       ...t.matchAll(/import\s*\(\s*['"]([^'"]+)['"]\s*\)/g),
+       ...t.matchAll(/import\s*['"]([^'"]+)['"]/g)
+     ].map((m) => m[1]);
+@@ -267,7 +269,7 @@ const EXCEPCIONS_ORFE = {
+   'src/assets/fonts/noto-sans.css': 'es carrega en execució via atribut fonts-href'
+ };
+ for (const f of [...JSX, ...CSS_TOTS])
+-  if (!accessible.has(f) && f !== FULL_OMBRA && !EXCEPCIONS_ORFE[f])
++  if (!accessible.has(f) && f !== FULL_OMBRA && !EXCEPCIONS_ORFE[f] && !/\.test\.[jt]sx?$/.test(f)) // les proves són entrades de vitest
+     registra('LLEI_08_SUBARBRE_ORFE', f);
+ 
+ /* ─────────────────────── Criquet i veredicte ──────────────────────── */
+diff --git a/tooling/gates/tractor-poda-css.mjs b/tooling/gates/tractor-poda-css.mjs
+new file mode 100644
+index 0000000..750a08b
+--- /dev/null
++++ b/tooling/gates/tractor-poda-css.mjs
+@@ -0,0 +1,402 @@
++#!/usr/bin/env node
++/**
++ * tractor-poda-css.mjs — L'eina de poda: classes CSS orfes REALS.
++ *
++ * PER QUÈ UNA EINA NOVA
++ *   tractor-classes.mjs dona 43 «aparentment mortes» i ix amb 0 igualment.
++ *   Entre elles hi ha xat-header-dropdown--left/--right, que viuen dins d'un
++ *   literal d'una plantilla de className: busca per text, no per estructura,
++ *   i els prefixos dinàmics són una llista escrita a mà que es fa vella.
++ *
++ * COM DECIDIX
++ *   CSS  · Sense parser extern (el paquet `css` no entén @layer). Comentaris,
++ *          cadenes i url() fora; cada prelude abans de `{` és una regla; les
++ *          at-regles són transparents. Per selector distingix classes
++ *          EXIGIDES (nivell 0), CITADES (dins :not/:is/:where/:has…) i
++ *          EXTERNES (:host(), :host-context(), ::slotted(): les posa l'amfitrió).
++ *   CODI · AST de @babel/parser sobre src/**\/*.{js,jsx,mjs}, tests fora.
++ *          Context FORT: className/class, classList.*, querySelector*,
++ *          closest, matches, setAttribute('class'), cx/clsx i qualsevol
++ *          variable, propietat o paràmetre amb «class» al nom.
++ *          Context DÈBIL: la resta del text (i18n, contingut, URLs…).
++ *   DINÀMIQUES · Una plantilla o una concatenació amb forat no dona un nom:
++ *          dona un PATRÓ. `btn-${v}` → prefix «btn-»; `${b}--avis` → sufix;
++ *          `${a}-card-${b}` → infix. Casar amb un patró salva la classe.
++ *   CRUES · index.html, public/**\/*.html, src/**\/*.json, supabase/**\/*.sql
++ *          i wordpress-plugin/** compten per paraules; class="…" compta fort.
++ *
++ * VEREDICTES   viva · patró · dèbil · externa · ORFE
++ *   Només ORFE vol dir «cap rastre enlloc, ni com a paraula solta».
++ *   Precisió abans que cobertura: si dubta, la dona per viva. El que ix com a
++ *   ORFE o REGLA MORTA es pot esborrar; patró i dèbil són llista de revisió.
++ *
++ * ÚS   node tooling/gates/tractor-poda-css.mjs [--css=ruta]… [--viu=regex]…
++ *                                             [--json=ruta] [--ci] [--max=N]
++ */
++import { readFileSync, readdirSync, statSync, existsSync, writeFileSync } from 'node:fs';
++import { join, dirname, relative, resolve } from 'node:path';
++import { parse } from '@babel/parser';
++
++const ARREL = process.cwd();
++const ARGS = process.argv.slice(2);
++const valors = (nom) => ARGS.filter((a) => a.startsWith(`--${nom}=`)).map((a) => a.slice(nom.length + 3));
++const FULLS = valors('css').length ? valors('css') : ['src/css/index.css'];
++const MAX = Number(valors('max')[0] ?? 0);
++
++/* DOM que pinten tercers en temps d'execució: mai apareix al nostre codi. */
++const VIVES_EXTERNES = [
++  /^ProseMirror/, /^tiptap/, /^is-(editor-)?empty$/, /^lucide(-|$)/,
++  ...valors('viu').map((r) => new RegExp(r)),
++];
++
++const EXCLOSOS = new Set(['node_modules', 'dist', 'build', 'vendor', 'coverage', '.git']);
++const CAR = /[\p{L}\p{N}_-]/u;
++const PARAULA = /[\p{L}\p{N}_-]+/gu;
++const HTML_CLASS = /\bclass(?:Name)?\s*=\s*\\?["']([^"'\\]*)/g;
++const JSON_CLASS = /"[\w-]*[cC]lass[\w-]*"\s*:\s*"([^"]*)"/g;
++
++function recorre(dir, filtre, eixida = []) {
++  const abs = resolve(ARREL, dir);
++  if (!existsSync(abs)) return eixida;
++  for (const nom of readdirSync(abs)) {
++    if (EXCLOSOS.has(nom)) continue;
++    const p = join(abs, nom);
++    if (statSync(p).isDirectory()) recorre(relative(ARREL, p), filtre, eixida);
++    else if (filtre(p)) eixida.push(relative(ARREL, p));
++  }
++  return eixida;
++}
++
++/* ═══════════════════════════════ 1 · CSS ═══════════════════════════════ */
++
++/** Comentaris, cadenes i url() a espais. Els salts de línia es queden. */
++function neteja(css) {
++  let o = '';
++  for (let i = 0; i < css.length;) {
++    const c = css[i];
++    if (c === '/' && css[i + 1] === '*') {
++      const f = css.indexOf('*/', i + 2);
++      const fi = f < 0 ? css.length : f + 2;
++      o += css.slice(i, fi).replace(/[^\n]/g, ' ');
++      i = fi;
++    } else if (c === '"' || c === "'") {
++      let j = i + 1;
++      while (j < css.length && css[j] !== c && css[j] !== '\n') j += css[j] === '\\' ? 2 : 1;
++      o += ' '.repeat(Math.min(j + 1, css.length) - i);
++      i = j + 1;
++    } else { o += c; i++; }
++  }
++  return o.replace(/url\([^)]*\)/g, (m) => m.replace(/[^\n]/g, ' '));
++}
++
++function llegixFull(ruta, vistos = new Set()) {
++  const abs = resolve(ARREL, ruta);
++  if (vistos.has(abs) || !existsSync(abs)) return [];
++  vistos.add(abs);
++  const cru = readFileSync(abs, 'utf8');
++  const fills = [];
++  for (const m of cru.replace(/\/\*[\s\S]*?\*\//g, '').matchAll(/@import\s+(?:url\(\s*)?["']?([^"')\s;]+)/g)) {
++    if (!/^([a-z]+:)?\/\//i.test(m[1])) fills.push(...llegixFull(relative(ARREL, resolve(dirname(abs), m[1])), vistos));
++  }
++  return [{ ruta: relative(ARREL, abs), css: neteja(cru), cru }, ...fills];
++}
++
++/** Cada prelude abans de `{` és una regla. `pare` és la regla que l'embolcalla.
++ *  neteja() conserva la longitud, així que els offsets valen per al text cru. */
++const avisosCss = [], fusions = [];
++function regles({ ruta, css, cru }) {
++  const eixida = [], pila = [];
++  let ini = -1, linia = 1, liniaIni = 0;
++  for (let i = 0; i < css.length; i++) {
++    const c = css[i];
++    if (c === '{') {
++      const sel = ini < 0 ? '' : css.slice(ini, i).trim();
++      const node = { ruta, linia: liniaIni || linia, sel, text: ini < 0 ? '' : cru.slice(ini, i).trim(), esAt: sel.startsWith('@'), pare: pila.findLast((n) => !n.esAt) ?? null };
++      if (!node.esAt && sel) {
++        eixida.push(node);
++        const k = fusio(sel);
++        if (k >= 0) fusions.push({ lloc: `${ruta}:${node.linia + k}`, text: node.text });
++      }
++      pila.push(node); ini = -1; liniaIni = 0;
++    } else if (c === '}') {
++      if (!pila.length) avisosCss.push(`${ruta}:${linia}  «}» sense bloc obert`);
++      pila.pop(); ini = -1; liniaIni = 0;
++    } else if (c === ';') { ini = -1; liniaIni = 0; }
++    else if (ini < 0 && c.trim()) { ini = i; liniaIni = linia; }
++    if (c === '\n') linia++;
++  }
++  for (const n of pila) avisosCss.push(`${ruta}:${n.linia}  bloc sense tancar: ${n.sel.replace(/\s+/g, ' ').slice(0, 60)}`);
++  return eixida;
++}
++
++/** Salt de línia dins d'un selector sense coma ni combinador: dos selectors
++ *  s'han soldat en un descendent que abans no existia. Torna la línia o -1. */
++function fusio(sel) {
++  const linies = sel.split('\n');
++  let prof = 0;
++  for (let k = 0; k < linies.length - 1; k++) {
++    for (const ch of linies[k]) { if (ch === '(') prof++; else if (ch === ')') prof--; }
++    const l = linies[k].trim();
++    if (prof === 0 && l && !/[,>+~]$/.test(l)) return k;
++  }
++  return -1;
++}
++
++function parteix(sel) {
++  const parts = []; let prof = 0, acc = '';
++  for (const c of sel) {
++    if (c === '(') prof++; else if (c === ')') prof--;
++    if (c === ',' && prof === 0) { parts.push(acc); acc = ''; } else acc += c;
++  }
++  parts.push(acc);
++  return parts.map((p) => p.trim()).filter(Boolean);
++}
++
++const FUNCIONS_EXTERNES = new Set(['host', 'host-context', 'slotted']);
++
++function analitza(selector) {
++  const exigides = new Set(), citades = new Set(), externes = new Set();
++  const s = selector.replace(/\[[^\]]*\]/g, ' ');
++  const obertes = [];
++  for (let i = 0; i < s.length; i++) {
++    const c = s[i];
++    if (c === '(') { obertes.push((/::?([\w-]+)\s*$/.exec(s.slice(0, i)) || [])[1] || ''); continue; }
++    if (c === ')') { obertes.pop(); continue; }
++    if (c !== '.') continue;
++    const m = /^(?:-?[\p{L}_]|--)[\p{L}\p{N}_-]*/u.exec(s.slice(i + 1));
++    if (!m) continue;
++    if (obertes.some((f) => FUNCIONS_EXTERNES.has(f))) externes.add(m[0]);
++    else if (obertes.length) citades.add(m[0]);
++    else exigides.add(m[0]);
++    i += m[0].length;
++  }
++  return { exigides, citades, externes };
++}
++
++/* ═══════════════════════════════ 2 · CODI ═══════════════════════════════ */
++
++const fortes = new Set(), febles = new Set(), patrons = new Map(), avisos = [];
++const consumits = new WeakSet();
++const IGNORA = new Set(['loc', 'start', 'end', 'extra', 'range', 'leadingComments', 'trailingComments', 'innerComments', 'comments', 'tokens', 'errors']);
++const CLASSLIST = new Set(['add', 'remove', 'toggle', 'contains', 'replace']);
++const SELECTORS = new Set(['querySelector', 'querySelectorAll', 'closest', 'matches', 'getElementsByClassName']);
++const ambClasse = (n) => typeof n === 'string' && /class/i.test(n);
++const nom = (k) => (!k ? null : k.type === 'Identifier' || k.type === 'JSXIdentifier' ? k.name : k.type === 'StringLiteral' ? k.value : null);
++const esMembre = (n) => n?.type === 'MemberExpression' || n?.type === 'OptionalMemberExpression';
++
++function patro(tipus, text, fort, on) {
++  if ((text.match(/[\p{L}\p{N}]/gu) || []).length < 2) return; // «-» o «--» sols casarien amb tot
++  const clau = `${tipus}:${text}`;
++  const p = patrons.get(clau) || { tipus, text, fort: false, llocs: new Set() };
++  p.fort ||= fort; p.llocs.add(on);
++  patrons.set(clau, p);
++}
++
++/** Trossos fixos (string) i forats (null) → noms complets i patrons. */
++function anota(trossos, fort, on) {
++  const t = [];
++  for (const x of trossos) {
++    if (typeof x === 'string' && typeof t[t.length - 1] === 'string') t[t.length - 1] += x;
++    else if (!(x === null && t[t.length - 1] === null)) t.push(x);
++  }
++  t.forEach((tros, i) => {
++    if (tros === null) return;
++    for (const re of [HTML_CLASS, JSON_CLASS]) {
++      for (const m of tros.matchAll(re)) for (const p of m[1].match(PARAULA) || []) fortes.add(p);
++    }
++    const paraules = tros.match(PARAULA) || [];
++    const obertInici = t[i - 1] === null && CAR.test(tros[0] || '');
++    const obertFinal = t[i + 1] === null && CAR.test(tros[tros.length - 1] || '');
++    paraules.forEach((p, k) => {
++      const primera = k === 0 && obertInici;
++      const darrera = k === paraules.length - 1 && obertFinal;
++      if (primera && darrera) patro('infix', p, fort, on);
++      else if (primera) patro('sufix', p, fort, on);
++      else if (darrera) patro('prefix', p, fort, on);
++      else (fort ? fortes : febles).add(p);
++    });
++  });
++}
++
++function aplana(n) {
++  if (n.type === 'BinaryExpression' && n.operator === '+') return [...aplana(n.left), ...aplana(n.right)];
++  if (n.type === 'StringLiteral') { consumits.add(n); return [n.value]; }
++  return [null];
++}
++
++function visita(n, fort, on) {
++  if (!n || typeof n.type !== 'string') return;
++  switch (n.type) {
++    case 'ImportDeclaration':
++    case 'TemplateElement':
++      return;
++    case 'StringLiteral':
++      if (!consumits.has(n)) anota([n.value], fort, on);
++      return;
++    case 'JSXText':
++      anota([n.value], false, on);
++      return;
++    case 'TemplateLiteral':
++      anota(n.quasis.flatMap((q, i) => {
++        const text = q.value.cooked ?? q.value.raw;
++        return i < n.expressions.length ? [text, null] : [text];
++      }), fort, on);
++      break;
++    case 'BinaryExpression':
++      if (n.operator === '+' && !consumits.has(n)) {
++        const t = aplana(n);
++        if (t.some((x) => typeof x === 'string')) anota(t, fort, on);
++      }
++      break;
++    case 'JSXAttribute': {
++      const a = nom(n.name);
++      visita(n.value, fort || a === 'className' || a === 'class', on);
++      return;
++    }
++    case 'ObjectProperty':
++      visita(n.key, fort, on);
++      visita(n.value, fort || ambClasse(nom(n.key)), on);
++      return;
++    case 'VariableDeclarator':
++      visita(n.id, fort, on);
++      visita(n.init, fort || ambClasse(nom(n.id)), on);
++      return;
++    case 'AssignmentPattern':
++      visita(n.left, fort, on);
++      visita(n.right, fort || ambClasse(nom(n.left)), on);
++      return;
++    case 'AssignmentExpression':
++      visita(n.left, fort, on);
++      visita(n.right, fort || ambClasse(esMembre(n.left) ? nom(n.left.property) : nom(n.left)), on);
++      return;
++    case 'CallExpression':
++    case 'OptionalCallExpression': {
++      const c = n.callee;
++      const metode = esMembre(c) ? nom(c.property) : nom(c);
++      const classList = esMembre(c) && esMembre(c.object) && nom(c.object.property) === 'classList' && CLASSLIST.has(metode);
++      const selector = SELECTORS.has(metode);
++      const cx = /^(cx|clsx|classnames|classNames)$/.test(metode || '');
++      const setClass = metode === 'setAttribute' && n.arguments[0]?.value === 'class';
++      visita(c, fort, on);
++      n.arguments.forEach((arg, i) => visita(arg, fort || classList || selector || cx || (setClass && i === 1), on));
++      return;
++    }
++  }
++  for (const k in n) {
++    if (IGNORA.has(k) || (k === 'source' && n.type.startsWith('Export'))) continue;
++    const v = n[k];
++    if (Array.isArray(v)) v.forEach((x) => visita(x, fort, on));
++    else if (v && typeof v === 'object' && typeof v.type === 'string') visita(v, fort, on);
++  }
++}
++
++const CODI = recorre('src', (p) => /\.(jsx?|mjs)$/.test(p) && !/\.test\.[jt]sx?$/.test(p));
++for (const f of CODI) {
++  const text = readFileSync(resolve(ARREL, f), 'utf8');
++  let ast = null;
++  try { ast = parse(text, { sourceType: 'module', plugins: ['jsx'], errorRecovery: true }); }
++  catch (e) { avisos.push(`${f}: no parseja (${e.message}); compta com a text cru`); }
++  if (ast) visita(ast.program, false, f);
++  if (!ast || ast.errors?.length) {
++    anota([text], false, f); // fail-safe: millor una viva de més que una orfe falsa
++    if (ast) avisos.push(`${f}: ${ast.errors.length} error(s) recuperats; afegit també com a text cru`);
++  }
++}
++
++/* ═══════════════════════════════ 3 · FONTS CRUES ═══════════════════════════════ */
++
++const CRUES = [
++  ...['index.html'].filter((f) => existsSync(resolve(ARREL, f))),
++  ...recorre('public', (p) => /\.html?$/.test(p)),
++  ...recorre('src', (p) => p.endsWith('.json')),
++  ...recorre('supabase', (p) => p.endsWith('.sql')),
++  ...recorre('wordpress-plugin', (p) => /\.(php|html?|js)$/.test(p)),
++];
++for (const f of CRUES) anota([readFileSync(resolve(ARREL, f), 'utf8')], false, f);
++
++/* ═══════════════════════════════ 4 · VEREDICTE ═══════════════════════════════ */
++
++const fulls = FULLS.flatMap((f) => llegixFull(f));
++if (!fulls.length) { console.error(`❌ [PODA CSS] No trobe ${FULLS.join(', ')}`); process.exit(2); }
++const totes = fulls.flatMap(regles);
++const definides = new Map();
++const externesCss = new Set();
++for (const r of totes) {
++  r.parts = parteix(r.sel).map(analitza);
++  for (const a of r.parts) {
++    for (const c of [...a.exigides, ...a.citades]) {
++      if (!definides.has(c)) definides.set(c, []);
++      definides.get(c).push(`${r.ruta}:${r.linia}`);
++    }
++    a.externes.forEach((c) => externesCss.add(c));
++  }
++}
++
++const casa = (c, p) => (p.tipus === 'prefix' ? c.startsWith(p.text) : p.tipus === 'sufix' ? c.endsWith(p.text) : c.includes(p.text));
++const estat = new Map(), perPatro = new Map();
++for (const c of definides.keys()) {
++  let e;
++  if (externesCss.has(c) || VIVES_EXTERNES.some((r) => r.test(c))) e = 'externa';
++  else if (fortes.has(c)) e = 'viva';
++  else {
++    const ps = [...patrons.values()].filter((p) => casa(c, p));
++    if (ps.length) { e = 'patró'; perPatro.set(c, ps.map((p) => `${p.tipus} «${p.text}»${p.fort ? '' : ' (dèbil)'}`)); }
++    else e = febles.has(c) ? 'dèbil' : 'orfe';
++  }
++  estat.set(c, e);
++}
++
++const mortes = [], parcials = [];
++for (const r of totes) {
++  const morts = r.parts.map((a) => [...a.exigides].some((c) => estat.get(c) === 'orfe'));
++  r.morta = Boolean(r.pare?.morta) || (morts.length > 0 && morts.every(Boolean));
++  if (r.morta) mortes.push(r);
++  else if (morts.some(Boolean)) parcials.push({ r, selectors: parteix(r.sel).filter((_, i) => morts[i]) });
++}
++
++const de = (e) => [...estat].filter(([, x]) => x === e).map(([c]) => c).sort();
++const orfes = de('orfe'), debils = de('dèbil');
++const net = (s) => s.replace(/\s+/g, ' ');
++const L = (s = '') => console.log(s);
++
++L(`\n🌾 PODA CSS — ${fulls.map((f) => f.ruta).join(' + ')}`);
++L('─'.repeat(72));
++L(`  ${totes.length} regles · ${definides.size} classes · ${CODI.length} fitxers per AST + ${CRUES.length} crus · ${patrons.size} patrons dinàmics`);
++L(`  viva ${de('viva').length} · patró ${perPatro.size} · dèbil ${debils.length} · externa ${de('externa').length} · ORFE ${orfes.length}`);
++L(`\n❌ ORFES — cap rastre enlloc (${orfes.length})`);
++for (const c of orfes) { const ll = definides.get(c); L(`   .${c}  ${ll.slice(0, 3).join(', ')}${ll.length > 3 ? ` (+${ll.length - 3})` : ''}`); }
++L(`\n🪦 REGLES MORTES — totes les branques exigixen una orfe (${mortes.length})`);
++for (const r of mortes) L(`   ${r.ruta}:${r.linia}  ${net(r.text).slice(0, 96)}`);
++L(`\n✂️  SELECTORS MORTS dins de regles vives (${parcials.length})`);
++for (const { r, selectors } of parcials) L(`   ${r.ruta}:${r.linia}  ${net(selectors.join(', ')).slice(0, 96)}`);
++L(`\n🔎 VIVES NOMÉS PER PATRÓ — revisió humana (${perPatro.size})`);
++for (const [c, ps] of perPatro) L(`   .${c}  ← ${ps.join(' | ')}`);
++L(`\n🔎 DÈBILS — només com a paraula en text, mai en context de classe (${debils.length})`);
++if (debils.length) L(`   ${debils.join('  ')}`);
++L(`\n🧷 SELECTORS SOLDATS — salt de línia sense coma: canvien de significat (${fusions.length})`);
++for (const f of fusions) L(`   ${f.lloc}  ${net(f.text).slice(0, 96)}`);
++if (avisosCss.length) { L('\n🧱 CLAUS DESQUADRADES'); avisosCss.forEach((a) => L(`   ${a}`)); }
++if (avisos.length) { L('\n⚠️  AVISOS'); avisos.forEach((a) => L(`   ${a}`)); }
++L("\n  Fora d'abast: classes que l'amfitrió injecte per configuració o per contingut de BD que no siga a supabase/*.sql.");
++
++const eixidaJson = valors('json')[0];
++if (eixidaJson) {
++  writeFileSync(resolve(ARREL, eixidaJson), JSON.stringify({
++    generat: new Date().toISOString(),
++    fulls: fulls.map((f) => f.ruta),
++    orfes: Object.fromEntries(orfes.map((c) => [c, definides.get(c)])),
++    regles_mortes: mortes.map((r) => `${r.ruta}:${r.linia}  ${net(r.text)}`),
++    selectors_soldats: fusions.map((f) => `${f.lloc}  ${net(f.text)}`),
++    claus: avisosCss,
++    selectors_morts: parcials.map(({ r, selectors }) => `${r.ruta}:${r.linia}  ${net(selectors.join(', '))}`),
++    per_patro: Object.fromEntries(perPatro),
++    debils,
++    avisos,
++  }, null, 2) + '\n');
++}
++
++if (ARGS.includes('--ci') && orfes.length > MAX) {
++  L(`\n❌ [PODA CSS] ${orfes.length} orfes > màx ${MAX}.`);
++  process.exit(1);
++}
++process.exit(0);

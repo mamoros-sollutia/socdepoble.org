@@ -35,6 +35,8 @@
    Safari/iOS i manté les barres sticky dins del visor.
    ═══════════════════════════════════════════════════════════════════ */
 
+@layer legacy;
+@layer legacy {
 @layer reset, tokens, base, components, notes, utilities;
 
 /* ── 0. TOKENS ─────────────────────────────────────────────────────
@@ -529,8 +531,7 @@ a:hover { color: var(--sdp-accent-text-hover); }
 header.bar-black :focus-visible,
 header.bar-blue :focus-visible,
 .mobile-nav :focus-visible,
-.sp-card-footer :focus-visible,
-.fab-button:focus-visible { outline-color: var(--sdp-accent-text); }
+.sp-card-footer :focus-visible { outline-color: var(--sdp-accent-text); }
 
 .sr-only, .sdp-sr-only {
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
@@ -919,7 +920,6 @@ section.design-block > p:first-of-type {
 .icona-linia:only-child { margin-right: 0; }
 
 /* Mostres de paleta · sense cap estil inline */
-.sw-pedra-75 { background: var(--sdp-pedra-100); color: var(--sdp-pedra-900); box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05); }
 .sw-pedra-100 { background: var(--sdp-pedra-100); color: var(--sdp-pedra-900); }
 .sw-pedra-200 { background: var(--sdp-pedra-200); color: var(--sdp-pedra-900); }
 .sw-pedra-300 { background: var(--sdp-pedra-300); color: var(--sdp-pedra-900); }
@@ -1194,8 +1194,6 @@ details[open] summary.accordion-header svg:last-child { transform: rotate(180deg
 .divider-dotted { border-top: 2px dotted var(--sdp-vora); margin: var(--sdp-space-6) 0; }
 
 /* 7.18 Llistes de definició */
-.dl-horizontal dt { font-weight: 700; color: var(--sdp-text-titol); }
-.dl-horizontal dd { margin: 0; color: var(--sdp-text-titol); }
 
 /* 7.20 Indicadors (UniversalIndicatorCard) */
 .sdp-indicator-card {
@@ -1270,9 +1268,9 @@ details[open] summary.accordion-header svg:last-child { transform: rotate(180deg
 .sp-card-author-link, .sp-card-author-block { display: flex; align-items: center; min-width: 0; flex: 1; }
 
 /* Etiquetes de la Targeta Mestra i Sistema de Badges */
-.sdp-badges-container, .sp-card-labels { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--sdp-space-2); margin-top: var(--sdp-space-3); margin-bottom: var(--sdp-space-4); list-style: none; padding: 0; }
-.sdp-badges-container li, .sp-card-labels li { list-style: none; padding: 0; margin: 0; }
-.sdp-badge, .sp-card-labels .sp-card-label, .sp-card-label { display: inline-flex; align-items: center; justify-content: center; height: 24px; padding: 0 12px; border-radius: 12px; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.05em; white-space: nowrap; }
+.sp-card-labels { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--sdp-space-2); margin-top: var(--sdp-space-3); margin-bottom: var(--sdp-space-4); list-style: none; padding: 0; }
+.sp-card-labels li { list-style: none; padding: 0; margin: 0; }
+.sp-card-labels .sp-card-label, .sp-card-label { display: inline-flex; align-items: center; justify-content: center; height: 24px; padding: 0 12px; border-radius: 12px; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.05em; white-space: nowrap; }
 
 /* Sistema de Badges Universals (Taxonomia 2026) */
 .sdp-badge-system { background: var(--sdp-accio); color: var(--sdp-sobre-accio); }
@@ -1303,10 +1301,6 @@ details[open] summary.accordion-header svg:last-child { transform: rotate(180deg
 /* Retrocompatibilitat */
 
 /* Tooltip (Bocata) */
-.tooltip-container:hover .tooltip-text::after {
-  content: ""; position: absolute; bottom: 100%; left: 50%; margin-left: -5px;
-  border-width: 5px; border-style: solid; border-color: transparent transparent var(--sdp-pedra-900) transparent;
-}
 
 .sp-card:hover { box-shadow: var(--sdp-ombra-4); }
 .sp-card-header { 
@@ -1330,14 +1324,6 @@ details[open] summary.accordion-header svg:last-child { transform: rotate(180deg
 
 .sp-card-body { padding: 22px 24px 16px; text-align: left; position: relative; min-width: 0; }
 .sp-card-title { font-size: 1.4rem; color: var(--sdp-accio-text); font-weight: 800; line-height: var(--sdp-leading-tight); margin: 0 0 var(--sdp-space-2) 0; flex: 1; text-align: center; }
-
-.sp-card-main-button, .sp-card-main-button:hover, .sp-card-main-link:hover {
-  text-decoration: underline;
-}
-
-.sp-card-content-link:hover .sp-card-media {
-  opacity: 0.95;
-}
 
 .sp-card .sp-card-body h1 {
   font-size: 1.6rem;
@@ -1560,9 +1546,6 @@ details[open] summary.accordion-header svg:last-child { transform: rotate(180deg
 }
 
 /* ── 8. FAB (només escriptori) ─────────────────────────────────── */
-.fab-button:hover { transform: translateY(-2px) scale(1.05); box-shadow: 0 10px 24px rgba(1,110,191,0.48); background: var(--sdp-accio-hover); }
-.fab-button:active { transform: scale(0.96); }
-.fab-button svg { width: 24px; height: 24px; }
 
 .sdp-ocult { display: none !important; }
 .sdp-text-error { color: var(--sdp-error); }
@@ -1841,12 +1824,7 @@ nav.mobile-nav { display: none; }
   } }
 
 /* ── 9. UTILITATS SDP-* ─────────────────────────────────────────── */
-.sdp-grid { display: grid; }
 .sdp-items-center { align-items: center; }
-.sdp-justify-center { justify-content: center; }
-
-
-.sdp-bg-transparent { background-color: transparent; }
 
 
 
@@ -1940,11 +1918,6 @@ nav.mobile-nav { display: none; }
 }
 
 /* --- 4. Micro-interaccions (Hàptica) --- */
-
-.sdp-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--sdp-shadow-elevate);
-}
 
 
 /* === TOC DRAWER === */
@@ -2131,32 +2104,9 @@ button.sp-card-calendar-badge:hover {
   border-radius: var(--sdp-radi-m);
 }
 
-
-.sdp-filtre--vista, .sdp-filtre--accio, .sdp-filtre--camp input, .sdp-filtre--camp select {
-  min-block-size: var(--sdp-touch-comode); /* 48px */
-}
-
 /* Blau per a arquitectura / vistes */
 
 /* Taronja per a estat/mode actiu */
-.sdp-filtre--vista[aria-pressed="true"] {
-  background: var(--sdp-accent);
-  color: var(--sdp-sobre-accent);
-  border: 1px solid var(--sdp-accent-hover);
-  box-shadow: inset 0 -4px 0 var(--sdp-accent-hover);
-}
-
-.sdp-filtre--vista:focus-visible, .sdp-filtre--accio:focus-visible, .sdp-filtre--camp :is(input, select):focus-visible {
-  outline: 3px solid var(--sdp-focus);
-  outline-offset: 2px;
-}
-
-
-.sdp-filtre--camp span {
-  font-size: var(--sdp-text-meta);
-  font-weight: 700;
-  color: var(--sdp-text-suau);
-}
 
 .mur-filter input, .mur-filter select {
   padding-inline: var(--sdp-space-3);
@@ -2752,10 +2702,6 @@ button.sp-card-calendar-badge:hover {
   /* Dummy for gatekeeper */
   display: initial;
 }
-.profile-actions button {
-  flex: 1;
-  justify-content: center;
-}
 
 /* ==========================================
    UTILITATS SDP 
@@ -2970,19 +2916,6 @@ button.sp-card-calendar-badge:hover {
 
 .login-action {
   margin-top: 8px; width: 100%; justify-content: center;
-}
-
-
-.login-register-invite strong {
-  display: block;
-  color: var(--sdp-text-titol);
-  margin-bottom: var(--sdp-space-1);
-}
-
-.login-register-invite p {
-  margin: 0;
-  color: var(--sdp-text-suau);
-  font-size: var(--sdp-text-meta);
 }
 
 /* 7.13 Alta personal i d'organitzacions */
@@ -3208,20 +3141,6 @@ button.sp-card-calendar-badge:hover {
   }
 }
 
-.app-main__content article.card:has(.notes-shell) {
-  padding: 0; overflow: hidden;
-}
-
-.app-main__content article.card:has(.notes-shell) 
-.app-main__content article.card:has(.notes-shell) .topbar__title, .app-main__content article.card:has(.notes-shell) .topbar__title strong {
-  color: var(--sdp-sobre-roca);
-}
-
-.app-main__content article.card:has(.notes-shell) 
-.note-list {
-  margin-top: 16px;
-}
-
 .note-list 
 .notes-editor .card__title {
   font-size: 2rem; margin-top: 0;
@@ -3264,13 +3183,6 @@ button.sp-card-calendar-badge:hover {
 }
 
 /* ── COMPONENTS TIPTAP (PoC) ── */
-
-
-.sdp-tiptap-container 
-.sdp-tiptap-container .ProseMirror:focus {
-  outline: 3px solid var(--sdp-focus);
-  outline-offset: 1px;
-}
 
 /* --- Perfil Universal (Formularis Pedra Seca) --- */
 .form-trellat {
@@ -3484,7 +3396,6 @@ button.sp-card-calendar-badge:hover {
 
 /* TranslationsSection.jsx */
 .trans-container { max-width: 800px; margin: 0 auto; padding: 1rem; }
-.trans-header { text-align: left; display: flex; justify-content: space-between; align-items: center; }
 .trans-body { padding: 0; }
 .trans-divider { border-top: 2px dashed var(--sdp-fons-subtil); margin: 3rem 0; }
 .trans-icon-wrap { display: inline-flex; vertical-align: middle; width: 20px; height: 20px; padding: 2px; background: var(--sdp-fons-subtil); border-radius: 4px; }
@@ -3506,7 +3417,6 @@ button.sp-card-calendar-badge:hover {
 
 
 /* OnboardingSteps.jsx */
-.onb-avatar-actions { display: flex; gap: 0.5rem; justify-content: center; }
 .onb-center-text { text-align: center; margin-top: 1rem; }
 .onb-org-list { list-style: none; padding: 0; margin: 1.5rem 0; }
 .onb-org-item { display: flex; justify-content: space-between; align-items: center; padding: 1rem; border-bottom: 1px solid var(--sdp-vora); }
@@ -3720,17 +3630,9 @@ button.sp-card-calendar-badge:hover {
 }
 
 /* Noves classes per a UniversalEditorShell */
-.ue-px-12 { padding: 0 12px; }
-.ue-flex-col-8 { display: flex; flex-direction: column; gap: 8px; }
-.ue-text-sm { font-size: 0.85rem; }
-.ue-input-field { flex: 1; height: 38px; border-radius: 4px; }
-.ue-flex-8 { display: flex; gap: 8px; }
 
 /* Noves classes per a UniversalElements */
-.ue-min-w-150 { min-width: 150px; }
 .ue-flex-center-8 { display: flex; align-items: center; gap: 8px; }
-.ue-flex-1-pr-16 { flex: 1; min-width: 0; padding-right: 16px; }
-.ue-shrink-0 { flex-shrink: 0; }
 .ue-w-full { width: 100%; }
 .ue-flex-center { display: flex; align-items: center; }
 
@@ -3752,7 +3654,6 @@ button.sp-card-calendar-badge:hover {
 .sdp-flex-col-h100 { display: flex; flex-direction: column; height: 100%; }
 .ue-inline-block-mw10 { display: inline-block; min-width: 10px; }
 .ue-block-mw10 { display: block; min-width: 10px; }
-.ue-cal-badge-wrap { position: relative; z-index: 20; cursor: pointer; border: 1px solid var(--sdp-accent-subtil); padding: 0; }
 .ue-flex-col-center { display: flex; flex-direction: column; align-items: center; }
 .ue-accordion-header-btn { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 16px; cursor: pointer; }
 .ue-accordion-body-pd { padding: 0 16px 16px 16px; }
@@ -3763,3 +3664,5 @@ button.sp-card-calendar-badge:hover {
 .app-btn-retry { padding: 0.5rem 1rem; margin-top: 1rem; cursor: pointer; }
 .ob-mb-15 { margin-bottom: 1.5rem; }
 .ob-mt-15-op8 { margin-top: 1.5rem; opacity: 0.8; }
+
+} /* fi de @layer legacy (obert a la línia 39) */

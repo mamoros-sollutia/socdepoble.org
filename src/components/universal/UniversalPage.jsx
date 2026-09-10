@@ -13,8 +13,8 @@ import { useContent } from './ContentProvider';
 import {
 
   BackIcon, ForwardIcon, IndexIcon,
-  CommentIcon, ShareIcon, PinIcon, ThemeIcon,
-  SearchIcon, IaiaIcon, GlobeIcon, IconButton, ActionControl, DateTimeControl
+  CommentIcon, ShareIcon, PinIcon,
+  IconButton, ActionControl, DateTimeControl
 } from './UniversalElements';
 
 import { isSafeUrl, isValidDate, DEFAULT_AUTHOR, PAGE_CHROME_MODES } from './UniversalUtils';

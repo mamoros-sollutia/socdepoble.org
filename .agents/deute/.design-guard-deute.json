@@ -23,7 +23,10 @@
     "max": 23,
     "identitats": [
       "inline-style|components/universal/UniversalEditorShell.jsx|style=",
-      "inline-style|components/universal/UniversalElements.jsx|style=",
+      "inline-style|components/ui/Accordion.jsx|style=",
+      "inline-style|components/ui/Dropdown.jsx|style=",
+      "inline-style|components/ui/UniversalIndicatorCard.jsx|style=",
+      "inline-style|components/ui/icones.jsx|style=",
       "inline-style|sections/detail/detailSectionMeta.jsx|style=",
       "inline-style|sections/dispositius/DevicesSection.jsx|style=",
       "inline-style|sections/profile/DetallAjust.jsx|style=",

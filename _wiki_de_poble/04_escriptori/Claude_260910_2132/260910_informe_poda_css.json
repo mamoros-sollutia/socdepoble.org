@@ -1,0 +1,214 @@
+{
+  "generat": "2026-09-10T19:25:03.450Z",
+  "fulls": [
+    "src/css/index.css",
+    "src/css/design-tokens.css"
+  ],
+  "orfes": {
+    "app-main__content": [
+      "src/css/index.css:3213",
+      "src/css/index.css:3217",
+      "src/css/index.css:3217",
+      "src/css/index.css:3222"
+    ],
+    "dl-horizontal": [
+      "src/css/index.css:1199",
+      "src/css/index.css:1200"
+    ],
+    "fab-button": [
+      "src/css/index.css:530",
+      "src/css/index.css:1565",
+      "src/css/index.css:1566",
+      "src/css/index.css:1567"
+    ],
+    "login-register-invite": [
+      "src/css/index.css:2978",
+      "src/css/index.css:2984"
+    ],
+    "onb-avatar-actions": [
+      "src/css/index.css:3511"
+    ],
+    "profile-actions": [
+      "src/css/index.css:2757"
+    ],
+    "sdp-badge": [
+      "src/css/index.css:1277"
+    ],
+    "sdp-badges-container": [
+      "src/css/index.css:1275",
+      "src/css/index.css:1276"
+    ],
+    "sdp-bg-transparent": [
+      "src/css/index.css:1851"
+    ],
+    "sdp-card": [
+      "src/css/index.css:1946"
+    ],
+    "sdp-filtre--accio": [
+      "src/css/index.css:2137",
+      "src/css/index.css:2151"
+    ],
+    "sdp-filtre--camp": [
+      "src/css/index.css:2137",
+      "src/css/index.css:2137",
+      "src/css/index.css:2151",
+      "src/css/index.css:2157"
+    ],
+    "sdp-filtre--vista": [
+      "src/css/index.css:2137",
+      "src/css/index.css:2144",
+      "src/css/index.css:2151"
+    ],
+    "sdp-grid": [
+      "src/css/index.css:1846"
+    ],
+    "sdp-justify-center": [
+      "src/css/index.css:1848"
+    ],
+    "sdp-tiptap-container": [
+      "src/css/index.css:3271"
+    ],
+    "sp-card-content-link": [
+      "src/css/index.css:1340"
+    ],
+    "sp-card-main-button": [
+      "src/css/index.css:1336",
+      "src/css/index.css:1336"
+    ],
+    "sp-card-main-link": [
+      "src/css/index.css:1336"
+    ],
+    "sw-pedra-75": [
+      "src/css/index.css:924"
+    ],
+    "tooltip-container": [
+      "src/css/index.css:1308"
+    ],
+    "tooltip-text": [
+      "src/css/index.css:1308"
+    ],
+    "topbar__title": [
+      "src/css/index.css:3217",
+      "src/css/index.css:3217"
+    ],
+    "trans-header": [
+      "src/css/index.css:3489"
+    ],
+    "ue-cal-badge-wrap": [
+      "src/css/index.css:3757"
+    ],
+    "ue-flex-1-pr-16": [
+      "src/css/index.css:3734"
+    ],
+    "ue-flex-8": [
+      "src/css/index.css:3729"
+    ],
+    "ue-flex-col-8": [
+      "src/css/index.css:3726"
+    ],
+    "ue-input-field": [
+      "src/css/index.css:3728"
+    ],
+    "ue-min-w-150": [
+      "src/css/index.css:3732"
+    ],
+    "ue-px-12": [
+      "src/css/index.css:3725"
+    ],
+    "ue-shrink-0": [
+      "src/css/index.css:3735"
+    ],
+    "ue-text-sm": [
+      "src/css/index.css:3727"
+    ]
+  },
+  "regles_mortes": [
+    "src/css/index.css:924  .sw-pedra-75",
+    "src/css/index.css:1199  .dl-horizontal dt",
+    "src/css/index.css:1200  .dl-horizontal dd",
+    "src/css/index.css:1308  .tooltip-container:hover .tooltip-text::after",
+    "src/css/index.css:1336  .sp-card-main-button, .sp-card-main-button:hover, .sp-card-main-link:hover",
+    "src/css/index.css:1340  .sp-card-content-link:hover .sp-card-media",
+    "src/css/index.css:1565  .fab-button:hover",
+    "src/css/index.css:1566  .fab-button:active",
+    "src/css/index.css:1567  .fab-button svg",
+    "src/css/index.css:1846  .sdp-grid",
+    "src/css/index.css:1848  .sdp-justify-center",
+    "src/css/index.css:1851  .sdp-bg-transparent",
+    "src/css/index.css:1946  .sdp-card:hover",
+    "src/css/index.css:2137  .sdp-filtre--vista, .sdp-filtre--accio, .sdp-filtre--camp input, .sdp-filtre--camp select",
+    "src/css/index.css:2144  .sdp-filtre--vista[aria-pressed=\"true\"]",
+    "src/css/index.css:2151  .sdp-filtre--vista:focus-visible, .sdp-filtre--accio:focus-visible, .sdp-filtre--camp :is(input, select):focus-visible",
+    "src/css/index.css:2157  .sdp-filtre--camp span",
+    "src/css/index.css:2757  .profile-actions button",
+    "src/css/index.css:2978  .login-register-invite strong",
+    "src/css/index.css:2984  .login-register-invite p",
+    "src/css/index.css:3213  .app-main__content article.card:has(.notes-shell)",
+    "src/css/index.css:3217  .app-main__content article.card:has(.notes-shell) .app-main__content article.card:has(.notes-shell) .topbar__title, .app-main__content article.card:has(.notes-shell) .topbar__title strong",
+    "src/css/index.css:3222  .app-main__content article.card:has(.notes-shell) .note-list",
+    "src/css/index.css:3271  .sdp-tiptap-container .sdp-tiptap-container .ProseMirror:focus",
+    "src/css/index.css:3489  .trans-header",
+    "src/css/index.css:3511  .onb-avatar-actions",
+    "src/css/index.css:3725  .ue-px-12",
+    "src/css/index.css:3726  .ue-flex-col-8",
+    "src/css/index.css:3727  .ue-text-sm",
+    "src/css/index.css:3728  .ue-input-field",
+    "src/css/index.css:3729  .ue-flex-8",
+    "src/css/index.css:3732  .ue-min-w-150",
+    "src/css/index.css:3734  .ue-flex-1-pr-16",
+    "src/css/index.css:3735  .ue-shrink-0",
+    "src/css/index.css:3757  .ue-cal-badge-wrap"
+  ],
+  "selectors_soldats": [
+    "src/css/index.css:3217  .app-main__content article.card:has(.notes-shell) .app-main__content article.card:has(.notes-shell) .topbar__title, .app-main__content article.card:has(.notes-shell) .topbar__title strong",
+    "src/css/index.css:3222  .app-main__content article.card:has(.notes-shell) .note-list",
+    "src/css/index.css:3227  .note-list .notes-editor .card__title",
+    "src/css/index.css:3271  .sdp-tiptap-container .sdp-tiptap-container .ProseMirror:focus",
+    "src/css/index.css:3322  .editor-toolbar /* Universal Toolbar buttons */ .btn-icon, .btn-publish, .btn-create"
+  ],
+  "claus": [],
+  "selectors_morts": [
+    "src/css/index.css:530  .fab-button:focus-visible",
+    "src/css/index.css:1275  .sdp-badges-container",
+    "src/css/index.css:1276  .sdp-badges-container li",
+    "src/css/index.css:1277  .sdp-badge"
+  ],
+  "per_patro": {
+    "toc-level-1": [
+      "prefix «toc-level-»"
+    ],
+    "toc-level-2": [
+      "prefix «toc-level-»"
+    ],
+    "toc-level-3": [
+      "prefix «toc-level-»"
+    ],
+    "toc-level-4": [
+      "prefix «toc-level-»"
+    ],
+    "mur-filter": [
+      "prefix «mur-» (dèbil)"
+    ],
+    "btn-realitat": [
+      "prefix «btn-»"
+    ],
+    "xat-control-dropdown": [
+      "prefix «xat-» (dèbil)"
+    ],
+    "onboarding-privacy-note": [
+      "prefix «onboarding-» (dèbil)"
+    ],
+    "notes-shell": [
+      "prefix «notes-» (dèbil)"
+    ],
+    "notes-editor": [
+      "prefix «notes-» (dèbil)"
+    ]
+  },
+  "debils": [
+    "h5",
+    "h6",
+    "sdp-ocult-mobil"
+  ],
+  "avisos": []
+}

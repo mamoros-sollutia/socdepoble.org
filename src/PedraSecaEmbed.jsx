@@ -30,7 +30,7 @@
 
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter, MemoryRouter } from './app/contexts/RouterContext';
+import { BrowserRouter } from './app/contexts/RouterContext';
 import App from './app/App';
 import { SessionProvider } from './app/contexts/SessionContext';
 import { UIProvider } from './app/contexts/UIContext';
@@ -38,37 +38,11 @@ import { IdentitatProvider } from './app/contexts/IdentitatContext';
 import { destroyToastSystem } from './components/universal/AvisadorEfimer.jsx';
 import styles from './css/index.css?inline';
 import { readThemePreference, resolveTheme } from './config/theme';
+import { ErrorBoundary } from './components/ErrorBoundary.jsx';
 
 /* ───────────────────────────── Error boundary ──────────────────────────── */
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false, error: null };
-  }
-  static getDerivedStateFromError(error) {
-    return { hasError: true, error };
-  }
-  componentDidCatch(error, errorInfo) {
-    console.error('[PedraSeca] Error capturat pel límit de React:', error, errorInfo);
-  }
-  render() {
-    if (this.state.hasError) {
-      return (
-        <div className="alert">
-          <h2>No s'ha pogut carregar Sóc de Poble</h2>
-          <p>Torna a carregar la pàgina. Si continua, avisa l'administrador del lloc.</p>
-          <pre>{this.state.error?.toString()}</pre>
-        </div>
-      );
-    }
-    return this.props.children;
-  }
-}
-
 export default function PedraSecaEmbed({ config, themeMode, language }) {
-  const RouterComponent = config.routerType === 'browser' ? BrowserRouter : 
-                          config.routerType === 'memory' ? MemoryRouter : BrowserRouter;
+  const RouterComponent = BrowserRouter;
   const routerProps = config.basename ? { basename: config.basename } : {};
 
   const uiConfig = React.useMemo(() => {

@@ -20,34 +20,12 @@
 
 import fs from 'node:fs/promises';
 
-const _metaUrl = import.meta.url.startsWith('file:') ? import.meta.url : 'file://' + import.meta.url;
 import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { isUtf8 } from 'node:buffer';
-import { fileURLToPath, pathToFileURL } from 'node:url';
-import {
-  parseFrontmatter,
-  serializeFrontmatter,
-} from '../lib/frontmatter.mjs';
 import { WIKI_DIR } from '../lib/project_paths.mjs';
 
 export const DEFAULT_WIKI_DIR = WIKI_DIR;
-const SCHEMA_TEXT = await fs.readFile(fileURLToPath(new URL('../schema.json', _metaUrl)), 'utf8');
-const SCHEMA = JSON.parse(SCHEMA_TEXT);
-const FIELD_ORDER = ['estat', 'tipus', 'description', 'aliases', 'revisat'];
-const ALLOWED_FIELDS = new Set(FIELD_ORDER);
-const ALLOWED_STATES = new Set(SCHEMA.properties.estat.enum);
-const ALLOWED_TYPES = new Set(SCHEMA.properties.tipus.enum);
-const MAX_DESCRIPTION = SCHEMA.properties.description.maxLength;
-const MAX_ALIASES = SCHEMA.properties.aliases.maxItems;
-const KNOWN_LEGACY_FIELDS = new Set([
-  'name', 'descripcio', 'resum', 'autor', 'authority', 'categoria', 'tags',
-  'created_at', 'updated_at', 'version', 'script', 'replaces', 'depends_on',
-  'jurisdiccio', 'pilar', 'mode',
-]);
-const MANUAL_LEGACY_FIELDS = new Set([
-  'tags', 'script', 'replaces', 'depends_on', 'jurisdiccio', 'mode',
-]);
 
 const EXCLUDED_DIRS = new Set([
   '.git', '.obsidian', 'assets', 'node_modules', 'scripts', '.wiki-safety',
@@ -59,21 +37,9 @@ const MIRROR_PREFIXES = [
 const VENDOR_PREFIXES = ['00_SER_Brain_Identitat/Sollutia'];
 const VISIBLE_QUARANTINE_RE = /^QUARANTENA(?:_|-)/i;
  
-const CONTROL_RE = /[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/;
-const PLACEHOLDER_RE = /^(?:todo|tbd|wip|fixme|placeholder|pendent|per completar|pr[oò]ximament|sense contingut)[\s.!…:;-]*$/i;
 
 const posix = (value) => value.split(path.sep).join('/');
-import { normalitza } from '../lib/text.mjs';
 const sha256 = (value) => createHash('sha256').update(value).digest('hex');
-const SCHEMA_SHA256 = sha256(SCHEMA_TEXT);
-const unique = (values) => [...new Set(values)];
-const emptyValue = (value) => value === undefined || value === null || value === ''
-  || (Array.isArray(value) && value.length === 0);
-const valueFingerprint = (value) => ({
-  type: Array.isArray(value) ? 'array' : typeof value,
-  items: Array.isArray(value) ? value.length : undefined,
-  sha256: sha256(JSON.stringify(value)),
-});
 const isPrefix = (rel, prefix) => rel === prefix || rel.startsWith(`${prefix}/`);
 const isInside = (root, candidate) => {
   const rel = path.relative(root, candidate);

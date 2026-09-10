@@ -25,6 +25,7 @@ const DevicesSection = lazy(() => import('../sections/dispositius/DevicesSection
 const ConnectarSection = lazy(() => import('../sections/connectar/ConnectarSection'));
 const ControlSection = lazy(() => import('../sections/control/ControlSection'));
 const OnboardingSection = lazy(() => import('../sections/onboarding/OnboardingSection'));
+const AdminSection = lazy(() => import('../sections/admin/AdminSection'));
 
 const TranslationsSection = lazy(() => import('../sections/translations/TranslationsSection'));
 const TextSection = lazy(() => import('../sections/text/TextSection'));
@@ -542,6 +543,7 @@ function AppRoutes() {
         <Route path="/grup/*" element={<SectionRedirect sectionId="grup" />} />
 
         {/* Rutes globals i administratives */}
+        <Route path="/admin/*" element={<AdminSection />} />
         <Route path="/cerca" element={<SearchSection />} />
         <Route path="/login" element={<Navigate to="/registre" replace />} />
         <Route path="/accedir" element={<Navigate to="/registre" replace />} />

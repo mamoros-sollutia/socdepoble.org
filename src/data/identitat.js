@@ -90,6 +90,10 @@ export function idConvidat() {
  * emmagatzematge local. S'esborra la primera volta que algú òbriga l'app.
  */
 function purgaLlegat() {
+  if (typeof document !== 'undefined' && /(?:^|; )(?:socdepoble-|sdp:oauth:)/.test(document.cookie)) {
+    for (const k of ['socdepoble-jwt','socdepoble-refresh-token','socdepoble-user', 'sdp:oauth:verificador','sdp:oauth:state','sdp:oauth:cb'])
+      document.cookie = `${k}=; path=/; max-age=0; SameSite=Lax`;
+  }
   if (typeof window === 'undefined') return;
   try {
     if (getVal(CLAU_USUARI, null)) {
@@ -154,4 +158,27 @@ export function oblidaConvidat() {
 export async function reclamaContingutDelConvidat() {
   // Mode Online-First: la persistència recau completament en el backend.
   return { migrat: 0 };
+}
+
+/** 
+ * ============================================================================
+ * SESSIÓ DE SUPERADMIN LOCAL
+ * ============================================================================
+ * El Mode Administrador utilitza un bypass per saltar-se RLS a Supabase.
+ * Aquesta identitat és exclusivament per a l'UI i accés a funcions RPC protegides.
+ */
+export const CLAU_LOCAL_ADMIN = 'socdepoble-local-admin';
+
+export function esAdminLocal() {
+  const adminToken = getEfimer(CLAU_LOCAL_ADMIN, null);
+  return !!adminToken;
+}
+
+export function desaAdminLocal(tokenSeu) {
+  setEfimer(CLAU_LOCAL_ADMIN, tokenSeu || 'mestre');
+  return true;
+}
+
+export function tancaAdminLocal() {
+  delEfimer(CLAU_LOCAL_ADMIN);
 }

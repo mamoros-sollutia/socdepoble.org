@@ -1,6 +1,6 @@
 ---
-tipus: index
 estat: canonic
+tipus: index
 description: 📥 L'ESCRIPTORI (SAFATA D'ENTRADA I TREBALL ACTIU)
 ---
 
@@ -9,27 +9,30 @@ description: 📥 L'ESCRIPTORI (SAFATA D'ENTRADA I TREBALL ACTIU)
 Ací només resideix la matèria viva. El que ha mort, descansa en l'arxiu.
 
 ## 🔗 Índexs Connectats (Xarxa Neuronal)
-- [[00_index]] (Índex Principal)
-- [[00_index_identitat]] (Nucli d'Identitat)
+- [[00_INDEX]] (Índex Principal)
+- [[00_INDEX_IDENTITAT]] (Nucli d'Identitat)
 - [[00_INDEX_Actes]] (Registre d'Actes)
 
-- [[260910_0431_absents_auditoria.json]]
-- [[260910_0431_prompt_auditoria]]
-- [[260910_0440_estudi_consell_auditoria]]
-- [[260910_0501_absents_auditoria.json]]
-- [[260910_0501_bundle_auditoria]]
-- [[260910_0501_prompt_auditoria]]
+- [[00_index_escriptori]]
+- [[260910_2208_ABSENTS_admin.json]]
+- [[260910_2208_PROMPT_admin]]
+- [[260910_2318_ABSENTS_auditoria.json]]
+- [[260910_2318_BUNDLE_auditoria]]
+- [[260910_2318_PROMPT_auditoria]]
+- [[260910_2335_auditoria_destructiva_universal_manager]]
 
-## 01_Produccio
-- [[01_Produccio/contracte_graella]]
+## 01_produccio
+- [[01_produccio/contracte_graella]]
 
+## Claude_260910_2132
+- [[Claude_260910_2132/260910_informe_poda_css.json]]
+- [[Claude_260910_2132/260910_informe_poda_css.txt]]
+- [[Claude_260910_2132/260910_seient5_poda_i_facana.patch]]
+- [[Claude_260910_2132/UniversalCard.jsx]]
+- [[Claude_260910_2132/index.js]]
+- [[Claude_260910_2132/tractor-poda-css.mjs]]
 
-## Orphans
-- [[00_bandeja_d_entrada/claude_260910_0514/260910_auditoria_nomenclatura_wiki.md]]
-- [[260910_0535_acta_marmota_migracio_nomenclatura.md]]
-- [[claude_260910_0450/260910_auditoria_seient5_post_destruccio.md]]
-- [[.ancora_sessio.json]]
-- [[00_bandeja_d_entrada/claude_260910_0514/nomenclatura.json]]
-- [[00_bandeja_d_entrada/claude_260910_0514/tractor_nomenclatura.mjs]]
-- [[claude_260910_0450/tractor_rutes_compila.mjs]]
-- [[260910_0730_ACTA_MARMOTA_sanejament_p0]]
+## claude_260910_0514
+- [[claude_260910_0514/260910_auditoria_nomenclatura_wiki]]
+- [[claude_260910_0514/nomenclatura.json]]
+- [[claude_260910_0514/tractor_nomenclatura.mjs]]

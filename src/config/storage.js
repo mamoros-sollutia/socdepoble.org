@@ -59,31 +59,15 @@ export const getEfimer = (key, fallback = null) => {
   if (!hasSession) return fallback;
   try {
     const raw = window.sessionStorage.getItem(key);
-    if (!raw) return fallback;
-    try {
-      return JSON.parse(raw);
-    } catch {
-      return raw;
-    }
-  } catch {
-    return fallback;
-  }
+    if (raw == null) return fallback;
+    try { return JSON.parse(raw); } catch { return raw; }
+  } catch { return fallback; }
 };
-
 export const setEfimer = (key, value) => {
   if (!hasSession) return;
-  try {
-    window.sessionStorage.setItem(key, JSON.stringify(value));
-  } catch {
-    // Ignore
-  }
+  try { window.sessionStorage.setItem(key, typeof value === 'string' ? value : JSON.stringify(value)); } catch { /* quota */ }
 };
-
 export const delEfimer = (key) => {
   if (!hasSession) return;
-  try {
-    window.sessionStorage.removeItem(key);
-  } catch {
-    // Ignore
-  }
+  try { window.sessionStorage.removeItem(key); } catch { /* res */ }
 };

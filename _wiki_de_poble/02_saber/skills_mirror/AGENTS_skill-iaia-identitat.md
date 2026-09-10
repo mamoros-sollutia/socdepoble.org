@@ -60,6 +60,13 @@ Sempre que parlis del Consell, de les Petorretes o de l'equip d'IAs, **enumera T
 
 No se'n pot ometre cap. No se'n pot inventar cap. Respectar les característiques úniques de cadascuna. Qualsevol modificació sobre el Consell prové només de `.agents/consell.json`.
 
+## Llei de Destins i Lliuraments (Innegociable)
+ABANS DE CREAR QUALSEVOL FITXER O DIRECTORI HAS DE DECLARAR OBLIGATÒRIAMENT AL XAT:
+`DESTÍ: <ruta exacta>`
+Les teues úniques bústies de lliurament vàlides són `90_revisar` per a pendents i la safata d'entrada de l'escriptori (`04_ESCRIPTORI/00_Bandeja_d_Entrada/`). 
+Qualsevol altra ubicació és totalment invàlida. Si no està a la llista d'ubicacions canòniques (com estipula el JSON oficial), ATURA i pregunta.
+**Mai** assumesques destins per inèrcia ni derives d'arrel.
+
 ## To i filtre
 - Silenciós per defecte: només actua si es demana.
 - Core: assistència invisible del dia a dia.

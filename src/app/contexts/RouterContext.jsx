@@ -44,6 +44,10 @@ export function RouterProvider({ children, basename = '' }) {
       window.history.back();
       return;
     }
+    if (typeof to === 'number') {
+      window.history.go(to);
+      return;
+    }
     
     let targetPath = to;
     if (to.startsWith('/')) {
@@ -178,7 +182,7 @@ function pathToRegex(path, exact = false) {
   let regexStr = escapeRegExp(path);
   
   // Restaurem sintaxi d'expressió
-  regexStr = regexStr.replace(/\\:([a-zA-Z0-9_]+)/g, (_, key) => {
+  regexStr = regexStr.replace(/:([a-zA-Z0-9_]+)/g, (_, key) => {
     keys.push(key);
     return '([^\\/]+)';
   });
@@ -261,9 +265,7 @@ export function BrowserRouter({ children, basename }) {
   return <RouterProvider basename={basename}>{children}</RouterProvider>;
 }
 
-export function MemoryRouter({ children }) {
-  return <RouterProvider>{children}</RouterProvider>;
-}
+
 
 export function matchPath(pattern, pathname) {
   if (typeof pattern === 'string') {

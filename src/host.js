@@ -139,7 +139,15 @@ export const CONTRACTE_BACKEND = Object.freeze([
      manera d'obtindre'l: "profiles read own" només deixa llegir el teu perfil i
      `town_memberships` no té política de lectura per a tercers. Sense aquest
      mètode, el botó «Nova conversa» és impossible d'implementar. */
-  'carregaMembres'
+  'carregaMembres',
+
+  /* Fase 2B: Migració a WebSockets per al Xat. */
+  'subscribeToXat',
+  'unsubscribeFromXat',
+  
+  /* Fase 3: Mode Administrador (UniversalManagerShell) */
+  'adminListUsers',
+  'adminListOrganizations'
 ]);
 
 /* ═══════════════════════ Fase 1 · Configuració ═══════════════════════ */
