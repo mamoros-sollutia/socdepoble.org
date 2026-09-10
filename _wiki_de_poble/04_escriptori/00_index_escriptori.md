@@ -28,3 +28,7 @@ Ací només resideix la matèria viva. El que ha mort, descansa en l'arxiu.
 - [[00_bandeja_d_entrada/claude_260910_0514/260910_auditoria_nomenclatura_wiki.md]]
 - [[260910_0535_acta_marmota_migracio_nomenclatura.md]]
 - [[claude_260910_0450/260910_auditoria_seient5_post_destruccio.md]]
+- [[.ancora_sessio.json]]
+- [[00_bandeja_d_entrada/claude_260910_0514/nomenclatura.json]]
+- [[00_bandeja_d_entrada/claude_260910_0514/tractor_nomenclatura.mjs]]
+- [[claude_260910_0450/tractor_rutes_compila.mjs]]
