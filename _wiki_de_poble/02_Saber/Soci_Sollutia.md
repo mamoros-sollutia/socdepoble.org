@@ -223,35 +223,35 @@ Aquestes eines configuren l'instrumental de la Forja.
 
 ## 11. Sinapsis
 
-- [[01_IDENTITAT]]
+- [[01_identitat]]
 - [[02_EQUIP_IA]]
-- [[00_BIOS]]
-- [[DOC_Governanca]]
-- [[Arquitectura_Protocol_Lazaro]]
+- [[00_bios]]
+- [[doc_governanca]]
+- [[arquitectura_protocol_lazaro]]
 
 
 ## Taxonomia
-- **Categoria:** [[Identitat]]
-- **Etiquetes:** [[Graf]]
+- **Categoria:** [[identitat]]
+- **Etiquetes:** [[graf]]
 
 
-**Ancoratge de Seguretat:** [[00_INDEX_IDENTITAT]]
+**Ancoratge de Seguretat:** [[00_index_identitat]]
 
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX_IDENTITAT]]
+**Ancoratge de Seguretat:** [[00_index_identitat]]
 
 ## Sinapsis Entrants (Autogenerat)
 
-- [[00_BIOS|00_SER_Brain_Identitat/00_BIOS.md]] — [[Soci_Sollutia|00_SER_Brain_Identitat/Soci_Sollutia.md]] — [[00_BIOS]]
-- [[00_INDEX_IDENTITAT|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[Soci_Sollutia]]
-- [[01_IDENTITAT|00_SER_Brain_Identitat/01_IDENTITAT.md]] — [[Soci_Sollutia|00_SER_Brain_Identitat/Soci_Sollutia.md]] — [[01_IDENTITAT]]
-- [[02_EQUIP_IA|00_SER_Brain_Identitat/02_EQUIP_IA.md]] — [[Soci_Sollutia|00_SER_Brain_Identitat/Soci_Sollutia.md]] — [[02_EQUIP_IA]]
-- [[el_projecte|00_SER_Brain_Identitat/el_projecte.md]] — [[Soci_Sollutia|00_SER_Brain_Identitat/Soci_Sollutia.md]] — Aquest document p...
-- [[Soci_Sollutia|00_SER_Brain_Identitat/Soci_Sollutia.md]] — [[00_BIOS|00_SER_Brain_Identitat/00_BIOS.md]] — [[Soci_Sollutia|00_SER_Brain_...
-- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[Soci_Sollutia|00_SER_Brain_Identitat/Soci_Sollutia.md]] — Etiquetes: [[Graf]]
-- [[Identitat|01_SABER_Cultura_Coneixement/Identitat.md]] — [[Soci_Sollutia|00_SER_Brain_Identitat/Soci_Sollutia.md]] — Categoria: [[Iden...
-- [[DOC_Governanca|03_GOVERNAR_Normativa_Regles/DOC_Governanca.md]] — [[Soci_Sollutia|00_SER_Brain_Identitat/Soci_Sollutia.md]] — [[DOC_Governanca]]
+- [[00_bios|00_SER_Brain_Identitat/00_BIOS.md]] — [[soci_sollutia|00_SER_Brain_Identitat/Soci_Sollutia.md]] — [[00_bios]]
+- [[00_index_identitat|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[soci_sollutia]]
+- [[01_identitat|00_SER_Brain_Identitat/01_IDENTITAT.md]] — [[soci_sollutia|00_SER_Brain_Identitat/Soci_Sollutia.md]] — [[01_identitat]]
+- [[02_EQUIP_IA|00_SER_Brain_Identitat/02_EQUIP_IA.md]] — [[soci_sollutia|00_SER_Brain_Identitat/Soci_Sollutia.md]] — [[02_EQUIP_IA]]
+- [[el_projecte|00_SER_Brain_Identitat/el_projecte.md]] — [[soci_sollutia|00_SER_Brain_Identitat/Soci_Sollutia.md]] — Aquest document p...
+- [[soci_sollutia|00_SER_Brain_Identitat/Soci_Sollutia.md]] — [[00_bios|00_SER_Brain_Identitat/00_BIOS.md]] — [[soci_sollutia|00_SER_Brain_...
+- [[graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[soci_sollutia|00_SER_Brain_Identitat/Soci_Sollutia.md]] — Etiquetes: [[graf]]
+- [[identitat|01_SABER_Cultura_Coneixement/Identitat.md]] — [[soci_sollutia|00_SER_Brain_Identitat/Soci_Sollutia.md]] — Categoria: [[Iden...
+- [[doc_governanca|03_GOVERNAR_Normativa_Regles/DOC_Governanca.md]] — [[soci_sollutia|00_SER_Brain_Identitat/Soci_Sollutia.md]] — [[doc_governanca]]
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

@@ -206,7 +206,7 @@ function esperaCodi(emergent, config) {
       if (e.key !== CLAU_TRASPAS || !e.newValue) return;
       try {
         const d = JSON.parse(e.newValue);
-        if (d.t && Date.now() - d.t > 120000) return;
+        if (!d.t || Date.now() - d.t > 120000) return;
         if (d?.error) return acaba(rebutja, new Error(d.error));
         if (d?.code) acaba(resol, d.code);
       } catch { /* valor malmés: s'ignora */ }
@@ -279,9 +279,12 @@ export async function gestionaTornada(config = {}, resolConfig) {
 
   const urlState = qSearch.get('state') || qHash.get('state');
   const storedState = getEfimer('sdp:oauth:state', null);
-  if (urlState && storedState && urlState !== storedState) {
-    netejaRetorn();
-    throw new Error('Estat OAuth no vàlid. Possilbe atac CSRF.');
+  
+  if (storedState) {
+    if (!urlState || urlState !== storedState) {
+      netejaRetorn();
+      throw new Error('Estat OAuth no vàlid. Possible atac CSRF.');
+    }
   }
 
   const verificador = getEfimer(CLAU_VERIFICADOR, null);

@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState, useMemo } from 'react';
-import { useLocation, matchPath } from 'react-router-dom';
+import { useLocation, matchPath } from './RouterContext';
 import { useSession } from './SessionContext';
 import { getDefaultUserId } from '../../data/backendPort';
 

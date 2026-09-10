@@ -82,41 +82,41 @@ Auditar no modifica fitxers. Escriure un informe, corregir YAML, moure una nota,
 
 ## Sinapsis
 
-- [[DOC_Governanca]]
-- [[FORJA_TO_CORE]]
-- [[02_GENOTIP]]
+- [[doc_governanca]]
+- [[forja_to_core]]
+- [[02_genotip]]
 
 
 ## Taxonomia
-- **Categoria:** [[Maquina]]
-- **Etiquetes:** [[Graf]]
+- **Categoria:** [[maquina]]
+- **Etiquetes:** [[graf]]
 
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_index]]
 
 
 ---
 **Categoria:** skills (BROKEN LINK: skills) <!-- TODO: fix link -->
-**Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_index]]
+**Ancoratge de Seguretat:** [[00_index]]
 
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_index]]
 
 ## Sinapsis Entrants (Autogenerat)
 
-- [[00_INDEX|00_INDEX.md]] — [[AUDITORIA_CANONICA|02_ACTUAR_Maquina_Tecnica/skills/AUDITORIA_CANONICA.md]]...
-- [[02_GENOTIP|00_SER_Brain_Identitat/02_GENOTIP.md]] — [[AUDITORIA_CANONICA|02_ACTUAR_Maquina_Tecnica/skills/AUDITORIA_CANONICA.md]]...
-- [[03_Consola_Termodinamica|00_SER_Brain_Identitat/03_Consola_Termodinamica.md]] — [[AUDITORIA_CANONICA]]
-- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[AUDITORIA_CANONICA|02_ACTUAR_Maquina_Tecnica/skills/AUDITORIA_CANONICA.md]]...
-- [[Maquina|01_SABER_Cultura_Coneixement/Maquina.md]] — [[AUDITORIA_CANONICA|02_ACTUAR_Maquina_Tecnica/skills/AUDITORIA_CANONICA.md]]...
-- [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maquina_Tecnica/00_arquitectura_tecnica_unificada.md]] — [[AUDITORIA_CANONICA]]
-- [[AUDITORIA_CANONICA|02_ACTUAR_Maquina_Tecnica/skills/AUDITORIA_CANONICA.md]] — [[00_INDEX|00_INDEX.md]] — [[AUDITORIA_CANONICA|02_ACTUAR_Maquina_Tecnica/ski...
-- [[index_trellat|02_ACTUAR_Maquina_Tecnica/skills/index_trellat.md]] — [[AUDITORIA_CANONICA]]
-- [[seguretat_execucio|02_ACTUAR_Maquina_Tecnica/skills/seguretat_execucio.md]] — [[AUDITORIA_CANONICA]]
-- [[successio_lazaro_execucio|02_ACTUAR_Maquina_Tecnica/skills/successio_lazaro_execucio.md]] — [[AUDITORIA_CANONICA]]
-- [[DOC_Governanca|03_GOVERNAR_Normativa_Regles/DOC_Governanca.md]] — [[AUDITORIA_CANONICA|02_ACTUAR_Maquina_Tecnica/skills/AUDITORIA_CANONICA.md]]...
+- [[00_index|00_INDEX.md]] — [[auditoria_canonica|02_ACTUAR_Maquina_Tecnica/skills/AUDITORIA_CANONICA.md]]...
+- [[02_genotip|00_SER_Brain_Identitat/02_GENOTIP.md]] — [[auditoria_canonica|02_ACTUAR_Maquina_Tecnica/skills/AUDITORIA_CANONICA.md]]...
+- [[03_consola_termodinamica|00_SER_Brain_Identitat/03_Consola_Termodinamica.md]] — [[auditoria_canonica]]
+- [[graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[auditoria_canonica|02_ACTUAR_Maquina_Tecnica/skills/AUDITORIA_CANONICA.md]]...
+- [[maquina|01_SABER_Cultura_Coneixement/Maquina.md]] — [[auditoria_canonica|02_ACTUAR_Maquina_Tecnica/skills/AUDITORIA_CANONICA.md]]...
+- [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maquina_Tecnica/00_arquitectura_tecnica_unificada.md]] — [[auditoria_canonica]]
+- [[auditoria_canonica|02_ACTUAR_Maquina_Tecnica/skills/AUDITORIA_CANONICA.md]] — [[00_index|00_INDEX.md]] — [[auditoria_canonica|02_ACTUAR_Maquina_Tecnica/ski...
+- [[index_trellat|02_ACTUAR_Maquina_Tecnica/skills/index_trellat.md]] — [[auditoria_canonica]]
+- [[seguretat_execucio|02_ACTUAR_Maquina_Tecnica/skills/seguretat_execucio.md]] — [[auditoria_canonica]]
+- [[successio_lazaro_execucio|02_ACTUAR_Maquina_Tecnica/skills/successio_lazaro_execucio.md]] — [[auditoria_canonica]]
+- [[doc_governanca|03_GOVERNAR_Normativa_Regles/DOC_Governanca.md]] — [[auditoria_canonica|02_ACTUAR_Maquina_Tecnica/skills/AUDITORIA_CANONICA.md]]...
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

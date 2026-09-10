@@ -89,7 +89,8 @@ revoke all on table public.xat_participants from anon, public;
 grant select on table public.xat_participants to authenticated;
 
 revoke all on table public.xat_missatges from anon, public;
-grant select, insert on table public.xat_missatges to authenticated;
+grant select on table public.xat_missatges to authenticated;
+grant insert (fil_id, usuari_id, text) on table public.xat_missatges to authenticated;
 
 revoke all on table public.xat_lectures from anon, public;
 grant select, insert, update on table public.xat_lectures to authenticated;

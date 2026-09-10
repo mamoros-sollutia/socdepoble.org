@@ -541,7 +541,6 @@ function ruleCandidates() {
   return [
     ['.agents/AGENTS.md'],
     ['.agents/PROTOCOL_PETORRETA.md'],
-    ['.agents/skills/socdepoble-workflow/SKILL.md'],
   ];
 }
 

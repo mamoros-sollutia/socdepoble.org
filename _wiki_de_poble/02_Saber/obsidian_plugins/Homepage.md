@@ -29,18 +29,18 @@ Additionally, pre-release versions can be either installed manually or via tools
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_index]]
 
 ## Taxonomia
-- **Categoria:** [[Maquina]]
-- **Etiquetes:** [[Graf]]
+- **Categoria:** [[maquina]]
+- **Etiquetes:** [[graf]]
 
 ## Sinapsis Entrants (Autogenerat)
 
-- [[00_INDEX|00_INDEX.md]] — [[Homepage|02_ACTUAR_Maquina_Tecnica/obsidian_plugins/Homepage.md]] — Ancorat...
-- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[Homepage|02_ACTUAR_Maquina_Tecnica/obsidian_plugins/Homepage.md]] — Etiquet...
-- [[Maquina|01_SABER_Cultura_Coneixement/Maquina.md]] — [[Homepage|02_ACTUAR_Maquina_Tecnica/obsidian_plugins/Homepage.md]] — Categor...
-- [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maquina_Tecnica/00_arquitectura_tecnica_unificada.md]] — [[Homepage]]
-- [[Homepage|02_ACTUAR_Maquina_Tecnica/obsidian_plugins/Homepage.md]] — [[00_INDEX|00_INDEX.md]] — [[Homepage|02_ACTUAR_Maquina_Tecnica/obsidian_plug...
+- [[00_index|00_INDEX.md]] — [[homepage|02_ACTUAR_Maquina_Tecnica/obsidian_plugins/Homepage.md]] — Ancorat...
+- [[graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[homepage|02_ACTUAR_Maquina_Tecnica/obsidian_plugins/Homepage.md]] — Etiquet...
+- [[maquina|01_SABER_Cultura_Coneixement/Maquina.md]] — [[homepage|02_ACTUAR_Maquina_Tecnica/obsidian_plugins/Homepage.md]] — Categor...
+- [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maquina_Tecnica/00_arquitectura_tecnica_unificada.md]] — [[homepage]]
+- [[homepage|02_ACTUAR_Maquina_Tecnica/obsidian_plugins/Homepage.md]] — [[00_index|00_INDEX.md]] — [[homepage|02_ACTUAR_Maquina_Tecnica/obsidian_plug...
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

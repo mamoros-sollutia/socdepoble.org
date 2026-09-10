@@ -11,7 +11,7 @@ tags:
 
 Els logos oficials no s’incrusten ací.
 
-Consulta sempre: [[DOC_Logos_Oficials]]
+Consulta sempre: [[doc_logos_oficials]]
 
 ---
 
@@ -174,30 +174,30 @@ La skill ha de retornar:
 
 ## Sinapsis
 
-- [[00_BIOS]]
-- [[02_GENOTIP]]
-- [[DOC_Governanca]]
-- [[DOC_Logos_Oficials]]
+- [[00_bios]]
+- [[02_genotip]]
+- [[doc_governanca]]
+- [[doc_logos_oficials]]
 - enginyeria_inversa_mit
 
 
 ## Taxonomia
-- **Categoria:** [[Maquina]]
-- **Etiquetes:** [[Graf]]
+- **Categoria:** [[maquina]]
+- **Etiquetes:** [[graf]]
 
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_index]]
 
 ## Sinapsis Entrants (Autogenerat)
 
-- [[00_INDEX|00_INDEX.md]] — [[PLANTILLA_ISO_SDP|02_ACTUAR_Maquina_Tecnica/plantilles/PLANTILLA_ISO_SDP.md...
-- [[02_GENOTIP|00_SER_Brain_Identitat/02_GENOTIP.md]] — [[PLANTILLA_ISO_SDP|02_ACTUAR_Maquina_Tecnica/plantilles/PLANTILLA_ISO_SDP.md...
-- [[DOC_Logos_Oficials|00_SER_Brain_Identitat/DOC_Logos_Oficials.md]] — [[PLANTILLA_ISO_SDP]]
+- [[00_index|00_INDEX.md]] — [[PLANTILLA_ISO_SDP|02_ACTUAR_Maquina_Tecnica/plantilles/PLANTILLA_ISO_SDP.md...
+- [[02_genotip|00_SER_Brain_Identitat/02_GENOTIP.md]] — [[PLANTILLA_ISO_SDP|02_ACTUAR_Maquina_Tecnica/plantilles/PLANTILLA_ISO_SDP.md...
+- [[doc_logos_oficials|00_SER_Brain_Identitat/DOC_Logos_Oficials.md]] — [[plantilla_iso_sdp]]
 - [[el_projecte|00_SER_Brain_Identitat/el_projecte.md]] — [[PLANTILLA_ISO_SDP|02_ACTUAR_Maquina_Tecnica/plantilles/PLANTILLA_ISO_SDP.md...
-- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[PLANTILLA_ISO_SDP|02_ACTUAR_Maquina_Tecnica/plantilles/PLANTILLA_ISO_SDP.md...
-- [[Maquina|01_SABER_Cultura_Coneixement/Maquina.md]] — [[PLANTILLA_ISO_SDP|02_ACTUAR_Maquina_Tecnica/plantilles/PLANTILLA_ISO_SDP.md...
+- [[graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[PLANTILLA_ISO_SDP|02_ACTUAR_Maquina_Tecnica/plantilles/PLANTILLA_ISO_SDP.md...
+- [[maquina|01_SABER_Cultura_Coneixement/Maquina.md]] — [[PLANTILLA_ISO_SDP|02_ACTUAR_Maquina_Tecnica/plantilles/PLANTILLA_ISO_SDP.md...
 - [[00_plantilles|02_ACTUAR_Maquina_Tecnica/07_plantilles/00_plantilles.md]] — [[PLANTILLA_ISO_SDP.md|Plantilla Prompt ISO històrica]]
-- [[PLANTILLA_ISO_SDP|02_ACTUAR_Maquina_Tecnica/plantilles/PLANTILLA_ISO_SDP.md]] — [[00_INDEX|00_INDEX.md]] — [[PLANTILLA_ISO_SDP|02_ACTUAR_Maquina_Tecnica/plan...
-- [[DOC_Governanca|03_GOVERNAR_Normativa_Regles/DOC_Governanca.md]] — [[PLANTILLA_ISO_SDP|02_ACTUAR_Maquina_Tecnica/plantilles/PLANTILLA_ISO_SDP.md...
+- [[plantilla_iso_sdp|02_ACTUAR_Maquina_Tecnica/plantilles/PLANTILLA_ISO_SDP.md]] — [[00_index|00_INDEX.md]] — [[plantilla_iso_sdp|02_ACTUAR_Maquina_Tecnica/plan...
+- [[doc_governanca|03_GOVERNAR_Normativa_Regles/DOC_Governanca.md]] — [[PLANTILLA_ISO_SDP|02_ACTUAR_Maquina_Tecnica/plantilles/PLANTILLA_ISO_SDP.md...
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

@@ -7,7 +7,7 @@ console.log("🌙 [SOMIADOR] Iniciant cicle de son (Consolidació i Neteja)...")
 
 const ARREL = path.resolve(process.cwd());
 const ESCRIPTORI = path.join(ARREL, '_wiki_de_poble/04_ESCRIPTORI');
-const HISTORIC = path.join(ARREL, '_wiki_de_poble/90_Revisar');
+const HISTORIC = path.join(ARREL, '_wiki_de_poble/90_Revisar_Revisar');
 
 // Creem la carpeta d'arxiu de la sessió actual
 const d = new Date();

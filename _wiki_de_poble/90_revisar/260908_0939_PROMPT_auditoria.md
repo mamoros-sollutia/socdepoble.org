@@ -43,4 +43,4 @@ Completar la integració Backend-Frontend del Xat v2 i tancar totes les tasques 
 Tens el Bundle `260908_0939_BUNDLE_auditoria.md` que conté tota la base de codi. Llança't-hi!
 
 ---
-**Ancoratge de Seguretat:** [[00_INDEX_ESCRIPTORI]]
+**Ancoratge de Seguretat:** [[00_index_escriptori]]

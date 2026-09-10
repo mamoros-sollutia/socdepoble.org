@@ -85,4 +85,4 @@ Al manual de disseny s'esmenta la migració al "patró Slot". Això s'hauria d'a
 
 Amb la modificació de `TextSection.jsx` canviant `.sdp-grid` per `.cms-preview` directament sobre el node arrel del contingut, s'arregla la desalineació de les pàgines legals sense trencar cap precepte del disseny de la Pedra Seca.
 
-**Ancoratge de Seguretat:** [[00_INDEX_ESCRIPTORI]]
+**Ancoratge de Seguretat:** [[00_index_escriptori]]

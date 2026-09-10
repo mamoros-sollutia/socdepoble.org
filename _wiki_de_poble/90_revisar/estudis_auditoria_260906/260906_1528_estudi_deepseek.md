@@ -3,7 +3,7 @@ tipus: document
 estat: esborrany
 description: 🧠 ANÀLISI COMPLETA DE L'ARQUITECTURA I RESPOSTA A LA PETICIÓ
 ---
-> **Ancoratge de Seguretat**: Aquest estudi pertany a l'[[00_INDEX_ESCRIPTORI]].
+> **Ancoratge de Seguretat**: Aquest estudi pertany a l'[[00_index_escriptori]].
 
 # 🧠 ANÀLISI COMPLETA DE L'ARQUITECTURA I RESPOSTA A LA PETICIÓ
 

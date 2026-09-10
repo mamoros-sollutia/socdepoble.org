@@ -37,31 +37,31 @@ Cap plantilla ha d’incrustar blocs repetits de logos. Les plantilles han d’e
 ## Sinapsis
 
 - [[identitat_visual|Identitat_Visual]]
-- [[PLANTILLA_ISO_SDP]]
+- [[plantilla_iso_sdp]]
 - [[00_visio_i_pilars]]
 
 ## Taxonomia
-- **Categoria:** [[Identitat]]
-- **Etiquetes:** [[Graf]]
+- **Categoria:** [[identitat]]
+- **Etiquetes:** [[graf]]
 
 
-**Ancoratge de Seguretat:** [[00_INDEX_IDENTITAT]]
+**Ancoratge de Seguretat:** [[00_index_identitat]]
 
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX_IDENTITAT]]
+**Ancoratge de Seguretat:** [[00_index_identitat]]
 
 ## Sinapsis Entrants (Autogenerat)
 
-- [[00_INDEX_IDENTITAT|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[DOC_Logos_Oficials]]
-- [[DOC_Logos_Oficials|00_SER_Brain_Identitat/DOC_Logos_Oficials.md]] — [[00_INDEX_IDENTITAT|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[DOC_L...
-- [[el_projecte|00_SER_Brain_Identitat/el_projecte.md]] — [[DOC_Logos_Oficials|00_SER_Brain_Identitat/DOC_Logos_Oficials.md]] — | Logo ...
-- [[identitat_visual|00_SER_Brain_Identitat/identitat_visual.md]] — [[DOC_Logos_Oficials|00_SER_Brain_Identitat/DOC_Logos_Oficials.md]] — [[ident...
-- [[00_visio_i_pilars|01_SABER_Cultura_Coneixement/00_visio_i_pilars.md]] — [[DOC_Logos_Oficials|00_SER_Brain_Identitat/DOC_Logos_Oficials.md]] — [[00_vi...
-- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[DOC_Logos_Oficials|00_SER_Brain_Identitat/DOC_Logos_Oficials.md]] — Etiquet...
-- [[Identitat|01_SABER_Cultura_Coneixement/Identitat.md]] — [[DOC_Logos_Oficials|00_SER_Brain_Identitat/DOC_Logos_Oficials.md]] — Categor...
-- [[PLANTILLA_ISO_SDP|02_ACTUAR_Maquina_Tecnica/plantilles/PLANTILLA_ISO_SDP.md]] — Consulta sempre: [[DOC_Logos_Oficials]]
-- 05_Escriptori_Soc_de_Poble/260903_0223_PROMPT_auditoria_notes.md — Consulta sempre: [[DOC_Logos_Oficials]]
+- [[00_index_identitat|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[doc_logos_oficials]]
+- [[doc_logos_oficials|00_SER_Brain_Identitat/DOC_Logos_Oficials.md]] — [[00_index_identitat|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[DOC_L...
+- [[el_projecte|00_SER_Brain_Identitat/el_projecte.md]] — [[doc_logos_oficials|00_SER_Brain_Identitat/DOC_Logos_Oficials.md]] — | Logo ...
+- [[identitat_visual|00_SER_Brain_Identitat/identitat_visual.md]] — [[doc_logos_oficials|00_SER_Brain_Identitat/DOC_Logos_Oficials.md]] — [[ident...
+- [[00_visio_i_pilars|01_SABER_Cultura_Coneixement/00_visio_i_pilars.md]] — [[doc_logos_oficials|00_SER_Brain_Identitat/DOC_Logos_Oficials.md]] — [[00_vi...
+- [[graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[doc_logos_oficials|00_SER_Brain_Identitat/DOC_Logos_Oficials.md]] — Etiquet...
+- [[identitat|01_SABER_Cultura_Coneixement/Identitat.md]] — [[doc_logos_oficials|00_SER_Brain_Identitat/DOC_Logos_Oficials.md]] — Categor...
+- [[plantilla_iso_sdp|02_ACTUAR_Maquina_Tecnica/plantilles/PLANTILLA_ISO_SDP.md]] — Consulta sempre: [[doc_logos_oficials]]
+- 05_Escriptori_Soc_de_Poble/260903_0223_PROMPT_auditoria_notes.md — Consulta sempre: [[doc_logos_oficials]]
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

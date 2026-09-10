@@ -28,9 +28,12 @@ La integració en qualsevol host es fa incloent l'script compilat i injectant el
   <!-- 3. S'injecta el backend personalitzat o configuració a través de l'API global -->
   <script>
     if (window.SocDePoble) {
+      // Opcional: Aturar l'arrencada automàtica si Sollutia necessita carregar asíncronament
+      // window.SocDePoble.deferArrenca();
+
       window.SocDePoble.configura({
         backend: {
-          loadAppData: async (...args) => {
+          loadCoreContent: async (...args) => {
             // Lògica de Sollutia ací
           },
           getCurrentUser: () => {
@@ -39,12 +42,13 @@ La integració en qualsevol host es fa incloent l'script compilat i injectant el
           // ... qualsevol mètode del CONTRACTE_BACKEND a substituir
         }
       });
-      // El host no necessita cridar arrenca(), el mòdul standalone ho farà automàticament
-      // en el següent tick de microtasques.
+      
+      // Si s'havia aturat amb deferArrenca(), s'ha de cridar arrenca() manualment:
+      // window.SocDePoble.arrenca();
     }
   </script>
   ```
-* **Enrutament:** El mòdul ja encapsula el seu propi `HashRouter` (o `BrowserRouter` si es configura), protegit dins de la frontera del component.
+* **Enrutament:** El mòdul ja encapsula el seu propi Enrutador Natiu a mida. Tota la navegació succeeix dins del component sense envair l'aplicació pare.
 * **Configuració (`config`):** Es pot passar de tres maneres: atributs en `<soc-de-poble>`, atribut `config` (JSON) o mitjançant `window.SocDePoble.configura()`.
 
 ### LLEI 2: La Frontera del Mas (`.sdp-root`)
@@ -55,9 +59,9 @@ Per evitar que els estils antics de Sollutia o llibreries externes xoquin amb la
 * **Zero Interferències:** Sollutia té la garantia que carregar l'CSS de Pedra Seca no trencarà la resta de la seva aplicació.
 * **Prohibició de Mutació:** Sollutia no pot sobreescriure les classes internes (com `.sdp-card`) amb Tailwind o CSS extern. Qualsevol adaptació s'ha de fer passant paràmetres a la `config` o respectant les variables `--sdp-*`.
 
-### LLEI 3: Dependències i Vite
+### LLEI 3: Dependències i Autonomia
 
-* **Peer Dependencies:** El mòdul Pedra Seca requereix que Sollutia tingui instal·lat `react` (19.x), `react-dom` (19.x) i `react-router-dom` (7.x). No porta la seva pròpia instància de React per evitar errors d'hidratació o de duplicitat de Context.
+* **Zero Dependències (Standalone):** El mòdul Pedra Seca porta el seu propi React i el seu Enrutador Natiu encapsulats dins del Shadow DOM. Sollutia **NO necessita** instal·lar React ni React Router. Això prevé completament qualsevol conflicte de versions (Dependency Hell).
 * **PWA / Service Worker:** Pedra Seca, quan es construeix internament, fa servir `vite-plugin-pwa`. Si Sollutia l'integra, Sollutia serà la responsable del seu propi Service Worker i manifest; Pedra Seca no forçarà la creació de workers globals per no entrar en conflicte amb els de Sollutia.
 
 ### LLEI 4: Accessibilitat Innegociable (WCAG AA)
@@ -73,14 +77,14 @@ Dins del mòdul Pedra Seca, no existeixen referències forçades a arrels absolu
 
 
 ## Taxonomia
-- **Categoria:** [[Govern]]
-- **Etiquetes:** [[Graf]]
+- **Categoria:** [[govern]]
+- **Etiquetes:** [[graf]]
 
 ## Sinapsis Entrants (Autogenerat)
 
-- [[00_INDEX|00_INDEX.md]] — [[ESTANDARD_Integracio_React]]
-- [[Govern|01_SABER_Cultura_Coneixement/Govern.md]] — [[ESTANDARD_Integracio_React|03_GOVERNAR_Normativa_Regles/ESTANDARD_Integraci...
-- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[ESTANDARD_Integracio_React|03_GOVERNAR_Normativa_Regles/ESTANDARD_Integraci...
-- [[ESTANDARD_Integracio_React|03_GOVERNAR_Normativa_Regles/ESTANDARD_Integracio_React.md]] — [[00_INDEX|00_INDEX.md]] — [[ESTANDARD_Integracio_React]]
+- [[00_index|00_INDEX.md]] — [[estandard_integracio_react]]
+- [[govern|01_SABER_Cultura_Coneixement/Govern.md]] — [[ESTANDARD_Integracio_React|03_GOVERNAR_Normativa_Regles/ESTANDARD_Integraci...
+- [[graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[ESTANDARD_Integracio_React|03_GOVERNAR_Normativa_Regles/ESTANDARD_Integraci...
+- [[estandard_integracio_react|03_GOVERNAR_Normativa_Regles/ESTANDARD_Integracio_React.md]] — [[00_index|00_INDEX.md]] — [[estandard_integracio_react]]
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

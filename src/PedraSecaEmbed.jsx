@@ -30,7 +30,7 @@
 
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter, MemoryRouter } from 'react-router-dom';
+import { BrowserRouter, MemoryRouter } from './app/contexts/RouterContext';
 import App from './app/App';
 import { SessionProvider } from './app/contexts/SessionContext';
 import { UIProvider } from './app/contexts/UIContext';
@@ -201,8 +201,13 @@ class SocDePobleElement extends BaseElement {
 
   constructor() {
     super();
+    let preConfig = {};
+    if (Object.prototype.hasOwnProperty.call(this, 'config')) {
+      preConfig = this.config;
+      delete this.config;
+    }
     this._config = {};
-    this._configProp = {};
+    this._configProp = preConfig && typeof preConfig === 'object' ? preConfig : {};
     this._root = null;
     this._punt = null;
     this._pendingUnmount = false;

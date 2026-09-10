@@ -2,16 +2,16 @@
 tipus: document
 estat: esborrany
 ---
-> **Ancoratge de Seguretat**: Aquest estudi pertany a l'[[00_INDEX_ESCRIPTORI]].
+> **Ancoratge de Seguretat**: Aquest estudi pertany a l'[[00_index_escriptori]].
 
 Entenc perfectament l’esperit: esporga extrema del Sistema Nerviós, zero deute tècnic, però amb Trellat.
 
 Ara mateix només tinc el manifest d’aquesta petorreta i els identificadors ISO dels altres documents, però no el contingut real de:
 
-- **[[00_BIOS]]**
-- **[[02_GENOTIP]]**
-- **[[DOC_Governanca]]**
-- **[[DOC_Logos_Oficials]]**
+- **[[00_bios]]**
+- **[[02_genotip]]**
+- **[[doc_governanca]]**
+- **[[doc_logos_oficials]]**
 - Qualsevol `.agents/skills/*`
 - Topologia de carpetes de la Wiki (`_wiki_de_poble/...`)
 

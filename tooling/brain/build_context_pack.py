@@ -15,7 +15,7 @@ IMPORTANT_FILES = [
     'disseny_pedra_seca.html',
     'src/css/index.css',
     'src/universal/UniversalComponents.jsx',
-    '_wiki_de_poble/00_INDEX_MESTRE.md'
+    '_wiki_de_poble/00_INDEX.md'
 ]
 
 def read_file(filepath):

@@ -28,7 +28,7 @@ Un Worker evita bloquejos de UI, però no reduïx automàticament el cost total.
 
 - El corpus es selecciona; no s’injecta tota la Wiki ni els arxius massius.
 - Cada resposta mostra les fonts recuperades i diferencia text font d’inferència.
-- La jerarquia de [[DOC_Governanca]] resol conflictes; un `.md` qualsevol no és dogma per ser Markdown.
+- La jerarquia de [[doc_governanca]] resol conflictes; un `.md` qualsevol no és dogma per ser Markdown.
 - Mirrors, arxiu i vendors no poden sobreescriure normes operatives.
 - Contingut privat o sensible no entra en embeddings ni telemetria sense base jurídica i control humà.
 - La cerca textual simple és el fallback. Una base vectorial només s’accepta si millora una bateria de consultes definida.
@@ -52,37 +52,37 @@ Qualsevol experiment que haja de modificar coneixement, configuració o codi seg
 
 ## Sinapsis
 
-- [[03_Consola_Termodinamica]]
+- [[03_consola_termodinamica]]
 - [[MOTOR_OFFLINE]]
-- [[DOC_Governanca]]
+- [[doc_governanca]]
 
 
 ## Taxonomia
-- **Categoria:** [[Maquina]]
-- **Etiquetes:** [[Graf]]
+- **Categoria:** [[maquina]]
+- **Etiquetes:** [[graf]]
 
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_index]]
 
 
 ---
 **Categoria:** skills (BROKEN LINK: skills) <!-- TODO: fix link -->
-**Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_index]]
+**Ancoratge de Seguretat:** [[00_index]]
 
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_index]]
 
 ## Sinapsis Entrants (Autogenerat)
 
-- [[00_INDEX|00_INDEX.md]] — [[futur_adaptacio|02_ACTUAR_Maquina_Tecnica/skills/futur_adaptacio.md]] — Anc...
-- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[futur_adaptacio|02_ACTUAR_Maquina_Tecnica/skills/futur_adaptacio.md]] — Eti...
-- [[Maquina|01_SABER_Cultura_Coneixement/Maquina.md]] — [[futur_adaptacio|02_ACTUAR_Maquina_Tecnica/skills/futur_adaptacio.md]] — Cat...
+- [[00_index|00_INDEX.md]] — [[futur_adaptacio|02_ACTUAR_Maquina_Tecnica/skills/futur_adaptacio.md]] — Anc...
+- [[graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[futur_adaptacio|02_ACTUAR_Maquina_Tecnica/skills/futur_adaptacio.md]] — Eti...
+- [[maquina|01_SABER_Cultura_Coneixement/Maquina.md]] — [[futur_adaptacio|02_ACTUAR_Maquina_Tecnica/skills/futur_adaptacio.md]] — Cat...
 - [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maquina_Tecnica/00_arquitectura_tecnica_unificada.md]] — [[futur_adaptacio]]
-- [[futur_adaptacio|02_ACTUAR_Maquina_Tecnica/skills/futur_adaptacio.md]] — [[00_INDEX|00_INDEX.md]] — [[futur_adaptacio|02_ACTUAR_Maquina_Tecnica/skills...
+- [[futur_adaptacio|02_ACTUAR_Maquina_Tecnica/skills/futur_adaptacio.md]] — [[00_index|00_INDEX.md]] — [[futur_adaptacio|02_ACTUAR_Maquina_Tecnica/skills...
 - [[MOTOR_OFFLINE|02_ACTUAR_Maquina_Tecnica/skills/MOTOR_OFFLINE.md]] — [[futur_adaptacio]]
-- [[DOC_Governanca|03_GOVERNAR_Normativa_Regles/DOC_Governanca.md]] — [[futur_adaptacio|02_ACTUAR_Maquina_Tecnica/skills/futur_adaptacio.md]] — La ...
+- [[doc_governanca|03_GOVERNAR_Normativa_Regles/DOC_Governanca.md]] — [[futur_adaptacio|02_ACTUAR_Maquina_Tecnica/skills/futur_adaptacio.md]] — La ...
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

@@ -52,39 +52,39 @@ entra en vigor quan tinga ADR, rutes, proves i propietari.
 - CI i protecció de branca una vegada versionats i activats.
 
 Els mecanismes CRDT, OPFS, bateria, “SSI” o IFT no formen part del bloqueig
-actual. El contracte executiu detallat és [[SDP_LOCK]].
+actual. El contracte executiu detallat és [[sdp_lock]].
 
 
 ## Taxonomia
-- **Categoria:** [[Govern]]
-- **Etiquetes:** [[Graf]]
+- **Categoria:** [[govern]]
+- **Etiquetes:** [[graf]]
 
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_index]]
 
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_index]]
 
 ## Sinapsis Entrants (Autogenerat)
 
-- [[00_INDEX|00_INDEX.md]] — [[DOC_Governanca|03_GOVERNAR_Normativa_Regles/DOC_Governanca.md]] — Ancoratge...
-- [[00_INDEX_IDENTITAT|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — | 03 GOVERNAR | Lleis, estàndards, protocols, veto | [[DOC_Governanca]] |
-- [[Soci_Sollutia|00_SER_Brain_Identitat/Soci_Sollutia.md]] — [[DOC_Governanca]]
-- [[Govern|01_SABER_Cultura_Coneixement/Govern.md]] — [[Govern|01_SABER_Cultura_Coneixement/Govern.md]] — [[Govern|01_SABER_Cultura...
-- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[DOC_Governanca|03_GOVERNAR_Normativa_Regles/DOC_Governanca.md]] — Etiquetes...
-- [[PLANTILLA_ISO_SDP|02_ACTUAR_Maquina_Tecnica/plantilles/PLANTILLA_ISO_SDP.md]] — [[DOC_Governanca]]
-- [[AUDITORIA_CANONICA|02_ACTUAR_Maquina_Tecnica/skills/AUDITORIA_CANONICA.md]] — [[DOC_Governanca]]
-- [[futur_adaptacio|02_ACTUAR_Maquina_Tecnica/skills/futur_adaptacio.md]] — La jerarquia de [[DOC_Governanca]] resol conflictes; un .md qualsevol no és d...
-- [[MOTOR_OFFLINE|02_ACTUAR_Maquina_Tecnica/skills/MOTOR_OFFLINE.md]] — [[DOC_Governanca]]
-- [[seguretat_execucio|02_ACTUAR_Maquina_Tecnica/skills/seguretat_execucio.md]] — [[DOC_Governanca]]
-- [[self_repair|02_ACTUAR_Maquina_Tecnica/skills/self_repair.md]] — [[DOC_Governanca]]
-- [[successio_lazaro_execucio|02_ACTUAR_Maquina_Tecnica/skills/successio_lazaro_execucio.md]] — [[DOC_Governanca]]
-- [[DOC_Governanca|03_GOVERNAR_Normativa_Regles/DOC_Governanca.md]] — [[00_INDEX|00_INDEX.md]] — [[DOC_Governanca|03_GOVERNAR_Normativa_Regles/DOC_...
-- [[ESTANDARD_UI_Universal|03_GOVERNAR_Normativa_Regles/ESTANDARD_UI_Universal.md]] — Prevalen [[DOC_Governanca]], ESTANDARD_Pedra_Seca, el codi, ESLint i les
-- [[FORJA_TO_CORE|03_GOVERNAR_Normativa_Regles/FORJA_TO_CORE.md]] — La decisió canònica vigent és la de [[DOC_Governanca]] i
-- [[LLEI_05_Privacitat|03_GOVERNAR_Normativa_Regles/LLEI_05_Privacitat.md]] — [[DOC_Governanca]]
-- 05_Escriptori_Soc_de_Poble/260903_0223_PROMPT_auditoria_notes.md — [[DOC_Governanca]]
+- [[00_index|00_INDEX.md]] — [[doc_governanca|03_GOVERNAR_Normativa_Regles/DOC_Governanca.md]] — Ancoratge...
+- [[00_index_identitat|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — | 03 GOVERNAR | Lleis, estàndards, protocols, veto | [[doc_governanca]] |
+- [[soci_sollutia|00_SER_Brain_Identitat/Soci_Sollutia.md]] — [[doc_governanca]]
+- [[govern|01_SABER_Cultura_Coneixement/Govern.md]] — [[govern|01_SABER_Cultura_Coneixement/Govern.md]] — [[govern|01_SABER_Cultura...
+- [[graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[doc_governanca|03_GOVERNAR_Normativa_Regles/DOC_Governanca.md]] — Etiquetes...
+- [[plantilla_iso_sdp|02_ACTUAR_Maquina_Tecnica/plantilles/PLANTILLA_ISO_SDP.md]] — [[doc_governanca]]
+- [[auditoria_canonica|02_ACTUAR_Maquina_Tecnica/skills/AUDITORIA_CANONICA.md]] — [[doc_governanca]]
+- [[futur_adaptacio|02_ACTUAR_Maquina_Tecnica/skills/futur_adaptacio.md]] — La jerarquia de [[doc_governanca]] resol conflictes; un .md qualsevol no és d...
+- [[MOTOR_OFFLINE|02_ACTUAR_Maquina_Tecnica/skills/MOTOR_OFFLINE.md]] — [[doc_governanca]]
+- [[seguretat_execucio|02_ACTUAR_Maquina_Tecnica/skills/seguretat_execucio.md]] — [[doc_governanca]]
+- [[self_repair|02_ACTUAR_Maquina_Tecnica/skills/self_repair.md]] — [[doc_governanca]]
+- [[successio_lazaro_execucio|02_ACTUAR_Maquina_Tecnica/skills/successio_lazaro_execucio.md]] — [[doc_governanca]]
+- [[doc_governanca|03_GOVERNAR_Normativa_Regles/DOC_Governanca.md]] — [[00_index|00_INDEX.md]] — [[doc_governanca|03_GOVERNAR_Normativa_Regles/DOC_...
+- [[estandard_ui_universal|03_GOVERNAR_Normativa_Regles/ESTANDARD_UI_Universal.md]] — Prevalen [[doc_governanca]], ESTANDARD_Pedra_Seca, el codi, ESLint i les
+- [[forja_to_core|03_GOVERNAR_Normativa_Regles/FORJA_TO_CORE.md]] — La decisió canònica vigent és la de [[doc_governanca]] i
+- [[llei_05_privacitat|03_GOVERNAR_Normativa_Regles/LLEI_05_Privacitat.md]] — [[doc_governanca]]
+- 05_Escriptori_Soc_de_Poble/260903_0223_PROMPT_auditoria_notes.md — [[doc_governanca]]
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

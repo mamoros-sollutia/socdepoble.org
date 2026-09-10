@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { UniversalPage } from '../../components/universal/UniversalPage';
 import { useSEO } from '../../hooks/useSEO';
-import { Link } from 'react-router-dom';
+import { Link } from '../../app/contexts/RouterContext';
 import { useCoreContent } from '../../app/contexts/CoreContentContext';
 import { useUIActions } from '../../app/contexts/UIContext';
 

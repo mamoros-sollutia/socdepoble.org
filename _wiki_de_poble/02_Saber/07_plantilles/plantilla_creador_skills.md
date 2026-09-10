@@ -53,26 +53,26 @@ _Fent poble amb [[el_projecte|Sóc de Poble]]! © 2026_
 
 
 ## Taxonomia
-- **Categoria:** [[Maquina]]
-- **Etiquetes:** [[Graf]]
+- **Categoria:** [[maquina]]
+- **Etiquetes:** [[graf]]
 
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_index]]
 
 
 ---
 **Categoria:** [[00_plantilles|07_plantilles]]
-**Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_index]]
+**Ancoratge de Seguretat:** [[00_index]]
 
 ## Sinapsis Entrants (Autogenerat)
 
-- [[00_INDEX|00_INDEX.md]] — [[plantilla_creador_skills|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_...
+- [[00_index|00_INDEX.md]] — [[plantilla_creador_skills|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_...
 - [[el_projecte|00_SER_Brain_Identitat/el_projecte.md]] — [[plantilla_creador_skills|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_...
-- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[plantilla_creador_skills|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_...
-- [[Maquina|01_SABER_Cultura_Coneixement/Maquina.md]] — [[plantilla_creador_skills|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_...
+- [[graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[plantilla_creador_skills|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_...
+- [[maquina|01_SABER_Cultura_Coneixement/Maquina.md]] — [[plantilla_creador_skills|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_...
 - [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maquina_Tecnica/00_arquitectura_tecnica_unificada.md]] — [[plantilla_creador_skills|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_...
 - [[00_plantilles|02_ACTUAR_Maquina_Tecnica/07_plantilles/00_plantilles.md]] — [[plantilla_creador_skills|Plantilla Creador Skills]]
-- [[plantilla_creador_skills|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_creador_skills.md]] — [[00_INDEX|00_INDEX.md]] — [[plantilla_creador_skills|02_ACTUAR_Maquina_Tecni...
+- [[plantilla_creador_skills|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_creador_skills.md]] — [[00_index|00_INDEX.md]] — [[plantilla_creador_skills|02_ACTUAR_Maquina_Tecni...
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

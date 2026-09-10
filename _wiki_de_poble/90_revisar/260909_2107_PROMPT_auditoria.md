@@ -9,7 +9,7 @@ description: "Auditoria tècnica per millorar tot el sistema i la pàgina legal"
 
 Els logos oficials no s’incrusten ací.
 
-Consulta sempre: [[DOC_Logos_Oficials]]
+Consulta sempre: [[doc_logos_oficials]]
 
 ---
 
@@ -54,18 +54,18 @@ Analitza l'arquitectura global i proposa les millores que consideres més críti
 
 ## Sinapsis
 
-- [[00_BIOS]]
-- [[02_GENOTIP]]
-- [[DOC_Governanca]]
-- [[DOC_Logos_Oficials]]
+- [[00_bios]]
+- [[02_genotip]]
+- [[doc_governanca]]
+- [[doc_logos_oficials]]
 - enginyeria_inversa_mit
 
 ## Taxonomia
 
-- **Categoria:** [[Maquina]]
-- **Etiquetes:** [[Graf]]
+- **Categoria:** [[maquina]]
+- **Etiquetes:** [[graf]]
 
 
-**Ancoratge de Seguretat:** [[00_INDEX_ESCRIPTORI]]
+**Ancoratge de Seguretat:** [[00_index_escriptori]]
 
 <!-- SDP-ISO-CONTEXT: {"_wiki_de_poble/02_Saber/plantilles/PLANTILLA_ISO_SDP.md":"5d347c8cf7fa59d34953dc2e5eddfb7013a271a404e7fa7c4d6ace73ac8324b4","_wiki_de_poble/01_Ser/00_BIOS.md":"bfcad6dc6375cb43c1654dc0af7a1c726ba8fb5a55224f26109d5be62f55d9ab","_wiki_de_poble/01_Ser/02_GENOTIP.md":"63a56952130daab5ede517ab646c0347fd9a952978594155592762e204c09f65","_wiki_de_poble/02_Saber/DOC_Governanca.md":"92301a5dc4fcaa0f69dae4cd9d00e8b106596dcdc829fd441cb0c912a6ba2280","_wiki_de_poble/02_Saber/DOC_Logos_Oficials.md":"c426ffc2ecc1b49a5382272b6cfc658f66b40ce927e85f89bf7e862c26694ffe","_wiki_de_poble/02_Saber/architecture/ADR-2026-08-ONLINE-FIRST.md":"d82f2d37b027844dcb3bad292f6bac659d1c2d24fb2b34618ef4ddcb989874cd"} -->

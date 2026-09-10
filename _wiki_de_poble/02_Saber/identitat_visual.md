@@ -65,24 +65,24 @@ A l'hora d'incorporar aquests estats en les interfícies:
 
 
 ## Taxonomia
-- **Categoria:** [[Identitat]]
-- **Etiquetes:** [[Graf]]
+- **Categoria:** [[identitat]]
+- **Etiquetes:** [[graf]]
 
 
-**Ancoratge de Seguretat:** [[00_INDEX_IDENTITAT]]
+**Ancoratge de Seguretat:** [[00_index_identitat]]
 
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX_IDENTITAT]]
+**Ancoratge de Seguretat:** [[00_index_identitat]]
 
 ## Sinapsis Entrants (Autogenerat)
 
-- [[00_INDEX_IDENTITAT|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[identitat_visual]]
-- [[DOC_Logos_Oficials|00_SER_Brain_Identitat/DOC_Logos_Oficials.md]] — [[identitat_visual|Identitat_Visual]]
+- [[00_index_identitat|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[identitat_visual]]
+- [[doc_logos_oficials|00_SER_Brain_Identitat/DOC_Logos_Oficials.md]] — [[identitat_visual|Identitat_Visual]]
 - [[el_projecte|00_SER_Brain_Identitat/el_projecte.md]] — [[identitat_visual|00_SER_Brain_Identitat/identitat_visual.md]] — "[[el_proje...
-- [[identitat_visual|00_SER_Brain_Identitat/identitat_visual.md]] — [[00_INDEX_IDENTITAT|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[ident...
-- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[identitat_visual|00_SER_Brain_Identitat/identitat_visual.md]] — Etiquetes: ...
-- [[Identitat|01_SABER_Cultura_Coneixement/Identitat.md]] — [[identitat_visual|00_SER_Brain_Identitat/identitat_visual.md]] — Categoria: ...
+- [[identitat_visual|00_SER_Brain_Identitat/identitat_visual.md]] — [[00_index_identitat|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[ident...
+- [[graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[identitat_visual|00_SER_Brain_Identitat/identitat_visual.md]] — Etiquetes: ...
+- [[identitat|01_SABER_Cultura_Coneixement/Identitat.md]] — [[identitat_visual|00_SER_Brain_Identitat/identitat_visual.md]] — Categoria: ...
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

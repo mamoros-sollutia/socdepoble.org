@@ -36,4 +36,4 @@ Aquest document resumeix les troballes de les 12 auditories (Codex, Claude 1 & 2
 - **Problema 3:** `react` i `react-dom` estan a `devDependencies` en compte de `dependencies`.
 
 ---
-**Ancoratge de Seguretat:** [[00_INDEX_ESCRIPTORI]]
+**Ancoratge de Seguretat:** [[00_index_escriptori]]

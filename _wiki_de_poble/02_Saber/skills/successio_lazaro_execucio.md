@@ -54,7 +54,7 @@ Una absència prolongada, pèrdua de repositori, ruptura de context o auditoria 
 ## Procediment Lázaro
 
 1. Confirma el repositori actual i l'estat de Git; no confongues la base antiga de només lectura amb el projecte viu.
-2. Llig primer `AGENTS.md`, el genotip `.agents` i [[00_INDEX]].
+2. Llig primer `AGENTS.md`, el genotip `.agents` i [[00_index]].
 3. Selecciona només els documents i fitxers necessaris per a l'incident. Prohibit bolcar la Wiki completa o fabricar una Mega-Petorreta.
 4. Inventaria evidències amb ruta, hash, rol i motiu; separa fets, inferències i decisions pendents.
 5. Executa auditories en mode lectura i presenta el delta esperat, riscos, proves i reversió.
@@ -92,42 +92,42 @@ Queden derogades tres idees heretades: abolir `.agents`, considerar que «el cod
 
 ## Sinapsis
 
-- [[00_INDEX]]
-- [[02_GENOTIP]]
-- [[DOC_Governanca]]
-- [[LLEI_05_Privacitat]]
-- [[AUDITORIA_CANONICA]]
+- [[00_index]]
+- [[02_genotip]]
+- [[doc_governanca]]
+- [[llei_05_privacitat]]
+- [[auditoria_canonica]]
 
 
 ## Taxonomia
-- **Categoria:** [[Maquina]]
-- **Etiquetes:** [[Graf]]
+- **Categoria:** [[maquina]]
+- **Etiquetes:** [[graf]]
 
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_index]]
 
 
 ---
 **Categoria:** skills (BROKEN LINK: skills) <!-- TODO: fix link -->
-**Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_index]]
+**Ancoratge de Seguretat:** [[00_index]]
 
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_index]]
 
 ## Sinapsis Entrants (Autogenerat)
 
-- [[00_INDEX|00_INDEX.md]] — [[successio_lazaro_execucio|02_ACTUAR_Maquina_Tecnica/skills/successio_lazaro...
-- [[02_GENOTIP|00_SER_Brain_Identitat/02_GENOTIP.md]] — [[successio_lazaro_execucio|02_ACTUAR_Maquina_Tecnica/skills/successio_lazaro...
+- [[00_index|00_INDEX.md]] — [[successio_lazaro_execucio|02_ACTUAR_Maquina_Tecnica/skills/successio_lazaro...
+- [[02_genotip|00_SER_Brain_Identitat/02_GENOTIP.md]] — [[successio_lazaro_execucio|02_ACTUAR_Maquina_Tecnica/skills/successio_lazaro...
 - [[el_projecte|00_SER_Brain_Identitat/el_projecte.md]] — [[successio_lazaro_execucio|02_ACTUAR_Maquina_Tecnica/skills/successio_lazaro...
-- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[successio_lazaro_execucio|02_ACTUAR_Maquina_Tecnica/skills/successio_lazaro...
-- [[Maquina|01_SABER_Cultura_Coneixement/Maquina.md]] — [[successio_lazaro_execucio|02_ACTUAR_Maquina_Tecnica/skills/successio_lazaro...
+- [[graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[successio_lazaro_execucio|02_ACTUAR_Maquina_Tecnica/skills/successio_lazaro...
+- [[maquina|01_SABER_Cultura_Coneixement/Maquina.md]] — [[successio_lazaro_execucio|02_ACTUAR_Maquina_Tecnica/skills/successio_lazaro...
 - [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maquina_Tecnica/00_arquitectura_tecnica_unificada.md]] — [[successio_lazaro_execucio]]
-- [[AUDITORIA_CANONICA|02_ACTUAR_Maquina_Tecnica/skills/AUDITORIA_CANONICA.md]] — [[successio_lazaro_execucio|02_ACTUAR_Maquina_Tecnica/skills/successio_lazaro...
-- [[successio_lazaro_execucio|02_ACTUAR_Maquina_Tecnica/skills/successio_lazaro_execucio.md]] — [[00_INDEX|00_INDEX.md]] — [[successio_lazaro_execucio|02_ACTUAR_Maquina_Tecn...
-- [[DOC_Governanca|03_GOVERNAR_Normativa_Regles/DOC_Governanca.md]] — [[successio_lazaro_execucio|02_ACTUAR_Maquina_Tecnica/skills/successio_lazaro...
-- [[LLEI_05_Privacitat|03_GOVERNAR_Normativa_Regles/LLEI_05_Privacitat.md]] — [[successio_lazaro_execucio|02_ACTUAR_Maquina_Tecnica/skills/successio_lazaro...
+- [[auditoria_canonica|02_ACTUAR_Maquina_Tecnica/skills/AUDITORIA_CANONICA.md]] — [[successio_lazaro_execucio|02_ACTUAR_Maquina_Tecnica/skills/successio_lazaro...
+- [[successio_lazaro_execucio|02_ACTUAR_Maquina_Tecnica/skills/successio_lazaro_execucio.md]] — [[00_index|00_INDEX.md]] — [[successio_lazaro_execucio|02_ACTUAR_Maquina_Tecn...
+- [[doc_governanca|03_GOVERNAR_Normativa_Regles/DOC_Governanca.md]] — [[successio_lazaro_execucio|02_ACTUAR_Maquina_Tecnica/skills/successio_lazaro...
+- [[llei_05_privacitat|03_GOVERNAR_Normativa_Regles/LLEI_05_Privacitat.md]] — [[successio_lazaro_execucio|02_ACTUAR_Maquina_Tecnica/skills/successio_lazaro...
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

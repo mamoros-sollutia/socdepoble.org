@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 
 const SKILLS_DIR = path.join(process.cwd(), '.agents/skills');
-const DEST_DIR = path.join(process.cwd(), '_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR');
+const DEST_DIR = path.join(process.cwd(), '_wiki_de_poble/01_Ser/00_AGENTS_I_SKILLS_MIRROR');
 
 if (!fs.existsSync(DEST_DIR)) {
   fs.mkdirSync(DEST_DIR, { recursive: true });

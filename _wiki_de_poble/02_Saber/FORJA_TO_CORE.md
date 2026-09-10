@@ -12,7 +12,7 @@ Este protocol **no està implementat en la baseline actual**. No existixen
 `npm run porta`. Per tant, cap agent pot usar este document per a
 moure components, rebutjar React o declarar una homologació superada.
 
-La decisió canònica vigent és la de [[DOC_Governanca]] i
+La decisió canònica vigent és la de [[doc_governanca]] i
 ESTANDARD_Pedra_Seca: React/Vite és la carcassa productiva legítima. El codi
 es localitza en `src/sections/`, `src/components/`, `src/config/` i `src/data/`.
 
@@ -45,32 +45,32 @@ Només després de l'activació anterior, una peça candidata podria exigir:
 
 ## Sinapsis
 
-- [[DOC_Governanca]]
+- [[doc_governanca]]
 - [[00_arquitectura_tecnica_unificada]]
 
 
 ## Taxonomia
-- **Categoria:** [[Govern]]
-- **Etiquetes:** [[Graf]]
+- **Categoria:** [[govern]]
+- **Etiquetes:** [[graf]]
 
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_index]]
 
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_index]]
 
 ## Sinapsis Entrants (Autogenerat)
 
-- [[00_INDEX|00_INDEX.md]] — [[FORJA_TO_CORE|03_GOVERNAR_Normativa_Regles/FORJA_TO_CORE.md]] — Ancoratge d...
-- [[00_BIOS|00_SER_Brain_Identitat/00_BIOS.md]] — [[FORJA_TO_CORE|03_GOVERNAR_Normativa_Regles/FORJA_TO_CORE.md]] — [[00_INDEX_...
-- [[00_INDEX_IDENTITAT|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[00_BIOS]] és una redirecció històrica i [[FORJA_TO_CORE]] una proposta
-- [[Govern|01_SABER_Cultura_Coneixement/Govern.md]] — [[FORJA_TO_CORE|03_GOVERNAR_Normativa_Regles/FORJA_TO_CORE.md]] — Categoria: ...
-- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[FORJA_TO_CORE|03_GOVERNAR_Normativa_Regles/FORJA_TO_CORE.md]] — Etiquetes: ...
-- [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maquina_Tecnica/00_arquitectura_tecnica_unificada.md]] — [[FORJA_TO_CORE|03_GOVERNAR_Normativa_Regles/FORJA_TO_CORE.md]] — [[00_arquit...
-- [[AUDITORIA_CANONICA|02_ACTUAR_Maquina_Tecnica/skills/AUDITORIA_CANONICA.md]] — [[FORJA_TO_CORE]]
-- [[DOC_Governanca|03_GOVERNAR_Normativa_Regles/DOC_Governanca.md]] — [[FORJA_TO_CORE|03_GOVERNAR_Normativa_Regles/FORJA_TO_CORE.md]] — La decisió ...
-- [[FORJA_TO_CORE|03_GOVERNAR_Normativa_Regles/FORJA_TO_CORE.md]] — [[00_INDEX|00_INDEX.md]] — [[FORJA_TO_CORE|03_GOVERNAR_Normativa_Regles/FORJA...
+- [[00_index|00_INDEX.md]] — [[forja_to_core|03_GOVERNAR_Normativa_Regles/FORJA_TO_CORE.md]] — Ancoratge d...
+- [[00_bios|00_SER_Brain_Identitat/00_BIOS.md]] — [[forja_to_core|03_GOVERNAR_Normativa_Regles/FORJA_TO_CORE.md]] — [[00_INDEX_...
+- [[00_index_identitat|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[00_bios]] és una redirecció històrica i [[forja_to_core]] una proposta
+- [[govern|01_SABER_Cultura_Coneixement/Govern.md]] — [[forja_to_core|03_GOVERNAR_Normativa_Regles/FORJA_TO_CORE.md]] — Categoria: ...
+- [[graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[forja_to_core|03_GOVERNAR_Normativa_Regles/FORJA_TO_CORE.md]] — Etiquetes: ...
+- [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maquina_Tecnica/00_arquitectura_tecnica_unificada.md]] — [[forja_to_core|03_GOVERNAR_Normativa_Regles/FORJA_TO_CORE.md]] — [[00_arquit...
+- [[auditoria_canonica|02_ACTUAR_Maquina_Tecnica/skills/AUDITORIA_CANONICA.md]] — [[forja_to_core]]
+- [[doc_governanca|03_GOVERNAR_Normativa_Regles/DOC_Governanca.md]] — [[forja_to_core|03_GOVERNAR_Normativa_Regles/FORJA_TO_CORE.md]] — La decisió ...
+- [[forja_to_core|03_GOVERNAR_Normativa_Regles/FORJA_TO_CORE.md]] — [[00_index|00_INDEX.md]] — [[forja_to_core|03_GOVERNAR_Normativa_Regles/FORJA...
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

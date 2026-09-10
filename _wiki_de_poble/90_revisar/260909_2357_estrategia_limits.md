@@ -30,4 +30,4 @@ Per la seua banda, a **Codex** l'hem de tractar de forma més quirúrgica (guard
 
 *Mètriques plasmades seguint el Cicle de Vida i la Consola Termodinàmica.*
 
-Ancoratge de Seguretat: [[00_INDEX_ESCRIPTORI]]
+Ancoratge de Seguretat: [[00_index_escriptori]]

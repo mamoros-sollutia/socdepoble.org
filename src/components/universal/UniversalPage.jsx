@@ -1,6 +1,6 @@
 import { resolveAsset } from '../../config/assetResolver';
 
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link } from '../../app/contexts/RouterContext';
 
 import { useEffect, useState, useRef } from 'react';
 
@@ -264,7 +264,7 @@ export function UniversalPage(props) {
       )}
 
       {showBlueBar && (
-          <header className={`bar-blue ${variant === 'embed' ? 'bar-blue--embed' : ''}`.trim()}>
+          <header className={`bar-blue ${variant === 'embed' ? 'bar-blue--embed' : ''} ${resolvedChrome === 'context' || resolvedChrome === 'system' ? 'bar-blue--top' : ''}`.trim()}>
             <div className="bar-blue-left">
               <IconButton label="Tornar arrere" onClick={handleBack} presentation>
                 <BackIcon className="icon" />

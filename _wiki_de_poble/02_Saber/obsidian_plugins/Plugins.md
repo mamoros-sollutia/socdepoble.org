@@ -218,18 +218,18 @@ AI chat with note context, smart writing assistance, and one-click edits for you
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_index]]
 
 ## Taxonomia
-- **Categoria:** [[Maquina]]
-- **Etiquetes:** [[Graf]]
+- **Categoria:** [[maquina]]
+- **Etiquetes:** [[graf]]
 
 ## Sinapsis Entrants (Autogenerat)
 
-- [[00_INDEX|00_INDEX.md]] — [[Plugins|02_ACTUAR_Maquina_Tecnica/obsidian_plugins/Plugins.md]] — Ancoratge...
-- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[Plugins|02_ACTUAR_Maquina_Tecnica/obsidian_plugins/Plugins.md]] — Etiquetes...
-- [[Maquina|01_SABER_Cultura_Coneixement/Maquina.md]] — [[Plugins|02_ACTUAR_Maquina_Tecnica/obsidian_plugins/Plugins.md]] — Categoria...
-- [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maquina_Tecnica/00_arquitectura_tecnica_unificada.md]] — [[Plugins]]
-- [[Plugins|02_ACTUAR_Maquina_Tecnica/obsidian_plugins/Plugins.md]] — [[00_INDEX|00_INDEX.md]] — [[Plugins|02_ACTUAR_Maquina_Tecnica/obsidian_plugi...
+- [[00_index|00_INDEX.md]] — [[plugins|02_ACTUAR_Maquina_Tecnica/obsidian_plugins/Plugins.md]] — Ancoratge...
+- [[graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[plugins|02_ACTUAR_Maquina_Tecnica/obsidian_plugins/Plugins.md]] — Etiquetes...
+- [[maquina|01_SABER_Cultura_Coneixement/Maquina.md]] — [[plugins|02_ACTUAR_Maquina_Tecnica/obsidian_plugins/Plugins.md]] — Categoria...
+- [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maquina_Tecnica/00_arquitectura_tecnica_unificada.md]] — [[plugins]]
+- [[plugins|02_ACTUAR_Maquina_Tecnica/obsidian_plugins/Plugins.md]] — [[00_index|00_INDEX.md]] — [[plugins|02_ACTUAR_Maquina_Tecnica/obsidian_plugi...
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

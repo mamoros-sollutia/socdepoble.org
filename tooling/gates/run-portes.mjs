@@ -22,7 +22,7 @@ export const passos = [
   { nom: 'Porta Cens', cmd: 'node', args: ['tooling/gates/tractor-cens.mjs'], script: 'porta:cens' },
   { nom: 'Porta Consell', cmd: 'node', args: ['tooling/gates/tractor-consell.mjs'], script: 'porta:consell' },
   { nom: 'Porta Registre', cmd: 'node', args: ['tooling/gates/tractor-registre.mjs'], script: 'porta:registre' },
-  { nom: 'Build Skills Index', cmd: 'node', args: ['tooling/brain/build_skills_index.mjs'] },
+
   { nom: 'Porta Manifest', cmd: 'node', args: ['tooling/gates/tractor-manifest.mjs'], script: 'porta:manifest' },
   { nom: 'Porta Doctrina', cmd: 'node', args: ['tooling/gates/tractor-doctrina.mjs'], script: 'porta:doctrina' },
   { nom: 'Porta Reflex', cmd: 'node', args: ['tooling/wiki/reflex_petorreta.mjs', 'doctor', '--ci'], script: 'porta:reflex' },
@@ -35,6 +35,7 @@ export const passos = [
   { nom: 'Llaurador Índexs', cmd: 'node', args: ['tooling/wiki/llaurador_indexs.mjs', '--check', '--lock-token'], script: 'porta:llaurador' },
   { nom: 'Porta Frontmatter', cmd: 'node', args: ['tooling/wiki/tractor-frontmatter.mjs'], script: 'porta:frontmatter' },
   { nom: 'Porta Esquemes', cmd: 'node', args: ['tooling/wiki/tractor-esquemes.mjs'], script: 'porta:esquemes' },
+  { nom: 'Porta Nomenclatura', cmd: 'node', args: ['tooling/wiki/tractor-nomenclatura.mjs', '--arrel=.'], script: 'porta:nomenclatura' },
   { nom: 'Porta Teixit', cmd: 'node', args: ['tooling/wiki/teixidor.mjs', '--lock-token'], script: 'porta:teixit' },
   { nom: 'Porta SCC', cmd: 'node', args: ['tooling/gates/verificador-scc.mjs'], script: 'porta:scc' },
   { nom: 'SEO Manifest', cmd: 'node', args: ['tooling/gates/build-seo-manifest.mjs', '--verifica', '--lock-token'], script: 'porta:seo' },

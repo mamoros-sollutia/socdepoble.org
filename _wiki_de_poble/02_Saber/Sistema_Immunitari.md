@@ -75,18 +75,18 @@ Els incrustats `!nota_inexistent (BROKEN LINK: nota_inexistent) <!-- TODO: fix l
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_index]]
 
 ## Taxonomia
-- **Categoria:** [[Coneixement]]
-- **Etiquetes:** [[Graf]]
+- **Categoria:** [[coneixement]]
+- **Etiquetes:** [[graf]]
 
 ## Sinapsis Entrants (Autogenerat)
 
-- [[00_INDEX|00_INDEX.md]] — [[Sistema_Immunitari|01_SABER_Cultura_Coneixement/Sistema_Immunitari.md]] — A...
-- [[00_INDEX_IDENTITAT|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[Sistema_Immunitari]]
-- [[Coneixement|01_SABER_Cultura_Coneixement/Coneixement.md]] — [[Sistema_Immunitari|01_SABER_Cultura_Coneixement/Sistema_Immunitari.md]] — C...
-- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[Sistema_Immunitari|01_SABER_Cultura_Coneixement/Sistema_Immunitari.md]] — E...
-- [[Sistema_Immunitari|01_SABER_Cultura_Coneixement/Sistema_Immunitari.md]] — [[00_INDEX|00_INDEX.md]] — [[Sistema_Immunitari|01_SABER_Cultura_Coneixement/...
+- [[00_index|00_INDEX.md]] — [[sistema_immunitari|01_SABER_Cultura_Coneixement/Sistema_Immunitari.md]] — A...
+- [[00_index_identitat|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[sistema_immunitari]]
+- [[coneixement|01_SABER_Cultura_Coneixement/Coneixement.md]] — [[sistema_immunitari|01_SABER_Cultura_Coneixement/Sistema_Immunitari.md]] — C...
+- [[graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[sistema_immunitari|01_SABER_Cultura_Coneixement/Sistema_Immunitari.md]] — E...
+- [[sistema_immunitari|01_SABER_Cultura_Coneixement/Sistema_Immunitari.md]] — [[00_index|00_INDEX.md]] — [[sistema_immunitari|01_SABER_Cultura_Coneixement/...
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

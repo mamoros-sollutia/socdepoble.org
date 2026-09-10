@@ -66,26 +66,26 @@ _Fent poble amb [[el_projecte|Sóc de Poble]]! © 2026_
 
 
 ## Taxonomia
-- **Categoria:** [[Maquina]]
-- **Etiquetes:** [[Graf]]
+- **Categoria:** [[maquina]]
+- **Etiquetes:** [[graf]]
 
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_index]]
 
 
 ---
 **Categoria:** [[00_plantilles|07_plantilles]]
-**Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_index]]
+**Ancoratge de Seguretat:** [[00_index]]
 
 ## Sinapsis Entrants (Autogenerat)
 
-- [[00_INDEX|00_INDEX.md]] — [[plantilla_branding|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_brandi...
+- [[00_index|00_INDEX.md]] — [[plantilla_branding|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_brandi...
 - [[el_projecte|00_SER_Brain_Identitat/el_projecte.md]] — [[plantilla_branding|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_brandi...
-- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[plantilla_branding|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_brandi...
-- [[Maquina|01_SABER_Cultura_Coneixement/Maquina.md]] — [[plantilla_branding|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_brandi...
+- [[graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[plantilla_branding|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_brandi...
+- [[maquina|01_SABER_Cultura_Coneixement/Maquina.md]] — [[plantilla_branding|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_brandi...
 - [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maquina_Tecnica/00_arquitectura_tecnica_unificada.md]] — [[plantilla_branding|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_brandi...
 - [[00_plantilles|02_ACTUAR_Maquina_Tecnica/07_plantilles/00_plantilles.md]] — [[plantilla_branding|Plantilla Branding]]
-- [[plantilla_branding|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_branding.md]] — [[00_INDEX|00_INDEX.md]] — [[plantilla_branding|02_ACTUAR_Maquina_Tecnica/07_...
+- [[plantilla_branding|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_branding.md]] — [[00_index|00_INDEX.md]] — [[plantilla_branding|02_ACTUAR_Maquina_Tecnica/07_...
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

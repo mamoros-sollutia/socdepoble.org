@@ -1,4 +1,4 @@
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams } from '../../app/contexts/RouterContext';
 import { createContext, useContext, useState, useMemo, useDeferredValue, useCallback, useEffect, useRef } from 'react';
 import { updateNote } from '../../data/backendPort';
 import { showToast } from '../../components/universal/AvisadorEfimer.jsx';

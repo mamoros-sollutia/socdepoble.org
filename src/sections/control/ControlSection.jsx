@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from '../../app/contexts/RouterContext';
 import { User, Cpu, Network, Receipt, FileText, Store, Calendar, MapPin, MessageSquare, Shield, LogOut, Car, PawPrint, MessageCircle } from 'lucide-react';
 import { UniversalPage } from '../../components/universal/UniversalPage';
 import { UniversalCard, UniversalIndicatorCard, UniversalButton } from '../../components/universal/UniversalElements';

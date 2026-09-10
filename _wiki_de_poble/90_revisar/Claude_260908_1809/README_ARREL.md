@@ -148,4 +148,4 @@ Per a mantenir la privacitat dels documents de la teua associació o poble, haur
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_index]]

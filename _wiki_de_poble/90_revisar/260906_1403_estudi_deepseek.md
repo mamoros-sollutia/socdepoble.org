@@ -17,4 +17,4 @@ Deepseek ha rebut i processat els 3.48 MB del bundle perfectament, validant inte
 * Afirma que s'han resolt deutes tècnics com l'eliminació del suport a l'iPad A10, la qual cosa contradiu completament l'anàlisi de Kimi (que va trobar layout thrashing gravíssim per a l'A10 a causa del `useLayoutEffect`).
 
 ---
-**Ancoratge de Seguretat:** [[00_INDEX_ESCRIPTORI]]
+**Ancoratge de Seguretat:** [[00_index_escriptori]]

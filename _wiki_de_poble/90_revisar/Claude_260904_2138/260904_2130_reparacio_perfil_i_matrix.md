@@ -12,7 +12,7 @@ description: Reparació verificada de les P0 d'organitzacions i de l'Efecte Matr
 > la mateixa versió i tenen contingut distint. Fins que no s'unifiquen, tot
 > el que s'escriga s'ha de quedar a la intersecció.
 
-**Ancoratge de Seguretat:** [[00_INDEX_ESCRIPTORI]]
+**Ancoratge de Seguretat:** [[00_index_escriptori]]
 
 ---
 
@@ -286,11 +286,11 @@ naixerà amb el defecte incorporat el dia que algú "seguisca la skill".
 
 - [[00_INDEX_SKILLS]]
 - [[PROTOCOL_PETORRETA]]
-- [[DOC_Governanca]]
+- [[doc_governanca]]
 
 ## Taxonomia
 
-- **Categoria:** [[Maquina]]
-- **Etiquetes:** [[Graf]]
+- **Categoria:** [[maquina]]
+- **Etiquetes:** [[graf]]
 
-**Ancoratge de Seguretat:** [[00_INDEX_ESCRIPTORI]]
+**Ancoratge de Seguretat:** [[00_index_escriptori]]

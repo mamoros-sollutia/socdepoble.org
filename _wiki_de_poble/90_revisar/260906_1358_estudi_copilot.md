@@ -23,4 +23,4 @@ description: Auditoria estructural extrema (Sóc de Poble × Supabase × Solluti
 
 *(Resumit per termodinàmica. Per a llegir el contingut complet, referir-se a l'original)*
 
-**Ancoratge de Seguretat:** [[00_INDEX_ESCRIPTORI]]
+**Ancoratge de Seguretat:** [[00_index_escriptori]]

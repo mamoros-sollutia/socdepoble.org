@@ -59,6 +59,15 @@ const buildHeaders = (anonKey, extra = {}) => {
   };
 };
 
+export async function removeAllChannels(config = {}) {
+  const { supabaseUrl } = getResolvedConfig(config);
+  if (!supabaseUrl) return;
+  // Si hi ha implementació WebSocket o realtime en ús a la instància de client,
+  // aquest mètode ha de ser cridat en desmuntar els contextos de Xat o Mur.
+  // Donat que usem crides REST en aquest fitxer, l'exportem per a complir amb el tancament de sockets
+  // si més endavant s'instància realtime-js externament.
+}
+
 let renovacioEnCurs = null;
 
 export function refreshSession(config = {}) {

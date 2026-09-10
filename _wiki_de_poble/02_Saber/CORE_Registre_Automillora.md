@@ -46,29 +46,29 @@ S'HA D'INCLOURE sempre el temps de sessió aproximat (Hores) per a avaluar la fa
 
 ---
 
-**Tornar a:**[[00_BIOS]]
+**Tornar a:**[[00_bios]]
 
 
 ## Taxonomia
-- **Categoria:** [[Identitat]]
-- **Etiquetes:** [[Graf]]
+- **Categoria:** [[identitat]]
+- **Etiquetes:** [[graf]]
 
 
-**Ancoratge de Seguretat:** [[00_INDEX_IDENTITAT]]
+**Ancoratge de Seguretat:** [[00_index_identitat]]
 
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX_IDENTITAT]]
+**Ancoratge de Seguretat:** [[00_index_identitat]]
 
 ## Sinapsis Entrants (Autogenerat)
 
-- [[00_INDEX|00_INDEX.md]] — [[CORE_Registre_Automillora]]
-- [[00_BIOS|00_SER_Brain_Identitat/00_BIOS.md]] — [[CORE_Registre_Automillora|00_SER_Brain_Identitat/CORE_Registre_Automillora....
-- [[00_INDEX_IDENTITAT|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[CORE_Registre_Automillora]]
-- [[CORE_Registre_Automillora|00_SER_Brain_Identitat/CORE_Registre_Automillora.md]] — [[00_INDEX|00_INDEX.md]] — [[CORE_Registre_Automillora]]
-- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[CORE_Registre_Automillora|00_SER_Brain_Identitat/CORE_Registre_Automillora....
-- [[Identitat|01_SABER_Cultura_Coneixement/Identitat.md]] — [[CORE_Registre_Automillora|00_SER_Brain_Identitat/CORE_Registre_Automillora....
+- [[00_index|00_INDEX.md]] — [[core_registre_automillora]]
+- [[00_bios|00_SER_Brain_Identitat/00_BIOS.md]] — [[CORE_Registre_Automillora|00_SER_Brain_Identitat/CORE_Registre_Automillora....
+- [[00_index_identitat|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[core_registre_automillora]]
+- [[core_registre_automillora|00_SER_Brain_Identitat/CORE_Registre_Automillora.md]] — [[00_index|00_INDEX.md]] — [[core_registre_automillora]]
+- [[graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[CORE_Registre_Automillora|00_SER_Brain_Identitat/CORE_Registre_Automillora....
+- [[identitat|01_SABER_Cultura_Coneixement/Identitat.md]] — [[CORE_Registre_Automillora|00_SER_Brain_Identitat/CORE_Registre_Automillora....
 - [[MOTOR_OFFLINE|02_ACTUAR_Maquina_Tecnica/skills/MOTOR_OFFLINE.md]] — [[CORE_Registre_Automillora|00_SER_Brain_Identitat/CORE_Registre_Automillora....
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

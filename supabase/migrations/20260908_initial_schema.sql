@@ -40,34 +40,7 @@ create table if not exists public.app_content (
   primary key (tenant_id, key)
 );
 
-create table if not exists public.chat_threads (
-  id text not null,
-  tenant_id uuid not null references public.towns(id) on delete cascade,
-  owner_user_id uuid not null,
-  payload jsonb not null,
-  updated_at timestamptz not null default now(),
-  primary key (tenant_id, id)
-);
 
-create table if not exists public.chat_messages (
-  id text not null,
-  tenant_id uuid not null references public.towns(id) on delete cascade,
-  owner_user_id uuid not null,
-  thread_id text not null,
-  message_id text not null,
-  text text not null,
-  sender text not null,
-  time_label text,
-  created_at timestamptz not null default now(),
-  primary key (tenant_id, id),
-  foreign key (tenant_id, thread_id) references public.chat_threads(tenant_id, id) on delete cascade
-);
-
-create unique index if not exists idx_chat_messages_owner_thread_message
-  on public.chat_messages(tenant_id, owner_user_id, thread_id, message_id);
-
-create index if not exists idx_chat_messages_owner_thread
-  on public.chat_messages(tenant_id, owner_user_id, thread_id, created_at);
 
 create table if not exists public.section_submissions (
   id uuid primary key default gen_random_uuid(),
@@ -84,8 +57,7 @@ create index if not exists idx_section_submissions_tenant_section_created
   on public.section_submissions(tenant_id, section_id, created_at desc);
 
 create index if not exists idx_app_content_tenant on public.app_content(tenant_id, key);
-create index if not exists idx_chat_threads_tenant on public.chat_threads(tenant_id, owner_user_id);
-create index if not exists idx_chat_messages_tenant on public.chat_messages(tenant_id, thread_id);
+
 
 create table if not exists public.profiles (
   id uuid primary key references auth.users(id) on delete cascade,
@@ -691,10 +663,7 @@ create trigger trg_app_content_touch
 before update on public.app_content
 for each row execute function public.touch_updated_at();
 
-drop trigger if exists trg_chat_threads_touch on public.chat_threads;
-create trigger trg_chat_threads_touch
-before update on public.chat_threads
-for each row execute function public.touch_updated_at();
+
 
 drop trigger if exists sdp_force_author on public.section_submissions;
 create trigger sdp_force_author
@@ -728,8 +697,7 @@ after insert on public.organizations
 for each row execute function private.add_organization_owner();
 
 -- 4. VIEWS
-create or replace view public.organization_directory with (security_invoker = true)
-with (security_barrier = true)
+create or replace view public.organization_directory with (security_invoker = true, security_barrier = true)
 as
 select
   id,
@@ -753,8 +721,7 @@ grant select on table public.organization_directory to anon, authenticated;
 alter table public.towns enable row level security;
 alter table public.town_memberships enable row level security;
 alter table public.app_content enable row level security;
-alter table public.chat_threads enable row level security;
-alter table public.chat_messages enable row level security;
+
 alter table public.section_submissions enable row level security;
 alter table public.profiles enable row level security;
 alter table public.organizations enable row level security;
@@ -791,38 +758,7 @@ drop policy if exists "public read app_content" on public.app_content;
 create policy "public read app_content" on public.app_content for select using (true);
 
 
-drop policy if exists "private read chat_threads" on public.chat_threads;
-create policy "public read chat_threads" on public.chat_threads for select
-using (true);
 
-drop policy if exists "private write chat_threads" on public.chat_threads;
-create policy "private write chat_threads" on public.chat_threads for insert to authenticated
-with check (owner_user_id = (select auth.uid()) and exists (select 1 from public.town_memberships where town_id = tenant_id and user_id = (select auth.uid())));
-
-drop policy if exists "private update chat_threads" on public.chat_threads;
-create policy "private update chat_threads" on public.chat_threads for update to authenticated
-using (owner_user_id = (select auth.uid()) and exists (select 1 from public.town_memberships where town_id = tenant_id and user_id = (select auth.uid())))
-with check (owner_user_id = (select auth.uid()) and exists (select 1 from public.town_memberships where town_id = tenant_id and user_id = (select auth.uid())));
-
-drop policy if exists "private delete chat_threads" on public.chat_threads;
-create policy "private delete chat_threads" on public.chat_threads for delete to authenticated
-using (owner_user_id = (select auth.uid()) and exists (select 1 from public.town_memberships where town_id = tenant_id and user_id = (select auth.uid())));
-
-
-drop policy if exists "private read chat_messages" on public.chat_messages;
-create policy "public read chat_messages" on public.chat_messages for select
-using (true);
-
-drop policy if exists "private write chat_messages" on public.chat_messages;
-create policy "private write chat_messages" on public.chat_messages for insert to authenticated
-with check (
-  owner_user_id = (select auth.uid())
-  and thread_id is not null 
-  and text is not null 
-  and text <> '' 
-  and sender in ('me', 'other')
-  and exists (select 1 from public.town_memberships where town_id = tenant_id and user_id = (select auth.uid()))
-);
 
 drop policy if exists "public read section_submissions" on public.section_submissions;
 create policy "public read section_submissions" on public.section_submissions for select
@@ -846,6 +782,7 @@ create policy "private update section_submissions" on public.section_submissions
 using (owner_user_id = (select auth.uid()) and exists (select 1 from public.town_memberships where town_id = tenant_id and user_id = (select auth.uid())))
 with check (
   owner_user_id = (select auth.uid()) 
+  and section_id in ('mur', 'mercat', 'events', 'multimedia', 'notes') 
   and exists (select 1 from public.town_memberships where town_id = tenant_id and user_id = (select auth.uid()))
   and (author_org_id is null or (select private.can_manage_organization(author_org_id)))
 );

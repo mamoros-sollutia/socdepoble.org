@@ -267,6 +267,14 @@ export function arrencaAuto() {
   }
 }
 
+/**
+ * Cedeix el control del segellat a l'amfitrió, aturant l'arrencada automàtica.
+ * S'ha de cridar immediatament després de carregar el bundle.
+ */
+export function deferArrenca() {
+  autoProgramada = true;
+}
+
 /** Estat actual, per a diagnòstic des de la consola del host. */
 export function estat() {
   return {
@@ -295,7 +303,7 @@ export function exposaGlobal(objectiu = (typeof window !== 'undefined' ? window 
   const existent = Object.getOwnPropertyDescriptor(objectiu, 'SocDePoble');
   if (existent) return existent.value ?? null;
 
-  const api = Object.freeze({ configura, arrenca, estat, CONTRACTE_BACKEND, isReady: true });
+  const api = Object.freeze({ configura, arrenca, arrencaAuto, deferArrenca, estat, CONTRACTE_BACKEND, isReady: true });
   Object.defineProperty(objectiu, 'SocDePoble', { value: api, writable: false, configurable: false });
   
   // Avisar a Sollutia o qualsevol integrador que l'API ja està llesta

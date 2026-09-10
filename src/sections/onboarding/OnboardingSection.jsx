@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from '../../app/contexts/RouterContext';
 import { UniversalPage } from '../../components/universal/UniversalPage';
 import { showToast } from '../../components/universal/AvisadorEfimer.jsx';
 import { createOnboardingSeed } from '../../data/appSeed.js';

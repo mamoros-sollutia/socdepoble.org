@@ -1,5 +1,5 @@
 import React, { lazy, Suspense, useEffect, useRef, memo, StrictMode } from 'react';
-import { Navigate, NavLink, Route, Routes, useNavigate, useParams, useLocation } from 'react-router-dom';
+import { Navigate, NavLink, Route, Routes, useNavigate, useParams, useLocation } from './contexts/RouterContext';
 import { Globe, MoonStar, Plus, Search, Settings, Sun, UserRound } from '../icons.jsx';
 import BrandMark from '../components/BrandMark';
 import { APP_NAME } from '../config/app';

@@ -16,7 +16,7 @@ tags:
 
 ## 1. Veredicte Jurídic (L'Estructura de Pedra Seca)
 
-L'arquitectura legal del projecte ha de complir tres premisses: permetre la captació de fons sense ànim de lucre, garantir la sobirania del codi i minimitzar la burocràcia per a un sol Mestre d'Obra inicial. Aquest document s'ancora a l'[[00_INDEX|Índex Principal]].
+L'arquitectura legal del projecte ha de complir tres premisses: permetre la captació de fons sense ànim de lucre, garantir la sobirania del codi i minimitzar la burocràcia per a un sol Mestre d'Obra inicial. Aquest document s'ancora a l'[[00_index|Índex Principal]].
 
 ### El DAFO de les Opcions Jurídiques
 
@@ -80,7 +80,7 @@ L'Administració no paga mai "hores de manteniment d'una web". Es ven un **serve
 
 ### Pressupost Mínim Sostenible
 El pressupost complet per garantir la independència, incloent els honoraris d'Associació i el marge estratègic de **Sollutia (BROKEN LINK: Sollutia) <!-- TODO: fix link -->**, s'ha detallat de forma exhaustiva al document agermanat:
-👉 **[[PLA_DIRECTOR_Viabilitat_Economica]]**
+👉 **[[pla_director_viabilitat_economica]]**
 
 ---
 *Fi de l'informe executiu. Arxivat a la Wiki com a normativa d'operacions (Directiva de Finançament).*
@@ -88,19 +88,19 @@ El pressupost complet per garantir la independència, incloent els honoraris d'A
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_index]]
 
 ## Taxonomia
-- **Categoria:** [[Govern]]
-- **Etiquetes:** [[Graf]]
+- **Categoria:** [[govern]]
+- **Etiquetes:** [[graf]]
 
 ## Sinapsis Entrants (Autogenerat)
 
-- [[00_INDEX|00_INDEX.md]] — [[PLA_DIRECTOR_Legal_i_Subvencions]]
+- [[00_index|00_INDEX.md]] — [[pla_director_legal_i_subvencions]]
 - [[el_projecte|00_SER_Brain_Identitat/el_projecte.md]] — [[PLA_DIRECTOR_Legal_i_Subvencions|03_GOVERNAR_Normativa_Regles/PLA_DIRECTOR_...
-- [[Govern|01_SABER_Cultura_Coneixement/Govern.md]] — [[PLA_DIRECTOR_Legal_i_Subvencions|03_GOVERNAR_Normativa_Regles/PLA_DIRECTOR_...
-- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[PLA_DIRECTOR_Legal_i_Subvencions|03_GOVERNAR_Normativa_Regles/PLA_DIRECTOR_...
-- [[PLA_DIRECTOR_Legal_i_Subvencions|03_GOVERNAR_Normativa_Regles/PLA_DIRECTOR_Legal_i_Subvencions.md]] — [[00_INDEX|00_INDEX.md]] — [[PLA_DIRECTOR_Legal_i_Subvencions]]
-- [[PLA_DIRECTOR_Viabilitat_Economica|03_GOVERNAR_Normativa_Regles/PLA_DIRECTOR_Viabilitat_Economica.md]] — (Veure [[PLA_DIRECTOR_Legal_i_Subvencions]] per a les línies exactes).
+- [[govern|01_SABER_Cultura_Coneixement/Govern.md]] — [[PLA_DIRECTOR_Legal_i_Subvencions|03_GOVERNAR_Normativa_Regles/PLA_DIRECTOR_...
+- [[graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[PLA_DIRECTOR_Legal_i_Subvencions|03_GOVERNAR_Normativa_Regles/PLA_DIRECTOR_...
+- [[pla_director_legal_i_subvencions|03_GOVERNAR_Normativa_Regles/PLA_DIRECTOR_Legal_i_Subvencions.md]] — [[00_index|00_INDEX.md]] — [[pla_director_legal_i_subvencions]]
+- [[pla_director_viabilitat_economica|03_GOVERNAR_Normativa_Regles/PLA_DIRECTOR_Viabilitat_Economica.md]] — (Veure [[pla_director_legal_i_subvencions]] per a les línies exactes).
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

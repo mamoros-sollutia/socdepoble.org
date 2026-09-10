@@ -88,4 +88,4 @@ Primer es crea la publicació; després s’intenta marcar `isPublished`. Un err
 *(S'ometen detalls P2 de l'auditoria per mantenir el resum de P1)*
 
 
-**Ancoratge de Seguretat:** [[00_INDEX_ESCRIPTORI]]
+**Ancoratge de Seguretat:** [[00_index_escriptori]]

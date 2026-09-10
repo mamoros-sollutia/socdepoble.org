@@ -5,9 +5,6 @@ import { CAMINS } from '../lib/arrel.mjs';
 export class VerificadorSCC {
   constructor(wikiRoot) {
     this.wikiRoot = resolve(wikiRoot);
-    // Prefixos de carpetes operatives. Si no comença per ací (o arrel), s'exclou logicament del graf.
-    this.operativePrefixes = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
-    this.excludedPrefixes = ['90', '99', '.', 'assets'];
     
     // Configuració de límits
     this.INBOX_MAX_FILES = 20;
@@ -17,13 +14,6 @@ export class VerificadorSCC {
     // Resultats
     this.graph = new Map(); // AbsolutePath -> Set<AbsolutePath>
     this.errors = [];
-  }
-
-  /** Retorna true si la ruta pertany a la zona operativa */
-  isOperative(filePath) {
-    // La regla és clara: CAP zona exclosa. Tot el que penja del repositori
-    // s'ha de mesurar. Ja no amaguem 90_historic ni .agents.
-    return true;
   }
 
   /** Llig recursivament totes les carpetes */

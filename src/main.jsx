@@ -28,7 +28,7 @@ const init = () => {
   // Instanciem l'element si trobem l'arrel de muntatge.
   // Açò permet l'ús standalone tant en DEV com en el build final.
   const arrel = document.getElementById('root');
-  if (arrel && !arrel.innerHTML) {
+  if (arrel && (!arrel.hasChildNodes() || arrel.innerHTML.trim() === '')) {
     const element = document.createElement('soc-de-poble');
     element.setAttribute('fonts-href', '/fonts/noto-sans.css');
     element.setAttribute('config', JSON.stringify({

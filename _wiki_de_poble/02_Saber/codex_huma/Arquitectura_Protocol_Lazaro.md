@@ -37,24 +37,24 @@ No tens gens ni mica de coneixement informàtic? No cal! Digues-li directament a
 
 
 ## Taxonomia
-- **Categoria:** [[Coneixement]]
-- **Etiquetes:** [[Graf]]
+- **Categoria:** [[coneixement]]
+- **Etiquetes:** [[graf]]
 
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_index]]
 
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_index]]
 
 ## Sinapsis Entrants (Autogenerat)
 
-- [[00_INDEX|00_INDEX.md]] — [[Arquitectura_Protocol_Lazaro|01_SABER_Cultura_Coneixement/codex_huma/Arquit...
+- [[00_index|00_INDEX.md]] — [[Arquitectura_Protocol_Lazaro|01_SABER_Cultura_Coneixement/codex_huma/Arquit...
 - [[el_projecte|00_SER_Brain_Identitat/el_projecte.md]] — [[Arquitectura_Protocol_Lazaro|01_SABER_Cultura_Coneixement/codex_huma/Arquit...
-- [[Soci_Sollutia|00_SER_Brain_Identitat/Soci_Sollutia.md]] — [[Arquitectura_Protocol_Lazaro]]
-- [[Arquitectura_Protocol_Lazaro|01_SABER_Cultura_Coneixement/codex_huma/Arquitectura_Protocol_Lazaro.md]] — [[00_INDEX|00_INDEX.md]] — [[Arquitectura_Protocol_Lazaro|01_SABER_Cultura_Co...
-- [[Coneixement|01_SABER_Cultura_Coneixement/Coneixement.md]] — [[Arquitectura_Protocol_Lazaro|01_SABER_Cultura_Coneixement/codex_huma/Arquit...
-- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[Arquitectura_Protocol_Lazaro|01_SABER_Cultura_Coneixement/codex_huma/Arquit...
+- [[soci_sollutia|00_SER_Brain_Identitat/Soci_Sollutia.md]] — [[arquitectura_protocol_lazaro]]
+- [[arquitectura_protocol_lazaro|01_SABER_Cultura_Coneixement/codex_huma/Arquitectura_Protocol_Lazaro.md]] — [[00_index|00_INDEX.md]] — [[arquitectura_protocol_lazaro|01_SABER_Cultura_Co...
+- [[coneixement|01_SABER_Cultura_Coneixement/Coneixement.md]] — [[Arquitectura_Protocol_Lazaro|01_SABER_Cultura_Coneixement/codex_huma/Arquit...
+- [[graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[Arquitectura_Protocol_Lazaro|01_SABER_Cultura_Coneixement/codex_huma/Arquit...
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

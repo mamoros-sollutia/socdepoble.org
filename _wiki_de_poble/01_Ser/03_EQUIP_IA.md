@@ -98,19 +98,19 @@ Una captura és evidència si aporta informació a la tasca. S’analitza, es cl
 El Consell ha funcionat quan deixa una decisió més verificable: supòsits visibles, riscos prioritzats, codi o pautes comprovables i una llista curta d’incerteses que encara requerixen l’humà.
 
 ## Taxonomia
-- **Categoria:** [[Identitat]]
-- **Etiquetes:** [[Graf]]
+- **Categoria:** [[identitat]]
+- **Etiquetes:** [[graf]]
 
-**Ancoratge de Seguretat:** [[00_INDEX_IDENTITAT]]
+**Ancoratge de Seguretat:** [[00_index_identitat]]
 
 ## Sinapsis Entrants (Autogenerat)
 
-- [[00_INDEX_IDENTITAT|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[02_EQUIP_IA]]
-- [[02_EQUIP_IA|00_SER_Brain_Identitat/02_EQUIP_IA.md]] — [[00_INDEX_IDENTITAT|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[02_EQ...
-- [[02_GENOTIP|00_SER_Brain_Identitat/02_GENOTIP.md]] — [[02_EQUIP_IA]]
+- [[00_index_identitat|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[02_EQUIP_IA]]
+- [[02_EQUIP_IA|00_SER_Brain_Identitat/02_EQUIP_IA.md]] — [[00_index_identitat|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[02_EQ...
+- [[02_genotip|00_SER_Brain_Identitat/02_GENOTIP.md]] — [[02_EQUIP_IA]]
 - [[el_projecte|00_SER_Brain_Identitat/el_projecte.md]] — [[02_EQUIP_IA|00_SER_Brain_Identitat/02_EQUIP_IA.md]] — La identitat d'aquest...
-- [[Soci_Sollutia|00_SER_Brain_Identitat/Soci_Sollutia.md]] — [[02_EQUIP_IA]]
-- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[02_EQUIP_IA|00_SER_Brain_Identitat/02_EQUIP_IA.md]] — Etiquetes: [[Graf]]
-- [[Identitat|01_SABER_Cultura_Coneixement/Identitat.md]] — [[02_EQUIP_IA|00_SER_Brain_Identitat/02_EQUIP_IA.md]] — Categoria: [[Identitat]]
+- [[soci_sollutia|00_SER_Brain_Identitat/Soci_Sollutia.md]] — [[02_EQUIP_IA]]
+- [[graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[02_EQUIP_IA|00_SER_Brain_Identitat/02_EQUIP_IA.md]] — Etiquetes: [[graf]]
+- [[identitat|01_SABER_Cultura_Coneixement/Identitat.md]] — [[02_EQUIP_IA|00_SER_Brain_Identitat/02_EQUIP_IA.md]] — Categoria: [[identitat]]
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

@@ -50,14 +50,14 @@ comunicar canvi d’abast o retirar la proposta.
 
 
 ## Taxonomia
-- **Categoria:** [[Maquina]]
-- **Etiquetes:** [[Graf]]
+- **Categoria:** [[maquina]]
+- **Etiquetes:** [[graf]]
 
 ## Sinapsis Entrants (Autogenerat)
 
-- [[00_INDEX|00_INDEX.md]] — [[ADR-2026-08-ONLINE-FIRST]]
-- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[ADR-2026-08-ONLINE-FIRST|02_ACTUAR_Maquina_Tecnica/architecture/ADR-2026-08...
-- [[Maquina|01_SABER_Cultura_Coneixement/Maquina.md]] — [[ADR-2026-08-ONLINE-FIRST|02_ACTUAR_Maquina_Tecnica/architecture/ADR-2026-08...
-- [[ADR-2026-08-ONLINE-FIRST|02_ACTUAR_Maquina_Tecnica/architecture/ADR-2026-08-ONLINE-FIRST.md]] — [[00_INDEX|00_INDEX.md]] — [[ADR-2026-08-ONLINE-FIRST]]
+- [[00_index|00_INDEX.md]] — [[ADR-2026-08-ONLINE-FIRST]]
+- [[graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[ADR-2026-08-ONLINE-FIRST|02_ACTUAR_Maquina_Tecnica/architecture/ADR-2026-08...
+- [[maquina|01_SABER_Cultura_Coneixement/Maquina.md]] — [[ADR-2026-08-ONLINE-FIRST|02_ACTUAR_Maquina_Tecnica/architecture/ADR-2026-08...
+- [[ADR-2026-08-ONLINE-FIRST|02_ACTUAR_Maquina_Tecnica/architecture/ADR-2026-08-ONLINE-FIRST.md]] — [[00_index|00_INDEX.md]] — [[ADR-2026-08-ONLINE-FIRST]]
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

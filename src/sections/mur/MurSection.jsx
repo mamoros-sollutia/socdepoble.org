@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams } from '../../app/contexts/RouterContext';
 import { UniversalPage } from '../../components/universal/UniversalPage';
 import { UniversalCard, ActionControl, IconButton, ContentProvider } from '../../components/universal/UniversalElements';
 import { EventCard } from '../../components/universal/EventCard';

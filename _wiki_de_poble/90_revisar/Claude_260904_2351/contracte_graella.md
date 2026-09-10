@@ -5,7 +5,7 @@ description: Contracte del Framework de Graella (AppGridShell i AppGridColumn)
 ---
 # Contracte del Framework de Graella
 
-> **Anclatge**: pertany a l'[[00_INDEX_ESCRIPTORI]]. Verificat per
+> **Anclatge**: pertany a l'[[00_index_escriptori]]. Verificat per
 > `tooling/gates/tractor-graella.mjs` (`npm run porta:graella`).
 
 Esta fitxa no és prosa il·lustrativa. Cada taula d'ací baix la compara una

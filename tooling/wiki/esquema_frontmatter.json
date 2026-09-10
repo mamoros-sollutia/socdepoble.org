@@ -78,7 +78,7 @@
   "extensio_agent": {
     "abast": [
       ".agents/skills/*/SKILL.md",
-      "_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS_*.md"
+      "_wiki_de_poble/01_Ser/00_AGENTS_I_SKILLS_MIRROR/AGENTS_*.md"
     ],
     "obligatories": {
       "name": {

@@ -152,7 +152,7 @@ def main() -> int:
     parser.add_argument("--source", default=".agents", help="Font canònica relativa")
     parser.add_argument(
         "--mirror",
-        default="_wiki_de_poble/00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR",
+        default="_wiki_de_poble/01_Ser/00_AGENTS_I_SKILLS_MIRROR",
         help="Directori de vista generada",
     )
     parser.add_argument("--write", action="store_true", help="Aplica la regeneració")

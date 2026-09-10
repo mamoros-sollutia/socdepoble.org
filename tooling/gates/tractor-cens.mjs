@@ -17,7 +17,7 @@
  *                                  a .agents/»
  *
  *   La «Regla Sagrada» d'enumerar totes les Petorretes vivia només a
- *   _wiki_de_poble/00_SER_Brain_Identitat/02_EQUIP_IA.md:54.
+ *   _wiki_de_poble/01_Ser/02_EQUIP_IA.md:54.
  *
  *   Una regla que ha de ser inevitable no pot ser prosa dins d'una zona
  *   declarada no-executiva. Ha de ser DADES amb PORTA. Això és la porta.

@@ -62,35 +62,35 @@ i una eixida que explique exactament què ha fallat.
 ## Sinapsis
 
 - [[index_trellat|Índex de Trellat]]
-- [[AUDITORIA_CANONICA]]
+- [[auditoria_canonica]]
 - [[MOTOR_OFFLINE]]
 - [[00_arquitectura_tecnica_unificada]]
 
 
 ## Taxonomia
-- **Categoria:** [[Identitat]]
-- **Etiquetes:** [[Graf]]
+- **Categoria:** [[identitat]]
+- **Etiquetes:** [[graf]]
 
 
-**Ancoratge de Seguretat:** [[00_INDEX_IDENTITAT]]
+**Ancoratge de Seguretat:** [[00_index_identitat]]
 
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX_IDENTITAT]]
+**Ancoratge de Seguretat:** [[00_index_identitat]]
 
 ## Sinapsis Entrants (Autogenerat)
 
-- [[00_INDEX_IDENTITAT|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[03_Consola_Termodinamica]]
-- [[03_Consola_Termodinamica|00_SER_Brain_Identitat/03_Consola_Termodinamica.md]] — [[00_INDEX_IDENTITAT|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[03_Co...
-- [[CORE_Registre_Automillora|00_SER_Brain_Identitat/CORE_Registre_Automillora.md]] — | 260707_1000 | 260707_1100 | 23h              | 4       | Exigència Matemàti...
+- [[00_index_identitat|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[03_consola_termodinamica]]
+- [[03_consola_termodinamica|00_SER_Brain_Identitat/03_Consola_Termodinamica.md]] — [[00_index_identitat|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[03_Co...
+- [[core_registre_automillora|00_SER_Brain_Identitat/CORE_Registre_Automillora.md]] — | 260707_1000 | 260707_1100 | 23h              | 4       | Exigència Matemàti...
 - [[el_projecte|00_SER_Brain_Identitat/el_projecte.md]] — Assistència de la Ment Colmena per processar dades. La [[03_Consola_Termodina...
-- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[03_Consola_Termodinamica|00_SER_Brain_Identitat/03_Consola_Termodinamica.md...
-- [[Identitat|01_SABER_Cultura_Coneixement/Identitat.md]] — [[03_Consola_Termodinamica|00_SER_Brain_Identitat/03_Consola_Termodinamica.md...
-- [[a11y_seo_trellat|02_ACTUAR_Maquina_Tecnica/skills/a11y_seo_trellat.md]] — [[03_Consola_Termodinamica]]
-- [[AUDITORIA_CANONICA|02_ACTUAR_Maquina_Tecnica/skills/AUDITORIA_CANONICA.md]] — [[03_Consola_Termodinamica|00_SER_Brain_Identitat/03_Consola_Termodinamica.md...
-- [[futur_adaptacio|02_ACTUAR_Maquina_Tecnica/skills/futur_adaptacio.md]] — [[03_Consola_Termodinamica]]
-- [[index_trellat|02_ACTUAR_Maquina_Tecnica/skills/index_trellat.md]] — [[03_Consola_Termodinamica]]
-- [[MOTOR_OFFLINE|02_ACTUAR_Maquina_Tecnica/skills/MOTOR_OFFLINE.md]] — [[03_Consola_Termodinamica]]
+- [[graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[03_Consola_Termodinamica|00_SER_Brain_Identitat/03_Consola_Termodinamica.md...
+- [[identitat|01_SABER_Cultura_Coneixement/Identitat.md]] — [[03_Consola_Termodinamica|00_SER_Brain_Identitat/03_Consola_Termodinamica.md...
+- [[a11y_seo_trellat|02_ACTUAR_Maquina_Tecnica/skills/a11y_seo_trellat.md]] — [[03_consola_termodinamica]]
+- [[auditoria_canonica|02_ACTUAR_Maquina_Tecnica/skills/AUDITORIA_CANONICA.md]] — [[03_Consola_Termodinamica|00_SER_Brain_Identitat/03_Consola_Termodinamica.md...
+- [[futur_adaptacio|02_ACTUAR_Maquina_Tecnica/skills/futur_adaptacio.md]] — [[03_consola_termodinamica]]
+- [[index_trellat|02_ACTUAR_Maquina_Tecnica/skills/index_trellat.md]] — [[03_consola_termodinamica]]
+- [[MOTOR_OFFLINE|02_ACTUAR_Maquina_Tecnica/skills/MOTOR_OFFLINE.md]] — [[03_consola_termodinamica]]
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

@@ -2,7 +2,7 @@
 tipus: document
 estat: esborrany
 ---
-> **Ancoratge de Seguretat**: Aquest estudi pertany a l'[[00_INDEX_ESCRIPTORI]].
+> **Ancoratge de Seguretat**: Aquest estudi pertany a l'[[00_index_escriptori]].
 
 Veredicte
 Estat: SDP-LOCK preventiu recomanat abans de qualsevol purga.

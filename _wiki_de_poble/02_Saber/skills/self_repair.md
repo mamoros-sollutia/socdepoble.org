@@ -80,40 +80,40 @@ Els antics frontmatters v1 incrustats, `pre_commit_trellat.mjs` com a autoritat,
 - [[anatomia_cognitiva|Cingulat Anterior]]
 - [[MOTOR_OFFLINE]]
 - [[seguretat_execucio]]
-- [[DOC_Governanca]]
-- [[LLEI_05_Privacitat]]
+- [[doc_governanca]]
+- [[llei_05_privacitat]]
 
 
 ## Taxonomia
-- **Categoria:** [[Maquina]]
-- **Etiquetes:** [[Graf]]
+- **Categoria:** [[maquina]]
+- **Etiquetes:** [[graf]]
 
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_index]]
 
 
 ---
 **Categoria:** skills (BROKEN LINK: skills) <!-- TODO: fix link -->
-**Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_index]]
+**Ancoratge de Seguretat:** [[00_index]]
 
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_index]]
 
 ## Sinapsis Entrants (Autogenerat)
 
-- [[00_INDEX|00_INDEX.md]] — [[self_repair|02_ACTUAR_Maquina_Tecnica/skills/self_repair.md]] — Ancoratge d...
+- [[00_index|00_INDEX.md]] — [[self_repair|02_ACTUAR_Maquina_Tecnica/skills/self_repair.md]] — Ancoratge d...
 - [[anatomia_cognitiva|00_SER_Brain_Identitat/anatomia_cognitiva.md]] — [[self_repair|02_ACTUAR_Maquina_Tecnica/skills/self_repair.md]] — [[anatomia_...
-- [[CORE_Registre_Automillora|00_SER_Brain_Identitat/CORE_Registre_Automillora.md]] — | 260706_0900 | 260707_0645 | 19h              | 1       | Agents Autònoms, D...
-- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[self_repair|02_ACTUAR_Maquina_Tecnica/skills/self_repair.md]] — Etiquetes: ...
-- [[Maquina|01_SABER_Cultura_Coneixement/Maquina.md]] — [[self_repair|02_ACTUAR_Maquina_Tecnica/skills/self_repair.md]] — Categoria: ...
+- [[core_registre_automillora|00_SER_Brain_Identitat/CORE_Registre_Automillora.md]] — | 260706_0900 | 260707_0645 | 19h              | 1       | Agents Autònoms, D...
+- [[graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[self_repair|02_ACTUAR_Maquina_Tecnica/skills/self_repair.md]] — Etiquetes: ...
+- [[maquina|01_SABER_Cultura_Coneixement/Maquina.md]] — [[self_repair|02_ACTUAR_Maquina_Tecnica/skills/self_repair.md]] — Categoria: ...
 - [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maquina_Tecnica/00_arquitectura_tecnica_unificada.md]] — [[self_repair]]
 - [[MOTOR_OFFLINE|02_ACTUAR_Maquina_Tecnica/skills/MOTOR_OFFLINE.md]] — [[self_repair|02_ACTUAR_Maquina_Tecnica/skills/self_repair.md]] — [[MOTOR_OFF...
 - [[seguretat_execucio|02_ACTUAR_Maquina_Tecnica/skills/seguretat_execucio.md]] — [[self_repair]]
-- [[self_repair|02_ACTUAR_Maquina_Tecnica/skills/self_repair.md]] — [[00_INDEX|00_INDEX.md]] — [[self_repair|02_ACTUAR_Maquina_Tecnica/skills/sel...
-- [[DOC_Governanca|03_GOVERNAR_Normativa_Regles/DOC_Governanca.md]] — [[self_repair|02_ACTUAR_Maquina_Tecnica/skills/self_repair.md]] — [[DOC_Gover...
-- [[LLEI_05_Privacitat|03_GOVERNAR_Normativa_Regles/LLEI_05_Privacitat.md]] — [[self_repair|02_ACTUAR_Maquina_Tecnica/skills/self_repair.md]] — [[LLEI_05_P...
+- [[self_repair|02_ACTUAR_Maquina_Tecnica/skills/self_repair.md]] — [[00_index|00_INDEX.md]] — [[self_repair|02_ACTUAR_Maquina_Tecnica/skills/sel...
+- [[doc_governanca|03_GOVERNAR_Normativa_Regles/DOC_Governanca.md]] — [[self_repair|02_ACTUAR_Maquina_Tecnica/skills/self_repair.md]] — [[DOC_Gover...
+- [[llei_05_privacitat|03_GOVERNAR_Normativa_Regles/LLEI_05_Privacitat.md]] — [[self_repair|02_ACTUAR_Maquina_Tecnica/skills/self_repair.md]] — [[LLEI_05_P...
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

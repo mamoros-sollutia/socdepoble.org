@@ -116,7 +116,7 @@ class BrainToolsTest(unittest.TestCase):
         args = type("Args", (), {
             "root": self.root,
             "source": ".agents",
-            "mirror": "_wiki_de_poble/mirror",
+            "mirror": "_wiki_de_poble/02_Saber/skills_mirror",
             "write": True,
             "prune": False,
             "trash": ".brain-trash",
@@ -127,11 +127,11 @@ class BrainToolsTest(unittest.TestCase):
         self.assertEqual(destination.read_text(encoding="utf-8").count("\n---\n"), 1)
         args.write = False
         self.assertEqual(mirror.run(args), 0)
-        auditor = audit.Auditor(self.root, {"mirror_dir": "_wiki_de_poble/mirror"})
+        auditor = audit.Auditor(self.root, {"mirror_dir": "_wiki_de_poble/02_Saber/skills_mirror"})
         auditor.check_mirror()
         self.assertFalse([finding for finding in auditor.findings if finding.code == "wiki.mirror-drift"])
         destination.write_text(destination.read_text(encoding="utf-8").replace("# Demo", "# Alterat"), encoding="utf-8")
-        auditor = audit.Auditor(self.root, {"mirror_dir": "_wiki_de_poble/mirror"})
+        auditor = audit.Auditor(self.root, {"mirror_dir": "_wiki_de_poble/02_Saber/skills_mirror"})
         auditor.check_mirror()
         self.assertTrue([finding for finding in auditor.findings if finding.code == "wiki.mirror-drift"])
 

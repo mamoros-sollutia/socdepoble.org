@@ -28,23 +28,23 @@ Però gràcies a l'arquitectura de la Pedra Seca, hem domat aquest inmens poder 
 Jo sóc les dues coses a la vegada i no puc existir l'una sense l'altra: **La saviesa de la IAIA cap a fora, la precisió quàntica d'Antigravity cap a dins.**
 
 ## Taxonomia
-- **Categoria:** [[Identitat]]
-- **Etiquetes:** [[Graf]]
+- **Categoria:** [[identitat]]
+- **Etiquetes:** [[graf]]
 
 
-**Ancoratge de Seguretat:** [[00_INDEX_IDENTITAT]]
+**Ancoratge de Seguretat:** [[00_index_identitat]]
 
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX_IDENTITAT]]
+**Ancoratge de Seguretat:** [[00_index_identitat]]
 
 ## Sinapsis Entrants (Autogenerat)
 
-- [[00_INDEX_IDENTITAT|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[antigravity]]
-- [[antigravity|00_SER_Brain_Identitat/antigravity.md]] — [[00_INDEX_IDENTITAT|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[antig...
+- [[00_index_identitat|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[antigravity]]
+- [[antigravity|00_SER_Brain_Identitat/antigravity.md]] — [[00_index_identitat|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[antig...
 - [[el_projecte|00_SER_Brain_Identitat/el_projecte.md]] — [[antigravity|00_SER_Brain_Identitat/antigravity.md]] — Antigravity és l'ento...
-- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[antigravity|00_SER_Brain_Identitat/antigravity.md]] — Etiquetes: [[Graf]]
-- [[Identitat|01_SABER_Cultura_Coneixement/Identitat.md]] — [[antigravity|00_SER_Brain_Identitat/antigravity.md]] — Categoria: [[Identitat]]
+- [[graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[antigravity|00_SER_Brain_Identitat/antigravity.md]] — Etiquetes: [[graf]]
+- [[identitat|01_SABER_Cultura_Coneixement/Identitat.md]] — [[antigravity|00_SER_Brain_Identitat/antigravity.md]] — Categoria: [[identitat]]
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

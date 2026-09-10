@@ -102,14 +102,14 @@ Fins que es complisquen els set punts, Antigravity ha de dir «proposat» o «no
 
 ## Relacions
 
-- [[00_INDEX|Índex de la Wiki]]
-- [[02_GENOTIP|Genotip cognitiu]]
+- [[00_index|Índex de la Wiki]]
+- [[02_genotip|Genotip cognitiu]]
 - [[PROTOCOL_PETORRETA|Petorretas i context selectiu]]
-- [[SDP_LOCK|Límits de seguretat]]
+- [[sdp_lock|Límits de seguretat]]
 - [[00_visio_i_pilars|Visió i pilars]]
 
 ### Skills Operatives (Autosanació i Execució)
-- [[AUDITORIA_CANONICA]]
+- [[auditoria_canonica]]
 - [[MOTOR_OFFLINE]]
 - [[a11y_seo_trellat]]
 - [[futur_adaptacio]]
@@ -119,53 +119,53 @@ Fins que es complisquen els set punts, Antigravity ha de dir «proposat» o «no
 - [[successio_lazaro_execucio]]
 
 ### Eines d'Obsidian (Plugins i Workflow)
-- [[Homepage]]
-- [[Plugins]]
+- [[homepage]]
+- [[plugins]]
 
 
 ## Taxonomia
-- **Categoria:** [[Maquina]]
-- **Etiquetes:** [[Graf]]
+- **Categoria:** [[maquina]]
+- **Etiquetes:** [[graf]]
 
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_index]]
 
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_index]]
 
 ## Sinapsis Entrants (Autogenerat)
 
-- [[00_INDEX|00_INDEX.md]] — [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maquina_Tecnica/00_arquitectura...
-- [[00_BIOS|00_SER_Brain_Identitat/00_BIOS.md]] — Les fonts mecàniques són [[00_arquitectura_tecnica_unificada]],
-- [[00_INDEX_IDENTITAT|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — | 02 ACTUAR | Màquina tècnica, skills, scripts, plantilles | [[00_arquitectur...
-- [[02_GENOTIP|00_SER_Brain_Identitat/02_GENOTIP.md]] — [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maquina_Tecnica/00_arquitectura...
-- [[03_Consola_Termodinamica|00_SER_Brain_Identitat/03_Consola_Termodinamica.md]] — [[00_arquitectura_tecnica_unificada]]
+- [[00_index|00_INDEX.md]] — [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maquina_Tecnica/00_arquitectura...
+- [[00_bios|00_SER_Brain_Identitat/00_BIOS.md]] — Les fonts mecàniques són [[00_arquitectura_tecnica_unificada]],
+- [[00_index_identitat|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — | 02 ACTUAR | Màquina tècnica, skills, scripts, plantilles | [[00_arquitectur...
+- [[02_genotip|00_SER_Brain_Identitat/02_GENOTIP.md]] — [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maquina_Tecnica/00_arquitectura...
+- [[03_consola_termodinamica|00_SER_Brain_Identitat/03_Consola_Termodinamica.md]] — [[00_arquitectura_tecnica_unificada]]
 - [[00_visio_i_pilars|01_SABER_Cultura_Coneixement/00_visio_i_pilars.md]] — Mapeig Col·lectiu de Recursos: Geolocalització d'informació vital. → [[00_arq...
-- [[Arquitectura_Sistema_Nervios|01_SABER_Cultura_Coneixement/codex_huma/Arquitectura_Sistema_Nervios.md]] — [[00_arquitectura_tecnica_unificada]]: React/Vite, persistència local parcial,
-- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maquina_Tecnica/00_arquitectura...
-- [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maquina_Tecnica/00_arquitectura_tecnica_unificada.md]] — [[00_INDEX|00_INDEX.md]] — [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maqu...
-- [[00_plantilles|02_ACTUAR_Maquina_Tecnica/07_plantilles/00_plantilles.md]] — Relacionat: [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
-- [[plantilla_acta_unica|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_acta_unica.md]] — Relacionat: [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
-- [[plantilla_brainstorming|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_brainstorming.md]] — Relacionat: [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
-- [[plantilla_branding|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_branding.md]] — Relacionat: [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
-- [[plantilla_creador_skills|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_creador_skills.md]] — Relacionat: [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
-- [[plantilla_doc_to_app|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_doc_to_app.md]] — Relacionat: [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
-- [[plantilla_modo_produccion|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_modo_produccion.md]] — Relacionat: [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
-- [[plantilla_planificacio|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_planificacio.md]] — Relacionat: [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
-- [[plantilla_skill_trellat|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_skill_trellat.md]] — Relacionat: [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
-- [[Homepage|02_ACTUAR_Maquina_Tecnica/obsidian_plugins/Homepage.md]] — [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maquina_Tecnica/00_arquitectura...
-- [[Plugins|02_ACTUAR_Maquina_Tecnica/obsidian_plugins/Plugins.md]] — [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maquina_Tecnica/00_arquitectura...
-- [[SDP_LOCK|02_ACTUAR_Maquina_Tecnica/SDP_LOCK.md]] — [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maquina_Tecnica/00_arquitectura...
+- [[arquitectura_sistema_nervios|01_SABER_Cultura_Coneixement/codex_huma/Arquitectura_Sistema_Nervios.md]] — [[00_arquitectura_tecnica_unificada]]: React/Vite, persistència local parcial,
+- [[graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maquina_Tecnica/00_arquitectura...
+- [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maquina_Tecnica/00_arquitectura_tecnica_unificada.md]] — [[00_index|00_INDEX.md]] — [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maqu...
+- [[00_plantilles|02_ACTUAR_Maquina_Tecnica/07_plantilles/00_plantilles.md]] — Relacionat: [[00_arquitectura_tecnica_unificada]], [[00_index]]
+- [[plantilla_acta_unica|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_acta_unica.md]] — Relacionat: [[00_arquitectura_tecnica_unificada]], [[00_index]]
+- [[plantilla_brainstorming|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_brainstorming.md]] — Relacionat: [[00_arquitectura_tecnica_unificada]], [[00_index]]
+- [[plantilla_branding|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_branding.md]] — Relacionat: [[00_arquitectura_tecnica_unificada]], [[00_index]]
+- [[plantilla_creador_skills|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_creador_skills.md]] — Relacionat: [[00_arquitectura_tecnica_unificada]], [[00_index]]
+- [[plantilla_doc_to_app|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_doc_to_app.md]] — Relacionat: [[00_arquitectura_tecnica_unificada]], [[00_index]]
+- [[plantilla_modo_produccion|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_modo_produccion.md]] — Relacionat: [[00_arquitectura_tecnica_unificada]], [[00_index]]
+- [[plantilla_planificacio|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_planificacio.md]] — Relacionat: [[00_arquitectura_tecnica_unificada]], [[00_index]]
+- [[plantilla_skill_trellat|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_skill_trellat.md]] — Relacionat: [[00_arquitectura_tecnica_unificada]], [[00_index]]
+- [[homepage|02_ACTUAR_Maquina_Tecnica/obsidian_plugins/Homepage.md]] — [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maquina_Tecnica/00_arquitectura...
+- [[plugins|02_ACTUAR_Maquina_Tecnica/obsidian_plugins/Plugins.md]] — [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maquina_Tecnica/00_arquitectura...
+- [[sdp_lock|02_ACTUAR_Maquina_Tecnica/SDP_LOCK.md]] — [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maquina_Tecnica/00_arquitectura...
 - [[a11y_seo_trellat|02_ACTUAR_Maquina_Tecnica/skills/a11y_seo_trellat.md]] — [[00_arquitectura_tecnica_unificada]]
-- [[AUDITORIA_CANONICA|02_ACTUAR_Maquina_Tecnica/skills/AUDITORIA_CANONICA.md]] — Relacionat: [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
-- [[futur_adaptacio|02_ACTUAR_Maquina_Tecnica/skills/futur_adaptacio.md]] — Relacionat: [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
-- [[index_trellat|02_ACTUAR_Maquina_Tecnica/skills/index_trellat.md]] — Relacionat: [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
+- [[auditoria_canonica|02_ACTUAR_Maquina_Tecnica/skills/AUDITORIA_CANONICA.md]] — Relacionat: [[00_arquitectura_tecnica_unificada]], [[00_index]]
+- [[futur_adaptacio|02_ACTUAR_Maquina_Tecnica/skills/futur_adaptacio.md]] — Relacionat: [[00_arquitectura_tecnica_unificada]], [[00_index]]
+- [[index_trellat|02_ACTUAR_Maquina_Tecnica/skills/index_trellat.md]] — Relacionat: [[00_arquitectura_tecnica_unificada]], [[00_index]]
 - [[MOTOR_OFFLINE|02_ACTUAR_Maquina_Tecnica/skills/MOTOR_OFFLINE.md]] — [[00_arquitectura_tecnica_unificada]]
-- [[seguretat_execucio|02_ACTUAR_Maquina_Tecnica/skills/seguretat_execucio.md]] — Relacionat: [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
-- [[self_repair|02_ACTUAR_Maquina_Tecnica/skills/self_repair.md]] — Relacionat: [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
-- [[successio_lazaro_execucio|02_ACTUAR_Maquina_Tecnica/skills/successio_lazaro_execucio.md]] — Relacionat: [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
-- [[FORJA_TO_CORE|03_GOVERNAR_Normativa_Regles/FORJA_TO_CORE.md]] — [[00_arquitectura_tecnica_unificada]]
+- [[seguretat_execucio|02_ACTUAR_Maquina_Tecnica/skills/seguretat_execucio.md]] — Relacionat: [[00_arquitectura_tecnica_unificada]], [[00_index]]
+- [[self_repair|02_ACTUAR_Maquina_Tecnica/skills/self_repair.md]] — Relacionat: [[00_arquitectura_tecnica_unificada]], [[00_index]]
+- [[successio_lazaro_execucio|02_ACTUAR_Maquina_Tecnica/skills/successio_lazaro_execucio.md]] — Relacionat: [[00_arquitectura_tecnica_unificada]], [[00_index]]
+- [[forja_to_core|03_GOVERNAR_Normativa_Regles/FORJA_TO_CORE.md]] — [[00_arquitectura_tecnica_unificada]]
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

@@ -9,7 +9,7 @@ description: "Auditoria tècnica del paquet auditoria"
 
 Els logos oficials no s’incrusten ací.
 
-Consulta sempre: [[DOC_Logos_Oficials]]
+Consulta sempre: [[doc_logos_oficials]]
 
 ---
 
@@ -55,18 +55,18 @@ Analitza el codi SQL proposat a l'`implementation_plan.md` (veure dins el bundle
 
 ## Sinapsis
 
-- [[00_BIOS]]
-- [[02_GENOTIP]]
-- [[DOC_Governanca]]
-- [[DOC_Logos_Oficials]]
+- [[00_bios]]
+- [[02_genotip]]
+- [[doc_governanca]]
+- [[doc_logos_oficials]]
 - enginyeria_inversa_mit
 
 ## Taxonomia
 
-- **Categoria:** [[Maquina]]
-- **Etiquetes:** [[Graf]]
+- **Categoria:** [[maquina]]
+- **Etiquetes:** [[graf]]
 
 
-**Ancoratge de Seguretat:** [[00_INDEX_ESCRIPTORI]]
+**Ancoratge de Seguretat:** [[00_index_escriptori]]
 
 <!-- SDP-ISO-CONTEXT: {"_wiki_de_poble/02_ACTUAR_Tecnica/plantilles/PLANTILLA_ISO_SDP.md":"1579af8b4a5938f86995776df6a1af1907ca7b220d1df77231b213ab4276ab76","_wiki_de_poble/00_SER_Identitat_Cervell/00_BIOS.md":"fc4f36244a2fa668b1f89dc920b7e5c5d9d85e944f6e3972ac683734f96f02d9","_wiki_de_poble/00_SER_Identitat_Cervell/02_GENOTIP.md":"5661dfb5a5136e241f85477473542f3346f48781a02a30701e52640192c082e0","_wiki_de_poble/03_GOVERNAR_Normativa/DOC_Governanca.md":"80fa2264bb8b5cb76fb4e61fc6c0463059017b288bcb49a44e24d9363f5ff51e","_wiki_de_poble/00_SER_Identitat_Cervell/DOC_Logos_Oficials.md":"34dba63b26a0628396d45131eb79cd00520343a5b33b1dbb6f6e3a2917a909b7","_wiki_de_poble/02_ACTUAR_Tecnica/architecture/ADR-2026-08-ONLINE-FIRST.md":"6700cb9c7f53419c1ccabb7f0c2aa7001b11c8795bca40b844e20ef5748395ec"} -->

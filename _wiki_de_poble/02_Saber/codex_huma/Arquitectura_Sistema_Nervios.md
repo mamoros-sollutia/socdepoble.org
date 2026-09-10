@@ -41,22 +41,22 @@ PWA i integració Supabase amb fallbacks.
 
 
 ## Taxonomia
-- **Categoria:** [[Coneixement]]
-- **Etiquetes:** [[Graf]]
+- **Categoria:** [[coneixement]]
+- **Etiquetes:** [[graf]]
 
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_index]]
 
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_index]]
 
 ## Sinapsis Entrants (Autogenerat)
 
-- [[00_INDEX|00_INDEX.md]] — [[Arquitectura_Sistema_Nervios]]
-- [[Arquitectura_Sistema_Nervios|01_SABER_Cultura_Coneixement/codex_huma/Arquitectura_Sistema_Nervios.md]] — [[00_INDEX|00_INDEX.md]] — [[Arquitectura_Sistema_Nervios]]
-- [[Coneixement|01_SABER_Cultura_Coneixement/Coneixement.md]] — [[Arquitectura_Sistema_Nervios|01_SABER_Cultura_Coneixement/codex_huma/Arquit...
-- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[Arquitectura_Sistema_Nervios|01_SABER_Cultura_Coneixement/codex_huma/Arquit...
+- [[00_index|00_INDEX.md]] — [[arquitectura_sistema_nervios]]
+- [[arquitectura_sistema_nervios|01_SABER_Cultura_Coneixement/codex_huma/Arquitectura_Sistema_Nervios.md]] — [[00_index|00_INDEX.md]] — [[arquitectura_sistema_nervios]]
+- [[coneixement|01_SABER_Cultura_Coneixement/Coneixement.md]] — [[Arquitectura_Sistema_Nervios|01_SABER_Cultura_Coneixement/codex_huma/Arquit...
+- [[graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[Arquitectura_Sistema_Nervios|01_SABER_Cultura_Coneixement/codex_huma/Arquit...
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

@@ -23,4 +23,4 @@ description: Auditoria Perplexity
 * **H-07 — Injecció de Shell:** L'script de matriu `toolingbrainmatrix.mjs` executa comandes de terminal directament amb noms de fitxers temporals previsibles.
 
 ---
-**Ancoratge de Seguretat:** [[00_INDEX_ESCRIPTORI]]
+**Ancoratge de Seguretat:** [[00_index_escriptori]]

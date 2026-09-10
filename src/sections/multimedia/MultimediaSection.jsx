@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import SectionItemCard from '../../components/SectionItemCard';
 import { UniversalPage } from '../../components/universal/UniversalPage';
-import { Link } from 'react-router-dom';
+import { Link } from '../../app/contexts/RouterContext';
 import { getSectionItemPath } from '../../config/navigation';
 import { useMultimedia } from './MultimediaContext';
 import { useUIActions } from '../../app/contexts/UIContext';

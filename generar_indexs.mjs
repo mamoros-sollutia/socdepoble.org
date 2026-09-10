@@ -80,7 +80,7 @@ ${customHeader}
 }
 
 async function main() {
-  await generateIndex('_wiki_de_poble/05_ARXIU', 'Arxiu Històric', '00_INDEX_ARXIU.md');
+  await generateIndex('_wiki_de_poble/90_Revisar', 'Arxiu Històric', '00_INDEX_ARXIU.md');
   await generateIndex('_wiki_de_poble/90_revisar', 'Zona de Quarantena i Revisió', '00_INDEX_REVISAR.md');
   
   await generateIndex(

@@ -63,31 +63,31 @@ L’IT no crea etiquetes de frontmatter. L’esquema v2 només admet `estat`, `t
 
 ## Sinapsis
 
-- [[AUDITORIA_CANONICA]]
+- [[auditoria_canonica]]
 - [[a11y_seo_trellat]]
 - [[MOTOR_OFFLINE]]
-- [[03_Consola_Termodinamica]]
+- [[03_consola_termodinamica]]
 
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_index]]
 
 
 ---
 **Categoria:** skills (BROKEN LINK: skills) <!-- TODO: fix link -->
-**Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_index]]
+**Ancoratge de Seguretat:** [[00_index]]
 
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_index]]
 
 ## Sinapsis Entrants (Autogenerat)
 
-- [[00_INDEX|00_INDEX.md]] — [[index_trellat|02_ACTUAR_Maquina_Tecnica/skills/index_trellat.md]] — Ancorat...
-- [[03_Consola_Termodinamica|00_SER_Brain_Identitat/03_Consola_Termodinamica.md]] — | “IT” de tres components del CLI | Retirat com a porta | sdp check falla tan...
+- [[00_index|00_INDEX.md]] — [[index_trellat|02_ACTUAR_Maquina_Tecnica/skills/index_trellat.md]] — Ancorat...
+- [[03_consola_termodinamica|00_SER_Brain_Identitat/03_Consola_Termodinamica.md]] — | “IT” de tres components del CLI | Retirat com a porta | sdp check falla tan...
 - [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maquina_Tecnica/00_arquitectura_tecnica_unificada.md]] — [[index_trellat]]
-- [[index_trellat|02_ACTUAR_Maquina_Tecnica/skills/index_trellat.md]] — [[00_INDEX|00_INDEX.md]] — [[index_trellat|02_ACTUAR_Maquina_Tecnica/skills/i...
+- [[index_trellat|02_ACTUAR_Maquina_Tecnica/skills/index_trellat.md]] — [[00_index|00_INDEX.md]] — [[index_trellat|02_ACTUAR_Maquina_Tecnica/skills/i...
 - [[MOTOR_OFFLINE|02_ACTUAR_Maquina_Tecnica/skills/MOTOR_OFFLINE.md]] — [[index_trellat|02_ACTUAR_Maquina_Tecnica/skills/index_trellat.md]] — Si una ...
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

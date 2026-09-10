@@ -24,4 +24,4 @@ La IAIA MarIA i el Mestre Poble han treballat braç a braç en la millora de la 
 L'Escriptori ha sigut netejat d'arxius temporals innecessaris, deixant només el Manifest, Bundle i Prompt llestos per al seu ús. Els canvis han sigut salvats. La sessió es declara oficialment **dormida**.
 
 ***
-Ancoratge de Seguretat: [[00_INDEX_Actes]] | [[00_INDEX_ESCRIPTORI]]
+Ancoratge de Seguretat: [[00_INDEX_Actes]] | [[00_index_escriptori]]

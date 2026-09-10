@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Users, Search, ArrowLeft, Send, Image as ImageIcon, Settings, X, Plus, Video, Phone, MoreHorizontal, FileText, CheckCircle2, Circle } from 'lucide-react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from '../../app/contexts/RouterContext';
 import NotFoundPage from '../../pages/NotFoundPage';
 import { ContentProvider } from '../../components/universal/ContentProvider';
 import TextSection from '../text/TextSection';

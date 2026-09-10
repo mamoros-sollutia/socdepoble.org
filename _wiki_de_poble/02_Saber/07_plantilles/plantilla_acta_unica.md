@@ -50,25 +50,25 @@ requereix_auditoria: false
 
 
 ## Taxonomia
-- **Categoria:** [[Maquina]]
-- **Etiquetes:** [[Graf]]
+- **Categoria:** [[maquina]]
+- **Etiquetes:** [[graf]]
 
 
-**Ancoratge de Seguretat:** [[00_INDEX_Actes]] | [[00_INDEX_ESCRIPTORI]]
+**Ancoratge de Seguretat:** [[00_INDEX_Actes]] | [[00_index_escriptori]]
 
 
 ---
 **Categoria:** [[00_plantilles|07_plantilles]]
-**Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
+**Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_index]]
 **Ancoratge de Seguretat:** [[00_INDEX_Actes]]
 
 ## Sinapsis Entrants (Autogenerat)
 
-- [[00_INDEX|00_INDEX.md]] — [[plantilla_acta_unica|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_acta...
-- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[plantilla_acta_unica|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_acta...
-- [[Maquina|01_SABER_Cultura_Coneixement/Maquina.md]] — [[plantilla_acta_unica|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_acta...
+- [[00_index|00_INDEX.md]] — [[plantilla_acta_unica|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_acta...
+- [[graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[plantilla_acta_unica|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_acta...
+- [[maquina|01_SABER_Cultura_Coneixement/Maquina.md]] — [[plantilla_acta_unica|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_acta...
 - [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maquina_Tecnica/00_arquitectura_tecnica_unificada.md]] — [[plantilla_acta_unica|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_acta...
 - [[00_plantilles|02_ACTUAR_Maquina_Tecnica/07_plantilles/00_plantilles.md]] — [[plantilla_acta_unica|Plantilla Acta Única]]
-- [[plantilla_acta_unica|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_acta_unica.md]] — [[00_INDEX|00_INDEX.md]] — [[plantilla_acta_unica|02_ACTUAR_Maquina_Tecnica/0...
+- [[plantilla_acta_unica|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_acta_unica.md]] — [[00_index|00_INDEX.md]] — [[plantilla_acta_unica|02_ACTUAR_Maquina_Tecnica/0...
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

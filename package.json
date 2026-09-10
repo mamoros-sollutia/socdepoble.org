@@ -48,7 +48,6 @@
     "porta:seo": "node tooling/gates/build-seo-manifest.mjs --verifica",
     "porta:frontera-auth": "node tooling/wiki/tractor-frontera-auth.mjs",
     "porta:esquemes": "node tooling/wiki/tractor-esquemes.mjs",
-    "skills:index": "node tooling/brain/build_skills_index.mjs",
     "porta:matrix": "node tooling/brain/matrix.mjs --check",
     "porta": "node tooling/gates/run-portes.mjs",
     "gate": "npm run porta",
@@ -56,7 +55,7 @@
     "rag:build": "node -e \"import('./tooling/wiki/core/build_rag_index.mjs').then(m => m.run({root: '.'}))\"",
     "slugs:build": "node tooling/wiki/core/build_slug_index.mjs",
     "bundle": "node tooling/brain/crear_bundle.mjs",
-    "build": "npm run build:tokens && npm run build:seo && npm run rag:build && npm run slugs:build && npm run build:web && npm run gate",
+    "build": "npm run build:tokens && npm run build:seo && npm run rag:build && npm run slugs:build && npm run build:web && npm run build:wp && npm run gate",
     "build:tokens": "node tooling/scripts/build-tokens.mjs",
     "build:seo": "node tooling/gates/build-seo-manifest.mjs --escriu",
     "build:web": "vite build",
@@ -80,13 +79,11 @@
     "lucide-react": "^1.35.0",
     "preact": "^10.29.8",
     "react": ">=18.0.0",
-    "react-dom": ">=18.0.0",
-    "react-router-dom": ">=6.0.0"
+    "react-dom": ">=18.0.0"
   },
   "peerDependencies": {
     "react": ">=18.0.0",
-    "react-dom": ">=18.0.0",
-    "react-router-dom": ">=6.0.0"
+    "react-dom": ">=18.0.0"
   },
   "devDependencies": {
     "@babel/parser": "^8.0.4",

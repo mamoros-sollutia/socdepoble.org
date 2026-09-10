@@ -31,6 +31,7 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
+import { construeixIndex, resol } from './lib/resolutor.mjs';
 
 const ARG = (n) => process.argv.find((a) => a.startsWith(`--${n}=`))?.slice(n.length + 3) ?? null;
 const ARREL = path.resolve(ARG('arrel') ?? process.cwd());
@@ -39,8 +40,7 @@ const DOT = process.argv.includes('--dot');
 const BASELINE = process.argv.includes('--baseline');
 const DEUTE = path.join(ARREL, '.agents/deute/.teixit-deute.json');
 
-/* Àncora: el node des del qual tot ha de ser abastable. */
-const ANCORA = ARG('ancora') ?? '00_INDEX_ESCRIPTORI';
+const ANCORA = ARG('ancora') ?? '00_index_escriptori';
 /* Arrels del graf. `.agents` hi entra a posta: el cervell també és wiki. */
 const ARRELS = (ARG('arrels') ?? '_wiki_de_poble,.agents').split(',');
 
@@ -66,12 +66,7 @@ if (NODES.length === 0) {
   process.exit(2);
 }
 
-const perNom = new Map();
-for (const n of NODES) {
-  const clau = path.basename(n, '.md');
-  if (!perNom.has(clau)) perNom.set(clau, []);
-  perNom.get(clau).push(n);
-}
+const idx = construeixIndex(NODES);
 
 /* ─────────────────────────── Construcció del graf ─────────────────────────── */
 
@@ -95,20 +90,20 @@ for (const n of NODES) {
     const esEtiqueta = LINIA_ETIQUETA.test(ln);
     for (const m of ln.matchAll(ENLLAC)) {
       const brut = m[1].trim();
+      const resolucio = resol(idx, brut);
       const clau = path.basename(brut).replace(/\.md$/, '');
-      const destins = perNom.get(clau);
       if (esEtiqueta) {
         pseudo += 1;
-        if (!destins) {
+        if (!resolucio.ok) {
           if (!etiquetesFalses.has(clau)) etiquetesFalses.set(clau, []);
           etiquetesFalses.get(clau).push(`${n}:${i + 1}`);
         }
         continue; /* una etiqueta no és una aresta */
       }
-      if (!destins) { penjats.push({ font: n, linia: i + 1, desti: brut }); continue; }
+      if (!resolucio.ok) { penjats.push({ font: n, linia: i + 1, desti: brut, motiu: resolucio.motiu }); continue; }
       arestesReals += 1;
-      for (const d of destins) {
-        if (d === n) continue;
+      const d = resolucio.node;
+      if (d !== n) {
         ix.get(n).add(d);
         entra.get(d).add(n);
       }

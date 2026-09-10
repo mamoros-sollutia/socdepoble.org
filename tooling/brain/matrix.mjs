@@ -20,10 +20,8 @@
  *
  * REGISTRE ÚNIC
  * ─────────────
- *   Llig `.agents/skills/00_INDEX_SKILLS.md` — el que ell mateix declara
- *   «l'únic registre oficial». NO llig manifest.yaml (té 2 fantasmes i li
- *   falta reflexio-previa) ni skills_index.json (taxonomia divergent).
- *   Si l'índex i el disc no coincidixen, falla: dos registres són dues lleis.
+ *   Llig directament els subdirectoris a `.agents/skills/`.
+ *   El disc és la font de veritat única.
  *
  * ÚS
  *   node tooling/brain/matrix.mjs "fes una petorreta del bloc de notes"
@@ -51,28 +49,13 @@ if (!PETICIO.trim()) {
 const errors = [];
 const avisos = [];
 
-/* ══════════ 1 · Registre únic: 00_INDEX_SKILLS.md ══════════ */
-
-const INDEX = R('.agents/skills/00_INDEX_SKILLS.md');
-if (!fs.existsSync(INDEX)) {
-  console.error(`❌ [MATRIX] No existix ${INDEX}. Sense registre no hi ha cervell.`);
-  process.exit(2);
-}
-const indexTxt = fs.readFileSync(INDEX, 'utf8');
-
-/* Els enllaços de l'índex: [[nom/SKILL|nom]] */
-const declarades = [...indexTxt.matchAll(/\[\[([a-z0-9-]+)\/SKILL\|/g)].map((m) => m[1]);
+/* ══════════ 1 · Registre únic: directori .agents/skills/ ══════════ */
 
 const dirSkills = R('.agents/skills');
 const alDisc = fs.readdirSync(dirSkills, { withFileTypes: true })
   .filter((d) => d.isDirectory() && fs.existsSync(path.join(dirSkills, d.name, 'SKILL.md')))
   .map((d) => d.name)
   .sort();
-
-const faltenAlDisc = declarades.filter((n) => !alDisc.includes(n));
-const faltenAIndex = alDisc.filter((n) => !declarades.includes(n));
-if (faltenAlDisc.length) errors.push(`Declarades a l'índex i absents del disc: ${faltenAlDisc.join(', ')}`);
-if (faltenAIndex.length) errors.push(`Al disc i absents de l'índex: ${faltenAIndex.join(', ')}`);
 
 /* ══════════ 2 · Càrrega de skills amb rebut ══════════ */
 

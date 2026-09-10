@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from '../../app/contexts/RouterContext';
 import { CheckCircle2, Globe, Lock, Plus, Tag } from 'lucide-react';
 import { UniversalPage } from '../../components/universal/UniversalPage';
 import { showToast } from '../../components/universal/AvisadorEfimer';

@@ -34,6 +34,6 @@ Abans de donar el torn per finalitzat, cal comprovar:
 
 ## Sinapsis Entrants (Autogenerat)
 
-- [[00_INDEX|00_INDEX.md]] — [[plantilla_skill_agent|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_ski...
+- [[00_index|00_INDEX.md]] — [[plantilla_skill_agent|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_ski...
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

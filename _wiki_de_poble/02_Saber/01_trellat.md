@@ -39,23 +39,23 @@ convertisca en dogma.
 
 
 ## Taxonomia
-- **Categoria:** [[Coneixement]]
-- **Etiquetes:** [[Graf]]
+- **Categoria:** [[coneixement]]
+- **Etiquetes:** [[graf]]
 
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_index]]
 
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_index]]
 
 ## Sinapsis Entrants (Autogenerat)
 
-- [[00_INDEX|00_INDEX.md]] — [[01_trellat|01_SABER_Cultura_Coneixement/01_trellat.md]] — Ancoratge de Segu...
-- [[00_INDEX_IDENTITAT|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[01_trellat]]
-- [[01_trellat|01_SABER_Cultura_Coneixement/01_trellat.md]] — [[00_INDEX|00_INDEX.md]] — [[01_trellat|01_SABER_Cultura_Coneixement/01_trell...
-- [[Coneixement|01_SABER_Cultura_Coneixement/Coneixement.md]] — [[01_trellat|01_SABER_Cultura_Coneixement/01_trellat.md]] — Categoria: [[Cone...
-- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[01_trellat|01_SABER_Cultura_Coneixement/01_trellat.md]] — Etiquetes: [[Graf]]
+- [[00_index|00_INDEX.md]] — [[01_trellat|01_SABER_Cultura_Coneixement/01_trellat.md]] — Ancoratge de Segu...
+- [[00_index_identitat|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[01_trellat]]
+- [[01_trellat|01_SABER_Cultura_Coneixement/01_trellat.md]] — [[00_index|00_INDEX.md]] — [[01_trellat|01_SABER_Cultura_Coneixement/01_trell...
+- [[coneixement|01_SABER_Cultura_Coneixement/Coneixement.md]] — [[01_trellat|01_SABER_Cultura_Coneixement/01_trellat.md]] — Categoria: [[Cone...
+- [[graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[01_trellat|01_SABER_Cultura_Coneixement/01_trellat.md]] — Etiquetes: [[graf]]
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

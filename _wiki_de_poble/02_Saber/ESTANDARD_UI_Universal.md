@@ -22,7 +22,7 @@ tags:
 - Offline, accessibilitat i compatibilitat amb el Baseline 2022 només es declaren per
   l'scope que haja superat proves reproduïbles.
 
-Prevalen [[DOC_Governanca]], ESTANDARD_Pedra_Seca, el codi, ESLint i les
+Prevalen [[doc_governanca]], ESTANDARD_Pedra_Seca, el codi, ESLint i les
 proves reals. El text següent es conserva com a **annex històric no normatiu**:
 descriu una aspiració fusionada, conté rutes i gates que no existixen i no pot
 autoritzar canvis ni justificar un “100%”.
@@ -247,24 +247,24 @@ Una Targeta Universal té 4 grans blocs obligatoris/opcionals en ordre descenden
 
 
 ## Taxonomia
-- **Categoria:** [[Govern]]
-- **Etiquetes:** [[Graf]]
+- **Categoria:** [[govern]]
+- **Etiquetes:** [[graf]]
 
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_index]]
 
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_index]]
 
 ## Sinapsis Entrants (Autogenerat)
 
-- [[00_INDEX|00_INDEX.md]] — [[ESTANDARD_UI_Universal]]
+- [[00_index|00_INDEX.md]] — [[estandard_ui_universal]]
 - [[el_projecte|00_SER_Brain_Identitat/el_projecte.md]] — [[ESTANDARD_UI_Universal|03_GOVERNAR_Normativa_Regles/ESTANDARD_UI_Universal....
-- [[Govern|01_SABER_Cultura_Coneixement/Govern.md]] — [[ESTANDARD_UI_Universal|03_GOVERNAR_Normativa_Regles/ESTANDARD_UI_Universal....
-- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[ESTANDARD_UI_Universal|03_GOVERNAR_Normativa_Regles/ESTANDARD_UI_Universal....
-- [[DOC_Governanca|03_GOVERNAR_Normativa_Regles/DOC_Governanca.md]] — [[ESTANDARD_UI_Universal|03_GOVERNAR_Normativa_Regles/ESTANDARD_UI_Universal....
-- [[ESTANDARD_UI_Universal|03_GOVERNAR_Normativa_Regles/ESTANDARD_UI_Universal.md]] — [[00_INDEX|00_INDEX.md]] — [[ESTANDARD_UI_Universal]]
+- [[govern|01_SABER_Cultura_Coneixement/Govern.md]] — [[ESTANDARD_UI_Universal|03_GOVERNAR_Normativa_Regles/ESTANDARD_UI_Universal....
+- [[graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[ESTANDARD_UI_Universal|03_GOVERNAR_Normativa_Regles/ESTANDARD_UI_Universal....
+- [[doc_governanca|03_GOVERNAR_Normativa_Regles/DOC_Governanca.md]] — [[ESTANDARD_UI_Universal|03_GOVERNAR_Normativa_Regles/ESTANDARD_UI_Universal....
+- [[estandard_ui_universal|03_GOVERNAR_Normativa_Regles/ESTANDARD_UI_Universal.md]] — [[00_index|00_INDEX.md]] — [[estandard_ui_universal]]
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

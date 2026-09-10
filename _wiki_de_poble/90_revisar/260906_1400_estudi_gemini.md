@@ -22,4 +22,4 @@ description: Auditoria Gemini
 * Risc de creuament de dades fatídic entre diferents pobles si el filtre `tenant_id` falla.
 
 ---
-**Ancoratge de Seguretat:** [[00_INDEX_ESCRIPTORI]]
+**Ancoratge de Seguretat:** [[00_index_escriptori]]

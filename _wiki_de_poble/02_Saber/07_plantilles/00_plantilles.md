@@ -18,35 +18,35 @@ necessiten revisió abans d'usar-les com a norma:
 - [[plantilla_planificacio|Plantilla Planificació]]
 - [[plantilla_acta_unica|Plantilla Acta Única]]
 - [[PLANTILLA_ISO_SDP.md|Plantilla Prompt ISO històrica]]
-- [[PLANTILLA_ISO_SDP|Plantilla ISO SDP v2]]
+- [[plantilla_iso_sdp|Plantilla ISO SDP v2]]
 
 ---
 **Arxiu relacionat:** Arxiu històric † (BROKEN LINK: 00_MEMORIAL_Lapides#90_arxiu_historic) <!-- TODO: fix link -->
 
 
 ## Taxonomia
-- **Categoria:** [[Maquina]]
-- **Etiquetes:** [[Graf]]
+- **Categoria:** [[maquina]]
+- **Etiquetes:** [[graf]]
 
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_index]]
 
 
 ---
 **Categoria:** [[00_plantilles|07_plantilles]]
-**Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_INDEX]]
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Relacionat:** [[00_arquitectura_tecnica_unificada]], [[00_index]]
+**Ancoratge de Seguretat:** [[00_index]]
 
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_index]]
 
 ## Sinapsis Entrants (Autogenerat)
 
-- [[00_INDEX|00_INDEX.md]] — [[00_plantilles]]
-- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[00_plantilles|02_ACTUAR_Maquina_Tecnica/07_plantilles/00_plantilles.md]] — ...
-- [[Maquina|01_SABER_Cultura_Coneixement/Maquina.md]] — [[00_plantilles|02_ACTUAR_Maquina_Tecnica/07_plantilles/00_plantilles.md]] — ...
+- [[00_index|00_INDEX.md]] — [[00_plantilles]]
+- [[graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[00_plantilles|02_ACTUAR_Maquina_Tecnica/07_plantilles/00_plantilles.md]] — ...
+- [[maquina|01_SABER_Cultura_Coneixement/Maquina.md]] — [[00_plantilles|02_ACTUAR_Maquina_Tecnica/07_plantilles/00_plantilles.md]] — ...
 - [[00_plantilles|02_ACTUAR_Maquina_Tecnica/07_plantilles/00_plantilles.md]] — Categoria: [[00_plantilles|07_plantilles]]
 - [[plantilla_acta_unica|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_acta_unica.md]] — Categoria: [[00_plantilles|07_plantilles]]
 - [[plantilla_brainstorming|02_ACTUAR_Maquina_Tecnica/07_plantilles/plantilla_brainstorming.md]] — Categoria: [[00_plantilles|07_plantilles]]

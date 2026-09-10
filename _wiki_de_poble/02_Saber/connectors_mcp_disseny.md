@@ -54,24 +54,24 @@ Mentre que Affinity és la nostra eina de base vectorial, **Stitch** actua com e
 
 
 ## Taxonomia
-- **Categoria:** [[Identitat]]
-- **Etiquetes:** [[Graf]]
+- **Categoria:** [[identitat]]
+- **Etiquetes:** [[graf]]
 
 
-**Ancoratge de Seguretat:** [[00_INDEX_IDENTITAT]]
+**Ancoratge de Seguretat:** [[00_index_identitat]]
 
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX_IDENTITAT]]
+**Ancoratge de Seguretat:** [[00_index_identitat]]
 
 ## Sinapsis Entrants (Autogenerat)
 
-- [[00_INDEX|00_INDEX.md]] — [[connectors_mcp_disseny]]
-- [[00_INDEX_IDENTITAT|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[connectors_mcp_disseny]]
-- [[connectors_mcp_disseny|00_SER_Brain_Identitat/connectors_mcp_disseny.md]] — [[00_INDEX|00_INDEX.md]] — [[connectors_mcp_disseny]]
+- [[00_index|00_INDEX.md]] — [[connectors_mcp_disseny]]
+- [[00_index_identitat|00_SER_Brain_Identitat/00_INDEX_IDENTITAT.md]] — [[connectors_mcp_disseny]]
+- [[connectors_mcp_disseny|00_SER_Brain_Identitat/connectors_mcp_disseny.md]] — [[00_index|00_INDEX.md]] — [[connectors_mcp_disseny]]
 - [[el_projecte|00_SER_Brain_Identitat/el_projecte.md]] — [[connectors_mcp_disseny|00_SER_Brain_Identitat/connectors_mcp_disseny.md]] —...
-- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[connectors_mcp_disseny|00_SER_Brain_Identitat/connectors_mcp_disseny.md]] —...
-- [[Identitat|01_SABER_Cultura_Coneixement/Identitat.md]] — [[connectors_mcp_disseny|00_SER_Brain_Identitat/connectors_mcp_disseny.md]] —...
+- [[graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[connectors_mcp_disseny|00_SER_Brain_Identitat/connectors_mcp_disseny.md]] —...
+- [[identitat|01_SABER_Cultura_Coneixement/Identitat.md]] — [[connectors_mcp_disseny|00_SER_Brain_Identitat/connectors_mcp_disseny.md]] —...
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

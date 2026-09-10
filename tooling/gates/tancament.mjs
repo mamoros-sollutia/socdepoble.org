@@ -40,7 +40,7 @@ async function main() {
     console.log("   Tots els nodes estan actius i l'escriptori està impol·lut. Sessió neta.");
     process.exit(0);
   } else {
-    console.error("\n❌ ERROR CRÍTIC: EL TANCAMENT S'HA BLOQUEJAT PER VIOLACIÓ DE REGLES.");
+    console.error("\n❌ ERROR CRÍTIC: EL TANCAMENT HA FALLAT PER VIOLACIÓ DE REGLES.");
     
     for (const err of result.errors) {
       console.error(`\n🚨 [${err.code}] ${err.message}`);
@@ -51,7 +51,7 @@ async function main() {
         }
       }
     }
-    console.error("\n🔒 S'aplica l'SDP-LOCK. No pots fer commit fins que resolgues estos defectes.");
+    console.error("\n🔒 Resol aquests defectes abans de continuar.");
     process.exit(1);
   }
 }

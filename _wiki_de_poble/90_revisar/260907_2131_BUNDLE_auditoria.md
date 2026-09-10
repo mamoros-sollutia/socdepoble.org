@@ -1,6 +1,6 @@
 # BUNDLE D'AUDITORIA PER AL CONSELL DE LA PETORRETA
 
-> **Anclatge**: aquest document pertany a l'[[00_INDEX_ESCRIPTORI]].
+> **Anclatge**: aquest document pertany a l'[[00_index_escriptori]].
 
 ## Com verificar aquest bundle
 

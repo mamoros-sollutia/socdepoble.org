@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from '../../app/contexts/RouterContext';
 import { UniversalPage } from '../../components/universal/UniversalPage';
 import { useMur } from '../../sections/mur/MurContext';
 import { useCoreContent } from '../../app/contexts/CoreContentContext';

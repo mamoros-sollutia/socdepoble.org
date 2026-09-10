@@ -18,4 +18,4 @@ description: Auditoria Qwen (Final)
 * **Rotació de Tokens:** Avisa que el token de refresc pot caducar per inactivitat (fent que la gent haja de tornar a fer login sovint en entorns rurals). Parla del risc de no tindre rotació de tokens de refresc implementada.
 
 ---
-**Ancoratge de Seguretat:** [[00_INDEX_ESCRIPTORI]]
+**Ancoratge de Seguretat:** [[00_index_escriptori]]

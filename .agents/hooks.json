@@ -22,16 +22,5 @@
           }
         ]
       }
-    ],
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node .agents/hooks/tancar.mjs"
-          }
-        ]
-      }
-    ]
   }
 }

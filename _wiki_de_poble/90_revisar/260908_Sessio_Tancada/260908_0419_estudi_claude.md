@@ -336,4 +336,4 @@ No per la qualitat del codi. El codi ha millorat molt i hi ha peces —la immuta
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX_ESCRIPTORI]]
+**Ancoratge de Seguretat:** [[00_index_escriptori]]

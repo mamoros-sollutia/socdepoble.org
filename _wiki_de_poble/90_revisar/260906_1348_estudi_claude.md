@@ -60,4 +60,4 @@ Línia 317: `create function public.create_organization(...)` no té `or replace
 *(Pots consultar l'arxiu sencer si necessites la llista completa)*
 
 
-**Ancoratge de Seguretat:** [[00_INDEX_ESCRIPTORI]]
+**Ancoratge de Seguretat:** [[00_index_escriptori]]

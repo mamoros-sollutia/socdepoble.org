@@ -40,25 +40,25 @@ Crear una **Xarxa Social Descentralitzada de Programari Lliure** on:
 
 
 ## Taxonomia
-- **Categoria:** [[Coneixement]]
-- **Etiquetes:** [[Graf]]
+- **Categoria:** [[coneixement]]
+- **Etiquetes:** [[graf]]
 
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_index]]
 
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_index]]
 
 ## Sinapsis Entrants (Autogenerat)
 
-- [[00_INDEX|00_INDEX.md]] — [[00_visio_i_pilars|01_SABER_Cultura_Coneixement/00_visio_i_pilars.md]] — Anc...
-- [[DOC_Logos_Oficials|00_SER_Brain_Identitat/DOC_Logos_Oficials.md]] — [[00_visio_i_pilars]]
+- [[00_index|00_INDEX.md]] — [[00_visio_i_pilars|01_SABER_Cultura_Coneixement/00_visio_i_pilars.md]] — Anc...
+- [[doc_logos_oficials|00_SER_Brain_Identitat/DOC_Logos_Oficials.md]] — [[00_visio_i_pilars]]
 - [[el_projecte|00_SER_Brain_Identitat/el_projecte.md]] — [[00_visio_i_pilars|01_SABER_Cultura_Coneixement/00_visio_i_pilars.md]] — Con...
-- [[00_visio_i_pilars|01_SABER_Cultura_Coneixement/00_visio_i_pilars.md]] — [[00_INDEX|00_INDEX.md]] — [[00_visio_i_pilars|01_SABER_Cultura_Coneixement/0...
-- [[Coneixement|01_SABER_Cultura_Coneixement/Coneixement.md]] — [[00_visio_i_pilars|01_SABER_Cultura_Coneixement/00_visio_i_pilars.md]] — Cat...
-- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[00_visio_i_pilars|01_SABER_Cultura_Coneixement/00_visio_i_pilars.md]] — Eti...
+- [[00_visio_i_pilars|01_SABER_Cultura_Coneixement/00_visio_i_pilars.md]] — [[00_index|00_INDEX.md]] — [[00_visio_i_pilars|01_SABER_Cultura_Coneixement/0...
+- [[coneixement|01_SABER_Cultura_Coneixement/Coneixement.md]] — [[00_visio_i_pilars|01_SABER_Cultura_Coneixement/00_visio_i_pilars.md]] — Cat...
+- [[graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[00_visio_i_pilars|01_SABER_Cultura_Coneixement/00_visio_i_pilars.md]] — Eti...
 - [[00_arquitectura_tecnica_unificada|02_ACTUAR_Maquina_Tecnica/00_arquitectura_tecnica_unificada.md]] — [[00_visio_i_pilars|Visió i pilars]]
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

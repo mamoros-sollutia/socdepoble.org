@@ -68,7 +68,7 @@ No es cobra per "tindre un web", es factura un **Contracte Anual de Custòdia Di
 Les subvencions NO paguen manteniment estructural. Financen innovació i projectes finits. Les hores de manteniment es camuflen com a:
 - *Costos directes de personal* per a desenvolupar [[el_projecte|el projecte]].
 - *Costos indirectes* (el 10-15% que admeten algunes bases).
-*(Veure [[PLA_DIRECTOR_Legal_i_Subvencions]] per a les línies exactes).*
+*(Veure [[pla_director_legal_i_subvencions]] per a les línies exactes).*
 
 ### C. Mecenatge i Serveis Cívics (10-20%)
 - **Socis Protectors:** Quotes voluntàries (ex: 10 €/mes). 50 socis = 6.000 €/any.
@@ -90,19 +90,19 @@ Les subvencions NO paguen manteniment estructural. Financen innovació i project
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_index]]
 
 ## Taxonomia
-- **Categoria:** [[Govern]]
-- **Etiquetes:** [[Graf]]
+- **Categoria:** [[govern]]
+- **Etiquetes:** [[graf]]
 
 ## Sinapsis Entrants (Autogenerat)
 
-- [[00_INDEX|00_INDEX.md]] — [[PLA_DIRECTOR_Viabilitat_Economica|03_GOVERNAR_Normativa_Regles/PLA_DIRECTOR...
+- [[00_index|00_INDEX.md]] — [[PLA_DIRECTOR_Viabilitat_Economica|03_GOVERNAR_Normativa_Regles/PLA_DIRECTOR...
 - [[el_projecte|00_SER_Brain_Identitat/el_projecte.md]] — [[PLA_DIRECTOR_Viabilitat_Economica|03_GOVERNAR_Normativa_Regles/PLA_DIRECTOR...
-- [[Govern|01_SABER_Cultura_Coneixement/Govern.md]] — [[PLA_DIRECTOR_Viabilitat_Economica|03_GOVERNAR_Normativa_Regles/PLA_DIRECTOR...
-- [[Graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[PLA_DIRECTOR_Viabilitat_Economica|03_GOVERNAR_Normativa_Regles/PLA_DIRECTOR...
-- [[PLA_DIRECTOR_Legal_i_Subvencions|03_GOVERNAR_Normativa_Regles/PLA_DIRECTOR_Legal_i_Subvencions.md]] — 👉 [[PLA_DIRECTOR_Viabilitat_Economica]]
-- [[PLA_DIRECTOR_Viabilitat_Economica|03_GOVERNAR_Normativa_Regles/PLA_DIRECTOR_Viabilitat_Economica.md]] — [[00_INDEX|00_INDEX.md]] — [[PLA_DIRECTOR_Viabilitat_Economica|03_GOVERNAR_No...
+- [[govern|01_SABER_Cultura_Coneixement/Govern.md]] — [[PLA_DIRECTOR_Viabilitat_Economica|03_GOVERNAR_Normativa_Regles/PLA_DIRECTOR...
+- [[graf|01_SABER_Cultura_Coneixement/Graf.md]] — [[PLA_DIRECTOR_Viabilitat_Economica|03_GOVERNAR_Normativa_Regles/PLA_DIRECTOR...
+- [[pla_director_legal_i_subvencions|03_GOVERNAR_Normativa_Regles/PLA_DIRECTOR_Legal_i_Subvencions.md]] — 👉 [[pla_director_viabilitat_economica]]
+- [[pla_director_viabilitat_economica|03_GOVERNAR_Normativa_Regles/PLA_DIRECTOR_Viabilitat_Economica.md]] — [[00_index|00_INDEX.md]] — [[pla_director_viabilitat_economica|03_GOVERNAR_No...
 
 <!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->

@@ -3,7 +3,7 @@ tipus: document
 estat: esborrany
 description: 1. Contradiccions i Solapaments (El Caos Cognitiu)
 ---
-> **Ancoratge de Seguretat**: Aquest estudi pertany a l'[[00_INDEX_ESCRIPTORI]].
+> **Ancoratge de Seguretat**: Aquest estudi pertany a l'[[00_index_escriptori]].
 
 > [!CAUTION]
 > **SDP-LOCK ACTIU (MODE FORENSE)**
@@ -40,7 +40,7 @@ El context arrossega literatura que engreixa el RAG sense valor executable. **Or
 ## 3. Ancoratge: Per què l'Acta Marmota es queda solta?
 
 El problema radica en una confusió entre *escriure a la nota* i *escriure a l'índex*.
-La instrucció diu a la IA: *"Assegura't de posar l'Ancoratge de Seguretat"*. La IA obeeix escrivint `**Ancoratge de Seguretat:** [[00_INDEX_ESCRIPTORI]]` al final de l'Acta Marmota. Però això **no altera l'arxiu de l'índex per incloure l'acta**. En Obsidian un enllaç funciona bidireccionalment, però a nivell de sistema de fitxers, si l'índex `00_INDEX_ESCRIPTORI.md` no es modifica amb la sintaxi `- [[260906_1438_ACTA_MARMOTA...]]`, l'arxiu queda orfe als ulls del motor del RAG.
+La instrucció diu a la IA: *"Assegura't de posar l'Ancoratge de Seguretat"*. La IA obeeix escrivint `**Ancoratge de Seguretat:** [[00_index_escriptori]]` al final de l'Acta Marmota. Però això **no altera l'arxiu de l'índex per incloure l'acta**. En Obsidian un enllaç funciona bidireccionalment, però a nivell de sistema de fitxers, si l'índex `00_INDEX_ESCRIPTORI.md` no es modifica amb la sintaxi `- [[260906_1438_ACTA_MARMOTA...]]`, l'arxiu queda orfe als ulls del motor del RAG.
 
 **Solució Estructural (Fail-Closed):**
 

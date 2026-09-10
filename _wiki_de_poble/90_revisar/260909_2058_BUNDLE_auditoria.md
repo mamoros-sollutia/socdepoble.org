@@ -1,6 +1,6 @@
 # BUNDLE D'AUDITORIA PER AL CONSELL DE LA PETORRETA
 
-> **Anclatge**: aquest document pertany a l'[[00_INDEX_ESCRIPTORI]].
+> **Anclatge**: aquest document pertany a l'[[00_index_escriptori]].
 
 ## Com verificar aquest bundle
 
@@ -9066,7 +9066,7 @@ function ChatConversation({ thread, messages, onSendMessage, onBack }) {
 
 Quedo a la teua disposició si consideres necessària qualsevol ajust al *Trellat*!
 
-**Ancoratge de Seguretat:** [[00_INDEX_ESCRIPTORI]]
+**Ancoratge de Seguretat:** [[00_index_escriptori]]
 </USER_REQUEST>
 <ADDITIONAL_METADATA>
 The current local time is: 2026-09-08T09:26:43+02:00.
@@ -14483,7 +14483,7 @@ Mai executes un POST silenciós o modificacions destructives de codi sense tenir
 ---
 *Llum verda per iniciar el processament.*
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_index]]
 ```
 
 ## Fitxer: .agents/codi-congelat.txt
@@ -16713,7 +16713,7 @@ Com un personatge de Matrix que necessita descarregar un mòdul de pilotatge d'h
 2. **Cerca de la Plantilla (Grep):** Cerca immediatament a la Wiki (fent servir eines com `grep_search` a `_wiki_de_poble/`) termes relacionats amb el document sol·licitat (p. ex: `plantilla acta`, `plantilla prompt`, `plantilla informe`).
 3. **Lectura i Assimilació:** Llegeix el fitxer de la plantilla resultant abans de continuar.
 4. **Què passa si no hi ha plantilla?** Si no existeix una plantilla (per exemple, per a un "Estudi"), has de crear-ne una de nova i guardar-la a la Wiki (dins de `02_ACTUAR_Maquina_Tecnica/07_plantilles/`) abans de crear el document final per a l'usuari. Tota plantilla nova HA de tindre un Ancoratge de Seguretat al final.
-5. **Aplicació Universal de l'Ancoratge:** ABSOLUTAMENT TOTS els documents generats i arxivats a l'[[00_INDEX_ESCRIPTORI|Escriptori]] o a la Wiki (ja siguen actes, informes o estudis) han d'incloure la directiva `**Ancoratge de Seguretat:** [[00_INDEX_ESCRIPTORI]]` (o l'índex corresponent) per no embrutar la Wiki i convertir-se en "satèl·lits" (fitxers invisibles per a Obsidian). La brossa termodinàmica penalitza el sistema.
+5. **Aplicació Universal de l'Ancoratge:** ABSOLUTAMENT TOTS els documents generats i arxivats a l'[[00_index_escriptori|Escriptori]] o a la Wiki (ja siguen actes, informes o estudis) han d'incloure la directiva `**Ancoratge de Seguretat:** [[00_index_escriptori]]` (o l'índex corresponent) per no embrutar la Wiki i convertir-se en "satèl·lits" (fitxers invisibles per a Obsidian). La brossa termodinàmica penalitza el sistema.
 
 ## Cas Especial: L'Acta Marmota
 
@@ -16723,13 +16723,13 @@ Hi ha un document específic anomenat **ACTA MARMOTA** que serveix per evitar el
 - **Part Psiquiàtrica:** L'estat d'ànim, nivell de fatiga, motivació de la IAIA i relació amb l'usuari.
 - **Part Termodinàmica:** Avaluació purament numèrica o d'eficiència (càlcul de tokens estalviats aplicant l'Efecte Matrix i refactoritzant bé).
 - **Briefing per l'Endemà:** Un resum ràpid perquè el sistema reprenga la feina l'endemà sense necessitat de repetir explicacions (context automàtic).
-- **Ancoratge de Seguretat (Obligatori):** Al final de l'Acta, s'ha d'incloure l'ancoratge per evitar que esdevinga un satèl·lit (ex: `**Ancoratge de Seguretat:** [[00_INDEX_ESCRIPTORI]]` o `[[00_index_escriptori]]`).
+- **Ancoratge de Seguretat (Obligatori):** Al final de l'Acta, s'ha d'incloure l'ancoratge per evitar que esdevinga un satèl·lit (ex: `**Ancoratge de Seguretat:** [[00_index_escriptori]]` o `[[00_index_escriptori]]`).
 
 ### Destil·lació General i Arxiu
 
 Quan s'acumulen massa "Actes Marmota" i ja perden la seua utilitat immediata per a la tasca actual:
 1. S'ha de redactar un **Acte General** per destil·lar el coneixement global (resumint allò més important).
-2. Totes les Actes Marmota velles i arxius que ja no siguen necessaris per a l'acció present de Sóc de Poble han de ser moguts fora de les carpetes operatives (com l'[[00_INDEX_ESCRIPTORI|Escriptori]]) cap a `_wiki_de_poble/90_arxiu_historic/`.
+2. Totes les Actes Marmota velles i arxius que ja no siguen necessaris per a l'acció present de Sóc de Poble han de ser moguts fora de les carpetes operatives (com l'[[00_index_escriptori|Escriptori]]) cap a `_wiki_de_poble/90_arxiu_historic/`.
 
 No omitis mai aquest procés. La neteja de la Wiki depèn de tu.
 
@@ -16818,7 +16818,7 @@ description: Flux de treball per a Soc de Poble i Protocol d'higiene cognitiva p
 ## Avís sobre esta skill
 
 Esta pàgina no neteja res. Les que netegen són les portes (tractors).
-Si no s'executen, l'[[00_INDEX_ESCRIPTORI|Escriptori]] tornarà a embrutar-se. Aquesta regla unifica l'antic `core-brain-hygiene` i `core-higiene-reflexa`.
+Si no s'executen, l'[[00_index_escriptori|Escriptori]] tornarà a embrutar-se. Aquesta regla unifica l'antic `core-brain-hygiene` i `core-higiene-reflexa`.
 
 ## Les Quatre Lleis del Cicle de Vida
 
@@ -16826,7 +16826,7 @@ Si no s'executen, l'[[00_INDEX_ESCRIPTORI|Escriptori]] tornarà a embrutar-se. A
 Abans de crear o moure res, has d'executar `node tooling/gates/obrir_torn.mjs --json` per a obtindre un `turn_id`. Sense ell, el torn no és legítim.
 
 ### 2. Un fitxer naix classificat i ancorat (o no naix)
-No hi ha fitxers provisionals lliures. "Ja ho ordenaré després" és la frase que ha omplit l'[[00_INDEX_ESCRIPTORI|Escriptori]] de brossa.
+No hi ha fitxers provisionals lliures. "Ja ho ordenaré després" és la frase que ha omplit l'[[00_index_escriptori|Escriptori]] de brossa.
 Abans de qualsevol escriptura, has de tindre clar el tipus i el lloc:
 - `temporal`: s’elimina o va a quarantena abans d’eixir.
 - `lliurable`: document de treball → `_wiki_de_poble/04_ESCRIPTORI/`. S'ancora al seu índex immediatament.
@@ -16853,11 +16853,11 @@ El torn acaba quan la porta et dona permís. Ordre exacte:
 Qui va al bancal se'n torna amb el sac. Si has obert una carpeta, la tanques. Si has fet una prova, la lleves. El bancal queda com t'agradaria trobar-lo.
 
 ## 6. La Destil·lació Diària (El xiquet que aprén)
-L'[[00_INDEX_ESCRIPTORI|Escriptori]] permet mantenir arxius (com actes, petorretas o documents en curs) que siguen rellevants per a la següent sessió, sempre que estiguen ancorats. No cal esborrar-lo tot de colp. El que SÍ s'ha de buidar obligatòriament i de forma estricta és la `00_Bandeja_d_Entrada`. No obstant això, l'[[00_INDEX_ESCRIPTORI|Escriptori]] no és un abocador permanent:
+L'[[00_index_escriptori|Escriptori]] permet mantenir arxius (com actes, petorretas o documents en curs) que siguen rellevants per a la següent sessió, sempre que estiguen ancorats. No cal esborrar-lo tot de colp. El que SÍ s'ha de buidar obligatòriament i de forma estricta és la `00_Bandeja_d_Entrada`. No obstant això, l'[[00_index_escriptori|Escriptori]] no és un abocador permanent:
 Cada dia o al final d'una sessió complexa:
 1. Llig els estudis, auditories o respostes temporals generades per tu o pel Consell (ex: `260901_2232_estudi_claude.md`).
 2. **Destil·la el coneixement**: Si hi ha alguna millora arquitectònica o patró útil, afig-ho immediatament a la `SKILL.md` corresponent (o crea'n una de nova).
-3. **Esborra sense pietat**: Un cop destil·lat l'aprenentatge, esborra l'arxiu temporal completament de la Wiki i de l'[[00_INDEX_ESCRIPTORI|Escriptori]]. No l'arxives enlloc. L'únic arxiu per al que s'utilitza la paraula "arxivar" és per a traure-ho completament de la Wiki (com ara moure'l a un `_arxiu_wiki_de_poble` fòssil fora del repositori).
+3. **Esborra sense pietat**: Un cop destil·lat l'aprenentatge, esborra l'arxiu temporal completament de la Wiki i de l'[[00_index_escriptori|Escriptori]]. No l'arxives enlloc. L'únic arxiu per al que s'utilitza la paraula "arxivar" és per a traure-ho completament de la Wiki (com ara moure'l a un `_arxiu_wiki_de_poble` fòssil fora del repositori).
 4. **Poda d'Actes**: Les actes de sessions (`10_actes`) actuen com una Time Machine temporal, però tampoc s'han d'acumular ad infinitum. Fes higiene de tant en tant i esborra les actes de fa més de 2 o 3 setmanes si el seu contingut ja s'ha absorbit.
 
 
@@ -16865,7 +16865,7 @@ Cada dia o al final d'una sessió complexa:
 ## 7. Creació d'Actes de Sessió (L'Ancoratge de Seguretat)
 Quan faces un "Tancament" i decidisques o se't demane crear una "Acta de Sessió" per resumir el treball:
 1. **Has de basar-te** en el format de `plantilla_acta_unica.md` (o, com a mínim, mantindre la mateixa taxonomia i seccions si la generes al vol).
-2. **Ancoratge Obligatori:** ÉS VITAL I ESTRICTAMENT PROHIBIT crear una Acta sense incloure al final del document l'**Ancoratge de Seguretat**. Sempre has d'afegir: `Ancoratge de Seguretat: [[00_INDEX_Actes]] | [[00_INDEX_ESCRIPTORI]]` per a no generar satèl·lits a la Wiki.
+2. **Ancoratge Obligatori:** ÉS VITAL I ESTRICTAMENT PROHIBIT crear una Acta sense incloure al final del document l'**Ancoratge de Seguretat**. Sempre has d'afegir: `Ancoratge de Seguretat: [[00_INDEX_Actes]] | [[00_index_escriptori]]` per a no generar satèl·lits a la Wiki.
 
 ## Ancoratge de la Wiki
 - Aquesta skill penja de: [[00_INDEX_SKILLS]]
@@ -16886,13 +16886,13 @@ Aquesta skill estableix el flux de treball (workflow) global per abordar qualsev
 ## Cicle de Vida d'una Tasca:
 1. **Lectura i Ancoratge (Aterratge):** Carregar ràpidament el context de l'arquitectura i les regles abans de generar propostes.
 2. **Actuació Autònoma (Modo Jarvis):** Si s'ha d'inspeccionar un directori o arrencar un script, l'agent ha d'emprar les seves pròpies eines sense esperar permisos per coses trivials.
-3. **Generació d'Artefactes (La Llei de l'[[00_INDEX_ESCRIPTORI|Escriptori]]):**
+3. **Generació d'Artefactes (La Llei de l'[[00_index_escriptori|Escriptori]]):**
    - MAI deixaràs Actes, Prompts o Bundles en el directori arrel o al teu "brain" intern.
    - TOT document destinat al Mestre ha d'anar directament a: `_wiki_de_poble/04_ESCRIPTORI/`
 4. **Nomenclatura Termodinàmica Estricta:** Tots els fitxers generats han de seguir la següent taxonomia exacta: `AAMMDD_HHMM_categoria_titol.extensio` (data, hora, categoria i títol). S'utilitzen "categories" (no tipus) per a classificar els arxius. El títol ha de tindre estrictament entre 1 i 6 paraules com a màxim. No pots superar les 6 paraules sota cap concepte.
-5. **Ancoratge de Seguretat (Zero Satèl·lits):** Qualsevol arxiu (Markdown, script, imatge, etc.) que generes i guardes a l'[[00_INDEX_ESCRIPTORI|Escriptori]] o a la Wiki HA DE REBRE IMMEDIATAMENT un "Ancoratge de Seguretat". Això vol dir que has de registrar el seu enllaç (`Nom_del_Fitxer`) a l'índex corresponent (per exemple, `00_INDEX_ESCRIPTORI.md`). Mai pots crear un fitxer solitari sense ancorar-lo; això genera "satèl·lits" invisibles a Obsidian. Grava-t'ho com a instint bàsic.
+5. **Ancoratge de Seguretat (Zero Satèl·lits):** Qualsevol arxiu (Markdown, script, imatge, etc.) que generes i guardes a l'[[00_index_escriptori|Escriptori]] o a la Wiki HA DE REBRE IMMEDIATAMENT un "Ancoratge de Seguretat". Això vol dir que has de registrar el seu enllaç (`Nom_del_Fitxer`) a l'índex corresponent (per exemple, `00_INDEX_ESCRIPTORI.md`). Mai pots crear un fitxer solitari sense ancorar-lo; això genera "satèl·lits" invisibles a Obsidian. Grava-t'ho com a instint bàsic.
 6. **Finalització de Fase (GATE):** Quan una fase s'acaba, has de generar un document final d'auditoria. Després, has d'assegurar-te que el Mestre ha validat la integritat del sistema.
-7. **Safata d'Entrada Neta (Zero Inbox):** La `00_Bandeja_d_Entrada` ha d'estar **SEMPRE buida**. Si una IA, un procés o un humà deixa arxius ací (com un bundle), és responsabilitat teua moure'ls a l'[[00_INDEX_ESCRIPTORI|Escriptori]] (`04_ESCRIPTORI/`) o a `01_Produccio`. **L'[[00_INDEX_ESCRIPTORI|Escriptori]] principal, però, ES PERMET que continga arxius** (com actes, prompts preparats, o investigacions en curs) que tinguen interès per a la següent sessió. No l'has de buidar de manera cega ni forçar una neteja massiva sense criteri. Sols neteja el que clarament siga brossa o allò que l'usuari et demane explícitament arxivar.
+7. **Safata d'Entrada Neta (Zero Inbox):** La `00_Bandeja_d_Entrada` ha d'estar **SEMPRE buida**. Si una IA, un procés o un humà deixa arxius ací (com un bundle), és responsabilitat teua moure'ls a l'[[00_index_escriptori|Escriptori]] (`04_ESCRIPTORI/`) o a `01_Produccio`. **L'[[00_index_escriptori|Escriptori]] principal, però, ES PERMET que continga arxius** (com actes, prompts preparats, o investigacions en curs) que tinguen interès per a la següent sessió. No l'has de buidar de manera cega ni forçar una neteja massiva sense criteri. Sols neteja el que clarament siga brossa o allò que l'usuari et demane explícitament arxivar.
 8. **Dormir (Neteja Extrema i Tancament):** Quan l'usuari demana "anar a dormir" o fer un "tancament" (especialment abans de generar una nova petorreta), significa fer una **neteja extrema** de l'Escriptori. Has d'esborrar o arxivar absolutament tots els estudis, bundles i petorretas anteriors. L'objectiu és que, quan la màquina "es desperte" neta i cree un nou bundle, aquest siga extremadament lleuger (p. ex. 3,5 MB i no 60 MB de pes per arrossegar brossa antiga). Es pot "dormir" moltes vegades al dia (una per cada petorreta o auditoria); és el ritual innegociable per no ofegar les IA amb soroll històric. S'acompanya d'executar `npm run tancar`. **IMPORTANT:** "Dormir" no significa tancar la conversa actual (xat). Pots dormir diverses vegades en la mateixa sessió; és una "siesta reparadora" de la Wiki, no de l'assistent, tot i que si la conversa està molt carregada de context, tu mateixa pots suggerir obrir un xat nou.
 
 El nostre flux de treball garanteix un projecte sostenible a llarg termini sense amnèsia arquitectònica.
@@ -16926,12 +16926,12 @@ Aquesta skill unifica el protocol d'interacció amb les avaluacions o auditories
 
 ## 2. Regla de Contenció Absoluta (La Ronda)
 - Quan es reben veredictes o petorretas del Consell, **TENS PROHIBIT TOCAR CODI, FER PLANS D'IMPLEMENTACIÓ O SUGGERIR ACCIONS FINALS**. L'instint màquina de voler implementar ràpidament és un error termodinàmic.
-- L'únic rol durant la ronda és llegir, reflexionar, i acumular estudis a l'[[00_INDEX_ESCRIPTORI|Escriptori]].
+- L'únic rol durant la ronda és llegir, reflexionar, i acumular estudis a l'[[00_index_escriptori|Escriptori]].
 - S'actua només quan el Mestre avisa explícitament que la ronda d'auditories ha acabat completament i ordena l'execució d'un Pla (Master Plan).
 
 ## 3. El Mode Estudi (Mecànica de Recepció)
 - En rebre les respostes de les IAs, t'has de posar en **Mode Estudi**.
-- **Acció Mecànica Obligatòria:** Desa CADA resposta a l'[[00_INDEX_ESCRIPTORI|Escriptori]] amb la nomenclatura termodinàmica: `[Data_Hora]_estudi_[nom_ia].md`. (P. ex: `260901_2232_estudi_qwen.md`). Has d'incloure el contingut sencer de l'auditoria dins l'arxiu.
+- **Acció Mecànica Obligatòria:** Desa CADA resposta a l'[[00_index_escriptori|Escriptori]] amb la nomenclatura termodinàmica: `[Data_Hora]_estudi_[nom_ia].md`. (P. ex: `260901_2232_estudi_qwen.md`). Has d'incloure el contingut sencer de l'auditoria dins l'arxiu.
 - Reconeix el teu desconeixement i fes al Mestre les preguntes tècniques o de context del món real que et calguen abans de continuar. Mai crees el `implementation_plan.md` en aquesta fase.
 
 ## 3. El Mode DAFO i Matrius
@@ -16984,7 +16984,7 @@ Quan un usuari o una IA demana preparar un "Bundle" o una "Petorreta" per al Con
 2. **S'han d'incloure els arxius estructurals obligatoris**, independentment del mòdul que s'estiga tocant (ex: `package.json`, configuració de `Vite`, arxius d'autenticació/portes).
 3. Si la mida del bundle es preveu problemàtica (alerta Termodinàmica), **NO ESPORGAREU** de forma silenciosa. Informareu a l'usuari amb l'avís "AVÍS TERMODINÀMIC" i demanareu instruccions o confirmació sobre com procedir per tallar de manera semàntica, no alfabètica.
 4. Si un sol arxiu sol·licitat en el bundle falta al disc, avortareu la generació (Fail-Closed).
-5. **FORMAT ZERO FRICCIÓ:** Quan lliures el prompt o petorreta a l'usuari, **CREA SEMPRE UN ARXIU MARKDOWN (.md) AL DISC** (a l'[[00_INDEX_ESCRIPTORI|Escriptori]]) amb el text exacte. MAI el faces eixir per pantalla en un bloc de codi del xat, ja que dificulta la còpia ràpida.
+5. **FORMAT ZERO FRICCIÓ:** Quan lliures el prompt o petorreta a l'usuari, **CREA SEMPRE UN ARXIU MARKDOWN (.md) AL DISC** (a l'[[00_index_escriptori|Escriptori]]) amb el text exacte. MAI el faces eixir per pantalla en un bloc de codi del xat, ja que dificulta la còpia ràpida.
 6. **PROHIBICIÓ DE CERCA WEB PER AL CONSELL:** Sóc de Poble és un projecte de codi tancat. Quan prepares un Prompt/Petorreta per a les IAs del Consell, **HAS D'INCLOURE OBLIGATÒRIAMENT UN AVÍS EXPLÍCIT** ordenant-los que NO facen cerques web per intentar localitzar el codi font, els repositoris a GitHub/GitLab o la Wiki. Han de treballar exclusivament amb el context (bundle) adjunt. Avisa'ls que fer-ho és gastar tokens inútilment i arriscar al·lucinacions, ja que no hi ha res públic.
 
 "Inventar és trair el poble. Amagar context és ofegar-lo, però ofegar-lo en brossa històrica també és ocultació."
@@ -17089,7 +17089,7 @@ No és autorització mecànica ni amplia scopes. És recordatori de missió i to
 ## Protocol d'arrencada (ordre fix)
 1. Carregar aquesta skill.
 2. Llegir `AGENTS.md` + `.agents/PROTOCOL_PETORRETA.md`.
-3. **Instint d'[[00_INDEX_ESCRIPTORI|Escriptori]] (Crucial)**: Abans de preguntar res, inspeccionar VISUALMENT O AMB COMANDAMENTS què hi ha damunt de l'escriptori (`_wiki_de_poble/04_ESCRIPTORI/`). Si hi ha actes pendents o prompts (ex. `PROMPT_inici_nova_sessio.md`), llegir-los IMMEDIATAMENT.
+3. **Instint d'[[00_index_escriptori|Escriptori]] (Crucial)**: Abans de preguntar res, inspeccionar VISUALMENT O AMB COMANDAMENTS què hi ha damunt de l'escriptori (`_wiki_de_poble/04_ESCRIPTORI/`). Si hi ha actes pendents o prompts (ex. `PROMPT_inici_nova_sessio.md`), llegir-los IMMEDIATAMENT.
 4. Netejar safates si l'usuari ha deixat documents fora de lloc (com carpetes Claude a l'arrel de l'escriptori).
 5. Localitzar només el codi, proves i documents estrictament relacionats amb la tasca un cop s'ha llegit l'acta pendent.
 6. Si cal mutació: Reflex + rebut abans d'escriure.
@@ -17122,7 +17122,7 @@ No se'n pot ometre cap. No se'n pot inventar cap. Respectar les característique
 - Llengua: valencià (norma del projecte) llevat que l'usuari demani una altra.
 - **FORMAT ZERO FRICCIÓ (INSTINT CODI - CRÍTIC):** Si has de generar un text perquè l'usuari el copie i enganxe (com respostes per a Qwen, Claude o qualsevol altra IA):
   - **Text curt:** HAS DE DONAR-HO SEMPRE I OBLIGATÒRIAMENT dins d'un bloc de codi ` ```markdown ` (amb els 3 backticks) al mateix xat, perquè aparega el botó de copiar amb un sol clic. MAI ho poses en text pla ni solt. Fallar açò genera fricció i emprenya l'usuari.
-  - **Text llarg:** Crea directament un arxiu `.md` a l'[[00_INDEX_ESCRIPTORI|Escriptori]] (`04_ESCRIPTORI/`) i deixa'l allà. No embrutes el xat amb textos quilomètrics.
+  - **Text llarg:** Crea directament un arxiu `.md` a l'[[00_index_escriptori|Escriptori]] (`04_ESCRIPTORI/`) i deixa'l allà. No embrutes el xat amb textos quilomètrics.
 
 ## Barrets actius
 - **IAIA Gestora**: tràmits, paperassa, wiki de Gestoria.
@@ -17842,7 +17842,7 @@ Per a mantenir la privacitat dels documents de la teua associació o poble, haur
 
 ---
 
-**Ancoratge de Seguretat:** [[00_INDEX]]
+**Ancoratge de Seguretat:** [[00_index]]
 ````
 
 ## Fitxer: scripts/audit-accessibility.sh
@@ -45615,7 +45615,7 @@ from datetime import datetime, timezone
 from pathlib import Path, PurePosixPath
 
 
-ANCHOR = "**Ancoratge de Seguretat:** [[00_INDEX]]"
+ANCHOR = "**Ancoratge de Seguretat:** [[00_index]]"
 SENSITIVE_MARKERS = (
     ".iaia_auth", "creds.json", "pre-key-", "session-", "sender-key-",
     "app-state-sync-key-", "private_key", "id_rsa", ".env",
@@ -46933,7 +46933,7 @@ function construeix({ entrades, absents }, meta) {
   const l = [];
   l.push("# BUNDLE D'AUDITORIA PER AL CONSELL DE LA PETORRETA");
   l.push('');
-  l.push(`> **Anclatge**: aquest document pertany a l'[[00_INDEX_ESCRIPTORI]].`);
+  l.push(`> **Anclatge**: aquest document pertany a l'[[00_index_escriptori]].`);
   l.push('');
 
   if (SENSE_VERIFICAR) {
@@ -47212,7 +47212,7 @@ academic_metadata:
 
 # ${title}
 
-> **Anclatge de Seguretat**: Aquest document està ancorat a l'índex central [[00_INDEX_ESCRIPTORI]] / [[00_index]] per evitar l'orfenesa i garantir la consciència de la IA en futures auditories.
+> **Anclatge de Seguretat**: Aquest document està ancorat a l'índex central [[00_index_escriptori]] / [[00_index]] per evitar l'orfenesa i garantir la consciència de la IA en futures auditories.
 
 [INSERIU EL CONTINGUT ACÍ]
 `;
@@ -65745,7 +65745,7 @@ export function loadIsoContext(root) {
 }
 
 function expectedBody(section) {
-  return section.body.replace('[[00_INDEX]]', '[[00_INDEX_ESCRIPTORI]]');
+  return section.body.replace('[[00_index]]', '[[00_index_escriptori]]');
 }
 const editable = new Set(['Objectiu', 'Context Necessari', 'Instrucció Principal', 'Output Esperat']);
 const receiptPattern = /\n<!-- SDP-ISO-CONTEXT: (\{[^\n]+\}) -->\s*$/;
@@ -70099,8 +70099,8 @@ process.exit(2);
  * ───────────────
  *   La wiki sembla cosida i no ho està del tot. L'auditoria 260831 va comptar
  *   396 enllaços `[[...]]` al bundle. 91 d'eixos (23%) no són enllaços: són
- *   etiquetes del bloc «## Taxonomia» (`[[Graf]]` ×46, `[[Maquina]]` ×22,
- *   `[[Identitat]]` ×16). Cap d'eixes destinacions existix com a document.
+ *   etiquetes del bloc «## Taxonomia» (`[[graf]]` ×46, `[[maquina]]` ×22,
+ *   `[[identitat]]` ×16). Cap d'eixes destinacions existix com a document.
  *   Inflen el graf d'Obsidian i el compte d'orfes ix bonic sense ser-ho.
  *
  *   A més va trobar que `.agents/` (22 fitxers: AGENTS, BIOS, LEDGER i les 12
@@ -70668,7 +70668,7 @@ function cusDocument(doc, index) {
   else if (pilar.includes('ARXIU')) categoriaStr = 'Arxiu';
 
   if (!nouContingut.includes('## Taxonomia')) {
-    nouContingut += `\n\n## Taxonomia\n- **Categoria:** [[${categoriaStr}]]\n- **Etiquetes:** [[Graf]]\n`;
+    nouContingut += `\n\n## Taxonomia\n- **Categoria:** [[${categoriaStr}]]\n- **Etiquetes:** [[graf]]\n`;
     afegits += 2;
     detall.push({ tipus: 'estructural', desti: categoriaStr, text: 'Taxonomia Generada' });
   }

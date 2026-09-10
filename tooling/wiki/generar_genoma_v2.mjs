@@ -48,10 +48,10 @@ const ROOTS = [
   'src',                             // el cos: sense codi viu no hi ha «zero caixes negres»
   'scripts',
   'tooling/wiki',
-  '_wiki_de_poble/00_SER_Brain_Identitat',
-  '_wiki_de_poble/01_SABER_Cultura_Coneixement',
-  '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica',
-  '_wiki_de_poble/03_GOVERNAR_Normativa_Regles',
+  '_wiki_de_poble/01_Ser',
+  '_wiki_de_poble/02_Saber',
+  '_wiki_de_poble/03_Actuar',
+  '_wiki_de_poble/02_Saber',
   '_wiki_de_poble/.obsidian/graph.json', // contracte de la Vista Gràfica (pre-commit 2/4)
 ];
 // .sdp-reflex queda FORA per disseny: el propi .gitignore del repositori el

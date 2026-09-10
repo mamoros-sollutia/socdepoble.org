@@ -9,10 +9,10 @@ const ARREL = path.dirname(path.dirname(path.dirname(fileURLToPath(import.meta.u
 // Llegim TOTS els pilars operatius i SKILLS, res d'arxius aïllats
 const ACTIVE_DIRS = [
   '.agents/skills',
-  '_wiki_de_poble/00_SER_Brain_Identitat',
-  '_wiki_de_poble/01_SABER_Cultura_Coneixement',
-  '_wiki_de_poble/02_ACTUAR_Maquina_Tecnica',
-  '_wiki_de_poble/03_GOVERNAR_Normativa_Regles'
+  '_wiki_de_poble/01_Ser',
+  '_wiki_de_poble/02_Saber',
+  '_wiki_de_poble/03_Actuar',
+  '_wiki_de_poble/02_Saber'
 ];
 
 function walkAndBundle(dir, fileList = []) {
