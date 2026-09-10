@@ -65,10 +65,10 @@ export function RegistrationStep({ isBusy, error, confirmationEmail, onRegister,
 
   return (
     <section className="onboarding-card" aria-labelledby="onboarding-register-title">
-      <div className="onboarding-card__heading">
-        <span className="onboarding-card__icon" aria-hidden="true"><UserRound size={28} /></span>
-        <h3 id="onboarding-register-title">Accés o nou registre</h3>
-      </div>
+      <h3 id="onboarding-register-title" className="onb-center-text">
+        <span className="onboarding-card__icon" aria-hidden="true" style={{ marginRight: '8px', verticalAlign: 'middle' }}><UserRound size={28} /></span>
+        <span style={{ verticalAlign: 'middle' }}>Accés o nou registre</span>
+      </h3>
 
       <p className="onboarding-card__intro onb-center-text">
         Primer entra una persona real. El teu perfil queda privat i separat de les
@@ -214,12 +214,10 @@ export function OrganizationStep({ blueprint, parentOrganization, isBusy, error,
 
   return (
     <section className="onboarding-card" aria-labelledby={`onboarding-${blueprint.kind}-title`}>
-      <div className="onboarding-card__heading">
-        <span className="onboarding-card__icon" aria-hidden="true"><Icon size={28} /></span>
-        <h2 id={`onboarding-${blueprint.kind}-title`}>
-          {isGroup ? 'Crea el grup Rentonar' : 'Crea l’empresa Sóc de Poble'}
-        </h2>
-      </div>
+      <h2 id={`onboarding-${blueprint.kind}-title`} className="onb-center-text">
+        <span className="onboarding-card__icon" aria-hidden="true" style={{ marginRight: '8px', verticalAlign: 'middle' }}><Icon size={28} /></span>
+        <span style={{ verticalAlign: 'middle' }}>{isGroup ? 'Crea el grup Rentonar' : 'Crea l’empresa Sóc de Poble'}</span>
+      </h2>
 
       <p className="onboarding-card__intro onb-center-text">
         {isGroup
@@ -357,10 +355,10 @@ export function OnboardingComplete({ company, group, onFinish }) {
 export function IdentityForkStep({ onCreateNew, onClaimExisting, onSkip }) {
   return (
     <section className="onboarding-card">
-      <div className="onboarding-card__heading">
-        <span className="onboarding-card__icon" aria-hidden="true"><UserRound size={28} /></span>
-        <h2>Quina és la teua relació amb el poble?</h2>
-      </div>
+      <h2 className="onb-center-text">
+        <span className="onboarding-card__icon" aria-hidden="true" style={{ marginRight: '8px', verticalAlign: 'middle' }}><UserRound size={28} /></span>
+        <span style={{ verticalAlign: 'middle' }}>Quina és la teua relació amb el poble?</span>
+      </h2>
       <p className="onboarding-card__intro onb-center-text">
         Tria com vols interactuar dins la xarxa. Pots crear una empresa, reclamar-ne una d'existent, o simplement explorar com a persona.
       </p>
@@ -387,10 +385,10 @@ export function ClaimStep({ organizations, onClaim, onBack, isBusy, error }) {
   
   return (
     <section className="onboarding-card">
-      <div className="onboarding-card__heading">
-        <span className="onboarding-card__icon" aria-hidden="true"><MapPin size={28} /></span>
-        <h2>Reclama la gestió d'una entitat</h2>
-      </div>
+      <h2 className="onb-center-text">
+        <span className="onboarding-card__icon" aria-hidden="true" style={{ marginRight: '8px', verticalAlign: 'middle' }}><MapPin size={28} /></span>
+        <span style={{ verticalAlign: 'middle' }}>Reclama la gestió d'una entitat</span>
+      </h2>
       
       {error ? <div className="alert alert-error" role="alert">{error}</div> : null}
 

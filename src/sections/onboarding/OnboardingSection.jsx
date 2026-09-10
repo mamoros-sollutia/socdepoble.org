@@ -143,7 +143,7 @@ export default function OnboardingSection() {
       <div className="onboarding-layout">
         {activeStep === 0 && !isLoadingOrganizations && (
           <>
-            <section className="onboarding-card" className="onb-section-intro">
+            <section className="onboarding-card onb-section-intro">
               <h3>Accés ràpid amb Google</h3>
               <p>
                 Crea o entra al teu compte amb un sol clic sense contrasenyes.
@@ -155,9 +155,8 @@ export default function OnboardingSection() {
               </p>
               <button 
                 type="button" 
-                className="btn btn-secondary onboarding-card__action" 
+                className="btn btn-secondary onboarding-card__action onb-flex-center-mt" 
                 onClick={googleLogin}
-                className="onb-flex-center-mt"
                 disabled={busyStep === 'register'}
               >
                 Entrar amb Google
