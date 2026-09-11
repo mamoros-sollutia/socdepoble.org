@@ -11,6 +11,9 @@ export default function UniversalEditorShell({
   titleText = 'Sense Títol',
   heroImage,
   logoImage,
+  authorName,
+  authorLocation,
+  authorAvatar,
   isPublished,
   formattedTime,
   formattedDate,
@@ -34,6 +37,9 @@ export default function UniversalEditorShell({
           chrome="context" 
           variant="embed"
           showLogos={!heroImage}
+          authorName={authorName}
+          authorLocation={authorLocation}
+          authorAvatar={authorAvatar}
           topBarData={{
             logoComponent: (logoImage && !logoHandler.isEditing) ? (
               <img 

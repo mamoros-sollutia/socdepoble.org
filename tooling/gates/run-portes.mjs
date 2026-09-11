@@ -29,6 +29,7 @@ export const passos = [
   { nom: 'Tractor Pedra Seca', cmd: 'node', args: ['tooling/brain/tractor-pedra-seca.mjs'], script: 'porta:pedra-seca' },
   { nom: 'Design Guard', cmd: 'node', args: ['tooling/gates/design_guard.mjs', '--arrel=src'], script: 'porta:design-guard' },
   { nom: 'Porta Tokens', cmd: 'node', args: ['tooling/gates/tractor-tokens.mjs'], script: 'porta:tokens' },
+  { nom: 'Porta Fitxa Gestor', cmd: 'node', args: ['tooling/gates/tractor-fitxa-gestor.mjs'], script: 'porta:fitxa' },
   { nom: 'Porta Cromàtic', cmd: 'node', args: ['tooling/gates/tractor-cromatic.mjs'], script: 'porta:cromatic' },
   { nom: 'Porta Vocabulari', cmd: 'node', args: ['tooling/gates/tractor-vocabulari.mjs'], script: 'porta:vocabulari' },
   { nom: 'Porta Estucat', cmd: 'node', args: ['tooling/gates/tractor-estucat.mjs', '--arrel=.'], script: 'porta:estucat' },

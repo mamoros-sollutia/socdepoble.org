@@ -204,6 +204,7 @@
   --sdp-alt-barres: calc(var(--sdp-alt-negra) + var(--sdp-alt-accio) * 2);  /* 180px · pila sticky */
   --sdp-alt-nav-mobil: 96px;                 /* nav inferior + separació */
   --sdp-pad-contenidor: clamp(16px, 4vw, 40px);
+  --sdp-fitxa-mida: 96px;                    /* LLEI DE LA FITXA · costat de la media = alçada mínima */
 
   /* LLEI DE VIDA · objectiu tàctil mínim. Cap control per davall. */
   --sdp-touch-min: 44px;
@@ -1262,7 +1263,7 @@ details[open] summary.accordion-header svg:last-child { transform: rotate(180deg
 
 /* Targeta Mestra enllaçable: overlay a z1, capa interactiva a z2 */
 .sp-card { position: relative; }
-.sp-card-link-overlay { position: absolute; inset: 0; z-index: 1; border-radius: inherit; outline: none; }
+.sp-card-link-overlay { position: absolute; inset: 0; z-index: 1; border-radius: inherit; outline: none; background: transparent; border: none; cursor: pointer; }
 .sp-card-link-overlay:focus-visible { box-shadow: 0 0 0 3px var(--sdp-focus) inset; }
 .sp-card-header, .sp-card-footer, .sp-card-author-link, .sp-card-author-block, .btn-icon-orange, .btn-date-time, .sp-card-action, .sp-card-connect, .sp-card-labels, .sp-card-copyright, .sp-card-body a, .sp-card-body span[onClick] { position: relative; z-index: 2; }
 .sp-card-author-link, .sp-card-author-block { display: flex; align-items: center; min-width: 0; flex: 1; }
@@ -1324,6 +1325,92 @@ details[open] summary.accordion-header svg:last-child { transform: rotate(180deg
 
 .sp-card-body { padding: 22px 24px 16px; text-align: left; position: relative; min-width: 0; }
 .sp-card-title { font-size: 1.4rem; color: var(--sdp-accio-text); font-weight: 800; line-height: var(--sdp-leading-tight); margin: 0 0 var(--sdp-space-2) 0; flex: 1; text-align: center; }
+
+/* Targetes Especials */
+.sp-card--onboarding,
+.sp-card--action {
+  border: 1px solid var(--sdp-vora);
+  border-top: 6px solid var(--sdp-accent);
+  border-radius: var(--sdp-radi-xl);
+  box-shadow: var(--sdp-ombra-3);
+  padding: clamp(var(--sdp-space-5), 5vw, var(--sdp-space-8));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.sp-card--action:hover {
+  box-shadow: var(--sdp-ombra-4);
+  transform: translateY(-2px);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.sp-card--action .sp-card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0;
+  width: 100%;
+}
+
+.sp-card--action .sp-card-heading-with-icon {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sdp-space-3);
+  margin-bottom: var(--sdp-space-2);
+  width: 100%;
+}
+
+.sp-card--action .sp-card-heading-with-icon .sp-card-title {
+  text-align: center;
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--sdp-accio-text);
+  line-height: var(--sdp-leading-tight);
+}
+
+.sp-card--action .sp-card-title-icon {
+  margin-bottom: var(--sdp-space-1);
+}
+
+.sp-card--action .sp-card-subtitle {
+  text-align: center;
+  margin: 0;
+  font-size: 1rem;
+  color: var(--sdp-text-secundari);
+  font-weight: 500;
+  line-height: var(--sdp-leading-normal);
+}
+
+.sp-card-heading-with-icon {
+  display: flex;
+  align-items: center;
+  gap: var(--sdp-space-4);
+  margin-bottom: var(--sdp-space-5);
+  justify-content: flex-start;
+}
+
+.sp-card-heading-with-icon .sp-card-title {
+  text-align: left;
+  margin: 0;
+  flex: none;
+}
+
+.sp-card-title-icon {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--sdp-accent);
+}
+
 
 .sp-card .sp-card-body h1 {
   font-size: 1.6rem;
@@ -1434,6 +1521,55 @@ details[open] summary.accordion-header svg:last-child { transform: rotate(180deg
 .sdp-card-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--sdp-space-6); align-items: start; }
 @media (max-width: 1400px) { .sdp-card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 800px) { .sdp-card-grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* Panell de Control — Contenidor Centrat */
+.ctl-main-container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: var(--sdp-space-6) var(--sdp-space-4) var(--sdp-space-12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sdp-space-8);
+  width: 100%;
+}
+.ctl-main-container > section {
+  width: 100%;
+}
+.ctl-secondary-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sdp-space-4);
+  justify-content: center;
+  align-items: center;
+  margin-top: var(--sdp-space-4);
+}
+
+.ctl-section-utilitats {
+  width: 100%;
+  margin-top: var(--sdp-space-6);
+  padding-top: var(--sdp-space-8);
+  border-top: 1px solid var(--sdp-vora);
+  text-align: center;
+}
+
+.ctl-section-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--sdp-accent-text);
+  margin: 0 0 var(--sdp-space-2) 0;
+  text-align: center;
+}
+
+.ctl-section-lead {
+  font-size: var(--sdp-text-lead);
+  font-weight: 500;
+  color: var(--sdp-text-suau);
+  max-width: 680px;
+  margin: var(--sdp-space-2) auto var(--sdp-space-6) auto;
+  line-height: var(--sdp-leading-editorial);
+  text-align: center;
+}
 
 
 /* 7.23 Cerca i filtratge */
@@ -3666,3 +3802,302 @@ button.sp-card-calendar-badge:hover {
 .ob-mt-15-op8 { margin-top: 1.5rem; opacity: 0.8; }
 
 } /* fi de @layer legacy (obert a la línia 39) */
+
+/* xat-main-empty per quan no hi ha fil actiu */
+.xat-main-empty {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--sdp-fons-subtil);
+}
+
+/* ═══ FITXA DE GESTOR · LLEI DE PEDRA SECA ═══════════════════════════
+   L'única forma d'un element dins la llista de l'UniversalManager.
+     · Títol (rol H1) ≤ 2 línies · subtítol (rol H2) ≤ 1 línia · res més.
+     · Media quadrada de var(--sdp-fitxa-mida) a l'esquerra.
+   Pressupost vertical (arrel de 16px):
+     2 × 18 × 1,3 + 16 × 1,3 + 4 = 71,6px de text + 2 × 12 de coixí = 95,6 ≤ 96px.
+   Interlineat 1,3 i no --sdp-leading-snug (1,21): amb Noto Sans (àrea de
+   contingut 1,362em) el retall de dues línies es menjaria la cua de la «ç».
+   El pressupost també el topa per dalt: per damunt de 1,307 ja no hi cap.
+   Si l'usuari engrandix la lletra, la fitxa creix: mai retalla.
+   Porta: tooling/gates/tractor-fitxa-gestor.mjs (F8).
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Embolcall de pàgina dels consumidors (abans: style={{ height: '100%' }}). */
+.sdp-gestor-pagina {
+  height: 100%;
+}
+
+/* La llista neutralitza la tipografia editorial global de ul/li:
+   sagnat de 28px, pic, i 8px de marge entre elements. */
+.sdp-gestor-llista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sdp-gestor-llista > li {
+  margin: 0;
+  padding: 0;
+}
+
+/* (0,2,0) guanya al reinici (0,1,1) sense dependre de l'ordre. Sense
+   opacitat: el text continua sent AAA. */
+.sdp-gestor-llista > .sdp-gestor-buit {
+  padding: var(--sdp-space-8) var(--sdp-space-4);
+  color: var(--sdp-text-suau);
+  text-align: center;
+}
+
+.sdp-gestor-fitxa {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: var(--sdp-fitxa-mida);
+  padding: 0;
+  border: 0;
+  border-left: 3px solid transparent;
+  border-bottom: 1px solid var(--sdp-vora);
+  border-radius: 0;
+  background: var(--sdp-fons-targeta);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color var(--sdp-t);
+}
+
+.sdp-gestor-fitxa:hover {
+  background: var(--sdp-fons-subtil);
+}
+
+/* Marcador d'actiu: --sdp-accent-text (5,51:1). --sdp-accent faria 2,73:1,
+   per davall del 3:1 de WCAG 1.4.11. Va després de :hover i guanya per ordre. */
+.sdp-gestor-fitxa[aria-current="true"] {
+  background: var(--sdp-accent-subtil);
+  border-left-color: var(--sdp-accent-text);
+}
+
+/* Anell interior: el contenidor amb scroll retallaria l'exterior.
+   :focus porta l'anell perquè Safari 15.0–15.3 no coneix :focus-visible;
+   on sí que el coneix, el ratolí no l'encén. */
+.sdp-gestor-fitxa:focus {
+  outline: 3px solid var(--sdp-focus);
+  outline-offset: -3px;
+}
+
+.sdp-gestor-fitxa:focus:not(:focus-visible) {
+  outline-color: transparent;
+}
+
+.sdp-gestor-fitxa__media {
+  flex: 0 0 var(--sdp-fitxa-mida);
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--sdp-fitxa-mida);
+  height: var(--sdp-fitxa-mida);
+  overflow: hidden;
+  background: var(--sdp-fons-subtil);
+  color: var(--sdp-text-suau);
+}
+
+.sdp-gestor-fitxa__imatge {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sdp-gestor-fitxa__inicial {
+  font-size: var(--sdp-text-h3);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.sdp-gestor-fitxa__text {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sdp-space-1);
+  padding: var(--sdp-space-3) var(--sdp-space-4);
+}
+
+.sdp-gestor-fitxa__titol {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  font-size: var(--sdp-text-base);
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--sdp-text-titol);
+}
+
+.sdp-gestor-fitxa__subtitol {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: var(--sdp-text-small);
+  line-height: 1.3;
+  color: var(--sdp-text-suau);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sdp-gestor-fitxa {
+    transition: none;
+  }
+}
+
+/* ═══ ESTRUCTURA I SCROLL DEL GESTOR UNIVERSAL ═══════════════════════ */
+.notes-column {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  background: inherit;
+}
+
+.notes-column__body {
+  flex: 1 1 0;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.notes-column__body.no-padding {
+  padding: 0;
+}
+
+.sdp-scrollable {
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+
+.notes-list-header {
+  padding: var(--sdp-space-3) var(--sdp-space-4);
+  border-bottom: 1px solid var(--sdp-vora);
+  background: var(--sdp-fons-superficie);
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--sdp-space-2);
+  background: var(--sdp-fons-subtil);
+  padding: var(--sdp-space-2) var(--sdp-space-3);
+  border-radius: var(--sdp-radi-s);
+  border: 1px solid var(--sdp-vora);
+}
+
+.search-bar input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  font: inherit;
+  font-size: var(--sdp-text-small);
+  color: var(--sdp-text-cos);
+}
+
+.univ-manager-facet-header {
+  padding: var(--sdp-space-4) var(--sdp-space-4) var(--sdp-space-2);
+  margin: 0;
+  font-size: var(--sdp-text-meta);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--sdp-text-suau);
+}
+
+.univ-manager-facet-item {
+  display: flex;
+  align-items: center;
+  gap: var(--sdp-space-3);
+  padding: var(--sdp-space-2) var(--sdp-space-4);
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: transparent;
+  color: var(--sdp-text-suau);
+  font-family: inherit;
+  font-size: var(--sdp-text-cos);
+  cursor: pointer;
+  transition: background var(--sdp-t), color var(--sdp-t);
+  border-radius: 0;
+}
+
+.univ-manager-facet-item:hover {
+  background: var(--sdp-fons-subtil);
+  color: var(--sdp-text-titol);
+}
+
+.univ-manager-facet-item--active {
+  background: var(--sdp-accent-subtil);
+  color: var(--sdp-text-titol);
+  font-weight: 700;
+}
+
+.univ-manager-facet-tree-branch {
+  display: flex;
+  flex-direction: column;
+  margin-left: var(--sdp-space-2);
+  padding-left: var(--sdp-space-3);
+  border-left: 2px solid var(--sdp-vora);
+}
+
+.univ-manager-facet-spacing {
+  height: var(--sdp-space-4);
+}
+
+.univ-manager-create-action {
+  padding: var(--sdp-space-4);
+  border-top: 1px solid var(--sdp-vora);
+  background: var(--sdp-fons-superficie);
+}
+
+.univ-manager-create-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sdp-space-2);
+  min-height: var(--sdp-touch-min);
+  background: var(--sdp-accio);
+  color: var(--sdp-sobre-accio);
+  border: none;
+  border-radius: var(--sdp-radi-pastilla);
+  font-weight: 700;
+  cursor: pointer;
+  transition: background var(--sdp-t);
+}
+
+.univ-manager-create-btn:hover {
+  background: var(--sdp-accio-hover);
+}
+
+/* ═══ PÀGINA 404 CENTRADA ═════════════════════════════════════════════ */
+.sdp-404-cos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--sdp-space-3);
+  padding: var(--sdp-space-8) var(--sdp-space-4);
+  max-width: 480px;
+  margin-inline: auto;
+}
+
+.sdp-404-icona {
+  color: var(--sdp-text-suau);
+  margin-bottom: var(--sdp-space-2);
+}

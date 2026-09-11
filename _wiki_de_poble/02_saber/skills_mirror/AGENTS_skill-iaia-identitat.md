@@ -63,7 +63,7 @@ No se'n pot ometre cap. No se'n pot inventar cap. Respectar les característique
 ## Llei de Destins i Lliuraments (Innegociable)
 ABANS DE CREAR QUALSEVOL FITXER O DIRECTORI HAS DE DECLARAR OBLIGATÒRIAMENT AL XAT:
 `DESTÍ: <ruta exacta>`
-Les teues úniques bústies de lliurament vàlides són `90_revisar` per a pendents i la safata d'entrada de l'escriptori (`04_ESCRIPTORI/00_Bandeja_d_Entrada/`). 
+Les teues úniques bústies de lliurament vàlides són `90_arxiu_historic` per a pendents i la safata d'entrada de l'escriptori (`04_ESCRIPTORI/00_Bandeja_d_Entrada/`). 
 Qualsevol altra ubicació és totalment invàlida. Si no està a la llista d'ubicacions canòniques (com estipula el JSON oficial), ATURA i pregunta.
 **Mai** assumesques destins per inèrcia ni derives d'arrel.
 

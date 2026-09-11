@@ -1,5 +1,7 @@
 // src/data/backendPort.js
 
+import { CAPACITATS } from './contracte.js';
+
 let currentImpl = null;
 let isLocked = false;
 
@@ -26,6 +28,12 @@ export function destroy() {
   }
 }
 
+export function teCapacitat(cap) {
+  if (!CAPACITATS[cap] || !currentImpl) return false;
+  return CAPACITATS[cap].every(m => typeof currentImpl[m] === 'function');
+}
+
+
 
 const asseguraMetode = (nom) => (...args) => {
   if (!currentImpl || typeof currentImpl[nom] !== 'function') {
@@ -46,6 +54,8 @@ export const appendChatMessages = asseguraMetode('appendChatMessages');
 export const appendSectionSubmissionNetworkOnly = asseguraMetode('appendSectionSubmissionNetworkOnly');
 export const updateNote = asseguraMetode('updateNote');
 export const loginWithMagicLink = asseguraMetode('loginWithMagicLink');
+export const registerWithPassword = asseguraMetode('registerWithPassword');
+export const loginWithPassword = asseguraMetode('loginWithPassword');
 export const loginWithGoogle = asseguraMetode('loginWithGoogle');
 export const listMyOrganizations = asseguraMetode('listMyOrganizations');
 export const createOrganization = asseguraMetode('createOrganization');

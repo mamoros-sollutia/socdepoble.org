@@ -5,7 +5,7 @@ import ManagerFacets from './ManagerFacets';
 import ManagerList from './ManagerList';
 import { UniversalPage } from '../UniversalPage';
 
-function UniversalManagerInner({ renderItem, renderDetail, onActionCreate, createLabel }) {
+function UniversalManagerInner({ getItemCard, renderDetail, onActionCreate, createLabel }) {
   const { activeItem } = useManager();
 
   return (
@@ -14,7 +14,7 @@ function UniversalManagerInner({ renderItem, renderDetail, onActionCreate, creat
         leftColumn={<ManagerFacets />}
         middleColumn={
           <ManagerList 
-            renderItem={renderItem} 
+            getItemCard={getItemCard} 
             onActionCreate={onActionCreate} 
             createLabel={createLabel} 
           />
@@ -28,24 +28,28 @@ function UniversalManagerInner({ renderItem, renderDetail, onActionCreate, creat
 export function UniversalManager({
   items = [],
   facets = [],
+  facetsTitle = 'CARPETES',
   getItemId,
   getItemSearchText,
-  renderItem,
+  getItemCard,
   renderDetail,
   onActionCreate,
   createLabel = 'CREAR',
   initialItemId = null,
+  initialActiveFacets = {},
 }) {
   return (
     <ManagerProvider
       items={items}
       facets={facets}
+      facetsTitle={facetsTitle}
       getItemId={getItemId}
       getItemSearchText={getItemSearchText}
       initialItemId={initialItemId}
+      initialActiveFacets={initialActiveFacets}
     >
       <UniversalManagerInner 
-        renderItem={renderItem}
+        getItemCard={getItemCard}
         renderDetail={renderDetail}
         onActionCreate={onActionCreate}
         createLabel={createLabel}

@@ -34,7 +34,7 @@ useHeroImageHandler.js
 src/app/AppDataContext.jsx
 supabase/schema.sql
 PLANTILLA_ISO_SDP.md
-_wiki_de_poble/90_Revisar_arxiu_historic
+_wiki_de_poble/90_arxiu_historic
 260901_2232_estudi_claude.md
 plantilla_acta_unica.md
 tractor-innerhtml.mjs

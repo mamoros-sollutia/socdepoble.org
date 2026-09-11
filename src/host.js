@@ -79,6 +79,7 @@ if (typeof window !== 'undefined') {
 
 import { setBackendImplementation, freezeImplementation, getBackendImplementation } from './data/backendPort.js';
 import { defineCustomElement } from './PedraSecaEmbed.jsx';
+import { CONTRACTE_NUCLI, CONTRACTE_BACKEND } from './data/contracte.js';
 
 /* ═══════════════════════ Estat de l'arrencada ═══════════════════════ */
 
@@ -87,76 +88,17 @@ let fase = FASE.CONFIGURABLE;
 let autoProgramada = false;
 let arrencada = null;
 
-/** Mètodes que un backend complet ha d'oferir. Documenta el contracte. */
-export const CONTRACTE_BACKEND = Object.freeze([
-  'loadCoreContent',
-  'loadMur',
-  'loadXat',
-  'loadMultimedia',
-  'loadNotes',
-  'appendChatMessages',
-  'appendSectionSubmissionNetworkOnly',
-  'updateNote',
-  'loginWithMagicLink',
-  'loginWithGoogle',
-  'listMyOrganizations',
-  'createOrganization',
-  'updateOrganization',
-  'updateProfile',
-  'updateUserPassword',
-  'getProfile',
-  'recullTornadaOAuth',
-  'logout',
-  'getCurrentUser',
-  'getBackendConfigurat',
-  'getRuntimeDataMode',
-
-  'getDefaultUserId',
-
-  /* Xat v2 i Pont amb Notes (260908).
-     Han d'estar ací o passen dues coses, no una:
-       · tractor-enxufe.mjs (E2) anota un error per cada mètode que el port
-         delega i el contracte no declara;
-       · configura() els classifica com a "desconeguts" i NO els injecta, així
-         que un host que els implemente es trobarà createNote apuntant al buit.
-     El port i el contracte són la mateixa llista escrita dos voltes. Si en
-     toques una, toca l'altra. */
-  'createNote',
-  'loadFils',
-  'loadMissatges',
-  'enviaMissatge',
-  'marcaLlegit',
-
-  /* Afegit 260908 amb el pegat correctiu del Xat v2.
-     `crea_fil_directe` és l'única porta d'entrada a una conversa: la política
-     "xat_participants_insercio" original no deixava inserir el primer
-     participant (peix que es mossega la cua), i el seed només omple l'antiga
-     `chat_threads`. Sense este mètode, `xat_fils` es queda buida per sempre. */
-  'creaFilDirecte',
-
-  /* Afegit 260908 amb el directori del poble.
-     `crea_fil_directe` necessita l'uuid de l'altra persona i no hi havia cap
-     manera d'obtindre'l: "profiles read own" només deixa llegir el teu perfil i
-     `town_memberships` no té política de lectura per a tercers. Sense aquest
-     mètode, el botó «Nova conversa» és impossible d'implementar. */
-  'carregaMembres',
-
-  /* Fase 2B: Migració a WebSockets per al Xat. */
-  'subscribeToXat',
-  'unsubscribeFromXat',
-  
-  /* Fase 3: Mode Administrador (UniversalManagerShell) */
-  'adminListUsers',
-  'adminListOrganizations'
-]);
+// Re-exportem CONTRACTE_BACKEND per retrocompatibilitat si algú l'importa des d'ací
+export { CONTRACTE_BACKEND };
 
 /* ═══════════════════════ Fase 1 · Configuració ═══════════════════════ */
 
 /**
  * Injecta una implementació de backend abans del segellat.
  *
- * Mode estricte: la injecció ha de proveir el contracte sencer per a
+ * Mode estricte: la injecció ha de proveir el contracte sencer (nucli + capacitats) per a
  * evitar barreges perilloses entre Supabase i el nou backend de Sollutia.
+ * O pot proveir només el nucli, però els mètodes declarats han d'estar complets.
  *
  * @param {{backend?: Record<string, Function>}} opcions
  * @returns {{acceptats: string[], desconeguts: string[], pendents: string[]}}
@@ -170,15 +112,13 @@ export function configura({ backend } = {}) {
     );
   }
   if (!backend || typeof backend !== 'object') {
-    return { acceptats: [], desconeguts: [], pendents: [...CONTRACTE_BACKEND] };
+    return { acceptats: [], desconeguts: [], pendents: [...CONTRACTE_NUCLI] };
   }
 
   const claus = Object.keys(backend);
   const desconeguts = claus.filter((k) => !CONTRACTE_BACKEND.includes(k));
   const acceptats = claus.filter((k) => CONTRACTE_BACKEND.includes(k) && typeof backend[k] === 'function');
 
-  // Els mètodes desconeguts no s'injecten en silenci: un error d'escriptura
-  // en un nom de mètode és una fallada muda que costa hores de trobar.
   if (desconeguts.length) {
     console.warn(`[host] Mètodes fora del contracte, ignorats: ${desconeguts.join(', ')}.`
       + ` Contracte vàlid: ${CONTRACTE_BACKEND.join(', ')}`);
@@ -189,22 +129,13 @@ export function configura({ backend } = {}) {
   }
 
   setBackendImplementation(Object.fromEntries(acceptats.map((k) => [k, backend[k]])));
-  return { acceptats, desconeguts, pendents: CONTRACTE_BACKEND.filter((k) => !acceptats.includes(k)) };
+  return { acceptats, desconeguts, pendents: CONTRACTE_NUCLI.filter((k) => !acceptats.includes(k)) };
 }
 
 /* ═══════════════════════ Fase 2 · Segellat ═══════════════════════ */
 
 /**
  * Congela el backend i defineix `<soc-de-poble>`. Idempotent.
- *
- * CURSA CORREGIDA (260903): `fase` es marcava DESPRÉS de l'`await import()`.
- * Durant eixa finestra:
- *   · un segon `arrenca()` travessava el guard i cridava `defineCustomElement()`
- *     dos voltes → NotSupportedError;
- *   · un `configura()` tardà passava net i després quedava sobreescrit en
- *   silenci pel backend de Supabase.
- * Ara el segellat es marca SÍNCRONAMENT i la faena asíncrona viu en una
- * promesa memoritzada.
  *
  * @returns {Promise<{fase: string, backend: string[]}>}
  */
@@ -217,18 +148,14 @@ export function arrenca() {
     const injectats = Object.keys(getBackendImplementation());
 
     if (injectats.length > 0) {
-      // Mode estricte: si s'ha injectat, ha de ser el contracte sencer.
-      const pendents = CONTRACTE_BACKEND.filter((k) => !injectats.includes(k));
-      if (pendents.length > 0) {
+      // Ara el fail-closed només exigeix el nucli. Les capacitats són opcionals.
+      const pendentsNucli = CONTRACTE_NUCLI.filter((k) => !injectats.includes(k));
+      if (pendentsNucli.length > 0) {
         throw new Error(
-          `[host] Injecció incompleta. No es permet fusió amb Supabase. Falten mètodes: ${pendents.join(', ')}`,
+          `[host] Injecció incompleta. No es permet fusió amb Supabase. Falten mètodes del nucli: ${pendentsNucli.join(', ')}`,
         );
       }
     } else {
-      // Fail-closed: si el backend per defecte no carrega, NO congelem una
-      // implementació buida ni pintem l'element. Abans es feia console.error
-      // i es continuava: l'app es muntava sencera amb totes les crides de
-      // dades fallant, que és pitjor que no muntar-se.
       const supabaseImpl = await import('./data/supabaseBackend.js');
       setBackendImplementation(supabaseImpl);
     }

@@ -186,7 +186,7 @@ def plan(root: Path) -> dict[str, object]:
             name_match = re.match(r"^(\d{2})(\d{2})(\d{2})", source.name)
             bucket = f"20{name_match.group(1)}_{name_match.group(2)}" if name_match else "sense_data"
             destination = (
-                Path("_wiki_de_poble/90_Revisar_Revisar")
+                Path("_wiki_de_poble/90_arxiu_historic")
                 / bucket / "legacy_pre_canonical" / source.relative_to(legacy)
             ).as_posix()
             item = action("move", source, root, "fusionar el segon arxiu històric", destination)

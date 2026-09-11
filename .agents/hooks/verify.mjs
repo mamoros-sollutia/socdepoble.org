@@ -129,7 +129,7 @@ process.stdin.on('end', () => {
   }
 
   if (rel.startsWith('90_arxiu_historic/')) {
-    resp('deny', "[PORTA] L'arxiu històric és de NOMÉS LECTURA. Posa el fitxer a 90_revisar/.");
+    resp('deny', "[PORTA] L'arxiu històric és de NOMÉS LECTURA. Posa el fitxer a 90_arxiu_historic/.");
   }
 
   /* ── LLEI 1 · Immutabilitat del LEDGER ── */

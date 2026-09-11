@@ -43,6 +43,7 @@ description: 00INDEX
 - [[00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS_skill-consell-bundle.md]]
 - [[00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS_skill-estudi-mercat.md]]
 - [[00_SER_Brain_Identitat/00_AGENTS_I_SKILLS_MIRROR/AGENTS_skill-iaia-identitat.md]]
+- [[02_saber/skills_mirror/AGENTS_skill-memoria-historica.md]]
 
 ## Cervell i Agents
 - [[AGENTS]]

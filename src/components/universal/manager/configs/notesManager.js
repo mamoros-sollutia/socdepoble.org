@@ -25,30 +25,36 @@ export function buildNotesFacets(noteFolders = []) {
 
   const folderFacet = {
     id: 'folderId',
+    label: 'CARPETES',
     title: 'CARPETES',
-    type: 'tree', // Use tree or flat. ManagerFacets renders them.
-    options: folderOptions
+    type: 'tree',
+    options: folderOptions,
+    getValue: (item) => item.folderId
   };
 
   // 2. Faceta de categories
   const categoryFacet = {
     id: 'category',
+    label: 'CATEGORIES',
     title: 'CATEGORIES',
     type: 'flat',
     options: [
       { id: 'Sistema', label: 'Sistema' },
       { id: 'Productivitat', label: 'Productivitat' }
-    ]
+    ],
+    getValue: (item) => item.category
   };
 
   // 3. Faceta d'etiquetes
   const tagsFacet = {
     id: 'tags',
+    label: 'ETIQUETES',
     title: 'ETIQUETES',
     type: 'flat',
     options: [
       { id: 'Tutorial', label: 'Tutorial' }
-    ]
+    ],
+    getValue: (item) => item.tags || []
   };
 
   return [folderFacet, categoryFacet, tagsFacet];
@@ -60,4 +66,10 @@ export const notesManagerConfig = {
   icon: FileText,
   getItemId: (item) => item.id,
   getItemSearchText: (item) => item.searchText || item.title || '',
+  getItemCard: (nota) => ({
+    titol: nota.title || 'Sense títol',
+    subtitol: nota.formattedDate,
+    imatge: nota.coverImage,
+    icona: FOLDER_ICONS[nota.folderId] || NotebookPen,
+  }),
 };

@@ -57,59 +57,6 @@
   color: var(--sdp-text-suau);
 }
 
-/* ── Fila d'ajust: el model de WhatsApp ── */
-.perfil-ajust {
-  display: flex;
-  align-items: center;
-  gap: var(--sdp-space-3);
-  width: 100%;
-  min-height: var(--sdp-touch-min);
-  padding: var(--sdp-space-3) var(--sdp-space-4);
-  background: none;
-  border: 0;
-  border-bottom: 1px solid var(--sdp-vora);
-  color: var(--sdp-text-cos);
-  text-align: left;
-  cursor: pointer;
-}
-
-.perfil-ajust:hover {
-  background: var(--sdp-fons-subtil);
-}
-
-.perfil-ajust[aria-current="true"] {
-  background: var(--sdp-accent-subtil);
-}
-
-.perfil-ajust-cos {
-  flex: 1;
-  min-width: 0;
-}
-
-.perfil-ajust-titol {
-  display: block;
-}
-
-.perfil-ajust-valor {
-  display: block;
-  font-size: var(--sdp-text-meta);
-  color: var(--sdp-text-suau);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-/* Una fila tancada diu per què ho està. Mai un botó que falla en silenci. */
-.perfil-ajust[data-obert="no"] {
-  cursor: not-allowed;
-  opacity: 0.55;
-}
-
-.perfil-ajust-motiu {
-  display: block;
-  font-size: var(--sdp-text-meta);
-  color: var(--sdp-avis-text);
-}
 
 /* ── Detall ── */
 .perfil-detall {

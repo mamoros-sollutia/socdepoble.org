@@ -13,5 +13,6 @@ description: Índex de skills i capacitats
 - [[skill-consell-bundle/SKILL|skill-consell-bundle]]: Generació de bundle per al consell
 - [[skill-estudi-mercat/SKILL|skill-estudi-mercat]]: Estudi de mercat
 - [[skill-iaia-identitat/SKILL|skill-iaia-identitat]]: Identitat de la IAIA
+- [[skill-memoria-historica/SKILL|skill-memoria-historica]]: Memòria històrica i aprenentatges
 - [[socdepoble-workflow/SKILL|socdepoble-workflow]]: Workflow workflow
 - [[universal-page/SKILL|universal-page]]: Estàndard de pàgina universal

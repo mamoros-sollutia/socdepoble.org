@@ -3,7 +3,7 @@
   "destins_permesos": {
     "safata_entrada": "_wiki_de_poble/04_ESCRIPTORI/00_Bandeja_d_Entrada",
     "treball_actiu": "_wiki_de_poble/04_ESCRIPTORI",
-    "revisio_pendents": "90_revisar"
+    "revisio_pendents": "90_arxiu_historic"
   },
   "politica_arxiu": "READ-ONLY. Prohibit escriure a l'històric llevat d'ordre humana explícita.",
   "regles_tancament": {

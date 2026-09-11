@@ -21,8 +21,8 @@ export default function NotFoundPage() {
       lead="La pàgina que busques no existeix o ha canviat de lloc."
       labels={['404', 'No trobat']}
     >
-      <div className="page-intro ">
-        <Compass size={48}  />
+      <div className="sdp-404-cos">
+        <Compass size={48} className="sdp-404-icona" />
         <p>
           Pots tornar a l'inici per seguir explorant Sóc de Poble.
         </p>

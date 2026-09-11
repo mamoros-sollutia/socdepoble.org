@@ -52,6 +52,7 @@ NO PRODUÏRES CAP OUTPUT fins que hages completat el PAS 3 o el PAS 4.
 | prepara, planificació, planificar | PLANTILLA_PLANIFICACIO | [[_wiki_de_poble/02_saber/07_plantilles/plantilla_planificacio.md]] |
 | nova funcionalitat, afegir funcionalitat | GUIA_AMPLIACIO | [[_wiki_de_poble/02_saber/07_plantilles/plantilla_skill_agent.md]] |
 | què sé jo, abans de començar, skill-acte-reflex | REFLEXIO_PREVIA | [[.agents/skills/skill-acte-reflex/SKILL.md]] |
+| memoria, historia, arxiu, saber | MEMORIA_HISTORICA | [[.agents/skills/skill-memoria-historica/SKILL.md]] |
 | qualsevol altra acció | PLANTILLA_ISO_SDP (per defecte) | [[_wiki_de_poble/02_saber/plantilles/plantilla_iso_sdp.md]] |
 
 ## 3. Regla d'Or contra la Psicopatia
@@ -93,7 +94,7 @@ Hi ha un document específic anomenat **ACTA MARMOTA** que serveix per evitar el
 
 Quan s'acumulen massa "Actes Marmota" i ja perden la seua utilitat immediata per a la tasca actual:
 1. S'ha de redactar un **Acte General** per destil·lar el coneixement global (resumint allò més important).
-2. Totes les Actes Marmota velles i arxius que ja no siguen necessaris per a l'acció present de Sóc de Poble han de ser moguts fora de les carpetes operatives (com l'[[00_INDEX_ESCRIPTORI|Escriptori]]) cap a `_wiki_de_poble/90_Revisar_arxiu_historic/`.
+2. Totes les Actes Marmota velles i arxius que ja no siguen necessaris per a l'acció present de Sóc de Poble han de ser moguts fora de les carpetes operatives (com l'[[00_INDEX_ESCRIPTORI|Escriptori]]) cap a `_wiki_de_poble/90_arxiu_historic/`.
 
 No omitis mai aquest procés. La neteja de la Wiki depèn de tu.
 

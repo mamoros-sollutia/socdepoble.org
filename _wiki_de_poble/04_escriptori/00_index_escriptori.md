@@ -13,28 +13,15 @@ Ací només resideix la matèria viva. El que ha mort, descansa en l'arxiu.
 - [[00_INDEX_IDENTITAT]] (Nucli d'Identitat)
 - [[00_INDEX_Actes]] (Registre d'Actes)
 
-- [[00_index_escriptori]]
-- [[260910_2208_ABSENTS_admin.json]]
-- [[260910_2208_PROMPT_admin]]
-- [[260910_2318_ABSENTS_auditoria.json]]
-- [[260910_2318_BUNDLE_auditoria]]
-- [[260910_2318_PROMPT_auditoria]]
-- [[260910_2335_auditoria_destructiva_universal_manager]]
+- [[260911_0520_ACTA_MARMOTA_tancament_sessio]]
+- [[260911_0624_ABSENTS_auditoria.json]]
+- [[260911_0624_BUNDLE_auditoria]]
+- [[260911_0624_PROMPT_auditoria]]
+- [[260911_0645_informe_rescat_antiga_web]]
+- [[260911_0645_propostes_manifest_panell_control]]
+- [[260911_0645_cartografia_arxiu_wiki_de_poble_2gb]]
 
 ## 01_produccio
-- [[01_produccio/contracte_graella]]
 - [[01_produccio/260911_0006_tasques_ui_standardization]]
 - [[01_produccio/260911_0012_agenda_futur_extensio_chrome]]
-
-## Claude_260910_2132
-- [[Claude_260910_2132/260910_informe_poda_css.json]]
-- [[Claude_260910_2132/260910_informe_poda_css.txt]]
-- [[Claude_260910_2132/260910_seient5_poda_i_facana.patch]]
-- [[Claude_260910_2132/UniversalCard.jsx]]
-- [[Claude_260910_2132/index.js]]
-- [[Claude_260910_2132/tractor-poda-css.mjs]]
-
-## claude_260910_0514
-- [[claude_260910_0514/260910_auditoria_nomenclatura_wiki]]
-- [[claude_260910_0514/nomenclatura.json]]
-- [[claude_260910_0514/tractor_nomenclatura.mjs]]
+- [[01_produccio/contracte_graella]]

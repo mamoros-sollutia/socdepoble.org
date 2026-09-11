@@ -15,9 +15,8 @@ SECURITY DEFINER
 SET search_path = ''
 AS $$
 BEGIN
-  -- Validem que l'usuari estiga autenticat i siga superadmin
-  IF (auth.jwt() -> 'app_metadata' ->> 'role') != 'superadmin' THEN
-    RAISE EXCEPTION 'Accés denegat: només per a superadmins';
+  IF NOT COALESCE((SELECT private.es_superadmin()), FALSE) THEN
+    RAISE EXCEPTION 'SDP-ADMIN-001: cal rol de superadmin.' USING ERRCODE = '42501';
   END IF;
 
   RETURN (
@@ -33,6 +32,8 @@ BEGIN
   );
 END;
 $$;
+REVOKE EXECUTE ON FUNCTION public.admin_list_users() FROM PUBLIC, anon;
+GRANT EXECUTE ON FUNCTION public.admin_list_users() TO authenticated;
 
 -- 2. admin_list_organizations()
 -- Retorna la llista d'empreses/grups per al gestor.
@@ -43,8 +44,8 @@ SECURITY DEFINER
 SET search_path = ''
 AS $$
 BEGIN
-  IF (auth.jwt() -> 'app_metadata' ->> 'role') != 'superadmin' THEN
-    RAISE EXCEPTION 'Accés denegat: només per a superadmins';
+  IF NOT COALESCE((SELECT private.es_superadmin()), FALSE) THEN
+    RAISE EXCEPTION 'SDP-ADMIN-002: cal rol de superadmin.' USING ERRCODE = '42501';
   END IF;
 
   RETURN (
@@ -62,3 +63,5 @@ BEGIN
   );
 END;
 $$;
+REVOKE EXECUTE ON FUNCTION public.admin_list_organizations() FROM PUBLIC, anon;
+GRANT EXECUTE ON FUNCTION public.admin_list_organizations() TO authenticated;

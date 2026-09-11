@@ -21,7 +21,7 @@ export function usePerfil() {
    de veres, no del que voldríem que permeteren.
    ═══════════════════════════════════════════════════════════════════ */
 
-function ajustosPersona(perfil = {}) {
+export function ajustosPersona(perfil = {}) {
   return [
     { id: 'nom', titol: 'Nom', camp: 'full_name', valor: perfil.full_name || '', obert: true },
     { id: 'avatar', titol: 'Foto de perfil', camp: 'avatar_url', valor: perfil.avatar_url || '', obert: true },
@@ -34,7 +34,7 @@ function ajustosPersona(perfil = {}) {
   ];
 }
 
-function ajustosOrganitzacio(org) {
+export function ajustosOrganitzacio(org) {
   const mana = org.role === 'owner' || org.role === 'admin';
   const tancat = 'Només qui administra aquesta organització ho pot canviar.';
   return [

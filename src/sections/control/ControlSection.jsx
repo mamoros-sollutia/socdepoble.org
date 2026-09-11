@@ -40,55 +40,70 @@ export default function ControlSection() {
         {/* Accions Principals - Quadres de Comandament */}
         <section>
           
+            <div className="sdp-card-grid" onClick={(e) => {
+              const card = e.target.closest('.sp-card--action');
+              if (card) {
+                navigate('/notes');
+              }
+            }}>
+              <UniversalCard 
+                variant="action"
+                icon={<FileText size={40} strokeWidth={1.5} />}
+                title="Publicar al Mur"
+                subtitle="Compartir novetats"
+              />
+              <UniversalCard 
+                variant="action"
+                icon={<Store size={40} strokeWidth={1.5} />}
+                title="Publicar al Mercat"
+                subtitle="Vendre productes"
+              />
+              <UniversalCard 
+                variant="action"
+                icon={<Calendar size={40} strokeWidth={1.5} />}
+                title="Publicar Esdeveniments"
+                subtitle="Crear agenda"
+              />
+              <UniversalCard 
+                variant="action"
+                icon={<MapPin size={40} strokeWidth={1.5} />}
+                title="Publicar al Mapa"
+                subtitle="Veure rutes"
+              />
+              <UniversalCard 
+                variant="action"
+                icon={<Car size={40} strokeWidth={1.5} />}
+                title="Compartir vehicle"
+                subtitle="Oferir o demanar viatge"
+              />
+              <UniversalCard 
+                variant="action"
+                icon={<PawPrint size={40} strokeWidth={1.5} />}
+                title="Animalets"
+                subtitle="Cercar propietaris o adoptar"
+              />
+              <UniversalCard 
+                variant="action"
+                icon={<MessageCircle size={40} strokeWidth={1.5} />}
+                title="Publicar al Xat"
+                subtitle="Crear anunci per a grups"
+              />
+            </div>
+        </section>
+
+        {/* Secció Utilitats Socials */}
+        <section className="ctl-section-utilitats">
+          <h2 className="ctl-section-title">Utilitats</h2>
+          <p className="lead ctl-section-lead">
+            Eines pràctiques d'utilitat social pensades per a facilitar la vida quotidiana al poble: gestió comptable autònoma, lectura de carpetes i suport a la comunitat.
+          </p>
           <div className="sdp-card-grid">
-            <UniversalIndicatorCard 
-              icon={<FileText size={40} strokeWidth={1.5} />}
-              title="Publicar al Mur"
-              subtitle="Compartir novetats"
-              onClick={() => navigate('/notes')}
-              iconColor="var(--sdp-accent)"
-            />
-            <UniversalIndicatorCard 
-              icon={<Store size={40} strokeWidth={1.5} />}
-              title="Publicar al Mercat"
-              subtitle="Vendre productes"
-              onClick={() => navigate('/notes')}
-              iconColor="var(--sdp-accent)"
-            />
-            <UniversalIndicatorCard 
-              icon={<Calendar size={40} strokeWidth={1.5} />}
-              title="Publicar Esdeveniments"
-              subtitle="Crear agenda"
-              onClick={() => navigate('/notes')}
-              iconColor="var(--sdp-accent)"
-            />
-            <UniversalIndicatorCard 
-              icon={<MapPin size={40} strokeWidth={1.5} />}
-              title="Publicar al Mapa"
-              subtitle="Veure rutes"
-              onClick={() => navigate('/notes')}
-              iconColor="var(--sdp-accent)"
-            />
-            <UniversalIndicatorCard 
-              icon={<Car size={40} strokeWidth={1.5} />}
-              title="Compartir vehicle"
-              subtitle="Oferir o demanar viatge"
-              onClick={() => navigate('/notes')}
-              iconColor="var(--sdp-accent)"
-            />
-            <UniversalIndicatorCard 
-              icon={<PawPrint size={40} strokeWidth={1.5} />}
-              title="Animalets perduts"
-              subtitle="Cercar els propietaris"
-              onClick={() => navigate('/notes')}
-              iconColor="var(--sdp-accent)"
-            />
-            <UniversalIndicatorCard 
-              icon={<MessageCircle size={40} strokeWidth={1.5} />}
-              title="Publicar al Xat"
-              subtitle="Crear anunci per a grups"
-              onClick={() => navigate('/notes')}
-              iconColor="var(--sdp-accent)"
+            <UniversalCard 
+              variant="action"
+              icon={<Receipt size={40} strokeWidth={1.5} />}
+              title="Gestoria de Poble"
+              subtitle="Comptabilitat i facturació trimestral"
+              onMainClick={() => { window.location.href = '/gestoria/index.html'; }}
             />
           </div>
         </section>
@@ -98,7 +113,6 @@ export default function ControlSection() {
           <UniversalButton onClick={() => navigate('/xat/0001')} variant="primary" icon={<MessageSquare size={18} />}>
             Missatges per a dubtes
           </UniversalButton>
-
 
           <UniversalButton variant="ghost" icon={<LogOut size={18} />}>
             Eixir del poble

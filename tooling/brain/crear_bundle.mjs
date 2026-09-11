@@ -72,6 +72,7 @@ const DIRECTORIS = [
   CAMINS.wiki,
   'assets',
   'supabase',
+  'tests',
 ];
 
 const FITXERS_OBLIGATORIS = [
@@ -155,7 +156,7 @@ const EXTENSIONS = new Set([
 ]);
 
 /** Directoris que no es trepitgen mai (a més dels globals d'arrel.mjs). */
-const DIRS_EXCLOSOS = new Set([...EXCLOSOS, 'cervells', '90_Revisar', '90_revisar', '90_arxiu_historic', '90_historic', '.husky', '.githooks']);
+const DIRS_EXCLOSOS = new Set([...EXCLOSOS, 'cervells', '90_arxiu_historic', '90_historic', '.husky', '.githooks']);
 
 /** Sostre termodinàmic orientatiu, en MB. Mai poda: només avisa. */
 const SOSTRE_MB = 2.5;
@@ -432,7 +433,7 @@ function principal() {
     );
     if (brossa.length > 0) {
       console.error("\n❌ [ALERTA COGNITIVA] L'Escriptori està brut (Hi ha bundles o estudis antics).");
-      console.error("   Has d'aplicar el protocol DORMIR (moure fitxers a 90_revisar)");
+      console.error("   Has d'aplicar el protocol DORMIR (moure fitxers a 90_arxiu_historic)");
       console.error("   abans de generar un nou abocament per evitar recursivitat i ofec termodinàmic.");
       console.error("   Fitxers detectats:");
       for (const f of brossa) console.error(`   · ${f}`);

@@ -33,7 +33,7 @@ function pickDeterministicImage(seed, options) {
 
 export function resolveAsset(path, basePath = '/', pluginUrl = '', version = '') {
   if (!path) return '';
-  if (/^https?:\/\//i.test(path)) return path;
+  if (/^(?:https?:\/\/|data:|blob:)/i.test(path)) return path;
   
   let base = String(basePath || '').replace(/\/$/, '');
   if (base === '/') base = '';

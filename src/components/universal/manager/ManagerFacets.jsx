@@ -12,7 +12,8 @@ export default function ManagerFacets() {
     setFacet, 
     clearFacet,
     colLeftCollapsed, 
-    setColLeftCollapsed 
+    setColLeftCollapsed,
+    facetsTitle
   } = useManager();
   
   const { mida, setPanellObert } = useAppGrid();
@@ -23,7 +24,7 @@ export default function ManagerFacets() {
     if (isCompact) setPanellObert('middle');
   };
 
-  const renderTreeNodes = (facetId, nodes, level = 0) => {
+  const renderTreeNodes = (facetId, nodes) => {
     if (!nodes || !Array.isArray(nodes)) return null;
 
     return nodes.map((node) => {
@@ -36,18 +37,13 @@ export default function ManagerFacets() {
             type="button"
             onClick={() => handleSelectFacet(facetId, node.id)}
             className={`univ-manager-facet-item ${isActive ? 'univ-manager-facet-item--active' : ''}`}
-            style={{ 
-              paddingLeft: `calc(var(--sdp-sp-6) + ${level * 24}px)`,
-              borderLeft: level > 0 ? '2px solid var(--sdp-color-borde)' : '2px solid transparent',
-              marginLeft: level > 0 ? 'var(--sdp-sp-2)' : '0'
-            }}
           >
             {Icon && <Icon size={18} strokeWidth={isActive ? 2.5 : 2} />}
             <span>{node.label || node.name}</span>
           </button>
           {node.children && node.children.length > 0 && (
             <div className="univ-manager-facet-tree-branch">
-              {renderTreeNodes(facetId, node.children, level + 1)}
+              {renderTreeNodes(facetId, node.children)}
             </div>
           )}
         </React.Fragment>
@@ -60,7 +56,7 @@ export default function ManagerFacets() {
       <aside className="notes-column collapsed">
         <AppGridColumn
           variant="collapsed"
-          titol="ÀMBITS"
+          titol={facetsTitle || 'CARPETES'}
           onReplega={() => setColLeftCollapsed(false)}
         />
       </aside>
@@ -70,7 +66,7 @@ export default function ManagerFacets() {
   return (
     <aside className="notes-column">
       <AppGridColumn
-        titol="ÀMBITS"
+        titol={facetsTitle || 'CARPETES'}
         plegable={!isCompact}
         onReplega={() => setColLeftCollapsed(true)}
       />

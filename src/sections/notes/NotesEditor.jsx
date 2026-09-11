@@ -48,24 +48,31 @@ export default function NotesEditor() {
     if (!editor || editor.isDestroyed || !activeNote) return;
     try {
       if (editor.getHTML() !== activeNote.content) {
-        editor.commands.setContent(activeNote.content || '');
+        editor.commands.setContent(activeNote.content || '', false);
       }
     } catch (err) {
       console.warn('Editor sync skipped (Fast Refresh / not ready)', err);
     }
   }, [activeNote?.id, editor]);
 
-  // Guardat segur al canviar de nota o desmuntar
+  // Guardat segur al canviar de nota, desmuntar o en tancar la pestanya (pagehide)
   useEffect(() => {
     const currentId = activeNote?.id;
-    return () => {
+
+    const flushSave = () => {
       if (timeoutRef.current && pendingSaveRef.current.id === currentId) {
         clearTimeout(timeoutRef.current);
         saveNoteField(currentId, 'content', pendingSaveRef.current.content);
         pendingSaveRef.current = { id: null, content: null };
       }
     };
-  }, [activeNote?.id]);
+
+    window.addEventListener('pagehide', flushSave);
+    return () => {
+      window.removeEventListener('pagehide', flushSave);
+      flushSave();
+    };
+  }, [activeNote?.id, saveNoteField]);
 
   if (!activeNote) {
     return (

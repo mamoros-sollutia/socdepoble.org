@@ -25,7 +25,7 @@ export class VerificadorSCC {
         // Excepte carpetes ocultes, de sistema i ignorades per SCC
         if (
           item.startsWith('.') || 
-          ['node_modules', 'dist', 'src', 'scratch', 'supabase', '_templates', 'scripts', 'public', '90_arxiu_historic', '90_revisar'].includes(item)
+          ['node_modules', 'dist', 'src', 'scratch', 'supabase', '_templates', 'scripts', 'public', '90_arxiu_historic', '90_arxiu_historic'].includes(item)
         ) continue;
         
         const itemPath = join(dirPath, item);
@@ -206,7 +206,7 @@ export class VerificadorSCC {
         
         // Excepcions lògiques: les plantilles no cal que estiguen enllaçades al graf principal per a no embrutar.
         const relNode = relative(this.wikiRoot, node);
-        if (relNode.includes('/07_plantilles/') || relNode.includes('/90_arxiu_historic/') || relNode.includes('/90_revisar/')) continue;
+        if (relNode.includes('/07_plantilles/') || relNode.includes('/90_arxiu_historic/') || relNode.includes('/90_arxiu_historic/')) continue;
 
         this.errors.push({
           code: "ORPHAN_OPERATIVE",

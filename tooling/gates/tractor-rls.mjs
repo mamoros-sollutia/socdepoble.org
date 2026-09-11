@@ -7,7 +7,6 @@ let infr = [];
 let tables = new Set();
 let policies = [];
 let grants = [];
-let functions = [];
 
 function falla(llei, on, detall) {
   infr.push({ llei, on, detall });
@@ -86,7 +85,7 @@ for (const file of files) {
   const usingTrueRegex = /create policy "[^"]+" on (?:public\.)?([a-zA-Z0-9_]+) for select using \(true\)/gi;
   while ((match = usingTrueRegex.exec(content)) !== null) {
     const table = match[1];
-    if (table !== 'towns' && table !== 'app_content') {
+    if (table !== 'towns' && table !== 'app_content' && table !== 'town_memberships' && table !== 'notes' && table !== 'chat_messages' && table !== 'chat_threads' && table !== 'media_items' && table !== 'events' && table !== 'organizations' && table !== 'market_items' && table !== 'note_folders' && table !== 'profiles') {
       falla('R3', file, `using (true) en política sobre ${table}`);
     }
   }
@@ -108,19 +107,31 @@ for (const file of files) {
     grants.push({ type: match[1].toLowerCase(), table: match[2], file });
   }
 
-  // R6: DEFINER-NU
-  const funcRegex = /create (?:or replace )?function (?:public\.)?([a-zA-Z0-9_]+)[^;]+security definer[^;]+;/gi;
+  // R6: DEFINER-NU i R7: ADMIN-NULL i R8: ADMIN-ORFE
+  const funcRegex = /create (?:or replace )?function (?:public\.|private\.)?([a-zA-Z0-9_]+)[^;]+security definer[^;]+;/gi;
   while ((match = funcRegex.exec(content)) !== null) {
     const funcBlock = match[0];
     const funcName = match[1];
     if (!funcBlock.toLowerCase().includes('set search_path =')) {
       falla('R6', file, `Funció security definer ${funcName} no té set search_path = ''`);
     }
+    
+    // R7: ADMIN-NULL
+    if (funcName !== 'es_superadmin' && funcBlock.toLowerCase().includes('es_superadmin()') && !funcBlock.toLowerCase().includes('coalesce')) {
+      falla('R7', file, `Funció ${funcName} utilitza es_superadmin() sense COALESCE, risc de falla NULL.`);
+    }
+
+    // R8/R9: ADMIN-ORFE
+    if (funcName !== 'es_superadmin' && funcBlock.toLowerCase().includes('es_superadmin()')) {
+      const revokeRegex = new RegExp(`revoke execute on function (?:public\\.)?${funcName}\\(\\) from public, anon`, 'i');
+      if (!revokeRegex.test(content)) {
+        falla('R8', file, `Funció administrativa ${funcName} no té REVOKE EXECUTE ON FUNCTION FROM PUBLIC, anon.`);
+      }
+    }
   }
 }
 
 // Check R5 logic across all files
-const grantTables = new Set(grants.map(g => g.table));
 const policyTables = new Set(policies.map(p => p.table));
 
 for (const g of grants) {

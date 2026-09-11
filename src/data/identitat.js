@@ -130,6 +130,33 @@ export function desaSessio(sessio) {
   return true;
 }
 
+/** Actualitza camps de l'usuari a la sessió efímera i avisa la UI via sdp:auth-change. */
+export function actualitzaUsuariSessio(novesDades = {}) {
+  const usuari = getEfimer(CLAU_USUARI, null);
+  if (!usuari) return null;
+
+  const actualitzat = {
+    ...usuari,
+    ...novesDades,
+    user_metadata: {
+      ...(usuari.user_metadata || {}),
+      ...(novesDades.user_metadata || {}),
+      ...(novesDades.avatar_url ? { avatar_url: novesDades.avatar_url } : {}),
+      ...(novesDades.full_name ? { full_name: novesDades.full_name, name: novesDades.full_name } : {}),
+      ...(novesDades.town_name ? { town_name: novesDades.town_name } : {})
+    },
+    ...(novesDades.avatar_url ? { avatar_url: novesDades.avatar_url } : {})
+  };
+
+  setEfimer(CLAU_USUARI, actualitzat);
+
+  if (typeof window !== 'undefined') {
+    window.dispatchEvent(new CustomEvent('sdp:auth-change', { detail: { user: actualitzat } }));
+  }
+
+  return actualitzat;
+}
+
 /** Esborra la sessió sencera. Les dues capes: la nova i el llegat. */
 export function esborraSessio() {
   delEfimer(CLAU_JWT);
@@ -160,25 +187,3 @@ export async function reclamaContingutDelConvidat() {
   return { migrat: 0 };
 }
 
-/** 
- * ============================================================================
- * SESSIÓ DE SUPERADMIN LOCAL
- * ============================================================================
- * El Mode Administrador utilitza un bypass per saltar-se RLS a Supabase.
- * Aquesta identitat és exclusivament per a l'UI i accés a funcions RPC protegides.
- */
-export const CLAU_LOCAL_ADMIN = 'socdepoble-local-admin';
-
-export function esAdminLocal() {
-  const adminToken = getEfimer(CLAU_LOCAL_ADMIN, null);
-  return !!adminToken;
-}
-
-export function desaAdminLocal(tokenSeu) {
-  setEfimer(CLAU_LOCAL_ADMIN, tokenSeu || 'mestre');
-  return true;
-}
-
-export function tancaAdminLocal() {
-  delEfimer(CLAU_LOCAL_ADMIN);
-}

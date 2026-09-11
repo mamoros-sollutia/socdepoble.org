@@ -7,7 +7,9 @@ import {
   createOrganization,
   listMyOrganizations,
   loginWithMagicLink,
-  loginWithGoogle
+  loginWithGoogle,
+  registerWithPassword,
+  loginWithPassword
 } from '../../data/backendPort.js';
 import {
   findSeedOrganization,
@@ -16,11 +18,7 @@ import {
 import { useSession } from '../../app/contexts/SessionContext';
 import { useUIState } from '../../app/contexts/UIContext';
 import {
-  OnboardingComplete,
-  OrganizationStep,
-  RegistrationStep,
-  IdentityForkStep,
-  ClaimStep
+  RegistrationStep
 } from './OnboardingSteps.jsx';
 
 export default function OnboardingSection() {
@@ -33,18 +31,14 @@ export default function OnboardingSection() {
   const [busyStep, setBusyStep] = useState(null);
   const [googleError, setGoogleError] = useState('');
   const [error, setError] = useState('');
-  const [onboardingPath, setOnboardingPath] = useState(null); // 'create' | 'claim' | null
+  useEffect(() => {
+    if (currentUser) {
+      // Bypasses the old onboarding steps, goes straight to dashboard
+      navigate('/el-meu-perfil', { replace: true });
+    }
+  }, [currentUser, navigate]);
 
-  const company = findSeedOrganization(organizations, seed.company);
-  const group = findSeedOrganization(organizations, seed.group, company?.id);
-  
-  const activeStep = useMemo(() => {
-    if (!currentUser) return 0;
-    if (onboardingPath === null) return 1; // IdentityFork
-    if (onboardingPath === 'create' && !company) return 2;
-    if (onboardingPath === 'claim') return 2; // ClaimStep
-    return 3; // Complete
-  }, [currentUser, onboardingPath, company]);
+  const activeStep = 0;
 
   const loadOrganizations = useCallback(async (signal) => {
     if (!currentUser?.id) {
@@ -83,39 +77,34 @@ export default function OnboardingSection() {
     }
   };
 
-  const createCompany = async (blueprint) => {
-    setBusyStep('company');
+  const handleRegister = async (fields) => {
+    setBusyStep('register');
     setError('');
     try {
-      const created = await createOrganization(blueprint, externalConfig);
-      setOrganizations((current) => [...current.filter((item) => item.id !== created.id), created]);
-      showToast('L’empresa Sóc de Poble ja està creada.', 'success');
-    } catch (creationError) {
-      setError(readableBackendError(creationError));
+      await registerWithPassword(fields.email, fields.password, { full_name: fields.name }, externalConfig);
+      showToast('Compte creat. Si cal, comprova el teu correu.', 'success');
+      window.dispatchEvent(new CustomEvent('sdp:auth-change'));
+    } catch (err) {
+      setError(readableBackendError(err));
     } finally {
       setBusyStep(null);
     }
   };
 
-/*
-  const createGroup = async (blueprint) => {
-    if (!company) return;
-    setBusyStep('group');
+  const handleLogin = async (fields) => {
+    setBusyStep('register');
     setError('');
     try {
-      const created = await createOrganization({
-        ...blueprint,
-        parentOrganizationId: company.id
-      }, externalConfig);
-      setOrganizations((current) => [...current.filter((item) => item.id !== created.id), created]);
-      showToast('El grup Rentonar ja està creat.', 'success');
-    } catch (creationError) {
-      setError(readableBackendError(creationError));
+      await loginWithPassword(fields.email, fields.password, externalConfig);
+      showToast('Benvingut de nou al Mas!', 'success');
+      window.dispatchEvent(new CustomEvent('sdp:auth-change'));
+    } catch (err) {
+      setError(readableBackendError(err));
     } finally {
       setBusyStep(null);
     }
   };
-*/
+
 
   const googleLogin = async () => {
     setBusyStep('register');
@@ -134,9 +123,8 @@ export default function OnboardingSection() {
   return (
     <UniversalPage
       title="Benvinguda al Mas Electrònic"
-      subtitle="Cada identitat al seu lloc"
-      lead="Entra primer com a persona. El teu perfil serà sempre privat (ningú veurà que estàs dins) i només serà públic si tu ho decideixes. Una vegada a dins, podràs crear els grups o empreses que necessites. Nota: Encara no tenim operativa l'alta directa per a Ajuntaments i altres institucions oficials."
-      labels={['Online-First', 'Perfil privat', 'RLS']}
+      lead="Entra per a participar. A l'interior podràs configurar la teua identitat i gestionar grups o empreses."
+      labels={['Online-First', 'Perfil privat', 'RGPD Segur']}
       chrome="system"
       showLogos={true}
     >
@@ -184,44 +172,11 @@ export default function OnboardingSection() {
           <RegistrationStep
             isBusy={busyStep === 'register'}
             error={error}
-            onMagicLink={sendMagicLink}
+            onRegister={handleRegister}
+            onLogin={handleLogin}
             onClearError={() => setError('')}
           />
-        ) : activeStep === 1 ? (
-          <IdentityForkStep
-            onCreateNew={() => setOnboardingPath('create')}
-            onClaimExisting={() => setOnboardingPath('claim')}
-            onSkip={() => navigate('/xat', { replace: true })}
-          />
-        ) : activeStep === 2 && onboardingPath === 'create' ? (
-          <OrganizationStep
-            key="company"
-            blueprint={seed.company}
-            isBusy={busyStep === 'company'}
-            error={error}
-            onCreate={createCompany}
-            onClearError={() => setError('')}
-            onSkip={() => navigate('/xat', { replace: true })}
-          />
-        ) : activeStep === 2 && onboardingPath === 'claim' ? (
-          <ClaimStep
-            organizations={organizations}
-            onClaim={() => {
-              // Stub for claim, will need backend logic, currently just skip
-              showToast('Sol·licitud de reclamació enviada', 'success');
-              navigate('/xat', { replace: true });
-            }}
-            onBack={() => setOnboardingPath(null)}
-            isBusy={busyStep === 'claim'}
-            error={error}
-          />
-        ) : (
-          <OnboardingComplete
-            company={company || seed.company}
-            group={group || seed.group}
-            onFinish={() => navigate('/xat', { replace: true })}
-          />
-        )}
+        ) : null}
       </div>
     </UniversalPage>
   );

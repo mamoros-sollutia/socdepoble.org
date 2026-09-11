@@ -2,20 +2,30 @@ import React, { useState, useEffect } from 'react';
 import AppGridColumn from '../../layout/AppGridColumn';
 import { useAppGrid } from '../../layout/AppGridShell';
 import { useManager } from './ManagerContext';
+import ManagerItemCard from './ManagerItemCard';
 import { Search, Plus } from 'lucide-react';
 import './UniversalManager.css';
 
-export default function ManagerList({ renderItem, onActionCreate, createLabel = 'CREAR' }) {
-  const { 
-    filteredItems, 
-    activeItemId, 
-    setActiveItemId, 
-    searchQuery: ctxSearchQuery, 
+/**
+ * La llista del gestor. És l'ÚNICA que pinta fitxes: els consumidors només
+ * projecten dades amb `getItemCard(item) → { titol, subtitol, imatge, icona }`.
+ *
+ * P0 · 260911: la identitat de cada fila és `getItemId(item)`, la mateixa que
+ * usa el context. Abans era `item.id`: al Perfil els id d'ajust es repetixen
+ * entre identitats, les claus xocaven i clicar qualsevol ajust obria el primer.
+ */
+export default function ManagerList({ getItemCard, onActionCreate, createLabel = 'CREAR' }) {
+  const {
+    filteredItems,
+    activeItemId,
+    setActiveItemId,
+    getItemId,
+    searchQuery: ctxSearchQuery,
     setSearchQuery: setCtxSearchQuery,
     colMiddleCollapsed,
     setColMiddleCollapsed
   } = useManager();
-  
+
   const { mida, setPanellObert } = useAppGrid();
   const isCompact = mida !== 'ample';
   const [localQuery, setLocalQuery] = useState(ctxSearchQuery);
@@ -31,7 +41,7 @@ export default function ManagerList({ renderItem, onActionCreate, createLabel = 
 
   const handleSelect = (id) => {
     setActiveItemId(id);
-    if (isCompact) setPanellObert('right');
+    if (isCompact) setPanellObert(null);
   };
 
   if (colMiddleCollapsed && !isCompact) {
@@ -53,7 +63,7 @@ export default function ManagerList({ renderItem, onActionCreate, createLabel = 
         plegable={!isCompact}
         onReplega={() => setColMiddleCollapsed(true)}
       />
-      
+
       <div className="notes-list-header">
         <div className="search-bar">
           <Search size={18} aria-hidden="true" />
@@ -68,48 +78,37 @@ export default function ManagerList({ renderItem, onActionCreate, createLabel = 
       </div>
 
       <div className="notes-column__body no-padding sdp-scrollable">
-        <ul style={{ listStyle: 'none', margin: 0, padding: 0 }}>
-          {filteredItems.map(item => {
-            const isActive = item.id === activeItemId;
+        <ul className="sdp-gestor-llista">
+          {filteredItems.map((item) => {
+            const id = getItemId(item);
+            const fitxa = getItemCard
+              ? getItemCard(item)
+              : { titol: item.name || item.title || String(id) };
             return (
-              <li 
-                key={item.id} 
-                className={`univ-manager-list-item ${isActive ? 'univ-manager-list-item--active' : ''}`}
-                onClick={() => handleSelect(item.id)}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    handleSelect(item.id);
-                  }
-                }}
-              >
-                {renderItem ? renderItem(item, isActive) : (
-                  <div>
-                    <strong style={{ display: 'block' }}>{item.name || item.title || item.id}</strong>
-                  </div>
-                )}
+              <li key={id}>
+                <ManagerItemCard
+                  {...fitxa}
+                  actiu={id === activeItemId}
+                  onSelecciona={() => handleSelect(id)}
+                />
               </li>
             );
           })}
           {filteredItems.length === 0 && (
-            <li className="univ-manager-empty">
-              Cap element trobat.
-            </li>
+            <li className="sdp-gestor-buit">Cap element trobat.</li>
           )}
         </ul>
       </div>
 
       {onActionCreate && (
         <div className="univ-manager-create-action">
-           <button 
-             className="btn btn-primary univ-manager-create-btn" 
-             onClick={onActionCreate}
-           >
-             <Plus size={18} />
-             {createLabel}
-           </button>
+          <button
+            className="btn btn-primary univ-manager-create-btn"
+            onClick={onActionCreate}
+          >
+            <Plus size={18} />
+            {createLabel}
+          </button>
         </div>
       )}
     </aside>

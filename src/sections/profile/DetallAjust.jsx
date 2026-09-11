@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { usePerfil } from './PerfilContext.jsx';
 import { logout } from '../../data/backendPort.js';
 import { useNavigate } from '../../app/contexts/RouterContext';
 import { compressImage } from '../../utils/imageUtils.js';
@@ -7,8 +6,7 @@ import UniversalToolbar from '../../components/universal/UniversalToolbar';
 import UniversalEditorShell from '../../components/universal/UniversalEditorShell';
 import { FileText } from 'lucide-react';
 
-export default function DetallAjust() {
-  const { ajust, identitat, guardarAjust } = usePerfil();
+export default function DetallAjust({ ajust, identitat, guardarAjust }) {
   const navigate = useNavigate();
 
   const [valorTemp, setValorTemp] = useState('');

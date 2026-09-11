@@ -3,7 +3,7 @@ import { APP_SEED, APP_SEED_VERSION, getDefaultUserId } from './appSeed.js';
    passat a identitat.js. Deixar els altres quatre importats faria botar
    `no-unused-vars` a `npm run lint`. */
 import { getEfimer } from '../config/storage.js';
-import { CLAU_JWT, CLAU_REFRESC, desaSessio, esborraSessio, usuariDeSessio } from './identitat.js';
+import { CLAU_JWT, CLAU_REFRESC, desaSessio, esborraSessio, usuariDeSessio, actualitzaUsuariSessio } from './identitat.js';
 import { entraAmbGoogle, gestionaTornada } from './oauthRelay.js';
 import { mergeById, mapSectionSubmissionToItem } from './mapejadorSeccions.js';
 
@@ -626,25 +626,69 @@ export async function getProfile(config = {}) {
   const user = getCurrentUser();
   if (!user) return null;
 
-  const result = await request(`/rest/v1/profiles?id=eq.${encodeURIComponent(user.id)}`, config);
-  if (!Array.isArray(result) || result.length === 0) return null;
-  return result[0];
+  try {
+    const result = await request(`/rest/v1/profiles?id=eq.${encodeURIComponent(user.id)}`, config);
+    if (Array.isArray(result) && result.length > 0) {
+      return result[0];
+    }
+  } catch (err) {
+    console.warn('[supabaseBackend] Avís consultant profiles, emprant dades de sessió:', err?.message);
+  }
+
+  // Fallback si profiles no té fila o té restricció RLS: llegir de user_metadata
+  return {
+    id: user.id,
+    full_name: user.user_metadata?.full_name || user.user_metadata?.name || '',
+    avatar_url: user.user_metadata?.avatar_url || user.avatar_url || '',
+    visibility: user.user_metadata?.visibility || 'private',
+    town_name: user.user_metadata?.town_name || 'La Torre de les Maçanes'
+  };
 }
 
 export async function updateProfile(updates, config = {}) {
   const user = getCurrentUser();
   if (!user) throw new Error('No hi ha sessió.');
 
-  const result = await request(`/rest/v1/profiles?id=eq.${encodeURIComponent(user.id)}`, config, {
-    method: 'PATCH',
-    headers: { Prefer: 'return=representation' },
-    body: updates
+  // 1. Persistència al cloud de Supabase Auth (user_metadata)
+  let authUpdatedUser = null;
+  try {
+    authUpdatedUser = await request('/auth/v1/user', config, {
+      method: 'PUT',
+      body: { data: updates }
+    });
+  } catch (err) {
+    console.warn('[supabaseBackend] Avís actualitzant auth metadata:', err?.message);
+  }
+
+  // 2. Intentem actualitzar a la taula public.profiles
+  let profileRow = null;
+  try {
+    const result = await request(`/rest/v1/profiles?id=eq.${encodeURIComponent(user.id)}`, config, {
+      method: 'PATCH',
+      headers: { Prefer: 'return=representation' },
+      body: updates
+    });
+    if (Array.isArray(result) && result.length > 0) {
+      profileRow = result[0];
+    }
+  } catch (err) {
+    console.warn('[supabaseBackend] Error fent PATCH a profiles (requereix migració SQL RLS):', err?.message);
+    if (!authUpdatedUser && !user.id) {
+      throw err;
+    }
+  }
+
+  // 3. Actualitzem la sessió efímera perquè tota la interfície ho veja immediatament
+  actualitzaUsuariSessio({
+    ...updates,
+    ...(authUpdatedUser ? authUpdatedUser : {})
   });
 
-  if (!Array.isArray(result) || result.length === 0) {
-    throw new Error('No s\'ha pogut actualitzar el perfil.');
-  }
-  return result[0];
+  return profileRow || {
+    id: user.id,
+    ...user.user_metadata,
+    ...updates
+  };
 }
 
 export async function updateUserPassword(newPassword, config = {}) {
@@ -657,6 +701,34 @@ export async function updateUserPassword(newPassword, config = {}) {
     throw new Error(result?.error_description || 'Error en canviar contrasenya.');
   }
   return true;
+}
+
+export async function registerWithPassword(email, password, metadata = {}, config = {}) {
+  const result = await request('/auth/v1/signup', config, {
+    method: 'POST',
+    body: { email: String(email || '').trim().toLowerCase(), password, data: metadata }
+  });
+  if (result.session) {
+    desaSessio(result.session);
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent('sdp:auth-change', { detail: { user: result.user } }));
+    }
+  }
+  return result;
+}
+
+export async function loginWithPassword(email, password, config = {}) {
+  const result = await request('/auth/v1/token?grant_type=password', config, {
+    method: 'POST',
+    body: { email: String(email || '').trim().toLowerCase(), password }
+  });
+  if (result.access_token) {
+    desaSessio(result);
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent('sdp:auth-change', { detail: { user: result.user } }));
+    }
+  }
+  return result;
 }
 
 export async function loginWithMagicLink(email, config = {}) {

@@ -7,4 +7,5 @@ export const usersManagerConfig = {
   facets: [],
   getItemId: (item) => item.id,
   getItemSearchText: (item) => item.email || '',
+  getItemCard: (usuari) => ({ titol: usuari.email, icona: User }),
 };

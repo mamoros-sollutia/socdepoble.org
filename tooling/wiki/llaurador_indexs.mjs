@@ -58,7 +58,7 @@ const JSON_OUT = process.argv.includes('--json');
  * documents. Des de `00_INDEX`, 81. L'escriptori és una fulla, no una arrel. */
 const ANCORES = (ARG('ancores') ?? '_wiki_de_poble/00_index.md').split(',');
 const ARRELS = (ARG('arrels') ?? '_wiki_de_poble,.agents').split(',');
-const EXCLOU = /(^|\/)(node_modules|\.git|\.obsidian|dist|build|90_historic|90_revisar|\.quarantena-260830|\.agents\/deute|\.sdp-paperera)(\/|$)/;
+const EXCLOU = /(^|\/)(node_modules|\.git|\.obsidian|dist|build|90_historic|90_arxiu_historic|\.quarantena-260830|\.agents\/deute|\.sdp-paperera)(\/|$)/;
 
 const INICI = '<!-- LLAURADOR:ADOPCIONS:INICI -->';
 const FI = '<!-- LLAURADOR:ADOPCIONS:FI -->';

@@ -36,6 +36,7 @@ const PerfilShell = lazy(() => import('../sections/profile/PerfilShell'));
 const ItemDetailSection = lazy(() => import('../sections/detail/ItemDetailSection'));
 const PageDetailSection = lazy(() => import('../sections/detail/PageDetailSection'));
 const RealitatSection = lazy(() => import('../sections/realitat/RealitatSection'));
+const GestoriaSection = lazy(() => import('../sections/gestoria/GestoriaSection'));
 import NotFoundPage from '../pages/NotFoundPage';
 import { CoreContentProvider, useCoreContent } from './contexts/CoreContentContext';
 import { MurProvider, useMur } from '../sections/mur/MurContext';
@@ -364,22 +365,25 @@ const TopBar = memo(function TopBar() {
         </button>
         <button 
           type="button" 
-          className="icon sdp-top-bar-btn" 
+          className="icon sdp-top-bar-btn sdp-top-bar-btn--avatar" 
           onClick={() => navigateWithTransition(currentUser ? '/el-meu-perfil' : '/registre')} 
           aria-label={t('nav.perfil', 'Perfil')} 
           title={t('nav.perfil', 'Perfil')}
         >
-          {currentUser ? (
-            currentUser.avatar_url ? (
-              <img src={currentUser.avatar_url} alt="El meu perfil" className="app-avatar-img" />
-            ) : (
-              <div className="sdp-avatar-placeholder">
-                <UserRound size={18} aria-hidden="true" focusable="false" />
-              </div>
-            )
-          ) : (
-            <UserRound aria-hidden="true" focusable="false" />
-          )}
+          {(() => {
+            const avatar = currentUser?.avatar_url || currentUser?.user_metadata?.avatar_url || currentUser?.user_metadata?.picture;
+            if (currentUser && avatar) {
+              return <img src={avatar} alt={currentUser?.user_metadata?.name || currentUser?.full_name || 'El meu perfil'} className="app-avatar-img" />;
+            }
+            if (currentUser) {
+              return (
+                <div className="sdp-avatar-placeholder">
+                  <UserRound size={18} aria-hidden="true" focusable="false" />
+                </div>
+              );
+            }
+            return <UserRound aria-hidden="true" focusable="false" />;
+          })()}
         </button>
       </div>
     </header>
@@ -551,6 +555,9 @@ function AppRoutes() {
         <Route path="/crear-compte" element={<Navigate to="/registre" replace />} />
         
         <Route path="/control" element={<ControlSection />} />
+        <Route path="/utilitats" element={<ControlSection />} />
+        <Route path="/gestoria" element={<GestoriaSection />} />
+        <Route path="/utilitats/gestoria" element={<GestoriaSection />} />
         <Route path="/connectar" element={<ConnectarSection agents={agents} />} />
         <Route path="/projecte" element={<Navigate to="/jo/projecte" replace />} />
         <Route path="/page/:slug" element={<PageDetailSection />} />
@@ -567,6 +574,8 @@ function AppRoutes() {
         <Route path="/ia" element={<Navigate to="/jo/ia" replace />} />
         <Route path="/anima" element={<Navigate to="/jo/ia" replace />} />
         <Route path="/iaia" element={<Navigate to="/jo/xat/iaia-maria" replace />} />
+        <Route path="/el-meu-perfil" element={<Navigate to="/jo/el-meu-perfil" replace />} />
+        <Route path="/perfil" element={<Navigate to="/jo/el-meu-perfil" replace />} />
         
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

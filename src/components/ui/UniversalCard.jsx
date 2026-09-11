@@ -136,7 +136,7 @@ function Etiqueta({ label }) {
   );
 }
 
-function CardBody({ imatge, imageAlt, calendarBadge, price, title, TitleTag, subtitle, body, etiquetes, copyright }) {
+function CardBody({ imatge, imageAlt, calendarBadge, price, icon, title, TitleTag, subtitle, body, etiquetes, copyright }) {
   return (
     <>
       {imatge && (
@@ -154,7 +154,14 @@ function CardBody({ imatge, imageAlt, calendarBadge, price, title, TitleTag, sub
       >
         {calendarBadge && <CalendarBadge badge={calendarBadge} />}
         {price && <p className="sp-card-price">{price}</p>}
-        {title && <TitleTag className="sp-card-title">{title}</TitleTag>}
+        {title && icon ? (
+          <div className="sp-card-heading-with-icon">
+            <span className="sp-card-title-icon">{icon}</span>
+            <TitleTag className="sp-card-title">{title}</TitleTag>
+          </div>
+        ) : title ? (
+          <TitleTag className="sp-card-title">{title}</TitleTag>
+        ) : null}
         {subtitle && <h4 className="sp-card-subtitle">{subtitle}</h4>}
         {body && (typeof body === 'string'
           ? <p className="sp-card-text">{body}</p>
@@ -182,6 +189,8 @@ function CardFooter({ accions, connectar }) {
 }
 
 export function UniversalCard({
+  variant = 'default',
+  icon,
   title,
   headingLevel = 'h3',
   subtitle,
@@ -303,8 +312,14 @@ export function UniversalCard({
 
   const peuVisible = hasFooter !== false && (accions.length > 0 || Boolean(connectar));
 
+  const cardClasses = [
+    'sp-card',
+    isAvis && 'sp-card--avis',
+    variant !== 'default' && `sp-card--${variant}`
+  ].filter(Boolean).join(' ');
+
   return (
-    <article className={['sp-card', isAvis && 'sp-card--avis'].filter(Boolean).join(' ')}>
+    <article className={cardClasses}>
       {(autor || pin || dataHora) && (
         <CardHeader autor={autor} autorHref={safeAuthorHref} pin={pin} dataHora={dataHora} />
       )}
@@ -320,6 +335,7 @@ export function UniversalCard({
         imageAlt={imageAlt}
         calendarBadge={calendarBadge}
         price={price}
+        icon={icon}
         title={title}
         TitleTag={TitleTag}
         subtitle={subtitle}
