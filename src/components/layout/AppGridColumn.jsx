@@ -1,4 +1,4 @@
-import { ChevronDown, ChevronRight, PanelLeftClose } from 'lucide-react';
+import { ChevronDown, ChevronRight, PanelLeftClose, PanelRightOpen } from 'lucide-react';
 
 /* ═══════════════════════════════════════════════════════════════════
    AppGridColumn — capçalera única de columna per a tot Sóc de Poble
@@ -29,7 +29,22 @@ export default function AppGridColumn({
   const esAcordio = variant === 'accordion';
   const Chevron = obert ? ChevronDown : ChevronRight;
 
+  const actionButtons = accions.map((a) => (
+    <button
+      key={a.id}
+      type="button"
+      className="app-grid-col-header__accio"
+      onClick={() => a.onAcciona?.()}
+      disabled={a.desactivat || typeof a.onAcciona !== 'function'}
+      aria-label={a.etiqueta}
+      title={a.etiqueta}
+    >
+      <a.icona size={18} aria-hidden focusable="false" />
+    </button>
+  ));
+
   if (variant === 'collapsed') {
+    const CollapsedIcon = Icona || PanelRightOpen;
     return (
       <div className="app-grid-col-header app-grid-col-header--collapsed">
         <button
@@ -39,8 +54,9 @@ export default function AppGridColumn({
           aria-label={`Expandir ${titol}`}
           title={`Expandir ${titol}`}
         >
-          {Icona ? <Icona size={20} aria-hidden focusable="false" /> : null}
+          <CollapsedIcon size={20} aria-hidden focusable="false" />
         </button>
+        {actionButtons}
       </div>
     );
   }
@@ -69,21 +85,8 @@ export default function AppGridColumn({
       )}
 
       <div className="app-grid-col-header__accions">
-        {accions.map((a) => (
-          <button
-            key={a.id}
-            type="button"
-            className="app-grid-col-header__accio"
-            /* Sense arguments a posta: si passàrem l'event del DOM, arribaria
-               com a càrrega útil a l'acció del domini i la corromperia. */
-            onClick={() => a.onAcciona?.()}
-            disabled={a.desactivat || typeof a.onAcciona !== 'function'}
-            aria-label={a.etiqueta}
-            title={a.etiqueta}
-          >
-            <a.icona size={18} aria-hidden focusable="false" />
-          </button>
-        ))}
+        {/* Sense arguments a posta: l'event del DOM no és càrrega del domini. */}
+        {actionButtons}
 
         {onReplega ? (
           <button

@@ -85,6 +85,8 @@ export const CAMINS = Object.freeze({
   escriptori: '_wiki_de_poble/04_escriptori',
   indexEscriptori: '_wiki_de_poble/04_escriptori/00_index_escriptori.md',
   arxiuHistoric: '_wiki_de_poble/90_arxiu_historic',
+  actes: '_wiki_de_poble/10_actes',
+  skillsMirror: '_wiki_de_poble/02_saber/skills_mirror',
 
   src: 'src',
   tooling: 'tooling',
@@ -97,7 +99,7 @@ export const CAMINS = Object.freeze({
 /** Directoris que cap recorregut del tooling ha de trepitjar mai. */
 export const EXCLOSOS = Object.freeze(new Set([
   'node_modules', '.git', 'dist', 'build', '.next', 'vendor', 'coverage',
-  '.sdp-paperera', '.sdp-reflex', '.brain-reports', '.gemini', '.obsidian',
+  '.sdp-paperera', '.sdp-reflex', '.brain-reports', '.gemini', '.obsidian', '90_arxiu_historic'
 ]));
 
 /* ══════════════════════ Error diagnòstic ══════════════════════ */

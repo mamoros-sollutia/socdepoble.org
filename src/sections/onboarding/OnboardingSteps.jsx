@@ -10,6 +10,7 @@ import {
   MapPin
 } from 'lucide-react';
 import { validateRegistration } from './onboardingModel.js';
+import { PillToggle } from '../../components/ui/PillToggle.jsx';
 import { UniversalCard } from '../../components/universal/UniversalElements.jsx';
 
 export function RegistrationStep({ isBusy, error, confirmationEmail, onRegister, onLogin, onClearError }) {
@@ -82,26 +83,18 @@ export function RegistrationStep({ isBusy, error, confirmationEmail, onRegister,
             També comprens que estem en <strong>fase Beta</strong> (proves) i que les teues dades podrien patir reinicis o pèrdues.
           </p>
 
-          <div className="login-switcher ob-mb-15" role="tablist" aria-label="Opcions d’accés">
-            <button
-              type="button"
-              className={`pill ${mode === 'login' ? 'pill--active' : ''}`}
-              onClick={() => { setMode('login'); setErrors({}); }}
-              role="tab"
-              aria-selected={mode === 'login'}
-            >
-              Entrar
-            </button>
-            <button
-              type="button"
-              className={`pill ${mode === 'register' ? 'pill--active' : ''}`}
-              onClick={() => { setMode('register'); setErrors({}); }}
-              role="tab"
-              aria-selected={mode === 'register'}
-            >
-              Crear compte
-            </button>
-          </div>
+          {/* 260911: abans role="tab" sense tabpanel ni fletxes (patró ARIA
+              incomplet) i `.pill--active` sense regla CSS. */}
+          <PillToggle
+            className="sdp-pindola--centrada ob-mb-15"
+            etiqueta="Opcions d’accés"
+            valor={mode}
+            onCanvi={(v) => { setMode(v); setErrors({}); }}
+            opcions={[
+              { valor: 'login', text: 'Entrar' },
+              { valor: 'register', text: 'Crear compte' },
+            ]}
+          />
 
           {error ? <div className="alert alert-error" role="alert">{error}</div> : null}
 

@@ -1,18 +1,36 @@
-import React from 'react';
+import { lazy, Suspense } from 'react';
 import { UniversalPage } from '../../components/universal/UniversalPage';
+import { Link, useLocation, useSearchParams } from '../../app/contexts/RouterContext';
 import { DesignSectionContent } from './DesignSectionContent.jsx';
+import { PAGINES } from './cataleg/registre.js';
+import { Carregant } from '../../components/ui/estats.jsx';
+
+/* Cada pàgina del catàleg és un chunk: qui obri Fonaments no paga Formularis. */
+const PAGINA = {
+  estructura: lazy(() => import('./cataleg/PaginaEstructura.jsx')),
+  formularis: lazy(() => import('./cataleg/PaginaFormularis.jsx')),
+  superposicions: lazy(() => import('./cataleg/PaginaSuperposicions.jsx')),
+  retroalimentacio: lazy(() => import('./cataleg/PaginaRetroalimentacio.jsx')),
+  navegacio: lazy(() => import('./cataleg/PaginaNavegacio.jsx')),
+  inventari: lazy(() => import('./cataleg/PaginaInventari.jsx')),
+};
+
 export default function DesignSection() {
+  const [params] = useSearchParams();
+  /* /disseny redirigix a /jo/disseny i perd la query: els enllaços es fan
+     sobre la ruta real, no sobre l'àlies. */
+  const { pathname } = useLocation();
+  const demanada = params.get('pagina');
+  const actual = PAGINA[demanada] ? demanada : 'fonaments';
+  const Pagina = PAGINA[actual];
+
   return (
     <UniversalPage
       chrome="full"
       showLogos={true}
       title="Disseny"
-      labels={[
-        { text: 'Sistema', className: 'sdp-badge-system' },
-        { text: 'Pàgina', className: 'sdp-badge-tag' }
-      ]}
       subtitle="Sistema oficial de disseny per a Sóc de Poble"
-      lead="Inclou la Targeta Mestra, els colors oficials, i tots els elements preparats, inclús els skills i scripts, perquè qualsevol IA puga entendre este sistema i reproduir-lo."
+      lead="Cada component es documenta amb el seu espècimen viu, el contracte, l'accessibilitat i les regles de fes / no facis, perquè qualsevol persona o IA el puga reproduir sense endevinar."
       copyright="© Sóc de Poble / Fet per la IAIA i Nano Banana"
       heroImage="/assets/uploads/brain/ibanez_pedra_seca_design_1780873465211.png"
       authorName="Sóc de Poble"
@@ -20,8 +38,24 @@ export default function DesignSection() {
       time="23:29"
       date="22/3/22"
     >
+      <nav className="sdp-cataleg-nav" aria-label="Pàgines del sistema de disseny">
+        <ul className="sdp-cataleg-nav__llista">
+          {PAGINES.map((p) => (
+            <li key={p.id}>
+              <Link to={p.id === 'fonaments' ? pathname : `${pathname}?pagina=${p.id}`}
+                className="sdp-cataleg-nav__enllac" aria-current={p.id === actual ? 'page' : undefined}>
+                {p.titol}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
       <div className="universal-content sdp-design-system sdp-manual-disseny">
-        <DesignSectionContent />
+        {Pagina ? (
+          <Suspense fallback={<Carregant etiqueta="Carregant la pàgina del catàleg…" />}>
+            <Pagina />
+          </Suspense>
+        ) : <DesignSectionContent />}
       </div>
     </UniversalPage>
   );

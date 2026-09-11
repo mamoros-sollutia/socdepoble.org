@@ -103,7 +103,7 @@ export default function ControlSection() {
               icon={<Receipt size={40} strokeWidth={1.5} />}
               title="Gestoria de Poble"
               subtitle="Comptabilitat i facturació trimestral"
-              onMainClick={() => { window.location.href = '/gestoria/index.html'; }}
+              onMainClick={handleNavGestoria}
             />
           </div>
         </section>

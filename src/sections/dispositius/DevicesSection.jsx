@@ -475,12 +475,12 @@ export default function DevicesSection() {
                 </div>
             </div>
             <div className="devices-panel__body">
-              <div className="devices-list" className="dv-grid-cards">
+              <div className="devices-list dv-grid-cards">
                 {mergedDevices.length === 0 ? <div className="note-card">Encara no hi ha altres instàncies visibles.</div> : null}
                 {mergedDevices.map((device) => {
                   const state = connections[device.id]?.state || 'idle';
                   return (
-                    <article key={device.id} className={`card card--soft`} className="dv-m-0">
+                    <article key={device.id} className={`card card--soft dv-m-0`}>
                       <div className="card__body">
                         <div className="devices-row">
                           <div>
@@ -542,7 +542,7 @@ export default function DevicesSection() {
               {!activeChatPeer ? <div className="note-card">No hi ha cap dispositiu connectat en el canal inferior.</div> : null}
               {activeChatPeer ? (
                 <div className="devices-chat-shell">
-                  <article className="card card--soft" className="dv-m-0-mb-16">
+                  <article className="card card--soft dv-m-0-mb-16">
                     <div className="card__body">
                       <div className="devices-row">
                         <div>
@@ -588,7 +588,7 @@ export default function DevicesSection() {
                     </div>
                   ) : null}
 
-                  <div ref={chatLogRef} className="devices-chat-log" className="dv-my-16">
+                  <div ref={chatLogRef} className="devices-chat-log dv-my-16">
                     {activeChatMessages.length === 0 ? <div className="note-card">Encara no hi ha missatges en este canal.</div> : null}
                     {activeChatMessages.map((message) => (
                       <article

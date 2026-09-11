@@ -1,4 +1,5 @@
 @import url('./design-tokens.css');
+@import url('./components.css');
 
 /* ── TIPOGRAFIA · allotjada en local ───────────────────────────────
    Noto Sans · SIL Open Font License 1.1 · redistribució permesa.
@@ -35,9 +36,7 @@
    Safari/iOS i manté les barres sticky dins del visor.
    ═══════════════════════════════════════════════════════════════════ */
 
-@layer legacy;
-@layer legacy {
-@layer reset, tokens, base, components, notes, utilities;
+@layer reset, sdp, legacy, utilities;
 
 /* ── 0. TOKENS ─────────────────────────────────────────────────────
    DOS CAPES. Esta separació és la llei del sistema.
@@ -126,7 +125,7 @@
   --sdp-fons-targeta:    var(--sdp-blanc-pur);
   --sdp-fons-elevat:     var(--sdp-blanc-pur);
   --sdp-fons-superficie: var(--sdp-blanc-pur);
-  
+
   /* Estructura de marca: no canvia amb el tema */
   --sdp-fons-roca:       var(--sdp-pedra-900);
   --sdp-sobre-roca:      var(--sdp-pedra-50);
@@ -262,6 +261,34 @@
   --sdp-li-gap: 8px;
   --sdp-bq-indent: 24px;
 
+  /* ═══ CAPA 2b · CROM · LA CLOSCA IMMUTABLE (260911) ═══════════════
+     TopBar (header.bar-black) i SideBar (nav.app-sidebar) no canvien
+     MAI entre clar i fosc. Llei:
+       · Els --sdp-crom-* es declaren NOMÉS ací. Prohibit redefinir-los
+         al bloc fosc (ho vigila tooling/gates/tractor-crom.mjs).
+       · Les regles de la closca només pinten amb --sdp-crom-* o literals.
+       · Són l'única porta legítima a les rampes des de la closca: així
+         ni els components toquen primitius ni la closca toca semàntics
+         que s'inverteixen. Resol la contradicció de pedra-seca/SKILL.md.
+     Tots els parells text/fons són AAA (mesurats al dictamen 260911). */
+  --sdp-crom-fons:              var(--sdp-pedra-900);
+  --sdp-crom-text:              var(--sdp-pedra-50);
+  --sdp-crom-text-suau:         rgba(255, 255, 255, 0.78);
+  --sdp-crom-vora:              rgba(255, 255, 255, 0.06);
+  --sdp-crom-hover:             rgba(255, 255, 255, 0.09);
+  --sdp-crom-actiu-fons:        var(--sdp-primary-500);
+  --sdp-crom-actiu-fons-hover:  var(--sdp-primary-400);
+  --sdp-crom-actiu-text:        var(--sdp-pedra-900);
+  --sdp-crom-control-fons:      var(--sdp-secondary-700);
+  --sdp-crom-control-hover:     var(--sdp-secondary-600);
+  --sdp-crom-control-text:      var(--sdp-pedra-50);
+  --sdp-crom-sistema:           rgba(255, 230, 100, 0.9);
+  --sdp-crom-sistema-viu:       rgba(255, 230, 100, 1);
+  --sdp-crom-sistema-actiu:     rgba(255, 230, 100, 0.1);
+  --sdp-crom-focus:             var(--sdp-primary-400);
+  --sdp-crom-scroll:            var(--sdp-pedra-600);
+  --sdp-crom-ombra:             0 18px 44px rgba(14, 13, 12, 0.16);
+
   accent-color: var(--sdp-accio);
   color-scheme: light;
 }
@@ -330,8 +357,8 @@
   --sdp-ombra-4: 0 18px 44px rgba(0, 0, 0, 0.72);
 }
 
-
 /* ── 1. RESET I BASE ───────────────────────────────────────────── */
+@layer reset {
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
@@ -351,8 +378,6 @@ body, :host, .sdp-root {
   text-rendering: optimizeLegibility;
 }
 
-
-
 .sdp-root {
   display: flex;
   width: 100%;
@@ -365,6 +390,10 @@ body, :host, .sdp-root {
 
 img { max-width: 100%; }
 button, input, select, textarea { font: inherit; }
+}
+
+@layer legacy {
+
 /* ═══════════════════════════════════════════════════════════════
    TIPOGRAFIA EDITORIAL · TRELLAT PUR
    Regles globals — ÚNICA FONT DE VERITAT.
@@ -372,7 +401,7 @@ button, input, select, textarea { font: inherit; }
    El ritme vertical és implacable per cascada.
    ═══════════════════════════════════════════════════════════════ */
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
-  font-family: var(--sdp-font);
+  font-family: var(--sdp-font) !important;
   color: var(--sdp-text-titol);
   text-wrap: balance;
   margin: 0;
@@ -383,7 +412,7 @@ h1, .h1 {
   font-size: var(--sdp-text-h1);
   line-height: var(--sdp-leading-display);
   font-weight: 800;
-  color: var(--sdp-accio-text);
+  color: var(--sdp-accio-text) !important;
   text-align: center;
   margin-top: var(--sdp-mt-h1);
   margin-bottom: var(--sdp-mb-h1);
@@ -393,7 +422,7 @@ h2, .h2 {
   font-size: var(--sdp-text-h2);
   line-height: var(--sdp-leading-snug);
   font-weight: 800;
-  color: var(--sdp-accent-titol);
+  color: var(--sdp-accent-titol) !important;
   text-align: center;
   margin-top: var(--sdp-mt-h2);
   margin-bottom: var(--sdp-mb-h2);
@@ -403,7 +432,7 @@ h3, .h3 {
   font-size: var(--sdp-text-h3);
   line-height: var(--sdp-leading-snug);
   font-weight: 700;
-  color: var(--sdp-accio-text);
+  color: var(--sdp-accio-text) !important;
   text-align: left;
   margin-top: var(--sdp-mt-h3);
   margin-bottom: var(--sdp-mb-h3);
@@ -414,7 +443,7 @@ h4, .h4 {
   font-size: var(--sdp-text-h4);
   line-height: var(--sdp-leading-snug);
   font-weight: 700;
-  color: var(--sdp-accent-titol);
+  color: var(--sdp-accent-titol) !important;
   text-align: left;
   margin-top: var(--sdp-mt-h4);
   margin-bottom: var(--sdp-mb-h4);
@@ -423,7 +452,7 @@ h5, .h5 {
   font-size: var(--sdp-text-h5);
   line-height: var(--sdp-leading-editorial);
   font-weight: 700;
-  color: var(--sdp-accio-text);
+  color: var(--sdp-accio-text) !important;
   text-align: left;
   margin-top: var(--sdp-mt-h5);
   margin-bottom: var(--sdp-mb-h5);
@@ -440,6 +469,7 @@ h6, .h6 {
   letter-spacing: 0.08em;
 }
 p {
+  font-family: var(--sdp-font) !important;
   font-size: var(--sdp-text-base);
   line-height: var(--sdp-leading-editorial);
   color: var(--sdp-text-cos);
@@ -526,10 +556,12 @@ a:hover { color: var(--sdp-accent-text-hover); }
 
 ::selection { background: var(--sdp-accent); color: var(--sdp-text-titol); }
 
-:focus-visible { outline: 3px solid var(--sdp-focus); outline-offset: 2px; border-radius: 4px; }
+:focus-visible { outline: 3px solid var(--sdp-focus); outline-offset: 2px; }
 /* Sobre superfícies fosques, l'anell de focus és taronja */
+/* Closca (TopBar/SideBar): anell immutable. Abans --sdp-accent-text feia
+   un marró de baix contrast sobre negre en clar i un altre color en fosc. */
 .app-sidebar :focus-visible,
-header.bar-black :focus-visible,
+header.bar-black :focus-visible { outline-color: var(--sdp-crom-focus); }
 header.bar-blue :focus-visible,
 .mobile-nav :focus-visible,
 .sp-card-footer :focus-visible { outline-color: var(--sdp-accent-text); }
@@ -575,8 +607,12 @@ nav.app-sidebar {
   display: flex;
   flex-direction: column;
   height: 100%;
-  background: var(--sdp-pedra-900);
-  color: var(--sdp-pedra-50);
+  background: var(--sdp-crom-fons);
+  color: var(--sdp-crom-text);
+  /* Sense açò, els controls natius (el <button> de la marca, la barra de
+     scroll) prenen els colors UA del tema de la pàgina: negre en clar,
+     blanc en fosc. Detectat amb Chromium, no amb el gate (260911). */
+  color-scheme: dark;
   position: relative;
   z-index: var(--z-sidebar);
   overscroll-behavior: contain;
@@ -586,7 +622,7 @@ nav.app-sidebar > div:last-child {
   flex: 1;
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: var(--sdp-text-suau) transparent;
+  scrollbar-color: var(--sdp-crom-scroll) transparent;
 }
 
 .brand {
@@ -596,42 +632,40 @@ nav.app-sidebar > div:last-child {
   align-items: center;
   justify-content: flex-start;
   padding-left: 28px !important;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid var(--sdp-crom-vora);
 }
 .brand img { width: 100%; max-width: 180px; height: auto; object-fit: contain; }
 
+/* ── BOTÓ DEL PANELL DE CONTROL ──
+   El Mestre ha demanat expressament tornar al disseny clàssic de bloc sencer
+   ("pintar todo el div como estaba antes"). */
 .sidebar-control-btn {
   display: flex;
-  text-transform: uppercase;
-  font-size: 0.75rem;
-  letter-spacing: 0.02em;
   align-items: center;
   justify-content: flex-start;
-  padding: 0 16px;
-  white-space: nowrap;
   gap: var(--sdp-space-3);
   flex: none;
+  align-self: stretch;
   height: var(--sdp-alt-accio);
-  background: var(--sdp-accio-forta);
-  color: var(--sdp-text-invers);
-  text-decoration: none;
+  margin: 0;
+  padding: 0 28px;
+  border: none;
+  border-radius: 0;
+  background: var(--sdp-crom-control-fons);
+  color: var(--sdp-crom-control-text);
   font-weight: 800;
   font-size: 1rem;
-  padding: 0 var(--sdp-space-6);
-  border: none;
-  width: 100%;
-  text-align: center;
-  cursor: pointer;
-  
   letter-spacing: 0.05em;
-  transition: background var(--sdp-t);
-  
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
   position: relative;
-  width: 100%;
   z-index: 2;
+  transition: background var(--sdp-t);
 }
-.sidebar-control-btn:hover { background: var(--sdp-accio-hover); }
-.sidebar-control-btn:active { background: var(--sdp-accio-forta); }
+.sidebar-control-btn:hover { background: var(--sdp-crom-control-hover); }
+.sidebar-control-btn:active { background: var(--sdp-crom-control-fons); }
 
 .nav-item {
   display: flex;
@@ -640,26 +674,28 @@ nav.app-sidebar > div:last-child {
   padding: var(--sdp-space-2) 18px;
   margin-bottom: var(--sdp-space-1);
   border-radius: var(--sdp-radi-pastilla);
-  color: rgba(255,255,255,0.78);
+  color: var(--sdp-crom-text-suau);
   text-decoration: none;
   font-weight: 600;
   transition: background var(--sdp-t), color var(--sdp-t);
 }
-.nav-item:hover { background: rgba(255,255,255,0.09); color: var(--sdp-pedra-50); }
-.nav-item.active { background: var(--sdp-accent); color: var(--sdp-sobre-accent); }
-.nav-item.active:hover { background: var(--sdp-accent-hover); }
+.nav-item:hover { background: var(--sdp-crom-hover); color: var(--sdp-crom-text); }
+.nav-item.active { background: var(--sdp-crom-actiu-fons); color: var(--sdp-crom-actiu-text); }
+.nav-item.active:hover { background: var(--sdp-crom-actiu-fons-hover); }
 
 .nav-item.nav-item--system {
   background-color: transparent;
-  color: rgba(255, 230, 100, 0.9);
+  color: var(--sdp-crom-sistema);
 }
 .nav-item.nav-item--system:hover {
   background-color: transparent;
-  color: rgba(255, 230, 100, 1);
+  color: var(--sdp-crom-sistema-viu);
 }
+/* Abans: --sdp-text-invers → en fosc, text negre sobre la SideBar negra
+   (1,23:1, invisible). */
 .nav-item.nav-item--system.active {
-  background-color: rgba(255, 230, 100, 0.1);
-  color: var(--sdp-text-invers);
+  background-color: var(--sdp-crom-sistema-actiu);
+  color: var(--sdp-crom-text);
 }
 
 /* ── 4. COLUMNA 2 · LLISTA CONTEXTUAL (opcional) ───────────────
@@ -670,13 +706,14 @@ nav.app-sidebar > div:last-child {
 header.bar-black {
   height: var(--sdp-alt-negra);
   flex: none;
-  background: var(--sdp-pedra-900);
-  color: var(--sdp-pedra-50);
+  background: var(--sdp-crom-fons);
+  color: var(--sdp-crom-text);
+  color-scheme: dark; /* controls natius immutables (vegeu nav.app-sidebar) */
   display: flex;
   align-items: center;
   padding: 0 var(--sdp-space-6);
   padding-left: 0 !important;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid var(--sdp-crom-vora);
   position: -webkit-sticky;
   position: sticky;
   top: 0;
@@ -696,7 +733,7 @@ header.bar-black {
   100% { opacity: 1; transform: scale(1); }
 }
 .iaia-icon {
-  fill: var(--sdp-accent); /* Orange color to match the old IAIA circular avatar */
+  fill: var(--sdp-crom-actiu-fons); /* taronja canònic, immutable (viu a la TopBar) */
   stroke: none;
   animation: sdp-iaia-pulse 4s ease-in-out infinite;
 }
@@ -716,7 +753,7 @@ header.bar-blue {
   align-items: center;
   position: -webkit-sticky;
   position: sticky;
-  top: 0;
+  top: var(--sdp-alt-negra);
   z-index: 100;
   box-shadow: none;
   border-bottom: none;
@@ -1074,15 +1111,7 @@ section.design-block > p:first-of-type {
 .badge-info { background: var(--sdp-info-fons); color: var(--sdp-info-text); }
 .badge-outline { background: transparent; border: 1px solid var(--sdp-vora-control); color: var(--sdp-text-titol); }
 
-/* 7.5 Taules */
-.table-wrapper { overflow-x: auto; margin-bottom: var(--sdp-space-8); border: 1px solid var(--sdp-vora); border-radius: var(--sdp-radi-s); background: var(--sdp-fons-targeta); }
-table { width: 100%; border-collapse: collapse; text-align: left; }
-th { background: var(--sdp-fons-subtil); padding: var(--sdp-space-4); font-size: 0.8rem; font-weight: 700;  color: var(--sdp-text-suau); border-bottom: 2px solid var(--sdp-vora); }
-td { padding: var(--sdp-space-4); border-bottom: 1px solid var(--sdp-vora); font-size: 0.95rem; }
-tr:last-child td { border-bottom: none; }
-tbody tr { transition: background var(--sdp-t); }
-tbody tr:hover { background: var(--sdp-accent-subtil); }
-.table-zebra tr:nth-child(even) { background: var(--sdp-fons-subtil); }
+/* 7.5 Taules suprimides. Veure Canonical CSS al final de l'arxiu. */
 .table-action { color: var(--sdp-accent-text); font-weight: 600; text-decoration: none; }
 .table-action:hover { color: var(--sdp-accent-text-hover); text-decoration: underline; }
 
@@ -1105,7 +1134,7 @@ tbody tr:hover { background: var(--sdp-accent-subtil); }
 .modal-actions { display: flex; justify-content: flex-end; gap: var(--sdp-space-3); flex-wrap: wrap; }
 
 /* 7.8 Indicadors de càrrega */
-.spinner-group { display: flex; align-items: flex-end; gap: 24px; margin-bottom: var(--sdp-space-8); }
+.spinner-group { display: flex; align-items: center; gap: 24px; margin-bottom: var(--sdp-space-8); }
 .spinner-sm { width: 16px; height: 16px; }
 .spinner-md { width: 24px; height: 24px; }
 .spinner-lg { width: 32px; height: 32px; }
@@ -1134,6 +1163,7 @@ tbody tr:hover { background: var(--sdp-accent-subtil); }
   justify-content: space-between;
   align-items: center;
   gap: var(--sdp-space-3);
+  border: none;
   border-bottom: 1px solid var(--sdp-vora);
   transition: background var(--sdp-t);
   list-style: none;
@@ -1384,9 +1414,9 @@ details[open] summary.accordion-header svg:last-child { transform: rotate(180deg
   text-align: center;
   margin: 0;
   font-size: 1rem;
-  color: var(--sdp-text-secundari);
+  color: var(--sdp-text-suau);
   font-weight: 500;
-  line-height: var(--sdp-leading-normal);
+  line-height: var(--sdp-leading-body);
 }
 
 .sp-card-heading-with-icon {
@@ -1649,37 +1679,7 @@ details[open] summary.accordion-header svg:last-child { transform: rotate(180deg
 .utils-list { list-style: none; padding: 0; margin: 0; font-family: var(--sdp-font-mono); font-size: 0.85rem; color: var(--sdp-text-titol); line-height: 2; }
 .utils-list li strong { color: var(--sdp-accent-text); }
 
-/* ── 7.5. TAULES (.sdp-table) ───────────────────────────────────── */
-.sdp-table-container {
-  overflow-x: auto;
-}
-.sdp-table {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: left;
-  margin-top: var(--sdp-space-8);
-}
-.sdp-table th {
-  padding: var(--sdp-space-3) var(--sdp-space-4);
-}
-.sdp-table td {
-  padding: var(--sdp-space-3) var(--sdp-space-4);
-}
-.sdp-table--poblacio thead tr {
-  border-bottom: 2px solid var(--sdp-accio);
-  color: var(--sdp-text-meta);
-}
-.sdp-table--poblacio tbody tr {
-  border-bottom: 1px solid var(--sdp-fons-subtil);
-}
-.sdp-table-link {
-  font-weight: 800;
-  color: var(--sdp-accio-text);
-  text-decoration: none;
-}
-.sdp-text-right {
-  text-align: right;
-}
+/* ── 7.5. TAULES (Veure bloc canònic al final del fitxer) ────────── */
 
 /* ── 8. FAB (només escriptori) ─────────────────────────────────── */
 
@@ -1709,7 +1709,7 @@ nav.mobile-nav { display: none; }
   nav.app-sidebar.sidebar-open {
     transform: translateX(0);
     visibility: visible;
-    box-shadow: var(--sdp-ombra-4);
+    box-shadow: var(--sdp-crom-ombra);
     transition: transform var(--sdp-t-lenta), box-shadow var(--sdp-t-lenta), visibility 0s;
   }
 
@@ -1818,8 +1818,7 @@ nav.mobile-nav { display: none; }
   .pagination-simple { flex-direction: column; }
     
   .tabs, .nav-bar { overflow-x: auto; scrollbar-width: none; }
-    .modal-preview { padding: 20px; }
-  th, td { padding: 12px; }
+  .modal-preview { padding: 20px; }
   .spinner-group { gap: var(--sdp-space-4); }
   .btn-group { gap: var(--sdp-space-3); }
   section.design-block { margin-bottom: var(--sdp-space-12); }
@@ -1974,12 +1973,14 @@ nav.mobile-nav { display: none; }
   border-radius: var(--sdp-radi-m);
 }
 
+/* Abans --sdp-fons-subtil: en clar, icona blanca sobre un fons quasi blanc
+   (1,18:1) — la icona desapareixia en passar-hi el ratolí. */
 .sdp-top-bar-btn:hover {
-  background-color: var(--sdp-fons-subtil);
+  background-color: var(--sdp-crom-hover);
 }
 
 .sdp-top-bar-btn:focus-visible {
-  outline: 2px solid var(--sdp-color-focus);
+  outline: 2px solid var(--sdp-crom-focus);
   outline-offset: 2px;
 }
 
@@ -2873,6 +2874,18 @@ button.sp-card-calendar-badge:hover {
   flex-direction: column;
 }
 
+.app-sidebar-nav-footer {
+  margin-top: auto;
+  border-top: 1px solid var(--sdp-crom-sistema);
+  padding-top: var(--sdp-space-2);
+}
+
+.app-sidebar-divider {
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  margin: var(--sdp-space-2) var(--sdp-space-4);
+}
+
 
 
 
@@ -3041,9 +3054,7 @@ button.sp-card-calendar-badge:hover {
 }
 
 
-.login-switcher {
-  display: flex; justify-content: center; gap: var(--sdp-space-3); background: var(--sdp-fons-targeta); padding: 8px; border-radius: 20px; box-shadow: var(--sdp-ombra-1); flex-wrap: wrap;
-}
+/* .login-switcher: retirat el 260911, substituït per PillToggle. */
 
 
 .login-form {
@@ -3351,6 +3362,18 @@ button.sp-card-calendar-badge:hover {
 }
 
 /* Universal Toolbar (shared between Notes and Profiles) */
+.editor-shell--main {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+.editor-scroll-area {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  min-height: 0;
+}
+
 .editor-toolbar {
   display: flex;
   align-items: center;
@@ -3774,6 +3797,17 @@ button.sp-card-calendar-badge:hover {
 
 /* Noves classes per a UniversalPage */
 .up-badge-inline { float: none; margin-left: 16px; display: inline-block; vertical-align: middle; margin-bottom: 4px; }
+.sdp-universal-page-container {
+  display: block;
+  width: 100%;
+  min-height: 100%;
+}
+.sdp-universal-page-container--contained {
+  position: relative;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
 
 /* Noves classes per a ItemDetailSection */
 .id-container-p8 { max-width: 800px; margin: 0 auto; padding: var(--sdp-space-8); }
@@ -3929,6 +3963,7 @@ button.sp-card-calendar-badge:hover {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   overflow: hidden;
   overflow-wrap: break-word;
   font-size: var(--sdp-text-base);
@@ -3985,7 +4020,55 @@ button.sp-card-calendar-badge:hover {
 .notes-list-header {
   padding: var(--sdp-space-3) var(--sdp-space-4);
   border-bottom: 1px solid var(--sdp-vora);
+  background: var(--sdp-fons-subtil);
+}
+
+.univ-manager-toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--sdp-space-2);
+  min-height: var(--sdp-touch-min);
+}
+
+.univ-manager-toolbar--facets {
+  justify-content: space-between;
+}
+
+.univ-manager-inbox {
+  display: inline-flex;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--sdp-space-2);
+  min-height: var(--sdp-touch-min);
+  padding: 0 var(--sdp-space-3);
+  border: 1px solid var(--sdp-vora-control);
+  border-radius: var(--sdp-radi-s);
   background: var(--sdp-fons-superficie);
+  color: var(--sdp-text-titol);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.univ-manager-toolbar--list .btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sdp-space-1);
+  min-height: var(--sdp-touch-min);
+  padding-inline: var(--sdp-space-3);
+  white-space: nowrap;
+}
+
+.univ-manager-search {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: var(--sdp-space-1) var(--sdp-space-2);
+  background: var(--sdp-fons-superficie);
+}
+
+.univ-manager-search input {
+  padding: var(--sdp-space-1) 0;
 }
 
 .search-bar {
@@ -4100,4 +4183,361 @@ button.sp-card-calendar-badge:hover {
 .sdp-404-icona {
   color: var(--sdp-text-suau);
   margin-bottom: var(--sdp-space-2);
+}
+
+/* ═══ PILLTOGGLE · SELECTOR DE PÍNDOLA CANÒNIC (260911) ═══════════════
+   Component: src/components/ui/PillToggle.jsx. Patró blindat pel Mestre.
+   · Capa `components` de primer nivell: es declara després de `legacy`,
+     així guanya el reinici i la regla global de :focus-visible sense
+     !important. Primer inquilí de la migració de capes (Fase 2 · pas 5).
+   · L'estat actiu penja de [aria-pressed="true"]. No hi ha classe
+     --active: sense ARIA no hi ha aspecte d'actiu.
+   · Actiu: taronja amb text fosc. Mai blanc sobre taronja.
+   · Llei de Vida: cada opció fa com a mínim --sdp-touch d'alt.        */
+@layer components {
+  .sdp-pindola {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--sdp-space-1);
+    max-width: 100%;
+    padding: var(--sdp-space-1);
+    background: var(--sdp-fons-subtil);
+    border: 1px solid var(--sdp-vora);
+    border-radius: var(--sdp-radi-pastilla);
+  }
+  .sdp-pindola__opcio {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--sdp-space-2);
+    min-height: var(--sdp-touch);
+    min-width: var(--sdp-touch);
+    margin: 0;
+    padding: 0 var(--sdp-space-5);
+    border: 0;
+    border-radius: var(--sdp-radi-pastilla);
+    background: transparent;
+    color: var(--sdp-text-titol);
+    font: inherit;
+    font-size: var(--sdp-text-small);
+    font-weight: 700;
+    line-height: var(--sdp-leading-tight);
+    cursor: pointer;
+    transition: background var(--sdp-t), color var(--sdp-t);
+  }
+  .sdp-pindola__opcio:hover { background: var(--sdp-fons-targeta); }
+  .sdp-pindola__opcio[aria-pressed="true"] {
+    background: var(--sdp-accent);
+    color: var(--sdp-sobre-accent);
+  }
+  .sdp-pindola__opcio:focus-visible {
+    outline: 3px solid var(--sdp-focus);
+    outline-offset: 2px;
+  }
+  .sdp-pindola__icona { display: inline-flex; }
+  /* Centrat dins d'un bloc (Onboarding): 0,1,0 com .sdp-pindola, va després. */
+  .sdp-pindola--centrada { display: flex; width: fit-content; margin-inline: auto; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   PEDRA SECA — COMPONENT ESTRUCTURAL CANÒNIC (260911)
+   Premissa: Elements semàntics nus. Zero classes per defecte.
+   Tota la base usa :where() → especificitat 0
+   =================================================================== */
+@layer sdp {
+
+  /* ── TAULA ─────────────────────────────────────────────────────── */
+  :where(table) {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-variant-numeric: tabular-nums;
+  }
+  :where(caption) {
+    caption-side: top;
+    text-align: start;
+    color: var(--sdp-text-suau);
+    padding-block: var(--sdp-space-1) var(--sdp-space-2);
+  }
+  :where(th, td) {
+    padding: var(--sdp-space-2) var(--sdp-space-3);
+    text-align: start;
+    vertical-align: top;
+    border-block-end: 1px solid var(--sdp-vora);
+  }
+  :where(thead th) {
+    background: var(--sdp-fons-app);
+    color: var(--sdp-text-titol);
+    font-weight: 700;
+    border-block-end: 1px solid var(--sdp-vora-forta);
+    white-space: nowrap;
+  }
+  :where(tbody tr:nth-child(even)) {
+    background: var(--sdp-fons-subtil);
+  }
+  @media (hover: hover) {
+    :where(tbody tr:hover) {
+      background: var(--sdp-accent-subtil);
+    }
+  }
+  :where(tfoot td, tfoot th) {
+    border-block-start: 1px solid var(--sdp-vora-forta);
+    border-block-end: 0;
+    font-weight: 700;
+  }
+  :where(tfoot tr:last-child td, tfoot tr:last-child th) {
+    border-block-end: 1px solid var(--sdp-vora-forta);
+  }
+  :where(.sdp-num) {
+    text-align: end;
+    white-space: nowrap;
+  }
+  @media (max-width: 40rem) {
+    :where(table) {
+      display: block;
+      overflow-x: auto;
+      overscroll-behavior-inline: contain;
+    }
+    .sdp-taula :where(table) {
+      display: table;
+      overflow: visible;
+    }
+  }
+  .sdp-taula {
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    border-block-start: 1px solid var(--sdp-vora);
+  }
+  .sdp-taula--llarga {
+    max-height: 70vh;
+    overflow: auto;
+  }
+  .sdp-taula--llarga :where(thead th) {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+  .sdp-taula--densa :where(th, td) {
+    padding-block: var(--sdp-space-1);
+  }
+  .sdp-taula--plana :where(tbody tr:nth-child(even)) {
+    background: transparent;
+  }
+
+  /* ── FORMULARIS ────────────────────────────────────────────────── */
+  :where(fieldset) {
+    border: 1px solid var(--sdp-vora);
+    border-radius: var(--sdp-radi-s);
+    padding: var(--sdp-space-3);
+    margin-block: var(--sdp-space-4);
+    min-inline-size: 0;
+  }
+  :where(legend) {
+    padding-inline: var(--sdp-space-1);
+    color: var(--sdp-text-suau);
+  }
+  :where(label) {
+    display: block;
+    margin-block-end: var(--sdp-space-1);
+  }
+  :where(input:not([type="checkbox"]):not([type="radio"]):not([type="file"]), select, textarea) {
+    font: inherit;
+    color: var(--sdp-text-titol);
+    background: var(--sdp-fons-superficie);
+    border: 1px solid var(--sdp-vora-control);
+    border-radius: var(--sdp-radi-s);
+    padding: var(--sdp-space-2) var(--sdp-space-3);
+    inline-size: 100%;
+  }
+  :where(textarea) {
+    min-block-size: 6rem;
+    resize: vertical;
+  }
+  :where(input:disabled, select:disabled, textarea:disabled) {
+    background: var(--sdp-fons-subtil);
+    color: var(--sdp-text-desactivat);
+    cursor: not-allowed;
+  }
+  :where(summary) {
+    cursor: pointer;
+  }
+
+  /* ── LLISTES ───────────────────────────────────────────────────── */
+  :where(ul.sdp-llista, ol.sdp-llista) {
+    padding-inline-start: var(--sdp-space-4);
+  }
+  :where(li)::marker {
+    color: var(--sdp-text-suau);
+  }
+  :where(nav) :where(ul, ol) {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  :where(dl) {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: var(--sdp-space-4);
+    row-gap: var(--sdp-space-1);
+    align-items: baseline;
+  }
+  :where(dt) {
+    color: var(--sdp-text-suau);
+  }
+  :where(dd) {
+    margin: 0;
+  }
+
+  /* ── AVATARS ───────────────────────────────────────────────────── */
+  .sdp-avatar {
+    display: inline-grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--sdp-info-fons);
+    color: var(--sdp-info-text);
+    font-weight: 700;
+    border: 2px solid var(--sdp-fons-app);
+    flex: none;
+    object-fit: cover;
+  }
+  .sdp-avatar--xs { width: 24px; height: 24px; font-size: 0.6rem; }
+  .sdp-avatar--sm { width: 32px; height: 32px; font-size: 0.68rem; }
+  .sdp-avatar--md { width: var(--sdp-touch-min); height: var(--sdp-touch-min); font-size: 0.8rem; }
+  .sdp-avatar--lg { width: calc(var(--sdp-space-8) + var(--sdp-space-6)); height: calc(var(--sdp-space-8) + var(--sdp-space-6)); font-size: 1rem; }
+  .sdp-avatar--xl { width: 80px; height: 80px; font-size: 1.4rem; }
+  .sdp-avatar-grup { display: flex; }
+  .sdp-avatar-grup .sdp-avatar + .sdp-avatar { margin-left: -10px; }
+
+  /* ── ESCALA (Ajuda visual Catàleg) ─────────────────────────────── */
+  .sdp-escala { display: grid; gap: var(--sdp-space-2); }
+  .sdp-escala__fila {
+    display: grid;
+    grid-template-columns: 120px 1fr auto;
+    gap: var(--sdp-space-3);
+    align-items: center;
+    font-size: 0.8rem;
+  }
+  .sdp-escala__barra {
+    height: 12px;
+    border-radius: var(--sdp-radi-s);
+    background: var(--sdp-accent);
+    opacity: 0.85;
+  }
+  .sdp-escala__barra--1 { width: var(--sdp-space-1); }
+  .sdp-escala__barra--2 { width: var(--sdp-space-2); }
+  .sdp-escala__barra--3 { width: var(--sdp-space-3); }
+  .sdp-escala__barra--4 { width: var(--sdp-space-4); }
+  .sdp-escala__barra--6 { width: var(--sdp-space-6); }
+  .sdp-escala__barra--8 { width: var(--sdp-space-8); }
+  .sdp-escala__barra--10 { width: var(--sdp-space-10); }
+  .sdp-escala__barra--12 { width: var(--sdp-space-12); }
+  .sdp-escala__barra--16 { width: var(--sdp-space-16); }
+  .sdp-escala__barra--20 { width: var(--sdp-space-20); }
+  .sdp-escala__token {
+    font-family: var(--sdp-font-mono);
+    color: var(--sdp-text-suau);
+  }
+
+
+  /* ── MODALS (Natius) ───────────────────────────────────────────── */
+  :where(dialog) {
+    border: 1px solid var(--sdp-vora);
+    border-radius: var(--sdp-radi-m);
+    background: var(--sdp-fons-app);
+    color: var(--sdp-text-titol);
+    padding: var(--sdp-space-5);
+    max-inline-size: min(90vw, 40rem);
+  }
+  :where(dialog)::backdrop {
+    background: var(--sdp-fons-vel);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    :where(dialog[open]) {
+      animation: sdp-aparicio 120ms ease-out;
+    }
+  }
+
+  /* ── ORFES SILENCIOSOS ─────────────────────────────────────────── */
+  :where(hr) {
+    border: 0;
+    border-block-start: 1px solid var(--sdp-vora);
+    margin-block: var(--sdp-space-6);
+  }
+  :where(kbd) {
+    font-family: var(--sdp-font-mono);
+    font-size: 0.9em;
+    background: var(--sdp-fons-subtil);
+    border: 1px solid var(--sdp-vora);
+    border-radius: var(--sdp-radi-s);
+    padding: 0 var(--sdp-space-1);
+  }
+}
+@keyframes sdp-aparicio {
+  from { opacity: 0; translate: 0 var(--sdp-space-2); }
+}
+
+.univ-manager-admin-login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+}
+
+.univ-manager-admin-sidebar-inner {
+  padding: var(--sdp-space-6);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.univ-manager-admin-actions {
+  margin-top: auto;
+  border-top: 1px solid var(--sdp-vora);
+  padding-top: var(--sdp-space-4);
+}
+
+.univ-manager-admin-action-btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: var(--sdp-space-3);
+}
+
+.univ-manager-admin-dashboard {
+  padding: var(--sdp-space-6);
+}
+
+.univ-manager-admin-detail {
+  padding: var(--sdp-space-6);
+}
+
+.univ-manager-admin-pre {
+  background: var(--sdp-fons-subtil);
+  padding: var(--sdp-space-5);
+  border-radius: var(--sdp-radi-m);
+}
+
+.univ-manager-admin-header {
+  padding: var(--sdp-space-2) var(--sdp-space-4);
+  background: var(--sdp-fons-subtil);
+  border-bottom: 1px solid var(--sdp-vora);
+  display: flex;
+  gap: var(--sdp-space-4);
+}
+
+.univ-manager-admin-header-title {
+  margin: 0;
+  align-self: center;
+}
+
+.univ-manager-admin-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.univ-manager-admin-content {
+  flex: 1;
+  position: relative;
 }

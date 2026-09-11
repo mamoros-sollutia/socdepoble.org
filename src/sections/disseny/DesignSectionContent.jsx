@@ -14,7 +14,7 @@ function ComponentDoc({ title, description, technical, children }) {
         <h3 >{title}</h3>
         {description && <p >{description}</p>}
         {technical && (
-          <div className="alert alert-info">
+          <div role="alert" className="sdp-alerta--info">
             <strong>Context Tècnic: </strong> {technical}
           </div>
         )}
@@ -36,7 +36,7 @@ export function DesignSectionContent() {
 <p >Normes absolutes que regeixen tot el que una IA pot o no pot fer en este repositori. Açò és el més important abans de tocar cap codi o disseny.</p>
 
 <h4>1.1 Arquitectura de la Pàgina Universal (UniversalPage)</h4>
-<div className="alert alert-info ">
+<div role="alert" className="sdp-alerta--info ">
   <div className="alert-content">
     <p><strong>Estructura Anatòmica Inviolable (FONT ÚNICA DE VERITAT)</strong><br/>Aquesta secció i el component <code>UniversalComponents.jsx</code> (on es defineix la UniversalPage) són la font única de veritat per a qualsevol agent o IA. Tota nova pàgina ha d'estendre exclusivament aquesta arquitectura, sense excepcions.</p>
     <ol className=" -col ">
@@ -51,12 +51,48 @@ export function DesignSectionContent() {
   </div>
 </div>
 
-<h4>1.2 Normes de Codi i CSS Absolutes</h4>
-<div className="alert alert-warning "><div className="alert-content">
+<p><strong>Esquema anatòmic canònic (UniversalPage)</strong>:</p>
+<pre><code>{`<!-- El shell extern de l'aplicació -->
+<div className="app-layout">
+  <Sidebar /> <!-- nav.app-sidebar -->
+  <main className="app-main">
+    <Topbar /> <!-- header.app-header -->
+    <!-- El contenidor de la pàgina -->
+    <div className="page-container">
+
+      <!-- INICI DE LA UNIVERSAL PAGE -->
+      <article className="universal-page">
+        <!-- 1. Barres Superiors -->
+        <header className="bar-blue">...</header>
+        <section className="bar-orange">...</section>
+
+        <!-- 2. Decoració Targeta Blanca -->
+        <header className="page-header-card">
+          <h1>Títol</h1>
+          <div className="meta-footer">...</div>
+        </header>
+
+        <!-- 3. Contingut base -->
+        <div className="page-content-wrapper">
+          <p className="lead">Entradilla</p>
+          <div className="page-content">
+             <p>Text de cos limitat a 68ch...</p>
+             <UniversalCard />
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </main>
+</div>`}</code></pre>
+
+<h4>1.2 Normes de Codi i CSS Absolutes (Llista "Prohibit Inventar")</h4>
+<div role="alert" className="sdp-alerta--avis "><div className="alert-content">
 <p><strong>Aquestes regles són absolutes i no es poden trencar sota cap concepte:</strong></p>
 <ol>
+<li><strong>Cap Serif al Core:</strong> Està terminantment prohibit usar tipografies serif (com Times o Georgia). La font única i exclusiva és <code>Noto Sans</code>.</li>
 <li><strong>Prohibició d'estils en línia:</strong> Està terminantment prohibit l'ús de <code>style=&#123;&#123;&#125;&#125;</code> en tot el codi JSX. Tots els estils han de viure en CSS mitjançant classes de la Constitució Pedra Seca.</li>
-<li><strong>Arquitectura OKLCH de 2 Capes:</strong> Els colors primitius (Capa 1) s'han de basar en OKLCH mantenint el to i el croma exactes de la marca. Aquests <strong>mai</strong> s'apliquen directament, sempre es mapen a variables semàntiques (Capa 2) que són les que responen al mode fosc.</li>
+<li><strong>Només Variables Semàntiques:</strong> Els components han d'utilitzar únicament els tokens semàntics (Capa 2, ex. <code>var(--sdp-accio)</code>). Prohibit aplicar colors directes o tokens de la paleta primitiva (Capa 1). L'H3 usa exclusivament <code>var(--sdp-accio-text)</code>.</li>
 <li><strong>Shadow DOM i Mode Fosc:</strong> Perquè les variables de CSS funcionin bé dins de WordPress o altres entorns amb Shadow DOM, <strong>sempre</strong> que s'escrigui una regla per al tema fosc com <code>:root[data-theme="dark"]</code> s'ha de duplicar exactament amb el selector bessó <code>:host([data-theme="dark"])</code>.</li>
 </ol>
 </div></div>
@@ -65,7 +101,7 @@ export function DesignSectionContent() {
 <section className="design-block">
 <h3>2. Identitat Cromàtica</h3>
 <p>La paleta es genera en <strong>OKLCH</strong>: el to i el croma de marca es mantenen constants i només varia la lluminositat. Per això l'escala és perceptivament regular i cada graó té un contrast previsible.</p>
-<div className="alert alert-info "><div className="alert-content"><h4>Contracte d'accessibilitat</h4>
+<div role="alert" className="sdp-alerta--info "><div className="alert-content"><h4>Contracte d'accessibilitat</h4>
 <p>Este sistema complix <strong>WCAG 2.2 nivell AAA (≥7:1) en tot el text, els fons i els grisos estructurals</strong>, i <strong>nivell AA (≥4,5:1) en els colors d'interacció</strong> — enllaços, pestanyes actives i botons primaris. Els límits dels controls complixen la norma 1.4.11 (≥3:1).</p>
 <p>Esta distinció és deliberada i honesta: AAA estricte en tot obligaria a abandonar el taronja de marca, perquè cap taronja reconeixible arriba a 7:1 sobre blanc. Preferim dir-ho que amagar-ho.</p>
 </div></div>
@@ -97,7 +133,7 @@ export function DesignSectionContent() {
 <div className="swatch-info">#0e0d0c<br/>--sdp-pedra-900<br/>Text principal</div>
 </div>
 </div>
-<div className="table-wrapper"><table><thead><tr><th>Parella</th><th>Contrast</th><th>Nivell</th><th>Ús</th></tr></thead><tbody>
+<div className="sdp-taula sdp-taula--densa"><table><thead><tr><th>Parella</th><th>Contrast</th><th>Nivell</th><th>Ús</th></tr></thead><tbody>
 <tr><td>Text fosc sobre taronja 500</td><td>7.13:1</td><td>AAA</td><td>Botons primaris, capçalera de targeta</td></tr>
 <tr><td>Taronja 700 sobre blanc</td><td>5.51:1</td><td>AA</td><td>Enllaços, pestanya activa</td></tr>
 <tr><td>Taronja 800 sobre blanc</td><td>7.97:1</td><td>AAA</td><td>Títols h2 i h4</td></tr>
@@ -174,45 +210,129 @@ export function DesignSectionContent() {
 </section>
 {/*  SECCIÓ: TIPOGRAFIA CMS  */}
 <section className="design-block">
-<h3>2. Estudi Tipogràfic</h3>
+<h3>2. Estudi Tipogràfic (Contracte Canònic)</h3>
 <p>Aquesta és l'arquitectura tipogràfica universal de l'ecosistema Sóc de Poble. S'ha dissenyat sota un rigorós estudi per a garantir l'accessibilitat AAA (lectura sota llum solar intensa per a gent gran).</p>
 
-<h4>Lleis Fonamentals:</h4>
+<div role="alert" className="sdp-alerta--avis">
+  <div className="alert-content">
+    <h4>CONTRACTE TIPOGRÀFIC (PROHIBIT AL·LUCINAR)</h4>
+    <p>Cap IA pot alterar o inventar tipografies (com introduir "serif" a l'H3 per associar-ho a conceptes com "còdex" o "arcaic"). Tot el sistema utilitza estrictament <strong>Noto Sans</strong>. A més, els colors dels títols alternen entre Blau Acció i Taronja Accent, i aquesta és l'única veritat acceptable.</p>
+  </div>
+</div>
+
+<div className="sdp-taula sdp-taula--densa">
+  <table>
+    <thead>
+      <tr>
+        <th>Nivell</th>
+        <th>Mida (rem/px)</th>
+        <th>Pes (font-weight)</th>
+        <th>Color Token</th>
+        <th>Alineació</th>
+        <th>Vora (Border)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>H1</strong></td>
+        <td>2.5rem (40px)</td>
+        <td>800</td>
+        <td><code>var(--sdp-accio-text)</code> (Blau fort)</td>
+        <td>Centrat</td>
+        <td>Cap</td>
+      </tr>
+      <tr>
+        <td><strong>H2</strong></td>
+        <td>2rem (32px)</td>
+        <td>800</td>
+        <td><code>var(--sdp-accent-titol)</code> (Taronja fort)</td>
+        <td>Centrat</td>
+        <td>Cap</td>
+      </tr>
+      <tr>
+        <td><strong>H3</strong></td>
+        <td>1.75rem (28px)</td>
+        <td>700</td>
+        <td><code>var(--sdp-accio-text)</code> (Blau fort)</td>
+        <td>Esquerra</td>
+        <td>Inferior (1px solid var(--sdp-vora))</td>
+      </tr>
+      <tr>
+        <td><strong>H4</strong></td>
+        <td>1.5rem (24px)</td>
+        <td>700</td>
+        <td><code>var(--sdp-accent-titol)</code> (Taronja fort)</td>
+        <td>Esquerra</td>
+        <td>Cap</td>
+      </tr>
+      <tr>
+        <td><strong>H5</strong></td>
+        <td>1.25rem (20px)</td>
+        <td>700</td>
+        <td><code>var(--sdp-accio-text)</code> (Blau fort)</td>
+        <td>Esquerra</td>
+        <td>Cap</td>
+      </tr>
+      <tr>
+        <td><strong>H6</strong></td>
+        <td>1.125rem (18px)</td>
+        <td>700</td>
+        <td><code>var(--sdp-text-suau)</code> (Pedra)</td>
+        <td>Esquerra</td>
+        <td>Cap (Text en majúscules)</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h4>Ritme Vertical i Espaiat Editorial</h4>
+<p>L'interlineat base (line-height) és <code>1.65</code> per a paràgrafs i text de cos, garantint oxigen a la lectura, i <code>1.21</code> (snug) per a encapçalaments, mantenint compacitat visual.</p>
+<div className="sdp-taula sdp-taula--densa">
+  <table>
+    <thead>
+      <tr>
+        <th>Element</th>
+        <th>Marge Superior (margin-top)</th>
+        <th>Marge Inferior (margin-bottom)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>h1</strong></td>
+        <td><code>0</code></td>
+        <td><code>16px</code> (var(--sdp-space-4))</td>
+      </tr>
+      <tr>
+        <td><strong>h2</strong></td>
+        <td><code>48px</code> (var(--sdp-space-12))</td>
+        <td><code>12px</code> (var(--sdp-space-3))</td>
+      </tr>
+      <tr>
+        <td><strong>h3</strong></td>
+        <td><code>40px</code> (var(--sdp-space-10))</td>
+        <td><code>12px</code> (var(--sdp-space-3))</td>
+      </tr>
+      <tr>
+        <td><strong>h4</strong></td>
+        <td><code>32px</code> (var(--sdp-space-8))</td>
+        <td><code>8px</code> (var(--sdp-space-2))</td>
+      </tr>
+      <tr>
+        <td><strong>Paràgraf (p)</strong> / <strong>Llistes (ul, ol)</strong></td>
+        <td><code>0</code></td>
+        <td><code>16px</code> (var(--sdp-space-4))</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h4>Lleis Fonamentals Addicionals:</h4>
 <ul>
 <li><strong>Arrel Mestra:</strong> <code>18px (1.125rem)</code> per a garantir touch-targets i visibilitat nativa sense zoom.</li>
-<li><strong>Font Única:</strong> <code>Noto Sans</code>, escollida per l'altura de la seua "x", les seues formes obertes i el suport multilingüe extrem.</li>
 <li><strong>Ample Màxim de Lectura:</strong> <code>68ch</code>, el límit científic abans de causar fatiga ocular al saltar de línia.</li>
-<li><strong>Interlineat (Line-height):</strong> <code>1.6</code> en paràgrafs per a donar oxigen; <code>1.2</code> en capçaleres per mantindre la compacitat.</li>
-<li><strong>Subtítols (H2):</strong> Mai porten punt final, ja que funcionen com a titulars estructurals i no com a paràgrafs (ex. el propòsit `subtitle` de la `UniversalPage`).</li>
+<li><strong>Subtítols (H2):</strong> Mai porten punt final, ja que funcionen com a titulars estructurals i no com a paràgrafs.</li>
+<li><strong>Entradilla (Lead):</strong> S'ha d'ubicar sempre exclusivament davall del títol H2. Aquest és el seu únic lloc.</li>
 </ul>
-<p>Dalt del títol pot anar una imatge o multimèdia d'un ample màxim de 600x600. Baix d'aquest H1 aniran exclusivament els components de presentació de la Targeta Mestra: categoria, etiqueta i copyright.</p>
-<p>L'H2 divideix els grans blocs temàtics de la pàgina.</p>
-<div className="h1">H1: Títol Principal (40px)</div>
-<div >
-<h2>H2: Secció Major (32px)</h2>
-<p className="lead">
-Aquesta és l'<em>entradilla</em> (<code>&lt;p className="lead"&gt;</code>). S'usa exclusivament sota l'H2 per establir la premissa de la secció amb un cos superior al text normal.
-</p>
-</div>
-<h3>H3: Sub-secció Temàtica (24px)</h3>
-<p>L'H3 s'empra per donar jerarquia interna dins d'un bloc H2. Sol acompanyar llistes de dades o enumeracions llargues.</p>
-<p>El text de cos (<code>&lt;p&gt;</code>) funciona com a ciment. No pot baixar mai dels 16px en mòbil, però l'estàndard base d'este sistema és 18px. Este paràgraf demostra la llegibilitat continuada i serveix d\'exemple de com es veu un text normal després de l'entradilla.</p>
-<ul>
-<li>La llista no ordenada (<code>&lt;ul&gt;</code>) manté un marge esquerre net per diferenciar-se ràpidament del paràgraf.</li>
-<li>S'evita usar majúscules ("uppercase") en capçaleres per preservar la silueta de la paraula, fonamental per a la lectura ràpida.</li>
-</ul>
-<h4>H4: Component de Suport (20px)</h4>
-<p>L'H4 és útil per a targetes (cards) internes o petites cites que necessiten el seu propi títol sense trencar l'esquema de lectura.</p>
-<blockquote>
-<p>“Un poble sense memòria és com un arbre sense arrels, condemnat a caure al primer vent fort.”</p>
-</blockquote>
-<h5>H5: Títol de Widget o Metadada (16px, Negreta)</h5>
-<ol>
-<li>Títols que requereixen presència però no pertanyen al flux narratiu principal.</li>
-<li>S'usa sovint en barres laterals (sidebars).</li>
-</ol>
-<h6>H6: Micro-Etiqueta (14px, Majúscules)</h6>
-<p>L'H6 és l'única etiqueta on es permet l'ús de majúscules pel seu caràcter de "badge" visual (sobretítols, dates, categories pures).</p>
 
 </section>
 {/*  SECCIÓ: ESPAIAT I GRID  */}
@@ -220,45 +340,17 @@ Aquesta és l'<em>entradilla</em> (<code>&lt;p className="lead"&gt;</code>). S'u
 <h3>3. Espaiat i Grid</h3>
 <h4>Sistema d'Espaiat (escala modular base 4/8)</h4>
 
-<div className="spacing-item">
-<div className="spacing-bar" ></div>
-<div className="spacing-label">--sdp-space-1 = 4px</div>
-</div>
-<div className="spacing-item">
-<div className="spacing-bar" ></div>
-<div className="spacing-label">--sdp-space-2 = 8px</div>
-</div>
-<div className="spacing-item">
-<div className="spacing-bar" ></div>
-<div className="spacing-label">--sdp-space-3 = 12px</div>
-</div>
-<div className="spacing-item">
-<div className="spacing-bar" ></div>
-<div className="spacing-label">--sdp-space-4 = 16px</div>
-</div>
-<div className="spacing-item">
-<div className="spacing-bar" ></div>
-<div className="spacing-label">--sdp-space-6 = 24px</div>
-</div>
-<div className="spacing-item">
-<div className="spacing-bar" ></div>
-<div className="spacing-label">--sdp-space-8 = 32px</div>
-</div>
-<div className="spacing-item">
-<div className="spacing-bar" ></div>
-<div className="spacing-label">--sdp-space-10 = 40px</div>
-</div>
-<div className="spacing-item">
-<div className="spacing-bar" ></div>
-<div className="spacing-label">--sdp-space-12 = 48px</div>
-</div>
-<div className="spacing-item">
-<div className="spacing-bar" ></div>
-<div className="spacing-label">--sdp-space-16 = 64px</div>
-</div>
-<div className="spacing-item">
-<div className="spacing-bar" ></div>
-<div className="spacing-label">--sdp-space-20 = 80px</div>
+<div className="sdp-escala">
+  <div className="sdp-escala__fila"><span className="sdp-escala__token">--sdp-space-1</span><span className="sdp-escala__barra sdp-escala__barra--1"></span><span>4 px</span></div>
+  <div className="sdp-escala__fila"><span className="sdp-escala__token">--sdp-space-2</span><span className="sdp-escala__barra sdp-escala__barra--2"></span><span>8 px</span></div>
+  <div className="sdp-escala__fila"><span className="sdp-escala__token">--sdp-space-3</span><span className="sdp-escala__barra sdp-escala__barra--3"></span><span>12 px</span></div>
+  <div className="sdp-escala__fila"><span className="sdp-escala__token">--sdp-space-4</span><span className="sdp-escala__barra sdp-escala__barra--4"></span><span>16 px</span></div>
+  <div className="sdp-escala__fila"><span className="sdp-escala__token">--sdp-space-6</span><span className="sdp-escala__barra sdp-escala__barra--6"></span><span>24 px</span></div>
+  <div className="sdp-escala__fila"><span className="sdp-escala__token">--sdp-space-8</span><span className="sdp-escala__barra sdp-escala__barra--8"></span><span>32 px</span></div>
+  <div className="sdp-escala__fila"><span className="sdp-escala__token">--sdp-space-10</span><span className="sdp-escala__barra sdp-escala__barra--10"></span><span>40 px</span></div>
+  <div className="sdp-escala__fila"><span className="sdp-escala__token">--sdp-space-12</span><span className="sdp-escala__barra sdp-escala__barra--12"></span><span>48 px</span></div>
+  <div className="sdp-escala__fila"><span className="sdp-escala__token">--sdp-space-16</span><span className="sdp-escala__barra sdp-escala__barra--16"></span><span>64 px</span></div>
+  <div className="sdp-escala__fila"><span className="sdp-escala__token">--sdp-space-20</span><span className="sdp-escala__barra sdp-escala__barra--20"></span><span>80 px</span></div>
 </div>
 
 <h4>Grid Responsive</h4>
@@ -300,6 +392,56 @@ Aquesta és l'<em>entradilla</em> (<code>&lt;p className="lead"&gt;</code>). S'u
   </div>
 </ComponentDoc>
 </section>
+
+{/*  SECCIÓ: TARGETA MESTRA I AVATARS  */}
+<section className="design-block">
+  <h3>4.5 Avatars (Contracte)</h3>
+  <div role="alert" className="sdp-alerta--avis">
+    <div className="alert-content">
+      <p><strong>Prohibit inventar mides:</strong> Els avatars només poden tenir les mides: <code>xs</code> (24px), <code>sm</code> (32px), <code>md</code> (44px, mínim touch), <code>lg</code> (56px) i <code>xl</code> (80px). Ràtio 1:1 exacte. Colors restringits a variables semàntiques.</p>
+    </div>
+  </div>
+  <div className="sdp-avatar-grup">
+    <span className="sdp-avatar sdp-avatar--xl">IA</span>
+    <span className="sdp-avatar sdp-avatar--lg">MJ</span>
+    <span className="sdp-avatar sdp-avatar--md">ER</span>
+    <span className="sdp-avatar sdp-avatar--sm">SP</span>
+    <span className="sdp-avatar sdp-avatar--xs">+4</span>
+  </div>
+
+  <h3>4.6 Targeta Mestra (UniversalCard)</h3>
+  <p>La <code>&lt;UniversalCard&gt;</code> és el component base per a mostrar qualsevol entitat (poble, fitxa, usuari). No s'ha d'intentar imitar el seu DOM a mà; s'ha d'instanciar el component de React.</p>
+
+  <div role="alert" className="sdp-alerta--avis">
+    <div className="alert-content">
+      <h4>CONTRACTE DOM (UNIVERSAL CARD)</h4>
+      <p>Quan calgui entendre o replicar l'estructura, l'ordre de renderitzat és estricte:</p>
+      <ol>
+        <li><code>.sp-card-header</code> (Opcional, autoria i meta).</li>
+        <li><code>.sp-card-media-container</code> (Opcional, aspect-ratio 1/1).</li>
+        <li><code>.sp-card-body</code> (Obligatori, conté el títol, subtítol, text descriptiu i etiquetes <code>.sp-card-labels</code>).</li>
+        <li><code>.sp-card-footer</code> (Opcional, equival a la barra blava, amb botons d'acció).</li>
+      </ol>
+      <p><strong>Classes obligatòries:</strong> L'embolcall sempre porta la classe <code>.sp-card</code>.</p>
+    </div>
+  </div>
+  <div role="alert" className="sdp-alerta--info">
+    <div className="alert-content">
+      <h4>Invocació Canònica</h4>
+      <p><code>{`<UniversalCard title="Títol" subtitle="Subtítol" headerLabel="Categoria" img="ruta.jpg" />`}</code></p>
+    </div>
+  </div>
+  <UniversalCard
+    title="La Torre de les Maçanes"
+    subtitle="L'essència de la muntanya"
+    headerLabel="POBLE"
+    authorName="Sóc de Poble"
+    img="https://picsum.photos/400/400"
+  >
+    <p>La UniversalCard centralitza tota la complexitat visual: des de la capçalera taronja fins a la imatge quadrada perfecta.</p>
+  </UniversalCard>
+</section>
+
 {/*  SECCIÓ: FORMULARIS  */}
 <section className="design-block">
 <h3>5. Formularis i Inputs</h3>
@@ -342,29 +484,29 @@ Aquesta és l'<em>entradilla</em> (<code>&lt;p className="lead"&gt;</code>). S'u
 {/*  SECCIÓ 7: ALERTES  */}
 <section className="design-block">
 <h3>7. Alertes i Missatges</h3>
-<div className="alert alert-info">
-<div className="alert-icon"><svg fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 20 20"><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="16" y2="12"></line><line x1="12" x2="12.01" y1="8" y2="8"></line></svg></div>
+<div role="alert" className="sdp-alerta--info">
+<svg fill="none" width="18" height="18" stroke="currentColor" strokeWidth="2" viewBox="0 0 20 20"><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="16" y2="12"></line><line x1="12" x2="12.01" y1="8" y2="8"></line></svg>
 <div className="alert-content">
 <h4>Informació</h4>
 <p>Aquesta és una alerta informativa per a destacar dades rellevants.</p>
 </div>
 </div>
-<div className="alert alert-success">
-<div className="alert-icon"><svg fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 20 20"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div>
+<div role="alert" className="sdp-alerta--ok">
+<svg fill="none" width="18" height="18" stroke="currentColor" strokeWidth="2" viewBox="0 0 20 20"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
 <div className="alert-content">
 <h4>Èxit</h4>
 <p>L'operació s'ha completat correctament.</p>
 </div>
 </div>
-<div className="alert alert-warning">
-<div className="alert-icon"><svg fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 20 20"><path d="M10.25 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" x2="12" y1="9" y2="13"></line><line x1="12" x2="12.01" y1="17" y2="17"></line></svg></div>
+<div role="alert" className="sdp-alerta--avis">
+<svg fill="none" width="18" height="18" stroke="currentColor" strokeWidth="2" viewBox="0 0 20 20"><path d="M10.25 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" x2="12" y1="9" y2="13"></line><line x1="12" x2="12.01" y1="17" y2="17"></line></svg>
 <div className="alert-content">
 <h4>Avís</h4>
 <p>Revisa els camps abans de continuar.</p>
 </div>
 </div>
-<div className="alert alert-error">
-<div className="alert-icon"><svg fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 20 20"><circle cx="12" cy="12" r="10"></circle><line x1="15" x2="9" y1="9" y2="15"></line><line x1="9" x2="15" y1="9" y2="15"></line></svg></div>
+<div role="alert" className="sdp-alerta--error">
+<svg fill="none" width="18" height="18" stroke="currentColor" strokeWidth="2" viewBox="0 0 20 20"><circle cx="12" cy="12" r="10"></circle><line x1="15" x2="9" y1="9" y2="15"></line><line x1="9" x2="15" y1="9" y2="15"></line></svg>
 <div className="alert-content">
 <h4>Error</h4>
 <p>No s'ha pogut connectar amb el servidor.</p>
@@ -394,7 +536,7 @@ Aquesta és l'<em>entradilla</em> (<code>&lt;p className="lead"&gt;</code>). S'u
 {/*  SECCIÓ 9: TAULES  */}
 <section className="design-block">
 <h3>9. Taules</h3>
-<div className="table-wrapper">
+<div className="sdp-taula">
 <table>
 <thead>
 <tr>
@@ -431,8 +573,8 @@ Aquesta és l'<em>entradilla</em> (<code>&lt;p className="lead"&gt;</code>). S'u
 </table>
 </div>
 <h4>Taula Zebra (Alternada)</h4>
-<div className="table-wrapper">
-<table className="table-zebra">
+<div className="sdp-taula">
+<table>
 <thead>
 <tr>
 <th>Recurs</th>
@@ -1061,7 +1203,7 @@ Gran</div>
 <section className="design-block ">
 <h3>29. Exemples de Composició</h3>
 <h4>29.1 Formulari de contacte complet</h4>
-<div className="card " className="dsg-center-600">
+<div className="card dsg-center-600">
 <h4 >Contacta amb nosaltres</h4>
 <p >Envieu-nos les vostres dubtes o suggeriments per a millorar el portal.</p>
 <div className="form-group">
@@ -1117,9 +1259,48 @@ Gran</div>
         rows="1" 
       ></textarea>
     </div>
-    <button className="btn btn-primary btn-sm" className="dsg-btn-round" title="Enviar">
+    <button className="btn btn-primary btn-sm dsg-btn-round" title="Enviar">
       <svg viewBox="0 0 20 20" className="dsg-icon-1em"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"></path></svg>
     </button>
+  </div>
+</ComponentDoc>
+</section>
+
+{/* SECCIÓ 31: ARQUITECTURA UNIVERSAL I GESTORS */}
+<section className="design-block">
+<ComponentDoc
+  title="31. Arquitectura Universal: Top Bar + Sidebar + Contingut"
+  description="Patró canònic per a pàgines d'aplicació, gestors i editors de tres columnes."
+  technical="UniversalPage governa el chrome i el contingut; UniversalManager compon facetes, llista i detall; AppGridShell governa responsive, scroll, plegat i amplàries. Cap consumidor ha de clonar estes responsabilitats."
+>
+  <div className="card">
+    <h4>Contracte estructural</h4>
+    <ol className="dsg-pl-1">
+      <li><strong>Top Bar fixa:</strong> navegació i accions globals pertanyen a <code>UniversalPage</code>.</li>
+      <li><strong>Sidebar / Carpetes:</strong> facetes jeràrquiques; els grups s'obrin cap avall i la columna es replega cap a l'esquerra.</li>
+      <li><strong>Llista / Notes:</strong> cerca i creació en una barra secundària subtil; en replegar queda només la lupa.</li>
+      <li><strong>Contingut:</strong> detall o editor flexible, sempre amb <code>min-width: 0</code> i scroll propi.</li>
+      <li><strong>Separadors:</strong> arrossegables amb punter i tacte, operables amb fletxes, <kbd>Home</kbd> i <kbd>End</kbd>.</li>
+    </ol>
+  </div>
+  <div className="card">
+    <h4>Estats responsive obligatoris</h4>
+    <dl>
+      <dt><strong>Ample (≥ 1090 px)</strong></dt>
+      <dd>Tres columnes simultànies, plegables i redimensionables.</dd>
+      <dt><strong>Mitjà (720–1089 px)</strong></dt>
+      <dd>Llista + contingut; Carpetes apareix com a panell superposat.</dd>
+      <dt><strong>Estret (&lt; 720 px)</strong></dt>
+      <dd>Un panell visible cada vegada; els panells fora de pantalla són <code>inert</code>.</dd>
+    </dl>
+  </div>
+  <div className="card">
+    <h4>API mínima de la graella</h4>
+    <pre><code>{`<AppGridShell
+  leftColumn={<Facetes />}
+  middleColumn={<Llista />}
+  rightColumn={<Detall />}
+/>`}</code></pre>
   </div>
 </ComponentDoc>
 </section>

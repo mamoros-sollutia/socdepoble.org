@@ -87,7 +87,7 @@ export const PAGE_COPY = {
       { "text": "Productivitat", "className": "sdp-badge-category" },
       { "text": "Tutorial", "className": "sdp-badge-neutral", "style": { "border": "1px solid var(--sdp-vora)", "backgroundColor": "transparent" } }
     ],
-    "image": "/assets/uploads/brain/forensic_psychiatry_ai_1775882113147.png",
+    "image": "/assets/notes/bloc_notes_vintage.jpg",
     "imageAlt": "Bloc de notes"
   },
   "versions": {

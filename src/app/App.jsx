@@ -3,7 +3,7 @@ import { Navigate, NavLink, Route, Routes, useNavigate, useParams, useLocation }
 import { Globe, MoonStar, Plus, Search, Settings, Sun, UserRound } from '../icons.jsx';
 import BrandMark from '../components/BrandMark';
 import { APP_NAME } from '../config/app';
-import { DEFAULT_SECTION_PATH, SECTIONS, SECTION_ORDER } from '../config/sections';
+import { DEFAULT_SECTION_PATH, SECTIONS, SECTION_ORDER, GESTORIA_SECTIONS } from '../config/sections';
 import { getSectionLabels } from '../config/i18n';
 import { UniversalPage } from '../components/universal/UniversalPage';
 import { IaiaIcon } from '../components/universal/UniversalElements';
@@ -83,14 +83,16 @@ function AppShell({ children, mobileNav }) {
   const contentRef = useRef(null);
   const { actorType, actorId } = useIdentitat();
   
-  const buildPath = (basePath) => {
-    // Les rutes de sistema o estàtiques que no canvien d'actor podrien no usar buildPath,
-    // però si formen part de NAV_SECTIONS assumirem que pertanyen a l'actor.
+  const buildPath = (basePath, isGestoriaLink) => {
+    if (isGestoriaLink) return `/gestoria${basePath}`;
     if (actorType === 'entitat') {
       return `/e/${actorId}${basePath}`;
     }
     return `/jo${basePath}`;
   };
+  
+  const isGestoria = location.pathname.startsWith('/gestoria');
+  const activeNavSections = isGestoria ? GESTORIA_SECTIONS : NAV_SECTIONS;
   
   // Pull to Refresh logic optimitzat natiu
   const indicatorRef = useRef(null);
@@ -268,16 +270,21 @@ function AppShell({ children, mobileNav }) {
         </button>
 
         <div className="app-sidebar-nav" aria-label="Seccions">
-          {NAV_SECTIONS.map((section) => {
+          {activeNavSections.map((section) => {
             const Icon = section.icon;
-            const labels = getSectionLabels(section.id, language);
+            const labels = section.kind === 'gestoria' 
+              ? { label: section.label, shortLabel: section.shortLabel } 
+              : getSectionLabels(section.id, language);
             return (
-              <NavLink key={section.id} to={buildPath(section.path)} className="nav-item" aria-label={labels.label}>
-                <Icon className="icona-linia" strokeWidth={2.1} size={24} aria-hidden="true" focusable="false" />
-                <span className="nav-item__text">
-                  {labels.label}
-                </span>
-              </NavLink>
+              <React.Fragment key={section.id}>
+                {section.id === 'projecte' && <hr className="app-sidebar-divider" aria-hidden="true" />}
+                <NavLink to={buildPath(section.path, isGestoria)} className="nav-item" aria-label={labels.label}>
+                  <Icon className="icona-linia" strokeWidth={2.1} size={24} aria-hidden="true" focusable="false" />
+                  <span className="nav-item__text">
+                    {labels.label}
+                  </span>
+                </NavLink>
+              </React.Fragment>
             );
           })}
           
@@ -556,8 +563,9 @@ function AppRoutes() {
         
         <Route path="/control" element={<ControlSection />} />
         <Route path="/utilitats" element={<ControlSection />} />
-        <Route path="/gestoria" element={<GestoriaSection />} />
-        <Route path="/utilitats/gestoria" element={<GestoriaSection />} />
+        {/* Gestoria: UNA sola ruta canònica. Els àlies redirigixen. */}
+        <Route path="/gestoria/*" element={<GestoriaSection />} />
+        <Route path="/utilitats/gestoria/*" element={<Navigate to="/gestoria" replace />} />
         <Route path="/connectar" element={<ConnectarSection agents={agents} />} />
         <Route path="/projecte" element={<Navigate to="/jo/projecte" replace />} />
         <Route path="/page/:slug" element={<PageDetailSection />} />
@@ -599,6 +607,9 @@ function ActorRoutes({ agents }) {
       <Route path="poblacio" element={<PoblacioSection />} />
       <Route path="notes" element={<NotesSection />} />
       <Route path="dispositius" element={<DevicesSection />} />
+      {/* Globals: sota /jo queien a NotFoundPage (el botó central del mòbil). */}
+      <Route path="control" element={<Navigate to="/control" replace />} />
+      <Route path="gestoria" element={<Navigate to="/gestoria" replace />} />
       
       <Route path="el-meu-perfil" element={<PerfilShell />} />
       <Route path="perfil" element={<ProfileSection agents={agents} />} />
@@ -627,20 +638,27 @@ const MobileNav = memo(function MobileNav() {
   const navigate = useNavigate();
   const { actorType, actorId } = useIdentitat();
   
-  const buildPath = (basePath) => {
+  const buildPath = (basePath, isGestoriaLink) => {
+    if (isGestoriaLink) return `/gestoria${basePath}`;
     if (actorType === 'entitat') {
       return `/e/${actorId}${basePath}`;
     }
     return `/jo${basePath}`;
   };
 
+  const isGestoria = window.location.pathname.startsWith('/gestoria');
+  const activeMobileLeading = isGestoria ? GESTORIA_SECTIONS.slice(0, 2) : MOBILE_NAV_LEADING;
+  const activeMobileTrailing = isGestoria ? GESTORIA_SECTIONS.slice(2, 4) : MOBILE_NAV_TRAILING;
+
   return (
       <nav className="mobile-nav" aria-label="Navegació mòbil">
-        {MOBILE_NAV_LEADING.map((section) => {
+        {activeMobileLeading.map((section) => {
           const Icon = section.icon;
-          const labels = getSectionLabels(section.id, language);
+          const labels = section.kind === 'gestoria' 
+            ? { label: section.label, shortLabel: section.shortLabel } 
+            : getSectionLabels(section.id, language);
           return (
-            <NavLink key={section.id} to={buildPath(section.path)} className="nav-item" aria-label={labels.label}>
+            <NavLink key={section.id} to={buildPath(section.path, isGestoria)} className="nav-item" aria-label={labels.label}>
               <Icon className="nav-item__icon" strokeWidth={2.1} aria-hidden="true" focusable="false" />
               <span className="nav-item__text">
                 <strong>{labels.shortLabel}</strong>
@@ -651,18 +669,20 @@ const MobileNav = memo(function MobileNav() {
         <button type="button" className="mobile-nav__cta" onClick={() => {
           const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
           if (document.startViewTransition && !prefersReducedMotion) {
-            document.startViewTransition(() => navigate(buildPath('/control')));
+            document.startViewTransition(() => navigate('/control'));
           } else {
-            navigate(buildPath('/control'));
+            navigate('/control');
           }
         }} aria-label={t('nav.panel', 'Panell de control')}>
           <Settings size={20} strokeWidth={2.8} />
         </button>
-        {MOBILE_NAV_TRAILING.map((section) => {
+        {activeMobileTrailing.map((section) => {
           const Icon = section.icon;
-          const labels = getSectionLabels(section.id, language);
+          const labels = section.kind === 'gestoria' 
+            ? { label: section.label, shortLabel: section.shortLabel } 
+            : getSectionLabels(section.id, language);
           return (
-            <NavLink key={section.id} to={buildPath(section.path)} className="nav-item" aria-label={labels.label}>
+            <NavLink key={section.id} to={buildPath(section.path, isGestoria)} className="nav-item" aria-label={labels.label}>
               <Icon className="nav-item__icon" strokeWidth={2.1} aria-hidden="true" focusable="false" />
               <span className="nav-item__text">
                 <strong>{labels.shortLabel}</strong>

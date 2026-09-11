@@ -78,9 +78,9 @@ Quan un usuari o una IA demana preparar un "Bundle" o una "Petorreta" per al Con
 3. Si la mida del bundle es preveu problemàtica (alerta Termodinàmica), **NO ESPORGAREU** de forma silenciosa. Informareu a l'usuari amb l'avís "AVÍS TERMODINÀMIC" i demanareu instruccions o confirmació sobre com procedir per tallar de manera semàntica, no alfabètica.
 4. Si un sol arxiu sol·licitat en el bundle falta al disc, avortareu la generació (Fail-Closed).
 5. **FORMAT ZERO FRICCIÓ:** Quan lliures el prompt o petorreta a l'usuari, **CREA SEMPRE UN ARXIU MARKDOWN (.md) AL DISC** (a l'[[00_INDEX_ESCRIPTORI|Escriptori]]) amb el text exacte. MAI el faces eixir per pantalla en un bloc de codi del xat, ja que dificulta la còpia ràpida.
-6. **PROHIBICIÓ DE CERCA WEB PER AL CONSELL:** Sóc de Poble és un projecte de codi tancat. Quan prepares un Prompt/Petorreta per a les IAs del Consell, **HAS D'INCLOURE OBLIGATÒRIAMENT UN AVÍS EXPLÍCIT** ordenant-los que NO facen cerques web per intentar localitzar el codi font, els repositoris a GitHub/GitLab o la Wiki. Han de treballar exclusivament amb el context (bundle) adjunt. Avisa'ls que fer-ho és gastar tokens inútilment i arriscar al·lucinacions, ja que no hi ha res públic.
+6. **PROHIBICIÓ DE CERCA WEB PER AL CONSELL (PROTOCOL ANTI-QWEN):** Sóc de Poble és un projecte de codi tancat. Quan prepares un Prompt/Petorreta per a les IAs del Consell, **HAS D'INCLOURE OBLIGATÒRIAMENT A LA PRIMERA LÍNIA UN AVÍS EXPLÍCIT** ordenant-los que NO activen cap eina de cerca avançada, web search ni navegadors per intentar localitzar el codi font, el nom del fitxer del bundle, o els repositoris a GitHub/GitLab. Han de treballar exclusivament amb el text adjunt. Avisa'ls clarament: 'AQUEST FITXER NO ÉS PÚBLIC. FER CERQUES A INTERNET DONARÀ 0 RESULTATS I ÉS UNA PÈRDUA DE TOKENS I RAONAMENT'. Això evitarà que models amb cerca automàtica (com Qwen o Z) caiguen a la trampa d'al·lucinar cerques en lloc de llegir.
 
-"Inventar és trair el poble. Amagar context és ofegar-lo, però ofegar-lo en brossa històrica també és ocultació."
+"Inventar és trair el poble. Amagar context és ofegar-lo, però ofegar-lo en brossa històrica també és ocultació i permetre que busquen a internet codi tancat és al·lucinació assegurada."
 
 
 ## Ancoratge de la Wiki

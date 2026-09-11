@@ -7,7 +7,7 @@ import { adminListUsers, adminListOrganizations } from '../../data/backendPort.j
 import { UniversalManager } from '../../components/universal/manager/UniversalManager';
 import { usersManagerConfig } from '../../components/universal/manager/configs/usersManager';
 import { companiesManagerConfig } from '../../components/universal/manager/configs/companiesManager';
-import '../../components/universal/manager/UniversalManager.css';
+
 
 function AdminSidebar({ activeTab, setActiveTab }) {
   return (

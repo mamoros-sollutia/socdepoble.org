@@ -2,8 +2,8 @@ import React from 'react';
 import AppGridColumn from '../../layout/AppGridColumn';
 import { useAppGrid } from '../../layout/AppGridShell';
 import { useManager } from './ManagerContext';
-import { Filter } from 'lucide-react';
-import './UniversalManager.css';
+import { Inbox, Settings } from 'lucide-react';
+
 
 export default function ManagerFacets() {
   const { 
@@ -18,6 +18,11 @@ export default function ManagerFacets() {
   
   const { mida, setPanellObert } = useAppGrid();
   const isCompact = mida !== 'ample';
+  const [expandedFacets, setExpandedFacets] = React.useState({});
+
+  const toggleFacet = (facetId) => {
+    setExpandedFacets(prev => ({ ...prev, [facetId]: prev[facetId] === false ? true : false }));
+  };
 
   const handleSelectFacet = (facetId, valueId) => {
     setFacet(facetId, valueId);
@@ -58,6 +63,12 @@ export default function ManagerFacets() {
           variant="collapsed"
           titol={facetsTitle || 'CARPETES'}
           onReplega={() => setColLeftCollapsed(false)}
+          accions={[{
+            id: 'settings',
+            icona: Settings,
+            etiqueta: 'Ajustos (pròximament)',
+            desactivat: true,
+          }]}
         />
       </aside>
     );
@@ -71,20 +82,36 @@ export default function ManagerFacets() {
         onReplega={() => setColLeftCollapsed(true)}
       />
 
+      <div className="notes-list-header univ-manager-toolbar univ-manager-toolbar--facets">
+        <button
+          type="button"
+          className="univ-manager-inbox"
+          onClick={() => {
+            facets.forEach(f => clearFacet(f.id));
+            if (isCompact) setPanellObert('middle');
+          }}
+        >
+          <Inbox size={18} aria-hidden="true" />
+          <span>Tot</span>
+        </button>
+        <button type="button" className="btn-icon sdp-boto--settings" title="Ajustos (pròximament)" aria-label="Ajustos (pròximament)" disabled>
+          <Settings size={18} />
+        </button>
+      </div>
+
       <div className="notes-column__body no-padding sdp-scrollable">
         {facets.map(facet => (
           <div key={facet.id}>
-            <h3 className="sdp-heading-3 ob-mb-15 univ-manager-facet-header">
-              {facet.label || facet.id}
-            </h3>
-            <button 
-              type="button" 
-              className={`univ-manager-facet-item ${!activeFacets[facet.id] ? 'univ-manager-facet-item--active' : ''}`}
-              onClick={() => clearFacet(facet.id)}
-            >
-              <Filter size={18} strokeWidth={!activeFacets[facet.id] ? 2.5 : 2} />
-              <span>Tots</span>
-            </button>
+            <AppGridColumn
+              variant="accordion"
+              titol={facet.label || facet.id}
+              plegable={true}
+              obert={expandedFacets[facet.id] !== false}
+              onPlega={() => toggleFacet(facet.id)}
+            />
+            {expandedFacets[facet.id] !== false && (
+              <div className="univ-manager-facet-content">
+
             {facet.type === 'tree' ? (
                renderTreeNodes(facet.id, facet.options || [])
             ) : (
@@ -100,7 +127,8 @@ export default function ManagerFacets() {
                  </button>
                ))
             )}
-            <div className="univ-manager-facet-spacing"></div>
+              </div>
+            )}
           </div>
         ))}
       </div>

@@ -4,7 +4,7 @@ import { useAppGrid } from '../../layout/AppGridShell';
 import { useManager } from './ManagerContext';
 import ManagerItemCard from './ManagerItemCard';
 import { Search, Plus } from 'lucide-react';
-import './UniversalManager.css';
+
 
 /**
  * La llista del gestor. És l'ÚNICA que pinta fitxes: els consumidors només
@@ -14,7 +14,7 @@ import './UniversalManager.css';
  * usa el context. Abans era `item.id`: al Perfil els id d'ajust es repetixen
  * entre identitats, les claus xocaven i clicar qualsevol ajust obria el primer.
  */
-export default function ManagerList({ getItemCard, onActionCreate, createLabel = 'CREAR' }) {
+export default function ManagerList({ getItemCard, onActionCreate, createLabel = 'CREAR', listTitle = 'LLISTA', listIcon = null }) {
   const {
     filteredItems,
     activeItemId,
@@ -49,7 +49,8 @@ export default function ManagerList({ getItemCard, onActionCreate, createLabel =
       <aside className="notes-column collapsed">
         <AppGridColumn
           variant="collapsed"
-          titol="LLISTA"
+          titol={listTitle}
+          icona={Search}
           onReplega={() => setColMiddleCollapsed(false)}
         />
       </aside>
@@ -59,14 +60,15 @@ export default function ManagerList({ getItemCard, onActionCreate, createLabel =
   return (
     <aside className="notes-column">
       <AppGridColumn
-        titol="LLISTA"
+        titol={listTitle}
+        icona={listIcon}
         plegable={!isCompact}
         onReplega={() => setColMiddleCollapsed(true)}
       />
 
-      <div className="notes-list-header">
-        <div className="search-bar">
-          <Search size={18} aria-hidden="true" />
+      <div className="notes-list-header univ-manager-toolbar univ-manager-toolbar--list">
+        <div className="search-bar univ-manager-search">
+          <Search size={16} aria-hidden="true" />
           <input
             type="text"
             placeholder="Cerca..."
@@ -75,6 +77,16 @@ export default function ManagerList({ getItemCard, onActionCreate, createLabel =
             aria-label="Cercar elements"
           />
         </div>
+        {onActionCreate && (
+          <button
+            className="btn btn-primary"
+            onClick={onActionCreate}
+            title={createLabel}
+          >
+            <Plus size={16} />
+            <span className="d-desktop-only">{createLabel}</span>
+          </button>
+        )}
       </div>
 
       <div className="notes-column__body no-padding sdp-scrollable">
@@ -100,17 +112,7 @@ export default function ManagerList({ getItemCard, onActionCreate, createLabel =
         </ul>
       </div>
 
-      {onActionCreate && (
-        <div className="univ-manager-create-action">
-          <button
-            className="btn btn-primary univ-manager-create-btn"
-            onClick={onActionCreate}
-          >
-            <Plus size={18} />
-            {createLabel}
-          </button>
-        </div>
-      )}
+
     </aside>
   );
 }

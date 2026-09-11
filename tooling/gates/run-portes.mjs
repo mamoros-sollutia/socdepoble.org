@@ -31,6 +31,7 @@ export const passos = [
   { nom: 'Porta Tokens', cmd: 'node', args: ['tooling/gates/tractor-tokens.mjs'], script: 'porta:tokens' },
   { nom: 'Porta Fitxa Gestor', cmd: 'node', args: ['tooling/gates/tractor-fitxa-gestor.mjs'], script: 'porta:fitxa' },
   { nom: 'Porta Cromàtic', cmd: 'node', args: ['tooling/gates/tractor-cromatic.mjs'], script: 'porta:cromatic' },
+  { nom: 'Porta Crom (closca immutable)', cmd: 'node', args: ['tooling/gates/tractor-crom.mjs'], script: 'porta:crom' },
   { nom: 'Porta Vocabulari', cmd: 'node', args: ['tooling/gates/tractor-vocabulari.mjs'], script: 'porta:vocabulari' },
   { nom: 'Porta Estucat', cmd: 'node', args: ['tooling/gates/tractor-estucat.mjs', '--arrel=.'], script: 'porta:estucat' },
   { nom: 'Llaurador Índexs', cmd: 'node', args: ['tooling/wiki/llaurador_indexs.mjs', '--check', '--lock-token'], script: 'porta:llaurador' },

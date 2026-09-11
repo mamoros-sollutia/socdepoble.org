@@ -1,7 +1,18 @@
 import { useLayoutEffect, useRef, useState, createContext, useContext } from 'react';
 import appGridStyles from './AppGridShell.css?inline';
+import AppGridResizer from './AppGridResizer';
 
 const AppGridContext = createContext(null);
+
+const COLUMN_LIMITS = Object.freeze({
+  left: { min: 200, max: 420 },
+  middle: { min: 240, max: 520 },
+});
+const DEFAULT_COLUMN_WIDTHS = Object.freeze({ left: 270, middle: 300 });
+const RIGHT_COLUMN_MIN = 320;
+const RESIZER_WIDTH = 8;
+
+const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 
 export function useAppGrid() {
   const ctx = useContext(AppGridContext);
@@ -22,6 +33,7 @@ export default function AppGridShell({
 }) {
   const [mida, setMida] = useState('ample'); // 'ample', 'mitja', 'estret'
   const [panellObert, setPanellObert] = useState(initialPane); // null, 'left', 'middle'
+  const [columnWidths, setColumnWidths] = useState(DEFAULT_COLUMN_WIDTHS);
   const pageRef = useRef(null);
 
   useLayoutEffect(() => {
@@ -52,6 +64,20 @@ export default function AppGridShell({
   const toggleLeft = () => setPanellObert(p => p === 'left' ? null : 'left');
   const toggleMiddle = () => setPanellObert(p => p === 'middle' ? null : 'middle');
 
+  const resizeColumn = (column, requestedWidth) => {
+    const containerWidth = pageRef.current?.clientWidth || 0;
+    setColumnWidths((current) => {
+      const otherColumn = column === 'left' ? 'middle' : 'left';
+      const otherWidth = current[otherColumn];
+      const availableMax = containerWidth - otherWidth - RIGHT_COLUMN_MIN - (RESIZER_WIDTH * 2);
+      const limits = COLUMN_LIMITS[column];
+      const max = Math.max(limits.min, Math.min(limits.max, availableMax));
+      const nextWidth = clamp(requestedWidth, limits.min, max);
+      if (nextWidth === current[column]) return current;
+      return { ...current, [column]: nextWidth };
+    });
+  };
+
   /* Una columna desplaçada amb translateX(-100%) continua sent focusable i
      visible per al lector de pantalla. Sense `inert`, tabular des de
      l'editor et fica dins de columnes fora de pantalla: canviaries la
@@ -68,7 +94,12 @@ export default function AppGridShell({
         <style data-appgrid-styles>{appGridStyles}</style>
         {children}
         
-        <article className="app-grid-shell" data-layout={mida} data-panell={panellObert || ''} aria-label={ariaLabel}>
+        <article
+          className="app-grid-shell"
+          data-layout={mida}
+          data-panell={panellObert || ''}
+          aria-label={ariaLabel}
+        >
           {mida !== 'ample' && (
             <div className="app-grid-headers">
               <button 
@@ -94,7 +125,13 @@ export default function AppGridShell({
             </div>
           )}
 
-          <div className="app-grid-content">
+          <div
+            className="app-grid-content"
+            style={{
+              '--app-grid-col-sidebar-live': `${columnWidths.left}px`,
+              '--app-grid-col-list-live': `${columnWidths.middle}px`,
+            }}
+          >
             <section
               className="app-grid-column app-grid-column--left"
               id="app-grid-sidebar"
@@ -103,6 +140,16 @@ export default function AppGridShell({
             >
               {leftColumn}
             </section>
+            {mida === 'ample' ? (
+              <AppGridResizer
+                className="app-grid-resizer--left"
+                label={`Redimensionar ${leftTitle}`}
+                value={columnWidths.left}
+                min={COLUMN_LIMITS.left.min}
+                max={COLUMN_LIMITS.left.max}
+                onResize={(value) => resizeColumn('left', value)}
+              />
+            ) : null}
             <section
               className="app-grid-column app-grid-column--middle"
               id="app-grid-list"
@@ -111,6 +158,16 @@ export default function AppGridShell({
             >
               {middleColumn}
             </section>
+            {mida === 'ample' ? (
+              <AppGridResizer
+                className="app-grid-resizer--middle"
+                label={`Redimensionar ${middleTitle}`}
+                value={columnWidths.middle}
+                min={COLUMN_LIMITS.middle.min}
+                max={COLUMN_LIMITS.middle.max}
+                onResize={(value) => resizeColumn('middle', value)}
+              />
+            ) : null}
             <section
               className="app-grid-column app-grid-column--right"
               id="app-grid-main"

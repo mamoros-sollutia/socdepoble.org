@@ -166,11 +166,13 @@ export function XatProvider({ children, config }) {
       if (meua !== genFils.current) return;
       setFils(bruts.map(mapejaFil));
       setAvis(null);
+      return true;
     } catch (error) {
-      if (meua !== genFils.current) return;
+      if (meua !== genFils.current) return false;
       /* No es propaga a `status`. Vegeu la capçalera del fitxer. */
       setAvis(error?.message || 'No s\'han pogut carregar les converses.');
       setFils([]);
+      return false;
     } finally {
       if (meua === genFils.current) setEstat('ready');
     }
@@ -205,9 +207,11 @@ export function XatProvider({ children, config }) {
           ]
         };
       });
+      return true;
     } catch (error) {
-      if (meua !== genMissatges.current) return;
+      if (meua !== genMissatges.current) return false;
       setAvis(error?.message || 'No s\'han pogut carregar els missatges.');
+      return false;
     }
   }, [joId]);
 
@@ -246,17 +250,19 @@ export function XatProvider({ children, config }) {
     let tempFil = null;
     const ticFil = async () => {
       if (!viu || !filActiu) return;
-      if (!amagat()) await carregaMissatges(filActiu);
-      if (viu) tempFil = setTimeout(ticFil, MS_FIL_ACTIU);
+      let ok = true;
+      if (!amagat()) ok = await carregaMissatges(filActiu);
+      if (viu) tempFil = setTimeout(ticFil, ok ? MS_FIL_ACTIU : MS_FIL_ACTIU * 10);
     };
     if (filActiu) tempFil = setTimeout(ticFil, MS_FIL_ACTIU);
 
     const tic = async () => {
       if (!viu) return;
+      let ok = true;
       if (!amagat()) {
-        await carregaFils();
+        ok = await carregaFils();
       }
-      if (viu) temporitzador = setTimeout(tic, MS_LLISTA);
+      if (viu) temporitzador = setTimeout(tic, ok ? MS_LLISTA : MS_LLISTA * 10);
     };
 
     temporitzador = setTimeout(tic, MS_LLISTA);

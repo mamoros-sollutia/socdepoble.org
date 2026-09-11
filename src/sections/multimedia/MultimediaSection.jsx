@@ -5,6 +5,7 @@ import { Link } from '../../app/contexts/RouterContext';
 import { getSectionItemPath } from '../../config/navigation';
 import { useMultimedia } from './MultimediaContext';
 import { useUIActions } from '../../app/contexts/UIContext';
+import { PillToggle } from '../../components/ui/PillToggle.jsx';
 
 export default function MultimediaSection() {
   const { mediaItems, mediaTimelineGroups } = useMultimedia();
@@ -23,12 +24,15 @@ export default function MultimediaSection() {
       <header className="multimedia-header">
         <strong className="multimedia-header__title">{t('section.multimedia.all', 'TOTS')} ({mediaItems.length}) - {featured?.created_at ? new Date(featured.created_at).toLocaleDateString('ca-ES', { month: 'long', year: 'numeric' }) : ''}</strong>
         <div className="section-actions multimedia-header__actions">
-          <button type="button" className={`pill ${viewMode === 'grid' ? 'pill--active' : ''}`} onClick={() => setViewMode('grid')}>
-            {t('section.multimedia.gallery', 'Galeria')}
-          </button>
-          <button type="button" className={`pill ${viewMode === 'timeline' ? 'pill--active' : ''}`} onClick={() => setViewMode('timeline')}>
-            {t('section.multimedia.timeline', 'Cronologia')}
-          </button>
+          <PillToggle
+            etiqueta={t('section.multimedia.viewMode', 'Mode de vista')}
+            valor={viewMode}
+            onCanvi={setViewMode}
+            opcions={[
+              { valor: 'grid', text: t('section.multimedia.gallery', 'Galeria') },
+              { valor: 'timeline', text: t('section.multimedia.timeline', 'Cronologia') },
+            ]}
+          />
         </div>
       </header>
 

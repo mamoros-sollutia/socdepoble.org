@@ -14,3 +14,4 @@ export { UniversalIndicatorCard } from './UniversalIndicatorCard.jsx';
 export { Accordion, AccordionItem } from './Accordion.jsx';
 export { Dropdown, DropdownItem } from './Dropdown.jsx';
 export { UniversalSearch } from './UniversalSearch.jsx';
+export { PillToggle } from './PillToggle.jsx';

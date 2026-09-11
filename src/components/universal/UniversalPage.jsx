@@ -4,8 +4,6 @@ import { useNavigate, Link } from '../../app/contexts/RouterContext';
 
 import { useEffect, useState, useRef } from 'react';
 
-import { useUIState, useUIActions } from '../../app/contexts/UIContext';
-
 import { showToast } from './AvisadorEfimer';
 
 import { useContent } from './ContentProvider';
@@ -118,14 +116,6 @@ export function UniversalPage(props) {
   const time = props.time ?? config.time;
   const date = props.date ?? config.date;
   const dateTime = props.dateTime ?? config.dateTime;
-  const viewerAvatarUrl = props.viewerAvatarUrl ?? config.viewerAvatarUrl ?? DEFAULT_AUTHOR.avatarUrl;
-  const viewerAvatarAlt = props.viewerAvatarAlt ?? config.viewerAvatarAlt ?? 'Sóc de Poble';
-  const themeMode = props.themeMode ?? config.themeMode ?? 'light';
-  const onLanguage = props.onLanguage ?? config.onLanguage;
-  const onIaia = props.onIaia ?? config.onIaia;
-  const onSearch = props.onSearch ?? config.onSearch;
-  const onTheme = props.onTheme ?? config.onTheme;
-  const onProfile = props.onProfile ?? config.onProfile ?? (() => navigate('/el-meu-perfil'));
   const onBack = props.onBack ?? config.onBack;
   const onForward = props.onForward ?? config.onForward;
   const onIndex = props.onIndex ?? config.onIndex;
@@ -137,14 +127,11 @@ export function UniversalPage(props) {
   const connectLabel = props.connectLabel ?? config.connectLabel ?? 'Connectar';
   const price = props.price ?? config.price;
   const noPadding = props.noPadding ?? config.noPadding ?? false;
+  const layout = props.layout ?? config.layout ?? 'page';
   const children = props.children;
 
   const [isTocOpen, setIsTocOpen] = useState(false);
   const navigate = useNavigate();
-  const uiState = useUIState();
-  const { toggleTheme: appToggleTheme } = useUIActions();
-  
-  const currentThemeMode = (themeMode === 'system' || themeMode === 'light') ? (uiState?.themeMode || 'light') : themeMode;
   
   const actualTitleText = props.titleText || config.titleText || (typeof title === 'string' ? title : '');
   const handleConnect = onConnect || (() => navigate('/connectar?item_id=' + encodeURIComponent(actualTitleText || 'page')));
@@ -153,7 +140,6 @@ export function UniversalPage(props) {
   const handleForward = onForward || (() => navigate(1));
   const handleIndex = onIndex || (() => setIsTocOpen(true));
 
-  const handleTheme = onTheme || appToggleTheme || (() => {});
   const handleComment = onComment || (() => navigate('/xat'));
   const handleShare = onShare || (() => {
     const safeHref = isSafeUrl(window.location.href) ? window.location.href : window.location.origin;
@@ -211,6 +197,7 @@ export function UniversalPage(props) {
 
   return (
     <>
+      <div className={`sdp-universal-page-container sdp-universal-page-container--${layout}`}>
       {showBlueBar && (
           <header className={`bar-blue ${variant === 'embed' ? 'bar-blue--embed' : ''} ${resolvedChrome === 'context' ? 'bar-blue--top' : ''}`.trim()}>
             <div className="bar-blue-left">
@@ -370,6 +357,7 @@ export function UniversalPage(props) {
         )}
         {children}
       </article>
+      </div>
 
       <TableOfContentsDrawer isOpen={isTocOpen} onClose={() => setIsTocOpen(false)} />
     </>

@@ -27,10 +27,10 @@ Recursos mestres per a forçar la consistència en tot el contingut generat (dis
 {
   "project": "Sóc de Poble!",
   "palette": {
-    "primary": "rgb(255, 115, 0)",
-    "secondary": "rgb(9, 132, 227)",
-    "tertiary": "rgb(0, 0, 0)",
-    "neutral": "rgb(255, 255, 255)"
+    "primary": "#FF7300",
+    "secondary": "#016ebf",
+    "tertiary": "#0e0d0c",
+    "neutral": "#ffffff"
   },
   "typography": {
     "headings": "Noto Sans",
@@ -54,10 +54,10 @@ Recursos mestres per a forçar la consistència en tot el contingut generat (dis
 - **Codi Net:** Preferència per Vanilla CSS i components modulars.
 - **Accessibilitat:** Contrast alt per a llegir sota el sol de l'horta.
 - **Protocols de Color:**
-  - **Primary:** rgb(255, 115, 0) (Color Taronja principal per a identitat i botons primaris)
-  - **Secondary:** rgb(9, 132, 227) (Color Blau per a elements secundaris)
-  - **Tertiary:** rgb(0, 0, 0) (Color Negre per a contrasts forts o fons de targeta)
-  - **Neutral:** rgb(255, 255, 255) (Color Blanc per a fons generals o text en mode fosc)
+  - **Primary:** #FF7300 (Color Taronja principal per a identitat i botons primaris)
+  - **Secondary:** #016ebf (Color Blau per a elements secundaris)
+  - **Tertiary:** #0e0d0c (Color Negre per a contrasts forts o fons de targeta)
+  - **Neutral:** #ffffff (Color Blanc per a fons generals o text en mode fosc)
 
 ---
 _Fent poble amb [[el_projecte|Sóc de Poble]]! © 2026_

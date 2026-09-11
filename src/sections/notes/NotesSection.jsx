@@ -2,6 +2,7 @@ import { useSearchParams } from '../../app/contexts/RouterContext';
 import { NotesProvider, useNotes } from './NotesContext';
 import NotesEditor from './NotesEditor';
 import { UniversalManager } from '../../components/universal/manager/UniversalManager';
+import { FileText } from 'lucide-react';
 import { notesManagerConfig, buildNotesFacets } from '../../components/universal/manager/configs/notesManager';
 
 function NotesSectionInner({ notaInicialId }) {
@@ -18,6 +19,8 @@ function NotesSectionInner({ notaInicialId }) {
         renderDetail={() => <NotesEditor />}
         onActionCreate={() => creaNota()}
         createLabel="CREAR NOTA"
+        listTitle="NOTES"
+        listIcon={FileText}
         initialItemId={notaInicialId}
       />
     </div>

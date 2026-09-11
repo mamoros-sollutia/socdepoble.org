@@ -43,6 +43,12 @@ export default defineConfig(() => ({
   },
   test: {
     environment: 'jsdom',
+    /* En Node, lucide-react es resol pel `main` CJS, que fa require('react')
+       i carrega el React real: l'àlies a preact/compat no hi arriba i pintar
+       qualsevol icona peta (InvalidCharacterError). Forcem l'entrada ESM i
+       la processem inline, com fa l'app en el build. */
+    alias: { 'lucide-react': path.resolve(__dirname, 'node_modules/lucide-react/dist/esm/lucide-react.mjs') },
+    server: { deps: { inline: [/lucide-react/] } },
     exclude: ['node_modules', 'dist', '.idea', '.git', '.cache', '_wiki_de_poble/**'],
   },
   build: {

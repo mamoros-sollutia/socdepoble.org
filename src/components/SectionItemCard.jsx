@@ -35,7 +35,7 @@ export default function SectionItemCard({
   const metaString = meta.filter(Boolean).join(' · ');
 
   return (
-    <div className={className} className="sdp-flex-col-h100">
+    <div className={`${className || ""}` + " sdp-flex-col-h100"}>
       <UniversalCard
         title={title}
         subtitle={subtitle}

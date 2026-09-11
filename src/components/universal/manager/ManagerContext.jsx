@@ -9,8 +9,6 @@ import {
 
 const ManagerContext = createContext(null);
 
-const MAX_ANCESTRY_GUARD = 1000;
-
 export function ManagerProvider({
   children,
   items = [],

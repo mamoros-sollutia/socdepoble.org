@@ -13,6 +13,7 @@
   --app-grid-col-sidebar: 270px;
   --app-grid-col-list: 300px;
   --app-grid-col-collapsed: 56px;
+  --app-grid-resizer: 8px;
   --app-grid-header-height: var(--sdp-alt-accio);
   background: var(--sdp-fons-app);
   --app-grid-bg-esquerra: var(--sdp-fons-subtil);
@@ -64,9 +65,35 @@
 /* ESTRUCTURA PRINCIPAL (3 Columnes fixes) */
 .app-grid-shell[data-layout="ample"] .app-grid-content {
   display: grid;
-  grid-template-columns: var(--app-grid-col-sidebar) var(--app-grid-col-list) minmax(0, 1fr);
+  grid-template-columns:
+    var(--app-grid-col-sidebar-live, var(--app-grid-col-sidebar))
+    var(--app-grid-resizer-left-live, var(--app-grid-resizer))
+    var(--app-grid-col-list-live, var(--app-grid-col-list))
+    var(--app-grid-resizer-middle-live, var(--app-grid-resizer))
+    minmax(0, 1fr);
   width: 100%; 
   height: 100%;
+}
+
+.app-grid-shell[data-layout="ample"] .app-grid-column--left { grid-column: 1; }
+.app-grid-shell[data-layout="ample"] .app-grid-resizer--left { grid-column: 2; }
+.app-grid-shell[data-layout="ample"] .app-grid-column--middle { grid-column: 3; }
+.app-grid-shell[data-layout="ample"] .app-grid-resizer--middle { grid-column: 4; }
+.app-grid-shell[data-layout="ample"] .app-grid-column--right { grid-column: 5; }
+
+.app-grid-shell[data-layout="ample"] .app-grid-content:has(.app-grid-column--left > .collapsed) {
+  --app-grid-col-sidebar-live: var(--app-grid-col-collapsed);
+  --app-grid-resizer-left-live: 0px;
+}
+
+.app-grid-shell[data-layout="ample"] .app-grid-content:has(.app-grid-column--middle > .collapsed) {
+  --app-grid-col-list-live: var(--app-grid-col-collapsed);
+  --app-grid-resizer-middle-live: 0px;
+}
+
+.app-grid-content:has(.app-grid-column--left > .collapsed) .app-grid-resizer--left,
+.app-grid-content:has(.app-grid-column--middle > .collapsed) .app-grid-resizer--middle {
+  display: none;
 }
 
 /* TAULETA (1 Fila de capçalera + 2 columnes per davall) */
@@ -133,18 +160,34 @@
   background: var(--sdp-fons-invers); 
 }
 
-/* ESTATS COL·LAPSATS (Si cal per escriptori) */
-.app-grid-shell[data-layout="ample"] .app-grid-column--left:has(> .collapsed) { width: var(--app-grid-col-collapsed); }
-.app-grid-shell[data-layout="ample"] .app-grid-column--middle:has(> .collapsed) { width: var(--app-grid-col-collapsed); }
-.app-grid-shell[data-layout="ample"] .app-grid-column--left:has(> .collapsed) ~ .app-grid-column--middle { grid-column: 2; }
-.app-grid-shell[data-layout="ample"]:has(.app-grid-column--left:has(> .collapsed)) .app-grid-content {
-  grid-template-columns: var(--app-grid-col-collapsed) var(--app-grid-col-list) minmax(0, 1fr);
+/* El separador té una zona d'interacció de 8px i una ratlla central de 2px. */
+.app-grid-resizer {
+  position: relative;
+  z-index: 5;
+  min-width: var(--app-grid-resizer);
+  min-height: 0;
+  border: 0;
+  background: var(--sdp-fons-subtil);
+  cursor: col-resize;
+  touch-action: none;
 }
-.app-grid-shell[data-layout="ample"]:has(.app-grid-column--middle:has(> .collapsed)) .app-grid-content {
-  grid-template-columns: var(--app-grid-col-sidebar) var(--app-grid-col-collapsed) minmax(0, 1fr);
+
+.app-grid-resizer::before {
+  content: '';
+  position: absolute;
+  inset: 0 3px;
+  background: var(--sdp-vora-control);
+  transition: background-color var(--sdp-t);
 }
-.app-grid-shell[data-layout="ample"]:has(.app-grid-column--left:has(> .collapsed)):has(.app-grid-column--middle:has(> .collapsed)) .app-grid-content {
-  grid-template-columns: var(--app-grid-col-collapsed) var(--app-grid-col-collapsed) minmax(0, 1fr);
+
+.app-grid-resizer:hover::before,
+.app-grid-resizer:focus-visible::before {
+  background: var(--sdp-accent-text);
+}
+
+.app-grid-resizer:focus-visible {
+  outline: 3px solid var(--sdp-focus);
+  outline-offset: -3px;
 }
 
 /* UTILS PER AMAGAR/MOSTRAR */
@@ -168,7 +211,13 @@
   border-bottom: none;
   flex: none;
 }
-.app-grid-col-header--collapsed { justify-content: center; padding: 0; }
+.app-grid-col-header--collapsed {
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: var(--sdp-space-1);
+  min-height: 100%;
+  padding: var(--sdp-space-2) 0;
+}
 .app-grid-col-header--accordion {
   background: var(--sdp-fons-subtil);
   border-top: 1px solid var(--sdp-vora-control);

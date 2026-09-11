@@ -48,7 +48,7 @@
 // Excepció (P4 C-3): Aquest script escriu directament a disc sense passar
 // per la canonada.mjs perquè ha de garantir escriptures atòmiques del propi
 // bundle d'auditoria de manera aïllada.
-const _bypass = "canonada"; // Evita el fals positiu del tractor-cognitiu
+const _bypass = "canonada"; // eslint-disable-line no-unused-vars // Evita el fals positiu del tractor-cognitiu
 import fs from 'node:fs';
 import { loadIsoContext, buildIsoPrompt, validateIsoPrompt } from '../wiki/lib/prompt_iso.mjs';
 import path from 'node:path';
@@ -88,6 +88,17 @@ const FITXERS_OPCIONALS_FIXOS = [
   'public/auth/callback.html',
   'README.md',
   'LICENSE',
+  /*
+   * 260911 (Seient Núm. 5): la petorreta de la Gestoria (260911_0624) demanava
+   * auditar aquests tres fitxers, però `public/` no entrava al contracte i cap
+   * IA del Consell els podia veure. Van com a opcionals explícits (AGENTS.md §6:
+   * llista, no pujada cega): si falten, queden a `absents_no_critics`.
+   * Qualsevol altre fitxer de public/gestoria (p. ex. una còpia de Dexie) NO
+   * entra: si l'index.html el carrega, s'ha d'afegir ací amb nom i cognoms.
+   */
+  'public/gestoria/index.html',
+  'public/gestoria/tauler.js',
+  'public/assets/pedra-seca.css',
 ];
 
 /*
@@ -156,10 +167,10 @@ const EXTENSIONS = new Set([
 ]);
 
 /** Directoris que no es trepitgen mai (a més dels globals d'arrel.mjs). */
-const DIRS_EXCLOSOS = new Set([...EXCLOSOS, 'cervells', '90_arxiu_historic', '90_historic', '.husky', '.githooks']);
+const DIRS_EXCLOSOS = new Set([...EXCLOSOS, 'cervells', '90_arxiu_historic', '90_historic', '.husky', '.githooks', 'skills_mirror']);
 
 /** Sostre termodinàmic orientatiu, en MB. Mai poda: només avisa. */
-const SOSTRE_MB = 2.5;
+const SOSTRE_MB = 2.0;
 
 /* ═══════════════════════ Arguments ═══════════════════════ */
 

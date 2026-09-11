@@ -7,7 +7,6 @@ export default function UniversalToolbar({
   onBack,
   onPublish,
   publishDisabled = false,
-  isPublished = false,
   editor = null, // Optional TipTap editor for formatting state and commands
   t = (key, fallback) => fallback
 }) {

@@ -25,6 +25,7 @@
     "porta:vocabulari": "node tooling/gates/tractor-vocabulari.mjs",
     "porta:tdz": "node tooling/gates/tractor-tdz.mjs",
     "porta:cromatic": "node tooling/gates/tractor-cromatic.mjs",
+    "porta:crom": "node tooling/gates/tractor-crom.mjs",
     "porta:tokens": "node tooling/gates/tractor-tokens.mjs",
     "porta:fitxa": "node tooling/gates/tractor-fitxa-gestor.mjs",
     "porta:baseline": "node tooling/brain/tractor-pedra-seca.mjs --baseline && node tooling/gates/design_guard.mjs --baseline && node tooling/gates/tractor-vocabulari.mjs --baseline && node tooling/gates/tractor-promesa.mjs --baseline && node tooling/wiki/teixidor.mjs --baseline",
@@ -74,12 +75,16 @@
     "test": "vitest",
     "lint": "eslint src tooling scripts tests",
     "porta:llavor": "node tooling/gates/tractor-llavor.mjs",
-    "porta:58px": "node tooling/gates/01_porta_pedra_seca_58px.mjs"
+    "porta:58px": "node tooling/gates/01_porta_pedra_seca_58px.mjs",
+    "porta:cataleg": "node tooling/gates/tractor-cataleg.mjs",
+    "porta:frontissa": "node tooling/gates/tractor-frontissa.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.112.4",
     "@tiptap/react": "^3.31.0",
     "@tiptap/starter-kit": "^3.31.0",
+    "dexie": "^4.4.6",
+    "dexie-react-hooks": "^4.4.0",
     "dompurify": "^3.4.14",
     "lucide-react": "^1.35.0",
     "preact": "^10.29.8",

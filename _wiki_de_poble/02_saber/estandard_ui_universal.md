@@ -72,8 +72,30 @@ No hi ha hui un gate CI que implemente totes les prohibicions de l'annex.
 
 L'arquitectura es basa en construir murs a base de pedra encaixada sense morter (HTML pur + CSS semàntic). Les classes pròpies segueixen els prefixos `sp-` (System/Page), `uc-` (Universal Card), i `up-` (Universal Page).
 
-### A. Universal Page (El Llenç)
-Aquesta és l'estructura base per a qualsevol pàgina completa:
+### A. Universal System (L'Entorn)
+Aquesta és l'estructura base per a qualsevol pàgina completa del sistema. L'arquitectura comprèn tres peces fixes i el 'content slot' (que allotja la Universal Page real):
+
+```jsx
+<div className="universal-system">
+  <aside className="universal-system-sidebar">
+    {/* Navegació i estructures fixes de l'esquerra */}
+  </aside>
+  
+  <div className="universal-system-main">
+    <header className="universal-system-topbar">
+      {/* Barra superior fixa per a la zona actual */}
+    </header>
+    
+    <main className="universal-system-content-slot">
+      <div className="universal-page">
+        {/* Ací viuen les Universal Cards, les graelles i els documents */}
+      </div>
+    </main>
+  </div>
+</div>
+```
+
+*Nota: La Universal Page no és la pàgina en si, sinó el `content slot` on s'aboca el contingut mentre Sidebar i Topbar mantenen l'estabilitat i el context de l'usuari.*
 
 ```jsx
 <div className="universal-page">
@@ -168,7 +190,7 @@ Utilitzeu el `gen_targeta_universal.mjs` que sempre generarà el JSX correcte. M
 
 - **Embolcalls brossa (Flex/Grid centrant coses):** Elimina el <div>. Usa el contenidor `universal-grid` directament.
 - **Espaiats arbitraris (`mt-4`, `p-2`):** Esborra'ls. Si un component necessita un marge intrínsec, defineix-lo en `pedra-seca.css` mitjançant les variables `--sp-espaiat-*`.
-- **Colors tallats a mà (`text-[rgb(9, 132, 227)]`):** Usa variables o classes pròpies com la color corporativa blava de la gestoria.
+- **Colors tallats a mà (`text-[#016ebf]` o similar):** Usa variables o classes pròpies com la color corporativa blava de la gestoria.
 - **Opacity (`style={{ opacity: 0.5 }}`):** Canvia a `<span className="opacitat-mitja">`.
 
 *Si algun concepte de la UI manca i consideres que requereix classes noves, s'han de proposar canvis formals a `pedra-seca.css`. No s'improvisa dins dels components JSX.*
@@ -237,8 +259,8 @@ Una Targeta Universal té 4 grans blocs obligatoris/opcionals en ordre descenden
 
 1. **La Caputxa (Header):** Fons fosc (`bg-primary-container`), Avatar a l'esquerra, Nom en Bold, Poble davall. A la dreta: el PIN o l'ull, l'Hora i la Data.
 2. **Div Multimèdia (Opcional):** Contingut `aspect-square` amb les imatges.
-3. **Cos (Card Body):** Fons clar (`bg-surface-container-lowest`), amb Títol Blau (rgb(9, 132, 227)), possible Subtítol Taronja (rgb(255, 115, 0)) limitat a 3 línies i els Badges de categories al fons.
-4. **Peu d'Acció Blau:** Fons Blau (rgb(9, 132, 227)). Tres icones d'acció a l'esquerra i el botó ovalat blanc d'acció principal a la dreta (`+ CONNECTAR`).
+3. **Cos (Card Body):** Fons clar (`bg-surface-container-lowest`), amb Títol Blau (var(--sdp-secondary-500)), possible Subtítol Taronja (var(--sdp-primary-500)) limitat a 3 línies i els Badges de categories al fons.
+4. **Peu d'Acció Blau:** Fons Blau (var(--sdp-secondary-500)). Tres icones d'acció a l'esquerra i el botó ovalat blanc d'acció principal a la dreta (`+ CONNECTAR`).
 
 *Nota: No t'inventes tipografies. Totes les mides venen per defecte utilitzant les classes de Tailwind injectades (com `font-label-sm`, `text-headline-md`, etc).*
 

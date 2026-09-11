@@ -10,6 +10,7 @@ import { buildMapEmbedUrl } from './mapConfig';
 import { useMur } from './MurContext';
 import { useCoreContent } from '../../app/contexts/CoreContentContext';
 import { useUIActions } from '../../app/contexts/UIContext';
+import { PillToggle } from '../../components/ui/PillToggle.jsx';
 
 export default function MurSection() {
   const { sortedEvents, sortedFeedPosts, sortedMarketItems } = useMur();
@@ -34,7 +35,7 @@ export default function MurSection() {
     { key: 'skills', isAvis: false, href: '/skills' },
     { key: 'anima', isAvis: false, href: '/ia' },
     { key: 'roadmap', isAvis: false, href: '/roadmap' },
-    { key: 'notes', isAvis: false, href: '/notes' },
+    { key: 'notes', isAvis: false, href: '/jo/notes' },
     { key: 'versions', isAvis: false, href: '/versions' },
     { key: 'legal', isAvis: false, href: '/legal' }
   ].map(item => {
@@ -129,37 +130,26 @@ export default function MurSection() {
       <div className="content-wrapper">
         
         {/* Switcher / Botonera */}
-        <section className="sdp-filtres" aria-label="Filtres del mur" className="mur-px-16">
-          <div className="login-switcher">
-            <button
-              type="button"
-              className={['pill', filterType === 'all' && !isMapOpen ? 'pill--active' : ''].filter(Boolean).join(' ')}
-              onClick={() => { setFilterType('all'); setIsMapOpen(false); }}
-            >
-              Mostrar Tot
-            </button>
-            <button
-              type="button"
-              className={['pill', filterType === 'events' && !isMapOpen ? 'pill--active' : ''].filter(Boolean).join(' ')}
-              onClick={() => { setFilterType('events'); setIsMapOpen(false); }}
-            >
-              Esdeveniments
-            </button>
-            <button
-              type="button"
-              className={['pill', filterType === 'system' && !isMapOpen ? 'pill--active' : ''].filter(Boolean).join(' ')}
-              onClick={() => { setFilterType('system'); setIsMapOpen(false); }}
-            >
-              Sistema
-            </button>
-            <button
-              type="button"
-              className={['pill', isMapOpen ? 'pill--active' : ''].filter(Boolean).join(' ')}
-              onClick={() => setIsMapOpen(!isMapOpen)}
-            >
-              🗺️ Mapa
-            </button>
-          </div>
+        {/* 260911: abans `className` duplicat (es perdia sdp-filtres) i
+            `.pill--active` sense cap regla CSS (l'actiu no es veia).
+            Mateix comportament: un filtre tanca el mapa; Mapa s'obri i es
+            plega tornant-lo a polsar. */}
+        <section className="mur-px-16" aria-label="Filtres del mur">
+          <PillToggle
+            etiqueta="Filtres del mur"
+            valor={isMapOpen ? 'mapa' : filterType}
+            onCanvi={(v) => {
+              if (v === 'mapa') { setIsMapOpen((obert) => !obert); return; }
+              setFilterType(v);
+              setIsMapOpen(false);
+            }}
+            opcions={[
+              { valor: 'all', text: 'Mostrar Tot' },
+              { valor: 'events', text: 'Esdeveniments' },
+              { valor: 'system', text: 'Sistema' },
+              { valor: 'mapa', text: '🗺️ Mapa' },
+            ]}
+          />
         </section>
 
         {/* Mapa Desplegable */}
