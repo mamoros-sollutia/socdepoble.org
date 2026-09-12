@@ -12,14 +12,13 @@ import { useIdentitat } from '../../app/contexts/IdentitatContext';
 import { showToast } from '../../components/universal/AvisadorEfimer';
 import { construeixRetall } from './retall.js';
 
-// Component per als avatars
-function Avatar({ src, size = 48 }) {
+function Avatar({ src, size = 'md' }) {
   if (src) {
-    return <div className="xat-avatar-wrap" style={{ '--avatar-size': typeof size === 'number' ? `${size}px` : size }}><img src={src} alt="Avatar" className="xat-item-avatar" /></div>;
+    return <div className={`sdp-avatar sdp-avatar--${size}`}><img src={src} alt="Avatar" className="sdp-avatar__imatge" /></div>;
   }
   return (
-    <div className="xat-avatar-wrap" style={{ '--avatar-size': typeof size === 'number' ? `${size}px` : size }}>
-      <Users size={size * 0.5} color="var(--sdp-text-suau)" />
+    <div className={`sdp-avatar sdp-avatar--${size}`}>
+      <Users size={16} color="var(--sdp-text-suau)" />
     </div>
   );
 }
@@ -36,8 +35,6 @@ export default function XatSection() {
     cercaMembres
   } = useXat();
 
-  /* Selector de «Nova conversa». La llista del padró viu ací i no al context:
-     només fa falta mentre el selector està obert. */
   const [modeNouXat, setModeNouXat] = useState(false);
   const [membres, setMembres] = useState([]);
   const [carregantMembres, setCarregantMembres] = useState(false);
@@ -52,13 +49,13 @@ export default function XatSection() {
   const navigate = useNavigate();
 
   const [searchTerm, setSearchTerm] = useState('');
-  const [activeFilter, setActiveFilter] = useState('totes'); // totes, no-llegits, grups...
+  const [activeFilter, setActiveFilter] = useState('totes');
 
   const threads = chatThreads || [];
 
   const activeThread = threadId
     ? threads.find(c => String(c.id) === threadId)
-    : null; // Si no hi ha thread, deixem el panell dret buit en escriptori
+    : null;
 
   const base = actorType === 'entitat' ? `/e/${actorId}` : '/jo';
 
@@ -66,9 +63,6 @@ export default function XatSection() {
     obriFil(threadId || null);
   }, [threadId, obriFil]);
 
-  /* El padró es demana una volta en obrir el selector i es filtra en local.
-     Cent veïns no justifiquen una petició per cada lletra que teclege un uelo
-     amb la connexió del bancal. L'RPC admet `p_cerca` per quan el poble cresca. */
   useEffect(() => {
     if (!modeNouXat) return undefined;
     let viu = true;
@@ -89,7 +83,6 @@ export default function XatSection() {
 
   const messages = activeThread ? getThreadMessages(activeThread.id) : [];
 
-  // Filtrem per cerca
   const filteredThreads = threads.filter((th) => {
     if (!searchTerm) return true;
     const name = th.nom || th.other_user_name || 'Desconegut';
@@ -101,14 +94,6 @@ export default function XatSection() {
     return (m.nom || '').toLowerCase().includes(searchTerm.toLowerCase());
   });
 
-  /**
-   * Obri la conversa amb una persona del poble.
-   *
-   * Si l'RPC ja ha dit que teniu fil (`m.filId`), s'hi navega i prou: obrir una
-   * conversa que ja existix no ha de tocar la base de dades. Si no, es crea.
-   * `crea_fil_directe` és idempotent al servidor, així que un doble clic no
-   * genera dos fils; el guard d'`obrintAmb` només evita la petició repetida.
-   */
   const obriConversaAmb = async (membre) => {
     if (obrintAmb) return;
     if (membre.filId) {
@@ -130,7 +115,6 @@ export default function XatSection() {
     }
   };
 
-  // Funcions
   const handleSelectThread = (id) => {
     navigate(`${base}/xat/${encodeURIComponent(String(id))}`);
   };
@@ -139,17 +123,6 @@ export default function XatSection() {
     navigate(`${base}/xat`);
   };
 
-  /**
-   * EL PONT. Missatges triats → nota nova → Bloc de Notes obert damunt d'ella.
-   *
-   * RUTA ABSOLUTA, NO RELATIVA (P2 · 260908): `navigate('../notes')` resol
-   * diferent segons si vens de `xat` o de `xat/:threadId` — el mateix defecte
-   * que ja pateix `../control-xat` d'ací dalt. Es construïx com a MobileNav.
-   *
-   * ROLLBACK PESSIMISTA: si la creació falla, es torna a llançar perquè la
-   * conversa conserve la selecció i l'usuari puga reintentar sense tornar a
-   * triar els missatges un per un.
-   */
   const enviaAlBloc = async (triats) => {
     const retall = construeixRetall({
       fil: activeThread,
@@ -160,7 +133,6 @@ export default function XatSection() {
     try {
       const nota = await creaNota(retall);
       
-      // El Sistema Nerviós de Grok: Event global per a desacoblament (Fase 5 - Quimera)
       if (typeof window !== 'undefined') {
         window.dispatchEvent(new CustomEvent('sdp:note-created', { detail: { note: nota } }));
       }
@@ -186,8 +158,7 @@ export default function XatSection() {
     <ContentProvider initialConfig={config}>
       <div className="xat-layout">
 
-        {/* SIDEBAR (Llista de Xats) */}
-        <aside className={`xat-sidebar ${threadId ? 'has-thread' : ''}`}>
+        <aside className={`xat-sidebar ${threadId ? 'd-desktop-only' : ''}`}>
           <header className="xat-sidebar-header">
             <div className="search-bar-basic">
               <Search size={18} color="currentColor" className="search-icon" />
@@ -210,27 +181,26 @@ export default function XatSection() {
             </div>
             <button
               type="button"
-              className="pill pill--icon xat-settings-btn"
+              className="sdp-boto sdp-boto--fantasma"
               aria-label={modeNouXat ? 'Cancel·lar la conversa nova' : 'Nova conversa'}
               aria-pressed={modeNouXat}
               onClick={() => { setModeNouXat((obert) => !obert); setSearchTerm(''); }}
             >
               {modeNouXat
-                ? <X size={24} color="currentColor" />
-                : <Plus size={24} color="currentColor" />}
+                ? <X size={24} color="var(--sdp-text-invers)" />
+                : <Plus size={24} color="var(--sdp-text-invers)" />}
             </button>
-            <div className="xat-settings-wrapper">
+            <div className="sdp-alerta__accions">
               <button
-                className="pill pill--icon xat-settings-btn"
+                className="sdp-boto sdp-boto--fantasma"
                 aria-label="Control General del Xat"
                 onClick={() => navigate(`${base}/control-xat`)}
               >
-                <Settings size={24} color="currentColor" />
+                <Settings size={24} color="var(--sdp-text-invers)" />
               </button>
             </div>
           </header>
 
-          {/* FILTRES */}
           <div className="xat-filters">
             <button className={`btn-taronja-fort ${activeFilter === 'totes' ? 'active' : ''}`} onClick={() => setActiveFilter('totes')}>Tot</button>
             <button className={`btn-taronja-fort ${activeFilter === 'no-llegits' ? 'active' : ''}`} onClick={() => setActiveFilter('no-llegits')}>No llegit</button>
@@ -280,7 +250,7 @@ export default function XatSection() {
                       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); obriConversaAmb(m); }
                     }}
                   >
-                    <Avatar />
+                    <Avatar size="md" />
                     <div className="xat-item-content">
                       <div className="xat-item-header">
                         <span className="xat-item-title">{m.nom}</span>
@@ -321,7 +291,7 @@ export default function XatSection() {
                 className={`xat-item ${threadId === String(th.id) ? 'active' : ''}`}
                 onClick={() => handleSelectThread(th.id)}
               >
-                <Avatar kind={th.type} src={th.avatar_url} />
+                <Avatar kind={th.type} src={th.avatar_url} size="md" />
                 <div className="xat-item-content">
                   <div className="xat-item-header">
                     <span className="xat-item-title">{th.name || th.title}</span>
@@ -338,8 +308,7 @@ export default function XatSection() {
           </div>
         </aside>
 
-        {/* ÀREA PRINCIPAL (Conversa o Buit) */}
-        <main className={`xat-main ${!threadId ? 'hidden-on-mobile' : 'active-on-mobile'}`}>
+        <main className={`xat-main ${!threadId ? 'd-desktop-only' : ''}`}>
           {activeThread ? (
             <ChatConversation
               thread={activeThread}
@@ -382,8 +351,6 @@ function ChatConversation({ thread, messages, onSendMessage, onBack, onEnviaAlBl
     }
   }, [messages]);
 
-  /* Canviar de conversa buida la selecció. Si no, una selecció viva d'un altre
-     fil permetria retallar missatges de dues converses dins d'una sola nota. */
   useEffect(() => {
     setModeSeleccio(false);
     setTriats(new Set());
@@ -398,12 +365,10 @@ function ChatConversation({ thread, messages, onSendMessage, onBack, onEnviaAlBl
     try {
       await onSendMessage(thread, value);
     } catch {
-      setText(value); // Restaura
+      setText(value);
     }
   };
 
-  /* Els missatges del seed porten `id` numèric per fil i els de Supabase un
-     uuid. La posició és l'últim recurs, no el primer. */
   const clauDe = (msg, i) => String(msg.id ?? `pos-${i}`);
 
   const alterna = (clau) => {
@@ -422,9 +387,6 @@ function ChatConversation({ thread, messages, onSendMessage, onBack, onEnviaAlBl
 
   const enviaAlBloc = async () => {
     if (creantNota) return;
-    /* ORDRE CRONOLÒGIC, NO ORDRE DE CLIC: es recorre `messages`, no el Set. Si
-       algú tria l'últim missatge i després el primer, la nota ha d'eixir en
-       l'ordre en què es va parlar, no en el que es va polsar. */
     const tria = messages.filter((m, i) => triats.has(clauDe(m, i)));
     if (tria.length === 0) return;
 
@@ -433,8 +395,7 @@ function ChatConversation({ thread, messages, onSendMessage, onBack, onEnviaAlBl
       await onEnviaAlBloc(tria);
       surtDeSeleccio();
     } catch {
-      /* El pare ja ha avisat l'usuari. Ací només es conserva la selecció
-         perquè puga reintentar sense tornar a triar-ho tot. */
+      // Pare ja avisa
     } finally {
       setCreantNota(false);
     }
@@ -453,10 +414,10 @@ function ChatConversation({ thread, messages, onSendMessage, onBack, onEnviaAlBl
         </header>
       ) : (
         <header className="xat-main-header">
-          <button className="pill pill--icon mobile-only" onClick={onBack} aria-label="Tornar" style={{ boxShadow: 'none' }}>
+          <button className="sdp-boto sdp-boto--fantasma d-mobile-only" onClick={onBack} aria-label="Tornar">
             <ArrowLeft size={24} color="var(--sdp-text-invers)" />
           </button>
-          <Avatar kind={thread?.type} src={thread?.avatar_url} size={40} />
+          <Avatar kind={thread?.type} src={thread?.avatar_url} size="sm" />
           <div className="xat-header-info">
             <strong>{thread?.name || thread?.title}</strong>
             <span className="xat-header-subtitle">Prem ací per a més informació</span>
@@ -465,27 +426,27 @@ function ChatConversation({ thread, messages, onSendMessage, onBack, onEnviaAlBl
             <button className="xat-header-btn"><Video size={20} color="currentColor" /></button>
             <button className="xat-header-btn"><Phone size={20} color="currentColor" /></button>
             <div style={{ position: 'relative' }}>
-              <button className={`xat-header-btn ${menuOpen ? 'xat-header-btn--active' : ''}`} onClick={() => setMenuOpen(!menuOpen)}><MoreHorizontal size={20} color="currentColor" /></button>
+              <button className={`xat-header-btn ${menuOpen ? 'active' : ''}`} onClick={() => setMenuOpen(!menuOpen)}><MoreHorizontal size={20} color="currentColor" /></button>
               {menuOpen && (
                 <div className="xat-header-dropdown">
-                  <button className="xat-dropdown-item">Info. del contacte</button>
-                  <button className="xat-dropdown-item">Cercar</button>
+                  <button className="sdp-dropdown-item">Info. del contacte</button>
+                  <button className="sdp-dropdown-item">Cercar</button>
                   <hr className="xat-divider" />
                   <button
                     type="button"
-                    className="xat-dropdown-item"
+                    className="sdp-dropdown-item"
                     onClick={() => { setModeSeleccio(true); setMenuOpen(false); }}
                   >
                     Seleccionar missatges
                   </button>
-                  <button className="xat-dropdown-item">Silenciar</button>
+                  <button className="sdp-dropdown-item">Silenciar</button>
                   <hr className="xat-divider" />
-                  <button className="xat-dropdown-item">Nova telefonada en grup</button>
-                  <button className="xat-dropdown-item">Enviar enllaç de telefonada</button>
-                  <button className="xat-dropdown-item">Programar telefonada</button>
+                  <button className="sdp-dropdown-item">Nova telefonada en grup</button>
+                  <button className="sdp-dropdown-item">Enviar enllaç de telefonada</button>
+                  <button className="sdp-dropdown-item">Programar telefonada</button>
                   <hr className="xat-divider" />
-                  <button className="xat-dropdown-item">Obrir en una finestra nova</button>
-                  <button className="xat-dropdown-item xat-dropdown-item--danger">Tancar xat</button>
+                  <button className="sdp-dropdown-item">Obrir en una finestra nova</button>
+                  <button className="sdp-dropdown-item sdp-dropdown-item--danger">Tancar xat</button>
                 </div>
               )}
             </div>
@@ -556,7 +517,7 @@ function ChatConversation({ thread, messages, onSendMessage, onBack, onEnviaAlBl
         </div>
       ) : (
         <form className="xat-composer" onSubmit={handleSubmit}>
-          <button type="button" className="pill pill--icon" aria-label="Adjuntar" style={{ boxShadow: 'none' }}>
+          <button type="button" className="sdp-boto sdp-boto--fantasma" aria-label="Adjuntar">
             <ImageIcon size={24} color="var(--sdp-text-suau)" />
           </button>
           <div className="xat-input-wrap">

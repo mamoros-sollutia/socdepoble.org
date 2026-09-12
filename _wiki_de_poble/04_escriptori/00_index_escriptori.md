@@ -13,9 +13,19 @@ Ací només resideix la matèria viva. El que ha mort, descansa en l'arxiu.
 - [[00_INDEX_IDENTITAT]] (Nucli d'Identitat)
 - [[00_INDEX_Actes]] (Registre d'Actes)
 
-- [[260911_2038_ABSENTS_auditoria.json]]
-- [[260911_2038_BUNDLE_auditoria]]
-- [[260911_2038_PROMPT_auditoria]]
+- [[00_index_escriptori]]
+- [[260912_2311_ABSENTS_auditoria.json]]
+- [[260912_2311_PROMPT_auditoria]]
+- [[260912_2330_ESTUDI_auditoria]]
+- [[260912_2330_PROMPT_Claude_Final]]
+- [[260912_2335_recollida_auditories]]
+- [[260913_0000_ABSENTS_auditoria.json]]
+- [[260913_0000_BUNDLE_auditoria]]
+- [[260913_0000_PROMPT_auditoria]]
+
+## 00_bandeja_d_entrada
+- [[00_bandeja_d_entrada/260912_2340_PROMPT_Claude_Remat]]
+- [[00_bandeja_d_entrada/260913_1230_PROMPT_neteja_disseny]]
 
 ## 01_produccio
 - [[01_produccio/260911_0006_tasques_ui_standardization]]

@@ -1,3 +1,4 @@
+/* SDP-LOCK */
 export const CONTRACTE_NUCLI = Object.freeze([
   'loadCoreContent',
   'loadMur',
@@ -38,6 +39,13 @@ export const CAPACITATS = Object.freeze({
   admin: Object.freeze([
     'adminListUsers',
     'adminListOrganizations'
+  ]),
+  gestoria: Object.freeze([
+    'loadGestoria'
+  ]),
+  sessio: Object.freeze([
+    'refrescaSessio',
+    'elMeuRol'
   ])
 });
 

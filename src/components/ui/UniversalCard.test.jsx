@@ -26,7 +26,7 @@ beforeEach(() => {
   vi.clearAllMocks();
 });
 afterEach(() => {
-  render(null, arrel);
+  arrel.innerHTML = '';
 });
 const pinta = (props) => act(() => { render(<UniversalCard {...props} />, arrel); });
 const troba = (selector) => arrel.querySelector(selector);

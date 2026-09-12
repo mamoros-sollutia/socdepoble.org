@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { ArrowRight, Check, Link2, MessageSquare, Plus, RefreshCcw, ShieldCheck, Wifi, X, Eye, EyeOff } from 'lucide-react';
+import { ArrowRight, Check, Link2, MessageSquare, RefreshCcw, ShieldCheck, Wifi, X, Eye, EyeOff } from 'lucide-react';
 import { UniversalPage } from '../../components/universal/UniversalPage';
 import { useUIState } from '../../app/contexts/UIContext';
 import { useCoreContent } from '../../app/contexts/CoreContentContext';
@@ -19,43 +19,10 @@ import {
 } from './devicesRuntime';
 
 const MOCK_DEVICES = [
-  {
-    id: 'E9B234F1-mock-a',
-    name: 'Mòbil de prova',
-    kind: 'mock',
-    lastSeen: Date.now()
-  },
-  {
-    id: '4A1D8F2C-mock-b',
-    name: 'Tauleta de prova',
-    kind: 'mock',
-    lastSeen: Date.now()
-  },
-  {
-    id: 'B8C1D9F4-mock-c',
-    name: 'Ordinador de prova',
-    kind: 'mock',
-    lastSeen: Date.now()
-  }
+  { id: 'E9B234F1-mock-a', name: 'Mòbil de prova', kind: 'mock', lastSeen: Date.now() },
+  { id: '4A1D8F2C-mock-b', name: 'Tauleta de prova', kind: 'mock', lastSeen: Date.now() },
+  { id: 'B8C1D9F4-mock-c', name: 'Ordinador de prova', kind: 'mock', lastSeen: Date.now() }
 ];
-
-const MOCK_REPLIES = {
-  'E9B234F1-mock-a': [
-    'Ací el Mòbil de prova. Canal disponible i operatiu.',
-    'Rebut en el mòbil. El flux de proves continua bé.',
-    'Això arriba correcte al telèfon.'
-  ],
-  '4A1D8F2C-mock-b': [
-    'Tauleta de prova connectada.',
-    'Verificant paquets des de la tauleta... Tot verd.',
-    'Dispositiu actiu i responent al missatge.'
-  ],
-  'B8C1D9F4-mock-c': [
-    'Ordinador de prova en línia.',
-    'Connexió estable des de l\'escriptori.',
-    'Perfecte, l\'ordinador rep correctament.'
-  ]
-};
 
 export default function DevicesSection() {
   const { externalConfig } = useUIState();
@@ -104,16 +71,12 @@ export default function DevicesSection() {
     [connections, mergedDevices]
   );
   const activeChatPeer = connectedPeers.find((device) => device.id === selectedPeerId) || null;
-
   const activeChatConnection = activeChatPeer ? connections[activeChatPeer.id] : null;
   const activeChatMessages = activeChatPeer ? messagesByPeer[activeChatPeer.id] || [] : [];
 
   const appendMessage = (peerId, message) => {
     setMessagesByPeer((current) => {
-      const next = {
-        ...current,
-        [peerId]: [...(current[peerId] || []), message]
-      };
+      const next = { ...current, [peerId]: [...(current[peerId] || []), message] };
       saveDeviceChats(tenantId, profile.id, next);
       return next;
     });
@@ -140,54 +103,28 @@ export default function DevicesSection() {
       onPresence(device) {
         setDevices((current) => ({
           ...current,
-          [device.id]: {
-            ...current[device.id],
-            ...device,
-            lastSeen: Date.now()
-          }
+          [device.id]: { ...current[device.id], ...device, lastSeen: Date.now() }
         }));
       },
       onConnectRequest(fromId) {
-        setConnections((current) => ({
-          ...current,
-          [fromId]: { state: 'incoming', updatedAt: Date.now() }
-        }));
+        setConnections((current) => ({ ...current, [fromId]: { state: 'incoming', updatedAt: Date.now() } }));
         setSelectedPeerId((current) => current || fromId);
       },
       onConnectAccept(fromId) {
-        setConnections((current) => ({
-          ...current,
-          [fromId]: { state: 'connected', updatedAt: Date.now() }
-        }));
+        setConnections((current) => ({ ...current, [fromId]: { state: 'connected', updatedAt: Date.now() } }));
         setSelectedPeerId(fromId);
       },
       onConnectDecline(fromId) {
-        setConnections((current) => ({
-          ...current,
-          [fromId]: { state: 'declined', updatedAt: Date.now() }
-        }));
+        setConnections((current) => ({ ...current, [fromId]: { state: 'declined', updatedAt: Date.now() } }));
       },
       onMessage(fromId, message) {
-        setConnections((current) => ({
-          ...current,
-          [fromId]: { state: 'connected', updatedAt: Date.now() }
-        }));
+        setConnections((current) => ({ ...current, [fromId]: { state: 'connected', updatedAt: Date.now() } }));
         appendMessage(fromId, { ...message, sender: 'other' });
         setSelectedPeerId((current) => current || fromId);
       },
       onDisconnect(fromId) {
-        setConnections((current) => ({
-          ...current,
-          [fromId]: { state: 'idle', updatedAt: Date.now() }
-        }));
-        appendMessage(
-          fromId,
-          createChatMessage({
-            sender: 'other',
-            text: 'La connexió s’ha tancat des de l’altre dispositiu.',
-            author: mergedDevices.find((device) => device.id === fromId)?.name || 'Dispositiu'
-          })
-        );
+        setConnections((current) => ({ ...current, [fromId]: { state: 'idle', updatedAt: Date.now() } }));
+        appendMessage(fromId, createChatMessage({ sender: 'other', text: 'La connexió s’ha tancat.', author: 'Dispositiu' }));
       }
     });
 
@@ -200,39 +137,15 @@ export default function DevicesSection() {
   useEffect(() => {
     const timer = window.setInterval(() => {
       setDevices((current) =>
-        Object.fromEntries(
-          Object.entries(current).filter(([, device]) => Date.now() - (device.lastSeen || 0) < PRESENCE_STALE_MS * 2)
-        )
+        Object.fromEntries(Object.entries(current).filter(([, device]) => Date.now() - (device.lastSeen || 0) < PRESENCE_STALE_MS * 2))
       );
     }, 4000);
-
-    return () => {
-      window.clearInterval(timer);
-    };
-  }, []);
-
-  useEffect(() => () => {
-    if (mockReplyTimerRef.current) {
-      window.clearTimeout(mockReplyTimerRef.current);
-    }
+    return () => window.clearInterval(timer);
   }, []);
 
   useEffect(() => {
-    if (!selectedPeerId && connectedPeers.length > 0) {
-      setSelectedPeerId(connectedPeers[0].id);
-    }
+    if (!selectedPeerId && connectedPeers.length > 0) setSelectedPeerId(connectedPeers[0].id);
   }, [connectedPeers, selectedPeerId]);
-
-  useEffect(() => {
-    if (selectedPeerId && connections[selectedPeerId]?.state === 'connected') return;
-    if (connectedPeers.length > 0) {
-      setSelectedPeerId(connectedPeers[0].id);
-      return;
-    }
-    if (selectedPeerId) {
-      setSelectedPeerId('');
-    }
-  }, [connectedPeers, connections, selectedPeerId]);
 
   useEffect(() => {
     if (!chatLogRef.current) return;
@@ -248,42 +161,14 @@ export default function DevicesSection() {
     const nextName = draftName.trim();
     if (!nextName) return;
     setProfile((current) => ({ ...current, name: nextName }));
-    window.setTimeout(() => {
-      bridgeRef.current?.announcePresence?.();
-    }, 0);
+    window.setTimeout(() => bridgeRef.current?.announcePresence?.(), 0);
   };
 
   const requestConnection = (peerId) => {
-    setConnections((current) => ({
-      ...current,
-      [peerId]: { state: 'pending', updatedAt: Date.now() }
-    }));
+    setConnections((current) => ({ ...current, [peerId]: { state: 'pending', updatedAt: Date.now() } }));
     if (MOCK_DEVICES.some((device) => device.id === peerId)) {
-      const mockDevice = MOCK_DEVICES.find((device) => device.id === peerId);
       mockReplyTimerRef.current = window.setTimeout(() => {
-        setConnections((current) => ({
-          ...current,
-          [peerId]: { state: 'connected', updatedAt: Date.now() }
-        }));
-        
-        // Evitar duplicar el missatge de benvinguda si ja hem interactuat
-        setMessagesByPeer((current) => {
-          const currentMsgs = current[peerId] || [];
-          if (currentMsgs.length === 0) {
-            return {
-              ...current,
-              [peerId]: [
-                ...currentMsgs,
-                createChatMessage({
-                  sender: 'other',
-                  text: 'Connexió simulada acceptada. Tot el que escrigues ací anirà directament a la safata de xat d\'aquest usuari.',
-                  author: mockDevice?.name || 'Dispositiu de prova'
-                })
-              ]
-            };
-          }
-          return current;
-        });
+        setConnections((current) => ({ ...current, [peerId]: { state: 'connected', updatedAt: Date.now() } }));
       }, 700);
       setSelectedPeerId(peerId);
       return;
@@ -293,53 +178,28 @@ export default function DevicesSection() {
   };
 
   const acceptConnection = (peerId) => {
-    setConnections((current) => ({
-      ...current,
-      [peerId]: { state: 'connected', updatedAt: Date.now() }
-    }));
+    setConnections((current) => ({ ...current, [peerId]: { state: 'connected', updatedAt: Date.now() } }));
     bridgeRef.current?.acceptConnection?.(peerId);
     setSelectedPeerId(peerId);
   };
 
   const declineConnection = (peerId) => {
-    setConnections((current) => ({
-      ...current,
-      [peerId]: { state: 'idle', updatedAt: Date.now() }
-    }));
+    setConnections((current) => ({ ...current, [peerId]: { state: 'idle', updatedAt: Date.now() } }));
     bridgeRef.current?.declineConnection?.(peerId);
   };
 
   const disconnectPeer = (peerId) => {
-    setConnections((current) => ({
-      ...current,
-      [peerId]: { state: 'idle', updatedAt: Date.now() }
-    }));
-    if (!MOCK_DEVICES.some((device) => device.id === peerId)) {
-      bridgeRef.current?.disconnectConnection?.(peerId);
-    }
+    setConnections((current) => ({ ...current, [peerId]: { state: 'idle', updatedAt: Date.now() } }));
+    if (!MOCK_DEVICES.some((device) => device.id === peerId)) bridgeRef.current?.disconnectConnection?.(peerId);
   };
 
   const sendMessage = (text) => {
     if (!selectedPeerId || !text.trim()) return;
-    const message = createChatMessage({
-      sender: 'me',
-      text: text.trim(),
-      author: profile.name
-    });
+    const message = createChatMessage({ sender: 'me', text: text.trim(), author: profile.name });
     appendMessage(selectedPeerId, message);
     if (MOCK_DEVICES.some((device) => device.id === selectedPeerId)) {
-      const deviceReplies = MOCK_REPLIES[selectedPeerId] || ['Rebut.'];
-      const mockDevice = MOCK_DEVICES.find((device) => device.id === selectedPeerId);
-      const replyText = deviceReplies[Math.floor(Math.random() * deviceReplies.length)];
       mockReplyTimerRef.current = window.setTimeout(() => {
-        appendMessage(
-          selectedPeerId,
-          createChatMessage({
-            sender: 'other',
-            text: replyText,
-            author: mockDevice?.name || 'Dispositiu de prova'
-          })
-        );
+        appendMessage(selectedPeerId, createChatMessage({ sender: 'other', text: 'Rebut.', author: 'Prova' }));
       }, 800);
       setDraftMessage('');
       return;
@@ -365,32 +225,17 @@ export default function DevicesSection() {
   ];
 
   return (
-    <UniversalPage
-      chrome="system"
-      showLogos={true}
-
-    >
+    <UniversalPage chrome="system" showLogos={true}>
       <div className="devices-shell">
         <div>
           <h2>Descobrix instàncies del portal</h2>
-          <p className="lead">
-            Llança una connexió i envia missatges directes des d’esta mateixa pantalla.
-          </p>
-          {/*
-          <div>
-            <h3>Per a què servix açò?</h3>
-            <p>
-              Sóc de Poble està dissenyada com a una xarxa <em>Offline-First</em>. Esta pantalla usa la tecnologia <strong>WebRTC</strong> perquè qualsevol parell de dispositius que estiguen prop o connectats a la mateixa xarxa Wi-Fi puguen descobrir-se i xatejar directament entre ells, sense passar per cap servidor central. <br /><br />
-              <strong>Per exemple:</strong> Pots obrir el portal al teu ordinador i al mateix temps al mòbil, o connectar-te amb la tauleta d'una veïna. Si ambdós esteu en la mateixa xarxa o a poca distància, podreu comunicar-vos i passar-vos informació en temps real.
-            </p>
-          </div>
-          */}
+          <p className="lead">Llança una connexió i envia missatges directes des d’esta mateixa pantalla.</p>
         </div>
 
         <div className="sdp-stat-grid">
           {summary.map((item) => (
             <article key={item.label} className="sdp-stat-card">
-              <div className="sdp-stat-info">
+              <div className="stat-info">
                 <div className="sdp-stat-value">{item.value}</div>
                 <div className="sdp-stat-label">{item.label}</div>
               </div>
@@ -399,30 +244,28 @@ export default function DevicesSection() {
         </div>
 
         <div className="devices-layout">
-          <section className="devices-panel">
+          <section className="devices-panel__head">
             <div className="devices-panel__head">
               <div>
                 <h2>Este dispositiu</h2>
                 <p className="lead">Canvia el nom visible i publica la teua presència per a la resta d’instàncies obertes.</p>
               </div>
-              <div className="dv-flex-wrap-8">
+              <div className="devices-panel__accions">
                 <button 
                   type="button"
-                  title={profile.isVisible ? "Mode públic (A un clic de passar a privat)" : "Mode privat (A un clic de passar a públic)"}
-                  className={`pill ${profile.isVisible ? 'pill--primary' : ''}`}
+                  title={profile.isVisible ? "Mode públic" : "Mode privat"}
+                  className={profile.isVisible ? 'sdp-boto sdp-boto--primari' : 'sdp-boto sdp-boto--secundari'}
                   onClick={() => {
                     const next = { ...profile, isVisible: !profile.isVisible };
                     setProfile(next);
-                    if (next.isVisible) {
-                      bridgeRef.current?.requestPresence?.();
-                    }
+                    if (next.isVisible) bridgeRef.current?.requestPresence?.();
                   }}
                 >
                   {profile.isVisible ? <Eye size={16} /> : <EyeOff size={16} />}
-                  {profile.isVisible ? 'Visible (Públic)' : 'Invisible (Privat)'}
+                  <span>{profile.isVisible ? 'Visible (Públic)' : 'Invisible (Privat)'}</span>
                 </button>
-                <button type="button" className="pill pill--accent" onClick={refreshDiscovery}>
-                  <RefreshCcw size={16} /> Refrescar
+                <button type="button" className="sdp-boto sdp-boto--accent" onClick={refreshDiscovery}>
+                  <RefreshCcw size={16} /> <span>Refrescar</span>
                 </button>
               </div>
             </div>
@@ -430,29 +273,21 @@ export default function DevicesSection() {
               <article className="card card--soft">
                 <div className="card__body">
                   <div className="badge-row">
-                    <span className="badge">
-                      <Wifi size={14} />
-                      ID {profile.id.slice(0, 8)}
-                    </span>
-                    <span className="badge">
-                      <ShieldCheck size={14} />
-                      Sessió local
-                    </span>
+                    <span className="badge"><Wifi size={14} /> ID {profile.id.slice(0, 8)}</span>
+                    <span className="badge"><ShieldCheck size={14} /> Sessió local</span>
                   </div>
                   <div className="devices-name-row">
                     <input
                       type="text"
                       value={draftName}
                       onChange={(event) => setDraftName(event.target.value)}
-                      className="form-control"
+                      className="sdp-control"
                       placeholder="Nom del dispositiu"
                     />
-                    <button type="button" className="pill pill--primary" onClick={saveName}>
-                      <Check size={16} /> Guardar
+                    <button type="button" className="sdp-boto sdp-boto--primari" onClick={saveName}>
+                      <Check size={16} /> <span>Guardar</span>
                     </button>
-                    <p>
-                      Este és el nom que es mostrarà a la resta de dispositius connectats. Pots canviar-lo pel nom que vulgues.
-                    </p>
+                    <p className="sdp-camp__ajuda">Este és el nom que es mostrarà a la resta de dispositius connectats.</p>
                   </div>
                   {!supportsBridge ? <div className="note-card">Este navegador no suporta la descoberta en viu per BroadcastChannel.</div> : null}
                 </div>
@@ -460,55 +295,51 @@ export default function DevicesSection() {
             </div>
           </section>
 
-          <section className="devices-panel">
+          <section className="devices-panel__head">
             <div className="devices-panel__head">
               <div>
                 <h2>Dispositius trobats</h2>
-                <p className="lead">
-                  Llistat de tots els ordinadors, tauletes o mòbils que ara mateix tenen la pàgina de Sóc de Poble oberta a prop teu i s'estan anunciant. Selecciona'n un per demanar de connectar-vos.
-                </p>
+                <p className="lead">Llistat de tots els ordinadors, tauletes o mòbils que s'estan anunciant. Selecciona'n un per demanar de connectar-vos.</p>
               </div>
-              <div style={{ marginTop: 16 }}>
-                  <button type="button" className="pill pill--primary" onClick={() => setIsSimulationEnabled(!isSimulationEnabled)}>
-                    Simular connexions de prova
-                  </button>
-                </div>
+              <div className="devices-panel__accions">
+                <button type="button" className="sdp-boto sdp-boto--primari" onClick={() => setIsSimulationEnabled(!isSimulationEnabled)}>
+                  Simular connexions de prova
+                </button>
+              </div>
             </div>
             <div className="devices-panel__body">
-              <div className="devices-list dv-grid-cards">
+              <div className="sdp-card-grid">
                 {mergedDevices.length === 0 ? <div className="note-card">Encara no hi ha altres instàncies visibles.</div> : null}
                 {mergedDevices.map((device) => {
                   const state = connections[device.id]?.state || 'idle';
                   return (
-                    <article key={device.id} className={`card card--soft dv-m-0`}>
+                    <article key={device.id} className="card card--soft">
                       <div className="card__body">
                         <div className="devices-row">
                           <div>
                             <strong className="card__title">{device.name}</strong>
-                            <p className="card__text">
-                              ID curt: {device.id.slice(0, 8)}
-                            </p>
+                            <p className="card__text">ID curt: {device.id.slice(0, 8)}</p>
                           </div>
-                          <span className={`devices-status devices-status--${state}`}>{connectionLabel(device.id)}</span>
+                          <span className="sdp-insignia">{connectionLabel(device.id)}</span>
                         </div>
-                        <div className="badge-row">
+                        <div className="devices-panel__accions">
                           {(state === 'idle' || state === 'declined') ? (
-                            <button type="button" className="pill pill--primary" onClick={() => requestConnection(device.id)}>
-                              <Link2 size={16} /> Connectar
+                            <button type="button" className="sdp-boto sdp-boto--primari" onClick={() => requestConnection(device.id)}>
+                              <Link2 size={16} /> <span>Connectar</span>
                             </button>
                           ) : null}
                           {state === 'connected' ? (
-                            <button type="button" className="pill pill--accent" onClick={() => disconnectPeer(device.id)}>
-                              <X size={16} /> Desconnectar
+                            <button type="button" className="sdp-boto sdp-boto--accent" onClick={() => disconnectPeer(device.id)}>
+                              <X size={16} /> <span>Desconnectar</span>
                             </button>
                           ) : null}
-                          {state === 'pending' ? <span className="pill">Esperant resposta</span> : null}
+                          {state === 'pending' ? <span className="sdp-insignia sdp-insignia--info">Esperant resposta</span> : null}
                           {state === 'incoming' ? (
                             <>
-                              <button type="button" className="pill pill--primary" onClick={() => acceptConnection(device.id)}>
+                              <button type="button" className="sdp-boto sdp-boto--primari" onClick={() => acceptConnection(device.id)}>
                                 <Check size={16} /> Acceptar
                               </button>
-                              <button type="button" className="pill pill--primary" onClick={() => declineConnection(device.id)}>
+                              <button type="button" className="sdp-boto sdp-boto--secundari" onClick={() => declineConnection(device.id)}>
                                 <X size={16} /> Rebutjar
                               </button>
                             </>
@@ -522,47 +353,40 @@ export default function DevicesSection() {
             </div>
           </section>
 
-          <section className="devices-panel devices-panel--wide">
+          <section className="devices-panel__head">
             <div className="devices-panel__head">
               <div>
                 <h2>Canal directe</h2>
                 <p className="lead">
                   {activeChatPeer
                     ? `Canal actiu i privat establert amb ${activeChatPeer.name}.`
-                    : 'Un colp hages connectat amb algú dalt, obrireu un canal de comunicació efímer. És un xat 100% privat que viatja directament entre els vostres dos aparells (sense xafar cap servidor ni núvol). En tancar la pestanya, els missatges s\'esvaïxen completament.'}
+                    : 'És un xat 100% privat que viatja directament entre els vostres dos aparells (sense xafar cap servidor ni núvol).'}
                 </p>
-              </div>
-              <div className="badge-row">
-                <button type="button" className="pill pill--primary" onClick={() => setIsSimulationEnabled(true)}>
-                  <Plus size={16} /> Simular connexió de prova
-                </button>
               </div>
             </div>
             <div className="devices-panel__body">
               {!activeChatPeer ? <div className="note-card">No hi ha cap dispositiu connectat en el canal inferior.</div> : null}
               {activeChatPeer ? (
                 <div className="devices-chat-shell">
-                  <article className="card card--soft dv-m-0-mb-16">
+                  <article className="card card--soft">
                     <div className="card__body">
                       <div className="devices-row">
                         <div>
                           <strong className="card__title">{activeChatPeer.name}</strong>
-                          <p className="card__text">
-                            ID curt: {activeChatPeer.id.slice(0, 8)}
-                          </p>
+                          <p className="card__text">ID curt: {activeChatPeer.id.slice(0, 8)}</p>
                         </div>
-                        <span className={`devices-status devices-status--${activeChatConnection?.state || 'idle'}`}>{connectionLabel(activeChatPeer.id)}</span>
+                        <span className="sdp-insignia">{connectionLabel(activeChatPeer.id)}</span>
                       </div>
-                      <div className="badge-row">
+                      <div className="devices-panel__accions">
                         {activeChatConnection?.state === 'connected' ? (
-                          <button type="button" className="pill pill--accent" onClick={() => disconnectPeer(activeChatPeer.id)}>
-                            <X size={16} /> Desconnectar
+                          <button type="button" className="sdp-boto sdp-boto--perill" onClick={() => disconnectPeer(activeChatPeer.id)}>
+                            <X size={16} /> <span>Desconnectar</span>
                           </button>
                         ) : null}
                       </div>
 
                       {activeChatConnection?.state !== 'connected' ? (
-                        <div className="note-card" style={{ marginTop: 12 }}>
+                        <div className="note-card">
                           {activeChatConnection?.state === 'pending'
                             ? 'Has enviat una petició. Esperant acceptació.'
                             : activeChatConnection?.state === 'incoming'
@@ -574,26 +398,26 @@ export default function DevicesSection() {
                   </article>
 
                   {connectedPeers.length > 0 ? (
-                    <div className="badge-row" style={{ justifyContent: 'center' }}>
+                    <div className="devices-panel__accions">
                       {connectedPeers.map((peer) => (
                         <button
                           key={peer.id}
                           type="button"
-                          className={`pill ${selectedPeerId === peer.id ? 'pill--primary' : ''}`}
+                          className={selectedPeerId === peer.id ? 'sdp-boto sdp-boto--primari' : 'sdp-boto sdp-boto--secundari'}
                           onClick={() => setSelectedPeerId(peer.id)}
                         >
-                          <MessageSquare size={16} /> {peer.name}
+                          <MessageSquare size={16} /> <span>{peer.name}</span>
                         </button>
                       ))}
                     </div>
                   ) : null}
 
-                  <div ref={chatLogRef} className="devices-chat-log dv-my-16">
+                  <div ref={chatLogRef} className="devices-chat-log">
                     {activeChatMessages.length === 0 ? <div className="note-card">Encara no hi ha missatges en este canal.</div> : null}
                     {activeChatMessages.map((message) => (
                       <article
                         key={message.id}
-                        className={`devices-bubble ${message.sender === 'me' ? 'devices-bubble--me' : 'devices-bubble--other'}`}
+                        className={message.sender === 'me' ? 'sdp-chat-bubble sdp-chat-bubble--user' : 'sdp-chat-bubble sdp-chat-bubble--ai'}
                       >
                         <strong>{message.sender === 'me' ? profile.name : message.author || activeChatPeer.name}</strong>
                         <p>{message.text}</p>
@@ -601,7 +425,7 @@ export default function DevicesSection() {
                     ))}
                   </div>
 
-                  <div className="search-bar-basic" style={{ marginBottom: 0 }}>
+                  <div className="search-bar-basic">
                     <input
                       type="text"
                       value={draftMessage}
@@ -617,7 +441,6 @@ export default function DevicesSection() {
                       type="button"
                       onClick={() => sendMessage(draftMessage)}
                       disabled={activeChatConnection?.state !== 'connected'}
-                      style={activeChatConnection?.state !== 'connected' ? { opacity: 0.5, cursor: 'not-allowed' } : {}}
                     >
                       <ArrowRight size={16} /> Enviar
                     </button>

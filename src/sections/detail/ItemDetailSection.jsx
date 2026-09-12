@@ -36,8 +36,8 @@ export default function ItemDetailSection() {
         labels={[{ text: 'Error', className: 'sdp-badge-system' }]}
         chrome="system"
       >
-        <div className="id-container-p8">
-          <button type="button" className="btn btn-primary" onClick={() => navigate(section?.listPath || '/xat')}>
+        <div className="content-wrapper">
+          <button type="button" className="sdp-boto sdp-boto--primari" onClick={() => navigate(section?.listPath || '/xat')}>
             {t('common.back', 'Torna')}
           </button>
         </div>
@@ -72,9 +72,8 @@ export default function ItemDetailSection() {
       date={item.date || (item.created_at ? new Date(item.created_at).toLocaleDateString('ca-ES') : undefined)}
       chrome="full"
     >
-      <div className="id-container-px4-pb8">
+      <div className="content-wrapper">
         {section.renderBody(item)}
-        
       </div>
     </UniversalPage>
   );

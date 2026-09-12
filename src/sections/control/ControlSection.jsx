@@ -1,124 +1,116 @@
-import React from 'react';
+import {
+  Calendar,
+  Car,
+  FileText,
+  LogOut,
+  MapPin,
+  MessageCircle,
+  MessageSquare,
+  PawPrint,
+  Receipt,
+  Store,
+  Book,
+  Power
+} from 'lucide-react';
 import { useNavigate } from '../../app/contexts/RouterContext';
-import { User, Cpu, Network, Receipt, FileText, Store, Calendar, MapPin, MessageSquare, Shield, LogOut, Car, PawPrint, MessageCircle } from 'lucide-react';
+import { logout } from '../../data/backendPort';
 import { UniversalPage } from '../../components/universal/UniversalPage';
-import { UniversalCard, UniversalIndicatorCard, UniversalButton } from '../../components/universal/UniversalElements';
-import { resolveAsset } from '../../config/assetResolver';
+import {
+  UniversalButton,
+  UniversalCard,
+} from '../../components/universal/UniversalElements';
 import { useUIActions } from '../../app/contexts/UIContext';
 
 export default function ControlSection() {
   const navigate = useNavigate();
   const { t } = useUIActions();
 
-
-  const handleNavIA = (e) => {
-    e?.stopPropagation();
-    navigate('/ia');
-  };
-  const handleNavTermo = (e) => {
-    e?.stopPropagation();
-    console.warn('Accés a consola termodinàmica bloquejat per seguretat del host.');
-  };
-  const handleNavGestoria = (e) => {
-    e?.stopPropagation();
+  const handleNavGestoria = (event) => {
+    event?.stopPropagation();
     navigate('/gestoria');
   };
-  const handleNavConnectar = (e) => {
-    e?.stopPropagation();
-    navigate('/connectar');
-  };
+
+  const primaryActions = [
+    { icon: <FileText size={40} strokeWidth={1.5} />,      title: 'Publicar al Mur',          subtitle: 'Compartir novetats',            desti: '/jo/mur' },
+    { icon: <Store size={40} strokeWidth={1.5} />,         title: 'Publicar al Mercat',       subtitle: 'Vendre productes',              desti: '/jo/mercat' },
+    { icon: <Calendar size={40} strokeWidth={1.5} />,      title: 'Publicar Esdeveniments',   subtitle: 'Crear agenda',                  desti: '/jo/mur' },
+    { icon: <MessageCircle size={40} strokeWidth={1.5} />, title: 'Publicar al Xat',          subtitle: 'Crear anunci per a grups',      desti: '/jo/xat' },
+    { icon: <FileText size={40} strokeWidth={1.5} />,      title: 'Editor de Notes',          subtitle: 'Escriure i publicar al mur',    desti: '/jo/notes' },
+    /* Sense secció encara. Es declara, no es dissimula amb un fallback. */
+    { icon: <MapPin size={40} strokeWidth={1.5} />,        title: 'Publicar al Mapa',         subtitle: 'Pendent de secció',             desti: null },
+    { icon: <Car size={40} strokeWidth={1.5} />,           title: 'Compartir vehicle',        subtitle: 'Pendent de secció',             desti: null },
+    { icon: <PawPrint size={40} strokeWidth={1.5} />,      title: 'Animalets',                subtitle: 'Pendent de secció',             desti: null },
+  ];
 
   return (
     <UniversalPage
       title={t('section.control.title', 'Panell de Control')}
-      subtitle={t('section.control.subtitle', 'Node principal i accés a les eines d\'administració i gestió')}
-      lead={t('section.control.lead', 'Tria on vols publicar i crea nous continguts des de l\'editor universal.')}
+      subtitle={t(
+        'section.control.subtitle',
+        "Node principal i accés a les eines d'administració i gestió"
+      )}
+      lead={t(
+        'section.control.lead',
+        "Tria on vols publicar i crea nous continguts des de l'editor universal."
+      )}
       chrome="system"
     >
-      <div className="ctl-main-container">
-        
-        {/* Accions Principals - Quadres de Comandament */}
+      <div className="content-wrapper">
         <section>
-          
-            <div className="sdp-card-grid" onClick={(e) => {
-              const card = e.target.closest('.sp-card--action');
-              if (card) {
-                navigate('/notes');
-              }
-            }}>
-              <UniversalCard 
+          <div className="sdp-card-grid">
+            {primaryActions.map((action) => (
+              <UniversalCard
+                key={action.title}
                 variant="action"
-                icon={<FileText size={40} strokeWidth={1.5} />}
-                title="Publicar al Mur"
-                subtitle="Compartir novetats"
+                icon={action.icon}
+                title={action.title}
+                subtitle={action.subtitle}
+                {...(action.desti
+                  ? { onMainClick: () => navigate(action.desti) }
+                  : { labels: [{ text: 'EN OBRES', className: 'sdp-badge-tag' }] })}
               />
-              <UniversalCard 
-                variant="action"
-                icon={<Store size={40} strokeWidth={1.5} />}
-                title="Publicar al Mercat"
-                subtitle="Vendre productes"
-              />
-              <UniversalCard 
-                variant="action"
-                icon={<Calendar size={40} strokeWidth={1.5} />}
-                title="Publicar Esdeveniments"
-                subtitle="Crear agenda"
-              />
-              <UniversalCard 
-                variant="action"
-                icon={<MapPin size={40} strokeWidth={1.5} />}
-                title="Publicar al Mapa"
-                subtitle="Veure rutes"
-              />
-              <UniversalCard 
-                variant="action"
-                icon={<Car size={40} strokeWidth={1.5} />}
-                title="Compartir vehicle"
-                subtitle="Oferir o demanar viatge"
-              />
-              <UniversalCard 
-                variant="action"
-                icon={<PawPrint size={40} strokeWidth={1.5} />}
-                title="Animalets"
-                subtitle="Cercar propietaris o adoptar"
-              />
-              <UniversalCard 
-                variant="action"
-                icon={<MessageCircle size={40} strokeWidth={1.5} />}
-                title="Publicar al Xat"
-                subtitle="Crear anunci per a grups"
-              />
-            </div>
+            ))}
+          </div>
         </section>
 
-        {/* Secció Utilitats Socials */}
-        <section className="ctl-section-utilitats">
-          <h2 className="ctl-section-title">Utilitats</h2>
-          <p className="lead ctl-section-lead">
-            Eines pràctiques d'utilitat social pensades per a facilitar la vida quotidiana al poble: gestió comptable autònoma, lectura de carpetes i suport a la comunitat.
+        <section>
+          <h2>Utilitats i Connectors (Plugins)</h2>
+
+          <p className="lead">
+            El sistema s'anirà enriquint amb aquest tipus d'utilitats (o plugins) que es poden activar si es necessiten.
+            Són independents del sistema base, cosa que permet endollar funcionalitats a mesura només per als usuaris o clients que les demanen.
           </p>
+
           <div className="sdp-card-grid">
-            <UniversalCard 
+            <UniversalCard
               variant="action"
               icon={<Receipt size={40} strokeWidth={1.5} />}
               title="Gestoria de Poble"
               subtitle="Comptabilitat i facturació trimestral"
               onMainClick={handleNavGestoria}
+              labels={[{ text: 'ACTIU', className: 'sdp-badge-system' }]}
+              style={{ backgroundColor: 'var(--sdp-secondary-50)' }}
             />
           </div>
         </section>
 
-        {/* Eines i Recursos (Opcions secundàries) */}
-        <section className="ctl-secondary-tools">
-          <UniversalButton onClick={() => navigate('/xat/0001')} variant="primary" icon={<MessageSquare size={18} />}>
+        <div className="sdp-alerta__accions">
+          <UniversalButton
+            onClick={() => navigate('/xat/0001')}
+            variant="primary"
+            icon={<MessageSquare size={18} />}
+          >
             Missatges per a dubtes
           </UniversalButton>
 
-          <UniversalButton variant="ghost" icon={<LogOut size={18} />}>
+          <UniversalButton
+            variant="ghost"
+            icon={<LogOut size={18} />}
+            onClick={() => logout().then(() => navigate('/registre'))}
+          >
             Eixir del poble
           </UniversalButton>
-        </section>
-
+        </div>
       </div>
     </UniversalPage>
   );

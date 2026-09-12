@@ -7,30 +7,47 @@ export default function XatControlSection() {
   return (
     <UniversalPage
       title={t('section.xatcontrol.title', 'Opcions del Xat')}
-      subtitle={t('section.xatcontrol.subtitle', 'Ajustos, missatges temporals i organització de converses.')}
+      subtitle={t(
+        'section.xatcontrol.subtitle',
+        'Ajustos, missatges temporals i organització de converses.'
+      )}
       chrome="system"
-      showLogos={true}
+      showLogos
     >
-      <div className="xatctrl-container">
-        <p>Aquesta pàgina s'anirà emplenant amb les idees i opcions d'organització (Cerca al xat, Missatges temporals, Fons de pantalla, etc.) sense necessitat d'embrutar la interfície amb menús desplegables sobreposats.</p>
-        
-        <div className="stack-grid ">
+      <div className="content-wrapper">
+        <p>
+          Aquesta pàgina s&apos;anirà emplenant amb les idees i opcions
+          d&apos;organització (Cerca al xat, Missatges temporals, Fons de
+          pantalla, etc.) sense necessitat d&apos;embrutar la interfície amb
+          menús desplegables sobreposats.
+        </p>
+
+        <div className="stack-grid">
           <section className="card card--soft">
             <div className="card__body">
-              <h3 className="section-title">Multimèdia, enllaços i documents</h3>
-              <p>Revisa tot el que s'ha enviat al xat.</p>
+              <h3 className="section-title">
+                Multimèdia, enllaços i documents
+              </h3>
+              <p>Revisa tot el que s&apos;ha enviat al xat.</p>
             </div>
           </section>
+
           <section className="card card--soft">
             <div className="card__body">
               <h3 className="section-title">Missatges Temporals</h3>
-              <p>Activa l'autodestrucció de missatges per a converses sensibles.</p>
+              <p>
+                Activa l&apos;autodestrucció de missatges per a converses
+                sensibles.
+              </p>
             </div>
           </section>
+
           <section className="card card--soft">
             <div className="card__body">
               <h3 className="section-title">Privacitat i Seguretat</h3>
-              <p>Silenciar notificacions, bloquejar, xifratge extrem a extrem.</p>
+              <p>
+                Silenciar notificacions, bloquejar, xifratge extrem a extrem.
+              </p>
             </div>
           </section>
         </div>

@@ -46,6 +46,7 @@ const XatControlSection = lazy(() => import('../sections/xat/XatControlSection')
 import { MultimediaProvider } from '../sections/multimedia/MultimediaContext';
 import { useUIActions, useUIState } from './contexts/UIContext';
 import { useSession } from './contexts/SessionContext';
+import { RequireAuth } from './guards/RequireAuth';
 
 const ALL_NAV_SECTIONS = SECTIONS.filter((section) => SECTION_ORDER.includes(section.id));
 const NAV_SECTIONS = ALL_NAV_SECTIONS.filter(s => s.id !== 'versions' && s.id !== 'legal');
@@ -380,7 +381,7 @@ const TopBar = memo(function TopBar() {
           {(() => {
             const avatar = currentUser?.avatar_url || currentUser?.user_metadata?.avatar_url || currentUser?.user_metadata?.picture;
             if (currentUser && avatar) {
-              return <img src={avatar} alt={currentUser?.user_metadata?.name || currentUser?.full_name || 'El meu perfil'} className="app-avatar-img" />;
+              return <img src={avatar} alt={currentUser?.user_metadata?.name || currentUser?.full_name || 'El meu perfil'} className="sdp-avatar__imatge" />;
             }
             if (currentUser) {
               return (
@@ -459,7 +460,7 @@ function AppDataLoader() {
 
   if (hasError) {
     return (
-      <div className="app-error-p2">
+      <div className="sdp-app-error">
         <h1>Error Intern</h1>
         <pre>{core.error?.message || mur.error?.message || xat.error?.message || 'Error desconegut'}</pre>
         <pre>{core.error?.stack}</pre>
@@ -489,13 +490,13 @@ class RouteErrorBoundary extends React.Component {
   render() {
     if (this.state.hasError) {
       return (
-        <div className="sdp-route-error app-route-error-wrap">
-          <h2 className="app-text-danger">Hi ha hagut un problema</h2>
+        <div className="sdp-route-error">
+          <h2 className="sdp-route-error__titol">Hi ha hagut un problema</h2>
           <p>Aquesta secció no ha pogut carregar-se correctament.</p>
           <pre className="sdp-error-pre">
             {this.state.error?.message || String(this.state.error)}
           </pre>
-          <button onClick={() => this.setState({ hasError: false, error: null })} className="app-btn-retry">
+          <button onClick={() => this.setState({ hasError: false, error: null })} className="sdp-boto sdp-boto--secundari sdp-route-error__reintent">
             Intentar de nou
           </button>
         </div>
@@ -554,7 +555,7 @@ function AppRoutes() {
         <Route path="/grup/*" element={<SectionRedirect sectionId="grup" />} />
 
         {/* Rutes globals i administratives */}
-        <Route path="/admin/*" element={<AdminSection />} />
+        <Route path="/admin/*" element={<RequireAuth rol="superadmin"><AdminSection /></RequireAuth>} />
         <Route path="/cerca" element={<SearchSection />} />
         <Route path="/login" element={<Navigate to="/registre" replace />} />
         <Route path="/accedir" element={<Navigate to="/registre" replace />} />
@@ -564,7 +565,7 @@ function AppRoutes() {
         <Route path="/control" element={<ControlSection />} />
         <Route path="/utilitats" element={<ControlSection />} />
         {/* Gestoria: UNA sola ruta canònica. Els àlies redirigixen. */}
-        <Route path="/gestoria/*" element={<GestoriaSection />} />
+        <Route path="/gestoria/*" element={<RequireAuth><GestoriaSection /></RequireAuth>} />
         <Route path="/utilitats/gestoria/*" element={<Navigate to="/gestoria" replace />} />
         <Route path="/connectar" element={<ConnectarSection agents={agents} />} />
         <Route path="/projecte" element={<Navigate to="/jo/projecte" replace />} />

@@ -39,7 +39,7 @@ export function DesignSectionContent() {
 <div role="alert" className="sdp-alerta--info ">
   <div className="alert-content">
     <p><strong>Estructura Anatòmica Inviolable (FONT ÚNICA DE VERITAT)</strong><br/>Aquesta secció i el component <code>UniversalComponents.jsx</code> (on es defineix la UniversalPage) són la font única de veritat per a qualsevol agent o IA. Tota nova pàgina ha d'estendre exclusivament aquesta arquitectura, sense excepcions.</p>
-    <ol className=" -col ">
+    <ol className="sdp-llista">
       <li><strong>Barres Superiors (Controls):</strong> La barra blava de navegació (context) i la barra taronja d'autoria (dades meta, data, connectar). En mode normal (pàgina completa), aquestes barres fan <em>sticky</em> a la part superior (es queden fixades).</li>
       <li><strong>Excepció (Mode Incrustat):</strong> Quan la UniversalPage s'incrusta en un editor (com el Bloc de Notes), la barra blava i la taronja adopten classe <code>--embed</code> (<em>position: static</em>) i s'amaguen naturalment amb l'scroll del document per afavorir l'edició lliure i evitar un "doble scroll". Aquesta és l'única excepció permesa.</li>
       <li><strong>Imatge Hero (Opcional):</strong> Es renderitza immediatament davall de les barres. Ocupa l'ample disponible (100%) sense marges.</li>
@@ -861,7 +861,7 @@ Gran</div>
   title="20.4 Targeta Mestra sense imatge (Exemple: Hisenda / Gestoria)"
   description="Quan la publicació no disposa d'imatge principal, el focus recau completament sobre la tipografia i les dades meta. S'acostuma a emprar per a avisos del sistema o procediments burocràtics."
 >
-  <div className=" -col ">
+  <div className="stack-grid">
     <UniversalCard
       title="Hisenda"
       subtitle="Model 303 / 130"
@@ -1334,7 +1334,6 @@ Gran</div>
           <button className="btn btn-danger" onClick={() => showToast('Error en desar les dades', 'error')}>Toast d'error</button>
           <button className="btn btn-base" onClick={() => showToast('Tens un missatge nou', 'info')}>Toast info</button>
         </div>
-        <AvisadorEfimer />
       </ComponentDoc>
 
       {/*  SECCIÓ 26: PÀGINES DE SISTEMA  */}

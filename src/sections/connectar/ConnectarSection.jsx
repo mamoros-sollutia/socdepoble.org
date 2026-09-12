@@ -193,15 +193,15 @@ export default function ConnectarSection({ agents = [] }) {
       chrome="system"
       showLogos={true}
     >
-      <div className="connect-layout">
-        <section className="connect-panel">
-          <div className="connect-panel__head">
+      <div className="content-wrapper">
+        <section className="content-wrapper">
+          <div className="content-wrapper">
             <div>
               <h2 className="section-title">{t('section.connectar.privacy', 'Privacitat de la connexió')}</h2>
             </div>
           </div>
-          <div className="connect-panel__body">
-            <div className="toggle-row">
+          <div className="content-wrapper">
+            <div className="sdp-pindola">
               <button type="button" className={`toggle-button ${isPrivate ? 'toggle-button--active' : ''}`} onClick={() => setIsPrivate(true)}>
                 <Lock size={16} /> {t('section.connectar.private', 'Privada')}
               </button>
@@ -213,15 +213,15 @@ export default function ConnectarSection({ agents = [] }) {
           </div>
         </section>
 
-        <section className="connect-panel">
-          <div className="connect-panel__head">
+        <section className="content-wrapper">
+          <div className="content-wrapper">
             <div>
               <h2 className="section-title">{t('section.connectar.where', 'On vols connectar-ho?')}</h2>
             </div>
             <span className="pill">{selectedLabel}</span>
           </div>
-          <div className="connect-panel__body">
-            <div className="connect-grid">
+          <div className="content-wrapper">
+            <div className="sdp-card-grid">
               {QUICK_AREAS.map((area) => (
                 <button
                   key={area.id}
@@ -237,13 +237,13 @@ export default function ConnectarSection({ agents = [] }) {
           </div>
         </section>
 
-        <section className="connect-panel">
-          <div className="connect-panel__head">
+        <section className="content-wrapper">
+          <div className="content-wrapper">
             <div>
               <h2 className="section-title">{t('section.connectar.context', 'Etiquetes i context')}</h2>
             </div>
           </div>
-          <div className="connect-panel__body">
+          <div className="content-wrapper">
             <div className="badge-row">
               {TAGS.map((tag) => (
                 <button key={tag} type="button" className="pill" onClick={() => addTag(tag)}>
@@ -252,7 +252,7 @@ export default function ConnectarSection({ agents = [] }) {
               ))}
             </div>
 
-            <div className="tag-input-row">
+            <div className="sdp-camp">
               <label htmlFor="connectar-tag-input" className="sr-only">{t('section.connectar.tagsPlaceholder', 'Afig una etiqueta lliure...')}</label>
               <input
                 id="connectar-tag-input"
@@ -261,7 +261,7 @@ export default function ConnectarSection({ agents = [] }) {
                 onChange={(event) => setTagInput(event.target.value)}
                 onKeyDown={(event) => event.key === 'Enter' && addTag(tagInput)}
                 placeholder={t('section.connectar.tagsPlaceholder', 'Afig una etiqueta lliure...')}
-                className="section-search"
+                className="sdp-control"
                 aria-label={t('section.connectar.tagsPlaceholder', 'Afig una etiqueta lliure...')}
               />
               <button type="button" className="pill pill--primary" onClick={() => addTag(tagInput)}>
@@ -274,7 +274,7 @@ export default function ConnectarSection({ agents = [] }) {
                 {customTags.map((tag) => (
                   <span key={tag} className="badge">
                     {tag}
-                    <button type="button" className="badge-remove" onClick={() => setCustomTags((current) => current.filter((item) => item !== tag))}>
+                    <button type="button" className="sdp-alerta__tanca" onClick={() => setCustomTags((current) => current.filter((item) => item !== tag))}>
                       ×
                     </button>
                   </span>
@@ -285,14 +285,14 @@ export default function ConnectarSection({ agents = [] }) {
         </section>
 
         {supportsPublishing ? (
-          <section className="connect-panel connect-panel--wide">
-            <div className="connect-panel__head">
+          <section className="content-wrapper">
+            <div className="content-wrapper">
               <div>
                 <h2 className="section-title">Nou element en {selectedLabel}</h2>
               </div>
               <span className="pill">Es guardarà i quedarà visible en recarregar</span>
             </div>
-            <div className="connect-panel__body">
+            <div className="content-wrapper">
               <label htmlFor="connectar-entry-title" className="sr-only">Títol de l'element</label>
               <input
                 id="connectar-entry-title"
@@ -304,7 +304,7 @@ export default function ConnectarSection({ agents = [] }) {
                   : selectedArea === 'mercat'
                     ? 'Nom del producte'
                     : 'Títol de l’esdeveniment'}
-                className="section-search"
+                className="sdp-control"
                 aria-label="Títol de l'element"
               />
               <label htmlFor="connectar-entry-desc" className="sr-only">Descripció o contingut</label>
@@ -317,7 +317,7 @@ export default function ConnectarSection({ agents = [] }) {
                   : selectedArea === 'mercat'
                     ? 'Descriu el producte o l’oferta...'
                     : 'Descriu l’esdeveniment o la convocatòria...'}
-                className="section-search"
+                className="sdp-control"
                 rows={4}
                 aria-label="Descripció o contingut"
               />
@@ -325,9 +325,9 @@ export default function ConnectarSection({ agents = [] }) {
           </section>
         ) : null}
 
-        <section className="connect-panel connect-panel--wide">
-          <div className="connect-panel__body">
-            <div className="connect-final">
+        <section className="content-wrapper">
+          <div className="content-wrapper">
+            <div className="content-wrapper">
               <button
                 type="button"
                 className="pill pill--primary"

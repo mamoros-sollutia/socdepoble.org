@@ -12,8 +12,8 @@ export default function GestoriaFacturacio() {
   if (loading) {
     return (
       <UniversalPage title="Facturació" chrome="none">
-        <div className="sdp-estat" role="status" aria-live="polite">
-          <p className="sdp-estat__text">Carregant factures...</p>
+        <div className="sdp-carregant" role="status" aria-live="polite">
+          <p className="sdp-carregant">Carregant factures...</p>
         </div>
       </UniversalPage>
     );
@@ -37,17 +37,16 @@ export default function GestoriaFacturacio() {
   factures.sort((a, b) => b.date_timestamp - a.date_timestamp);
 
   return (
-    <UniversalPage
+    <UniversalPage chrome="system"
       title="FACTURACIÓ"
-      category="GESTORIA"
-      tags={["PANELL INTERN"]}
+      labels={["GESTORIA", "PANELL INTERN"]}
     >
-      <section className="up-document" aria-labelledby="gestoria-facturacio-titol">
+      <section className="content-wrapper" aria-labelledby="gestoria-facturacio-titol">
         <h2 id="gestoria-facturacio-titol">
           Registre unificat de vendes i compres
         </h2>
 
-        <div className="sdp-marge-bottom">
+        <div className="sdp-camp">
           <PillToggle
             etiqueta="Filtres de facturació"
             valor={filter}
@@ -60,7 +59,7 @@ export default function GestoriaFacturacio() {
           />
         </div>
         
-        <div className="sdp-marge-bottom">
+        <div className="sdp-camp">
           <PillToggle
             etiqueta="Vista de la taula"
             valor={vistaComprimida ? 'COMPACTA' : 'NORMAL'}
@@ -73,7 +72,7 @@ export default function GestoriaFacturacio() {
         </div>
 
         <form
-          className="sdp-formulari"
+          className="form-trellat"
           role="search"
           onSubmit={(event) => event.preventDefault()}
         >
@@ -90,14 +89,14 @@ export default function GestoriaFacturacio() {
           </div>
         </form>
 
-        <div className="sdp-accions sdp-accions--final">
+        <div className="sdp-alerta__accions sdp-accions--final">
           <button className="sdp-boto sdp-boto--accent" type="button">
             Nova factura
           </button>
         </div>
 
         <div
-          className="sdp-taula-scroll"
+          className="sdp-taula"
           tabIndex="0"
           aria-label="Factures: desplaçament horitzontal"
         >
@@ -110,14 +109,14 @@ export default function GestoriaFacturacio() {
                 <th scope="col">Número de document</th>
                 <th scope="col">Client o proveïdor</th>
                 <th scope="col">Concepte</th>
-                <th className="sdp-taula__nombre" scope="col">Total</th>
+                <th className="sdp-num" scope="col">Total</th>
                 <th scope="col">Estat</th>
               </tr>
             </thead>
             <tbody>
               {factures.length === 0 ? (
                 <tr>
-                  <td className="sdp-taula__buit" colSpan="7">
+                  <td className="sdp-gestor-buit" colSpan="7">
                     Sense documents per mostrar. Usa l’escàner o canvia els filtres.
                   </td>
                 </tr>
@@ -139,7 +138,7 @@ export default function GestoriaFacturacio() {
                       <th scope="row">{factura.id}</th>
                       <td>{factura.contact_name || factura.contact_nif}</td>
                       <td>{factura.desc}</td>
-                      <td className="sdp-taula__nombre">{formatEur(factura.total)}</td>
+                      <td className="sdp-num">{formatEur(factura.total)}</td>
                       <td>
                         <span
                           className={`sdp-insignia ${conciliada ? 'sdp-insignia--exit' : 'sdp-insignia--avis'}`}

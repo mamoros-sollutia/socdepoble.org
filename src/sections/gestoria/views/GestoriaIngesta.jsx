@@ -39,17 +39,16 @@ const DOCUMENTS_PROCESSATS = [
 
 export default function GestoriaIngesta() {
   return (
-    <UniversalPage
+    <UniversalPage chrome="system"
       title="ESCÀNER LOCAL"
-      category="GESTORIA"
-      tags={["PANELL INTERN"]}
+      labels={["GESTORIA", "PANELL INTERN"]}
     >
-      <section className="up-document" aria-labelledby="gestoria-ingesta-titol">
+      <section className="content-wrapper" aria-labelledby="gestoria-ingesta-titol">
         <h2 id="gestoria-ingesta-titol">Motor d’ingesta</h2>
 
         <section aria-labelledby="gestoria-pujada-titol">
           <h3 id="gestoria-pujada-titol">Importa el banc o les factures</h3>
-          <label className="sdp-pujada" htmlFor="gestoria-arxius">
+          <label className="upload-zone" htmlFor="gestoria-arxius">
             <span aria-hidden="true">📥</span>
             <strong>Llança els arxius ací o prem per seleccionar-los</strong>
             <span>Admet CSV, PDF i imatges de factures.</span>
@@ -65,7 +64,7 @@ export default function GestoriaIngesta() {
 
         <section aria-labelledby="gestoria-tramits-titol">
           <h3 id="gestoria-tramits-titol">Tràmits</h3>
-          <div className="sdp-accions">
+          <div className="sdp-alerta__accions">
             <button className="sdp-boto sdp-boto--primari" type="button">
               <span aria-hidden="true">📊</span>
               Generar CSV per a la gestoria
@@ -78,7 +77,7 @@ export default function GestoriaIngesta() {
         </section>
 
         <section aria-labelledby="gestoria-documents-titol">
-          <div className="sdp-accions">
+          <div className="sdp-alerta__accions">
             <h3 id="gestoria-documents-titol">
               Últims documents processats — 2T 2026
             </h3>
@@ -88,20 +87,20 @@ export default function GestoriaIngesta() {
           </div>
 
           <div
-            className="sdp-taula-scroll"
+            className="sdp-taula"
             tabIndex="0"
             aria-label="Documents processats: desplaçament horitzontal"
           >
-            <table className="sdp-taula sdp-taula--interactiva sdp-taula--ampla">
+            <table className="sdp-taula">
               <caption>Documents processats durant el segon trimestre de 2026</caption>
               <thead>
                 <tr>
                   <th scope="col">Arxiu original</th>
                   <th scope="col">Data</th>
                   <th scope="col">Proveïdor o client</th>
-                  <th className="sdp-taula__nombre" scope="col">Base imposable</th>
-                  <th className="sdp-taula__nombre" scope="col">IVA</th>
-                  <th className="sdp-taula__nombre" scope="col">Total</th>
+                  <th className="sdp-num" scope="col">Base imposable</th>
+                  <th className="sdp-num" scope="col">IVA</th>
+                  <th className="sdp-num" scope="col">Total</th>
                   <th scope="col">Estat</th>
                 </tr>
               </thead>
@@ -111,9 +110,9 @@ export default function GestoriaIngesta() {
                     <th scope="row">{document.arxiu}</th>
                     <td>{document.data}</td>
                     <td>{document.contacte}</td>
-                    <td className="sdp-taula__nombre">{document.base}</td>
-                    <td className="sdp-taula__nombre">{document.iva}</td>
-                    <td className="sdp-taula__nombre">{document.total}</td>
+                    <td className="sdp-num">{document.base}</td>
+                    <td className="sdp-num">{document.iva}</td>
+                    <td className="sdp-num">{document.total}</td>
                     <td>
                       <span className={`sdp-insignia sdp-insignia--${document.variant}`}>
                         {document.estat}

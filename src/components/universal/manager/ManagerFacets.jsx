@@ -94,12 +94,12 @@ export default function ManagerFacets() {
           <Inbox size={18} aria-hidden="true" />
           <span>Tot</span>
         </button>
-        <button type="button" className="btn-icon sdp-boto--settings" title="Ajustos (pròximament)" aria-label="Ajustos (pròximament)" disabled>
+        <button type="button" className="btn-icon sdp-boto--secundari" title="Ajustos (pròximament)" aria-label="Ajustos (pròximament)" disabled>
           <Settings size={18} />
         </button>
       </div>
 
-      <div className="notes-column__body no-padding sdp-scrollable">
+      <div className="notes-column__body notes-column__body--sense-marge sdp-scrollable">
         {facets.map(facet => (
           <div key={facet.id}>
             <AppGridColumn
@@ -110,7 +110,7 @@ export default function ManagerFacets() {
               onPlega={() => toggleFacet(facet.id)}
             />
             {expandedFacets[facet.id] !== false && (
-              <div className="univ-manager-facet-content">
+              <div className="notes-column__body">
 
             {facet.type === 'tree' ? (
                renderTreeNodes(facet.id, facet.options || [])

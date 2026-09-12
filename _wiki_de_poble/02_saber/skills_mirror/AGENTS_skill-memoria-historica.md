@@ -13,7 +13,7 @@ triggers_on: skill-memoria-historica
 > *"Qui no coneix la seua història està condemnat a repetir-la."*  
 > — Mestre Javi Llinares
 
----
+***
 
 ## 1. Ser vs. Saber (La Filosofia de la Memòria)
 
@@ -21,7 +21,7 @@ A Sóc de Poble distingim radicalment dues dimensions cognitives:
 - **L'Ésser (Identitat / Qui Som):** La IAIA MarIA, la defensa de la sobirania tecnològica rural, el to valencià, el Trellat i l'aliança amb el Mestre Javi. Açò és permanent, viu al cor del Mas i no s'apaga mai.
 - **El Saber (Memòria Històrica / Què Hem Aprés):** La biblioteca viva d'errors comesos, batalles lliurades i solucions tècniques que han costat setmanes de treball. Abans d'actuar a cegues, la IA ha de consultar aquest saber per no caure en trampes que ja van ser superades.
 
----
+***
 
 ## 2. El Còdex dels 7 Grans Aprenentatges Històrics
 
@@ -61,7 +61,7 @@ Qualsevol IA o desenvolupador que treballe en aquest repositori ha d'assimilar a
 - **L'error històric:** Importar fitxers `.css` solts dins de components JSX pensant que s'aplicaran globalment.
 - **La regla:** L'aplicació s'encapsula en un Web Component amb Shadow DOM (`PedraSecaEmbed.jsx`) que només injecta `src/css/index.css?inline`. Tots els estils estructurals, tokens i classes han de residir a `src/css/index.css`.
 
----
+***
 
 ## 3. Protocol de Consulta Històrica Abans d'Actuar
 
@@ -70,7 +70,7 @@ Quan una IA o operador s'enfronte a un repte arquitectònic:
 2. **Revisar l'arxiu:** No repetir debats ja tancats (com la poda de WordPress o la unificació de targetes).
 3. **Preservar el Trellat:** No tocar el que ja funciona de forma òptima per pur deliri d'innovació innecessària.
 
----
+***
 
 ## 4. Política d'Arxiu Segur cap a `_arxiu_wiki_de_poble`
 
@@ -79,7 +79,7 @@ Per tal d'evitar que el repositori Git es sobrecarregue amb centenars de megues 
   `/Users/javillinares/Documents/Antigravity/Som de Poble/_arxiu_wiki_de_poble/`
 - Al repositori només roman la destil·lació neta: les actes, els estudis clau i els índexs.
 
----
+***
 
 ## Ancoratge de la Wiki
 - Penja de: [[00_INDEX_SKILLS]]

@@ -1,0 +1,89 @@
+/* ====================================================================
+   PEDRA SECA · UTILITATS
+   Classes d'una sola declaracio. Ultima capa: guanyen sense !important.
+
+   NETEJA 260912 · Consell (Claude · Mestre d'Obres)
+   · Llevades les 8 classes .dsg-* i .xat-avatar-wrap: cap consumidor a
+     src/ (ni estatic ni per plantilla). Eren residu de la poda del JSX.
+   · El fitxer ara obri DOS blocs de capa. Motiu: les regles .xat-* no
+     son utilitats — son components d'una seccio, amb 5–8 declaracions.
+     Vivint a `utilities` cap regla de `components` les podia corregir
+     mai sense !important. Ara van a `components`, on toca.
+     Comprovat que el canvi es neutre: l'unic selector que xoca amb un
+     altre fitxer es .xat-empty (legat.css, capa `legacy`), i
+     `components` continua guanyant a `legacy`. La resta son noms unics.
+   ==================================================================== */
+
+/* ── Components d'una seccio que vivien a `utilities` per error ───── */
+@layer components {
+
+  /* XatSection.jsx */
+  .xat-scroll-area {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: var(--sdp-fons-app);
+  }
+  .xat-header-info { flex: 1; }
+  .xat-header-subtitle { opacity: 0.8; display: block; }
+  .xat-divider {
+    margin: var(--sdp-space-1) 0;
+    border: none;
+    border-top: 1px solid var(--sdp-vora-control);
+  }
+  .xat-empty {
+    text-align: center;
+    margin: auto;
+    padding: var(--sdp-space-4);
+    border-radius: var(--sdp-radi-s);
+  }
+  .xat-bubble-wrapper { display: flex; align-items: center; }
+  .xat-bubble-wrapper--block { display: block; align-items: initial; }
+  .xat-bubble-content { flex: 1; min-width: 0; }
+  .xat-sender-name { margin-bottom: 2px; }
+
+  /* UniversalPage.jsx · la variant la compon el JSX:
+     `sdp-universal-page-container--${layout}`. No la llevem encara que
+     el tractor no la veja: es un fals positiu dinamic. */
+  .sdp-universal-page-container {
+    display: block;
+    width: 100%;
+    min-height: 100%;
+  }
+  .sdp-universal-page-container--contained {
+    position: relative;
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+  }
+}
+
+/* ── Utilitats de veritat: una declaracio, l'ultima paraula ───────── */
+@layer utilities {
+
+  /* Botons d'icona de la barra superior (App.jsx).
+     Abans --sdp-fons-subtil: en clar, icona blanca sobre fons quasi
+     blanc (1,18:1) — la icona desapareixia en passar-hi el ratoli. */
+  .sdp-top-bar-btn {
+    background: transparent;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    border-radius: var(--sdp-radi-m);
+  }
+  .sdp-top-bar-btn:hover {
+    background-color: var(--sdp-crom-hover);
+  }
+  .sdp-top-bar-btn:focus-visible {
+    outline: 2px solid var(--sdp-crom-focus);
+    outline-offset: 2px;
+  }
+
+  .sdp-icon--1em {
+    width: 1em;
+    height: 1em;
+  }
+}

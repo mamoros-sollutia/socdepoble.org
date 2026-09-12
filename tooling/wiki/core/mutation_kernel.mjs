@@ -31,7 +31,7 @@ import {
 
 const SCRIPT_DIR = TOOLING_WIKI_DIR;
 export const DEFAULT_WIKI_DIR = WIKI_DIR;
-};
+
 
 export async function atomicWrite(file, content, { mode = 0o644 } = {}) {
   verificaTancaSeguretat(file);

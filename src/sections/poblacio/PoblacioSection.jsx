@@ -33,27 +33,27 @@ export default function PoblacioSection() {
       showLogos={true}
     >
       <div >
-        <div className="sdp-table-container">
-          <table className="sdp-table sdp-table--poblacio">
+        <div className="sdp-taula">
+          <table className="sdp-taula">
             <thead>
               <tr>
                 <th>Poble</th>
                 <th>Comarca</th>
-                <th className="sdp-text-right">Habitants</th>
+                <th className="sdp-num">Habitants</th>
               </tr>
             </thead>
             <tbody>
               {sortedByPopulation.map((town) => (
                 <tr key={town.id}>
                   <td>
-                    <Link to={`/pobles/${town.id}`} className="sdp-table-link">
+                    <Link to={`/pobles/${town.id}`} className="sdp-molla__enllac">
                       {town.title}
                     </Link>
                   </td>
                   <td>
                     {town.comarca}
                   </td>
-                  <td className="sdp-text-right">
+                  <td className="sdp-num">
                     <strong>
                       {town.population}
                     </strong>

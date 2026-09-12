@@ -76,6 +76,25 @@ export function refreshSession(config = {}) {
   return renovacioEnCurs;
 }
 
+/** Nom del contracte. `refreshSession` es queda com a intern. */
+export const refrescaSessio = (config = {}) => refreshSession(config);
+
+/**
+ * Rol de plataforma de qui crida. La política «llig el propi rol» ja existix
+ * a l'esquema inicial i `user_platform_roles` només té SELECT per a
+ * authenticated: no cal cap RPC nova. Fail-closed a 'usuari'.
+ */
+export async function elMeuRol(config = {}) {
+  const u = usuariDeSessio();
+  if (!u?.id) return null;
+  const r = await requestMaybe(
+    `/rest/v1/user_platform_roles?select=role&user_id=eq.${encodeURIComponent(u.id)}&limit=1`,
+    config
+  );
+  if (!r.ok || !Array.isArray(r.data) || r.data.length === 0) return 'usuari';
+  return r.data[0].role || 'usuari';
+}
+
 async function _renova(config) {
   const refreshToken = getEfimer(CLAU_REFRESC);
   if (!refreshToken) return false;
@@ -106,6 +125,7 @@ async function _renova(config) {
          mentre els tokens anaven a sessionStorage. Les tres peces a la mateixa
          capa, i per un sol camí. */
       desaSessio(result);
+      reautenticaRealtime();
       if (typeof window !== 'undefined') {
         window.dispatchEvent(new CustomEvent('sdp:auth-change', { detail: { user: result.user }}));
       }
@@ -266,7 +286,29 @@ function getSupabaseClient(config) {
   return supabaseClient;
 }
 
+/** Tanca canals i client. Idempotent. */
+export function tancaRealtime() {
+  for (const [filId, sub] of activeSubscriptions) {
+    try { sub.unsubscribe(); } catch { /* socket ja mort */ }
+    activeSubscriptions.delete(filId);
+  }
+  if (supabaseClient) {
+    try { supabaseClient.removeAllChannels?.(); } catch { /* res */ }
+    supabaseClient = null;
+  }
+}
+
+/** El token del socket ha de seguir el de les capçaleres. */
+export function reautenticaRealtime() {
+  if (!supabaseClient) return;
+  const jwt = getEfimer(CLAU_JWT);
+  if (jwt) supabaseClient.realtime.setAuth(jwt);
+  else tancaRealtime();
+}
+
 export function subscribeToXat(filId, callback, config = {}) {
+  if (activeSubscriptions.has(filId)) activeSubscriptions.get(filId).unsubscribe();
+  
   const client = getSupabaseClient(config);
   if (!client) return;
 
@@ -298,7 +340,7 @@ export function subscribeToXat(filId, callback, config = {}) {
   activeSubscriptions.set(filId, sub);
 }
 
-export function unsubscribeFromXat(filId, config = {}) {
+export function unsubscribeFromXat(filId, _config = {}) {
   const sub = activeSubscriptions.get(filId);
   if (sub) {
     sub.unsubscribe();
@@ -480,6 +522,10 @@ export async function updateNote(id, updates, expectedRevision, config = {}) {
     throw new Error('ATURADOR CRÍTIC: No es pot actualitzar una nota sense connexió al servidor. El projecte és Online-First estricte i no permet fallbacks locals rotatoris.');
   }
 
+  if (expectedRevision === undefined || expectedRevision === null) {
+    throw new Error('ATURADOR CRÍTIC: expectedRevision és obligatori per a actualitzar una nota i evitar pèrdua de dades per concurrència.');
+  }
+
   const payload = {
     folder_id: updates.folderId,
     title: updates.title,
@@ -610,10 +656,18 @@ export async function createOrganization(organization, config = {}) {
 }
 
 export async function updateOrganization(id, updates, config = {}) {
+  const allowed = ['name', 'slug', 'description', 'kind', 'parentOrganizationId'];
+  const payload = {};
+  for (const k of allowed) {
+    if (updates[k] !== undefined) {
+      payload[k] = updates[k];
+    }
+  }
+
   const result = await request(`/rest/v1/organizations?id=eq.${encodeURIComponent(id)}`, config, {
     method: 'PATCH',
     headers: { Prefer: 'return=representation' },
-    body: updates
+    body: payload
   });
 
   if (!Array.isArray(result) || result.length === 0) {
@@ -779,6 +833,7 @@ export function recullTornadaOAuth(config = {}) {
  * repintava i la interfície es quedava mostrant l'usuari que acabaves de tancar.
  */
 export async function logout() {
+  tancaRealtime();
   esborraSessio();
   if (typeof window !== 'undefined') {
     window.dispatchEvent(new CustomEvent('sdp:auth-change', { detail: { user: null } }));
@@ -1131,6 +1186,83 @@ export async function creaFilDirecte(altreUsuariId, titol = null, config = {}) {
   return typeof filId === 'string' ? filId : (filId?.crea_fil_directe ?? null);
 }
 
+
+/**
+ * Implementació local (Mock) de la Gestoria.
+ * Aquesta funció permet veure la UI de la Gestoria de manera segura en local,
+ * garantint que les dades financeres NO pugen a Supabase/Internet.
+ * Intenta recuperar la base de dades antiga de Dexie (GestoriaDePoble) usant IndexedDB natiu
+ * perquè l'usuari puga veure les seues dades sense perdre-les.
+ */
+export async function loadGestoria(options = {}) {
+  if (options.signal?.aborted) throw new DOMException('Aborted', 'AbortError');
+  
+  try {
+    const isDemoMode = new URLSearchParams(window.location.search).get('mode') === 'demo';
+    const dbName = isDemoMode ? "GestoriaDePoble_Demo" : "GestoriaDePoble";
+    
+    // Promesa per llegir de IndexedDB natiu
+    const dadesAntigues = await new Promise((resolve) => {
+      const request = indexedDB.open(dbName);
+      
+      request.onsuccess = (event) => {
+        const db = event.target.result;
+        if (!db.objectStoreNames.contains('events')) {
+          db.close();
+          resolve(null);
+          return;
+        }
+        
+        try {
+          const transaction = db.transaction(['events', 'factures', 'contactes', 'documents'], 'readonly');
+          const results = { events: [], factures: [], contactes: [], documents: [] };
+          let pending = 4;
+          
+          const onComplete = () => {
+            pending--;
+            if (pending === 0) {
+              db.close();
+              resolve(results);
+            }
+          };
+          
+          ['events', 'factures', 'contactes', 'documents'].forEach(storeName => {
+            if (db.objectStoreNames.contains(storeName)) {
+              const req = transaction.objectStore(storeName).getAll();
+              req.onsuccess = (e) => { results[storeName] = e.target.result || []; onComplete(); };
+              req.onerror = () => onComplete();
+            } else {
+              onComplete();
+            }
+          });
+        } catch (e) {
+          db.close();
+          resolve(null);
+        }
+      };
+      
+      request.onerror = () => resolve(null);
+      request.onupgradeneeded = (e) => {
+        // Si no existia, cancel·lem l'upgrade per no crear-la buida innecessàriament
+        e.target.transaction.abort();
+        resolve(null);
+      };
+    });
+    
+    if (dadesAntigues && (dadesAntigues.events.length > 0 || dadesAntigues.factures.length > 0)) {
+      return dadesAntigues;
+    }
+
+    // Fallback a localStorage si no hi ha res a IndexedDB
+    const dadesLocals = localStorage.getItem('sdp_gestoria_local');
+    if (dadesLocals) return JSON.parse(dadesLocals);
+
+  } catch (e) {
+    console.warn('Error llegint dades locals de gestoria:', e);
+  }
+  
+  return { events: [], factures: [], contactes: [], documents: [] };
+}
 
 /**
  * ============================================================================

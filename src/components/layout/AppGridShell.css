@@ -1,3 +1,4 @@
+@layer components {
 /* ═══════════════════════════════════════════════════════════════════
    AppGridShell — Graella universal de 3 columnes
    (Basada en la filosofia de Pedra Seca del Bloc de Notes)
@@ -280,3 +281,4 @@
 .app-grid-col-header__accio:hover:not(:disabled) { background: var(--sdp-accio-hover); }
 .app-grid-col-header__accio:focus-visible { outline: 2px solid var(--sdp-focus); outline-offset: 2px; }
 .app-grid-col-header__accio:disabled { opacity: 0.4; cursor: not-allowed; }
+}

@@ -9,7 +9,7 @@ import { PillToggle } from './PillToggle.jsx';
 
 let arrel;
 beforeEach(() => { arrel = document.createElement('div'); });
-afterEach(() => { render(null, arrel); });
+afterEach(() => { arrel.innerHTML = ''; });
 
 const OPCIONS = [
   { valor: 'cards', text: 'Universal Cards' },
@@ -52,8 +52,8 @@ test('sense onCanvi no peta', () => {
 });
 
 test('className s\'afegix sense perdre la classe base', () => {
-  pinta({ valor: 'cards', className: 'sdp-pindola--centrada ob-mb-15' });
-  expect(arrel.firstElementChild.className).toBe('sdp-pindola sdp-pindola--centrada ob-mb-15');
+  pinta({ valor: 'cards', className: 'sdp-pindola--centrada onboarding-form__pindola' });
+  expect(arrel.firstElementChild.className).toBe('sdp-pindola sdp-pindola--centrada onboarding-form__pindola');
 });
 
 test('la icona és decorativa', () => {

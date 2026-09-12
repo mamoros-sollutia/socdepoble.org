@@ -10,8 +10,8 @@ export default function GestoriaContactes() {
   if (loading) {
     return (
       <UniversalPage title="Contactes" chrome="none">
-        <div className="sdp-estat" role="status" aria-live="polite">
-          <p className="sdp-estat__text">Carregant contactes...</p>
+        <div className="sdp-carregant" role="status" aria-live="polite">
+          <p className="sdp-carregant">Carregant contactes...</p>
         </div>
       </UniversalPage>
     );
@@ -20,15 +20,14 @@ export default function GestoriaContactes() {
   const contactes = data.contactes || [];
 
   return (
-    <UniversalPage
+    <UniversalPage chrome="system"
       title="CONTACTES"
-      category="GESTORIA"
-      tags={["PANELL INTERN"]}
+      labels={["GESTORIA", "PANELL INTERN"]}
     >
-      <section className="up-document" aria-labelledby="gestoria-contactes-titol">
+      <section className="content-wrapper" aria-labelledby="gestoria-contactes-titol">
         <h2 id="gestoria-contactes-titol">El CRM poble-first — Llibre Major</h2>
 
-        <div className="sdp-marge-bottom">
+        <div className="sdp-camp">
           <PillToggle
             etiqueta="Vista de la taula"
             valor={vistaComprimida ? 'COMPACTA' : 'NORMAL'}
@@ -41,7 +40,7 @@ export default function GestoriaContactes() {
         </div>
 
         <div
-          className="sdp-taula-scroll"
+          className="sdp-taula"
           tabIndex="0"
           aria-label="Contactes: desplaçament horitzontal"
         >
@@ -52,13 +51,13 @@ export default function GestoriaContactes() {
                 <th scope="col">Nom o raó social</th>
                 <th scope="col">NIF o CIF</th>
                 <th scope="col">Tipus</th>
-                <th className="sdp-taula__accions" scope="col">Accions</th>
+                <th className="table-action" scope="col">Accions</th>
               </tr>
             </thead>
             <tbody>
               {contactes.length === 0 ? (
                 <tr>
-                  <td className="sdp-taula__buit" colSpan="4">
+                  <td className="sdp-gestor-buit" colSpan="4">
                     Sense contactes al Llibre Major.
                   </td>
                 </tr>
@@ -77,7 +76,7 @@ export default function GestoriaContactes() {
                           {contacte.tipus}
                         </span>
                       </td>
-                      <td className="sdp-taula__accions">
+                      <td className="table-action">
                         <button className="sdp-boto" type="button">
                           Editar
                         </button>

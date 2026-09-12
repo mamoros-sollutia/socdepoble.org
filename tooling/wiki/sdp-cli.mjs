@@ -45,7 +45,7 @@ function parseCli(argv) {
     quarantineEmpty: false,
     ackSchemaCutover: false,
     ackLegacyLoss: false,
-    wikiDir: DEFAULT_WIKI_DIR,
+    wikiDir: WIKI_DIR,
     receiptPath: '',
     restore: '',
     reportPath: '',

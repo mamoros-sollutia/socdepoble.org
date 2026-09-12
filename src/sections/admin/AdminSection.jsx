@@ -8,14 +8,15 @@ import { UniversalManager } from '../../components/universal/manager/UniversalMa
 import { usersManagerConfig } from '../../components/universal/manager/configs/usersManager';
 import { companiesManagerConfig } from '../../components/universal/manager/configs/companiesManager';
 
-
 function AdminSidebar({ activeTab, setActiveTab }) {
   return (
-    <aside className="univ-manager-admin-sidebar-inner">
+    <aside className="notes-column">
       <AppGridColumn titol="Administració" />
-      <h2 className="sdp-heading-3 ob-mb-15">Mode Administrador</h2>
+      <div className="notes-list-header univ-manager-toolbar">
+        <strong className="sdp-alerta__titol">Mode Administrador</strong>
+      </div>
       
-      <div className="univ-manager-facet-list" role="navigation" aria-label="Menú d'administració">
+      <div className="notes-column__body no-padding sdp-scrollable" role="navigation" aria-label="Menú d'administració">
         <button 
           className={`univ-manager-facet-item ${activeTab === 'dashboard' ? 'univ-manager-facet-item--active' : ''}`}
           onClick={() => setActiveTab('dashboard')}
@@ -44,11 +45,13 @@ function AdminSidebar({ activeTab, setActiveTab }) {
 
 function AdminDashboard() {
   return (
-    <div className="univ-manager-admin-dashboard sdp-article">
+    <div className="sdp-buit">
       <AppGridColumn titol="Tauler" />
-      <p>Benvingut a l'administració de Sóc de Poble.</p>
-      <div className="alert alert-info">
-        Nota: Aquesta àrea està restringida a Superadmins. Si no tens permisos a la base de dades, les crides fallaran amb 42501.
+      <div className="sdp-buit__text">
+        <p>Benvingut a l'administració de Sóc de Poble.</p>
+        <div className="sdp-alerta sdp-alerta--info" role="status">
+          <p>Nota: Aquesta àrea està restringida a Superadmins. Si no tens permisos a la base de dades, les crides fallaran amb 42501.</p>
+        </div>
       </div>
     </div>
   );
@@ -68,7 +71,7 @@ function AdminUsersManager() {
   }, []);
 
   if (error) {
-    return <div className="alert alert-error">{error}</div>;
+    return <div className="sdp-alerta sdp-alerta--error" role="alert">{error}</div>;
   }
 
   return (
@@ -79,12 +82,14 @@ function AdminUsersManager() {
       getItemSearchText={usersManagerConfig.getItemSearchText}
       getItemCard={usersManagerConfig.getItemCard}
       renderDetail={(item) => (
-         <aside className="univ-manager-admin-detail">
+         <aside className="perfil-detall">
            <AppGridColumn titol="Detall de l'Usuari" />
-           <h2>{item.email}</h2>
-           <p className="ob-color-subtle">ID: {item.id}</p>
-           <p>Alta: {item.created_at}</p>
-           <p>Últim accés: {item.last_sign_in_at}</p>
+           <div className="perfil-detall-buit">
+             <h2>{item.email}</h2>
+             <p className="sdp-camp__ajuda">ID: {item.id}</p>
+             <p>Alta: {item.created_at}</p>
+             <p>Últim accés: {item.last_sign_in_at}</p>
+           </div>
          </aside>
       )}
     />
@@ -105,7 +110,7 @@ function AdminCompaniesManager() {
   }, []);
 
   if (error) {
-    return <div className="alert alert-error">{error}</div>;
+    return <div className="sdp-alerta sdp-alerta--error" role="alert">{error}</div>;
   }
 
   return (
@@ -116,12 +121,14 @@ function AdminCompaniesManager() {
       getItemSearchText={companiesManagerConfig.getItemSearchText}
       getItemCard={companiesManagerConfig.getItemCard}
       renderDetail={(item) => (
-         <aside className="univ-manager-admin-detail">
+         <aside className="perfil-detall">
            <AppGridColumn titol="Detall de l'Entitat" />
-           <h2>{item.name}</h2>
-           <p className="ob-color-subtle">ID: {item.id} / Slug: {item.slug}</p>
-           <p>Alta: {item.created_at}</p>
-           <p>{item.description}</p>
+           <div className="perfil-detall-buit">
+             <h2>{item.name}</h2>
+             <p className="sdp-camp__ajuda">ID: {item.id} / Slug: {item.slug}</p>
+             <p>Alta: {item.created_at}</p>
+             <p>{item.description}</p>
+           </div>
          </aside>
       )}
     />
@@ -149,4 +156,3 @@ export default function AdminSection() {
     </UniversalPage>
   );
 }
-

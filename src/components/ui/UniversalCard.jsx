@@ -115,7 +115,7 @@ function CalendarBadge({ badge }) {
         badge.onClick();
       }}
     >
-      <time dateTime={badge.dateTime} className="ue-flex-col-center">{contingut}</time>
+      <time dateTime={badge.dateTime}>{contingut}</time>
     </button>
   );
 }
@@ -128,9 +128,9 @@ function Etiqueta({ label }) {
   return (
     <li className={`sp-card-label ${classe}`}>
       {!segur ? text : segur.startsWith('http') ? (
-        <a href={segur} target="_blank" rel="noopener noreferrer" className="sdp-link-inherit">{text}</a>
+        <a href={segur} target="_blank" rel="noopener noreferrer" className="sp-card-label">{text}</a>
       ) : (
-        <Link to={segur} className="sdp-link-inherit">{text}</Link>
+        <Link to={segur} className="sp-card-label">{text}</Link>
       )}
     </li>
   );

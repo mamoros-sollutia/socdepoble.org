@@ -100,7 +100,7 @@ export default function NotesEditor() {
       onLocalChange={(field, value) => setLocalNoteField(activeNote.id, field, value)}
       labels={etiquetesDeNota(activeNote, noteFolders, {})}
     >
-      <div className="editor-tiptap-container">
+      <div className="editor-scroll-area">
         <EditorContent editor={editor} />
       </div>
     </UniversalEditorShell>

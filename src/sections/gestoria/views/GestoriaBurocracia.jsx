@@ -6,35 +6,34 @@ export default function GestoriaBurocracia() {
   const { t } = useUIActions();
 
   return (
-    <UniversalPage
+    <UniversalPage chrome="system"
       title="ARXIU BUROCRÀTIC"
-      category="GESTORIA"
-      tags={["BUROCRÀCIA"]}
+      labels={["GESTORIA", "BUROCRÀCIA"]}
     >
-      <div className="up-document universal-grid">
+      <div className="content-wrapper sdp-card-grid">
         
-        <h2 className="sdp-text-centrat sdp-text-accent sdp-text-maj">
+        <h2 className="sp-card-copyright stat-value univ-manager-facet-header">
           GESTIÓ DE SUMA, HERÈNCIES I PAPERS QUE NO ENTENS
         </h2>
 
-        <div className="sdp-dropzone sdp-marge-top" onClick={() => {}}>
-          <div className="sdp-dropzone-icona">🗄️</div>
-          <h3 className="sdp-dropzone-titol">
+        <div className="upload-zone sdp-camp" onClick={() => {}}>
+          <div className="upload-zone-text">🗄️</div>
+          <h3 className="upload-zone-text">
             LLANÇA EL PAPER DE SUMA O DE L'HERÈNCIA ACÍ
           </h3>
-          <p className="sdp-text-mut sdp-marge-bottom-petit">
+          <p className="sdp-camp__ajuda sdp-camp">
             Accepta PDF o Fotos del paper.
           </p>
-          <p className="sdp-text-mut sdp-text-menut">
+          <p className="sdp-camp__ajuda">
             La IAIA ho llegirà, et dirà de què va, i si has de pagar o pots oblidar-te'n.
           </p>
         </div>
 
-        <div className="sdp-marge-top-gran">
-          <h3 className="sdp-borde-inferior">
+        <div className="sdp-camp">
+          <h3 className="sdp-divisor">
             Papers Arxivat (0)
           </h3>
-          <p className="sdp-text-mut sdp-marge-top">
+          <p className="sdp-camp__ajuda sdp-camp">
             Encara no has pujat cap document burocràtic.
           </p>
         </div>

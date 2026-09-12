@@ -36,8 +36,8 @@ export function Dropdown({ trigger, children, className = '', right = false, min
       </div>
       {isOpen && (
         <div 
-          className={`xat-header-dropdown ${right ? 'xat-header-dropdown--right' : 'xat-header-dropdown--left'}`} 
-          style={{ minWidth }} 
+          className={`xat-header-dropdown ${right ? 'xat-header-dropdown--right' : 'xat-header-dropdown--left'}`}
+          style={{ '--sdp-desplegable-ample': minWidth }}
         >
           {children}
         </div>
@@ -50,10 +50,10 @@ export function DropdownItem({ children, onClick, className = '', icon }) {
   return (
     <button 
       type="button" 
-      className={`xat-dropdown-item ue-flex-center-8 ue-w-full ${className}`} 
+      className={`sdp-dropdown-item ${className}`} 
       onClick={onClick} 
     >
-      {icon && <span className="ue-flex-center">{icon}</span>}
+      {icon && <span className="sdp-dropdown-item__icona">{icon}</span>}
       {children}
     </button>
   );

@@ -77,9 +77,10 @@ if (typeof window !== 'undefined') {
   });
 }
 
-import { setBackendImplementation, freezeImplementation, getBackendImplementation } from './data/backendPort.js';
+import { setBackendImplementation, getBackendImplementation, freezeImplementation } from './data/backendPort.js';
 import { defineCustomElement } from './PedraSecaEmbed.jsx';
 import { CONTRACTE_NUCLI, CONTRACTE_BACKEND } from './data/contracte.js';
+import { adoptaSessioExterna, esborraSessio } from './data/identitat.js';
 
 /* ═══════════════════════ Estat de l'arrencada ═══════════════════════ */
 
@@ -220,6 +221,24 @@ export function estat() {
   };
 }
 
+/**
+ * L'amfitrió entrega una sessió. Vàlid en qualsevol fase: les sessions
+ * arriben quan l'usuari entra, no quan arranca el bundle. No confon-lo amb
+ * `configura()`, que sí que està sotmés al pany del backend.
+ */
+export function injectaSessio(sessio, opcions = {}) {
+  return adoptaSessioExterna(sessio, opcions);
+}
+
+/** L'amfitrió tanca la sessió del seu costat. */
+export function expulsaSessio() {
+  esborraSessio();
+  if (typeof window !== 'undefined') {
+    window.dispatchEvent(new CustomEvent('sdp:auth-change', { detail: { user: null } }));
+  }
+  return true;
+}
+
 /* ═══════════════════════ Superfície global ═══════════════════════ */
 
 /**
@@ -238,7 +257,7 @@ export function exposaGlobal(objectiu = (typeof window !== 'undefined' ? window 
   const existent = Object.getOwnPropertyDescriptor(objectiu, 'SocDePoble');
   if (existent) return existent.value ?? null;
 
-  const api = Object.freeze({ configura, arrenca, arrencaAuto, deferArrenca, estat, CONTRACTE_BACKEND, isReady: true });
+  const api = Object.freeze({ configura, arrenca, arrencaAuto, deferArrenca, estat, CONTRACTE_BACKEND, injectaSessio, expulsaSessio, isReady: true });
   Object.defineProperty(objectiu, 'SocDePoble', { value: api, writable: false, configurable: false });
   
   // Avisar a Sollutia o qualsevol integrador que l'API ja està llesta

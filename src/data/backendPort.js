@@ -43,6 +43,8 @@ const asseguraMetode = (nom) => (...args) => {
 };
 
 export const getDefaultUserId = asseguraMetode('getDefaultUserId');
+export const refrescaSessio = asseguraMetode('refrescaSessio');
+export const elMeuRol = asseguraMetode('elMeuRol');
 
 export const loadCoreContent = asseguraMetode('loadCoreContent');
 export const loadMur = asseguraMetode('loadMur');
@@ -84,4 +86,7 @@ export const unsubscribeFromXat = asseguraMetode('unsubscribeFromXat');
 // Mode Administrador
 export const adminListUsers = asseguraMetode('adminListUsers');
 export const adminListOrganizations = asseguraMetode('adminListOrganizations');
+
+// Gestoria
+export const loadGestoria = asseguraMetode('loadGestoria');
 

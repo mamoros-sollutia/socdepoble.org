@@ -3,7 +3,8 @@
    Full de src/components/ui/{formulari,Boto,Insignia,Alerta,Dialeg,
    Pestanyes,navegacio,estats,Pista}.jsx. Catàleg: /disseny?pagina=…
    · Només tokens semàntics: el tema fosc funciona sense cap regla extra.
-   · Capa `components`: guanya a `legacy` sense !important.
+   · Capa `components`: declarada a index.css DAVANT dels @import.
+   · Boto gran: var(--sdp-alt-accio) = 58px (abans 56px en brut).
    · Llei de Vida: tot control ≥ var(--sdp-touch-min).
    ═══════════════════════════════════════════════════════════════════ */
 @layer components {
@@ -29,11 +30,11 @@
   .sdp-boto--accent:hover:not(:disabled) { background: var(--sdp-accent-hover); }
   .sdp-boto--secundari { background: var(--sdp-fons-targeta); color: var(--sdp-text-titol); border-color: var(--sdp-vora-control); }
   .sdp-boto--secundari:hover:not(:disabled) { background: var(--sdp-fons-subtil); }
-  .sdp-boto--perill { background: var(--sdp-error); color: var(--sdp-blanc-pur, #fff); }
+  .sdp-boto--perill { background: var(--sdp-error); color: var(--sdp-sobre-color); }
   .sdp-boto--perill:hover:not(:disabled) { background: var(--sdp-error-text); }
   .sdp-boto--fantasma { background: transparent; color: var(--sdp-accio-text); }
   .sdp-boto--fantasma:hover:not(:disabled) { background: var(--sdp-fons-subtil); }
-  .sdp-boto--gran { min-height: 56px; padding: 0 var(--sdp-space-8); font-size: var(--sdp-text-base); }
+  .sdp-boto--gran { min-height: var(--sdp-alt-accio); padding: 0 var(--sdp-space-8); font-size: var(--sdp-text-base); }
   .sdp-boto--ple { width: 100%; }
   .sdp-boto__gir, .sdp-carregant__gir { animation: sdp-gir 0.9s linear infinite; }
   @keyframes sdp-gir { to { rotate: 360deg; } }
@@ -76,11 +77,12 @@
   .sdp-camp { display: flex; flex-direction: column; gap: var(--sdp-space-2); margin-bottom: var(--sdp-space-5); }
   .sdp-camp__etiqueta, .sdp-grup__llegenda { font-weight: 700; color: var(--sdp-text-titol); font-size: var(--sdp-text-small); }
   .sdp-camp__obligatori { font-weight: 400; color: var(--sdp-text-suau); }
-  .sdp-camp__ajuda { margin: 0; color: var(--sdp-text-suau); font-size: var(--sdp-text-meta); }
+  .sdp-camp__ajuda { color: var(--sdp-text-suau); font-size: var(--sdp-text-meta); }
   .sdp-camp__error {
-    display: flex; align-items: center; gap: var(--sdp-space-2); margin: 0;
+    margin-top: var(--sdp-space-2);
     color: var(--sdp-error-text); font-weight: 700; font-size: var(--sdp-text-meta);
   }
+  /* .sdp-camp--error utilitzat per a marcar camps amb error (el border el dóna aria-invalid) */
   .sdp-control {
     width: 100%; min-height: var(--sdp-touch-min); padding: var(--sdp-space-2) var(--sdp-space-3);
     border: 2px solid var(--sdp-vora-control); border-radius: var(--sdp-radi-s);
@@ -205,6 +207,10 @@
   .sdp-paginacio__num:focus-visible, .sdp-paginacio__pas:focus-visible { outline: 3px solid var(--sdp-focus); outline-offset: 2px; }
   .sdp-paginacio__pas:disabled { opacity: 0.45; cursor: not-allowed; }
   .sdp-paginacio__salt { padding-inline: var(--sdp-space-1); color: var(--sdp-text-suau); }
+  .sdp-taula--ampla { width: 100%; min-width: 600px; }
+  .sdp-taula--interactiva tbody tr:hover { background: var(--sdp-fons-subtil); cursor: pointer; }
+  .sdp-accions { display: flex; flex-wrap: wrap; gap: var(--sdp-space-3); align-items: center; }
+  .sdp-accions--final { justify-content: flex-end; }
 
   /* ── ESTATS ───────────────────────────────────────────────────────── */
   .sdp-buit {
@@ -279,9 +285,13 @@
   .sdp-anatomia__lat { grid-area: lat; background: var(--sdp-crom-fons); color: var(--sdp-crom-text); }
   .sdp-anatomia__sup { grid-area: sup; min-height: 3rem; background: var(--sdp-crom-fons); color: var(--sdp-crom-text); }
   .sdp-anatomia__fin { grid-area: fin; background: var(--sdp-fons-app); color: var(--sdp-text-titol); }
-}
 
-@media (prefers-reduced-motion: reduce) {
-  .sdp-boto__gir, .sdp-carregant__gir, .sdp-esquelet__linia, .sdp-esquelet__media { animation: none; }
-  .sdp-interruptor__botonet, .sdp-interruptor__carril { transition: none; }
+  /* Fuga reparada (260912): este bloc vivia FORA de @layer components, i el
+     CSS sense capa guanya a TOTES les capes, `utilities` inclosa. Funcionava
+     per accident (la intenció era anul·lar animacions). Ara viu on diu el
+     capçal del fitxer. */
+  @media (prefers-reduced-motion: reduce) {
+    .sdp-boto__gir, .sdp-carregant__gir, .sdp-esquelet__linia, .sdp-esquelet__media { animation: none; }
+    .sdp-interruptor__botonet, .sdp-interruptor__carril { transition: none; }
+  }
 }

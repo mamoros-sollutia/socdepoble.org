@@ -3,14 +3,13 @@ import path from 'node:path';
 import { createHash } from 'node:crypto';
 
 export const ISO_SOURCES = [
-  '_wiki_de_poble/02_saber/plantilles/PLANTILLA_ISO_SDP.md',
+  '_wiki_de_poble/02_saber/plantilles/plantilla_iso_sdp.md',
   '_wiki_de_poble/01_ser/00_bios.md',
   '_wiki_de_poble/01_ser/02_genotip.md',
   '_wiki_de_poble/02_saber/doc_governanca.md',
   '_wiki_de_poble/02_saber/doc_logos_oficials.md',
   '_wiki_de_poble/02_saber/architecture/ADR-2026-08-ONLINE-FIRST.md',
 ];
-const hash = text => createHash('sha256').update(text).digest('hex');
 const stripAuto = text => text.replace(/\n## Sinapsis Entrants \(Autogenerat\)[\s\S]*?<!-- FI SINAPSIS ENTRANTS - NO EDITAR MANUALMENT -->/g, '').trim();
 function sections(text) {
   // Només capçaleres Markdown reals, fora dels blocs de codi.

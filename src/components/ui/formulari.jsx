@@ -107,7 +107,7 @@ export function GrupOpcions({ llegenda, nom, opcions = [], valor, onCanvi, error
         return (
           <div className="sdp-casella" key={o.valor}>
             <input type="radio" id={idOpcio} name={nomReal} value={o.valor}
-              className="sdp-casella__control sdp-casella__control--radi"
+              className="sdp-casella__control"
               checked={valor === undefined ? undefined : valor === o.valor}
               onChange={() => onCanvi?.(o.valor)} />
             <label htmlFor={idOpcio} className="sdp-casella__etiqueta">

@@ -2,11 +2,9 @@ import React from 'react';
 import { UniversalPage } from '../../../components/universal/UniversalPage';
 import { UniversalCard } from '../../../components/ui/UniversalCard';
 import { useGestoriaData } from '../hooks/useGestoriaData';
-import { useUIActions } from '../../../app/contexts/UIContext';
 
 export default function GestoriaHome() {
   const { data, loading } = useGestoriaData();
-  const { t } = useUIActions();
 
   if (loading) {
     return (
@@ -19,16 +17,17 @@ export default function GestoriaHome() {
   }
 
   const { saldoFormatted, mesosRebost, events } = data;
-  const eventsRecents = events.sort((a, b) => b.timestamp - a.timestamp).slice(0, 5);
+  const eventsRecents = [...events]
+    .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
+    .slice(0, 5);
 
   return (
-    <UniversalPage
+    <UniversalPage chrome="system"
       title="Tauler d'Inici"
-      category="GESTORIA"
-      tags={["PANEL INTERN", "VISTA RESUM"]}
+      labels={["GESTORIA", "PANELL INTERN", "VISTA RESUM"]}
       heroImage="/assets/fons_gestoria.jpg"
     >
-      <div className="up-document universal-grid">
+      <div className="content-wrapper sdp-card-grid">
         
         <div className="stat-grid">
           
@@ -57,38 +56,38 @@ export default function GestoriaHome() {
         <UniversalCard
           title="Darrers Moviments Bancaris"
           headingLevel="h3"
-        >
-          {eventsRecents.length === 0 ? (
-            <p className="sdp-text-mut sdp-marge-top">Sense moviments registrats.</p>
-          ) : (
-            <div className="sdp-taula-wrapper sdp-marge-top">
-              <table className="sdp-taula sdp-taula--densa sdp-taula--zebra">
-                <thead>
-                  <tr>
-                    <th>Data</th>
-                    <th>Concepte</th>
-                    <th style={{ textAlign: 'right' }}>Import</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {eventsRecents.map((ev, i) => (
-                    <tr key={i}>
-                      <td className="sdp-text-mut sdp-text-nowrap">
-                        {new Date(ev.timestamp).toLocaleDateString()}
-                      </td>
-                      <td>
-                        <strong>{ev.clean_concept || ev.concept}</strong>
-                      </td>
-                      <td className={`sdp-text-dreta sdp-text-negreta ${ev.amount > 0 ? 'sdp-text-exit' : ''}`}>
-                        {data.formatEur(ev.amount)}
-                      </td>
+          body={
+            eventsRecents.length === 0 ? (
+              <p className="sdp-camp__ajuda sdp-camp">Sense moviments registrats.</p>
+            ) : (
+              <div className="sdp-camp">
+                <table className="sdp-taula sdp-taula--densa">
+                  <thead>
+                    <tr>
+                      <th scope="col">Data</th>
+                      <th scope="col">Concepte</th>
+                      <th scope="col" className="sdp-text-dreta">Import</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          )}
-        </UniversalCard>
+                  </thead>
+                  <tbody>
+                    {eventsRecents.map((ev) => (
+                      <tr key={ev.id ?? `${ev.timestamp}-${ev.amount}`}>
+                        <td className="sdp-camp__ajuda sdp-num">
+                          {new Date(ev.timestamp).toLocaleDateString()}
+                        </td>
+                        <td><strong>{ev.clean_concept || ev.concept}</strong></td>
+                        <td className={`sdp-text-dreta sdp-text-negreta ${ev.amount > 0 ? 'sdp-text-exit' : ''}`}>
+                          {data.formatEur(ev.amount)}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )
+          }
+        />
+
 
       </div>
     </UniversalPage>

@@ -10,10 +10,10 @@ import { Inbox, LoaderCircle } from 'lucide-react';
 export function EstatBuit({ icona: Icona = Inbox, titol, children, accio = null, className }) {
   return (
     <div className={['sdp-buit', className].filter(Boolean).join(' ')}>
-      <Icona className="sdp-buit__icona" size={56} aria-hidden="true" focusable="false" />
+      <Icona className="sdp-buit" size={56} aria-hidden="true" focusable="false" />
       <p className="sdp-buit__titol">{titol}</p>
       {children ? <div className="sdp-buit__text">{children}</div> : null}
-      {accio ? <div className="sdp-buit__accio">{accio}</div> : null}
+      {accio ? <div className="sdp-buit">{accio}</div> : null}
     </div>
   );
 }

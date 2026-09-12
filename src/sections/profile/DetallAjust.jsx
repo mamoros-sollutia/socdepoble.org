@@ -64,8 +64,8 @@ export default function DetallAjust({ ajust, identitat, guardarAjust }) {
 
     if (ajust.accio === 'logout') {
       return (
-        <div className="ajust-center-text">
-          <button type="button" className="sdp-boto" onClick={handleLogout}>
+        <div className="sdp-buit">
+          <button type="button" className="sdp-boto sdp-boto--perill" onClick={handleLogout}>
             Confirmar eixida
           </button>
         </div>
@@ -78,56 +78,60 @@ export default function DetallAjust({ ajust, identitat, guardarAjust }) {
 
     return (
       <form onSubmit={handleSubmit} className="form-trellat">
-        <label htmlFor={`ajust-${ajust.id}`}>
-          Nou valor per a {ajust.titol.toLowerCase()}:
-        </label>
-        
-        {esAvatar ? (
-          <div className="ajust-flex-col">
-            {valorTemp && (
-              <img 
-                src={valorTemp} 
-                alt="Previsualització" 
-                className="ajust-avatar" 
+        <div className="sdp-camp">
+          <label className="sdp-camp__etiqueta" htmlFor={`ajust-${ajust.id}`}>
+            Nou valor per a {ajust.titol.toLowerCase()}:
+          </label>
+          
+          {esAvatar ? (
+            <div className="sdp-alerta__accions">
+              {valorTemp && (
+                <div className="sdp-avatar sdp-avatar--xl">
+                  <img 
+                    src={valorTemp} 
+                    alt="Previsualització" 
+                    className="sdp-avatar__imatge" 
+                  />
+                </div>
+              )}
+              <input
+                type="file"
+                accept="image/*"
+                id={`ajust-${ajust.id}`}
+                className="sdp-control"
+                onChange={handleFileChange}
               />
-            )}
-            <input
-              type="file"
-              accept="image/*"
+            </div>
+          ) : esMultilinia ? (
+            <textarea
               id={`ajust-${ajust.id}`}
-              className="input-trellat"
-              onChange={handleFileChange}
+              className="sdp-control sdp-control--area"
+              rows="5"
+              value={valorTemp}
+              onChange={(e) => setValorTemp(e.target.value)}
             />
-          </div>
-        ) : esMultilinia ? (
-          <textarea
-            id={`ajust-${ajust.id}`}
-            className="input-trellat"
-            rows="5"
-            value={valorTemp}
-            onChange={(e) => setValorTemp(e.target.value)}
-          />
-        ) : (
-          <input
-            type={esContrasenya ? 'password' : 'text'}
-            id={`ajust-${ajust.id}`}
-            className="input-trellat"
-            value={valorTemp}
-            onChange={(e) => setValorTemp(e.target.value)}
-            placeholder={esContrasenya ? 'Introdueix nova contrasenya...' : ''}
-          />
-        )}
+          ) : (
+            <input
+              type={esContrasenya ? 'password' : 'text'}
+              id={`ajust-${ajust.id}`}
+              className="sdp-control"
+              value={valorTemp}
+              onChange={(e) => setValorTemp(e.target.value)}
+              placeholder={esContrasenya ? 'Introdueix nova contrasenya...' : ''}
+            />
+          )}
 
-        {missatge && (
-          <div className={missatge.tipus === 'exit' ? 'sdp-text-exit' : 'sdp-text-error'} style={{ marginTop: '0.5rem' }}>
-            {missatge.text}
-          </div>
-        )}
+          {missatge && (
+            <p className={missatge.tipus === 'exit' ? 'sdp-text-exit' : 'sdp-camp__error'}>
+              {missatge.text}
+            </p>
+          )}
 
-        <div className="ajust-btn-group">
-          <button type="submit" className="sdp-boto" disabled={desant}>
-            {desant ? 'Desant...' : 'Guardar'}
-          </button>
+          <div className="sdp-alerta__accions">
+            <button type="submit" className="sdp-boto sdp-boto--primari" disabled={desant}>
+              {desant ? 'Desant...' : 'Guardar'}
+            </button>
+          </div>
         </div>
       </form>
     );
@@ -135,10 +139,10 @@ export default function DetallAjust({ ajust, identitat, guardarAjust }) {
 
   if (!identitat) {
     return (
-      <section className="notes-column notes-column--editor">
-        <div className="chat-empty">
+      <section className="notes-column">
+        <div className="sdp-buit">
           <FileText size={64} />
-          <h2 className="section-title">Sense Identitat</h2>
+          <h2>Sense Identitat</h2>
         </div>
       </section>
     );
@@ -172,7 +176,7 @@ export default function DetallAjust({ ajust, identitat, guardarAjust }) {
       }}
       labels={[{ id: 'tipus', etiqueta: identitat.mena, color: 'gris' }]}
     >
-      <div className="perfil-detall" style={{ paddingTop: '2rem' }}>
+      <div className="perfil-detall">
         {ajust ? (
           renderitzaFormulari()
         ) : (

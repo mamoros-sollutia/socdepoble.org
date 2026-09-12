@@ -89,7 +89,7 @@ export default function ManagerList({ getItemCard, onActionCreate, createLabel =
         )}
       </div>
 
-      <div className="notes-column__body no-padding sdp-scrollable">
+      <div className="notes-column__body notes-column__body--sense-marge sdp-scrollable">
         <ul className="sdp-gestor-llista">
           {filteredItems.map((item) => {
             const id = getItemId(item);

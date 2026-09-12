@@ -50,7 +50,7 @@ export default function DesignSection() {
           ))}
         </ul>
       </nav>
-      <div className="universal-content sdp-design-system sdp-manual-disseny">
+      <div className="content-wrapper">
         {Pagina ? (
           <Suspense fallback={<Carregant etiqueta="Carregant la pàgina del catàleg…" />}>
             <Pagina />

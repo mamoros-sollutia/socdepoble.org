@@ -14,13 +14,13 @@ export function renderRichText(text) {
     .filter(Boolean);
 
   return (
-    <article className="detail-content detail-content--plain">
+    <article className="detail-content">
       {paragraphs.map((paragraph, index) => {
         const lines = paragraph.split(/\n/g);
         return (
           <p
             key={`${index}-${paragraph.slice(0, 18)}`}
-            className="detail-content__paragraph detail-content__paragraph--plain"
+            className="detail-content__paragraph"
           >
             {lines.map((line, lineIndex) => (
               <span key={`${index}-${lineIndex}`}>

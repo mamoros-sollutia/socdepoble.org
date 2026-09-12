@@ -7,7 +7,7 @@ export default function NotesToolbar({ editor }) {
   return (
     <UniversalToolbar 
       editor={editor}
-      onPublish={publishNote}
+      onPublish={() => publishNote(activeNote)}
       publishDisabled={!activeNote}
       isPublished={activeNote?.isPublished}
       t={t}

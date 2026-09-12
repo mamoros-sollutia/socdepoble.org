@@ -20,8 +20,8 @@ export default function UniversalEditorShell({
   titleHtml = '',
   subtitleHtml = '',
   leadHtml = '',
-  onSaveField,    // (field, value) => void
-  onLocalChange,  // (field, value) => void
+  onSaveField,
+  onLocalChange,
   labels = [],
   copyright = '© Sóc de Poble / Fet per la IAIA i Nano Banana',
 }) {
@@ -45,22 +45,22 @@ export default function UniversalEditorShell({
               <img 
                 src={logoImage} 
                 alt="Logotip" 
-                className="page-title-logo hero-editable" 
+                className="page-title-logo hero-image" 
                 onClick={logoHandler.startEdit}
                 title="Clica per canviar el logotip"
               />
             ) : (
-              <div className="hero-accions logo-accions" style={{marginBottom: 20}}>
-                <input type="file" accept="image/*" ref={logoHandler.fileInputRef} onChange={logoHandler.handleFileChange} className="sdp-ocult" />
-                <button type="button" className="pill hero-accions__inserir" onClick={() => logoHandler.fileInputRef.current?.click()}>
+              <div className="sdp-alerta__accions sdp-camp">
+                <input type="file" accept="image/*" ref={logoHandler.fileInputRef} onChange={logoHandler.handleFileChange} className="sdp-nomes-lector" />
+                <button type="button" className="sdp-boto sdp-boto--secundari" onClick={() => logoHandler.fileInputRef.current?.click()}>
                   <ImageIcon size={16} /> Inserir Imatge (Logotip) o Multimèdia (600x600)
                 </button>
                 {logoImage && (
-                  <div className="hero-accions__grup">
-                    <button type="button" className="pill hero-accions__cancelar" onClick={logoHandler.cancelEdit}>
+                  <div className="sdp-alerta__accions">
+                    <button type="button" className="sdp-boto sdp-boto--fantasma" onClick={logoHandler.cancelEdit}>
                       Tornar enrere
                     </button>
-                    <button type="button" className="pill hero-accions__esborrar" onClick={logoHandler.handleDelete}>
+                    <button type="button" className="sdp-boto sdp-boto--perill" onClick={logoHandler.handleDelete}>
                       Esborrar contingut
                     </button>
                   </div>
@@ -71,22 +71,22 @@ export default function UniversalEditorShell({
               <img 
                 src={heroImage} 
                 alt="Capçalera" 
-                className="hero-editable" 
+                className="hero-image" 
                 onClick={heroHandler.startEdit}
                 title="Clica per canviar la imatge"
               />
             ) : (
-              <div className="hero-accions">
-                <input type="file" accept="image/*" ref={heroHandler.fileInputRef} onChange={heroHandler.handleFileChange} className="sdp-ocult" />
-                <button type="button" className="pill hero-accions__inserir" onClick={() => heroHandler.fileInputRef.current?.click()}>
+              <div className="sdp-alerta__accions sdp-camp">
+                <input type="file" accept="image/*" ref={heroHandler.fileInputRef} onChange={heroHandler.handleFileChange} className="sdp-nomes-lector" />
+                <button type="button" className="sdp-boto sdp-boto--secundari" onClick={() => heroHandler.fileInputRef.current?.click()}>
                   <ImageIcon size={16} /> Inserir Imatge o Multimèdia
                 </button>
                 {heroImage && (
-                  <div className="hero-accions__grup">
-                    <button type="button" className="pill hero-accions__cancelar" onClick={heroHandler.cancelEdit}>
+                  <div className="sdp-alerta__accions">
+                    <button type="button" className="sdp-boto sdp-boto--fantasma" onClick={heroHandler.cancelEdit}>
                       Tornar enrere
                     </button>
-                    <button type="button" className="pill hero-accions__esborrar" onClick={heroHandler.handleDelete}>
+                    <button type="button" className="sdp-boto sdp-boto--perill" onClick={heroHandler.handleDelete}>
                       Esborrar contingut
                     </button>
                   </div>
@@ -99,14 +99,14 @@ export default function UniversalEditorShell({
                   right
                   minWidth="320px"
                   trigger={
-                    <button type="button" className={`btn-icon-orange sp-card-time ${isPublished ? 'published' : ''}`}>
+                    <button type="button" className={`btn-icon-orange ${isPublished ? 'published' : ''}`}>
                       {isPublished ? <Globe size={16} /> : <Lock size={16} />}
                     </button>
                   }
                 >
-                  <div className="dropdown-info-header">
-                    <strong>{isPublished ? 'Exemple de Publicació' : 'Pàgina en Edició'}</strong>
-                    <p>Aquesta targeta és una previsualització de com quedarà al Mur. Utilitza l'editor inferior per modificar el contingut.</p>
+                  <div className="sdp-camp">
+                    <strong className="sdp-alerta__titol">{isPublished ? 'Exemple de Publicació' : 'Pàgina en Edició'}</strong>
+                    <p className="sdp-camp__ajuda">Aquesta targeta és una previsualització de com quedarà al Mur. Utilitza l'editor inferior per modificar el contingut.</p>
                   </div>
                 </Dropdown>
                 <DateTimeControl time={formattedTime} date={formattedDate} />
@@ -115,7 +115,7 @@ export default function UniversalEditorShell({
           }}
           title={
             <span
-              className="editor-title-input ue-inline-block-mw10"
+              className="editor-title-input"
               contentEditable
               suppressContentEditableWarning
               onInput={(e) => onLocalChange?.('title', e.currentTarget.innerHTML)}
@@ -128,7 +128,7 @@ export default function UniversalEditorShell({
           copyright={copyright}
           subtitle={
             <span
-              className="editor-subtitle-input ue-block-mw10"
+              className="editor-subtitle-input"
               contentEditable
               suppressContentEditableWarning
               onInput={(e) => onLocalChange?.('subtitle', e.currentTarget.innerHTML)}
@@ -139,7 +139,7 @@ export default function UniversalEditorShell({
           }
           lead={
             <span
-              className="editor-lead-input ue-block-mw10"
+              className="editor-lead-input"
               contentEditable
               suppressContentEditableWarning
               onInput={(e) => onLocalChange?.('lead', e.currentTarget.innerHTML)}

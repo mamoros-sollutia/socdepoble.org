@@ -57,6 +57,13 @@
       "maxItems": 5,
       "uniqueItems": true
     },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
     "revisat": {
       "type": "string",
       "format": "date",

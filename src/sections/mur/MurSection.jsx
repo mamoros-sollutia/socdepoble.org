@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { useSearchParams } from '../../app/contexts/RouterContext';
 import { UniversalPage } from '../../components/universal/UniversalPage';
-import { UniversalCard, ActionControl, IconButton, ContentProvider } from '../../components/universal/UniversalElements';
+import { UniversalCard, ContentProvider } from '../../components/universal/UniversalElements';
 import { EventCard } from '../../components/universal/EventCard';
 import { useSEO } from '../../hooks/useSEO';
 import { resolveAsset } from '../../config/assetResolver';
@@ -89,18 +89,6 @@ export default function MurSection() {
     return items;
   }, [allItems, filterType, dateFilter, categoryFilter]);
 
-  const getCalendarBadge = (dateString) => {
-    if (!dateString) return null;
-    const d = new Date(dateString);
-    if (isNaN(d.getTime())) return null;
-    return {
-      dia: d.getDate(),
-      mes: d.toLocaleDateString('ca-ES', { month: 'long' }),
-      any: d.getFullYear(),
-      dateTime: dateString
-    };
-  };
-
   const formatDate = (dateStr) => {
     if (!dateStr) return '';
     const d = new Date(dateStr);
@@ -127,92 +115,84 @@ export default function MurSection() {
   return (
     <ContentProvider initialConfig={config}>
       <UniversalPage>
-      <div className="content-wrapper">
-        
-        {/* Switcher / Botonera */}
-        {/* 260911: abans `className` duplicat (es perdia sdp-filtres) i
-            `.pill--active` sense cap regla CSS (l'actiu no es veia).
-            Mateix comportament: un filtre tanca el mapa; Mapa s'obri i es
-            plega tornant-lo a polsar. */}
-        <section className="mur-px-16" aria-label="Filtres del mur">
-          <PillToggle
-            etiqueta="Filtres del mur"
-            valor={isMapOpen ? 'mapa' : filterType}
-            onCanvi={(v) => {
-              if (v === 'mapa') { setIsMapOpen((obert) => !obert); return; }
-              setFilterType(v);
-              setIsMapOpen(false);
-            }}
-            opcions={[
-              { valor: 'all', text: 'Mostrar Tot' },
-              { valor: 'events', text: 'Esdeveniments' },
-              { valor: 'system', text: 'Sistema' },
-              { valor: 'mapa', text: '🗺️ Mapa' },
-            ]}
-          />
-        </section>
+        <div className="content-wrapper">
+          <section aria-label="Filtres del mur" className="sdp-camp">
+            <PillToggle
+              etiqueta="Filtres del mur"
+              valor={isMapOpen ? 'mapa' : filterType}
+              onCanvi={(v) => {
+                if (v === 'mapa') { setIsMapOpen((obert) => !obert); return; }
+                setFilterType(v);
+                setIsMapOpen(false);
+              }}
+              opcions={[
+                { valor: 'all', text: 'Mostrar Tot' },
+                { valor: 'events', text: 'Esdeveniments' },
+                { valor: 'system', text: 'Sistema' },
+                { valor: 'mapa', text: '🗺️ Mapa' },
+              ]}
+            />
+          </section>
 
-        {/* Mapa Desplegable */}
-        {isMapOpen && (
-          <div className="sdp-filtre--mapa">
-            {React.createElement('iframe', {
-              title: "Mapa del territori",
-              src: buildMapEmbedUrl(),
-              loading: "lazy",
-              referrerPolicy: "no-referrer-when-downgrade",
-              style: { width: '100%', height: '400px', border: 0, borderRadius: 'var(--sdp-radi-g)' }
+          {isMapOpen && (
+            <div className="sdp-camp">
+              <iframe
+                title="Mapa del territori"
+                src={buildMapEmbedUrl()}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="embed-container"
+              />
+            </div>
+          )}
+
+          <div className="sdp-card-grid">
+            {displayedItems.map((item) => {
+              const rawDate = item.date || item.publish_date || item.created_at || "2026-08-21T00:00:00.000Z";
+              
+              if (item.type === 'event') {
+                return <EventCard key={`${item.type}-${item.id}`} item={item} />;
+              }
+              
+              return (
+                <UniversalCard
+                  key={`${item.type}-${item.id}`}
+                  title={item.title || item.name}
+                  subtitle={item.subtitle}
+                  body={item.lead || <p className="sp-card-text">{item.description}</p>}
+                  imageUrl={resolveAsset(item.image_url || item.image || item.images?.[0] || item.imageSrc || '')}
+                  imageAlt={item.imageAlt || item.title || ''}
+                  author={item.author_name || item.seller || "Sóc de Poble"}
+                  authorHref={item.isSystem ? "/pobles" : undefined}
+                  avatarUrl={resolveAsset(item.author_avatar || item.avatar_url || '/assets/system/ui/logo-socdepoble-cuadrat-verd.svg')}
+                  location={item.author_location || item.population || "La Torre de les Maçanes"}
+                  date={formatDate(rawDate)}
+                  time={formatTime(item.time, rawDate)}
+                  copyright="© Sóc de Poble / Fet per la IAIA i Nano Banana"
+                  calendarBadge={null}
+                  price={item.price}
+                  labels={item.labels || [
+                    { 
+                      text: item.isSystem ? 'Sistema' : ((item.type === 'market' || item.type === 'product') ? 'Mercat' : (item.type || 'Publicació')), 
+                      className: (item.isSystem || item.type === 'market' || item.type === 'product') ? 'sdp-badge-system' : 'sdp-badge-category' 
+                    },
+                    (item.type === 'market' || item.type === 'product') && item.variations?.length ? { text: `${item.variations.length} ${t('section.mercat.variations', 'variants')}`, className: 'sdp-badge-accent' } : null,
+                    (item.type === 'market' || item.type === 'product') && item.category_slug ? { text: item.category_slug, className: 'sdp-badge-category' } : null,
+                    (item.type === 'market' || item.type === 'product') && item.tag ? { text: item.tag, className: 'sdp-badge-tag' } : null
+                  ].filter(Boolean)}
+                  mainHref={item.mainHref || getSectionItemPath(item.type === 'event' ? 'events' : ((item.type === 'market' || item.type === 'product') ? 'mercat' : (item.type === 'poble' ? 'pobles' : 'mur')), item.id)}
+                  showPin={item.isAvis}
+                  hasFooter={true}
+                  showTranslate={true}
+                  showComment={true}
+                  showShare={true}
+                  showConnect={true}
+                />
+              );
             })}
           </div>
-        )}
-
-        {/* Targetes del Mur */}
-        <div className="sdp-card-grid">
-          {displayedItems.map((item) => {
-            const rawDate = item.date || item.publish_date || item.created_at || "2026-08-21T00:00:00.000Z";
-            
-            if (item.type === 'event') {
-              return <EventCard key={`${item.type}-${item.id}`} item={item} />;
-            }
-            
-            return (
-              <UniversalCard
-                key={`${item.type}-${item.id}`}
-                title={item.title || item.name}
-                subtitle={item.subtitle}
-                body={item.lead || <p className="sp-card-text">{item.description}</p>}
-                imageUrl={resolveAsset(item.image_url || item.image || item.images?.[0] || item.imageSrc || '')}
-                imageAlt={item.imageAlt || item.title || ''}
-                author={item.author_name || item.seller || "Sóc de Poble"}
-                authorHref={item.isSystem ? "/pobles" : undefined}
-                avatarUrl={resolveAsset(item.author_avatar || item.avatar_url || '/assets/system/ui/logo-socdepoble-cuadrat-verd.svg')}
-                location={item.author_location || item.population || "La Torre de les Maçanes"}
-                date={formatDate(rawDate)}
-                time={formatTime(item.time, rawDate)}
-                copyright="© Sóc de Poble / Fet per la IAIA i Nano Banana"
-                calendarBadge={null}
-                price={item.price}
-                labels={item.labels || [
-                  { 
-                    text: item.isSystem ? 'Sistema' : ((item.type === 'market' || item.type === 'product') ? 'Mercat' : (item.type || 'Publicació')), 
-                    className: (item.isSystem || item.type === 'market' || item.type === 'product') ? 'sdp-badge-system' : 'sdp-badge-category' 
-                  },
-                  (item.type === 'market' || item.type === 'product') && item.variations?.length ? { text: `${item.variations.length} ${t('section.mercat.variations', 'variants')}`, className: 'sdp-badge-accent' } : null,
-                  (item.type === 'market' || item.type === 'product') && item.category_slug ? { text: item.category_slug, className: 'sdp-badge-category' } : null,
-                  (item.type === 'market' || item.type === 'product') && item.tag ? { text: item.tag, className: 'sdp-badge-tag' } : null
-                ].filter(Boolean)}
-                mainHref={item.mainHref || getSectionItemPath(item.type === 'event' ? 'events' : ((item.type === 'market' || item.type === 'product') ? 'mercat' : (item.type === 'poble' ? 'pobles' : 'mur')), item.id)}
-                showPin={item.isAvis}
-                hasFooter={true}
-                showTranslate={true}
-                showComment={true}
-                showShare={true}
-                showConnect={true}
-              />
-            );
-          })}
         </div>
-      </div>
-    </UniversalPage>
+      </UniversalPage>
     </ContentProvider>
   );
 }

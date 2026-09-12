@@ -58,7 +58,7 @@ export function NotesProvider({ children }) {
     if (!id) return;
     setLocalNoteOverrides(prev => {
       const next = { ...prev, [id]: { ...prev[id], [field]: value } };
-      try { sessionStorage.setItem('sdp_notes_drafts', JSON.stringify(next)); } catch (e) { /* ignore */ }
+      try { sessionStorage.setItem('sdp_notes_drafts', JSON.stringify(next)); } catch { /* ignore */ }
       return next;
     });
   }, []);
@@ -86,9 +86,9 @@ export function NotesProvider({ children }) {
     setLocalNoteField(noteId, field, netejat);
     
     const baseNote = rawNotes.find(n => n.id === noteId);
-    const expectedRevision = knownRevisions.current.has(noteId) 
+    const expectedRevision = (knownRevisions.current.has(noteId) 
       ? knownRevisions.current.get(noteId) 
-      : (baseNote ? baseNote.revision : undefined);
+      : (baseNote ? baseNote.revision : undefined)) ?? 0;
     
     try {
       const savedNote = await updateNote(noteId, { [field]: netejat }, expectedRevision, externalConfig);
@@ -99,7 +99,7 @@ export function NotesProvider({ children }) {
         if (!next[noteId]) next[noteId] = {};
         if (next[noteId][field] === netejat) { delete next[noteId][field]; }
         next[noteId].revision = savedNote.revision;
-        try { sessionStorage.setItem('sdp_notes_drafts', JSON.stringify(next)); } catch (e) { /* ignore */ }
+        try { sessionStorage.setItem('sdp_notes_drafts', JSON.stringify(next)); } catch { /* ignore */ }
         return next;
       });
       

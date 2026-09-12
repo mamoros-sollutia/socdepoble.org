@@ -3,10 +3,10 @@ import { useNavigate } from '../../app/contexts/RouterContext';
 import { UniversalPage } from '../../components/universal/UniversalPage';
 import { showToast } from '../../components/universal/AvisadorEfimer.jsx';
 import { createOnboardingSeed } from '../../data/appSeed.js';
+import { Divisor } from '../../components/ui/Divisor.jsx';
 import {
   createOrganization,
   listMyOrganizations,
-  loginWithMagicLink,
   loginWithGoogle,
   registerWithPassword,
   loginWithPassword
@@ -17,9 +17,7 @@ import {
 } from './onboardingModel.js';
 import { useSession } from '../../app/contexts/SessionContext';
 import { useUIState } from '../../app/contexts/UIContext';
-import {
-  RegistrationStep
-} from './OnboardingSteps.jsx';
+import { RegistrationStep } from './OnboardingSteps.jsx';
 
 export default function OnboardingSection() {
   const navigate = useNavigate();
@@ -31,10 +29,11 @@ export default function OnboardingSection() {
   const [busyStep, setBusyStep] = useState(null);
   const [googleError, setGoogleError] = useState('');
   const [error, setError] = useState('');
+
   useEffect(() => {
     if (currentUser) {
-      // Bypasses the old onboarding steps, goes straight to dashboard
-      navigate('/el-meu-perfil', { replace: true });
+      const tornar = new URLSearchParams(window.location.search).get('tornar');
+      navigate(tornar && tornar.startsWith('/') && !tornar.startsWith('//') ? tornar : '/jo/el-meu-perfil', { replace: true });
     }
   }, [currentUser, navigate]);
 
@@ -45,7 +44,6 @@ export default function OnboardingSection() {
       setOrganizations([]);
       return;
     }
-
     setIsLoadingOrganizations(true);
     setError('');
     try {
@@ -64,24 +62,11 @@ export default function OnboardingSection() {
     return () => controller.abort();
   }, [loadOrganizations]);
 
-  const sendMagicLink = async ({ email }) => {
-    setBusyStep('register');
-    setError('');
-    try {
-      await loginWithMagicLink(email, externalConfig);
-      showToast('Hem enviat l\'enllaç al teu correu.', 'success');
-    } catch (err) {
-      setError(readableBackendError(err));
-    } finally {
-      setBusyStep(null);
-    }
-  };
-
   const handleRegister = async (fields) => {
     setBusyStep('register');
     setError('');
     try {
-      await registerWithPassword(fields.email, fields.password, { full_name: fields.name }, externalConfig);
+      await registerWithPassword(fields.email, fields.password, { full_name: fields.name, avatar_url: fields.avatar_url }, externalConfig);
       showToast('Compte creat. Si cal, comprova el teu correu.', 'success');
       window.dispatchEvent(new CustomEvent('sdp:auth-change'));
     } catch (err) {
@@ -105,7 +90,6 @@ export default function OnboardingSection() {
     }
   };
 
-
   const googleLogin = async () => {
     setBusyStep('register');
     setGoogleError('');
@@ -128,45 +112,45 @@ export default function OnboardingSection() {
       chrome="system"
       showLogos={true}
     >
-      <div className="onboarding-layout">
+      <div className="content-wrapper">
         {activeStep === 0 && !isLoadingOrganizations && (
           <>
-            <section className="onboarding-card onb-section-intro">
-              <h3 className="onb-center-text">Accés ràpid amb Google</h3>
-              <p>
-                Crea o entra al teu compte amb un sol clic sense contrasenyes.
-              </p>
-
-              <p className="ob-mt-15-op8">
-                En entrar o crear compte, acceptes el tractament de dades (RGPD Llei 05) per a Sóc de Poble. 
-                També comprens que estem en <strong>fase Beta</strong> (proves) i que les teues dades podrien patir reinicis o pèrdues.
-              </p>
-              <button 
-                type="button" 
-                className="btn btn-secondary onboarding-card__action onb-flex-center-mt" 
-                onClick={googleLogin}
-                disabled={busyStep === 'register'}
-              >
-                Entrar amb Google
-              </button>
-              {googleError && (
-                <div className="sdp-onboarding-error">
-                  {googleError}
+            <section className="sp-card sp-card--onboarding">
+              <div className="sp-card-body">
+                <h3>Accés ràpid amb Google</h3>
+                <p>
+                  Crea o entra al teu compte amb un sol clic sense contrasenyes.
+                </p>
+                <p className="onboarding-card__intro onboarding-card__intro--espaiada">
+                  En entrar o crear compte, acceptes el tractament de dades (RGPD Llei 05) per a Sóc de Poble. 
+                  També comprens que estem en <strong>fase Beta</strong> (proves) i que les teues dades podrien patir reinicis o pèrdues.
+                </p>
+                <div className="onboarding-card__action--ple">
+                  <button 
+                    type="button" 
+                    className="sdp-boto sdp-boto--secundari sdp-boto--ple" 
+                    onClick={googleLogin}
+                    disabled={busyStep === 'register'}
+                  >
+                    Entrar amb Google
+                  </button>
                 </div>
-              )}
+                {googleError && (
+                  <div className="sdp-alerta sdp-alerta--error" role="alert">
+                    {googleError}
+                  </div>
+                )}
+              </div>
             </section>
             
-            <div className="onb-section-header">
-              — O completar els 3 passos manuals —
-            </div>
+            <Divisor text="O completar els 3 passos manuals" />
           </>
         )}
 
-
         {isLoadingOrganizations ? (
-          <div className="onboarding-loading" role="status" aria-live="polite">
-            <span className="onboarding-loading__spinner" aria-hidden="true" />
-            Comprovant el teu progrés…
+          <div className="sdp-carregant" role="status" aria-live="polite">
+            <span className="sdp-carregant__gir" aria-hidden="true" />
+            <span>Comprovant el teu progrés…</span>
           </div>
         ) : activeStep === 0 ? (
           <RegistrationStep

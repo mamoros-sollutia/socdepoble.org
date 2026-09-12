@@ -187,8 +187,8 @@ function pathToRegex(path, exact = false) {
     return '([^\\/]+)';
   });
   
-  if (regexStr.endsWith('\\/\\*')) {
-      regexStr = regexStr.replace(/\\\/\*$/, '(?:\\/(.*))?');
+  if (regexStr.endsWith('/\\*')) {
+      regexStr = regexStr.replace(/\/\\\*$/, '(?:\\/(.*))?');
       keys.push('*');
   } else {
       regexStr = regexStr.replace(/\\\*/g, '(.*)');

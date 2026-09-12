@@ -41,7 +41,7 @@ export function DateTimeControl({ time, date, dateTime, label, onClick }) {
     return (
       <button
         type="button"
-        className="btn-date-time sp-card-time"
+        className="btn-date-time"
         aria-label={accessibleLabel}
         title={accessibleLabel}
         onClick={onClick}
@@ -53,7 +53,7 @@ export function DateTimeControl({ time, date, dateTime, label, onClick }) {
 
   return (
     <time
-      className="btn-date-time sp-card-time"
+      className="btn-date-time"
       dateTime={dateTime}
       aria-label={accessibleLabel}
     >

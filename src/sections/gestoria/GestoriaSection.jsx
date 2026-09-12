@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Routes, Route, Navigate } from '../../app/contexts/RouterContext';
 import { UniversalPage } from '../../components/universal/UniversalPage';
 import { useUIActions } from '../../app/contexts/UIContext';
-import { initializeDBWithCSV } from './lib/csv_ingestor';
 import { useSession } from '../../app/contexts/SessionContext';
+import { teCapacitat } from '../../data/backendPort';
 
 // Vistes Nadiues de la Gestoria
 import GestoriaHome from './views/GestoriaHome';
@@ -18,36 +18,16 @@ import GestoriaIngesta from './views/GestoriaIngesta';
 export default function GestoriaSection() {
   const { currentUser } = useSession();
   const { t } = useUIActions();
-  const [dbReady, setDbReady] = useState(false);
 
-  useEffect(() => {
-    // Inicialitzem la base de dades Dexie en entrar a la secció
-    initializeDBWithCSV().then(() => {
-      setDbReady(true);
-    }).catch(err => {
-      console.error("Error inicialitzant DB Gestoria:", err);
-      setDbReady(true); // Fallback per no bloquejar l'UI
-    });
-  }, []);
 
-  if (!currentUser) {
+  if (!teCapacitat('gestoria')) {
     return (
       <UniversalPage title={t('section.gestoria.title', 'Gestoria')} chrome="none">
-        <div className="sdp-gestor-buit">
-          <div role="alert" className="sdp-alerta--error">
-            <h3>Accés Restringit</h3>
-            <p>Ho sentim, però no pots accedir a la gestoria perquè no estàs registrat ni has iniciat sessió.</p>
+        <div className="sdp-buit">
+          <div role="status" className="sdp-alerta sdp-alerta--info">
+            <h3>Gestoria pendent de backend</h3>
+            <p>Esta secció necessita que el backend implemente <code>loadGestoria</code>. Encara no està disponible.</p>
           </div>
-        </div>
-      </UniversalPage>
-    );
-  }
-
-  if (!dbReady) {
-    return (
-      <UniversalPage title={t('section.gestoria.title', 'Gestoria de Poble')} chrome="none">
-        <div className="sdp-gestor-buit">
-          Cargant Base de Dades Local...
         </div>
       </UniversalPage>
     );

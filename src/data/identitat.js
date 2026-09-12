@@ -117,6 +117,10 @@ export function usuariDeSessio() {
   purgaLlegat();
   const jwt = getEfimer(CLAU_JWT, null);
   if (!jwt) return null;
+  /* Un token caducat és un token que no val. Sense açò, la interfície pinta
+     l'usuari i cada escriptura mor amb 401: la sessió fantasma, versió 2. */
+  const exp = caducitatJwt(jwt);
+  if (exp !== null && exp <= Date.now()) return null;
   const usuari = getEfimer(CLAU_USUARI, null);
   return usuari && usuari.id ? usuari : null;
 }
@@ -187,3 +191,82 @@ export async function reclamaContingutDelConvidat() {
   return { migrat: 0 };
 }
 
+/** Marge abans de la caducitat real. 60 s cobrix la deriva de rellotge del client. */
+export const MARGE_RENOVACIO_MS = 60_000;
+
+/**
+ * `exp` del JWT en ms, o null.
+ *
+ * NO VERIFICA LA SIGNATURA I NO HO HA DE FER. Un client no pot validar res:
+ * no té la clau. Açò només servix per a saber QUAN demanar la renovació i no
+ * esperar el 401. Qui decidix si el token val és Sollutia, sempre.
+ * Un `exp` mentit per l'usuari només el perjudica a ell: renovarà abans.
+ */
+export function caducitatJwt(jwt = getEfimer(CLAU_JWT, null)) {
+  if (!jwt || typeof jwt !== 'string') return null;
+  const parts = jwt.split('.');
+  if (parts.length !== 3) return null;
+  try {
+    const b64 = parts[1].replace(/-/g, '+').replace(/_/g, '/');
+    const carrega = JSON.parse(decodeURIComponent(
+      atob(b64 + '='.repeat((4 - b64.length % 4) % 4))
+        .split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join('')
+    ));
+    return typeof carrega.exp === 'number' ? carrega.exp * 1000 : null;
+  } catch {
+    return null;   // token opac o corromput: que decidisca el servidor
+  }
+}
+
+/** true si el token ja no val. Sense token → true. */
+export function sessioCaducada() {
+  const exp = caducitatJwt();
+  return exp === null ? !getEfimer(CLAU_JWT, null) : exp <= Date.now();
+}
+
+/**
+ * Accepta una sessió emesa per l'amfitrió (Sollutia).
+ *
+ * FAIL-CLOSED. Es rebutja i es torna `false` si:
+ *   · no hi ha access_token, o no té forma de JWT
+ *   · ja està caducat
+ *   · `sub` no és un uuid
+ *   · l'emissor no és el que esperem (si se'n declara un)
+ *
+ * El que NO comprova: la signatura. Ací no es pot. Si Sollutia envia un token
+ * fals, la primera crida a PostgREST tornarà 401 i el `logout()` del reintent
+ * el traurà. Esta funció evita pintar una sessió òbviament morta, no suplix
+ * la verificació del servidor.
+ */
+export function adoptaSessioExterna(sessio, { emissorEsperat = null } = {}) {
+  if (!sessio || typeof sessio !== 'object') return false;
+  const { access_token: jwt, refresh_token: refresc, user } = sessio;
+  if (typeof jwt !== 'string' || jwt.split('.').length !== 3) return false;
+
+  const exp = caducitatJwt(jwt);
+  if (exp !== null && exp <= Date.now()) return false;
+
+  let carrega = null;
+  try {
+    const b64 = jwt.split('.')[1].replace(/-/g, '+').replace(/_/g, '/');
+    carrega = JSON.parse(atob(b64 + '='.repeat((4 - b64.length % 4) % 4)));
+  } catch { return false; }
+
+  if (!carrega?.sub || !RE_UUID.test(String(carrega.sub))) return false;
+  if (emissorEsperat && carrega.iss !== emissorEsperat) return false;
+
+  /* L'usuari que val és el del token, no el que ens passen al costat.
+     Si l'amfitrió envia `user` amb una altra id, mana el `sub`. */
+  const usuariFinal = (user && user.id === carrega.sub)
+    ? user
+    : { id: carrega.sub, email: carrega.email ?? null, user_metadata: user?.user_metadata ?? {} };
+
+  const desada = desaSessio({ access_token: jwt, refresh_token: refresc ?? null, user: usuariFinal });
+  if (!desada) return false;
+
+  oblidaConvidat();   // ja no és convidat: el protocol d'Apoptosi tanca ací
+  if (typeof window !== 'undefined') {
+    window.dispatchEvent(new CustomEvent('sdp:auth-change', { detail: { user: usuariFinal } }));
+  }
+  return true;
+}

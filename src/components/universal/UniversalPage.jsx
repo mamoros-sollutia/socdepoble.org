@@ -289,7 +289,7 @@ export function UniversalPage(props) {
           className={['page-title', tone && `is-${tone}`].filter(Boolean).join(' ')}
         >
           {topBarData?.logoComponent ? (
-            <div className="page-title-logo-wrapper">
+            <div className="page-title">
               {topBarData.logoComponent}
             </div>
           ) : (showLogos || chrome === 'system') ? (
@@ -309,7 +309,7 @@ export function UniversalPage(props) {
           {title && (
             <h1>
               {title}
-              {price && <span className="sp-card-price up-badge-inline">{price}</span>}
+              {price && <span className="sp-card-price sp-card-price--en-linia">{price}</span>}
             </h1>
           )}
           {labels.length > 0 && (
@@ -330,9 +330,9 @@ export function UniversalPage(props) {
                       </button>
                     ) : safeHref ? (
                       safeHref.startsWith('http') ? (
-                        <a href={safeHref} target="_blank" rel="noopener noreferrer" className="sdp-link-inherit">{text}</a>
+                        <a href={safeHref} target="_blank" rel="noopener noreferrer" className="sp-card-label">{text}</a>
                       ) : (
-                        <Link to={safeHref} className="sdp-link-inherit">{text}</Link>
+                        <Link to={safeHref} className="sp-card-label">{text}</Link>
                       )
                     ) : (
                       text
@@ -348,7 +348,7 @@ export function UniversalPage(props) {
         </header>
       )}
 
-      <article className={`content-wrapper${noPadding ? ' no-padding' : ''}`}>
+      <article className={`content-wrapper${noPadding ? ' content-wrapper--sense-marge' : ''}`}>
         {(subtitle || lead) && (
           <div className="page-intro">
             {subtitle && <h2>{subtitle}</h2>}

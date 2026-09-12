@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url';
 export const passos = [
   { nom: 'Porta 58px', cmd: 'node', args: ['tooling/gates/01_porta_pedra_seca_58px.mjs'], script: 'porta:58px' },
   { nom: 'Linter', cmd: 'npm', args: ['run', 'lint'] },
+  { nom: 'Porta Importacions', cmd: 'npm', args: ['run', 'porta:importacions'], script: 'porta:importacions' },
   { nom: 'Porta Build', cmd: 'node', args: ['tooling/gates/tractor-build-previ.mjs'], script: 'porta:build' },
   { nom: 'Porta Promesa', cmd: 'node', args: ['tooling/gates/tractor-promesa.mjs'], script: 'porta:promesa' },
   { nom: 'Porta TDZ', cmd: 'node', args: ['tooling/gates/tractor-tdz.mjs'], script: 'porta:tdz' },
@@ -52,6 +53,8 @@ export const passos = [
   { nom: 'Porta Inline-Styles (Salfumà)', cmd: 'node', args: ['tooling/gates/tractor-inline-styles.mjs'], script: 'porta:inlinestyles' },
   { nom: 'Porta Classes (Salfumà)', cmd: 'node', args: ['tooling/gates/tractor-classes.mjs'], script: 'porta:classes' },
   { nom: 'Porta RLS', cmd: 'node', args: ['tooling/gates/tractor-rls.mjs'], script: 'porta:rls' },
+  { nom: 'Porta Catàleg', cmd: 'node', args: ['tooling/gates/tractor-cataleg.mjs'], script: 'porta:cataleg' },
+  { nom: 'Porta Frontissa', cmd: 'node', args: ['tooling/gates/tractor-frontissa.mjs'], script: 'porta:frontissa' },
   { nom: 'Proves', cmd: 'npm', args: ['run', 'test', '--', '--run'] },
   { nom: 'Porta Segella', cmd: 'node', args: ['tooling/gates/segella.mjs'], script: 'porta:segella' }
 ];

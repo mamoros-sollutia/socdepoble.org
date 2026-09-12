@@ -8,7 +8,7 @@
  * Ús a .husky/pre-commit:
  *   node tooling/wiki/pre-commit.mjs || exit 1
  */
-import { auditRootHygiene } from './wiki_integritat.mjs';
+
 import { auditWiki } from './autoneteja_wiki.mjs';
 import { runSemanticAudit } from './semantic_auditor.mjs';
 import { verifyWikiBaselineLock } from './reflex_petorreta.mjs';

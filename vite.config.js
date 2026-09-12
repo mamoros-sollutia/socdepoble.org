@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+import preact from '@preact/preset-vite';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -17,13 +17,11 @@ if (anonKey) {
     if (e.message.includes('ATURADOR')) throw e;
   }
 }
-export default defineConfig(() => ({
-  plugins: [
-    react({
-      jsxImportSource: 'react',
-    })
-  ],
 
+export default defineConfig({
+  plugins: [
+    preact()
+  ],
   server: {
     host: true,
     port: 3340,
@@ -34,11 +32,7 @@ export default defineConfig(() => ({
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src'),
-      'react': 'preact/compat',
-      'react-dom/test-utils': 'preact/test-utils',
-      'react-dom': 'preact/compat',
-      'react/jsx-runtime': 'preact/jsx-runtime'
+      '@': path.resolve(__dirname, 'src')
     }
   },
   test: {
@@ -47,13 +41,15 @@ export default defineConfig(() => ({
        i carrega el React real: l'àlies a preact/compat no hi arriba i pintar
        qualsevol icona peta (InvalidCharacterError). Forcem l'entrada ESM i
        la processem inline, com fa l'app en el build. */
-    alias: { 'lucide-react': path.resolve(__dirname, 'node_modules/lucide-react/dist/esm/lucide-react.mjs') },
-    server: { deps: { inline: [/lucide-react/] } },
-    exclude: ['node_modules', 'dist', '.idea', '.git', '.cache', '_wiki_de_poble/**'],
+    alias: { 
+      'lucide-react': path.resolve(__dirname, 'node_modules/lucide-react/dist/esm/lucide-react.mjs')
+    },
+    server: { deps: { inline: [/lucide-react/, /react/, /@testing-library/] } },
+    exclude: ['node_modules', 'dist', '.idea', '.git', '.cache', '_wiki_de_poble/**']
   },
   build: {
     target: 'es2020',
     outDir: 'dist',
     emptyOutDir: true
   }
-}));
+});

@@ -23,7 +23,7 @@ export function buildMercatDetailSectionMeta({ marketItems = [], t }) {
         {Array.isArray(item.variations) && item.variations.length > 0 ? (
           <div className="stack-grid ">
             {item.variations.map((variation) => (
-              <div key={variation.name} className="note-card -col detail-section-meta-card">
+              <div key={variation.name} className="note-card stack-grid">
                 {variation.image && (
                   <img 
                     src={variation.image} 
@@ -44,7 +44,7 @@ export function buildMercatDetailSectionMeta({ marketItems = [], t }) {
                 <div className="sp-card-price">
                   {variation.price}
                 </div>
-                <button className="btn btn-secondary btn-full detail-section-btn">
+                <button className="btn btn-secondary sdp-boto--ple">
                   Afegeix al cabàs
                 </button>
               </div>
@@ -67,7 +67,7 @@ export function buildPoblesDetailSectionMeta({ towns = [], t }) {
     getImage: (item) => item.image_url || null,
     renderBody: (item) => (
       <>
-        <div className="detail-grid">
+        <div className="badge-row">
           <span className="pill">{item.population || item.type || t('section.detail.pobles.itemTitle', 'Poble')}</span>
           <span className="pill"><MapPin size={14} /> {item.town_name || item.title || ''}</span>
         </div>
@@ -88,7 +88,7 @@ export function buildNotesDetailSectionMeta({ notes = [], t }) {
     getImage: () => null,
     renderBody: (item) => (
       <>
-        <div className="detail-grid">
+        <div className="badge-row">
           <span className="pill">{item.folderId || t('section.detail.notes.folderFallback', 'General')}</span>
           <span className="pill">{item.updatedAt || ''}</span>
         </div>
@@ -109,7 +109,7 @@ export function buildMurDetailSectionMeta({ feedPosts = [], t }) {
     getImage: (item) => item.imageSrc || getFirstImage(item.image_url || item.image) || null,
     renderBody: (item) => (
       <>
-        <div className="detail-grid">
+        <div className="badge-row">
           <span className="pill"><UserRound size={14} /> {item.author || t('section.detail.mur.author', 'Sóc de Poble')}</span>
           <span className="pill"><MapPin size={14} /> {item.town_name || t('section.detail.mur.town', 'La Torre de les Maçanes')}</span>
           <span className="pill"><MessageCircle size={14} /> {item.comments || 0}</span>
@@ -139,7 +139,7 @@ export function buildMultimediaDetailSectionMeta({ mediaItems = [], t }) {
     getImage: (item) => item.src || null,
     renderBody: (item) => (
       <>
-        <div className="detail-grid">
+        <div className="badge-row">
           <span className="pill">{item.tag || t('section.detail.multimedia.mediaType', 'Media')}</span>
           <span className="pill">{item.kind || t('section.detail.multimedia.imageType', 'Imatge')}</span>
           {item.source ? <span className="pill"><UserRound size={14} /> {item.source}</span> : null}
@@ -167,7 +167,7 @@ export function buildEventsDetailSectionMeta({ events = [], t }) {
     getImage: (item) => item.image_url || null,
     renderBody: (item) => (
       <>
-        <div className="detail-grid">
+        <div className="badge-row">
           <span className="pill"><CalendarDays size={14} /> {item.date || ''}</span>
           <span className="pill">{item.type || t('section.detail.events.typeFallback', 'Esdeveniment')}</span>
           <span className="pill"><UserRound size={14} /> {item.author_name || t('section.detail.events.organisation', 'Organització')}</span>

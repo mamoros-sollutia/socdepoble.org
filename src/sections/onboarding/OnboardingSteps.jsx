@@ -1,21 +1,12 @@
 import { useState } from 'react';
-import {
-  ArrowRight,
-  Building2,
-  Check,
-  Loader2,
-  MailCheck,
-  UserRound,
-  UsersRound,
-  MapPin
-} from 'lucide-react';
+import { ArrowRight, MailCheck, UserRound, LoaderCircle } from 'lucide-react';
 import { validateRegistration } from './onboardingModel.js';
 import { PillToggle } from '../../components/ui/PillToggle.jsx';
 import { UniversalCard } from '../../components/universal/UniversalElements.jsx';
 
 export function RegistrationStep({ isBusy, error, confirmationEmail, onRegister, onLogin, onClearError }) {
   const [mode, setMode] = useState('register');
-  const [fields, setFields] = useState({ name: '', email: '', password: '', rgpd: false });
+  const [fields, setFields] = useState({ name: '', email: '', password: '', avatar_url: '', rgpd: false });
   const [errors, setErrors] = useState({});
 
   const updateField = (event) => {
@@ -55,13 +46,15 @@ export function RegistrationStep({ isBusy, error, confirmationEmail, onRegister,
         title="Confirma el teu compte"
         body={
           <>
-            <p>
+            <p className="sdp-camp">
               Hem enviat l’enllaç de confirmació a <strong>{confirmationEmail}</strong>.
               En confirmar-lo, torna a entrar per continuar amb l’empresa i el grup.
             </p>
-            <button type="button" className="btn btn-secondary onboarding-card__action" onClick={() => window.location.reload()}>
-              Entés <ArrowRight size={18} aria-hidden="true" />
-            </button>
+            <div className="onboarding-card__action--ple">
+              <button type="button" className="sdp-boto sdp-boto--secundari sdp-boto--ple" onClick={() => window.location.reload()}>
+                Entés <ArrowRight size={18} aria-hidden="true" />
+              </button>
+            </div>
           </>
         }
       />
@@ -74,35 +67,36 @@ export function RegistrationStep({ isBusy, error, confirmationEmail, onRegister,
       title="Accés o nou registre"
       body={
         <>
-          <p className="onboarding-card__intro onb-center-text">
+          <p className="onboarding-card__intro">
             Primer entra una persona real. El teu perfil queda privat i separat de les
             organitzacions que crearàs després.
           </p>
-          <p className="onboarding-card__intro onb-center-text-mt">
+          <p className="onboarding-card__intro onboarding-card__intro--espaiada">
             En entrar o crear compte, acceptes el tractament de dades (RGPD Llei 05) per a Sóc de Poble. 
             També comprens que estem en <strong>fase Beta</strong> (proves) i que les teues dades podrien patir reinicis o pèrdues.
           </p>
 
-          {/* 260911: abans role="tab" sense tabpanel ni fletxes (patró ARIA
-              incomplet) i `.pill--active` sense regla CSS. */}
-          <PillToggle
-            className="sdp-pindola--centrada ob-mb-15"
-            etiqueta="Opcions d’accés"
-            valor={mode}
-            onCanvi={(v) => { setMode(v); setErrors({}); }}
-            opcions={[
-              { valor: 'login', text: 'Entrar' },
-              { valor: 'register', text: 'Crear compte' },
-            ]}
-          />
+          <div className="sdp-pindola--centrada onboarding-form__pindola">
+            <PillToggle
+              etiqueta="Opcions d’accés"
+              valor={mode}
+              onCanvi={(v) => { setMode(v); setErrors({}); }}
+              opcions={[
+                { valor: 'login', text: 'Entrar' },
+                { valor: 'register', text: 'Crear compte' },
+              ]}
+            />
+          </div>
 
-          {error ? <div className="alert alert-error" role="alert">{error}</div> : null}
+          {error ? <div className="sdp-alerta sdp-alerta--error" role="alert">{error}</div> : null}
 
           <form className="onboarding-form" onSubmit={submit} noValidate>
             {mode === 'register' && (
-              <label className={`form-group${errors.name ? ' has-error' : ''}`}>
-                <span>Nom i cognoms</span>
+              <div className={errors.name ? 'sdp-camp ' : 'sdp-camp'}>
+                <label className="sdp-camp__etiqueta" htmlFor="reg-name">Nom i cognoms</label>
                 <input
+                  id="reg-name"
+                  className="sdp-control"
                   type="text"
                   name="name"
                   value={fields.name}
@@ -113,13 +107,32 @@ export function RegistrationStep({ isBusy, error, confirmationEmail, onRegister,
                   aria-describedby={errors.name ? 'onboarding-name-error' : undefined}
                   disabled={isBusy}
                 />
-                {errors.name ? <span id="onboarding-name-error" className="error-text">{errors.name}</span> : null}
-              </label>
+                {errors.name ? <p id="onboarding-name-error" className="sdp-camp__error">{errors.name}</p> : null}
+              </div>
+            )}
+            
+            {mode === 'register' && (
+              <div className="sdp-camp">
+                <label className="sdp-camp__etiqueta" htmlFor="reg-avatar">URL de la foto de perfil (opcional)</label>
+                <input
+                  id="reg-avatar"
+                  className="sdp-control"
+                  type="url"
+                  name="avatar_url"
+                  value={fields.avatar_url}
+                  onChange={updateField}
+                  autoComplete="photo"
+                  placeholder="https://exemples.com/foto.jpg"
+                  disabled={isBusy}
+                />
+              </div>
             )}
 
-            <label className={`form-group${errors.email ? ' has-error' : ''}`}>
-              <span>Correu electrònic</span>
+            <div className={errors.email ? 'sdp-camp ' : 'sdp-camp'}>
+              <label className="sdp-camp__etiqueta" htmlFor="reg-email">Correu electrònic</label>
               <input
+                id="reg-email"
+                className="sdp-control"
                 type="email"
                 name="email"
                 value={fields.email}
@@ -130,12 +143,14 @@ export function RegistrationStep({ isBusy, error, confirmationEmail, onRegister,
                 aria-describedby={errors.email ? 'onboarding-email-error' : undefined}
                 disabled={isBusy}
               />
-              {errors.email ? <span id="onboarding-email-error" className="error-text">{errors.email}</span> : null}
-            </label>
+              {errors.email ? <p id="onboarding-email-error" className="sdp-camp__error">{errors.email}</p> : null}
+            </div>
 
-            <label className={`form-group${errors.password ? ' has-error' : ''}`}>
-              <span>Contrasenya</span>
+            <div className={errors.password ? 'sdp-camp ' : 'sdp-camp'}>
+              <label className="sdp-camp__etiqueta" htmlFor="reg-password">Contrasenya</label>
               <input
+                id="reg-password"
+                className="sdp-control"
                 type="password"
                 name="password"
                 value={fields.password}
@@ -147,45 +162,44 @@ export function RegistrationStep({ isBusy, error, confirmationEmail, onRegister,
                 disabled={isBusy}
               />
               {mode === 'register' && (
-                <span id="onboarding-password-help" className={errors.password ? 'error-text' : 'onboarding-field-help'}>
+                <p id="onboarding-password-help" className={errors.password ? 'sdp-camp__error' : 'sdp-camp__ajuda'}>
                   {errors.password || 'Mínim 10 caràcters. No reutilitzes una contrasenya antiga.'}
-                </span>
+                </p>
               )}
               {mode === 'login' && errors.password && (
-                <span className="error-text">{errors.password}</span>
+                <p className="sdp-camp__error">{errors.password}</p>
               )}
-            </label>
+            </div>
 
             {mode === 'register' && (
-              <>
-
-
-                <label className={`form-group form-group--checkbox${errors.rgpd ? ' has-error sdp-border-error' : ' sdp-border-vora'} sdp-items-center`}
-                >
-                  <input
-                    type="checkbox"
-                    name="rgpd"
-                    checked={fields.rgpd}
-                    onChange={updateField}
-                    aria-invalid={Boolean(errors.rgpd)}
-                    aria-describedby={errors.rgpd ? 'onboarding-rgpd-error' : undefined}
-                    disabled={isBusy}
-                    className="onb-icon-action"
-                  />
-                  <span className="">Consent el tractament de dades personals (RGPD Llei 05) exclusivament per a Sóc de Poble.</span>
+              <div className={errors.rgpd ? 'sdp-casella ' : 'sdp-casella'}>
+                <input
+                  type="checkbox"
+                  name="rgpd"
+                  id="reg-rgpd"
+                  checked={fields.rgpd}
+                  onChange={updateField}
+                  aria-invalid={Boolean(errors.rgpd)}
+                  aria-describedby={errors.rgpd ? 'onboarding-rgpd-error' : undefined}
+                  disabled={isBusy}
+                  className="sdp-casella__control"
+                />
+                <label htmlFor="reg-rgpd" className="sdp-casella__etiqueta">
+                  Consent el tractament de dades personals (RGPD Llei 05) exclusivament per a Sóc de Poble.
                 </label>
-                {errors.rgpd ? <span id="onboarding-rgpd-error" className="error-text onb-block-mt">{errors.rgpd}</span> : null}
-              </>
+                {errors.rgpd ? <p id="onboarding-rgpd-error" className="sdp-camp__error">{errors.rgpd}</p> : null}
+              </div>
             )}
 
-            <button type="submit" className="btn btn-secondary onboarding-card__action" disabled={isBusy}>
-              {isBusy ? <Loader2 className="spinner" size={18} aria-hidden="true" /> : <UserRound size={18} aria-hidden="true" />}
-              {mode === 'login' ? 'Entrar al compte' : 'Crear el compte'}
-            </button>
+            <div className="onboarding-card__action--ple">
+              <button type="submit" className="sdp-boto sdp-boto--secundari sdp-boto--ple" disabled={isBusy}>
+                {isBusy ? <LoaderCircle className="sdp-boto__gir" size={18} aria-hidden="true" /> : <UserRound size={18} aria-hidden="true" />}
+                <span>{mode === 'login' ? 'Entrar al compte' : 'Crear el compte'}</span>
+              </button>
+            </div>
           </form>
         </>
       }
     />
   );
 }
-
