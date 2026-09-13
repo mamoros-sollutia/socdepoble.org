@@ -2,6 +2,7 @@ import { useNavigate, Link } from '../../app/contexts/RouterContext';
 import { showToast } from './AvisadorEfimer';
 import { useContent } from './ContentProvider';
 import { PageFrame } from './PageFrame';
+import { isSafeUrl, isValidDate } from './UniversalUtils';
 
 export function UniversalPage(props) {
   const contentContext = useContent();

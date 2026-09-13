@@ -1,5 +1,8 @@
-import { createContext, useContext, useEffect, useState, useCallback, useMemo } from 'react';
-import { getCurrentUser, listMyOrganizations, updateOrganization, updateProfile, updateUserPassword, getProfile, createOrganization } from '../../data/backendPort.js';
+import { createContext, useContext, useEffect, useState, useCallback, useMemo, useRef } from 'react';
+import {
+  getCurrentUser, listMyOrganizations, updateOrganization, updateProfile,
+  updateUserPassword, getProfile, createOrganization, teCapacitat, uploadToStorage,
+} from '../../data/backendPort.js';
 
 const PerfilContext = createContext(null);
 
@@ -17,37 +20,44 @@ export function usePerfil() {
    complisca: un botó que fa `permission denied` en silenci és pitjor
    que una fila desactivada amb el motiu escrit.
 
-   `obert` es deriva del rol i del que les polítiques RLS permeten
-   de veres, no del que voldríem que permeteren.
+   `tipus` diu QUIN giny pinta DetallAjust ('text' | 'area' |
+   'password' | 'imatge' | 'boolean' | 'accio'). La UI mai més
+   endevina per l'id: afegir un ajust nou no requereix tocar DetallAjust.
+
+   `pendent` (només accions) = el backend encara no la té: es pinta
+   desactivada i honesta, mai prometuda.
    ═══════════════════════════════════════════════════════════════════ */
 
 export function ajustosPersona(perfil = {}) {
   return [
-    { id: 'nom', titol: 'Nom', camp: 'full_name', valor: perfil.full_name || '', obert: true },
-    { id: 'avatar', titol: 'Foto de perfil', camp: 'avatar_url', valor: perfil.avatar_url || '', obert: true },
-    { id: 'correu', titol: 'Correu electrònic', obert: false,
+    { id: 'nom', titol: 'Nom', camp: 'full_name', tipus: 'text', valor: perfil.full_name || '', obert: true },
+    { id: 'avatar', titol: 'Foto de perfil', camp: 'avatar_url', tipus: 'imatge', valor: perfil.avatar_url || '', obert: true },
+    { id: 'correu', titol: 'Correu electrònic', tipus: 'text', valor: perfil.email || '', obert: false,
       motiu: 'El correu identifica el compte. Es canvia des d’Accedir.' },
-    { id: 'privacitat', titol: 'Estat del perfil', valor: perfil.is_public ? 'Públic' : 'Privat', obert: true,
+    { id: 'privacitat', titol: 'Estat del perfil', camp: 'is_public', tipus: 'boolean',
+      valor: Boolean(perfil.is_public), obert: true,
       motiu: 'Tria si vols ser visible a la gent del poble o mantindre el compte privat.' },
-    { id: 'contrasenya', titol: 'Contrasenya', valor: '******', obert: true },
-    { id: 'sessio', titol: 'Tancar sessió', obert: true, accio: 'logout' }
+    { id: 'contrasenya', titol: 'Contrasenya', tipus: 'password', valor: '******', obert: true },
+    { id: 'sessio', titol: 'Tancar sessió', tipus: 'accio', accio: 'logout', obert: true },
   ];
 }
 
-export function ajustosOrganitzacio(org) {
+export function ajustosOrganitzacio(org = {}) {
   const mana = org.role === 'owner' || org.role === 'admin';
   const tancat = 'Només qui administra aquesta organització ho pot canviar.';
   return [
-    { id: 'nom', titol: 'Nom', camp: 'name', valor: org.name, obert: mana, motiu: tancat },
-    { id: 'avatar', titol: 'Foto / Logotip', camp: 'logo_url', valor: org.logo_url, obert: mana, motiu: tancat },
-    { id: 'lema', titol: 'Lema', camp: 'lema', valor: org.lema, obert: mana, motiu: tancat },
-    { id: 'descripcio', titol: 'Descripció', camp: 'description', valor: org.description, obert: mana, motiu: tancat },
-    { id: 'membres', titol: 'Membres', obert: mana, motiu: tancat },
-    { id: 'identificador', titol: 'Identificador', valor: org.slug, obert: false,
+    { id: 'nom', titol: 'Nom', camp: 'name', tipus: 'text', valor: org.name || '', obert: mana, motiu: tancat },
+    { id: 'avatar', titol: 'Foto / Logotip', camp: 'logo_url', tipus: 'imatge', valor: org.logo_url || '', obert: mana, motiu: tancat },
+    { id: 'lema', titol: 'Lema', camp: 'lema', tipus: 'text', valor: org.lema || '', obert: mana, motiu: tancat },
+    { id: 'descripcio', titol: 'Descripció', camp: 'description', tipus: 'area', valor: org.description || '', obert: mana, motiu: tancat },
+    { id: 'membres', titol: 'Membres', tipus: 'accio', accio: 'membres', pendent: true, obert: mana, motiu: tancat },
+    { id: 'identificador', titol: 'Identificador', tipus: 'text', valor: org.slug || '', obert: false,
       motiu: 'L’identificador és permanent: hi ha enllaços publicats que hi apunten.' },
-    { id: 'fitxa', titol: 'Fitxa pública', valor: `/${org.kind === 'group' ? 'grup' : 'empresa'}/${org.slug}`, obert: true, accio: 'obrir-fitxa' },
-    { id: 'eixir', titol: 'Eixir de l’organització', obert: org.role !== 'owner',
-      motiu: 'Qui és propietari no pot eixir-se’n: primer ha de traspassar la propietat.', accio: 'eixir' }
+    { id: 'fitxa', titol: 'Fitxa pública', tipus: 'accio', accio: 'obrir-fitxa',
+      valor: `/${org.kind === 'group' ? 'grup' : 'empresa'}/${org.slug}`, obert: true },
+    { id: 'eixir', titol: 'Eixir de l’organització', tipus: 'accio', accio: 'eixir', pendent: true,
+      obret: org.role !== 'owner',
+      motiu: 'Qui és propietari no pot eixir-se’n: primer ha de traspassar la propietat.' },
   ];
 }
 
@@ -58,25 +68,36 @@ export function PerfilProvider({ children, config = {} }) {
   const [carregant, setCarregant] = useState(true);
   const [error, setError] = useState(null);
 
-  const [identitatId, setIdentitatId] = useState('jo');
-  const [ajustId, setAjustId] = useState(null);
+  /* `config` canvia d'identitat a cada render del pare. El patró del
+     "ref actual" ens deixa usar-la dins dels callbacks sense fer-los
+     inestables. */
+  const configRef = useRef(config);
+  configRef.current = config;
 
+  /* Càrrega única en muntar. PENDENT de decidir: si `config` pot
+     arribar TARD (config externa asíncrona), caldrà repetir-la quan
+     passe de buida a plena. */
   useEffect(() => {
     let viu = true;
     setUsuari(getCurrentUser());
-    
+
     Promise.all([
-      listMyOrganizations(config),
-      getProfile(config)
+      listMyOrganizations(configRef.current),
+      getProfile(configRef.current),
     ])
-      .then(([files, perfil]) => { 
-        if (viu) {
-          setOrganitzacions(Array.isArray(files) ? files : []); 
-          setDadesPerfil(perfil);
-        }
+      .then(([orgs, perfil]) => {
+        if (!viu) return;
+        setOrganitzacions(Array.isArray(orgs) ? orgs : []);
+        setDadesPerfil(perfil);
+        setError(null);
       })
-      .catch((e) => { if (viu) setError(e?.message || 'No s’han pogut carregar les organitzacions.'); })
-      .finally(() => { if (viu) setCarregant(false); });
+      .catch((e) => {
+        if (viu) setError(e?.message || "No s'han pogut carregar les dades del perfil.");
+      })
+      .finally(() => {
+        if (viu) setCarregant(false);
+      });
+
     return () => { viu = false; };
   }, []);
 
@@ -87,7 +108,7 @@ export function PerfilProvider({ children, config = {} }) {
       nom: dadesPerfil?.full_name || usuari?.user_metadata?.name || usuari?.user_metadata?.full_name || 'El meu compte',
       avatar: dadesPerfil?.avatar_url || usuari?.user_metadata?.avatar_url,
       rol: 'Persona',
-      dades: dadesPerfil
+      dades: dadesPerfil,
     },
     ...organitzacions.map((o) => ({
       id: o.id,
@@ -95,89 +116,94 @@ export function PerfilProvider({ children, config = {} }) {
       nom: o.name,
       avatar: o.logo_url,
       rol: o.role === 'owner' ? 'Propietari' : o.role === 'admin' ? 'Administra' : 'Membre',
-      dades: o
-    }))
+      dades: o,
+    })),
   ]), [usuari, organitzacions, dadesPerfil]);
 
-  const identitat = identitats.find((i) => i.id === identitatId) || identitats[0];
+  /* ⚰️ ELIMINAT (auditoria): identitatId, ajustId, triaIdentitat,
+     triaAjust, identitat, ajustos i ajust. Era el sistema de navegació
+     paral·lel que la plantilla ja havia substituït però seguia viu i
+     descrivint-se com a vigent — i va fer que guardarAjust escriguera
+     a la identitat equivocada. La selecció viu al Manager; este context
+     només dóna DADES i ACCIONS. */
 
-  /* Memoitzat a posta. Si `ajustos` es reconstruïx a cada render, `ajust`
-     canvia d'identitat i el useEffect de DetallAjust es dispara sol: buida
-     el camp i esborra el missatge de "Desat correctament". */
-  const ajustos = useMemo(() => (
-    identitat?.mena === 'persona'
-      ? ajustosPersona(identitat?.dades || {})
-      : ajustosOrganitzacio(identitat?.dades || {})
-  ), [identitat?.mena, identitat?.dades]);
+  const guardarCampPerfil = useCallback(async (camp, valor, identitatObjectiuId) => {
+    if (identitatObjectiuId == null) {
+      throw new Error('guardarCampPerfil: falta la identitat objectiu (tercer paràmetre, OBLIGATORI).');
+    }
+    const objectiu = identitats.find((item) => item.id === identitatObjectiuId);
+    if (!objectiu) {
+      throw new Error(`Identitat desconeguda: ${String(identitatObjectiuId)}`);
+    }
 
-  const ajust = useMemo(
-    () => ajustos.find((a) => a.id === ajustId) || null,
-    [ajustos, ajustId]
-  );
-
-  /* Canviar d'identitat no navega: filtra. Una persona gran no ha
-     d'aprendre dues jerarquies per fer una cosa. */
-  function triaIdentitat(id) {
-    setIdentitatId(id);
-    setAjustId(null);
-  }
-
-  const triaAjust = useCallback((id) => {
-    setAjustId(id);
-  }, []);
-
-  async function guardarCampPerfil(campEfectiu, valor, identitatObjectiuId = identitat?.id) {
-    const identitatObjectiu = identitats.find((item) => item.id === identitatObjectiuId);
-    if (!identitatObjectiu) throw new Error('Cap identitat seleccionada');
-    if (identitatObjectiu.mena === 'persona') {
-      const dadesNovamentRebudes = await updateProfile({ [campEfectiu]: valor }, config);
-      setDadesPerfil(prev => ({ ...prev, ...(dadesNovamentRebudes || {}), [campEfectiu]: valor }));
-      setUsuari(prev => ({
-        ...prev,
-        user_metadata: { ...prev?.user_metadata, [campEfectiu]: valor, name: dadesNovamentRebudes?.full_name || prev?.user_metadata?.name }
+    if (objectiu.mena === 'persona') {
+      const rebudes = await updateProfile({ [camp]: valor }, configRef.current);
+      setDadesPerfil((prev) => ({ ...(prev || {}), ...(rebudes || {}), [camp]: valor }));
+      setUsuari((prev) => ({
+        ...(prev || {}),
+        user_metadata: {
+          ...(prev?.user_metadata || {}),
+          [camp]: valor,
+          name: rebudes?.full_name || prev?.user_metadata?.name,
+        },
       }));
     } else {
-      const novesDades = await updateOrganization(identitatObjectiu.id, { [campEfectiu]: valor }, config);
-      setOrganitzacions(prev => prev.map(o => o.id === identitatObjectiu.id ? { ...o, ...novesDades } : o));
+      const novesDades = await updateOrganization(objectiu.id, { [camp]: valor }, configRef.current);
+      setOrganitzacions((prev) =>
+        prev.map((o) => (o.id === objectiu.id ? { ...o, ...(novesDades || {}), [camp]: valor } : o)),
+      );
     }
-  }
+  }, [identitats]);
 
-  async function guardarAjust(camp, valor) {
-    if (!identitat) throw new Error('Cap identitat seleccionada');
-    
-    // Ja no prioritzem l'ajust seleccionat. Busquem explícitament l'ajust sol·licitat.
-    const ajustEfectiu = ajustos.find((a) => a.camp === camp || a.id === camp);
-    if (!ajustEfectiu || !ajustEfectiu.obert) throw new Error('Aquest ajust no es pot modificar');
+  /* Signatura TRENCADORA a propòsit: guardarAjust(identitat, ajust, valor). */
+  const guardarAjust = useCallback(async (identitatObjectiuId, ajustId, valor) => {
+    const objectiu = identitats.find((i) => i.id === identitatObjectiuId);
+    if (!objectiu) throw new Error(`Identitat desconeguda: ${String(identitatObjectiuId)}`);
 
-    const campEfectiu = ajustEfectiu.camp || camp;
+    const cataleg =
+      objectiu.mena === 'persona'
+        ? ajustosPersona(objectiu.dades || {})
+        : ajustosOrganitzacio(objectiu.dades || {});
+    const ajust = cataleg.find((a) => a.id === ajustId);
+    if (!ajust) throw new Error(`Ajust desconegut: ${String(ajustId)}`);
+    if (!ajust.obert) throw new Error(ajust.motiu || 'Aquest ajust no es pot modificar.');
+    if (ajust.tipus === 'accio') throw new Error("Les accions s'executen: no es desen.");
 
-    if (identitat.mena === 'persona' && ajustEfectiu.id === 'contrasenya') {
-      await updateUserPassword(valor, config);
-    } else {
-      await guardarCampPerfil(campEfectiu, valor);
+    if (objectiu.mena === 'persona' && ajust.id === 'contrasenya') {
+      await updateUserPassword(valor, configRef.current);
+      return;
     }
-  }
+    if (!ajust.camp) {
+      throw new Error(`L'ajust "${ajust.id}" no té camp associat al catàleg.`);
+    }
+    await guardarCampPerfil(ajust.camp, valor, objectiu.id);
+  }, [identitats, guardarCampPerfil]);
 
-  /* El botó "+" de la columna d'identitats. Existix perquè
-     createOrganization sí que està implementat de punta a punta
-     (backendPort → supabaseBackend → rpc create_organization).
-     Si no ho estiguera, este botó no s'hauria d'haver pintat. */
   const creaOrganitzacio = useCallback(async (dades) => {
-    const nova = await createOrganization(dades || { name: 'Organització nova', kind: 'group' }, config);
+    const nova = await createOrganization(
+      dades || { name: 'Organització nova', kind: 'group' },
+      configRef.current,
+    );
     setOrganitzacions((prev) => [...prev, nova]);
-    setIdentitatId(nova.id);
-    setAjustId(null);
+    /* La nova identitat apareixerà sola als facets (identitats canvia).
+       Seleccionar-la per programació requereix que el Manager expose
+       una acció de selecció: pendent del contracte de ManagerContext. */
     return nova;
-  }, [config]);
+  }, []);
 
-  const valor = {
-    usuari, identitats, identitat, ajustos, ajust,
-    carregant, error,
-    triaIdentitat, triaAjust,
-    guardarAjust,
-    guardarCampPerfil,
-    creaOrganitzacio
-  };
+  const pujaMitja = useCallback(async (fitxer, carpeta = 'avatars') => {
+    if (!teCapacitat('mitjans')) return null;
+    const res = await uploadToStorage(fitxer, { carpeta }, configRef.current);
+    return res.url;
+  }, []);
+
+  /* Valor memoitzat + callbacks estables: els consumidors (i els
+     useCallback que en depenguin) només es mouen quan canvien DADES,
+     no quan canvia la identitat d'una funció. */
+  const valor = useMemo(() => ({
+    usuari, identitats, carregant, error,
+    guardarCampPerfil, guardarAjust, creaOrganitzacio, pujaMitja,
+  }), [usuari, identitats, carregant, error, guardarCampPerfil, guardarAjust, creaOrganitzacio, pujaMitja]);
 
   return <PerfilContext.Provider value={valor}>{children}</PerfilContext.Provider>;
 }

@@ -1,25 +1,83 @@
 import { FileText } from 'lucide-react';
+import { useCallback, useMemo } from 'react';
 import { useNotes, etiquetesDeNota } from './NotesContext';
 import { useManager } from '../../components/universal/manager/ManagerContext';
 import { UniversalEditorShell } from '../../components/universal/UniversalEditorShell';
-import { useUniversalRichText, UniversalRichTextToolbar, UniversalRichTextContent } from '../../components/universal/richText';
-import { PageFrame } from '../../components/universal/PageFrame';
+import {
+  useUniversalRichText,
+  useTipTapToolbarAdapter,
+  UniversalRichTextToolbar,
+  UniversalRichTextContent,
+} from '../../components/universal/richText';
+import { extensionsRiques } from '../../components/universal/richText/extensions/index.js';
+import { uploadToStorage, teCapacitat } from '../../data/backendPort.js';
 
-export default function NotesEditor() {
+/* Constants de mòdul: identitat eterna, cap recreació per render. */
+const SENSE_PARAMS = {};
+const toastPerConsola = (msg, tipus) =>
+  console.warn('[NotesEditor] Toast sense cablejar:', msg, tipus);
+
+/* La capacitat es comprova al MOMENT de la crida (abans es capturava al
+   muntatge i quedava antiguada si l'usuari entrava després). A més:
+   funció de mòdul = identitat estable per a l'hook i per a la closca. */
+async function pujarImatgeDeNota(fitxer) {
+  if (!teCapacitat('mitjans')) return null;
+  const res = await uploadToStorage(fitxer, { carpeta: 'notes' });
+  return res.url;
+}
+
+export default function NotesEditor({ onToast = toastPerConsola }) {
   const { saveNoteField, setLocalNoteField, publishNote, noteFolders, t } = useNotes();
   const { activeItem: activeNote } = useManager();
+
+  const extensions = useMemo(
+    () => extensionsRiques({ onImageUpload: pujarImatgeDeNota }),
+    [],
+  );
+
+  /* Handlers ESTABLES. Sospitós #1 de la pèrdua de focus: si
+     useUniversalRichText posa onChange/onSave en deps de recreació de
+     l'editor, una identitat nova per render destrueix el TipTap.
+     Açò ho neutralitza — sempre que NotesContext done funcions
+     estables (si no, el focus killer viu allà). */
+  const desaLocal = useCallback(
+    (field, val, noteId) => {
+      if (noteId != null) setLocalNoteField(noteId, field, val);
+    },
+    [setLocalNoteField],
+  );
+
+  const desaCamp = useCallback(
+    (field, val, noteId) => {
+      if (noteId != null) saveNoteField(noteId, field, val);
+    },
+    [saveNoteField],
+  );
+
+  const handleChange = useCallback(
+    (html, noteId) => desaLocal('content', html, noteId),
+    [desaLocal],
+  );
+
+  const handleSave = useCallback(
+    (html, noteId) => desaCamp('content', html, noteId),
+    [desaCamp],
+  );
 
   const editor = useUniversalRichText({
     content: activeNote?.content || '',
     id: activeNote?.id,
-    onChange: (html, noteId) => {
-      if (noteId) setLocalNoteField(noteId, 'content', html);
-    },
-    onSave: (html, noteId) => {
-      if (noteId) saveNoteField(noteId, 'content', html);
-    },
-    debounceMs: 800
+    extensions,
+    onChange: handleChange,
+    onSave: handleSave,
+    debounceMs: 800,
   });
+
+  const { state, exec } = useTipTapToolbarAdapter(editor);
+
+  const publica = useCallback(() => {
+    if (activeNote) publishNote(activeNote);
+  }, [publishNote, activeNote]);
 
   if (!activeNote) {
     return (
@@ -33,40 +91,35 @@ export default function NotesEditor() {
   }
 
   const topBar = (
-    <UniversalRichTextToolbar 
-      editor={editor}
-      onPublish={() => publishNote(activeNote)}
-      publishDisabled={!activeNote}
-      isPublished={activeNote?.isPublished}
+    <UniversalRichTextToolbar
+      state={state}
+      exec={exec}
+      onPublish={publica}
+      isPublished={activeNote.isPublished}
       t={t}
     />
   );
 
   return (
-    <PageFrame
-      chrome="none"
-      variant="embed"
-      layout="editor"
+    <UniversalEditorShell
+      key={activeNote.id}
+      id={activeNote.id}
+      topBar={topBar}
+      titleHtml={activeNote.title}
+      subtitleHtml={activeNote.subtitle}
+      leadHtml={activeNote.lead}
+      heroImage={activeNote.heroImage}
+      logoImage={activeNote.logoImage}
+      isPublished={activeNote.isPublished}
+      formattedTime={activeNote.formattedTime}
+      formattedDate={activeNote.formattedDate}
+      labels={etiquetesDeNota(activeNote, noteFolders, SENSE_PARAMS)}
+      onImageUpload={pujarImatgeDeNota}
+      onLocalChange={desaLocal}
+      onSaveField={desaCamp}
+      onToast={onToast}
     >
-      <UniversalEditorShell
-        key={activeNote.id}
-        id={activeNote.id}
-        topBar={topBar}
-        titleHtml={activeNote.title}
-        subtitleHtml={activeNote.subtitle}
-        leadHtml={activeNote.lead}
-        heroImage={activeNote.heroImage}
-        logoImage={activeNote.logoImage}
-        isPublished={activeNote.isPublished}
-        formattedTime={activeNote.formattedTime}
-        formattedDate={activeNote.formattedDate}
-        labels={etiquetesDeNota(activeNote, noteFolders, {})}
-        onLocalChange={(field, val, noteId) => setLocalNoteField(noteId, field, val)}
-        onSaveField={(field, val, noteId) => saveNoteField(noteId, field, val)}
-        onToast={(msg, type) => console.log('Toast:', msg, type)}
-      >
-        <UniversalRichTextContent editor={editor} />
-      </UniversalEditorShell>
-    </PageFrame>
+      <UniversalRichTextContent editor={editor} />
+    </UniversalEditorShell>
   );
 }

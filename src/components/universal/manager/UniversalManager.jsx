@@ -1,67 +1,15 @@
-import React from 'react';
-import AppGridShell from '../../layout/AppGridShell';
-import { ManagerProvider, useManager } from './ManagerContext';
-import ManagerFacets from './ManagerFacets';
-import ManagerList from './ManagerList';
-import { UniversalPage } from '../UniversalPage';
+/**
+ * UniversalManager.jsx — ÀLIES DEPRECAT
+ *
+ * L'antiga graella de 3 columnes s'ha consolidat dins de `UniversalWorkspace`.
+ * Aquest fitxer només manté la compatibilitat dels imports existents.
+ *
+ * @deprecated Usa `UniversalWorkspace` de '../workspace/UniversalWorkspace.jsx'.
+ */
+import { UniversalWorkspace } from '../workspace/UniversalWorkspace.jsx';
 
-function UniversalManagerInner({ getItemCard, renderDetail, onActionCreate, createLabel, listTitle, listIcon }) {
-  const { activeItem, facetsTitle } = useManager();
-
-  return (
-    <UniversalPage layout="contained">
-      <AppGridShell
-        leftColumn={<ManagerFacets />}
-        middleColumn={
-          <ManagerList 
-            getItemCard={getItemCard} 
-            onActionCreate={onActionCreate} 
-            createLabel={createLabel} 
-            listTitle={listTitle}
-            listIcon={listIcon}
-          />
-        }
-        rightColumn={renderDetail ? renderDetail(activeItem) : null}
-        leftTitle={facetsTitle}
-        middleTitle={listTitle}
-      />
-    </UniversalPage>
-  );
+export function UniversalManager({ renderDetail, ...rest }) {
+  return <UniversalWorkspace {...rest} renderEditor={renderDetail} />;
 }
 
-export function UniversalManager({
-  items = [],
-  facets = [],
-  facetsTitle = 'CARPETES',
-  listTitle = 'LLISTA',
-  listIcon = null,
-  getItemId,
-  getItemSearchText,
-  getItemCard,
-  renderDetail,
-  onActionCreate,
-  createLabel = 'CREAR',
-  initialItemId = null,
-  initialActiveFacets = {},
-}) {
-  return (
-    <ManagerProvider
-      items={items}
-      facets={facets}
-      facetsTitle={facetsTitle}
-      getItemId={getItemId}
-      getItemSearchText={getItemSearchText}
-      initialItemId={initialItemId}
-      initialActiveFacets={initialActiveFacets}
-    >
-      <UniversalManagerInner 
-        getItemCard={getItemCard}
-        renderDetail={renderDetail}
-        onActionCreate={onActionCreate}
-        createLabel={createLabel}
-        listTitle={listTitle}
-        listIcon={listIcon}
-      />
-    </ManagerProvider>
-  );
-}
+export default UniversalManager;

@@ -6,6 +6,7 @@ import { getEfimer } from '../config/storage.js';
 import { CLAU_JWT, CLAU_REFRESC, desaSessio, esborraSessio, usuariDeSessio, actualitzaUsuariSessio } from './identitat.js';
 import { entraAmbGoogle, gestionaTornada } from './oauthRelay.js';
 import { mergeById, mapSectionSubmissionToItem } from './mapejadorSeccions.js';
+import { permetOrigenMitjans } from '../utils/sanitize.js';
 
 
 
@@ -113,6 +114,7 @@ async function _renova(config) {
       body: JSON.stringify({ refresh_token: refreshToken })
     });
   } catch (e) {
+    void e;
     console.warn('Error de xarxa renovant sessió', e);
     // Xarxa caiguda != Sessió invàlida
     return false;
@@ -197,6 +199,151 @@ export async function requestMaybe(path, config, options = {}) {
       errorMessage: match ? match[2] : String(error?.message || error)
     };
   }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   FASE 4 · MITJANS (SUPABASE STORAGE)
+
+   Per què un `requestBinari()` i no `request()`: `request()` fa
+   `JSON.stringify(body)`. Un Blob passat per allí arriba com "{}".
+   El reintent 401 → refresc → repeteix és el mateix, a posta: si es
+   divergix, el bug de la sessió caducada torna per la porta del darrere.
+   ═══════════════════════════════════════════════════════════════════ */
+
+const BUCKET_MITJANS = 'mitjans';
+
+/** L'usuari amb sessió viva. Renova si el JWT local ha caducat. */
+async function asseguraUsuari(config = {}) {
+  const actual = getCurrentUser();
+  if (actual) return actual;
+  const renovada = await refreshSession(config).catch(() => false);
+  return renovada ? getCurrentUser() : null;
+}
+
+function extensioDe(tipusMime = '') {
+  const mapa = {
+    'image/webp': 'webp',
+    'image/jpeg': 'jpg',
+    'image/png': 'png',
+    'image/gif': 'gif',
+    'image/avif': 'avif'
+  };
+  return mapa[tipusMime] || 'bin';
+}
+
+function camiSegur(cami) {
+  return String(cami)
+    .replace(/^\/+/, '')
+    .split('/')
+    .filter(Boolean)
+    .map(encodeURIComponent)
+    .join('/');
+}
+
+async function requestBinari(cami, config, {
+  method = 'POST',
+  body,
+  contentType,
+  upsert = false,
+  signal,
+  timeoutMs = 30000,
+  _isRetry = false
+} = {}) {
+  const { supabaseUrl, supabaseAnonKey, hasSupabaseConfig } = getResolvedConfig(config);
+  if (!hasSupabaseConfig) {
+    throw new Error('Falten VITE_SUPABASE_URL i/o VITE_SUPABASE_ANON_KEY.');
+  }
+
+  const jwt = getEfimer(CLAU_JWT);
+  if (!jwt) throw new Error('Cal una sessió activa per a pujar fitxers.');
+
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+  const avorta = () => controller.abort();
+  if (signal) signal.addEventListener('abort', avorta);
+
+  try {
+    const response = await fetch(`${supabaseUrl}${cami}`, {
+      method,
+      headers: {
+        apikey: supabaseAnonKey,
+        Authorization: `Bearer ${jwt}`,
+        'Content-Type': contentType || 'application/octet-stream',
+        'cache-control': 'max-age=3600',
+        ...(upsert ? { 'x-upsert': 'true' } : {})
+      },
+      body,
+      signal: controller.signal
+    });
+
+    if (!response.ok) {
+      if (response.status === 401 && !_isRetry) {
+        const renovada = await refreshSession(config);
+        if (renovada) {
+          return await requestBinari(cami, config, {
+            method, body, contentType, upsert, signal, timeoutMs, _isRetry: true
+          });
+        }
+      }
+      const text = await response.text();
+      throw new ErrorSupabase(`Storage ${response.status}: ${text || 'Error desconegut.'}`, response.status);
+    }
+
+    return await response.json().catch(() => null);
+  } finally {
+    clearTimeout(timeoutId);
+    if (signal) signal.removeEventListener('abort', avorta);
+  }
+}
+
+/**
+ * Puja un fitxer al bucket. La ruta SEMPRE comença per l'uid: és el que
+ * la política RLS comprova amb storage.foldername(name)[1].
+ *
+ * @returns {Promise<{bucket: string, cami: string, url: string}>}
+ */
+export async function uploadToStorage(fitxer, opcions = {}, config = {}) {
+  const { bucket = BUCKET_MITJANS, carpeta = '', nom, upsert = true } = opcions;
+  if (!fitxer) throw new Error('Cap fitxer per a pujar.');
+
+  const { runtimeDataMode } = getResolvedConfig(config);
+  if (runtimeDataMode === 'seed') {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = (e) => resolve({ bucket, cami: 'mock-local', url: e.target.result });
+      reader.onerror = reject;
+      reader.readAsDataURL(fitxer);
+    });
+  }
+
+  const user = await asseguraUsuari(config);
+  if (!user) throw new Error('La sessió ha caducat. Torna a entrar per a pujar la imatge.');
+
+  const tipus = fitxer.type || 'application/octet-stream';
+  if (!tipus.startsWith('image/')) throw new Error('Només imatges, de moment.');
+
+  const sufix = extensioDe(tipus);
+  const identificador = globalThis.crypto?.randomUUID?.() || `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+  const nomFinal = nom || `${identificador}.${sufix}`;
+  const trossos = [user.id, ...String(carpeta).split('/').filter(Boolean), nomFinal];
+  const cami = trossos.join('/');
+
+  await requestBinari(
+    `/storage/v1/object/${encodeURIComponent(bucket)}/${camiSegur(cami)}`,
+    config,
+    { method: 'POST', body: fitxer, contentType: tipus, upsert }
+  );
+
+  return { bucket, cami, url: getPublicUrl(cami, { bucket }, config) };
+}
+
+/** URL pública. El bucket 'mitjans' és public: true a la migració. */
+export function getPublicUrl(cami, opcions = {}, config = {}) {
+  const { bucket = BUCKET_MITJANS } = opcions;
+  const { supabaseUrl } = getResolvedConfig(config);
+  if (!supabaseUrl || !cami) return '';
+  if (/^https?:\/\//.test(cami)) return cami;
+  return `${supabaseUrl}/storage/v1/object/public/${encodeURIComponent(bucket)}/${camiSegur(cami)}`;
 }
 
 function mapContentRowsToData(rows) {
@@ -341,6 +488,7 @@ export function subscribeToXat(filId, callback, config = {}) {
 }
 
 export function unsubscribeFromXat(filId, _config = {}) {
+  void _config;
   const sub = activeSubscriptions.get(filId);
   if (sub) {
     sub.unsubscribe();
@@ -603,6 +751,11 @@ export function getResolvedConfig(config = {}) {
   const hasSupabaseConfig = Boolean(supabaseUrl && supabaseAnonKey);
   const dataMode = normalizeDataMode(config.dataMode);
   
+  /* El sanejador bloqueja tota IMG que no siga del nostre origen. Storage
+     viu en un altre domini. Ací és l'únic lloc pel qual passa tota crida
+     al backend, i el registre és idempotent. */
+  if (supabaseUrl) permetOrigenMitjans(supabaseUrl);
+
   return {
     supabaseUrl,
     supabaseAnonKey,
@@ -700,8 +853,25 @@ export async function getProfile(config = {}) {
 }
 
 export async function updateProfile(updates, config = {}) {
-  const user = getCurrentUser();
-  if (!user) throw new Error('No hi ha sessió.');
+  /* FASE 4. Abans: `getCurrentUser()` és fail-closed sobre l'`exp` del JWT
+     local, i llançava «No hi ha sessió» SENSE intentar el refresc que
+     `request()` sí que fa en el seu reintent 401. Passada una hora, l'usuari
+     veia la interfície com si estiguera dins i cada desat moria ací. */
+  const user = await asseguraUsuari(config);
+  if (!user) throw new Error('La sessió ha caducat. Torna a entrar.');
+
+  /* El base64 dins de user_metadata viatja dins del JWT en CADA petició.
+     Es tanca la porta en codi perquè no puga tornar per descuit. */
+  const { runtimeDataMode } = getResolvedConfig(config);
+  
+  if (runtimeDataMode !== 'seed') {
+    if (typeof updates?.avatar_url === 'string' && updates.avatar_url.startsWith('data:')) {
+      throw new Error('Les imatges no es desen incrustades. Puja-les amb uploadToStorage.');
+    }
+    if (typeof updates?.logo_url === 'string' && updates.logo_url.startsWith('data:')) {
+      throw new Error('Les imatges no es desen incrustades. Puja-les amb uploadToStorage.');
+    }
+  }
 
   // 1. Persistència al cloud de Supabase Auth (user_metadata)
   let authUpdatedUser = null;
@@ -1236,6 +1406,7 @@ export async function loadGestoria(options = {}) {
             }
           });
         } catch (e) {
+          void e;
           db.close();
           resolve(null);
         }
@@ -1258,6 +1429,7 @@ export async function loadGestoria(options = {}) {
     if (dadesLocals) return JSON.parse(dadesLocals);
 
   } catch (e) {
+    void e;
     console.warn('Error llegint dades locals de gestoria:', e);
   }
   

@@ -4,6 +4,7 @@ import { DateTimeControl } from '../ui/controls';
 import { sanitizeHtml } from '../../utils/sanitize.js';
 import useHeroImageHandler from '../../hooks/useHeroImageHandler.js';
 import React, { Component, useRef, useCallback, useEffect } from 'react';
+import { useContent } from './ContentProvider.jsx';
 
 // Error Boundary per protegir l'editor i evitar tombar la pàgina hoste
 class EditorErrorBoundary extends Component {
@@ -58,11 +59,11 @@ export function UniversalEditorShell({
   logoImage,
   topBar,
   children,
+  labels,
   isPublished = false,
+  onImageUpload = null,
   formattedTime,
   formattedDate,
-  labels = [],
-  copyright,
   showStatusToggle = true,
   previewTitle = "Previsualitzar / Tancar",
   previewHelp = "No oblides desar els canvis.",
@@ -128,6 +129,7 @@ export function UniversalEditorShell({
 
   const shellData = useEditorShell({
     onSaveField: (field, value) => onSaveFieldRef.current?.(field, value, id),
+    onImageUpload,
     heroImage,
     logoImage,
     isPublished,
@@ -139,6 +141,12 @@ export function UniversalEditorShell({
     onToast
   });
 
+  const contentContext = useContent();
+  const config = contentContext?.config || {};
+  const barAuthorAvatar = config.barAuthorAvatar || '/assets/system/ui/default-avatar.jpg';
+  const barAuthorName = config.barAuthorName || 'Foraster';
+  const barAuthorLocation = config.barAuthorLocation || 'Identitat Lliure';
+
   return (
     <EditorErrorBoundary>
       <div className={`ues-root ${className}`}>
@@ -146,20 +154,54 @@ export function UniversalEditorShell({
           {topBar}
         </header>
         <div className="ues-scroll">
-          <div className="ues-canvas">
-            {shellData.topBarData.heroComponent ? (
-              <div className="hero-image" style={{ marginBottom: '2rem' }}>
-                {shellData.topBarData.heroComponent}
+          {shellData.topBarData.heroComponent ? (
+            <div className="hero-image">
+              {shellData.topBarData.heroComponent}
+            </div>
+          ) : null}
+          
+          <section className="bar-orange bar-orange--embed bar-orange--top" aria-label="Autoria i data">
+            <div className="sp-card-author">
+              <img
+                className="sp-card-avatar"
+                src={barAuthorAvatar}
+                alt="Avatar"
+                decoding="async"
+                width="48"
+                height="48"
+              />
+              <div className="sp-card-author-info">
+                <div className="sp-card-author-name">{barAuthorName}</div>
+                <div className="sp-card-author-location">{barAuthorLocation}</div>
               </div>
-            ) : null}
-            <EditableField 
-              key={`${id}-title`} 
-              className="editor-title-input" 
-              html={titleHtml} 
-              placeholder="Títol..." 
-              onChange={(val) => handleFieldChange('title', val)} 
-              onBlur={(val) => handleFieldBlur('title', val)} 
-            />
+            </div>
+            <div className="bar-actions">
+              {shellData.topBarData.barActions}
+            </div>
+          </section>
+
+          <div className="ues-canvas">
+            <div className="page-title">
+              {shellData.topBarData.logoComponent}
+              <EditableField 
+                key={`${id}-title`} 
+                className="editor-title-input" 
+                html={titleHtml} 
+                placeholder="Títol..." 
+                onChange={(val) => handleFieldChange('title', val)} 
+                onBlur={(val) => handleFieldBlur('title', val)} 
+              />
+              {labels && labels.length > 0 && (
+                <ul className="sp-card-labels page-title-labels" aria-label="Categories" style={{ marginTop: '0.5rem', marginBottom: '0.5rem' }}>
+                  {labels.map((label, idx) => (
+                    <li key={idx} className={`sdp-badge sdp-badge-${label.type}`}>
+                      {label.text}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+            
             <EditableField 
               key={`${id}-subtitle`} 
               className="editor-subtitle-input" 
@@ -186,6 +228,7 @@ export function UniversalEditorShell({
 
 export function useEditorShell({ 
   onSaveField, 
+  onImageUpload = null,
   heroImage, 
   logoImage, 
   isPublished, 
@@ -199,6 +242,7 @@ export function useEditorShell({
   const heroHandler = useHeroImageHandler({ 
     onSaveField, 
     fieldName: 'heroImage',
+    onImageUpload,
     onError: (msg) => onToast(msg, 'error'),
     onConfirmDelete: () => {
       onToast("Imatge esborrada", "success");
@@ -209,6 +253,7 @@ export function useEditorShell({
   const logoHandler = useHeroImageHandler({ 
     onSaveField, 
     fieldName: 'logoImage',
+    onImageUpload,
     onError: (msg) => onToast(msg, 'error'),
     onConfirmDelete: () => {
       onToast("Logotip esborrat", "success");

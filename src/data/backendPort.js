@@ -90,3 +90,8 @@ export const adminListOrganizations = asseguraMetode('adminListOrganizations');
 // Gestoria
 export const loadGestoria = asseguraMetode('loadGestoria');
 
+/* Fase 4 · Mitjans (capacitat 'mitjans').
+   Cap component importa Supabase: demanen la capacitat i, si no hi és,
+   es queden amb el comportament d'abans. */
+export const uploadToStorage = asseguraMetode('uploadToStorage');
+export const getPublicUrl = asseguraMetode('getPublicUrl');

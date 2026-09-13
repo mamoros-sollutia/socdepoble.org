@@ -1,30 +1,35 @@
 import UniversalToolbar from '../UniversalToolbar';
+import { SCHEMA_VISIBLE, ESTAT_BUIT, EXEC_BUIT } from './toolbarContract.js';
 
-export function UniversalRichTextToolbar({ 
-  editor, 
-  onPublish, 
-  publishDisabled, 
-  isPublished, 
-  t = (key, def) => def 
+/**
+ * Barra muda. No rep `editor`, no importa cap motor, no fa cap crida
+ * d'edició. Rep dades (`state`) i una porta (`exec`), i itera l'esquema.
+ *
+ * La projecció cap a les cinc ranures de UniversalToolbar és mecànica i
+ * la declara l'esquema (`slot`), no este component: quan UniversalToolbar
+ * accepte una llista de botons, este bucle es queda igual i el `slot`
+ * desapareix.
+ */
+export function UniversalRichTextToolbar({
+  state = ESTAT_BUIT,
+  exec = EXEC_BUIT,
+  onPublish,
+  publishDisabled,
+  isPublished,
+  t = (key, def) => def
 }) {
-  const formatState = {
-    isHeading: editor?.isActive('heading', { level: 2 }),
-    isList: editor?.isActive('bulletList'),
-    isBold: editor?.isActive('bold'),
-    isItalic: editor?.isActive('italic'),
-    isStrike: editor?.isActive('strike'),
-  };
+  const formatState = {};
+  const formatActions = {};
 
-  const formatActions = editor ? {
-    toggleHeading: () => editor.chain().focus().toggleHeading({ level: 2 }).run(),
-    toggleList: () => editor.chain().focus().toggleBulletList().run(),
-    toggleBold: () => editor.chain().focus().toggleBold().run(),
-    toggleItalic: () => editor.chain().focus().toggleItalic().run(),
-    toggleStrike: () => editor.chain().focus().toggleStrike().run(),
-  } : {};
+  for (const boto of SCHEMA_VISIBLE) {
+    formatState[boto.slot.estat] = Boolean(state.actiu?.[boto.id]);
+    if (state.disponible && state.pot?.[boto.id]) {
+      formatActions[boto.slot.accio] = () => exec(boto.id);
+    }
+  }
 
   return (
-    <UniversalToolbar 
+    <UniversalToolbar
       onPublish={onPublish}
       publishDisabled={publishDisabled}
       isPublished={isPublished}

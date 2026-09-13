@@ -2,14 +2,25 @@ import { useState, useRef } from 'react';
 
 import { compressImage } from '../utils/imageUtils.js';
 
+/** Un data URL comprimit tornat a fitxer, per a pujar-lo. */
+async function aFitxer(dataUrl, nom, tipus) {
+  const resposta = await fetch(dataUrl);
+  const blob = await resposta.blob();
+  return new File([blob], nom, { type: tipus });
+}
+
 export default function useHeroImageHandler({ 
   onSaveField, 
   fieldName = 'heroImage', 
   maxSizeBytes = 5 * 1024 * 1024, // Accept up to 5MB, then compress
   onError = (msg) => console.error(msg),
-  onConfirmDelete = () => true
+  onConfirmDelete = () => true,
+  /* FASE 4. Capacitat opcional. Si no ve, comportament idèntic al d'abans:
+     data URL. Cap host existent es trenca per no passar-la. */
+  onImageUpload = null
 }) {
   const [isEditing, setIsEditing] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
   const fileInputRef = useRef(null);
 
   const handleFileChange = async (e) => {
@@ -25,13 +36,25 @@ export default function useHeroImageHandler({
       return;
     }
 
+    setIsUploading(true);
     try {
-      const maxSize = fieldName.toLowerCase().includes('logo') || fieldName.toLowerCase().includes('avatar') ? 600 : 1200;
+      const esMenut = fieldName.toLowerCase().includes('logo') || fieldName.toLowerCase().includes('avatar');
+      const maxSize = esMenut ? 600 : 1200;
       const dataUrl = await compressImage(file, { maxSize, format: 'image/webp', quality: 0.8 });
-      onSaveField?.(fieldName, dataUrl);
+
+      let valor = dataUrl;
+      if (typeof onImageUpload === 'function') {
+        const fitxer = await aFitxer(dataUrl, `${fieldName}.webp`, 'image/webp');
+        const url = await onImageUpload(fitxer);
+        if (url) valor = url;
+      }
+
+      onSaveField?.(fieldName, valor);
       setIsEditing(false);
     } catch (err) {
-      onError("No s'ha pogut processar la imatge.");
+      onError(err?.message || "No s'ha pogut processar la imatge.");
+    } finally {
+      setIsUploading(false);
     }
   };
 
@@ -47,6 +70,7 @@ export default function useHeroImageHandler({
 
   return {
     isEditing,
+    isUploading,
     startEdit,
     cancelEdit,
     fileInputRef,

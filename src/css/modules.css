@@ -593,3 +593,54 @@
   flex: 1 1 auto;
   outline: none;
 }
+
+/* ==========================================================================
+   SDP SLASH MENU
+   ========================================================================== */
+.sdp-slash-menu {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sdp-espai-min);
+  background: var(--sdp-fons);
+  border: 1px solid var(--sdp-vora);
+  border-radius: var(--sdp-radi);
+  padding: var(--sdp-espai-min);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  min-width: 220px;
+  position: fixed;
+  z-index: 9999;
+  isolation: isolate;
+  font-family: inherit;
+}
+.sdp-slash-menu__opcio {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: calc(var(--sdp-espai-min) * 1.5) var(--sdp-espai-base);
+  border: none;
+  background: transparent;
+  text-align: left;
+  border-radius: calc(var(--sdp-radi) / 2);
+  cursor: pointer;
+  color: var(--sdp-text);
+  font-family: inherit;
+  transition: background 0.1s;
+}
+.sdp-slash-menu__opcio--activa,
+.sdp-slash-menu__opcio:hover {
+  background: var(--sdp-fons-alt);
+}
+.sdp-slash-menu__titol {
+  font-weight: 500;
+  font-size: var(--sdp-mida-text);
+}
+.sdp-slash-menu__ajuda {
+  font-size: 0.85em;
+  color: var(--sdp-text-secundari);
+}
+.sdp-slash-menu__buit {
+  padding: var(--sdp-espai-base);
+  color: var(--sdp-text-secundari);
+  font-size: var(--sdp-mida-text);
+  text-align: center;
+}

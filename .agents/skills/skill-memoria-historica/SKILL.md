@@ -51,7 +51,7 @@ Qualsevol IA o desenvolupador que treballe en aquest repositori ha d'assimilar a
   - Alineació horitzontal persistent: en replegar les columnes, les icones s'han de continuar veient a la mateixa línia.
 
 ### 🔌 Lliçó 6: Independència de Backend (Llei Sollutia / Supabase)
-- **L'error històric:** Intentar adaptar l'aplicació a estructures de WordPress o utilitzar dreceres anònimes sense seguretat.
+- **L'error històric:** Intentar adaptar l'aplicació a estructures d'un CMS extern o utilitzar dreceres anònimes sense seguretat.
 - **La regla:** Sóc de Poble és 100% online i modular. El backend oficial és Supabase. Tota funció SQL ha de ser auditada amb `tractor-rls` (`search_path = ''`, seguretat de dades RGPD) i cap clau `service_role` pot exposar-se al client.
 
 ### 🎨 Lliçó 7: El Shadow DOM i els Estils Globals
@@ -64,7 +64,7 @@ Qualsevol IA o desenvolupador que treballe en aquest repositori ha d'assimilar a
 
 Quan una IA o operador s'enfronte a un repte arquitectònic:
 1. **Passar pel sedàs de la història:** Comprovar si aquesta mateixa decisió ja es va discutir en una Acta Marmota anterior o en un informe del Consell.
-2. **Revisar l'arxiu:** No repetir debats ja tancats (com la poda de WordPress o la unificació de targetes).
+2. **Revisar l'arxiu:** No repetir debats ja tancats (com la independència del CMS o la unificació de targetes).
 3. **Preservar el Trellat:** No tocar el que ja funciona de forma òptima per pur deliri d'innovació innecessària.
 
 ***

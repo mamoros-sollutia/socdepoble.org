@@ -46,6 +46,13 @@ export const CAPACITATS = Object.freeze({
   sessio: Object.freeze([
     'refrescaSessio',
     'elMeuRol'
+  ]),
+  /* Fase 4. No és nucli a posta: un backend sense Storage segueix sent
+     vàlid i la interfície cau cap a data URL. teCapacitat('mitjans')
+     és l'única manera legítima de preguntar-ho. */
+  mitjans: Object.freeze([
+    'uploadToStorage',
+    'getPublicUrl'
   ])
 });
 

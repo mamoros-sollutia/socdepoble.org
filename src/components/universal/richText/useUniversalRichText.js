@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback } from 'react';
+import { useEffect, useMemo, useRef, useCallback } from 'react';
 import { useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 
@@ -7,7 +7,10 @@ export function useUniversalRichText({
   onChange,
   onSave,
   id,
-  debounceMs = 800
+  debounceMs = 800,
+  /* FASE 4. Extensions que injecta el host. L'editor base no engreixa
+     si ningú les demana. */
+  extensions = []
 }) {
   const timeoutRef = useRef(null);
   const pendingSaveRef = useRef({ id: null, content: null });
@@ -19,6 +22,14 @@ export function useUniversalRichText({
   currentIdRef.current = id;
   onChangeRef.current = onChange;
   onSaveRef.current = onSave;
+
+  /* Si l'array arriba nou a cada render, useEditor reconstruïx l'editor
+     i perds el cursor a cada tecla. El host ha de memoritzar-lo; ací es
+     memoritza la composició per si de cas. */
+  const totesLesExtensions = useMemo(
+    () => [StarterKit.configure({ heading: { levels: [2, 3, 4] } }), ...extensions],
+    [extensions]
+  );
 
   // The flush function reads from the draft, never from the editor, 
   // preventing empty-string overwrites if the editor is already destroyed.
@@ -37,7 +48,7 @@ export function useUniversalRichText({
   }, []);
 
   const editor = useEditor({
-    extensions: [StarterKit.configure({ heading: { levels: [2, 3, 4] } })],
+    extensions: totesLesExtensions,
     content: content,
     onUpdate: ({ editor }) => {
       const html = editor.getHTML();
@@ -56,12 +67,16 @@ export function useUniversalRichText({
     },
   });
 
-  // Sync incoming content changes (e.g. when changing notes)
+  /* Sync incoming content changes (e.g. when changing notes).
+     TipTap 3 va llevar el segon argument posicional `emitUpdate`. Amb
+     `setContent(html, false)` la supressió s'ignora, l'onUpdate dispara
+     i cada canvi de nota programa un desat del contingut que acabes de
+     carregar: el desat fantasma. L'objecte d'opcions és obligatori. */
   useEffect(() => {
     if (!editor || editor.isDestroyed) return;
     try {
       if (editor.getHTML() !== content) {
-        editor.commands.setContent(content || '', false);
+        editor.commands.setContent(content || '', { emitUpdate: false });
       }
     } catch (err) {
       console.warn('Editor sync skipped', err);
@@ -88,15 +103,11 @@ export function useUniversalRichText({
   useEffect(() => {
     return () => flush(id);
   }, [id, flush]);
-  
-  // ProseMirror orphan event cleanup as recommended by the Council
-  useEffect(() => {
-    return () => {
-      if (editor && !editor.isDestroyed && editor.view) {
-         editor.view.destroy();
-      }
-    };
-  }, [editor]);
+
+  /* LLEVAT A POSTA (Fase 4). Ací hi havia un `editor.view.destroy()` de
+     neteja. `useEditor` ja destruïx l'editor en desmuntar, i això destruïx
+     la vista: era una doble destrucció. Amb l'StarterKit pelat no es notava;
+     amb node views (imatges, embeds) trenca la desconstrucció dels nodes. */
 
   return editor;
 }

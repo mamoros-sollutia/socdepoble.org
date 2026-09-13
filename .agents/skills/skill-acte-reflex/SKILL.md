@@ -141,7 +141,7 @@ Llista explícitament 2 solucions alternatives que NO proposes i explica per qu�
 
 ### Segona Pedra — L'Empatia amb el Mantenidor
 1. "Serà fàcil modificar això d'aquí 6 mesos per algú que no coneix el context?"
-2. "On podria fallar això en un entorn hostil (WordPress, xarxa inestable)?"
+2. "On podria fallar això en un entorn hostil (sistema amfitrió extern, xarxa inestable)?"
 
 ### Tercera Pedra — L'Auto-Verificació (L'Auditoria Hostil)
 1. 3 maneres en què aquest codi pot trencar-se (si no en trobes 3, no has pensat prou).

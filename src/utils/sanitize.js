@@ -11,6 +11,17 @@ import DOMPurify from 'dompurify';
  */
 
 let ganxosPosats = false;
+let origensMitjans = [];
+
+export function permetOrigenMitjans(url) {
+  if (!url) return;
+  try {
+    const origen = new URL(url).origin;
+    if (!origensMitjans.includes(origen)) origensMitjans.push(origen);
+  } catch (err) {
+    void err;
+  }
+}
 
 function posaGanxos() {
   if (ganxosPosats) return;
@@ -24,6 +35,7 @@ function posaGanxos() {
         src.startsWith('/') ||
         src.startsWith('./') ||
         src.startsWith('data:image/') ||
+        origensMitjans.some(o => src.startsWith(o)) ||
         (typeof window !== 'undefined' && src.startsWith(window.location.origin));
       if (!esLocal) {
         node.removeAttribute('src');
