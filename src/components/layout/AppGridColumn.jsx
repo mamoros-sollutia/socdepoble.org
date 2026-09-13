@@ -1,47 +1,48 @@
 import { ChevronDown, ChevronRight, PanelLeftClose, PanelRightOpen } from 'lucide-react';
 
-/* ═══════════════════════════════════════════════════════════════════
-   AppGridColumn — capçalera única de columna per a tot Sóc de Poble
-
-   Substituïx les QUATRE implementacions que hi havia escampades:
-     notes-column-header, --collapsed, --accordion, perfil-columna-capcalera
-
-   Contracte: esta capçalera NO sap què és una carpeta, una nota, una
-   etiqueta ni una organització. Rep `accions` i les pinta. Qui sap del
-   domini és la columna que la crida. Si un dia el botó "+" ha de crear
-   una empresa en compte d'una carpeta, ací no es toca res.
-
-   Ordre visual imposat pel Mestre:
-     [ plec ] TÍTOL … [ + ] [ replegar columna ]
-   ═══════════════════════════════════════════════════════════════════ */
-
+/**
+ * Capçalera única de columna.
+ * Ordre visual (obert): [ esquerra / titol ] … [ accions ] [ replegar ]
+ * Collapsed: [ expandir ] + accions (vertical).
+ */
 export default function AppGridColumn({
   titol,
   icona: Icona = null,
-  accions = [],          // [{ id, icona, etiqueta, onAcciona, desactivat }]
-  plegable = false,      // mostra el chevron d'acordió
+  accions = [],
+  esquerra = null, // node opcional a l'esquerra (ex. botó "Tot", lupa)
+  plegable = false,
   obert = true,
-  onPlega = null,        // () => void — acordió
-  onReplega = null,      // () => void — replegar tota la columna (escriptori)
-  variant = null,        // null | 'accordion' | 'collapsed'
-  children
+  onPlega = null,
+  onReplega = null,
+  variant = null,
+  children,
 }) {
   const esAcordio = variant === 'accordion';
   const Chevron = obert ? ChevronDown : ChevronRight;
 
-  const actionButtons = accions.map((a) => (
-    <button
-      key={a.id}
-      type="button"
-      className="app-grid-col-header__accio"
-      onClick={() => a.onAcciona?.()}
-      disabled={a.desactivat || typeof a.onAcciona !== 'function'}
-      aria-label={a.etiqueta}
-      title={a.etiqueta}
-    >
-      <a.icona size={18} aria-hidden focusable="false" />
-    </button>
-  ));
+  const actionButtons = accions.map((a) => {
+    const cls =
+      a.variant === 'text'
+        ? 'app-grid-col-header__accio-text'
+        : a.variant === 'primary'
+          ? 'app-grid-col-header__accio'
+          : 'app-grid-col-header__accio-icon';
+    return (
+      <button
+        key={a.id}
+        type="button"
+        className={cls}
+        onClick={() => a.onAcciona?.()}
+        disabled={a.desactivat || (a.onAcciona == null && a.variant !== 'text')}
+        aria-label={a.etiqueta}
+        title={a.etiqueta}
+        aria-pressed={a.pressed}
+      >
+        {a.icona ? <a.icona size={18} aria-hidden focusable="false" /> : null}
+        {a.label ? <span>{a.label}</span> : null}
+      </button>
+    );
+  });
 
   if (variant === 'collapsed') {
     const CollapsedIcon = Icona || PanelRightOpen;
@@ -49,7 +50,7 @@ export default function AppGridColumn({
       <div className="app-grid-col-header app-grid-col-header--collapsed">
         <button
           type="button"
-          className="btn-icon hover-bg"
+          className="btn-icon btn-icon--transparent"
           onClick={onReplega}
           aria-label={`Expandir ${titol}`}
           title={`Expandir ${titol}`}
@@ -63,8 +64,8 @@ export default function AppGridColumn({
 
   return (
     <div className={`app-grid-col-header${esAcordio ? ' app-grid-col-header--accordion' : ''}`}>
-      {/* Era un <div onClick> sense role ni tabIndex: inaccessible per teclat.
-          Ara és un botó de veres, amb estat exposat. */}
+      {esquerra}
+
       {plegable ? (
         <button
           type="button"
@@ -75,19 +76,17 @@ export default function AppGridColumn({
         >
           <Chevron size={20} aria-hidden focusable="false" />
           {Icona ? <Icona size={20} aria-hidden focusable="false" /> : null}
-          <span className="app-grid-col-header__titol">{titol}</span>
+          {titol ? <span className="app-grid-col-header__titol">{titol}</span> : null}
         </button>
       ) : (
         <div className="app-grid-col-header__plec app-grid-col-header__plec--fix">
           {Icona ? <Icona size={20} aria-hidden focusable="false" /> : null}
-          <span className="app-grid-col-header__titol">{titol}</span>
+          {titol ? <span className="app-grid-col-header__titol">{titol}</span> : null}
         </div>
       )}
 
       <div className="app-grid-col-header__accions">
-        {/* Sense arguments a posta: l'event del DOM no és càrrega del domini. */}
         {actionButtons}
-
         {onReplega ? (
           <button
             type="button"
@@ -99,7 +98,6 @@ export default function AppGridColumn({
             <PanelLeftClose size={18} aria-hidden focusable="false" />
           </button>
         ) : null}
-
         {children}
       </div>
     </div>

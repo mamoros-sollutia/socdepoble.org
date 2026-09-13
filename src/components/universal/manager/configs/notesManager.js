@@ -68,8 +68,9 @@ export const notesManagerConfig = {
   getItemSearchText: (item) => item.searchText || item.title || '',
   getItemCard: (nota) => ({
     titol: nota.title || 'Sense títol',
-    subtitol: nota.formattedDate,
-    imatge: nota.coverImage,
+    subtitol: nota.lead || nota.subtitle,
+    meta: nota.formattedDate,
+    imatge: nota.coverImage || nota.heroImage,
     icona: FOLDER_ICONS[nota.folderId] || NotebookPen,
   }),
 };

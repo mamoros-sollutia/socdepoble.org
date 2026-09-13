@@ -21,73 +21,71 @@ export default function UniversalToolbar({
   const { toggleHeading, toggleList, toggleBold, toggleItalic, toggleStrike } = formatActions;
 
   return (
-    <div className="editor-toolbar" role="group" aria-label="Format i accions de la pàgina">
+    <header className="format-fascia" role="group" aria-label="Format i accions de la pàgina">
       <button 
         type="button" 
         aria-label="Tornar a la llista" 
         title="Tornar a la llista"
         onClick={handleBack} 
-        className="btn-icon d-mobile-only"
+        className="format-button d-mobile-only"
       >
         <ArrowLeft {...iconProps} />
       </button>
       
-      <div className="toolbar-actions" role="group" aria-label="Format del text">
+      <div className="format-tools" role="group" aria-label="Format del text">
         <button 
-          aria-label="Alternar encapçalament"
+          aria-label="Títol de nivell 2"
           onClick={toggleHeading} 
-          className={`btn-icon ${isHeading ? 'active-text' : ''}`}
+          className={`format-button ${isHeading ? 'active-text' : ''}`}
           disabled={!toggleHeading}
         >
-          <Heading2 {...iconProps} />
-        </button>
-        <button 
-          aria-label={t('section.notes.format.list', 'Llista')}
-          onClick={toggleList} 
-          className={`btn-icon ${isList ? 'active-text' : ''}`}
-          disabled={!toggleList}
-        >
-          <List {...iconProps} />
+          H₂
         </button>
         <button 
           aria-label={t('section.notes.format.bold', 'Negreta')}
           onClick={toggleBold} 
-          className={`btn-icon ${isBold ? 'active-text' : ''}`}
+          className={`format-button ${isBold ? 'active-text' : ''}`}
           disabled={!toggleBold}
         >
-          <Bold {...iconProps} />
+          <strong>B</strong>
         </button>
         <button 
           aria-label={t('section.notes.format.italic', 'Cursiva')}
           onClick={toggleItalic} 
-          className={`btn-icon ${isItalic ? 'active-text' : ''}`}
+          className={`format-button ${isItalic ? 'active-text' : ''}`}
           disabled={!toggleItalic}
         >
-          <Italic {...iconProps} />
+          <em>I</em>
         </button>
         <button 
           aria-label={t('section.notes.format.strike', 'Ratllat')}
           onClick={toggleStrike} 
-          className={`btn-icon ${isStrike ? 'active-text' : ''}`}
+          className={`format-button ${isStrike ? 'active-text' : ''}`}
           disabled={!toggleStrike}
         >
-          <Strikethrough {...iconProps} />
+          <s>S</s>
+        </button>
+        <button 
+          aria-label={t('section.notes.format.list', 'Llista desordenada')}
+          onClick={toggleList} 
+          className={`format-button ${isList ? 'active-text' : ''}`}
+          disabled={!toggleList}
+        >
+          <List {...iconProps} />
         </button>
       </div>
 
-      <div className="toolbar-actions right">
-        {onPublish && (
-          <button 
-            type="button"
-            className="btn-publish" 
-            disabled={publishDisabled} 
-            onClick={onPublish}
-            aria-label={t('section.notes.publish', 'Publicar article')}
-          >
-            {t('section.notes.publish', 'Publicar')} <Globe size={16} />
-          </button>
-        )}
-      </div>
-    </div>
+      {onPublish && (
+        <button 
+          type="button"
+          className="publish" 
+          disabled={publishDisabled} 
+          onClick={onPublish}
+          aria-label={t('section.notes.publish', 'Publicar')}
+        >
+          ◎ {t('section.notes.publish', 'Publicar')}
+        </button>
+      )}
+    </header>
   );
 }

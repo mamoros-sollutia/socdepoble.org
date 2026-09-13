@@ -76,3 +76,11 @@ export const UserRound = (props) => (
     <path d="M20 21a8 8 0 0 0-16 0" />
   </SvgBase>
 );
+
+export const Menu = (props) => (
+  <SvgBase {...props}>
+    <line x1="4" x2="20" y1="12" y2="12" />
+    <line x1="4" x2="20" y1="6" y2="6" />
+    <line x1="4" x2="20" y1="18" y2="18" />
+  </SvgBase>
+);

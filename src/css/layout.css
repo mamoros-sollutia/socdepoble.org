@@ -171,9 +171,9 @@ header.bar-black {
   animation: sdp-iaia-pulse 4s ease-in-out infinite;
 }
 
-/* Botó logo: només visible en mòbil (obri la sidebar) o en escriptori tancat */
-.mobile-logo-wrapper { display: none; cursor: pointer; }
-.mobile-logo-wrapper img { width: 180px; height: auto; object-fit: contain; }
+/* Botó logo a la TopBar */
+.mobile-logo-wrapper { display: flex; cursor: pointer; height: 100%; }
+.mobile-logo-wrapper img { width: 140px; height: auto; object-fit: contain; margin-left: 8px; }
 
 
 header.bar-blue {
@@ -341,8 +341,7 @@ nav.mobile-nav { display: none; }
     pointer-events: auto;
   }
 
-  /* El logo actua com a botó (sense hamburguesa addicional) */
-  .mobile-logo-wrapper { display: flex; align-items: center; justify-content: flex-start; padding-left: 28px !important; }
+
 
   /* El visor deixa espai per a la barra inferior fixa */
   main.app-main { padding-bottom: calc(var(--sdp-alt-nav-mobil) + env(safe-area-inset-bottom, 0px)); }
@@ -548,26 +547,31 @@ nav.mobile-nav { display: none; }
   opacity: 0.95;
 }
 
-/* ── TRUC PER A LA SIDEBAR EN ESCRIPTORI (TOGGLE) ── */
-@media (min-width: 1101px) {
-  :host(.sidebar-closed) nav.app-sidebar {
+  body.sidebar-closed nav.app-sidebar {
     display: none !important;
   }
-  :host(.sidebar-closed) header.bar-black {
+  body.sidebar-closed header.bar-black {
     padding-left: 0 !important;
   }
-  :host(.sidebar-closed) .mobile-logo-wrapper {
-    display: flex !important;
-    width: var(--sdp-col-sidebar);
-    height: var(--sdp-alt-negra);
-    align-items: center;
+  
+  body.sidebar-mini {
+    --sdp-col-sidebar: 72px;
+  }
+  body.sidebar-mini nav.app-sidebar .nav-item__text {
+    display: none;
+  }
+  body.sidebar-mini nav.app-sidebar .sidebar-control-btn .nav-item__text {
+    display: none;
+  }
+  body.sidebar-mini nav.app-sidebar .sidebar-control-btn {
+    padding: 0;
     justify-content: center;
   }
-  :host(.sidebar-closed) .mobile-logo-wrapper img {
-    width: 100%;
-    max-width: 180px;
-    height: auto;
-    object-fit: contain;
-  } }
-
+  body.sidebar-mini nav.app-sidebar .nav-item {
+    justify-content: center;
+    padding: var(--sdp-space-2) 0;
+  }
+  body.sidebar-mini nav.app-sidebar .icona-linia {
+    margin: 0;
+  }
 }

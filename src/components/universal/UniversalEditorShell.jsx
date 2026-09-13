@@ -150,7 +150,7 @@ export function UniversalEditorShell({
   return (
     <EditorErrorBoundary>
       <div className={`ues-root ${className}`}>
-        <header className="ues-header">
+        <header className="ues-header bar-blue bar-blue--top" style={{ position: 'sticky', top: 0, zIndex: 10 }}>
           {topBar}
         </header>
         <div className="ues-scroll">
@@ -194,7 +194,7 @@ export function UniversalEditorShell({
               {labels && labels.length > 0 && (
                 <ul className="sp-card-labels page-title-labels" aria-label="Categories" style={{ marginTop: '0.5rem', marginBottom: '0.5rem' }}>
                   {labels.map((label, idx) => (
-                    <li key={idx} className={`sdp-badge sdp-badge-${label.type}`}>
+                    <li key={idx} className={label.className || `sdp-badge sdp-badge-${label.type || 'default'}`}>
                       {label.text}
                     </li>
                   ))}

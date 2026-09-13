@@ -29,8 +29,8 @@ function Media({ imatge, icona: Icona, titol }) {
         className="sdp-gestor-fitxa__imatge"
         src={segura}
         alt=""
-        width="96"
-        height="96"
+        width="80"
+        height="80"
         loading="lazy"
         decoding="async"
         onError={() => setSrcTrencada(segura)}
@@ -38,14 +38,14 @@ function Media({ imatge, icona: Icona, titol }) {
     );
   }
 
-  if (Icona) return <Icona size={40} />;
+  if (Icona) return <Icona size={32} />;
 
   /* Array.from respecta els parells subrogats: una emoji no es parteix. */
   const [inicial = ''] = Array.from(String(titol ?? '').trim());
   return <span className="sdp-gestor-fitxa__inicial">{inicial.toLocaleUpperCase('ca')}</span>;
 }
 
-export default function ManagerItemCard({ titol, subtitol, imatge, icona, actiu = false, onSelecciona }) {
+export default function ManagerItemCard({ titol, subtitol, meta, imatge, icona, actiu = false, onSelecciona }) {
   return (
     <button
       type="button"
@@ -57,7 +57,10 @@ export default function ManagerItemCard({ titol, subtitol, imatge, icona, actiu 
         <Media imatge={imatge} icona={icona} titol={titol} />
       </span>
       <span className="sdp-gestor-fitxa__text">
-        <span className="sdp-gestor-fitxa__titol">{titol}</span>
+        <span className="sdp-gestor-fitxa__cap">
+          <span className="sdp-gestor-fitxa__titol">{titol}</span>
+          {meta ? <span className="sdp-gestor-fitxa__meta">{meta}</span> : null}
+        </span>
         {subtitol ? <span className="sdp-gestor-fitxa__subtitol">{subtitol}</span> : null}
       </span>
     </button>

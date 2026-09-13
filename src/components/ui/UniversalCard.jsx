@@ -213,7 +213,6 @@ function CardFooter({ accions, connectar }) {
 export function UniversalCard({
   variant = 'default',
   className,
-  style,
   icon,
   title,
   headingLevel = 'h3',
@@ -345,7 +344,7 @@ export function UniversalCard({
   ].filter(Boolean).join(' ');
 
   return (
-    <article className={cardClasses} style={style}>
+    <article className={cardClasses}>
       {(autor || pin || dataHora) && (
         <CardHeader autor={autor} autorHref={safeAuthorHref} pin={pin} dataHora={dataHora} />
       )}

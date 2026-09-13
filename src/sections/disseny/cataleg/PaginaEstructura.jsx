@@ -40,7 +40,7 @@ export default function PaginaEstructura() {
       </Especimen>
 
       <Especimen id="gestor" nom="Gestor de tres columnes (AppGridShell + UniversalManager)" fitxer="src/components/layout/ + universal/manager/ (Codex)"
-        descripcio="Carpetes · Llista · Detall. Cada columna té tres franges alineades entre si: barra (crom), subbarra (gris suau), cos (scroll propi)."
+        descripcio="Carpetes · Llista · Detall. La lògica i anatomia exacta està documentada al fitxer .agents/skills/app-grid-shell/SKILL.md."
         fes={['Barra de totes les columnes en --sdp-crom-fons: una sola franja contínua.', 'Subbarra amb el mateix gris a totes les columnes i la mateixa alçada.', 'Scroll independent a cada cos.']}
         noFacis={['Pintar la barra amb --sdp-fons-invers: en fosc s’invertix i el text desapareix.', 'Estils en línia a les subbarres.']}>
         <table>

@@ -13,3 +13,31 @@
 ## ⏭️ Pròxims passos (Per a la següent sessió)
 1. Iniciar la refactorització de `PerfilShell.jsx` perquè adopte l'arquitectura de la Pàgina Universal (3 columnes: Carpetes, Atributs, Editor).
 2. Reprendre la Fase 5 (UniversalToolbar) si es requereix un editor 100% abstracte per altres mòduls.
+
+---
+
+# 260913 · Auditoria visual de la Plantilla Enxufable
+
+## Què s'ha fet
+
+1. `UniversalWorkspace` ja no embolica `AppGridShell` amb `UniversalPage`; el crom de pàgina queda fora de les columnes de Carpetes i Notes.
+2. El plegat d'escriptori usa classes modificadores React (`has-left-collapsed` i `has-middle-collapsed`) i s'han eliminat els selectors `:has()`.
+3. Les amplàries redimensionables s'injecten amb un `<style>` local identificat per instància, sense atribut `style=` al JSX de la graella.
+4. Les capçaleres i subbarres recuperen crom Pedra Seca estable, icones blanques i fons transparent.
+5. Carpetes mostra `Tot` i Ajustos; Notes mostra la Lupa i Crear, la cerca completa s'obri sota demanda, i Crear desapareix quan Notes està replegada.
+
+## Verificació
+
+- ESLint dels components tocats: correcte.
+- `tests/managerItemCard.test.jsx`: 25 proves superades.
+- `vite build`: correcte.
+- `porta:graella`: continua bloquejada perquè el gate només busca tokens en fitxers antics i no reconeix `src/css/tokens.css`.
+- `porta:design-guard`: bloquejada per deute global preexistent/reamarrat fora dels fitxers funcionals d'esta refactorització.
+
+## Poliment visual amb captura de referència
+
+- Validada la vista real de `/notes` contra la captura antiga en amplària d'escriptori.
+- Unificada cada capçalera en una sola barra de 58 px: `Tot`/Ajustos en Carpetes i Lupa/Crear en Notes.
+- Carpetes usa `--sdp-crom-fons`; Notes superposa `--sdp-crom-hover` sobre el mateix crom per donar profunditat sense introduir colors nous.
+- Eliminats fons, vores i ombres dels botons d'icona; el botó Crear usa els tokens blaus `--sdp-accio`/`--sdp-accio-hover`.
+- La cerca oberta continua dins de la mateixa barra i no crea una segona franja.

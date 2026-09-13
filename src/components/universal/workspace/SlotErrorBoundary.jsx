@@ -58,7 +58,7 @@ export class SlotErrorBoundary extends Component {
           l'espai de treball segueix operativa.
         </p>
         {import.meta.env.DEV && (
-          <pre className="sdp-camp__ajuda" style={{ whiteSpace: 'pre-wrap' }}>
+          <pre className="sdp-camp__ajuda sdp-pre-wrap">
             {String(error?.message ?? error)}
           </pre>
         )}

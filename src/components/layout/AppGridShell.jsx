@@ -22,55 +22,57 @@ export function useAppGrid() {
 }
 
 export default function AppGridShell({
-  children, // Expected to be injected CSS (e.g. page specific styles)
+  children,
   leftColumn,
   middleColumn,
   rightColumn,
   leftTitle = 'ESQUERRA',
   middleTitle = 'CENTRE',
+  leftCollapsed = false,
+  middleCollapsed = false,
   initialPane = null,
   'aria-label': ariaLabel = 'Graella de l\'aplicació',
-  className = ''
+  className = '',
 }) {
-  const [mida, setMida] = useState('ample'); // 'ample', 'mitja', 'estret'
-  const [panellObert, setPanellObert] = useState(initialPane); // null, 'left', 'middle'
+  const [mida, setMida] = useState('ample');
+  const [panellObert, setPanellObert] = useState(initialPane);
   const [columnWidths, setColumnWidths] = useState(DEFAULT_COLUMN_WIDTHS);
   const pageRef = useRef(null);
 
   useLayoutEffect(() => {
     const page = pageRef.current;
     if (!page) return;
-    
+
     const measure = () => {
       const w = page.clientWidth;
       let novaMida = 'ample';
       if (w < 720) novaMida = 'estret';
       else if (w < 1090) novaMida = 'mitja';
-      
-      setMida(prev => {
+
+      setMida((prev) => {
         if (prev !== novaMida) {
-           if (novaMida === 'ample') setPanellObert(null);
-           if (novaMida === 'estret' && prev === 'ample') setPanellObert(null);
+          if (novaMida === 'ample') setPanellObert(null);
+          if (novaMida === 'estret' && prev === 'ample') setPanellObert(null);
         }
         return novaMida;
       });
     };
-    
+
     measure();
     const observer = new ResizeObserver(measure);
     observer.observe(page);
     return () => observer.disconnect();
   }, []);
 
-  const toggleLeft = () => setPanellObert(p => p === 'left' ? null : 'left');
-  const toggleMiddle = () => setPanellObert(p => p === 'middle' ? null : 'middle');
+  const toggleLeft = () => setPanellObert((p) => (p === 'left' ? null : 'left'));
+  const toggleMiddle = () => setPanellObert((p) => (p === 'middle' ? null : 'middle'));
 
   const resizeColumn = (column, requestedWidth) => {
     const containerWidth = pageRef.current?.clientWidth || 0;
     setColumnWidths((current) => {
       const otherColumn = column === 'left' ? 'middle' : 'left';
       const otherWidth = current[otherColumn];
-      const availableMax = containerWidth - otherWidth - RIGHT_COLUMN_MIN - (RESIZER_WIDTH * 2);
+      const availableMax = containerWidth - otherWidth - RIGHT_COLUMN_MIN - RESIZER_WIDTH * 2;
       const limits = COLUMN_LIMITS[column];
       const max = Math.max(limits.min, Math.min(limits.max, availableMax));
       const nextWidth = clamp(requestedWidth, limits.min, max);
@@ -79,22 +81,38 @@ export default function AppGridShell({
     });
   };
 
-  /* Una columna desplaçada amb translateX(-100%) continua sent focusable i
-     visible per al lector de pantalla. Sense `inert`, tabular des de
-     l'editor et fica dins de columnes fora de pantalla: canviaries la
-     pèrdua de cursor per una trampa de focus més silenciosa. */
   const tancada = {
     left: mida !== 'ample' && panellObert !== 'left',
     middle: mida === 'estret' && panellObert !== 'middle',
-    right: mida === 'estret' && panellObert !== null
+    right: mida === 'estret' && panellObert !== null,
   };
 
+  /* Classes modificadores en lloc de :has() (Baseline 2022). */
+  const contentMods = [
+    'app-grid-content',
+    leftCollapsed && mida === 'ample' ? 'has-left-collapsed' : '',
+    middleCollapsed && mida === 'ample' ? 'has-middle-collapsed' : '',
+  ]
+    .filter(Boolean)
+    .join(' ');
+
+  /* Design-guard: mides dinàmiques via <style>, mai style= al JSX. */
+  const liveVars = `
+.app-grid-page > .app-grid-shell > .app-grid-content {
+  --app-grid-col-sidebar-live: ${columnWidths.left}px;
+  --app-grid-col-list-live: ${columnWidths.middle}px;
+}
+`.trim();
+
   return (
-    <AppGridContext.Provider value={{ mida, panellObert, setPanellObert, tancaPanells: () => setPanellObert(null) }}>
-      <div ref={pageRef} className={`app-grid-page ${className}`}>
+    <AppGridContext.Provider
+      value={{ mida, panellObert, setPanellObert, tancaPanells: () => setPanellObert(null) }}
+    >
+      <div ref={pageRef} className={`app-grid-page ${className}`.trim()}>
         <style data-appgrid-styles>{appGridStyles}</style>
+        <style data-appgrid-live>{liveVars}</style>
         {children}
-        
+
         <article
           className="app-grid-shell"
           data-layout={mida}
@@ -103,8 +121,8 @@ export default function AppGridShell({
         >
           {mida !== 'ample' && (
             <div className="app-grid-headers">
-              <button 
-                type="button" 
+              <button
+                type="button"
                 className={`app-grid-header-btn ${panellObert === 'left' ? 'active' : ''}`}
                 aria-expanded={panellObert === 'left'}
                 aria-controls="app-grid-sidebar"
@@ -113,8 +131,8 @@ export default function AppGridShell({
                 {leftTitle}
               </button>
               {mida === 'estret' && (
-                <button 
-                  type="button" 
+                <button
+                  type="button"
                   className={`app-grid-header-btn ${panellObert === 'middle' ? 'active' : ''}`}
                   aria-expanded={panellObert === 'middle'}
                   aria-controls="app-grid-list"
@@ -126,13 +144,7 @@ export default function AppGridShell({
             </div>
           )}
 
-          <div
-            className="app-grid-content"
-            style={{
-              '--app-grid-col-sidebar-live': `${columnWidths.left}px`,
-              '--app-grid-col-list-live': `${columnWidths.middle}px`,
-            }}
-          >
+          <div className={contentMods}>
             <section
               className="app-grid-column app-grid-column--left"
               id="app-grid-sidebar"
@@ -141,7 +153,7 @@ export default function AppGridShell({
             >
               {leftColumn}
             </section>
-            {mida === 'ample' ? (
+            {mida === 'ample' && !leftCollapsed ? (
               <AppGridResizer
                 className="app-grid-resizer--left"
                 label={`Redimensionar ${leftTitle}`}
@@ -159,7 +171,7 @@ export default function AppGridShell({
             >
               {middleColumn}
             </section>
-            {mida === 'ample' ? (
+            {mida === 'ample' && !middleCollapsed ? (
               <AppGridResizer
                 className="app-grid-resizer--middle"
                 label={`Redimensionar ${middleTitle}`}

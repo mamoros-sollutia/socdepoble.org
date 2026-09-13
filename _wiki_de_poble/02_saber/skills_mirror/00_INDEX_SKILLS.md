@@ -14,6 +14,7 @@ description: Índex de skills i capacitats
 - [[skill-acte-reflex/SKILL|skill-acte-reflex]]: Protocol reflex
 - [[skill-cicle-de-vida/SKILL|skill-cicle-de-vida]]: Cicle de vida de les dades
 - [[skill-consell-bundle/SKILL|skill-consell-bundle]]: Generació de bundle per al consell
+- [[skill-estrategies-ia/SKILL|skill-estrategies-ia]]: Estratègies i control de límits per a IAs de pagament (Codex, Claude)
 - [[skill-estudi-mercat/SKILL|skill-estudi-mercat]]: Estudi de mercat
 - [[skill-iaia-identitat/SKILL|skill-iaia-identitat]]: Identitat de la IAIA
 - [[skill-memoria-historica/SKILL|skill-memoria-historica]]: Memòria històrica i aprenentatges

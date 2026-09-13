@@ -1,20 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import AppGridColumn from '../../layout/AppGridColumn';
 import { useAppGrid } from '../../layout/AppGridShell';
 import { useManager } from './ManagerContext';
 import ManagerItemCard from './ManagerItemCard';
 import { Search, Plus } from 'lucide-react';
 
-
-/**
- * La llista del gestor. És l'ÚNICA que pinta fitxes: els consumidors només
- * projecten dades amb `getItemCard(item) → { titol, subtitol, imatge, icona }`.
- *
- * P0 · 260911: la identitat de cada fila és `getItemId(item)`, la mateixa que
- * usa el context. Abans era `item.id`: al Perfil els id d'ajust es repetixen
- * entre identitats, les claus xocaven i clicar qualsevol ajust obria el primer.
- */
-export default function ManagerList({ getItemCard, onActionCreate, createLabel = 'CREAR', listTitle = 'LLISTA', listIcon = null }) {
+export default function ManagerList({
+  getItemCard,
+  onActionCreate,
+  createLabel = 'CREAR',
+  listTitle = 'LLISTA',
+}) {
   const {
     filteredItems,
     activeItemId,
@@ -23,71 +19,99 @@ export default function ManagerList({ getItemCard, onActionCreate, createLabel =
     searchQuery: ctxSearchQuery,
     setSearchQuery: setCtxSearchQuery,
     colMiddleCollapsed,
-    setColMiddleCollapsed
+    setColMiddleCollapsed,
   } = useManager();
 
   const { mida, setPanellObert } = useAppGrid();
   const isCompact = mida !== 'ample';
   const [localQuery, setLocalQuery] = useState(ctxSearchQuery);
+  const [searchOpen, setSearchOpen] = useState(Boolean(ctxSearchQuery));
+  const inputRef = useRef(null);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (ctxSearchQuery !== localQuery) {
-        setCtxSearchQuery(localQuery);
-      }
+      if (ctxSearchQuery !== localQuery) setCtxSearchQuery(localQuery);
     }, 200);
     return () => clearTimeout(timer);
   }, [localQuery, ctxSearchQuery, setCtxSearchQuery]);
+
+  useEffect(() => {
+    if (searchOpen) inputRef.current?.focus();
+  }, [searchOpen]);
 
   const handleSelect = (id) => {
     setActiveItemId(id);
     if (isCompact) setPanellObert(null);
   };
 
+  /* Collapsed: només lupa + expandir. Crear DESAPAREIX. */
   if (colMiddleCollapsed && !isCompact) {
     return (
       <aside className="notes-column collapsed">
         <AppGridColumn
           variant="collapsed"
           titol={listTitle}
-          icona={Search}
           onReplega={() => setColMiddleCollapsed(false)}
+          accions={[
+            {
+              id: 'search',
+              icona: Search,
+              etiqueta: 'Cercar',
+              onAcciona: () => {
+                setColMiddleCollapsed(false);
+                setSearchOpen(true);
+              },
+            },
+          ]}
         />
       </aside>
     );
   }
 
+  const listAccions = [];
+  if (onActionCreate) {
+    listAccions.push({
+      id: 'create',
+      icona: Plus,
+      etiqueta: createLabel,
+      label: createLabel,
+      onAcciona: onActionCreate,
+      variant: 'primary',
+    });
+  }
+
   return (
     <aside className="notes-column">
+      {/* Capçalera: [Lupa] … [Crear] [replegar] — sense input fins clicar lupa */}
       <AppGridColumn
-        titol={listTitle}
-        icona={listIcon}
-        plegable={!isCompact}
-        onReplega={() => setColMiddleCollapsed(true)}
-      />
-
-      <div className="notes-list-header univ-manager-toolbar univ-manager-toolbar--list">
-        <div className="search-bar univ-manager-search">
-          <Search size={16} aria-hidden="true" />
-          <input
-            type="text"
-            placeholder="Cerca..."
-            value={localQuery}
-            onChange={(e) => setLocalQuery(e.target.value)}
-            aria-label="Cercar elements"
-          />
-        </div>
-        {onActionCreate && (
+        titol=""
+        onReplega={!isCompact ? () => setColMiddleCollapsed(true) : null}
+        esquerra={searchOpen ? (
+          <div className="univ-manager-header-search">
+            <Search size={18} aria-hidden focusable="false" />
+            <input
+              ref={inputRef}
+              type="search"
+              placeholder="Cerca..."
+              value={localQuery}
+              onChange={(e) => setLocalQuery(e.target.value)}
+              aria-label="Cercar elements"
+            />
+          </div>
+        ) : (
           <button
-            className="btn btn-primary"
-            onClick={onActionCreate}
-            title={createLabel}
+            type="button"
+            className="app-grid-col-header__accio-icon"
+            onClick={() => setSearchOpen((v) => !v)}
+            aria-label="Cercar"
+            title="Cercar"
+            aria-pressed={searchOpen}
           >
-            <Plus size={16} />
-            <span className="d-desktop-only">{createLabel}</span>
+            <Search size={18} aria-hidden focusable="false" />
           </button>
         )}
-      </div>
+        accions={listAccions}
+      />
 
       <div className="notes-column__body notes-column__body--sense-marge sdp-scrollable">
         <ul className="sdp-gestor-llista">
@@ -111,8 +135,6 @@ export default function ManagerList({ getItemCard, onActionCreate, createLabel =
           )}
         </ul>
       </div>
-
-
     </aside>
   );
 }

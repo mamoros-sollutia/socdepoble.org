@@ -22,7 +22,7 @@ import { join } from 'node:path';
 const arrel = (process.argv.find((a) => a.startsWith('--arrel=')) || '--arrel=.').split('=')[1];
 const P = (...t) => join(arrel, ...t);
 
-const FITXA = P('_wiki_de_poble', '04_escriptori', '01_Produccio', 'contracte_graella.md');
+const FITXA = P('_wiki_de_poble', '04_ESCRIPTORI', '01_Produccio', 'contracte_graella.md');
 const SHELL = P('src', 'components', 'layout', 'AppGridShell.jsx');
 const COLUMNA = P('src', 'components', 'layout', 'AppGridColumn.jsx');
 const CSS = P('src', 'components', 'layout', 'AppGridShell.css');
@@ -115,7 +115,7 @@ if (!shell.includes('inert')) {
 /* ── 6. Tots els tokens del CSS han d'existir de veres ───────────── */
 const css = llig(CSS) || '';
 const tokensCanon = new Set();
-for (const f of ['src/css/design-tokens.css', 'src/css/index.css']) {
+for (const f of ['src/css/tokens.css', 'src/css/design-tokens.css', 'src/css/index.css']) {
   const t = llig(P(f));
   if (t) for (const m of t.matchAll(/--(sdp-[\w-]+)\s*:/g)) tokensCanon.add(m[1]);
 }

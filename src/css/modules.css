@@ -139,7 +139,16 @@
   padding: var(--sdp-space-3) var(--sdp-space-4);
 }
 
+.sdp-gestor-fitxa__cap {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--sdp-space-2);
+  width: 100%;
+}
+
 .sdp-gestor-fitxa__titol {
+  flex: 1 1 auto;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
@@ -150,6 +159,14 @@
   font-weight: 700;
   line-height: 1.3;
   color: var(--sdp-text-titol);
+}
+
+.sdp-gestor-fitxa__meta {
+  flex: 0 0 auto;
+  font-size: var(--sdp-text-meta);
+  color: var(--sdp-text-suau);
+  line-height: 1.3;
+  padding-top: 1px;
 }
 
 .sdp-gestor-fitxa__subtitol {
@@ -199,8 +216,8 @@
 
 .notes-list-header {
   padding: var(--sdp-space-3) var(--sdp-space-4);
-  border-bottom: 1px solid var(--sdp-vora);
-  background: var(--sdp-fons-subtil);
+  border-bottom: 1px solid var(--sdp-crom-vora);
+  color: var(--sdp-crom-text);
 }
 
 .univ-manager-toolbar {
@@ -212,6 +229,14 @@
 
 .univ-manager-toolbar--facets {
   justify-content: space-between;
+  background: var(--sdp-crom-fons);
+}
+
+.univ-manager-toolbar--list {
+  justify-content: space-between;
+  background:
+    linear-gradient(var(--sdp-crom-hover), var(--sdp-crom-hover)),
+    var(--sdp-crom-fons);
 }
 
 .univ-manager-inbox {
@@ -222,13 +247,41 @@
   gap: var(--sdp-space-2);
   min-height: var(--sdp-touch-min);
   padding: 0 var(--sdp-space-3);
-  border: 1px solid var(--sdp-vora-control);
+  border: 0;
   border-radius: var(--sdp-radi-s);
-  background: var(--sdp-fons-superficie);
-  color: var(--sdp-text-titol);
+  background: transparent;
+  color: var(--sdp-crom-text);
   font: inherit;
   font-weight: 700;
   cursor: pointer;
+}
+
+.univ-manager-toolbar__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--sdp-touch-min);
+  height: var(--sdp-touch-min);
+  padding: 0;
+  border: 0;
+  border-radius: var(--sdp-radi-s);
+  background: transparent;
+  color: var(--sdp-crom-text);
+  cursor: pointer;
+}
+
+.univ-manager-toolbar__icon:hover:not(:disabled) {
+  background: transparent;
+}
+
+.univ-manager-toolbar__icon:focus-visible {
+  outline: 2px solid var(--sdp-focus);
+  outline-offset: 2px;
+}
+
+.univ-manager-toolbar__icon:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
 }
 
 .univ-manager-toolbar--list .btn-primary {
@@ -238,6 +291,24 @@
   min-height: var(--sdp-touch-min);
   padding-inline: var(--sdp-space-3);
   white-space: nowrap;
+}
+
+.univ-manager-create {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sdp-space-1);
+  min-height: var(--sdp-touch-min);
+  padding-inline: var(--sdp-space-3);
+  border: 0;
+  border-radius: var(--sdp-radi-pastilla);
+  background: var(--sdp-accio);
+  color: var(--sdp-sobre-accio);
+  white-space: nowrap;
+}
+
+.univ-manager-create:hover:not(:disabled) {
+  background: var(--sdp-accio-hover);
+  color: var(--sdp-sobre-accio);
 }
 
 .univ-manager-search {

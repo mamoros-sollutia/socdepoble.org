@@ -1,6 +1,6 @@
 import React, { lazy, Suspense, useEffect, useRef, memo, StrictMode } from 'react';
 import { Navigate, NavLink, Route, Routes, useNavigate, useParams, useLocation } from './contexts/RouterContext';
-import { Globe, MoonStar, Plus, Search, Settings, Sun, UserRound } from '../icons.jsx';
+import { Globe, MoonStar, Plus, Search, Settings, Sun, UserRound, Menu } from '../icons.jsx';
 import BrandMark from '../components/BrandMark';
 import { APP_NAME } from '../config/app';
 import { DEFAULT_SECTION_PATH, SECTIONS, SECTION_ORDER, GESTORIA_SECTIONS } from '../config/sections';
@@ -348,15 +348,20 @@ const TopBar = memo(function TopBar() {
 
   return (
     <header className="bar-black">
-      <button type="button" className="mobile-logo-wrapper sdp-unstyled-btn" aria-label="Obrir menú" onClick={(e) => {
-        const root = e.target.getRootNode();
-        const sidebar = root.querySelector('.app-sidebar') || document.querySelector('.app-sidebar');
-        const host = root instanceof ShadowRoot ? root.host : document.body;
-        sidebar?.classList.toggle('sidebar-open');
-        host.classList.toggle('sidebar-closed');
-      }}>
-        <BrandMark variant="light" className="mobile-logo" />
-      </button>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sdp-space-3)' }}>
+        <button type="button" className="sdp-top-bar-btn icon" aria-label="Obrir menú" onClick={(e) => {
+          const root = e.target.getRootNode();
+          const sidebar = root.querySelector('.app-sidebar') || document.querySelector('.app-sidebar');
+          const host = root instanceof ShadowRoot ? root.host : document.body;
+          sidebar?.classList.toggle('sidebar-open');
+          host.classList.toggle('sidebar-closed');
+        }}>
+          <Menu aria-hidden="true" focusable="false" />
+        </button>
+        <div className="mobile-logo-wrapper" style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }} onClick={() => navigateWithTransition('/jo/mur')}>
+          <BrandMark variant="light" className="mobile-logo" />
+        </div>
+      </div>
 
       <div className="right-icons">
         <button type="button" className="icon sdp-top-bar-btn" onClick={() => navigateWithTransition('/traduccions')} aria-label={t('nav.idioma', 'Idioma')} title={t('nav.idioma', 'Idioma')}>
