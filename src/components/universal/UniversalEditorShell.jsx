@@ -1,9 +1,9 @@
 import { Image as ImageIcon, Lock, Globe } from 'lucide-react';
-import { DateTimeControl, Dropdown } from './UniversalElements';
+import { Dropdown } from '../ui/Dropdown';
+import { DateTimeControl } from '../ui/controls';
 import { sanitizeHtml } from '../../utils/sanitize.js';
 import useHeroImageHandler from '../../hooks/useHeroImageHandler.js';
 import React, { Component, useRef, useCallback, useEffect } from 'react';
-import { PageFrame } from './PageFrame';
 
 // Error Boundary per protegir l'editor i evitar tombar la pàgina hoste
 class EditorErrorBoundary extends Component {
@@ -66,6 +66,7 @@ export function UniversalEditorShell({
   showStatusToggle = true,
   previewTitle = "Previsualitzar / Tancar",
   previewHelp = "No oblides desar els canvis.",
+  onToast = (msg, type) => console.log(`[Toast ${type}] ${msg}`),
   className = ''
 }) {
   const debounceTimeouts = useRef({});
@@ -134,62 +135,54 @@ export function UniversalEditorShell({
     formattedDate,
     showStatusToggle,
     previewTitle,
-    previewHelp
+    previewHelp,
+    onToast
   });
 
   return (
     <EditorErrorBoundary>
-      <section className={`editor-shell--main ${className}`}>
-        {topBar}
-        <div className="editor-scroll-area">
-          <PageFrame
-            className="editor-page-frame"
-            contentClassName="editor-page-frame__content"
-            chrome="context"
-            variant="embed"
-            title={
-              <EditableField 
-                key={`${id}-title`} 
-                className="title-editor" 
-                html={titleHtml} 
-                placeholder="Títol..." 
-                onChange={(val) => handleFieldChange('title', val)} 
-                onBlur={(val) => handleFieldBlur('title', val)} 
-              />
-            }
-            subtitle={
-              <EditableField 
-                key={`${id}-subtitle`} 
-                className="subtitle-editor" 
-                html={subtitleHtml} 
-                placeholder="Subtítol opcional..." 
-                onChange={(val) => handleFieldChange('subtitle', val)} 
-                onBlur={(val) => handleFieldBlur('subtitle', val)} 
-              />
-            }
-            lead={
-              <EditableField 
-                key={`${id}-lead`} 
-                className="lead-editor" 
-                html={leadHtml} 
-                placeholder="Entradilla opcional..." 
-                onChange={(val) => handleFieldChange('lead', val)} 
-                onBlur={(val) => handleFieldBlur('lead', val)} 
-              />
-            }
-            labels={labels}
-            copyright={copyright}
-            topBarData={shellData.topBarData}
-          >
+      <div className={`ues-root ${className}`}>
+        <header className="ues-header">
+          {topBar}
+        </header>
+        <div className="ues-scroll">
+          <div className="ues-canvas">
+            {shellData.topBarData.heroComponent ? (
+              <div className="hero-image" style={{ marginBottom: '2rem' }}>
+                {shellData.topBarData.heroComponent}
+              </div>
+            ) : null}
+            <EditableField 
+              key={`${id}-title`} 
+              className="editor-title-input" 
+              html={titleHtml} 
+              placeholder="Títol..." 
+              onChange={(val) => handleFieldChange('title', val)} 
+              onBlur={(val) => handleFieldBlur('title', val)} 
+            />
+            <EditableField 
+              key={`${id}-subtitle`} 
+              className="editor-subtitle-input" 
+              html={subtitleHtml} 
+              placeholder="Subtítol opcional..." 
+              onChange={(val) => handleFieldChange('subtitle', val)} 
+              onBlur={(val) => handleFieldBlur('subtitle', val)} 
+            />
+            <EditableField 
+              key={`${id}-lead`} 
+              className="editor-lead-input" 
+              html={leadHtml} 
+              placeholder="Entradilla opcional..." 
+              onChange={(val) => handleFieldChange('lead', val)} 
+              onBlur={(val) => handleFieldBlur('lead', val)} 
+            />
             {children}
-          </PageFrame>
+          </div>
         </div>
-      </section>
+      </div>
     </EditorErrorBoundary>
   );
 }
-
-import { showToast } from './AvisadorEfimer';
 
 export function useEditorShell({ 
   onSaveField, 
@@ -200,14 +193,15 @@ export function useEditorShell({
   formattedDate,
   showStatusToggle = true,
   previewTitle = "Exemple de Publicació",
-  previewHelp = "Aquesta targeta és una previsualització de com quedarà al Mur. Utilitza l'editor inferior per modificar el contingut."
+  previewHelp = "Aquesta targeta és una previsualització de com quedarà al Mur. Utilitza l'editor inferior per modificar el contingut.",
+  onToast = console.log
 }) {
   const heroHandler = useHeroImageHandler({ 
     onSaveField, 
     fieldName: 'heroImage',
-    onError: (msg) => showToast(msg, 'error'),
+    onError: (msg) => onToast(msg, 'error'),
     onConfirmDelete: () => {
-      showToast("Imatge esborrada", "success");
+      onToast("Imatge esborrada", "success");
       return true;
     }
   });
@@ -215,9 +209,9 @@ export function useEditorShell({
   const logoHandler = useHeroImageHandler({ 
     onSaveField, 
     fieldName: 'logoImage',
-    onError: (msg) => showToast(msg, 'error'),
+    onError: (msg) => onToast(msg, 'error'),
     onConfirmDelete: () => {
-      showToast("Logotip esborrat", "success");
+      onToast("Logotip esborrat", "success");
       return true;
     }
   });

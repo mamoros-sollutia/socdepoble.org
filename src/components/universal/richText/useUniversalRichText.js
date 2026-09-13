@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 import { useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 
@@ -14,13 +14,15 @@ export function useUniversalRichText({
   const currentIdRef = useRef(id);
   const onChangeRef = useRef(onChange);
   const onSaveRef = useRef(onSave);
-  const flushRef = useRef(() => {});
 
+  // Sync refs with latest props
   currentIdRef.current = id;
   onChangeRef.current = onChange;
   onSaveRef.current = onSave;
 
-  flushRef.current = (expectedId) => {
+  // The flush function reads from the draft, never from the editor, 
+  // preventing empty-string overwrites if the editor is already destroyed.
+  const flush = useCallback((expectedId) => {
     const pending = pendingSaveRef.current;
     if (pending.content === null) return;
     if (expectedId !== undefined && pending.id !== expectedId) return;
@@ -28,8 +30,11 @@ export function useUniversalRichText({
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
     timeoutRef.current = null;
     pendingSaveRef.current = { id: null, content: null };
-    if (pending.id != null) onSaveRef.current?.(pending.content, pending.id);
-  };
+    
+    if (pending.id != null) {
+      onSaveRef.current?.(pending.content, pending.id);
+    }
+  }, []);
 
   const editor = useEditor({
     extensions: [StarterKit.configure({ heading: { levels: [2, 3, 4] } })],
@@ -42,7 +47,7 @@ export function useUniversalRichText({
       onChangeRef.current?.(html, currentId);
 
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
-      timeoutRef.current = setTimeout(() => flushRef.current(currentId), debounceMs);
+      timeoutRef.current = setTimeout(() => flush(currentId), debounceMs);
     },
     editorProps: {
       attributes: {
@@ -51,6 +56,7 @@ export function useUniversalRichText({
     },
   });
 
+  // Sync incoming content changes (e.g. when changing notes)
   useEffect(() => {
     if (!editor || editor.isDestroyed) return;
     try {
@@ -62,8 +68,9 @@ export function useUniversalRichText({
     }
   }, [content, editor, id]);
 
+  // Global exit hooks (pagehide, visibilitychange)
   useEffect(() => {
-    const flushSave = () => flushRef.current();
+    const flushSave = () => flush();
     const flushWhenHidden = () => {
       if (document.visibilityState === 'hidden') flushSave();
     };
@@ -73,11 +80,23 @@ export function useUniversalRichText({
     return () => {
       window.removeEventListener('pagehide', flushSave);
       document.removeEventListener('visibilitychange', flushWhenHidden);
-      flushRef.current();
+      flushSave();
     };
-  }, []);
+  }, [flush]);
 
-  useEffect(() => () => flushRef.current(id), [id]);
+  // Flush when note ID changes or component unmounts
+  useEffect(() => {
+    return () => flush(id);
+  }, [id, flush]);
+  
+  // ProseMirror orphan event cleanup as recommended by the Council
+  useEffect(() => {
+    return () => {
+      if (editor && !editor.isDestroyed && editor.view) {
+         editor.view.destroy();
+      }
+    };
+  }, [editor]);
 
   return editor;
 }

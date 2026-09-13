@@ -15,27 +15,53 @@ export function TableOfContentsDrawer({ isOpen, onClose, contentRef, idPrefix = 
 
     const container = contentRef?.current;
     if (!container) return;
-
-    const domHeadings = container.querySelectorAll('h1, h2, h3, h4');
     
-    const parsedHeadings = Array.from(domHeadings).map((el, idx) => {
-      if (el.classList.contains('sr-only') || el.textContent.trim() === '') return null;
-      if (!el.id) {
-        el.id = `${idPrefix}-heading-${idx}`;
-        el.dataset.sdpTocGenerated = 'true';
-      }
-      return {
-        id: el.id,
-        text: el.innerText || el.textContent,
-        level: parseInt(el.tagName.substring(1), 10),
-        element: el
-      };
-    }).filter(Boolean);
+    let currentParsed = [];
 
-    setHeadings(parsedHeadings);
+    const buildToc = () => {
+      const domHeadings = container.querySelectorAll('h1, h2, h3, h4');
+      
+      const parsedHeadings = Array.from(domHeadings).map((el, idx) => {
+        if (el.classList.contains('sr-only') || el.textContent.trim() === '') return null;
+        if (!el.id) {
+          el.id = `${idPrefix}-heading-${idx}`;
+          el.dataset.sdpTocGenerated = 'true';
+        }
+        return {
+          id: el.id,
+          text: el.innerText || el.textContent,
+          level: parseInt(el.tagName.substring(1), 10),
+          element: el
+        };
+      }).filter(Boolean);
+      
+      currentParsed = parsedHeadings;
+      setHeadings(parsedHeadings);
+    };
+
+    buildToc();
+
+    // Use MutationObserver for live updates as suggested by the Council
+    const observer = new MutationObserver((mutations) => {
+      // Only rebuild if there are meaningful text or node changes
+      const shouldRebuild = mutations.some(m => 
+        m.type === 'childList' || 
+        (m.type === 'characterData' && m.target.parentElement?.matches?.('h1, h2, h3, h4'))
+      );
+      if (shouldRebuild) {
+        buildToc();
+      }
+    });
+
+    observer.observe(container, {
+      childList: true,
+      subtree: true,
+      characterData: true
+    });
 
     return () => {
-      parsedHeadings.forEach(({ element, id }) => {
+      observer.disconnect();
+      currentParsed.forEach(({ element, id }) => {
         if (element.dataset.sdpTocGenerated === 'true' && element.id === id) {
           element.removeAttribute('id');
           delete element.dataset.sdpTocGenerated;

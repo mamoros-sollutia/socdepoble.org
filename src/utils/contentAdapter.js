@@ -13,12 +13,15 @@ export function extractPlainText(html, maxLength = 160) {
   const safeHtml = sanitizeHtml(String(html));
   let text;
 
-  if (typeof document !== 'undefined') {
-    const template = document.createElement('template');
-    template.innerHTML = safeHtml
-      .replace(/<br\s*\/?>/gi, ' ')
-      .replace(/<\/(p|li|h[1-6]|blockquote|div)>/gi, '</$1> ');
-    text = template.content.textContent || '';
+  if (typeof window !== 'undefined' && window.DOMParser) {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(
+      safeHtml
+        .replace(/<br\s*\/?>/gi, ' ')
+        .replace(/<\/(p|li|h[1-6]|blockquote|div)>/gi, '</$1> '),
+      'text/html'
+    );
+    text = doc.body.textContent || '';
   } else {
     // Fallback per a renderitzat sense DOM. El sanejador ja ha eliminat els
     // blocs prohibits; ací només convertim l'HTML segur restant a text.
