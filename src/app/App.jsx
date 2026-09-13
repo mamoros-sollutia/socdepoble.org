@@ -1,11 +1,10 @@
 import React, { lazy, Suspense, useEffect, useRef, memo, StrictMode } from 'react';
 import { Navigate, NavLink, Route, Routes, useNavigate, useParams, useLocation } from './contexts/RouterContext';
-import { Globe, MoonStar, Plus, Search, Settings, Sun, UserRound, Menu } from '../icons.jsx';
+import { Globe, MoonStar, Search, Settings, Sun, UserRound, Menu } from '../icons.jsx';
 import BrandMark from '../components/BrandMark';
 import { APP_NAME } from '../config/app';
 import { DEFAULT_SECTION_PATH, SECTIONS, SECTION_ORDER, GESTORIA_SECTIONS } from '../config/sections';
 import { getSectionLabels } from '../config/i18n';
-import { UniversalPage } from '../components/universal/UniversalPage';
 import { IaiaIcon } from '../components/universal/UniversalElements';
 import { recullTornadaOAuth } from '../data/backendPort.js';
 import { reclamaContingutDelConvidat } from '../data/identitat.js';

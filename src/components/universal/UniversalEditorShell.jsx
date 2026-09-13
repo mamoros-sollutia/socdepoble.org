@@ -68,8 +68,7 @@ export function UniversalEditorShell({
   showStatusToggle = true,
   previewTitle = "Previsualitzar / Tancar",
   previewHelp = "No oblides desar els canvis.",
-  onToast = (msg, type) => console.log(`[Toast ${type}] ${msg}`),
-  className = ''
+  onToast = (msg, type) => console.log(`[Toast ${type}] ${msg}`)
 }) {
   const debounceTimeouts = useRef({});
   const onSaveFieldRef = useRef(onSaveField);

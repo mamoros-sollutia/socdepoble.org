@@ -1,4 +1,4 @@
-import { ArrowLeft, List, Globe, Heading2, Bold, Italic, Strikethrough } from 'lucide-react';
+import { List } from 'lucide-react';
 import { useContext, useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { AppGridContext } from '../layout/AppGridShell';
@@ -16,8 +16,6 @@ export default function UniversalToolbar({
   const gridCtx = useContext(AppGridContext);
   
   // Try to use the passed onBack, or fallback to closing the mobile panel (if inside a grid)
-  const handleBack = onBack || (() => gridCtx?.setPanellObert('middle'));
-
   const { isHeading, isList, isBold, isItalic, isStrike } = formatState;
   const { toggleHeading, toggleList, toggleBold, toggleItalic, toggleStrike } = formatActions;
 
