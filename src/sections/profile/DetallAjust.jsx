@@ -2,11 +2,12 @@ import { useEffect, useState } from 'react';
 import { logout } from '../../data/backendPort.js';
 import { useNavigate } from '../../app/contexts/RouterContext';
 import { compressImage } from '../../utils/imageUtils.js';
+import { sanitizeHtml } from '../../utils/sanitize.js';
 import UniversalToolbar from '../../components/universal/UniversalToolbar';
-import UniversalEditorShell from '../../components/universal/UniversalEditorShell';
-import { FileText } from 'lucide-react';
+import { UniversalEditorShell } from '../../components/universal/UniversalEditorShell';
+import { UniversalPage } from '../../components/universal/UniversalPage';
 
-export default function DetallAjust({ ajust, identitat, guardarAjust }) {
+export default function DetallAjust({ ajust, identitat, guardarAjust, guardarCampPerfil }) {
   const navigate = useNavigate();
 
   const [valorTemp, setValorTemp] = useState('');
@@ -25,7 +26,7 @@ export default function DetallAjust({ ajust, identitat, guardarAjust }) {
     try {
       const dataUrl = await compressImage(file, { maxSize: 600, format: 'image/webp' });
       setValorTemp(dataUrl);
-    } catch (error) {
+    } catch {
       setMissatge({ tipus: 'error', text: 'S\'ha produït un error processant la imatge.' });
     }
   }
@@ -139,12 +140,19 @@ export default function DetallAjust({ ajust, identitat, guardarAjust }) {
 
   if (!identitat) {
     return (
-      <section className="notes-column">
-        <div className="sdp-buit">
-          <FileText size={64} />
-          <h2>Sense Identitat</h2>
+      <UniversalPage
+        titleText="El Meu Perfil"
+        heroImage="/assets/system/ui/login-fons.jpg"
+        logoImage="/assets/system/ui/logo-socdepoble-cuadrat-verd.svg"
+        title={<span dangerouslySetInnerHTML={{ __html: sanitizeHtml("Benvingut al teu perfil") }} />}
+        subtitle={<span dangerouslySetInnerHTML={{ __html: sanitizeHtml("L'ànima de la IAIA") }} />}
+        lead={<span dangerouslySetInnerHTML={{ __html: sanitizeHtml("Registra't per a tindre la teua pròpia veu, crear targetes i personalitzar el teu entorn.") }} />}
+        isPublished={true}
+      >
+        <div className="perfil-detall-buit">
+          Crea el teu compte o inicia sessió per a començar.
         </div>
-      </section>
+      </UniversalPage>
     );
   }
 
@@ -152,7 +160,8 @@ export default function DetallAjust({ ajust, identitat, guardarAjust }) {
   const isPersona = identitat.mena === 'persona';
 
   return (
-    <UniversalEditorShell
+    <UniversalEditorShell 
+      id={identitat.id}
       topBar={
         <UniversalToolbar 
           onPublish={() => alert("El perfil es desarà automàticament")} 
@@ -160,28 +169,27 @@ export default function DetallAjust({ ajust, identitat, guardarAjust }) {
           publishDisabled={false} 
         />
       }
-      titleText={identitat.nom || 'Sense nom'}
+      titleHtml={identitat.nom || ''}
+      subtitleHtml={isPersona ? null : (dades.lema || '')}
+      leadHtml={isPersona ? null : (dades.description || '')}
       heroImage={dades.hero_image}
       logoImage={dades.avatar_url || dades.logo_url}
-      isPublished={dades.is_public}
-      titleHtml={identitat.nom || ''}
-      subtitleHtml={isPersona ? '' : (dades.lema || '')}
-      leadHtml={isPersona ? '' : (dades.description || '')}
-      onSaveField={(field, value) => {
-        if (field === 'title') guardarAjust(isPersona ? 'nom' : 'nom', value);
-        if (field === 'subtitle' && !isPersona) guardarAjust('lema', value);
-        if (field === 'lead' && !isPersona) guardarAjust('descripcio', value);
-        if (field === 'logoImage') guardarAjust('avatar', value);
-        if (field === 'heroImage') guardarAjust('hero_image', value);
+      isPublished={Boolean(dades.is_public)}
+      onSaveField={(field, value, identitatId) => {
+        if (field === 'title') guardarCampPerfil(isPersona ? 'full_name' : 'name', value, identitatId);
+        if (field === 'subtitle' && !isPersona) guardarCampPerfil('lema', value, identitatId);
+        if (field === 'lead' && !isPersona) guardarCampPerfil('description', value, identitatId);
+        if (field === 'logoImage') guardarCampPerfil(isPersona ? 'avatar_url' : 'logo_url', value, identitatId);
+        if (field === 'heroImage') guardarCampPerfil('hero_image', value, identitatId);
       }}
-      labels={[{ id: 'tipus', etiqueta: identitat.mena, color: 'gris' }]}
+      showStatusToggle={false}
     >
       <div className="perfil-detall">
         {ajust ? (
           renderitzaFormulari()
         ) : (
           <p className="perfil-detall-buit">
-            Estàs modificant la teua fitxa de perfil. Pots editar els camps a la capçalera (títol, subtítol, text inicial, i imatges) directament. O bé, selecciona un ajust a l'esquerra (com Contrasenya o Privacitat) per a modificar-lo aquí.
+            Selecciona un ajust de l'esquerra per a modificar-lo.
           </p>
         )}
       </div>

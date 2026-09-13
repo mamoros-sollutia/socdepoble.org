@@ -1,32 +1,43 @@
 import { useState, useRef } from 'react';
 
-export default function useHeroImageHandler({ onSaveField, fieldName = 'heroImage', maxSizeBytes = 512 * 1024 }) {
+import { compressImage } from '../utils/imageUtils.js';
+
+export default function useHeroImageHandler({ 
+  onSaveField, 
+  fieldName = 'heroImage', 
+  maxSizeBytes = 5 * 1024 * 1024, // Accept up to 5MB, then compress
+  onError = (msg) => console.error(msg),
+  onConfirmDelete = () => true
+}) {
   const [isEditing, setIsEditing] = useState(false);
   const fileInputRef = useRef(null);
 
-  const handleFileChange = (e) => {
+  const handleFileChange = async (e) => {
     const file = e.target.files?.[0];
     e.target.value = '';
     if (!file) return;
     if (!file.type.startsWith('image/')) {
-      alert('Només imatges, de moment.');
+      onError('Només imatges, de moment.');
       return;
     }
     if (file.size > maxSizeBytes) {
-      alert(`La imatge passa de ${Math.round(maxSizeBytes / 1024)} KB. Redueix-la abans.`);
+      onError(`La imatge passa de ${Math.round(maxSizeBytes / (1024 * 1024))} MB. És massa pesada per processar-la.`);
       return;
     }
-    const reader = new FileReader();
-    reader.onload = () => {
-      onSaveField?.(fieldName, String(reader.result));
+
+    try {
+      const maxSize = fieldName.toLowerCase().includes('logo') || fieldName.toLowerCase().includes('avatar') ? 600 : 1200;
+      const dataUrl = await compressImage(file, { maxSize, format: 'image/webp', quality: 0.8 });
+      onSaveField?.(fieldName, dataUrl);
       setIsEditing(false);
-    };
-    reader.onerror = () => alert("No s'ha pogut llegir el fitxer.");
-    reader.readAsDataURL(file);
+    } catch (err) {
+      onError("No s'ha pogut processar la imatge.");
+    }
   };
 
-  const handleDelete = () => {
-    if (!window.confirm('Esborrar definitivament la imatge?')) return;
+  const handleDelete = async () => {
+    const confirmed = await onConfirmDelete();
+    if (!confirmed) return;
     onSaveField?.(fieldName, '');
     setIsEditing(false);
   };

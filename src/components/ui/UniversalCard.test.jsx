@@ -59,7 +59,7 @@ test('headingLevel fora de llista cau a h3, i labels nul no tomba la targeta', (
 
 test('una data «dd/mm/aa» filtra el Mur pel mateix dia', () => {
   pinta({ title: 'X', date: '10/09/26' });
-  act(() => { troba('.sp-card-time').click(); });
+  act(() => { troba('.btn-date-time').click(); });
   expect(mocks.navigate).toHaveBeenCalledWith('/mur?date=2026-09-10');
 });
 

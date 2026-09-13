@@ -1,5 +1,6 @@
 import { ArrowLeft, List, Globe, Heading2, Bold, Italic, Strikethrough } from 'lucide-react';
-import { useAppGrid } from '../layout/AppGridShell';
+import { useContext } from 'react';
+import { AppGridContext } from '../layout/AppGridShell';
 
 const iconProps = { size: 20, strokeWidth: 2, 'aria-hidden': true, focusable: false };
 
@@ -7,20 +8,17 @@ export default function UniversalToolbar({
   onBack,
   onPublish,
   publishDisabled = false,
-  editor = null, // Optional TipTap editor for formatting state and commands
+  formatState = {},
+  formatActions = {},
   t = (key, fallback) => fallback
 }) {
-  const { setPanellObert } = useAppGrid();
+  const gridCtx = useContext(AppGridContext);
   
-  // Try to use the passed onBack, or fallback to closing the mobile panel
-  const handleBack = onBack || (() => setPanellObert('middle'));
+  // Try to use the passed onBack, or fallback to closing the mobile panel (if inside a grid)
+  const handleBack = onBack || (() => gridCtx?.setPanellObert('middle'));
 
-  // If no editor is provided, these will just be inactive UI buttons
-  const isHeading = editor?.isActive('heading', { level: 2 });
-  const isList = editor?.isActive('bulletList');
-  const isBold = editor?.isActive('bold');
-  const isItalic = editor?.isActive('italic');
-  const isStrike = editor?.isActive('strike');
+  const { isHeading, isList, isBold, isItalic, isStrike } = formatState;
+  const { toggleHeading, toggleList, toggleBold, toggleItalic, toggleStrike } = formatActions;
 
   return (
     <div className="editor-toolbar" role="group" aria-label="Format i accions de la pàgina">
@@ -37,55 +35,59 @@ export default function UniversalToolbar({
       <div className="toolbar-actions" role="group" aria-label="Format del text">
         <button 
           aria-label="Alternar encapçalament"
-          onClick={() => editor?.chain().focus().toggleHeading({ level: 2 }).run()} 
+          onClick={toggleHeading} 
           className={`btn-icon ${isHeading ? 'active-text' : ''}`}
-          disabled={!editor}
+          disabled={!toggleHeading}
         >
           <Heading2 {...iconProps} />
         </button>
         <button 
           aria-label={t('section.notes.format.list', 'Llista')}
-          onClick={() => editor?.chain().focus().toggleBulletList().run()} 
+          onClick={toggleList} 
           className={`btn-icon ${isList ? 'active-text' : ''}`}
-          disabled={!editor}
+          disabled={!toggleList}
         >
           <List {...iconProps} />
         </button>
         <button 
           aria-label={t('section.notes.format.bold', 'Negreta')}
-          onClick={() => editor?.chain().focus().toggleBold().run()} 
+          onClick={toggleBold} 
           className={`btn-icon ${isBold ? 'active-text' : ''}`}
-          disabled={!editor}
+          disabled={!toggleBold}
         >
           <Bold {...iconProps} />
         </button>
         <button 
           aria-label={t('section.notes.format.italic', 'Cursiva')}
-          onClick={() => editor?.chain().focus().toggleItalic().run()} 
+          onClick={toggleItalic} 
           className={`btn-icon ${isItalic ? 'active-text' : ''}`}
-          disabled={!editor}
+          disabled={!toggleItalic}
         >
           <Italic {...iconProps} />
         </button>
         <button 
           aria-label={t('section.notes.format.strike', 'Ratllat')}
-          onClick={() => editor?.chain().focus().toggleStrike().run()} 
+          onClick={toggleStrike} 
           className={`btn-icon ${isStrike ? 'active-text' : ''}`}
-          disabled={!editor}
+          disabled={!toggleStrike}
         >
           <Strikethrough {...iconProps} />
         </button>
       </div>
-      
-      <button 
-        type="button" 
-        aria-label="Publicar" 
-        onClick={onPublish} 
-        disabled={publishDisabled}
-        className="btn-publish"
-      >
-        <Globe {...iconProps} /> PUBLICAR
-      </button>
+
+      <div className="toolbar-actions right">
+        {onPublish && (
+          <button 
+            type="button"
+            className="btn-publish" 
+            disabled={publishDisabled} 
+            onClick={onPublish}
+            aria-label={t('section.notes.publish', 'Publicar article')}
+          >
+            {t('section.notes.publish', 'Publicar')} <Globe size={16} />
+          </button>
+        )}
+      </div>
     </div>
   );
 }

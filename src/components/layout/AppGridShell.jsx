@@ -3,6 +3,7 @@ import appGridStyles from './AppGridShell.css?inline';
 import AppGridResizer from './AppGridResizer';
 
 const AppGridContext = createContext(null);
+export { AppGridContext };
 
 const COLUMN_LIMITS = Object.freeze({
   left: { min: 200, max: 420 },

@@ -342,8 +342,8 @@ details[open] summary.accordion-header svg:last-child { transform: rotate(180deg
 
 .sp-card-media { width: 100%; aspect-ratio: 1 / 1; display: block; object-fit: cover; object-position: top; background: var(--sdp-fons-subtil); }
 
-.sp-card-body { padding: 22px 24px 16px; text-align: left; position: relative; min-width: 0; }
-.sp-card-title { font-size: 1.4rem; color: var(--sdp-accio-text); font-weight: 800; line-height: var(--sdp-leading-tight); margin: 0 0 var(--sdp-space-2) 0; flex: 1; text-align: left; }
+.sp-card-body { padding: 22px 24px 16px; text-align: center; position: relative; min-width: 0; }
+.sp-card-title { font-size: 1.4rem; color: var(--sdp-accio-text); font-weight: 800; line-height: var(--sdp-leading-tight); margin: 0 0 var(--sdp-space-2) 0; flex: 1; text-align: center; }
 
 /* Targetes Especials */
 .sp-card--onboarding,
@@ -450,6 +450,8 @@ details[open] summary.accordion-header svg:last-child { transform: rotate(180deg
 /* Per defecte, tot centrat al cos de la targeta si no hi ha etiqueta a dalt a la dreta */
 .sp-card .sp-card-body h1,
 .sp-card .sp-card-body h2,
+.sp-card .sp-card-body .sp-card-title,
+.sp-card .sp-card-body .sp-card-subtitle,
 .sp-card-body p,
 .sp-card-body .sp-card-text {
   text-align: center;
@@ -957,6 +959,7 @@ button.sp-card-calendar-badge:hover {
 .component-doc { margin-bottom: var(--sdp-space-8); }
 .component-doc-header { margin-bottom: var(--sdp-space-4); }
 .component-doc-preview { padding: var(--sdp-space-6); background: var(--sdp-fons-elevat); border-radius: var(--sdp-radi-m); border: 1px solid var(--sdp-vora); }
+.component-doc-preview--transparent { background: transparent; padding: 0; border: none; }
 .chat-container { padding: var(--sdp-space-4); margin-bottom: var(--sdp-space-6); background-color: var(--sdp-fons-superficie); border-radius: var(--sdp-radi-g); display: flex; flex-direction: column; gap: var(--sdp-space-4); }
 .form-control { width: 100%; border: 1px solid var(--sdp-vora-control); border-radius: var(--sdp-radi-m); padding: var(--sdp-space-2) var(--sdp-space-3); background-color: var(--sdp-fons-elevat); color: var(--sdp-text-base); }
 

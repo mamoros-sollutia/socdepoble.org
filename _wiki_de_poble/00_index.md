@@ -51,6 +51,7 @@ description: 00INDEX
 - [[BIOS]]
 - [[ESTAT]]
 - [[LEDGER]]
+- [[02_saber/skills_mirror/AGENTS_skill-casos-us-essencials.md]]
 
 ## Disseny i Arquitectura Actual (Pedra Seca)
 - [[estandard_integracio_react]]

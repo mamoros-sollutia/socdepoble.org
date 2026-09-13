@@ -1,5 +1,4 @@
 import { useMemo } from 'react';
-import { UniversalPage } from '../../components/universal/UniversalPage';
 import { useContent } from '../../components/universal/UniversalElements';
 import { PerfilProvider, usePerfil, ajustosPersona, ajustosOrganitzacio } from './PerfilContext.jsx';
 import DetallAjust from './DetallAjust.jsx';
@@ -9,26 +8,36 @@ import { UniversalManager } from '../../components/universal/manager/UniversalMa
 import { UserRound, Building2, Lock } from 'lucide-react';
 
 function PerfilManagerInner() {
-  const { identitats, guardarAjust } = usePerfil();
+  const { 
+    identitats,
+    guardarAjust,
+    guardarCampPerfil
+  } = usePerfil();
 
   const totsElsAjustos = useMemo(() => {
-    return identitats.flatMap(id => {
-      const aj = id.mena === 'persona' ? ajustosPersona(id.dades || {}) : ajustosOrganitzacio(id.dades || {});
-      return aj.map(a => ({ ...a, uniqueId: `${id.id}-${a.id}`, identitatId: id.id, identitatMena: id.mena }));
+    return identitats.flatMap(identitat => {
+      const ajustosIdentitat = identitat.mena === 'persona' 
+        ? ajustosPersona(identitat.dades || {}) 
+        : ajustosOrganitzacio(identitat.dades || {});
+      return ajustosIdentitat.map(a => ({
+        ...a,
+        uniqueId: `${identitat.id}-${a.id}`,
+        identitatId: identitat.id,
+        identitatMena: identitat.mena,
+        identitatNom: identitat.nom
+      }));
     });
   }, [identitats]);
 
   const facets = useMemo(() => [
     {
       id: 'identitat',
-      label: 'IDENTITATS',
-      type: 'flat',
+      label: 'Identitat',
       options: identitats.map(i => ({
-        id: i.id,
-        label: i.nom,
-        icon: i.mena === 'persona' ? UserRound : Building2
+        value: i.id,
+        label: i.nom
       })),
-      getValue: item => item.identitatId
+      getValue: item => item?.identitatId
     }
   ], [identitats]);
 
@@ -50,8 +59,9 @@ function PerfilManagerInner() {
         renderDetail={(item) => (
           <DetallAjust 
             ajust={item} 
-            identitat={identitats.find(i => i.id === item.identitatId)} 
+            identitat={identitats.find(i => i.id === item?.identitatId)} 
             guardarAjust={guardarAjust} 
+            guardarCampPerfil={guardarCampPerfil}
           />
         )}
         onActionCreate={null}
@@ -61,23 +71,16 @@ function PerfilManagerInner() {
 }
 
 export default function PerfilShell() {
-  const { t, externalConfig } = useUI();
+  const { externalConfig } = useUI();
   const contentContext = useContent();
   const config = contentContext?.config || externalConfig || {};
 
   return (
     <>
-      <UniversalPage
-        title={t('section.perfil.title', 'El meu compte')}
-        chrome="none"
-        variant="embed"
-        noPadding
-      >
-        <style data-perfil-styles>{perfilStyles}</style>
-        <PerfilProvider config={config}>
-          <PerfilManagerInner />
-        </PerfilProvider>
-      </UniversalPage>
+      <style data-perfil-styles>{perfilStyles}</style>
+      <PerfilProvider config={config}>
+        <PerfilManagerInner />
+      </PerfilProvider>
     </>
   );
 }

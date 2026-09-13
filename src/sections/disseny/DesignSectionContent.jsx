@@ -7,7 +7,7 @@ import { EVENTS } from '../mur/eventsContent.js';
  * ComponentDoc - Wrapper per a documentar elements del Sistema de Disseny (Pedra Seca)
  * Açò actua com a "Storybook" en miniatura.
  */
-function ComponentDoc({ title, description, technical, children }) {
+function ComponentDoc({ title, description, technical, transparent, children }) {
   return (
     <div className="component-doc ">
       <div className="component-doc-header">
@@ -19,7 +19,7 @@ function ComponentDoc({ title, description, technical, children }) {
           </div>
         )}
       </div>
-      <div className="component-doc-preview ">
+      <div className={`component-doc-preview ${transparent ? 'component-doc-preview--transparent' : ''}`}>
         {children}
       </div>
     </div>
@@ -774,11 +774,13 @@ Gran</div>
 <h3 >20. Targeta Mestra (Sóc de Poble Universal Card)</h3>
 
 <ComponentDoc
-  title="20.1 Targeta Mestra Principal (Base Canònica)"
-  description="L'estructura base de qualsevol publicació al Mur. Tot el text (títol, subtítol i cos) està centrat per defecte per oferir una lectura pausada i harmoniosa."
-  technical="Quan no hi ha cap element superior dret (com un preu o una etiqueta de data), el text de la targeta manté la seua naturalesa centrada. Esta és la targeta sobre la qual s'afegeixen o lleven elements."
+  title="Variants de la Targeta Mestra"
+  description="L'ànima de la IAIA. Totes les publicacions hereten de la mateixa anatomia. El contenidor flexbox d'avall (.sdp-card-grid) mostra com s'adapten les targetes segons si tenen una insígnia lateral (badge) o no."
+  technical="Utilitza la propietat `squareBadge` per introduir una insígnia a la dreta (data, preu, icona). Això afegeix la classe `.has-aside` al cos de la targeta i alinea automàticament el text a l'esquerra per contrapesar el bloc. Si no hi ha insígnia, el text es centra."
+  transparent={true}
 >
-  <>
+  <div className="sdp-card-grid">
+    {/* 20.1: Base (sense aside) */}
     <UniversalCard
       title="Disseny Pedra Seca"
       subtitle="Sistema oficial de disseny per a Sóc de Poble"
@@ -794,7 +796,6 @@ Gran</div>
       avatarUrl="/assets/system/ui/logo-socdepoble-cuadrat-verd.svg"
       time="10:00"
       date="07/08/22"
-      showPin={true}
       copyright="© Sóc de Poble / Fet per la IAIA i Nano Banana"
       hasFooter={true}
       showTranslate={true}
@@ -803,20 +804,13 @@ Gran</div>
       showConnect={true}
       mainHref="#disseny"
     />
-  </>
-</ComponentDoc>
 
-<ComponentDoc
-  title="20.2 Targeta Mestra: Mercat (Producte / Intercanvi)"
-  description="Variació dissenyada per al comerç de proximitat. Afig un distintiu a la cantonada superior dreta de l'àrea de text i alinea automàticament tot el contingut a l'esquerra."
-  technical="En passar la propietat `price`, la targeta afig la classe `.has-price` al contenidor del text. Esta classe trenca el centratge per defecte i alinea el text a l'esquerra (justify-content: flex-start) per equilibrar el pes visual del botó flotant del preu/intercanvi."
->
-  <>
+    {/* 20.2: Mercat (amb preu) */}
     <UniversalCard
       title="Samarreta Sóc de Poble"
       subtitle="L'edició definitiva amb el logotip complet"
       body="Dibuix del mapa del tresor. Cotó Roly de màxima qualitat."
-      price="15.00 €"
+      squareBadge={{ type: 'price', value: '15 €' }}
       imageUrl="https://socdepoble.org/assets/uploads/brain/media__1776503825171.jpg"
       imageAlt="Samarreta"
       labels={[
@@ -830,82 +824,82 @@ Gran</div>
       avatarUrl="/assets/system/ui/logo-socdepoble-cuadrat-verd.svg"
       time="00:29"
       date="23/03/22"
-      showPin={true}
       copyright="© Sóc de Poble / Fet per la IAIA i Nano Banana"
       hasFooter={true}
       showTranslate={true}
       showComment={true}
       showShare={true}
       showConnect={true}
-      mainHref="#samarreta"
     />
-  </>
-</ComponentDoc>
 
-<ComponentDoc
-  title="20.3 Targeta Mestra: Esdeveniment"
-  description="Variació per a dates assenyalades. La data es destaca mitjançant un 'Badge' de calendari, bevent de la font de dades oficial."
->
-  <>
+    {/* 20.3: Esdeveniment (amb data) */}
     {(() => {
       const eventItem = EVENTS.find(e => e.id === 'aplec-2023') || {};
-      
-      return (
-        <EventCard item={eventItem} />
-      );
+      return <EventCard item={eventItem} />;
     })()}
-  </>
-</ComponentDoc>
 
-<ComponentDoc
-  title="20.4 Targeta Mestra sense imatge (Exemple: Hisenda / Gestoria)"
-  description="Quan la publicació no disposa d'imatge principal, el focus recau completament sobre la tipografia i les dades meta. S'acostuma a emprar per a avisos del sistema o procediments burocràtics."
->
-  <div className="stack-grid">
+    {/* Variant: Vehicle */}
+    <UniversalCard
+      title="Viatge a Alacant"
+      subtitle="Compartir cotxe"
+      body="Isc demà divendres a les 8:00h cap a l'estació de tren d'Alacant. Tinc 3 places lliures."
+      squareBadge={{ type: 'custom', content: <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg> }}
+      labels={[
+        { text: 'Vehicle', className: 'sdp-badge-system' },
+        { text: 'Alacant', className: 'sdp-badge-category' }
+      ]}
+      author="Maria"
+      location="La Torre de les Maçanes"
+      time="18:30"
+      date="13/09/26"
+      hasFooter={true}
+      showTranslate={true}
+      showComment={true}
+      showShare={true}
+      showConnect={true}
+      connectLabel="Sol·licitar plaça"
+    />
+
+    {/* Variant: Animalets */}
+    <UniversalCard
+      title="Gos perdut"
+      subtitle="Zona del Riu"
+      body="Hem trobat un gosset xicotet prop del riu. Porta un collar roig però no té xapa. Si algú el coneix que avise."
+      squareBadge={{ type: 'custom', content: <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 16.5A3.5 3.5 0 0 1 8.5 13a3.5 3.5 0 0 1 7 0 3.5 3.5 0 0 1-3.5 3.5Z"/><path d="M6 10.5A2.5 2.5 0 0 1 3.5 8a2.5 2.5 0 0 1 5 0 2.5 2.5 0 0 1-2.5 2.5Z"/><path d="M18 10.5A2.5 2.5 0 0 1 15.5 8a2.5 2.5 0 0 1 5 0 2.5 2.5 0 0 1-2.5 2.5Z"/><path d="M9.5 5A2.5 2.5 0 0 1 7 2.5 2.5 2.5 0 0 1 12 2.5 2.5 2.5 0 0 1 9.5 5Z"/><path d="M14.5 5A2.5 2.5 0 0 1 12 2.5 2.5 2.5 0 0 1 17 2.5 2.5 2.5 0 0 1 14.5 5Z"/></svg> }}
+      labels={[
+        { text: 'Animalets', className: 'sdp-badge-system' },
+        { text: 'Perdut', className: 'sdp-badge-accent' }
+      ]}
+      author="Paco"
+      location="La Torre de les Maçanes"
+      time="09:15"
+      date="13/09/26"
+      hasFooter={true}
+      showTranslate={false}
+      showComment={true}
+      showShare={true}
+      showConnect={true}
+    />
+
+    {/* Variant: Sense imatge i text */}
     <UniversalCard
       title="Hisenda"
       subtitle="Model 303 / 130"
-      price="***,** €"
+      squareBadge={{ type: 'text', content: <span className="sp-card-calendar-badge__dia" data-oversized="true">Vist</span> }}
       labels={[
         { text: 'Gestoria', className: 'sdp-badge-system' },
         { text: 'Hisenda', className: 'sdp-badge-category' }
       ]}
       author="Mestre Poble"
       location="La Torre de les Maçanes"
-      avatarUrl="/assets/system/ui/logo-socdepoble-cuadrat-verd.svg"
       time="14:28"
       date="26/06/22"
-      copyright="© Sóc de Poble / Fet per la IAIA i Nano Banana"
       hasFooter={true}
       showTranslate={true}
       showComment={true}
       showShare={true}
       showConnect={true}
-      connectLabel="Connectar amb Hisenda"
-      mainHref="#hisenda"
-    />
-
-    <UniversalCard
-      title="Caixa Real"
-      subtitle="Saldo Disponible"
-      price="***,** €"
-      labels={[
-        { text: 'Mercat', className: 'sdp-badge-system' },
-        { text: 'Sóc de Poble', className: 'sdp-badge-category' }
-      ]}
-      author="Mestre Poble"
-      location="La Torre de les Maçanes"
-      avatarUrl="/assets/system/ui/logo-socdepoble-cuadrat-verd.svg"
-      time="14:28"
-      date="26/06/22"
-      copyright="© Sóc de Poble / Fet per la IAIA i Nano Banana"
-      hasFooter={true}
-      showTranslate={true}
-      showComment={true}
-      showShare={true}
-      showConnect={true}
-      connectLabel="Connectar amb Caixa Real"
-      mainHref="#caixa"
+      connectLabel="Obrir"
     />
   </div>
 </ComponentDoc>

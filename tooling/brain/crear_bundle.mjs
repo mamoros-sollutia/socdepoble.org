@@ -543,7 +543,7 @@ function principal() {
   
   // Ancoratge automàtic: evitar orfes a l'Escriptori
   try {
-    execSync('node generar_indexs.mjs', { cwd: arrelSegura() });
+    // execSync('node generar_indexs.mjs', { cwd: arrelSegura() });
     console.log('✅ Ancoratge automàtic: L\'Escriptori ha sigut reindexat.');
   } catch (e) {
     throw new Error(`Error en l'ancoratge automàtic: ${e.message}`);

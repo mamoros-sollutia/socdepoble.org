@@ -6,12 +6,13 @@ import { useUIState } from '../../app/contexts/UIContext';
 import { useUIActions } from '../../app/contexts/UIContext';
 import { useNotesData } from './NotesDataContext';
 import { useMur } from '../mur/MurContext';
+import { extractPlainText } from '../../utils/contentAdapter.js';
 
 const CAMPS_HTML = new Set(['title', 'subtitle', 'lead', 'content']);
 
 function netejaCamp(field, value) {
   if (CAMPS_HTML.has(field)) return sanitizeHtml(value);
-  if (field === 'heroImage') return esFontImatgeSegura(value) ? String(value).trim() : '';
+  if (field === 'heroImage' || field === 'logoImage') return esFontImatgeSegura(value) ? String(value).trim() : '';
   return netejaText(value);
 }
 
@@ -67,12 +68,13 @@ export function NotesProvider({ children }) {
     return rawNotes.map((rawNote) => {
       const overrides = localNoteOverrides[rawNote.id] || {};
       const note = { ...rawNote, ...overrides };
-      const plainText = String(note.content || '').replace(/<[^>]*>/g, ' ').trim();
+      const plainText = extractPlainText(note.content || '', Infinity);
+      const plainTitle = extractPlainText(note.title || '', Infinity);
       return {
         ...note,
         plainText,
         coverImage: note.heroImage || undefined,
-        searchText: normalizeSearchText(`${note.title} ${plainText}`),
+        searchText: normalizeSearchText(`${plainTitle} ${plainText}`),
         formattedDate: new Date(note.updatedAt || Date.now()).toLocaleDateString(locale, { day: '2-digit', month: '2-digit', year: '2-digit' }),
         formattedTime: new Date(note.updatedAt || Date.now()).toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit' })
       };

@@ -22,7 +22,9 @@ Ací només resideix la matèria viva. El que ha mort, descansa en l'arxiu.
 - [[260913_0000_ABSENTS_auditoria.json]]
 - [[260913_0000_BUNDLE_auditoria]]
 - [[260913_0000_PROMPT_auditoria]]
-
+- [[260913_0320_BUNDLE_auditoria]]
+- [[260913_0320_PETORRETA_EXCELENCIA]]
+- [[260913_0320_ABSENTS_auditoria.json]]
 ## 00_bandeja_d_entrada
 - [[00_bandeja_d_entrada/260912_2340_PROMPT_Claude_Remat]]
 - [[00_bandeja_d_entrada/260913_1230_PROMPT_neteja_disseny]]

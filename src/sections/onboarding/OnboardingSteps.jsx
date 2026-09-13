@@ -6,7 +6,7 @@ import { UniversalCard } from '../../components/universal/UniversalElements.jsx'
 
 export function RegistrationStep({ isBusy, error, confirmationEmail, onRegister, onLogin, onClearError }) {
   const [mode, setMode] = useState('register');
-  const [fields, setFields] = useState({ name: '', email: '', password: '', avatar_url: '', rgpd: false });
+  const [fields, setFields] = useState({ name: '', email: '', password: '', confirmPassword: '', rgpd: false });
   const [errors, setErrors] = useState({});
 
   const updateField = (event) => {
@@ -20,6 +20,9 @@ export function RegistrationStep({ isBusy, error, confirmationEmail, onRegister,
     event.preventDefault();
     if (mode === 'register') {
       const nextErrors = validateRegistration(fields);
+      if (fields.password !== fields.confirmPassword) {
+        nextErrors.confirmPassword = 'Les contrasenyes no coincideixen';
+      }
       if (!fields.rgpd) {
         nextErrors.rgpd = 'Has d’acceptar la política de privacitat per continuar.';
       }
@@ -111,22 +114,6 @@ export function RegistrationStep({ isBusy, error, confirmationEmail, onRegister,
               </div>
             )}
             
-            {mode === 'register' && (
-              <div className="sdp-camp">
-                <label className="sdp-camp__etiqueta" htmlFor="reg-avatar">URL de la foto de perfil (opcional)</label>
-                <input
-                  id="reg-avatar"
-                  className="sdp-control"
-                  type="url"
-                  name="avatar_url"
-                  value={fields.avatar_url}
-                  onChange={updateField}
-                  autoComplete="photo"
-                  placeholder="https://exemples.com/foto.jpg"
-                  disabled={isBusy}
-                />
-              </div>
-            )}
 
             <div className={errors.email ? 'sdp-camp ' : 'sdp-camp'}>
               <label className="sdp-camp__etiqueta" htmlFor="reg-email">Correu electrònic</label>
@@ -170,6 +157,26 @@ export function RegistrationStep({ isBusy, error, confirmationEmail, onRegister,
                 <p className="sdp-camp__error">{errors.password}</p>
               )}
             </div>
+
+            {mode === 'register' && (
+              <div className={errors.confirmPassword ? 'sdp-camp ' : 'sdp-camp'}>
+                <label className="sdp-camp__etiqueta" htmlFor="reg-confirm-password">Confirmar contrasenya</label>
+                <input
+                  id="reg-confirm-password"
+                  className="sdp-control"
+                  type="password"
+                  name="confirmPassword"
+                  value={fields.confirmPassword}
+                  onChange={updateField}
+                  autoComplete="new-password"
+                  minLength={10}
+                  aria-invalid={Boolean(errors.confirmPassword)}
+                  aria-describedby={errors.confirmPassword ? 'onboarding-confirm-password-error' : undefined}
+                  disabled={isBusy}
+                />
+                {errors.confirmPassword ? <p id="onboarding-confirm-password-error" className="sdp-camp__error">{errors.confirmPassword}</p> : null}
+              </div>
+            )}
 
             {mode === 'register' && (
               <div className={errors.rgpd ? 'sdp-casella ' : 'sdp-casella'}>

@@ -126,31 +126,35 @@ export function PerfilProvider({ children, config = {} }) {
     setAjustId(id);
   }, []);
 
+  async function guardarCampPerfil(campEfectiu, valor, identitatObjectiuId = identitat?.id) {
+    const identitatObjectiu = identitats.find((item) => item.id === identitatObjectiuId);
+    if (!identitatObjectiu) throw new Error('Cap identitat seleccionada');
+    if (identitatObjectiu.mena === 'persona') {
+      const dadesNovamentRebudes = await updateProfile({ [campEfectiu]: valor }, config);
+      setDadesPerfil(prev => ({ ...prev, ...(dadesNovamentRebudes || {}), [campEfectiu]: valor }));
+      setUsuari(prev => ({
+        ...prev,
+        user_metadata: { ...prev?.user_metadata, [campEfectiu]: valor, name: dadesNovamentRebudes?.full_name || prev?.user_metadata?.name }
+      }));
+    } else {
+      const novesDades = await updateOrganization(identitatObjectiu.id, { [campEfectiu]: valor }, config);
+      setOrganitzacions(prev => prev.map(o => o.id === identitatObjectiu.id ? { ...o, ...novesDades } : o));
+    }
+  }
+
   async function guardarAjust(camp, valor) {
     if (!identitat) throw new Error('Cap identitat seleccionada');
     
-    const ajustEfectiu = ajust || ajustos.find((a) => a.camp === camp || a.id === camp);
+    // Ja no prioritzem l'ajust seleccionat. Busquem explícitament l'ajust sol·licitat.
+    const ajustEfectiu = ajustos.find((a) => a.camp === camp || a.id === camp);
     if (!ajustEfectiu || !ajustEfectiu.obert) throw new Error('Aquest ajust no es pot modificar');
 
     const campEfectiu = ajustEfectiu.camp || camp;
 
-    if (identitat.mena === 'persona') {
-      if (ajustEfectiu.id === 'contrasenya') {
-        await updateUserPassword(valor, config);
-      } else {
-        const dadesNovamentRebudes = await updateProfile({ [campEfectiu]: valor }, config);
-        /* `identitats` prioritza dadesPerfil sobre user_metadata. Si només
-           refresquem user_metadata, la llista continua mostrant el nom vell
-           i el desat sembla que no ha fet res. */
-        setDadesPerfil(prev => ({ ...prev, ...(dadesNovamentRebudes || {}), [campEfectiu]: valor }));
-        setUsuari(prev => ({
-          ...prev,
-          user_metadata: { ...prev?.user_metadata, [campEfectiu]: valor, name: dadesNovamentRebudes?.full_name }
-        }));
-      }
+    if (identitat.mena === 'persona' && ajustEfectiu.id === 'contrasenya') {
+      await updateUserPassword(valor, config);
     } else {
-      const novesDades = await updateOrganization(identitat.id, { [campEfectiu]: valor }, config);
-      setOrganitzacions(prev => prev.map(o => o.id === identitat.id ? { ...o, ...novesDades } : o));
+      await guardarCampPerfil(campEfectiu, valor);
     }
   }
 
@@ -169,7 +173,10 @@ export function PerfilProvider({ children, config = {} }) {
   const valor = {
     usuari, identitats, identitat, ajustos, ajust,
     carregant, error,
-    triaIdentitat, triaAjust, guardarAjust, creaOrganitzacio
+    triaIdentitat, triaAjust,
+    guardarAjust,
+    guardarCampPerfil,
+    creaOrganitzacio
   };
 
   return <PerfilContext.Provider value={valor}>{children}</PerfilContext.Provider>;

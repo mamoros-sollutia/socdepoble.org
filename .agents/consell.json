@@ -134,9 +134,10 @@
       "nom": "ChatGPT Codex",
       "url": "https://chatgpt.com/",
       "origen": "EUA (OpenAI)",
-      "fortalesa": "Versatilitat absoluta; segona opinió fiable per a tasques generals.",
-      "debilitat": "Peca de respostes genèriques («AI slop») si no se li aplica un prompt dur.",
-      "rol": "Segona opinió generalista",
+      "fortalesa": "Versatilitat absoluta i auditories implacables quan se li ajusta el nivell de raonament adequat.",
+      "debilitat": "Peca de respostes genèriques («AI slop») si no se li aplica un prompt dur, i falla a meitat de procés si se satura la temperatura/esforç.",
+      "rol": "Segona opinió generalista i auditories de codi",
+      "estrategia_optima": "Usar sempre la versió 'GPT-5.6 Sol Medio'. El nivell 'Sol Alto' exhaureix els tòkens abans d'acabar la resposta. El 'Sol Medio' equival a la potència d'un Claude donant respostes completes de 3-4 iteracions.",
       "actiu": true
     }
   ]

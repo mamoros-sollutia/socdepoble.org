@@ -21,7 +21,7 @@ function UniversalManagerInner({ getItemCard, renderDetail, onActionCreate, crea
             listIcon={listIcon}
           />
         }
-        rightColumn={activeItem ? renderDetail(activeItem) : null}
+        rightColumn={renderDetail ? renderDetail(activeItem) : null}
         leftTitle={facetsTitle}
         middleTitle={listTitle}
       />

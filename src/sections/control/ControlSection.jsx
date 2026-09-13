@@ -10,7 +10,9 @@ import {
   Receipt,
   Store,
   Book,
-  Power
+  Power,
+  Briefcase,
+  Home
 } from 'lucide-react';
 import { useNavigate } from '../../app/contexts/RouterContext';
 import { logout } from '../../data/backendPort';
@@ -40,6 +42,8 @@ export default function ControlSection() {
     { icon: <MapPin size={40} strokeWidth={1.5} />,        title: 'Publicar al Mapa',         subtitle: 'Pendent de secció',             desti: null },
     { icon: <Car size={40} strokeWidth={1.5} />,           title: 'Compartir vehicle',        subtitle: 'Pendent de secció',             desti: null },
     { icon: <PawPrint size={40} strokeWidth={1.5} />,      title: 'Animalets',                subtitle: 'Pendent de secció',             desti: null },
+    { icon: <Briefcase size={40} strokeWidth={1.5} />,     title: 'Ocupació',                 subtitle: 'Oferta i demanda',              desti: null },
+    { icon: <Home size={40} strokeWidth={1.5} />,          title: 'Habitatge',                subtitle: 'Lloguer i venda',               desti: null },
   ];
 
   return (
@@ -89,16 +93,17 @@ export default function ControlSection() {
               subtitle="Comptabilitat i facturació trimestral"
               onMainClick={handleNavGestoria}
               labels={[{ text: 'ACTIU', className: 'sdp-badge-system' }]}
-              style={{ backgroundColor: 'var(--sdp-secondary-50)' }}
+              className="sp-card"
             />
           </div>
         </section>
 
-        <div className="sdp-alerta__accions">
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '100%', maxWidth: '350px', margin: '3rem auto 1rem' }}>
           <UniversalButton
             onClick={() => navigate('/xat/0001')}
             variant="primary"
             icon={<MessageSquare size={18} />}
+            style={{ width: '100%', justifyContent: 'center' }}
           >
             Missatges per a dubtes
           </UniversalButton>
@@ -107,6 +112,7 @@ export default function ControlSection() {
             variant="ghost"
             icon={<LogOut size={18} />}
             onClick={() => logout().then(() => navigate('/registre'))}
+            style={{ width: '100%', justifyContent: 'center' }}
           >
             Eixir del poble
           </UniversalButton>

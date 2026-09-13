@@ -88,34 +88,55 @@ function CardHeader({ autor, autorHref, pin, dataHora }) {
   );
 }
 
-function CalendarBadge({ badge }) {
-  const etiqueta = badge.label || [badge.dia, badge.mes, badge.any].filter(Boolean).join(' ');
-  const contingut = (
-    <>
-      <span className="sp-card-calendar-badge__dia">{badge.dia}</span>
-      <span className="sp-card-calendar-badge__mes">{badge.mes}</span>
-      {badge.any && <span className="sp-card-calendar-badge__any">{badge.any}</span>}
-    </>
-  );
+function SquareBadge({ badge }) {
+  const isCalendar = badge.dia || badge.mes || badge.any || badge.type === 'calendar';
+  const isPrice = badge.type === 'price';
+  
+  let contingut;
+  let etiqueta;
+
+  if (isCalendar) {
+    etiqueta = badge.label || [badge.dia, badge.mes, badge.any].filter(Boolean).join(' ');
+    contingut = (
+      <>
+        <span className="sp-card-calendar-badge__dia">{badge.dia}</span>
+        <span className="sp-card-calendar-badge__mes">{badge.mes}</span>
+        {badge.any && <span className="sp-card-calendar-badge__any">{badge.any}</span>}
+      </>
+    );
+  } else if (isPrice) {
+    etiqueta = badge.label || `Preu: ${badge.value}`;
+    contingut = <span className="sp-card-calendar-badge__dia" data-oversized="true">{badge.value}</span>;
+  } else {
+    etiqueta = badge.label || 'Insignia';
+    contingut = badge.content;
+  }
+
+  const Tag = isCalendar && !badge.onClick ? 'time' : 'div';
+  const commonProps = {
+    className: "sp-card-calendar-badge",
+    "aria-label": etiqueta,
+    ...(isCalendar && { dateTime: badge.dateTime })
+  };
+
   if (!badge.onClick) {
     return (
-      <time className="sp-card-calendar-badge" dateTime={badge.dateTime} aria-label={etiqueta}>
+      <Tag {...commonProps}>
         {contingut}
-      </time>
+      </Tag>
     );
   }
   return (
     <button
       type="button"
-      className="sp-card-calendar-badge"
-      aria-label={etiqueta}
+      {...commonProps}
       onClick={(e) => {
         e.preventDefault();
         e.stopPropagation();
         badge.onClick();
       }}
     >
-      <time dateTime={badge.dateTime}>{contingut}</time>
+      <Tag dateTime={isCalendar ? badge.dateTime : undefined}>{contingut}</Tag>
     </button>
   );
 }
@@ -136,7 +157,8 @@ function Etiqueta({ label }) {
   );
 }
 
-function CardBody({ imatge, imageAlt, calendarBadge, price, icon, title, TitleTag, subtitle, body, etiquetes, copyright }) {
+function CardBody({ imatge, imageAlt, calendarBadge, squareBadge, price, icon, title, TitleTag, subtitle, body, etiquetes, copyright }) {
+  const activeBadge = squareBadge || calendarBadge;
   return (
     <>
       {imatge && (
@@ -148,11 +170,11 @@ function CardBody({ imatge, imageAlt, calendarBadge, price, icon, title, TitleTa
         className={[
           'sp-card-body',
           price && 'has-price',
-          calendarBadge && 'has-calendar-badge',
-          (price || calendarBadge) && 'has-aside'
+          activeBadge && 'has-calendar-badge',
+          (price || activeBadge) && 'has-aside'
         ].filter(Boolean).join(' ')}
       >
-        {calendarBadge && <CalendarBadge badge={calendarBadge} />}
+        {activeBadge && <SquareBadge badge={activeBadge} />}
         {price && <p className="sp-card-price">{price}</p>}
         {title && icon ? (
           <div className="sp-card-heading-with-icon">
@@ -190,6 +212,8 @@ function CardFooter({ accions, connectar }) {
 
 export function UniversalCard({
   variant = 'default',
+  className,
+  style,
   icon,
   title,
   headingLevel = 'h3',
@@ -211,6 +235,7 @@ export function UniversalCard({
   onMainClick,
   copyright,
   calendarBadge = null,
+  squareBadge = null,
   isAvis = false,
   hasFooter,
   showPin,
@@ -315,11 +340,12 @@ export function UniversalCard({
   const cardClasses = [
     'sp-card',
     isAvis && 'sp-card--avis',
-    variant !== 'default' && `sp-card--${variant}`
+    variant !== 'default' && `sp-card--${variant}`,
+    className
   ].filter(Boolean).join(' ');
 
   return (
-    <article className={cardClasses}>
+    <article className={cardClasses} style={style}>
       {(autor || pin || dataHora) && (
         <CardHeader autor={autor} autorHref={safeAuthorHref} pin={pin} dataHora={dataHora} />
       )}
@@ -334,6 +360,7 @@ export function UniversalCard({
         imatge={safeImageUrl}
         imageAlt={imageAlt}
         calendarBadge={calendarBadge}
+        squareBadge={squareBadge}
         price={price}
         icon={icon}
         title={title}

@@ -1,22 +1,25 @@
 import fs from 'fs';
-import path from 'path';
 
 const files = [
-  'src/components/ui/PillToggle.jsx',
-  'src/components/ui/index.js',
-  'src/sections/disseny/DesignSection.jsx',
-  'src/sections/disseny/DesignSectionContent.jsx',
-  'src/sections/mur/MurSection.jsx',
-  'src/css/index.css',
-  'src/css/components.css'
+  'src/components/universal/UniversalEditorShell.jsx',
+  'src/sections/notes/NotesEditor.jsx',
+  'src/sections/profile/DetallAjust.jsx',
+  'src/hooks/useHeroImageHandler.js',
+  'src/hooks/useLogoImageHandler.js',
+  'src/components/universal/UniversalPage.jsx',
+  'src/sections/notes/NotesContext.jsx'
 ];
 
-let output = '# MINI-BUNDLE PER A Z\n\n';
+let output = '# MINI-BUNDLE PER A Z: AUDITORIA EDITOR PLUGIN\n\n';
 
 for (const file of files) {
-  const content = fs.readFileSync(file, 'utf-8');
-  output += `## FITXER: ${file}\n\`\`\`${file.endsWith('.css') ? 'css' : 'jsx'}\n${content}\n\`\`\`\n\n`;
+  if (fs.existsSync(file)) {
+    const content = fs.readFileSync(file, 'utf-8');
+    output += `## FITXER: ${file}\n\`\`\`${file.endsWith('.css') ? 'css' : 'jsx'}\n${content}\n\`\`\`\n\n`;
+  } else {
+    output += `## FITXER: ${file}\n[FITXER ABSENT]\n\n`;
+  }
 }
 
-fs.writeFileSync('_wiki_de_poble/04_ESCRIPTORI/260912_1320_MINI_BUNDLE_Z.md', output);
-console.log('Mini bundle creat per a Z.');
+fs.writeFileSync('_wiki_de_poble/04_escriptori/260913_0237_MINI_BUNDLE_Z.md', output);
+console.log('Mini bundle Z creat.');
