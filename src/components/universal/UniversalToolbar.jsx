@@ -1,5 +1,6 @@
 import { ArrowLeft, List, Globe, Heading2, Bold, Italic, Strikethrough } from 'lucide-react';
-import { useContext } from 'react';
+import { useContext, useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { AppGridContext } from '../layout/AppGridShell';
 
 const iconProps = { size: 20, strokeWidth: 2, 'aria-hidden': true, focusable: false };
@@ -20,19 +21,17 @@ export default function UniversalToolbar({
   const { isHeading, isList, isBold, isItalic, isStrike } = formatState;
   const { toggleHeading, toggleList, toggleBold, toggleItalic, toggleStrike } = formatActions;
 
-  return (
-    <header className="format-fascia" role="group" aria-label="Format i accions de la pàgina">
-      <button 
-        type="button" 
-        aria-label="Tornar a la llista" 
-        title="Tornar a la llista"
-        onClick={handleBack} 
-        className="format-button d-mobile-only"
-      >
-        <ArrowLeft {...iconProps} />
-      </button>
-      
-      <div className="format-tools" role="group" aria-label="Format del text">
+  const [portalTarget, setPortalTarget] = useState(null);
+
+  useEffect(() => {
+    // Busquem l'slot a la barra negra només un cop muntat el component
+    const el = document.getElementById('global-toolbar-slot');
+    if (el) setPortalTarget(el);
+  }, []);
+
+  const toolbarContent = (
+    <div className="sdp-toolbar sdp-toolbar--inline" role="group" aria-label="Format i accions de la pàgina" style={{ display: 'flex', alignItems: 'center' }}>
+      <div className="format-tools sdp-toolbar-group" role="group" aria-label="Format del text" style={{ display: 'flex', gap: '4px', background: 'transparent' }}>
         <button 
           aria-label="Títol de nivell 2"
           onClick={toggleHeading} 
@@ -68,7 +67,7 @@ export default function UniversalToolbar({
         <button 
           aria-label={t('section.notes.format.list', 'Llista desordenada')}
           onClick={toggleList} 
-          className={`format-button ${isList ? 'active-text' : ''}`}
+          className={`sdp-toolbar-btn ${isList ? 'is-active' : ''}`}
           disabled={!toggleList}
         >
           <List {...iconProps} />
@@ -78,14 +77,22 @@ export default function UniversalToolbar({
       {onPublish && (
         <button 
           type="button"
-          className="publish" 
+          className="sdp-boto sdp-boto--primari sdp-boto--sm" 
           disabled={publishDisabled} 
           onClick={onPublish}
           aria-label={t('section.notes.publish', 'Publicar')}
+          style={{ marginLeft: '12px' }}
         >
           ◎ {t('section.notes.publish', 'Publicar')}
         </button>
       )}
-    </header>
+    </div>
   );
+
+  if (portalTarget) {
+    return createPortal(toolbarContent, portalTarget);
+  }
+
+  // Fallback si per alguna raó la barra negra no existeix (p. ex., dins de l'editor mòbil flotant)
+  return toolbarContent;
 }

@@ -362,6 +362,8 @@ const TopBar = memo(function TopBar() {
           <BrandMark variant="light" className="mobile-logo" />
         </div>
       </div>
+      
+      <div id="global-toolbar-slot" style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center' }}></div>
 
       <div className="right-icons">
         <button type="button" className="icon sdp-top-bar-btn" onClick={() => navigateWithTransition('/traduccions')} aria-label={t('nav.idioma', 'Idioma')} title={t('nav.idioma', 'Idioma')}>
