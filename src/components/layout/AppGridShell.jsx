@@ -10,6 +10,11 @@ const COLUMN_LIMITS = Object.freeze({
   middle: { min: 240, max: 520 },
 });
 const DEFAULT_COLUMN_WIDTHS = Object.freeze({ left: 270, middle: 300 });
+const PRESETS = Object.freeze({
+  compacta: { left: 220, middle: 260 },
+  defecte: DEFAULT_COLUMN_WIDTHS,
+  ampla: { left: 320, middle: 380 }
+});
 const RIGHT_COLUMN_MIN = 320;
 const RESIZER_WIDTH = 8;
 
@@ -36,7 +41,13 @@ export default function AppGridShell({
 }) {
   const [mida, setMida] = useState('ample');
   const [panellObert, setPanellObert] = useState(initialPane);
-  const [columnWidths, setColumnWidths] = useState(DEFAULT_COLUMN_WIDTHS);
+  const [columnWidths, setColumnWidths] = useState(() => {
+    try {
+      const saved = localStorage.getItem('sdp-grid-widths');
+      if (saved) return JSON.parse(saved);
+    } catch (e) {}
+    return DEFAULT_COLUMN_WIDTHS;
+  });
   const pageRef = useRef(null);
 
   useLayoutEffect(() => {
@@ -77,8 +88,18 @@ export default function AppGridShell({
       const max = Math.max(limits.min, Math.min(limits.max, availableMax));
       const nextWidth = clamp(requestedWidth, limits.min, max);
       if (nextWidth === current[column]) return current;
-      return { ...current, [column]: nextWidth };
+      
+      const nextState = { ...current, [column]: nextWidth };
+      localStorage.setItem('sdp-grid-widths', JSON.stringify(nextState));
+      return nextState;
     });
+  };
+
+  const applyPreset = (presetName) => {
+    if (!PRESETS[presetName]) return;
+    const nextState = PRESETS[presetName];
+    setColumnWidths(nextState);
+    localStorage.setItem('sdp-grid-widths', JSON.stringify(nextState));
   };
 
   const tancada = {
@@ -106,7 +127,14 @@ export default function AppGridShell({
 
   return (
     <AppGridContext.Provider
-      value={{ mida, panellObert, setPanellObert, tancaPanells: () => setPanellObert(null) }}
+      value={{ 
+        mida, 
+        panellObert, 
+        setPanellObert, 
+        tancaPanells: () => setPanellObert(null),
+        columnWidths,
+        applyPreset 
+      }}
     >
       <div ref={pageRef} className={`app-grid-page ${className}`.trim()}>
         <style data-appgrid-styles>{appGridStyles}</style>

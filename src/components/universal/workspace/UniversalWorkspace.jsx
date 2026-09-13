@@ -2,6 +2,7 @@ import AppGridShell from '../../layout/AppGridShell';
 import { ManagerProvider, useManager } from '../manager/ManagerContext';
 import ManagerFacets from '../manager/ManagerFacets';
 import ManagerList from '../manager/ManagerList';
+import UniversalSettingsPanel from './UniversalSettingsPanel';
 import { SlotErrorBoundary } from './SlotErrorBoundary';
 
 const getIdPerDefecte = (item) => item?.id;
@@ -88,6 +89,7 @@ function UniversalWorkspaceInner({
     facetsTitle,
     colLeftCollapsed,
     colMiddleCollapsed,
+    viewMode,
   } = useManager();
 
   const clauDeItem = activeItem == null ? '~buit' : String(getItemId(activeItem) ?? '~sense-id');
@@ -112,8 +114,12 @@ function UniversalWorkspaceInner({
         </SlotErrorBoundary>
       }
       rightColumn={
-        <SlotErrorBoundary domini="editor" resetKey={clauDeItem}>
-          <EditorSlot renderEditor={renderEditor} activeItem={activeItem} />
+        <SlotErrorBoundary domini="editor" resetKey={clauDeItem + viewMode}>
+          {viewMode === 'settings' ? (
+            <UniversalSettingsPanel />
+          ) : (
+            <EditorSlot renderEditor={renderEditor} activeItem={activeItem} />
+          )}
         </SlotErrorBoundary>
       }
       leftTitle={facetsTitle}

@@ -24,6 +24,7 @@ export function ManagerProvider({
   const [searchQuery, setSearchQuery] = useState('');
   const [colLeftCollapsed, setColLeftCollapsed] = useState(false);
   const [colMiddleCollapsed, setColMiddleCollapsed] = useState(false);
+  const [viewMode, setViewMode] = useState('editor'); // 'editor' | 'settings'
 
   const deferredSearchQuery = useDeferredValue(searchQuery);
 
@@ -138,6 +139,7 @@ export function ManagerProvider({
     searchQuery,
     colLeftCollapsed,
     colMiddleCollapsed,
+    viewMode,
     facetsTitle,
     setFacet,
     clearFacet,
@@ -145,6 +147,7 @@ export function ManagerProvider({
     setSearchQuery,
     setColLeftCollapsed,
     setColMiddleCollapsed,
+    setViewMode,
     getItemId,
     getItemSearchText,
   }), [
@@ -157,6 +160,7 @@ export function ManagerProvider({
     searchQuery,
     colLeftCollapsed,
     colMiddleCollapsed,
+    viewMode,
     facetsTitle,
     setFacet,
     clearFacet,

@@ -13,6 +13,7 @@ export default function ManagerFacets() {
     colLeftCollapsed,
     setColLeftCollapsed,
     facetsTitle,
+    setViewMode,
   } = useManager();
 
   const { mida, setPanellObert } = useAppGrid();
@@ -73,8 +74,8 @@ export default function ManagerFacets() {
             {
               id: 'settings',
               icona: Settings,
-              etiqueta: 'Ajustos (pròximament)',
-              desactivat: true,
+              etiqueta: 'Ajustos de la Graella',
+              onAcciona: () => setViewMode('settings'),
             },
           ]}
         />
@@ -104,8 +105,8 @@ export default function ManagerFacets() {
           {
             id: 'settings',
             icona: Settings,
-            etiqueta: 'Ajustos (pròximament)',
-            desactivat: true,
+            etiqueta: 'Ajustos de la Graella',
+            onAcciona: () => setViewMode('settings'),
           },
         ]}
       />

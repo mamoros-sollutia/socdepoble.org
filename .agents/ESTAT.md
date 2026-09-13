@@ -41,3 +41,17 @@
 - Carpetes usa `--sdp-crom-fons`; Notes superposa `--sdp-crom-hover` sobre el mateix crom per donar profunditat sense introduir colors nous.
 - Eliminats fons, vores i ombres dels botons d'icona; el botó Crear usa els tokens blaus `--sdp-accio`/`--sdp-accio-hover`.
 - La cerca oberta continua dins de la mateixa barra i no crea una segona franja.
+
+# 260913 · Ajustos de la Graella i Presets
+
+## Què s'ha fet
+1. S'ha habilitat la persistència de les amplàries de les columnes de l'`AppGridShell` usant `localStorage`.
+2. S'ha creat un `UniversalSettingsPanel` per mostrar les preferències de l'entorn.
+3. S'ha connectat el botó de l'engranatge (Ajustos de la Graella) de la barra lateral esquerra cap al nou panell de configuració.
+4. S'han incorporat tres modes pre-establerts per canviar la distribució: Compacta, Per defecte i Ampla.
+5. S'han assegurat que la `UniversalToolbar` oferisca H2, Negreta, Cursiva, Ratllat i Llista Desordenada segons les especificacions aprovades.
+
+## Verificació
+- Les targetes empren proporció SVG 80x80 px i la data respecta la posició desitjada (`top: 8px; right: 8px`).
+- La persistència al LocalStorage actua per defecte de manera correcta.
+- L'editor alterna fluidament cap al menú d'ajustos amb `viewMode`.
