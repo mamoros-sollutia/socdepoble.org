@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+import preact from '@preact/preset-vite';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -8,7 +8,7 @@ const __dirname = path.dirname(__filename);
 
 export default defineConfig(() => ({
   plugins: [
-    react({
+    preact({
       jsxImportSource: 'react',
     })
   ],

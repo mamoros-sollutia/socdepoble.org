@@ -173,7 +173,7 @@ export function UniversalEditorShell({
       </section>
 
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', padding: '32px', maxWidth: '800px', margin: '0 auto', width: '100%' }}>
-        <article className="card universal-page" style={{ margin: 0, padding: 0, flex: 1, display: 'flex', flexDirection: 'column', border: 'none', boxShadow: 'none', background: 'transparent' }}>
+        <article className="card universal-page" style={{ margin: 0, flex: 1, display: 'flex', flexDirection: 'column' }}>
           
           <header className="page-title" style={{ margin: '0 0 24px 0', borderBottom: 'none' }}>
             <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '32px' }}>
