@@ -193,9 +193,16 @@ export function UniversalEditorShell({
 
             {labels && labels.length > 0 && (
               <ul className="sp-card-labels page-title-labels" style={{ marginTop: '24px', marginBottom: '16px', justifyContent: 'center', display: 'flex', gap: '8px', listStyle: 'none', padding: 0, flexWrap: 'wrap' }}>
-                {labels.map((label, idx) => (
-                  <li key={idx} className="sp-card-label" style={{ cursor: 'pointer', border: '1px solid var(--sdp-vora)', padding: '4px 16px', borderRadius: '20px', fontSize: '0.85rem' }}>{label}</li>
-                ))}
+                {labels.map((label, idx) => {
+                  const text = typeof label === 'string' ? label : label.text;
+                  const customClass = typeof label === 'string' ? '' : (label.className || '');
+                  const onClick = typeof label === 'string' ? undefined : label.onClick;
+                  return (
+                    <li key={idx} className={`sp-card-label ${customClass}`.trim()} onClick={onClick} style={{ cursor: onClick ? 'pointer' : 'default', border: '1px solid var(--sdp-vora)', padding: '4px 16px', borderRadius: '20px', fontSize: '0.85rem' }}>
+                      {text}
+                    </li>
+                  );
+                })}
               </ul>
             )}
 
