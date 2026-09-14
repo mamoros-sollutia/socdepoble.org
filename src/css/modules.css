@@ -422,15 +422,17 @@
 
 /* -- PILLTOGGLE -- */
   .sdp-pindola {
-    display: inline-flex;
+    display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     align-items: center;
-    gap: var(--sdp-space-1);
+    gap: var(--sdp-space-2);
     max-width: 100%;
-    padding: var(--sdp-space-1);
-    background: var(--sdp-fons-subtil);
-    border: 1px solid var(--sdp-vora);
+    padding: var(--sdp-space-2) var(--sdp-space-3);
+    background: var(--sdp-fons-targeta);
+    border: 1px solid var(--sdp-vora-suau);
     border-radius: var(--sdp-radi-pastilla);
+    box-shadow: var(--sdp-ombra-1);
   }
   .sdp-pindola__opcio {
     display: inline-flex;
@@ -453,9 +455,10 @@
     transition: background var(--sdp-t), color var(--sdp-t);
   }
   .sdp-pindola__opcio:hover { background: var(--sdp-fons-targeta); }
-  .sdp-pindola__opcio[aria-pressed="true"] {
-    background: var(--sdp-accent);
-    color: var(--sdp-sobre-accent);
+  .sdp-pindola__opcio[aria-pressed="true"],
+  .sdp-pindola__opcio[aria-current="page"] {
+    background: var(--sdp-accio);
+    color: var(--sdp-sobre-accio);
   }
   .sdp-pindola__opcio:focus-visible {
     outline: 3px solid var(--sdp-focus);

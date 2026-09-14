@@ -250,7 +250,7 @@ article.content-wrapper {
 .cms-preview > p,
 .cms-preview > ul,
 .cms-preview > ol {
-  max-width: none;
+  width: min(100%, var(--sdp-measure));
   margin-inline: auto;
 }
 /* Els títols de secció acompanyen la columna, no la travessen */

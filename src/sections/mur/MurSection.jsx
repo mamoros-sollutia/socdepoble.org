@@ -70,6 +70,7 @@ export default function MurSection() {
     let items = allItems;
     if (filterType === 'events') items = items.filter(i => i.type === 'event');
     if (filterType === 'sistema') items = items.filter(i => i.type === 'sistema');
+    if (filterType === 'mercat') items = items.filter(i => i.type === 'market' || i.type === 'product');
 
     if (dateFilter) {
       items = items.filter(i => {
@@ -121,15 +122,19 @@ export default function MurSection() {
               etiqueta="Filtres del mur"
               valor={isMapOpen ? 'mapa' : filterType}
               onCanvi={(v) => {
-                if (v === 'mapa') { setIsMapOpen((obert) => !obert); return; }
+                if (v === 'mapa') { 
+                  setIsMapOpen((obert) => !obert); 
+                  setFilterType('all');
+                  return; 
+                }
                 setFilterType(v);
                 setIsMapOpen(false);
               }}
               opcions={[
-                { valor: 'all', text: 'Mostrar Tot' },
+                { valor: 'all', text: 'Mostrar tot' },
+                { valor: 'mercat', text: 'Mercat' },
                 { valor: 'events', text: 'Esdeveniments' },
-                { valor: 'system', text: 'Sistema' },
-                { valor: 'mapa', text: '🗺️ Mapa' },
+                { valor: 'mapa', text: 'Mapa' },
               ]}
             />
           </section>
@@ -139,9 +144,9 @@ export default function MurSection() {
               <iframe
                 title="Mapa del territori"
                 src={buildMapEmbedUrl()}
+                style={{ width: '100%', height: '400px', border: '1px solid var(--sdp-vora-suau)', borderRadius: 'var(--sdp-radi-lg)' }}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                className="embed-container"
               />
             </div>
           )}

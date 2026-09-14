@@ -91,53 +91,43 @@ function CardHeader({ autor, autorHref, pin, dataHora }) {
 function SquareBadge({ badge }) {
   const isCalendar = badge.dia || badge.mes || badge.any || badge.type === 'calendar';
   const isPrice = badge.type === 'price';
-  
-  let contingut;
-  let etiqueta;
+  const etiqueta = badge.label || (isCalendar
+    ? [badge.dia, badge.mes, badge.any].filter(Boolean).join(' ')
+    : isPrice ? `Preu: ${badge.value}` : 'Insígnia');
 
-  if (isCalendar) {
-    etiqueta = badge.label || [badge.dia, badge.mes, badge.any].filter(Boolean).join(' ');
-    contingut = (
-      <>
-        <span className="sp-card-calendar-badge__dia">{badge.dia}</span>
-        <span className="sp-card-calendar-badge__mes">{badge.mes}</span>
-        {badge.any && <span className="sp-card-calendar-badge__any">{badge.any}</span>}
-      </>
-    );
-  } else if (isPrice) {
-    etiqueta = badge.label || `Preu: ${badge.value}`;
-    contingut = <span className="sp-card-calendar-badge__dia" data-oversized="true">{badge.value}</span>;
-  } else {
-    etiqueta = badge.label || 'Insignia';
-    contingut = badge.content;
-  }
+  const contingut = isCalendar ? (
+    <>
+      <span className="sp-card-calendar-badge__dia">{badge.dia}</span>
+      <span className="sp-card-calendar-badge__mes">{badge.mes}</span>
+      {badge.any && <span className="sp-card-calendar-badge__any">{badge.any}</span>}
+    </>
+  ) : isPrice ? (
+    <span className="sp-card-calendar-badge__dia" data-oversized="true">{badge.value}</span>
+  ) : badge.content;
 
-  const Tag = isCalendar && !badge.onClick ? 'time' : 'div';
-  const commonProps = {
-    className: "sp-card-calendar-badge",
-    "aria-label": etiqueta,
-    ...(isCalendar && { dateTime: badge.dateTime })
-  };
-
-  if (!badge.onClick) {
+  if (badge.onClick) {
     return (
-      <Tag {...commonProps}>
+      <button
+        type="button"
+        className="sp-card-calendar-badge"
+        aria-label={etiqueta}
+        onClick={(event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          badge.onClick();
+        }}
+      >
         {contingut}
-      </Tag>
+      </button>
     );
   }
-  return (
-    <button
-      type="button"
-      {...commonProps}
-      onClick={(e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        badge.onClick();
-      }}
-    >
-      <Tag dateTime={isCalendar ? badge.dateTime : undefined}>{contingut}</Tag>
-    </button>
+
+  return isCalendar ? (
+    <time className="sp-card-calendar-badge" aria-label={etiqueta} dateTime={badge.dateTime}>
+      {contingut}
+    </time>
+  ) : (
+    <div className="sp-card-calendar-badge" aria-label={etiqueta}>{contingut}</div>
   );
 }
 

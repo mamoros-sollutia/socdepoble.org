@@ -44,7 +44,10 @@ export function EventCard({ item }) {
   const bodyContent = item.entradilla || item.lead || (item.description ? <p className="sp-card-text">{item.description}</p> : null);
   
   // Custom badges for event
-  const labels = item.labels || [];
+  const labels = item.labels || [
+    { text: 'Esdeveniment', className: 'sdp-badge-category' },
+    item.id === 'aplec-2023' || item?.title?.toLowerCase().includes('aplec') ? { text: 'Aplec', className: 'sdp-badge-category' } : null
+  ].filter(Boolean);
 
   return (
     <UniversalCard
@@ -53,13 +56,13 @@ export function EventCard({ item }) {
       body={bodyContent}
       imageUrl={resolveAsset((typeof item.image_url === 'string' ? item.image_url : null) || (typeof item.image === 'string' ? item.image : null) || '')}
       imageAlt={item.imageAlt || item.title || item.name || ''}
-      author={item.author_name}
+      author={item.author_name || item.author || "Sóc de Poble"}
       authorHref={item.isSystem ? "/pobles" : undefined}
-      avatarUrl={resolveAsset((typeof item.author_avatar === 'string' ? item.author_avatar : null) || '')}
-      location={item.author_location || item.location}
+      avatarUrl={resolveAsset((typeof item.author_avatar === 'string' ? item.author_avatar : null) || '/assets/system/ui/logo-socdepoble-cuadrat-verd.svg')}
+      location={item.author_location || item.location || item.population || "La Torre de les Maçanes"}
       date={formatDate(rawDate)}
       time={formatTime(item.time, rawDate)}
-      copyright={item.copyright}
+      copyright={item.copyright || "© Sóc de Poble / Fet per la IAIA i Nano Banana"}
       calendarBadge={getCalendarBadge(rawDate)}
       labels={labels}
       mainHref={item.mainHref || `/events/${item.id}`}

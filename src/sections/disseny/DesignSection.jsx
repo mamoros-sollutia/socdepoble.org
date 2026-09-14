@@ -33,30 +33,27 @@ export default function DesignSection() {
       lead="Cada component es documenta amb el seu espècimen viu, el contracte, l'accessibilitat i les regles de fes / no facis, perquè qualsevol persona o IA el puga reproduir sense endevinar."
       copyright="© Sóc de Poble / Fet per la IAIA i Nano Banana"
       heroImage="/assets/uploads/brain/ibanez_pedra_seca_design_1780873465211.png"
+      heroAlt="Il·lustració del sistema de disseny Pedra Seca"
       authorName="Sóc de Poble"
       authorLocation="La Torre de les Maçanes"
       time="23:29"
       date="22/3/22"
     >
-      <nav className="sdp-cataleg-nav" aria-label="Pàgines del sistema de disseny">
-        <ul className="sdp-cataleg-nav__llista">
+      <nav className="sdp-pindola" aria-label="Pàgines del sistema de disseny">
           {PAGINES.map((p) => (
-            <li key={p.id}>
-              <Link to={p.id === 'fonaments' ? pathname : `${pathname}?pagina=${p.id}`}
-                className="sdp-cataleg-nav__enllac" aria-current={p.id === actual ? 'page' : undefined}>
-                {p.titol}
-              </Link>
-            </li>
+            <Link key={p.id} to={p.id === 'fonaments' ? pathname : `${pathname}?pagina=${p.id}`}
+              className="sdp-pindola__opcio" aria-current={p.id === actual ? 'page' : undefined}>
+              {p.titol}
+            </Link>
           ))}
-        </ul>
       </nav>
-      <div className="content-wrapper">
-        {Pagina ? (
-          <Suspense fallback={<Carregant etiqueta="Carregant la pàgina del catàleg…" />}>
-            <Pagina />
-          </Suspense>
-        ) : <DesignSectionContent />}
-      </div>
+      {Pagina ? (
+        <Suspense fallback={<Carregant etiqueta="Carregant la pàgina del catàleg…" />}>
+          <Pagina />
+        </Suspense>
+      ) : (
+        <DesignSectionContent />
+      )}
     </UniversalPage>
   );
 }

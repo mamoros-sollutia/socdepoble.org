@@ -1,10 +1,11 @@
 import React, { lazy, Suspense, useEffect, useRef, memo, StrictMode } from 'react';
 import { Navigate, NavLink, Route, Routes, useNavigate, useParams, useLocation } from './contexts/RouterContext';
-import { Globe, MoonStar, Search, Settings, Sun, UserRound, Menu } from '../icons.jsx';
+import { Globe, MoonStar, Plus, Search, Settings, Sun, UserRound } from '../icons.jsx';
 import BrandMark from '../components/BrandMark';
 import { APP_NAME } from '../config/app';
 import { DEFAULT_SECTION_PATH, SECTIONS, SECTION_ORDER, GESTORIA_SECTIONS } from '../config/sections';
 import { getSectionLabels } from '../config/i18n';
+import { UniversalPage } from '../components/universal/UniversalPage';
 import { IaiaIcon } from '../components/universal/UniversalElements';
 import { recullTornadaOAuth } from '../data/backendPort.js';
 import { reclamaContingutDelConvidat } from '../data/identitat.js';
@@ -250,25 +251,15 @@ function AppShell({ children, mobileNav }) {
   return (
     <>
       <nav id="app-sidebar" className="app-sidebar" aria-label="Navegació principal">
-        <div className="brand" style={{ display: 'flex', alignItems: 'center', gap: 'var(--sdp-space-3)' }}>
-          <button type="button" className="sdp-top-bar-btn icon sdp-unstyled-btn" aria-label="Minimitzar barra lateral" onClick={(e) => {
-            const root = e.target.getRootNode();
-            const host = root instanceof ShadowRoot ? root.host : document.body;
-            host.classList.toggle('sidebar-mini');
-          }}>
-            <Menu aria-hidden="true" focusable="false" />
-          </button>
-          
-          <button type="button" className="mobile-logo-wrapper sdp-unstyled-btn" aria-label="Obrir o tancar menú Sóc de Poble" onClick={(e) => {
-            const root = e.target.getRootNode();
-            const sidebar = root.querySelector('.app-sidebar') || document.querySelector('.app-sidebar');
-            const host = root instanceof ShadowRoot ? root.host : document.body;
-            sidebar?.classList.toggle('sidebar-open');
-            host.classList.toggle('sidebar-closed');
-          }}>
-            <BrandMark className="app-brand__mark" />
-          </button>
-        </div>
+        <button type="button" className="brand sdp-unstyled-btn" aria-label="Obrir o tancar menú Sóc de Poble" onClick={(e) => {
+          const root = e.target.getRootNode();
+          const sidebar = root.querySelector('.app-sidebar') || document.querySelector('.app-sidebar');
+          const host = root instanceof ShadowRoot ? root.host : document.body;
+          sidebar?.classList.toggle('sidebar-open');
+          host.classList.toggle('sidebar-closed');
+        }}>
+          <BrandMark className="app-brand__mark" />
+        </button>
 
         <button
           type="button"
@@ -357,27 +348,15 @@ const TopBar = memo(function TopBar() {
 
   return (
     <header className="bar-black">
-      <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sdp-space-3)' }}>
-        <button type="button" className="sdp-top-bar-btn icon sdp-unstyled-btn" aria-label="Minimitzar barra lateral" onClick={(e) => {
-          const root = e.target.getRootNode();
-          const host = root instanceof ShadowRoot ? root.host : document.body;
-          host.classList.toggle('sidebar-mini');
-        }}>
-          <Menu aria-hidden="true" focusable="false" />
-        </button>
-        
-        <button type="button" className="mobile-logo-wrapper sdp-unstyled-btn" aria-label="Obrir menú" onClick={(e) => {
-          const root = e.target.getRootNode();
-          const sidebar = root.querySelector('.app-sidebar') || document.querySelector('.app-sidebar');
-          const host = root instanceof ShadowRoot ? root.host : document.body;
-          sidebar?.classList.toggle('sidebar-open');
-          host.classList.toggle('sidebar-closed');
-        }}>
-          <BrandMark variant="light" className="mobile-logo" />
-        </button>
-      </div>
-      
-      <div id="global-toolbar-slot" style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center' }}></div>
+      <button type="button" className="mobile-logo-wrapper sdp-unstyled-btn" aria-label="Obrir menú" onClick={(e) => {
+        const root = e.target.getRootNode();
+        const sidebar = root.querySelector('.app-sidebar') || document.querySelector('.app-sidebar');
+        const host = root instanceof ShadowRoot ? root.host : document.body;
+        sidebar?.classList.toggle('sidebar-open');
+        host.classList.toggle('sidebar-closed');
+      }}>
+        <BrandMark variant="light" className="mobile-logo" />
+      </button>
 
       <div className="right-icons">
         <button type="button" className="icon sdp-top-bar-btn" onClick={() => navigateWithTransition('/traduccions')} aria-label={t('nav.idioma', 'Idioma')} title={t('nav.idioma', 'Idioma')}>

@@ -9,10 +9,10 @@ import { EVENTS } from '../mur/eventsContent.js';
  */
 function ComponentDoc({ title, description, technical, transparent, children }) {
   return (
-    <div className="component-doc ">
+    <div className="component-doc">
       <div className="component-doc-header">
-        <h3 >{title}</h3>
-        {description && <p >{description}</p>}
+        <h3>{title}</h3>
+        {description && <p>{description}</p>}
         {technical && (
           <div role="alert" className="sdp-alerta--info">
             <strong>Context Tècnic: </strong> {technical}
@@ -31,71 +31,26 @@ export function DesignSectionContent() {
     <>
         {/* Generated JSX from HTML */}
         
-<section className="design-block ">
-<h3>1. Lleis de Pedra Seca per a IAs Arquitectes</h3>
-<p >Normes absolutes que regeixen tot el que una IA pot o no pot fer en este repositori. Açò és el més important abans de tocar cap codi o disseny.</p>
-
-<h4>1.1 Arquitectura de la Pàgina Universal (UniversalPage)</h4>
-<div role="alert" className="sdp-alerta--info ">
-  <div className="alert-content">
-    <p><strong>Estructura Anatòmica Inviolable (FONT ÚNICA DE VERITAT)</strong><br/>Aquesta secció i el component <code>UniversalComponents.jsx</code> (on es defineix la UniversalPage) són la font única de veritat per a qualsevol agent o IA. Tota nova pàgina ha d'estendre exclusivament aquesta arquitectura, sense excepcions.</p>
-    <ol className="sdp-llista">
-      <li><strong>Barres Superiors (Controls):</strong> La barra blava de navegació (context) i la barra taronja d'autoria (dades meta, data, connectar). En mode normal (pàgina completa), aquestes barres fan <em>sticky</em> a la part superior (es queden fixades).</li>
-      <li><strong>Excepció (Mode Incrustat):</strong> Quan la UniversalPage s'incrusta en un editor (com el Bloc de Notes), la barra blava i la taronja adopten classe <code>--embed</code> (<em>position: static</em>) i s'amaguen naturalment amb l'scroll del document per afavorir l'edició lliure i evitar un "doble scroll". Aquesta és l'única excepció permesa.</li>
-      <li><strong>Imatge Hero (Opcional):</strong> Es renderitza immediatament davall de les barres. Ocupa l'ample disponible (100%) sense marges.</li>
-      <li><strong>La Targeta de Decoració Blanca (Header):</strong> Un bloc blanc amb <em>box-shadow</em> que embolica el logotip de Sóc de Poble (max 600px), l'element <strong>H1</strong> (H3 a la card), les etiquetes de categorització, i el <strong>Copyright</strong> de tancament.
-      <br/><small >Nota: El tancament d'aquesta targeta delimita el final de la decoració del títol.</small></li>
-      <li><strong>H2 i Entradilla (Fora de la targeta blanca):</strong> Actuen de pont i preàmbul visual abans d'endinsar-se en l'article profund.</li>
-      <li><strong>H3 i Contingut Base (article):</strong> El text enriquit, estructurat harmònicament cap avall amb una amplària màxima centrada (~68 caràcters) per afavorir la llegibilitat (<em>var(--sdp-measure)</em>). La resta d'elements (targetes, graelles) flueixen a tota l'amplària disponible del contenidor respectant els marges de 40px (<em>var(--sdp-pad-contenidor)</em>).</li>
-    </ol>
-  </div>
-</div>
-
-<p><strong>Esquema anatòmic canònic (UniversalPage)</strong>:</p>
-<pre><code>{`<!-- El shell extern de l'aplicació -->
-<div className="app-layout">
-  <Sidebar /> <!-- nav.app-sidebar -->
-  <main className="app-main">
-    <Topbar /> <!-- header.app-header -->
-    <!-- El contenidor de la pàgina -->
-    <div className="page-container">
-
-      <!-- INICI DE LA UNIVERSAL PAGE -->
-      <article className="universal-page">
-        <!-- 1. Barres Superiors -->
-        <header className="bar-blue">...</header>
-        <section className="bar-orange">...</section>
-
-        <!-- 2. Decoració Targeta Blanca -->
-        <header className="page-header-card">
-          <h1>Títol</h1>
-          <div className="meta-footer">...</div>
-        </header>
-
-        <!-- 3. Contingut base -->
-        <div className="page-content-wrapper">
-          <p className="lead">Entradilla</p>
-          <div className="page-content">
-             <p>Text de cos limitat a 68ch...</p>
-             <UniversalCard />
-          </div>
-        </div>
-      </article>
-
+<section className="design-block" aria-labelledby="norma-vigent">
+  <h3 id="norma-vigent">1. Contracte vigent de Pedra Seca</h3>
+  <p>
+    React i Vite formen la carcassa productiva. Els components viuen en
+    <code> src/components/ui/</code> i <code>src/components/universal/</code>;
+    els estils visuals usen classes semàntiques i tokens <code>--sdp-*</code>.
+  </p>
+  <div className="sdp-alerta sdp-alerta--info">
+    <div className="sdp-alerta__contingut">
+      <strong>Font de veritat:</strong> el codi, els tests, ESLint, les portes
+      actives i l’Estàndard UI Universal. L’annex antic «zero Tailwind» no és
+      normatiu; al Core nou, però, no afegim Tailwind ni estils en línia.
     </div>
-  </main>
-</div>`}</code></pre>
-
-<h4>1.2 Normes de Codi i CSS Absolutes (Llista "Prohibit Inventar")</h4>
-<div role="alert" className="sdp-alerta--avis "><div className="alert-content">
-<p><strong>Aquestes regles són absolutes i no es poden trencar sota cap concepte:</strong></p>
-<ol>
-<li><strong>Cap Serif al Core:</strong> Està terminantment prohibit usar tipografies serif (com Times o Georgia). La font única i exclusiva és <code>Noto Sans</code>.</li>
-<li><strong>Prohibició d'estils en línia:</strong> Està terminantment prohibit l'ús de <code>style=&#123;&#123;&#125;&#125;</code> en tot el codi JSX. Tots els estils han de viure en CSS mitjançant classes de la Constitució Pedra Seca.</li>
-<li><strong>Només Variables Semàntiques:</strong> Els components han d'utilitzar únicament els tokens semàntics (Capa 2, ex. <code>var(--sdp-accio)</code>). Prohibit aplicar colors directes o tokens de la paleta primitiva (Capa 1). L'H3 usa exclusivament <code>var(--sdp-accio-text)</code>.</li>
-<li><strong>Shadow DOM i Mode Fosc:</strong> Perquè les variables de CSS funcionin bé dins de WordPress o altres entorns amb Shadow DOM, <strong>sempre</strong> que s'escrigui una regla per al tema fosc com <code>:root[data-theme="dark"]</code> s'ha de duplicar exactament amb el selector bessó <code>:host([data-theme="dark"])</code>.</li>
-</ol>
-</div></div>
+  </div>
+  <ul className="sdp-llista">
+    <li><code>UniversalPage</code> delega l’estructura visual en <code>PageFrame</code>.</li>
+    <li><code>UniversalCard</code> és la targeta mestra i usa classes <code>sp-card*</code>.</li>
+    <li>Colors, radis, ombres i espaiat provenen de tokens semàntics.</li>
+    <li>Els controls tàctils respecten com a mínim <code>--sdp-touch-min</code> (44 px).</li>
+  </ul>
 </section>
 
 <section className="design-block">
@@ -361,15 +316,15 @@ export function DesignSectionContent() {
 </div>
 </section>
 {/*  SECCIÓ: BOTONS  */}
-<section className="design-block ">
+<section className="design-block">
 <ComponentDoc
   title="4. Botons (Accions)"
   description="L'element interactiu fonamental. Els botons han de comunicar clarament l'acció que realitzaran i el seu nivell d'importància."
   technical="Tots els botons complixen un touch-target mínim de 44x44px en mòbil. L'estat :focus-visible aplica un anell de color per a navegació per teclat (WCAG 2.1.1). Mai s'han d'usar per a enllaços simples sense acció."
 >
   <h4>Variants i Jerarquia</h4>
-  <p >Els botons es divideixen en nivells d'atenció. Usa <code>btn-primary</code> només per a l'acció principal d'una vista.</p>
-  <div className="btn-group ">
+  <p>Els botons es divideixen en nivells d'atenció. Usa <code>btn-primary</code> només per a l'acció principal d'una vista.</p>
+  <div className="btn-group">
     <button className="btn btn-primary">Primari</button>
     <button className="btn btn-secondary">Secundari</button>
     <button className="btn btn-outline-dark">Terciari</button>
@@ -379,12 +334,12 @@ export function DesignSectionContent() {
   </div>
 
   <h4>Estats d'Interacció</h4>
-  <p >Els estats visuals informen l'usuari sobre la disponibilitat de l'acció.</p>
-  <div className="btn-group ">
+  <p>Els estats visuals informen l'usuari sobre la disponibilitat de l'acció.</p>
+  <div className="btn-group">
     <button className="btn btn-primary">Normal</button>
     <button className="btn btn-primary" disabled>Desactivat</button>
     <button className="btn btn-primary" disabled>
-      <svg className="spinner spinner-sm " viewBox="0 0 20 20">
+      <svg className="spinner spinner-sm" viewBox="0 0 20 20">
         <circle cx="12" cy="12" fill="none" r="10" stroke="currentColor" strokeWidth="3"></circle>
       </svg>
       <span>Carregant...</span>
@@ -466,16 +421,16 @@ export function DesignSectionContent() {
 <input defaultChecked id="chk1" type="checkbox"/>
 <label htmlFor="chk1">Accepte els termes del Consell de la Petorreta</label>
 </div>
-<div className="checkbox-group ">
+<div className="checkbox-group">
 <input defaultChecked id="optA" name="opt" type="radio"/> <label htmlFor="optA">Opció A</label>
 <input id="optB" name="opt" type="radio"/> <label htmlFor="optB">Opció B</label>
 </div>
-<div className="form-group has-error ">
+<div className="form-group has-error">
 <label>Input amb error</label>
 <input type="text" defaultValue="valor incorrecte"/>
 <div className="error-text">Aquest camp és obligatori.</div>
 </div>
-<div className="form-group is-disabled ">
+<div className="form-group is-disabled">
 <label>Input desactivat</label>
 <input disabled="" type="text" defaultValue="No editable"/>
 </div>
@@ -514,7 +469,7 @@ export function DesignSectionContent() {
 </div>
 </section>
 {/*  SECCIÓ 8: BADGES  */}
-<section className="design-block ">
+<section className="design-block">
 <h3>8. Badges i Etiquetes</h3>
 <div className="design-badges-container">
 <span className="badge badge-default">Per defecte</span>
@@ -525,7 +480,7 @@ export function DesignSectionContent() {
 <span className="badge badge-info">Informació</span>
 </div>
 <h4>Etiquetes de Poble</h4>
-<div >
+<div>
 <span className="badge badge-outline"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="icona-linia" viewBox="0 0 20 20" width="16"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> Poble actiu</span>
 <span className="badge badge-outline"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="icona-linia" viewBox="0 0 20 20" width="16"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg> Fototeca</span>
 <span className="badge badge-outline"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="icona-linia" viewBox="0 0 20 20" width="16"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg> Arxiu</span>
@@ -641,11 +596,11 @@ export function DesignSectionContent() {
 <section className="design-block">
 <h3>12. Indicadors de Càrrega</h3>
 <div className="spinner-group">
-<div ><svg className="spinner spinner-sm" viewBox="0 0 20 20"><circle cx="12" cy="12" fill="none" r="10" stroke="currentColor" strokeWidth="3"></circle></svg>
+<div><svg className="spinner spinner-sm" viewBox="0 0 20 20"><circle cx="12" cy="12" fill="none" r="10" stroke="currentColor" strokeWidth="3"></circle></svg>
 Petit</div>
-<div ><svg className="spinner spinner-md" viewBox="0 0 20 20"><circle cx="12" cy="12" fill="none" r="10" stroke="currentColor" strokeWidth="3"></circle></svg>
+<div><svg className="spinner spinner-md" viewBox="0 0 20 20"><circle cx="12" cy="12" fill="none" r="10" stroke="currentColor" strokeWidth="3"></circle></svg>
 Normal</div>
-<div ><svg className="spinner spinner-lg" viewBox="0 0 20 20"><circle cx="12" cy="12" fill="none" r="10" stroke="currentColor" strokeWidth="3"></circle></svg>
+<div><svg className="spinner spinner-lg" viewBox="0 0 20 20"><circle cx="12" cy="12" fill="none" r="10" stroke="currentColor" strokeWidth="3"></circle></svg>
 Gran</div>
 </div>
 <h4>Esquelet (Skeleton)</h4>
@@ -668,7 +623,7 @@ Gran</div>
 {/*  SECCIÓ 14: DESPLEGABLES I MENÚS FLOTANTS  */}
 <section className="design-block">
 <h3>14. Desplegables i Menús Flotants</h3>
-<div >
+<div>
   <h4>Acordions</h4>
   <Accordion>
     <AccordionItem title="Què és Sóc de Poble?" defaultOpen={false}>
@@ -681,8 +636,8 @@ Gran</div>
 </div>
 <div>
   <h4>Menús Flotants (Dropdowns)</h4>
-  <p >Components usats per a menús contextuals, com les opcions d'una publicació o els ajustaments.</p>
-  <div >
+  <p>Components usats per a menús contextuals, com les opcions d'una publicació o els ajustaments.</p>
+  <div>
     <Dropdown 
       trigger={<button className="btn btn-outline-dark">Opcions de la Nota</button>}
     >
@@ -703,7 +658,7 @@ Gran</div>
 <div className="tab">Mapa</div>
 </div>
 <div className="tab-content">
-<p >Contingut de la pestanya activa. Aquesta àrea canvia segons la selecció. Les pestanyes són accessibles via teclat (Tab + Enter/Espai).</p>
+<p>Contingut de la pestanya activa. Aquesta àrea canvia segons la selecció. Les pestanyes són accessibles via teclat (Tab + Enter/Espai).</p>
 </div>
 </section>
 {/*  SECCIÓ 16: PROGRÉS  */}
@@ -746,7 +701,7 @@ Gran</div>
 </div>
 </section>
 {/*  SECCIÓ 19: DIVISORS  */}
-<section className="design-block ">
+<section className="design-block">
 <h3>19. Divisors i Separadors</h3>
 <div className="divider-preview">
 <div className="divider-label">19.1 Divisor horitzontal bàsic</div>
@@ -770,8 +725,8 @@ Gran</div>
 </div>
 </section>
 {/*  SECCIÓ 20: TARGETES MESTRES  */}
-<section className="design-block ">
-<h3 >20. Targeta Mestra (Sóc de Poble Universal Card)</h3>
+<section className="design-block">
+<h3>20. Targeta Mestra (Sóc de Poble Universal Card)</h3>
 
 <ComponentDoc
   title="Variants de la Targeta Mestra"

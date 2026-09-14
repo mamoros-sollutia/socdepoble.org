@@ -143,7 +143,8 @@ export function PageFrame({
   const showBlueBar = resolvedChrome === 'full' || resolvedChrome === 'context' || resolvedChrome === 'system';
   const showOrangeBar = resolvedChrome === 'full' || resolvedChrome === 'context';
   const showPageHeader = resolvedChrome !== 'none' && !hideHeader;
-  const hasHeader = Boolean(showPageHeader && (showLogos || title || labels.length || copyright));
+  const pageLabels = Array.isArray(labels) ? labels.filter(Boolean) : [];
+  const hasHeader = Boolean(showPageHeader && (showLogos || title || pageLabels.length || copyright));
 
   return (
     <>
@@ -231,7 +232,7 @@ export function PageFrame({
       {hasHeader && (
         <header className={['page-title', tone && `is-${tone}`].filter(Boolean).join(' ')}>
           {topBarData?.logoComponent ? (
-            <div className="page-title">
+            <div className="page-title-logo-personalitzat">
               {topBarData.logoComponent}
             </div>
           ) : (showLogos || chrome === 'system') ? (
@@ -246,9 +247,9 @@ export function PageFrame({
               {price && <span className="sp-card-price sp-card-price--en-linia">{price}</span>}
             </h1>
           )}
-          {labels.length > 0 && (
+          {pageLabels.length > 0 && (
             <ul className="sp-card-labels page-title-labels" aria-label="Categories">
-              {labels.map((label, index) => {
+              {pageLabels.map((label, index) => {
                 const text = typeof label === 'string' ? label : label.text;
                 const className = typeof label === 'string' ? 'sdp-badge-tag' : label.className || 'sdp-badge-tag';
                 const href = typeof label === 'string' ? null : label.href;

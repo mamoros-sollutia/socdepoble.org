@@ -5,7 +5,6 @@ import { sanitizeHtml } from '../../utils/sanitize.js';
 import useHeroImageHandler from '../../hooks/useHeroImageHandler.js';
 import React, { Component, useRef, useCallback, useEffect } from 'react';
 import { useContent } from './ContentProvider.jsx';
-import { UniversalPage } from './UniversalPage.jsx';
 
 // Error Boundary per protegir l'editor i evitar tombar la pàgina hoste
 class EditorErrorBoundary extends Component {
@@ -34,10 +33,10 @@ class EditorErrorBoundary extends Component {
   }
 }
 
-export function EditableField({ html, placeholder, onChange, onBlur, className }) {
+export function EditableField({ as: Component = 'span', html, placeholder, onChange, onBlur, className, ...props }) {
   if (html === null) return null;
   return (
-    <span
+    <Component
       className={className}
       contentEditable
       suppressContentEditableWarning
@@ -45,6 +44,7 @@ export function EditableField({ html, placeholder, onChange, onBlur, className }
       onBlur={(e) => onBlur?.(sanitizeHtml(e.currentTarget.innerHTML))}
       data-placeholder={placeholder}
       dangerouslySetInnerHTML={{ __html: sanitizeHtml(html || '') }}
+      {...props}
     />
   );
 }
@@ -150,54 +150,89 @@ export function UniversalEditorShell({
   return (
     <EditorErrorBoundary>
       {topBar}
-      <UniversalPage
-        chrome="context"
-        variant="embed"
-        topBarData={{
-          heroComponent: shellData.topBarData.heroComponent,
-          logoComponent: shellData.topBarData.logoComponent,
-          barActions: shellData.topBarData.barActions,
-          authorName: barAuthorName,
-          authorLocation: barAuthorLocation,
-          authorAvatar: barAuthorAvatar,
-          dateTime: formattedDate
-        }}
-        title={
-          <EditableField 
-            key={`${id}-title`} 
-            className="editor-title-input" 
-            html={titleHtml} 
-            placeholder="Títol..." 
-            onChange={(val) => handleFieldChange('title', val)} 
-            onBlur={(val) => handleFieldBlur('title', val)} 
-          />
-        }
-        subtitle={
-          <EditableField 
-            key={`${id}-subtitle`} 
-            className="editor-subtitle-input" 
-            html={subtitleHtml} 
-            placeholder="Subtítol opcional..." 
-            onChange={(val) => handleFieldChange('subtitle', val)} 
-            onBlur={(val) => handleFieldBlur('subtitle', val)} 
-          />
-        }
-        lead={
-          <EditableField 
-            key={`${id}-lead`} 
-            className="editor-lead-input" 
-            html={leadHtml} 
-            placeholder="Entradilla opcional..." 
-            onChange={(val) => handleFieldChange('lead', val)} 
-            onBlur={(val) => handleFieldBlur('lead', val)} 
-          />
-        }
-        labels={labels}
-      >
-        <div className="ues-canvas" style={{ padding: 0 }}>
-          {children}
+      
+      {/* Imatge Capçalera (Hero Image) */}
+      {shellData.topBarData.heroComponent && (
+        <div className="hero-image" style={{ margin: 0, width: '100%', flexShrink: 0 }}>
+          {shellData.topBarData.heroComponent}
         </div>
-      </UniversalPage>
+      )}
+
+      {/* Barra Taronja */}
+      <section className="bar-orange" aria-label="Autoria i data" style={{ margin: 0, borderRadius: 0, background: 'var(--sdp-marca)', padding: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', color: '#fff' }}>
+        <div className="sp-card-author" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <img className="sp-card-avatar" src={barAuthorAvatar} alt={barAuthorName} width="48" height="48" style={{ borderRadius: '4px' }} />
+          <div className="sp-card-author-info">
+            <div className="sp-card-author-name" style={{ fontWeight: 'bold' }}>{barAuthorName}</div>
+            <div className="sp-card-author-location" style={{ fontSize: '0.9rem', opacity: 0.9 }}>{barAuthorLocation}</div>
+          </div>
+        </div>
+        <div className="bar-actions" style={{ opacity: 0.9, fontSize: '0.9rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
+          {shellData.topBarData.barActions}
+        </div>
+      </section>
+
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', padding: '32px', maxWidth: '800px', margin: '0 auto', width: '100%' }}>
+        <article className="card universal-page" style={{ margin: 0, padding: 0, flex: 1, display: 'flex', flexDirection: 'column', border: 'none', boxShadow: 'none', background: 'transparent' }}>
+          
+          <header className="page-title" style={{ margin: '0 0 24px 0', borderBottom: 'none' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '32px' }}>
+              {shellData.topBarData.logoComponent}
+            </div>
+
+            <EditableField 
+              as="h1"
+              key={`${id}-title`} 
+              className="editor-title-input" 
+              html={titleHtml} 
+              placeholder="Escriu el títol de l'article (H1)..." 
+              onChange={(val) => handleFieldChange('title', val)} 
+              onBlur={(val) => handleFieldBlur('title', val)} 
+              style={{ outline: 'none', cursor: 'text', color: 'var(--sdp-accio-text)', fontSize: '3rem', fontWeight: 'bold', textAlign: 'center', marginBottom: '16px', lineHeight: '1.2' }}
+            />
+
+            {labels && labels.length > 0 && (
+              <ul className="sp-card-labels page-title-labels" style={{ marginTop: '24px', marginBottom: '16px', justifyContent: 'center', display: 'flex', gap: '8px', listStyle: 'none', padding: 0, flexWrap: 'wrap' }}>
+                {labels.map((label, idx) => (
+                  <li key={idx} className="sp-card-label" style={{ cursor: 'pointer', border: '1px solid var(--sdp-vora)', padding: '4px 16px', borderRadius: '20px', fontSize: '0.85rem' }}>{label}</li>
+                ))}
+              </ul>
+            )}
+
+            <p className="sp-card-copyright page-title-copyright" style={{ textAlign: 'center', color: 'var(--sdp-text-secundari)', fontSize: '0.85rem', margin: '16px 0 32px 0' }}>
+              © Sóc de Poble / Fet per la IAIA i Nano Banana
+            </p>
+          </header>
+
+          <div className="page-intro" style={{ marginBottom: '32px' }}>
+            <EditableField 
+              as="h2"
+              key={`${id}-subtitle`} 
+              className="editor-subtitle-input" 
+              html={subtitleHtml} 
+              placeholder="Escriu el subtítol (H2)..." 
+              onChange={(val) => handleFieldChange('subtitle', val)} 
+              onBlur={(val) => handleFieldBlur('subtitle', val)} 
+              style={{ outline: 'none', cursor: 'text', fontSize: '1.8rem', fontWeight: '600', color: 'var(--sdp-marca)', textAlign: 'center', marginBottom: '24px', lineHeight: '1.3' }}
+            />
+
+            <EditableField 
+              as="p"
+              key={`${id}-lead`} 
+              className="editor-lead-input" 
+              html={leadHtml} 
+              placeholder="Escriu l'entradilla..." 
+              onChange={(val) => handleFieldChange('lead', val)} 
+              onBlur={(val) => handleFieldBlur('lead', val)} 
+              style={{ outline: 'none', cursor: 'text', fontSize: '1.15rem', lineHeight: '1.6', color: 'var(--sdp-text-base)', marginBottom: '24px', textAlign: 'center' }}
+            />
+          </div>
+          
+          <div className="editor-content page-content ues-canvas" style={{ outline: 'none', flex: 1, fontSize: '1.1rem', lineHeight: '1.8', color: 'var(--sdp-text-base)', padding: 0 }}>
+            {children}
+          </div>
+        </article>
+      </div>
     </EditorErrorBoundary>
   );
 }
